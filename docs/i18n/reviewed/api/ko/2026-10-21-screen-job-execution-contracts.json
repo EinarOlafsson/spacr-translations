@@ -1,0 +1,98 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Build the graph for ``project`` through the job runner and draw it when ready.",
+      "label": "spacr.qt.screens.pipeline_graph.PipelineGraphScreen.load_project#0",
+      "source": "Build the graph for ``project`` through the job runner and draw it when ready.",
+      "source_sha256": "935e5102deb906baa3109564bd2e666da94a38899e671dc193d5ac2258af6c4a",
+      "translation": "작업 실행기를 통해 ``project``\\ 의 그래프를 만들고 준비되면 그립니다."
+    },
+    {
+      "context": "In executed in a worker mode, returns once the job is submitted; an unthreaded screen builds the graph and delivers its result inline before returning. :attr:`graph_loaded` fires when the graph is drawn. A project with no registry is not a failure — it draws the declared module order and says nothing has run.",
+      "label": "spacr.qt.screens.pipeline_graph.PipelineGraphScreen.load_project#1",
+      "source": "In threaded mode, returns once the job is submitted; an unthreaded screen builds the graph and delivers its result inline before returning. :attr:`graph_loaded` fires when the graph is drawn. A project with no registry is not a failure — it draws the declared module order and says nothing has run.",
+      "source_sha256": "b8a69232bb00f506456253876f36468266bc2025fde79af569b6ba4b0066ac79",
+      "translation": "스레드 모드에서는 작업을 제출하면 반환합니다. 스레드를 사용하지 않는 화면은 같은 호출 안에서 그래프를 만들고 결과를 전달한 뒤 반환합니다. 그래프가 그려지면 :attr:`graph_loaded`\\ 신호가 발생합니다. 레지스트리가 없는 프로젝트는 실패가 아닙니다. 선언된 모듈 순서를 그리고 아직 아무것도 실행되지 않았다고 표시합니다."
+    },
+    {
+      "context": "Read a coefficient table and profile the model it describes.",
+      "label": "spacr.qt.screens.profiler.ProfilerScreen.load_coefficients#0",
+      "source": "Read a coefficient table and profile the model it describes.",
+      "source_sha256": "e44261afa948815b690a3e1737fc06a82b7615a38b34153eb4c34f9842a2fa7e",
+      "translation": "계수 표를 읽고 그 표가 설명하는 모델의 프로필을 만듭니다."
+    },
+    {
+      "context": "CSV file with ``feature`` and ``coefficient`` columns; read and rebuilt with the chosen link on a background execution unit by default, or inline when the screen is unthreaded. An empty path only asks for a table.",
+      "label": "spacr.qt.screens.profiler.ProfilerScreen.load_coefficients#1",
+      "source": "CSV file with ``feature`` and ``coefficient`` columns; read and rebuilt with the chosen link on a worker thread by default, or inline when the screen is unthreaded. An empty path only asks for a table.",
+      "source_sha256": "fd6fce497f76a04fed3e4a688fc94ec03a246862c2a59387f3fee5868c822179",
+      "translation": "``feature``\\ 와 ``coefficient``\\ 열이 있는 CSV 파일입니다. 기본적으로 작업 스레드에서 선택한 링크를 사용하여 읽고 다시 구성하며, 스레드를 사용하지 않는 화면에서는 같은 호출 안에서 처리합니다. 빈 경로는 테이블만 요청합니다."
+    },
+    {
+      "context": "Re-read the verdicts through the job runner.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#0",
+      "source": "Re-read the verdicts through the job runner.",
+      "source_sha256": "a3638b2e31abefa2dce6148063769608e82c9830278bcd5efc291799ca6bfce8",
+      "translation": "작업 실행기를 통해 판정 결과를 다시 읽습니다."
+    },
+    {
+      "context": "By default, the parse and the two decisions in front of it -- \"is this a folder?\" and \"has anything changed?\" -- all run on the worker, because both decisions touch the disk at a path the user typed. `os.path.isdir` is one call, and `_fingerprint` is a `find_scorecards` listing plus a stat per artifact. An unthreaded screen performs the same work inline.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#1",
+      "source": "By default, the parse and the two decisions in front of it -- \"is this a folder?\" and \"has anything changed?\" -- all run on the worker, because both decisions touch the disk at a path the user typed. `os.path.isdir` is one call, and `_fingerprint` is a `find_scorecards` listing plus a stat per artifact. An unthreaded screen performs the same work inline.",
+      "source_sha256": "7283db0c017997f4ad5a30f683f62d9477ae58bd4f4b4aebfd8e63532dd09eb6",
+      "translation": "기본적으로 파싱과 그 앞의 두 판단 -- \"폴더인가?\"와 \"변경된 것이 있는가?\" -- 은 모두 작업 스레드에서 실행됩니다. 두 판단 모두 사용자가 입력한 경로의 디스크에 접근하기 때문입니다. `os.path.isdir`\\ 는 한 번의 호출이며, `_fingerprint`\\ 는 `find_scorecards` 목록 조회와 각 아티팩트에 대한 stat 호출로 구성됩니다. 스레드를 사용하지 않는 화면은 같은 작업을 같은 호출 안에서 수행합니다."
+    },
+    {
+      "context": "Measured on one workstation: a single `os.path.exists` under `/nas_mnt`, an `autofs` mount whose share was asleep, had not returned after twenty seconds -- the stat is what triggers the automount. Execute on the main GUI execution path, that call would freeze the whole interface, with no traceback, whenever such a folder was dropped, browsed to or refreshed.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#2",
+      "source": "Measured on one workstation: a single `os.path.exists` under `/nas_mnt`, an `autofs` mount whose share was asleep, had not returned after twenty seconds -- the stat is what triggers the automount. Run on the GUI thread, that call would freeze the whole interface, with no traceback, whenever such a folder was dropped, browsed to or refreshed.",
+      "source_sha256": "af72fcce1b823ea68bc8efe122d03d90d5b8a190ff8f76afdb4a7645ea0018cf",
+      "translation": "한 워크스테이션에서 측정한 결과, `os.path.exists` 호출 하나가 `/nas_mnt` 아래에서 공유 저장소가 유휴 상태인 `autofs` 마운트에 접근할 때 20초 후에도 반환되지 않았습니다 -- stat 호출이 자동 마운트를 시작하기 때문입니다. GUI 스레드에서 이 호출을 실행하면 그런 폴더를 끌어다 놓거나 파일 선택기로 선택하거나 새로 고칠 때마다 오류 추적 정보 없이 전체 인터페이스가 멈춥니다."
+    },
+    {
+      "context": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the main GUI execution path would only allow the two answers to disagree. The application view's messages are unchanged; they appear when the worker finishes.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#3",
+      "source": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the GUI thread would only allow the two answers to disagree. The screen's messages are unchanged; they appear when the worker finishes.",
+      "source_sha256": "ecda6b01e9d559a9d993a876334bee5067a5bf67e1575f774f36ad1f9026e981",
+      "translation": "`path_probe` 는 폴더 확인에 사용하지 않습니다. 낙관적으로 응답하므로 \"go on and read\" (계속 읽기)라고만 할 수 있고, 작업자가 어차피 같은 조건을 확인합니다. GUI 스레드에서 한 번 더 확인하면 두 응답이 서로 다를 가능성만 생깁니다. 화면의 메시지는 바뀌지 않으며 작업자가 완료되면 나타납니다."
+    },
+    {
+      "context": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. With worker execution, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#5",
+      "source": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. Threaded, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
+      "source_sha256": "cda73b4ca5c0fbe87a1387ecc459294b7a50bdc1a96a0f030a8db0bfc7ec54ca",
+      "translation": "디스크 읽기를 시작했는지 여부입니다. 호출 안에서 직접 읽으면(``threaded=False``) 함수가 반환될 때 작업자 부분이 이미 실행되어 결과를 보고했으므로 정확한 값입니다. 스레드 모드에서는 작업을 시작했다는 뜻입니다. 데이터 지문은 아직 계산하지 않았으므로 \"nothing changed\" (변경 없음)는 나중에 상태 줄에 나타납니다."
+    },
+    {
+      "context": "Write the report to the path in the output box.",
+      "label": "spacr.qt.screens.report.ReportScreen.generate#0",
+      "source": "Write the report to the path in the output box.",
+      "source_sha256": "a329a80dd9f20122ab7ae154a141b0d313d29288dead932a884bc00415d5a889",
+      "translation": "출력 상자에 지정된 경로로 보고서를 씁니다."
+    },
+    {
+      "context": "Re-collects rather than reusing the scan, so the file reflects the folder as it is now and the figure cap as it is now.",
+      "label": "spacr.qt.screens.report.ReportScreen.generate#1",
+      "source": "Re-collects rather than reusing the scan, so the file reflects the folder as it is now and the figure cap as it is now.",
+      "source_sha256": "d80a38c17c27c24c7ba140d67f67e07edbc30e3335d58f7059ceb436d10f25b9",
+      "translation": "이전 스캔을 재사용하는 대신 데이터를 다시 수집하여 현재 폴더 내용과 현재 그림 개수 제한을 파일에 반영합니다."
+    },
+    {
+      "context": "True when the job was started; unthreaded, True only when the report callable and its completion handler return without throwing.",
+      "label": "spacr.qt.screens.report.ReportScreen.generate#2",
+      "source": "True when the job was started; unthreaded, True only when the report callable and its completion handler return without raising.",
+      "source_sha256": "6ce0429aea3e9e83f521646aeb4027c8fb6701d146744187a0c94b0fc8af777e",
+      "translation": "작업이 시작되었으면 True입니다. 스레드를 사용하지 않을 때는 보고서 함수와 완료 핸들러가 모두 예외를 발생시키지 않고 반환한 경우에만 True입니다."
+    },
+    {
+      "context": "Reload processing-session records on a background execution unit by default, or inline when constructed with ``threaded=False``.",
+      "label": "spacr.qt.screens.run_history.RunHistoryScreen.refresh#0",
+      "source": "Reload run records on a worker thread by default, or inline when constructed with ``threaded=False``.",
+      "source_sha256": "f9fec8aa1fe8766f864443aee22ff75cd76738ea69b2fb5c0e1fd86f5c4280e0",
+      "translation": "기본적으로 작업 스레드에서 실행 기록을 다시 불러오며, ``threaded=False``\\ 로 생성한 경우에는 같은 호출 안에서 불러옵니다."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

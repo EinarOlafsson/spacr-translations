@@ -4368,21 +4368,27 @@
       "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#1",
       "source": "The parse and the two decisions in front of it -- \"is this a folder?\" and \"has anything changed?\" -- all run on the worker, because both decisions touch the disk at a path the user typed. `os.path.isdir` is one call, and `_fingerprint` is a `find_scorecards` listing plus a stat per artifact.",
       "source_sha256": "72482739fec02b9c6b84dc93839d492106a543647288276e40bb04b6ecd463bb",
-      "translation": "L'analyse et les deux décisions devant elle -- « est-ce un dossier ? » et « a-t-il changé ? » -- sont toutes exécutées sur le worker, parce que les deux choix touchent le disque à un chemin que l'utilisateur a tapé. `os.path.isdir` est un appel, et `_fingerprint` est une liste `find_scorecards` plus une stat par artefact."
+      "translation": "L'analyse et les deux décisions devant elle -- « est-ce un dossier ? » et « a-t-il changé ? » -- sont toutes exécutées sur le worker, parce que les deux choix touchent le disque à un chemin que l'utilisateur a tapé. `os.path.isdir` est un appel, et `_fingerprint` est une liste `find_scorecards` plus une stat par artefact.",
+      "retired": true,
+      "retired_reason": "2026-10-21 source-bound corrections of threaded and inline screen-job contracts or companion translations; original review fields retained."
     },
     {
       "context": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the main GUI execution path would only allow the two answers to disagree. The application view's messages are unchanged; they appear when the worker finishes.",
       "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#3",
       "source": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the GUI thread would only allow the two answers to disagree. The screen's messages are unchanged; they appear when the worker finishes.",
       "source_sha256": "ecda6b01e9d559a9d993a876334bee5067a5bf67e1575f774f36ad1f9026e981",
-      "translation": "`path_probe` n'est pas utilisé pour le garde-dossiers. Il répond optimistement, donc il ne pourrait jamais dire \"go on and read\", que le worker vérifie de toute façon; un deuxième garde sur le chemin d'exécution principal GUI ne permettrait que les deux réponses de ne pas être d'accord. Les messages de la vue de l'application sont inchangés; ils apparaissent lorsque le worker termine."
+      "translation": "`path_probe` n'est pas utilisé pour le garde-dossiers. Il répond optimistement, donc il ne pourrait jamais dire \"go on and read\", que le worker vérifie de toute façon; un deuxième garde sur le chemin d'exécution principal GUI ne permettrait que les deux réponses de ne pas être d'accord. Les messages de la vue de l'application sont inchangés; ils apparaissent lorsque le worker termine.",
+      "retired": true,
+      "retired_reason": "2026-10-21 source-bound corrections of threaded and inline screen-job contracts or companion translations; original review fields retained."
     },
     {
       "context": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. With worker execution, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
       "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#5",
       "source": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. Threaded, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
       "source_sha256": "cda73b4ca5c0fbe87a1387ecc459294b7a50bdc1a96a0f030a8db0bfc7ec54ca",
-      "translation": "La lecture en ligne (``threaded=False``) qui est exacte, parce que la moitié du worker a déjà couru et signalé au moment où ce retour est effectué. Avec l'exécution du worker, cela signifie que le travail a commencé : l'empreinte digitale n'est pas encore prise, donc \"nothing changed\" arrive plus tard, sur la ligne d'état."
+      "translation": "La lecture en ligne (``threaded=False``) qui est exacte, parce que la moitié du worker a déjà couru et signalé au moment où ce retour est effectué. Avec l'exécution du worker, cela signifie que le travail a commencé : l'empreinte digitale n'est pas encore prise, donc \"nothing changed\" arrive plus tard, sur la ligne d'état.",
+      "retired": true,
+      "retired_reason": "2026-10-21 source-bound corrections of threaded and inline screen-job contracts or companion translations; original review fields retained."
     },
     {
       "context": "Each row reflects a :class:`spacr.qt.plate_queue.QueueItem`. The application view owns a :class:`spacr.qt.plate_queue.PlateQueue` and a single worker QThread that walks items sequentially.",

@@ -1,0 +1,84 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "context": "Build the graph for ``project`` through the job runner and draw it when ready.",
+      "label": "spacr.qt.screens.pipeline_graph.PipelineGraphScreen.load_project#0",
+      "source": "Build the graph for ``project`` through the job runner and draw it when ready.",
+      "source_sha256": "935e5102deb906baa3109564bd2e666da94a38899e671dc193d5ac2258af6c4a",
+      "translation": "Bygg grafen för ``project`` via jobbhanteraren och rita den när den är klar."
+    },
+    {
+      "context": "In executed in a worker mode, returns once the job is submitted; an unthreaded screen builds the graph and delivers its result inline before returning. :attr:`graph_loaded` fires when the graph is drawn. A project with no registry is not a failure — it draws the declared module order and says nothing has run.",
+      "label": "spacr.qt.screens.pipeline_graph.PipelineGraphScreen.load_project#1",
+      "source": "In threaded mode, returns once the job is submitted; an unthreaded screen builds the graph and delivers its result inline before returning. :attr:`graph_loaded` fires when the graph is drawn. A project with no registry is not a failure — it draws the declared module order and says nothing has run.",
+      "source_sha256": "b8a69232bb00f506456253876f36468266bc2025fde79af569b6ba4b0066ac79",
+      "translation": "I trådat läge återgår anropet när jobbet har skickats in; en skärm utan trådning bygger grafen och levererar resultatet direkt i samma anrop innan det återgår. :attr:`graph_loaded` skickas när grafen ritas. Ett projekt utan register är inget fel — det visar den deklarerade modulordningen och anger att inget har körts."
+    },
+    {
+      "context": "CSV file with ``feature`` and ``coefficient`` columns; read and rebuilt with the chosen link on a background execution unit by default, or inline when the screen is unthreaded. An empty path only asks for a table.",
+      "label": "spacr.qt.screens.profiler.ProfilerScreen.load_coefficients#1",
+      "source": "CSV file with ``feature`` and ``coefficient`` columns; read and rebuilt with the chosen link on a worker thread by default, or inline when the screen is unthreaded. An empty path only asks for a table.",
+      "source_sha256": "fd6fce497f76a04fed3e4a688fc94ec03a246862c2a59387f3fee5868c822179",
+      "translation": "CSV-fil med kolumnerna ``feature`` och ``coefficient``; läses och byggs om med den valda länken på en arbetstråd som standard, eller direkt i samma anrop när skärmen inte är trådad. En tom sökväg ber bara om en tabell."
+    },
+    {
+      "context": "Re-read the verdicts through the job runner.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#0",
+      "source": "Re-read the verdicts through the job runner.",
+      "source_sha256": "a3638b2e31abefa2dce6148063769608e82c9830278bcd5efc291799ca6bfce8",
+      "translation": "Läs in bedömningarna på nytt via jobbhanteraren."
+    },
+    {
+      "context": "By default, the parse and the two decisions in front of it -- \"is this a folder?\" and \"has anything changed?\" -- all run on the worker, because both decisions touch the disk at a path the user typed. `os.path.isdir` is one call, and `_fingerprint` is a `find_scorecards` listing plus a stat per artifact. An unthreaded screen performs the same work inline.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#1",
+      "source": "By default, the parse and the two decisions in front of it -- \"is this a folder?\" and \"has anything changed?\" -- all run on the worker, because both decisions touch the disk at a path the user typed. `os.path.isdir` is one call, and `_fingerprint` is a `find_scorecards` listing plus a stat per artifact. An unthreaded screen performs the same work inline.",
+      "source_sha256": "7283db0c017997f4ad5a30f683f62d9477ae58bd4f4b4aebfd8e63532dd09eb6",
+      "translation": "Som standard körs både parsningen och de två föregående besluten -- \"är detta en mapp?\" och \"har något ändrats?\" -- på arbetstråden, eftersom båda besluten läser från disken vid en sökväg som användaren skrivit in. `os.path.isdir` är ett anrop, och `_fingerprint` är en listning med `find_scorecards` samt ett stat-anrop per artefakt. En skärm utan trådning gör samma arbete direkt i samma anrop."
+    },
+    {
+      "context": "Measured on one workstation: a single `os.path.exists` under `/nas_mnt`, an `autofs` mount whose share was asleep, had not returned after twenty seconds -- the stat is what triggers the automount. Execute on the main GUI execution path, that call would freeze the whole interface, with no traceback, whenever such a folder was dropped, browsed to or refreshed.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#2",
+      "source": "Measured on one workstation: a single `os.path.exists` under `/nas_mnt`, an `autofs` mount whose share was asleep, had not returned after twenty seconds -- the stat is what triggers the automount. Run on the GUI thread, that call would freeze the whole interface, with no traceback, whenever such a folder was dropped, browsed to or refreshed.",
+      "source_sha256": "af72fcce1b823ea68bc8efe122d03d90d5b8a190ff8f76afdb4a7645ea0018cf",
+      "translation": "Uppmätt på en arbetsstation: ett enda `os.path.exists` under `/nas_mnt`, en `autofs`-montering vars nätverksresurs vilade, hade inte returnerat efter tjugo sekunder -- det är stat-anropet som utlöser automatisk montering. På GUI-tråden skulle detta anrop frysa hela gränssnittet utan stackspårning varje gång en sådan mapp släpptes in, valdes i en filväljare eller uppdaterades."
+    },
+    {
+      "context": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the main GUI execution path would only allow the two answers to disagree. The application view's messages are unchanged; they appear when the worker finishes.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#3",
+      "source": "`path_probe` is not used for the folder guard. It answers optimistically, so it could only ever say \"go on and read\", which the worker then checks anyway; a second guard on the GUI thread would only allow the two answers to disagree. The screen's messages are unchanged; they appear when the worker finishes.",
+      "source_sha256": "ecda6b01e9d559a9d993a876334bee5067a5bf67e1575f774f36ad1f9026e981",
+      "translation": "`path_probe` används inte för kontrollen av mappen. Den svarar optimistiskt och kan därför bara säga \"go on and read\" (fortsätt och läs), vilket arbetstråden ändå kontrollerar. En andra kontroll på GUI-tråden skulle bara göra det möjligt för de två svaren att motsäga varandra. Skärmens meddelanden är oförändrade; de visas när arbetstråden är klar."
+    },
+    {
+      "context": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. With worker execution, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
+      "label": "spacr.qt.screens.qc_dashboard.QCDashboardScreen.refresh#5",
+      "source": "whether a read of the disk was started. Reading inline (``threaded=False``) that is exact, because the worker half has already run and reported by the time this returns. Threaded, it means the job was started: the fingerprint is not taken yet, so \"nothing changed\" arrives later, on the status line.",
+      "source_sha256": "cda73b4ca5c0fbe87a1387ecc459294b7a50bdc1a96a0f030a8db0bfc7ec54ca",
+      "translation": "om en läsning från disk startades. Vid läsning direkt i anropet (``threaded=False``) är det svaret exakt, eftersom arbetardelen redan har körts och rapporterat när funktionen returnerar. Vid trådad körning betyder det att jobbet startades: fingeravtrycket har ännu inte beräknats, så \"nothing changed\" (inget ändrades) visas senare på statusraden."
+    },
+    {
+      "context": "Re-collects rather than reusing the scan, so the file reflects the folder as it is now and the figure cap as it is now.",
+      "label": "spacr.qt.screens.report.ReportScreen.generate#1",
+      "source": "Re-collects rather than reusing the scan, so the file reflects the folder as it is now and the figure cap as it is now.",
+      "source_sha256": "d80a38c17c27c24c7ba140d67f67e07edbc30e3335d58f7059ceb436d10f25b9",
+      "translation": "Samlar in på nytt i stället för att återanvända skanningen, så att filen återspeglar mappens aktuella innehåll och den aktuella gränsen för antalet figurer."
+    },
+    {
+      "context": "True when the job was started; unthreaded, True only when the report callable and its completion handler return without throwing.",
+      "label": "spacr.qt.screens.report.ReportScreen.generate#2",
+      "source": "True when the job was started; unthreaded, True only when the report callable and its completion handler return without raising.",
+      "source_sha256": "6ce0429aea3e9e83f521646aeb4027c8fb6701d146744187a0c94b0fc8af777e",
+      "translation": "True när jobbet har startats; utan trådning är värdet True endast när rapportfunktionen och dess slutförandehanterare återgår utan att kasta undantag."
+    },
+    {
+      "context": "Reload processing-session records on a background execution unit by default, or inline when constructed with ``threaded=False``.",
+      "label": "spacr.qt.screens.run_history.RunHistoryScreen.refresh#0",
+      "source": "Reload run records on a worker thread by default, or inline when constructed with ``threaded=False``.",
+      "source_sha256": "f9fec8aa1fe8766f864443aee22ff75cd76738ea69b2fb5c0e1fd86f5c4280e0",
+      "translation": "Läs in körningsposterna på en arbetstråd som standard, eller direkt i samma anrop när skärmen har skapats med ``threaded=False``."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

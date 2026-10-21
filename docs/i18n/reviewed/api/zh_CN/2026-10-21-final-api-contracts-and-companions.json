@@ -1,0 +1,273 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "1. A name that already *is* a microplate sample position address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The laboratory microplate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that laboratory microplate, skipping any id claimed in step 1.",
+      "label": "spacr.convert.assign_wells#2",
+      "source": "1. A name that already *is* a well address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The plate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that plate, skipping any id claimed in step 1.",
+      "source_sha256": "7690c90876df1d6d303f173617e353f8ea36af8d51bb2309b1a905a6def61d9e",
+      "translation": "1. 名称若*已经是*孔地址，则保留该地址 — :func:`normalise_well` 处理 ``a1`` / ``A-1`` / ``A01`` / ``aa1``。2. 由 :func:`plate_format_for_names` 选择板格式：使用 384，除非已占用的地址或名称数量需要 1536；此时行可到 ``AF``，列可到 48。3. 其余名称使用 ``_natural_key`` 排序，依次分配该板下一个空闲编号，跳过步骤 1 已占用的编号。"
+    },
+    {
+      "context": "All three are deterministic — the same folder names always produce the same microplate sample positions — and step 3 is only *reversible* because the map file records ``source_well`` next to ``well``. After conversion ``plate1_A01`` cannot be traced to its folder without the map, so :func:`plan` also reports every synthetic assignment by name.",
+      "label": "spacr.convert.assign_wells#3",
+      "source": "All three are deterministic — the same folder names always produce the same wells — and step 3 is only *reversible* because the map file records ``source_well`` next to ``well``. After conversion ``plate1_A01`` cannot be traced to its folder without the map, so :func:`plan` also reports every synthetic assignment by name.",
+      "source_sha256": "a930d8de69cc45978ab57dc0beb15b78db10b0672b99598aefce57996b962758",
+      "translation": "三项规则都是确定性的 — 相同文件夹名称始终产生相同的孔 — 第 3 步之所以可\\ *逆转*\\ ，只是因为映射文件在 ``source_well`` 旁记录了 ``well``。转换后，没有映射便无法从 ``plate1_A01`` 追溯到原文件夹，因此 :func:`plan` 也会按名称报告每项合成分配。"
+    },
+    {
+      "context": "Classify a Make Masks drop without prompting or opening an editor.",
+      "label": "spacr.drop_classification.classify_drop#0",
+      "source": "Classify a Make Masks drop without prompting or opening an editor.",
+      "source_sha256": "901d68a97279cf0242891f0b16ceeecc8f9319ac0f865f9bef1ac461f2c4f876",
+      "translation": "对拖放到 Make Masks 的输入进行分类，不提示用户也不打开编辑器。"
+    },
+    {
+      "context": "When normalization is enabled, every extracted image region is divided by the same per-channel scale, ``spec.channel_scale``, so an extracted image region's embedding does not depend on the other extracted image regions in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole laboratory microplate -- and a warning is logged. To embed one laboratory microplate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "label": "spacr.embeddings.embed_array#1",
+      "source": "When normalization is enabled, every crop is divided by the same per-channel scale, ``spec.channel_scale``, so a crop's embedding does not depend on the other crops in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole plate -- and a warning is logged. To embed one plate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "source_sha256": "d7f62bf6f38bc8b5c026d7bbfd47103bd860ad5ff995d0866e1eda5dea593143",
+      "translation": "启用归一化时，每个裁剪图都除以同一逐通道尺度 ``spec.channel_scale``，因此一个裁剪图的嵌入不会依赖 ``crops`` 中的其他裁剪图。如果启用了归一化但规格中没有尺度，则会从 ``crops`` 的随机样本估计尺度 — 此时将整个堆栈视为整块板 — 并记录警告。要分多次调用嵌入同一块板，请每次传入相同尺度：返回的 ``spec`` 会携带该尺度。"
+    },
+    {
+      "context": "how to embed; the default is per-channel resnet18.",
+      "label": "spacr.embeddings.embed_array#3",
+      "source": "how to embed; the default is per-channel resnet18.",
+      "source_sha256": "15ff2ca016c1c575259534a0be93452a78d27f1bc16dcfcd4ec13516fda82f66",
+      "translation": "嵌入方式；默认是逐通道 resnet18。"
+    },
+    {
+      "context": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "label": "spacr.lineage.build_forest#1",
+      "source": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "source_sha256": "60b3941f91f25ec10c8a30ad424183a164acf68d0b17dfb9bbdce093c20069d2",
+      "translation": "``{table name: rows}``。直接读取 ``root`` 表；其他表只有名称列在 :data:`LINEAGE_TABLES` 中时才读取。其余表会被忽略，因此调用方可以传入加载的全部内容。"
+    },
+    {
+      "context": "the table whose rows become the roots.",
+      "label": "spacr.lineage.build_forest#2",
+      "source": "the table whose rows become the roots.",
+      "source_sha256": "7d778f8ab21398ed63efe5d9d52b2771cff0cf313da85fbe5f5dda4bdb87f55e",
+      "translation": "其行成为根的表。"
+    },
+    {
+      "context": "put each node's object table into its shared structured-data name, so a cell's nucleus 1 and its pathogen 1 are two structured-data names. ``False`` rebuilds the untyped structured-data names spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "label": "spacr.lineage.build_forest#3",
+      "source": "put each node's object table into its shared key, so a cell's nucleus 1 and its pathogen 1 are two keys. ``False`` rebuilds the untyped keys spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "source_sha256": "6fe1f532eae650b1264a06f645bf8c54f68d1db488effcebd073cda28f802718",
+      "translation": "将每个节点的对象表纳入其共享键，使细胞的细胞核 1 和病原体 1 使用不同的键。``False`` 重建 spaCR 在对象类型出现之前写出的无类型键；保留此行为是为了能够\\ *重现*\\ 键冲突，而非仅记住它，因此 :meth:`LineageNode.key_collisions` 可以检验两种情况。"
+    },
+    {
+      "context": "one :class:`LineageNode` per root row, in field order then label order.",
+      "label": "spacr.lineage.build_forest#4",
+      "source": "one :class:`LineageNode` per root row, in field order then label order.",
+      "source_sha256": "d4aa1991a1e49c4cc58d1faef9aaeed25345c0a3e0b5fe980de767373fb4a28f",
+      "translation": "每个根行对应一个 :class:`LineageNode`，先按视野顺序，再按标签顺序排列。"
+    },
+    {
+      "context": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "label": "spacr.lineage.build_forest#5",
+      "source": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "source_sha256": "b4d875b849a6832e9f8270e41e1e55608c8965588179670e954b711426f47012",
+      "translation": "根表缺失或无法使用时。缺少\\ *子*\\ 表并非错误 — 一次测量了细胞但未测量病原体的运行，会产生由无子节点细胞组成的森林。"
+    },
+    {
+      "context": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole laboratory microplate.",
+      "label": "spacr.lineage.build_forest#6",
+      "source": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole plate.",
+      "source_sha256": "a519ec9a03115a77b6e29cb51c2d75c9e6e4d82717b9fd8ead0cb5244945ba31",
+      "translation": "保留无子节点的根。感染实验中没有病原体的细胞说明阴性对照正在起作用；若树丢弃这种细胞，就会把感染群体显示得仿佛它代表整块孔板。"
+    },
+    {
+      "context": "regression settings key-value mapping. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the key-value mapping is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "label": "spacr.ml.normalize_regression_input_pairs#2",
+      "source": "regression settings dictionary. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the dictionary is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "source_sha256": "96e5117a383a3cb759f7bd6094e365a7e6a2d1b55e3744b4cb7a1da878e76ab9",
+      "translation": "回归设置字典。``paired_data`` 非空时读取它，否则读取旧式 ``score_data`` 和 ``count_data`` 列表；字典会原地更新为规范化的 ``paired_data`` 以及去重后的 ``score_data``/``count_data`` 列表。"
+    },
+    {
+      "context": "Whether a module spec for napari can be found. Never throws.",
+      "label": "spacr.napari_bridge.napari_available#0",
+      "source": "Whether a module spec for napari can be found. Never raises.",
+      "source_sha256": "5d10bbe476fe7b5055c94bbc15a8c9b2b618c785c9d2de32f33a5909184aeb0c",
+      "translation": "能否找到 napari 的模块规格。不会抛出异常。"
+    },
+    {
+      "context": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "label": "spacr.napari_bridge.napari_available#1",
+      "source": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "source_sha256": "2e11378af8497bcf4f6f9b0c446744f02fb6eb6ca93bf7cab764ff1d94cdbf73",
+      "translation": "使用 :func:`importlib.util.find_spec` 而不导入 napari，因此界面可在用户按下按钮前将其禁用。"
+    },
+    {
+      "context": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "label": "spacr.plot.save_figure#4",
+      "source": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "source_sha256": "578ea9df3e53abd6dbd1d9182f3691210a1a887013ceacd0d076345393b393be",
+      "translation": "**字体默认使用 TrueType 嵌入**（``pdf.fonttype = 42``），仅在保存期间生效；禁用 ``vector_text`` 时则选择 Type 3（``pdf.fonttype = 3``）。matplotlib 默认使用 Type 3，它将每个字形绘制成独立的内容流：文件仍为矢量，但 Illustrator 和 Inkscape 会将文字作为无法选中的轮廓打开，而选择此路径的偏好设置名为 \"PDF (vector, editable)\"。通过 ``rc_context`` 限定作用域，因此不会改动调用方有意选择的其他设置。"
+    },
+    {
+      "context": "NUTS target acceptance (numpyro/pymc).",
+      "label": "spacr.power_model.fit_model#22",
+      "source": "NUTS target acceptance (numpyro/pymc).",
+      "source_sha256": "09b866c9bdef16ee6f9e0ab92ab2969b80510af544341af4a85769104f41dbb0",
+      "translation": "NUTS 的目标接受率 (numpyro/pymc)。"
+    },
+    {
+      "context": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the structured-data name that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "label": "spacr.predictions.attach_predictions#1",
+      "source": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the key that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "source_sha256": "e8a7a13ef3513f49a993dcdb9e814ba5c594fed98288cb20f030578461f820f8",
+      "translation": "与 :func:`merge_prediction_results` 相同的连接，但不写入任何内容。`_choose_key` 选择匹配行数最多的键，因此从分数 CSV 读取的蒙太奇，与已合并同一 CSV 的数据库，会为每个对象分配相同分数。"
+    },
+    {
+      "context": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "label": "spacr.predictions.attach_predictions#2",
+      "source": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "source_sha256": "64b6a1de5407c48b4a984a17f1885c0cd9b2c1cd331eaf13a856d04ba63f6fdf",
+      "translation": "支持 ``png_list`` 表没有预测列、但回归输入中已含每个细胞一行分数的项目。连接使用这些分数，不改变数据库。"
+    },
+    {
+      "context": "the per-object frame, e.g. `png_list` read back.",
+      "label": "spacr.predictions.attach_predictions#3",
+      "source": "the per-object frame, e.g. `png_list` read back.",
+      "source_sha256": "87eed3dea88300230a6027c204183fc7b6a55a2b9b22c021068fef1baa902ec9",
+      "translation": "每个对象一行的数据框，例如读回的 `png_list`。"
+    },
+    {
+      "context": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join structured-data name, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "label": "spacr.predictions.attach_predictions#5",
+      "source": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join key, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "source_sha256": "326de09e14e83d472e53506f9da80fd2a1fb9b453f77ac6c127dee67c6a52a3b",
+      "translation": "``(frame, matched)`` — 值成功连接时，返回带有连接后的分数或类别列的 ``objects`` 副本，以及这些列中最大的非缺失匹配数。没有匹配值或可用连接键时，``frame`` 就是未更改的原始 ``objects``，而 ``matched`` 为 0。"
+    },
+    {
+      "context": "Whether Python can find a module spec for ``module``, without importing it.",
+      "label": "spacr.qt.model_install.is_importable#0",
+      "source": "Whether Python can find a module spec for ``module``, without importing it.",
+      "source_sha256": "c46df6a8a17a0ed967c7ded0c0ee79b3e01801537339940966fd4a286bf6af17",
+      "translation": "Python 能否找到 ``module`` 的模块规格，而不导入它。"
+    },
+    {
+      "context": "``min_reads`` above zero is used verbatim — an absolute floor the experimenter knows from the library prep. Otherwise the cut is ``starved_read_fraction`` of the median well's depth, a rule that transfers between runs of different total depth.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#1",
+      "source": "``min_reads`` above zero is used verbatim — an absolute floor the experimenter knows from the library prep. Otherwise the cut is ``starved_read_fraction`` of the median well's depth, a rule that transfers between runs of different total depth.",
+      "source_sha256": "05e835502e4ba0bc779ce713d358afd29268d4bbf637724111b8fac9544f1e59",
+      "translation": "大于零的 ``min_reads`` 原样使用 — 它是实验者根据建库过程确定的绝对下限。否则，截断值是中位数孔读段深度的 ``starved_read_fraction`` 倍；此规则适用于总深度不同的运行。"
+    },
+    {
+      "context": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#6",
+      "source": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "source_sha256": "efbf3f41326152413d531e84d81236b2298bb5d4196f586827de1a86f04552f6",
+      "translation": "``min_reads`` 为负数或 ``starved_read_fraction`` 不在 ``(0, 1]`` 内时。"
+    },
+    {
+      "context": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "label": "spacr.timeflows_qc.frame_interval_summary#2",
+      "source": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "source_sha256": "7e80f90002aa2860c3216025db437e37a5959f5ded1ccf35982d8ce0f20de6a8",
+      "translation": "声明的间隔，在时间戳少于两个时使用。它会标记为声明值，绝不与测量结果矛盾。"
+    },
+    {
+      "context": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "label": "spacr.timelapse.link_by_iou#4",
+      "source": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "source_sha256": "d86101ecb305a49307bf1dfabcca3d929f29c03e2f5e71d1cfb6458d1ab561a9",
+      "translation": "达到或超过阈值的 ``(label_prev, label_next)`` 匹配列表。"
+    },
+    {
+      "context": "The returned metadata key-value mapping always contains ``legacy``. Current artifacts retain their optimizer/scheduler/RNG state so callers can resume training.",
+      "label": "spacr.torch_artifacts.load_model_artifact#1",
+      "source": "The returned metadata dict always contains ``legacy``. Current artifacts retain their optimizer/scheduler/RNG state so callers can resume training.",
+      "source_sha256": "f245c0b804076329bfb976f0a4f0af710cf659965a467e784ad405e9463fc07d",
+      "translation": "返回的元数据字典始终包含 ``legacy``。当前产物保留优化器/调度器/RNG 状态，以便调用方恢复训练。"
+    },
+    {
+      "context": "forwarded to :func:`torch.load`. The ``cpu`` default lets a GPU-trained checkpoint load on a machine without a GPU; an unrecognised device string throws ``RuntimeError`` from torch.",
+      "label": "spacr.torch_artifacts.load_model_artifact#4",
+      "source": "forwarded to :func:`torch.load`. The ``cpu`` default lets a GPU-trained checkpoint load on a machine without a GPU; an unrecognised device string raises ``RuntimeError`` from torch.",
+      "source_sha256": "b1b24b4c138ccf404011f0af23c927ab3ae97e37e2eb6c4c6a19b5aa1e960dc6",
+      "translation": "传给 :func:`torch.load`。默认 ``cpu`` 允许在无 GPU 的机器上加载用 GPU 训练的检查点；无法识别的设备字符串会使 torch 抛出 ``RuntimeError``。"
+    },
+    {
+      "context": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state key-value mapping is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "label": "spacr.torch_artifacts.load_model_artifact#5",
+      "source": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state dict is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "source_sha256": "d3475343f3a900c67a4cb3bcfbfbb687ab3a952a45cd88adb2c91b4154111b1a",
+      "translation": "``None`` 根据记录的配置重建架构。包含 ``model`` 或 ``state_dict`` 条目的旧式映射使用 ``maxvit_t`` 作为缺少 ``model_name`` 时的默认架构；裸状态字典会被拒绝。此处传入的模块会原地加载并以同一对象返回；对于旧式完整模块文件，则忽略传入模块并返回文件自身的模块。"
+    },
+    {
+      "context": "forwarded to ``load_state_dict``; ``True`` throws ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "label": "spacr.torch_artifacts.load_model_artifact#6",
+      "source": "forwarded to ``load_state_dict``; ``True`` raises ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "source_sha256": "69e2b9673d27f5349676b27867ed33bc9469885762dd84e29a732207b06a449e",
+      "translation": "传给 ``load_state_dict``；``True`` 会在任何键不匹配时抛出 ``RuntimeError``，``False`` 容许缺失或意外的键，因此不匹配的架构可能静默加载，而其中部分仍保持随机初始化。对于旧版完整模块文件，此参数也被忽略。"
+    },
+    {
+      "context": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state key-value mapping was found, or the config names no architecture and no ``model`` was supplied.",
+      "label": "spacr.torch_artifacts.load_model_artifact#7",
+      "source": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state dictionary was found, or the config names no architecture and no ``model`` was supplied.",
+      "source_sha256": "125e83d67fede0e746d1f4557942a0c4483e7538df2c3a044db0c532cfcd5e11",
+      "translation": "文件既不是模块也不是检查点映射，其 ``artifact_version`` 不受支持，找不到状态字典，或配置未指定架构且没有提供 ``model``。"
+    },
+    {
+      "context": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "label": "spacr.trial_metrics.control_recovery#1",
+      "source": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "source_sha256": "7422114722aa1cab4b11a9d73e93ae5f10a3f5d7d37248e99045c43acb93f6ef",
+      "translation": "同时返回排名与百分位，因为结果表的系数数量可能不同。缺失对照以 false 的 ``*_control_found`` 值表示，不会虚构排名。"
+    },
+    {
+      "context": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "label": "spacr.trial_metrics.control_recovery#3",
+      "source": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "source_sha256": "42c675abe430d643f4a3d6f497c742a457c1ccefb57841f1105178b51228a1a7",
+      "translation": "results : pandas.DataFrame 回归试验产生的系数表。settings : mapping 包含可选阳性与阴性对照的试验设置。"
+    },
+    {
+      "context": "key-value mapping Control presence, rank, percentile, and significance fields.",
+      "label": "spacr.trial_metrics.control_recovery#5",
+      "source": "dict Control presence, rank, percentile, and significance fields.",
+      "source_sha256": "ebe16bb07fd4a715ca2ca9f5d72b0e7d502e1c743007900a7b6fc39a9dbb4b49",
+      "translation": "包含对照存在情况、排名、百分位和显著性字段的字典。"
+    },
+    {
+      "context": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "label": "spacr.umap_search.walk_recipes#2",
+      "source": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "source_sha256": "62f1f3cff7f1cbdd6189a874f0205d2ab7d9f13302ae0439c2f4823a713ca8b4",
+      "translation": "为每个候选复制的配置。未提供显式网格的维度使用此配置的值，其邻居数决定默认邻居遍历的尺度。"
+    },
+    {
+      "context": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "label": "spacr.umap_search.walk_recipes#3",
+      "source": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "source_sha256": "200599eb9fa957af843c3d016d51d79b3bcca53b3cf7d72c4467906dbae6fc58",
+      "translation": "未给出显式网格时的目标采样数量。至少尝试两个邻居数值，整数舍入与去重可能改变最终数量。"
+    },
+    {
+      "context": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "label": "spacr.umap_search.walk_recipes#4",
+      "source": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "source_sha256": "a44fd075eb607ec7d63a64e12687be974a3070b058e190385abdf9f94b18b124",
+      "translation": "显式邻域大小值。如果三个网格都为空，则从 ``base`` 和 ``steps`` 派生遍历；如果提供了其他网格，空的邻域网格会保留基础配方的邻居数量。"
+    },
+    {
+      "context": "distinct recipes in Cartesian-product order.",
+      "label": "spacr.umap_search.walk_recipes#7",
+      "source": "distinct recipes in Cartesian-product order.",
+      "source_sha256": "bdb6dc21e369084ed216ad256881ec96b5666315405b37cfb9b32a584ea7071e",
+      "translation": "按笛卡尔积顺序排列的不同配置。"
+    },
+    {
+      "context": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the structured-data name. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "label": "spacr.validate.coerce_expected_types#3",
+      "source": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the key. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "source_sha256": "1820ac9e7e701a8a69975ff39f2f68d9a844b7530c5f6e7b91956fe73f9f09f0",
+      "translation": "对象直径设置首先规范为其存储形式。后续类型转换采取保守策略：仅转换 ``bool``、``int`` 和 ``float``，仅从字符串转换，仅在转换精确时进行，且键本身允许 ``str`` 类型时绝不转换。无法正常转换的值完全保持原样，由 :func:`validate_settings` 报告。"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review against exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

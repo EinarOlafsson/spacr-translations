@@ -1,0 +1,308 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Map arbitrary microplate sample position-folder names onto microplate sample position ids.",
+      "label": "spacr.convert.assign_wells#0",
+      "source": "Map arbitrary well-folder names onto plate well ids.",
+      "source_sha256": "7bbdc2733bef5d3402e0f6cf331095b8526ad107f4431c2174ee7a3649cc7d88",
+      "translation": "मनमाने वेल-फ़ोल्डर नामों को प्लेट के वेल आईडी से मैप करें।"
+    },
+    {
+      "context": "1. A name that already *is* a microplate sample position address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The laboratory microplate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that laboratory microplate, skipping any id claimed in step 1.",
+      "label": "spacr.convert.assign_wells#2",
+      "source": "1. A name that already *is* a well address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The plate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that plate, skipping any id claimed in step 1.",
+      "source_sha256": "7690c90876df1d6d303f173617e353f8ea36af8d51bb2309b1a905a6def61d9e",
+      "translation": "1. जो नाम पहले से वेल पता *है*, वह उसे रखता है — :func:`normalise_well` में ``a1`` / ``A-1`` / ``A01`` / ``aa1`` संभाले जाते हैं। 2. प्लेट प्रारूप :func:`plate_format_for_names` चुनता है: 384, जब तक किसी पहले से लिए पते या नामों की संख्या के कारण 1536 की ज़रूरत न हो; तब पंक्तियाँ ``AF`` तक और स्तंभ 48 तक जाते हैं। 3. बाकी हर नाम ``_natural_key`` से क्रमबद्ध होता है और उसे उस प्लेट की अगली खाली आईडी मिलती है, चरण 1 में ली गई आईडी छोड़कर।"
+    },
+    {
+      "context": "the microplate sample position-folder names found for one laboratory microplate.",
+      "label": "spacr.convert.assign_wells#4",
+      "source": "the well-folder names found for one plate.",
+      "source_sha256": "b741bbbfb900be47889be2c2b45b7ebcd8ad264e7198b5bffe20b228305f9678",
+      "translation": "एक प्लेट के लिए मिले वेल-फ़ोल्डर नाम।"
+    },
+    {
+      "context": "Classify a Make Masks drop without prompting or opening an editor.",
+      "label": "spacr.drop_classification.classify_drop#0",
+      "source": "Classify a Make Masks drop without prompting or opening an editor.",
+      "source_sha256": "901d68a97279cf0242891f0b16ceeecc8f9319ac0f865f9bef1ac461f2c4f876",
+      "translation": "बिना पूछे या एडिटर खोले, Make Masks में छोड़े गए इनपुट का वर्गीकरण करें।"
+    },
+    {
+      "context": "Embed a stack of extracted image regions.",
+      "label": "spacr.embeddings.embed_array#0",
+      "source": "Embed a stack of crops.",
+      "source_sha256": "bdea2d4d935fdada62dc3f44c8b2456c622173b79320fd5a7cf4e8a0e178deb1",
+      "translation": "क्रॉप के स्टैक की एम्बेडिंग बनाएँ।"
+    },
+    {
+      "context": "When normalization is enabled, every extracted image region is divided by the same per-channel scale, ``spec.channel_scale``, so an extracted image region's embedding does not depend on the other extracted image regions in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole laboratory microplate -- and a warning is logged. To embed one laboratory microplate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "label": "spacr.embeddings.embed_array#1",
+      "source": "When normalization is enabled, every crop is divided by the same per-channel scale, ``spec.channel_scale``, so a crop's embedding does not depend on the other crops in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole plate -- and a warning is logged. To embed one plate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "source_sha256": "d7f62bf6f38bc8b5c026d7bbfd47103bd860ad5ff995d0866e1eda5dea593143",
+      "translation": "नॉर्मलाइज़ेशन चालू होने पर हर क्रॉप को समान प्रति-चैनल स्केल, ``spec.channel_scale``, से भाग दिया जाता है, ताकि किसी क्रॉप की एम्बेडिंग ``crops`` में मौजूद दूसरे क्रॉप पर निर्भर न हो। नॉर्मलाइज़ेशन चालू हो और स्पेक में स्केल न हो, तो ``crops`` के यादृच्छिक नमूने से एक स्केल अनुमानित होता है — स्टैक को पूरी प्लेट माना जाता है — और चेतावनी लॉग होती है। एक प्लेट की एम्बेडिंग कई कॉल में बनाने के लिए हर कॉल में वही स्केल दें: लौटाया गया ``spec`` उसे रखता है।"
+    },
+    {
+      "context": "how to embed; the default is per-channel resnet18.",
+      "label": "spacr.embeddings.embed_array#3",
+      "source": "how to embed; the default is per-channel resnet18.",
+      "source_sha256": "15ff2ca016c1c575259534a0be93452a78d27f1bc16dcfcd4ec13516fda82f66",
+      "translation": "एम्बेडिंग कैसे बनानी है; डिफ़ॉल्ट प्रति-चैनल resnet18 है।"
+    },
+    {
+      "context": "on a shape or image data channel problem, before any model is loaded, so an invalid array does not trigger a model download.",
+      "label": "spacr.embeddings.embed_array#6",
+      "source": "on a shape or channel problem, before any model is loaded, so an invalid array does not trigger a model download.",
+      "source_sha256": "3d11b71568bb5b832ea05264492c63d78701aeda36d56543b21dbc4fa201f566",
+      "translation": "आकार या चैनल की समस्या होने पर, किसी भी मॉडल के लोड होने से पहले, ताकि अमान्य ऐरे मॉडल डाउनलोड शुरू न करे।"
+    },
+    {
+      "context": "Assemble object tables into one tree per root object.",
+      "label": "spacr.lineage.build_forest#0",
+      "source": "Assemble object tables into one tree per root object.",
+      "source_sha256": "9b7068738bc55f9b674a3a14c1c65a7f06663696d677498b91ee3f8a10eb6fb5",
+      "translation": "ऑब्जेक्ट तालिकाओं से प्रत्येक मूल ऑब्जेक्ट के लिए एक वृक्ष बनाएँ।"
+    },
+    {
+      "context": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "label": "spacr.lineage.build_forest#1",
+      "source": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "source_sha256": "60b3941f91f25ec10c8a30ad424183a164acf68d0b17dfb9bbdce093c20069d2",
+      "translation": "``{table name: rows}``। ``root`` तालिका सीधे पढ़ी जाती है; दूसरी तालिकाएँ तभी पढ़ी जाती हैं जब वे :data:`LINEAGE_TABLES` में हों। बाकी तालिकाएँ अनदेखी होती हैं, इसलिए कॉल करने वाला लोड की गई पूरी सामग्री दे सकता है।"
+    },
+    {
+      "context": "the table whose rows become the roots.",
+      "label": "spacr.lineage.build_forest#2",
+      "source": "the table whose rows become the roots.",
+      "source_sha256": "7d778f8ab21398ed63efe5d9d52b2771cff0cf313da85fbe5f5dda4bdb87f55e",
+      "translation": "वह तालिका जिसकी पंक्तियाँ वृक्ष की जड़ बनती हैं।"
+    },
+    {
+      "context": "put each node's object table into its shared structured-data name, so a cell's nucleus 1 and its pathogen 1 are two structured-data names. ``False`` rebuilds the untyped structured-data names spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "label": "spacr.lineage.build_forest#3",
+      "source": "put each node's object table into its shared key, so a cell's nucleus 1 and its pathogen 1 are two keys. ``False`` rebuilds the untyped keys spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "source_sha256": "6fe1f532eae650b1264a06f645bf8c54f68d1db488effcebd073cda28f802718",
+      "translation": "हर नोड की ऑब्जेक्ट तालिका को उसकी साझा कुंजी में शामिल करें, ताकि कोशिका का नाभिक 1 और उसका रोगजनक 1 अलग कुंजियाँ हों। ``False`` उन बिना-प्रकार वाली कुंजियों को फिर बनाता है जिन्हें spaCR ऑब्जेक्ट प्रकार आने से पहले लिखता था। इसे बनाए रखा गया है ताकि टकराव को केवल याद करने के बजाय *पुनः उत्पन्न* किया जा सके; इसी से :meth:`LineageNode.key_collisions` दोनों स्थितियों की जाँच कर सकता है।"
+    },
+    {
+      "context": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "label": "spacr.lineage.build_forest#5",
+      "source": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "source_sha256": "b4d875b849a6832e9f8270e41e1e55608c8965588179670e954b711426f47012",
+      "translation": "जब मूल तालिका अनुपस्थित या अनुपयोगी हो। किसी *संतान* तालिका का न होना त्रुटि नहीं है — कोशिकाएँ मापने लेकिन रोगजनक न मापने वाला रन संतान-विहीन कोशिकाओं का वन बनाता है।"
+    },
+    {
+      "context": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole laboratory microplate.",
+      "label": "spacr.lineage.build_forest#6",
+      "source": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole plate.",
+      "source_sha256": "a519ec9a03115a77b6e29cb51c2d75c9e6e4d82717b9fd8ead0cb5244945ba31",
+      "translation": "संतान-विहीन जड़ों को रखा जाता है। संक्रमण परीक्षण में रोगजनक-विहीन कोशिका नकारात्मक नियंत्रण के काम करने का संकेत है; उसे हटाने वाला वृक्ष संक्रमित आबादी को पूरी प्लेट की आबादी जैसा दिखाएगा।"
+    },
+    {
+      "context": "regression settings key-value mapping. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the key-value mapping is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "label": "spacr.ml.normalize_regression_input_pairs#2",
+      "source": "regression settings dictionary. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the dictionary is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "source_sha256": "96e5117a383a3cb759f7bd6094e365a7e6a2d1b55e3744b4cb7a1da878e76ab9",
+      "translation": "रिग्रेशन सेटिंग डिक्शनरी। ``paired_data`` खाली न हो तो उसे पढ़ा जाता है, अन्यथा पुरानी ``score_data`` और ``count_data`` सूचियाँ पढ़ी जाती हैं; डिक्शनरी को उसी स्थान पर सामान्यीकृत ``paired_data`` और बिना दोहराव वाली ``score_data``/``count_data`` सूचियों से अपडेट किया जाता है।"
+    },
+    {
+      "context": "Whether a module spec for napari can be found. Never throws.",
+      "label": "spacr.napari_bridge.napari_available#0",
+      "source": "Whether a module spec for napari can be found. Never raises.",
+      "source_sha256": "5d10bbe476fe7b5055c94bbc15a8c9b2b618c785c9d2de32f33a5909184aeb0c",
+      "translation": "क्या napari के लिए मॉड्यूल स्पेक मिल सकता है। कभी अपवाद नहीं उठाता।"
+    },
+    {
+      "context": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "label": "spacr.plot.save_figure#4",
+      "source": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "source_sha256": "578ea9df3e53abd6dbd1d9182f3691210a1a887013ceacd0d076345393b393be",
+      "translation": "**डिफ़ॉल्ट रूप से फ़ॉन्ट TrueType एम्बेडिंग उपयोग करते हैं** (``pdf.fonttype = 42``), केवल सहेजने के दौरान; ``vector_text`` बंद करने पर इसके बजाय Type 3 (``pdf.fonttype = 3``) चुना जाता है। matplotlib का डिफ़ॉल्ट Type 3 है, जो हर ग्लिफ़ को अलग कंटेंट स्ट्रीम के रूप में बनाता है: फ़ाइल वेक्टर रहती है, लेकिन Illustrator और Inkscape पाठ को न चुनी जा सकने वाली बाह्य रेखाओं के रूप में खोलते हैं, और इस रास्ते को चुनने वाली प्राथमिकता का नाम \"PDF (vector, editable)\" है। ``rc_context`` से दायरा सीमित रहता है, ताकि कॉल करने वाले का जानबूझकर चुना अलग मान न बदले।"
+    },
+    {
+      "context": "NUTS target acceptance (numpyro/pymc).",
+      "label": "spacr.power_model.fit_model#22",
+      "source": "NUTS target acceptance (numpyro/pymc).",
+      "source_sha256": "09b866c9bdef16ee6f9e0ab92ab2969b80510af544341af4a85769104f41dbb0",
+      "translation": "NUTS की लक्षित स्वीकृति दर (numpyro/pymc)."
+    },
+    {
+      "context": "Join prediction columns onto an object frame in memory.",
+      "label": "spacr.predictions.attach_predictions#0",
+      "source": "Join prediction columns onto an object frame in memory.",
+      "source_sha256": "f92ddc0998e9ff4ba56ec68c022612ac777a9cb388a1cab646a3e03bc2191357",
+      "translation": "मेमोरी में ऑब्जेक्ट डेटा फ़्रेम के साथ पूर्वानुमान स्तंभ जोड़ें।"
+    },
+    {
+      "context": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the structured-data name that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "label": "spacr.predictions.attach_predictions#1",
+      "source": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the key that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "source_sha256": "e8a7a13ef3513f49a993dcdb9e814ba5c594fed98288cb20f030578461f820f8",
+      "translation": ":func:`merge_prediction_results` जैसी ही जॉइन, पर कुछ भी लिखे बिना। `_choose_key` सबसे अधिक पंक्तियों से मेल खाने वाली कुंजी चुनता है, इसलिए स्कोर CSV से पढ़ने वाला मोंटाज और उसी CSV को पहले से जोड़ चुकी डेटाबेस हर ऑब्जेक्ट को समान स्कोर देते हैं।"
+    },
+    {
+      "context": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "label": "spacr.predictions.attach_predictions#2",
+      "source": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "source_sha256": "64b6a1de5407c48b4a984a17f1885c0cd9b2c1cd331eaf13a856d04ba63f6fdf",
+      "translation": "यह उन परियोजनाओं का समर्थन करता है जिनकी ``png_list`` तालिका में पूर्वानुमान स्तंभ नहीं है, लेकिन जिनके रिग्रेशन इनपुट में प्रति कोशिका पहले से एक स्कोर पंक्ति है। जॉइन डेटाबेस बदले बिना इन स्कोर का उपयोग करती है।"
+    },
+    {
+      "context": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "label": "spacr.predictions.attach_predictions#4",
+      "source": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "source_sha256": "2a0ad1dcde6cfcb8b91ac136ac8d5235f9f52c49e90504f5917b3cc4a74a0a4d",
+      "translation": "स्कोर तालिका -- `path`, `pred`, `cv_predictions` -- जैसे `process_vision_results` और रिग्रेशन मॉड्यूल की स्कोर CSV फ़ाइलों में होते हैं।"
+    },
+    {
+      "context": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join structured-data name, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "label": "spacr.predictions.attach_predictions#5",
+      "source": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join key, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "source_sha256": "326de09e14e83d472e53506f9da80fd2a1fb9b453f77ac6c127dee67c6a52a3b",
+      "translation": "``(frame, matched)`` — मान जुड़ने पर, जुड़े हुए स्कोर या वर्ग स्तंभों वाली ``objects`` की कॉपी और उन स्तंभों में अनुपस्थित न होने वाले मिलानों की सबसे बड़ी संख्या। कोई मान न मिले या उपयोग योग्य जोड़ कुंजी न हो, तो ``frame`` वही मूल ``objects`` है, बिना बदलाव के, और ``matched`` 0 है।"
+    },
+    {
+      "context": "Whether Python can find a module spec for ``module``, without importing it.",
+      "label": "spacr.qt.model_install.is_importable#0",
+      "source": "Whether Python can find a module spec for ``module``, without importing it.",
+      "source_sha256": "c46df6a8a17a0ed967c7ded0c0ee79b3e01801537339940966fd4a286bf6af17",
+      "translation": "क्या Python ``module`` के लिए मॉड्यूल स्पेक ढूँढ सकता है, बिना उसे इम्पोर्ट किए।"
+    },
+    {
+      "context": "``min_reads`` above zero is used verbatim — an absolute floor the experimenter knows from the library prep. Otherwise the cut is ``starved_read_fraction`` of the median well's depth, a rule that transfers between runs of different total depth.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#1",
+      "source": "``min_reads`` above zero is used verbatim — an absolute floor the experimenter knows from the library prep. Otherwise the cut is ``starved_read_fraction`` of the median well's depth, a rule that transfers between runs of different total depth.",
+      "source_sha256": "05e835502e4ba0bc779ce713d358afd29268d4bbf637724111b8fac9544f1e59",
+      "translation": "शून्य से अधिक ``min_reads`` को ज्यों का त्यों उपयोग किया जाता है — यह पूर्ण न्यूनतम सीमा है जिसे प्रयोगकर्ता लाइब्रेरी तैयारी से जानता है। अन्यथा सीमा मध्यिका वेल की रीड गहराई का ``starved_read_fraction`` अंश होती है; यह नियम अलग कुल गहराई वाले रन पर भी लागू होता है।"
+    },
+    {
+      "context": "share of the median well's reads used when deriving.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#4",
+      "source": "share of the median well's reads used when deriving.",
+      "source_sha256": "146e8bc7ff9d2e7d1312cb22e3f7760548d549ca08655408c22b6d7397a5e260",
+      "translation": "सीमा निकालते समय मध्यिका वेल की रीड संख्या का उपयोग किया जाने वाला अंश।"
+    },
+    {
+      "context": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#6",
+      "source": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "source_sha256": "efbf3f41326152413d531e84d81236b2298bb5d4196f586827de1a86f04552f6",
+      "translation": "``min_reads`` ऋणात्मक होने पर या ``starved_read_fraction`` के ``(0, 1]`` से बाहर होने पर।"
+    },
+    {
+      "context": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "label": "spacr.timeflows_qc.frame_interval_summary#2",
+      "source": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "source_sha256": "7e80f90002aa2860c3216025db437e37a5959f5ded1ccf35982d8ce0f20de6a8",
+      "translation": "बताया गया अंतराल, जिसका उपयोग दो से कम टाइमस्टैम्प दिए जाने पर होता है। इसे बताया हुआ अंतराल कहकर रिपोर्ट किया जाता है और यह कभी माप से विरोध नहीं करता।"
+    },
+    {
+      "context": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "label": "spacr.timelapse.link_by_iou#4",
+      "source": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "source_sha256": "d86101ecb305a49307bf1dfabcca3d929f29c03e2f5e71d1cfb6458d1ab561a9",
+      "translation": "सीमा के बराबर या उससे ऊपर वाले ``(label_prev, label_next)`` मिलानों की सूची।"
+    },
+    {
+      "context": "Load current artifacts and legacy full-module/state-key-value mapping checkpoints.",
+      "label": "spacr.torch_artifacts.load_model_artifact#0",
+      "source": "Load current artifacts and legacy full-module/state-dict checkpoints.",
+      "source_sha256": "443dc3d96e5c8c4f2602c91cde6046a1518e192620f6b5192a8e3cb970ffae0c",
+      "translation": "वर्तमान आर्टिफैक्ट और पुराने पूर्ण-मॉड्यूल/state-dict चेकपॉइंट लोड करें।"
+    },
+    {
+      "context": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state key-value mapping is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "label": "spacr.torch_artifacts.load_model_artifact#5",
+      "source": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state dict is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "source_sha256": "d3475343f3a900c67a4cb3bcfbfbb687ab3a952a45cd88adb2c91b4154111b1a",
+      "translation": "``None`` दर्ज कॉन्फ़िगरेशन से आर्किटेक्चर फिर बनाता है। ``model`` या ``state_dict`` प्रविष्टि वाली पुरानी मैपिंग ``maxvit_t`` उपयोग करती हैं जब ``model_name`` अनुपस्थित हो; अकेला स्टेट डिक्शनरी अस्वीकार किया जाता है। यहाँ दिया गया मॉड्यूल उसी ऑब्जेक्ट में लोड होता है और वही ऑब्जेक्ट लौटता है; पूरे मॉड्यूल वाली पुरानी फ़ाइलों में इसे अनदेखा करके फ़ाइल का अपना मॉड्यूल लौटता है।"
+    },
+    {
+      "context": "forwarded to ``load_state_dict``; ``True`` throws ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "label": "spacr.torch_artifacts.load_model_artifact#6",
+      "source": "forwarded to ``load_state_dict``; ``True`` raises ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "source_sha256": "69e2b9673d27f5349676b27867ed33bc9469885762dd84e29a732207b06a449e",
+      "translation": "``load_state_dict`` को भेजा जाता है; ``True`` किसी भी कुंजी के बेमेल होने पर ``RuntimeError`` देता है। ``False`` अनुपस्थित और अप्रत्याशित कुंजियाँ स्वीकार करता है, जिससे बेमेल आर्किटेक्चर के कुछ भाग अब भी यादृच्छिक रूप से आरंभित रहते हुए बिना चेतावनी लोड हो सकते हैं। पुराने पूर्ण-मॉड्यूल फ़ाइलों के लिए इसे भी अनदेखा किया जाता है।"
+    },
+    {
+      "context": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state key-value mapping was found, or the config names no architecture and no ``model`` was supplied.",
+      "label": "spacr.torch_artifacts.load_model_artifact#7",
+      "source": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state dictionary was found, or the config names no architecture and no ``model`` was supplied.",
+      "source_sha256": "125e83d67fede0e746d1f4557942a0c4483e7538df2c3a044db0c532cfcd5e11",
+      "translation": "फ़ाइल न मॉड्यूल है न चेकपॉइंट मैपिंग, उसका ``artifact_version`` समर्थित नहीं है, कोई स्टेट डिक्शनरी नहीं मिली, या कॉन्फ़िगरेशन में आर्किटेक्चर का नाम नहीं है और ``model`` भी नहीं दिया गया।"
+    },
+    {
+      "context": "Summarize where configured controls rank in a result table.",
+      "label": "spacr.trial_metrics.control_recovery#0",
+      "source": "Summarize where configured controls rank in a result table.",
+      "source_sha256": "7e4c93a22626d06438281c49097791c8569f6fb3157534f8f743d46a6222ea40",
+      "translation": "परिणाम तालिका में कॉन्फ़िगर किए गए नियंत्रणों की रैंक का सार दें।"
+    },
+    {
+      "context": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "label": "spacr.trial_metrics.control_recovery#1",
+      "source": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "source_sha256": "7422114722aa1cab4b11a9d73e93ae5f10a3f5d7d37248e99045c43acb93f6ef",
+      "translation": "रैंक और पर्सेंटाइल दोनों लौटते हैं, क्योंकि परिणाम तालिकाओं में गुणांकों की संख्या अलग हो सकती है। न मिलने वाले नियंत्रणों के लिए ``*_control_found`` का मान false होता है और कोई काल्पनिक रैंक नहीं दी जाती।"
+    },
+    {
+      "context": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "label": "spacr.trial_metrics.control_recovery#3",
+      "source": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "source_sha256": "42c675abe430d643f4a3d6f497c742a457c1ccefb57841f1105178b51228a1a7",
+      "translation": "results : pandas.DataFrame रिग्रेशन परीक्षण से बनी गुणांक तालिका। settings : mapping वैकल्पिक सकारात्मक और नकारात्मक नियंत्रण वाली परीक्षण सेटिंग्स।"
+    },
+    {
+      "context": "key-value mapping Control presence, rank, percentile, and significance fields.",
+      "label": "spacr.trial_metrics.control_recovery#5",
+      "source": "dict Control presence, rank, percentile, and significance fields.",
+      "source_sha256": "ebe16bb07fd4a715ca2ca9f5d72b0e7d502e1c743007900a7b6fc39a9dbb4b49",
+      "translation": "डिक्शनरी में नियंत्रण की उपस्थिति, रैंक, पर्सेंटाइल और सांख्यिकीय सार्थकता के फ़ील्ड।"
+    },
+    {
+      "context": "The recipes a walk would try, worked out before any of them runs.",
+      "label": "spacr.umap_search.walk_recipes#0",
+      "source": "The recipes a walk would try, worked out before any of them runs.",
+      "source_sha256": "ef05871407f8f4f79bd97f5a21d9041136822a58bfb07c5b9e3ce4f0e3151c54",
+      "translation": "खोज में आज़माए जाने वाले विन्यास, किसी भी विन्यास को चलाने से पहले निर्धारित।"
+    },
+    {
+      "context": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "label": "spacr.umap_search.walk_recipes#2",
+      "source": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "source_sha256": "62f1f3cff7f1cbdd6189a874f0205d2ab7d9f13302ae0439c2f4823a713ca8b4",
+      "translation": "हर उम्मीदवार के लिए प्रतिलिपि बनाया जाने वाला विन्यास। उसके मान बिना स्पष्ट ग्रिड वाले आयाम भरते हैं और उसकी पड़ोसी संख्या डिफ़ॉल्ट पड़ोसी खोज को स्केल करती है।"
+    },
+    {
+      "context": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "label": "spacr.umap_search.walk_recipes#3",
+      "source": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "source_sha256": "200599eb9fa957af843c3d016d51d79b3bcca53b3cf7d72c4467906dbae6fc58",
+      "translation": "स्पष्ट ग्रिड न दिए जाने पर लक्ष्य नमूना संख्या। कम से कम दो पड़ोसी-संख्या मान आज़माए जाते हैं; पूर्णांक में राउंड करने और डुप्लिकेट हटाने से अंतिम संख्या बदल सकती है।"
+    },
+    {
+      "context": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "label": "spacr.umap_search.walk_recipes#4",
+      "source": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "source_sha256": "a44fd075eb607ec7d63a64e12687be974a3070b058e190385abdf9f94b18b124",
+      "translation": "स्पष्ट पड़ोस-आकार मान। तीनों ग्रिड खाली हों तो ``base`` और ``steps`` से खोज क्रम निकाला जाता है; कोई दूसरा ग्रिड दिया हो तो खाली पड़ोसी ग्रिड में मूल पड़ोसी संख्या बनी रहती है।"
+    },
+    {
+      "context": "distinct recipes in Cartesian-product order.",
+      "label": "spacr.umap_search.walk_recipes#7",
+      "source": "distinct recipes in Cartesian-product order.",
+      "source_sha256": "bdb6dc21e369084ed216ad256881ec96b5666315405b37cfb9b32a584ea7071e",
+      "translation": "कार्तीय गुणनफल के क्रम में अलग-अलग विन्यास।"
+    },
+    {
+      "context": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the structured-data name. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "label": "spacr.validate.coerce_expected_types#3",
+      "source": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the key. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "source_sha256": "1820ac9e7e701a8a69975ff39f2f68d9a844b7530c5f6e7b91956fe73f9f09f0",
+      "translation": "ऑब्जेक्ट व्यास सेटिंग पहले उनके संग्रहीत मानक रूप में बदली जाती हैं। उसके बाद का प्रकार रूपांतरण सावधानी से होता है। केवल ``bool``, ``int`` और ``float`` बदले जाते हैं, केवल स्ट्रिंग से, केवल सटीक रूपांतरण होने पर, और कभी नहीं जब ``str`` स्वयं उस कुंजी के लिए स्वीकार्य प्रकार हो। जो साफ़ रूप से परिवर्तित न हो, उसे ठीक वैसा ही छोड़ा जाता है, ताकि :func:`validate_settings` उसकी रिपोर्ट करे।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review against exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

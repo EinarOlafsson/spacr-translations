@@ -1,0 +1,287 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "1. A name that already *is* a microplate sample position address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The laboratory microplate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that laboratory microplate, skipping any id claimed in step 1.",
+      "label": "spacr.convert.assign_wells#2",
+      "source": "1. A name that already *is* a well address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The plate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that plate, skipping any id claimed in step 1.",
+      "source_sha256": "7690c90876df1d6d303f173617e353f8ea36af8d51bb2309b1a905a6def61d9e",
+      "translation": "1. 이름이 *이미 웰 주소라면* 그대로 유지합니다. :func:`normalise_well`\\ 은 ``a1`` / ``A-1`` / ``A01`` / ``aa1``\\ 을 처리합니다. 2. 플레이트 형식은 :func:`plate_format_for_names`\\ 가 선택합니다. 384를 기본으로 사용하되, 지정된 주소나 이름의 개수 때문에 1536 형식이 필요하면 행이 ``AF``\\ 까지, 열이 48까지입니다. 3. 나머지 이름은 ``_natural_key``\\ 로 정렬한 뒤 해당 플레이트의 다음 빈 식별자를 받으며, 단계 1에서 지정한 식별자는 건너뜁니다."
+    },
+    {
+      "context": "All three are deterministic — the same folder names always produce the same microplate sample positions — and step 3 is only *reversible* because the map file records ``source_well`` next to ``well``. After conversion ``plate1_A01`` cannot be traced to its folder without the map, so :func:`plan` also reports every synthetic assignment by name.",
+      "label": "spacr.convert.assign_wells#3",
+      "source": "All three are deterministic — the same folder names always produce the same wells — and step 3 is only *reversible* because the map file records ``source_well`` next to ``well``. After conversion ``plate1_A01`` cannot be traced to its folder without the map, so :func:`plan` also reports every synthetic assignment by name.",
+      "source_sha256": "a930d8de69cc45978ab57dc0beb15b78db10b0672b99598aefce57996b962758",
+      "translation": "세 가지 모두 결정적이므로 같은 폴더 이름은 항상 같은 웰을 만듭니다. 3단계가 *가역적*\\ 인 이유는 매핑 파일이 ``source_well`` 옆에 ``well``\\ 을 기록하기 때문입니다. 변환 후 ``plate1_A01``\\ 은 매핑 없이는 원래 폴더를 추적할 수 없으므로 :func:`plan` 도 합성 할당을 이름별로 알립니다."
+    },
+    {
+      "context": "the microplate sample position-folder names found for one laboratory microplate.",
+      "label": "spacr.convert.assign_wells#4",
+      "source": "the well-folder names found for one plate.",
+      "source_sha256": "b741bbbfb900be47889be2c2b45b7ebcd8ad264e7198b5bffe20b228305f9678",
+      "translation": "한 플레이트에서 발견한 웰 폴더 이름입니다."
+    },
+    {
+      "context": "when the names fit no standard laboratory microplate — the real limit is 1536, not 384.",
+      "label": "spacr.convert.assign_wells#7",
+      "source": "when the names fit no standard plate — the real limit is 1536, not 384.",
+      "source_sha256": "c05b77fc29d9aca5e720fd88cf8387c40a363a03fd0b76ef88a38b1aad1f5bd4",
+      "translation": "이름들이 어떤 표준 플레이트에도 들어가지 않을 때이며, 실제 한계는 1536이고 384가 아닙니다."
+    },
+    {
+      "context": "Classify a Make Masks drop without prompting or opening an editor.",
+      "label": "spacr.drop_classification.classify_drop#0",
+      "source": "Classify a Make Masks drop without prompting or opening an editor.",
+      "source_sha256": "901d68a97279cf0242891f0b16ceeecc8f9319ac0f865f9bef1ac461f2c4f876",
+      "translation": "묻거나 편집기를 열지 않고 Make Masks에 드롭한 입력을 분류합니다."
+    },
+    {
+      "context": "When normalization is enabled, every extracted image region is divided by the same per-channel scale, ``spec.channel_scale``, so an extracted image region's embedding does not depend on the other extracted image regions in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole laboratory microplate -- and a warning is logged. To embed one laboratory microplate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "label": "spacr.embeddings.embed_array#1",
+      "source": "When normalization is enabled, every crop is divided by the same per-channel scale, ``spec.channel_scale``, so a crop's embedding does not depend on the other crops in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole plate -- and a warning is logged. To embed one plate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "source_sha256": "d7f62bf6f38bc8b5c026d7bbfd47103bd860ad5ff995d0866e1eda5dea593143",
+      "translation": "정규화가 켜져 있으면 모든 크롭을 동일한 채널별 배율인 ``spec.channel_scale``\\ 로 나누므로, 크롭의 임베딩은 ``crops``\\ 의 다른 크롭에 의존하지 않습니다. 정규화가 켜져 있고 사양에 배율이 없으면 ``crops``\\ 의 무작위 표본에서 배율을 추정하고, 스택을 전체 플레이트로 간주하며 경고를 기록합니다. 한 플레이트를 여러 호출로 임베딩하려면 각 호출에 같은 배율을 전달하세요. 반환된 ``spec``\\ 에 배율이 들어 있습니다."
+    },
+    {
+      "context": "how to embed; the default is per-channel resnet18.",
+      "label": "spacr.embeddings.embed_array#3",
+      "source": "how to embed; the default is per-channel resnet18.",
+      "source_sha256": "15ff2ca016c1c575259534a0be93452a78d27f1bc16dcfcd4ec13516fda82f66",
+      "translation": "임베딩 방법이며, 기본값은 채널별 resnet18입니다."
+    },
+    {
+      "context": "on a shape or image data channel problem, before any model is loaded, so an invalid array does not trigger a model download.",
+      "label": "spacr.embeddings.embed_array#6",
+      "source": "on a shape or channel problem, before any model is loaded, so an invalid array does not trigger a model download.",
+      "source_sha256": "3d11b71568bb5b832ea05264492c63d78701aeda36d56543b21dbc4fa201f566",
+      "translation": "모양이나 채널에 문제가 있을 때 모델을 불러오기 전에 발생하므로, 잘못된 배열 때문에 모델 다운로드가 시작되지 않습니다."
+    },
+    {
+      "context": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "label": "spacr.lineage.build_forest#1",
+      "source": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "source_sha256": "60b3941f91f25ec10c8a30ad424183a164acf68d0b17dfb9bbdce093c20069d2",
+      "translation": "``{table name: rows}``\\ 입니다. ``root`` 테이블은 직접 읽으며, 다른 테이블은 :data:`LINEAGE_TABLES`\\ 에 이름이 있을 때만 읽습니다. 나머지 테이블은 무시하므로 호출자는 읽어 온 모든 내용을 전달할 수 있습니다."
+    },
+    {
+      "context": "the table whose rows become the roots.",
+      "label": "spacr.lineage.build_forest#2",
+      "source": "the table whose rows become the roots.",
+      "source_sha256": "7d778f8ab21398ed63efe5d9d52b2771cff0cf313da85fbe5f5dda4bdb87f55e",
+      "translation": "행들이 루트가 되는 테이블입니다."
+    },
+    {
+      "context": "put each node's object table into its shared structured-data name, so a cell's nucleus 1 and its pathogen 1 are two structured-data names. ``False`` rebuilds the untyped structured-data names spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "label": "spacr.lineage.build_forest#3",
+      "source": "put each node's object table into its shared key, so a cell's nucleus 1 and its pathogen 1 are two keys. ``False`` rebuilds the untyped keys spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "source_sha256": "6fe1f532eae650b1264a06f645bf8c54f68d1db488effcebd073cda28f802718",
+      "translation": "각 노드의 객체 테이블을 공유 키에 포함하여 세포의 핵 1과 병원체 1을 서로 다른 키로 만듭니다. ``False``\\ 는 객체 유형이 없던 시절 spaCR가 기록한 유형 없는 키를 재구성합니다. 충돌을 기억만 하는 대신 *재현*\\ 할 수 있도록 보존하므로 :meth:`LineageNode.key_collisions` 가 두 경우를 모두 검사할 수 있습니다."
+    },
+    {
+      "context": "one :class:`LineageNode` per root row, in field order then label order.",
+      "label": "spacr.lineage.build_forest#4",
+      "source": "one :class:`LineageNode` per root row, in field order then label order.",
+      "source_sha256": "d4aa1991a1e49c4cc58d1faef9aaeed25345c0a3e0b5fe980de767373fb4a28f",
+      "translation": "루트 행마다 :class:`LineageNode` 하나이며, 필드 순서 다음에 레이블 순서로 정렬됩니다."
+    },
+    {
+      "context": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "label": "spacr.lineage.build_forest#5",
+      "source": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "source_sha256": "b4d875b849a6832e9f8270e41e1e55608c8965588179670e954b711426f47012",
+      "translation": "루트 테이블이 없거나 사용할 수 없을 때입니다. *자식* 테이블이 없는 것은 오류가 아닙니다. 세포는 측정하고 병원체는 측정하지 않은 실행은 자식 없는 세포의 포리스트를 만듭니다."
+    },
+    {
+      "context": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole laboratory microplate.",
+      "label": "spacr.lineage.build_forest#6",
+      "source": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole plate.",
+      "source_sha256": "a519ec9a03115a77b6e29cb51c2d75c9e6e4d82717b9fd8ead0cb5244945ba31",
+      "translation": "자식 없는 루트도 유지합니다. 감염 분석에서 병원체가 없는 세포는 음성 대조군이 작동한다는 뜻이며, 이를 버리는 트리는 감염 집단이 전체 플레이트인 것처럼 보이게 합니다."
+    },
+    {
+      "context": "regression settings key-value mapping. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the key-value mapping is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "label": "spacr.ml.normalize_regression_input_pairs#2",
+      "source": "regression settings dictionary. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the dictionary is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "source_sha256": "96e5117a383a3cb759f7bd6094e365a7e6a2d1b55e3744b4cb7a1da878e76ab9",
+      "translation": "회귀 설정 딕셔너리입니다. ``paired_data``\\ 가 비어 있지 않으면 이를 읽고, 그렇지 않으면 레거시 ``score_data``\\ 와 ``count_data`` 목록을 읽습니다. 딕셔너리는 정규화된 ``paired_data``\\ 와 중복을 제거한 ``score_data``/``count_data`` 목록으로 제자리에서 업데이트됩니다."
+    },
+    {
+      "context": "Whether a module spec for napari can be found. Never throws.",
+      "label": "spacr.napari_bridge.napari_available#0",
+      "source": "Whether a module spec for napari can be found. Never raises.",
+      "source_sha256": "5d10bbe476fe7b5055c94bbc15a8c9b2b618c785c9d2de32f33a5909184aeb0c",
+      "translation": "napari 모듈 사양을 찾을 수 있는지 여부입니다. 예외를 발생시키지 않습니다."
+    },
+    {
+      "context": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "label": "spacr.napari_bridge.napari_available#1",
+      "source": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "source_sha256": "2e11378af8497bcf4f6f9b0c446744f02fb6eb6ca93bf7cab764ff1d94cdbf73",
+      "translation": ":func:`importlib.util.find_spec` 을 사용하며 napari는 임포트하지 않습니다. 따라서 사용자가 누르기 전에 화면에서 버튼을 비활성화할 수 있습니다."
+    },
+    {
+      "context": "check the figure's image panels before writing -- display ranges that differ between panels meant for comparison, saturated or clipped pixels, repeated panels, a lossy format, and panels written with fewer pixels than they hold -- print any warning, stamp the provenance (source files, display settings, processing steps, spaCR version) into the PNG or PDF metadata and write it to a ``<file>.provenance.json`` sidecar beside the figure. None follows ``SPACR_FIGURE_INTEGRITY`` and then the Preferences toggle, which is off by default. A figure without image panels is written unchanged either way.",
+      "label": "spacr.plot.save_figure#15",
+      "source": "check the figure's image panels before writing -- display ranges that differ between panels meant for comparison, saturated or clipped pixels, repeated panels, a lossy format, and panels written with fewer pixels than they hold -- print any warning, stamp the provenance (source files, display settings, processing steps, spaCR version) into the PNG or PDF metadata and write it to a ``<file>.provenance.json`` sidecar beside the figure. None follows ``SPACR_FIGURE_INTEGRITY`` and then the Preferences toggle, which is off by default. A figure without image panels is written unchanged either way.",
+      "source_sha256": "eab2c7e944337e92601d4193eb6a95a8a9a14b44bf63851398481f8bf597237a",
+      "translation": "기록하기 전에 그림의 이미지 패널을 검사합니다 -- 비교할 패널 사이의 표시 범위 차이, 포화되거나 잘린 픽셀, 반복된 패널, 손실 형식, 원래보다 적은 픽셀로 저장되는 패널을 확인합니다. 경고를 출력하고, 출처 정보(원본 파일, 표시 설정, 처리 단계, spaCR 버전)를 PNG 또는 PDF 메타데이터에 넣으며, 그림 옆의 ``<file>.provenance.json`` 부속 파일에도 기록합니다. None은 먼저 ``SPACR_FIGURE_INTEGRITY``\\ 를 따르고 다음으로 환경설정의 토글을 따릅니다. 이 토글은 기본적으로 꺼져 있습니다. 이미지 패널이 없는 그림은 어느 경우든 변경 없이 기록됩니다."
+    },
+    {
+      "context": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "label": "spacr.plot.save_figure#4",
+      "source": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "source_sha256": "578ea9df3e53abd6dbd1d9182f3691210a1a887013ceacd0d076345393b393be",
+      "translation": "**글꼴은 기본적으로 TrueType 임베딩을 사용합니다** (``pdf.fonttype = 42``). 이는 저장하는 동안만 적용되며, ``vector_text``\\ 를 끄면 대신 Type 3 (``pdf.fonttype = 3``)을 선택합니다. matplotlib의 기본값은 Type 3으로, 각 글리프를 별도의 콘텐츠 스트림으로 그립니다. 파일은 여전히 벡터이지만 Illustrator와 Inkscape는 텍스트를 선택할 수 없는 윤곽선으로 열며, 이 경로를 선택하는 환경설정의 이름은 \"PDF (vector, editable)\"입니다. ``rc_context``\\ 로 범위를 제한하므로 호출자가 의도적으로 다른 값을 선택한 경우 이를 바꾸지 않습니다."
+    },
+    {
+      "context": "NUTS target acceptance (numpyro/pymc).",
+      "label": "spacr.power_model.fit_model#22",
+      "source": "NUTS target acceptance (numpyro/pymc).",
+      "source_sha256": "09b866c9bdef16ee6f9e0ab92ab2969b80510af544341af4a85769104f41dbb0",
+      "translation": "NUTS 목표 수락률 (numpyro/pymc)."
+    },
+    {
+      "context": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the structured-data name that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "label": "spacr.predictions.attach_predictions#1",
+      "source": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the key that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "source_sha256": "e8a7a13ef3513f49a993dcdb9e814ba5c594fed98288cb20f030578461f820f8",
+      "translation": ":func:`merge_prediction_results` 와 같은 조인이며 아무것도 기록하지 않습니다. `_choose_key` 는 가장 많은 행에 맞는 키를 선택하므로, 점수 CSV를 읽는 몽타주와 같은 CSV를 이미 병합한 데이터베이스가 각 객체에 같은 점수를 부여합니다."
+    },
+    {
+      "context": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "label": "spacr.predictions.attach_predictions#2",
+      "source": "This supports projects whose ``png_list`` table has no prediction column but whose regression inputs already contain one score row per cell. The join uses those scores without changing the database.",
+      "source_sha256": "64b6a1de5407c48b4a984a17f1885c0cd9b2c1cd331eaf13a856d04ba63f6fdf",
+      "translation": "``png_list`` 테이블에 예측 열이 없어도 회귀 입력에 이미 세포당 점수 행이 하나 있는 프로젝트를 지원합니다. 데이터베이스를 바꾸지 않고 그 점수로 조인합니다."
+    },
+    {
+      "context": "the per-object frame, e.g. `png_list` read back.",
+      "label": "spacr.predictions.attach_predictions#3",
+      "source": "the per-object frame, e.g. `png_list` read back.",
+      "source_sha256": "87eed3dea88300230a6027c204183fc7b6a55a2b9b22c021068fef1baa902ec9",
+      "translation": "객체별 데이터 프레임이며, 예를 들어 `png_list` 를 읽어 얻은 프레임입니다."
+    },
+    {
+      "context": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "label": "spacr.predictions.attach_predictions#4",
+      "source": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "source_sha256": "2a0ad1dcde6cfcb8b91ac136ac8d5235f9f52c49e90504f5917b3cc4a74a0a4d",
+      "translation": "점수 테이블 -- `path`, `pred`, `cv_predictions` -- `process_vision_results` 와 회귀 모듈의 점수 CSV에 들어 있는 형태입니다."
+    },
+    {
+      "context": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join structured-data name, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "label": "spacr.predictions.attach_predictions#5",
+      "source": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join key, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "source_sha256": "326de09e14e83d472e53506f9da80fd2a1fb9b453f77ac6c127dee67c6a52a3b",
+      "translation": "``(frame, matched)`` — 값이 결합되면 점수 또는 클래스 열이 결합된 ``objects``\\ 의 복사본과, 해당 열들 중 결측이 아닌 매칭 수의 최댓값입니다. 매칭된 값이나 사용 가능한 결합 키가 없으면 ``frame``\\ 은 원래 ``objects`` 그대로이며 ``matched``\\ 는 0입니다."
+    },
+    {
+      "context": "Whether Python can find a module spec for ``module``, without importing it.",
+      "label": "spacr.qt.model_install.is_importable#0",
+      "source": "Whether Python can find a module spec for ``module``, without importing it.",
+      "source_sha256": "c46df6a8a17a0ed967c7ded0c0ee79b3e01801537339940966fd4a286bf6af17",
+      "translation": "Python이 ``module``\\ 의 모듈 사양을 가져오기 없이 찾을 수 있는지 여부입니다."
+    },
+    {
+      "context": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#6",
+      "source": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "source_sha256": "efbf3f41326152413d531e84d81236b2298bb5d4196f586827de1a86f04552f6",
+      "translation": "``min_reads``\\ 가 음수이거나 ``starved_read_fraction``\\ 이 ``(0, 1]`` 밖에 있는 경우입니다."
+    },
+    {
+      "context": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "label": "spacr.timeflows_qc.frame_interval_summary#2",
+      "source": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "source_sha256": "7e80f90002aa2860c3216025db437e37a5959f5ded1ccf35982d8ce0f20de6a8",
+      "translation": "타임스탬프가 두 개 미만일 때 사용하는 명시된 간격입니다. 명시된 값으로 보고하며 측정값과 모순되지 않습니다."
+    },
+    {
+      "context": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "label": "spacr.timelapse.link_by_iou#4",
+      "source": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "source_sha256": "d86101ecb305a49307bf1dfabcca3d929f29c03e2f5e71d1cfb6458d1ab561a9",
+      "translation": "임계값 이상인 ``(label_prev, label_next)`` 매칭의 목록입니다."
+    },
+    {
+      "context": "The returned metadata key-value mapping always contains ``legacy``. Current artifacts retain their optimizer/scheduler/RNG state so callers can resume training.",
+      "label": "spacr.torch_artifacts.load_model_artifact#1",
+      "source": "The returned metadata dict always contains ``legacy``. Current artifacts retain their optimizer/scheduler/RNG state so callers can resume training.",
+      "source_sha256": "f245c0b804076329bfb976f0a4f0af710cf659965a467e784ad405e9463fc07d",
+      "translation": "반환된 메타데이터 사전은 항상 ``legacy``\\ 를 포함합니다. 현재 아티팩트는 옵티마이저/스케줄러/RNG 상태를 보존하므로 호출자가 학습을 재개할 수 있습니다."
+    },
+    {
+      "context": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state key-value mapping is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "label": "spacr.torch_artifacts.load_model_artifact#5",
+      "source": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state dict is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "source_sha256": "d3475343f3a900c67a4cb3bcfbfbb687ab3a952a45cd88adb2c91b4154111b1a",
+      "translation": "``None``\\ 은 기록된 설정에서 아키텍처를 다시 구성합니다. ``model`` 또는 ``state_dict`` 항목이 있는 레거시 매핑은 ``maxvit_t``\\ 를 사용하며, 이는 ``model_name``\\ 이 없는 경우입니다. 상태 딕셔너리만 있는 입력은 거부합니다. 여기에 전달한 모듈은 같은 객체에 로드하여 그 객체를 반환합니다. 전체 모듈을 담은 레거시 파일에서는 전달한 모듈을 무시하고 파일 자체의 모듈을 반환합니다."
+    },
+    {
+      "context": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "label": "spacr.trial_metrics.control_recovery#1",
+      "source": "Both rank and percentile are returned because result tables can contain different numbers of coefficients. Missing controls are reported with a false ``*_control_found`` value and no invented rank.",
+      "source_sha256": "7422114722aa1cab4b11a9d73e93ae5f10a3f5d7d37248e99045c43acb93f6ef",
+      "translation": "결과 테이블마다 계수 개수가 다를 수 있으므로 순위와 백분위수를 모두 반환합니다. 누락된 대조군은 false인 ``*_control_found`` 값으로 표시하며 순위를 지어내지 않습니다."
+    },
+    {
+      "context": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "label": "spacr.trial_metrics.control_recovery#3",
+      "source": "results : pandas.DataFrame Coefficient table produced by a regression trial. settings : mapping Trial settings containing optional positive and negative controls.",
+      "source_sha256": "42c675abe430d643f4a3d6f497c742a457c1ccefb57841f1105178b51228a1a7",
+      "translation": "results : pandas.DataFrame 회귀 시험으로 생성된 계수 테이블. settings : mapping 선택적인 양성 및 음성 대조군을 포함한 시험 설정."
+    },
+    {
+      "context": "key-value mapping Control presence, rank, percentile, and significance fields.",
+      "label": "spacr.trial_metrics.control_recovery#5",
+      "source": "dict Control presence, rank, percentile, and significance fields.",
+      "source_sha256": "ebe16bb07fd4a715ca2ca9f5d72b0e7d502e1c743007900a7b6fc39a9dbb4b49",
+      "translation": "컨트롤 존재 여부, 순위, 백분위 및 유의성 필드가 담긴 딕셔너리입니다."
+    },
+    {
+      "context": "The returned list lets the panel report the total trial count before the first trial starts.",
+      "label": "spacr.umap_search.walk_recipes#1",
+      "source": "The returned list lets the panel report the total trial count before the first trial starts.",
+      "source_sha256": "3b418371c2b29b2580d1a72859b22dc603efa1cce9b84bbeaf1101cd3a365fc1",
+      "translation": "반환 목록으로 첫 시험을 시작하기 전에 패널이 전체 시험 개수를 보고할 수 있습니다."
+    },
+    {
+      "context": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "label": "spacr.umap_search.walk_recipes#2",
+      "source": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "source_sha256": "62f1f3cff7f1cbdd6189a874f0205d2ab7d9f13302ae0439c2f4823a713ca8b4",
+      "translation": "각 후보에 복제할 설정입니다. 명시적 그리드가 없는 차원에는 이 설정의 값을 쓰며, 기본 이웃 탐색의 범위는 이 설정의 이웃 수에 따라 정합니다."
+    },
+    {
+      "context": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "label": "spacr.umap_search.walk_recipes#3",
+      "source": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "source_sha256": "200599eb9fa957af843c3d016d51d79b3bcca53b3cf7d72c4467906dbae6fc58",
+      "translation": "명시적 그리드가 없을 때의 목표 표본 수입니다. 최소 두 이웃 수 값을 시도하며, 정수 반올림과 중복 제거로 최종 개수가 달라질 수 있습니다."
+    },
+    {
+      "context": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "label": "spacr.umap_search.walk_recipes#4",
+      "source": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "source_sha256": "a44fd075eb607ec7d63a64e12687be974a3070b058e190385abdf9f94b18b124",
+      "translation": "명시적인 이웃 크기 값입니다. 세 그리드가 모두 비어 있으면 ``base``\\ 와 ``steps``\\ 에서 탐색을 도출합니다. 다른 그리드를 지정한 경우, 빈 이웃 그리드는 기본 이웃 수를 유지합니다."
+    },
+    {
+      "context": "distinct recipes in Cartesian-product order.",
+      "label": "spacr.umap_search.walk_recipes#7",
+      "source": "distinct recipes in Cartesian-product order.",
+      "source_sha256": "bdb6dc21e369084ed216ad256881ec96b5666315405b37cfb9b32a584ea7071e",
+      "translation": "데카르트 곱 순서의 서로 다른 설정입니다."
+    },
+    {
+      "context": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the structured-data name. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "label": "spacr.validate.coerce_expected_types#3",
+      "source": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the key. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "source_sha256": "1820ac9e7e701a8a69975ff39f2f68d9a844b7530c5f6e7b91956fe73f9f09f0",
+      "translation": "먼저 객체 지름 설정을 저장 형식에 맞게 정규화합니다. 이후의 타입 변환은 보수적으로 수행합니다. ``bool``, ``int``, ``float``\\ 만 문자열에서 변환하며, 정확한 변환일 때만 수행하고 ``str``\\ 이 해당 키의 허용 타입이면 변환하지 않습니다. 제대로 변환되지 않는 값은 그대로 두어 :func:`validate_settings`\\ 가 보고하도록 합니다."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review against exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

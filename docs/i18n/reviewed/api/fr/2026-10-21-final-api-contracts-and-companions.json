@@ -1,0 +1,259 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "Map arbitrary microplate sample position-folder names onto microplate sample position ids.",
+      "label": "spacr.convert.assign_wells#0",
+      "source": "Map arbitrary well-folder names onto plate well ids.",
+      "source_sha256": "7bbdc2733bef5d3402e0f6cf331095b8526ad107f4431c2174ee7a3649cc7d88",
+      "translation": "Associer des noms arbitraires de dossiers de puits aux identifiants des puits d’une plaque."
+    },
+    {
+      "context": "1. A name that already *is* a microplate sample position address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The laboratory microplate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that laboratory microplate, skipping any id claimed in step 1.",
+      "label": "spacr.convert.assign_wells#2",
+      "source": "1. A name that already *is* a well address keeps it — :func:`normalise_well` handles ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. The plate format is chosen by :func:`plate_format_for_names`: 384 unless a claimed address or the sheer number of names needs the 1536, in which case rows run to ``AF`` and columns to 48. 3. Every remaining name is sorted with ``_natural_key`` and handed the next free id of that plate, skipping any id claimed in step 1.",
+      "source_sha256": "7690c90876df1d6d303f173617e353f8ea36af8d51bb2309b1a905a6def61d9e",
+      "translation": "1. Un nom qui *est déjà une adresse de puits* la conserve — :func:`normalise_well` gère ``a1`` / ``A-1`` / ``A01`` / ``aa1``. 2. Le format de plaque est choisi par :func:`plate_format_for_names` : 384, sauf si une adresse revendiquée ou le nombre de noms nécessite 1536 ; les lignes vont alors jusqu’à ``AF`` et les colonnes jusqu’à 48. 3. Tous les noms restants sont triés avec ``_natural_key`` et reçoivent le prochain identifiant libre de cette plaque, en sautant les identifiants revendiqués à l’étape 1."
+    },
+    {
+      "context": "Classify a Make Masks drop without prompting or opening an editor.",
+      "label": "spacr.drop_classification.classify_drop#0",
+      "source": "Classify a Make Masks drop without prompting or opening an editor.",
+      "source_sha256": "901d68a97279cf0242891f0b16ceeecc8f9319ac0f865f9bef1ac461f2c4f876",
+      "translation": "Classer un élément déposé sur Make Masks sans poser de question ni ouvrir d’éditeur."
+    },
+    {
+      "context": "When normalization is enabled, every extracted image region is divided by the same per-channel scale, ``spec.channel_scale``, so an extracted image region's embedding does not depend on the other extracted image regions in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole laboratory microplate -- and a warning is logged. To embed one laboratory microplate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "label": "spacr.embeddings.embed_array#1",
+      "source": "When normalization is enabled, every crop is divided by the same per-channel scale, ``spec.channel_scale``, so a crop's embedding does not depend on the other crops in ``crops``. If normalization is enabled and the spec carries no scale, one is estimated from a random sample of ``crops`` -- the stack is treated as the whole plate -- and a warning is logged. To embed one plate in several calls, pass the same scale to each: the returned ``spec`` carries it.",
+      "source_sha256": "d7f62bf6f38bc8b5c026d7bbfd47103bd860ad5ff995d0866e1eda5dea593143",
+      "translation": "Lorsque la normalisation est activée, chaque recadrage est divisé par la même échelle par canal, ``spec.channel_scale``, de sorte que son plongement ne dépend pas des autres recadrages dans ``crops``. Si la normalisation est activée et que la spécification ne contient aucune échelle, une échelle est estimée sur un échantillon aléatoire de ``crops`` -- la pile est traitée comme la plaque entière -- et un avertissement est journalisé. Pour calculer les plongements d’une plaque en plusieurs appels, transmettre la même échelle à chacun : la ``spec`` renvoyée la contient."
+    },
+    {
+      "context": "how to embed; the default is per-channel resnet18.",
+      "label": "spacr.embeddings.embed_array#3",
+      "source": "how to embed; the default is per-channel resnet18.",
+      "source_sha256": "15ff2ca016c1c575259534a0be93452a78d27f1bc16dcfcd4ec13516fda82f66",
+      "translation": "comment calculer les plongements ; la valeur par défaut est resnet18 par canal."
+    },
+    {
+      "context": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "label": "spacr.lineage.build_forest#1",
+      "source": "``{table name: rows}``. The ``root`` table is read directly; other tables are read only if named in :data:`LINEAGE_TABLES`. Remaining tables are ignored, so a caller can hand over everything it loaded.",
+      "source_sha256": "60b3941f91f25ec10c8a30ad424183a164acf68d0b17dfb9bbdce093c20069d2",
+      "translation": "``{table name: rows}``. La table ``root`` est lue directement ; les autres tables ne sont lues que si elles figurent dans :data:`LINEAGE_TABLES`. Les tables restantes sont ignorées, ce qui permet à l’appelant de transmettre tout ce qu’il a chargé."
+    },
+    {
+      "context": "put each node's object table into its shared structured-data name, so a cell's nucleus 1 and its pathogen 1 are two structured-data names. ``False`` rebuilds the untyped structured-data names spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "label": "spacr.lineage.build_forest#3",
+      "source": "put each node's object table into its shared key, so a cell's nucleus 1 and its pathogen 1 are two keys. ``False`` rebuilds the untyped keys spaCR wrote before object types existed — kept so the collapse can be *reproduced* rather than only remembered, which is what makes :meth:`LineageNode.key_collisions` a test with two sides to it.",
+      "source_sha256": "6fe1f532eae650b1264a06f645bf8c54f68d1db488effcebd073cda28f802718",
+      "translation": "inclure la table d’objets de chaque nœud dans sa clé commune : le noyau 1 et l’agent pathogène 1 d’une cellule ont ainsi deux clés distinctes. ``False`` reconstruit les clés non typées écrites par spaCR avant l’existence des types d’objets — pour pouvoir *reproduire* leur fusion au lieu de seulement s’en souvenir, ce qui permet à :meth:`LineageNode.key_collisions` de tester les deux cas."
+    },
+    {
+      "context": "one :class:`LineageNode` per root row, in field order then label order.",
+      "label": "spacr.lineage.build_forest#4",
+      "source": "one :class:`LineageNode` per root row, in field order then label order.",
+      "source_sha256": "d4aa1991a1e49c4cc58d1faef9aaeed25345c0a3e0b5fe980de767373fb4a28f",
+      "translation": "un :class:`LineageNode` par ligne racine, dans l’ordre des champs puis des étiquettes."
+    },
+    {
+      "context": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "label": "spacr.lineage.build_forest#5",
+      "source": "when the root table is absent or unusable. A missing *child* table is not an error — a run that measured cells and not pathogens produces a forest of childless cells.",
+      "source_sha256": "b4d875b849a6832e9f8270e41e1e55608c8965588179670e954b711426f47012",
+      "translation": "lorsque la table racine est absente ou inutilisable. Une table *enfant* absente n’est pas une erreur — une exécution ayant mesuré les cellules mais pas les agents pathogènes produit une forêt de cellules sans enfants."
+    },
+    {
+      "context": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole laboratory microplate.",
+      "label": "spacr.lineage.build_forest#6",
+      "source": "Childless roots are kept. A cell with no pathogens in an infection assay is the negative control working, and a tree that dropped it would show the infected population as if it were the whole plate.",
+      "source_sha256": "a519ec9a03115a77b6e29cb51c2d75c9e6e4d82717b9fd8ead0cb5244945ba31",
+      "translation": "Les racines sans enfants sont conservées. Une cellule sans agents pathogènes dans un essai d’infection témoigne du bon fonctionnement du contrôle négatif ; un arbre qui l’exclurait présenterait la population infectée comme si elle constituait toute la plaque."
+    },
+    {
+      "context": "regression settings key-value mapping. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the key-value mapping is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "label": "spacr.ml.normalize_regression_input_pairs#2",
+      "source": "regression settings dictionary. ``paired_data`` is read when nonempty, otherwise the legacy ``score_data`` and ``count_data`` lists; the dictionary is updated in place with the normalised ``paired_data`` and de-duplicated ``score_data``/``count_data`` lists.",
+      "source_sha256": "96e5117a383a3cb759f7bd6094e365a7e6a2d1b55e3744b4cb7a1da878e76ab9",
+      "translation": "dictionnaire des paramètres de régression. ``paired_data`` est lu s’il n’est pas vide, sinon les anciennes listes ``score_data`` et ``count_data`` sont lues ; le dictionnaire est mis à jour sur place avec ``paired_data`` normalisé et les listes ``score_data``/``count_data`` dédupliquées."
+    },
+    {
+      "context": "Whether a module spec for napari can be found. Never throws.",
+      "label": "spacr.napari_bridge.napari_available#0",
+      "source": "Whether a module spec for napari can be found. Never raises.",
+      "source_sha256": "5d10bbe476fe7b5055c94bbc15a8c9b2b618c785c9d2de32f33a5909184aeb0c",
+      "translation": "Indique si une spécification de module pour napari peut être trouvée. Ne lève jamais d’exception."
+    },
+    {
+      "context": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "label": "spacr.napari_bridge.napari_available#1",
+      "source": "Uses :func:`importlib.util.find_spec` without importing napari, so a screen can disable a button before the user presses it.",
+      "source_sha256": "2e11378af8497bcf4f6f9b0c446744f02fb6eb6ca93bf7cab764ff1d94cdbf73",
+      "translation": "Utilise :func:`importlib.util.find_spec` sans importer napari, pour qu’un écran puisse désactiver un bouton avant que l’utilisateur ne l’appuie."
+    },
+    {
+      "context": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "label": "spacr.plot.save_figure#4",
+      "source": "**Fonts use TrueType embedding by default** (``pdf.fonttype = 42``) for the length of the save; disabling ``vector_text`` selects Type 3 (``pdf.fonttype = 3``) instead. matplotlib's default is Type 3, which draws every glyph as its own content stream: the file is still vector, but Illustrator and Inkscape open the text as unselectable outlines, and the preference that selects this path is labelled \"PDF (vector, editable)\". Scoped with ``rc_context`` so a caller that has deliberately chosen otherwise is not changed underneath it.",
+      "source_sha256": "578ea9df3e53abd6dbd1d9182f3691210a1a887013ceacd0d076345393b393be",
+      "translation": "**Les polices utilisent par défaut l’incorporation TrueType** (``pdf.fonttype = 42``) pendant l’enregistrement ; désactiver ``vector_text`` sélectionne à la place Type 3 (``pdf.fonttype = 3``). La valeur par défaut de matplotlib est Type 3, qui dessine chaque glyphe dans son propre flux de contenu : le fichier reste vectoriel, mais Illustrator et Inkscape ouvrent le texte sous forme de contours non sélectionnables, et la préférence qui sélectionne ce chemin porte le libellé \"PDF (vector, editable)\". L’utilisation de ``rc_context`` limite ce réglage à cette opération pour ne pas modifier celui qu’un appelant a délibérément choisi."
+    },
+    {
+      "context": "NUTS target acceptance (numpyro/pymc).",
+      "label": "spacr.power_model.fit_model#22",
+      "source": "NUTS target acceptance (numpyro/pymc).",
+      "source_sha256": "09b866c9bdef16ee6f9e0ab92ab2969b80510af544341af4a85769104f41dbb0",
+      "translation": "Taux d’acceptation cible de NUTS (numpyro/pymc)."
+    },
+    {
+      "context": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the structured-data name that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "label": "spacr.predictions.attach_predictions#1",
+      "source": "The same join as :func:`merge_prediction_results`, without writing anything. `_choose_key` picks the key that matches the most rows, so a montage reading scores from a score CSV and a database with the same CSV merged into it assign each object the same score.",
+      "source_sha256": "e8a7a13ef3513f49a993dcdb9e814ba5c594fed98288cb20f030578461f820f8",
+      "translation": "La même jointure que :func:`merge_prediction_results`, sans rien écrire. `_choose_key` choisit la clé correspondant au plus grand nombre de lignes : un montage lisant les scores d’un CSV de scores et une base de données intégrant ce même CSV attribuent ainsi le même score à chaque objet."
+    },
+    {
+      "context": "the per-object frame, e.g. `png_list` read back.",
+      "label": "spacr.predictions.attach_predictions#3",
+      "source": "the per-object frame, e.g. `png_list` read back.",
+      "source_sha256": "87eed3dea88300230a6027c204183fc7b6a55a2b9b22c021068fef1baa902ec9",
+      "translation": "le tableau par objet, par exemple `png_list` relu."
+    },
+    {
+      "context": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "label": "spacr.predictions.attach_predictions#4",
+      "source": "the score table -- `path`, `pred`, `cv_predictions`, as `process_vision_results` and the regression module's score CSVs carry.",
+      "source_sha256": "2a0ad1dcde6cfcb8b91ac136ac8d5235f9f52c49e90504f5917b3cc4a74a0a4d",
+      "translation": "la table de scores -- `path`, `pred`, `cv_predictions`, tels qu’ils figurent dans `process_vision_results` et les CSV de scores du module de régression."
+    },
+    {
+      "context": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join structured-data name, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "label": "spacr.predictions.attach_predictions#5",
+      "source": "``(frame, matched)`` -- when values join, a copy of ``objects`` with the joined score or class columns and the largest non-missing match count among those columns. With no matched values or no usable join key, ``frame`` is the original ``objects`` unchanged and ``matched`` is 0.",
+      "source_sha256": "326de09e14e83d472e53506f9da80fd2a1fb9b453f77ac6c127dee67c6a52a3b",
+      "translation": "``(frame, matched)`` -- lorsque des valeurs sont jointes, une copie de ``objects`` avec les colonnes de score ou de classe jointes et le plus grand nombre de correspondances non manquantes parmi ces colonnes. Sans valeurs correspondantes ou clé de jointure utilisable, ``frame`` est l’objet ``objects`` original inchangé et ``matched`` vaut 0."
+    },
+    {
+      "context": "Whether Python can find a module spec for ``module``, without importing it.",
+      "label": "spacr.qt.model_install.is_importable#0",
+      "source": "Whether Python can find a module spec for ``module``, without importing it.",
+      "source_sha256": "c46df6a8a17a0ed967c7ded0c0ee79b3e01801537339940966fd4a286bf6af17",
+      "translation": "Indique si Python peut trouver une spécification de module pour ``module``, sans l’importer."
+    },
+    {
+      "context": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "label": "spacr.sequencing_qc.starvation_cutoff#6",
+      "source": "on a negative ``min_reads`` or a ``starved_read_fraction`` outside ``(0, 1]``.",
+      "source_sha256": "efbf3f41326152413d531e84d81236b2298bb5d4196f586827de1a86f04552f6",
+      "translation": "si ``min_reads`` est négatif ou si ``starved_read_fraction`` est hors de ``(0, 1]``."
+    },
+    {
+      "context": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "label": "spacr.timeflows_qc.frame_interval_summary#2",
+      "source": "a stated interval, used when fewer than two timestamps are given. It is reported as stated and never contradicts a measurement.",
+      "source_sha256": "7e80f90002aa2860c3216025db437e37a5959f5ded1ccf35982d8ce0f20de6a8",
+      "translation": "un intervalle déclaré, utilisé lorsque moins de deux horodatages sont fournis. Il est rapporté tel qu’indiqué et ne contredit jamais une mesure."
+    },
+    {
+      "context": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "label": "spacr.timelapse.link_by_iou#4",
+      "source": "list of ``(label_prev, label_next)`` matches at or above the threshold.",
+      "source_sha256": "d86101ecb305a49307bf1dfabcca3d929f29c03e2f5e71d1cfb6458d1ab561a9",
+      "translation": "liste de correspondances ``(label_prev, label_next)`` dont le score atteint ou dépasse le seuil."
+    },
+    {
+      "context": "Load current artifacts and legacy full-module/state-key-value mapping checkpoints.",
+      "label": "spacr.torch_artifacts.load_model_artifact#0",
+      "source": "Load current artifacts and legacy full-module/state-dict checkpoints.",
+      "source_sha256": "443dc3d96e5c8c4f2602c91cde6046a1518e192620f6b5192a8e3cb970ffae0c",
+      "translation": "Charger les artefacts actuels et les anciens points de contrôle contenant un module complet ou un dictionnaire d’état."
+    },
+    {
+      "context": "forwarded to :func:`torch.load`. The ``cpu`` default lets a GPU-trained checkpoint load on a machine without a GPU; an unrecognised device string throws ``RuntimeError`` from torch.",
+      "label": "spacr.torch_artifacts.load_model_artifact#4",
+      "source": "forwarded to :func:`torch.load`. The ``cpu`` default lets a GPU-trained checkpoint load on a machine without a GPU; an unrecognised device string raises ``RuntimeError`` from torch.",
+      "source_sha256": "b1b24b4c138ccf404011f0af23c927ab3ae97e37e2eb6c4c6a19b5aa1e960dc6",
+      "translation": "transmis à :func:`torch.load`. La valeur par défaut ``cpu`` permet de charger un point de contrôle entraîné sur GPU sur une machine sans GPU ; une chaîne de périphérique non reconnue provoque ``RuntimeError`` dans torch."
+    },
+    {
+      "context": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state key-value mapping is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "label": "spacr.torch_artifacts.load_model_artifact#5",
+      "source": "``None`` rebuilds the architecture from the recorded config. Legacy mappings with a ``model`` or ``state_dict`` entry use ``maxvit_t`` when ``model_name`` is absent; a bare state dict is rejected. A module passed here is loaded in place and returned as the same object; for legacy full-module files it is ignored and the file's own module comes back.",
+      "source_sha256": "d3475343f3a900c67a4cb3bcfbfbb687ab3a952a45cd88adb2c91b4154111b1a",
+      "translation": "``None`` reconstruit l’architecture à partir de la configuration enregistrée. Les anciennes structures de correspondance avec une entrée ``model`` ou ``state_dict`` utilisent ``maxvit_t`` lorsque ``model_name`` est absent ; un dictionnaire d’état seul est rejeté. Un module transmis ici est chargé sur place et renvoyé comme le même objet ; pour les anciens fichiers contenant un module complet, il est ignoré et le module du fichier est renvoyé."
+    },
+    {
+      "context": "forwarded to ``load_state_dict``; ``True`` throws ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "label": "spacr.torch_artifacts.load_model_artifact#6",
+      "source": "forwarded to ``load_state_dict``; ``True`` raises ``RuntimeError`` on any key mismatch, ``False`` tolerates missing and unexpected keys so a mismatched architecture loads quietly with parts still randomly initialised. Also ignored for legacy full-module files.",
+      "source_sha256": "69e2b9673d27f5349676b27867ed33bc9469885762dd84e29a732207b06a449e",
+      "translation": "transmis à ``load_state_dict`` ; ``True`` provoque ``RuntimeError`` pour toute différence de clés, tandis que ``False`` tolère les clés absentes et inattendues : une architecture incompatible se charge alors sans signalement, certaines parties restant initialisées aléatoirement. Également ignoré pour les anciens fichiers contenant un module complet."
+    },
+    {
+      "context": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state key-value mapping was found, or the config names no architecture and no ``model`` was supplied.",
+      "label": "spacr.torch_artifacts.load_model_artifact#7",
+      "source": "the file is neither a module nor a checkpoint mapping, its ``artifact_version`` is not the supported one, no state dictionary was found, or the config names no architecture and no ``model`` was supplied.",
+      "source_sha256": "125e83d67fede0e746d1f4557942a0c4483e7538df2c3a044db0c532cfcd5e11",
+      "translation": "le fichier n’est ni un module ni un mapping de point de contrôle, sa ``artifact_version`` n’est pas prise en charge, aucun dictionnaire d’état n’a été trouvé, ou la configuration ne nomme aucune architecture et aucun ``model`` n’a été fourni."
+    },
+    {
+      "context": "Summarize where configured controls rank in a result table.",
+      "label": "spacr.trial_metrics.control_recovery#0",
+      "source": "Summarize where configured controls rank in a result table.",
+      "source_sha256": "7e4c93a22626d06438281c49097791c8569f6fb3157534f8f743d46a6222ea40",
+      "translation": "Résumer le rang des contrôles configurés dans une table de résultats."
+    },
+    {
+      "context": "key-value mapping Control presence, rank, percentile, and significance fields.",
+      "label": "spacr.trial_metrics.control_recovery#5",
+      "source": "dict Control presence, rank, percentile, and significance fields.",
+      "source_sha256": "ebe16bb07fd4a715ca2ca9f5d72b0e7d502e1c743007900a7b6fc39a9dbb4b49",
+      "translation": "dict Champs de présence, de rang, de percentile et de significativité des contrôles."
+    },
+    {
+      "context": "The recipes a walk would try, worked out before any of them runs.",
+      "label": "spacr.umap_search.walk_recipes#0",
+      "source": "The recipes a walk would try, worked out before any of them runs.",
+      "source_sha256": "ef05871407f8f4f79bd97f5a21d9041136822a58bfb07c5b9e3ce4f0e3151c54",
+      "translation": "Les recettes qu’un parcours essaierait, déterminées avant l’exécution de l’une d’elles."
+    },
+    {
+      "context": "The returned list lets the panel report the total trial count before the first trial starts.",
+      "label": "spacr.umap_search.walk_recipes#1",
+      "source": "The returned list lets the panel report the total trial count before the first trial starts.",
+      "source_sha256": "3b418371c2b29b2580d1a72859b22dc603efa1cce9b84bbeaf1101cd3a365fc1",
+      "translation": "La liste renvoyée permet au panneau d’annoncer le nombre total d’essais avant le début du premier."
+    },
+    {
+      "context": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "label": "spacr.umap_search.walk_recipes#2",
+      "source": "recipe cloned for every candidate. Its values fill dimensions with no explicit grid, and its neighbour count scales the default neighbour walk.",
+      "source_sha256": "62f1f3cff7f1cbdd6189a874f0205d2ab7d9f13302ae0439c2f4823a713ca8b4",
+      "translation": "recette clonée pour chaque candidat. Ses valeurs complètent les dimensions sans grille explicite, et son nombre de voisins détermine l’échelle du parcours des voisins par défaut."
+    },
+    {
+      "context": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "label": "spacr.umap_search.walk_recipes#3",
+      "source": "target sample count when no explicit grid is given. At least two neighbor values are attempted, and integer rounding plus deduplication may change the final count.",
+      "source_sha256": "200599eb9fa957af843c3d016d51d79b3bcca53b3cf7d72c4467906dbae6fc58",
+      "translation": "nombre cible d’échantillons lorsqu’aucune grille explicite n’est fournie. Au moins deux valeurs du nombre de voisins sont essayées ; l’arrondi entier et la déduplication peuvent modifier le nombre final."
+    },
+    {
+      "context": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "label": "spacr.umap_search.walk_recipes#4",
+      "source": "explicit neighborhood-size values. If all three grids are empty, derive a walk from ``base`` and ``steps``; if another grid is supplied, an empty neighbor grid retains the base neighbor count.",
+      "source_sha256": "a44fd075eb607ec7d63a64e12687be974a3070b058e190385abdf9f94b18b124",
+      "translation": "valeurs explicites de taille du voisinage. Si les trois grilles sont vides, déduire un parcours de ``base`` et ``steps`` ; si une autre grille est fournie, une grille de voisinage vide conserve le nombre de voisins de base."
+    },
+    {
+      "context": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the structured-data name. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "label": "spacr.validate.coerce_expected_types#3",
+      "source": "Object-diameter settings are canonicalized to their stored form first. The subsequent type conversion is conservative. Only ``bool``, ``int`` and ``float`` are converted, only from a string, only when the conversion is exact, and never when ``str`` is itself an accepted type for the key. Anything that does not convert cleanly is left exactly as it was, for :func:`validate_settings` to report.",
+      "source_sha256": "1820ac9e7e701a8a69975ff39f2f68d9a844b7530c5f6e7b91956fe73f9f09f0",
+      "translation": "Les paramètres de diamètre des objets sont d’abord convertis vers leur forme stockée canonique. La conversion de type qui suit est prudente. Seuls ``bool``, ``int`` et ``float`` sont convertis, uniquement depuis une chaîne, seulement si la conversion est exacte, et jamais si ``str`` est lui-même un type accepté pour la clé. Tout ce qui ne se convertit pas correctement reste strictement inchangé, afin que :func:`validate_settings` puisse le signaler."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review against exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

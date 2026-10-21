@@ -1,0 +1,693 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "true class INDEX per sample, in ``range(n_classes)``. A value outside that range is refused rather than clipped.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#1",
+      "source": "true class INDEX per sample, in ``range(n_classes)``. A value outside that range is refused rather than clipped.",
+      "source_sha256": "8a420eb053761711795411ae91ef9fe222872699b0a5dfb211b6d9574797c1da",
+      "translation": "각 샘플의 실제 클래스 인덱스로, ``range(n_classes)`` 범위에 속합니다. 범위 밖의 값은 경곗값으로 잘라내지 않고 거부합니다."
+    },
+    {
+      "context": "``summary`` — scalar metrics (``n``, accuracy, balanced accuracy, macro/weighted F1, macro precision/recall, log loss, multiclass Brier, expected calibration error, mean confidence) plus ``classes``, ``n_classes``, ``calibration_method``, ``raw_expected_calibration_error``, ``temperatures_by_held_out_fold``, ``calibration_warnings`` and ``probability_column_names``;",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#10",
+      "source": "``summary`` — scalar metrics (``n``, accuracy, balanced accuracy, macro/weighted F1, macro precision/recall, log loss, multiclass Brier, expected calibration error, mean confidence) plus ``classes``, ``n_classes``, ``calibration_method``, ``raw_expected_calibration_error``, ``temperatures_by_held_out_fold``, ``calibration_warnings`` and ``probability_column_names``;",
+      "source_sha256": "2749e45d39c4da2b643e503e225a7780286d9a38faefa37ee1ea31483aa4f12d",
+      "translation": "``summary`` — 스칼라 지표(``n``, 정확도, 균형 정확도, 매크로/가중 F1, 매크로 정밀도/재현율, 로그 손실, 다중 클래스 Brier 점수, 기대 보정 오차, 평균 신뢰도)와 ``classes``, ``n_classes``, ``calibration_method``, ``raw_expected_calibration_error``, ``temperatures_by_held_out_fold``, ``calibration_warnings`` 및 ``probability_column_names``;"
+    },
+    {
+      "context": "``predictions`` — one row per sample with ``fold``, the :func:`sample_identity` columns, ``true_label`` / ``true_class``, ``predicted_label`` / ``predicted_class``, ``correct``, ``confidence`` (the calibrated probability of the chosen class) and a ``raw_prob_<name>`` / ``prob_<name>`` pair per class, where ``<name>`` is the sanitized, de-duplicated class name listed in ``probability_column_names`` rather than the class name itself;",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#11",
+      "source": "``predictions`` — one row per sample with ``fold``, the :func:`sample_identity` columns, ``true_label`` / ``true_class``, ``predicted_label`` / ``predicted_class``, ``correct``, ``confidence`` (the calibrated probability of the chosen class) and a ``raw_prob_<name>`` / ``prob_<name>`` pair per class, where ``<name>`` is the sanitized, de-duplicated class name listed in ``probability_column_names`` rather than the class name itself;",
+      "source_sha256": "18911d9feed3df98dfe2c268fbeee0853bbff52d46733e42557fc5ffd3929a60",
+      "translation": "``predictions`` — 각 샘플의 행으로, ``fold``, :func:`sample_identity` 열, ``true_label`` / ``true_class``, ``predicted_label`` / ``predicted_class``, ``correct``, ``confidence``(선택한 클래스의 보정된 확률), 클래스별 ``raw_prob_<name>`` / ``prob_<name>`` 쌍을 포함합니다. 여기서 ``<name>``은 원래 클래스 이름 자체가 아니라, 열 이름에 맞게 정리하고 중복을 제거하여 ``probability_column_names``에 나열한 클래스 이름입니다;"
+    },
+    {
+      "context": "``confusion_counts`` — counts indexed and columned by class name;",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#12",
+      "source": "``confusion_counts`` — counts indexed and columned by class name;",
+      "source_sha256": "92ae07b0549b00f9bcc048c75ebc9bfe1d9723ba77cde19f0be02125825eaec7",
+      "translation": "``confusion_counts`` — 행 인덱스와 열 이름이 클래스 이름인 빈도표입니다;"
+    },
+    {
+      "context": "``confusion_normalized`` — the same matrix divided by its true-class row totals, with all-zero rows left at zero;",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#13",
+      "source": "``confusion_normalized`` — the same matrix divided by its true-class row totals, with all-zero rows left at zero;",
+      "source_sha256": "78cf598b175be8f8a81c9e0108f9f47017de5a1894b4dff604dbbe28d37664eb",
+      "translation": "``confusion_normalized`` — 각 실제 클래스 행을 해당 행의 합으로 나눈 동일한 행렬이며, 전부 0인 행은 0으로 유지됩니다;"
+    },
+    {
+      "context": "``per_plate`` — the same scalar metrics per ``plate`` group, with ``plate`` as the first column;",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#14",
+      "source": "``per_plate`` — the same scalar metrics per ``plate`` group, with ``plate`` as the first column;",
+      "source_sha256": "2b8b5e763793f784c2510840472dae0eb6937be9b5fc4f45e0a7fc4f6fbd635e",
+      "translation": "``per_plate`` — 각 ``plate`` 그룹에 대한 동일한 스칼라 지표이며, 첫 번째 열은 ``plate``입니다;"
+    },
+    {
+      "context": "``calibration`` — the :func:`calibration_table` reliability bins for the calibrated probabilities.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#15",
+      "source": "``calibration`` — the :func:`calibration_table` reliability bins for the calibrated probabilities.",
+      "source_sha256": "b6a4de3d0a94743be3f2f633f71de19e76812dcfcce1953bac1f9d23a76d2368",
+      "translation": "``calibration`` — 보정된 확률에 대한 :func:`calibration_table`의 신뢰도 구간입니다."
+    },
+    {
+      "context": "``(n_samples, n_classes)`` predicted probabilities. Its column count defines ``n_classes``.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#2",
+      "source": "``(n_samples, n_classes)`` predicted probabilities. Its column count defines ``n_classes``.",
+      "source_sha256": "7edcc14a2a501b32ea8c35d45fc5be7426e1e6fed1d496dfc8be24eeb6dd47f5",
+      "translation": "``(n_samples, n_classes)`` 형태의 예측 확률입니다. 열의 수가 ``n_classes``를 결정합니다."
+    },
+    {
+      "context": "one source path per sample, used to derive the per-laboratory microplate tables. Must be the same length as ``y_true``.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#3",
+      "source": "one source path per sample, used to derive the per-plate tables. Must be the same length as ``y_true``.",
+      "source_sha256": "3334dde01178291ce77cedeea70b8a567d8b425c0d8f18c888f4c49d5550b975",
+      "translation": "각 샘플의 원본 경로로, 플레이트별 표를 만드는 데 사용됩니다. 목록의 길이는 ``y_true``와 같아야 합니다."
+    },
+    {
+      "context": "display names for the columns, in column order. Defaults to ``class_0 ... class_n``; a length that disagrees with the probability columns is refused.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#4",
+      "source": "display names for the columns, in column order. Defaults to ``class_0 ... class_n``; a length that disagrees with the probability columns is refused.",
+      "source_sha256": "f2e338f3501e5f0fe879f2ee6f7f19927eae91f734259c82655ad72930b032e6",
+      "translation": "열 순서대로 지정한 열의 표시 이름입니다. 기본값은 ``class_0 ... class_n``이며, 이름의 수가 확률 열의 수와 일치하지 않으면 거부합니다."
+    },
+    {
+      "context": "held-out fold identity per sample. Supplied identities must match the sample count and are retained in the predictions table even without calibration; omitted identities are stored as zero. Temperature calibration requires at least two distinct folds and attempts to fit each fold's temperature using predictions from the other folds.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#5",
+      "source": "held-out fold identity per sample. Supplied identities must match the sample count and are retained in the predictions table even without calibration; omitted identities are stored as zero. Temperature calibration requires at least two distinct folds and attempts to fit each fold's temperature using predictions from the other folds.",
+      "source_sha256": "62c94a7dd725780a1fe50cdc4cf227b61f8e76263d1bbd8fa6bf69baf92c71b9",
+      "translation": "각 샘플의 홀드아웃 폴드 식별자입니다. 제공한 식별자의 수는 샘플 수와 일치해야 하며, 보정을 하지 않아도 예측 표에 보존됩니다. 생략한 식별자는 0으로 저장됩니다. 온도 보정에는 서로 다른 폴드가 두 개 이상 필요하며, 다른 폴드들의 예측을 사용하여 각 폴드의 온도를 적합하려고 시도합니다."
+    },
+    {
+      "context": "``'temperature'`` for cross-fitted calibration; ``'none'`` (default), ``'off'``, ``'false'``, ``None`` or an empty string leave probabilities uncalibrated. String comparisons ignore case and surrounding whitespace; unknown method names are refused.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#6",
+      "source": "``'temperature'`` for cross-fitted calibration; ``'none'`` (default), ``'off'``, ``'false'``, ``None`` or an empty string leave probabilities uncalibrated. String comparisons ignore case and surrounding whitespace; unknown method names are refused.",
+      "source_sha256": "51572399a93e99cd1c5e5902eb667f01a130341c752cd7591ff7e8707c41b777",
+      "translation": "교차 적합 보정에는 ``'temperature'``를 사용합니다. ``'none'``(기본값), ``'off'``, ``'false'``, ``None`` 또는 빈 문자열은 확률을 보정하지 않은 상태로 둡니다. 문자열 비교에서는 대소문자와 앞뒤 공백을 무시하며, 알 수 없는 메서드 이름은 거부합니다."
+    },
+    {
+      "context": "bin count for the expected-calibration-error estimate. More bins resolve the reliability curve better and make each bin noisier.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#7",
+      "source": "bin count for the expected-calibration-error estimate. More bins resolve the reliability curve better and make each bin noisier.",
+      "source_sha256": "7c568811c6d0e0fb7034259feb40dd11e1dd4cbb981a6f1b8b37cb2092b264a8",
+      "translation": "기대 보정 오차를 추정할 때 사용할 구간 수입니다. 구간 수가 많으면 신뢰도 곡선을 더 세밀하게 나타내지만 각 구간의 통계적 잡음은 커집니다."
+    },
+    {
+      "context": "on mismatched lengths, a class index outside the probability columns, an unknown ``calibration_method``, or temperature calibration with fewer than two distinct folds.",
+      "label": "spacr.classifier_evaluation.evaluate_predictions#8",
+      "source": "on mismatched lengths, a class index outside the probability columns, an unknown ``calibration_method``, or temperature calibration with fewer than two distinct folds.",
+      "source_sha256": "7c4915552e9f404df7f797e15c28a5c7588913e646ab9199c4beab4f7b6f2e1f",
+      "translation": "길이가 서로 다르거나, 클래스 인덱스가 확률 열의 범위를 벗어나거나, ``calibration_method``가 알려지지 않은 값이거나, 온도 보정에 서로 다른 폴드가 두 개 미만인 경우입니다."
+    },
+    {
+      "context": "observed share called positive, conventionally between zero and one.",
+      "label": "spacr.classifier_quality.rogan_gladen#1",
+      "source": "observed share called positive, conventionally between zero and one.",
+      "source_sha256": "c12885f40d74af23c30ab85bc8479ceada381cf6d392ba750616d9ccda361a7b",
+      "translation": "양성으로 분류된 관측 비율로, 일반적으로 0과 1 사이입니다."
+    },
+    {
+      "context": "true-positive rate at the chosen machine-learning classification model threshold.",
+      "label": "spacr.classifier_quality.rogan_gladen#2",
+      "source": "true-positive rate at the chosen classifier threshold.",
+      "source_sha256": "e3bfbc968f56ddb72c91b01b7d41cd77b69c516c85cb66fcdbbbedd59fcedb9c",
+      "translation": "선택한 분류기 임계값에서의 참양성률."
+    },
+    {
+      "context": "true-negative rate at the chosen machine-learning classification model threshold.",
+      "label": "spacr.classifier_quality.rogan_gladen#3",
+      "source": "true-negative rate at the chosen classifier threshold.",
+      "source_sha256": "62560fb9e90a28148290922eb178f3e5fa7f6975b361398cb8b8f4481b61d323",
+      "translation": "선택한 분류기 임계값에서의 참음성률."
+    },
+    {
+      "context": "the number of cells, if the standard error is wanted. The correction inflates variance by ``1 / (se + sp - 1)^2``.",
+      "label": "spacr.classifier_quality.rogan_gladen#4",
+      "source": "the number of cells, if the standard error is wanted. The correction inflates variance by ``1 / (se + sp - 1)^2``.",
+      "source_sha256": "f342970cf6321c870040c0ad1b4344e69f1b49345936725c1502ac4265361dd3",
+      "translation": "표준오차가 필요한 경우의 세포 수입니다. 보정은 분산에 ``1 / (se + sp - 1)^2``를 곱합니다."
+    },
+    {
+      "context": "A usable result includes the unclipped denominator, a clipping indicator, and variance inflation. When ``se + sp - 1`` is nonfinite or has absolute value below ``1e-9``, only ``corrected`` (NaN), ``denominator`` and ``usable`` (0.0) are returned.",
+      "label": "spacr.classifier_quality.rogan_gladen#5",
+      "source": "A usable result includes the unclipped denominator, a clipping indicator, and variance inflation. When ``se + sp - 1`` is nonfinite or has absolute value below ``1e-9``, only ``corrected`` (NaN), ``denominator`` and ``usable`` (0.0) are returned.",
+      "source_sha256": "1525f8e519b5b23668ed25bdfb2345467271fbc826c4e2229c1b8342120e77ae",
+      "translation": "사용 가능한 결과에는 클리핑하지 않은 분모, 클리핑 여부 표시, 분산 팽창이 포함됩니다. ``se + sp - 1``이 유한하지 않거나 절댓값이 ``1e-9``보다 작으면 ``corrected`` (NaN), ``denominator``, ``usable`` (0.0)만 반환됩니다."
+    },
+    {
+      "context": "Invalid class definitions and custom-model load failures are reported in the returned :class:`ModelReport`. Exceptions outside those handled class-validation and custom-load branches can still propagate, including errors from input-channel conversion.",
+      "label": "spacr.model_check.check_model#2",
+      "source": "Invalid class definitions and custom-model load failures are reported in the returned :class:`ModelReport`. Exceptions outside those handled class-validation and custom-load branches can still propagate, including errors from input-channel conversion.",
+      "source_sha256": "d780e447de514ab157df30c8dd20bd0a0b08156ddd85cd8b659c70adce2b89ee",
+      "translation": "잘못된 클래스 정의와 사용자 지정 모델 로드 실패는 반환되는 :class:`ModelReport`에 보고됩니다. 이러한 처리 대상 클래스 검증 및 사용자 지정 로드 분기 밖의 예외는 입력 채널 정보 변환 오류를 포함하여 여전히 전파될 수 있습니다."
+    },
+    {
+      "context": "The default backend loads one model for each call and processes every microscope field of view, A first, then B. The report times each backend call and materialization of its returned masks, including default-backend model loading but excluding subsequent mask conversion, QC and comparison. A supplied ``segment_fn`` controls its own model loading and reuse.",
+      "label": "spacr.model_compare.compare_models#1",
+      "source": "The default backend loads one model for each call and processes every field, A first, then B. The report times each backend call and materialization of its returned masks, including default-backend model loading but excluding subsequent mask conversion, QC and comparison. A supplied ``segment_fn`` controls its own model loading and reuse.",
+      "source_sha256": "5a7e95f870abfc47a55ab38ac889f075fa8a99c4ad2ef334ab15527c20cd24ff",
+      "translation": "기본 백엔드는 호출마다 모델 하나를 로드하고 모든 영상 시야를 처리하며, A를 먼저 처리한 다음 B를 처리합니다. 보고서는 각 백엔드 호출과 반환된 마스크들을 실제 목록으로 만드는 데 걸린 시간을 측정합니다. 여기에는 기본 백엔드의 모델 로드가 포함되지만, 이후의 마스크 변환, QC 및 비교는 포함되지 않습니다. 제공된 ``segment_fn``은 자체 모델 로드 및 재사용을 제어합니다."
+    },
+    {
+      "context": "keep the images and masks on the report so a GUI can draw them. Pass False for a headless sweep over many microscope fields of view.",
+      "label": "spacr.model_compare.compare_models#12",
+      "source": "keep the images and masks on the report so a GUI can draw them. Pass False for a headless sweep over many fields.",
+      "source_sha256": "86361352f0db050f657d3551f7d8186d8fea2eef00c4dc7e1123473ad22b5a6a",
+      "translation": "GUI에서 표시할 수 있도록 보고서에 영상과 마스크를 보관합니다. 그래픽 인터페이스 없이 많은 현미경 시야를 순회하여 처리하려면 False를 전달하세요."
+    },
+    {
+      "context": "``fn(message, done, total)``, called as the run proceeds.",
+      "label": "spacr.model_compare.compare_models#13",
+      "source": "``fn(message, done, total)``, called as the run proceeds.",
+      "source_sha256": "f0c15e9efceade21ed64185045651a3b92045992a117338933a5c77888190b75",
+      "translation": "``fn(message, done, total)``로, 실행이 진행되는 동안 호출됩니다."
+    },
+    {
+      "context": "The segmentation call is an argument: the Model Zoo can hand in a different backend, and a test can hand in a stub, so nothing about this function needs Cellpose to be exercised.",
+      "label": "spacr.model_compare.compare_models#2",
+      "source": "The segmentation call is an argument: the Model Zoo can hand in a different backend, and a test can hand in a stub, so nothing about this function needs Cellpose to be exercised.",
+      "source_sha256": "c6682b99f3e0a901ad22a6ed55178e1f86372703295e527ba726665679ed2be9",
+      "translation": "분할 호출은 인수로 전달됩니다. Model Zoo는 다른 백엔드를 제공할 수 있고 테스트는 대체 함수를 제공할 수 있으므로, 이 함수는 Cellpose 없이도 실행할 수 있습니다."
+    },
+    {
+      "context": "one array per field.",
+      "label": "spacr.model_compare.compare_models#3",
+      "source": "one array per field.",
+      "source_sha256": "27dac3f76d2661beebc9d21fd88c5b099234d9ba7ed48f145fe961e73c46a4fa",
+      "translation": "각 영상 시야의 배열 하나입니다."
+    },
+    {
+      "context": "passed to :func:`compare_masks`.",
+      "label": "spacr.model_compare.compare_models#8",
+      "source": "passed to :func:`compare_masks`.",
+      "source_sha256": "7a23a2face56f2c24ce466a3cf5729839811d710050bd0363477717d2c566015",
+      "translation": ":func:`compare_masks`에 전달됩니다."
+    },
+    {
+      "context": "passed to :func:`compare_masks`.",
+      "label": "spacr.model_compare.compare_models#9",
+      "source": "passed to :func:`compare_masks`.",
+      "source_sha256": "7a23a2face56f2c24ce466a3cf5729839811d710050bd0363477717d2c566015",
+      "translation": ":func:`compare_masks`에 전달됩니다."
+    },
+    {
+      "context": "a :class:`spacr.seg_qc.FieldQC` field stem (``.npy`` is accepted too).",
+      "label": "spacr.qc_quarantine.quarantine_field#2",
+      "source": "a :class:`spacr.seg_qc.FieldQC` field stem (``.npy`` is accepted too).",
+      "source_sha256": "b566336a31ae167e5ffab7a8fc8088ea073740bb39a9d9456f9156581c7110f5",
+      "translation": ":class:`spacr.seg_qc.FieldQC` 시야의 확장자를 제외한 파일 이름(``.npy`` 확장자가 있어도 허용됨)."
+    },
+    {
+      "context": "actor recorded in the ledger; defaults to the OS account.",
+      "label": "spacr.qc_quarantine.quarantine_field#4",
+      "source": "actor recorded in the ledger; defaults to the OS account.",
+      "source_sha256": "56f7d3f4c7126d91853f8262221ba89c962b195442cf553788405ab428d3f53b",
+      "translation": "감사 로그에 기록할 작업자이며, 기본값은 운영체제 계정입니다."
+    },
+    {
+      "context": "rather than overwriting an existing quarantine.",
+      "label": "spacr.qc_quarantine.quarantine_field#7",
+      "source": "rather than overwriting an existing quarantine.",
+      "source_sha256": "3078474491db8bbc7d45dec3ff0aca7d535cbda23e61eb471ce48d1f1b2c5328",
+      "translation": "기존 격리 파일을 덮어쓰는 대신 발생합니다."
+    },
+    {
+      "context": "If the sidecar cannot be written, the function attempts to move the array back before raising. If rollback also fails, ``QuarantineError`` reports that the field could not be restored. An unaudited quarantine is never reported as a successful operation.",
+      "label": "spacr.qc_quarantine.quarantine_field#8",
+      "source": "If the sidecar cannot be written, the function attempts to move the array back before raising. If rollback also fails, ``QuarantineError`` reports that the field could not be restored. An unaudited quarantine is never reported as a successful operation.",
+      "source_sha256": "e8278a0d1045654619d3fb903f8f42b841a5882eefd392de3fe11e1774c6d8f0",
+      "translation": "보조 파일을 쓸 수 없으면 함수는 예외를 발생시키기 전에 배열을 원래 위치로 되돌리려고 시도합니다. 이 복원도 실패하면 ``QuarantineError``는 시야를 복원하지 못했다고 알립니다. 감사 기록이 없는 격리는 성공한 작업으로 보고되지 않습니다."
+    },
+    {
+      "context": "Parse a filter bound, returning ``None`` for empty or invalid input.",
+      "label": "spacr.qt.annotate_engine.filter_bound#0",
+      "source": "Parse a filter bound, returning ``None`` for empty or invalid input.",
+      "source_sha256": "cc2eddd85e40e9fbd285b985fdbd0f1f5cd8a857ce9a1986f302e0adff377357",
+      "translation": "필터 경계값을 해석하고 입력이 비어 있거나 유효하지 않으면 ``None``\\ 을 반환합니다."
+    },
+    {
+      "context": "user-entered bound, typically a number or numeric string; ``None``, a blank string, conversions rejected by ``float()`` with ``TypeError`` or ``ValueError``, and NaN all give ``None``. Other conversion exceptions can propagate.",
+      "label": "spacr.qt.annotate_engine.filter_bound#1",
+      "source": "user-entered bound, typically a number or numeric string; ``None``, a blank string, conversions rejected by ``float()`` with ``TypeError`` or ``ValueError``, and NaN all give ``None``. Other conversion exceptions can propagate.",
+      "source_sha256": "152d7c87c2801842f2a876adc12ec5164f0409af77fc504ada70862c22848185",
+      "translation": "사용자가 입력한 경계값으로, 보통 숫자 또는 숫자 문자열입니다. ``None``, 빈 문자열, ``float()``\\ 가 ``TypeError`` 또는 ``ValueError``\\ 로 거부하는 변환, NaN은 모두 ``None``\\ 을 반환합니다. 다른 변환 예외는 전파될 수 있습니다."
+    },
+    {
+      "context": "``image`` itself when nothing is switched on -- so a detector reading an untouched field reads the very array and not a float copy -- and otherwise a float32 array of the same shape. The result may share input storage when enabled steps are skipped or return their input.",
+      "label": "spacr.qt.detect_chain.prepare#7",
+      "source": "``image`` itself when nothing is switched on -- so a detector reading an untouched field reads the very array and not a float copy -- and otherwise a float32 array of the same shape. The result may share input storage when enabled steps are skipped or return their input.",
+      "source_sha256": "3f9ff614be1e581784cfbff22490e1825ee705460fa79dbdf452d91a315829e2",
+      "translation": "아무것도 켜져 있지 않으면 ``image`` 자체입니다 -- 따라서 변경하지 않은 필드를 읽는 검출기는 부동소수점 복사본이 아닌 원래 배열을 읽습니다 -- 그 외에는 같은 형태의 float32 배열입니다. 활성화된 단계를 건너뛰거나 해당 단계가 입력을 그대로 반환하면 결과가 입력과 저장 공간을 공유할 수 있습니다."
+    },
+    {
+      "context": "Show the tour if it hasn't been seen (or if ``force=True``).",
+      "label": "spacr.qt.first_run.maybe_show_tour#0",
+      "source": "Show the tour if it hasn't been seen (or if ``force=True``).",
+      "source_sha256": "c89bd550a72682152d99e564ad5219c37eb3a36ec182ca9b6b9a5e44a9f038e7",
+      "translation": "둘러보기를 아직 보지 않았다면 표시합니다(또는 ``force=True``\\ 인 경우 표시)."
+    },
+    {
+      "context": "the MainWindow to overlay.",
+      "label": "spacr.qt.first_run.maybe_show_tour#1",
+      "source": "the MainWindow to overlay.",
+      "source_sha256": "bf14d775bae226ef98a9f26023695ce53962f8ed166e55d24c35d55a2434d9bc",
+      "translation": "오버레이가 덮을 MainWindow입니다."
+    },
+    {
+      "context": "skip the \"seen\" check; an active pathway walkthrough still suppresses the tour.",
+      "label": "spacr.qt.first_run.maybe_show_tour#2",
+      "source": "skip the \"seen\" check; an active pathway walkthrough still suppresses the tour.",
+      "source_sha256": "69665a92893207a93482bc939cec64f3ac05a03aa44d95fee0df1b7d32c73883",
+      "translation": "\"seen\" 검사를 건너뜁니다. 작업 흐름 안내가 활성화되어 있으면 시작 둘러보기는 여전히 표시되지 않습니다."
+    },
+    {
+      "context": "the overlay widget (already visible), or ``None`` when a pathway walkthrough is active or the tour was already seen and ``force`` is false.",
+      "label": "spacr.qt.first_run.maybe_show_tour#3",
+      "source": "the overlay widget (already visible), or ``None`` when a pathway walkthrough is active or the tour was already seen and ``force`` is false.",
+      "source_sha256": "cd950674f8e746915777485f7bcc205f7287aa7afd70f40c41c86b1b814da90e",
+      "translation": "이미 표시된 오버레이 위젯 또는 ``None``\\ 입니다. 작업 흐름 안내가 활성화되어 있거나, 시작 둘러보기를 이미 보았고 ``force``\\ 가 거짓이면 후자를 반환합니다."
+    },
+    {
+      "context": "Collect the oldest due generation, or service an explicit full-cleanup request.",
+      "label": "spacr.qt.gc_policy.collect_once#0",
+      "source": "Collect the oldest due generation, or service an explicit full-cleanup request.",
+      "source_sha256": "1443a4376baf281deb995875f8dbe73bd38e4d6e010008c536cdf8a708bd5e3e",
+      "translation": "수집 시점이 된 가장 오래된 세대를 수집하거나 명시적인 전체 정리 요청을 처리합니다."
+    },
+    {
+      "context": "Without an explicit cleanup request, collection is deferred during a heavy import or busy-worker deferral. Otherwise, generations are checked in order 2, 1, 0, and ``gc.collect(generation)`` is called for the first whose count exceeds its saved threshold (or its current threshold when none was saved). No collection is requested when none is due.",
+      "label": "spacr.qt.gc_policy.collect_once#1",
+      "source": "Without an explicit cleanup request, collection is deferred during a heavy import or busy-worker deferral. Otherwise, generations are checked in order 2, 1, 0, and ``gc.collect(generation)`` is called for the first whose count exceeds its saved threshold (or its current threshold when none was saved). No collection is requested when none is due.",
+      "source_sha256": "d0feaf42ec97d4ad3359ca79915c0840a5f7e88007062d031b68f94c92037763",
+      "translation": "명시적인 정리 요청이 없으면 무거운 모듈을 가져오는 동안이나 작업자가 바빠 수집이 연기되는 동안에는 수집을 미룹니다. 그 외에는 세대를 2, 1, 0 순서로 확인하고, 카운터가 저장된 임계값을 처음으로 초과한 세대에 대해 ``gc.collect(generation)``\\ 을 호출합니다(저장된 임계값이 없으면 현재 임계값 사용). 수집할 세대가 없으면 수집을 요청하지 않습니다."
+    },
+    {
+      "context": "the generation collected, or ``-1`` when none is due or ordinary collection is deferred.",
+      "label": "spacr.qt.gc_policy.collect_once#3",
+      "source": "the generation collected, or ``-1`` when none is due or ordinary collection is deferred.",
+      "source_sha256": "5960ea7a51d0862ee6d6f6fe3db8acd8c69f6e7238c4adbdc0b02d2e09323a6e",
+      "translation": "수집한 세대 또는 ``-1``\\ 입니다. 수집할 세대가 없거나 일반 수집이 연기되면 후자를 반환합니다."
+    },
+    {
+      "context": "the opener's status message, converted with ``str``; ``\"\"`` when no opener is registered or its result is false-like. An opener exception is logged and produces a localized failure message.",
+      "label": "spacr.qt.help_search.open_entry#3",
+      "source": "the opener's status message, converted with ``str``; ``\"\"`` when no opener is registered or its result is false-like. An opener exception is logged and produces a localized failure message.",
+      "source_sha256": "3db921dc14542dd4cdcd83d7626dfc7f4ce1e7540d1ece60f9f6047831b7b750",
+      "translation": "열기 함수의 상태 메시지를 ``str``\\ 로 변환한 값입니다. ``\"\"``\\ 는 등록된 열기 함수가 없거나 그 결과가 거짓으로 평가될 때 반환됩니다. 열기 함수에서 예외가 발생하면 로그에 기록하고 현지화된 실패 메시지를 생성합니다."
+    },
+    {
+      "context": "Kick off the demo download with a modal progress dialog.",
+      "label": "spacr.qt.hf_download.download_toxo_mito_demo#0",
+      "source": "Kick off the demo download with a modal progress dialog.",
+      "source_sha256": "e8940ca9ee2af534c4d65d8d41d7533ea55f3665a5d108b4c61e50aa218b2530",
+      "translation": "모달 진행 대화 상자로 데모 다운로드를 시작합니다."
+    },
+    {
+      "context": "any QWidget — the progress dialog parents to this.",
+      "label": "spacr.qt.hf_download.download_toxo_mito_demo#1",
+      "source": "any QWidget — the progress dialog parents to this.",
+      "source_sha256": "e2b5acd02d7854e5128c41edb0d97497a5c1f96348c84d50bc9eedc63d7e2cdb",
+      "translation": "진행 대화 상자의 부모 위젯이 될 임의의 QWidget입니다."
+    },
+    {
+      "context": "local directory that will hold ``plate1/`` and ``settings/`` subfolders.",
+      "label": "spacr.qt.hf_download.download_toxo_mito_demo#2",
+      "source": "local directory that will hold ``plate1/`` and ``settings/`` subfolders.",
+      "source_sha256": "65de3477a77d44cb9f44b3cabc935379dec27ad7a1f4d4c57d880adb83ca3222",
+      "translation": "``plate1/`` 및 ``settings/`` 하위 폴더가 생성될 로컬 디렉터리입니다."
+    },
+    {
+      "context": "callback fired on completion or cancellation with ``(result, error_message)``. ``result`` is ``None`` on worker-reported failure or cancellation, otherwise a :class:`DownloadResult` containing the local dataset and settings paths.",
+      "label": "spacr.qt.hf_download.download_toxo_mito_demo#3",
+      "source": "callback fired on completion or cancellation with ``(result, error_message)``. ``result`` is ``None`` on worker-reported failure or cancellation, otherwise a :class:`DownloadResult` containing the local dataset and settings paths.",
+      "source_sha256": "ae94bad7102f2ecae539747b0991c66ffb68455d08626954d5ff857c4bfef286",
+      "translation": "완료 또는 취소 시 ``(result, error_message)``\\ 로 호출되는 콜백입니다. ``result``\\ 는 작업자가 보고한 실패 또는 취소 시 ``None``\\ 이며, 그렇지 않으면 로컬 데이터 및 설정 경로를 포함한 :class:`DownloadResult` 객체입니다."
+    },
+    {
+      "context": "Nothing is returned; the callback carries the worker outcome. Worker-reported errors and cancellations call ``on_done`` with a ``None`` result and an explanatory string. Destination creation and dialog setup happen before the worker starts and can raise directly.",
+      "label": "spacr.qt.hf_download.download_toxo_mito_demo#4",
+      "source": "Nothing is returned; the callback carries the worker outcome. Worker-reported errors and cancellations call ``on_done`` with a ``None`` result and an explanatory string. Destination creation and dialog setup happen before the worker starts and can raise directly.",
+      "source_sha256": "0942e2fc1b9116b95c73adfa5982bdbf8511df2a34c48c9edb79040ad3fb78e5",
+      "translation": "반환값은 없으며 콜백이 작업자의 결과를 전달합니다. 작업자가 보고한 오류와 취소는 ``on_done``\\ 을 ``None`` 결과와 설명 문자열로 호출합니다. 대상 디렉터리 생성과 대화 상자 설정은 작업자가 시작되기 전에 이루어지며 여기서 예외가 직접 발생할 수 있습니다."
+    },
+    {
+      "context": "``source`` at ``width`` x ``height`` LOGICAL pixels on ``target``.",
+      "label": "spacr.qt.hidpi.scaled_for#0",
+      "source": "``source`` at ``width`` x ``height`` LOGICAL pixels on ``target``.",
+      "source_sha256": "d18abac1822b0e06309bf049b3261c3cc3922d48557726bcebc715f7aad35578",
+      "translation": "``source``\\ 를 ``width`` x ``height`` 논리 픽셀 크기로 ``target``\\ 에 표시합니다."
+    },
+    {
+      "context": "The one call every picture in the application should make. ``source`` is a ``QPixmap`` or a ``QImage``; ``target`` is the widget the picture will be shown on (anything :func:`device_ratio` understands); the size is a side length, a ``(w, h)`` pair, a ``QSize``, or two arguments.",
+      "label": "spacr.qt.hidpi.scaled_for#1",
+      "source": "The one call every picture in the application should make. ``source`` is a ``QPixmap`` or a ``QImage``; ``target`` is the widget the picture will be shown on (anything :func:`device_ratio` understands); the size is a side length, a ``(w, h)`` pair, a ``QSize``, or two arguments.",
+      "source_sha256": "f934c334feb650428a8aaaa93ff711143f73f4d253b12b6ab2d00a74cfb9ec0a",
+      "translation": "애플리케이션의 모든 그림이 사용해야 할 단일 호출입니다. ``source``\\ 는 ``QPixmap`` 또는 ``QImage``\\ 이며, ``target``\\ 은 그림이 표시될 위젯입니다(:func:`device_ratio`\\ 가 처리할 수 있는 모든 객체). 크기는 한 변의 길이, ``(w, h)`` 쌍, ``QSize`` 또는 두 인수로 지정합니다."
+    },
+    {
+      "context": "The requested logical bounds are converted to ``size * ratio`` device-pixel bounds. The ``aspect`` mode controls the scaled picture's dimensions; by default it fits within those bounds while preserving aspect ratio. The result carries the device pixel ratio so it lays out at its corresponding logical size.",
+      "label": "spacr.qt.hidpi.scaled_for#2",
+      "source": "The requested logical bounds are converted to ``size * ratio`` device-pixel bounds. The ``aspect`` mode controls the scaled picture's dimensions; by default it fits within those bounds while preserving aspect ratio. The result carries the device pixel ratio so it lays out at its corresponding logical size.",
+      "source_sha256": "d42ce2d338cbd78c23f4b16d9703a61c12703b363f181b270866a43f8ae5e239",
+      "translation": "요청한 논리적 경계는 ``size * ratio``\\ 에 따라 장치 픽셀 경계로 변환됩니다. ``aspect`` 모드는 크기가 조정된 그림의 치수를 제어하며, 기본적으로 종횡비를 유지하면서 해당 경계 안에 맞춥니다. 결과에는 장치 픽셀 비율이 지정되어 레이아웃에서 그에 해당하는 논리적 크기를 차지합니다."
+    },
+    {
+      "context": "A null or missing source comes back untouched -- a caller that already checks ``isNull()`` keeps its own answer, and one that does not is no worse off than it was with a bare ``.scaled()``.",
+      "label": "spacr.qt.hidpi.scaled_for#3",
+      "source": "A null or missing source comes back untouched -- a caller that already checks ``isNull()`` keeps its own answer, and one that does not is no worse off than it was with a bare ``.scaled()``.",
+      "source_sha256": "bdab345e34cc0a211c2d2d3bcec840ed01e0687ee552864d49103644d5469a1a",
+      "translation": "빈 소스나 없는 소스는 그대로 반환합니다 -- 이미 ``isNull()``\\ 을 확인하는 호출자는 기존 동작을 유지하며, 확인하지 않는 호출자도 단순히 ``.scaled()``\\ 를 사용했을 때보다 나빠지지 않습니다."
+    },
+    {
+      "context": "Translate one English UI string.",
+      "label": "spacr.qt.i18n.tr#0",
+      "source": "Translate one English UI string.",
+      "source_sha256": "4fd591af47bd1566f7e20a691125eb9e1785b30f17613c471bbbf15c894701e9",
+      "translation": "영어 UI 문자열 하나를 번역합니다."
+    },
+    {
+      "context": "Exact catalog matches are tried first, followed by composite-label and conservative term translation. The source remains English when none applies. Keyword values are applied with ``str.format`` *after* translation, allowing catalogs to reorder placeholders safely.",
+      "label": "spacr.qt.i18n.tr#1",
+      "source": "Exact catalog matches are tried first, followed by composite-label and conservative term translation. The source remains English when none applies. Keyword values are applied with ``str.format`` *after* translation, allowing catalogs to reorder placeholders safely.",
+      "source_sha256": "1b876e001b0507188e37df09ece0b1112fc90c50732abff3c33fb5fe450227ca",
+      "translation": "먼저 정확히 일치하는 카탈로그 항목을 시도한 뒤, 복합 레이블 번역과 보수적인 용어 번역을 시도합니다. 어느 것도 적용되지 않으면 원문은 영어로 유지됩니다. 키워드 값은 ``str.format``\\ 을 통해 번역 *후에* 적용되므로 카탈로그에서 자리표시자 순서를 안전하게 바꿀 수 있습니다."
+    },
+    {
+      "context": "Return a reviewed module summary, falling back to ``english``.",
+      "label": "spacr.qt.i18n_module_summaries.module_summary#0",
+      "source": "Return a reviewed module summary, falling back to ``english``.",
+      "source_sha256": "ead70a9e48e8e9b3efc3a27bf1755993a7ddfdb51c820f974eb41ef798c4eeb7",
+      "translation": "검토된 모듈 요약을 반환하며, 대체 값으로 ``english`` 를 사용합니다."
+    },
+    {
+      "context": "Plugin modules and future built-ins therefore remain readable until their own translation catalog supplies an exact description.",
+      "label": "spacr.qt.i18n_module_summaries.module_summary#1",
+      "source": "Plugin modules and future built-ins therefore remain readable until their own translation catalog supplies an exact description.",
+      "source_sha256": "9acea4506be19ed9dc2ba919a54f0426756dfcd8c8ef1dcc3681bf445400d31b",
+      "translation": "따라서 플러그인 모듈과 앞으로 추가될 내장 모듈도 자체 번역 카탈로그에서 정확한 설명을 제공할 때까지 읽을 수 있는 상태를 유지합니다."
+    },
+    {
+      "context": "the English summary, returned for English and as the last fallback. The built-in reviewed summary is used only when this text's SHA-256 matches its recorded hash; otherwise the external summary catalog and exact UI catalogs are tried before returning the English text.",
+      "label": "spacr.qt.i18n_module_summaries.module_summary#3",
+      "source": "the English summary, returned for English and as the last fallback. The built-in reviewed summary is used only when this text's SHA-256 matches its recorded hash; otherwise the external summary catalog and exact UI catalogs are tried before returning the English text.",
+      "source_sha256": "ad2c9460f41398fd58fd8c7f315bc230c00c4f5b6475135acad117c9a8028453",
+      "translation": "영어 요약입니다. 언어가 영어이거나 최종 대체 값이 필요할 때 반환합니다. 이 텍스트의 SHA-256이 기록된 해시와 일치할 때만 내장된 검토 완료 요약을 사용합니다. 그렇지 않으면 영어 텍스트를 반환하기 전에 외부 요약 카탈로그와 정확히 일치하는 UI 텍스트 카탈로그를 조회합니다."
+    },
+    {
+      "context": "Re-inked ``(h, w, 4)`` uint8 array for ``path``, or ``None``.",
+      "label": "spacr.qt.iconset.themed_array#0",
+      "source": "Re-inked ``(h, w, 4)`` uint8 array for ``path``, or ``None``.",
+      "source_sha256": "5ce0544f2a65735b0312b98e22bb63e95ce6bf1ae2af75509bde29d463dc4fb9",
+      "translation": "다시 색칠한 ``(h, w, 4)`` uint8 배열로, ``path`` 에 대한 결과이거나 ``None`` 입니다."
+    },
+    {
+      "context": "path to the icon artwork (PNG or SVG); its modification time and size invalidate the in-memory cache. The on-disk cache structured-data name uses the source content digest, theme and cache version.",
+      "label": "spacr.qt.iconset.themed_array#1",
+      "source": "path to the icon artwork (PNG or SVG); its modification time and size invalidate the in-memory cache. The on-disk cache key uses the source content digest, theme and cache version.",
+      "source_sha256": "60b122b2e5deb541bbfed46b1dbadbf96f8583baf5dff0a4a5fb36305b899757",
+      "translation": "아이콘 이미지의 경로(PNG 또는 SVG)입니다. 수정 시각과 크기는 메모리 내 캐시를 무효화합니다. 디스크 캐시 키는 원본 내용의 해시, 테마 및 캐시 버전을 사용합니다."
+    },
+    {
+      "context": "the multiplier. Pixel sizes are rounded to whole pixels with a minimum of 1 px; point sizes are rounded to two decimals with a minimum of 0.75 pt. Even 1.0 can therefore change fractional or below-minimum sizes.",
+      "label": "spacr.qt.live_zoom.scaled_font_sheet#3",
+      "source": "the multiplier. Pixel sizes are rounded to whole pixels with a minimum of 1 px; point sizes are rounded to two decimals with a minimum of 0.75 pt. Even 1.0 can therefore change fractional or below-minimum sizes.",
+      "source_sha256": "c88d00fc6e7b666f050bcd53a714db7419e8a2eb934e69db336b0e5a6459d12b",
+      "translation": "배율입니다. 픽셀 크기는 최소 1 px를 유지하며 정수 픽셀로 반올림합니다. 포인트 크기는 최소 0.75 pt를 유지하며 소수 둘째 자리까지 반올림합니다. 따라서 1.0도 소수 크기나 최솟값보다 작은 크기를 바꿀 수 있습니다."
+    },
+    {
+      "context": "minimum number of image/mask pairs, or images alone when the sample has no masks directory.",
+      "label": "spacr.qt.make_masks_datasets.is_present#3",
+      "source": "minimum number of image/mask pairs, or images alone when the sample has no masks directory.",
+      "source_sha256": "bbc872f0d7d7bcbcbc26a5edfa68a02b6ca86c8ed9acab78d737e1a9fc5c6dcb",
+      "translation": "최소 이미지/마스크 쌍 수입니다. 샘플에 마스크 디렉터리가 없으면 이미지만 셉니다."
+    },
+    {
+      "context": "whether at least that many image/mask pairs are present, or at least that many images when there is no masks directory.",
+      "label": "spacr.qt.make_masks_datasets.is_present#4",
+      "source": "whether at least that many image/mask pairs are present, or at least that many images when there is no masks directory.",
+      "source_sha256": "3ad732cd096eb183d284fc9ede11aab40708458ae06b51837a51ef0f57809ec0",
+      "translation": "최소한 그 수만큼의 이미지/마스크 쌍이 있는지, 또는 마스크 디렉터리가 없을 때 최소한 그 수만큼의 이미지가 있는지 여부입니다."
+    },
+    {
+      "context": "paths relative to ``folder``, each image followed by its ground-truth mask when the row names one, in manifest order. Empty when there is no readable manifest or any row names no image. This function lists manifest paths without checking whether those files exist.",
+      "label": "spacr.qt.make_masks_demo.listed_files#2",
+      "source": "paths relative to ``folder``, each image followed by its ground-truth mask when the row names one, in manifest order. Empty when there is no readable manifest or any row names no image. This function lists manifest paths without checking whether those files exist.",
+      "source_sha256": "b0f87a793da1e449e04910fb14fe8318511aee2ee34001c470b9222b3d36c920",
+      "translation": "``folder`` 기준 상대 경로이며, 매니페스트 순서를 따릅니다. 각 이미지 뒤에는 해당 행에 이름이 명시된 경우 그 참조 마스크가 옵니다. 매니페스트를 읽을 수 없거나 어느 행에 이미지 이름이 없으면 빈 결과입니다. 이 함수는 매니페스트의 경로를 나열하며 해당 파일의 존재 여부는 확인하지 않습니다."
+    },
+    {
+      "context": "Assign a macOS menu role and return ``action``.",
+      "label": "spacr.qt.menus.set_menu_role#0",
+      "source": "Assign a macOS menu role and return ``action``.",
+      "source_sha256": "74cb771acd01ce6019ad950e72733cf41305b97a836f26b480fe38a9768db9c3",
+      "translation": "macOS 메뉴 역할을 지정하고 ``action`` 을 반환합니다."
+    },
+    {
+      "context": "action : PySide6.QtGui.QAction Action whose role is assigned. role : {'none', 'preferences', 'quit', 'about'}, default='none' Target system-menu role. ``'none'`` keeps the action in its menu.",
+      "label": "spacr.qt.menus.set_menu_role#2",
+      "source": "action : PySide6.QtGui.QAction Action whose role is assigned. role : {'none', 'preferences', 'quit', 'about'}, default='none' Target system-menu role. ``'none'`` keeps the action in its menu.",
+      "source_sha256": "d040822bc4f981b5e3a15df905d4f8d3acb10ab26d666a681ac6a4494774ef6a",
+      "translation": "action : PySide6.QtGui.QAction 역할을 지정할 액션입니다. role : {'none', 'preferences', 'quit', 'about'}, default='none' 시스템 메뉴의 대상 역할입니다. ``'none'`` 은 액션을 원래 메뉴에 유지합니다."
+    },
+    {
+      "context": "ValueError If ``role`` is not supported and QtGui was imported successfully. If QtGui cannot be imported, ``action`` is returned unchanged.",
+      "label": "spacr.qt.menus.set_menu_role#6",
+      "source": "ValueError If ``role`` is not supported and QtGui was imported successfully. If QtGui cannot be imported, ``action`` is returned unchanged.",
+      "source_sha256": "c5068e62316aba506be93234647455372c132af648df9f6fb77a8c8c1715584e",
+      "translation": "ValueError ``role`` 이 지원되지 않고 QtGui를 성공적으로 가져왔을 때 발생합니다. QtGui를 가져올 수 없으면 ``action`` 을 그대로 반환합니다."
+    },
+    {
+      "context": "The line a module widget contributes, or ``\"\"``.",
+      "label": "spacr.qt.module_hints.module_hint_text#0",
+      "source": "The line a module widget contributes, or ``\"\"``.",
+      "source_sha256": "9fdd57aa2915f1e1cb0e328482838953dac127fcb6c0796a21676bf3d0cdb6e0",
+      "translation": "모듈 위젯이 제공하는 텍스트 줄 또는 ``\"\"`` 입니다."
+    },
+    {
+      "context": "Name and summary are read from PROPERTIES rather than from the tooltip, so the text is the canonical English source and a language switch retranslates it rather than translating a translation.",
+      "label": "spacr.qt.module_hints.module_hint_text#1",
+      "source": "Name and summary are read from PROPERTIES rather than from the tooltip, so the text is the canonical English source and a language switch retranslates it rather than translating a translation.",
+      "source_sha256": "45beb280c858bf92b35ba189a97e1306986b75da6b0c020564b9916d053dc44f",
+      "translation": "이름과 요약은 도구 설명이 아닌 속성(PROPERTIES)에서 읽습니다. 따라서 텍스트는 기준 영어 원문이며, 언어를 바꾸면 번역문을 다시 번역하는 대신 원문을 새로 번역합니다."
+    },
+    {
+      "context": "the hovered widget; its module name and summary Qt properties are read. ``None`` or a deleted widget gives ``\"\"``. With a nonempty summary, a line longer than :data:`MAX_HINT_CHARS` is shortened at the last space in that prefix, when available, and an ellipsis is appended. With no summary, the name is returned unchanged.",
+      "label": "spacr.qt.module_hints.module_hint_text#2",
+      "source": "the hovered widget; its module name and summary Qt properties are read. ``None`` or a deleted widget gives ``\"\"``. With a nonempty summary, a line longer than :data:`MAX_HINT_CHARS` is shortened at the last space in that prefix, when available, and an ellipsis is appended. With no summary, the name is returned unchanged.",
+      "source_sha256": "3acff87c98a7b84af3c6b00c84bc4b109b1fb8336be37f8c3df1095a84e8faa3",
+      "translation": "포인터가 올라간 위젯입니다. 모듈 이름과 요약을 나타내는 Qt 속성을 읽습니다. ``None`` 또는 삭제된 위젯은 ``\"\"`` 를 반환합니다. 요약이 비어 있지 않으면 :data:`MAX_HINT_CHARS` 보다 긴 줄은 해당 접두 부분의 마지막 공백에서(공백이 있을 때) 잘리고 말줄임표가 붙습니다. 요약이 없으면 이름을 그대로 반환합니다."
+    },
+    {
+      "context": "Best-effort OS notification.",
+      "label": "spacr.qt.notify.notify#0",
+      "source": "Best-effort OS notification.",
+      "source_sha256": "6d753609a4ae2d22c68678317cd48c28a28765987e0ebc9d4bbeea33f0c06d96",
+      "translation": "가능한 범위에서 시도하는 OS 알림입니다."
+    },
+    {
+      "context": "optional longer body text.",
+      "label": "spacr.qt.notify.notify#2",
+      "source": "optional longer body text.",
+      "source_sha256": "f5099024618d1e76bd87332e8d6920c5f0683da27ffd469ec59e98bd15ed70a3",
+      "translation": "선택적인 더 긴 본문 텍스트입니다."
+    },
+    {
+      "context": "True when a Linux/macOS notification task starts or the Windows notifier call returns without throwing; this does not confirm acceptance or display. False when no supported backend is available or synchronous setup fails.",
+      "label": "spacr.qt.notify.notify#4",
+      "source": "True when a Linux/macOS notification task starts or the Windows notifier call returns without raising; this does not confirm acceptance or display. False when no supported backend is available or synchronous setup fails.",
+      "source_sha256": "701d46be32dd1d3fe7cbd69ab75de51cbcf7dacc3e2626ff11cabcc247b0ad8a",
+      "translation": "Linux/macOS 알림 작업이 시작되거나 Windows 알림 호출이 예외 없이 반환하면 True입니다. 이는 수락이나 표시를 확인하지 않습니다. 지원되는 백엔드가 없거나 동기식 준비가 실패하면 False입니다."
+    },
+    {
+      "context": "child process, or None if installation or a requested upgrade is cancelled or unsuccessful, or the initial launch fails. Skipping or cancelling only the update check still opens the installed app.",
+      "label": "spacr.qt.parascape.open_parascape#3",
+      "source": "child process, or None if installation or a requested upgrade is cancelled or unsuccessful, or the initial launch fails. Skipping or cancelling only the update check still opens the installed app.",
+      "source_sha256": "1730f8e53c0b614de058b68b91abe98af452d3604acc11b0adea757096e641f7",
+      "translation": "자식 프로세스를 반환합니다. 설치나 요청한 업그레이드가 취소되거나 성공하지 못한 경우, 또는 최초 실행이 실패한 경우에는 None입니다. 업데이트 확인만 건너뛰거나 취소해도 설치된 앱은 열립니다."
+    },
+    {
+      "context": "Select a regex for a set of filenames.",
+      "label": "spacr.qt.regex_detect.auto_detect_regex#0",
+      "source": "Select a regex for a set of filenames.",
+      "source_sha256": "53311d4f0892ffa4103e973e602aab793cbcc27ef5657a1cd1acf8f20d288223",
+      "translation": "파일 이름 집합에 사용할 정규식을 선택합니다."
+    },
+    {
+      "context": "1. Try every :data:`BUILTIN_REGEXES` pattern; if one matches every file it wins immediately. 2. Otherwise pick the built-in that matches the MOST files (>=50 %). 3. Below 50 % coverage, try ``spacr.regex_infer.propose`` and return the first proposal with recognised metadata groups and more matches than the best built-in. 4. Otherwise try ``_synthesise_regex``. Keep the best built-in if synthesis fails, cannot compile, or matches fewer files. Equal match counts favour the synthesised pattern.",
+      "label": "spacr.qt.regex_detect.auto_detect_regex#2",
+      "source": "1. Try every :data:`BUILTIN_REGEXES` pattern; if one matches every file it wins immediately. 2. Otherwise pick the built-in that matches the MOST files (>=50 %). 3. Below 50 % coverage, try ``spacr.regex_infer.propose`` and return the first proposal with recognised metadata groups and more matches than the best built-in. 4. Otherwise try ``_synthesise_regex``. Keep the best built-in if synthesis fails, cannot compile, or matches fewer files. Equal match counts favour the synthesised pattern.",
+      "source_sha256": "777cdc7226b671b376282cafed747b35f3b97cacdbf31726b1442af976d8bbe4",
+      "translation": "1. :data:`BUILTIN_REGEXES` 의 각 패턴을 시도합니다. 모든 파일과 일치하는 패턴이 있으면 즉시 선택합니다. 2. 그렇지 않으면 가장 많은 파일과 일치하는 기본 제공 패턴을 선택합니다 (>=50 %). 3. 일치율이 50 % 미만이면 ``spacr.regex_infer.propose`` 를 시도하고, 인식된 메타데이터 그룹이 있으며 최상의 기본 제공 패턴보다 일치 수가 많은 첫 제안을 반환합니다. 4. 그렇지 않으면 ``_synthesise_regex`` 를 시도합니다. 생성에 실패하거나 컴파일할 수 없거나 일치하는 파일 수가 더 적으면 최상의 기본 제공 패턴을 유지합니다. 일치 수가 같으면 생성된 패턴을 우선합니다."
+    },
+    {
+      "context": "sample filenames to fit against.",
+      "label": "spacr.qt.regex_detect.auto_detect_regex#3",
+      "source": "sample filenames to fit against.",
+      "source_sha256": "6fd60d4bd943fd5683031c8b29d91fd6d8274012cd10313f7671bbca2bed11c2",
+      "translation": "패턴과 비교할 표본 파일 이름입니다."
+    },
+    {
+      "context": "``(pattern_or_None, label, n_matches)``. ``pattern_or_None`` is None for an empty sample or when no pattern can be selected.",
+      "label": "spacr.qt.regex_detect.auto_detect_regex#4",
+      "source": "``(pattern_or_None, label, n_matches)``. ``pattern_or_None`` is None for an empty sample or when no pattern can be selected.",
+      "source_sha256": "4e4529e26b28d718f45aeeb8de998c7d439da8192b7de1e605a8b2c4722286bf",
+      "translation": "``(pattern_or_None, label, n_matches)``. 표본이 비어 있거나 패턴을 선택할 수 없으면 ``pattern_or_None`` 은 None입니다."
+    },
+    {
+      "context": "Modal editor for the filename metadata regex.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#0",
+      "source": "Modal editor for the filename metadata regex.",
+      "source_sha256": "43a2b391f39d642582c49ca7b7c766b0fb93ca701d34ac5dfa71e9236dfb3a41",
+      "translation": "파일 이름 메타데이터 정규식을 위한 모달 편집기입니다."
+    },
+    {
+      "context": "bare filenames from the dropped folder used for the live preview (first 20 or so).",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#1",
+      "source": "bare filenames from the dropped folder used for the live preview (first 20 or so).",
+      "source_sha256": "0aad59e37decc597b759b85b280d0b1d4d67ed437a966146b6ec67e4ea5bd013",
+      "translation": "실시간 미리보기에 사용할, 끌어다 놓은 폴더의 경로 없는 파일 이름입니다(처음 20개 정도)."
+    },
+    {
+      "context": "pre-fill the input with this pattern; empty means auto-detection runs during dialog construction.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#2",
+      "source": "pre-fill the input with this pattern; empty means auto-detection runs during dialog construction.",
+      "source_sha256": "4f1ab8b9c708f729b0e36bcdb383b1768af1e201e7c3c4ead106536a82dc4630",
+      "translation": "이 패턴으로 입력을 미리 채웁니다. 비어 있으면 대화상자를 생성하는 동안 자동 감지를 실행합니다."
+    },
+    {
+      "context": "True for regular multi-channel plates; False for single-channel data (relaxes the warning set).",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#3",
+      "source": "True for regular multi-channel plates; False for single-channel data (relaxes the warning set).",
+      "source_sha256": "8f8f6389f1c941d5771fd698b59906b0b6529a4758de63e5d08d83879ee22430",
+      "translation": "일반 다중 채널 플레이트에는 True, 단일 채널 데이터에는 False입니다(경고 요건을 완화합니다)."
+    },
+    {
+      "context": "the final chosen regex; only meaningful after :py:meth:`exec` returned ``QDialog.Accepted``.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#5",
+      "source": "the final chosen regex; only meaningful after :py:meth:`exec` returned ``QDialog.Accepted``.",
+      "source_sha256": "a7c716bd47cc007a9600cdfb17fd7343678f36bfbe4e4113d94a51a1ef39962a",
+      "translation": "최종 선택한 정규식으로, :py:meth:`exec` 가 ``QDialog.Accepted`` 를 반환한 뒤에만 의미가 있습니다."
+    },
+    {
+      "context": "Build the filename-regex editor over a sample of filenames.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#6",
+      "source": "Build the filename-regex editor over a sample of filenames.",
+      "source_sha256": "e49aa504734f517eb43efe6a4782fce7f20c1b9f7a1110db85093d1ae181ced8",
+      "translation": "파일 이름 표본을 사용하는 파일 이름 정규식 편집기를 만듭니다."
+    },
+    {
+      "context": "names to match against; the first twenty are kept, which is enough to see whether a pattern generalises.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#7",
+      "source": "names to match against; the first twenty are kept, which is enough to see whether a pattern generalises.",
+      "source_sha256": "b020e42357e15e17e6abd278e4bc7ade38ec525049720a79761827661d5f16a2",
+      "translation": "패턴과 비교할 이름입니다. 처음 스무 개를 유지하며, 패턴이 다른 예시에도 적용되는지 확인하기에 충분합니다."
+    },
+    {
+      "context": "the pattern to open with; empty runs auto-detect.",
+      "label": "spacr.qt.regex_editor.RegexEditorDialog#8",
+      "source": "the pattern to open with; empty runs auto-detect.",
+      "source_sha256": "37a63183da5d8a8846a684b170da8254e2d910ec63f8db61c4f011c3049561ef",
+      "translation": "처음 열 때 사용할 패턴입니다. 비어 있으면 자동 감지를 실행합니다."
+    },
+    {
+      "context": "Launch the Qt GUI. Public entry point used by both `spacr-qt` and `python -m spacr.qt`.",
+      "label": "spacr.qt.run#0",
+      "source": "Launch the Qt GUI. Public entry point used by both `spacr-qt` and `python -m spacr.qt`.",
+      "source_sha256": "9db5a3b329429d121ffcb014ac3a8bd266317835e3d757101be5ba9a41d8247d",
+      "translation": "Qt GUI를 시작합니다. `spacr-qt`\\ 와 `python -m spacr.qt`\\ 가 모두 사용하는 공개 진입점입니다."
+    },
+    {
+      "context": "Args: argv: Optional CLI arguments. The first positional element, if present, opens directly into that app application view key (e.g. `spacr-qt mask`).",
+      "label": "spacr.qt.run#1",
+      "source": "Args: argv: Optional CLI arguments. The first positional element, if present, opens directly into that app screen key (e.g. `spacr-qt mask`).",
+      "source_sha256": "0b9c9c5217abb532b449c8d976e24e1e1678889237588642fc0aba196734e032",
+      "translation": "Args: argv: 선택적 CLI 인수입니다. 첫 번째 위치 인수가 있으면 해당 인수를 앱 화면의 키로 사용하여 그 화면을 바로 엽니다(예: `spacr-qt mask`)."
+    },
+    {
+      "context": "Returns: The exit code returned by `QApplication.exec()`, ``0`` for a version-only invocation, or ``1`` when the required Qt dependency cannot be imported.",
+      "label": "spacr.qt.run#2",
+      "source": "Returns: The exit code returned by `QApplication.exec()`, ``0`` for a version-only invocation, or ``1`` when the required Qt dependency cannot be imported.",
+      "source_sha256": "2eebdc498be06f164b90bfd561bdf3d7c8a6f62922577042d37648deaebee9bf",
+      "translation": "반환값: `QApplication.exec()`\\ 가 반환한 종료 코드이며, 버전만 표시하는 호출에서는 ``0``, 필요한 Qt 의존성을 가져올 수 없으면 ``1``\\ 입니다."
+    },
+    {
+      "context": "Turn whatever a host screen holds into a path to a database file.",
+      "label": "spacr.qt.widgets.column_picker.resolve_db_path#0",
+      "source": "Turn whatever a host screen holds into a path to a database file.",
+      "source_sha256": "737d77324b511d27e763d96ce09bd6439cbe6d2bb5e2512cb9daa4bf1de2e6e8",
+      "translation": "호스트 화면에서 보유한 값을 데이터베이스 파일의 경로로 변환합니다."
+    },
+    {
+      "context": "Hosts variously hold ``src`` (a processing-session folder), ``src/measurements`` or the database itself, so all three resolve here rather than in each caller.",
+      "label": "spacr.qt.widgets.column_picker.resolve_db_path#1",
+      "source": "Hosts variously hold ``src`` (a run folder), ``src/measurements`` or the database itself, so all three resolve here rather than in each caller.",
+      "source_sha256": "cf74dc45e63c96ff718dee31efc7e486e5a61f1ea30613da4a288472a8df8749",
+      "translation": "호스트 화면은 ``src``\\ (실행 폴더), ``src/measurements`` 또는 데이터베이스 자체를 보유할 수 있으므로, 각 호출자가 처리하는 대신 여기서 세 가지 형태를 모두 경로로 해석합니다."
+    },
+    {
+      "context": "file, processing-session folder, or measurements folder.",
+      "label": "spacr.qt.widgets.column_picker.resolve_db_path#2",
+      "source": "file, run folder, or measurements folder.",
+      "source_sha256": "4d07f768f51f83dd101da8034b0d061bf9d1f614820d1b897887635a4ce80d19",
+      "translation": "파일, 실행 폴더 또는 측정 폴더입니다."
+    },
+    {
+      "context": "absolute, user-expanded candidate path. For an existing directory, search for an existing file at its ``measurements/measurements.db`` then ``measurements.db``; if neither exists, return the former candidate. Other inputs are returned without checking existence or a ``.db`` extension.",
+      "label": "spacr.qt.widgets.column_picker.resolve_db_path#3",
+      "source": "absolute, user-expanded candidate path. For an existing directory, search for an existing file at its ``measurements/measurements.db`` then ``measurements.db``; if neither exists, return the former candidate. Other inputs are returned without checking existence or a ``.db`` extension.",
+      "source_sha256": "ee16b3baf2c7206fc33173e92e1ecde2d84c7604ffcd035404362e75c6a128f0",
+      "translation": "사용자 홈 디렉터리를 확장한 절대 후보 경로입니다. 기존 디렉터리에서는 그 안의 ``measurements/measurements.db``, 다음으로 ``measurements.db``에 파일이 있는지 찾습니다. 둘 다 없으면 첫 번째 후보를 반환합니다. 다른 입력은 존재 여부나 ``.db`` 확장자를 확인하지 않고 반환합니다."
+    },
+    {
+      "context": "Chart ``spec``'s control value plate by plate over run order.",
+      "label": "spacr.qt.widgets.control_chart.control_chart#0",
+      "source": "Chart ``spec``'s control value plate by plate over run order.",
+      "source_sha256": "2678f3d9091abc3edad9a84ae3440279ecceccc79396e6ffba4fbf71f8699eec",
+      "translation": "실행 순서대로 플레이트마다 ``spec``\\ 의 대조군 값을 차트로 그립니다."
+    },
+    {
+      "context": "The whole policy is in the module docstring; the short version is that one point is drawn per laboratory microplate in processing-session order, sigma comes from the selected estimator, the limits are estimated from a stated baseline and applied forward, and every rule that fires is reported by number, in words, and with the laboratory microplates it fired on. Automatic estimator selection uses within-laboratory microplate subgroup variation when a laboratory microplate has multiple control microplate sample positions, and moving ranges otherwise.",
+      "label": "spacr.qt.widgets.control_chart.control_chart#1",
+      "source": "The whole policy is in the module docstring; the short version is that one point is drawn per plate in run order, sigma comes from the selected estimator, the limits are estimated from a stated baseline and applied forward, and every rule that fires is reported by number, in words, and with the plates it fired on. Automatic estimator selection uses within-plate subgroup variation when a plate has multiple control wells, and moving ranges otherwise.",
+      "source_sha256": "116d99da6477a1e333cc06ed1ab379b24a38be3ffe86dc8561c3ead1aa06e397",
+      "translation": "전체 정책은 모듈의 문서 문자열에 있습니다. 간단히 말해 실행 순서대로 플레이트마다 점 하나를 그리고, sigma는 선택한 추정량에서 구하며, 지정한 기준선에서 한계를 추정하여 이후에 적용합니다. 발생한 각 규칙은 번호, 설명, 해당 플레이트와 함께 보고합니다. 자동 추정량 선택은 플레이트에 대조군 웰이 여러 개 있으면 플레이트 내 부분군 변동을 사용하고, 그렇지 않으면 이동 범위를 사용합니다."
+    },
+    {
+      "context": "whenever the chart cannot be computed — with the reason and the fix in the message.",
+      "label": "spacr.qt.widgets.control_chart.control_chart#3",
+      "source": "whenever the chart cannot be computed — with the reason and the fix in the message.",
+      "source_sha256": "d12e7b976c1beba487c2dc1f44f837fb42e31e41a4cba0b19469a75e7e60eb0c",
+      "translation": "차트를 계산할 수 없을 때마다 해당하며, 메시지에 원인과 해결 방법이 포함됩니다."
+    },
+    {
+      "context": "elapsed time in seconds.",
+      "label": "spacr.qt.widgets.dna_rain.DnaRainEngine.advance#1",
+      "source": "elapsed time in seconds.",
+      "source_sha256": "b1a9af00bd14af801e11fe21b3361b7a99e258f8941c849438731c3641fc096d",
+      "translation": "초 단위의 경과 시간입니다."
+    },
+    {
+      "context": "``(column index, first row, last row)`` spans that changed, already clipped to the canvas. A column contributes nothing when its rounded strip position in pixels is unchanged and it has not respawned; movement within an integer row can still produce a changed span.",
+      "label": "spacr.qt.widgets.dna_rain.DnaRainEngine.advance#2",
+      "source": "``(column index, first row, last row)`` spans that changed, already clipped to the canvas. A column contributes nothing when its rounded strip position in pixels is unchanged and it has not respawned; movement within an integer row can still produce a changed span.",
+      "source_sha256": "1f9b954b6fd0e0215bf61f92c58f536470ca11595778f7597986e810a25df80c",
+      "translation": "변경된 ``(column index, first row, last row)`` 범위이며, 이미 캔버스 경계에 맞게 잘려 있습니다. 열의 반올림된 띠 위치가 픽셀 단위로 변하지 않았고 다시 생성되지 않았다면 그 열은 범위에 기여하지 않습니다. 정수 행 안에서의 움직임도 변경된 범위를 만들 수 있습니다."
+    },
+    {
+      "context": "point opacity, clipped to 0.05-1.0, for unlabeled points and nonnegative cluster labels. Noise points and the fallback for mismatched label shape retain their palette opacity.",
+      "label": "spacr.qt.widgets.umap_search_viewer.colors_for_labels#4",
+      "source": "point opacity, clipped to 0.05-1.0, for unlabeled points and nonnegative cluster labels. Noise points and the fallback for mismatched label shape retain their palette opacity.",
+      "source_sha256": "406904d2dab7bd002286f10b97add74d0e770d28e579e9b1229b819edaf5426d",
+      "translation": "레이블이 없는 점과 음이 아닌 클러스터 레이블에 대한 점 불투명도이며, 0.05-1.0으로 제한됩니다. 노이즈 점과 레이블 모양이 일치하지 않을 때의 대체 결과는 팔레트의 불투명도를 유지합니다."
+    },
+    {
+      "context": "one :class:`FieldQC` per microscope field of view, in source iteration order. Directory filenames are sorted; mappings and sequences retain their input order. An empty list when the source holds no mask — that is not an error, it is what a run with ``save=False`` looks like.",
+      "label": "spacr.seg_qc.score_masks#4",
+      "source": "one :class:`FieldQC` per field, in source iteration order. Directory filenames are sorted; mappings and sequences retain their input order. An empty list when the source holds no mask — that is not an error, it is what a run with ``save=False`` looks like.",
+      "source_sha256": "782bfdb0c78435b13ccfa135a6439491324617fbf17a3293e5848205b8709300",
+      "translation": "원본의 순회 순서에 따라 시야마다 :class:`FieldQC` 하나를 반환합니다. 디렉터리의 파일 이름은 정렬하며, 매핑과 시퀀스는 입력 순서를 유지합니다. 원본에 마스크가 없으면 빈 목록을 반환합니다 — 이는 오류가 아니라 ``save=False``로 실행했을 때의 결과입니다."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact Qt and QC implementations and source/context bindings. Only demonstrated contract and companion-translation defects changed. No human or native-speaker signoff.",
+  "schema": 1
+}

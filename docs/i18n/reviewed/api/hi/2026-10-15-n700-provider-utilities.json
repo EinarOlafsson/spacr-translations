@@ -10,7 +10,9 @@
       "source_sha256": "ad7cc225f90cb372cca7e2e7c84e7dd2818883369b4e9408f66115b7f00f087c",
       "context": "Have the active AI explain a failure once, for the console and the issue.",
       "translation": "सक्रिय AI से किसी विफलता की एक बार व्याख्या करवाएँ, जिसे कंसोल और इश्यू रिपोर्ट में उपयोग किया जाए।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#1",
@@ -18,7 +20,9 @@
       "source_sha256": "bd98b7f9865a2d9fdea51da602e8a141bedd9cce2a20decd137961d2201263e4",
       "context": "spaCR AI (free) asks the relay's ``/diagnose`` with the anonymised summary and :data:`spacr.crashreport.EXPLAIN_QUESTION`; a vendor CLI answers :func:`spacr.crashreport.ai_summary_prompt` here (:func:`write_report_summary`). The same text is shown in the console and sent as the report's ``ai_summary``, so a failure costs one AI call. Blocks, so call it off the main GUI execution path.",
       "translation": "spaCR AI (free), रिले के ``/diagnose`` पर अनामित सारांश और :data:`spacr.crashreport.EXPLAIN_QUESTION` भेजता है; विक्रेता का CLI यहाँ :func:`spacr.crashreport.ai_summary_prompt` का उत्तर देता है (:func:`write_report_summary`)। वही पाठ कंसोल में दिखाया जाता है और रिपोर्ट के ``ai_summary`` के रूप में भेजा जाता है, इसलिए एक विफलता में एक AI कॉल खर्च होती है। यह कॉल अवरोधक है, इसलिए इसे GUI थ्रेड से बाहर चलाएँ।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#2",
@@ -50,7 +54,9 @@
       "source_sha256": "f739a99d4a900440a2ea08d864d905586720381157d9c4004477829d6b12de91",
       "context": "``{\"text\": explanation or \"\", \"tier\": \"best\"|\"light\"|\"\", \"refused\": \"\" or \"quota\"|\"network\"|\"error\"|\"none\"}``, plus ``\"saved\": \"local\"`` when the answer was saved on this computer (no AI call, no network) or ``\"relay\"`` when the relay reused one.",
       "translation": "``{\"text\": explanation or \"\", \"tier\": \"best\"|\"light\"|\"\", \"refused\": \"\" or \"quota\"|\"network\"|\"error\"|\"none\"}`` के साथ, यदि उत्तर इस कंप्यूटर पर सहेजा गया था तो ``\"saved\": \"local\"`` (न AI कॉल, न नेटवर्क), या यदि रिले ने किसी उत्तर का पुनः उपयोग किया तो ``\"relay\"``।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#6",
@@ -58,7 +64,9 @@
       "source_sha256": "7ea7e26255aa7c895df0363947439ecc1f2f02cf8f0dd21c81d0dfecee41a0d8",
       "context": "An error explained before is not explained again: the answer saved on this computer (:func:`spacr.crashreport.saved_explanation`) comes first, for every provider, and each new answer is saved.",
       "translation": "पहले समझाई गई त्रुटि के लिए फिर व्याख्या नहीं माँगी जाती: हर प्रदाता के लिए इस कंप्यूटर पर सहेजा गया उत्तर (:func:`spacr.crashreport.saved_explanation`) पहले लिया जाता है, और हर नया उत्तर सहेजा जाता है।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.hosted_allowance_text#0",
@@ -204,7 +212,9 @@
       "source_sha256": "3ca648fdcee288b74d8923fa3514adad78ee5751a72b69586eb1e96750529835",
       "context": "Only the first question of a conversation is saved, and only when the question and whatever was pasted with it (console context, code, traceback) stay within :data:`spacr.crashreport.QUESTION_CACHE_CONTEXT_MAX` characters. The key is :func:`spacr.crashreport.question_key` of the question and the active app; it is the same for every provider.",
       "translation": "किसी वार्तालाप का केवल पहला प्रश्न सहेजा जाता है, और वह भी तभी जब प्रश्न तथा उसके साथ चिपकाई गई सारी सामग्री (कंसोल संदर्भ, कोड, ट्रेसबैक) :data:`spacr.crashreport.QUESTION_CACHE_CONTEXT_MAX` वर्णों के भीतर हों। कुंजी, प्रश्न और सक्रिय ऐप की :func:`spacr.crashreport.question_key` है; यह हर प्रदाता के लिए समान है।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.question_cache_key#2",
@@ -268,7 +278,9 @@
       "source_sha256": "ffe17686b3fc90fc5c889ae69cf17101985604ec3718ccad51765bf6e56828d6",
       "context": "Return the report with the AI summary its provider allows.",
       "translation": "प्रदाता द्वारा अनुमत AI सारांश सहित रिपोर्ट लौटाएँ।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.with_ai_summary#1",
@@ -276,7 +288,9 @@
       "source_sha256": "9b8fd8924a9831e0f1c13029bba9fca82b7c12546c870044557a56288d0643aa",
       "context": "spaCR AI (free) asks the relay to write it (``summarize: true``, charged to the user's light-model allowance). A vendor CLI writes it here (:func:`write_report_summary`) and it travels as ``ai_summary``. With no provider, or when the CLI gives nothing, the report is unchanged.",
       "translation": "spaCR AI (free) इसे लिखने के लिए रिले से कहता है (``summarize: true``, जिसका शुल्क उपयोगकर्ता के हल्के मॉडल के कोटे से लिया जाता है)। विक्रेता का CLI इसे यहाँ लिखता है (:func:`write_report_summary`) और यह ``ai_summary`` के रूप में भेजा जाता है। प्रदाता न होने पर, या CLI से कुछ न मिलने पर, रिपोर्ट अपरिवर्तित रहती है।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.with_ai_summary#2",
@@ -316,7 +330,9 @@
       "source_sha256": "4316497ce7fa874d6ef3f0d3ac98265e07ce9ad4d8a3d18b26899a4eba8a49d1",
       "context": "The provider is given :func:`spacr.crashreport.ai_summary_prompt` and nothing else. It executes on an independent execution path of its own and is stopped after ``timeout`` seconds; a failure, a timeout or an empty answer gives ``\"\"``, and the report is then filed without a summary. Blocks, so call it off the main GUI execution path.",
       "translation": "प्रदाता को केवल :func:`spacr.crashreport.ai_summary_prompt` दिया जाता है। वह अपने अलग थ्रेड पर चलता है और ``timeout`` सेकंड बाद रोका जाता है; विफलता, समय-सीमा समाप्त होने या खाली उत्तर पर ``\"\"`` मिलता है, और रिपोर्ट बिना सारांश के दर्ज की जाती है। यह कॉल अवरोधक है, इसलिए इसे GUI थ्रेड से बाहर चलाएँ।",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.write_report_summary#2",

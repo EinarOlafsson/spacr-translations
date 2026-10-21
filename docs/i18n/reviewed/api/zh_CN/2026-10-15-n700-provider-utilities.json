@@ -10,7 +10,9 @@
       "source_sha256": "ad7cc225f90cb372cca7e2e7c84e7dd2818883369b4e9408f66115b7f00f087c",
       "context": "Have the active AI explain a failure once, for the console and the issue.",
       "translation": "让当前 AI 对一次故障作出一次说明，供控制台和问题报告使用。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#1",
@@ -18,7 +20,9 @@
       "source_sha256": "bd98b7f9865a2d9fdea51da602e8a141bedd9cce2a20decd137961d2201263e4",
       "context": "spaCR AI (free) asks the relay's ``/diagnose`` with the anonymised summary and :data:`spacr.crashreport.EXPLAIN_QUESTION`; a vendor CLI answers :func:`spacr.crashreport.ai_summary_prompt` here (:func:`write_report_summary`). The same text is shown in the console and sent as the report's ``ai_summary``, so a failure costs one AI call. Blocks, so call it off the main GUI execution path.",
       "translation": "spaCR AI (free) 向中继的 ``/diagnose`` 发送匿名化摘要和 :data:`spacr.crashreport.EXPLAIN_QUESTION`；供应商 CLI 在本机回答 :func:`spacr.crashreport.ai_summary_prompt`（:func:`write_report_summary`）。同一文本显示在控制台中，并作为报告的 ``ai_summary`` 发送，因此一次故障只消耗一次 AI 调用。此函数会阻塞，应在 GUI 线程之外调用。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#2",
@@ -50,7 +54,9 @@
       "source_sha256": "f739a99d4a900440a2ea08d864d905586720381157d9c4004477829d6b12de91",
       "context": "``{\"text\": explanation or \"\", \"tier\": \"best\"|\"light\"|\"\", \"refused\": \"\" or \"quota\"|\"network\"|\"error\"|\"none\"}``, plus ``\"saved\": \"local\"`` when the answer was saved on this computer (no AI call, no network) or ``\"relay\"`` when the relay reused one.",
       "translation": "``{\"text\": explanation or \"\", \"tier\": \"best\"|\"light\"|\"\", \"refused\": \"\" or \"quota\"|\"network\"|\"error\"|\"none\"}``；若答案保存在本机上，则另有 ``\"saved\": \"local\"``（不调用 AI，也不访问网络）；若中继复用了答案，则为 ``\"relay\"``。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.explain_failure#6",
@@ -58,7 +64,9 @@
       "source_sha256": "7ea7e26255aa7c895df0363947439ecc1f2f02cf8f0dd21c81d0dfecee41a0d8",
       "context": "An error explained before is not explained again: the answer saved on this computer (:func:`spacr.crashreport.saved_explanation`) comes first, for every provider, and each new answer is saved.",
       "translation": "已经说明过的错误不会再次请求说明：对所有供应商，都优先使用保存在本机的答案（:func:`spacr.crashreport.saved_explanation`），并保存每个新答案。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.hosted_allowance_text#0",
@@ -204,7 +212,9 @@
       "source_sha256": "3ca648fdcee288b74d8923fa3514adad78ee5751a72b69586eb1e96750529835",
       "context": "Only the first question of a conversation is saved, and only when the question and whatever was pasted with it (console context, code, traceback) stay within :data:`spacr.crashreport.QUESTION_CACHE_CONTEXT_MAX` characters. The key is :func:`spacr.crashreport.question_key` of the question and the active app; it is the same for every provider.",
       "translation": "仅保存对话的第一个问题，而且仅当问题及其附带的所有粘贴内容（控制台上下文、代码、回溯）不超过 :data:`spacr.crashreport.QUESTION_CACHE_CONTEXT_MAX` 个字符时才保存。键由问题和当前应用的 :func:`spacr.crashreport.question_key` 生成；所有供应商使用同一个键。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.question_cache_key#2",
@@ -268,7 +278,9 @@
       "source_sha256": "ffe17686b3fc90fc5c889ae69cf17101985604ec3718ccad51765bf6e56828d6",
       "context": "Return the report with the AI summary its provider allows.",
       "translation": "返回带有供应商所允许的 AI 摘要的报告。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.with_ai_summary#1",
@@ -276,7 +288,9 @@
       "source_sha256": "9b8fd8924a9831e0f1c13029bba9fca82b7c12546c870044557a56288d0643aa",
       "context": "spaCR AI (free) asks the relay to write it (``summarize: true``, charged to the user's light-model allowance). A vendor CLI writes it here (:func:`write_report_summary`) and it travels as ``ai_summary``. With no provider, or when the CLI gives nothing, the report is unchanged.",
       "translation": "spaCR AI (free) 请求中继编写摘要（``summarize: true``，计入用户的轻量模型额度）。供应商 CLI 在本机编写摘要（:func:`write_report_summary`），并将其作为 ``ai_summary`` 发送。若没有供应商，或 CLI 未返回内容，报告保持不变。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.with_ai_summary#2",
@@ -316,7 +330,9 @@
       "source_sha256": "4316497ce7fa874d6ef3f0d3ac98265e07ce9ad4d8a3d18b26899a4eba8a49d1",
       "context": "The provider is given :func:`spacr.crashreport.ai_summary_prompt` and nothing else. It executes on an independent execution path of its own and is stopped after ``timeout`` seconds; a failure, a timeout or an empty answer gives ``\"\"``, and the report is then filed without a summary. Blocks, so call it off the main GUI execution path.",
       "translation": "供应商仅收到 :func:`spacr.crashreport.ai_summary_prompt`，没有其他内容。它在独立线程中运行，并在 ``timeout`` 秒后停止；失败、超时或空答案均返回 ``\"\"``，随后提交不含摘要的报告。此函数会阻塞，应在 GUI 线程之外调用。",
-      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately."
+      "review_basis": "Direct AI technical authoring against exact canonical source/context; independent peer recorded separately.",
+      "retired": true,
+      "retired_reason": "N112 2026-10-21 corrects provider configuration/defaults, account/prompt scope, tool rules, refusal/cache/report and cancellation contracts against the implementation; original source, target and review history retained."
     },
     {
       "label": "spacr.qt.ai.providers.write_report_summary#2",

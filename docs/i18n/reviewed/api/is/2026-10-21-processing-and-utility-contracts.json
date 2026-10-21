@@ -1,0 +1,735 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "context": "Ordering is total and reproducible:",
+      "label": "spacr.active_learning.rank_by_uncertainty#1",
+      "source": "Ordering is total and reproducible:",
+      "source_sha256": "a1f260b08589b8ff9ce575a20a067199bac920505a8f0f7cb3a5b7ef52238e8c",
+      "translation": "Röðunin er altæk og endurtakanleg:"
+    },
+    {
+      "context": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "label": "spacr.active_learning.rank_by_uncertainty#10",
+      "source": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "source_sha256": "35d95e9b5eac683fc9cbe8b5518c555fdef6f7ca5ddb5e5162041560d224c43b",
+      "translation": "fylki af gerðinni int með lögunina ``(K,)`` og vísum raða, þar sem ``K = N`` þegar engin takmörk eru gefin og annars ``K = min(N, max(0, int(limit)))``. ``N`` er fjöldi reiknaðra eða afhentra skora."
+    },
+    {
+      "context": "primary key — the uncertainty score, descending;",
+      "label": "spacr.active_learning.rank_by_uncertainty#2",
+      "source": "primary key — the uncertainty score, descending;",
+      "source_sha256": "21daeed2e188ce3a912107d470a0f59d033f011044c644f0ca01969cffc864f9",
+      "translation": "aðalröðunarlykill — óvissustigið, í lækkandi röð;"
+    },
+    {
+      "context": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of extracted image regions score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's annotation work list on every refresh.",
+      "label": "spacr.active_learning.rank_by_uncertainty#3",
+      "source": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of crops score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's queue on every refresh.",
+      "source_sha256": "dabdaa6d8314ec225141189079e39e29bfd5734d40e7dd2b16e278ccf11a3010",
+      "translation": "jöfn gildi — línuvísir í hækkandi röð sjálfgefið, eða umraðað með ``seed`` ef það er gefið. Hvort tveggja er ákvarðað af inntakinu: sömu inntök og sama slembifræ gefa alltaf sömu röð. Jöfn gildi eru algeng í skimun þar sem þúsundir myndskurða fá nákvæmlega 0.5; stokkun án slembifræs myndi því endurraða biðröð merkingarverkfærisins við hverja uppfærslu."
+    },
+    {
+      "context": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "label": "spacr.active_learning.rank_by_uncertainty#4",
+      "source": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "source_sha256": "6d8c7b26d88d99e41ca7f16e6aa0008df4a59df4eeb262dd4d5b49e76578f97c",
+      "translation": "NaN-stig raðast alltaf síðast og aldrei á undan gildu stigi. Þeim er raðað í stað þess að sleppa þeim svo vísarnir sem skilað er haldist umröðun á ``range(N)``; :func:`build_queue` sleppir þeim og tilgreinir fjöldann."
+    },
+    {
+      "context": "``(N,)`` or ``(N, C)`` probabilities.",
+      "label": "spacr.active_learning.rank_by_uncertainty#5",
+      "source": "``(N,)`` or ``(N, C)`` probabilities.",
+      "source_sha256": "404a69d55c7607d26af6f95662f7f7b0201aaa62cdb85da88c6225cde720a73b",
+      "translation": "``(N,)`` eða ``(N, C)`` líkur."
+    },
+    {
+      "context": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "label": "spacr.active_learning.rank_by_uncertainty#6",
+      "source": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "source_sha256": "8603d299dfc141b09897b78a519c578302a9691c826da8a2d8525760be36e2c5",
+      "translation": "heiti úr :data:`UNCERTAINTY_MEASURES` eða kallanlegt fall."
+    },
+    {
+      "context": "keep only the first ``limit`` indices.",
+      "label": "spacr.active_learning.rank_by_uncertainty#7",
+      "source": "keep only the first ``limit`` indices.",
+      "source_sha256": "b0e2a2b2fa8222d769fbde207cd947868989e80fa1962ce93e853fb2dd480d89",
+      "translation": "halda aðeins fyrstu ``limit`` vísunum."
+    },
+    {
+      "context": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "label": "spacr.active_learning.rank_by_uncertainty#8",
+      "source": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "source_sha256": "9a266bdc44a5e46dcb8fe8ecafc0b164aac16cd2a203f7c1de64c7677fc6442e",
+      "translation": "slembifræ til að leysa úr jöfnum gildum; með ``None`` ræður vísirinn úrslitum."
+    },
+    {
+      "context": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "label": "spacr.active_learning.rank_by_uncertainty#9",
+      "source": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "source_sha256": "60a203b194ea2a68b707485a2bb8f31ffed529edfc2abe526d230f599168a235",
+      "translation": "fyrirfram reiknuð stig til að raða í stað þess að endurreikna úr ``probs`` (notað af :func:`build_queue` og öllu sem raðar :func:`disagreement`-stigi)."
+    },
+    {
+      "context": "labels of the cells carrying a pathogen.",
+      "label": "spacr.bystanders.distance_to_infected#2",
+      "source": "labels of the cells carrying a pathogen.",
+      "source_sha256": "42b8ce60d014ab56ae012d986ff60acf1169c118e0f07ed06415aee9b315e77b",
+      "translation": "auðkenni frumnanna sem bera sýkil."
+    },
+    {
+      "context": "voxel size, so the distances carry physical units.",
+      "label": "spacr.bystanders.distance_to_infected#3",
+      "source": "voxel size, so the distances carry physical units.",
+      "source_sha256": "8df49611f792d2e15d9add6a865a2b7785b02a36f5b77b1bd7faa7765e7c946b",
+      "translation": "stærð rúmpunkts, svo fjarlægðirnar séu í eðlisfræðilegum einingum."
+    },
+    {
+      "context": "``label`` and ``distance_to_infected``, one row per cell.",
+      "label": "spacr.bystanders.distance_to_infected#4",
+      "source": "``label`` and ``distance_to_infected``, one row per cell.",
+      "source_sha256": "fa779394d767337ee84b9e53cd4aba59104d63a6150b11c019baee66099bdbf9",
+      "translation": "``label`` og ``distance_to_infected``, ein lína fyrir hverja frumu."
+    },
+    {
+      "context": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "label": "spacr.bystanders.distance_to_infected#5",
+      "source": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "source_sha256": "f4955fea91e8d01f09c1491ed62c12d769252ae30e0cdcb69d0eb4965ef32470",
+      "translation": "Með einingarbilum gefur sýkt fruma 0 og næsti nágranni hennar eitt pixlaskref, ekki 0. Sviðið er núll á hverjum sýktum pixli og vex út á við. Í frumu sem deilir mörkum með sýktri frumu er næsti pixill hennar því einu skrefi frá: lágmarkið yfir þá frumu er 1. Aðeins fruma sem hefur eigin sýkta pixla gefur 0."
+    },
+    {
+      "context": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "label": "spacr.bystanders.distance_to_infected#6",
+      "source": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "source_sha256": "b80d8e07733b3e29e06f32d0136a7d6495598eb13718e9efc33afad7d4538e9a",
+      "translation": "`surface_distance_transform` er núll í punktum innan markgrímunnar, þar á meðal við skörun eða innilokaða hluti. Tveir aðskildir merkimiðar sem aðeins deila mörkum skarast ekki og því er aðliggjandi fruma enn einu pixlaskrefi frá. Með ``spacing`` er það skref í uppgefnum eðliseiningum."
+    },
+    {
+      "context": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "label": "spacr.bystanders.distance_to_infected#7",
+      "source": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "source_sha256": "ccb6f8d1fcabb1e3697f4d4e2c1fcb90ef3c0b7c410d9608543d25068e99588d",
+      "translation": "Allar fjarlægðir eru ``inf`` þegar myndin hefur enga sýkta frumu, fremur en 0 eða NaN: óendanleiki heldur `distance <= reach` False fyrir öll endanleg nálægðarmörk."
+    },
+    {
+      "context": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "label": "spacr.cli_plugins.main#1",
+      "source": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "source_sha256": "ef3340468a31bec678888399feaef8ef478d4cdd0a46060bdc030a8e29bd2cac",
+      "translation": "viðföng án heitis forritsins; ``sys.argv[1:]`` þegar gildið er None."
+    },
+    {
+      "context": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "label": "spacr.crashreport.network_allowed#1",
+      "source": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "source_sha256": "1551ce91fe0197a1136a52997702c1b3536df4016c7fbac51922b142224be6ba",
+      "translation": "``False`` þegar :data:`NO_NETWORK_ENV` hefur ótómt gildi annað en ``0``, ``false``, ``no`` eða ``off`` (án tillits til hástafa, lágstafa og bilstafa utan um gildið), eða spaCR keyrir í öruggum ham; annars ``True``."
+    },
+    {
+      "context": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "label": "spacr.crops.percentile_pair#3",
+      "source": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "source_sha256": "580821dd351a1a8ec6ad2972bf87ef6ca07b9231b03cd4853ad0395a08ae656b",
+      "translation": "tvær fleytitölur. Gildi úr þáttun eru röðuð í hækkandi röð og klippt að bilinu ``[0, 100]``; varagildum úr ``default`` er breytt í fleytitölur án röðunar eða klippingar."
+    },
+    {
+      "context": "This parser treats the values as percentiles rather than channel indices; numeric values such as ``0``, ``1`` and ``2`` therefore retain their literal meaning.",
+      "label": "spacr.crops.percentile_pair#4",
+      "source": "This parser treats the values as percentiles rather than channel indices; numeric values such as ``0``, ``1`` and ``2`` therefore retain their literal meaning.",
+      "source_sha256": "0c46e6001e74af4febb6665a33ff09c7f3db86d132975c601c6f9fb694c62a6f",
+      "translation": "Þessi þáttari túlkar gildin sem hundraðsmörk fremur en rásavísa; tölugildi eins og ``0``, ``1`` og ``2`` halda því bókstaflegri merkingu sinni."
+    },
+    {
+      "context": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "label": "spacr.example_archives.extract_example_archive#1",
+      "source": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "source_sha256": "71525dbc0df03022634d3817723741a45fdae831f76d0fbfe4ca7505a08e370e",
+      "translation": "Þegar sían er tiltæk eru færslur afpakkaðar með ``filter=\"data\"``. Ólíkt venjulegu ``extractall`` hafnar sían slóðum á borð við ``../../etc/something`` sem myndu fara út fyrir áfangamöppuna. Slóðaskil fremst eru fjarlægð áður en eftirstandandi slóð er athuguð. Tækjaskrám og tenglum með algildum markslóðum eða slóðum út fyrir áfangamöppuna er hafnað; óöruggir aðgangsheimildabitar, þar á meðal setuid, eru hreinsaðir."
+    },
+    {
+      "context": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "label": "spacr.example_archives.extract_example_archive#2",
+      "source": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "source_sha256": "3430add28ce2d3910c8670d6ef736138072ab32370a288c4bfb6b6e297e32449",
+      "translation": "Þegar ``tarfile.data_filter`` er ekki tiltækt eru allar færslur athugaðar fyrir afpökkun: nöfnum sem byrja á ``/`` eða innihalda slóðahlutann ``..`` er hafnað, sem og færslum sem eru hvorki venjulegar skrár né möppur."
+    },
+    {
+      "context": "the ``.tar`` on disk.",
+      "label": "spacr.example_archives.extract_example_archive#3",
+      "source": "the ``.tar`` on disk.",
+      "source_sha256": "43f3d1772c8c44c5019b952f5650d04910743bce35d88a43da056064b446dfb7",
+      "translation": "``.tar``-skráin á diski."
+    },
+    {
+      "context": "the folder to unpack into.",
+      "label": "spacr.example_archives.extract_example_archive#4",
+      "source": "the folder to unpack into.",
+      "source_sha256": "ad0a18b1f58801cd050298403c135495d56c3ac67d2c37aa0c191ec297c350e4",
+      "translation": "mappan sem á að afþjappa í."
+    },
+    {
+      "context": "how many members were written.",
+      "label": "spacr.example_archives.extract_example_archive#5",
+      "source": "how many members were written.",
+      "source_sha256": "ff6e56ba4d21304a3416de04a74b07d815309d9ee0804cffe53e0fdd5efbe374",
+      "translation": "fjöldi safnfærslna sem voru skrifaðar."
+    },
+    {
+      "context": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "label": "spacr.filters.choose_anchor#1",
+      "source": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "source_sha256": "24da0dbc08504d590decba7cd3cb2687021b61996448c88e2af8f59af1b354db",
+      "translation": "\"venjulega cell, en ef cell er ekki til ætti að nota aðra töflu\". Þetta er forgangsröð, svo gagnagrunnur með aðeins kjarna notar kjarnatöfluna sem grunn og gagnagrunnur með aðeins frumulíffæri notar frumulíffæratöfluna -- engin ákveðin tafla þarf að vera til staðar."
+    },
+    {
+      "context": "nothing to anchor on. The message lists the table names that were looked for.",
+      "label": "spacr.filters.choose_anchor#3",
+      "source": "nothing to anchor on. The message lists the table names that were looked for.",
+      "source_sha256": "9800b9a21d80eb5eda46e17578197cfbc8809da20b103e9819bf5ad163bce8c2",
+      "translation": "ekkert er til að festa við. Skilaboðin telja upp töfluheitin sem leitað var að."
+    },
+    {
+      "context": "table containing the measurement columns.",
+      "label": "spacr.gene_measurement_compare.combine#1",
+      "source": "table containing the measurement columns.",
+      "source_sha256": "c9b9bcc4c6b580c626784790eec2b6f126372ef2cba9ebe5d1d74ff813a05579",
+      "translation": "tafla sem inniheldur mælingadálkana."
+    },
+    {
+      "context": "name of the first measurement column.",
+      "label": "spacr.gene_measurement_compare.combine#2",
+      "source": "name of the first measurement column.",
+      "source_sha256": "2f1c016f02dd4373448f7932cb522da9b97e4d02041d51f51492518b7f21da9f",
+      "translation": "heiti fyrsta mælingadálksins."
+    },
+    {
+      "context": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "label": "spacr.gene_measurement_compare.combine#3",
+      "source": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "source_sha256": "f47652f34901959f0b2abc91698f97fb5ac5c204b1939f01d816135280d3d911",
+      "translation": "eitt af ``''``, ``'+'``, ``'-'``, ``'*'`` eða ``'/'``. Tómur strengur skilar ``first`` eftir umbreytingu í tölugildi; gildum sem ekki er hægt að þátta er skipt út fyrir vöntunargildi."
+    },
+    {
+      "context": "name of the second measurement column. Required when ``operator`` is not empty.",
+      "label": "spacr.gene_measurement_compare.combine#4",
+      "source": "name of the second measurement column. Required when ``operator`` is not empty.",
+      "source_sha256": "e3f220d007d4221dd37a31caeb5e2104ed9c74d9c34da0ad403b634e1b429cd5",
+      "translation": "heiti annars mælingadálksins. Nauðsynlegt ef ``operator`` er ekki tómt."
+    },
+    {
+      "context": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "label": "spacr.gene_measurement_compare.combine#5",
+      "source": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "source_sha256": "bc95cc7c9be3f2f2ce228f18996f54ade5bbde10510b00df05f4f79f1abdc20d",
+      "translation": "``(values, name, dropped)``. ``name`` er segðin sem birt er og ``dropped`` telur nefnara sem eru núll eða ekki endanlegir."
+    },
+    {
+      "context": "if a requested measurement column is absent.",
+      "label": "spacr.gene_measurement_compare.combine#6",
+      "source": "if a requested measurement column is absent.",
+      "source_sha256": "a84eaa23f676c50e7a1dad473a9338d6fac93fab413015d27585fd5ee558b602",
+      "translation": "ef umbeðinn mælingadálkur er ekki til."
+    },
+    {
+      "context": "if ``operator`` is unsupported.",
+      "label": "spacr.gene_measurement_compare.combine#7",
+      "source": "if ``operator`` is unsupported.",
+      "source_sha256": "f9072780f14dbc1cc15e146b3da1b9a85639298e439261a9d0d09a2693f3e198",
+      "translation": "ef ekki er stuðningur við ``operator``."
+    },
+    {
+      "context": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "label": "spacr.gene_measurement_compare.combine#8",
+      "source": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "source_sha256": "47517fc14efecf8f2fbbd2d60347faec1d35bbc19ef3fe03b106c8bc607903c4",
+      "translation": "Deiling með núlli eða nefnara sem er ekki endanlegur skilar gildi sem vantar; því er aldrei breytt í núll eða óendanlegt gildi."
+    },
+    {
+      "context": "Return a named logger backed by a rotating file in the user's home.",
+      "label": "spacr.logger.configure_logger#0",
+      "source": "Return a named logger backed by a rotating file in the user's home.",
+      "source_sha256": "972a09e5e9811903cbe62f40656a3f5f1018428eb37003d9fb22f62040b3c82e",
+      "translation": "Skilar nafngreindum annálaskráara sem notar annálaskrá með sjálfvirkri endurnýjun í heimamöppu notandans."
+    },
+    {
+      "context": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "label": "spacr.logger.configure_logger#1",
+      "source": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "source_sha256": "b8623ced58502f411455f006de0659d0864c60e439ca1f43dd143fb2be7e9e7b",
+      "translation": "Endurtekin köll endurnýta meðhöndlara sem settir eru upp hér, uppfæra stig þeirra og geta bætt við valfrjálsum straummeðhöndlara síðar. Meðhöndlarar sem kallendur setja upp haldast óbreyttir; :class:`logging.NullHandler` við ræsingu telst ekki skráning í annálaskrá."
+    },
+    {
+      "context": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "label": "spacr.logger.configure_logger#2",
+      "source": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "source_sha256": "6366b14045970cca5a187024a611426dcd54c72be8b2e945bceb9188c5a6c28a",
+      "translation": "heiti annálaskráara sem á að sækja eða búa til. Sjálfgefið ``\"spacr\"``."
+    },
+    {
+      "context": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "label": "spacr.logger.configure_logger#3",
+      "source": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "source_sha256": "ae6659b4488b0463829dddfac51a336ae5afe68f4f8b9511ac0eb70b79a41a07",
+      "translation": "skráarheiti í heimamöppu notandans fyrir fyrsta skráarmeðhöndlarann sem settur er upp fyrir ``name``. Síðari köll halda sömu skrá."
+    },
+    {
+      "context": "Logging level applied to the logger and handlers installed by this function.",
+      "label": "spacr.logger.configure_logger#4",
+      "source": "Logging level applied to the logger and handlers installed by this function.",
+      "source_sha256": "b6f3aa1da6d1fdb7a5b712dee841ea537e2eae6ca73eaf3a1d7fe3c75ef79ee2",
+      "translation": "Skráningarstig sem gildir fyrir logger og handlera sem þetta fall setur upp."
+    },
+    {
+      "context": "When True, also attach a stderr stream handler.",
+      "label": "spacr.logger.configure_logger#5",
+      "source": "When True, also attach a stderr stream handler.",
+      "source_sha256": "6749fcd617ae80902b85a43e79427b584ae8475dcbcf6e23f62b3d559df23a0d",
+      "translation": "Þegar True er einnig bætt við straummeðhöndlara fyrir stderr."
+    },
+    {
+      "context": "Configured ``logging.Logger`` instance.",
+      "label": "spacr.logger.configure_logger#6",
+      "source": "Configured ``logging.Logger`` instance.",
+      "source_sha256": "607e97d36d4e8b21ac7067efa989d4ea5c490fd789efb8a777f8a26e7cd2ebba",
+      "translation": "Uppsett tilvik af ``logging.Logger``."
+    },
+    {
+      "context": "Return available defaults overlaid with the caller's settings.",
+      "label": "spacr.macro.explicit_settings#0",
+      "source": "Return available defaults overlaid with the caller's settings.",
+      "source_sha256": "196b298cdc6659cf40438cc5510f21ac9582d5212912906f09c255fae23a64ae",
+      "translation": "Skila tiltækum sjálfgefnum gildum með stillingum kallandans ofan á."
+    },
+    {
+      "context": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset structured-data names can remain absent. Structured-data names are ordered defaults-first so a diff between two macros lines up.",
+      "label": "spacr.macro.explicit_settings#1",
+      "source": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset keys can remain absent. Keys are ordered defaults-first so a diff between two macros lines up.",
+      "source_sha256": "e2d660bd4a328a8bbaacf1c044fa32dad1c799378aa899c0b621ba8178d2c370",
+      "translation": "Tiltæk sjálfgefin gildi einingarinnar, síðan tiltæk sjálfgefin gildi keyrslustýringar (:func:`spacr.runctx.apply_defaults` — einkum ``random_seed``, því ófest slembifræ er eina \"default\"-gildið sem breytir tölunum af sjálfu sér), og svo gildi kallandans ofan á. Uppsprettum sjálfgefinna gilda sem eru ekki tiltækar er sleppt og því geta óstilltir lyklar áfram vantað. Lyklar sjálfgefinna gilda koma fyrst svo mismunur tveggja fjölva raðist saman."
+    },
+    {
+      "context": "the module / app key.",
+      "label": "spacr.macro.explicit_settings#2",
+      "source": "the module / app key.",
+      "source_sha256": "a249d3ac974513c387c7115658bde4f63aba24abef625ce1a2e56b5ee684939b",
+      "translation": "lykill einingarinnar eða forritsins."
+    },
+    {
+      "context": "what the run was launched with.",
+      "label": "spacr.macro.explicit_settings#3",
+      "source": "what the run was launched with.",
+      "source_sha256": "5480086c2318eddff705c552ec789e4e586911ab36e2e44d3b2d191fe5d76c7c",
+      "translation": "það sem keyrslan var ræst með."
+    },
+    {
+      "context": "``(settings, defaulted_keys, defaults_source)`` where ``defaulted_keys`` contains keys the caller **did not provide**. The script supplies those values for the caller.",
+      "label": "spacr.macro.explicit_settings#4",
+      "source": "``(settings, defaulted_keys, defaults_source)`` where ``defaulted_keys`` are the keys the caller did **not** set and the script is therefore pinning on their behalf.",
+      "source_sha256": "03ea69b16f4cdac0ef67ab5ff9074172b8b659e431a3305d66d28933c4110713",
+      "translation": "``(settings, defaulted_keys, defaults_source)`` þar sem ``defaulted_keys`` eru lyklarnir sem kallandinn stillti **ekki** og handritið festir því fyrir hans hönd."
+    },
+    {
+      "context": "mask file or extensionless stem to resolve and load.",
+      "label": "spacr.mask_io.load_mask#1",
+      "source": "mask file or extensionless stem to resolve and load.",
+      "source_sha256": "f45e0454281e4d6e07c30ed3d5c2537b24234404d78af4ee34606c8890587934",
+      "translation": "grímuskrá eða skráarslóð án endingar sem á að finna og hlaða."
+    },
+    {
+      "context": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "label": "spacr.mask_io.load_mask#2",
+      "source": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "source_sha256": "aa0ce9552d298dc00376439d4e3a0a4d42cc08a91c7cfd218d184e2d96ee03b4",
+      "translation": "Tekur við fullri slóð (``foo.tif`` / ``foo.npy``) eða slóð án endingar (``foo``) — í síðara tilvikinu er tif → tiff → npy prófað og fyrsta skráin sem finnst er hlaðin."
+    },
+    {
+      "context": "uint16 array with the stored shape and rank unchanged.",
+      "label": "spacr.mask_io.load_mask#3",
+      "source": "uint16 array with the stored shape and rank unchanged.",
+      "source_sha256": "a9bc411d2c338bfb1e28c121191dd0e57a5e845c72689f5198e52f155c6a0fa7",
+      "translation": "fylki af gerðinni uint16 með óbreytta vistaða lögun og víddafjölda."
+    },
+    {
+      "context": "when no matching file exists.",
+      "label": "spacr.mask_io.load_mask#4",
+      "source": "when no matching file exists.",
+      "source_sha256": "fc3514a64ca246bc01fb0ec852f71f1c3009ecbd36c7bd4d035059d49a88b1f4",
+      "translation": "þegar engin samsvarandi skrá er til."
+    },
+    {
+      "context": "The hook is called once per microscope field of view, with the intensity image data channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-microscope field of view / illumination correction belongs.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#1",
+      "source": "The hook is called once per field, with the intensity channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-field / illumination correction belongs.",
+      "source_sha256": "b26dd2f160e07c06f7a60868397101dd30b0e7bb22ab9ec05752e32849266b5e",
+      "translation": "Forvinnslufallið er kallað einu sinni fyrir hvern myndreit eftir að styrkleikarásirnar sem ``settings['channels']`` tilgreinir hafa verið valdar og áður en nokkur eiginleiki er reiknaður. Það verður að skila fylki með sömu lögun og sama dtype. Hér á flat-field-leiðrétting eða lýsingarleiðrétting heima."
+    },
+    {
+      "context": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#2",
+      "source": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "source_sha256": "a5bd9988b7f44128748535b4669092ed0fc188109c78b593a855c15e58cd22df",
+      "translation": "kallanlega fallið. ``context`` er :class:`PreprocessingContext`."
+    },
+    {
+      "context": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#3",
+      "source": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "source_sha256": "621576b23680b4fa246237ea9459520e2038ee3140dd9afa944e641dce61c9a5",
+      "translation": "skráningarlykill. Sjálfgefið er ``module.qualname``; endurskráning sama lykils eða sama fallahlutar kemur í stað færslunnar í stað þess að bæta við annarri."
+    },
+    {
+      "context": "lower runs first; ties keep registration order.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#4",
+      "source": "lower runs first; ties keep registration order.",
+      "source_sha256": "1fe0a3edb5a55dcde3a25a0f863228acdad4aa883ad56520abafa0a6d274a800",
+      "translation": "lægri gildi keyra fyrst; jöfn gildi halda skráningarröðinni."
+    },
+    {
+      "context": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#6",
+      "source": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "source_sha256": "1cd102cf16c134db59c5867ba43e9b1cfecb1a65217dc22e66931fe712d2eb9f",
+      "translation": "ef ``hook`` er ekki kallanlegt, eða umbreyting ``priority`` í int kastar ``TypeError`` eða ``ValueError``."
+    },
+    {
+      "context": "label or binary image containing the target objects.",
+      "label": "spacr.object_distances.surface_distance_transform#1",
+      "source": "label or binary image containing the target objects.",
+      "source_sha256": "a8e9003d0691588b09d25e8d30dc56a204ff60af2d478efaee611f7b83d6dcaf",
+      "translation": "auðkennismynd eða tvígild mynd sem inniheldur markhlutina."
+    },
+    {
+      "context": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "label": "spacr.object_distances.surface_distance_transform#2",
+      "source": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "source_sha256": "e22b38cacfe2fa1eb2d039582c0f3d0ddae807dd9a805b064eb50382f5b110f6",
+      "translation": "Niðurstaðan er núll innan hlutar. `distance_transform_edt` mælir fjarlægð að næsta núlli og er því keyrt á andhverfri grímu: niðurstaðan er 0 á hverjum merktum pixli og vex út á við. Uppfletting í þungamiðju annars hlutar mælir fjarlægð frá þeim punkti að næsta merkta pixli; hún er aðeins núll ef punkturinn liggur innan markgrímunnar."
+    },
+    {
+      "context": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "label": "spacr.ops_compose.windows_over#1",
+      "source": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "source_sha256": "198c4990eeeb51728b304877b8e0a4ce1ccc126e469ea58a76f731ebd287b7dc",
+      "translation": "Gluggarnir skarast svo hægt sé að sameina hluti yfir gluggamörkin: hlutur sem liggur yfir gluggamörk er einn hlutur og aðeins er hægt að para hann yfir samskeytin ef báðir gluggar innihalda hann allan. Skörunin verður að vera stærri en stærsti hluturinn; það nægir ekki að þeir snertist."
+    },
+    {
+      "context": "``(height, width)`` of the microplate sample position frame.",
+      "label": "spacr.ops_compose.windows_over#2",
+      "source": "``(height, width)`` of the well frame.",
+      "source_sha256": "5fd2da00e9ba4dccea7b96d40f9e7c5f1571ad527aa282cd625ee79eec663344",
+      "translation": "``(height, width)`` ramma brunnsins."
+    },
+    {
+      "context": "window edge in pixels.",
+      "label": "spacr.ops_compose.windows_over#3",
+      "source": "window edge in pixels.",
+      "source_sha256": "7446032b6fb00a83a0a8f3f580218756645806d129e7f196c786388bce4e876c",
+      "translation": "hliðarlengd gluggans í pixlum."
+    },
+    {
+      "context": "how much neighbouring windows share.",
+      "label": "spacr.ops_compose.windows_over#4",
+      "source": "how much neighbouring windows share.",
+      "source_sha256": "53747ea6692116a69328604abfec580c74bbdaf5a2795b48887b0d399d987251",
+      "translation": "hversu mikið aðliggjandi gluggar skarast."
+    },
+    {
+      "context": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "label": "spacr.ops_compose.windows_over#5",
+      "source": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "source_sha256": "c2a83d9bbaa1715459f0353abae440433039c789f3c5b060711887fa8d507e33",
+      "translation": "þegar gluggastærðin er ekki jákvæð, eða skörunin er neikvæð eða ekki minni en glugginn."
+    },
+    {
+      "context": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "label": "spacr.ops_merge.match_cells#1",
+      "source": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "source_sha256": "a73fba1e1f7f85dfd4b82c53b1f1c04c6ccc1c152a445edd59cc63330e2c7f06",
+      "translation": "Par helst aðeins ef hvor fruma er næsti nágranni hinnar og fjarlægðin milli þeirra er innan ``threshold``. Þegar margar frumur velja sama félaga getur aðeins sú fruma sem er næst þeim félaga haldist."
+    },
+    {
+      "context": "run the two nearest-neighbour searches on a GPU when one is usable. A microplate sample position carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "label": "spacr.ops_merge.match_cells#6",
+      "source": "run the two nearest-neighbour searches on a GPU when one is usable. A well carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "source_sha256": "0b6bbdd57bdd9d5bc080a86df76055777f082b0d01901db53cb230a72fafd049",
+      "translation": "keyra báðar leitir að næstu nágrönnum á GPU þegar slíkt tæki er nothæft. Brunnur inniheldur tugi þúsunda kjarna hvorum megin og leitin er keyrð tvisvar, einu sinni í hvora átt; `spacr.ops_accel.nearest_neighbours` vinnur upprunapunkta í bútum gagnvart öllu markpunktasafninu."
+    },
+    {
+      "context": "``(N, 2)`` points in the frame being moved.",
+      "label": "spacr.ops_phenotype.refine_similarity#1",
+      "source": "``(N, 2)`` points in the frame being moved.",
+      "source_sha256": "35adac8816ec203db9afd6eaf3bd15256b806d469e8153209836d782c02af996",
+      "translation": "``(N, 2)`` punktar í hnitakerfinu sem er fært."
+    },
+    {
+      "context": "``(M, 2)`` points in the frame being moved to.",
+      "label": "spacr.ops_phenotype.refine_similarity#2",
+      "source": "``(M, 2)`` points in the frame being moved to.",
+      "source_sha256": "8abeef48b7baf15b7c0efd02da9485b04c62ef47776a639e2dd4b34beac9775a",
+      "translation": "``(M, 2)`` punktar í markhnitakerfinu."
+    },
+    {
+      "context": "how close a moved point must land to count as a match.",
+      "label": "spacr.ops_phenotype.refine_similarity#4",
+      "source": "how close a moved point must land to count as a match.",
+      "source_sha256": "b361c77cabccce70c132eec6687ceae62785c247991b9bda50c6543add6951ab",
+      "translation": "hversu nálægt færður punktur verður að lenda til að teljast samsvörun."
+    },
+    {
+      "context": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "label": "spacr.ops_phenotype.refine_similarity#5",
+      "source": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "source_sha256": "e70f8f1189e676ed7c87265d11c7d54d2707accc8235ccc51343cbfb58a86243",
+      "translation": "hversu margar lokatilraunir til endurlausnar á að gera við ``radius``, eftir tvær víðari pörunarlotur; fjöldanum er breytt í heiltölu og hann hafður að minnsta kosti einn."
+    },
+    {
+      "context": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "label": "spacr.ops_phenotype.refine_similarity#6",
+      "source": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "source_sha256": "2fb35be5eb1a1121dccc7253fad27fe0f02be2914a638ffe8c9471562ba086dc",
+      "translation": "``(scale, rotation, translation, source_in, target_in, distances)`` úr síðustu leystu lotu, eða None ef engin lota var leyst. Síðari lota með of fáum samsvörunum eða aðlögun sem ekki er hægt að leysa skilar fyrri niðurstöðu."
+    },
+    {
+      "context": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "label": "spacr.ops_phenotype.refine_similarity#7",
+      "source": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "source_sha256": "df1c49dcfbc3ba9fc85c12820e01ca712a3f2274a659fb12da7ab0bc3208278a",
+      "translation": "Upphafsumbreytingin getur verið ónákvæm. Samhljómur þríhyrninganna getur skekkst um allt að 44 % í kvarða þegar gögnin eru gisin. Jafnvel svo mikil skekkja setur þó punktana nálægt snúningsmiðjunni aðeins örfáa pixla frá réttri staðsetningu, sem gefur nægar samsvaranir til að leysa umbreytinguna aftur. Fyrstu tvær umferðirnar leita að samsvörunum við fjórfalt og tvöfalt ``radius`` áður en þrengt er að ``radius``."
+    },
+    {
+      "context": "One well at a time, and one microscope image field pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain microscope image field arrays.",
+      "label": "spacr.ops_stitch.stitch_well#1",
+      "source": "One well at a time, and one tile pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain tile arrays.",
+      "source_sha256": "fb64a37380ff63413a77ef01933326dea16185caabc673465f919f2cfa5b435d",
+      "translation": "Einn brunnur í einu og eitt myndflísapar í einu innan hans. Ef ``tiles`` er kallanlegt þarf þetta fall ekki að halda öllum brunninum í minni. Kallandinn ákveður hvað fer í skyndiminni og hvað er lesið aftur; skyndiminnið hans getur samt haldið eftir myndflísafylkjum."
+    },
+    {
+      "context": "the stitch, its edges and its residuals.",
+      "label": "spacr.ops_stitch.stitch_well#10",
+      "source": "the stitch, its edges and its residuals.",
+      "source_sha256": "252d4644a262472a4e8fbba22aff93a84db091e4ddf5ee34348032398cd3f183",
+      "translation": "samsetta niðurstaðan, brúnir hennar og leifar."
+    },
+    {
+      "context": "when the microplate sample position holds no microscope image fields at all, which is a caller error rather than an empty result.",
+      "label": "spacr.ops_stitch.stitch_well#11",
+      "source": "when the well holds no tiles at all, which is a caller error rather than an empty result.",
+      "source_sha256": "e3ac86deecc1c78e097ef5e932bb234c98445422eae473a5eacd1433463aa60c",
+      "translation": "þegar brunnurinn inniheldur enga myndreiti; það er villa hjá kallanda fremur en tóm niðurstaða."
+    },
+    {
+      "context": "``site -> 2-D array``, or a callable taking a site.",
+      "label": "spacr.ops_stitch.stitch_well#2",
+      "source": "``site -> 2-D array``, or a callable taking a site.",
+      "source_sha256": "22941aa206938334f2f2ab25b1333ee459705e121b944b942c5a365afdcefed7",
+      "translation": "``site -> 2-D array`` eða fall sem tekur auðkenni myndreits."
+    },
+    {
+      "context": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-microscope field of view well.",
+      "label": "spacr.ops_stitch.stitch_well#3",
+      "source": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-field well.",
+      "source_sha256": "3bda58600c0224b0c6e310282c6ab5f22ba37a7d1f88b2cd0ae4fac5100228bb",
+      "translation": "líkan brunnsins. Með None er hringurinn lagaður að ``sites`` eða, ef það tekst ekki, að mælda brunninum með 333 myndreitum."
+    },
+    {
+      "context": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "label": "spacr.ops_stitch.stitch_well#4",
+      "source": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "source_sha256": "1d267cfe58b8d0f7e6889736d54d4b2006a6eeb6c9bb61d277788e32f26f3100",
+      "translation": "skörun rastans í pixlum. Ef hún er gefin upp ákvarðar hún vænta skörun við samstillingu og útreikning myndflatarins í uppsetningunni; annars nota báðir lakari niðurstöður, svo gefa ætti hana upp."
+    },
+    {
+      "context": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real laboratory microplate it cannot.",
+      "label": "spacr.ops_stitch.stitch_well#5",
+      "source": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real plate it cannot.",
+      "source_sha256": "74f37b58be389068e4719c1c5bba4afe0684c33fbc1f7134de30e046bf8f7d0a",
+      "translation": "hversu langt brún má víkja eftir rastanum frá spá uppsetningarinnar og samt vera samþykkt. Þetta er samþykkisviðmiðið sem raunverulegi brunnurinn notaði -- 624 af 624 -- og án þess ræður hlutfall toppa, sem getur ekki ráðið því á raunverulegri plötu."
+    },
+    {
+      "context": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "label": "spacr.ops_stitch.stitch_well#6",
+      "source": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "source_sha256": "32273cb219622d2466229e546b8c536dc2b6e7ef546a04ee711bd3474e70ea3d",
+      "translation": "hversu mikið frávik má vera þvert á rastann. Skekkja sýnisborðsins er raunveruleg og stöðug -- 9 px á mældu plötunni -- og er því sérstök tala, aðskilin frá vikmörkunum. None notar `spacr.ops_register.SKEW_PX`."
+    },
+    {
+      "context": "passed through to the registration.",
+      "label": "spacr.ops_stitch.stitch_well#7",
+      "source": "passed through to the registration.",
+      "source_sha256": "619fe2f54b87486c408939f16a83a2d4d5697c7ce074ceeeb236691220338189",
+      "translation": "sent áfram til samstillingarinnar."
+    },
+    {
+      "context": "which sites to place. None uses every site the layout holds.",
+      "label": "spacr.ops_stitch.stitch_well#8",
+      "source": "which sites to place. None uses every site the layout holds.",
+      "source_sha256": "4cac791fbfc0d1c08462e1bb9ae01a807ccbc67deba1fb050e34c85e377c8fa8",
+      "translation": "hvaða myndreiti á að staðsetja. None notar alla myndreiti sem uppsetningin inniheldur."
+    },
+    {
+      "context": "passed to :func:`spacr.ops_register.register_edge`.",
+      "label": "spacr.ops_stitch.stitch_well#9",
+      "source": "passed to :func:`spacr.ops_register.register_edge`.",
+      "source_sha256": "8db2c073d7a9ece7ca6e300f0290065eb40f39db0cbbf68da5ef0bcd25599f07",
+      "translation": "sent til :func:`spacr.ops_register.register_edge`."
+    },
+    {
+      "context": "the annotator-named settings, as :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` returns them.",
+      "label": "spacr.picture_settings.to_crop_settings#1",
+      "source": "the annotator-named settings, as :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` returns them.",
+      "source_sha256": "8700a5cd012560946e3a29e8426795328bd6229ed7693097d0ca46d717286ceb",
+      "translation": "stillingarnar með heitum sem merkingarverkfærið notar, eins og :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` skilar þeim."
+    },
+    {
+      "context": "a mapping in the extracted image region layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "label": "spacr.picture_settings.to_crop_settings#2",
+      "source": "a mapping in the crop layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "source_sha256": "382d5d7ff9b3e35b66bed49236dac0c4e59ff119438e3b13d3dc3bb87325669d",
+      "translation": "vörpun sem notar heiti úr myndskurðarlaginu, með viðeigandi stilltum gildum auk stillinga sem ráðast af ham, svo sem ``stream_method`` fyrir strauminntak."
+    },
+    {
+      "context": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "label": "spacr.regression_backends.backend_status#2",
+      "source": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "source_sha256": "a19b21c019f79ac88342e571f3bfb45d2308403dcdb2b996443a40fc172c25cc",
+      "translation": "umbeðin aðhvarfsfjölskylda. ``None`` merkir að fjölskyldan verður valin út frá svörunarbreytunni og því eru bakendar sem takmarkast við tilteknar fjölskyldur óvirkir."
+    },
+    {
+      "context": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``. ``reason`` is ``''`` when enabled -- a disabled entry always carries the sentence that says why, and it is written to be shown on the control, not logged.",
+      "label": "spacr.regression_backends.backend_status#3",
+      "source": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``. ``reason`` is ``''`` when enabled -- a disabled entry always carries the sentence that says why, and it is written to be shown on the control, not logged.",
+      "source_sha256": "238df23d552dca8006e724823054c13711d2350c66ca6e3deeaae89931d8bfdb",
+      "translation": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``. ``reason`` er ``''`` þegar bakendinn er virkur -- óvirk færsla ber alltaf setninguna sem útskýrir ástæðuna, og hún er skrifuð til birtingar á stýrihlutanum, ekki til skráningar í annál."
+    },
+    {
+      "context": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "label": "spacr.regression_backends.backend_status#4",
+      "source": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "source_sha256": "a407a86b4200605b8cb648c5dc8649400d7c1c5ad559f2f8ff423a0386585c01",
+      "translation": "``short_reason`` er sama höfnun í stuttu máli sem hentar færslu í fellilista. Qt sýnir vísbendingu atriðis aðeins þegar hennar er þörf og meðan fellilistinn er opinn; því er stutta útgáfan sett í texta færslunnar sjálfrar og í reitinn fyrir neðan."
+    },
+    {
+      "context": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "label": "spacr.run_journal.recent_runs#1",
+      "source": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "source_sha256": "9bf7ccb4532862aec95d5bb545f655e5bc50ec92b98e5b505c4e7272b54bff01",
+      "translation": "Raðað eftir tímastimplinum ``start_utc`` í lýsigagnaskránni (þáttaður sem :class:`datetime.datetime`), svo keyrslur sem eru opnaðar á sömu klukkusekúndu raðist samt rétt — möppuheiti ein og sér eru stytt niður í sekúndur og myndu mynda jafntefli. Aðeins nýjustu ``max(limit * 4, limit + 64)`` möppurnar eftir heiti eru opnaðar (fyrir ``limit`` sem er ekki neikvætt), sem takmarkar lestur lýsigagnaskráa, en öll heiti keyrslumappa eru samt talin upp og röðuð."
+    },
+    {
+      "context": "Pass ``None`` for every processing session, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-processing-session journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "label": "spacr.run_journal.recent_runs#2",
+      "source": "Pass ``None`` for every run, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-run journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "source_sha256": "b13cbd3a33a995b2fde6c523204545232f7538e01366b26b4b1730bd75b43984",
+      "translation": "Sendu ``None`` til að fá allar keyrslur, aldrei neikvæða tölu. Styttingin í lokin er ``all_entries[:limit]``, svo ``limit=-1`` les alla dagbókina og skilar síðan öllu nema elstu færslunni -- þetta sást 2026-09-03 í dagbók með 11,027 keyrslum sem skilaði 11,026. Möppu án ``manifest.json`` er sleppt hljóðlega; möppu þar sem ekki er hægt að þátta lýsiskrána er sleppt með viðvörun í annál."
+    },
+    {
+      "context": "Each dictionary contains ``dir`` (Path), ``app_key`` (str), ``status`` (str), ``start_utc`` (ISO str), ``elapsed_s`` (float), and the raw ``manifest`` dictionary when available.",
+      "label": "spacr.run_journal.recent_runs#3",
+      "source": "Each entry is a dict with keys ``dir`` (Path), ``app_key`` (str), ``status`` (str), ``start_utc`` (ISO str), ``elapsed_s`` (float), and the raw ``manifest`` (dict, best-effort).",
+      "source_sha256": "db1a41a9e431850c8324c3d9e40ded89e3c253be7ce94399d2607ff3b4b86568",
+      "translation": "Hver færsla er orðabók með lyklunum ``dir`` (Path), ``app_key`` (str), ``status`` (str), ``start_utc`` (ISO str), ``elapsed_s`` (float) og hráu ``manifest`` (dict, eftir því sem hægt er)."
+    },
+    {
+      "context": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "label": "spacr.schema.parse_int_token#0",
+      "source": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "source_sha256": "6fc290caa9ae3a7e9a083d56fcdfec9b78debeee4d9e0503f8327d50bb6aeea8",
+      "translation": "Skila heiltölunni sem ``token`` táknar, eða ``None`` fyrir ógilt inntak; ``0`` er gilt."
+    },
+    {
+      "context": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "label": "spacr.schema.parse_int_token#1",
+      "source": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "source_sha256": "9f5217f0d0755c5154b71525cbec27c4902619716208cbb04314b3b29548be33",
+      "translation": "Þetta kemur í stað ``utils._safe_int_convert``, sem skilar ``0`` fyrir tákn sem táknar enga heiltölu; ``0`` er gilt auðkenni myndreits og því er ekki hægt að greina á milli þessara tilvika síðar í vinnslunni. ``None`` er ekki auðkenni myndreits, þannig að hver kallandi verður að ákveða hvað á að gera — sjá :func:`field_id`."
+    },
+    {
+      "context": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a workflow that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "label": "spacr.schema.parse_int_token#2",
+      "source": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a pipeline that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "source_sha256": "273295986927e4c02d10925bcdfdfbd945cc4b84424a3c16b04d744bc4830d8b",
+      "translation": "Forskeyti framleiðenda eru þekkt, því þau eru önnur stafsetning sömu tölu en ekki önnur tala: ImageXpress-myndreitur ``s3``, CellVoyager-myndreitur ``F003`` og talan ``3`` ein og sér eru sami myndreiturinn. Vinnuferli sem gæfi þeim þrjú mismunandi auðkenni væri jafn rangt og ferli sem gæfi þeim öllum ``f0``."
+    },
+    {
+      "context": "anything — a string, an int, a float, ``None``.",
+      "label": "spacr.schema.parse_int_token#3",
+      "source": "anything — a string, an int, a float, ``None``.",
+      "source_sha256": "a39169c136bf0131f6c47f1c82cc58a8504578b701979130dac75f0c63279bac",
+      "translation": "hvað sem er — strengur, heiltala, fleytitala, ``None``."
+    },
+    {
+      "context": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "label": "spacr.schema.parse_int_token#4",
+      "source": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "source_sha256": "b19c2aad20e267f3d644d180e751b66383e2b22ea3ee035911acc1da946a4d0c",
+      "translation": "fjarlægja einn eða tvo ASCII-stafi fremst þegar það sem á eftir kemur er eingöngu tölustafir. Sjálfgefið ``True``."
+    },
+    {
+      "context": "the integer, or ``None`` when the token holds no integer.",
+      "label": "spacr.schema.parse_int_token#5",
+      "source": "the integer, or ``None`` when the token holds no integer.",
+      "source_sha256": "b53735ae462022ed95cb9091374298afa3e4317dca41b3da99ce8190f4195ef4",
+      "translation": "heiltalan, eða ``None`` þegar táknið táknar enga heiltölu."
+    },
+    {
+      "context": "The column names a table would be read with, using a schema or header when possible.",
+      "label": "spacr.tabular.table_columns#0",
+      "source": "The column names a table would be read with, using a schema or header when possible.",
+      "source_sha256": "d63e4ef5d0147a80fc1ec52ea78c38f9839fbe127c1ab0c5a7895ebac126b13b",
+      "translation": "Dálkaheitin sem tafla væri lesin með, með skema eða haus þegar það er hægt."
+    },
+    {
+      "context": "The CSV button and the SQL column list show what the run will see -- ``columnID``, never ``column_name`` -- and they get that by asking the reader rather than by growing a second copy of the vocabulary.",
+      "label": "spacr.tabular.table_columns#1",
+      "source": "The CSV button and the SQL column list show what the run will see -- ``columnID``, never ``column_name`` -- and they get that by asking the reader rather than by growing a second copy of the vocabulary.",
+      "source_sha256": "eb984de6e7a66dea6aedf4a5950319f9ee59c079b21a63e8f0a23623c5ea560f",
+      "translation": "CSV-hnappurinn og SQL-dálkalistinn sýna það sem keyrslan mun sjá -- ``columnID``, aldrei ``column_name`` -- og fá það með því að spyrja lesarann fremur en að búa til annað eintak af orðaforðanum."
+    },
+    {
+      "context": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "label": "spacr.tabular.table_columns#2",
+      "source": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "source_sha256": "67dc632e0f9d718c806a22f8b86900873359c7e358d4b02c9f6bd381f7d4c849",
+      "translation": "Sameinað tvírit er **ekki** skráð tvisvar: val sem byði bæði ``well`` og ``wellID`` myndi leyfa notanda að velja dálk sem keyrslan finnur ekki."
+    },
+    {
+      "context": "a CSV/Parquet/Excel path, or a database path with ``table``.",
+      "label": "spacr.tabular.table_columns#3",
+      "source": "a CSV/Parquet/Excel path, or a database path with ``table``.",
+      "source_sha256": "8111e74f910bec48771472a2d96352fea145df852bc24426949e0dfcae1de620",
+      "translation": "CSV/Parquet/Excel-slóð eða slóð að gagnagrunni ásamt ``table``."
+    },
+    {
+      "context": "the table name, for a database.",
+      "label": "spacr.tabular.table_columns#4",
+      "source": "the table name, for a database.",
+      "source_sha256": "81918d2eda50486ab20c71eb56908307672266bd3b77e833dd9a0d469ad69143",
+      "translation": "heiti töflunnar í gagnagrunni."
+    },
+    {
+      "context": "apply the vocabulary.",
+      "label": "spacr.tabular.table_columns#5",
+      "source": "apply the vocabulary.",
+      "source_sha256": "8e348dcaa9894ba06c27fe30e35e23a18715310258ed6cfe2f7b7d0947e02a6f",
+      "translation": "beita orðaforðanum."
+    },
+    {
+      "context": "the column names, in order.",
+      "label": "spacr.tabular.table_columns#6",
+      "source": "the column names, in order.",
+      "source_sha256": "2d2c4ad349de6a67f4bcf6cc0db2aa2ac0a7039133c7ca321f9daef30dfcee78",
+      "translation": "dálkaheitin, í röð."
+    },
+    {
+      "context": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "label": "spacr.workspace.section_states#2",
+      "source": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "source_sha256": "92fa271fc7ee7c0f6e145cad34cd0739690e8c7ea98c8f79023ee2587dd760cb",
+      "translation": "``(sections, problems)``. Gildum sem eru ``None``, þar á meðal niðurstöðum frá kallanlegum veitanda, er sleppt án tilkynningar. Öðrum veitendum sem kasta undantekningu eða bjóða ekkert nothæft ástand er sleppt og þeim lýst í ``problems``; öðrum hlutum er áfram safnað."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

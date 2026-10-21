@@ -1,0 +1,483 @@
+{
+  "language": "de",
+  "records": [
+    {
+      "context": "Row indices ordered most-uncertain-first.",
+      "label": "spacr.active_learning.rank_by_uncertainty#0",
+      "source": "Row indices ordered most-uncertain-first.",
+      "source_sha256": "d9b8b812433d644647572c3fc2eae7a56a4519da04ea8ca95a6d3bf2ac33c7d8",
+      "translation": "Zeilenindizes, zuerst nach der größten Unsicherheit geordnet."
+    },
+    {
+      "context": "Ordering is total and reproducible:",
+      "label": "spacr.active_learning.rank_by_uncertainty#1",
+      "source": "Ordering is total and reproducible:",
+      "source_sha256": "a1f260b08589b8ff9ce575a20a067199bac920505a8f0f7cb3a5b7ef52238e8c",
+      "translation": "Die Sortierung ist vollständig und reproduzierbar:"
+    },
+    {
+      "context": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "label": "spacr.active_learning.rank_by_uncertainty#10",
+      "source": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "source_sha256": "35d95e9b5eac683fc9cbe8b5518c555fdef6f7ca5ddb5e5162041560d224c43b",
+      "translation": "``(K,)``-Array vom Typ int mit Zeilenindizes, wobei ``K = N`` gilt, wenn kein Limit angegeben ist, und andernfalls ``K = min(N, max(0, int(limit)))``. ``N`` ist die Anzahl der berechneten oder übergebenen Scores."
+    },
+    {
+      "context": "primary key — the uncertainty score, descending;",
+      "label": "spacr.active_learning.rank_by_uncertainty#2",
+      "source": "primary key — the uncertainty score, descending;",
+      "source_sha256": "21daeed2e188ce3a912107d470a0f59d033f011044c644f0ca01969cffc864f9",
+      "translation": "primärer Sortierschlüssel — der Unsicherheitswert, absteigend;"
+    },
+    {
+      "context": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of extracted image regions score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's annotation work list on every refresh.",
+      "label": "spacr.active_learning.rank_by_uncertainty#3",
+      "source": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of crops score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's queue on every refresh.",
+      "source_sha256": "dabdaa6d8314ec225141189079e39e29bfd5734d40e7dd2b16e278ccf11a3010",
+      "translation": "Gleichstände — standardmäßig aufsteigender Zeilenindex oder, wenn ``seed`` angegeben ist, eine damit initialisierte Permutation. Beides ist deterministisch: Gleiche Eingaben und derselbe Seed ergeben immer dieselbe Reihenfolge. Gleichstände sind bei einem Screening normal, bei dem Tausende von Bildausschnitten genau 0.5 erreichen. Ein zufälliges Mischen ohne Seed würde deshalb die Warteschlange des Annotators bei jeder Aktualisierung neu anordnen."
+    },
+    {
+      "context": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "label": "spacr.active_learning.rank_by_uncertainty#4",
+      "source": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "source_sha256": "6d8c7b26d88d99e41ca7f16e6aa0008df4a59df4eeb262dd4d5b49e76578f97c",
+      "translation": "NaN-Werte werden immer zuletzt einsortiert und nie vor einem gültigen Wert. Sie werden einsortiert statt verworfen, damit die zurückgegebenen Indizes eine Permutation von ``range(N)`` bleiben; :func:`build_queue` entfernt sie und gibt ihre Anzahl an."
+    },
+    {
+      "context": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "label": "spacr.active_learning.rank_by_uncertainty#6",
+      "source": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "source_sha256": "8603d299dfc141b09897b78a519c578302a9691c826da8a2d8525760be36e2c5",
+      "translation": "ein Name aus :data:`UNCERTAINTY_MEASURES` oder eine aufrufbare Funktion."
+    },
+    {
+      "context": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "label": "spacr.active_learning.rank_by_uncertainty#8",
+      "source": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "source_sha256": "9a266bdc44a5e46dcb8fe8ecafc0b164aac16cd2a203f7c1de64c7677fc6442e",
+      "translation": "Seed zur Auflösung von Gleichständen; bei ``None`` entscheidet der Index."
+    },
+    {
+      "context": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "label": "spacr.active_learning.rank_by_uncertainty#9",
+      "source": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "source_sha256": "60a203b194ea2a68b707485a2bb8f31ffed529edfc2abe526d230f599168a235",
+      "translation": "vorab berechnete Werte, die einsortiert werden, statt sie aus ``probs`` neu zu berechnen (verwendet von :func:`build_queue` und von allen Aufrufern, die einen :func:`disagreement`-Wert einsortieren)."
+    },
+    {
+      "context": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "label": "spacr.bystanders.distance_to_infected#5",
+      "source": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "source_sha256": "f4955fea91e8d01f09c1491ed62c12d769252ae30e0cdcb69d0eb4965ef32470",
+      "translation": "Bei Einheitsabständen ergibt eine infizierte Zelle 0 und ihr unmittelbarer Nachbar einen Pixelschritt, nicht 0. Das Feld ist auf jedem infizierten Pixel null und wächst nach außen. Bei einer Zelle, die eine Grenze mit einer infizierten Zelle teilt, liegt ihr nächstes Pixel daher einen Schritt entfernt: Das Minimum über diese Zelle ist 1. Nur eine Zelle, deren eigene Pixel infiziert sind, ergibt 0."
+    },
+    {
+      "context": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "label": "spacr.bystanders.distance_to_infected#6",
+      "source": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "source_sha256": "b80d8e07733b3e29e06f32d0136a7d6495598eb13718e9efc33afad7d4538e9a",
+      "translation": "`surface_distance_transform` ist an Punkten innerhalb der Zielmaske null, auch bei Überlappungen oder vollständig enthaltenen Objekten. Zwei getrennte Labels, die lediglich eine gemeinsame Grenze haben, überlappen sich nicht; eine benachbarte Zelle bleibt daher einen Pixelschritt entfernt. Mit ``spacing`` trägt dieser Schritt die angegebenen physikalischen Einheiten."
+    },
+    {
+      "context": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "label": "spacr.cli_plugins.main#1",
+      "source": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "source_sha256": "ef3340468a31bec678888399feaef8ef478d4cdd0a46060bdc030a8e29bd2cac",
+      "translation": "Argumente ohne den Programmnamen; ``sys.argv[1:]`` bei None."
+    },
+    {
+      "context": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "label": "spacr.crashreport.network_allowed#1",
+      "source": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "source_sha256": "1551ce91fe0197a1136a52997702c1b3536df4016c7fbac51922b142224be6ba",
+      "translation": "``False``, wenn :data:`NO_NETWORK_ENV` einen nicht leeren Wert außer ``0``, ``false``, ``no`` oder ``off`` hat (ohne Beachtung der Groß-/Kleinschreibung und umgebender Leerzeichen) oder spaCR im abgesicherten Modus läuft; andernfalls ``True``."
+    },
+    {
+      "context": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "label": "spacr.crops.percentile_pair#3",
+      "source": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "source_sha256": "580821dd351a1a8ec6ad2972bf87ef6ca07b9231b03cd4853ad0395a08ae656b",
+      "translation": "zwei Gleitkommazahlen. Eingelesene Werte werden aufsteigend sortiert und auf ``[0, 100]`` begrenzt; Ersatzwerte aus ``default`` werden ohne Sortierung oder Begrenzung in Gleitkommazahlen umgewandelt."
+    },
+    {
+      "context": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "label": "spacr.example_archives.extract_example_archive#1",
+      "source": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "source_sha256": "71525dbc0df03022634d3817723741a45fdae831f76d0fbfe4ca7505a08e370e",
+      "translation": "Wenn verfügbar, werden die Einträge mit ``filter=\"data\"`` entpackt. Anders als ein einfaches ``extractall`` weist der Filter Pfade wie ``../../etc/something`` zurück, die das Zielverzeichnis verlassen würden. Führende Pfadtrenner werden entfernt, bevor der verbleibende Pfad geprüft wird. Gerätedateien und Verknüpfungen zu absoluten oder außerhalb liegenden Zielen werden zurückgewiesen; unsichere Berechtigungsbits einschließlich setuid werden gelöscht."
+    },
+    {
+      "context": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "label": "spacr.example_archives.extract_example_archive#2",
+      "source": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "source_sha256": "3430add28ce2d3910c8670d6ef736138072ab32370a288c4bfb6b6e297e32449",
+      "translation": "Wenn ``tarfile.data_filter`` nicht verfügbar ist, werden alle Einträge vor dem Entpacken geprüft: Namen, die mit ``/`` beginnen oder eine Pfadkomponente ``..`` enthalten, werden ebenso zurückgewiesen wie Einträge, die weder reguläre Dateien noch Verzeichnisse sind."
+    },
+    {
+      "context": "The table the metadata is taken from.",
+      "label": "spacr.filters.choose_anchor#0",
+      "source": "The table the metadata is taken from.",
+      "source_sha256": "d06e73bcf3fd0d48e39dfafef89b8a97054fa57284539bd3ea815eeb71b3e3e0",
+      "translation": "Die Tabelle, aus der die Metadaten entnommen werden."
+    },
+    {
+      "context": "nothing to anchor on. The message lists the table names that were looked for.",
+      "label": "spacr.filters.choose_anchor#3",
+      "source": "nothing to anchor on. The message lists the table names that were looked for.",
+      "source_sha256": "9800b9a21d80eb5eda46e17578197cfbc8809da20b103e9819bf5ad163bce8c2",
+      "translation": "keine Grundlage zum Verankern vorhanden ist. Die Meldung nennt die Tabellennamen, nach denen gesucht wurde."
+    },
+    {
+      "context": "Combine one or two measurement columns.",
+      "label": "spacr.gene_measurement_compare.combine#0",
+      "source": "Combine one or two measurement columns.",
+      "source_sha256": "0a90df4f852df300feb8ccd873697c8aea5f1bceba236e8de43427aea59b8a67",
+      "translation": "Eine oder zwei Messspalten kombinieren."
+    },
+    {
+      "context": "table containing the measurement columns.",
+      "label": "spacr.gene_measurement_compare.combine#1",
+      "source": "table containing the measurement columns.",
+      "source_sha256": "c9b9bcc4c6b580c626784790eec2b6f126372ef2cba9ebe5d1d74ff813a05579",
+      "translation": "Tabelle mit den Messspalten."
+    },
+    {
+      "context": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "label": "spacr.gene_measurement_compare.combine#3",
+      "source": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "source_sha256": "f47652f34901959f0b2abc91698f97fb5ac5c204b1939f01d816135280d3d911",
+      "translation": "einer der Werte ``''``, ``'+'``, ``'-'``, ``'*'`` oder ``'/'``. Eine leere Zeichenfolge gibt ``first`` nach numerischer Konvertierung zurück; nicht interpretierbare Werte werden als fehlend behandelt."
+    },
+    {
+      "context": "if a requested measurement column is absent.",
+      "label": "spacr.gene_measurement_compare.combine#6",
+      "source": "if a requested measurement column is absent.",
+      "source_sha256": "a84eaa23f676c50e7a1dad473a9338d6fac93fab413015d27585fd5ee558b602",
+      "translation": "wenn eine angeforderte Messspalte fehlt."
+    },
+    {
+      "context": "Return a named logger backed by a rotating file in the user's home.",
+      "label": "spacr.logger.configure_logger#0",
+      "source": "Return a named logger backed by a rotating file in the user's home.",
+      "source_sha256": "972a09e5e9811903cbe62f40656a3f5f1018428eb37003d9fb22f62040b3c82e",
+      "translation": "Einen benannten Logger zurückgeben, der eine rotierende Protokolldatei im Home-Verzeichnis des Benutzers verwendet."
+    },
+    {
+      "context": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "label": "spacr.logger.configure_logger#3",
+      "source": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "source_sha256": "ae6659b4488b0463829dddfac51a336ae5afe68f4f8b9511ac0eb70b79a41a07",
+      "translation": "Dateiname im Home-Verzeichnis des Benutzers für den ersten für ``name`` installierten Datei-Handler. Spätere Aufrufe behalten diese Datei bei."
+    },
+    {
+      "context": "Logging level applied to the logger and handlers installed by this function.",
+      "label": "spacr.logger.configure_logger#4",
+      "source": "Logging level applied to the logger and handlers installed by this function.",
+      "source_sha256": "b6f3aa1da6d1fdb7a5b712dee841ea537e2eae6ca73eaf3a1d7fe3c75ef79ee2",
+      "translation": "Logging-Level, das auf den Logger und die von dieser Funktion installierten Handler angewendet wird."
+    },
+    {
+      "context": "Return available defaults overlaid with the caller's settings.",
+      "label": "spacr.macro.explicit_settings#0",
+      "source": "Return available defaults overlaid with the caller's settings.",
+      "source_sha256": "196b298cdc6659cf40438cc5510f21ac9582d5212912906f09c255fae23a64ae",
+      "translation": "Verfügbare Standardwerte zurückgeben, überlagert von den Einstellungen des Aufrufers."
+    },
+    {
+      "context": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset structured-data names can remain absent. Structured-data names are ordered defaults-first so a diff between two macros lines up.",
+      "label": "spacr.macro.explicit_settings#1",
+      "source": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset keys can remain absent. Keys are ordered defaults-first so a diff between two macros lines up.",
+      "source_sha256": "e2d660bd4a328a8bbaacf1c044fa32dad1c799378aa899c0b621ba8178d2c370",
+      "translation": "Verfügbare Modulstandardwerte, dann verfügbare Laufsteuerungsstandardwerte (:func:`spacr.runctx.apply_defaults` — vor allem ``random_seed``, da ein nicht fixierter Seed der einzige \"default\" ist, der die Zahlen von selbst ändert), darüber die Werte des Aufrufers. Nicht verfügbare Standardwertquellen werden übersprungen, sodass nicht gesetzte Schlüssel fehlen können. Schlüssel der Standardwerte stehen zuerst, damit ein Vergleich zweier Makros übereinstimmend angeordnet ist."
+    },
+    {
+      "context": "mask file or extensionless stem to resolve and load.",
+      "label": "spacr.mask_io.load_mask#1",
+      "source": "mask file or extensionless stem to resolve and load.",
+      "source_sha256": "f45e0454281e4d6e07c30ed3d5c2537b24234404d78af4ee34606c8890587934",
+      "translation": "Maskendatei oder Dateipfad ohne Erweiterung, der aufgelöst und geladen werden soll."
+    },
+    {
+      "context": "uint16 array with the stored shape and rank unchanged.",
+      "label": "spacr.mask_io.load_mask#3",
+      "source": "uint16 array with the stored shape and rank unchanged.",
+      "source_sha256": "a9bc411d2c338bfb1e28c121191dd0e57a5e845c72689f5198e52f155c6a0fa7",
+      "translation": "uint16-Array mit unveränderter gespeicherter Form und Dimensionszahl."
+    },
+    {
+      "context": "The hook is called once per microscope field of view, with the intensity image data channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-microscope field of view / illumination correction belongs.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#1",
+      "source": "The hook is called once per field, with the intensity channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-field / illumination correction belongs.",
+      "source_sha256": "b26dd2f160e07c06f7a60868397101dd30b0e7bb22ab9ec05752e32849266b5e",
+      "translation": "Der Hook wird einmal pro Aufnahmefeld aufgerufen, nachdem die durch ``settings['channels']`` benannten Intensitätskanäle ausgewählt wurden und bevor ein Merkmal berechnet wird. Er muss ein Array mit derselben Form und demselben dtype zurückgeben. Hier gehört eine Flat-Field- oder Beleuchtungskorrektur hin."
+    },
+    {
+      "context": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#2",
+      "source": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "source_sha256": "a5bd9988b7f44128748535b4669092ed0fc188109c78b593a855c15e58cd22df",
+      "translation": "die aufrufbare Funktion. ``context`` ist ein :class:`PreprocessingContext`."
+    },
+    {
+      "context": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#3",
+      "source": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "source_sha256": "621576b23680b4fa246237ea9459520e2038ee3140dd9afa944e641dce61c9a5",
+      "translation": "Registrierungsschlüssel. Standardmäßig ``module.qualname``; eine erneute Registrierung desselben Schlüssels oder desselben Funktionsobjekts ersetzt den Eintrag, statt einen zweiten hinzuzufügen."
+    },
+    {
+      "context": "lower runs first; ties keep registration order.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#4",
+      "source": "lower runs first; ties keep registration order.",
+      "source_sha256": "1fe0a3edb5a55dcde3a25a0f863228acdad4aa883ad56520abafa0a6d274a800",
+      "translation": "niedrigere Werte werden zuerst ausgeführt; bei Gleichstand bleibt die Registrierungsreihenfolge erhalten."
+    },
+    {
+      "context": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#6",
+      "source": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "source_sha256": "1cd102cf16c134db59c5867ba43e9b1cfecb1a65217dc22e66931fe712d2eb9f",
+      "translation": "wenn ``hook`` nicht aufrufbar ist oder die Umwandlung von ``priority`` in einen int ``TypeError`` oder ``ValueError`` auslöst."
+    },
+    {
+      "context": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "label": "spacr.object_distances.surface_distance_transform#2",
+      "source": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "source_sha256": "e22b38cacfe2fa1eb2d039582c0f3d0ddae807dd9a805b064eb50382f5b110f6",
+      "translation": "Das Ergebnis ist innerhalb eines Objekts null. `distance_transform_edt` misst die Entfernung zur nächsten Null und wird deshalb auf der invertierten Maske ausgeführt: Das Ergebnis ist auf jedem gelabelten Pixel 0 und wächst nach außen. Eine Abfrage am Schwerpunkt eines anderen Objekts misst die Entfernung von diesem Punkt zum nächsten gelabelten Pixel; sie ist nur null, wenn der Punkt innerhalb der Zielmaske liegt."
+    },
+    {
+      "context": "Microscope image field a canvas into overlapping windows, in raster order.",
+      "label": "spacr.ops_compose.windows_over#0",
+      "source": "Tile a canvas into overlapping windows, in raster order.",
+      "source_sha256": "d09520c0f1100b5706041dffba94e97b464724d398a47796fac909616e1d18e3",
+      "translation": "Eine Fläche in Rasterreihenfolge in überlappende Fenster aufteilen."
+    },
+    {
+      "context": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "label": "spacr.ops_compose.windows_over#1",
+      "source": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "source_sha256": "198c4990eeeb51728b304877b8e0a4ce1ccc126e469ea58a76f731ebd287b7dc",
+      "translation": "Die Fenster überlappen sich, damit Objekte über die Fenstergrenzen hinweg zusammengefügt werden können: Ein Objekt, das eine Fenstergrenze überschreitet, bleibt ein einziges Objekt. Es lässt sich nur über die Naht hinweg zuordnen, wenn beide Fenster es vollständig enthalten. Die Überlappung muss größer als das größte Objekt sein; bloßes Berühren reicht nicht."
+    },
+    {
+      "context": "``(height, width)`` of the microplate sample position frame.",
+      "label": "spacr.ops_compose.windows_over#2",
+      "source": "``(height, width)`` of the well frame.",
+      "source_sha256": "5fd2da00e9ba4dccea7b96d40f9e7c5f1571ad527aa282cd625ee79eec663344",
+      "translation": "``(height, width)`` des Bezugsrahmens des Wells."
+    },
+    {
+      "context": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "label": "spacr.ops_compose.windows_over#5",
+      "source": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "source_sha256": "c2a83d9bbaa1715459f0353abae440433039c789f3c5b060711887fa8d507e33",
+      "translation": "wenn die Fenstergröße nicht positiv ist oder die Überlappung negativ oder nicht kleiner als das Fenster ist."
+    },
+    {
+      "context": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "label": "spacr.ops_merge.match_cells#1",
+      "source": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "source_sha256": "a73fba1e1f7f85dfd4b82c53b1f1c04c6ccc1c152a445edd59cc63330e2c7f06",
+      "translation": "Ein Paar bleibt nur erhalten, wenn jede Zelle der nächste Nachbar der anderen ist und ihr Abstand innerhalb von ``threshold`` liegt. Wählen mehrere Zellen denselben Partner, kann nur die diesem Partner nächstgelegene Zelle erhalten bleiben."
+    },
+    {
+      "context": "run the two nearest-neighbour searches on a GPU when one is usable. A microplate sample position carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "label": "spacr.ops_merge.match_cells#6",
+      "source": "run the two nearest-neighbour searches on a GPU when one is usable. A well carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "source_sha256": "0b6bbdd57bdd9d5bc080a86df76055777f082b0d01901db53cb230a72fafd049",
+      "translation": "die beiden Suchen nach nächsten Nachbarn auf einer GPU ausführen, wenn eine nutzbar ist. Ein Well enthält auf jeder Seite Zehntausende Zellkerne, und die Suche erfolgt zweimal, einmal in jeder Richtung; `spacr.ops_accel.nearest_neighbours` verarbeitet die Quellpunkte in Blöcken gegen die vollständige Zielmenge."
+    },
+    {
+      "context": "Re-solve a seed transform from the correspondences it implies.",
+      "label": "spacr.ops_phenotype.refine_similarity#0",
+      "source": "Re-solve a seed transform from the correspondences it implies.",
+      "source_sha256": "47318d012262c5cac2b95a8a4628dec163e7b5a021a45c2c69d273a5c241188f",
+      "translation": "Eine anfängliche Transformation anhand der von ihr implizierten Zuordnungen erneut berechnen."
+    },
+    {
+      "context": "``(M, 2)`` points in the frame being moved to.",
+      "label": "spacr.ops_phenotype.refine_similarity#2",
+      "source": "``(M, 2)`` points in the frame being moved to.",
+      "source_sha256": "8abeef48b7baf15b7c0efd02da9485b04c62ef47776a639e2dd4b34beac9775a",
+      "translation": "``(M, 2)`` Punkte im Zielkoordinatensystem."
+    },
+    {
+      "context": "how close a moved point must land to count as a match.",
+      "label": "spacr.ops_phenotype.refine_similarity#4",
+      "source": "how close a moved point must land to count as a match.",
+      "source_sha256": "b361c77cabccce70c132eec6687ceae62785c247991b9bda50c6543add6951ab",
+      "translation": "wie nahe ein transformierter Punkt liegen muss, um als Übereinstimmung zu zählen."
+    },
+    {
+      "context": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "label": "spacr.ops_phenotype.refine_similarity#5",
+      "source": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "source_sha256": "e70f8f1189e676ed7c87265d11c7d54d2707accc8235ccc51343cbfb58a86243",
+      "translation": "wie viele abschließende Neuberechnungen bei ``radius`` nach zwei weiter gefassten Zuordnungsrunden versucht werden sollen; der Wert wird in eine Ganzzahl umgewandelt und auf mindestens eins gesetzt."
+    },
+    {
+      "context": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "label": "spacr.ops_phenotype.refine_similarity#6",
+      "source": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "source_sha256": "2fb35be5eb1a1121dccc7253fad27fe0f02be2914a638ffe8c9471562ba086dc",
+      "translation": "``(scale, rotation, translation, source_in, target_in, distances)`` aus der letzten gelösten Runde oder None, wenn keine Runde gelöst werden konnte. Eine spätere Runde mit zu wenigen Zuordnungen oder einer nicht lösbaren Anpassung gibt das vorherige Ergebnis zurück."
+    },
+    {
+      "context": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "label": "spacr.ops_phenotype.refine_similarity#7",
+      "source": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "source_sha256": "df1c49dcfbc3ba9fc85c12820e01ca712a3f2274a659fb12da7ab0bc3208278a",
+      "translation": "Die anfängliche Transformation kann ungenau sein. Bei dünn besetzten Daten weist der Dreieckskonsens eine Skalierungsabweichung von bis zu 44 % auf. Selbst bei einer so großen Abweichung liegen die Punkte nahe dem Rotationszentrum jedoch nur wenige Pixel von ihrer wahren Position entfernt, sodass genügend Zuordnungen für eine erneute Berechnung vorliegen. Die ersten beiden Runden suchen Übereinstimmungen mit dem Vierfachen und dem Doppelten von ``radius``, bevor auf ``radius`` eingeengt wird."
+    },
+    {
+      "context": "Register a microplate sample position's microscope image fields against each other and solve their positions.",
+      "label": "spacr.ops_stitch.stitch_well#0",
+      "source": "Register a well's tiles against each other and solve their positions.",
+      "source_sha256": "8685cd118c361d094485bd9688d22fc5f721251322921ba426b74cf45e079b0c",
+      "translation": "Die Bildkacheln eines Wells gegeneinander registrieren und ihre Positionen berechnen."
+    },
+    {
+      "context": "One well at a time, and one microscope image field pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain microscope image field arrays.",
+      "label": "spacr.ops_stitch.stitch_well#1",
+      "source": "One well at a time, and one tile pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain tile arrays.",
+      "source_sha256": "fb64a37380ff63413a77ef01933326dea16185caabc673465f919f2cfa5b435d",
+      "translation": "Ein Well nach dem anderen und darin jeweils ein Kachelpaar. Ist ``tiles`` aufrufbar, muss diese Funktion nicht das gesamte Well im Speicher halten. Der Aufrufer entscheidet, was zwischengespeichert und was erneut gelesen wird; sein Cache kann weiterhin Kachelarrays halten."
+    },
+    {
+      "context": "the stitch, its edges and its residuals.",
+      "label": "spacr.ops_stitch.stitch_well#10",
+      "source": "the stitch, its edges and its residuals.",
+      "source_sha256": "252d4644a262472a4e8fbba22aff93a84db091e4ddf5ee34348032398cd3f183",
+      "translation": "das Stitching-Ergebnis, seine Kanten und seine Residuen."
+    },
+    {
+      "context": "``site -> 2-D array``, or a callable taking a site.",
+      "label": "spacr.ops_stitch.stitch_well#2",
+      "source": "``site -> 2-D array``, or a callable taking a site.",
+      "source_sha256": "22941aa206938334f2f2ab25b1333ee459705e121b944b942c5a365afdcefed7",
+      "translation": "``site -> 2-D array`` oder eine aufrufbare Funktion, die eine Aufnahmefeldkennung entgegennimmt."
+    },
+    {
+      "context": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "label": "spacr.ops_stitch.stitch_well#4",
+      "source": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "source_sha256": "1d267cfe58b8d0f7e6889736d54d4b2006a6eeb6c9bb61d277788e32f26f3100",
+      "translation": "die Überlappung des Rasters in Pixeln. Wird sie angegeben, bestimmt sie die erwartete Überlappung bei der Registrierung und die Berechnung der Bildfläche im Layout. Ohne Angabe greifen beide auf weniger aussagekräftige Ergebnisse zurück; daher sollte sie übergeben werden."
+    },
+    {
+      "context": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "label": "spacr.ops_stitch.stitch_well#6",
+      "source": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "source_sha256": "32273cb219622d2466229e546b8c536dc2b6e7ef546a04ee711bd3474e70ea3d",
+      "translation": "wie weit die Abweichung quer dazu sein darf. Die Schiefstellung des Probentischs ist real und konstant -- 9 px auf der vermessenen Platte -- und wird deshalb getrennt von der Toleranz angegeben. Bei None wird `spacr.ops_register.SKEW_PX` verwendet."
+    },
+    {
+      "context": "passed through to the registration.",
+      "label": "spacr.ops_stitch.stitch_well#7",
+      "source": "passed through to the registration.",
+      "source_sha256": "619fe2f54b87486c408939f16a83a2d4d5697c7ce074ceeeb236691220338189",
+      "translation": "wird an die Registrierung weitergegeben."
+    },
+    {
+      "context": "The subset of a picture-settings key-value mapping the extracted image region layer understands.",
+      "label": "spacr.picture_settings.to_crop_settings#0",
+      "source": "The subset of a picture-settings dict the crop layer understands.",
+      "source_sha256": "4ba3880ce3b47e217b0ce4670445bcdc33a5b60745313236e980158f160f8eae",
+      "translation": "Der Teil eines Dictionaries mit Bildeinstellungen, den die Ebene zur Verarbeitung von Bildausschnitten versteht."
+    },
+    {
+      "context": "a mapping in the extracted image region layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "label": "spacr.picture_settings.to_crop_settings#2",
+      "source": "a mapping in the crop layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "source_sha256": "382d5d7ff9b3e35b66bed49236dac0c4e59ff119438e3b13d3dc3bb87325669d",
+      "translation": "eine Zuordnung im eigenen Vokabular der Zuschneideschicht, mit anwendbaren gesetzten Werten sowie aus dem Modus abgeleiteten Einstellungen wie ``stream_method`` für Streaming-Eingaben."
+    },
+    {
+      "context": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "label": "spacr.regression_backends.backend_status#2",
+      "source": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "source_sha256": "a19b21c019f79ac88342e571f3bfb45d2308403dcdb2b996443a40fc172c25cc",
+      "translation": "angeforderte Regressionsfamilie. ``None`` bedeutet, dass die Familie anhand der Zielvariable gewählt wird; deshalb werden Backends deaktiviert, die auf bestimmte Familien beschränkt sind."
+    },
+    {
+      "context": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "label": "spacr.regression_backends.backend_status#4",
+      "source": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "source_sha256": "a407a86b4200605b8cb648c5dc8649400d7c1c5ad559f2f8ff423a0386585c01",
+      "translation": "``short_reason`` enthält dieselbe Ablehnung in einer für einen Auswahllisteneintrag geeigneten Länge. Qt zeigt den Tooltip eines Eintrags erst bei Bedarf und nur bei geöffneter Auswahlliste an. Deshalb steht die Kurzfassung im Text des Eintrags selbst und im Feld darunter."
+    },
+    {
+      "context": "Return the ``limit`` most-recent runs newest-first.",
+      "label": "spacr.run_journal.recent_runs#0",
+      "source": "Return the ``limit`` most-recent runs newest-first.",
+      "source_sha256": "372ebf2e5dc2ed1883450d955b46d04837b4b3d95e4da558a0d5afd895e5c3d4",
+      "translation": "Die ``limit`` neuesten Läufe zurückgeben, mit dem neuesten zuerst."
+    },
+    {
+      "context": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "label": "spacr.run_journal.recent_runs#1",
+      "source": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "source_sha256": "9bf7ccb4532862aec95d5bb545f655e5bc50ec92b98e5b505c4e7272b54bff01",
+      "translation": "Nach dem Zeitstempel ``start_utc`` des Manifests geordnet (als :class:`datetime.datetime` geparst), sodass Läufe, die in derselben Wanduhrsekunde geöffnet wurden, trotzdem richtig sortiert werden — Ordnernamen allein sind auf Sekunden gekürzt und würden Gleichstände erzeugen. Nur die nach Namen neuesten ``max(limit * 4, limit + 64)`` Ordner werden überhaupt geöffnet (bei nicht negativem ``limit``). Das begrenzt die Manifestlesevorgänge, während weiterhin alle Laufordnernamen aufgelistet und sortiert werden."
+    },
+    {
+      "context": "Pass ``None`` for every processing session, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-processing-session journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "label": "spacr.run_journal.recent_runs#2",
+      "source": "Pass ``None`` for every run, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-run journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "source_sha256": "b13cbd3a33a995b2fde6c523204545232f7538e01366b26b4b1730bd75b43984",
+      "translation": "``None`` übergeben, um alle Läufe zu erhalten, niemals eine negative Zahl. Die abschließende Kürzung erfolgt mit ``all_entries[:limit]``. Daher liest ``limit=-1`` das gesamte Journal und gibt alle Einträge außer dem ältesten zurück -- beobachtet am 2026-09-03 bei einem Journal mit 11,027 Läufen, das 11,026 zurückgab. Ein Ordner ohne ``manifest.json`` wird still übersprungen; lässt sich sein Manifest nicht parsen, wird er mit einer protokollierten Warnung übersprungen."
+    },
+    {
+      "context": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "label": "spacr.schema.parse_int_token#0",
+      "source": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "source_sha256": "6fc290caa9ae3a7e9a083d56fcdfec9b78debeee4d9e0503f8327d50bb6aeea8",
+      "translation": "Die durch ``token`` bezeichnete Ganzzahl zurückgeben oder ``None`` bei ungültiger Eingabe; ``0`` ist gültig."
+    },
+    {
+      "context": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a workflow that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "label": "spacr.schema.parse_int_token#2",
+      "source": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a pipeline that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "source_sha256": "273295986927e4c02d10925bcdfdfbd945cc4b84424a3c16b04d744bc4830d8b",
+      "translation": "Herstellerpräfixe werden erkannt, weil sie eine andere Schreibweise einer Zahl und keine andere Zahl sind: Ein ImageXpress-Aufnahmefeld ``s3``, ein CellVoyager-Feld ``F003`` und die bloße Zahl ``3`` bezeichnen dasselbe Feld. Eine Pipeline, die ihnen drei verschiedene IDs zuweist, wäre genauso falsch wie eine, die ihnen allen ``f0`` zuweist."
+    },
+    {
+      "context": "anything — a string, an int, a float, ``None``.",
+      "label": "spacr.schema.parse_int_token#3",
+      "source": "anything — a string, an int, a float, ``None``.",
+      "source_sha256": "a39169c136bf0131f6c47f1c82cc58a8504578b701979130dac75f0c63279bac",
+      "translation": "beliebige Eingabe — eine Zeichenkette, eine Ganzzahl, eine Gleitkommazahl, ``None``."
+    },
+    {
+      "context": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "label": "spacr.schema.parse_int_token#4",
+      "source": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "source_sha256": "b19c2aad20e267f3d644d180e751b66383e2b22ea3ee035911acc1da946a4d0c",
+      "translation": "einen oder zwei führende ASCII-Buchstaben entfernen, wenn danach nur Ziffern folgen. Standardmäßig ``True``."
+    },
+    {
+      "context": "The column names a table would be read with, using a schema or header when possible.",
+      "label": "spacr.tabular.table_columns#0",
+      "source": "The column names a table would be read with, using a schema or header when possible.",
+      "source_sha256": "d63e4ef5d0147a80fc1ec52ea78c38f9839fbe127c1ab0c5a7895ebac126b13b",
+      "translation": "Die Spaltennamen, mit denen eine Tabelle eingelesen würde, nach Möglichkeit anhand eines Schemas oder einer Kopfzeile."
+    },
+    {
+      "context": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "label": "spacr.tabular.table_columns#2",
+      "source": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "source_sha256": "67dc632e0f9d718c806a22f8b86900873359c7e358d4b02c9f6bd381f7d4c849",
+      "translation": "Ein zusammengeführtes Duplikat wird **nicht** zweimal aufgeführt: Eine Auswahl, die sowohl ``well`` als auch ``wellID`` anbietet, würde die Wahl einer Spalte erlauben, die der Lauf nicht findet."
+    },
+    {
+      "context": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "label": "spacr.workspace.section_states#2",
+      "source": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "source_sha256": "92fa271fc7ee7c0f6e145cad34cd0739690e8c7ea98c8f79023ee2587dd760cb",
+      "translation": "``(sections, problems)``. Werte, die ``None`` sind, einschließlich Ergebnissen eines aufrufbaren Anbieters, werden stillschweigend ausgelassen. Andere Anbieter, die eine Ausnahme auslösen oder keinen nutzbaren Zustand anbieten, werden ausgelassen und in ``problems`` beschrieben; die übrigen Abschnitte werden weiterhin gesammelt."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

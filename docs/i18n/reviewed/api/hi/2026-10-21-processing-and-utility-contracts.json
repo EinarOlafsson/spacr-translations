@@ -1,0 +1,567 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Row indices ordered most-uncertain-first.",
+      "label": "spacr.active_learning.rank_by_uncertainty#0",
+      "source": "Row indices ordered most-uncertain-first.",
+      "source_sha256": "d9b8b812433d644647572c3fc2eae7a56a4519da04ea8ca95a6d3bf2ac33c7d8",
+      "translation": "सबसे अधिक अनिश्चितता से शुरू होने वाले क्रम में पंक्ति इंडेक्स।"
+    },
+    {
+      "context": "Ordering is total and reproducible:",
+      "label": "spacr.active_learning.rank_by_uncertainty#1",
+      "source": "Ordering is total and reproducible:",
+      "source_sha256": "a1f260b08589b8ff9ce575a20a067199bac920505a8f0f7cb3a5b7ef52238e8c",
+      "translation": "क्रम पूर्ण और पुनरुत्पाद्य है:"
+    },
+    {
+      "context": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "label": "spacr.active_learning.rank_by_uncertainty#10",
+      "source": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "source_sha256": "35d95e9b5eac683fc9cbe8b5518c555fdef6f7ca5ddb5e5162041560d224c43b",
+      "translation": "पंक्ति सूचकांकों का ``(K,)`` पूर्णांक ऐरे, जिसमें सीमा न दिए जाने पर ``K = N`` और अन्यथा ``K = min(N, max(0, int(limit)))`` होता है। ``N`` गणना किए गए या दिए गए स्कोर की संख्या है।"
+    },
+    {
+      "context": "primary key — the uncertainty score, descending;",
+      "label": "spacr.active_learning.rank_by_uncertainty#2",
+      "source": "primary key — the uncertainty score, descending;",
+      "source_sha256": "21daeed2e188ce3a912107d470a0f59d033f011044c644f0ca01969cffc864f9",
+      "translation": "प्राथमिक कुंजी — अनिश्चितता स्कोर, घटते क्रम में;"
+    },
+    {
+      "context": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of extracted image regions score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's annotation work list on every refresh.",
+      "label": "spacr.active_learning.rank_by_uncertainty#3",
+      "source": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of crops score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's queue on every refresh.",
+      "source_sha256": "dabdaa6d8314ec225141189079e39e29bfd5734d40e7dd2b16e278ccf11a3010",
+      "translation": "बराबर स्कोर — डिफ़ॉल्ट रूप से बढ़ते पंक्ति इंडेक्स के अनुसार, या ``seed`` दिए जाने पर उससे आरंभ किया गया क्रमचय। दोनों नियतात्मक हैं: समान इनपुट और समान बीज हमेशा समान क्रम देते हैं। उस स्क्रीन पर बराबर स्कोर सामान्य हैं जहाँ हज़ारों क्रॉप का स्कोर ठीक 0.5 होता है; इसलिए बिना बीज की यादृच्छिक फेरबदल हर रिफ्रेश पर एनोटेटर की कतार बदल देगी।"
+    },
+    {
+      "context": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "label": "spacr.active_learning.rank_by_uncertainty#4",
+      "source": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "source_sha256": "6d8c7b26d88d99e41ca7f16e6aa0008df4a59df4eeb262dd4d5b49e76578f97c",
+      "translation": "NaN स्कोर हमेशा अंत में आते हैं, कभी किसी वास्तविक स्कोर से पहले नहीं। उन्हें हटाने के बजाय क्रम में रखा जाता है ताकि लौटाए गए इंडेक्स ``range(N)`` का क्रमचय बने रहें; :func:`build_queue` उन्हें हटाता है और उनकी संख्या बताता है।"
+    },
+    {
+      "context": "keep only the first ``limit`` indices.",
+      "label": "spacr.active_learning.rank_by_uncertainty#7",
+      "source": "keep only the first ``limit`` indices.",
+      "source_sha256": "b0e2a2b2fa8222d769fbde207cd947868989e80fa1962ce93e853fb2dd480d89",
+      "translation": "केवल पहले ``limit`` इंडेक्स रखें।"
+    },
+    {
+      "context": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "label": "spacr.active_learning.rank_by_uncertainty#8",
+      "source": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "source_sha256": "9a266bdc44a5e46dcb8fe8ecafc0b164aac16cd2a203f7c1de64c7677fc6442e",
+      "translation": "बराबर स्कोर का क्रम तय करने के लिए बीज; ``None`` इंडेक्स के आधार पर बराबरी सुलझाता है।"
+    },
+    {
+      "context": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "label": "spacr.active_learning.rank_by_uncertainty#9",
+      "source": "pre-computed scores to rank instead of recomputing from ``probs`` (used by :func:`build_queue`, and by anything ranking a :func:`disagreement` score).",
+      "source_sha256": "60a203b194ea2a68b707485a2bb8f31ffed529edfc2abe526d230f599168a235",
+      "translation": "``probs`` से दोबारा गणना करने के बजाय क्रमबद्ध करने के लिए पहले से गणना किए गए स्कोर (:func:`build_queue` और :func:`disagreement` स्कोर को क्रमबद्ध करने वाले किसी भी उपभोक्ता द्वारा प्रयुक्त)।"
+    },
+    {
+      "context": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "label": "spacr.bystanders.distance_to_infected#5",
+      "source": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "source_sha256": "f4955fea91e8d01f09c1491ed62c12d769252ae30e0cdcb69d0eb4965ef32470",
+      "translation": "इकाई अंतराल होने पर, संक्रमित कोशिका का मान 0 होता है और उसकी तुरंत पड़ोसी कोशिका का मान एक पिक्सेल कदम होता है, 0 नहीं। हर संक्रमित पिक्सेल पर फ़ील्ड शून्य है और बाहर की ओर बढ़ती है, इसलिए संक्रमित कोशिका से सीमा साझा करने वाली कोशिका का निकटतम पिक्सेल एक कदम दूर है: उस कोशिका पर न्यूनतम मान 1 है। केवल वही कोशिका 0 दिखाती है जिसके अपने पिक्सेल संक्रमित हों।"
+    },
+    {
+      "context": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "label": "spacr.bystanders.distance_to_infected#6",
+      "source": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "source_sha256": "b80d8e07733b3e29e06f32d0136a7d6495598eb13718e9efc33afad7d4538e9a",
+      "translation": "`surface_distance_transform` लक्ष्य मास्क के अंदर के बिंदुओं पर शून्य है, जिनमें ओवरलैप या भीतर समाए ऑब्जेक्ट भी शामिल हैं। दो अलग लेबल जो केवल सीमा साझा करते हैं, ओवरलैप नहीं करते, इसलिए पास वाली कोशिका एक पिक्सेल कदम दूर रहती है। ``spacing`` दिए जाने पर उस कदम की इकाइयाँ दी गई भौतिक इकाइयाँ होती हैं।"
+    },
+    {
+      "context": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "label": "spacr.bystanders.distance_to_infected#7",
+      "source": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "source_sha256": "ccb6f8d1fcabb1e3697f4d4e2c1fcb90ef3c0b7c410d9608543d25068e99588d",
+      "translation": "छवि में कोई संक्रमित कोशिका न होने पर हर दूरी ``inf`` होती है, 0 या NaN नहीं: अनंतता के कारण किसी भी परिमित पहुँच के लिए `distance <= reach` False रहता है।"
+    },
+    {
+      "context": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "label": "spacr.cli_plugins.main#1",
+      "source": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "source_sha256": "ef3340468a31bec678888399feaef8ef478d4cdd0a46060bdc030a8e29bd2cac",
+      "translation": "प्रोग्राम नाम के बिना तर्क; None होने पर ``sys.argv[1:]``।"
+    },
+    {
+      "context": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "label": "spacr.crashreport.network_allowed#1",
+      "source": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "source_sha256": "1551ce91fe0197a1136a52997702c1b3536df4016c7fbac51922b142224be6ba",
+      "translation": "``False`` तब, जब :data:`NO_NETWORK_ENV` का मान खाली न हो और ``0``, ``false``, ``no`` या ``off`` से अलग हो (अक्षरों का केस और आसपास की खाली जगह अनदेखी करके), या spaCR सुरक्षित मोड में चल रहा हो; अन्यथा ``True``।"
+    },
+    {
+      "context": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "label": "spacr.crops.percentile_pair#3",
+      "source": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "source_sha256": "580821dd351a1a8ec6ad2972bf87ef6ca07b9231b03cd4853ad0395a08ae656b",
+      "translation": "दो फ़्लोट मान। पार्स किए गए मान बढ़ते क्रम में रखे जाते हैं और ``[0, 100]`` तक सीमित किए जाते हैं; ``default`` से लिए गए वैकल्पिक मान बिना क्रमबद्ध या सीमित किए फ़्लोट में बदले जाते हैं।"
+    },
+    {
+      "context": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "label": "spacr.example_archives.extract_example_archive#1",
+      "source": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "source_sha256": "71525dbc0df03022634d3817723741a45fdae831f76d0fbfe4ca7505a08e370e",
+      "translation": "जहाँ उपलब्ध हो, सदस्यों को ``filter=\"data\"`` के साथ निकाला जाता है। साधारण ``extractall`` के विपरीत, फ़िल्टर ``../../etc/something`` जैसे पथ अस्वीकार करता है जो गंतव्य से बाहर निकलते हैं। बचे हुए पथ की जाँच से पहले शुरू के पथ विभाजक हटा दिए जाते हैं। डिवाइस नोड और निरपेक्ष या बाहरी लक्ष्यों के लिंक अस्वीकार किए जाते हैं; setuid सहित असुरक्षित अनुमति बिट साफ़ किए जाते हैं।"
+    },
+    {
+      "context": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "label": "spacr.example_archives.extract_example_archive#2",
+      "source": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "source_sha256": "3430add28ce2d3910c8670d6ef736138072ab32370a288c4bfb6b6e297e32449",
+      "translation": "``tarfile.data_filter`` उपलब्ध न होने पर, निकालने से पहले सभी सदस्यों की जाँच होती है: ``/`` से शुरू होने वाले या ``..`` पथ घटक वाले नाम अस्वीकार किए जाते हैं, और सामान्य फ़ाइलों तथा निर्देशिकाओं के अलावा अन्य सदस्य भी अस्वीकार किए जाते हैं।"
+    },
+    {
+      "context": "the folder to unpack into.",
+      "label": "spacr.example_archives.extract_example_archive#4",
+      "source": "the folder to unpack into.",
+      "source_sha256": "ad0a18b1f58801cd050298403c135495d56c3ac67d2c37aa0c191ec297c350e4",
+      "translation": "वह फ़ोल्डर जिसमें संग्रह खोलना है।"
+    },
+    {
+      "context": "The table the metadata is taken from.",
+      "label": "spacr.filters.choose_anchor#0",
+      "source": "The table the metadata is taken from.",
+      "source_sha256": "d06e73bcf3fd0d48e39dfafef89b8a97054fa57284539bd3ea815eeb71b3e3e0",
+      "translation": "वह तालिका जिससे मेटाडेटा लिया जाता है।"
+    },
+    {
+      "context": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "label": "spacr.filters.choose_anchor#1",
+      "source": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "source_sha256": "24da0dbc08504d590decba7cd3cb2687021b61996448c88e2af8f59af1b354db",
+      "translation": "\"आमतौर पर सेल हो, लेकिन सेल न हो तो दूसरी तालिका उपयोग की जाए\"। यह प्राथमिकता क्रम है: केवल नाभिक वाली डेटाबेस में नाभिक और केवल ऑर्गेनेल वाली डेटाबेस में ऑर्गेनेल आधार बनते हैं — किसी एक तालिका का होना अनिवार्य नहीं है।"
+    },
+    {
+      "context": "nothing to anchor on. The message lists the table names that were looked for.",
+      "label": "spacr.filters.choose_anchor#3",
+      "source": "nothing to anchor on. The message lists the table names that were looked for.",
+      "source_sha256": "9800b9a21d80eb5eda46e17578197cfbc8809da20b103e9819bf5ad163bce8c2",
+      "translation": "आधार बनाने के लिए कोई तालिका नहीं है। संदेश उन तालिका नामों की सूची देता है जिन्हें खोजा गया था।"
+    },
+    {
+      "context": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "label": "spacr.gene_measurement_compare.combine#3",
+      "source": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "source_sha256": "f47652f34901959f0b2abc91698f97fb5ac5c204b1939f01d816135280d3d911",
+      "translation": "``''``, ``'+'``, ``'-'``, ``'*'``, या ``'/'`` में से एक। खाली स्ट्रिंग ``first`` को संख्यात्मक रूपांतरण के बाद लौटाती है, जिसमें पार्स न हो सकने वाले मान अनुपस्थित कर दिए जाते हैं।"
+    },
+    {
+      "context": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "label": "spacr.gene_measurement_compare.combine#5",
+      "source": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "source_sha256": "bc95cc7c9be3f2f2ce228f18996f54ade5bbde10510b00df05f4f79f1abdc20d",
+      "translation": "``(values, name, dropped)``। ``name`` प्रदर्शित व्यंजक है और ``dropped`` शून्य या गैर-परिमित हरों की संख्या गिनता है।"
+    },
+    {
+      "context": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "label": "spacr.gene_measurement_compare.combine#8",
+      "source": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "source_sha256": "47517fc14efecf8f2fbbd2d60347faec1d35bbc19ef3fe03b106c8bc607903c4",
+      "translation": "शून्य से या गैर-परिमित हर से भाग देने पर अनुपस्थित मान मिलता है; इसे कभी शून्य या अनंत में नहीं बदला जाता।"
+    },
+    {
+      "context": "Return a named logger backed by a rotating file in the user's home.",
+      "label": "spacr.logger.configure_logger#0",
+      "source": "Return a named logger backed by a rotating file in the user's home.",
+      "source_sha256": "972a09e5e9811903cbe62f40656a3f5f1018428eb37003d9fb22f62040b3c82e",
+      "translation": "उपयोगकर्ता की होम डायरेक्टरी में रोटेट होने वाली फ़ाइल का उपयोग करने वाला नामित लॉगर लौटाएँ।"
+    },
+    {
+      "context": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "label": "spacr.logger.configure_logger#1",
+      "source": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "source_sha256": "b8623ced58502f411455f006de0659d0864c60e439ca1f43dd143fb2be7e9e7b",
+      "translation": "बार-बार कॉल करने पर यहाँ स्थापित हैंडलर फिर उपयोग किए जाते हैं, उनके स्तर अपडेट होते हैं और वैकल्पिक स्ट्रीम हैंडलर बाद में जोड़ा जा सकता है। कॉलर द्वारा स्थापित हैंडलर सुरक्षित रहते हैं; प्रारंभिक :class:`logging.NullHandler` फ़ाइल लॉगिंग नहीं माना जाता।"
+    },
+    {
+      "context": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "label": "spacr.logger.configure_logger#2",
+      "source": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "source_sha256": "6366b14045970cca5a187024a611426dcd54c72be8b2e945bceb9188c5a6c28a",
+      "translation": "प्राप्त करने या बनाने के लिए लॉगर का नाम। डिफ़ॉल्ट ``\"spacr\"``।"
+    },
+    {
+      "context": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "label": "spacr.logger.configure_logger#3",
+      "source": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "source_sha256": "ae6659b4488b0463829dddfac51a336ae5afe68f4f8b9511ac0eb70b79a41a07",
+      "translation": "``name`` के लिए पहले स्थापित फ़ाइल हैंडलर का फ़ाइल नाम, उपयोगकर्ता की होम डायरेक्टरी के अंतर्गत। बाद की कॉल वही फ़ाइल रखती हैं।"
+    },
+    {
+      "context": "Logging level applied to the logger and handlers installed by this function.",
+      "label": "spacr.logger.configure_logger#4",
+      "source": "Logging level applied to the logger and handlers installed by this function.",
+      "source_sha256": "b6f3aa1da6d1fdb7a5b712dee841ea537e2eae6ca73eaf3a1d7fe3c75ef79ee2",
+      "translation": "लॉगर और इस फ़ंक्शन द्वारा स्थापित हैंडलरों पर लागू लॉगिंग स्तर।"
+    },
+    {
+      "context": "When True, also attach a stderr stream handler.",
+      "label": "spacr.logger.configure_logger#5",
+      "source": "When True, also attach a stderr stream handler.",
+      "source_sha256": "6749fcd617ae80902b85a43e79427b584ae8475dcbcf6e23f62b3d559df23a0d",
+      "translation": "True होने पर stderr स्ट्रीम हैंडलर भी जोड़ें।"
+    },
+    {
+      "context": "Configured ``logging.Logger`` instance.",
+      "label": "spacr.logger.configure_logger#6",
+      "source": "Configured ``logging.Logger`` instance.",
+      "source_sha256": "607e97d36d4e8b21ac7067efa989d4ea5c490fd789efb8a777f8a26e7cd2ebba",
+      "translation": "कॉन्फ़िगर किया गया ``logging.Logger`` इंस्टेंस।"
+    },
+    {
+      "context": "Return available defaults overlaid with the caller's settings.",
+      "label": "spacr.macro.explicit_settings#0",
+      "source": "Return available defaults overlaid with the caller's settings.",
+      "source_sha256": "196b298cdc6659cf40438cc5510f21ac9582d5212912906f09c255fae23a64ae",
+      "translation": "उपलब्ध डिफ़ॉल्ट लौटाएँ, जिनके ऊपर कॉल करने वाले की सेटिंग लागू हों।"
+    },
+    {
+      "context": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset structured-data names can remain absent. Structured-data names are ordered defaults-first so a diff between two macros lines up.",
+      "label": "spacr.macro.explicit_settings#1",
+      "source": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset keys can remain absent. Keys are ordered defaults-first so a diff between two macros lines up.",
+      "source_sha256": "e2d660bd4a328a8bbaacf1c044fa32dad1c799378aa899c0b621ba8178d2c370",
+      "translation": "पहले उपलब्ध मॉड्यूल डिफ़ॉल्ट, फिर उपलब्ध रन-कंट्रोल डिफ़ॉल्ट (:func:`spacr.runctx.apply_defaults` — सबसे बढ़कर ``random_seed``, क्योंकि बिना निश्चित किए बीज ही ऐसा \"default\" है जो अपने आप संख्याएँ बदलता है), और फिर ऊपर कॉल करने वाले के मान। अनुपलब्ध डिफ़ॉल्ट स्रोत छोड़ दिए जाते हैं, इसलिए निर्धारित न की गई कुंजियाँ अनुपस्थित रह सकती हैं। कुंजियाँ डिफ़ॉल्ट-पहले क्रम में होती हैं, ताकि दो मैक्रो का अंतर साथ-साथ मेल खाए।"
+    },
+    {
+      "context": "the module / app key.",
+      "label": "spacr.macro.explicit_settings#2",
+      "source": "the module / app key.",
+      "source_sha256": "a249d3ac974513c387c7115658bde4f63aba24abef625ce1a2e56b5ee684939b",
+      "translation": "मॉड्यूल / ऐप की कुंजी।"
+    },
+    {
+      "context": "mask file or extensionless stem to resolve and load.",
+      "label": "spacr.mask_io.load_mask#1",
+      "source": "mask file or extensionless stem to resolve and load.",
+      "source_sha256": "f45e0454281e4d6e07c30ed3d5c2537b24234404d78af4ee34606c8890587934",
+      "translation": "मास्क फ़ाइल या बिना एक्सटेंशन का पथ, जिसे पहचानकर लोड करना है।"
+    },
+    {
+      "context": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "label": "spacr.mask_io.load_mask#2",
+      "source": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "source_sha256": "aa0ce9552d298dc00376439d4e3a0a4d42cc08a91c7cfd218d184e2d96ee03b4",
+      "translation": "पूरा पथ (``foo.tif`` / ``foo.npy``) या बिना एक्सटेंशन का पथ (``foo``) स्वीकार करता है — दूसरे मामले में tif → tiff → npy क्रम में जाँचकर पहली मौजूद फ़ाइल लोड की जाती है।"
+    },
+    {
+      "context": "uint16 array with the stored shape and rank unchanged.",
+      "label": "spacr.mask_io.load_mask#3",
+      "source": "uint16 array with the stored shape and rank unchanged.",
+      "source_sha256": "a9bc411d2c338bfb1e28c121191dd0e57a5e845c72689f5198e52f155c6a0fa7",
+      "translation": "uint16 ऐरे, जिसका संग्रहीत आकार और आयामों की संख्या अपरिवर्तित रहती है।"
+    },
+    {
+      "context": "Register the preprocessing callback ``hook(channel_arrays, context) -> np.ndarray``.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#0",
+      "source": "Register ``hook(channel_arrays, context) -> np.ndarray``.",
+      "source_sha256": "6e14e10968d36bfdc14fbefdfa5e82300431d8c7ec6ca69e593086405d382d00",
+      "translation": "प्रीप्रोसेसिंग कॉलबैक ``hook(channel_arrays, context) -> np.ndarray`` पंजीकृत करें।"
+    },
+    {
+      "context": "The hook is called once per microscope field of view, with the intensity image data channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-microscope field of view / illumination correction belongs.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#1",
+      "source": "The hook is called once per field, with the intensity channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-field / illumination correction belongs.",
+      "source_sha256": "b26dd2f160e07c06f7a60868397101dd30b0e7bb22ab9ec05752e32849266b5e",
+      "translation": "हुक को प्रत्येक फ़ील्ड के लिए एक बार बुलाया जाता है, जब ``settings['channels']`` में नामित तीव्रता चैनल पहले से चुने जा चुके हों और किसी भी फ़ीचर की गणना शुरू न हुई हो। उसे समान आकार और dtype वाला ऐरे लौटाना चाहिए। फ्लैट-फ़ील्ड या प्रकाश-सुधार यहीं किया जाता है।"
+    },
+    {
+      "context": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#2",
+      "source": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "source_sha256": "a5bd9988b7f44128748535b4669092ed0fc188109c78b593a855c15e58cd22df",
+      "translation": "कॉल करने योग्य ऑब्जेक्ट। ``context`` एक :class:`PreprocessingContext` है।"
+    },
+    {
+      "context": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#3",
+      "source": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "source_sha256": "621576b23680b4fa246237ea9459520e2038ee3140dd9afa944e641dce61c9a5",
+      "translation": "रजिस्ट्री कुंजी। डिफ़ॉल्ट ``module.qualname`` है; वही कुंजी (या वही फ़ंक्शन ऑब्जेक्ट) फिर पंजीकृत करने पर दूसरी प्रविष्टि जोड़ने के बजाय मौजूदा प्रविष्टि बदल जाती है।"
+    },
+    {
+      "context": "lower runs first; ties keep registration order.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#4",
+      "source": "lower runs first; ties keep registration order.",
+      "source_sha256": "1fe0a3edb5a55dcde3a25a0f863228acdad4aa883ad56520abafa0a6d274a800",
+      "translation": "छोटे मान पहले चलते हैं; बराबर मानों के लिए पंजीकरण क्रम बना रहता है।"
+    },
+    {
+      "context": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#6",
+      "source": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "source_sha256": "1cd102cf16c134db59c5867ba43e9b1cfecb1a65217dc22e66931fe712d2eb9f",
+      "translation": "यदि ``hook`` कॉल करने योग्य न हो, या ``priority`` को पूर्णांक में बदलने पर ``TypeError`` या ``ValueError`` उठे।"
+    },
+    {
+      "context": "label or binary image containing the target objects.",
+      "label": "spacr.object_distances.surface_distance_transform#1",
+      "source": "label or binary image containing the target objects.",
+      "source_sha256": "a8e9003d0691588b09d25e8d30dc56a204ff60af2d478efaee611f7b83d6dcaf",
+      "translation": "लक्ष्य वस्तुओं वाली लेबल छवि या बाइनरी छवि।"
+    },
+    {
+      "context": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "label": "spacr.object_distances.surface_distance_transform#2",
+      "source": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "source_sha256": "e22b38cacfe2fa1eb2d039582c0f3d0ddae807dd9a805b064eb50382f5b110f6",
+      "translation": "ऑब्जेक्ट के अंदर परिणाम शून्य होता है। `distance_transform_edt` निकटतम शून्य तक की दूरी मापता है, इसलिए इसे उलटे मास्क पर चलाया जाता है: किसी भी लेबल वाले पिक्सेल पर परिणाम 0 होता है और बाहर की ओर बढ़ता है। दूसरे ऑब्जेक्ट के सेंट्रॉइड पर पढ़ा गया मान उस बिंदु से निकटतम लेबल वाले पिक्सेल तक की दूरी मापता है; यह तभी शून्य होता है जब वह बिंदु लक्ष्य मास्क के अंदर हो।"
+    },
+    {
+      "context": "Microscope image field a canvas into overlapping windows, in raster order.",
+      "label": "spacr.ops_compose.windows_over#0",
+      "source": "Tile a canvas into overlapping windows, in raster order.",
+      "source_sha256": "d09520c0f1100b5706041dffba94e97b464724d398a47796fac909616e1d18e3",
+      "translation": "कैनवास को रैस्टर क्रम में ओवरलैप करती विंडो में बाँटें।"
+    },
+    {
+      "context": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "label": "spacr.ops_compose.windows_over#1",
+      "source": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "source_sha256": "198c4990eeeb51728b304877b8e0a4ce1ccc126e469ea58a76f731ebd287b7dc",
+      "translation": "विंडो ओवरलैप करती हैं ताकि उनके आर-पार वस्तुओं को जोड़ा जा सके: विंडो की सीमा पार करती वस्तु एक ही वस्तु है, और जोड़ के आर-पार उसका मिलान तभी हो सकता है जब दोनों विंडो में वह पूरी दिखे। ओवरलैप सबसे बड़ी वस्तु से अधिक होना चाहिए, केवल छूना पर्याप्त नहीं है।"
+    },
+    {
+      "context": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "label": "spacr.ops_compose.windows_over#5",
+      "source": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "source_sha256": "c2a83d9bbaa1715459f0353abae440433039c789f3c5b060711887fa8d507e33",
+      "translation": "जब विंडो का आकार धनात्मक न हो, या ओवरलैप ऋणात्मक हो अथवा विंडो से छोटा न हो।"
+    },
+    {
+      "context": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "label": "spacr.ops_merge.match_cells#1",
+      "source": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "source_sha256": "a73fba1e1f7f85dfd4b82c53b1f1c04c6ccc1c152a445edd59cc63330e2c7f06",
+      "translation": "कोई जोड़ी तभी बनी रहती है जब दोनों कोशिकाएँ एक-दूसरे की निकटतम पड़ोसी हों और ``threshold`` के भीतर हों। जब कई कोशिकाएँ एक ही साथी को चुनती हैं, तो उस साथी की निकटतम कोशिका ही बनी रह सकती है।"
+    },
+    {
+      "context": "run the two nearest-neighbour searches on a GPU when one is usable. A microplate sample position carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "label": "spacr.ops_merge.match_cells#6",
+      "source": "run the two nearest-neighbour searches on a GPU when one is usable. A well carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "source_sha256": "0b6bbdd57bdd9d5bc080a86df76055777f082b0d01901db53cb230a72fafd049",
+      "translation": "उपयोग योग्य GPU होने पर उस पर निकटतम पड़ोसियों की दोनों खोजें चलाएँ। एक वेल के प्रत्येक पक्ष में दसियों हज़ार नाभिक होते हैं और खोज दो बार होती है, हर दिशा में एक बार; `spacr.ops_accel.nearest_neighbours` स्रोत बिंदुओं को खंडों में लेकर पूरे लक्ष्य समूह के विरुद्ध संसाधित करता है।"
+    },
+    {
+      "context": "Re-solve a seed transform from the correspondences it implies.",
+      "label": "spacr.ops_phenotype.refine_similarity#0",
+      "source": "Re-solve a seed transform from the correspondences it implies.",
+      "source_sha256": "47318d012262c5cac2b95a8a4628dec163e7b5a021a45c2c69d273a5c241188f",
+      "translation": "प्रारंभिक रूपांतरण से मिलने वाले संगत बिंदु-युग्मों से उस रूपांतरण को फिर हल करें।"
+    },
+    {
+      "context": "``(M, 2)`` points in the frame being moved to.",
+      "label": "spacr.ops_phenotype.refine_similarity#2",
+      "source": "``(M, 2)`` points in the frame being moved to.",
+      "source_sha256": "8abeef48b7baf15b7c0efd02da9485b04c62ef47776a639e2dd4b34beac9775a",
+      "translation": "``(M, 2)`` बिंदु लक्ष्य निर्देशांक फ़्रेम में।"
+    },
+    {
+      "context": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "label": "spacr.ops_phenotype.refine_similarity#5",
+      "source": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "source_sha256": "e70f8f1189e676ed7c87265d11c7d54d2707accc8235ccc51343cbfb58a86243",
+      "translation": "दो अधिक विस्तृत मिलान दौरों के बाद ``radius`` पर अंतिम हल कितनी बार फिर से निकालने का प्रयास करना है; इसे पूर्णांक में बदला जाता है और कम से कम एक रखा जाता है।"
+    },
+    {
+      "context": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "label": "spacr.ops_phenotype.refine_similarity#6",
+      "source": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "source_sha256": "2fb35be5eb1a1121dccc7253fad27fe0f02be2914a638ffe8c9471562ba086dc",
+      "translation": "अंतिम हल किए गए दौर से ``(scale, rotation, translation, source_in, target_in, distances)``, या यदि किसी भी दौर का हल न निकल सके तो None। बाद के किसी दौर में बहुत कम संगत बिंदु हों या फ़िट का हल न निकले, तो पिछला परिणाम लौटाया जाता है।"
+    },
+    {
+      "context": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "label": "spacr.ops_phenotype.refine_similarity#7",
+      "source": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "source_sha256": "df1c49dcfbc3ba9fc85c12820e01ca712a3f2274a659fb12da7ab0bc3208278a",
+      "translation": "प्रारंभिक रूपांतरण गलत हो सकता है। विरल डेटा पर त्रिकोणीय सहमति में स्केल का विचलन 44 % तक होता है, लेकिन इतना बड़ा विचलन भी घूर्णन केंद्र के पास के बिंदुओं को सही स्थान से कुछ पिक्सेल के भीतर रखता है, जिससे हल करने के लिए पर्याप्त संगत बिंदु-युग्म मिलते हैं। पहले दो दौरों में मिलान चार और दो गुना ``radius`` पर होता है, फिर इसे ``radius`` तक सीमित किया जाता है।"
+    },
+    {
+      "context": "Register a microplate sample position's microscope image fields against each other and solve their positions.",
+      "label": "spacr.ops_stitch.stitch_well#0",
+      "source": "Register a well's tiles against each other and solve their positions.",
+      "source_sha256": "8685cd118c361d094485bd9688d22fc5f721251322921ba426b74cf45e079b0c",
+      "translation": "एक वेल के छवि-खंडों का आपस में पंजीकरण करके उनकी स्थितियाँ हल करें।"
+    },
+    {
+      "context": "One well at a time, and one microscope image field pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain microscope image field arrays.",
+      "label": "spacr.ops_stitch.stitch_well#1",
+      "source": "One well at a time, and one tile pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain tile arrays.",
+      "source_sha256": "fb64a37380ff63413a77ef01933326dea16185caabc673465f919f2cfa5b435d",
+      "translation": "एक समय में एक वेल, और उसके भीतर एक समय में टाइलों की एक जोड़ी। ``tiles`` कॉल करने योग्य होने पर इस फ़ंक्शन को पूरा वेल मेमोरी में रखने की ज़रूरत नहीं होती। कॉल करने वाला तय करता है कि क्या कैश करना है और क्या फिर पढ़ना है; उसके कैश में टाइल ऐरे फिर भी बने रह सकते हैं।"
+    },
+    {
+      "context": "the stitch, its edges and its residuals.",
+      "label": "spacr.ops_stitch.stitch_well#10",
+      "source": "the stitch, its edges and its residuals.",
+      "source_sha256": "252d4644a262472a4e8fbba22aff93a84db091e4ddf5ee34348032398cd3f183",
+      "translation": "सिली हुई छवि, उसकी एज और उसके अवशेष।"
+    },
+    {
+      "context": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-microscope field of view well.",
+      "label": "spacr.ops_stitch.stitch_well#3",
+      "source": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-field well.",
+      "source_sha256": "3bda58600c0224b0c6e310282c6ab5f22ba37a7d1f88b2cd0ae4fac5100228bb",
+      "translation": "वेल का मॉडल। None वृत्त को ``sites`` पर फिट करता है या, वह विफल होने पर, मापे गए 333-फ़ील्ड वेल पर।"
+    },
+    {
+      "context": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "label": "spacr.ops_stitch.stitch_well#4",
+      "source": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "source_sha256": "1d267cfe58b8d0f7e6889736d54d4b2006a6eeb6c9bb61d277788e32f26f3100",
+      "translation": "रैस्टर का ओवरलैप, पिक्सेल में। दिए जाने पर यह पंजीकरण की अपेक्षा और लेआउट के कैनवास की गणना तय करता है; न दिए जाने पर दोनों कमज़ोर विकल्पों पर लौटते हैं, इसलिए इसे दें।"
+    },
+    {
+      "context": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real laboratory microplate it cannot.",
+      "label": "spacr.ops_stitch.stitch_well#5",
+      "source": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real plate it cannot.",
+      "source_sha256": "74f37b58be389068e4719c1c5bba4afe0684c33fbc1f7134de30e046bf8f7d0a",
+      "translation": "लेआउट के अनुमान से रैस्टर की दिशा में कोई एज कितनी दूर होकर भी स्वीकार की जा सकती है। वास्तविक वेल में इसी स्वीकृति का उपयोग हुआ -- 624 में से 624 -- और इसके बिना पीक अनुपात निर्णय करता है, जो वास्तविक प्लेट पर ऐसा नहीं कर सकता।"
+    },
+    {
+      "context": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "label": "spacr.ops_stitch.stitch_well#6",
+      "source": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "source_sha256": "32273cb219622d2466229e546b8c536dc2b6e7ef546a04ee711bd3474e70ea3d",
+      "translation": "अनुप्रस्थ दिशा में वह कितनी दूर हो सकती है। स्टेज का तिरछापन वास्तविक और स्थिर है -- मापी गई प्लेट पर 9 px -- इसलिए यह सहनशीलता से अलग संख्या है। None `spacr.ops_register.SKEW_PX` का उपयोग करता है।"
+    },
+    {
+      "context": "which sites to place. None uses every site the layout holds.",
+      "label": "spacr.ops_stitch.stitch_well#8",
+      "source": "which sites to place. None uses every site the layout holds.",
+      "source_sha256": "4cac791fbfc0d1c08462e1bb9ae01a807ccbc67deba1fb050e34c85e377c8fa8",
+      "translation": "किन साइट को रखना है। None लेआउट की सभी साइट का उपयोग करता है।"
+    },
+    {
+      "context": "The subset of a picture-settings key-value mapping the extracted image region layer understands.",
+      "label": "spacr.picture_settings.to_crop_settings#0",
+      "source": "The subset of a picture-settings dict the crop layer understands.",
+      "source_sha256": "4ba3880ce3b47e217b0ce4670445bcdc33a5b60745313236e980158f160f8eae",
+      "translation": "चित्र-सेटिंग शब्दकोश का वह उपसमुच्चय जिसे क्रॉप परत समझती है।"
+    },
+    {
+      "context": "a mapping in the extracted image region layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "label": "spacr.picture_settings.to_crop_settings#2",
+      "source": "a mapping in the crop layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "source_sha256": "382d5d7ff9b3e35b66bed49236dac0c4e59ff119438e3b13d3dc3bb87325669d",
+      "translation": "क्रॉप परत की अपनी शब्दावली में मैपिंग, जिसमें लागू निर्धारित मानों के साथ मोड से निकली सेटिंग भी होती हैं, जैसे स्ट्रीमिंग इनपुट के लिए ``stream_method``।"
+    },
+    {
+      "context": "Whether a backend is choosable right now, and the reason if not.",
+      "label": "spacr.regression_backends.backend_status#0",
+      "source": "Whether a backend is choosable right now, and the reason if not.",
+      "source_sha256": "577c05963cb3bdb6d3a781b246b584825ca8dc05ad00efcf43b0a448a680221c",
+      "translation": "कोई बैकएंड अभी चुना जा सकता है या नहीं, और नहीं तो उसका कारण।"
+    },
+    {
+      "context": "backend name or label.",
+      "label": "spacr.regression_backends.backend_status#1",
+      "source": "backend name or label.",
+      "source_sha256": "a31023643fe77eb56492299ba7b81b611eec2c71540d7fdf492b194fef1d5819",
+      "translation": "बैकएंड का नाम या लेबल।"
+    },
+    {
+      "context": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "label": "spacr.regression_backends.backend_status#2",
+      "source": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "source_sha256": "a19b21c019f79ac88342e571f3bfb45d2308403dcdb2b996443a40fc172c25cc",
+      "translation": "माँगी गई रिग्रेशन फ़ैमिली। ``None`` का अर्थ है कि फ़ैमिली प्रतिक्रिया से चुनी जाएगी, इसलिए कुछ विशेष फ़ैमिली तक सीमित बैकएंड अक्षम कर दिए जाते हैं।"
+    },
+    {
+      "context": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "label": "spacr.regression_backends.backend_status#4",
+      "source": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "source_sha256": "a407a86b4200605b8cb648c5dc8649400d7c1c5ad559f2f8ff423a0386585c01",
+      "translation": "``short_reason`` उसी अस्वीकृति का कॉम्बो प्रविष्टि में समाने वाला छोटा रूप है। Qt किसी आइटम का टूलटिप आवश्यकता होने पर और केवल पॉपअप खुला होने के दौरान दिखाता है, इसलिए छोटा रूप प्रविष्टि के अपने पाठ और उसके नीचे के बॉक्स में रखा जाता है।"
+    },
+    {
+      "context": "Return the ``limit`` most-recent runs newest-first.",
+      "label": "spacr.run_journal.recent_runs#0",
+      "source": "Return the ``limit`` most-recent runs newest-first.",
+      "source_sha256": "372ebf2e5dc2ed1883450d955b46d04837b4b3d95e4da558a0d5afd895e5c3d4",
+      "translation": "सबसे हाल के ``limit`` रन लौटाएँ, नवीनतम पहले।"
+    },
+    {
+      "context": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "label": "spacr.run_journal.recent_runs#1",
+      "source": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "source_sha256": "9bf7ccb4532862aec95d5bb545f655e5bc50ec92b98e5b505c4e7272b54bff01",
+      "translation": "मैनिफ़ेस्ट के ``start_utc`` टाइमस्टैम्प के क्रम में (जिसे :class:`datetime.datetime` के रूप में पार्स किया जाता है), ताकि घड़ी के एक ही सेकंड में खोले गए रन भी सही क्रम में रहें — केवल फ़ोल्डर नाम सेकंड तक सीमित होते हैं और बराबरी पैदा करते हैं। नाम के अनुसार केवल नवीनतम ``max(limit * 4, limit + 64)`` फ़ोल्डर ही खोले जाते हैं (गैर-ऋणात्मक ``limit`` के लिए), जिससे मैनिफ़ेस्ट पढ़ने की संख्या सीमित रहती है, जबकि सभी रन-फ़ोल्डर नाम फिर भी गिने और क्रमबद्ध किए जाते हैं।"
+    },
+    {
+      "context": "Pass ``None`` for every processing session, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-processing-session journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "label": "spacr.run_journal.recent_runs#2",
+      "source": "Pass ``None`` for every run, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-run journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "source_sha256": "b13cbd3a33a995b2fde6c523204545232f7538e01366b26b4b1730bd75b43984",
+      "translation": "सभी रन पाने के लिए ``None`` दें, कभी नकारात्मक संख्या नहीं। अंत में कटौती ``all_entries[:limit]`` है, इसलिए ``limit=-1`` पूरी रन पत्रिका पढ़कर सबसे पुरानी प्रविष्टि छोड़कर बाकी सब लौटाता है -- 2026-09-03 को 11,027 रन की पत्रिका पर देखा गया, जिसमें 11,026 लौटे। ``manifest.json`` न रखने वाला फ़ोल्डर चुपचाप छोड़ दिया जाता है; जिसका मैनिफ़ेस्ट पढ़कर समझा न जा सके, उसे लॉग चेतावनी के साथ छोड़ा जाता है।"
+    },
+    {
+      "context": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "label": "spacr.schema.parse_int_token#0",
+      "source": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "source_sha256": "6fc290caa9ae3a7e9a083d56fcdfec9b78debeee4d9e0503f8327d50bb6aeea8",
+      "translation": "``token`` द्वारा दर्शाया गया पूर्णांक लौटाएँ, या अमान्य इनपुट के लिए ``None`` लौटाएँ; ``0`` मान्य है।"
+    },
+    {
+      "context": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "label": "spacr.schema.parse_int_token#1",
+      "source": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "source_sha256": "9f5217f0d0755c5154b71525cbec27c4902619716208cbb04314b3b29548be33",
+      "translation": "यह ``utils._safe_int_convert`` की जगह लेता है, जो ऐसा टोकन मिलने पर ``0`` लौटाता है जिसमें पूर्णांक नहीं है; ``0`` एक वैध फ़ील्ड आईडी है, इसलिए इस परिणाम में त्रुटि का आगे पता नहीं चल सकता। ``None`` फ़ील्ड आईडी नहीं है, इसलिए हर कॉलर को तय करना चाहिए कि क्या करना है — :func:`field_id` देखें।"
+    },
+    {
+      "context": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a workflow that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "label": "spacr.schema.parse_int_token#2",
+      "source": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a pipeline that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "source_sha256": "273295986927e4c02d10925bcdfdfbd945cc4b84424a3c16b04d744bc4830d8b",
+      "translation": "विक्रेता के उपसर्ग पहचाने जाते हैं, क्योंकि वे उसी संख्या को लिखने का तरीका हैं, कोई अलग संख्या नहीं: ImageXpress की साइट ``s3``, CellVoyager का फ़ील्ड ``F003`` और केवल ``3`` एक ही फ़ील्ड हैं। इन्हें तीन अलग आईडी देने वाला कार्यप्रवाह उतना ही गलत होगा जितना सभी को ``f0`` देने वाला।"
+    },
+    {
+      "context": "anything — a string, an int, a float, ``None``.",
+      "label": "spacr.schema.parse_int_token#3",
+      "source": "anything — a string, an int, a float, ``None``.",
+      "source_sha256": "a39169c136bf0131f6c47f1c82cc58a8504578b701979130dac75f0c63279bac",
+      "translation": "कुछ भी — स्ट्रिंग, int, float, ``None``।"
+    },
+    {
+      "context": "the integer, or ``None`` when the token holds no integer.",
+      "label": "spacr.schema.parse_int_token#5",
+      "source": "the integer, or ``None`` when the token holds no integer.",
+      "source_sha256": "b53735ae462022ed95cb9091374298afa3e4317dca41b3da99ce8190f4195ef4",
+      "translation": "पूर्णांक, या टोकन में पूर्णांक न होने पर ``None``।"
+    },
+    {
+      "context": "The column names a table would be read with, using a schema or header when possible.",
+      "label": "spacr.tabular.table_columns#0",
+      "source": "The column names a table would be read with, using a schema or header when possible.",
+      "source_sha256": "d63e4ef5d0147a80fc1ec52ea78c38f9839fbe127c1ab0c5a7895ebac126b13b",
+      "translation": "वे स्तंभ नाम जिनके साथ तालिका पढ़ी जाएगी; जहाँ संभव हो स्कीमा या हेडर का उपयोग किया जाता है।"
+    },
+    {
+      "context": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "label": "spacr.tabular.table_columns#2",
+      "source": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "source_sha256": "67dc632e0f9d718c806a22f8b86900873359c7e358d4b02c9f6bd381f7d4c849",
+      "translation": "एक में समेटा गया डुप्लिकेट दो बार सूचीबद्ध **नहीं** होता: ``well`` और ``wellID`` दोनों दिखाने वाला चयनकर्ता उपयोगकर्ता को ऐसा स्तंभ चुनने देगा जो रन को नहीं मिलेगा।"
+    },
+    {
+      "context": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "label": "spacr.workspace.section_states#2",
+      "source": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "source_sha256": "92fa271fc7ee7c0f6e145cad34cd0739690e8c7ea98c8f79023ee2587dd760cb",
+      "translation": "``(sections, problems)``। ``None`` वाले मान, जिनमें कॉल करने योग्य प्रदाता के परिणाम भी शामिल हैं, बिना संदेश के छोड़ दिए जाते हैं। अन्य प्रदाता जो अपवाद उठाते हैं या उपयोग योग्य स्थिति नहीं देते, छोड़ दिए जाते हैं और ``problems`` में वर्णित होते हैं; बाकी अनुभाग फिर भी एकत्र किए जाते हैं।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

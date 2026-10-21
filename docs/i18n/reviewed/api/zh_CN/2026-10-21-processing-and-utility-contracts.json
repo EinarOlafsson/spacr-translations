@@ -1,0 +1,574 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Ordering is total and reproducible:",
+      "label": "spacr.active_learning.rank_by_uncertainty#1",
+      "source": "Ordering is total and reproducible:",
+      "source_sha256": "a1f260b08589b8ff9ce575a20a067199bac920505a8f0f7cb3a5b7ef52238e8c",
+      "translation": "排序是全序且可复现的："
+    },
+    {
+      "context": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "label": "spacr.active_learning.rank_by_uncertainty#10",
+      "source": "``(K,)`` int array of row indices, with ``K = N`` when no limit is given and ``K = min(N, max(0, int(limit)))`` otherwise. ``N`` is the number of computed or supplied scores.",
+      "source_sha256": "35d95e9b5eac683fc9cbe8b5518c555fdef6f7ca5ddb5e5162041560d224c43b",
+      "translation": "形状为 ``(K,)`` 的行索引整数数组；未指定上限时 ``K = N``，否则 ``K = min(N, max(0, int(limit)))``。``N`` 为计算得到或提供的分数数量。"
+    },
+    {
+      "context": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of extracted image regions score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's annotation work list on every refresh.",
+      "label": "spacr.active_learning.rank_by_uncertainty#3",
+      "source": "ties — row index ascending by default, or a permutation seeded with ``seed`` when one is given. Both are deterministic: the same inputs and the same seed always give the same order. Ties are the normal case on a screen where thousands of crops score exactly 0.5, so an unseeded shuffle there would reshuffle the annotator's queue on every refresh.",
+      "source_sha256": "dabdaa6d8314ec225141189079e39e29bfd5734d40e7dd2b16e278ccf11a3010",
+      "translation": "并列 — 默认按行索引升序排列，或在提供 ``seed`` 时使用以其为种子的置换。两种方式都是确定性的：相同的输入和种子总是给出相同顺序。在数千个裁剪图像得分恰为 0.5 的界面中，并列是常态，因此不设种子的随机打乱会在每次刷新时重排标注者的队列。"
+    },
+    {
+      "context": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "label": "spacr.active_learning.rank_by_uncertainty#4",
+      "source": "NaN scores sort last, always, and never in front of a real one. They are ranked rather than dropped so the returned indices stay a permutation of ``range(N)``; :func:`build_queue` drops them and says how many.",
+      "source_sha256": "6d8c7b26d88d99e41ca7f16e6aa0008df4a59df4eeb262dd4d5b49e76578f97c",
+      "translation": "NaN 得分始终排在最后，绝不会排在实数得分之前。它们参与排序而不被删除，使返回的索引仍是 ``range(N)`` 的一个置换；:func:`build_queue` 会删除它们并报告数量。"
+    },
+    {
+      "context": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "label": "spacr.active_learning.rank_by_uncertainty#6",
+      "source": "name from :data:`UNCERTAINTY_MEASURES` or a callable.",
+      "source_sha256": "8603d299dfc141b09897b78a519c578302a9691c826da8a2d8525760be36e2c5",
+      "translation": ":data:`UNCERTAINTY_MEASURES` 中的名称，或一个可调用对象。"
+    },
+    {
+      "context": "keep only the first ``limit`` indices.",
+      "label": "spacr.active_learning.rank_by_uncertainty#7",
+      "source": "keep only the first ``limit`` indices.",
+      "source_sha256": "b0e2a2b2fa8222d769fbde207cd947868989e80fa1962ce93e853fb2dd480d89",
+      "translation": "只保留前 ``limit`` 个索引。"
+    },
+    {
+      "context": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "label": "spacr.active_learning.rank_by_uncertainty#8",
+      "source": "seed for tie-breaking; ``None`` breaks ties on index.",
+      "source_sha256": "9a266bdc44a5e46dcb8fe8ecafc0b164aac16cd2a203f7c1de64c7677fc6442e",
+      "translation": "用于打破并列的种子；``None`` 按索引处理并列。"
+    },
+    {
+      "context": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "label": "spacr.bystanders.distance_to_infected#5",
+      "source": "With unit spacing, an infected cell reads 0 and its immediate neighbour reads one pixel step, not 0. The field is zero on every infected pixel and grows outward, so a cell that shares a border with an infected one has its nearest pixel one step away: the minimum over that cell is 1. Only a cell whose own pixels are infected reads 0.",
+      "source_sha256": "f4955fea91e8d01f09c1491ed62c12d769252ae30e0cdcb69d0eb4965ef32470",
+      "translation": "采用单位间距时，感染细胞的值为 0，紧邻细胞的值为一个像素步长，而不是 0。场在每个感染像素上为零，并向外增大，因此与感染细胞共享边界的细胞，其最近像素相距一个步长：该细胞上的最小值为 1。只有自身像素被感染的细胞才为 0。"
+    },
+    {
+      "context": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "label": "spacr.bystanders.distance_to_infected#6",
+      "source": "`surface_distance_transform` is zero at points inside the target mask, including overlaps or contained objects. Two disjoint labels that merely share a border do not overlap, so an adjacent cell remains one pixel step away. With ``spacing``, that step carries the supplied physical units.",
+      "source_sha256": "b80d8e07733b3e29e06f32d0136a7d6495598eb13718e9efc33afad7d4538e9a",
+      "translation": "`surface_distance_transform` 在目标掩码内部的点上为零，包括重叠或被包含的对象。仅共享边界的两个互不相交标签并不重叠，因此相邻细胞仍相距一个像素步长。提供 ``spacing`` 时，该步长采用所提供的物理单位。"
+    },
+    {
+      "context": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "label": "spacr.bystanders.distance_to_infected#7",
+      "source": "Every distance is ``inf`` when the image has no infected cell, rather than 0 or NaN: infinity keeps `distance <= reach` False for every finite reach.",
+      "source_sha256": "ccb6f8d1fcabb1e3697f4d4e2c1fcb90ef3c0b7c410d9608543d25068e99588d",
+      "translation": "图像没有感染细胞时，所有距离都为 ``inf``，而非 0 或 NaN：无穷大使 `distance <= reach` 对每个有限作用范围都保持 False。"
+    },
+    {
+      "context": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "label": "spacr.cli_plugins.main#1",
+      "source": "arguments without the program name; ``sys.argv[1:]`` when None.",
+      "source_sha256": "ef3340468a31bec678888399feaef8ef478d4cdd0a46060bdc030a8e29bd2cac",
+      "translation": "不含程序名称的参数；为 None 时使用 ``sys.argv[1:]``。"
+    },
+    {
+      "context": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "label": "spacr.crashreport.network_allowed#1",
+      "source": "``False`` when :data:`NO_NETWORK_ENV` has a nonempty value other than ``0``, ``false``, ``no`` or ``off`` (ignoring case and surrounding whitespace), or spaCR runs in safe mode; ``True`` otherwise.",
+      "source_sha256": "1551ce91fe0197a1136a52997702c1b3536df4016c7fbac51922b142224be6ba",
+      "translation": "以下情况为 ``False``：:data:`NO_NETWORK_ENV` 的值非空且不是 ``0``、``false``、``no`` 或 ``off``（忽略大小写及首尾空白），或 spaCR 以安全模式运行；否则为 ``True``。"
+    },
+    {
+      "context": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "label": "spacr.crops.percentile_pair#3",
+      "source": "two floats. Parsed values are sorted in ascending order and clipped to ``[0, 100]``; fallback values from ``default`` are converted to floats without sorting or clipping.",
+      "source_sha256": "580821dd351a1a8ec6ad2972bf87ef6ca07b9231b03cd4853ad0395a08ae656b",
+      "translation": "两个浮点数。解析出的值按升序排列并限制在 ``[0, 100]`` 内；来自 ``default`` 的回退值仅转换为浮点数，不排序也不限制范围。"
+    },
+    {
+      "context": "This parser treats the values as percentiles rather than channel indices; numeric values such as ``0``, ``1`` and ``2`` therefore retain their literal meaning.",
+      "label": "spacr.crops.percentile_pair#4",
+      "source": "This parser treats the values as percentiles rather than channel indices; numeric values such as ``0``, ``1`` and ``2`` therefore retain their literal meaning.",
+      "source_sha256": "0c46e6001e74af4febb6665a33ff09c7f3db86d132975c601c6f9fb694c62a6f",
+      "translation": "此解析器将数值视为百分位，而非通道索引；因此 ``0``、``1`` 和 ``2`` 等数值保留其字面含义。"
+    },
+    {
+      "context": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "label": "spacr.example_archives.extract_example_archive#1",
+      "source": "Where available, members are extracted with ``filter=\"data\"``. Unlike a plain ``extractall``, the filter rejects paths such as ``../../etc/something`` that would leave the destination. Leading path separators are stripped before the remaining path is checked. Device nodes and links to absolute or outside targets are rejected; unsafe permission bits, including setuid, are cleared.",
+      "source_sha256": "71525dbc0df03022634d3817723741a45fdae831f76d0fbfe4ca7505a08e370e",
+      "translation": "可用时，使用 ``filter=\"data\"`` 提取归档成员。与直接使用 ``extractall`` 不同，该过滤器会拒绝 ``../../etc/something`` 这类会超出目标目录的路径。在检查剩余路径前，会先移除开头的路径分隔符。设备节点以及指向绝对路径或目标目录外部的链接会被拒绝；包括 setuid 在内的不安全权限位会被清除。"
+    },
+    {
+      "context": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "label": "spacr.example_archives.extract_example_archive#2",
+      "source": "When ``tarfile.data_filter`` is unavailable, all members are checked before extraction: names starting with ``/`` or containing a ``..`` path component are refused, as are members other than regular files and directories.",
+      "source_sha256": "3430add28ce2d3910c8670d6ef736138072ab32370a288c4bfb6b6e297e32449",
+      "translation": "当 ``tarfile.data_filter`` 不可用时，提取前会检查所有成员：拒绝名称以 ``/`` 开头或包含 ``..`` 路径分量的成员，也拒绝普通文件和目录以外的成员。"
+    },
+    {
+      "context": "the folder to unpack into.",
+      "label": "spacr.example_archives.extract_example_archive#4",
+      "source": "the folder to unpack into.",
+      "source_sha256": "ad0a18b1f58801cd050298403c135495d56c3ac67d2c37aa0c191ec297c350e4",
+      "translation": "要解压到的文件夹。"
+    },
+    {
+      "context": "how many members were written.",
+      "label": "spacr.example_archives.extract_example_archive#5",
+      "source": "how many members were written.",
+      "source_sha256": "ff6e56ba4d21304a3416de04a74b07d815309d9ee0804cffe53e0fdd5efbe374",
+      "translation": "写入的归档成员数量。"
+    },
+    {
+      "context": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "label": "spacr.filters.choose_anchor#1",
+      "source": "\"usually be cell, but if cell does not exist then another table should be used\". Preference order, so a database of only nuclei anchors on nuclei and a database of only organelles on organelles -- there is no table that has to be present.",
+      "source_sha256": "24da0dbc08504d590decba7cd3cb2687021b61996448c88e2af8f59af1b354db",
+      "translation": "“通常使用细胞表，但若不存在细胞表，就使用另一张表。”这是优先顺序，因此只有细胞核的数据库以细胞核表为基准，只有细胞器的数据库以细胞器表为基准；没有哪一张表必须存在。"
+    },
+    {
+      "context": "the object tables actually present, as returned by :func:`object_tables`. Only membership is tested -- the preference comes from the order of :data:`OBJECT_TABLES`, not from the order given here, so putting ``nucleus`` first does not make it the anchor while ``cell`` is also in the sequence.",
+      "label": "spacr.filters.choose_anchor#2",
+      "source": "the object tables actually present, as returned by :func:`object_tables`. Only membership is tested -- the preference comes from the order of :data:`OBJECT_TABLES`, not from the order given here, so putting ``nucleus`` first does not make it the anchor while ``cell`` is also in the sequence.",
+      "source_sha256": "0496f36d37f509fcf8ac4c1ff96666d58ac4dc53564b58263d99a656ad85f6fa",
+      "translation": "实际存在的对象表，由 :func:`object_tables` 返回。仅检查表是否包含在其中；优先顺序由 :data:`OBJECT_TABLES` 的排列决定，而非这里传入的顺序。因此，把 ``nucleus`` 放在首位也不会使其成为基准表，只要序列中也有 ``cell``。"
+    },
+    {
+      "context": "nothing to anchor on. The message lists the table names that were looked for.",
+      "label": "spacr.filters.choose_anchor#3",
+      "source": "nothing to anchor on. The message lists the table names that were looked for.",
+      "source_sha256": "9800b9a21d80eb5eda46e17578197cfbc8809da20b103e9819bf5ad163bce8c2",
+      "translation": "没有可用作锚点的表。消息列出的是尝试查找的表名。"
+    },
+    {
+      "context": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "label": "spacr.gene_measurement_compare.combine#3",
+      "source": "one of ``''``, ``'+'``, ``'-'``, ``'*'``, or ``'/'``. An empty string returns ``first`` after numeric conversion, with unparseable values made missing.",
+      "source_sha256": "f47652f34901959f0b2abc91698f97fb5ac5c204b1939f01d816135280d3d911",
+      "translation": "``''``、``'+'``、``'-'``、``'*'`` 或 ``'/'`` 之一。空字符串会返回 ``first`` 转换为数值后的结果，无法解析的值会被设为缺失值。"
+    },
+    {
+      "context": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "label": "spacr.gene_measurement_compare.combine#5",
+      "source": "``(values, name, dropped)``. ``name`` is the displayed expression and ``dropped`` counts zero or non-finite denominators.",
+      "source_sha256": "bc95cc7c9be3f2f2ce228f18996f54ade5bbde10510b00df05f4f79f1abdc20d",
+      "translation": "``(values, name, dropped)``。``name`` 是显示的表达式，``dropped`` 统计为零或非有限的分母数量。"
+    },
+    {
+      "context": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "label": "spacr.gene_measurement_compare.combine#8",
+      "source": "Division by zero or a non-finite denominator produces a missing value; it is never converted to zero or infinity.",
+      "source_sha256": "47517fc14efecf8f2fbbd2d60347faec1d35bbc19ef3fe03b106c8bc607903c4",
+      "translation": "除以零或非有限分母会产生缺失值；绝不会将其转换为零或无穷大。"
+    },
+    {
+      "context": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "label": "spacr.logger.configure_logger#1",
+      "source": "Repeated calls reuse handlers installed here, update their levels, and may add the optional stream handler later. Handlers installed by callers are preserved; a bootstrap :class:`logging.NullHandler` does not count as file logging.",
+      "source_sha256": "b8623ced58502f411455f006de0659d0864c60e439ca1f43dd143fb2be7e9e7b",
+      "translation": "重复调用会复用这里安装的处理器，更新其日志级别，并可在之后添加可选的流处理器。调用方安装的处理器予以保留；初始 :class:`logging.NullHandler` 不算文件日志记录。"
+    },
+    {
+      "context": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "label": "spacr.logger.configure_logger#2",
+      "source": "Logger name to fetch or create. Default ``\"spacr\"``.",
+      "source_sha256": "6366b14045970cca5a187024a611426dcd54c72be8b2e945bceb9188c5a6c28a",
+      "translation": "要获取或创建的日志记录器名称。默认 ``\"spacr\"``。"
+    },
+    {
+      "context": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "label": "spacr.logger.configure_logger#3",
+      "source": "file name under the user's home for the first file handler installed for ``name``. Later calls keep that file.",
+      "source_sha256": "ae6659b4488b0463829dddfac51a336ae5afe68f4f8b9511ac0eb70b79a41a07",
+      "translation": "为 ``name`` 首次安装的文件处理器使用的文件名，位于用户主目录下。后续调用保留该文件。"
+    },
+    {
+      "context": "Logging level applied to the logger and handlers installed by this function.",
+      "label": "spacr.logger.configure_logger#4",
+      "source": "Logging level applied to the logger and handlers installed by this function.",
+      "source_sha256": "b6f3aa1da6d1fdb7a5b712dee841ea537e2eae6ca73eaf3a1d7fe3c75ef79ee2",
+      "translation": "应用于日志记录器及此函数安装的处理器的日志级别。"
+    },
+    {
+      "context": "Configured ``logging.Logger`` instance.",
+      "label": "spacr.logger.configure_logger#6",
+      "source": "Configured ``logging.Logger`` instance.",
+      "source_sha256": "607e97d36d4e8b21ac7067efa989d4ea5c490fd789efb8a777f8a26e7cd2ebba",
+      "translation": "配置好的 ``logging.Logger`` 实例。"
+    },
+    {
+      "context": "Return available defaults overlaid with the caller's settings.",
+      "label": "spacr.macro.explicit_settings#0",
+      "source": "Return available defaults overlaid with the caller's settings.",
+      "source_sha256": "196b298cdc6659cf40438cc5510f21ac9582d5212912906f09c255fae23a64ae",
+      "translation": "返回可用默认值，并用调用方的设置覆盖它们。"
+    },
+    {
+      "context": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset structured-data names can remain absent. Structured-data names are ordered defaults-first so a diff between two macros lines up.",
+      "label": "spacr.macro.explicit_settings#1",
+      "source": "Available module defaults, then available run-control defaults (:func:`spacr.runctx.apply_defaults` — ``random_seed`` above all, since an unpinned seed is the one \"default\" that changes the numbers on its own), then the caller's values on top. Unavailable default sources are skipped, so unset keys can remain absent. Keys are ordered defaults-first so a diff between two macros lines up.",
+      "source_sha256": "e2d660bd4a328a8bbaacf1c044fa32dad1c799378aa899c0b621ba8178d2c370",
+      "translation": "先使用可用的模块默认值，再使用可用的运行控制默认值（:func:`spacr.runctx.apply_defaults` — 尤其是 ``random_seed``，因为未固定的种子是唯一会自行改变数值的 \"default\"），最后用调用方的值覆盖。不可用的默认值来源会被跳过，因此未设置的键仍可能缺失。键按默认值优先的顺序排列，使两个宏的差异能够对应。"
+    },
+    {
+      "context": "the module / app key.",
+      "label": "spacr.macro.explicit_settings#2",
+      "source": "the module / app key.",
+      "source_sha256": "a249d3ac974513c387c7115658bde4f63aba24abef625ce1a2e56b5ee684939b",
+      "translation": "模块 / 应用程序的键。"
+    },
+    {
+      "context": "what the run was launched with.",
+      "label": "spacr.macro.explicit_settings#3",
+      "source": "what the run was launched with.",
+      "source_sha256": "5480086c2318eddff705c552ec789e4e586911ab36e2e44d3b2d191fe5d76c7c",
+      "translation": "启动运行时使用的设置。"
+    },
+    {
+      "context": "``(settings, defaulted_keys, defaults_source)`` where ``defaulted_keys`` contains keys the caller **did not provide**. The script supplies those values for the caller.",
+      "label": "spacr.macro.explicit_settings#4",
+      "source": "``(settings, defaulted_keys, defaults_source)`` where ``defaulted_keys`` are the keys the caller did **not** set and the script is therefore pinning on their behalf.",
+      "source_sha256": "03ea69b16f4cdac0ef67ab5ff9074172b8b659e431a3305d66d28933c4110713",
+      "translation": "``(settings, defaulted_keys, defaults_source)``，其中 ``defaulted_keys`` 是调用方\\ **没有**\\ 设置的键，因此脚本代为固定其值。"
+    },
+    {
+      "context": "mask file or extensionless stem to resolve and load.",
+      "label": "spacr.mask_io.load_mask#1",
+      "source": "mask file or extensionless stem to resolve and load.",
+      "source_sha256": "f45e0454281e4d6e07c30ed3d5c2537b24234404d78af4ee34606c8890587934",
+      "translation": "要解析并加载的掩膜文件，或不含扩展名的路径。"
+    },
+    {
+      "context": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "label": "spacr.mask_io.load_mask#2",
+      "source": "Accepts a full path (``foo.tif`` / ``foo.npy``) or a stem (``foo``) — in the stem case, tif → tiff → npy is tried and the first extant file is loaded.",
+      "source_sha256": "aa0ce9552d298dc00376439d4e3a0a4d42cc08a91c7cfd218d184e2d96ee03b4",
+      "translation": "接受完整路径 (``foo.tif`` / ``foo.npy``) 或不含扩展名的路径 (``foo``) — 后一种情况按 tif → tiff → npy 的顺序尝试，并加载第一个存在的文件。"
+    },
+    {
+      "context": "uint16 array with the stored shape and rank unchanged.",
+      "label": "spacr.mask_io.load_mask#3",
+      "source": "uint16 array with the stored shape and rank unchanged.",
+      "source_sha256": "a9bc411d2c338bfb1e28c121191dd0e57a5e845c72689f5198e52f155c6a0fa7",
+      "translation": "uint16 数组，保留存储时的形状和维数。"
+    },
+    {
+      "context": "The hook is called once per microscope field of view, with the intensity image data channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-microscope field of view / illumination correction belongs.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#1",
+      "source": "The hook is called once per field, with the intensity channels named by ``settings['channels']`` already selected and before a single feature is computed. It must return an array of the same shape and dtype. This is where a flat-field / illumination correction belongs.",
+      "source_sha256": "b26dd2f160e07c06f7a60868397101dd30b0e7bb22ab9ec05752e32849266b5e",
+      "translation": "每个视野调用一次该钩子，调用时已选好 ``settings['channels']`` 指定的强度通道，且尚未计算任何特征。它必须返回形状和 dtype 相同的数组。平场或照明校正在这里完成。"
+    },
+    {
+      "context": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#2",
+      "source": "the callable. ``context`` is a :class:`PreprocessingContext`.",
+      "source_sha256": "a5bd9988b7f44128748535b4669092ed0fc188109c78b593a855c15e58cd22df",
+      "translation": "可调用对象。``context`` 是 :class:`PreprocessingContext`。"
+    },
+    {
+      "context": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#3",
+      "source": "registry key. Defaults to ``module.qualname``; registering the same key (or the same function object) again replaces the entry instead of adding a second one.",
+      "source_sha256": "621576b23680b4fa246237ea9459520e2038ee3140dd9afa944e641dce61c9a5",
+      "translation": "注册表键。默认为 ``module.qualname``；再次注册相同的键或同一个函数对象会替换原条目，而非添加第二个条目。"
+    },
+    {
+      "context": "lower runs first; ties keep registration order.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#4",
+      "source": "lower runs first; ties keep registration order.",
+      "source_sha256": "1fe0a3edb5a55dcde3a25a0f863228acdad4aa883ad56520abafa0a6d274a800",
+      "translation": "较小的值先执行；相同值保持注册顺序。"
+    },
+    {
+      "context": "the key the hook was registered under — pass it to :func:`unregister_preprocessing_hook`.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#5",
+      "source": "the key the hook was registered under — pass it to :func:`unregister_preprocessing_hook`.",
+      "source_sha256": "27eb9b3a570b46cd96816a6bf173f6dcef3c4496fd97cc476a2ade494f008f88",
+      "translation": "钩子注册时使用的键 — 请将其传给 :func:`unregister_preprocessing_hook`。"
+    },
+    {
+      "context": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "label": "spacr.measure_hooks.register_preprocessing_hook#6",
+      "source": "if ``hook`` is not callable, or converting ``priority`` to an int raises ``TypeError`` or ``ValueError``.",
+      "source_sha256": "1cd102cf16c134db59c5867ba43e9b1cfecb1a65217dc22e66931fe712d2eb9f",
+      "translation": "``hook`` 不可调用，或将 ``priority`` 转换为整数时抛出 ``TypeError`` 或 ``ValueError``。"
+    },
+    {
+      "context": "label or binary image containing the target objects.",
+      "label": "spacr.object_distances.surface_distance_transform#1",
+      "source": "label or binary image containing the target objects.",
+      "source_sha256": "a8e9003d0691588b09d25e8d30dc56a204ff60af2d478efaee611f7b83d6dcaf",
+      "translation": "包含目标对象的标签图像或二值图像。"
+    },
+    {
+      "context": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "label": "spacr.object_distances.surface_distance_transform#2",
+      "source": "The result is zero inside an object. `distance_transform_edt` measures distance to the nearest zero, so it is run on the inverted mask: the result is 0 on any labelled pixel and grows outward. A lookup at another object's centroid measures distance from that point to the nearest labelled pixel; it is zero only if that point lies inside the target mask.",
+      "source_sha256": "e22b38cacfe2fa1eb2d039582c0f3d0ddae807dd9a805b064eb50382f5b110f6",
+      "translation": "结果在对象内部为零。`distance_transform_edt` 测量到最近零值的距离，因此在反转后的掩码上运行：任何带标签像素的结果都为 0，并向外增大。在另一对象的质心处查询，测量的是从该点到最近带标签像素的距离；只有该点位于目标掩码内部时才为零。"
+    },
+    {
+      "context": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "label": "spacr.ops_compose.windows_over#1",
+      "source": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "source_sha256": "198c4990eeeb51728b304877b8e0a4ce1ccc126e469ea58a76f731ebd287b7dc",
+      "translation": "窗口相互重叠，以便跨窗口拼接对象：横跨窗口边界的对象仍是同一个对象，只有两个窗口都包含完整对象时，才能跨接缝匹配它。重叠范围必须大于最大的对象，不能只是接触。"
+    },
+    {
+      "context": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "label": "spacr.ops_compose.windows_over#5",
+      "source": "when the window size is not positive, or the overlap is negative or not smaller than the window.",
+      "source_sha256": "c2a83d9bbaa1715459f0353abae440433039c789f3c5b060711887fa8d507e33",
+      "translation": "窗口大小不是正数，或重叠量为负数或不小于窗口大小时。"
+    },
+    {
+      "context": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "label": "spacr.ops_merge.match_cells#1",
+      "source": "A pair survives only when each cell is the other's nearest and they are within ``threshold``. When several cells choose the same partner, only that partner's nearest cell can survive.",
+      "source_sha256": "a73fba1e1f7f85dfd4b82c53b1f1c04c6ccc1c152a445edd59cc63330e2c7f06",
+      "translation": "只有两细胞互为最近邻且距离在 ``threshold`` 以内时，才保留该配对。当多个细胞选择同一对象时，只有离该对象最近的细胞可能保留。"
+    },
+    {
+      "context": "run the two nearest-neighbour searches on a GPU when one is usable. A microplate sample position carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "label": "spacr.ops_merge.match_cells#6",
+      "source": "run the two nearest-neighbour searches on a GPU when one is usable. A well carries tens of thousands of nuclei on each side and the search is done twice, once in each direction; `spacr.ops_accel.nearest_neighbours` processes source points in chunks against the full target set.",
+      "source_sha256": "0b6bbdd57bdd9d5bc080a86df76055777f082b0d01901db53cb230a72fafd049",
+      "translation": "有可用 GPU 时，在其上执行两次最近邻搜索。同一孔的两侧各有数万个细胞核，搜索分两个方向各执行一次；`spacr.ops_accel.nearest_neighbours` 将源点分块，与完整目标点集进行比较处理。"
+    },
+    {
+      "context": "``(N, 2)`` points in the frame being moved.",
+      "label": "spacr.ops_phenotype.refine_similarity#1",
+      "source": "``(N, 2)`` points in the frame being moved.",
+      "source_sha256": "35adac8816ec203db9afd6eaf3bd15256b806d469e8153209836d782c02af996",
+      "translation": "待移动坐标系中的 ``(N, 2)`` 个点。"
+    },
+    {
+      "context": "``(M, 2)`` points in the frame being moved to.",
+      "label": "spacr.ops_phenotype.refine_similarity#2",
+      "source": "``(M, 2)`` points in the frame being moved to.",
+      "source_sha256": "8abeef48b7baf15b7c0efd02da9485b04c62ef47776a639e2dd4b34beac9775a",
+      "translation": "目标坐标系中的 ``(M, 2)`` 个点。"
+    },
+    {
+      "context": "``(scale, rotation, translation)`` to start from.",
+      "label": "spacr.ops_phenotype.refine_similarity#3",
+      "source": "``(scale, rotation, translation)`` to start from.",
+      "source_sha256": "6aa145c7914c043c3b4ef2a29abec7dbf5e527eb34d0d59a2f7b1bdd8a0e3343",
+      "translation": "起始的 ``(scale, rotation, translation)``。"
+    },
+    {
+      "context": "how close a moved point must land to count as a match.",
+      "label": "spacr.ops_phenotype.refine_similarity#4",
+      "source": "how close a moved point must land to count as a match.",
+      "source_sha256": "b361c77cabccce70c132eec6687ceae62785c247991b9bda50c6543add6951ab",
+      "translation": "移动后的点必须靠得多近才算匹配。"
+    },
+    {
+      "context": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "label": "spacr.ops_phenotype.refine_similarity#5",
+      "source": "how many final re-solves to attempt at ``radius``, coerced to an integer and at least one, after two wider matching rounds.",
+      "source_sha256": "e70f8f1189e676ed7c87265d11c7d54d2707accc8235ccc51343cbfb58a86243",
+      "translation": "经过两轮更大范围的匹配后，在 ``radius`` 处尝试的最终重复求解次数；转换为整数且至少为一次。"
+    },
+    {
+      "context": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "label": "spacr.ops_phenotype.refine_similarity#6",
+      "source": "``(scale, rotation, translation, source_in, target_in, distances)`` from the last solved round, or None if no round could be solved. A later round with too few correspondences or an unsolvable fit returns the previous result.",
+      "source_sha256": "2fb35be5eb1a1121dccc7253fad27fe0f02be2914a638ffe8c9471562ba086dc",
+      "translation": "最后成功求解轮次的 ``(scale, rotation, translation, source_in, target_in, distances)``；若没有任何轮次能求解，则为 None。后续轮次若对应点太少或拟合无法求解，会返回之前的结果。"
+    },
+    {
+      "context": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "label": "spacr.ops_phenotype.refine_similarity#7",
+      "source": "The seed may be inaccurate. The triangle consensus is biased by up to 44 % in scale on sparse data, but a bias that large still puts the points near the centre of rotation within a few pixels of the truth, which gives enough correspondences to solve from. The first two rounds match at four and two times ``radius`` before narrowing to ``radius``.",
+      "source_sha256": "df1c49dcfbc3ba9fc85c12820e01ca712a3f2274a659fb12da7ab0bc3208278a",
+      "translation": "初始变换可能不准确。稀疏数据中三角形共识的尺度偏差可达 44 %，但即使偏差这么大，也仍将旋转中心附近的点放在距真实位置几个像素以内，从而提供足够的对应关系以求解变换。前两轮分别在四倍和两倍 ``radius`` 范围内匹配，然后缩小到 ``radius``。"
+    },
+    {
+      "context": "One well at a time, and one microscope image field pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain microscope image field arrays.",
+      "label": "spacr.ops_stitch.stitch_well#1",
+      "source": "One well at a time, and one tile pair at a time within it. With a callable ``tiles``, this function need not hold the whole well in memory. The caller decides what to cache and what to re-read; its cache may still retain tile arrays.",
+      "source_sha256": "fb64a37380ff63413a77ef01933326dea16185caabc673465f919f2cfa5b435d",
+      "translation": "每次处理一个孔，在孔内每次处理一对图像块。当 ``tiles`` 可调用时，此函数不必将整个孔保留在内存中。调用方决定缓存哪些内容、重新读取哪些内容；其缓存仍可能保留图像块数组。"
+    },
+    {
+      "context": "the stitch, its edges and its residuals.",
+      "label": "spacr.ops_stitch.stitch_well#10",
+      "source": "the stitch, its edges and its residuals.",
+      "source_sha256": "252d4644a262472a4e8fbba22aff93a84db091e4ddf5ee34348032398cd3f183",
+      "translation": "拼接结果、其边以及残差。"
+    },
+    {
+      "context": "``site -> 2-D array``, or a callable taking a site.",
+      "label": "spacr.ops_stitch.stitch_well#2",
+      "source": "``site -> 2-D array``, or a callable taking a site.",
+      "source_sha256": "22941aa206938334f2f2ab25b1333ee459705e121b944b942c5a365afdcefed7",
+      "translation": "``site -> 2-D array``，或一个接收拍摄位置的可调用对象。"
+    },
+    {
+      "context": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-microscope field of view well.",
+      "label": "spacr.ops_stitch.stitch_well#3",
+      "source": "the well model. None fits the circle to ``sites`` or, failing that, to the measured 333-field well.",
+      "source_sha256": "3bda58600c0224b0c6e310282c6ab5f22ba37a7d1f88b2cd0ae4fac5100228bb",
+      "translation": "孔模型。None 表示将圆拟合到 ``sites``；若失败，则拟合到实测的 333 视野孔。"
+    },
+    {
+      "context": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "label": "spacr.ops_stitch.stitch_well#4",
+      "source": "the raster's overlap in pixels. Given, it sets the registration's expectation and the layout's canvas arithmetic; omitted, both fall back to weaker answers, so pass it.",
+      "source_sha256": "1d267cfe58b8d0f7e6889736d54d4b2006a6eeb6c9bb61d277788e32f26f3100",
+      "translation": "光栅扫描的重叠范围，以像素为单位。提供后，它决定配准的预期值及布局画布的计算；省略时，两者都会采用较弱的替代结果，因此请传入此值。"
+    },
+    {
+      "context": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real laboratory microplate it cannot.",
+      "label": "spacr.ops_stitch.stitch_well#5",
+      "source": "how far along the raster an edge may land from the layout's prediction and still be accepted. This is the acceptance the real well used -- 624 of 624 -- and without it the peak ratio decides, which on a real plate it cannot.",
+      "source_sha256": "74f37b58be389068e4719c1c5bba4afe0684c33fbc1f7134de30e046bf8f7d0a",
+      "translation": "边沿扫描方向可以偏离布局预测多远而仍被接受。这是实测孔采用的接受标准 -- 624 个中接受 624 个 -- 没有它就由峰值比决定，而峰值比在真实孔板上无法作此判断。"
+    },
+    {
+      "context": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "label": "spacr.ops_stitch.stitch_well#6",
+      "source": "how far across it may. The stage's skew is real and constant -- 9 px on the measured plate -- so it is a separate number from the tolerance. None takes `spacr.ops_register.SKEW_PX`.",
+      "source_sha256": "32273cb219622d2466229e546b8c536dc2b6e7ef546a04ee711bd3474e70ea3d",
+      "translation": "在扫描横向可以偏离多远。载物台的偏斜真实且恒定 -- 实测板上为 9 px -- 因此它是独立于容差的另一个数值。None 使用 `spacr.ops_register.SKEW_PX`。"
+    },
+    {
+      "context": "passed through to the registration.",
+      "label": "spacr.ops_stitch.stitch_well#7",
+      "source": "passed through to the registration.",
+      "source_sha256": "619fe2f54b87486c408939f16a83a2d4d5697c7ce074ceeeb236691220338189",
+      "translation": "原样传给配准过程。"
+    },
+    {
+      "context": "which sites to place. None uses every site the layout holds.",
+      "label": "spacr.ops_stitch.stitch_well#8",
+      "source": "which sites to place. None uses every site the layout holds.",
+      "source_sha256": "4cac791fbfc0d1c08462e1bb9ae01a807ccbc67deba1fb050e34c85e377c8fa8",
+      "translation": "要放置的拍摄位置。None 使用布局中的所有拍摄位置。"
+    },
+    {
+      "context": "the annotator-named settings, as :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` returns them.",
+      "label": "spacr.picture_settings.to_crop_settings#1",
+      "source": "the annotator-named settings, as :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` returns them.",
+      "source_sha256": "8700a5cd012560946e3a29e8426795328bd6229ed7693097d0ca46d717286ceb",
+      "translation": "标注工具命名的设置，采用 :class:`spacr.qt.widgets.picture_settings_dialog.PictureSettingsDialog` 返回的形式。"
+    },
+    {
+      "context": "a mapping in the extracted image region layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "label": "spacr.picture_settings.to_crop_settings#2",
+      "source": "a mapping in the crop layer's own vocabulary, with applicable set values plus mode-derived settings such as ``stream_method`` for streaming inputs.",
+      "source_sha256": "382d5d7ff9b3e35b66bed49236dac0c4e59ff119438e3b13d3dc3bb87325669d",
+      "translation": "使用裁剪层自身术语的映射，包含适用的已设置值，以及由模式派生的设置，例如流式输入的 ``stream_method``。"
+    },
+    {
+      "context": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "label": "spacr.regression_backends.backend_status#2",
+      "source": "requested regression family. ``None`` means the family will be chosen from the response, so backends restricted to particular families are disabled.",
+      "source_sha256": "a19b21c019f79ac88342e571f3bfb45d2308403dcdb2b996443a40fc172c25cc",
+      "translation": "请求的回归分布族。``None`` 表示根据响应值选择分布族，因此仅支持特定分布族的后端会被禁用。"
+    },
+    {
+      "context": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``. ``reason`` is ``''`` when enabled -- a disabled entry always carries the sentence that says why, and it is written to be shown on the control, not logged.",
+      "label": "spacr.regression_backends.backend_status#3",
+      "source": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``. ``reason`` is ``''`` when enabled -- a disabled entry always carries the sentence that says why, and it is written to be shown on the control, not logged.",
+      "source_sha256": "238df23d552dca8006e724823054c13711d2350c66ca6e3deeaae89931d8bfdb",
+      "translation": "``{name, label, device, enabled, reason, short_reason, url, summary, cost, differs, pip}``。启用时 ``reason`` 为 ``''``；禁用条目始终带有说明原因的句子，其文字用于显示在控件上，而非写入日志。"
+    },
+    {
+      "context": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "label": "spacr.regression_backends.backend_status#4",
+      "source": "``short_reason`` is the same refusal at combo-entry length. Qt shows an item tooltip lazily and only while the popup is open, so the short form is placed in the entry's own text and in the box under it.",
+      "source_sha256": "a407a86b4200605b8cb648c5dc8649400d7c1c5ad559f2f8ff423a0386585c01",
+      "translation": "``short_reason`` 是同一拒绝理由的精简形式，长度适合下拉框条目。Qt 仅在需要时且弹出列表打开期间显示条目工具提示，因此短文本也放在条目自身的文字及下方的框中。"
+    },
+    {
+      "context": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "label": "spacr.run_journal.recent_runs#1",
+      "source": "Ordered by the manifest's ``start_utc`` timestamp (parsed as :class:`datetime.datetime`), so runs opened in the same wall- clock second still sort correctly — folder names alone truncate to seconds and would produce ties. Only the newest ``max(limit * 4, limit + 64)`` folders by name are opened at all (for non-negative ``limit``), bounding manifest reads while all run-folder names are still enumerated and sorted.",
+      "source_sha256": "9bf7ccb4532862aec95d5bb545f655e5bc50ec92b98e5b505c4e7272b54bff01",
+      "translation": "按清单中的 ``start_utc`` 时间戳（解析为 :class:`datetime.datetime`）排序，因此在实际时钟同一秒内打开的运行也能正确排序；仅使用文件夹名称会截断到秒，从而产生并列值。只会按名称打开最新的 ``max(limit * 4, limit + 64)`` 个文件夹（``limit`` 非负时），以限制清单读取次数，但仍会枚举并排序所有运行文件夹名称。"
+    },
+    {
+      "context": "Pass ``None`` for every processing session, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-processing-session journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "label": "spacr.run_journal.recent_runs#2",
+      "source": "Pass ``None`` for every run, never a negative number. The truncation at the end is ``all_entries[:limit]``, so ``limit=-1`` reads the whole journal and then hands back all but the oldest entry -- observed 2026-09-03 on an 11,027-run journal, which returned 11,026. A folder with no ``manifest.json`` is skipped quietly; one whose manifest cannot be parsed is skipped with a logged warning.",
+      "source_sha256": "b13cbd3a33a995b2fde6c523204545232f7538e01366b26b4b1730bd75b43984",
+      "translation": "要获取所有运行，请传入 ``None``，不要传负数。末尾通过 ``all_entries[:limit]`` 截断，因此 ``limit=-1`` 会读取整个运行日志，然后返回除最旧条目之外的全部条目 -- 2026-09-03 在含 11,027 次运行的日志上观察到返回了 11,026 条。没有 ``manifest.json`` 的文件夹会被静默跳过；若其清单无法解析，则记录警告并跳过。"
+    },
+    {
+      "context": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "label": "spacr.schema.parse_int_token#0",
+      "source": "Return the integer ``token`` denotes, or ``None`` for invalid input; ``0`` is valid.",
+      "source_sha256": "6fc290caa9ae3a7e9a083d56fcdfec9b78debeee4d9e0503f8327d50bb6aeea8",
+      "translation": "返回 ``token`` 表示的整数；输入无效时返回 ``None``。``0`` 是有效值。"
+    },
+    {
+      "context": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "label": "spacr.schema.parse_int_token#1",
+      "source": "This replaces ``utils._safe_int_convert``, which returns ``0`` for a token that holds no integer; ``0`` is a valid field id, so that result cannot be detected downstream. ``None`` is not a field id, so every caller must decide what to do — see :func:`field_id`.",
+      "source_sha256": "9f5217f0d0755c5154b71525cbec27c4902619716208cbb04314b3b29548be33",
+      "translation": "这替代了 ``utils._safe_int_convert``，后者对不含整数的词元返回 ``0``；``0`` 是有效的视野 ID，因此后续处理无法检测出这个结果的问题。``None`` 不是视野 ID，所以每个调用方必须决定如何处理 — 参见 :func:`field_id`。"
+    },
+    {
+      "context": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a workflow that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "label": "spacr.schema.parse_int_token#2",
+      "source": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a pipeline that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
+      "source_sha256": "273295986927e4c02d10925bcdfdfbd945cc4b84424a3c16b04d744bc4830d8b",
+      "translation": "支持识别厂商前缀，因为它们只是同一个数的不同写法，并非不同的数：ImageXpress 的拍摄位置 ``s3``、CellVoyager 的视野 ``F003`` 和单独的 ``3`` 都是同一个视野。为它们分配三个不同 ID 的流程，与将它们全部指定为 ``f0`` 一样错误。"
+    },
+    {
+      "context": "anything — a string, an int, a float, ``None``.",
+      "label": "spacr.schema.parse_int_token#3",
+      "source": "anything — a string, an int, a float, ``None``.",
+      "source_sha256": "a39169c136bf0131f6c47f1c82cc58a8504578b701979130dac75f0c63279bac",
+      "translation": "任何值 — 字符串、int、float、``None``。"
+    },
+    {
+      "context": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "label": "spacr.schema.parse_int_token#4",
+      "source": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
+      "source_sha256": "b19c2aad20e267f3d644d180e751b66383e2b22ea3ee035911acc1da946a4d0c",
+      "translation": "若后面的字符全为数字，则移除开头的一到两个 ASCII 字母。默认 ``True``。"
+    },
+    {
+      "context": "the integer, or ``None`` when the token holds no integer.",
+      "label": "spacr.schema.parse_int_token#5",
+      "source": "the integer, or ``None`` when the token holds no integer.",
+      "source_sha256": "b53735ae462022ed95cb9091374298afa3e4317dca41b3da99ce8190f4195ef4",
+      "translation": "整数；若词元不含整数则为 ``None``。"
+    },
+    {
+      "context": "The column names a table would be read with, using a schema or header when possible.",
+      "label": "spacr.tabular.table_columns#0",
+      "source": "The column names a table would be read with, using a schema or header when possible.",
+      "source_sha256": "d63e4ef5d0147a80fc1ec52ea78c38f9839fbe127c1ab0c5a7895ebac126b13b",
+      "translation": "读取表时会使用的列名，尽可能根据模式或表头确定。"
+    },
+    {
+      "context": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "label": "spacr.tabular.table_columns#2",
+      "source": "A collapsed duplicate is **not** listed twice: a picker that offered both ``well`` and ``wellID`` would let a user choose a column the run will not find.",
+      "source_sha256": "67dc632e0f9d718c806a22f8b86900873359c7e358d4b02c9f6bd381f7d4c849",
+      "translation": "合并后的重复列\\ **不会**\\ 列出两次：若选择器同时提供 ``well`` 和 ``wellID``，用户便可能选择运行时找不到的列。"
+    },
+    {
+      "context": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "label": "spacr.workspace.section_states#2",
+      "source": "``(sections, problems)``. Values that are ``None``, including results from a callable provider, are silently omitted. Other providers that raise or offer no usable state are omitted and described in ``problems``; other sections are still collected.",
+      "source_sha256": "92fa271fc7ee7c0f6e145cad34cd0739690e8c7ea98c8f79023ee2587dd760cb",
+      "translation": "``(sections, problems)``。值为 ``None`` 时会静默省略，包括可调用提供者返回的结果。其他抛出异常或未提供可用状态的提供者会被省略，并在 ``problems`` 中说明；其余节仍会继续收集。"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI language/technical peer review of exact source/context bindings; no human or native-speaker signoff.",
+  "schema": 1
+}

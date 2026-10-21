@@ -1,0 +1,1050 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Render Methods and Results sections from a run digest and check numerical tokens.",
+      "label": "spacr.methods_export#0",
+      "source": "Render Methods and Results sections from a run digest and check numerical tokens.",
+      "source_sha256": "4486044789793758ce3e8f17178a49d4517f294f27a8f7283ea81758049bfe57",
+      "translation": "रन डाइजेस्ट से Methods और Results खंड रेंडर करें और संख्यात्मक टोकन जाँचें।"
+    },
+    {
+      "context": "The digest records run metadata and summaries for deterministic Methods and Results rendering. Optional model-written sections can be checked for recognized numerical tokens and selected caveat phrases. These checks do not establish scientific accuracy or detect every unsupported claim.",
+      "label": "spacr.methods_export#1",
+      "source": "The digest records run metadata and summaries for deterministic Methods and Results rendering. Optional model-written sections can be checked for recognized numerical tokens and selected caveat phrases. These checks do not establish scientific accuracy or detect every unsupported claim.",
+      "source_sha256": "52e3b2e28f9685defc9a1a5f5825b155e910414c1de5f2b55b8ab6e32d7f475e",
+      "translation": "नियतात्मक Methods और Results रेंडरिंग के लिए डाइजेस्ट रन मेटाडेटा और सारांश दर्ज करता है। वैकल्पिक मॉडल-लिखित खंडों में पहचाने गए संख्यात्मक टोकन और चुने हुए सीमा-संबंधी वाक्यांश जाँचे जा सकते हैं। ये जाँच वैज्ञानिक शुद्धता स्थापित नहीं करतीं और हर असमर्थित दावा नहीं पकड़तीं।"
+    },
+    {
+      "context": "The model-facing prompt contains a **processing-session digest**: the supplied mapping serialized as JSON, alongside static instructions. :func:`build_digest` collects run metadata and existing summaries, but :func:`render_prompt` does not remove raw or sensitive values that a caller includes in its digest. The checking helpers then apply these rules:",
+      "label": "spacr.methods_export#2",
+      "source": "The model-facing prompt contains a **run digest**: the supplied mapping serialized as JSON, alongside static instructions. :func:`build_digest` collects run metadata and existing summaries, but :func:`render_prompt` does not remove raw or sensitive values that a caller includes in its digest. The checking helpers then apply these rules:",
+      "source_sha256": "90c4db84016e14eb00f422793c410e0e2cbc82fff7cf31653c1ab10d269e8403",
+      "translation": "मॉडल को दिए जाने वाले प्रॉम्प्ट में **रन डाइजेस्ट** होता है: स्थिर निर्देशों के साथ JSON के रूप में सीरियलाइज़ की गई दी हुई मैपिंग। :func:`build_digest` रन मेटाडेटा और मौजूदा सारांश इकट्ठा करता है, लेकिन :func:`render_prompt` कॉलर के डाइजेस्ट में दिए कच्चे या संवेदनशील मान नहीं हटाता। इसके बाद जाँच सहायक फ़ंक्शन ये नियम लागू करते हैं:"
+    },
+    {
+      "context": ":func:`verify_numbers` checks the numeric tokens left after removing permitted digest-string substrings and structural patterns. Tokens can pass by matching digest numbers, falling within the implemented rounding tolerance or belonging to :data:`ALWAYS_ALLOWED` with either sign. A token that fails those checks is reported as unsupported.",
+      "label": "spacr.methods_export#3",
+      "source": ":func:`verify_numbers` checks the numeric tokens left after removing permitted digest-string substrings and structural patterns. Tokens can pass by matching digest numbers, falling within the implemented rounding tolerance or belonging to :data:`ALWAYS_ALLOWED` with either sign. A token that fails those checks is reported as unsupported.",
+      "source_sha256": "aca9703710fdbe1a8ae96d223da08059168e3736f6f559885cd8dee445dadee2",
+      "translation": ":func:`verify_numbers` डाइजेस्ट-स्ट्रिंग की अनुमत उपस्ट्रिंग और संरचनात्मक पैटर्न हटाने के बाद बचे संख्यात्मक टोकन जाँचता है। टोकन डाइजेस्ट की संख्याओं से मेल खाकर, लागू की गई राउंडिंग सहनशीलता के भीतर होकर या धनात्मक अथवा ऋणात्मक चिह्न के साथ :data:`ALWAYS_ALLOWED` में होने पर सफल हो सकते हैं। इन जाँचों में विफल टोकन को असमर्थित बताया जाता है।"
+    },
+    {
+      "context": ":func:`check_draft` returns two verification verdicts; it does not discard or replace text itself. :mod:`spacr.qt.ai.manuscript` uses these verdicts to choose accepted model sections or deterministic fallback sections.",
+      "label": "spacr.methods_export#4",
+      "source": ":func:`check_draft` returns two verification verdicts; it does not discard or replace text itself. :mod:`spacr.qt.ai.manuscript` uses these verdicts to choose accepted model sections or deterministic fallback sections.",
+      "source_sha256": "2d8212e41d8029e0f3ba4aebbece6faef09c7979ccea72e2c37cca0768a448f3",
+      "translation": ":func:`check_draft` सत्यापन के दो निर्णय लौटाता है; स्वयं पाठ हटाता या बदलता नहीं है। :mod:`spacr.qt.ai.manuscript` इन निर्णयों से तय करता है कि स्वीकृत मॉडल खंड उपयोग हों या नियतात्मक वैकल्पिक खंड।"
+    },
+    {
+      "context": "The digest supplies the recorded values and collection sizes used by :func:`render_methods` and :func:`render_results`. These deterministic renderers require no model and do not themselves run the verification checks. Their text also contains fixed wording, such as the two-guide corroboration description.",
+      "label": "spacr.methods_export#5",
+      "source": "The digest supplies the recorded values and collection sizes used by :func:`render_methods` and :func:`render_results`. These deterministic renderers require no model and do not themselves run the verification checks. Their text also contains fixed wording, such as the two-guide corroboration description.",
+      "source_sha256": "35d0d9b625f055e0e25a14af97e8ff0fa4e7f342acf11c318a1277f41857091f",
+      "translation": "डाइजेस्ट :func:`render_methods` और :func:`render_results` के उपयोग के लिए दर्ज मान और संग्रहों के आकार देता है। इन नियतात्मक रेंडरर को मॉडल की आवश्यकता नहीं होती और ये स्वयं सत्यापन जाँच नहीं चलाते। इनके पाठ में स्थिर शब्दावली भी होती है, जैसे दो गाइड से पुष्टि का वर्णन।"
+    },
+    {
+      "context": "**Recorded caveats are included in Methods and the prompt.** :func:`build_digest` calls :func:`caveats_for` to derive selected caveats under :data:`DIGEST_CAVEATS`. :func:`render_methods` and :func:`render_prompt` include the supplied caveat sentences; :func:`render_results` does not repeat that list. Methods verification searches for the case-folded first clause of each caveat, which is a text-containment check rather than a semantic assessment.",
+      "label": "spacr.methods_export#6",
+      "source": "**Recorded caveats are included in Methods and the prompt.** :func:`build_digest` calls :func:`caveats_for` to derive selected caveats under :data:`DIGEST_CAVEATS`. :func:`render_methods` and :func:`render_prompt` include the supplied caveat sentences; :func:`render_results` does not repeat that list. Methods verification searches for the case-folded first clause of each caveat, which is a text-containment check rather than a semantic assessment.",
+      "source_sha256": "2fd328bc77169e5b012e5ebf70c0811cd6b07c1e745ae49a6c8e3c3b9b9f56f5",
+      "translation": "**दर्ज सीमाएँ Methods और प्रॉम्प्ट में शामिल होती हैं।** :func:`build_digest`, :func:`caveats_for` को कॉल करके :data:`DIGEST_CAVEATS` के अंतर्गत चुनी हुई सीमाएँ निकालता है। :func:`render_methods` और :func:`render_prompt` दिए गए सीमा-संबंधी वाक्य शामिल करते हैं; :func:`render_results` वह सूची दोहराता नहीं है। Methods का सत्यापन हर सीमा-वाक्य के पहले खंड को बड़े-छोटे अक्षरों का भेद मिटाकर खोजता है; यह पाठ समावेशन की जाँच है, अर्थ का मूल्यांकन नहीं।"
+    },
+    {
+      "context": "The AI half lives in :mod:`spacr.qt.ai.manuscript`, which reuses the console's existing provider plumbing rather than opening a second client.",
+      "label": "spacr.methods_export#8",
+      "source": "The AI half lives in :mod:`spacr.qt.ai.manuscript`, which reuses the console's existing provider plumbing rather than opening a second client.",
+      "source_sha256": "dd2ace67feb5b4280db52d4d514343fe8e1613b5d88e2e71bfb05cdcc40de93c",
+      "translation": "AI से संबंधित भाग :mod:`spacr.qt.ai.manuscript` में है, जो दूसरा क्लाइंट खोलने के बजाय कंसोल के मौजूदा प्रदाता ढाँचे का उपयोग करता है।"
+    },
+    {
+      "context": "Recorded numerical-token and optional caveat-check verdict for a section.",
+      "label": "spacr.methods_export.Verification#0",
+      "source": "Recorded numerical-token and optional caveat-check verdict for a section.",
+      "source_sha256": "0a805e123d69c2736c85ec42f7e33908186cfed89d520398e6e84a446dbf726a",
+      "translation": "किसी खंड के संख्यात्मक टोकन और वैकल्पिक सीमा-संबंधी जाँच का दर्ज निर्णय।"
+    },
+    {
+      "context": "no numerical token was rejected and no required caveat phrase was missing.",
+      "label": "spacr.methods_export.Verification#1",
+      "source": "no numerical token was rejected and no required caveat phrase was missing.",
+      "source_sha256": "39405b256178335ecb001d44be782d5445113739f9a8d9c201ebb5552e1bdead",
+      "translation": "कोई संख्यात्मक टोकन अस्वीकृत नहीं हुआ और कोई आवश्यक सीमा-संबंधी वाक्यांश अनुपस्थित नहीं था।"
+    },
+    {
+      "context": "the tokens accepted by digest matching, rounding tolerance or the structural-value allowance.",
+      "label": "spacr.methods_export.Verification#3",
+      "source": "the tokens accepted by digest matching, rounding tolerance or the structural-value allowance.",
+      "source_sha256": "47fc88f4154924bf8ba68beef8c0c7855030a56d5fb827c77b40913df623c4f6",
+      "translation": "डाइजेस्ट से मिलान, राउंडिंग सहनशीलता या संरचनात्मक मानों की छूट के आधार पर स्वीकृत टोकन।"
+    },
+    {
+      "context": "the numerical tokens rejected by those checks.",
+      "label": "spacr.methods_export.Verification#4",
+      "source": "the numerical tokens rejected by those checks.",
+      "source_sha256": "d95769edde7c8ace3f2ef503d8b1d8eeaf03f0c845bee183b141fc5ff204a982",
+      "translation": "इन जाँचों में अस्वीकृत संख्यात्मक टोकन।"
+    },
+    {
+      "context": "the caveat sentences whose selected opening phrase was not found.",
+      "label": "spacr.methods_export.Verification#5",
+      "source": "the caveat sentences whose selected opening phrase was not found.",
+      "source_sha256": "d6aae18c18bfb21ccc259bc17309fbb0a3d50a97999d83664c594d802210d4a0",
+      "translation": "वे सीमा-संबंधी वाक्य जिनका चुना हुआ शुरुआती वाक्यांश नहीं मिला।"
+    },
+    {
+      "context": "Return the recorded ``ok`` flag without performing another check.",
+      "label": "spacr.methods_export.Verification.__bool__#0",
+      "source": "Return the recorded ``ok`` flag without performing another check.",
+      "source_sha256": "f57f5215831f9f4818c1a26dff7da81fd168e85ecf8a4147572df21be0e95b31",
+      "translation": "नई जाँच किए बिना दर्ज ``ok`` फ़्लैग लौटाएँ।"
+    },
+    {
+      "context": "Collect available run metadata and summaries into a JSON-compatible digest.",
+      "label": "spacr.methods_export.build_digest#0",
+      "source": "Collect available run metadata and summaries into a JSON-compatible digest.",
+      "source_sha256": "0a6bcee6697747070d3bdeb49b75666608959477f471ab283874e902c134ea9c",
+      "translation": "उपलब्ध रन मेटाडेटा और सारांश JSON-संगत डाइजेस्ट में इकट्ठा करें।"
+    },
+    {
+      "context": "Most source collectors run through a guarded helper that records a failure as a note and continues. Input conversion, some settings and hit-row handling, caveat construction and final serialization are outside those guards and can still raise; the function does not promise successful output for every input.",
+      "label": "spacr.methods_export.build_digest#1",
+      "source": "Most source collectors run through a guarded helper that records a failure as a note and continues. Input conversion, some settings and hit-row handling, caveat construction and final serialization are outside those guards and can still raise; the function does not promise successful output for every input.",
+      "source_sha256": "2ca89d2060f44557c2a863264317d61cca12e9f300ad901c9013ad719d0f6688",
+      "translation": "अधिकांश स्रोत संग्राहक सुरक्षित सहायक फ़ंक्शन के माध्यम से चलते हैं, जो विफलता को टिप्पणी के रूप में दर्ज करके आगे बढ़ता है। इनपुट रूपांतरण, कुछ सेटिंग्स और हिट-पंक्ति प्रबंधन, सीमाओं का निर्माण तथा अंतिम सीरियलाइज़ेशन इन सुरक्षा घेरों से बाहर हैं और अब भी अपवाद उठा सकते हैं; फ़ंक्शन हर इनपुट पर सफल आउटपुट का वादा नहीं करता।"
+    },
+    {
+      "context": "a machine-learning classification model checkpoint whose model card carries the held-out metrics.",
+      "label": "spacr.methods_export.build_digest#10",
+      "source": "a classifier checkpoint whose model card carries the held-out metrics.",
+      "source_sha256": "4a26669efa5e3ff059e7d12e0c92b3ef79a576fc6809dfc28f66ff4bd88e573b",
+      "translation": "क्लासिफ़ायर का चेकपॉइंट, जिसके मॉडल कार्ड में अलग रखे गए डेटा पर मूल्यांकन के मेट्रिक हैं।"
+    },
+    {
+      "context": "what to call the experiment in the prose.",
+      "label": "spacr.methods_export.build_digest#11",
+      "source": "what to call the experiment in the prose.",
+      "source_sha256": "be04586b54a8a697914e6a2dee4541b98bfd8473daa8786d5c66ddff3b151a95",
+      "translation": "वर्णनात्मक पाठ में प्रयोग को क्या नाम देना है।"
+    },
+    {
+      "context": "how many hits to carry into the digest.",
+      "label": "spacr.methods_export.build_digest#12",
+      "source": "how many hits to carry into the digest.",
+      "source_sha256": "ff90c61bb10078e96b66c5697fe64c4a57597781e1c863528108d018db1675cc",
+      "translation": "डाइजेस्ट में कितने हिट शामिल करने हैं।"
+    },
+    {
+      "context": "the digest, JSON-serializable throughout.",
+      "label": "spacr.methods_export.build_digest#14",
+      "source": "the digest, JSON-serializable throughout.",
+      "source_sha256": "a175364cb22cab7fced3a85bd0bcc1f5cc5cc6a3305432ce9ddbcb8c2d8d1013",
+      "translation": "डाइजेस्ट, जिसे पूरी तरह JSON में सीरियलाइज़ किया जा सकता है।"
+    },
+    {
+      "context": "the project root. Supplies the provenance summary from :mod:`spacr.pipeline_graph` and the segmentation QC from :mod:`spacr.seg_qc`.",
+      "label": "spacr.methods_export.build_digest#2",
+      "source": "the project root. Supplies the provenance summary from :mod:`spacr.pipeline_graph` and the segmentation QC from :mod:`spacr.seg_qc`.",
+      "source_sha256": "4e0898eaadbd76992ebe11494a62d16d7093e9318a04332bbd02c7eae540c61a",
+      "translation": "प्रोजेक्ट का मूल फ़ोल्डर। यह :mod:`spacr.pipeline_graph` से उत्पत्ति-संबंधी सारांश और :mod:`spacr.seg_qc` से सेगमेंटेशन QC देता है।"
+    },
+    {
+      "context": "a :mod:`spacr.run_journal` processing-session folder. Supplies the manifest: versions, timings, seeds, warnings, status.",
+      "label": "spacr.methods_export.build_digest#3",
+      "source": "a :mod:`spacr.run_journal` run folder. Supplies the manifest: versions, timings, seeds, warnings, status.",
+      "source_sha256": "1f630604687e3065c6abcd81afa6ba131b5dd1b6a096b288fe8d4f2c2abf2357",
+      "translation": "एक :mod:`spacr.run_journal` रन फ़ोल्डर। यह मैनिफ़ेस्ट देता है: संस्करण, समय, सीड, चेतावनियाँ और स्थिति।"
+    },
+    {
+      "context": "the emitted ``macro.py``; defaults to the one inside ``run_dir``. Supplies the per-module steps, the settings each ran with and which of them the user actually chose.",
+      "label": "spacr.methods_export.build_digest#4",
+      "source": "the emitted ``macro.py``; defaults to the one inside ``run_dir``. Supplies the per-module steps, the settings each ran with and which of them the user actually chose.",
+      "source_sha256": "c22650a176c3ad2966e63e8cb6aef889a55e59f4a6bdd24434a2335ab6d61402",
+      "translation": "बनाई गई ``macro.py``; डिफ़ॉल्ट रूप से ``run_dir`` के भीतर वाली फ़ाइल। इससे हर मॉड्यूल के चरण, उनके चलने में उपयोग हुई सेटिंग्स और उनमें उपयोगकर्ता ने वास्तव में किन्हें चुना, यह मिलता है।"
+    },
+    {
+      "context": "settings supplied directly. A non-empty mapping takes precedence over journal or macro settings; otherwise those sources may supply the settings.",
+      "label": "spacr.methods_export.build_digest#5",
+      "source": "settings supplied directly. A non-empty mapping takes precedence over journal or macro settings; otherwise those sources may supply the settings.",
+      "source_sha256": "d74d92eeac38d75b3118d50e7ec9711b3006da86b6d00b517053e1d6ec059f9a",
+      "translation": "सीधे दी गई सेटिंग्स। गैर-खाली मैपिंग को जर्नल या मैक्रो सेटिंग्स पर प्राथमिकता मिलती है; अन्यथा वे स्रोत सेटिंग्स दे सकते हैं।"
+    },
+    {
+      "context": "a regression results folder, for the statistics.",
+      "label": "spacr.methods_export.build_digest#6",
+      "source": "a regression results folder, for the statistics.",
+      "source_sha256": "71a01a783e390c25fbf2102ec2ed86517a3919ef1de4247af86b416c52a32b9c",
+      "translation": "सांख्यिकीय आँकड़ों के लिए रिग्रेशन परिणामों का फ़ोल्डर।"
+    },
+    {
+      "context": "the backend, for how the hit list is ranked.",
+      "label": "spacr.methods_export.build_digest#8",
+      "source": "the backend, for how the hit list is ranked.",
+      "source_sha256": "318544c86b044c01453950ed5acd34dfcbe888ad366d391bba0fd62402ecc383",
+      "translation": "हिट सूची को रैंक करने के लिए उपयोग होने वाला बैकएंड।"
+    },
+    {
+      "context": "Return the caveat sentences that a methods section must include.",
+      "label": "spacr.methods_export.caveats_for#0",
+      "source": "Return the caveat sentences that a methods section must include.",
+      "source_sha256": "34a767581bce6e8f79b7215187682607cbd6cb0db0569eecc92ef0e8b7592d7d",
+      "translation": "वे सीमा-संबंधी वाक्य लौटाएँ जिन्हें Methods खंड में शामिल करना आवश्यक है।"
+    },
+    {
+      "context": "Selected limitations and context derived from the digest: seed and error policy, illumination configuration, segmentation QC, machine-learning classification model summaries, artifact state, analysis-lock status and recorded warnings. At most five segmentation flag names and five run warnings are included; this is not an exhaustive account of every recorded limitation.",
+      "label": "spacr.methods_export.caveats_for#1",
+      "source": "Selected limitations and context derived from the digest: seed and error policy, illumination configuration, segmentation QC, classifier summaries, artifact state, analysis-lock status and recorded warnings. At most five segmentation flag names and five run warnings are included; this is not an exhaustive account of every recorded limitation.",
+      "source_sha256": "88168dd28858df4d62db0d216cc24fc9926cb8cb972a9a87b93da57932ed67df",
+      "translation": "डाइजेस्ट से निकाली गई चुनी हुई सीमाएँ और संदर्भ: सीड और त्रुटि नीति, प्रकाश-सुधार कॉन्फ़िगरेशन, सेगमेंटेशन QC, क्लासिफ़ायर सारांश, आर्टिफ़ैक्ट स्थिति, विश्लेषण-लॉक स्थिति और दर्ज चेतावनियाँ। अधिकतम पाँच सेगमेंटेशन फ़्लैग नाम और पाँच रन चेतावनियाँ शामिल होती हैं; यह दर्ज हर सीमा का संपूर्ण विवरण नहीं है।"
+    },
+    {
+      "context": "a digest under construction.",
+      "label": "spacr.methods_export.caveats_for#2",
+      "source": "a digest under construction.",
+      "source_sha256": "a224edea9a8d456e909be77f2f89e3a5ee191edcff8aa73f6815b5aa98d3b1e9",
+      "translation": "निर्माणाधीन डाइजेस्ट।"
+    },
+    {
+      "context": "one sentence per caveat, in the order a methods section would state them.",
+      "label": "spacr.methods_export.caveats_for#3",
+      "source": "one sentence per caveat, in the order a methods section would state them.",
+      "source_sha256": "4e7314c8a7cdbff3f4852830b59c22a04a39afc02fe379e9be09dc9e28bc38e2",
+      "translation": "हर सीमा के लिए एक वाक्य, उसी क्रम में जिसमें Methods खंड उन्हें प्रस्तुत करेगा।"
+    },
+    {
+      "context": "The Methods verdict additionally checks for the selected opening phrase of each recorded caveat. The function returns verdicts and does not replace either section.",
+      "label": "spacr.methods_export.check_draft#1",
+      "source": "The Methods verdict additionally checks for the selected opening phrase of each recorded caveat. The function returns verdicts and does not replace either section.",
+      "source_sha256": "4c1dd74bcb711af58bb4eed7a56326d94c54fb9f923058dde3654fe73338fbe7",
+      "translation": "Methods का निर्णय हर दर्ज सीमा-वाक्य के चुने हुए शुरुआती वाक्यांश की भी जाँच करता है। फ़ंक्शन निर्णय लौटाता है और किसी भी खंड को बदलता नहीं है।"
+    },
+    {
+      "context": "source digest against which numbers and caveats are checked.",
+      "label": "spacr.methods_export.check_draft#4",
+      "source": "source digest against which numbers and caveats are checked.",
+      "source_sha256": "b359a84a430bb22b13d77bb2a30110730e626c7406fb5d459e24509368bb6d56",
+      "translation": "वह स्रोत डाइजेस्ट जिसके विरुद्ध संख्याएँ और सीमा-संबंधी वाक्य जाँचे जाते हैं।"
+    },
+    {
+      "context": "Collect numeric leaves and fully numeric string leaves as floats.",
+      "label": "spacr.methods_export.digest_numbers#0",
+      "source": "Collect numeric leaves and fully numeric string leaves as floats.",
+      "source_sha256": "1e92d2a9d739b5dfceb3251fa66fa8b61d81c3bbb4b6bb4c4bbd1c805cbad348",
+      "translation": "संख्यात्मक लीफ़ मान और पूरी तरह संख्यात्मक स्ट्रिंग लीफ़ मान फ़्लोट के रूप में इकट्ठा करें।"
+    },
+    {
+      "context": "Numeric leaves, plus strings that are *entirely* a number (a gene id such as ``\"233460\"`` is a string in the tables and a number in prose). Digits embedded in a longer string — a path, a run id, a version — are not harvested here: those are handled by :func:`digest_strings`, which lets the prose quote them verbatim without also licensing every digit inside them as a free-standing figure.",
+      "label": "spacr.methods_export.digest_numbers#1",
+      "source": "Numeric leaves, plus strings that are *entirely* a number (a gene id such as ``\"233460\"`` is a string in the tables and a number in prose). Digits embedded in a longer string — a path, a run id, a version — are not harvested here: those are handled by :func:`digest_strings`, which lets the prose quote them verbatim without also licensing every digit inside them as a free-standing figure.",
+      "source_sha256": "eaeeb4515a4791601c2ef3c142003d9af9bc4f0cd50581982f60877c1d400796",
+      "translation": "संख्यात्मक लीफ़ मान और ऐसी स्ट्रिंग जो *पूरी तरह* एक संख्या हैं (``\"233460\"`` जैसा जीन पहचानकर्ता तालिकाओं में स्ट्रिंग और वर्णनात्मक पाठ में संख्या होता है)। लंबी स्ट्रिंग में मौजूद अंक — पथ, रन पहचानकर्ता या संस्करण — यहाँ नहीं इकट्ठे किए जाते: उन्हें :func:`digest_strings` संभालता है, जिससे पाठ में उन्हें अक्षरशः उद्धृत किया जा सकता है, पर उनके हर अंक को अलग स्वतंत्र संख्या के रूप में मान्यता नहीं मिलती।"
+    },
+    {
+      "context": "a digest as :func:`build_digest` returns.",
+      "label": "spacr.methods_export.digest_numbers#2",
+      "source": "a digest as :func:`build_digest` returns.",
+      "source_sha256": "a2ace17de38c79a0c800df22b17e5dc442d33da6c89755f2d90d9d75724c96cc",
+      "translation": ":func:`build_digest` द्वारा लौटाया गया डाइजेस्ट।"
+    },
+    {
+      "context": "the numbers, as floats.",
+      "label": "spacr.methods_export.digest_numbers#3",
+      "source": "the numbers, as floats.",
+      "source_sha256": "740b5fed6f697d8f6b895a161f5f7c5f5d86a3fc9c42592375ac60d863108f15",
+      "translation": "फ़्लोट के रूप में संख्याएँ।"
+    },
+    {
+      "context": "Return digit-bearing digest strings of at least two characters, longest first.",
+      "label": "spacr.methods_export.digest_strings#0",
+      "source": "Return digit-bearing digest strings of at least two characters, longest first.",
+      "source_sha256": "74da274ed803fe68498418b8154fb6c634f260364936e94721287fc617b01140",
+      "translation": "अंकों वाली कम से कम दो अक्षरों की डाइजेस्ट स्ट्रिंग लौटाएँ, सबसे लंबी पहले।"
+    },
+    {
+      "context": "These strings are removed as literal substrings before numerical tokens are extracted, allowing paths, run identifiers and versions to be quoted without checking their embedded digits separately. A string is excluded when its nearest structured-data name is a generated-prose structured-data name, such as the caveat list structured-data name. Sorting longest first avoids removing a shorter match before its enclosing string.",
+      "label": "spacr.methods_export.digest_strings#1",
+      "source": "These strings are removed as literal substrings before numerical tokens are extracted, allowing paths, run identifiers and versions to be quoted without checking their embedded digits separately. A string is excluded when its nearest mapping key is a generated-prose key, such as the caveat list key. Sorting longest first avoids removing a shorter match before its enclosing string.",
+      "source_sha256": "2025fc3fcb9655eeaf57c11c9d3d192134109d9cd1093dd7b9d97b21e71b9b2b",
+      "translation": "संख्यात्मक टोकन निकालने से पहले ये स्ट्रिंग अक्षरशः उपस्ट्रिंग के रूप में हटा दी जाती हैं, जिससे पथ, रन पहचानकर्ता और संस्करणों को उनके भीतर के अंकों की अलग जाँच के बिना उद्धृत किया जा सकता है। यदि किसी स्ट्रिंग की निकटतम मैपिंग कुंजी जनित गद्य की कुंजी हो, जैसे सीमा-सूची की कुंजी, तो वह स्ट्रिंग बाहर रखी जाती है। सबसे लंबी पहले क्रमित करने से, छोटी मिलती स्ट्रिंग उसे समाहित करने वाली लंबी स्ट्रिंग से पहले नहीं हटती।"
+    },
+    {
+      "context": "a digest.",
+      "label": "spacr.methods_export.digest_strings#2",
+      "source": "a digest.",
+      "source_sha256": "e8efe031738679036433a218ffa7432680df292739024765b7bbb297c1032b84",
+      "translation": "एक डाइजेस्ट।"
+    },
+    {
+      "context": "the strings, longest first.",
+      "label": "spacr.methods_export.digest_strings#3",
+      "source": "the strings, longest first.",
+      "source_sha256": "5fb8da29d038b4d46da864397b9ad879365fe52116703c07e7eb38f38d830d4e",
+      "translation": "स्ट्रिंग, सबसे लंबी पहले।"
+    },
+    {
+      "context": "Return recognized numerical tokens after permitted text and pattern removal.",
+      "label": "spacr.methods_export.extract_numbers#0",
+      "source": "Return recognized numerical tokens after permitted text and pattern removal.",
+      "source_sha256": "e86373fca8f1e13ebc55d5d1096c0805153ea5eb5536d0a4749aaff973104845",
+      "translation": "अनुमत पाठ और पैटर्न हटाने के बाद पहचाने गए संख्यात्मक टोकन लौटाएँ।"
+    },
+    {
+      "context": "Remove the supplied ``strings`` as literal substrings, longest first, then remove the configured structural patterns for list markers, dotted versions, ISO dates, long hexadecimal identifiers and reference labels. Apply the numeric-token expression to the remaining text; this does not detect numbers written as words or determine the meaning of a numerical claim.",
+      "label": "spacr.methods_export.extract_numbers#1",
+      "source": "Remove the supplied ``strings`` as literal substrings, longest first, then remove the configured structural patterns for list markers, dotted versions, ISO dates, long hexadecimal identifiers and reference labels. Apply the numeric-token expression to the remaining text; this does not detect numbers written as words or determine the meaning of a numerical claim.",
+      "source_sha256": "b0faa94c210aef2ea6aff0d1b1299cbed04620087b4b2349468e14857ce57234",
+      "translation": "दी गई ``strings`` को अक्षरशः उपस्ट्रिंग के रूप में सबसे लंबी पहले हटाएँ, फिर सूची चिह्नों, बिंदु वाले संस्करणों, ISO तिथियों, लंबे हेक्स पहचानकर्ताओं और संदर्भ लेबलों के लिए कॉन्फ़िगर किए गए संरचनात्मक पैटर्न हटाएँ। बचे पाठ पर संख्यात्मक-टोकन एक्सप्रेशन लागू करें; यह शब्दों में लिखी संख्याएँ नहीं पहचानता और न संख्यात्मक दावे का अर्थ तय करता है।"
+    },
+    {
+      "context": "the prose to check.",
+      "label": "spacr.methods_export.extract_numbers#2",
+      "source": "the prose to check.",
+      "source_sha256": "ccadc91a69bb277a0b61e75ae4327cdff7251dcf9d641b2d9476d073d5b62b45",
+      "translation": "जाँचा जाने वाला वर्णनात्मक पाठ।"
+    },
+    {
+      "context": "substrings that may be quoted verbatim.",
+      "label": "spacr.methods_export.extract_numbers#3",
+      "source": "substrings that may be quoted verbatim.",
+      "source_sha256": "ab004e3c9ade6a441eba2a38acfa91013b90d3e6bfedbb40ed88293abacc009d",
+      "translation": "वे उपस्ट्रिंग जिन्हें अक्षरशः उद्धृत किया जा सकता है।"
+    },
+    {
+      "context": "Write the methods section from the digest, with no model involved.",
+      "label": "spacr.methods_export.render_methods#0",
+      "source": "Write the methods section from the digest, with no model involved.",
+      "source_sha256": "97f54c6521f7066d7886eab608718434ba4a448a78965372944da06b5ebe22c5",
+      "translation": "मॉडल का उपयोग किए बिना डाइजेस्ट से Methods खंड लिखें।"
+    },
+    {
+      "context": "Format recorded values and simple counts derived from the supplied collections. Include every supplied caveat and note, without a trailing newline. The function performs no model request or numerical verification.",
+      "label": "spacr.methods_export.render_methods#1",
+      "source": "Format recorded values and simple counts derived from the supplied collections. Include every supplied caveat and note, without a trailing newline. The function performs no model request or numerical verification.",
+      "source_sha256": "1de01bddf2372b5eca9ac36155ff5c961f28bf4b1d7335efc3c2e5d7b7bfb63e",
+      "translation": "दर्ज मान और दिए गए संग्रहों से निकली साधारण गिनतियाँ स्वरूपित करें। हर दिए गए सीमा-वाक्य और टिप्पणी को शामिल करें, बिना अंतिम नई पंक्ति के। फ़ंक्शन न मॉडल अनुरोध करता है और न संख्यात्मक सत्यापन।"
+    },
+    {
+      "context": "collected run facts from which to render the section.",
+      "label": "spacr.methods_export.render_methods#2",
+      "source": "collected run facts from which to render the section.",
+      "source_sha256": "f15f489fc63ba0385128ff15167426e5c4deb7d87bc3849e47e0e9401e27316d",
+      "translation": "इकट्ठा किए गए रन के तथ्य, जिनसे खंड रेंडर किया जाएगा।"
+    },
+    {
+      "context": "``(system prompt, user message)`` for one digest.",
+      "label": "spacr.methods_export.render_prompt#0",
+      "source": "``(system prompt, user message)`` for one digest.",
+      "source_sha256": "7335e0b31c07b7d89d67752fb8e4af7a1f0a10ff4c6a877719e2a68f1eedd31e",
+      "translation": "एक डाइजेस्ट के लिए ``(system prompt, user message)``।"
+    },
+    {
+      "context": "Serialize the complete supplied digest into a user message and pair it with the static system instructions. This helper does not call a model or filter raw or sensitive values from the mapping. The prompts contain fixed instructions in addition to the serialized digest.",
+      "label": "spacr.methods_export.render_prompt#1",
+      "source": "Serialize the complete supplied digest into a user message and pair it with the static system instructions. This helper does not call a model or filter raw or sensitive values from the mapping. The prompts contain fixed instructions in addition to the serialized digest.",
+      "source_sha256": "2eb80d437afa0ea738f1f9a80129a421828b9be9c65c47168457b9d8b182fbab",
+      "translation": "पूरा दिया गया डाइजेस्ट उपयोगकर्ता संदेश में सीरियलाइज़ करें और स्थिर सिस्टम निर्देशों के साथ जोड़ें। यह सहायक फ़ंक्शन मॉडल को कॉल नहीं करता और न मैपिंग से कच्चे या संवेदनशील मान हटाता है। सीरियलाइज़ किए गए डाइजेस्ट के अलावा प्रॉम्प्ट में स्थिर निर्देश भी होते हैं।"
+    },
+    {
+      "context": "the digest to write about.",
+      "label": "spacr.methods_export.render_prompt#2",
+      "source": "the digest to write about.",
+      "source_sha256": "a760e686affc1f55eed07ace658e611b0faf7c9447b75901a47dc81a320a83c5",
+      "translation": "वह डाइजेस्ट जिसके बारे में लिखना है।"
+    },
+    {
+      "context": "the two prompt halves.",
+      "label": "spacr.methods_export.render_prompt#3",
+      "source": "the two prompt halves.",
+      "source_sha256": "f3cb6b236ec777d652c3fd00421b7218b6fc0524c1d37f2250e97e77b369aa6a",
+      "translation": "प्रॉम्प्ट के दो भाग।"
+    },
+    {
+      "context": "Write the results section from the digest, with no model involved.",
+      "label": "spacr.methods_export.render_results#0",
+      "source": "Write the results section from the digest, with no model involved.",
+      "source_sha256": "c4a8d197740abfcd0d192e526d92b296b0780acde8fa7484a11e3979935e64d3",
+      "translation": "मॉडल का उपयोग किए बिना डाइजेस्ट से Results खंड लिखें।"
+    },
+    {
+      "context": "Format supplied statistical summaries, hit rows and provenance counts. No trailing newline; no model request or numerical verification.",
+      "label": "spacr.methods_export.render_results#1",
+      "source": "Format supplied statistical summaries, hit rows and provenance counts. No trailing newline; no model request or numerical verification.",
+      "source_sha256": "e6ecb6ffd2b2d6c9d0e004bd5749f782276c558f9a1867f372829e51f5b53e5f",
+      "translation": "दिए गए सांख्यिकीय सारांश, हिट पंक्तियाँ और उत्पत्ति-संबंधी गिनतियाँ स्वरूपित करें। न अंतिम नई पंक्ति, न मॉडल अनुरोध, न संख्यात्मक सत्यापन।"
+    },
+    {
+      "context": "collected run facts from which to render the section.",
+      "label": "spacr.methods_export.render_results#2",
+      "source": "collected run facts from which to render the section.",
+      "source_sha256": "f15f489fc63ba0385128ff15167426e5c4deb7d87bc3849e47e0e9401e27316d",
+      "translation": "इकट्ठा किए गए रन के तथ्य, जिनसे खंड रेंडर किया जाएगा।"
+    },
+    {
+      "context": "Return instructions requesting that numerical claims be supported by the digest.",
+      "label": "spacr.methods_export.system_prompt#0",
+      "source": "Return instructions requesting that numerical claims be supported by the digest.",
+      "source_sha256": "9a41f3f87736a0dd8cd8299ff9492f7c8f520b3a995b08f424baec93f12977c7",
+      "translation": "संख्यात्मक दावों के डाइजेस्ट से समर्थित होने का अनुरोध करने वाले निर्देश लौटाएँ।"
+    },
+    {
+      "context": "Check recognized numerical tokens and optional caveat phrases against a digest.",
+      "label": "spacr.methods_export.verify_numbers#0",
+      "source": "Check recognized numerical tokens and optional caveat phrases against a digest.",
+      "source_sha256": "f0d5793ad1abf692ed0a057149ee6d0c452c025f53b7d2c11b35ebe35d949185",
+      "translation": "डाइजेस्ट के विरुद्ध पहचाने गए संख्यात्मक टोकन और वैकल्पिक सीमा-संबंधी वाक्यांश जाँचें।"
+    },
+    {
+      "context": "The check uses :func:`extract_numbers`, digest values, rounding tolerance and :data:`ALWAYS_ALLOWED`. :func:`check_draft` applies it to both generated sections; the manuscript caller decides whether to use a fallback. A passing verdict does not establish scientific accuracy.",
+      "label": "spacr.methods_export.verify_numbers#1",
+      "source": "The check uses :func:`extract_numbers`, digest values, rounding tolerance and :data:`ALWAYS_ALLOWED`. :func:`check_draft` applies it to both generated sections; the manuscript caller decides whether to use a fallback. A passing verdict does not establish scientific accuracy.",
+      "source_sha256": "a1d26590af9be5b5271d86a3aa712394ea7a39136d142fe64a6d6ab320928242",
+      "translation": "जाँच :func:`extract_numbers`, डाइजेस्ट मान, राउंडिंग सहनशीलता और :data:`ALWAYS_ALLOWED` उपयोग करती है। :func:`check_draft` इसे दोनों जनित खंडों पर लागू करता है; वैकल्पिक खंड उपयोग करना है या नहीं, यह पांडुलिपि वाला कॉलर तय करता है। सफल निर्णय वैज्ञानिक शुद्धता स्थापित नहीं करता।"
+    },
+    {
+      "context": "the generated prose.",
+      "label": "spacr.methods_export.verify_numbers#2",
+      "source": "the generated prose.",
+      "source_sha256": "7845ad7c39908016cb5d67b1837271906d188207f1dca35de8313d06998659e9",
+      "translation": "जनित वर्णनात्मक पाठ।"
+    },
+    {
+      "context": "the digest it was generated from.",
+      "label": "spacr.methods_export.verify_numbers#3",
+      "source": "the digest it was generated from.",
+      "source_sha256": "88ee85ade33a990dc9f8f01ccc60fe655bb25bea3447cfbda331a0619180f4aa",
+      "translation": "वह डाइजेस्ट जिससे इसे बनाया गया।"
+    },
+    {
+      "context": "also search for the case-folded opening clause of each non-empty caveat in the digest. The clause ends at the first comma, full stop or semicolon. :func:`check_draft` enables this for Methods; it is a substring check rather than semantic verification.",
+      "label": "spacr.methods_export.verify_numbers#4",
+      "source": "also search for the case-folded opening clause of each non-empty caveat in the digest. The clause ends at the first comma, full stop or semicolon. :func:`check_draft` enables this for Methods; it is a substring check rather than semantic verification.",
+      "source_sha256": "5e81676a944accc2cc8e6d362fcaf68202bccda080a6b6b693b3777d270e6c7e",
+      "translation": "डाइजेस्ट के हर गैर-खाली सीमा-वाक्य के शुरुआती खंड को बड़े-छोटे अक्षरों का भेद मिटाकर भी खोजें। खंड पहले कॉमा, पूर्णविराम या सेमीकोलन पर समाप्त होता है। :func:`check_draft` इसे Methods के लिए सक्षम करता है; यह उपस्ट्रिंग जाँच है, अर्थ-संबंधी सत्यापन नहीं।"
+    },
+    {
+      "context": "The AI console shares a streaming `ChatProvider` interface across the spaCR hosted relay and the Anthropic Claude, OpenAI Codex and Google Gemini command-line tools. Vendor tools use their own authentication; this package does not retrieve API structured-data names from the OS keyring. Provider configuration checks select candidates and do not guarantee a working authenticated session.",
+      "label": "spacr.qt.ai#1",
+      "source": "The AI console shares a streaming `ChatProvider` interface across the spaCR hosted relay and the Anthropic Claude, OpenAI Codex and Google Gemini command-line tools. Vendor tools use their own authentication; this package does not retrieve API keys from the OS keyring. Provider configuration checks select candidates and do not guarantee a working authenticated session.",
+      "source_sha256": "da98db83b1158419fc6d8deb73b570719e5a134f4fcb7d97dd07206fda82de02",
+      "translation": "AI कंसोल spaCR होस्टेड रिले तथा Anthropic Claude, OpenAI Codex और Google Gemini कमांड-लाइन टूल के बीच स्ट्रीमिंग `ChatProvider` इंटरफ़ेस साझा करता है। प्रदाता टूल अपना प्रमाणीकरण स्वयं करते हैं; यह पैकेज OS कीरिंग से API कुंजियाँ नहीं लेता। प्रदाता कॉन्फ़िगरेशन जाँच उम्मीदवार चुनती हैं, किसी कार्यरत प्रमाणित सत्र की गारंटी नहीं देतीं।"
+    },
+    {
+      "context": "GitHub authentication + direct issue creation for spaCR.",
+      "label": "spacr.qt.ai.github_auth#0",
+      "source": "GitHub authentication + direct issue creation for spaCR.",
+      "source_sha256": "4c035fecc16b9767c38e7621213fa7a29a5d8e67952b793df0a8f7ba68fc90ba",
+      "translation": "GitHub प्रमाणीकरण और spaCR के लिए सीधे इश्यू बनाना।"
+    },
+    {
+      "context": "Supports issue filing through the GitHub REST API without a browser round-trip. Token resolution checks the process-only compatibility token first, then ``GITHUB_TOKEN``, then ``GH_TOKEN``, and finally the GitHub CLI (``gh auth token``). This module does not persist tokens; a compatibility token can be held in process memory. The official CLI manages its own interactive sign-in and credential storage.",
+      "label": "spacr.qt.ai.github_auth#1",
+      "source": "Supports issue filing through the GitHub REST API without a browser round-trip. Token resolution checks the process-only compatibility token first, then ``GITHUB_TOKEN``, then ``GH_TOKEN``, and finally the GitHub CLI (``gh auth token``). This module does not persist tokens; a compatibility token can be held in process memory. The official CLI manages its own interactive sign-in and credential storage.",
+      "source_sha256": "5cf9b94b705caf6a979e0cb5e1af85859df7ef43c92934fd6898169b83bca617",
+      "translation": "ब्राउज़र में जाने की आवश्यकता के बिना GitHub REST API के माध्यम से इश्यू भेजने में सहायता करता है। टोकन चुनते समय पहले केवल प्रक्रिया में रखे गए संगतता टोकन को जाँचा जाता है, फिर ``GITHUB_TOKEN``, फिर ``GH_TOKEN`` और अंत में GitHub CLI (``gh auth token``) को। यह मॉड्यूल टोकन को स्थायी रूप से सहेजता नहीं है; संगतता टोकन प्रक्रिया की मेमोरी में रह सकता है। आधिकारिक CLI अपना संवादात्मक साइन-इन और क्रेडेंशियल भंडारण स्वयं संभालती है।"
+    },
+    {
+      "context": "With a token, :func:`create_issue` attempts a GitHub REST API request and returns a success flag with a URL or error. With no token it returns failure; it does not open a browser. Callers decide whether to fall back to a pre-filled ``issues/new`` URL.",
+      "label": "spacr.qt.ai.github_auth#2",
+      "source": "With a token, :func:`create_issue` attempts a GitHub REST API request and returns a success flag with a URL or error. With no token it returns failure; it does not open a browser. Callers decide whether to fall back to a pre-filled ``issues/new`` URL.",
+      "source_sha256": "4ac4c8e11aebabb1374b2878170f8d59097dfdb560286b84bf8c7dec162b7f67",
+      "translation": "टोकन होने पर :func:`create_issue` GitHub REST API अनुरोध करने का प्रयास करता है और सफलता के फ़्लैग के साथ URL या त्रुटि लौटाता है। टोकन न होने पर यह विफलता लौटाता है; ब्राउज़र नहीं खोलता। पहले से भरे ``issues/new`` URL पर जाने का निर्णय कॉल करने वाला कोड लेता है।"
+    },
+    {
+      "context": "Add a comment to an existing issue.",
+      "label": "spacr.qt.ai.github_auth.comment_on_issue#0",
+      "source": "Add a comment to an existing issue.",
+      "source_sha256": "0a3a6f6f6423bc2000869c996f7a666cb0df5c41e6d64180661b75ee24566a06",
+      "translation": "किसी मौजूदा इश्यू में टिप्पणी जोड़ें।"
+    },
+    {
+      "context": "``owner/name`` slug.",
+      "label": "spacr.qt.ai.github_auth.comment_on_issue#1",
+      "source": "``owner/name`` slug.",
+      "source_sha256": "cadca8a54b1fd947494944b00cf5fb04c4c4e1188b79c7c4d7d2c92f8fd94b7f",
+      "translation": "``owner/name`` रूप में रिपॉज़िटरी पहचानकर्ता।"
+    },
+    {
+      "context": "the issue number.",
+      "label": "spacr.qt.ai.github_auth.comment_on_issue#2",
+      "source": "the issue number.",
+      "source_sha256": "3742defba593c6a57dd94a7fd65fab72676397494ab42eab64fab5f21de8853e",
+      "translation": "इश्यू का क्रमांक।"
+    },
+    {
+      "context": "markdown comment body.",
+      "label": "spacr.qt.ai.github_auth.comment_on_issue#3",
+      "source": "markdown comment body.",
+      "source_sha256": "10d5e5055aa0abc72f456d6c1db2e6e323e0dc5985dc79d1289b634c8819787c",
+      "translation": "Markdown में टिप्पणी का मुख्य पाठ।"
+    },
+    {
+      "context": "``(True, comment_html_url)`` on success, or ``(False, error)`` for a missing token, refused transport or a caught request/response error. Token resolution, serialization and request construction can raise before that handler.",
+      "label": "spacr.qt.ai.github_auth.comment_on_issue#4",
+      "source": "``(True, comment_html_url)`` on success, or ``(False, error)`` for a missing token, refused transport or a caught request/response error. Token resolution, serialization and request construction can raise before that handler.",
+      "source_sha256": "72573181831acfde3e8d30a6ed3886c45cfaf9816fca3029cdac87534e848d0b",
+      "translation": "सफलता पर ``(True, comment_html_url)``, या टोकन न होने, परिवहन अस्वीकार होने अथवा अनुरोध या प्रतिक्रिया की पकड़ी गई त्रुटि पर ``(False, error)``। टोकन चुनना, सीरियलाइज़ेशन और अनुरोध बनाना उस हैंडलर से पहले अपवाद उठा सकते हैं।"
+    },
+    {
+      "context": "Create a GitHub issue directly via the REST API.",
+      "label": "spacr.qt.ai.github_auth.create_issue#0",
+      "source": "Create a GitHub issue directly via the REST API.",
+      "source_sha256": "50153ddf5478335ad1b0be650b02f4b422b38ef7fc1103dd100eeb4e23566cda",
+      "translation": "REST API के माध्यम से सीधे GitHub इश्यू बनाएँ।"
+    },
+    {
+      "context": "``owner/name`` slug.",
+      "label": "spacr.qt.ai.github_auth.create_issue#1",
+      "source": "``owner/name`` slug.",
+      "source_sha256": "cadca8a54b1fd947494944b00cf5fb04c4c4e1188b79c7c4d7d2c92f8fd94b7f",
+      "translation": "``owner/name`` रूप में रिपॉज़िटरी पहचानकर्ता।"
+    },
+    {
+      "context": "issue title.",
+      "label": "spacr.qt.ai.github_auth.create_issue#2",
+      "source": "issue title.",
+      "source_sha256": "28a7953e9b566c6f54de7edcb217c4a498909af3ace3ffd4f47ba03df28f4d62",
+      "translation": "इश्यू का शीर्षक।"
+    },
+    {
+      "context": "markdown body.",
+      "label": "spacr.qt.ai.github_auth.create_issue#3",
+      "source": "markdown body.",
+      "source_sha256": "9db754b09830beaadae81779c9aaf623be61e0ba795b5f6507d2a0360b54ce23",
+      "translation": "Markdown में मुख्य पाठ।"
+    },
+    {
+      "context": "label names to include in the request; this function does not create labels. Applying labels requires push access to the repository, and GitHub can silently ignore them otherwise.",
+      "label": "spacr.qt.ai.github_auth.create_issue#4",
+      "source": "label names to include in the request; this function does not create labels. Applying labels requires push access to the repository, and GitHub can silently ignore them otherwise.",
+      "source_sha256": "43b83fd7f417b1abab4e0f93d21235c169f2d8a95068d4dce7e898aa871f2bc7",
+      "translation": "अनुरोध में शामिल करने के लिए लेबल नाम; यह फ़ंक्शन लेबल बनाता नहीं है। लेबल लगाने के लिए रिपॉज़िटरी पर push पहुँच आवश्यक है, अन्यथा GitHub उन्हें बिना सूचना दिए अनदेखा कर सकता है।"
+    },
+    {
+      "context": "``(True, issue_html_url)`` on success, or ``(False, error)`` for a missing token, refused transport or a caught request/response error. Token resolution, serialization and request construction can raise before that handler.",
+      "label": "spacr.qt.ai.github_auth.create_issue#5",
+      "source": "``(True, issue_html_url)`` on success, or ``(False, error)`` for a missing token, refused transport or a caught request/response error. Token resolution, serialization and request construction can raise before that handler.",
+      "source_sha256": "6f3c72fb05464d7592b34db26f331b5494189defcae1053ee8c714a45b46b09a",
+      "translation": "सफलता पर ``(True, issue_html_url)``, या टोकन न होने, परिवहन अस्वीकार होने अथवा अनुरोध या प्रतिक्रिया की पकड़ी गई त्रुटि पर ``(False, error)``। टोकन चुनना, सीरियलाइज़ेशन और अनुरोध बनाना उस हैंडलर से पहले अपवाद उठा सकते हैं।"
+    },
+    {
+      "context": "Find an open GitHub issue containing a diagnostic fingerprint.",
+      "label": "spacr.qt.ai.github_auth.find_issue_by_fingerprint#0",
+      "source": "Find an open GitHub issue containing a diagnostic fingerprint.",
+      "source_sha256": "b9309e8b43c298b417c506a035d48fbc3086286ce22a6d27307e74c40bff9f98",
+      "translation": "वह खुला GitHub इश्यू खोजें जिसमें निदान का फ़िंगरप्रिंट है।"
+    },
+    {
+      "context": "repo : str Repository slug in ``owner/name`` form. fingerprint : str Short diagnostic hash stored in the issue body.",
+      "label": "spacr.qt.ai.github_auth.find_issue_by_fingerprint#2",
+      "source": "repo : str Repository slug in ``owner/name`` form. fingerprint : str Short diagnostic hash stored in the issue body.",
+      "source_sha256": "cb5b2a1e0442279c3a84321c53b5a5e686628d0ebe828852ed23dd722b8984f9",
+      "translation": "repo : str ``owner/name`` रूप में रिपॉज़िटरी पहचानकर्ता। fingerprint : str इश्यू के मुख्य पाठ में रखा छोटा निदान हैश।"
+    },
+    {
+      "context": "search_completed : bool ``True`` when GitHub returned a search result, including no matches. ``False`` when no token is available, test transport is refused or a caught search error occurs. Token resolution and request construction occur outside the request handler and can raise. issue : dict or None First matching issue, or ``None`` when none was found or the search could not be completed.",
+      "label": "spacr.qt.ai.github_auth.find_issue_by_fingerprint#4",
+      "source": "search_completed : bool ``True`` when GitHub returned a search result, including no matches. ``False`` when no token is available, test transport is refused or a caught search error occurs. Token resolution and request construction occur outside the request handler and can raise. issue : dict or None First matching issue, or ``None`` when none was found or the search could not be completed.",
+      "source_sha256": "71d96c9703ace517a5eea1ca3df23fa9837efcae8ab9eb897886f12a1aa224c1",
+      "translation": "search_completed : bool जब GitHub खोज परिणाम लौटाए, भले ही कोई मिलान न हो, तब ``True``। टोकन उपलब्ध न होने, परीक्षण परिवहन अस्वीकार होने या पकड़ी गई खोज त्रुटि होने पर ``False``। टोकन चुनना और अनुरोध बनाना अनुरोध के त्रुटि हैंडलर से बाहर होता है और अपवाद उठा सकता है। issue : dict or None पहला मेल खाता इश्यू, या कोई न मिलने अथवा खोज पूरी न हो पाने पर ``None``।"
+    },
+    {
+      "context": "Show an editable report preview with a Send button.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#0",
+      "source": "Show an editable report preview with a Send button.",
+      "source_sha256": "3dbe7acbd326f21c61a89808ecc30bab37488f5bd582278cee84720e76b0372f",
+      "translation": "Send बटन के साथ संपादन योग्य रिपोर्ट पूर्वावलोकन दिखाएँ।"
+    },
+    {
+      "context": "the drafted payload, including ``body`` and ``fingerprint``. The preview permits edits, path stripping and adding a matching AI analysis before the caller submits the returned report.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#1",
+      "source": "the drafted payload, including ``body`` and ``fingerprint``. The preview permits edits, path stripping and adding a matching AI analysis before the caller submits the returned report.",
+      "source_sha256": "a08bbf4c695081636168279aae83f668be486784bf855d703a6238899060deb5",
+      "translation": "रिपोर्ट का मसौदा पेलोड, जिसमें ``body`` और ``fingerprint`` शामिल हैं। कॉलर के रिपोर्ट भेजने से पहले पूर्वावलोकन में संपादन, पथ हटाने और मेल खाता AI विश्लेषण जोड़ने की अनुमति है।"
+    },
+    {
+      "context": "the console that owns the AI conversation; taken from the parent when not given, so the screen opening this need not know about the button.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#10",
+      "source": "the console that owns the AI conversation; taken from the parent when not given, so the screen opening this need not know about the button.",
+      "source_sha256": "d2c82b270e8495ef63dc046c2b8a9042e2e52c663c2e875356b161cf10f232b5",
+      "translation": "वह कंसोल जिसके पास AI बातचीत का स्वामित्व है; न देने पर इसे पैरेंट से लिया जाता है, ताकि यह संवाद खोलने वाली स्क्रीन को बटन के बारे में जानकारी न चाहिए।"
+    },
+    {
+      "context": "the traceback to diagnose.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#11",
+      "source": "the traceback to diagnose.",
+      "source_sha256": "9221777dc1a0fb0475cf59cc6975a298963763ce2942b2af51f55b6892270ce1",
+      "translation": "निदान के लिए ट्रेसबैक।"
+    },
+    {
+      "context": "the AI console that owns the conversation. Taken from ``parent`` when not given, so the screen opening this does not have to know about the button.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#3",
+      "source": "the AI console that owns the conversation. Taken from ``parent`` when not given, so the screen opening this does not have to know about the button.",
+      "source_sha256": "bec5a7443af5b0fb37d58439cb3777d177e6828ff4480d4546e689fb986e344b",
+      "translation": "वह AI कंसोल जिसके पास बातचीत का स्वामित्व है। न देने पर इसे ``parent`` से लिया जाता है, ताकि यह संवाद खोलने वाली स्क्रीन को बटन के बारे में जानकारी न चाहिए।"
+    },
+    {
+      "context": "the traceback to offer, if there is one.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#4",
+      "source": "the traceback to offer, if there is one.",
+      "source_sha256": "687d2195b8b27501b84f82020220d05c7f7710353a9ac9459b16fc0e52eb4137",
+      "translation": "यदि उपलब्ध हो, तो प्रस्तुत करने के लिए ट्रेसबैक।"
+    },
+    {
+      "context": "Build an editable report-review dialog; this constructor does not post an issue.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#5",
+      "source": "Build an editable report-review dialog; this constructor does not post an issue.",
+      "source_sha256": "01955e888abbc04f0a3b5174dbaeb690e52c7ed124bd2595a1b2f5223a9ba428",
+      "translation": "संपादन योग्य रिपोर्ट समीक्षा संवाद बनाएँ; यह कंस्ट्रक्टर इश्यू पोस्ट नहीं करता।"
+    },
+    {
+      "context": "Opening this dialog makes no submission itself. Its warning explains that a public issue is world-readable, indexed and mirrored, and cannot be reliably unpublished. Path stripping is enabled by default.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#6",
+      "source": "Opening this dialog makes no submission itself. Its warning explains that a public issue is world-readable, indexed and mirrored, and cannot be reliably unpublished. Path stripping is enabled by default.",
+      "source_sha256": "58ecc90eb996bf837125fdb728dc6eaea182be804ca41996e0327876c350bbef",
+      "translation": "इस संवाद को खोलने से स्वयं कुछ भी भेजा नहीं जाता। इसकी चेतावनी बताती है कि सार्वजनिक इश्यू सबके लिए पठनीय है, अनुक्रमित और प्रतिलिपित होता है, तथा उसे विश्वसनीय रूप से वापस अप्रकाशित नहीं किया जा सकता। पथ हटाना डिफ़ॉल्ट रूप से सक्षम है।"
+    },
+    {
+      "context": "Diagnose asks spaCR AI to explain this error. An available matching answer can be added to the report body; no answer is guaranteed.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#7",
+      "source": "Diagnose asks spaCR AI to explain this error. An available matching answer can be added to the report body; no answer is guaranteed.",
+      "source_sha256": "20ba94400c2872bfd9f885970dc0ce9b8813c223d60e277039ad203965bfb133",
+      "translation": "Diagnose, spaCR AI से इस त्रुटि को समझाने के लिए कहता है। उपलब्ध मेल खाता उत्तर रिपोर्ट के मुख्य पाठ में जोड़ा जा सकता है; उत्तर की गारंटी नहीं है।"
+    },
+    {
+      "context": "the drafted issue -- its ``title``, ``body`` and ``fingerprint``.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog#8",
+      "source": "the drafted issue -- its ``title``, ``body`` and ``fingerprint``.",
+      "source_sha256": "3352b6e9e76baa33fd64c5484b73a75031df0a65214901a42cb1f35ae15fc6ce",
+      "translation": "इश्यू का मसौदा — उसका ``title``, ``body`` और ``fingerprint``।"
+    },
+    {
+      "context": "Return a report mapping with the displayed body verbatim, the displayed title stripped of surrounding whitespace and the original fingerprint. This method neither checks approval nor sends the report.",
+      "label": "spacr.qt.ai.issue_preview.IssuePreviewDialog.approved_report#0",
+      "source": "Return a report mapping with the displayed body verbatim, the displayed title stripped of surrounding whitespace and the original fingerprint. This method neither checks approval nor sends the report.",
+      "source_sha256": "19fd9a6b6ae3af5d7510dab1c61a196acb1397503c97da13e5e3579ad28cb1a8",
+      "translation": "रिपोर्ट मैपिंग लौटाएँ, जिसमें दिखाया गया मुख्य पाठ ज्यों का त्यों, दिखाए गए शीर्षक से शुरुआती और अंतिम रिक्त स्थान हटाकर मिला पाठ तथा मूल फ़िंगरप्रिंट हो। यह विधि अनुमोदन जाँचती नहीं और रिपोर्ट भेजती नहीं है।"
+    },
+    {
+      "context": "These helpers build reports for automatic filing with a GitHub sign-in or submission after an editable preview. Callers decide whether and when to report; anonymous relay reporting is handled separately.",
+      "label": "spacr.qt.ai.issue_report#1",
+      "source": "These helpers build reports for automatic filing with a GitHub sign-in or submission after an editable preview. Callers decide whether and when to report; anonymous relay reporting is handled separately.",
+      "source_sha256": "96171213e6a7d34270ebf3e6da483afb80d88771e164704643cddc2feb86c4be",
+      "translation": "ये सहायक फ़ंक्शन GitHub साइन-इन के साथ स्वचालित रिपोर्टिंग के लिए, या संपादन योग्य पूर्वावलोकन के बाद भेजने के लिए रिपोर्ट बनाते हैं। रिपोर्ट करना है या नहीं और कब करना है, यह कॉल करने वाला कोड तय करता है; अनाम रिले रिपोर्टिंग अलग संभाली जाती है।"
+    },
+    {
+      "context": "``'always'``: the caller can pass the report produced by :func:`public_report` to :func:`file_without_review` for automatic filing without a browser. This requires a GitHub sign-in; without one, nothing is sent. Eligibility checks, duplicate-memory checks and any wait for an AI answer are handled by the caller.",
+      "label": "spacr.qt.ai.issue_report#2",
+      "source": "``'always'``: the caller can pass the report produced by :func:`public_report` to :func:`file_without_review` for automatic filing without a browser. This requires a GitHub sign-in; without one, nothing is sent. Eligibility checks, duplicate-memory checks and any wait for an AI answer are handled by the caller.",
+      "source_sha256": "cd5428aea7d9c78a1e399dda1d711fcec26cb82f52328f6cd84ad42c42b901ee",
+      "translation": "``'always'``: कॉल करने वाला कोड ब्राउज़र के बिना स्वचालित रिपोर्टिंग के लिए :func:`public_report` से बनी रिपोर्ट को :func:`file_without_review` में दे सकता है। इसके लिए GitHub साइन-इन आवश्यक है; उसके बिना कुछ नहीं भेजा जाता। पात्रता जाँच, पहले भेजी रिपोर्टों की स्मृति जाँच और AI उत्तर की प्रतीक्षा कॉल करने वाला कोड संभालता है।"
+    },
+    {
+      "context": "``'ask'``: the user can open an editable preview and approve it before :func:`submit_report` is called. Without a sign-in, or if API posting fails, submission opens a pre-filled GitHub form in the browser.",
+      "label": "spacr.qt.ai.issue_report#3",
+      "source": "``'ask'``: the user can open an editable preview and approve it before :func:`submit_report` is called. Without a sign-in, or if API posting fails, submission opens a pre-filled GitHub form in the browser.",
+      "source_sha256": "943688fd7adac1208a65b217cfb214b3b82ebd7fb45c131e0cd369c01f6cd2a5",
+      "translation": "``'ask'``: उपयोगकर्ता :func:`submit_report` को कॉल किए जाने से पहले संपादन योग्य पूर्वावलोकन खोलकर अनुमोदित कर सकता है। साइन-इन न होने पर या API पोस्ट विफल होने पर, सबमिशन ब्राउज़र में पहले से भरा GitHub फ़ॉर्म खोलता है।"
+    },
+    {
+      "context": "Both paths can use :func:`build_report`. With a GitHub sign-in, posting searches for an open issue with the same traceback fingerprint and attempts to comment there. A failed search or comment can lead to a new issue instead. This module does not persist GitHub tokens.",
+      "label": "spacr.qt.ai.issue_report#4",
+      "source": "Both paths can use :func:`build_report`. With a GitHub sign-in, posting searches for an open issue with the same traceback fingerprint and attempts to comment there. A failed search or comment can lead to a new issue instead. This module does not persist GitHub tokens.",
+      "source_sha256": "e4f812a750317045ca178ee21ef8d295692d940568c0041a2bb68e007cddc9b7",
+      "translation": "दोनों मार्ग :func:`build_report` का उपयोग कर सकते हैं। GitHub साइन-इन होने पर पोस्टिंग उसी traceback फ़िंगरप्रिंट वाले खुले इश्यू की खोज करती है और वहाँ टिप्पणी करने का प्रयास करती है। खोज या टिप्पणी विफल होने पर नया इश्यू बन सकता है। यह मॉड्यूल GitHub टोकन स्थायी रूप से नहीं रखता।"
+    },
+    {
+      "context": "Build a report mapping containing a title, body and traceback fingerprint.",
+      "label": "spacr.qt.ai.issue_report.build_report#0",
+      "source": "Build a report mapping containing a title, body and traceback fingerprint.",
+      "source_sha256": "db3119e1d46ae92dec0545f4d6f1019ff4cbe8f4033a16ba302d751636938a65",
+      "translation": "शीर्षक, मुख्य पाठ और traceback फ़िंगरप्रिंट वाली रिपोर्ट मैपिंग बनाएँ।"
+    },
+    {
+      "context": "id of the app the user was in when the error fired (``\"mask\"`` / ``\"measure\"`` / …).",
+      "label": "spacr.qt.ai.issue_report.build_report#2",
+      "source": "id of the app the user was in when the error fired (``\"mask\"`` / ``\"measure\"`` / …).",
+      "source_sha256": "e0f3017d3aec4c07299e156a2bef199e86bcf21998a47a4e14e4ee44efe99bf6",
+      "translation": "त्रुटि होने पर उपयोगकर्ता जिस ऐप में था, उसका पहचानकर्ता (``\"mask\"`` / ``\"measure\"`` / …)।"
+    },
+    {
+      "context": "the workflow settings key-value mapping in play, if any. Sanitised before inclusion.",
+      "label": "spacr.qt.ai.issue_report.build_report#3",
+      "source": "the pipeline settings dict in play, if any. Sanitised before inclusion.",
+      "source_sha256": "d188360f65fe419ba97ef23a7210c2a95284758aa5050d2269a0ead519a524e9",
+      "translation": "उपयोग में मौजूद पाइपलाइन सेटिंग्स की डिक्शनरी, यदि कोई हो। शामिल करने से पहले इसे साफ़ किया जाता है।"
+    },
+    {
+      "context": "attempt to save a sanitized local log tail and include its local path in the body. The log contents are not attached to the public issue.",
+      "label": "spacr.qt.ai.issue_report.build_report#4",
+      "source": "attempt to save a sanitized local log tail and include its local path in the body. The log contents are not attached to the public issue.",
+      "source_sha256": "a9c6938ce39dbb6b644f4148eaed76e8c60036780ee87eed9dd29581760d93da",
+      "translation": "साफ़ किए गए स्थानीय लॉग के अंतिम हिस्से को सहेजने का प्रयास करें और मुख्य पाठ में उसका स्थानीय पथ शामिल करें। सार्वजनिक इश्यू में लॉग की सामग्री संलग्न नहीं होती।"
+    },
+    {
+      "context": "spaCR AI's analysis of this same error, when available. It passes through :func:`sanitize_path` and is shortened after :data:`AI_ANALYSIS_MAX_CHARS` characters, with a truncation note added. It is marked as unreviewed machine-generated advice rather than a diagnosis.",
+      "label": "spacr.qt.ai.issue_report.build_report#5",
+      "source": "spaCR AI's analysis of this same error, when available. It passes through :func:`sanitize_path` and is shortened after :data:`AI_ANALYSIS_MAX_CHARS` characters, with a truncation note added. It is marked as unreviewed machine-generated advice rather than a diagnosis.",
+      "source_sha256": "3c40e1283ba3dbd3e271358b33d884087222c7cb987084a8a8ae4c6239a44ac8",
+      "translation": "उपलब्ध होने पर इसी त्रुटि का spaCR AI विश्लेषण। यह :func:`sanitize_path` से गुज़रता है और :data:`AI_ANALYSIS_MAX_CHARS` अक्षरों के बाद छोटा किया जाता है, साथ में कटौती की सूचना जोड़ी जाती है। इसे बिना समीक्षा वाली मशीन-जनित सलाह के रूप में चिह्नित किया जाता है, निदान के रूप में नहीं।"
+    },
+    {
+      "context": "key-value mapping with structured-data names ``title``, ``body`` and ``fingerprint``, ready to be URL-encoded onto ``issues/new``.",
+      "label": "spacr.qt.ai.issue_report.build_report#6",
+      "source": "dict with keys ``title``, ``body`` and ``fingerprint``, ready to be URL-encoded onto ``issues/new``.",
+      "source_sha256": "1cc75b1098c75dca084907f227fe3fbf22b48307328b4b0ee850d8490505d52f",
+      "translation": "``title``, ``body`` और ``fingerprint`` कुंजियों वाली डिक्शनरी, जिसे ``issues/new`` के लिए URL-एन्कोड किया जा सकता है।"
+    },
+    {
+      "context": "This function builds a report and immediately passes it to :func:`submit_report`; it does not show a preview or apply :func:`public_report`. GUI callers handle preview approval or automatic-filing decisions separately. A headless caller is responsible for deciding whether this report may be submitted.",
+      "label": "spacr.qt.ai.issue_report.file_issue#1",
+      "source": "This function builds a report and immediately passes it to :func:`submit_report`; it does not show a preview or apply :func:`public_report`. GUI callers handle preview approval or automatic-filing decisions separately. A headless caller is responsible for deciding whether this report may be submitted.",
+      "source_sha256": "9aaadf5cf42dd647fc830f4c1d2fa7bced4fbfbac1f5251251c07c4dd90fe049",
+      "translation": "यह फ़ंक्शन रिपोर्ट बनाकर तुरंत :func:`submit_report` को देता है; न पूर्वावलोकन दिखाता है और न :func:`public_report` लागू करता है। GUI से कॉल करने वाला कोड पूर्वावलोकन अनुमोदन या स्वचालित रिपोर्टिंग का निर्णय अलग संभालता है। बिना ग्राफ़िकल इंटरफ़ेस वाले कॉलर को तय करना होता है कि यह रिपोर्ट भेजी जा सकती है या नहीं।"
+    },
+    {
+      "context": "six hex characters, without building the report, copying a log or making a network call. Callers can use this key to check their remembered reports before doing that work; this function does not itself remember or suppress reports.",
+      "label": "spacr.qt.ai.issue_report.fingerprint_of#2",
+      "source": "six hex characters, without building the report, copying a log or making a network call. Callers can use this key to check their remembered reports before doing that work; this function does not itself remember or suppress reports.",
+      "source_sha256": "042f60a52df5e5eb7bc388b1c442b2bcc8458826891268e6b8fc5ccbee037cce",
+      "translation": "छह हेक्स अक्षर, रिपोर्ट बनाए बिना, लॉग की प्रति बनाए बिना और नेटवर्क कॉल किए बिना। वह काम करने से पहले कॉल करने वाला कोड इस कुंजी से याद रखी गई रिपोर्टों की जाँच कर सकता है; यह फ़ंक्शन स्वयं रिपोर्टें याद नहीं रखता और न रोकता है।"
+    },
+    {
+      "context": "Build the ``https://github.com/<repo>/issues/new?…`` URL.",
+      "label": "spacr.qt.ai.issue_report.issue_url#0",
+      "source": "Build the ``https://github.com/<repo>/issues/new?…`` URL.",
+      "source_sha256": "2acb9dd549eac8ce2cd06d4ea99ac4950b48bfc2e1633b59de46703ace884312",
+      "translation": "``https://github.com/<repo>/issues/new?…`` URL बनाएँ।"
+    },
+    {
+      "context": "If the estimated URL-encoded length exceeds :data:`MAX_URL_LEN`, shorten the body and append a truncation note. The title, repository and label are not shortened, so unusually large values can still exceed that limit.",
+      "label": "spacr.qt.ai.issue_report.issue_url#1",
+      "source": "If the estimated URL-encoded length exceeds :data:`MAX_URL_LEN`, shorten the body and append a truncation note. The title, repository and label are not shortened, so unusually large values can still exceed that limit.",
+      "source_sha256": "6dbc71286e4fbf3257906488521ffaa5a674f988ac7a6fc52e912bd5728bff85",
+      "translation": "यदि अनुमानित URL-एन्कोडेड लंबाई :data:`MAX_URL_LEN` से अधिक हो, तो मुख्य पाठ छोटा करें और कटौती की सूचना जोड़ें। शीर्षक, रिपॉज़िटरी और लेबल छोटे नहीं किए जाते, इसलिए असामान्य रूप से बड़े मान अब भी उस सीमा से अधिक हो सकते हैं।"
+    },
+    {
+      "context": "URL-encodable issue title.",
+      "label": "spacr.qt.ai.issue_report.issue_url#2",
+      "source": "URL-encodable issue title.",
+      "source_sha256": "36d3a83cd39fde9c6e119edaa98bcb81d0c1caa83881b1cda61003ca8b07a9ac",
+      "translation": "URL में एन्कोड किया जा सकने वाला इश्यू शीर्षक।"
+    },
+    {
+      "context": "markdown body; may be truncated.",
+      "label": "spacr.qt.ai.issue_report.issue_url#3",
+      "source": "markdown body; may be truncated.",
+      "source_sha256": "f953be819cd8ca998fffac3142caf96a7f42d904b12c8dd7ed8cfc5d2029def3",
+      "translation": "Markdown में मुख्य पाठ; इसे छोटा किया जा सकता है।"
+    },
+    {
+      "context": "label requested in the pre-filled form; this helper does not create it.",
+      "label": "spacr.qt.ai.issue_report.issue_url#4",
+      "source": "label requested in the pre-filled form; this helper does not create it.",
+      "source_sha256": "30973bb152162edc6c0484062045bba63ae93a1991b43bcb848334aa66a32706",
+      "translation": "पहले से भरे फ़ॉर्म में माँगा गया लेबल; यह सहायक फ़ंक्शन उसे बनाता नहीं है।"
+    },
+    {
+      "context": "``owner/name`` slug.",
+      "label": "spacr.qt.ai.issue_report.issue_url#5",
+      "source": "``owner/name`` slug.",
+      "source_sha256": "cadca8a54b1fd947494944b00cf5fb04c4c4e1188b79c7c4d7d2c92f8fd94b7f",
+      "translation": "``owner/name`` रूप में रिपॉज़िटरी पहचानकर्ता।"
+    },
+    {
+      "context": "fully-quoted ``https://github.com/…`` URL.",
+      "label": "spacr.qt.ai.issue_report.issue_url#6",
+      "source": "fully-quoted ``https://github.com/…`` URL.",
+      "source_sha256": "aad5d66c7d2b889a08f77b334998e1763b3da6d49ef6a1acff6e2a51b44e3830",
+      "translation": "पूरी तरह एन्कोड किया गया ``https://github.com/…`` URL।"
+    },
+    {
+      "context": "Return a shallow settings copy with selected strings sanitized.",
+      "label": "spacr.qt.ai.issue_report.sanitize_settings#0",
+      "source": "Return a shallow settings copy with selected strings sanitized.",
+      "source_sha256": "1db9216ad1843f81bae2095da2993d47706f25743e57ebd32c0b9e5423ada370",
+      "translation": "चुने हुए स्ट्रिंग मानों को साफ़ करके सेटिंग्स की उथली प्रति लौटाएँ।"
+    },
+    {
+      "context": "Top-level values whose string structured-data name names a credential (``api_key``, ``GITHUB_TOKEN``, ``password``, …) are replaced by :data:`REDACTED`; their structured-data names remain. Other string values and direct string elements of lists pass through :func:`sanitize_path`. Nested mappings and other values are not recursively sanitized.",
+      "label": "spacr.qt.ai.issue_report.sanitize_settings#1",
+      "source": "Top-level values whose string key names a credential (``api_key``, ``GITHUB_TOKEN``, ``password``, …) are replaced by :data:`REDACTED`; their keys remain. Other string values and direct string elements of lists pass through :func:`sanitize_path`. Nested mappings and other values are not recursively sanitized.",
+      "source_sha256": "8162848a76cf3d537c5c270ec54c3bac2bd60c9e2a56e9609e1ef6b9b5ac1b66",
+      "translation": "ऊपरी स्तर पर, जिन स्ट्रिंग कुंजियों से क्रेडेंशियल का संकेत मिलता है (``api_key``, ``GITHUB_TOKEN``, ``password``, …), उनके मान :data:`REDACTED` से बदल दिए जाते हैं; कुंजियाँ बनी रहती हैं। अन्य स्ट्रिंग मान और सूचियों के सीधे स्ट्रिंग तत्व :func:`sanitize_path` से गुज़रते हैं। नेस्टेड मैपिंग और अन्य मानों को पुनरावर्ती रूप से साफ़ नहीं किया जाता।"
+    },
+    {
+      "context": "a shallow copy with the redactions described above; arbitrary nested data is not guaranteed safe for a public issue.",
+      "label": "spacr.qt.ai.issue_report.sanitize_settings#3",
+      "source": "a shallow copy with the redactions described above; arbitrary nested data is not guaranteed safe for a public issue.",
+      "source_sha256": "299976159a47c566e0cb9198779f98607be214f512744154fef7dfea6a4c1377",
+      "translation": "ऊपर वर्णित संशोधनों वाली उथली प्रति; मनमाने नेस्टेड डेटा के सार्वजनिक इश्यू में सुरक्षित होने की गारंटी नहीं है।"
+    },
+    {
+      "context": "Write the log tail to a file beside the report and return its path.",
+      "label": "spacr.qt.ai.issue_report.save_log_bundle#0",
+      "source": "Write the log tail to a file beside the report and return its path.",
+      "source_sha256": "2c62a841da4e3a737ae9819220c71438e93c233f3848c41e2fc444ae7e0fff15",
+      "translation": "रिपोर्ट के पास एक फ़ाइल में लॉग का अंतिम भाग लिखें और उसका पथ लौटाएँ।"
+    },
+    {
+      "context": "The report builder can include this local path instead of the log contents; stricter public redaction may replace the path. The file is not constrained by the issue URL length limit.",
+      "label": "spacr.qt.ai.issue_report.save_log_bundle#1",
+      "source": "The report builder can include this local path instead of the log contents; stricter public redaction may replace the path. The file is not constrained by the issue URL length limit.",
+      "source_sha256": "31c61bd665b801c38e107c8b2627cdc8650a6abbe1f12abae2ac321b32e41f82",
+      "translation": "रिपोर्ट बिल्डर लॉग सामग्री की जगह यह स्थानीय पथ शामिल कर सकता है; सार्वजनिक रिपोर्ट में संवेदनशील जानकारी हटाने की अधिक सख़्त प्रक्रिया पथ को भी बदल सकती है। फ़ाइल इश्यू URL की लंबाई सीमा से बँधी नहीं है।"
+    },
+    {
+      "context": "how many trailing lines to keep.",
+      "label": "spacr.qt.ai.issue_report.save_log_bundle#4",
+      "source": "how many trailing lines to keep.",
+      "source_sha256": "caf4d804b0966b42ee1ca9f30d4097e507fa4af19d8288e16e563bfd933b1a14",
+      "translation": "अंत की कितनी पंक्तियाँ रखनी हैं।"
+    },
+    {
+      "context": "The AI console uses vendor command-line tools and a hosted relay rather than retrieving structured-data names through this module. Vendor authentication and account usage follow each tool's own configuration; this stub does not establish how a vendor account is billed.",
+      "label": "spacr.qt.ai.keys#1",
+      "source": "The AI console uses vendor command-line tools and a hosted relay rather than retrieving keys through this module. Vendor authentication and account usage follow each tool's own configuration; this stub does not establish how a vendor account is billed.",
+      "source_sha256": "9ab79b5b8e287cb2efdada8d30ef08be807dda7d2b330f7414f74ba61c253b77",
+      "translation": "AI कंसोल इस मॉड्यूल से कुंजियाँ लेने के बजाय प्रदाताओं के कमांड-लाइन टूल और होस्टेड रिले का उपयोग करता है। प्रदाता का प्रमाणीकरण और खाते का उपयोग उस टूल की अपनी कॉन्फ़िगरेशन के अनुसार होता है; यह स्टब निर्धारित नहीं करता कि प्रदाता खाते की बिलिंग कैसे होती है।"
+    },
+    {
+      "context": "This module remains as a compatibility stub for code importing `spacr.qt.ai.keys`. ``get_key`` returns ``None``, ``set_key`` returns ``False``, ``delete_key`` returns ``None``, and ``source_of`` returns a descriptive compatibility label.",
+      "label": "spacr.qt.ai.keys#2",
+      "source": "This module remains as a compatibility stub for code importing `spacr.qt.ai.keys`. ``get_key`` returns ``None``, ``set_key`` returns ``False``, ``delete_key`` returns ``None``, and ``source_of`` returns a descriptive compatibility label.",
+      "source_sha256": "e4808e9961970b9ad7d7798f8ded3f15114a09619cd2e3db06be7cb867a467a3",
+      "translation": "`spacr.qt.ai.keys` आयात करने वाले कोड के लिए यह मॉड्यूल संगतता स्टब के रूप में रखा गया है। ``get_key`` से ``None``, ``set_key`` से ``False``, ``delete_key`` से ``None`` और ``source_of`` से संगतता का वर्णन करने वाला लेबल लौटता है।"
+    },
+    {
+      "context": "Return ``None`` without changing a credential store.",
+      "label": "spacr.qt.ai.keys.delete_key#0",
+      "source": "Return ``None`` without changing a credential store.",
+      "source_sha256": "8a2cfde51a3850644dacef3e65fdbcf06726c32add240530cbdc265f9fd54b48",
+      "translation": "क्रेडेंशियल भंडार में परिवर्तन किए बिना ``None`` लौटाएँ।"
+    },
+    {
+      "context": "Return ``None``; this compatibility stub does not retrieve a provider key.",
+      "label": "spacr.qt.ai.keys.get_key#0",
+      "source": "Return ``None``; this compatibility stub does not retrieve a provider key.",
+      "source_sha256": "981c55d8e178c383e74bdb165f0ec9e6323612168918926d975ec27f99fd0959",
+      "translation": "``None`` लौटाएँ; यह संगतता स्टब प्रदाता की कुंजी प्राप्त नहीं करता।"
+    },
+    {
+      "context": "Ignore the supplied key and return ``False``.",
+      "label": "spacr.qt.ai.keys.set_key#0",
+      "source": "Ignore the supplied key and return ``False``.",
+      "source_sha256": "483caf485b9c8687a4c6957e69e1dd65f9484da55ba4b002defbf09d514511cb",
+      "translation": "दी गई कुंजी को अनदेखा करें और ``False`` लौटाएँ।"
+    },
+    {
+      "context": ":mod:`spacr.methods_export` builds the processing-session digest, writes the prompt and checks generated sections. This module uses the :class:`spacr.qt.ai.providers.ChatProvider` interface shared with the AI console. Automatic selection considers configured vendor CLI providers and excludes the hosted relay; callers can also pass a provider explicitly. Configuration checks do not establish that authentication or a model request will succeed.",
+      "label": "spacr.qt.ai.manuscript#1",
+      "source": ":mod:`spacr.methods_export` builds the run digest, writes the prompt and checks generated sections. This module uses the :class:`spacr.qt.ai.providers.ChatProvider` interface shared with the AI console. Automatic selection considers configured vendor CLI providers and excludes the hosted relay; callers can also pass a provider explicitly. Configuration checks do not establish that authentication or a model request will succeed.",
+      "source_sha256": "991e7e0a5802b99e6f0d50ff6b25792efc7f78953413c3e16efbab62be31d603",
+      "translation": ":mod:`spacr.methods_export` रन डाइजेस्ट बनाता है, प्रॉम्प्ट लिखता है और जनित खंडों की जाँच करता है। यह मॉड्यूल AI कंसोल वाला ही :class:`spacr.qt.ai.providers.ChatProvider` इंटरफ़ेस उपयोग करता है। स्वचालित चयन कॉन्फ़िगर किए गए प्रदाता CLI पर विचार करता है और होस्टेड रिले को बाहर रखता है; कॉलर प्रदाता स्पष्ट रूप से भी दे सकता है। कॉन्फ़िगरेशन जाँच यह स्थापित नहीं करती कि प्रमाणीकरण या मॉडल अनुरोध सफल होगा।"
+    },
+    {
+      "context": "**Generated sections are checked before acceptance.** The split reply is passed to :func:`spacr.methods_export.check_draft`, which checks recognized number tokens against the digest and looks for the recorded caveat phrases in Methods. If either verdict fails, ``ok=False``, :attr:`ManuscriptDraft.problems` describes the failures, :attr:`ManuscriptDraft.rejected` retains the reply and the deterministic renderers supply the returned sections. These checks do not establish scientific accuracy or verify every possible numerical claim; the fallback sections are not passed through this check.",
+      "label": "spacr.qt.ai.manuscript#3",
+      "source": "**Generated sections are checked before acceptance.** The split reply is passed to :func:`spacr.methods_export.check_draft`, which checks recognized number tokens against the digest and looks for the recorded caveat phrases in Methods. If either verdict fails, ``ok=False``, :attr:`ManuscriptDraft.problems` describes the failures, :attr:`ManuscriptDraft.rejected` retains the reply and the deterministic renderers supply the returned sections. These checks do not establish scientific accuracy or verify every possible numerical claim; the fallback sections are not passed through this check.",
+      "source_sha256": "64e94cf35e05360489ae642a9e0a6c6c2c2f03e57b18f09b6f97eb515e811639",
+      "translation": "**जनित खंड स्वीकार करने से पहले जाँचे जाते हैं।** अलग किए गए उत्तर को :func:`spacr.methods_export.check_draft` में दिया जाता है, जो पहचाने गए संख्यात्मक टोकन को डाइजेस्ट से मिलाता है और Methods में दर्ज सीमाओं वाले वाक्यांश खोजता है। किसी भी निर्णय के विफल होने पर ``ok=False`` होता है, :attr:`ManuscriptDraft.problems` विफलताएँ बताता है, :attr:`ManuscriptDraft.rejected` उत्तर रखता है और नियतात्मक रेंडरर लौटाए जाने वाले खंड देते हैं। ये जाँच वैज्ञानिक शुद्धता स्थापित नहीं करतीं और हर संभव संख्यात्मक दावे की पुष्टि नहीं करतीं; वैकल्पिक खंड इस जाँच से नहीं गुज़रते।"
+    },
+    {
+      "context": "**No configured vendor provider triggers a deterministic fallback.** :func:`availability` reports candidates or setup guidance, and :func:`generate_sections` uses the digest renderers when discovery finds no candidate. Caught streaming errors, empty replies and rejected drafts also use this fallback. Discovery outside the guarded calls, prompt construction, verification and fallback rendering can still raise exceptions.",
+      "label": "spacr.qt.ai.manuscript#4",
+      "source": "**No configured vendor provider triggers a deterministic fallback.** :func:`availability` reports candidates or setup guidance, and :func:`generate_sections` uses the digest renderers when discovery finds no candidate. Caught streaming errors, empty replies and rejected drafts also use this fallback. Discovery outside the guarded calls, prompt construction, verification and fallback rendering can still raise exceptions.",
+      "source_sha256": "eaccb121c5d3f2031565c4c780c395b5f9ee633baca242fa5a613fd75805d251",
+      "translation": "**कोई कॉन्फ़िगर किया गया प्रदाता न मिलने पर नियतात्मक वैकल्पिक मार्ग अपनाया जाता है।** :func:`availability` उम्मीदवार या सेटअप मार्गदर्शन बताता है और खोज में उम्मीदवार न मिलने पर :func:`generate_sections` डाइजेस्ट रेंडरर उपयोग करता है। पकड़ी गई स्ट्रीमिंग त्रुटियाँ, खाली उत्तर और अस्वीकृत मसौदे भी यही वैकल्पिक मार्ग उपयोग करते हैं। सुरक्षित किए गए कॉल से बाहर की खोज, प्रॉम्प्ट बनाना, सत्यापन और वैकल्पिक रेंडरिंग अब भी अपवाद उठा सकते हैं।"
+    },
+    {
+      "context": "Recorded vendor-provider configuration status and setup guidance.",
+      "label": "spacr.qt.ai.manuscript.Availability#0",
+      "source": "Recorded vendor-provider configuration status and setup guidance.",
+      "source_sha256": "2b6d75ef2468ca72a66f42a6c9042bfdf15cf4205e54f0b3b39dbeb7d43a032c",
+      "translation": "प्रदाता कॉन्फ़िगरेशन की दर्ज स्थिति और सेटअप मार्गदर्शन।"
+    },
+    {
+      "context": "at least one non-hosted provider passed the configuration checks used by :func:`availability`; this does not confirm authentication or model access.",
+      "label": "spacr.qt.ai.manuscript.Availability#1",
+      "source": "at least one non-hosted provider passed the configuration checks used by :func:`availability`; this does not confirm authentication or model access.",
+      "source_sha256": "98f9b17ea4ac5d134d8da7b8b7f109985d9f28d6567f9aae83bb9052620223fc",
+      "translation": "कम से कम एक गैर-होस्टेड प्रदाता :func:`availability` की कॉन्फ़िगरेशन जाँच में सफल हुआ; इससे प्रमाणीकरण या मॉडल पहुँच की पुष्टि नहीं होती।"
+    },
+    {
+      "context": "the names of the non-hosted providers that passed those checks.",
+      "label": "spacr.qt.ai.manuscript.Availability#2",
+      "source": "the names of the non-hosted providers that passed those checks.",
+      "source_sha256": "1d391e1b89ea12fe4701480c771a08efbc9ca73db3eacb3d7ed2f64d34a9ec2b",
+      "translation": "उन गैर-होस्टेड प्रदाताओं के नाम जो इन जाँचों में सफल हुए।"
+    },
+    {
+      "context": "status or setup guidance for the user. It can contain several lines; discovery failures can produce an error message instead of a complete provider list.",
+      "label": "spacr.qt.ai.manuscript.Availability#3",
+      "source": "status or setup guidance for the user. It can contain several lines; discovery failures can produce an error message instead of a complete provider list.",
+      "source_sha256": "36d02d7531412c3d3854cfa39bb07d6b77a5272ad7e46b5c6633631fbe361452",
+      "translation": "उपयोगकर्ता के लिए स्थिति या सेटअप मार्गदर्शन। इसमें कई पंक्तियाँ हो सकती हैं; खोज में विफलता होने पर पूरी प्रदाता सूची के बजाय त्रुटि संदेश मिल सकता है।"
+    },
+    {
+      "context": "Return the recorded ``ok`` flag without checking model access.",
+      "label": "spacr.qt.ai.manuscript.Availability.__bool__#0",
+      "source": "Return the recorded ``ok`` flag without checking model access.",
+      "source_sha256": "04ffbcf259e5b807d255a71273e643fadd6ccec3e190431099176f283715f3d5",
+      "translation": "मॉडल पहुँच जाँचे बिना दर्ज ``ok`` फ़्लैग लौटाएँ।"
+    },
+    {
+      "context": "Report configured vendor AI candidates or available setup guidance.",
+      "label": "spacr.qt.ai.manuscript.availability#0",
+      "source": "Report configured vendor AI candidates or available setup guidance.",
+      "source_sha256": "7cf161127c18381c0dc2f839a587c47921ed3c0b1b3a19835036a57862242abf",
+      "translation": "कॉन्फ़िगर किए गए प्रदाता AI उम्मीदवारों या उपलब्ध सेटअप मार्गदर्शन की जानकारी दें।"
+    },
+    {
+      "context": "Current vendor checks inspect local CLI availability rather than making a model request. Initial configured-provider discovery failures are converted into an unavailable status, and a failed provider-list lookup yields no setup rows. Later provider-property and installation checks are not guarded and can raise; a configured candidate is not proof of a successful login.",
+      "label": "spacr.qt.ai.manuscript.availability#1",
+      "source": "Current vendor checks inspect local CLI availability rather than making a model request. Initial configured-provider discovery failures are converted into an unavailable status, and a failed provider-list lookup yields no setup rows. Later provider-property and installation checks are not guarded and can raise; a configured candidate is not proof of a successful login.",
+      "source_sha256": "581080da2bd2e5a77a2b81dacdd1be37dc8c0cfad7034b78ed41c79e727dfab7",
+      "translation": "वर्तमान प्रदाता जाँच मॉडल अनुरोध करने के बजाय स्थानीय CLI उपलब्धता देखती है। कॉन्फ़िगर किए गए प्रदाताओं की शुरुआती खोज में विफलता को अनुपलब्ध स्थिति में बदला जाता है और प्रदाता सूची पाने में विफलता पर कोई सेटअप पंक्ति नहीं मिलती। बाद की प्रदाता प्रॉपर्टी और इंस्टॉलेशन जाँचें सुरक्षित नहीं हैं और अपवाद उठा सकती हैं; कॉन्फ़िगर किया गया उम्मीदवार सफल लॉगिन का प्रमाण नहीं है।"
+    },
+    {
+      "context": "Request two model-written sections and use digest renderers when generation or the draft checks fail.",
+      "label": "spacr.qt.ai.manuscript.generate_sections#0",
+      "source": "Request two model-written sections and use digest renderers when generation or the draft checks fail.",
+      "source_sha256": "d2e88b0b4465801df171d119fd76f7d57b7dff7853c05d879acfd7aca01f0325",
+      "translation": "मॉडल से दो खंड लिखने का अनुरोध करें और जनन या मसौदे की जाँच विफल होने पर डाइजेस्ट रेंडरर उपयोग करें।"
+    },
+    {
+      "context": "the run digest — see :func:`spacr.methods_export.build_digest`. It is serialized into the user prompt; this function does not remove raw or sensitive values supplied in the mapping.",
+      "label": "spacr.qt.ai.manuscript.generate_sections#1",
+      "source": "the run digest — see :func:`spacr.methods_export.build_digest`. It is serialized into the user prompt; this function does not remove raw or sensitive values supplied in the mapping.",
+      "source_sha256": "ff1e8a052a70f125d1e323ebf9dac67e7a0766180fb86653ea4738218b007837",
+      "translation": "रन डाइजेस्ट — :func:`spacr.methods_export.build_digest` देखें। इसे उपयोगकर्ता प्रॉम्प्ट में सीरियलाइज़ किया जाता है; यह फ़ंक्शन कॉलर की मैपिंग में दिए गए कच्चे या संवेदनशील मान नहीं हटाता।"
+    },
+    {
+      "context": "the provider to use. When omitted, select the first configured non-hosted candidate from :func:`availability`; when none is found, use the deterministic renderers. An explicitly supplied provider bypasses discovery.",
+      "label": "spacr.qt.ai.manuscript.generate_sections#2",
+      "source": "the provider to use. When omitted, select the first configured non-hosted candidate from :func:`availability`; when none is found, use the deterministic renderers. An explicitly supplied provider bypasses discovery.",
+      "source_sha256": "e3cbc717567087b5835d40d6d7c330963b5f3b96cf13fec28e2b544ec6784333",
+      "translation": "उपयोग किया जाने वाला प्रदाता। न देने पर :func:`availability` से पहला कॉन्फ़िगर किया गया गैर-होस्टेड उम्मीदवार चुनें; कोई न मिलने पर नियतात्मक रेंडरर उपयोग करें। स्पष्ट रूप से दिया गया प्रदाता खोज को छोड़ देता है।"
+    },
+    {
+      "context": "optional callable invoked with each chunk as it arrives, for a live view. Exceptions from it are ignored — a UI that fails to paint must not lose the generation.",
+      "label": "spacr.qt.ai.manuscript.generate_sections#4",
+      "source": "optional callable invoked with each chunk as it arrives, for a live view. Exceptions from it are ignored — a UI that fails to paint must not lose the generation.",
+      "source_sha256": "b3d053244aa29b06fc0eaaa1a1005e03938802d3e828c18fcb72fc8210823e7d",
+      "translation": "लाइव दृश्य के लिए, हर खंड आने पर बुलाया जाने वाला वैकल्पिक फ़ंक्शन। उसके अपवाद अनदेखे किए जाते हैं — यदि UI दृश्य न बना पाए, तो भी पाठ जनन खोना नहीं चाहिए।"
+    },
+    {
+      "context": "a :class:`ManuscriptDraft` containing accepted model sections or deterministic fallback sections. Errors in discovery outside the guarded calls, prompt construction, verification or fallback rendering can propagate instead of returning a draft.",
+      "label": "spacr.qt.ai.manuscript.generate_sections#5",
+      "source": "a :class:`ManuscriptDraft` containing accepted model sections or deterministic fallback sections. Errors in discovery outside the guarded calls, prompt construction, verification or fallback rendering can propagate instead of returning a draft.",
+      "source_sha256": "a60cce2dc892a56d0526e89544c4f6f1f6933a5b05034afb1a24100c85090df3",
+      "translation": "स्वीकृत मॉडल खंडों या नियतात्मक वैकल्पिक खंडों वाला :class:`ManuscriptDraft`। सुरक्षित किए गए कॉल से बाहर की खोज, प्रॉम्प्ट निर्माण, सत्यापन या वैकल्पिक रेंडरिंग की त्रुटियाँ मसौदा लौटाने के बजाय आगे जा सकती हैं।"
+    },
+    {
+      "context": "Search case-insensitively for ``## methods`` and ``## results``, falling back to ``# methods`` and ``# results`` respectively. Text before the selected Methods heading is discarded; text after the selected Results heading remains in Results. If Results precedes Methods, return only Methods; if only Results is found, return only Results. The selected heading lines are removed, but other text such as a sign-off remains.",
+      "label": "spacr.qt.ai.manuscript.split_sections#1",
+      "source": "Search case-insensitively for ``## methods`` and ``## results``, falling back to ``# methods`` and ``# results`` respectively. Text before the selected Methods heading is discarded; text after the selected Results heading remains in Results. If Results precedes Methods, return only Methods; if only Results is found, return only Results. The selected heading lines are removed, but other text such as a sign-off remains.",
+      "source_sha256": "c07ba90ca36c663cc773e42bff56cb4cb0a90289cf06e2c5420a8dcff667a7f0",
+      "translation": "अक्षरों के बड़े-छोटे रूप का भेद किए बिना ``## methods`` और ``## results`` खोजें और आवश्यकता पर क्रमशः ``# methods`` और ``# results`` का उपयोग करें। चुने गए Methods शीर्षक से पहले का पाठ हटा दिया जाता है; चुने गए Results शीर्षक के बाद का पाठ Results में रहता है। Results के Methods से पहले होने पर केवल Methods लौटाएँ; केवल Results मिलने पर केवल Results लौटाएँ। चुनी गई शीर्षक पंक्तियाँ हटा दी जाती हैं, लेकिन समापन टिप्पणी जैसा अन्य पाठ बना रहता है।"
+    },
+    {
+      "context": "the two sections without their selected heading lines. A section can be ``\"\"`` when its heading is absent, its body is empty or the heading order excludes it.",
+      "label": "spacr.qt.ai.manuscript.split_sections#3",
+      "source": "the two sections without their selected heading lines. A section can be ``\"\"`` when its heading is absent, its body is empty or the heading order excludes it.",
+      "source_sha256": "53aed195ec73faa74d13dbd0eecccd080c10460118c2edcdee359a861eeba81a",
+      "translation": "चुनी गई शीर्षक पंक्तियों के बिना दो खंड। शीर्षक अनुपस्थित होने, उसका मुख्य पाठ खाली होने या शीर्षक क्रम के कारण खंड बाहर होने पर वह ``\"\"`` हो सकता है।"
+    },
+    {
+      "context": "Execute a command-line sign-in flow inside a spaCR dialog.",
+      "label": "spacr.qt.ai.pty_sign_in#0",
+      "source": "Run a command-line sign-in flow inside a spaCR dialog.",
+      "source_sha256": "928595172bcdae41e197ca149ac7d65ed7a867ce9cad6fffcfef3ae328535aa3",
+      "translation": "spaCR संवाद के भीतर कमांड-लाइन साइन-इन प्रक्रिया चलाएँ।"
+    },
+    {
+      "context": "The dialog runs the supplied command on a pseudo-terminal, shows its output and sends text entered by the user. It automatically opens the first detected sign-in URL in a browser; later URLs can be opened manually. A successful command exit is not an independent check that a tool is installed, authenticated or ready for a model request.",
+      "label": "spacr.qt.ai.pty_sign_in#1",
+      "source": "The dialog runs the supplied command on a pseudo-terminal, shows its output and sends text entered by the user. It automatically opens the first detected sign-in URL in a browser; later URLs can be opened manually. A successful command exit is not an independent check that a tool is installed, authenticated or ready for a model request.",
+      "source_sha256": "12d403dfca1225dcd80d9e7114865db1a796866f23ae210af668b86f14d0a629",
+      "translation": "संवाद दिए गए कमांड को छद्म-टर्मिनल पर चलाता है, उसका आउटपुट दिखाता है और उपयोगकर्ता का लिखा पाठ भेजता है। यह पहले पहचाने गए साइन-इन URL को ब्राउज़र में अपने आप खोलता है; बाद के URL मैन्युअल रूप से खोले जा सकते हैं। कमांड का सफलतापूर्वक समाप्त होना इस बात की स्वतंत्र जाँच नहीं है कि टूल इंस्टॉल है, प्रमाणित है या मॉडल अनुरोध के लिए तैयार है।"
+    },
+    {
+      "context": "Availability depends on :func:`pty_available`, which checks POSIX and whether the pseudo-terminal module can be imported. Callers decide what to do when it is unavailable; this module does not provide a Windows terminal fallback.",
+      "label": "spacr.qt.ai.pty_sign_in#2",
+      "source": "Availability depends on :func:`pty_available`, which checks POSIX and whether the pseudo-terminal module can be imported. Callers decide what to do when it is unavailable; this module does not provide a Windows terminal fallback.",
+      "source_sha256": "4de89ccd4af2dcb3eb7010935836f2fd3b74a7dedb47449dc55d34510fd8026f",
+      "translation": "उपलब्धता :func:`pty_available` पर निर्भर है, जो POSIX और छद्म-टर्मिनल मॉड्यूल के आयात होने की जाँच करता है। अनुपलब्ध होने पर क्या करना है, यह कॉल करने वाला कोड तय करता है; यह मॉड्यूल Windows टर्मिनल वाला वैकल्पिक मार्ग नहीं देता।"
+    },
+    {
+      "context": "Drain the currently queued output and return the cleaned text available so far.",
+      "label": "spacr.qt.ai.pty_sign_in.PtySession.read#0",
+      "source": "Drain the currently queued output and return the cleaned text available so far.",
+      "source_sha256": "d329ed043aedf8900678ed9d1c2f034e98a4cca4b7ec4cc767f28c5591d54eee",
+      "translation": "वर्तमान में कतार में मौजूद आउटपुट निकालें और अब तक उपलब्ध साफ़ किया गया पाठ लौटाएँ।"
+    },
+    {
+      "context": "the drained text after terminal-code cleanup. Incomplete escape or carriage-return data can remain buffered for a later read.",
+      "label": "spacr.qt.ai.pty_sign_in.PtySession.read#1",
+      "source": "the drained text after terminal-code cleanup. Incomplete escape or carriage-return data can remain buffered for a later read.",
+      "source_sha256": "d4df5a6f08acf655c83d9ac93408d0e9185e41c7ed2f833392dc61c8fe5bd88f",
+      "translation": "टर्मिनल कोड हटाने के बाद निकाला गया पाठ। अधूरा एस्केप या कैरिज-रिटर्न डेटा अगली पढ़ाई के लिए बफ़र में रह सकता है।"
+    },
+    {
+      "context": "Request termination of the session process group and attempt terminal cleanup.",
+      "label": "spacr.qt.ai.pty_sign_in.PtySession.stop#0",
+      "source": "Request termination of the session process group and attempt terminal cleanup.",
+      "source_sha256": "4dc225a0824451b23ad000bed8db59fe629113a801f91f8daf262468c4960dcb",
+      "translation": "सत्र के प्रक्रिया समूह को समाप्त करने का अनुरोध करें और टर्मिनल की सफ़ाई का प्रयास करें।"
+    },
+    {
+      "context": "Launchers can leave children in the session process group after they exit. Teardown targets that group, but does not guarantee that every child has stopped, including children that leave it; errors can propagate. A flag skips subsequent teardown attempts so they cannot close a reused file descriptor.",
+      "label": "spacr.qt.ai.pty_sign_in.PtySession.stop#1",
+      "source": "Launchers can leave children in the session process group after they exit. Teardown targets that group, but does not guarantee that every child has stopped, including children that leave it; errors can propagate. A flag skips subsequent teardown attempts so they cannot close a reused file descriptor.",
+      "source_sha256": "493b26fc781dd05907a2e7249f73c31c339103a3028300867bb35bc681b3f020",
+      "translation": "लॉन्चर समाप्त होने के बाद सत्र के प्रक्रिया समूह में चाइल्ड प्रक्रियाएँ छोड़ सकते हैं। समापन उसी समूह को लक्षित करता है, पर समूह छोड़ देने वाले बच्चों सहित हर चाइल्ड प्रक्रिया के रुकने की गारंटी नहीं देता; त्रुटि-अपवाद आगे जा सकते हैं। एक फ़्लैग बाद के समापन प्रयास छोड़ देता है, ताकि वे दोबारा उपयोग हुए फ़ाइल डिस्क्रिप्टर को बंद न कर सकें।"
+    },
+    {
+      "context": "Find HTTP(S) URL matches in ``text`` in encounter order.",
+      "label": "spacr.qt.ai.pty_sign_in.find_urls#0",
+      "source": "Find HTTP(S) URL matches in ``text`` in encounter order.",
+      "source_sha256": "b01f1aa90a1c344c7550e7e8d9351e43bdd2c5cfabf5749f41dafc516240482d",
+      "translation": "``text`` में HTTP(S) URL के मिलान उनके मिलने के क्रम में खोजें।"
+    },
+    {
+      "context": "the matched addresses, with trailing ``).,;]`` characters removed.",
+      "label": "spacr.qt.ai.pty_sign_in.find_urls#2",
+      "source": "the matched addresses, with trailing ``).,;]`` characters removed.",
+      "source_sha256": "57187c2affac5d5c5dd23cefe8b832bedf53ab5caa3671aa3549fb7b37ab7fac",
+      "translation": "मेल खाते पते, जिनके अंत के ``).,;]`` अक्षर हटा दिए गए हैं।"
+    },
+    {
+      "context": "Check for POSIX and an importable pseudo-terminal module.",
+      "label": "spacr.qt.ai.pty_sign_in.pty_available#0",
+      "source": "Check for POSIX and an importable pseudo-terminal module.",
+      "source_sha256": "974dcea8d8f90f9d4b16e868b01be580406b54b4c38a2fa4e4929c5a1d3e9aa1",
+      "translation": "POSIX और आयात किए जा सकने वाले छद्म-टर्मिनल मॉड्यूल की जाँच करें।"
+    },
+    {
+      "context": "``True`` when executing on POSIX and importing the pseudo-terminal module succeeds; no terminal allocation or sign-in is attempted.",
+      "label": "spacr.qt.ai.pty_sign_in.pty_available#1",
+      "source": "``True`` when running on POSIX and importing the pseudo-terminal module succeeds; no terminal allocation or sign-in is attempted.",
+      "source_sha256": "23f95f29a6b0b58a0b4e4b1ac1340d93e57442e501c9bc588c476ca9dedc0956",
+      "translation": "POSIX पर चलने और छद्म-टर्मिनल मॉड्यूल के सफल आयात पर ``True``; टर्मिनल आवंटन या साइन-इन का प्रयास नहीं होता।"
+    },
+    {
+      "context": "Remove supported terminal escape sequences from ``text`` and normalize carriage-return output.",
+      "label": "spacr.qt.ai.pty_sign_in.strip_terminal_codes#0",
+      "source": "Remove supported terminal escape sequences from ``text`` and normalize carriage-return output.",
+      "source_sha256": "cd7f8bc37218a5d81fbf441ad68bd48df28718ecf07fc0e2045c5d2b2c8f2680",
+      "translation": "``text`` से समर्थित टर्मिनल एस्केप अनुक्रम हटाएँ और कैरिज-रिटर्न आउटपुट सामान्यीकृत करें।"
+    },
+    {
+      "context": "text after the supported substitutions, not a complete rendering of a terminal screen.",
+      "label": "spacr.qt.ai.pty_sign_in.strip_terminal_codes#2",
+      "source": "text after the supported substitutions, not a complete rendering of a terminal screen.",
+      "source_sha256": "4c1ad707a6f3db982d84e4ebaff5cee838747618593a77c24307ca015682041e",
+      "translation": "समर्थित प्रतिस्थापनों के बाद का पाठ; यह टर्मिनल स्क्रीन का पूरा पुनर्निर्माण नहीं है।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact current authentication, reporting, PTY, manuscript and methods implementation and source/context bindings. No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,49 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Replace eligible local login and host name matches with placeholders.",
+      "label": "spacr.qt.ai.issue_report.redact_identity#0",
+      "source": "Replace eligible local login and host name matches with placeholders.",
+      "source_sha256": "3ad82d1a16777223b57a1b2ba7ed2e8240a53dad72c1f56a6206865ae5d479f5",
+      "translation": "조건에 맞는 로컬 로그인 이름과 호스트 이름의 일치 항목을 자리표시자로 바꿉니다."
+    },
+    {
+      "context": "Candidate names come from ``_identity_words``; names shorter than three characters, all-digit names and entries in ``_GENERIC_NAMES`` are omitted. Matches are case-insensitive and blocked if either adjacent character matches ``[A-Za-z0-9]`` under ``re.IGNORECASE``; underscores do not block them. Home-string substitution is handled separately by :func:`sanitize_path`.",
+      "label": "spacr.qt.ai.issue_report.redact_identity#1",
+      "source": "Candidate names come from ``_identity_words``; names shorter than three characters, all-digit names and entries in ``_GENERIC_NAMES`` are omitted. Matches are case-insensitive and blocked if either adjacent character matches ``[A-Za-z0-9]`` under ``re.IGNORECASE``; underscores do not block them. Home-string substitution is handled separately by :func:`sanitize_path`.",
+      "source_sha256": "3a1a029fe510cef19fa961c94a05ff12529c2554be67ed047b50fd964c8d1cae",
+      "translation": "후보 이름은 ``_identity_words``에서 가져오며, 문자 수가 셋 미만인 이름, 숫자로만 이루어진 이름, ``_GENERIC_NAMES``에 포함된 이름은 제외합니다. 일치는 대소문자를 구분하지 않습니다. 인접한 문자 중 하나라도 ``[A-Za-z0-9]``와 일치하면 차단하며, 이 검사는 ``re.IGNORECASE``를 적용합니다. 밑줄은 일치를 차단하지 않습니다. 홈 경로 문자열의 치환은 :func:`sanitize_path`에서 별도로 수행합니다."
+    },
+    {
+      "context": "The input with eligible matches replaced by :data:`USER_PLACEHOLDER` or :data:`HOST_PLACEHOLDER`; excluded names and other unmatched identifiers are unchanged.",
+      "label": "spacr.qt.ai.issue_report.redact_identity#3",
+      "source": "The input with eligible matches replaced by :data:`USER_PLACEHOLDER` or :data:`HOST_PLACEHOLDER`; excluded names and other unmatched identifiers are unchanged.",
+      "source_sha256": "258534759a6e3862b3c16461a3ea24c7f3796cca1e65bd084f17dcf01c3988dc",
+      "translation": "조건에 맞는 일치 항목을 :data:`USER_PLACEHOLDER` 또는 :data:`HOST_PLACEHOLDER`로 바꾼 입력입니다. 제외된 이름과 일치하지 않은 다른 식별자는 그대로 둡니다."
+    },
+    {
+      "context": "Apply literal home-string replacement and pattern-based redaction.",
+      "label": "spacr.qt.ai.issue_report.sanitize_path#0",
+      "source": "Apply literal home-string replacement and pattern-based redaction.",
+      "source_sha256": "7a1cc4c70ed827688d1d61caf19c232ab55b5f52d61e50e07063272379503791",
+      "translation": "홈 경로 문자열의 리터럴 치환과 패턴 기반 정보 가림을 적용합니다."
+    },
+    {
+      "context": "Replace exact, case-sensitive occurrences of ``str(Path.home())`` with ``~`` wherever they occur; no path boundaries are checked. Replace substrings matching the case-sensitive database-path regex with ``<DB>``: a slash or backslash, one or more characters other than whitespace or single/double quotes, then ``.db`` and a regex word boundary. Finally apply :func:`redact_identity` and :func:`redact_secrets`. These substitutions do not guarantee removal of every identifier or credential.",
+      "label": "spacr.qt.ai.issue_report.sanitize_path#1",
+      "source": "Replace exact, case-sensitive occurrences of ``str(Path.home())`` with ``~`` wherever they occur; no path boundaries are checked. Replace substrings matching the case-sensitive database-path regex with ``<DB>``: a slash or backslash, one or more characters other than whitespace or single/double quotes, then ``.db`` and a regex word boundary. Finally apply :func:`redact_identity` and :func:`redact_secrets`. These substitutions do not guarantee removal of every identifier or credential.",
+      "source_sha256": "6b5d923b52778893c05e415c590ff3eefa4d541d183f3cdf340f54e7ef0567ec",
+      "translation": "``str(Path.home())``와 정확히 일치하는 부분을 대소문자를 구분하여 모든 위치에서 ``~``로 바꾸며, 경로 경계는 확인하지 않습니다. 대소문자를 구분하는 데이터베이스 경로 정규식과 일치하는 부분 문자열은 ``<DB>``로 바꿉니다. 이 패턴은 슬래시 또는 역슬래시, 공백이나 작은따옴표 또는 큰따옴표가 아닌 하나 이상의 문자, 그 뒤의 ``.db``와 정규식 단어 경계로 구성됩니다. 마지막으로 :func:`redact_identity`와 :func:`redact_secrets`를 적용합니다. 이 치환이 모든 식별자나 자격 증명을 제거한다고 보장하지는 않습니다."
+    },
+    {
+      "context": "The text after the literal home-string replacement and the database, identity and credential-pattern substitutions.",
+      "label": "spacr.qt.ai.issue_report.sanitize_path#3",
+      "source": "The text after the literal home-string replacement and the database, identity and credential-pattern substitutions.",
+      "source_sha256": "c66a00378844827c891d6572c5ae5dfa9e18d31617579c5efa952feb5cb09ae4",
+      "translation": "홈 경로 문자열의 리터럴 치환과 데이터베이스, 신원, 자격 증명 패턴에 따른 치환을 적용한 텍스트입니다."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against the exact current sanitizer implementations and source/context bindings. No human or native-speaker signoff.",
+  "schema": 1
+}

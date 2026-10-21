@@ -1,0 +1,175 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Qt-free installer helpers. :func:`run_install` blocks, so GUI callers should run it off the main GUI execution path; nothing here touches a widget.",
+      "label": "spacr.qt.ai.cli_install#1",
+      "source": "Qt-free installer helpers. :func:`run_install` blocks, so GUI callers should run it off the GUI thread; nothing here touches a widget.",
+      "source_sha256": "800fe570288094c124e4976659e7a5fced56f03d705269115de4e2be93b485df",
+      "translation": "Qt के बिना इंस्टॉलेशन सहायक फ़ंक्शन। :func:`run_install` ब्लॉक करता है, इसलिए GUI से कॉल करने वाले को इसे GUI थ्रेड के बाहर चलाना चाहिए; यहाँ किसी विजेट को नहीं छुआ जाता।"
+    },
+    {
+      "context": "This module defines no install commands. Each tool's ``install_methods`` in :mod:`spacr.qt.ai.providers` supplies the rows used by :func:`plan_install`, which picks the first row whose prerequisite programs are on ``PATH``. The tool's ``install_hint`` is built from those same rows; this module does not wire them to an application view or Install button.",
+      "label": "spacr.qt.ai.cli_install#2",
+      "source": "This module defines no install commands. Each tool's ``install_methods`` in :mod:`spacr.qt.ai.providers` supplies the rows used by :func:`plan_install`, which picks the first row whose prerequisite programs are on ``PATH``. The tool's ``install_hint`` is built from those same rows; this module does not wire them to a screen or Install button.",
+      "source_sha256": "11ffd8e8b95ff867e96f97fb1c7643f63d6dbeaf664fedfbc84c52bbc4faedf7",
+      "translation": "यह मॉड्यूल इंस्टॉलेशन कमांड परिभाषित नहीं करता। प्रत्येक टूल के ``install_methods`` से :mod:`spacr.qt.ai.providers` में वे पंक्तियाँ मिलती हैं जिनका :func:`plan_install` उपयोग करता है; वह पहली ऐसी पंक्ति चुनता है जिसके आवश्यक प्रोग्राम ``PATH`` पर हों। टूल का ``install_hint`` उन्हीं पंक्तियों से बनता है; यह मॉड्यूल उन्हें किसी स्क्रीन या इंस्टॉल बटन से नहीं जोड़ता।"
+    },
+    {
+      "context": "the recorded installer exit status, or ``None`` when no status is retained, including cancellation and timeout outcomes.",
+      "label": "spacr.qt.ai.cli_install.InstallOutcome#2",
+      "source": "the recorded installer exit status, or ``None`` when no status is retained, including cancellation and timeout outcomes.",
+      "source_sha256": "a8f3ede89f2bf1a44dc758c2429e88abf3452fbfcf234290813330b3cb21ca4d",
+      "translation": "इंस्टॉलर का दर्ज किया गया निकास स्टेटस, या स्टेटस सुरक्षित न रखे जाने पर ``None``, जिसमें रद्दीकरण और समय-सीमा समाप्त होने के परिणाम भी शामिल हैं।"
+    },
+    {
+      "context": "the installer's last output, shortened for a failure message, or the startup exception text when the installer could not be started.",
+      "label": "spacr.qt.ai.cli_install.InstallOutcome#3",
+      "source": "the installer's last output, shortened for a failure message, or the startup exception text when the installer could not be started.",
+      "source_sha256": "a8f1296d88a152547da49b38ce5c8f6ab0db25a9566628ee8ec3f8b9ff22625d",
+      "translation": "विफलता संदेश के लिए संक्षिप्त किया गया इंस्टॉलर का अंतिम आउटपुट, या इंस्टॉलर शुरू न हो पाने पर स्टार्टअप अपवाद का पाठ।"
+    },
+    {
+      "context": "Whether ``kind`` is :data:`INSTALLED`; this property performs no new executable lookup.",
+      "label": "spacr.qt.ai.cli_install.InstallOutcome.ok#0",
+      "source": "Whether ``kind`` is :data:`INSTALLED`; this property performs no new executable lookup.",
+      "source_sha256": "dcaf02e9de23934675618aa8424f95de93c528b16a348c5bc1bddc3b428521ee",
+      "translation": "क्या ``kind`` का मान :data:`INSTALLED` है; यह प्रॉपर्टी निष्पादन योग्य फ़ाइल की नई खोज नहीं करती।"
+    },
+    {
+      "context": "Classify an installer failure from its output markers and exit status.",
+      "label": "spacr.qt.ai.cli_install.classify#0",
+      "source": "Classify an installer failure from its output markers and exit status.",
+      "source_sha256": "4a177e5527f8e004b5ab5e256b467376f19ac057b8c7895105a56698b14bdcd7",
+      "translation": "आउटपुट के संकेतों और निकास स्टेटस से इंस्टॉलेशन विफलता का वर्गीकरण करें।"
+    },
+    {
+      "context": "the executable path found in the searched locations, or ``\"\"`` when none was found there.",
+      "label": "spacr.qt.ai.cli_install.locate#3",
+      "source": "the executable path found in the searched locations, or ``\"\"`` when none was found there.",
+      "source_sha256": "497c35648d8d174b449bbb5ff72857674c8d124e66518a72cc85061204b4aa26",
+      "translation": "खोजे गए स्थानों में मिली निष्पादन योग्य फ़ाइल का पथ, या वहाँ कोई न मिलने पर ``\"\"``।"
+    },
+    {
+      "context": "Blocks while consuming the installer's output and waiting for its process to exit, so run it off the main GUI execution path. Standard input supplies end-of-file. The installer runs in a scratch folder, with cleanup attempted afterwards, because the Windows command downloads ``install.cmd`` into its working folder. Cancellation and timeout handling request termination; neither guarantees a fixed upper bound on this call's duration.",
+      "label": "spacr.qt.ai.cli_install.run_install#1",
+      "source": "Blocks while consuming the installer's output and waiting for its process to exit, so run it off the GUI thread. Standard input supplies end-of-file. The installer runs in a scratch folder, with cleanup attempted afterwards, because the Windows command downloads ``install.cmd`` into its working folder. Cancellation and timeout handling request termination; neither guarantees a fixed upper bound on this call's duration.",
+      "source_sha256": "a1a17ce61515fe1f791ca8b8b3f6da8f9c2601bfe3042017259a8d5fe01776b2",
+      "translation": "इंस्टॉलर का आउटपुट पढ़ते समय और उसकी प्रक्रिया समाप्त होने की प्रतीक्षा में ब्लॉक करता है, इसलिए GUI थ्रेड के बाहर चलाएँ। मानक इनपुट फ़ाइल का अंत प्रदान करता है। इंस्टॉलर एक अस्थायी फ़ोल्डर में चलता है जिसकी सफ़ाई का बाद में प्रयास होता है, क्योंकि Windows कमांड ``install.cmd`` को अपनी कार्यशील निर्देशिका में डाउनलोड करती है। रद्दीकरण और समय-सीमा को संभालने की प्रक्रिया समाप्ति का अनुरोध करती है; इनमें से कोई भी इस कॉल की अवधि की निश्चित ऊपरी सीमा की गारंटी नहीं देता।"
+    },
+    {
+      "context": "set it to request cancellation of the installer.",
+      "label": "spacr.qt.ai.cli_install.run_install#4",
+      "source": "set it to request cancellation of the installer.",
+      "source_sha256": "6d70d585d6745cfac7cdddc51fefd686ea872d0d2c8c437223dd355224dc4b99",
+      "translation": "इंस्टॉलर रद्द करने का अनुरोध करने के लिए इसे सेट करें।"
+    },
+    {
+      "context": "seconds before the watcher requests termination after the installer starts; not a bound on the total call duration.",
+      "label": "spacr.qt.ai.cli_install.run_install#5",
+      "source": "seconds before the watcher requests termination after the installer starts; not a bound on the total call duration.",
+      "source_sha256": "68c32e848e758aab539d15355041b9d5a520bcadab8c44d6e38278bb204726be",
+      "translation": "इंस्टॉलर शुरू होने के बाद वे सेकंड जिनके बीतने पर वॉचर समाप्ति का अनुरोध करता है; यह कॉल की कुल अवधि की सीमा नहीं है।"
+    },
+    {
+      "context": "the recorded outcome; :data:`INSTALLED` requires an exit status of 0 and a CLI found afterwards, with ``location`` saying where. If cancellation or timeout was recorded, its kind is returned unless both success checks pass. Other non-zero exits are classified from their output and status; an exit of 0 with no CLI found is not a successful install.",
+      "label": "spacr.qt.ai.cli_install.run_install#6",
+      "source": "the recorded outcome; :data:`INSTALLED` requires an exit status of 0 and a CLI found afterwards, with ``location`` saying where. If cancellation or timeout was recorded, its kind is returned unless both success checks pass. Other non-zero exits are classified from their output and status; an exit of 0 with no CLI found is not a successful install.",
+      "source_sha256": "d9a12d6aa4be98f7b6ac4b2f8dc39b977eab3a880a00ad1d4f6bdff611f6b309",
+      "translation": "दर्ज किया गया परिणाम; :data:`INSTALLED` के लिए निकास स्टेटस 0 और बाद में CLI मिलना आवश्यक है, जिसका स्थान ``location`` बताता है। यदि रद्दीकरण या समय-सीमा समाप्त होना दर्ज किया गया था, तो उसी प्रकार का परिणाम लौटता है, जब तक सफलता की दोनों जाँचें पूरी न हों। अन्य गैर-शून्य निकासों का वर्गीकरण उनके आउटपुट और स्टेटस से होता है; CLI मिले बिना निकास स्टेटस 0 सफल इंस्टॉलेशन नहीं है।"
+    },
+    {
+      "context": "Request termination of an installer process or its process group.",
+      "label": "spacr.qt.ai.cli_install.stop_process#0",
+      "source": "Request termination of an installer process or its process group.",
+      "source_sha256": "1f780e5ee7d9ae4be69756a8e6f45373c0a3739c0c2dc02d6aa908d5fee11556",
+      "translation": "किसी इंस्टॉलर प्रक्रिया या उसके प्रक्रिया समूह को समाप्त करने का अनुरोध करें।"
+    },
+    {
+      "context": "On POSIX, signal the installer's group even when the installer itself has exited, because a child may still hold its output open. An executing installer gets a termination request and, after :data:`STOP_GRACE_S`, a kill attempt if its wait times out. On Windows, an executing installer is targeted with ``taskkill /T /F`` without waiting for that command; an already exited installer is left alone. These attempts do not confirm that every descendant has stopped.",
+      "label": "spacr.qt.ai.cli_install.stop_process#1",
+      "source": "On POSIX, signal the installer's group even when the installer itself has exited, because a child may still hold its output open. A running installer gets a termination request and, after :data:`STOP_GRACE_S`, a kill attempt if its wait times out. On Windows, a running installer is targeted with ``taskkill /T /F`` without waiting for that command; an already exited installer is left alone. These attempts do not confirm that every descendant has stopped.",
+      "source_sha256": "16114bbceab4c1be8f46350ca32a98155f2f04606cf9d05ca9a07698cbca5dd2",
+      "translation": "POSIX पर इंस्टॉलर का समूह संकेत प्राप्त करता है, भले ही इंस्टॉलर स्वयं समाप्त हो चुका हो, क्योंकि कोई चाइल्ड प्रक्रिया अब भी उसका आउटपुट खुला रख सकती है। चल रहे इंस्टॉलर को समाप्त होने का अनुरोध मिलता है और यदि :data:`STOP_GRACE_S` की प्रतीक्षा के बाद भी वह समाप्त नहीं होता, तो उसे बलपूर्वक समाप्त करने का प्रयास होता है। Windows पर चल रहे इंस्टॉलर को ``taskkill /T /F`` से लक्षित किया जाता है, उस कमांड के पूरा होने की प्रतीक्षा किए बिना; पहले ही समाप्त हो चुके इंस्टॉलर को नहीं छेड़ा जाता। ये प्रयास पुष्टि नहीं करते कि सभी वंशज प्रक्रियाएँ रुक गई हैं।"
+    },
+    {
+      "context": "`error_explainer_prompt()` — instructions requesting a concrete, numbered traceback fix list with at most six steps.",
+      "label": "spacr.qt.ai.prompts#3",
+      "source": "`error_explainer_prompt()` — instructions requesting a concrete, numbered traceback fix list with at most six steps.",
+      "source_sha256": "74d026ba891e5ddbfa1da239962a7a06b7b4862033d8449ae6631c19e2712671",
+      "translation": "`error_explainer_prompt()` — अधिकतम छह चरणों वाली, traceback को ठीक करने की ठोस और क्रमांकित सूची माँगने वाले निर्देश।"
+    },
+    {
+      "context": "Return instructions requesting a traceback explanation and a fix list of at most six steps.",
+      "label": "spacr.qt.ai.prompts.error_explainer_prompt#0",
+      "source": "Return instructions requesting a traceback explanation and a fix list of at most six steps.",
+      "source_sha256": "0d5c42020be2a9ce793bdf2d1ce050916b780916cb93b1f2654c4204ed0efc3d",
+      "translation": "traceback की व्याख्या और अधिकतम छह चरणों वाली सुधार सूची माँगने वाले निर्देश लौटाएँ।"
+    },
+    {
+      "context": "Return instructions about tool approval for spaCR's console (GitHub #147).",
+      "label": "spacr.qt.ai.prompts.tool_approval_note#0",
+      "source": "Return instructions about tool approval for spaCR's console (GitHub #147).",
+      "source_sha256": "00cb3636e9b80656391c8537b76d573786511493c2da2438d8360183b9b20ff2",
+      "translation": "spaCR के कंसोल के लिए टूल अनुमोदन संबंधी निर्देश लौटाएँ (GitHub #147)।"
+    },
+    {
+      "context": "The vendor CLIs run non-interactively. For Claude Code, the console can offer an approval dialog after a successful reply when the provider recorded denied tool calls and a resumable session. Approval supplies tool rules for the next resumed reply; a rule may cover more than one exact call. Other provider names receive instructions to give the user a terminal command instead. This function only returns the instructions; the caller handles any approval and resume.",
+      "label": "spacr.qt.ai.prompts.tool_approval_note#1",
+      "source": "The vendor CLIs run non-interactively. For Claude Code, the console can offer an approval dialog after a successful reply when the provider recorded denied tool calls and a resumable session. Approval supplies tool rules for the next resumed reply; a rule may cover more than one exact call. Other provider names receive instructions to give the user a terminal command instead. This function only returns the instructions; the caller handles any approval and resume.",
+      "source_sha256": "1b5fadfff764ee1cffef5b24d91eeb73bf914102599ccef91b576654dbfa7596",
+      "translation": "प्रदाताओं की CLI गैर-संवादात्मक रूप से चलती हैं। Claude Code के लिए, सफलतापूर्वक पूरा हुए उत्तर के बाद कंसोल अनुमोदन संवाद दिखा सकता है, यदि प्रदाता ने अस्वीकृत टूल कॉल और फिर से शुरू की जा सकने वाली सत्र जानकारी दर्ज की हो। अनुमोदन फिर से शुरू किए गए सत्र के अगले उत्तर के लिए टूल नियम देता है; एक नियम किसी एक विशिष्ट कॉल से अधिक पर लागू हो सकता है। अन्य प्रदाता नामों के लिए, उपयोगकर्ता को इसके बजाय टर्मिनल कमांड देने के निर्देश मिलते हैं। यह फ़ंक्शन केवल निर्देश लौटाता है; कॉल करने वाला कोड अनुमोदन और सत्र दोबारा शुरू करने की प्रक्रिया संभालता है।"
+    },
+    {
+      "context": "Format a traceback and optional active-app label as a user message.",
+      "label": "spacr.qt.ai.prompts.wrap_error_for_prompt#0",
+      "source": "Format a traceback and optional active-app label as a user message.",
+      "source_sha256": "c3b64e62947206960b8436a2711bed6c97998c540f4630150940efbbd47a9a14",
+      "translation": "traceback और सक्रिय ऐप के वैकल्पिक लेबल को उपयोगकर्ता संदेश के रूप में स्वरूपित करें।"
+    },
+    {
+      "context": "Callers can use a non-empty stored URL to avoid filing the same fingerprint again while it remains in this profile. Remembering an existing fingerprint moves it to the newest position; entries beyond :data:`AUTO_FILED_LIMIT` are dropped oldest first. An evicted or cleared entry no longer prevents another filing; malformed or non-mapping stored data is treated as an empty history.",
+      "label": "spacr.qt.ai.settings.remember_auto_filed#1",
+      "source": "Callers can use a non-empty stored URL to avoid filing the same fingerprint again while it remains in this profile. Remembering an existing fingerprint moves it to the newest position; entries beyond :data:`AUTO_FILED_LIMIT` are dropped oldest first. An evicted or cleared entry no longer prevents another filing; malformed or non-mapping stored data is treated as an empty history.",
+      "source_sha256": "97cb34d3adcaf488546cdb7ac83b213440f6385814b4b7b083a84053d9a7e16d",
+      "translation": "जब तक फ़िंगरप्रिंट इस प्रोफ़ाइल में रहता है, कॉल करने वाला कोड उसी फ़िंगरप्रिंट को फिर से रिपोर्ट करने से बचने के लिए सहेजे गए गैर-खाली URL का उपयोग कर सकता है। किसी मौजूदा फ़िंगरप्रिंट को फिर से याद रखने पर वह सबसे नए स्थान पर आ जाता है; :data:`AUTO_FILED_LIMIT` से अधिक प्रविष्टियाँ सबसे पुरानी से शुरू करके हटा दी जाती हैं। हटाई या साफ़ की गई प्रविष्टि एक और रिपोर्ट को नहीं रोकती; गलत प्रारूप में सहेजे गए या मैपिंग न होने वाले डेटा को खाली इतिहास माना जाता है।"
+    },
+    {
+      "context": "Mark the worker cancelled and request provider cancellation.",
+      "label": "spacr.qt.ai.worker.StreamWorker.cancel#0",
+      "source": "Mark the worker cancelled and request provider cancellation.",
+      "source_sha256": "cb707f57a2e602b7f4e3aec612c32dce462f2e0ead08353090b8b8981d88b45f",
+      "translation": "वर्कर को रद्द किया गया चिह्नित करें और प्रदाता से रद्द करने का अनुरोध करें।"
+    },
+    {
+      "context": "A flag alone may not interrupt a provider blocked while reading subprocess output or waiting for a reply. This method calls ``provider.cancel_stream()`` and ignores its exceptions; it does not wait for the background execution unit to exit or guarantee that the provider stops. The streaming path checks the flag after receiving a chunk and after the iterator ends.",
+      "label": "spacr.qt.ai.worker.StreamWorker.cancel#1",
+      "source": "A flag alone may not interrupt a provider blocked while reading subprocess output or waiting for a reply. This method calls ``provider.cancel_stream()`` and ignores its exceptions; it does not wait for the worker thread to exit or guarantee that the provider stops. The streaming path checks the flag after receiving a chunk and after the iterator ends.",
+      "source_sha256": "4441ac00cb48a9e25d69a26951b6885791b0854deade4ca395827645c956cf8c",
+      "translation": "संभव है कि केवल एक फ़्लैग ऐसे प्रदाता को बाधित न कर पाए जो उपप्रक्रिया का आउटपुट पढ़ते समय या उत्तर की प्रतीक्षा में रुका हो। यह विधि ``provider.cancel_stream()`` को कॉल करती है और उसके अपवादों को अनदेखा करती है; यह वर्कर थ्रेड के समाप्त होने की प्रतीक्षा नहीं करती और न ही प्रदाता के रुकने की गारंटी देती है। स्ट्रीमिंग पथ कोई खंड मिलने के बाद और इटरेटर समाप्त होने के बाद फ़्लैग की जाँच करता है।"
+    },
+    {
+      "context": "``finished`` carries ``(True, text)`` for a saved-answer hit or when the uncancelled streaming path completes without an exception, including an empty reply. In the streaming path, cancellation gives ``(False, \"Cancelled.\")``, including when the provider raises after cancellation; other caught exceptions give ``(False, error_detail)``. Chunks already emitted before a failure are not a successful answer.",
+      "label": "spacr.qt.ai.worker.StreamWorker.run#1",
+      "source": "``finished`` carries ``(True, text)`` for a saved-answer hit or when the uncancelled streaming path completes without an exception, including an empty reply. In the streaming path, cancellation gives ``(False, \"Cancelled.\")``, including when the provider raises after cancellation; other caught exceptions give ``(False, error_detail)``. Chunks already emitted before a failure are not a successful answer.",
+      "source_sha256": "1e770c7e3e566f81386f73d2899ae4024b5380540dbcd2c214b7157dffe1198a",
+      "translation": "सहेजा हुआ उत्तर मिलने पर या स्ट्रीमिंग पथ के बिना रद्द हुए और किसी अपवाद के बिना पूरा होने पर ``finished`` में ``(True, text)`` आता है, भले ही उत्तर खाली हो। स्ट्रीमिंग पथ में रद्द करने पर ``(False, \"Cancelled.\")`` मिलता है, तब भी जब रद्द करने के बाद प्रदाता अपवाद उठाए; अन्य पकड़े गए अपवादों पर ``(False, error_detail)`` मिलता है। विफलता से पहले जारी किए गए खंड सफलतापूर्वक पूरा हुआ उत्तर नहीं हैं।"
+    },
+    {
+      "context": "The exception's class name is prefixed to its message, except for a :class:`~spacr.qt.ai.providers.ProviderFailed` with a non-empty message. The console writes this text after \"[AI error] \", and a ProviderFailed message is written to be read there, including the sign-in command to execute. For every other exception the class name is kept because it often names the error: a bare ``[Errno 2] No such file or directory`` does not say it is a FileNotFoundError.",
+      "label": "spacr.qt.ai.worker.StreamWorker.run#2",
+      "source": "The exception's class name is prefixed to its message, except for a :class:`~spacr.qt.ai.providers.ProviderFailed` with a non-empty message. The console writes this text after \"[AI error] \", and a ProviderFailed message is written to be read there, including the sign-in command to run. For every other exception the class name is kept because it often names the error: a bare ``[Errno 2] No such file or directory`` does not say it is a FileNotFoundError.",
+      "source_sha256": "3160512b0f19c634feac7f83a5bd96efbbb6b4fb9df33a2d7efc6bffb5225199",
+      "translation": "अपवाद के संदेश से पहले उसकी क्लास का नाम जोड़ा जाता है, सिवाय ऐसे :class:`~spacr.qt.ai.providers.ProviderFailed` के जिसका संदेश खाली नहीं है। कंसोल इस पाठ को \"[AI error] \" के बाद लिखता है, और ProviderFailed का संदेश इसी स्थान पर पढ़ने के लिए लिखा जाता है, जिसमें चलाने वाला साइन-इन कमांड भी शामिल है। अन्य सभी अपवादों में क्लास का नाम रखा जाता है, क्योंकि उससे अक्सर त्रुटि की पहचान होती है: केवल ``[Errno 2] No such file or directory`` से यह नहीं पता चलता कि वह FileNotFoundError है।"
+    },
+    {
+      "context": "For a question accepted by :func:`~spacr.qt.ai.providers.question_cache_key`, a valid saved answer is returned without a provider call and :attr:`saved` becomes ``True``. This lookup precedes the streaming cancellation check and exception handler, so a cache hit succeeds even if cancellation was already requested, and lookup errors propagate without a ``finished`` signal. Otherwise a non-empty, uncancelled reply is passed to ``save_explanation``; a save attempt does not guarantee persistence.",
+      "label": "spacr.qt.ai.worker.StreamWorker.run#3",
+      "source": "For a question accepted by :func:`~spacr.qt.ai.providers.question_cache_key`, a valid saved answer is returned without a provider call and :attr:`saved` becomes ``True``. This lookup precedes the streaming cancellation check and exception handler, so a cache hit succeeds even if cancellation was already requested, and lookup errors propagate without a ``finished`` signal. Otherwise a non-empty, uncancelled reply is passed to ``save_explanation``; a save attempt does not guarantee persistence.",
+      "source_sha256": "349867bb830e9390baaf340e92eb6c9755937d1701540d7fc1484b524dacbba5",
+      "translation": ":func:`~spacr.qt.ai.providers.question_cache_key` द्वारा स्वीकार किए गए प्रश्न के लिए, प्रदाता को कॉल किए बिना एक मान्य सहेजा हुआ उत्तर लौटाया जाता है और :attr:`saved` का मान ``True`` हो जाता है। यह खोज स्ट्रीमिंग की रद्दीकरण जाँच और अपवाद हैंडलर से पहले होती है, इसलिए पहले ही रद्द करने का अनुरोध होने पर भी कैश में उत्तर मिलना सफल रहता है, और खोज के त्रुटि-अपवाद ``finished`` संकेत के बिना आगे जाते हैं। अन्यथा एक ऐसा गैर-खाली उत्तर, जिसे रद्द नहीं किया गया है, ``save_explanation`` को दिया जाता है; सहेजने का प्रयास स्थायी रूप से सहेजे जाने की गारंटी नहीं देता।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against the exact current worker/prompt/settings/CLI-installer implementation and source/context bindings. No human or native-speaker signoff.",
+  "schema": 1
+}

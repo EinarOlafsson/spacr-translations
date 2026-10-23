@@ -1,0 +1,190 @@
+{
+  "language": "de",
+  "records": [
+    {
+      "context": "Check that torch imports and report its compiled accelerator backend.",
+      "label": "spacr.doctor.check_torch#0",
+      "source": "Check that torch imports and report its compiled accelerator backend.",
+      "source_sha256": "37f637e2f2c11df8652314da902e7f978172867e5dce009e466af07ac26a8dc7",
+      "translation": "Prüfen, ob torch importiert werden kann, und dessen einkompiliertes Beschleuniger-Backend melden."
+    },
+    {
+      "context": "Build opt-in RAPIDS/Metal reducers, with scientific CPU defaults.",
+      "label": "spacr.gpu_reduce#0",
+      "source": "Build opt-in RAPIDS/Metal reducers, with scientific CPU defaults.",
+      "source_sha256": "55e199fe48c68296cb91297e3d369a845a7db95b306ae3b26542aec8cd58699b",
+      "translation": "Explizit aktivierte RAPIDS-/Metal-Reduzierer mit wissenschaftlichen CPU-Standardeinstellungen erstellen."
+    },
+    {
+      "context": "Metal supports PCA projection and KMeans without installing RAPIDS. PCA fitting and ill-conditioned projections use CPU float64 for accuracy. UMAP, t-SNE and DBSCAN remain CPU algorithms on Metal machines.",
+      "label": "spacr.gpu_reduce#1",
+      "source": "Metal supports PCA projection and KMeans without installing RAPIDS. PCA fitting and ill-conditioned projections use CPU float64 for accuracy. UMAP, t-SNE and DBSCAN remain CPU algorithms on Metal machines.",
+      "source_sha256": "9dd38c6b2c30f9b5e9a5ca73fdd754d0cab2b5667fa2880a4a349494353d0903",
+      "translation": "Metal unterstützt PCA-Projektion und KMeans ohne Installation von RAPIDS. PCA-Anpassung und schlecht konditionierte Projektionen verwenden CPU float64 für hohe Genauigkeit. UMAP, t-SNE und DBSCAN bleiben auf Metal-Rechnern CPU-Algorithmen."
+    },
+    {
+      "context": "Install the optional RAPIDS support with:",
+      "label": "spacr.gpu_reduce#2",
+      "source": "Install the optional RAPIDS support with:",
+      "source_sha256": "510c6dabefdc114c2cdcea108604a1d4bc252e6f0677f18be4d7e6c72315aca2",
+      "translation": "Installieren Sie die optionale RAPIDS-Unterstützung mit:"
+    },
+    {
+      "context": "pip install spacr[rapids]",
+      "label": "spacr.gpu_reduce#3",
+      "source": "pip install spacr[rapids]",
+      "source_sha256": "356b062c20783b6f108be720bdfc49ac8c6eacd19e7591bea23b0501e3a5f69b",
+      "translation": "pip install spacr[rapids]"
+    },
+    {
+      "context": "No other configuration is required. The CPU path remains the default and is used unless the caller opts in and a supported GPU implementation is available.",
+      "label": "spacr.gpu_reduce#4",
+      "source": "No other configuration is required. The CPU path remains the default and is used unless the caller opts in and a supported GPU implementation is available.",
+      "source_sha256": "2dca7b256433e4a0cdacbfdc343a86cc8bd76971e4b7d350a0f91bddd9aceef0",
+      "translation": "Es ist keine weitere Konfiguration erforderlich. Der CPU-Pfad bleibt der Standard und wird verwendet, sofern der Aufrufer nicht ausdrücklich zustimmt und eine unterstützte GPU-Implementierung verfügbar ist."
+    },
+    {
+      "context": "cuML is an optional extra rather than a dependency. ``cuml-cu12`` declares ``requires_python >= 3.11`` with machine-learning classification models for 3.11 and 3.12 only, and requires ``numpy>=2.0`` and ``scipy>=1.14``. spaCR supports Python 3.9 through 3.14, so a core dependency would drop four of six interpreters. As an extra it constrains nothing -- see the note beside it in setup.py.",
+      "label": "spacr.gpu_reduce#5",
+      "source": "cuML is an optional extra rather than a dependency. ``cuml-cu12`` declares ``requires_python >= 3.11`` with classifiers for 3.11 and 3.12 only, and requires ``numpy>=2.0`` and ``scipy>=1.14``. spaCR supports Python 3.9 through 3.14, so a core dependency would drop four of six interpreters. As an extra it constrains nothing -- see the note beside it in setup.py.",
+      "source_sha256": "d831406a30932ab0acac12a0f8e5d960960940323d4597517746055960d5b94d",
+      "translation": "cuML ist eher ein optionales Extra als eine Abhängigkeit. ``cuml-cu12`` deklariert ``requires_python >= 3.11`` mit Machine-Learning-Klassifikationsmodellen nur für 3.11 und 3.12 und erfordert ``numpy>=2.0`` und ``scipy>=1.14``. spaCR unterstützt Python 3.9 bis 3.14, also würde eine Kernabhängigkeit vier von sechs Interpreten fallen lassen. Als zusätzliches beschränkt es nichts -- siehe die Anmerkung daneben in setup.py."
+    },
+    {
+      "context": "cuML implements the algorithms spaCR runs on large tables: UMAP, t-SNE, PCA, DBSCAN and KMeans, and only these are offered here. Other spaCR work -- barcode mapping, format conversion, SQLite, report assembly, grouped statistics -- is decompression, filesystem and small-table work, where transfer to a GPU costs more time than the computation saves.",
+      "label": "spacr.gpu_reduce#6",
+      "source": "cuML implements the algorithms spaCR runs on large tables: UMAP, t-SNE, PCA, DBSCAN and KMeans, and only these are offered here. Other spaCR work -- barcode mapping, format conversion, SQLite, report assembly, grouped statistics -- is decompression, filesystem and small-table work, where transfer to a GPU costs more time than the computation saves.",
+      "source_sha256": "1442c4613b19b02758ae350077b4937c77a35b513d5f569eaf57b9fe4a0fdd02",
+      "translation": "cuML implementiert die Algorithmen spaCR läuft auf großen Tabellen: UMAP, t-SNE, PCA, DBSCAN und KMeans, und nur diese werden hier angeboten. Andere spaCR Arbeiten -- Barcode Mapping, Formatkonvertierung, SQLite, Bericht Assembly, gruppierte Statistiken -- ist Dekompression, Dateisystem und kleine Tabelle Arbeit, wo die Übertragung auf eine GPU kostet mehr Zeit als die Berechnung spart."
+    },
+    {
+      "context": "**Results differ between backends.** cuML's UMAP is not bit-identical to umap-learn's, and its KMeans and DBSCAN can assign boundary points differently, so a figure regenerated on another machine can change. The accelerator is therefore opt-in per call and reports which backend ran; a caller that pins a seed for reproducibility should keep the CPU path.",
+      "label": "spacr.gpu_reduce#7",
+      "source": "**Results differ between backends.** cuML's UMAP is not bit-identical to umap-learn's, and its KMeans and DBSCAN can assign boundary points differently, so a figure regenerated on another machine can change. The accelerator is therefore opt-in per call and reports which backend ran; a caller that pins a seed for reproducibility should keep the CPU path.",
+      "source_sha256": "ef9f4f145f94ce044eed2e487f9d91b3b2cfb95b0738fc941cb9d173e4235f2c",
+      "translation": "**Ergebnisse unterscheiden sich zwischen Backends.** cuML's UMAP ist nicht bit-identisch zu umap-learn's, und seine KMeans und DBSCAN können Grenzpunkte unterschiedlich zuweisen, so dass sich eine auf einer anderen Maschine regenerierte Figur ändern kann. Der Beschleuniger ist daher Opt-in pro Anruf und berichtet, welches Backend lief; ein Anrufer, der einen Seed für Reproduzierbarkeit pinnt, sollte den CPU Pfad halten."
+    },
+    {
+      "context": "Return ``'cuml'``, ``'mps'`` or ``'cpu'`` for the requested method.",
+      "label": "spacr.gpu_reduce.backend_for#0",
+      "source": "Return ``'cuml'``, ``'mps'`` or ``'cpu'`` for the requested method.",
+      "source_sha256": "abfebd8affbd72b6f9908e218d1b87a42baf7da2456fd81a3fa2af91b69f295c",
+      "translation": "Für die angeforderte Methode ``'cuml'``, ``'mps'`` oder ``'cpu'`` zurückgeben."
+    },
+    {
+      "context": "Keep Cellpose's CPU-only augmentation/AMP assumptions off the Metal path.",
+      "label": "spacr.metal_cellpose#0",
+      "source": "Keep Cellpose's CPU-only augmentation/AMP assumptions off the Metal path.",
+      "source_sha256": "3dfeaa1e8ec22558125f64a9119994785ca0bbeff8e785eeeb83fb250dac2039",
+      "translation": "Annahmen von Cellpose zu reiner CPU-Augmentierung/AMP vom Metal-Pfad fernhalten."
+    },
+    {
+      "context": "Augment on CPU, train in float32 on Metal, and restore upstream globals.",
+      "label": "spacr.metal_cellpose.training_context#0",
+      "source": "Augment on CPU, train in float32 on Metal, and restore upstream globals.",
+      "source_sha256": "1b5ebd75c497dc3a1585815a2ab11b7ad094fb35963fcaf8587613aa33a38945",
+      "translation": "Auf CPU augmentieren, mit float32 auf Metal trainieren und die ursprünglichen globalen Variablen der Bibliothek wiederherstellen."
+    },
+    {
+      "context": "Cellpose 4.2 builds float64 affine tensors and enters unsupported MPS autocast. Only its training-module references are adapted; the torch module and other application code are untouched. Network forward/backward stays on the selected GPU. Older Cellpose releases lacking this seam are retained.",
+      "label": "spacr.metal_cellpose.training_context#1",
+      "source": "Cellpose 4.2 builds float64 affine tensors and enters unsupported MPS autocast. Only its training-module references are adapted; the torch module and other application code are untouched. Network forward/backward stays on the selected GPU. Older Cellpose releases lacking this seam are retained.",
+      "source_sha256": "1735afb4c713407ff3b2feb826702a2508a8b7aae37245eb7533491ca262dde6",
+      "translation": "Cellpose 4.2 erstellt affine float64-Tensoren und aktiviert nicht unterstütztes MPS autocast. Nur Referenzen seines Trainingsmoduls werden angepasst; das torch-Modul und anderer Anwendungscode bleiben unverändert. Vorwärts- und Rückwärtsberechnungen des Netzes bleiben auf der ausgewählten GPU. Ältere Cellpose-Versionen ohne diese Integrationsstelle werden beibehalten."
+    },
+    {
+      "context": "a torch device; None uses spaCR's selected accelerator.",
+      "label": "spacr.model_zoo.segment_mitonet#7",
+      "source": "a torch device; None uses spaCR's selected accelerator.",
+      "source_sha256": "4d0398ac2d3937378b41d7da997789de27df919416de212d2b2f01a16e549405",
+      "translation": "ein torch-Gerät; None verwendet den von spaCR ausgewählten Beschleuniger."
+    },
+    {
+      "context": "Opt-in Metal reducers with sklearn-shaped results and bounded working memory.",
+      "label": "spacr.mps_reduce#0",
+      "source": "Opt-in Metal reducers with sklearn-shaped results and bounded working memory.",
+      "source_sha256": "ba893ff8e7062bee0e7c8ed0709c0d40e99585f87d412227eea0a2652c9fe068",
+      "translation": "Explizit aktivierte Metal-Reduzierer mit Ergebnissen im sklearn-Format und begrenztem Arbeitsspeicher."
+    },
+    {
+      "context": "Cluster assignment, centroid updates and well-conditioned PCA projections run on MPS. PCA fitting and numerically sensitive projections use CPU float64: forming a float32 covariance matrix can erase valid scientific components.",
+      "label": "spacr.mps_reduce#1",
+      "source": "Cluster assignment, centroid updates and well-conditioned PCA projections run on MPS. PCA fitting and numerically sensitive projections use CPU float64: forming a float32 covariance matrix can erase valid scientific components.",
+      "source_sha256": "c79cafb2e0dc2249fe8f9779be4c1961bff9e70f46fd32740d5ffa6efa67207c",
+      "translation": "Clusterzuordnung, Aktualisierungen der Zentroiden und gut konditionierte PCA-Projektionen laufen auf MPS. PCA-Anpassung und numerisch empfindliche Projektionen verwenden CPU float64: Die Bildung einer float32-Kovarianzmatrix kann gültige wissenschaftliche Komponenten auslöschen."
+    },
+    {
+      "context": "Lloyd KMeans with chunked Metal assignment and k-means++ initialization.",
+      "label": "spacr.mps_reduce.MetalKMeans#0",
+      "source": "Lloyd KMeans with chunked Metal assignment and k-means++ initialization.",
+      "source_sha256": "1c5580796a2089553dec2885e2ac10e9afa2374e51397e557a6ab7bc931f6628",
+      "translation": "Lloyd KMeans mit blockweiser Metal-Zuordnung und k-means++-Initialisierung."
+    },
+    {
+      "context": "Stable CPU PCA fitting with Metal projection where precision permits.",
+      "label": "spacr.mps_reduce.MetalPCA#0",
+      "source": "Stable CPU PCA fitting with Metal projection where precision permits.",
+      "source_sha256": "59a35cd4aec1560de2309ff9d34a8c70bf8af4f0f2f6c2854cc63e014a3368ab",
+      "translation": "Stabile PCA-Anpassung auf CPU mit Metal-Projektion, sofern die Genauigkeit dies zulässt."
+    },
+    {
+      "context": "Enable available GPU reducers and explain partial Metal support.",
+      "label": "spacr.qt.screens.hyperparam.HyperparamPanel.request_gpu_enabled#0",
+      "source": "Enable available GPU reducers and explain partial Metal support.",
+      "source_sha256": "68ef83f8b359a89a1c420ded02fab258ef7ed345284889e2de5c766ca59d9bb0",
+      "translation": "Verfügbare GPU-Reduzierer aktivieren und die teilweise Metal-Unterstützung erläutern."
+    },
+    {
+      "context": "Discard complete labels intersecting the calibrated extracted image region's boundary.",
+      "label": "spacr.qt.widgets.live_preview._segment_multi._crop_labels#0",
+      "source": "Discard complete labels intersecting the calibrated crop's boundary.",
+      "source_sha256": "5cec367827f67c024e6b68b52683bb58205f62637aaffcbc2cdd5e52a2dd46fc",
+      "translation": "Vollständige Labels verwerfen, die den Rand des kalibrierten Bildausschnitts schneiden."
+    },
+    {
+      "context": "a torch device, including ``'cpu'``, ``'cuda'`` or ``'mps'``.",
+      "label": "spacr.timeflows_model.train_timeflows#11",
+      "source": "a torch device, including ``'cpu'``, ``'cuda'`` or ``'mps'``.",
+      "source_sha256": "b93fc915829bb5ab96b7caa174401922b26d6477c3197dcc02b5455ac25ed5f4",
+      "translation": "ein torch-Gerät, einschließlich ``'cpu'``, ``'cuda'`` oder ``'mps'``."
+    },
+    {
+      "context": "Transport macOS loader batches without PyTorch shared-memory daemons.",
+      "label": "spacr.torch_loader#0",
+      "source": "Transport macOS loader batches without PyTorch shared-memory daemons.",
+      "source_sha256": "ca38b1c633b35991767a0218c49595aa43e36f5b7a9ae7e64ef00c700c485ec3",
+      "translation": "macOS-Lader-Batches ohne PyTorch-Daemons für gemeinsamen Speicher übertragen."
+    },
+    {
+      "context": "On Intel macOS, torch 2.2's file-system sharing helpers inherit Python's resource-tracker pipe. Python then waits for that tracker while the helpers wait for Python to exit. Default collation sends NumPy-backed records instead; the parent restores the same CPU tensor shapes and dtypes before yielding.",
+      "label": "spacr.torch_loader#1",
+      "source": "On Intel macOS, torch 2.2's file-system sharing helpers inherit Python's resource-tracker pipe. Python then waits for that tracker while the helpers wait for Python to exit. Default collation sends NumPy-backed records instead; the parent restores the same CPU tensor shapes and dtypes before yielding.",
+      "source_sha256": "a14d1f08cfdc49648ddd696a01cc4b031a50dc9fcd3c648d8d9e59f8423f655d",
+      "translation": "Unter Intel macOS erben die Hilfsprozesse zur Dateisystemfreigabe von torch 2.2 die Pipe des Python-Ressourcentrackers. Python wartet dann auf diesen Tracker, während die Hilfsprozesse auf das Ende von Python warten. Die Standard-Kollation sendet stattdessen NumPy-basierte Datensätze; der Elternprozess stellt dieselben CPU-Tensorformen und Datentypen wieder her, bevor er sie weitergibt."
+    },
+    {
+      "context": "Default CPU batches cross process boundaries as NumPy, then restore.",
+      "label": "spacr.torch_loader.ArrayDataLoader#0",
+      "source": "Default CPU batches cross process boundaries as NumPy, then restore.",
+      "source_sha256": "109a063efb53ddc03ebb062c6b6d8361536955ec508c0761ae8f83ae30102a73",
+      "translation": "Standardmäßige CPU-Batches passieren Prozessgrenzen als NumPy und werden anschließend wiederhergestellt."
+    },
+    {
+      "context": "Explicit custom collators retain their existing behavior. Single-process loaders use ordinary PyTorch collation and iteration unchanged.",
+      "label": "spacr.torch_loader.ArrayDataLoader#1",
+      "source": "Explicit custom collators retain their existing behavior. Single-process loaders use ordinary PyTorch collation and iteration unchanged.",
+      "source_sha256": "943b5b11bdfc7cd5ff8c09ac1faac0936b9372480f7420eaa450b90551ed1a7e",
+      "translation": "Explizite benutzerdefinierte Kollatoren behalten ihr bisheriges Verhalten. Lader mit einem einzigen Prozess verwenden unverändert die gewöhnliche PyTorch-Kollation und -Iteration."
+    },
+    {
+      "context": "Supported reducers are UMAP, t-SNE, PCA, Isomap and Spectral Embedding. ``reducer_options`` carries only method-specific settings; irrelevant options are never forwarded. GPU execution is opt-in: RAPIDS supports UMAP/t-SNE/PCA, while Metal supports PCA/KMeans. The actual reduction backend is retained on the fitted reducer.",
+      "label": "spacr.utils.reduction_and_clustering#1",
+      "source": "Supported reducers are UMAP, t-SNE, PCA, Isomap and Spectral Embedding. ``reducer_options`` carries only method-specific settings; irrelevant options are never forwarded. GPU execution is opt-in: RAPIDS supports UMAP/t-SNE/PCA, while Metal supports PCA/KMeans. The actual reduction backend is retained on the fitted reducer.",
+      "source_sha256": "0f4f6fc099dd3c5826888fec9db31d7a9e9f34632b1b5e4f194ada6c5098cb08",
+      "translation": "Unterstützte Reduzierer sind UMAP, t-SNE, PCA, Isomap und Spectral Embedding. ``reducer_options`` enthält nur methodenspezifische Einstellungen; irrelevante Optionen werden nie weitergeleitet. GPU-Ausführung wird ausdrücklich aktiviert: RAPIDS unterstützt UMAP/t-SNE/PCA, Metal unterstützt PCA/KMeans. Das tatsächlich verwendete Reduktions-Backend bleibt am angepassten Reduzierer erhalten."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against the exact calibrated-unmixing and Metal compatibility source/context contracts. Existing translations are rebound only where their source/context and target remain unchanged. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "e2ffe92391e032d755f3af45f9ec04897a72f8b2"
+}

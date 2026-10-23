@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "language": "ko",
+  "records": [
+    {
+      "label": "spacr.ml.check_and_clean_data#5",
+      "source": "if a complete well/gRNA identity carries more than one ``fraction``, which makes ``gene_fraction`` ambiguous. Well identity includes screen when present, plate, row, column and prc.",
+      "source_sha256": "548f73eba086d6a530e9adcc66c542dfe6acc83b5f0c527506909f19c966d7b1",
+      "context": "if a complete well/gRNA identity carries more than one ``fraction``, which makes ``gene_fraction`` ambiguous. Well identity includes screening experiment when present, laboratory microplate, row, column and prc.",
+      "translation": "완전한 웰/gRNA 식별자에 ``fraction`` 값이 둘 이상 있어 ``gene_fraction``이 모호해지는 경우입니다. 웰 식별 정보에는 스크리닝 실험 정보가 있으면 이를 포함하고, 플레이트, 행, 열 및 prc가 포함됩니다."
+    },
+    {
+      "label": "spacr.ml.regression#28",
+      "source": "``'long'`` keeps one fitted row per well-guide pair. At gene level, each row carries all retained measured gene fractions of that complete well; guide-level fits retain the guide interaction. Gene-level LONG horseshoe fits weight only observation log likelihood by inverse fitted-row multiplicity per complete well, so each well contributes once without rescaling counts, exposures, design standardization or priors. ``'wide'`` pivots fractions to one row per independent well before fitting. Full gene compositions can confound a common coefficient shift with the intercept; existing estimator priors and coefficient units are retained. Mixed models keep their long nesting representation even when a wide count input was supplied.",
+      "source_sha256": "f3101983dbb785519c8ae303993550a48080deef6e8fe74a0a11d3304ad17dff",
+      "context": "``'long'`` keeps one fitted row per well-guide pair. At gene level, each row carries all retained measured gene fractions of that complete well; guide-level fits retain the guide interaction. Gene-level LONG horseshoe fits weight only observation log likelihood by inverse fitted-row multiplicity per complete well, so each well contributes once without rescaling counts, exposures, design standardization or priors. ``'wide'`` pivots fractions to one row per independent well before fitting. Full gene compositions can confound a common coefficient shift with the intercept; existing estimator priors and coefficient units are retained. Mixed models keep their long nesting representation even when a wide count input was supplied.",
+      "translation": "``'long'``은 웰-가이드 쌍마다 적합된 행 하나를 유지합니다. 유전자 수준에서는 각 행에 완전히 식별된 해당 웰에서 유지된 모든 측정 유전자 분율이 들어가며, 가이드 수준 적합에서는 가이드 상호작용을 유지합니다. 유전자 수준 LONG horseshoe 적합은 완전히 식별된 웰별 적합 행 수의 역수로 관측 로그우도만 가중하여, 계수 데이터, 노출량, 설계 표준화 또는 사전분포의 척도를 바꾸지 않고 각 웰이 한 번씩 기여하도록 합니다. ``'wide'``는 적합 전에 분율을 독립적인 웰당 한 행으로 피벗합니다. 전체 유전자 조성에서는 계수의 공통 이동과 절편이 혼동될 수 있으며, 추정기의 기존 사전분포와 계수 단위는 유지됩니다. 혼합모형은 입력 계수 데이터가 넓은 형식으로 주어져도 긴 형식의 중첩 표현을 유지합니다."
+    },
+    {
+      "label": "spacr.ml.regression_model#28",
+      "source": "Optional aligned observation log-likelihood weights for ``horseshoe``. Counts, exposures and design standardization are not rescaled. Automatic global-prior calibration counts identified nonconstant predictors and independent physical wells. Weighted rows require aligned complete well identities in ``X.attrs['likelihood_well_ids']``. For arbitrary weights, use ``spacr.power_model.ModelData`` with an explicit ``scale_global``.",
+      "source_sha256": "8abc1b51230ab9e2f654c0049a488ac81daa9168c41aecfdbd2402f1ed443b2b",
+      "context": "Optional aligned observation log-likelihood weights for ``horseshoe``. Counts, exposures and design standardization are not rescaled. Automatic global-prior calibration counts identified nonconstant predictors and independent physical microplate sample positions. Weighted rows require aligned complete microplate sample position identities in ``X.attrs['likelihood_well_ids']``. For arbitrary weights, use ``spacr.power_model.ModelData`` with an explicit ``scale_global``.",
+      "translation": "``horseshoe``에 사용할, 관측 로그우도의 선택적 행 정렬 가중치입니다. 계수 데이터, 노출량 및 설계 표준화의 척도는 바꾸지 않습니다. 자동 전역 사전분포 보정은 식별된 비상수 예측변수와 독립적인 실제 웰의 수를 셉니다. 가중된 행에는 ``X.attrs['likelihood_well_ids']``에 행 정렬된 완전한 웰 식별 정보가 필요합니다. 임의의 가중치에는 ``spacr.power_model.ModelData``와 명시적인 ``scale_global``을 사용하세요."
+    },
+    {
+      "label": "spacr.power_model.ModelData#0",
+      "source": "Well-level Poisson design, optionally retaining weighted repeated rows.",
+      "source_sha256": "fa5c6c008e35560f0a50d6a02e8d684f315fb747bc833f94341c3aab5773426f",
+      "context": "Microplate sample position-level Poisson design, optionally retaining weighted repeated rows.",
+      "translation": "가중된 반복 행을 선택적으로 유지할 수 있는 웰 수준 Poisson 설계입니다."
+    },
+    {
+      "label": "spacr.power_model.ModelData#1",
+      "source": "Ordinary designs have one row per well. Repeated LONG observations may retain all rows with inverse multiplicity likelihood weights; design centering and scaling still use the retained rows. Automatic prior calibration counts identified nonconstant predictors and independent physical wells established by explicit row-aligned identities.",
+      "source_sha256": "ba41b482ddea4da48e49c5a121cd49f7ebc8c4dc51a2ca15df7aca9b428b5f8d",
+      "context": "Ordinary designs have one row per microplate sample position. Repeated LONG observations may retain all rows with inverse multiplicity likelihood weights; design centering and scaling still use the retained rows. Automatic prior calibration counts identified nonconstant predictors and independent physical microplate sample positions established by explicit row-aligned identities.",
+      "translation": "일반적인 설계에는 웰마다 한 행이 있습니다. 반복된 LONG 관측은 반복 횟수의 역수를 우도 가중치로 사용하여 모든 행을 유지할 수 있으며, 설계의 중심화와 척도 조정에는 여전히 유지된 행이 사용됩니다. 자동 사전분포 보정은 식별된 비상수 예측변수와 명시적인 행 정렬 식별 정보로 확인된 독립적인 실제 웰의 수를 셉니다."
+    },
+    {
+      "label": "spacr.power_model.ModelData#9",
+      "source": "optional positive finite row weights applied only to the observation log likelihood. ``None`` counts every row once; inverse within-well multiplicities count repeated LONG rows once per well.",
+      "source_sha256": "9a038d91dbd546a3b4374c17ef24f792599e89aca4e0ef1449d2f9b18a176c03",
+      "context": "optional positive finite row weights applied only to the observation log likelihood. ``None`` counts every row once; inverse within-well multiplicities count repeated LONG rows once per well.",
+      "translation": "관측 로그우도에만 적용되는 선택적인 양의 유한 행 가중치입니다. ``None``은 각 행을 한 번씩 세며, 웰 내 반복 횟수의 역수는 반복된 LONG 행이 웰마다 한 번씩 기여하도록 합니다."
+    },
+    {
+      "label": "spacr.power_model.ModelData#10",
+      "source": "optional complete physical-well identities in design-row order. Automatic calibration of weighted rows requires these identities, exact repeated designs/counts/exposures within each well and inverse row-multiplicity weights. Arbitrary weights require an explicit global prior scale instead of an inferred independent-well count.",
+      "source_sha256": "d31affec549e342fcabf017f9b60f654952b9363fa4abd2359fc5eccfbb325d7",
+      "context": "optional complete physical-microplate sample position identities in design-row order. Automatic calibration of weighted rows requires these identities, exact repeated designs/counts/exposures within each microplate sample position and inverse row-multiplicity weights. Arbitrary weights require an explicit global prior scale instead of an inferred independent-microplate sample position count.",
+      "translation": "설계 행 순서에 따른 실제 웰의 선택적인 완전한 식별 정보입니다. 가중된 행의 자동 보정에는 이 식별 정보, 각 웰 내에서 정확히 반복되는 설계/계수 데이터/노출량, 행 반복 횟수의 역수 가중치가 필요합니다. 임의의 가중치에는 독립적인 웰 수를 추론하는 대신 명시적인 전역 사전분포 척도가 필요합니다."
+    },
+    {
+      "label": "spacr.power_model.fit_model#6",
+      "source": "prior guess at the number of true hits, used for the horseshoe's global scale. Default: 5 % of identified nonconstant predictors, floored at one. It must be strictly between zero and the identified predictor count. With one identified predictor, provide an explicit valid expected-hit count or ``scale_global``; a design with no identified predictor is refused.",
+      "source_sha256": "f483a733c0949067218a058aa35b3cbcf7e26046f434f64393db48d5fe44a9b7",
+      "context": "prior guess at the number of true hits, used for the horseshoe's global scale. Default: 5 % of identified nonconstant predictors, floored at one. It must be strictly between zero and the identified predictor count. With one identified predictor, provide an explicit valid expected-hit count or ``scale_global``; a design with no identified predictor is refused.",
+      "translation": "실제 히트 수에 대한 사전 추정값으로, horseshoe의 전역 척도에 사용됩니다. 기본값은 식별된 비상수 예측변수 수의 5 %이며, 최소값은 하나입니다. 값은 0보다 크고 식별된 예측변수 수보다 작아야 합니다. 식별된 예측변수가 하나이면 유효한 예상 히트 수 또는 ``scale_global``을 명시적으로 제공해야 하며, 식별된 예측변수가 없는 설계는 거부됩니다."
+    },
+    {
+      "context": "``elasticnet`` mix; 1.0 is lasso, 0.0 is ridge.",
+      "label": "spacr.ml.regression_model#29",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``elasticnet`` mix; 1.0 is lasso, 0.0 is ridge.",
+      "source_sha256": "a546f82e041ef4b2a4b4487078312653c70505997d870fc0f8c2855a6968a138",
+      "translation": "``elasticnet`` 혼합 비율입니다. 1.0은 lasso, 0.0은 ridge입니다."
+    },
+    {
+      "context": "Quantile fitted by ``quantile`` regression, in (0, 1).",
+      "label": "spacr.ml.regression_model#30",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Quantile fitted by ``quantile`` regression, in (0, 1).",
+      "source_sha256": "a5bcfb20a0edf4f09e7c9e7b841b71195ed192e563338a8cb4f1a7481e9a4d07",
+      "translation": "``quantile`` 회귀로 적합할 분위수로, (0, 1) 범위입니다."
+    },
+    {
+      "context": "Cut used to binarise a continuous response for ``hinge``; see :func:`binarise_response`.",
+      "label": "spacr.ml.regression_model#31",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Cut used to binarise a continuous response for ``hinge``; see :func:`binarise_response`.",
+      "source_sha256": "5bbe2c2ae375360dbc8d634ad14e4c42fd6dd97e20b9e0c7b82b96b4100f1d59",
+      "translation": "``hinge``를 위해 연속 반응을 이진화하는 기준값입니다. :func:`binarise_response`를 참조하십시오."
+    },
+    {
+      "context": "Knots per continuous covariate for ``spline``.",
+      "label": "spacr.ml.regression_model#32",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Knots per continuous covariate for ``spline``.",
+      "source_sha256": "f32505b838ba22bd793aebdbb6b1971325a4a137f27079ebc01f3687a620deee",
+      "translation": "``spline``에서 연속 공변량마다 두는 매듭 수입니다."
+    },
+    {
+      "context": "Polynomial degree of that basis; 3 is cubic.",
+      "label": "spacr.ml.regression_model#33",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Polynomial degree of that basis; 3 is cubic.",
+      "source_sha256": "4a4084178fecf97d014312eb4b8920895a9e8b1a2f4f89fe21ce182bca56e865",
+      "translation": "그 기저의 다항식 차수입니다. 3은 3차입니다."
+    },
+    {
+      "context": "Huber tuning constant for ``rlm``/``huber``, in units of the estimated residual scale. 1.345 gives 95% efficiency under normality.",
+      "label": "spacr.ml.regression_model#34",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Huber tuning constant for ``rlm``/``huber``, in units of the estimated residual scale. 1.345 gives 95% efficiency under normality.",
+      "source_sha256": "6b9e72829bc7222daf77f87deb050fa92b9e3d42947751dc97b2d9eda5d8e0ba",
+      "translation": "``rlm``/``huber``의 Huber 조정 상수로, 추정된 잔차 척도 단위입니다. 1.345는 정규성 아래에서 95% 효율을 줍니다."
+    },
+    {
+      "context": "Per-observation exposure (the microplate sample position's cell count) used as ``offset(log(exposure))`` by ``horseshoe`` and by ``poisson`` (and by ``glm`` when it auto-selects a Poisson family).",
+      "label": "spacr.ml.regression_model#35",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Per-observation exposure (the well's cell count) used as ``offset(log(exposure))`` by ``horseshoe`` and by ``poisson`` (and by ``glm`` when it auto-selects a Poisson family).",
+      "source_sha256": "9d3cc0de88209babb1325631f22ab3fbd04a39ff08d4805add4d57c576c712fb",
+      "translation": "관측값별 노출량(웰의 세포 수)으로, ``offset(log(exposure))``로 사용됩니다. 사용하는 모델은 ``horseshoe``와 ``poisson``(그리고 포아송 패밀리를 자동 선택한 ``glm``)입니다."
+    },
+    {
+      "context": "The block penalty for ``group_lasso``. Its own structured-data name rather than ``alpha`` because it is compared against :func:`spacr.group_lasso.max_lambda`, which is a property of the design, so a value carried over from a lasso run would mean something else here.",
+      "label": "spacr.ml.regression_model#36",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The block penalty for ``group_lasso``. Its own key rather than ``alpha`` because it is compared against :func:`spacr.group_lasso.max_lambda`, which is a property of the design, so a value carried over from a lasso run would mean something else here.",
+      "source_sha256": "0bcb19b325999fa55bc8e2981d506e7b2b4e7626ab4e0c40c32b9507ebdd4e8f",
+      "translation": "``group_lasso``의 블록 벌점입니다. ``alpha`` 대신 별도의 키를 쓰는 이유는 설계의 속성인 :func:`spacr.group_lasso.max_lambda`와 비교되기 때문이며, lasso 실행에서 넘어온 값은 여기서 다른 의미가 됩니다."
+    },
+    {
+      "context": "The top fraction of the guide ranking alpha-RRA aggregates over. MAGeCK's 0.25, which is what keeps a gene with one strong guide and three that did not cut findable.",
+      "label": "spacr.ml.regression_model#37",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The top fraction of the guide ranking alpha-RRA aggregates over. MAGeCK's 0.25, which is what keeps a gene with one strong guide and three that did not cut findable.",
+      "source_sha256": "6bffb4eb7fdde28282ed5513e41d8c67eef9a7b778b5b763b2f1b355caf5dc04",
+      "translation": "alpha-RRA가 집계하는 가이드 RNA 순위의 상위 비율입니다. MAGeCK의 0.25로, 강한 가이드 RNA 하나와 절단하지 못한 가이드 RNA 셋을 가진 유전자도 찾을 수 있게 해 줍니다."
+    },
+    {
+      "context": "Draws per distinct guide count in RRA's permutation null; 10,000 puts the smallest reportable P value at 1e-4.",
+      "label": "spacr.ml.regression_model#38",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Draws per distinct guide count in RRA's permutation null; 10,000 puts the smallest reportable P value at 1e-4.",
+      "source_sha256": "46eecdf78856cbbfed36195478aa83df1143fc00795de99a5cdd2e2b46cd81c4",
+      "translation": "RRA의 순열 귀무 분포에서 서로 다른 가이드 RNA 수마다 추출하는 횟수입니다. 10,000이면 보고 가능한 가장 작은 P 값이 1e-4가 됩니다."
+    },
+    {
+      "context": "Fitted statsmodels / sklearn estimator.",
+      "label": "spacr.ml.regression_model#39",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Fitted statsmodels / sklearn estimator.",
+      "source_sha256": "503e174033dbf98c2bc0d5070b43a0257ff672f28e7968a91f6421c70ea1b479",
+      "translation": "적합된 statsmodels / sklearn 추정기입니다."
+    },
+    {
+      "context": "on an unsupported ``regression_type``, or when a setting the chosen backend cannot read was set to a non-default value.",
+      "label": "spacr.ml.regression_model#40",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "on an unsupported ``regression_type``, or when a setting the chosen backend cannot read was set to a non-default value.",
+      "source_sha256": "80af4e9109c9e0dccce6cf52d6081cd6439b4726b681f688360faa550d630564",
+      "translation": "``regression_type``이 지원되지 않거나, 선택한 백엔드가 읽을 수 없는 설정이 기본값이 아닌 값으로 설정되었을 때 발생합니다."
+    }
+  ],
+  "source_revision": "b82580583ab006ecf7936ed2fd53c78b93091c47"
+}

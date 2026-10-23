@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "language": "de",
+  "records": [
+    {
+      "label": "spacr.ml.check_and_clean_data#5",
+      "source": "if a complete well/gRNA identity carries more than one ``fraction``, which makes ``gene_fraction`` ambiguous. Well identity includes screen when present, plate, row, column and prc.",
+      "source_sha256": "548f73eba086d6a530e9adcc66c542dfe6acc83b5f0c527506909f19c966d7b1",
+      "context": "if a complete well/gRNA identity carries more than one ``fraction``, which makes ``gene_fraction`` ambiguous. Well identity includes screening experiment when present, laboratory microplate, row, column and prc.",
+      "translation": "wenn eine vollständige Well-/gRNA-Identität mehr als einen Wert für ``fraction`` besitzt und dadurch ``gene_fraction`` mehrdeutig wird. Zur Well-Identität gehören gegebenenfalls das Screeningexperiment sowie Platte, Zeile, Spalte und prc."
+    },
+    {
+      "label": "spacr.ml.regression#28",
+      "source": "``'long'`` keeps one fitted row per well-guide pair. At gene level, each row carries all retained measured gene fractions of that complete well; guide-level fits retain the guide interaction. Gene-level LONG horseshoe fits weight only observation log likelihood by inverse fitted-row multiplicity per complete well, so each well contributes once without rescaling counts, exposures, design standardization or priors. ``'wide'`` pivots fractions to one row per independent well before fitting. Full gene compositions can confound a common coefficient shift with the intercept; existing estimator priors and coefficient units are retained. Mixed models keep their long nesting representation even when a wide count input was supplied.",
+      "source_sha256": "f3101983dbb785519c8ae303993550a48080deef6e8fe74a0a11d3304ad17dff",
+      "context": "``'long'`` keeps one fitted row per well-guide pair. At gene level, each row carries all retained measured gene fractions of that complete well; guide-level fits retain the guide interaction. Gene-level LONG horseshoe fits weight only observation log likelihood by inverse fitted-row multiplicity per complete well, so each well contributes once without rescaling counts, exposures, design standardization or priors. ``'wide'`` pivots fractions to one row per independent well before fitting. Full gene compositions can confound a common coefficient shift with the intercept; existing estimator priors and coefficient units are retained. Mixed models keep their long nesting representation even when a wide count input was supplied.",
+      "translation": "``'long'`` behält eine angepasste Zeile pro Well-Guide-Paar bei. Auf Genebene enthält jede Zeile alle beibehaltenen gemessenen Genanteile dieses vollständig identifizierten Wells; Anpassungen auf Guide-Ebene behalten die Guide-Interaktion bei. LONG-Horseshoe-Anpassungen auf Genebene gewichten ausschließlich die Beobachtungs-Log-Likelihood mit dem Kehrwert der Anzahl angepasster Zeilen je vollständig identifiziertem Well. Damit trägt jedes Well einmal bei, ohne Zählwerte, Expositionen, Standardisierung der Designmatrix oder Priorverteilungen umzuskalieren. ``'wide'`` pivotiert die Anteile vor der Anpassung auf eine Zeile pro unabhängigem Well. Vollständige Genzusammensetzungen können eine gemeinsame Koeffizientenverschiebung mit dem Interzept vermengen; die vorhandenen Priorverteilungen und Koeffizienteneinheiten des Schätzers bleiben erhalten. Gemischte Modelle behalten ihre verschachtelte Darstellung im Langformat auch dann bei, wenn Zähldaten im Breitformat übergeben wurden."
+    },
+    {
+      "label": "spacr.ml.regression_model#28",
+      "source": "Optional aligned observation log-likelihood weights for ``horseshoe``. Counts, exposures and design standardization are not rescaled. Automatic global-prior calibration counts identified nonconstant predictors and independent physical wells. Weighted rows require aligned complete well identities in ``X.attrs['likelihood_well_ids']``. For arbitrary weights, use ``spacr.power_model.ModelData`` with an explicit ``scale_global``.",
+      "source_sha256": "8abc1b51230ab9e2f654c0049a488ac81daa9168c41aecfdbd2402f1ed443b2b",
+      "context": "Optional aligned observation log-likelihood weights for ``horseshoe``. Counts, exposures and design standardization are not rescaled. Automatic global-prior calibration counts identified nonconstant predictors and independent physical microplate sample positions. Weighted rows require aligned complete microplate sample position identities in ``X.attrs['likelihood_well_ids']``. For arbitrary weights, use ``spacr.power_model.ModelData`` with an explicit ``scale_global``.",
+      "translation": "Optionale, zeilengerecht zugeordnete Gewichte der Beobachtungs-Log-Likelihood für ``horseshoe``. Zählwerte, Expositionen und Standardisierung der Designmatrix werden nicht umskaliert. Die automatische Kalibrierung der globalen Prior-Skala zählt identifizierte nichtkonstante Prädiktoren und unabhängige physische Wells. Gewichtete Zeilen erfordern zeilengerecht zugeordnete vollständige Well-Identitäten in ``X.attrs['likelihood_well_ids']``. Verwenden Sie für beliebige Gewichte ``spacr.power_model.ModelData`` mit einem expliziten Wert für ``scale_global``."
+    },
+    {
+      "label": "spacr.power_model.ModelData#0",
+      "source": "Well-level Poisson design, optionally retaining weighted repeated rows.",
+      "source_sha256": "fa5c6c008e35560f0a50d6a02e8d684f315fb747bc833f94341c3aab5773426f",
+      "context": "Microplate sample position-level Poisson design, optionally retaining weighted repeated rows.",
+      "translation": "Poisson-Design auf Well-Ebene, das optional gewichtete wiederholte Zeilen beibehält."
+    },
+    {
+      "label": "spacr.power_model.ModelData#1",
+      "source": "Ordinary designs have one row per well. Repeated LONG observations may retain all rows with inverse multiplicity likelihood weights; design centering and scaling still use the retained rows. Automatic prior calibration counts identified nonconstant predictors and independent physical wells established by explicit row-aligned identities.",
+      "source_sha256": "ba41b482ddea4da48e49c5a121cd49f7ebc8c4dc51a2ca15df7aca9b428b5f8d",
+      "context": "Ordinary designs have one row per microplate sample position. Repeated LONG observations may retain all rows with inverse multiplicity likelihood weights; design centering and scaling still use the retained rows. Automatic prior calibration counts identified nonconstant predictors and independent physical microplate sample positions established by explicit row-aligned identities.",
+      "translation": "Gewöhnliche Designmatrizen enthalten eine Zeile pro Well. Bei wiederholten LONG-Beobachtungen können alle Zeilen mit inversen Wiederholungsgewichten für die Likelihood erhalten bleiben; Zentrierung und Skalierung der Designmatrix verwenden weiterhin die beibehaltenen Zeilen. Die automatische Prior-Kalibrierung zählt identifizierte nichtkonstante Prädiktoren und unabhängige physische Wells, die durch explizite, zeilengerecht zugeordnete Identitäten festgelegt sind."
+    },
+    {
+      "label": "spacr.power_model.ModelData#9",
+      "source": "optional positive finite row weights applied only to the observation log likelihood. ``None`` counts every row once; inverse within-well multiplicities count repeated LONG rows once per well.",
+      "source_sha256": "9a038d91dbd546a3b4374c17ef24f792599e89aca4e0ef1449d2f9b18a176c03",
+      "context": "optional positive finite row weights applied only to the observation log likelihood. ``None`` counts every row once; inverse within-well multiplicities count repeated LONG rows once per well.",
+      "translation": "optionale positive, endliche Zeilengewichte, die ausschließlich auf die Beobachtungs-Log-Likelihood angewendet werden. ``None`` zählt jede Zeile einmal; inverse Wiederholungszahlen innerhalb eines Wells zählen wiederholte LONG-Zeilen einmal pro Well."
+    },
+    {
+      "label": "spacr.power_model.ModelData#10",
+      "source": "optional complete physical-well identities in design-row order. Automatic calibration of weighted rows requires these identities, exact repeated designs/counts/exposures within each well and inverse row-multiplicity weights. Arbitrary weights require an explicit global prior scale instead of an inferred independent-well count.",
+      "source_sha256": "d31affec549e342fcabf017f9b60f654952b9363fa4abd2359fc5eccfbb325d7",
+      "context": "optional complete physical-microplate sample position identities in design-row order. Automatic calibration of weighted rows requires these identities, exact repeated designs/counts/exposures within each microplate sample position and inverse row-multiplicity weights. Arbitrary weights require an explicit global prior scale instead of an inferred independent-microplate sample position count.",
+      "translation": "optionale vollständige Identitäten physischer Wells in der Reihenfolge der Designzeilen. Die automatische Kalibrierung gewichteter Zeilen erfordert diese Identitäten, exakt wiederholte Designwerte/Zählwerte/Expositionen innerhalb jedes Wells und Gewichte als Kehrwerte der Zeilenwiederholungszahlen. Beliebige Gewichte erfordern eine explizite globale Prior-Skala anstelle einer abgeleiteten Anzahl unabhängiger Wells."
+    },
+    {
+      "label": "spacr.power_model.fit_model#6",
+      "source": "prior guess at the number of true hits, used for the horseshoe's global scale. Default: 5 % of identified nonconstant predictors, floored at one. It must be strictly between zero and the identified predictor count. With one identified predictor, provide an explicit valid expected-hit count or ``scale_global``; a design with no identified predictor is refused.",
+      "source_sha256": "f483a733c0949067218a058aa35b3cbcf7e26046f434f64393db48d5fe44a9b7",
+      "context": "prior guess at the number of true hits, used for the horseshoe's global scale. Default: 5 % of identified nonconstant predictors, floored at one. It must be strictly between zero and the identified predictor count. With one identified predictor, provide an explicit valid expected-hit count or ``scale_global``; a design with no identified predictor is refused.",
+      "translation": "Prior-Annahme zur Anzahl echter Treffer, die für die globale Horseshoe-Skala verwendet wird. Standard: 5 % der identifizierten nichtkonstanten Prädiktoren, mindestens jedoch eins. Der Wert muss strikt zwischen null und der Anzahl identifizierter Prädiktoren liegen. Bei einem identifizierten Prädiktor muss eine gültige erwartete Trefferzahl oder ``scale_global`` explizit angegeben werden; ein Design ohne identifizierten Prädiktor wird abgelehnt."
+    },
+    {
+      "context": "positive-cell counts per retained well, summed over genes.",
+      "label": "spacr.power_model.ModelData#4",
+      "source": "positive-cell counts per retained well, summed over genes.",
+      "source_sha256": "5a34cc8be38e4aa5c7cee3cf99d7af556214b0c48b349264ac415c6458635f95",
+      "translation": "Positiv-Zell-Zahlen pro Well erhalten, zusammengefasst über Gene."
+    },
+    {
+      "context": "Draws per distinct guide count in RRA's permutation null; 10,000 puts the smallest reportable P value at 1e-4.",
+      "label": "spacr.ml.regression_model#38",
+      "source": "Draws per distinct guide count in RRA's permutation null; 10,000 puts the smallest reportable P value at 1e-4.",
+      "source_sha256": "46eecdf78856cbbfed36195478aa83df1143fc00795de99a5cdd2e2b46cd81c4",
+      "translation": "Zeichnet pro eindeutige Guide-RNA-Zahl in RRAs Permutation null; 10.000 setzt den kleinsten meldepflichtigen P-Wert auf 1e-4."
+    },
+    {
+      "context": "``elasticnet`` mix; 1.0 is lasso, 0.0 is ridge.",
+      "label": "spacr.ml.regression_model#29",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``elasticnet`` mix; 1.0 is lasso, 0.0 is ridge.",
+      "source_sha256": "a546f82e041ef4b2a4b4487078312653c70505997d870fc0f8c2855a6968a138",
+      "translation": "Mischung für ``elasticnet``; 1.0 ist lasso, 0.0 ist ridge."
+    },
+    {
+      "context": "Quantile fitted by ``quantile`` regression, in (0, 1).",
+      "label": "spacr.ml.regression_model#30",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Quantile fitted by ``quantile`` regression, in (0, 1).",
+      "source_sha256": "a5bcfb20a0edf4f09e7c9e7b841b71195ed192e563338a8cb4f1a7481e9a4d07",
+      "translation": "Quantil, das von der ``quantile``-Regression angepasst wird, in (0, 1)."
+    },
+    {
+      "context": "Cut used to binarise a continuous response for ``hinge``; see :func:`binarise_response`.",
+      "label": "spacr.ml.regression_model#31",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Cut used to binarise a continuous response for ``hinge``; see :func:`binarise_response`.",
+      "source_sha256": "5bbe2c2ae375360dbc8d634ad14e4c42fd6dd97e20b9e0c7b82b96b4100f1d59",
+      "translation": "Grenzwert zur Binarisierung einer kontinuierlichen Zielgröße für ``hinge``; siehe :func:`binarise_response`."
+    },
+    {
+      "context": "Knots per continuous covariate for ``spline``.",
+      "label": "spacr.ml.regression_model#32",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Knots per continuous covariate for ``spline``.",
+      "source_sha256": "f32505b838ba22bd793aebdbb6b1971325a4a137f27079ebc01f3687a620deee",
+      "translation": "Knoten pro kontinuierlicher Kovariate für ``spline``."
+    },
+    {
+      "context": "Polynomial degree of that basis; 3 is cubic.",
+      "label": "spacr.ml.regression_model#33",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Polynomial degree of that basis; 3 is cubic.",
+      "source_sha256": "4a4084178fecf97d014312eb4b8920895a9e8b1a2f4f89fe21ce182bca56e865",
+      "translation": "Polynomgrad dieser Basis; 3 ist kubisch."
+    },
+    {
+      "context": "Huber tuning constant for ``rlm``/``huber``, in units of the estimated residual scale. 1.345 gives 95% efficiency under normality.",
+      "label": "spacr.ml.regression_model#34",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Huber tuning constant for ``rlm``/``huber``, in units of the estimated residual scale. 1.345 gives 95% efficiency under normality.",
+      "source_sha256": "6b9e72829bc7222daf77f87deb050fa92b9e3d42947751dc97b2d9eda5d8e0ba",
+      "translation": "Huber-Tuningkonstante für ``rlm``/``huber``, in Einheiten der geschätzten Residuenskala. 1.345 ergibt 95% Effizienz unter Normalverteilung."
+    },
+    {
+      "context": "Per-observation exposure (the microplate sample position's cell count) used as ``offset(log(exposure))`` by ``horseshoe`` and by ``poisson`` (and by ``glm`` when it auto-selects a Poisson family).",
+      "label": "spacr.ml.regression_model#35",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Per-observation exposure (the well's cell count) used as ``offset(log(exposure))`` by ``horseshoe`` and by ``poisson`` (and by ``glm`` when it auto-selects a Poisson family).",
+      "source_sha256": "9d3cc0de88209babb1325631f22ab3fbd04a39ff08d4805add4d57c576c712fb",
+      "translation": "Exposition pro Beobachtung (die Zellanzahl des Wells), die als ``offset(log(exposure))`` von ``horseshoe`` und von ``poisson`` verwendet wird (und von ``glm``, wenn es automatisch eine Poisson-Familie wählt)."
+    },
+    {
+      "context": "The block penalty for ``group_lasso``. Its own structured-data name rather than ``alpha`` because it is compared against :func:`spacr.group_lasso.max_lambda`, which is a property of the design, so a value carried over from a lasso run would mean something else here.",
+      "label": "spacr.ml.regression_model#36",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The block penalty for ``group_lasso``. Its own key rather than ``alpha`` because it is compared against :func:`spacr.group_lasso.max_lambda`, which is a property of the design, so a value carried over from a lasso run would mean something else here.",
+      "source_sha256": "0bcb19b325999fa55bc8e2981d506e7b2b4e7626ab4e0c40c32b9507ebdd4e8f",
+      "translation": "Die Blockstrafe für ``group_lasso``. Ein eigener Schlüssel statt ``alpha``, weil sie mit :func:`spacr.group_lasso.max_lambda` verglichen wird, einer Eigenschaft des Designs, sodass ein aus einem Lasso-Lauf übernommener Wert hier etwas anderes bedeuten würde."
+    },
+    {
+      "context": "The top fraction of the guide ranking alpha-RRA aggregates over. MAGeCK's 0.25, which is what keeps a gene with one strong guide and three that did not cut findable.",
+      "label": "spacr.ml.regression_model#37",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The top fraction of the guide ranking alpha-RRA aggregates over. MAGeCK's 0.25, which is what keeps a gene with one strong guide and three that did not cut findable.",
+      "source_sha256": "6bffb4eb7fdde28282ed5513e41d8c67eef9a7b778b5b763b2f1b355caf5dc04",
+      "translation": "Der oberste Anteil der Guide-Rangfolge, über den alpha-RRA aggregiert. Der Wert 0.25 von MAGeCK, der dafür sorgt, dass ein Gen mit einem starken Guide und drei, die nicht geschnitten haben, auffindbar bleibt."
+    },
+    {
+      "context": "Fitted statsmodels / sklearn estimator.",
+      "label": "spacr.ml.regression_model#39",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Fitted statsmodels / sklearn estimator.",
+      "source_sha256": "503e174033dbf98c2bc0d5070b43a0257ff672f28e7968a91f6421c70ea1b479",
+      "translation": "Angepasster Schätzer von statsmodels / sklearn."
+    },
+    {
+      "context": "on an unsupported ``regression_type``, or when a setting the chosen backend cannot read was set to a non-default value.",
+      "label": "spacr.ml.regression_model#40",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "on an unsupported ``regression_type``, or when a setting the chosen backend cannot read was set to a non-default value.",
+      "source_sha256": "80af4e9109c9e0dccce6cf52d6081cd6439b4726b681f688360faa550d630564",
+      "translation": "bei einem nicht unterstützten ``regression_type`` oder wenn eine Einstellung, die das gewählte Backend nicht lesen kann, auf einen vom Standard abweichenden Wert gesetzt wurde."
+    }
+  ],
+  "source_revision": "b82580583ab006ecf7936ed2fd53c78b93091c47"
+}

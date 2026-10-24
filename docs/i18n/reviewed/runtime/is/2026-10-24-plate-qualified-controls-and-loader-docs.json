@@ -1,0 +1,57 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "Blönduaðgreining eftir plötu"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "JSON-kvörðun með mældum PSFs rásanna, heiltalsfærslum, viðmiðunarrás og pixlasýnatöku. Skipulagðar 2D-forsýningar og V2 eingöngu fyrir frumur nota sameiginlega breikkaða PSF og gilda skörun. V2 varðveitir hráar skrár og skrifar aðskilin ómegindleg myndlög til birtingar, endurstaðsettar grímur og útskurði með formerki; merki sem snerta jaðar eru útilokuð. Hefðbundið Measure/forsýning, V1, 3D, tímaraðir og aukavinnsla hafna kvörðuðum úttökum/stillingum. Engin kvörðun er ályktuð. Tómt sjálfgefið gildi varðveitir eldri blönduaðgreiningu."
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "Viðmiðunarbrunnar með einum lit, sem channel:well[,well] færslur aðskildar með semíkommu, til dæmis 0:A01,A02; 1:B01. Rásin er eigin rás litarefnisins, talin eins og í staflanum eða sameinuðu fylki; brunnarnir innihalda aðeins það litarefni. Rásir án viðmiðana eru taldar ekki leka í aðrar rásir. Allt að 24 myndsvið eru lesin fyrir hvert litarefni. Hunsað nema unmix sé virkt. Sjálfgefið tómt. Þegar unmix_per_plate er True skal í staðinn gefa JSON-kort frá plötu í efnislega rás og síðan brunnalista; hver valin efnisleg rás verður að hafa viðmiðanir af sömu plötu. Eldri stöðubundinni setningagerð er hafnað í þeim ham."
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "Veldu viðmiðanir af sömu plötu eftir auðkenni efnislegrar rásar með JSON-korti frá plötu í rás og síðan brunnalista í unmix_controls. Krefst unmix og skýrrar kvörðunar. Hver valin efnisleg rás þarf viðmiðanir af sömu plötu; engin sameiginleg varaúrræði eða varaúrræði milli platna eru notuð. Aðeins kvarðaðar skipulagðar 2D-frumukeyrslur V2 með eina plötu, einn tíma og eitt Z fyrir hvern uppruna eru studdar. Endurnotaðu aðalkort í aðskildum plötumöppum. Blönduðum plötum, forsýningum, V1 og hefðbundnu Measure er hafnað. Engin fylkisskrá er hlaðin og enginn hreinleiki ályktaður. Sjálfgefið False varðveitir sameiginlegar viðmiðanir og setningagerð pakkaðra stafla."
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "Viðmiðunarinnlögn fyrir hverja plötu verður að vera stöðug stærðartakmörkuð töluleg 2D NPY-myndsvið alla kvörðunina."
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "Rófviðmiðanir eftir plötu krefjast stærðartakmarkaðs JSON-korts frá plötu í rás og síðan brunnalista með fullgerðum viðmiðunum fyrir nákvæma upprunaplötu og efnislegar rásir."
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "Rófviðmiðanir eftir plötu krefjast kvarðaðrar skipulagðrar 2D-frumuskiptingar í V2; þessi vinnsluleið er ekki studd."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

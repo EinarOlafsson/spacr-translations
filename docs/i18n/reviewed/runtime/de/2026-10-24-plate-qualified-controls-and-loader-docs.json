@@ -1,0 +1,57 @@
+{
+  "language": "de",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "Entmischung pro Platte"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "Kalibrierungs-JSON mit gemessenen Kanal-PSFs, ganzzahligen Verschiebungen, Referenzkanal und Pixelabtastung. Organisierte 2D-Vorschauen und V2 nur für Zellen verwenden eine gemeinsame verbreiterte PSF und gültige Überlappung. V2 erhält Rohdateien und schreibt separate nichtquantitative Anzeigeebenen, wiederhergestellte Masken und vorzeichenbehaftete Ausschnitte; randberührende Labels werden ausgeschlossen. Gewöhnliches Measure/Vorschau, V1, 3D, Zeitreihen und zusätzliche Verarbeitung lehnen kalibrierte Ausgaben/Einstellungen ab. Es wird keine Kalibrierung abgeleitet. Ein leeres Standardfeld erhält die bisherige Entmischung."
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "Die einfach gefärbten Kontroll-Wells als durch Semikolons getrennte Einträge Kanal:Well[,Well], zum Beispiel 0:A01,A02; 1:B01. Der Kanal ist der eigene Kanal des Farbstoffs, gezählt wie im Stapel oder zusammengeführten Array; seine Wells enthalten nur diesen Farbstoff. Für Kanäle ohne Kontrollen wird angenommen, dass sie in keinen anderen Kanal übersprechen. Bis zu 24 Bildfelder pro Farbstoff werden gelesen. Wird ignoriert, sofern unmix nicht aktiviert ist. Standardmäßig leer. Wenn unmix_per_plate True ist, stattdessen eine JSON-Zuordnung von Platte zu physischem Kanal zu Well-Liste angeben; jeder ausgewählte physische Kanal muss Kontrollen derselben Platte haben. Die bisherige Positionssyntax wird in diesem Modus abgelehnt."
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "Kontrollen derselben Platte nach physischer Kanal-ID über eine JSON-Zuordnung von Platte zu Kanal zu Well-Liste in unmix_controls auswählen. Erfordert unmix und explizite Kalibrierung. Jeder ausgewählte physische Kanal benötigt Kontrollen derselben Platte; kein globaler oder plattenübergreifender Rückgriff. Unterstützt werden nur kalibrierte organisierte 2D-Zellläufe über V2 mit einer Platte, Zeit und Z pro Quelle. Eine Hauptzuordnung für separate Plattenordner wiederverwenden. Gemischte Platten, Vorschauen, V1 und gewöhnliches Measure werden abgelehnt. Kein Laden von Matrixdateien und keine Ableitung der Reinheit. Der Standardwert False erhält globale Kontrollen und die Syntax für gepackte Stapel."
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "Kontrolleingaben pro Platte müssen während der gesamten Kalibrierung stabile, begrenzte numerische 2D NPY-Bildfelder sein."
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "Spektralkontrollen pro Platte erfordern eine begrenzte JSON-Zuordnung von Platte zu Kanal zu Well-Liste mit vollständigen Kontrollen für die genaue Quellplatte und die physischen Kanäle."
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "Spektralkontrollen pro Platte erfordern kalibrierte organisierte 2D-Zellsegmentierung über V2; dieser Verarbeitungspfad wird nicht unterstützt."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

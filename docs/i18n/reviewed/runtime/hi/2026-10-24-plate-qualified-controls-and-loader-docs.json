@@ -1,0 +1,57 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "प्रति प्लेट स्पेक्ट्रल मिश्रण पृथक्करण"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "मापी गई चैनल PSFs, पूर्णांक शिफ्ट, संदर्भ चैनल और पिक्सेल सैंपलिंग वाला कैलिब्रेशन JSON। व्यवस्थित 2D पूर्वावलोकन और केवल कोशिकाओं वाला V2 साझा चौड़ी PSF और वैध ओवरलैप उपयोग करते हैं। V2 रॉ फ़ाइलें संरक्षित रखता है और अलग गैर-मात्रात्मक प्रदर्शन प्लेन, बहाल मास्क तथा चिह्नयुक्त क्रॉप लिखता है; सीमा छूने वाले लेबल हटाए जाते हैं। सामान्य Measure/पूर्वावलोकन, V1, 3D, टाइमलैप्स और अतिरिक्त प्रसंस्करण कैलिब्रेटेड आउटपुट/सेटिंग अस्वीकार करते हैं। किसी कैलिब्रेशन का अनुमान नहीं लगाया जाता। खाली डिफ़ॉल्ट पुराने मिश्रण पृथक्करण को बनाए रखता है।"
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "एकल डाई वाले कंट्रोल वेल, channel:well[,well] प्रविष्टियों के रूप में सेमीकोलन से अलग करें, जैसे 0:A01,A02; 1:B01। चैनल डाई का अपना चैनल है, जिसे स्टैक या मर्ज किए गए ऐरे की तरह गिना जाता है; उसके वेल में केवल वही डाई होती है। बिना कंट्रोल वाले चैनल को किसी अन्य चैनल में रिसाव न करने वाला माना जाता है। प्रति डाई अधिकतम 24 इमेज फ़ील्ड पढ़े जाते हैं। unmix चालू न होने पर अनदेखा किया जाता है। डिफ़ॉल्ट खाली है। जब unmix_per_plate True हो, तो इसके बजाय प्लेट से भौतिक चैनल से वेल सूची तक का JSON मैप दें; प्रत्येक चुने हुए भौतिक चैनल के कंट्रोल उसी प्लेट पर होने चाहिए। उस मोड में पुराना स्थान-आधारित सिंटैक्स अस्वीकार होता है।"
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "unmix_controls में प्लेट से चैनल से वेल सूची तक का JSON मैप देकर भौतिक चैनल ID से उसी प्लेट के कंट्रोल चुनें। unmix और स्पष्ट कैलिब्रेशन आवश्यक हैं। प्रत्येक चुने हुए भौतिक चैनल के लिए उसी प्लेट के कंट्रोल चाहिए; वैश्विक या दूसरी प्लेट के कंट्रोल पर फ़ॉलबैक नहीं होता। केवल कैलिब्रेटेड व्यवस्थित 2D कोशिका-मात्र V2 रन समर्थित हैं, जिनमें प्रति स्रोत एक प्लेट, समय और Z हो। अलग प्लेट फ़ोल्डर में एक मास्टर मैप पुनः उपयोग करें। मिश्रित प्लेट, पूर्वावलोकन, V1 और सामान्य Measure अस्वीकार होते हैं। मैट्रिक्स फ़ाइल लोड करना या शुद्धता का अनुमान लगाना नहीं होता। डिफ़ॉल्ट False वैश्विक कंट्रोल और पैक्ड-स्टैक सिंटैक्स बनाए रखता है।"
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "प्रति-प्लेट कंट्रोल इनपुट पूरे कैलिब्रेशन के दौरान स्थिर और सीमित आकार के संख्यात्मक 2D NPY इमेज फ़ील्ड होने चाहिए।"
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "प्रति-प्लेट स्पेक्ट्रल कंट्रोल के लिए प्लेट से चैनल से वेल सूची तक का सीमित JSON मैप चाहिए, जिसमें सटीक स्रोत प्लेट और भौतिक चैनलों के पूर्ण कंट्रोल हों।"
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "प्रति-प्लेट स्पेक्ट्रल कंट्रोल के लिए V2 द्वारा कैलिब्रेटेड व्यवस्थित 2D कोशिका सेगमेंटेशन आवश्यक है; यह प्रसंस्करण मार्ग समर्थित नहीं है।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

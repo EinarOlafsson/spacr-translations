@@ -1,0 +1,57 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "Separación espectral por placa"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "JSON de calibración con PSF de canal medidas, desplazamientos enteros, canal de referencia y muestreo de píxeles. Las vistas previas 2D organizadas y V2 solo para células utilizan una PSF ensanchada común y un solapamiento válido. V2 conserva los archivos sin procesar y escribe planos de visualización no cuantitativos separados, máscaras restauradas y recortes con signo; se excluyen las etiquetas que tocan el borde. Measure/vista previa ordinarios, V1, 3D, series temporales y el procesamiento adicional rechazan las salidas/configuraciones calibradas. No se infiere ninguna calibración. El valor vacío predeterminado conserva la separación espectral anterior."
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "Los pocillos de control de tinción única, como entradas canal:pocillo[,pocillo] separadas por punto y coma, por ejemplo 0:A01,A02; 1:B01. El canal es el canal propio del colorante, contado como en la pila o matriz combinada; sus pocillos contienen únicamente ese colorante. Se supone que los canales sin controles no presentan contaminación espectral hacia ningún otro canal. Se leen hasta 24 campos por colorante. Se ignora salvo que unmix esté activado. Vacío de forma predeterminada. Cuando unmix_per_plate es True, proporciona en su lugar un mapa JSON de placa a canal físico a lista de pocillos; cada canal físico seleccionado debe tener controles de la misma placa. En ese modo se rechaza la sintaxis posicional anterior."
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "Selecciona controles de la misma placa por ID de canal físico mediante un mapa JSON de placa a canal a lista de pocillos en unmix_controls. Requiere unmix y calibración explícita. Cada canal físico seleccionado necesita controles de la misma placa; no hay alternativa global ni entre placas. Solo se admiten ejecuciones V2 celulares 2D organizadas y calibradas con una placa, tiempo y Z por fuente. Reutiliza un mapa maestro en carpetas de placas separadas. Se rechazan las placas mixtas, las vistas previas, V1 y Measure ordinario. No se cargan archivos de matriz ni se infiere la pureza. El valor predeterminado False conserva los controles globales y la sintaxis de pilas empaquetadas."
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "Las entradas de control por placa deben ser campos NPY 2D numéricos estables y acotados durante toda la calibración."
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "Los controles espectrales por placa requieren un mapa JSON acotado de placa a canal a lista de pocillos con controles completos para la placa de origen exacta y los canales físicos."
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "Los controles espectrales por placa requieren segmentación celular 2D organizada y calibrada mediante V2; esta ruta de procesamiento no está admitida."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

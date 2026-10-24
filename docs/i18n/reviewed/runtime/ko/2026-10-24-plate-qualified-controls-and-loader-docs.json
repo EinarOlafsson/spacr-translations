@@ -1,0 +1,57 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "플레이트별 스펙트럼 혼합 분리"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "측정된 채널 PSFs, 정수 이동량, 참조 채널 및 픽셀 샘플링이 포함된 보정 JSON입니다. 구조화된 2D 미리보기와 세포 전용 V2는 넓어진 공통 PSF와 유효 겹침 영역을 사용합니다. V2는 원시 파일을 보존하고 별도의 비정량 표시 평면, 복원된 마스크, 부호를 보존한 크롭을 기록합니다. 경계에 닿는 레이블은 제외됩니다. 일반 Measure/미리보기, V1, 3D, 타임랩스 및 추가 처리는 보정 출력/설정을 거부합니다. 보정은 추론하지 않습니다. 기본 빈 값은 기존 혼합 분리를 유지합니다."
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "단일 염색 대조군 웰을 세미콜론으로 구분한 channel:well[,well] 항목으로 지정합니다. 예: 0:A01,A02; 1:B01. 채널은 스택 또는 병합 배열과 같은 방식으로 세는 염료 자체의 채널이며, 해당 웰에는 그 염료만 들어 있습니다. 대조군이 없는 채널은 다른 채널로 누출되지 않는 것으로 간주합니다. 염료당 최대 24 개 이미지 필드를 읽습니다. unmix 가 켜져 있지 않으면 무시됩니다. 기본값은 빈 값입니다. unmix_per_plate 가 True 이면 대신 플레이트에서 물리 채널로, 이어서 웰 목록으로 연결하는 JSON 맵을 제공하세요. 선택한 각 물리 채널에는 같은 플레이트의 대조군이 있어야 합니다. 이 모드에서는 기존 위치 기반 문법이 거부됩니다."
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "unmix_controls 의 플레이트에서 채널로, 이어서 웰 목록으로 연결하는 JSON 맵에서 물리 채널 ID로 같은 플레이트의 대조군을 선택합니다. unmix 및 명시적 보정이 필요합니다. 선택한 모든 물리 채널에는 같은 플레이트의 대조군이 필요하며 전역 또는 다른 플레이트로 대체하지 않습니다. 원본마다 플레이트, 시간, Z가 각각 하나인 보정된 구조화 2D 세포 전용 V2 실행만 지원됩니다. 서로 다른 플레이트 폴더에서 마스터 맵을 재사용하세요. 플레이트 혼합, 미리보기, V1 및 일반 Measure는 거부됩니다. 행렬 파일 로딩이나 순도 추론은 수행하지 않습니다. 기본값 False 는 전역 대조군과 패킹된 스택 문법을 유지합니다."
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "플레이트별 대조군 입력은 보정 내내 안정적이고 크기가 제한된 수치형 2D NPY 이미지 필드여야 합니다."
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "플레이트별 스펙트럼 대조군에는 정확한 원본 플레이트와 물리 채널의 완전한 대조군을 포함하는 크기가 제한된 플레이트에서 채널로, 이어서 웰 목록으로 연결하는 JSON 맵이 필요합니다."
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "플레이트별 스펙트럼 대조군에는 V2를 통한 보정된 구조화 2D 세포 분할이 필요합니다. 이 처리 경로는 지원되지 않습니다."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

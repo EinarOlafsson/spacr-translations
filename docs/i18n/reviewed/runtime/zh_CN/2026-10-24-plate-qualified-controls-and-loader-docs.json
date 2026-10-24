@@ -1,0 +1,57 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "key": "unmix_per_plate",
+      "source": "Unmix per plate",
+      "source_sha256": "da8e48dd842288a1381103cdfaec377932cb85308644840dbabb415e7636a16f",
+      "table": "setting_labels",
+      "translation": "按板分离光谱混合"
+    },
+    {
+      "key": "unmix_calibration",
+      "source": "Calibration JSON with measured channel PSFs, integer shifts, reference channel and pixel sampling. Organized 2D previews and cell-only V2 use a common broadened PSF and valid overlap. V2 preserves raw files and writes separate nonquantitative display planes, restored masks and signed crops; boundary-touching labels are excluded. Ordinary Measure/preview, V1, 3D, timelapse and extra processing refuse calibrated outputs/settings. No calibration is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "3ad86aaf66835ae793cad8660df009942cbf4355cbc00cf36a1956bff7b70a81",
+      "table": "setting_tooltips",
+      "translation": "包含实测通道 PSFs、整数位移、参考通道和像素采样的校准 JSON。结构化 2D 预览和仅处理细胞的 V2 使用展宽的共同 PSF 及有效重叠区域。V2 保留原始文件，并写入独立的非定量显示平面、还原的掩膜和带符号裁剪图像；接触边界的标签会被排除。常规 Measure/预览、V1、3D、延时序列及额外处理均拒绝校准输出/设置。不推断校准。默认留空保留旧版混合分离行为。"
+    },
+    {
+      "key": "unmix_controls",
+      "source": "The single-stain control wells, as channel:well[,well] entries separated by semicolons, for example 0:A01,A02; 1:B01. The channel is the dye's own channel, counted as in the stack or merged array; its wells hold that dye alone. Channels without controls are taken to bleed into nothing. Up to 24 fields per dye are read. Ignored unless unmix is on. Default blank. When unmix_per_plate is True, instead supply a JSON plate-to-physical-channel-to-well-list mapping; every selected physical channel must have same-plate controls. The legacy positional syntax is refused in that mode.",
+      "source_sha256": "c2b2532e726b3481fe295dae553e5d881fc4dd8340b44920a43f443a4686bdb7",
+      "table": "setting_tooltips",
+      "translation": "单染对照孔，以分号分隔的 channel:well[,well] 条目表示，例如 0:A01,A02; 1:B01。通道是染料自身的通道，编号方式与堆栈或合并数组相同；其对照孔仅含该染料。没有对照的通道被视为不会串入任何其他通道。每种染料最多读取 24 个图像视野。仅在开启 unmix 时使用。默认留空。当 unmix_per_plate 为 True 时，应改为提供从板到物理通道再到孔列表的 JSON 映射；每个选定物理通道必须具有同板对照。此模式拒绝旧版按位置指定的语法。"
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Only calibrated organized 2D cell-only V2 runs with one plate, time and Z per source are supported. Reuse a master map across separate plate folders. Mixed plates, previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "aeaaecb3dd997425addb45fb857a1d16d93eed0f2fea29ec4ff8bf059f581ffa",
+      "table": "setting_tooltips",
+      "translation": "使用 unmix_controls 中的从板到通道再到孔列表 JSON 映射，按物理通道 ID 选择同板对照。需要开启 unmix 并提供明确校准。每个选定物理通道都需要同板对照，不会回退到全局或跨板对照。仅支持每个来源恰好具有一个板、时间和 Z 的校准结构化 2D 细胞专用 V2 运行。可在不同板文件夹间复用主映射。混合板、预览、V1 和常规 Measure 均被拒绝。不加载矩阵文件，也不推断纯度。默认 False 保留全局对照和打包堆栈语法。"
+    },
+    {
+      "key": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source": "Per-plate control inputs must be stable bounded numeric 2D NPY fields throughout calibration.",
+      "source_sha256": "0d37a3187446212f9cb8296474b78c6008bc3221593960086ff139f00f5ba5ef",
+      "table": "ui",
+      "translation": "按板对照输入在整个校准过程中必须是稳定、大小受限的数值型 2D NPY 图像视野。"
+    },
+    {
+      "key": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source": "Per-plate spectral controls require a bounded JSON plate-to-channel-to-well-list map with complete controls for the exact source plate and physical channels.",
+      "source_sha256": "90e153ed486a297380e214a1248f853377880c0edbdd8c3a1361617961c3c002",
+      "table": "ui",
+      "translation": "按板光谱对照需要大小受限的从板到通道再到孔列表 JSON 映射，其中包含与确切源板和物理通道相匹配的完整对照。"
+    },
+    {
+      "key": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source": "Per-plate spectral controls require calibrated organized 2D cell segmentation through V2; this processing path is not supported.",
+      "source_sha256": "ca3be747ea3ca9c6e6125be52754b9f8341976a691d4fdad9e66e7595d89985a",
+      "table": "ui",
+      "translation": "按板光谱对照需要通过 V2 进行校准的结构化 2D 细胞分割；不支持此处理路径。"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "bf3eea256cdf715ff76233eba7127060d3a986a9"
+}

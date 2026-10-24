@@ -1,0 +1,78 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "key": "unmix_partition_plates",
+      "source": "Unmix partition plates",
+      "source_sha256": "7fc899d9f5ea310bd1033d968d85390cb77a9fc076bfa48263369690858ecd2e",
+      "table": "setting_labels",
+      "translation": "解混时拆分板"
+    },
+    {
+      "key": "unmix_plate_calibrations",
+      "source": "Unmix plate calibrations",
+      "source_sha256": "44c3894f077d4688f7c20eda3d8888470bc0b90c0b18a8426ba2c4abb943fd41",
+      "table": "setting_labels",
+      "translation": "解混板校准"
+    },
+    {
+      "key": "unmix_partition_plates",
+      "source": "Split mixed organized sources into independent calibrated 2D cell-only V2 datasets. Requires unmix_per_plate, complete controls and unmix_plate_calibrations. Conflicts with global calibration, pixel spacing and matrix files. Requires directory-relative, no-follow and nonblocking descriptor access. Originals stay unchanged; the collection is nonquantitative. Cancellation retains completed plate outputs without resuming or overwriting. QC supports report or off. Acquisition compatibility is supplied, not verified. Default False preserves the single-dataset route.",
+      "source_sha256": "560e2790017adac3ccbea1411801c836ae28ce7f0a5c7530a203b496a68f314c",
+      "table": "setting_tooltips",
+      "translation": "将混合的有组织来源拆分为独立的经校准、仅限二维细胞的 V2 数据集。要求 unmix_per_plate、完整对照和 unmix_plate_calibrations。与全局校准、像素间距和矩阵文件冲突。要求目录相对、不跟随链接且非阻塞的描述符访问。原始数据保持不变；集合非定量。取消时保留已完成的板输出，不续跑或覆盖。QC 支持 report 或 off。采集兼容性由用户提供，未经验证。默认 False 保留单数据集路径。"
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Calibrated organized 2D cell-only V2 supports one plate/time/Z per dataset; mixed sources require unmix_partition_plates and explicit optical mappings. Previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "01f1ee4d7e62639bcd43f79986dd185c0591cc2cf8ce29ff04fe93603f2a0de8",
+      "table": "setting_tooltips",
+      "translation": "使用 unmix_controls 中的 JSON 板到通道再到孔列表映射，按物理通道 ID 选择同板对照。要求 unmix 和明确校准。每个选定的物理通道都需要同板对照；不提供全局或跨板回退。经校准、有组织且仅限二维细胞的 V2 每个数据集支持一个板/时间/Z；混合来源需要 unmix_partition_plates 和明确的光学映射。预览、V1 和常规 Measure 拒绝。不加载矩阵文件，也不推断纯度。默认 False 保留全局对照和打包堆栈语法。"
+    },
+    {
+      "key": "unmix_plate_calibrations",
+      "source": "JSON object keyed by exact plate ID. Each entry has calibration_file, pixel_size_um [Y,X], source_context {plate,time,z}, and acquisition_compatibility='user_asserts_same_channel_gains_exposures_and_linear_response'. Relative calibration paths start at the original source folder. Used only with unmix_partition_plates; every plate requires a complete entry. Optical applicability and within-plate gain/exposure compatibility are unverified user assertions, not cross-plate comparability. Default blank.",
+      "source_sha256": "596c65369323c8b35f37df572295930c47b123d5564cc15523521635fa3bdf28",
+      "table": "setting_tooltips",
+      "translation": "以确切板 ID 为键的 JSON 对象。每项包含 calibration_file、pixel_size_um [Y,X]、source_context {plate,time,z}，以及 acquisition_compatibility='user_asserts_same_channel_gains_exposures_and_linear_response'。相对校准路径起始于原始来源文件夹。仅与 unmix_partition_plates 一同使用；每块板都需要完整条目。光学适用性和板内增益/曝光兼容性是用户未经验证的声明，不表示跨板可比性。默认留空。"
+    },
+    {
+      "key": "Calibrated child outputs saved to {path}; display planes are nonquantitative, and quantitative measurements use the signed-cell API.",
+      "source": "Calibrated child outputs saved to {path}; display planes are nonquantitative, and quantitative measurements use the signed-cell API.",
+      "source_sha256": "d598301faa9fecd0f9545c6629f08a42c103a6b9e530d8a489269457765901cf",
+      "table": "ui",
+      "translation": "经校准的子输出已保存到 {path}；显示平面非定量，定量测量使用带符号细胞 API。"
+    },
+    {
+      "key": "Calibrated plate collection created at {path}; each child is an independent signed-cell dataset, and the collection itself is not a Measure input.",
+      "source": "Calibrated plate collection created at {path}; each child is an independent signed-cell dataset, and the collection itself is not a Measure input.",
+      "source_sha256": "a8069cdb0e61378e4842c47ffb6e727685ea0215b7c1724f50d842f9f5fb3977",
+      "table": "ui",
+      "translation": "已在 {path} 创建经校准的板集合；每个子数据集都是独立的带符号细胞数据集，集合本身不是 Measure 输入。"
+    },
+    {
+      "key": "Collection status could not be saved: {error_type}",
+      "source": "Collection status could not be saved: {error_type}",
+      "source_sha256": "5069d57b614f185a3b78f91585872ec8ecbbe4361c9eb42cb473a516bc9ddc00",
+      "table": "ui",
+      "translation": "无法保存集合状态：{error_type}"
+    },
+    {
+      "key": "Mixed-plate calibration requires complete explicit per-plate controls, optical files, pixel sizes and acquisition contexts within the existing 2D resource limits; no cross-plate fallback or inferred acquisition compatibility is allowed.",
+      "source": "Mixed-plate calibration requires complete explicit per-plate controls, optical files, pixel sizes and acquisition contexts within the existing 2D resource limits; no cross-plate fallback or inferred acquisition compatibility is allowed.",
+      "source_sha256": "d83adf4d4edab626330b6db2f4062c831ad7a2baf937f6d9b930f50b7205a75a",
+      "table": "ui",
+      "translation": "混合板校准要求在现有二维资源限制内提供完整明确的逐板对照、光学文件、像素尺寸和采集上下文；不允许跨板回退或推断采集兼容性。"
+    },
+    {
+      "key": "Plate partitioning requires calibrated 2D cell V2 segmentation with per-plate controls, an explicit optical mapping, QC report or off, and no global calibration, matrix file or VVVV export. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse.",
+      "source": "Plate partitioning requires calibrated 2D cell V2 segmentation with per-plate controls, an explicit optical mapping, QC report or off, and no global calibration, matrix file or VVVV export. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse.",
+      "source_sha256": "dc7ea1da4a7cf72b68faf270e97e3cebfaaf8fa04d40ebba1395a3995423019e",
+      "table": "ui",
+      "translation": "板拆分要求使用逐板对照、明确光学映射、QC report 或 off 的经校准二维细胞 V2 分割，且不得使用全局校准、矩阵文件或 VVVV 导出。要求目录相对、不跟随链接且非阻塞的描述符访问；不支持的主机拒绝。"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context; unchanged moved blocks reuse exact pinned source/context-bound translations. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "d9d2051b4c4c940f85413f3308d5d3fe8865eeb1"
+}

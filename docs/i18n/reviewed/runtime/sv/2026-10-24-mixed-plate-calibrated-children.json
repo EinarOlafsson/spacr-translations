@@ -1,0 +1,78 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "key": "unmix_partition_plates",
+      "source": "Unmix partition plates",
+      "source_sha256": "7fc899d9f5ea310bd1033d968d85390cb77a9fc076bfa48263369690858ecd2e",
+      "table": "setting_labels",
+      "translation": "Dela upp plattor för spektral separation"
+    },
+    {
+      "key": "unmix_plate_calibrations",
+      "source": "Unmix plate calibrations",
+      "source_sha256": "44c3894f077d4688f7c20eda3d8888470bc0b90c0b18a8426ba2c4abb943fd41",
+      "table": "setting_labels",
+      "translation": "Plattkalibreringar för spektral separation"
+    },
+    {
+      "key": "unmix_partition_plates",
+      "source": "Split mixed organized sources into independent calibrated 2D cell-only V2 datasets. Requires unmix_per_plate, complete controls and unmix_plate_calibrations. Conflicts with global calibration, pixel spacing and matrix files. Requires directory-relative, no-follow and nonblocking descriptor access. Originals stay unchanged; the collection is nonquantitative. Cancellation retains completed plate outputs without resuming or overwriting. QC supports report or off. Acquisition compatibility is supplied, not verified. Default False preserves the single-dataset route.",
+      "source_sha256": "560e2790017adac3ccbea1411801c836ae28ce7f0a5c7530a203b496a68f314c",
+      "table": "setting_tooltips",
+      "translation": "Dela upp blandade organiserade källor i oberoende kalibrerade V2-dataset enbart för 2D-celler. Kräver unmix_per_plate, kompletta kontroller och unmix_plate_calibrations. Kan inte kombineras med global kalibrering, pixelavstånd eller matrisfiler. Kräver katalogrelativ, icke-länkföljande och icke-blockerande åtkomst via filbeskrivare. Originalen förblir oförändrade; samlingen är icke-kvantitativ. Avbrott bevarar färdiga plattutdata utan återupptagning eller överskrivning. QC stöder rapportläge eller avstängt. Kompatibilitet för bildinsamling anges men verifieras inte. Standardvärdet False bevarar vägen för ett enda dataset."
+    },
+    {
+      "key": "unmix_per_plate",
+      "source": "Select same-plate controls by physical channel ID using a JSON plate-to-channel-to-well-list map in unmix_controls. Requires unmix and explicit calibration. Every selected physical channel needs same-plate controls; no global or cross-plate fallback. Calibrated organized 2D cell-only V2 supports one plate/time/Z per dataset; mixed sources require unmix_partition_plates and explicit optical mappings. Previews, V1 and ordinary Measure refuse. No matrix-file loading or purity inference. Default False preserves global controls and packed-stack syntax.",
+      "source_sha256": "01f1ee4d7e62639bcd43f79986dd185c0591cc2cf8ce29ff04fe93603f2a0de8",
+      "table": "setting_tooltips",
+      "translation": "Välj kontroller från samma platta efter fysiskt kanal-ID med en JSON-mappning från platta till kanal till brunnslista i unmix_controls. Kräver unmix och explicit kalibrering. Varje vald fysisk kanal behöver kontroller från samma platta; ingen global reservväg eller reservväg mellan plattor. Kalibrerad organiserad V2 enbart för 2D-celler stöder en platta/tid/Z per dataset; blandade källor kräver unmix_partition_plates och explicita optiska mappningar. Förhandsvisningar, V1 och vanlig Measure avvisar detta. Ingen laddning av matrisfiler eller inferens av renhet. Standardvärdet False bevarar globala kontroller och syntaxen för packade stackar."
+    },
+    {
+      "key": "unmix_plate_calibrations",
+      "source": "JSON object keyed by exact plate ID. Each entry has calibration_file, pixel_size_um [Y,X], source_context {plate,time,z}, and acquisition_compatibility='user_asserts_same_channel_gains_exposures_and_linear_response'. Relative calibration paths start at the original source folder. Used only with unmix_partition_plates; every plate requires a complete entry. Optical applicability and within-plate gain/exposure compatibility are unverified user assertions, not cross-plate comparability. Default blank.",
+      "source_sha256": "596c65369323c8b35f37df572295930c47b123d5564cc15523521635fa3bdf28",
+      "table": "setting_tooltips",
+      "translation": "JSON-objekt med exakta platt-ID:n som nycklar. Varje post har calibration_file, pixel_size_um [Y,X], source_context {plate,time,z} och acquisition_compatibility='user_asserts_same_channel_gains_exposures_and_linear_response'. Relativa kalibreringssökvägar utgår från den ursprungliga källmappen. Används endast med unmix_partition_plates; varje platta kräver en komplett post. Optisk tillämplighet och kompatibilitet för förstärkning/exponering inom plattan är overifierade användarpåståenden, inte jämförbarhet mellan plattor. Tomt som standard."
+    },
+    {
+      "key": "Calibrated child outputs saved to {path}; display planes are nonquantitative, and quantitative measurements use the signed-cell API.",
+      "source": "Calibrated child outputs saved to {path}; display planes are nonquantitative, and quantitative measurements use the signed-cell API.",
+      "source_sha256": "d598301faa9fecd0f9545c6629f08a42c103a6b9e530d8a489269457765901cf",
+      "table": "ui",
+      "translation": "Kalibrerade underdataset sparade till {path}; visningsplan är icke-kvantitativa och kvantitativa mätningar använder API:t för celldata med positiva och negativa värden."
+    },
+    {
+      "key": "Calibrated plate collection created at {path}; each child is an independent signed-cell dataset, and the collection itself is not a Measure input.",
+      "source": "Calibrated plate collection created at {path}; each child is an independent signed-cell dataset, and the collection itself is not a Measure input.",
+      "source_sha256": "a8069cdb0e61378e4842c47ffb6e727685ea0215b7c1724f50d842f9f5fb3977",
+      "table": "ui",
+      "translation": "Kalibrerad plattsamling skapad i {path}; varje underdataset är ett oberoende dataset för celldata med positiva och negativa värden och själva samlingen är inte indata för Measure."
+    },
+    {
+      "key": "Collection status could not be saved: {error_type}",
+      "source": "Collection status could not be saved: {error_type}",
+      "source_sha256": "5069d57b614f185a3b78f91585872ec8ecbbe4361c9eb42cb473a516bc9ddc00",
+      "table": "ui",
+      "translation": "Samlingsstatus kunde inte sparas: {error_type}"
+    },
+    {
+      "key": "Mixed-plate calibration requires complete explicit per-plate controls, optical files, pixel sizes and acquisition contexts within the existing 2D resource limits; no cross-plate fallback or inferred acquisition compatibility is allowed.",
+      "source": "Mixed-plate calibration requires complete explicit per-plate controls, optical files, pixel sizes and acquisition contexts within the existing 2D resource limits; no cross-plate fallback or inferred acquisition compatibility is allowed.",
+      "source_sha256": "d83adf4d4edab626330b6db2f4062c831ad7a2baf937f6d9b930f50b7205a75a",
+      "table": "ui",
+      "translation": "Kalibrering av blandade plattor kräver kompletta explicita kontroller per platta, optiska filer, pixelstorlekar och bildinsamlingssammanhang inom befintliga 2D-resursgränser; ingen reservväg mellan plattor eller härledd bildinsamlingskompatibilitet tillåts."
+    },
+    {
+      "key": "Plate partitioning requires calibrated 2D cell V2 segmentation with per-plate controls, an explicit optical mapping, QC report or off, and no global calibration, matrix file or VVVV export. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse.",
+      "source": "Plate partitioning requires calibrated 2D cell V2 segmentation with per-plate controls, an explicit optical mapping, QC report or off, and no global calibration, matrix file or VVVV export. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse.",
+      "source_sha256": "dc7ea1da4a7cf72b68faf270e97e3cebfaaf8fa04d40ebba1395a3995423019e",
+      "table": "ui",
+      "translation": "Plattuppdelning kräver kalibrerad V2-segmentering av 2D-celler med kontroller per platta, en explicit optisk mappning, QC i rapportläge eller avstängt och ingen global kalibrering, matrisfil eller VVVV-export. Katalogrelativ, icke-länkföljande och icke-blockerande åtkomst via filbeskrivare krävs; värdar utan stöd avvisar detta."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context; unchanged moved blocks reuse exact pinned source/context-bound translations. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "d9d2051b4c4c940f85413f3308d5d3fe8865eeb1"
+}

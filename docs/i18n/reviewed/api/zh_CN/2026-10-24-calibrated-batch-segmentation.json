@@ -1,0 +1,92 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a key-value mapping naming the microscope fields of view analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display image layers and reference-canvas masks; original raw image data channels are unchanged and Measure refuses those calibrated outputs.",
+      "label": "spacr.core.preprocess_generate_masks#19",
+      "source": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a dict naming the fields analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display planes and reference-canvas masks; original raw channels are unchanged and Measure refuses those calibrated outputs.",
+      "source_sha256": "b1652b1611a891d7b6cbf7ddd68c0d8cf6d42482fc3e30172bb93501582f74b6",
+      "translation": "正常运行返回 ``None``，此时已将掩膜、叠加图、``measurements.db`` 中的计数和设置 CSV 写入 ``src`` 的子文件夹。设置 ``dry_run`` 时，改为返回 :func:`spacr.validate.run_preflight` 给出的问题列表。设置 ``watch_folder`` 时，返回一个字典，列出监视结束时已分析、失败和始终未完成的成像视野。经校准的 V2 分割改为写入独立数据集，其中包含对齐的非定量显示平面和参考画布掩膜；原始通道不变，Measure 拒绝使用这些校准输出。"
+    },
+    {
+      "context": "``None`` hands the raw selected image layers to Cellpose and skips post-processing entirely. Any key-value mapping, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role structured-data names are rewritten on a copy (the caller's key-value mapping is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more image layers were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI extracted image regions are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "label": "spacr.pipeline_v2.run_v2#16",
+      "source": "``None`` hands the raw selected planes to Cellpose and skips post-processing entirely. Any dict, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role keys are rewritten on a copy (the caller's dict is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more planes were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI crops are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "source_sha256": "eff11db1e00cc9026bae7c8b460fc0d5ba889462c469ec7552644558f85becd2",
+      "translation": "``None`` 将所选原始平面交给 Cellpose，并完全跳过后处理。任何字典（包括 ``{}``）都会启用 :func:`spacr.io._normalize_img_batch` 和 :func:`spacr.object.merge_split_filter_masks`。四个 ``*_channel`` 角色键在副本上重写（调用者的字典保持不变）：先全部清为 None，再将 ``object_type`` 设为 0；另设 ``nucleus_channel=1`` 的条件是 ``object_type`` 为 ``\"cell\"`` 且选中了两个或更多平面。明确的 ``unmix_calibration`` 与 ``unmix`` 一起选择已整理的 2D 校准细胞处理路径：带符号的有效 ROI 裁剪单独保留，分割使用非负视图，标签恢复到原始参考画布并移除边界上的不完整对象。不支持的预处理、自定义/强度/周长过滤以及按质量排除均在推理前被拒绝。"
+    },
+    {
+      "context": "key-value mapping with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "label": "spacr.pipeline_v2.run_v2#19",
+      "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
+      "translation": "包含 ``mapper``（:class:`FilenameMapper`）、``stacks``（:class:`StackFile` 列表）和 ``dst``（指向 ``merged/`` 的 Path）的字典。校准输出还给出其独立的 ``output_root``；其中 float32 显示强度已对齐、不可用于定量分析，绝不作为 Measure 输入。带符号的有效 ROI float32 诊断数据位于 ``output_root/signed``；其应用记录同时绑定两类产物，发生错误时保持未完成状态。"
+    },
+    {
+      "context": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "label": "spacr.pipeline_v2.run_v2#2",
+      "source": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "source_sha256": "32497cd2f7a39cb16cc8bd9ece2c889feec97557d9519993bd6dc78d500ea06e",
+      "translation": "存放原始图像的板文件夹，仅扫描本层，不递归扫描子文件夹。通常映射 CSV 保存在此处，输出写入 ``<src>/merged``。校准运行改用新建的 ``calibrated_segmentation`` 输出目录，保留源元数据和现有合并数组。已占用的名称会添加数字后缀；校准结果从不续跑。"
+    },
+    {
+      "context": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the image data channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one image layer, and an empty sequence falls back to image layer 0. Calibrated runs require explicit in-range positions instead.",
+      "label": "spacr.pipeline_v2.run_v2#6",
+      "source": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one plane, and an empty sequence falls back to plane 0. Calibrated runs require explicit in-range positions instead.",
+      "source_sha256": "c524ea4699990bbb4402575844ac37ae428300fa1133dd0000d84defe252673e",
+      "translation": "尽管名称如此，该值从不传入 Cellpose 的 ``channels=`` 参数；它从组装的图像堆栈中选择 C 轴索引，按通道数取模（7 在 C=4 时变为 3），再按原顺序去重。默认值 ``(0, 0)`` 合并为一个平面，空序列则回退到平面 0。校准运行改为要求明确指定范围内的位置。"
+    },
+    {
+      "context": "microscope fields of view loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask image data channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this microscope field of view count when a batch refuses.",
+      "label": "spacr.pipeline_v2.run_v2#8",
+      "source": "fields loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this field count when a batch refuses.",
+      "source_sha256": "dbc0d79ba95deb75eccae01a5443cd411a37382a95f95ee5a595aeeaa49cc7a8",
+      "translation": "每批加载并分割的成像视野数，用于权衡内存与速度。``0`` 会引发 ``ValueError``；负值不会分割任何图像，但仍会重写 ``channel_order.json``，声称存在一个从未写入任何堆栈的掩膜通道。校准批次还限制为最多 ``64 * 1024**2`` 个打包输入值或填充后的模型输入值；批次被拒绝时请减少此视野数。"
+    },
+    {
+      "context": "optional captured PSF session. Unmixes each whole microscope field of view first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image data channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid extracted image region for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display image data channels in its separate output tree, with signed extracted image regions under ``signed/``. These display image data channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#10",
+      "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
+      "translation": "可选的已捕获 PSF 会话。启用解混时，先对每个完整成像视野解混，再在照明处理之后、归一化、填充或 Cellpose 之前处理选定强度。存储的图像通道保持原始状态；只有追加的标签依赖于 PSF 处理。校准会话改为提供带符号的有效裁剪，供非负分割视图使用，将标签恢复到参考画布，并在独立输出树中保存单独的非定量 float32 显示通道，带符号裁剪位于 ``signed/`` 下。这些显示通道不是 Measure 输入；校准输出不能续跑，只有显示文件和带符号文件均持久保存后才算完成。"
+    },
+    {
+      "context": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the image data channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single image layer, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected image data channel is the object's own image data channel for absolute mean-intensity filtering.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#3",
+      "source": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single plane, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected channel is the object's own channel for absolute mean-intensity filtering.",
+      "source_sha256": "1a0a26e45cb6a58d915f24d336fa8f126eb1b94fff7fee1583a0c02846d19bac",
+      "translation": "在将组装后的各堆栈交给 Cellpose 前选择的 C 轴索引，按通道数取模并按顺序去重。它不会传给 Cellpose 的 ``channels=`` 参数，因此 ``[0, 0]`` 产生单个平面，而不是灰度图像对。校准会话改为要求明确指定范围内的位置。首个选定通道是对象自身的通道，用于绝对平均强度过滤。"
+    },
+    {
+      "context": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#5",
+      "source": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "source_sha256": "f6637bca1ad9eef842e8ad6c1a763f224dd5f773d83d35e7065f7ce33c86d753",
+      "translation": "一次向内存加载的成像视野堆栈数。越大越快，但占用更多 RAM。打包输入值或填充后的模型输入值超过 ``64 * 1024**2`` 时，校准批次将被拒绝。"
+    },
+    {
+      "context": "mapping CSV destination, defaulting to the source folder.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#7",
+      "source": "mapping CSV destination, defaulting to the source folder.",
+      "source_sha256": "db73a696812f8916160c765fdb69f1f0c0c8c7f6fb25f86271c0004a09bc9973",
+      "translation": "映射 CSV 的目标位置，默认为源文件夹。"
+    },
+    {
+      "context": "preserve numeric image layers and refuse missing, duplicate, non-2D or oversized image data channels for the separate calibrated route.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#8",
+      "source": "preserve numeric planes and refuse missing, duplicate, non-2D or oversized channels for the separate calibrated route.",
+      "source_sha256": "7654cd11cdcd02e22beb8701729084fcf9af61c89c6964f74e2964cbab2b811a",
+      "translation": "保留数值图像平面，并在独立校准路径中拒绝缺失、重复、非 2D 或过大的通道。"
+    },
+    {
+      "context": "list of :class:`StackFile`, one per field written.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#9",
+      "source": "list of :class:`StackFile`, one per field written.",
+      "source_sha256": "e1e8de21694973f15d2f0c287a54f3febd75773ce12f4e0c44f9877527262e4a",
+      "translation": "列表为 :class:`StackFile`,字段为字段。"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact calibrated batch segmentation source/context contracts. Existing translations are rebound only where source/context and target remain unchanged. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "72dcad65236d3628d30caa99b8c06f4cc895744b"
+}

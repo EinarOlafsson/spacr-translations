@@ -1,0 +1,253 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "key": "unmix_calibration",
+      "source": "Optional explicit spectral-calibration JSON for organized 2D live previews and cell-only V2 batch segmentation. Supply measured per-channel PSFs, integer registration shifts, reference channel and pixel sampling. Cross-convolution broadens all channels to one common PSF and uses only their valid overlap. Signed float residuals are retained in calibration diagnostics; segmentation uses a separate nonnegative view and restores masks to the original canvas, excluding complete labels touching the valid-region boundary. Calibrated V2 writes a separate dataset of aligned nonquantitative float32 display planes, restored masks and signed valid-region crops, leaving original raw files unchanged. Measure and its preview refuse that dataset regardless of current settings. V1, volumes, timelapse, illumination and additional PSF/enhancement/denoising processing refuse this option. No calibration or biological truth is inferred. Default blank preserves legacy unmixing.",
+      "source_sha256": "f79c6c9797470b2b6e93d903490413495b7b5e84ad29a7b2c11b9f994d703180",
+      "table": "setting_tooltips",
+      "translation": "JSON facultatif de calibration spectrale explicite pour les aperçus en direct 2D organisés et la segmentation V2 par lots de cellules uniquement. Fournissez les PSF mesurées par canal, les décalages entiers de recalage, le canal de référence et l’échantillonnage des pixels. La convolution croisée élargit tous les canaux vers une PSF commune et utilise seulement leur recouvrement valide. Les résidus flottants signés sont conservés dans les diagnostics de calibration ; la segmentation utilise une vue non négative séparée et replace les masques sur le canevas original, en excluant les étiquettes entières touchant la limite de la région valide. V2 calibré écrit un jeu de données séparé de plans d’affichage float32 alignés non quantitatifs, de masques replacés et de recadrages signés de la région valide, sans modifier les fichiers bruts d’origine. Measure et son aperçu refusent ce jeu de données quels que soient les paramètres actuels. V1, volumes, séries temporelles, illumination et traitements PSF, d’amélioration ou de débruitage supplémentaires refusent cette option. Aucune calibration ni vérité biologique n’est déduite. La valeur vide par défaut préserve le démélange historique."
+    },
+    {
+      "key": "unmix_pixel_size_um",
+      "source": "Explicit source pixel size [Y, X] in micrometers for calibrated spectral live previews and V2 batch segmentation. Both values must be positive and match the supplied image and PSF calibration; no resampling is performed. Required when unmix_calibration is set. Default None.",
+      "source_sha256": "79c49e93e1cd42eb99702562d6ff58c56d7acf0cbda34b1e46d7e179b6c13710",
+      "table": "setting_tooltips",
+      "translation": "Taille explicite des pixels source [Y, X] en micromètres pour les aperçus spectraux calibrés en direct et la segmentation V2 par lots. Les deux valeurs doivent être positives et correspondre à l’image et à la calibration PSF fournies ; aucun rééchantillonnage n’est effectué. Obligatoire lorsque unmix_calibration est défini. Valeur par défaut None."
+    },
+    {
+      "key": "Calibrated V2 segmentation requires cell objects and explicit unique physical channels with valid model positions.",
+      "source": "Calibrated V2 segmentation requires cell objects and explicit unique physical channels with valid model positions.",
+      "source_sha256": "85ef1a0473a95e56f2b68adb9f5d47b2ca43f14ffc315db9b9579c8a75ff5b47",
+      "table": "ui",
+      "translation": "La segmentation V2 calibrée exige des objets cellulaires et des canaux physiques explicites uniques avec des positions valides pour le modèle."
+    },
+    {
+      "key": "Calibrated V2 segmentation requires cell objects without illumination correction.",
+      "source": "Calibrated V2 segmentation requires cell objects without illumination correction.",
+      "source_sha256": "ca4c2caea99dd908aaeda32909b4d9a7a440d2a47eecc09f6f323d92f010b90c",
+      "table": "ui",
+      "translation": "La segmentation V2 calibrée exige des objets cellulaires sans correction d’illumination."
+    },
+    {
+      "key": "Calibrated batch completion requires durable display, mask and signed-crop outputs.",
+      "source": "Calibrated batch completion requires durable display, mask and signed-crop outputs.",
+      "source_sha256": "24d3f5159ea2b3c03b4b5e732aa2d76d97ea595026b9492148e858c067adf725",
+      "table": "ui",
+      "translation": "L’achèvement d’un lot calibré exige la persistance des sorties d’affichage, des masques et des recadrages signés."
+    },
+    {
+      "key": "Calibrated batch controls and targets must belong to one plate and one acquisition time and plane.",
+      "source": "Calibrated batch controls and targets must belong to one plate and one acquisition time and plane.",
+      "source_sha256": "e8d2ae3a671f9e5806cce6c3b1d69677d1d9e3e0347c919dee24efdc55038482",
+      "table": "ui",
+      "translation": "Les contrôles et les cibles du lot calibré doivent appartenir à une seule plaque et à un seul temps et plan d’acquisition."
+    },
+    {
+      "key": "Calibrated batch fields must identify one original source dataset.",
+      "source": "Calibrated batch fields must identify one original source dataset.",
+      "source_sha256": "4bd61edb7e22672879ed2c664340aa39b06853285f54793c92bc5f628f074b5f",
+      "table": "ui",
+      "translation": "Les champs du lot calibré doivent identifier un seul jeu de données source original."
+    },
+    {
+      "key": "Calibrated batch inputs require distinct nonnegative integer physical channel IDs.",
+      "source": "Calibrated batch inputs require distinct nonnegative integer physical channel IDs.",
+      "source_sha256": "1a9453a13e73f753c02c42c20dedb03c20253f6ec63e8f271b879f467c37a12a",
+      "table": "ui",
+      "translation": "Les entrées du lot calibré exigent des identifiants entiers non négatifs et distincts de canaux physiques."
+    },
+    {
+      "key": "Calibrated batch inputs require explicit plate and well identities for every field.",
+      "source": "Calibrated batch inputs require explicit plate and well identities for every field.",
+      "source_sha256": "ce40a9c5daaf8660f1e07829925da21f568031d8bf0a41c6bd5d61bdbe41f853",
+      "table": "ui",
+      "translation": "Les entrées du lot calibré exigent des identités explicites de plaque et de puits pour chaque champ d’image."
+    },
+    {
+      "key": "Calibrated batch labels must match the valid crop and contain exact integer IDs from 0 to 65535.",
+      "source": "Calibrated batch labels must match the valid crop and contain exact integer IDs from 0 to 65535.",
+      "source_sha256": "f96cad7c28433b6b3ba20bd08717b7a4f0dbe148e6727bfae4a378eb60c09e5b",
+      "table": "ui",
+      "translation": "Les étiquettes du lot calibré doivent correspondre au recadrage valide et contenir des identifiants entiers exacts de 0 à 65535."
+    },
+    {
+      "key": "Calibrated batch output must use a fresh empty destination; existing results are not resumed or replaced.",
+      "source": "Calibrated batch output must use a fresh empty destination; existing results are not resumed or replaced.",
+      "source_sha256": "e4542a36f9045899f1c38024de0866d28c2c0065eb5d9b79289fd2b4aff58be1",
+      "table": "ui",
+      "translation": "La sortie du lot calibré doit utiliser une nouvelle destination vide ; les résultats existants ne sont ni repris ni remplacés."
+    },
+    {
+      "key": "Calibrated batch output requires spectral unmixing and an explicit calibration.",
+      "source": "Calibrated batch output requires spectral unmixing and an explicit calibration.",
+      "source_sha256": "960b1fefaeb54be743169f62f87671ffd818794187c896e99f8e741c34cc75af",
+      "table": "ui",
+      "translation": "La sortie du lot calibré exige un démélange spectral et une calibration explicite."
+    },
+    {
+      "key": "Calibrated batch segmentation does not support VVVV export; its aligned display output is not quantitative data.",
+      "source": "Calibrated batch segmentation does not support VVVV export; its aligned display output is not quantitative data.",
+      "source_sha256": "cba920f8c0b3b633f2c2db25024a2638bb2af0d9902ee29a6be07ac153da4070",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots ne prend pas en charge l’exportation VVVV ; sa sortie d’affichage alignée n’est pas une donnée quantitative."
+    },
+    {
+      "key": "Calibrated batch segmentation does not support excluding image-QC fields; use report mode so every emitted field retains a declared coordinate frame.",
+      "source": "Calibrated batch segmentation does not support excluding image-QC fields; use report mode so every emitted field retains a declared coordinate frame.",
+      "source_sha256": "9c8570418374d157323ee8dcf873e9d6f2d7ff7b54a5c25b089280c4e901f31e",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots ne permet pas d’exclure des champs selon le contrôle qualité d’image (QC) ; utilisez le mode rapport afin que chaque champ produit conserve un repère de coordonnées déclaré."
+    },
+    {
+      "key": "Calibrated batch segmentation does not support intensity or perimeter-merge filters; use size and border filters only.",
+      "source": "Calibrated batch segmentation does not support intensity or perimeter-merge filters; use size and border filters only.",
+      "source_sha256": "33a291201be03689a0f02a566b0664c499158f8be3aa14c43185c513eab91df2",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots ne prend pas en charge les filtres d’intensité ou de fusion par périmètre ; utilisez uniquement les filtres de taille et de bord."
+    },
+    {
+      "key": "Calibrated batch segmentation does not support time series or Z stacks.",
+      "source": "Calibrated batch segmentation does not support time series or Z stacks.",
+      "source_sha256": "ac0793db3c33e22e192d1b37914c960eb67ef8a4d0d7288b8aead9050aa1240f",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots ne prend pas en charge les séries temporelles ni les piles Z."
+    },
+    {
+      "key": "Calibrated batch segmentation requires acquired single-channel 2D images.",
+      "source": "Calibrated batch segmentation requires acquired single-channel 2D images.",
+      "source_sha256": "04b00e45a3197bfbf7201009e73b5230c7978e35ca539c7af7e8396d0c0bdfe0",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots exige des images 2D acquises à un seul canal."
+    },
+    {
+      "key": "Calibrated batch segmentation requires organized 2D V2 fields with explicit physical channels and source identities.",
+      "source": "Calibrated batch segmentation requires organized 2D V2 fields with explicit physical channels and source identities.",
+      "source_sha256": "e6a1cae96f7abeec80f6f9d57333939f157b8787d182bde33bf4e8387c7817bf",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots exige des champs V2 2D organisés avec des canaux physiques et des identités source explicites."
+    },
+    {
+      "key": "Calibrated batch segmentation supports independent 2D fields without illumination, additional PSF, enhancement, denoising or timelapse processing.",
+      "source": "Calibrated batch segmentation supports independent 2D fields without illumination, additional PSF, enhancement, denoising or timelapse processing.",
+      "source_sha256": "30f59d045993b7067cca0e730a122e1c7cc7299a8bff631dbd4a42144cb82d2b",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots prend en charge des champs 2D indépendants sans illumination, PSF supplémentaire, amélioration, débruitage ni traitement temporel."
+    },
+    {
+      "key": "Calibrated batch segmentation supports size and border filters only; custom object filters are not supported.",
+      "source": "Calibrated batch segmentation supports size and border filters only; custom object filters are not supported.",
+      "source_sha256": "2e20ed0deb4967d52f08824705667b1b44ee7b0a185b4201d24e30fb94860582",
+      "table": "ui",
+      "translation": "La segmentation calibrée par lots ne prend en charge que les filtres de taille et de bord ; les filtres d’objets personnalisés ne sont pas pris en charge."
+    },
+    {
+      "key": "Calibrated segmentation can write only inside its separate output merged directory.",
+      "source": "Calibrated segmentation can write only inside its separate output merged directory.",
+      "source_sha256": "04279b460429505558427211b40898749b16926b2989ceb9c4b68b7f8263c7e3",
+      "table": "ui",
+      "translation": "La segmentation calibrée ne peut écrire qu’à l’intérieur de son répertoire de sortie merged séparé."
+    },
+    {
+      "key": "Calibrated segmentation channels must share the same acquired YX shape.",
+      "source": "Calibrated segmentation channels must share the same acquired YX shape.",
+      "source_sha256": "01b893caf91d31c67ff81515aee1cc83033e79df786d3dd2a55a0beaedd57c02",
+      "table": "ui",
+      "translation": "Les canaux de segmentation calibrée doivent partager la même forme YX acquise."
+    },
+    {
+      "key": "Calibrated segmentation exceeds the supported aggregate batch-pixel budget; reduce the field batch size.",
+      "source": "Calibrated segmentation exceeds the supported aggregate batch-pixel budget; reduce the field batch size.",
+      "source_sha256": "5a28cc0ca83b1fa6b83c849b3c1d8d4824748f9fc50c4513d399efb87086dfea",
+      "table": "ui",
+      "translation": "La segmentation calibrée dépasse le budget total de pixels par lot pris en charge ; réduisez le nombre de champs par lot."
+    },
+    {
+      "key": "Calibrated segmentation exceeds the supported padded batch-pixel budget; reduce the field batch size.",
+      "source": "Calibrated segmentation exceeds the supported padded batch-pixel budget; reduce the field batch size.",
+      "source_sha256": "16e713a95ff22e645703cf8ae80fd69e0561a13561c70200fd99a6e6aea7f116",
+      "table": "ui",
+      "translation": "La segmentation calibrée dépasse le budget de pixels par lot avec marges pris en charge ; réduisez le nombre de champs par lot."
+    },
+    {
+      "key": "Calibrated segmentation exceeds the supported source-pixel budget.",
+      "source": "Calibrated segmentation exceeds the supported source-pixel budget.",
+      "source_sha256": "3a17dd5c751979b10a239034bf93c758975ba29daa661205b4953e5ab36fb8e0",
+      "table": "ui",
+      "translation": "La segmentation calibrée dépasse le budget de pixels source pris en charge."
+    },
+    {
+      "key": "Calibrated segmentation labels must be finite nonnegative integers representable exactly as uint16.",
+      "source": "Calibrated segmentation labels must be finite nonnegative integers representable exactly as uint16.",
+      "source_sha256": "fc3fd02ff2c2fd5105cd5e7aa1fcd91e0ca6f76251d6b30da72084d74329acbd",
+      "table": "ui",
+      "translation": "Les étiquettes de segmentation calibrée doivent être des entiers finis non négatifs représentables exactement en uint16."
+    },
+    {
+      "key": "Calibrated segmentation labels must match the image passed to the model.",
+      "source": "Calibrated segmentation labels must match the image passed to the model.",
+      "source_sha256": "98d7973e00e823b416114df5a835527e8ea64e5e088f7b958569345d29dc9d24",
+      "table": "ui",
+      "translation": "Les étiquettes de segmentation calibrée doivent correspondre à l’image transmise au modèle."
+    },
+    {
+      "key": "Calibrated segmentation must return one label image for every field.",
+      "source": "Calibrated segmentation must return one label image for every field.",
+      "source_sha256": "697ce6640546668467632d64cc7511a30807117f24bc81857fcad33a0c949c28",
+      "table": "ui",
+      "translation": "La segmentation calibrée doit renvoyer une image d’étiquettes pour chaque champ d’image."
+    },
+    {
+      "key": "Calibrated segmentation requires every selected physical channel exactly once in each field.",
+      "source": "Calibrated segmentation requires every selected physical channel exactly once in each field.",
+      "source_sha256": "c2d1b08f2e732fe4688abe920dfff91c4c38fc23ae0507bcedad0920fb32a055",
+      "table": "ui",
+      "translation": "La segmentation calibrée exige chaque canal physique sélectionné exactement une fois dans chaque champ d’image."
+    },
+    {
+      "key": "Calibrated segmentation requires finite 2D channel-last fields within the supported source-pixel budget.",
+      "source": "Calibrated segmentation requires finite 2D channel-last fields within the supported source-pixel budget.",
+      "source_sha256": "b06bba1d21968de59cb0797312f126e48292195b312ef1b7fb250ce81256084e",
+      "table": "ui",
+      "translation": "La segmentation calibrée exige des champs 2D finis avec l’axe des canaux en dernier, dans le budget de pixels source pris en charge."
+    },
+    {
+      "key": "Calibrated segmentation saved nonquantitative display outputs to {path}; quantitative Measure is not supported.",
+      "source": "Calibrated segmentation saved nonquantitative display outputs to {path}; quantitative Measure is not supported.",
+      "source_sha256": "d41d7b580f89121d52421951fa308eb1b43fb940fe1fa3d52cde4593e0c00d97",
+      "table": "ui",
+      "translation": "La segmentation calibrée a enregistré des sorties d’affichage non quantitatives dans {path} ; Measure quantitatif n’est pas pris en charge."
+    },
+    {
+      "key": "Calibrated segmentation uses nonquantitative aligned display planes and is not supported by Measure or its crop preview. Use a separate project segmented without spectral calibration for measurement.",
+      "source": "Calibrated segmentation uses nonquantitative aligned display planes and is not supported by Measure or its crop preview. Use a separate project segmented without spectral calibration for measurement.",
+      "source_sha256": "56d4aef5547746d7ed9943aea491ef687932a9984a1ea2417abce2f62355245f",
+      "table": "ui",
+      "translation": "La segmentation calibrée utilise des plans d’affichage alignés non quantitatifs et n’est pas prise en charge par Measure ni son aperçu des recadrages. Pour mesurer, utilisez un projet séparé segmenté sans calibration spectrale."
+    },
+    {
+      "key": "Calibrated spectral unmixing requires an explicit 2D live preview or calibrated V2 batch route; this processing path, including Measure, is not supported.",
+      "source": "Calibrated spectral unmixing requires an explicit 2D live preview or calibrated V2 batch route; this processing path, including Measure, is not supported.",
+      "source_sha256": "3bce5e431dd5c59b60fd2e63a6f85a913d5fec2542f1e8c3958f2b27c6854083",
+      "table": "ui",
+      "translation": "Le démélange spectral calibré exige un aperçu en direct 2D explicite ou la voie V2 calibrée par lots ; cette voie de traitement, y compris Measure, n’est pas prise en charge."
+    },
+    {
+      "key": "Cannot verify the segmentation coordinate record at {path}. Restore its provenance or use a separate project rebuilt from original images.",
+      "source": "Cannot verify the segmentation coordinate record at {path}. Restore its provenance or use a separate project rebuilt from original images.",
+      "source_sha256": "c171c5124bae74dc85a25ae152659bcb99f6b863aeb791e3f76abd9d46ea8567",
+      "table": "ui",
+      "translation": "Impossible de vérifier le journal de coordonnées de segmentation dans {path}. Restaurez sa provenance ou utilisez un projet séparé reconstruit à partir des images originales."
+    },
+    {
+      "key": "No unused calibrated segmentation output directory is available.",
+      "source": "No unused calibrated segmentation output directory is available.",
+      "source_sha256": "87c93f000e4b2c7876aacda8357bf5cfa9fe53c30435744a622f5333c7b76318",
+      "table": "ui",
+      "translation": "Aucun répertoire de sortie de segmentation calibrée inutilisé n’est disponible."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact calibrated batch segmentation source/context contracts. Existing translations are rebound only where source/context and target remain unchanged. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "72dcad65236d3628d30caa99b8c06f4cc895744b"
+}

@@ -1,0 +1,92 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "context": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a key-value mapping naming the microscope fields of view analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display image layers and reference-canvas masks; original raw image data channels are unchanged and Measure refuses those calibrated outputs.",
+      "label": "spacr.core.preprocess_generate_masks#19",
+      "source": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a dict naming the fields analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display planes and reference-canvas masks; original raw channels are unchanged and Measure refuses those calibrated outputs.",
+      "source_sha256": "b1652b1611a891d7b6cbf7ddd68c0d8cf6d42482fc3e30172bb93501582f74b6",
+      "translation": "``None`` við venjulega keyrslu, eftir að grímur, yfirlag, talningar í ``measurements.db`` og CSV-stillingaskrár hafa verið skrifaðar í undirmöppur ``src``. Þegar ``dry_run`` er virkt er í staðinn skilað vandamálalista frá :func:`spacr.validate.run_preflight`. Þegar ``watch_folder`` er virkt er skilað vörpun sem tilgreinir myndsvið sem voru greind, mistókust eða kláruðust aldrei þegar vöktun lýkur. Kvörðuð V2-segmentation skrifar í staðinn sérstakt gagnasafn með samstilltum ómegindlegum sýningarmyndlögum og grímum á viðmiðunarstriga; upprunalegar hráar rásir haldast óbreyttar og Measure hafnar þessum kvörðuðu úttökum."
+    },
+    {
+      "context": "``None`` hands the raw selected image layers to Cellpose and skips post-processing entirely. Any key-value mapping, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role structured-data names are rewritten on a copy (the caller's key-value mapping is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more image layers were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI extracted image regions are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "label": "spacr.pipeline_v2.run_v2#16",
+      "source": "``None`` hands the raw selected planes to Cellpose and skips post-processing entirely. Any dict, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role keys are rewritten on a copy (the caller's dict is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more planes were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI crops are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "source_sha256": "eff11db1e00cc9026bae7c8b460fc0d5ba889462c469ec7552644558f85becd2",
+      "translation": "``None`` sendir valin hrá myndlög til Cellpose og sleppir allri eftirvinnslu. Sérhver vörpun, þar á meðal ``{}``, virkjar bæði :func:`spacr.io._normalize_img_batch` og :func:`spacr.object.merge_split_filter_masks`. Fjórir ``*_channel`` hlutverkalyklar eru endurskrifaðir í afriti (vörpun kallanda helst óbreytt): allir eru fyrst settir á None, síðan er ``object_type`` sett á 0 og einnig ``nucleus_channel=1`` þegar ``object_type`` er ``\"cell\"`` og tvö eða fleiri myndlög voru valin. Skýrt ``unmix_calibration`` ásamt ``unmix`` velur skipulagða kvarðaða 2D-frumuleiðina: útskurðir gilds ROI með formerki eru varðveittir sérstaklega, skipting notar óneikvætt sýn og merki eru færð aftur á upprunalegan viðmiðunarstriga; óheilir hlutir við jaðarinn eru fjarlægðir. Óstudd forvinnsla, sérsniðnar síur, styrksíur og síur eftir ummáli og útilokun eftir gæðum eru höfnuð fyrir ályktun."
+    },
+    {
+      "context": "key-value mapping with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "label": "spacr.pipeline_v2.run_v2#19",
+      "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
+      "translation": "vörpun með ``mapper`` (:class:`FilenameMapper`), ``stacks`` (listi af :class:`StackFile`) og ``dst`` (Path að ``merged/``). Kvarðað úttak tilgreinir einnig sitt sérstaka ``output_root``; float32-sýningarstyrkur þess er samstilltur og ómegindlegur og er aldrei inntak í Measure. float32-greiningargögn gilds ROI með formerki eru í ``output_root/signed``; notkunarskráin bindur bæði gagnasöfnin og helst ólokið við villu."
+    },
+    {
+      "context": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "label": "spacr.pipeline_v2.run_v2#2",
+      "source": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "source_sha256": "32497cd2f7a39cb16cc8bd9ece2c889feec97557d9519993bd6dc78d500ea06e",
+      "translation": "möppu plötu sem inniheldur frumgögnin; aðeins er leitað í möppunni sjálfri. Venjulega er vörpunar-CSV skrifað hér og úttakið fer í ``<src>/merged``. Kvörðuð keyrsla notar í staðinn nýja ``calibrated_segmentation`` úttaksmöppu og varðveitir upprunalýsigögn og fyrirliggjandi sameinuð fylki. Nöfn sem eru þegar í notkun fá töluskeyti; kvörðuð niðurstaða er aldrei tekin upp aftur."
+    },
+    {
+      "context": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the image data channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one image layer, and an empty sequence falls back to image layer 0. Calibrated runs require explicit in-range positions instead.",
+      "label": "spacr.pipeline_v2.run_v2#6",
+      "source": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one plane, and an empty sequence falls back to plane 0. Calibrated runs require explicit in-range positions instead.",
+      "source_sha256": "c524ea4699990bbb4402575844ac37ae428300fa1133dd0000d84defe252673e",
+      "translation": "þrátt fyrir nafnið berst þetta aldrei í ``channels=`` viðfang Cellpose; það velur C-ásvísitölur úr samsettum stafla, tekur afgang við deilingu með fjölda rása (7 með C=4 verður 3) og fjarlægir tvítekningar í sömu röð. Sjálfgefna ``(0, 0)`` verður eitt myndlag og tóm runa fellur aftur á myndlag 0. Kvörðuð keyrsla krefst þess í stað skýrra staða innan marka."
+    },
+    {
+      "context": "microscope fields of view loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask image data channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this microscope field of view count when a batch refuses.",
+      "label": "spacr.pipeline_v2.run_v2#8",
+      "source": "fields loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this field count when a batch refuses.",
+      "source_sha256": "dbc0d79ba95deb75eccae01a5443cd411a37382a95f95ee5a595aeeaa49cc7a8",
+      "translation": "myndsvið sem eru hlaðin og skipt í hluti í hverri lotu; stýrir minni á móti hraða. ``0`` veldur ``ValueError``; neikvætt gildi skiptir engu í hluti, en ``channel_order.json`` er samt endurskrifað og fullyrðir að grímurás sé til sem enginn stafli fékk. Kvörðuð lota takmarkast auk þess við ``64 * 1024**2`` pakkað inntaksgildi eða gildi í fylltu líkaninntaki; lækkaðu þennan fjölda myndsviða ef lotu er hafnað."
+    },
+    {
+      "context": "optional captured PSF session. Unmixes each whole microscope field of view first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image data channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid extracted image region for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display image data channels in its separate output tree, with signed extracted image regions under ``signed/``. These display image data channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#10",
+      "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
+      "translation": "valfrjáls fönguð PSF-lota. Aðskilur fyrst rásablöndun í hverju heilu myndsviði þegar það er virkt og vinnur síðan valda styrki eftir lýsingarleiðréttingu og fyrir stöðlun, fyllingu eða Cellpose. Vistuðu myndrásirnar haldast hráar; aðeins viðbætt merki ráðast af PSF-vinnslu. Kvörðuð lota gefur í staðinn gildan útskurð með formerki fyrir óneikvætt skiptingarsýn, færir merki aftur á viðmiðunarstriga og vistar sérstakar ómegindlegar float32-sýningarrásir í sínu sérstöku úttakstré, með útskurðum með formerki í ``signed/``. Þessar sýningarrásir eru ekki inntak í Measure; kvarðað úttak er ekki hægt að taka upp aftur og bæði sýningarskrár og skrár með formerki þurfa að vera varanlega vistaðar til að ljúka vinnslunni."
+    },
+    {
+      "context": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the image data channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single image layer, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected image data channel is the object's own image data channel for absolute mean-intensity filtering.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#3",
+      "source": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single plane, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected channel is the object's own channel for absolute mean-intensity filtering.",
+      "source_sha256": "1a0a26e45cb6a58d915f24d336fa8f126eb1b94fff7fee1583a0c02846d19bac",
+      "translation": "C-ásvísitölur sem eru valdar úr hverjum samsettum stafla áður en hann er sendur til Cellpose — afgangur við deilingu með fjölda rása er tekinn og tvítekningar fjarlægðar í röð. Þetta er EKKI sent í ``channels=`` viðfang Cellpose; ``[0, 0]`` gefur því eitt myndlag, ekki grátónapar. Kvörðuð lota krefst þess í stað skýrra staða innan marka. Fyrsta valda rásin er eigin rás hlutarins fyrir síun eftir algildum meðalstyrk."
+    },
+    {
+      "context": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#5",
+      "source": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "source_sha256": "f6637bca1ad9eef842e8ad6c1a763f224dd5f773d83d35e7065f7ce33c86d753",
+      "translation": "hve margir myndsviðsstaflar eru hlaðnir í minni í einu. Fleiri = hraðara en meira vinnsluminni. Kvörðuðum lotum er hafnað yfir ``64 * 1024**2`` pökkuðum inntaksgildum eða gildum í fylltu líkaninntaki."
+    },
+    {
+      "context": "mapping CSV destination, defaulting to the source folder.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#7",
+      "source": "mapping CSV destination, defaulting to the source folder.",
+      "source_sha256": "db73a696812f8916160c765fdb69f1f0c0c8c7f6fb25f86271c0004a09bc9973",
+      "translation": "áfangastaður vörpunar-CSV, sjálfgefið upprunamappan."
+    },
+    {
+      "context": "preserve numeric image layers and refuse missing, duplicate, non-2D or oversized image data channels for the separate calibrated route.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#8",
+      "source": "preserve numeric planes and refuse missing, duplicate, non-2D or oversized channels for the separate calibrated route.",
+      "source_sha256": "7654cd11cdcd02e22beb8701729084fcf9af61c89c6964f74e2964cbab2b811a",
+      "translation": "varðveita tölugildi myndlaga og hafna rásum sem vantar, eru tvíteknar, ekki 2D eða of stórar fyrir sérstöku kvörðuðu leiðina."
+    },
+    {
+      "context": "list of :class:`StackFile`, one per field written.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#9",
+      "source": "list of :class:`StackFile`, one per field written.",
+      "source_sha256": "e1e8de21694973f15d2f0c287a54f3febd75773ce12f4e0c44f9877527262e4a",
+      "translation": "listan :class:`StackFile`, eitt á sviði skrifað."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact calibrated batch segmentation source/context contracts. Existing translations are rebound only where source/context and target remain unchanged. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "72dcad65236d3628d30caa99b8c06f4cc895744b"
+}

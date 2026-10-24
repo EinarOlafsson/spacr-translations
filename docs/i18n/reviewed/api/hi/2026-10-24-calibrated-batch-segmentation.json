@@ -1,0 +1,92 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a key-value mapping naming the microscope fields of view analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display image layers and reference-canvas masks; original raw image data channels are unchanged and Measure refuses those calibrated outputs.",
+      "label": "spacr.core.preprocess_generate_masks#19",
+      "source": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a dict naming the fields analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display planes and reference-canvas masks; original raw channels are unchanged and Measure refuses those calibrated outputs.",
+      "source_sha256": "b1652b1611a891d7b6cbf7ddd68c0d8cf6d42482fc3e30172bb93501582f74b6",
+      "translation": "सामान्य रन में ``None``, जब मास्क, ओवरले, ``measurements.db`` में गिनतियां और सेटिंग्स CSV फ़ाइलें ``src`` के उपफ़ोल्डरों में लिख दी गई हों। ``dry_run`` चालू होने पर इसके बजाय :func:`spacr.validate.run_preflight` की समस्याओं की सूची लौटती है। ``watch_folder`` चालू होने पर निगरानी समाप्त होते समय विश्लेषित, विफल और कभी पूरे नहीं हुए इमेज फ़ील्ड बताने वाला डिक्शनरी लौटता है। कैलिब्रेटेड V2 सेगमेंटेशन इसके बजाय एक अलग डेटासेट लिखता है, जिसमें संरेखित गैर-मात्रात्मक डिस्प्ले प्लेन और संदर्भ कैनवस पर मास्क होते हैं; मूल रॉ चैनल अपरिवर्तित रहते हैं और Measure इन कैलिब्रेटेड आउटपुट को अस्वीकार करता है।"
+    },
+    {
+      "context": "``None`` hands the raw selected image layers to Cellpose and skips post-processing entirely. Any key-value mapping, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role structured-data names are rewritten on a copy (the caller's key-value mapping is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more image layers were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI extracted image regions are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "label": "spacr.pipeline_v2.run_v2#16",
+      "source": "``None`` hands the raw selected planes to Cellpose and skips post-processing entirely. Any dict, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role keys are rewritten on a copy (the caller's dict is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more planes were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI crops are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference.",
+      "source_sha256": "eff11db1e00cc9026bae7c8b460fc0d5ba889462c469ec7552644558f85becd2",
+      "translation": "``None`` चुने हुए रॉ प्लेन Cellpose को देता है और पोस्ट-प्रोसेसिंग पूरी तरह छोड़ देता है। कोई भी डिक्शनरी, ``{}`` भी, :func:`spacr.io._normalize_img_batch` और :func:`spacr.object.merge_split_filter_masks` दोनों चालू करती है। चार ``*_channel`` भूमिका-कुंजियां एक प्रति पर दोबारा लिखी जाती हैं (कॉलर की डिक्शनरी नहीं बदलती): पहले सभी None, फिर ``object_type`` को 0, और ``nucleus_channel=1`` भी जब ``object_type`` ``\"cell\"`` हो तथा दो या अधिक प्लेन चुने गए हों। स्पष्ट ``unmix_calibration`` को ``unmix`` के साथ देने पर व्यवस्थित 2D कैलिब्रेटेड सेल मार्ग चुनता है: चिह्नयुक्त वैध-ROI क्रॉप अलग रखे जाते हैं, सेगमेंटेशन गैर-ऋणात्मक दृश्य का उपयोग करता है और अधूरे सीमा-ऑब्जेक्ट हटाकर लेबल मूल संदर्भ कैनवस पर लौटाए जाते हैं। असमर्थित प्रीप्रोसेसिंग, कस्टम/तीव्रता/परिमाप फ़िल्टर और गुणवत्ता के आधार पर बहिष्करण इन्फरेंस से पहले अस्वीकार होते हैं।"
+    },
+    {
+      "context": "key-value mapping with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "label": "spacr.pipeline_v2.run_v2#19",
+      "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
+      "translation": "``mapper`` (:class:`FilenameMapper`), ``stacks`` (:class:`StackFile` की सूची) और ``dst`` (``merged/`` का Path) वाला डिक्शनरी। कैलिब्रेटेड आउटपुट अपने अलग ``output_root`` का नाम भी देता है; इसकी float32 डिस्प्ले तीव्रताएं संरेखित और गैर-मात्रात्मक हैं तथा कभी Measure का इनपुट नहीं हैं। चिह्नयुक्त वैध-ROI float32 डायग्नोस्टिक्स ``output_root/signed`` में रहते हैं; इसका अनुप्रयोग रिकॉर्ड दोनों आर्टिफ़ैक्ट को बांधता है और त्रुटि पर अधूरा रहता है।"
+    },
+    {
+      "context": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "label": "spacr.pipeline_v2.run_v2#2",
+      "source": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
+      "source_sha256": "32497cd2f7a39cb16cc8bd9ece2c889feec97557d9519993bd6dc78d500ea06e",
+      "translation": "मूल चित्रों वाला प्लेट फ़ोल्डर, जिसमें उपफ़ोल्डरों में जाए बिना खोज होती है। सामान्यतः मैपिंग CSV यहां और आउटपुट ``<src>/merged`` में जाता है। कैलिब्रेटेड रन इसके बजाय नया ``calibrated_segmentation`` आउटपुट फ़ोल्डर उपयोग करते हैं और स्रोत मेटाडेटा तथा मौजूदा मर्ज किए गए ऐरे सुरक्षित रखते हैं। पहले से उपयोग किए गए नामों में संख्यात्मक प्रत्यय जुड़ता है; कैलिब्रेटेड परिणाम कभी फिर से शुरू नहीं किए जाते।"
+    },
+    {
+      "context": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the image data channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one image layer, and an empty sequence falls back to image layer 0. Calibrated runs require explicit in-range positions instead.",
+      "label": "spacr.pipeline_v2.run_v2#6",
+      "source": "despite the name this never reaches Cellpose's ``channels=`` argument; it selects C-axis indices from the assembled stack, taken modulo the channel count (7 with C=4 becomes 3) and de-duplicated in order. The default ``(0, 0)`` collapses to one plane, and an empty sequence falls back to plane 0. Calibrated runs require explicit in-range positions instead.",
+      "source_sha256": "c524ea4699990bbb4402575844ac37ae428300fa1133dd0000d84defe252673e",
+      "translation": "नाम के बावजूद यह कभी Cellpose के ``channels=`` आर्ग्युमेंट तक नहीं पहुंचता; यह संयोजित स्टैक से C-अक्ष इंडेक्स चुनता है, चैनलों की संख्या से मॉड्यूलो लेता है (7, C=4 होने पर, 3 बनता है) और क्रम बनाए रखते हुए दोहराव हटाता है। डिफ़ॉल्ट ``(0, 0)`` एक प्लेन में सिमटता है और खाली अनुक्रम प्लेन 0 पर लौटता है। कैलिब्रेटेड रन में इसके बजाय सीमा के भीतर स्पष्ट स्थितियां आवश्यक हैं।"
+    },
+    {
+      "context": "microscope fields of view loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask image data channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this microscope field of view count when a batch refuses.",
+      "label": "spacr.pipeline_v2.run_v2#8",
+      "source": "fields loaded and segmented per batch, the memory-versus-speed dial. ``0`` raises ``ValueError``; a negative value segments nothing at all, yet ``channel_order.json`` is still rewritten to claim a mask channel that no stack received. Calibrated batches are additionally bounded to ``64 * 1024**2`` packed input or padded model-input values; lower this field count when a batch refuses.",
+      "source_sha256": "dbc0d79ba95deb75eccae01a5443cd411a37382a95f95ee5a595aeeaa49cc7a8",
+      "translation": "प्रति बैच लोड और सेगमेंट किए जाने वाले इमेज फ़ील्ड; यह मेमोरी और गति का संतुलन नियंत्रित करता है। ``0`` से ``ValueError`` उठता है; ऋणात्मक मान पर कोई सेगमेंटेशन नहीं होता, फिर भी ``channel_order.json`` दोबारा लिखा जाता है और ऐसे मास्क चैनल का दावा करता है जो किसी स्टैक को नहीं मिला। कैलिब्रेटेड बैच अतिरिक्त रूप से ``64 * 1024**2`` पैक किए गए इनपुट या पैड किए गए मॉडल-इनपुट मानों तक सीमित हैं; बैच अस्वीकृत होने पर फ़ील्ड की यह संख्या घटाएं।"
+    },
+    {
+      "context": "optional captured PSF session. Unmixes each whole microscope field of view first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image data channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid extracted image region for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display image data channels in its separate output tree, with signed extracted image regions under ``signed/``. These display image data channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#10",
+      "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
+      "translation": "वैकल्पिक कैप्चर किया हुआ PSF सत्र। अनमिक्सिंग चालू होने पर पहले हर पूरे इमेज फ़ील्ड की अनमिक्सिंग करता है, फिर इल्यूमिनेशन के बाद तथा नॉर्मलाइज़ेशन, पैडिंग या Cellpose से पहले चुनी तीव्रताओं को प्रोसेस करता है। संग्रहीत इमेज चैनल रॉ रहते हैं; केवल जोड़े गए लेबल PSF प्रोसेसिंग पर निर्भर करते हैं। कैलिब्रेटेड सत्र इसके बजाय गैर-ऋणात्मक सेगमेंटेशन दृश्य के लिए चिह्नयुक्त वैध क्रॉप देता है, लेबल संदर्भ कैनवस पर लौटाता है और अपने अलग आउटपुट ट्री में अलग गैर-मात्रात्मक float32 डिस्प्ले चैनल रखता है; चिह्नयुक्त क्रॉप ``signed/`` में रहते हैं। ये डिस्प्ले चैनल Measure के इनपुट नहीं हैं; कैलिब्रेटेड आउटपुट फिर से शुरू नहीं किए जा सकते और पूर्ण होने के लिए डिस्प्ले तथा चिह्नयुक्त दोनों फ़ाइलों का स्थायी रूप से लिखा होना आवश्यक है।"
+    },
+    {
+      "context": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the image data channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single image layer, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected image data channel is the object's own image data channel for absolute mean-intensity filtering.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#3",
+      "source": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single plane, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected channel is the object's own channel for absolute mean-intensity filtering.",
+      "source_sha256": "1a0a26e45cb6a58d915f24d336fa8f126eb1b94fff7fee1583a0c02846d19bac",
+      "translation": "प्रत्येक संयोजित स्टैक को Cellpose को देने से पहले चुने गए C-अक्ष इंडेक्स — चैनल संख्या से मॉड्यूलो लेकर क्रम में दोहराव हटाया जाता है। यह Cellpose के ``channels=`` आर्ग्युमेंट में नहीं भेजा जाता; इसलिए ``[0, 0]`` एक प्लेन देता है, ग्रेस्केल जोड़ी नहीं। कैलिब्रेटेड सत्र में इसके बजाय सीमा के भीतर स्पष्ट स्थितियां आवश्यक हैं। पहला चुना चैनल निरपेक्ष औसत-तीव्रता फ़िल्टरिंग के लिए ऑब्जेक्ट का अपना चैनल है।"
+    },
+    {
+      "context": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#5",
+      "source": "how many field stacks to load into memory at once. Larger = faster but more RAM. Calibrated batches refuse above ``64 * 1024**2`` packed input or padded model-input values.",
+      "source_sha256": "f6637bca1ad9eef842e8ad6c1a763f224dd5f773d83d35e7065f7ce33c86d753",
+      "translation": "एक बार में कितने इमेज फ़ील्ड स्टैक मेमोरी में लोड हों। अधिक = तेज़, लेकिन अधिक RAM। ``64 * 1024**2`` पैक किए गए इनपुट या पैड किए गए मॉडल-इनपुट मानों से ऊपर कैलिब्रेटेड बैच अस्वीकार होते हैं।"
+    },
+    {
+      "context": "mapping CSV destination, defaulting to the source folder.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#7",
+      "source": "mapping CSV destination, defaulting to the source folder.",
+      "source_sha256": "db73a696812f8916160c765fdb69f1f0c0c8c7f6fb25f86271c0004a09bc9973",
+      "translation": "मैपिंग CSV का गंतव्य, डिफ़ॉल्ट रूप से स्रोत फ़ोल्डर।"
+    },
+    {
+      "context": "preserve numeric image layers and refuse missing, duplicate, non-2D or oversized image data channels for the separate calibrated route.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#8",
+      "source": "preserve numeric planes and refuse missing, duplicate, non-2D or oversized channels for the separate calibrated route.",
+      "source_sha256": "7654cd11cdcd02e22beb8701729084fcf9af61c89c6964f74e2964cbab2b811a",
+      "translation": "संख्यात्मक प्लेन सुरक्षित रखें और अलग कैलिब्रेटेड मार्ग में गायब, दोहराए गए, गैर-2D या अत्यधिक बड़े चैनल अस्वीकार करें।"
+    },
+    {
+      "context": "list of :class:`StackFile`, one per field written.",
+      "label": "spacr.pipeline_v2.stream_originals_to_stack#9",
+      "source": "list of :class:`StackFile`, one per field written.",
+      "source_sha256": "e1e8de21694973f15d2f0c287a54f3febd75773ce12f4e0c44f9877527262e4a",
+      "translation": "सूची :class:`StackFile`, प्रत्येक फ़ील्ड के लिए एक लिखा गया है।"
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact calibrated batch segmentation source/context contracts. Existing translations are rebound only where source/context and target remain unchanged. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "72dcad65236d3628d30caa99b8c06f4cc895744b"
+}

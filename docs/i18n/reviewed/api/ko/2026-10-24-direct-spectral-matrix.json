@@ -1,0 +1,44 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "block_index": 19,
+      "context": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a key-value mapping naming the microscope fields of view analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display image layers and reference-canvas masks; original raw image data channels are unchanged and Measure refuses those calibrated outputs. Optional ``unmix_matrix_file`` supplies an explicit normalized camera- signal matrix for the calibrated single-laboratory microplate 2D cell V2 route, instead of control estimation. Its acquisition compatibility is an unverified user assertion; its exact matrix and calibration binding are recorded.",
+      "label": "spacr.core.preprocess_generate_masks#19",
+      "source": "``None`` on a normal run, having written masks, overlays, ``measurements.db`` counts and settings CSVs into subfolders of ``src``. When ``dry_run`` is set, returns instead the list of problems from :func:`spacr.validate.run_preflight`. When ``watch_folder`` is set, returns a dict naming the fields analysed, failed and never completed when the watch ends. Calibrated V2 segmentation instead writes a separate dataset with nonquantitative aligned display planes and reference-canvas masks; original raw channels are unchanged and Measure refuses those calibrated outputs. Optional ``unmix_matrix_file`` supplies an explicit normalized camera- signal matrix for the calibrated single-plate 2D cell V2 route, instead of control estimation. Its acquisition compatibility is an unverified user assertion; its exact matrix and calibration binding are recorded.",
+      "source_sha256": "1fe7a9d7e2200a16fc949800cca05983b7c75e0601787b5a9903c5f5669370e8",
+      "symbol": "spacr.core.preprocess_generate_masks",
+      "translation": "``None``을 일반 실행에서 반환하며, 이때 마스크, 오버레이, ``measurements.db`` 개수 및 설정 CSV는 ``src`` 하위 폴더에 기록되어 있습니다. ``dry_run``이 설정되면 대신 :func:`spacr.validate.run_preflight`의 문제 목록을 반환합니다. ``watch_folder``가 설정되면 감시 종료 시 분석된 이미지 필드, 실패한 필드, 완료되지 않은 필드를 명시하는 딕셔너리를 반환합니다. 보정된 V2 분할은 비정량적 정렬 표시 평면과 참조 캔버스 마스크를 포함한 별도 데이터셋을 씁니다. 원래 원시 채널은 변경되지 않으며 Measure는 이러한 보정 출력을 거부합니다. 선택적 ``unmix_matrix_file``은 대조군 추정 대신 보정된 단일 플레이트 2D 세포 V2 경로에 명시적인 정규화 카메라 신호 행렬을 제공합니다. 획득 호환성은 검증되지 않은 사용자 주장입니다. 정확한 행렬과 보정 연결 정보가 기록됩니다."
+    },
+    {
+      "block_index": 20,
+      "context": "A nonempty ``unmix_matrix_file`` in ``postprocess_settings`` supplies a version-1 JSON matrix instead of estimating one. This requires calibrated organized 2D cell V2 processing, no control microplate sample positions, and ``unmix_per_plate=False``. Its physical channels must match the packed order exactly; no transpose, channel reordering or diagonal renormalization is inferred. ``matrix[i][j]`` is the camera reading in row-channel ``i`` per unit of the dye measured in its own column-channel ``j``. The diagonal is exactly one; outputs retain camera-linear units and signed residuals, not calibrated concentrations. For physical order ``[3, 1]``, the file has exactly these structured-data names",
+      "label": "spacr.pipeline_v2.run_v2#20",
+      "source": "A nonempty ``unmix_matrix_file`` in ``postprocess_settings`` supplies a version-1 JSON matrix instead of estimating one. This requires calibrated organized 2D cell V2 processing, no control wells, and ``unmix_per_plate=False``. Its physical channels must match the packed order exactly; no transpose, channel reordering or diagonal renormalization is inferred. ``matrix[i][j]`` is the camera reading in row-channel ``i`` per unit of the dye measured in its own column-channel ``j``. The diagonal is exactly one; outputs retain camera-linear units and signed residuals, not calibrated concentrations. For physical order ``[3, 1]``, the file has exactly these keys",
+      "source_sha256": "82d81e5b85fe3b1f198a6bf80305c66c191e4c45a55d74e82c744680fb8ea533",
+      "symbol": "spacr.pipeline_v2.run_v2",
+      "translation": "비어 있지 않은 ``unmix_matrix_file``은 ``postprocess_settings``에서 행렬을 추정하는 대신 버전 1 JSON 행렬을 제공합니다. 보정된 체계적 2D 세포 V2 처리, 대조 웰 없음, ``unmix_per_plate=False``가 필요합니다. 물리적 채널은 패킹된 순서와 정확히 일치해야 하며, 전치, 채널 재정렬 또는 대각선 재정규화는 추론하지 않습니다. ``matrix[i][j]``는 행 채널 ``i``의 카메라 판독값으로, 염료 자체의 열 채널 ``j``에서 측정한 염료 한 단위에 해당합니다. 대각선은 정확히 1입니다. 출력은 보정된 농도가 아닌 카메라 선형 단위와 부호 있는 잔차를 유지합니다. 물리적 순서 ``[3, 1]``의 파일에는 정확히 다음 키가 있습니다"
+    },
+    {
+      "block_index": 21,
+      "context": "Replace the example calibration hash with 64 lowercase hexadecimal digits. Background percentile must equal ``unmix_background_percentile``. Laboratory microplate, time and Z must equal every mapped microscope field of view's exact acquisition IDs, including their string or integer types; an absent time or Z uses the empty string. This supplied-file route requires POSIX descriptor-relative access without symbolic links; unsupported platforms refuse before creating outputs. The acquisition-compatibility token is an unverified user assertion: unknown gains, exposures and response remain unknown. The file is captured before outputs and copied byte-for-byte into ``psf/spectral_matrix_input.json``. Signed-cell readers validate that copied bundle and never depend on the original external path. An empty path preserves control-estimation behavior.",
+      "label": "spacr.pipeline_v2.run_v2#21",
+      "source": "Replace the example calibration hash with 64 lowercase hexadecimal digits. Background percentile must equal ``unmix_background_percentile``. Plate, time and Z must equal every mapped field's exact acquisition IDs, including their string or integer types; an absent time or Z uses the empty string. This supplied-file route requires POSIX descriptor-relative access without symbolic links; unsupported platforms refuse before creating outputs. The acquisition-compatibility token is an unverified user assertion: unknown gains, exposures and response remain unknown. The file is captured before outputs and copied byte-for-byte into ``psf/spectral_matrix_input.json``. Signed-cell readers validate that copied bundle and never depend on the original external path. An empty path preserves control-estimation behavior.",
+      "source_sha256": "40ef111fb406461ba7219c4f1c8e377f3f143c1fa4ee73442a5f74700baf1661",
+      "symbol": "spacr.pipeline_v2.run_v2",
+      "translation": "예제 보정 해시를 소문자 16진수 64자리로 바꾸세요. 배경 백분위수는 ``unmix_background_percentile``과 같아야 합니다. 플레이트, 시간, Z는 매핑된 모든 이미지 필드의 정확한 획득 ID와 일치해야 하며 문자열 또는 정수 유형도 일치해야 합니다. 시간 또는 Z가 없으면 빈 문자열을 사용합니다. 이 제공 파일 경로에는 심볼릭 링크 없는 POSIX 디스크립터 상대 접근이 필요합니다. 지원되지 않는 플랫폼은 출력을 만들기 전에 거부합니다. 획득 호환성 토큰은 검증되지 않은 사용자 주장입니다. 알 수 없는 게인, 노출 및 응답은 계속 알 수 없는 상태입니다. 파일은 출력 전에 캡처되어 ``psf/spectral_matrix_input.json``에 바이트 단위로 동일하게 복사됩니다. 부호 있는 세포 데이터 리더는 이 복사된 번들을 검증하며 원래 외부 경로에 의존하지 않습니다. 빈 경로는 대조군 추정 동작을 유지합니다."
+    },
+    {
+      "block_index": 22,
+      "context": "from :meth:`FilenameMapper.discover` when ``src`` holds no images, when ``metadata_type=\"custom\"`` has no ``custom_regex``, or from ``batch_fields=0``.",
+      "label": "spacr.pipeline_v2.run_v2#22",
+      "source": "from :meth:`FilenameMapper.discover` when ``src`` holds no images, when ``metadata_type=\"custom\"`` has no ``custom_regex``, or from ``batch_fields=0``.",
+      "source_sha256": "9b53789529892bd33e716163f177cc1801a303f3c968e2b641ad3260638be306",
+      "symbol": "spacr.pipeline_v2.run_v2",
+      "translation": ":meth:`FilenameMapper.discover`에서 ``src``이 이미지를 보유하지 않는 경우, ``metadata_type=\"custom\"``이 ``custom_regex``이 없는 경우 또는 ``batch_fields=0``에서."
+    }
+  ],
+  "review_method": "AI technical authoring and independent AI technical/language peer review against exact source/context; unchanged moved blocks reuse exact pinned source/context-bound translations. No human or native-speaker signoff.",
+  "schema": 1,
+  "source_revision": "e8ed95ff195dd7b66d08b494f657e07f37321256"
+}

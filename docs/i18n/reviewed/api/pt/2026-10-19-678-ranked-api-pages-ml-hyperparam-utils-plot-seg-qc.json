@@ -2738,7 +2738,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Pass ``dst`` to keep the figure in a specific run folder. When omitted, the function uses the screen-level ``results`` folder derived from ``count_data`` for compatibility with direct notebook and script calls.",
       "source_sha256": "605dfcb6fc96142312d8bab1567cb86cafc47579bbc12a575e41088c413fc160",
-      "translation": "Passe ``dst`` para manter a figura em uma pasta de execução específica. Quando omitido, a função usa a pasta ``results`` de nível superior derivada de ``count_data``, por compatibilidade com chamadas diretas em notebooks e scripts."
+      "translation": "Passe ``dst`` para manter a figura em uma pasta de execução específica. Quando omitido, a função usa a pasta ``results`` da triagem, derivada de ``count_data``, por compatibilidade com chamadas diretas em notebooks e scripts."
     },
     {
       "context": "Requires ``score_data`` (CSV path or list of paths), ``dependent_variable``, ``tolerance`` (int percent or float fraction) and ``min_cells_per_well``. ``count_data`` is needed only when ``dst`` is left unset, and only to locate the figure.",
@@ -5692,7 +5692,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "One colour scale is shared across the plates, so the same colour means the same number on every plate. A well that was never measured is drawn as a neutral wash and left out of the scale; drawing it as zero would, on a screen with 155 of 384 wells used, fill more than half the panel and set the bottom of the scale.",
       "source_sha256": "ee3160c44ae1036f088726394fba3623f3edebdfdefaf12faa124023d7085f95",
-      "translation": "Uma única escala de cores é compartilhada entre as placas, de modo que a mesma cor significa o mesmo número em todas elas. Um poço que nunca foi medido é desenhado com um tom neutro e fica fora da escala; desenhá-lo como zero, em um experimento que usa 155 de 384 poços, preencheria mais da metade do painel e definiria o piso da escala."
+      "translation": "Uma única escala de cores é compartilhada entre as placas, de modo que a mesma cor significa o mesmo número em todas elas. Um poço que nunca foi medido é desenhado com um tom neutro e fica fora da escala; desenhá-lo como zero, em uma triagem que usa 155 de 384 poços, preencheria mais da metade do painel e definiria o piso da escala."
     },
     {
       "context": "Long-format DataFrame with a ``prc`` column of the form ``plateID_rowID_columnID`` and the column named by ``variable``.",
@@ -6420,7 +6420,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Below :data:`spacr.figures.stats.MIN_N_FOR_ASSUMPTIONS` observations in the smallest group the result is ``(nan, nan)``. On three replicates Levene has almost no power, so \"p = 0.7, variances are equal\" means \"we could not tell\", and printing 0.7 into a results table invites exactly the reading that publishes a difference that is not there.",
       "source_sha256": "9c57568b755214e01df7c510ed541f85e299613ef6fb9354655a4577fa969db3",
-      "translation": "Abaixo de :data:`spacr.figures.stats.MIN_N_FOR_ASSUMPTIONS` observações no menor grupo, o resultado é ``(nan, nan)``. Com três réplicas, o teste de Levene quase não tem potência estatística, então \"p = 0.7, variances are equal\" (variâncias iguais) significa \"we could not tell\" (não foi possível saber), e imprimir 0.7 em uma tabela de resultados convida exatamente à leitura que leva a publicar uma diferença que não existe."
+      "translation": "Abaixo de :data:`spacr.figures.stats.MIN_N_FOR_ASSUMPTIONS` observações no menor grupo, o resultado é ``(nan, nan)``. Com três réplicas, o teste de Levene quase não tem poder estatístico, então \"p = 0.7, variances are equal\" (variâncias iguais) significa \"we could not tell\" (não foi possível saber), e imprimir 0.7 em uma tabela de resultados convida exatamente à leitura que leva a publicar uma diferença que não existe."
     },
     {
       "context": "Groups to compare.",
@@ -6476,7 +6476,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Outcome of the normality check, which selects the family of test: True runs Tukey HSD, False runs Dunn's test with an automatically chosen p-adjustment. It only matters when post-hoc testing runs at all — see ``unique_groups``. It must be the verdict :meth:`perform_normality_tests` returned, which is :func:`spacr.figures.stats.check_normality`'s. A hand-computed one puts the omnibus test and the pairwise tests on different footing — Kruskal-Wallis across the groups followed by Tukey between them is two different assumptions about one dataset — and it is how the power floor gets bypassed: three replicates buy Dunn's, not Tukey.",
       "source_sha256": "d720afbbc4973d35c75c50b229ffa5658464e1226a7d4e100b5867d48e041afa",
-      "translation": "Resultado da verificação de normalidade, que seleciona a família do teste: True executa Tukey HSD, False executa o teste de Dunn com um ajuste de p escolhido automaticamente. Só importa quando o teste post hoc chega a ser executado — consulte ``unique_groups``. Deve ser o veredito que :meth:`perform_normality_tests` retornou, que é o de :func:`spacr.figures.stats.check_normality`. Um veredito calculado à mão coloca o teste global e os testes par a par em bases diferentes — Kruskal-Wallis entre os grupos seguido de Tukey entre eles são duas suposições diferentes sobre um mesmo conjunto de dados —, e é assim que o piso de potência estatística é contornado: três réplicas dão direito ao teste de Dunn, não ao de Tukey."
+      "translation": "Resultado da verificação de normalidade, que seleciona a família do teste: True executa Tukey HSD, False executa o teste de Dunn com um ajuste de p escolhido automaticamente. Só importa quando o teste post hoc chega a ser executado — consulte ``unique_groups``. Deve ser o veredito que :meth:`perform_normality_tests` retornou, que é o de :func:`spacr.figures.stats.check_normality`. Um veredito calculado à mão coloca o teste global e os testes par a par em bases diferentes — Kruskal-Wallis entre os grupos seguido de Tukey entre eles são duas suposições diferentes sobre um mesmo conjunto de dados —, e é assim que o piso de poder estatístico é contornado: três réplicas dão direito ao teste de Dunn, não ao de Tukey."
     },
     {
       "context": "The distinct group labels. Only its *length* is read; the comparisons themselves are rebuilt from ``self.df[self.grouping_column]``, so reordering or renaming entries has no effect. Fewer than three groups returns an empty list, as does ``self.all_to_all`` being False, because pairwise correction is meaningless for a single comparison.",

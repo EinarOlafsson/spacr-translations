@@ -4336,7 +4336,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "**Benchmarks are only comparable inside one field set.** A model's score on your three fields does not predict its score on somebody else's, and a table that sorts the two together produces a ranking of two unrelated numbers. So every :class:`BenchmarkResult` records a :func:`fieldset_id` — a hash of the actual pixels, not the folder name — and :func:`rank` **raises** :class:`IncomparableBenchmarks` when handed results from more than one field set. :func:`rank_groups` and :func:`format_benchmarks` are the supported alternative: they group by field set, rank within each group, and label the groups.",
       "source_sha256": "931a8364df621f798947374ceb9688ee322f7cb13d59ba474af4806f542f4bb9",
-      "translation": "**Prestandatester är bara jämförbara inom en uppsättning synfält.** En modells poäng på dina tre synfält förutsäger inte dess poäng på någon annans, och en tabell som sorterar de två tillsammans ger en rangordning av två orelaterade tal. Därför registrerar varje :class:`BenchmarkResult` ett :func:`fieldset_id` — en hash av de faktiska pixlarna, inte mappnamnet — och :func:`rank` **utlöser** :class:`IncomparableBenchmarks` när den får resultat från mer än en uppsättning synfält. :func:`rank_groups` och :func:`format_benchmarks` är det stödda alternativet: de grupperar efter uppsättning synfält, rangordnar inom varje grupp och märker grupperna."
+      "translation": "**Prestandatester är bara jämförbara inom en uppsättning bildfält.** En modells poäng på dina tre bildfält förutsäger inte dess poäng på någon annans, och en tabell som sorterar de två tillsammans ger en rangordning av två orelaterade tal. Därför registrerar varje :class:`BenchmarkResult` ett :func:`fieldset_id` — en hash av de faktiska pixlarna, inte mappnamnet — och :func:`rank` **utlöser** :class:`IncomparableBenchmarks` när den får resultat från mer än en uppsättning bildfält. :func:`rank_groups` och :func:`format_benchmarks` är det stödda alternativet: de grupperar efter uppsättning bildfält, rangordnar inom varje grupp och märker grupperna."
     },
     {
       "context": "A model file that is missing, empty, or not a torch checkpoint at all fails in :func:`inspect_checkpoint` with a message naming the file, before anything tries to load it. The default failure — a ``KeyError`` on a state-dictionary entry name from deep inside torch — names nothing the user chose.",
@@ -4360,7 +4360,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "There is no ground truth here. :func:`benchmark` runs one model over N fields and reports what came out: object counts, timings and the :mod:`spacr.seg_qc` verdict per field (fused? shattered? empty? all on the border?). That is a *quality-control* score, not an accuracy — it can tell you a model collapsed on your data, it cannot tell you which of two plausible segmentations is right. :data:`RANK_KEYS` therefore offers exactly two keys, ``'qc'`` and ``'seconds'``, and no key that would read as accuracy. To compare two models against each other, use :func:`compare_entries`, which hands both to :func:`spacr.model_compare.compare_models` — the A/B harness that is explicit about neither side being the truth.",
       "source_sha256": "d95766e1ea9048659932fff4f63644469f3f4e43a89105f9d9326ab788b68681",
-      "translation": "Det finns ingen facit här. :func:`benchmark` kör en modell över N synfält och rapporterar vad som kom ut: objektantal, tidsåtgång och utlåtandet från :mod:`spacr.seg_qc` per synfält (sammanslaget? sönderslaget? tomt? allt vid kanten?). Det är en poäng för *kvalitetskontroll*, inte en noggrannhet — den kan tala om för dig att en modell kollapsade på dina data, men den kan inte avgöra vilken av två rimliga segmenteringar som är rätt. :data:`RANK_KEYS` erbjuder därför exakt två nycklar, ``'qc'`` och ``'seconds'``, och ingen nyckel som skulle kunna läsas som noggrannhet. För att jämföra två modeller mot varandra, använd :func:`compare_entries`, som lämnar båda till :func:`spacr.model_compare.compare_models` — den A/B-testrigg som uttryckligen anger att ingen av sidorna är facit."
+      "translation": "Det finns ingen facit här. :func:`benchmark` kör en modell över N bildfält och rapporterar vad som kom ut: objektantal, tidsåtgång och utlåtandet från :mod:`spacr.seg_qc` per bildfält (sammanslaget? sönderslaget? tomt? allt vid kanten?). Det är en poäng för *kvalitetskontroll*, inte en noggrannhet — den kan tala om för dig att en modell kollapsade på dina data, men den kan inte avgöra vilken av två rimliga segmenteringar som är rätt. :data:`RANK_KEYS` erbjuder därför exakt två nycklar, ``'qc'`` och ``'seconds'``, och ingen nyckel som skulle kunna läsas som noggrannhet. För att jämföra två modeller mot varandra, använd :func:`compare_entries`, som lämnar båda till :func:`spacr.model_compare.compare_models` — den A/B-testrigg som uttryckligen anger att ingen av sidorna är facit."
     },
     {
       "context": "Cellpose 4 accepts and ignores ``model_type``, ``diam_mean``, ``nchan``, ``channels`` and ``rescale``; only ``diameter`` at ``eval`` still changes the masks. :class:`BenchmarkResult` carries the resolved ``honoured`` and ``ignored`` parameter key-value mappings straight from :class:`spacr.model_compare.ModelConfig` so a benchmark cannot silently be a benchmark of settings nothing read.",
@@ -4456,7 +4456,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "One model over one field set. Only comparable to results on the *same* set.",
       "source_sha256": "362ee447b8900e5d4ca3180d75fd0f433cf8efe17c940f3a733ba6d23cf2c6d5",
-      "translation": "En modell över en uppsättning synfält. Endast jämförbart med resultat på *samma* uppsättning."
+      "translation": "En modell över en uppsättning bildfält. Endast jämförbart med resultat på *samma* uppsättning."
     },
     {
       "context": "the model that ran.",
@@ -4472,7 +4472,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "the source fields, likewise.",
       "source_sha256": "bde4dfefe395e91a3190a4e7b01df3dd0a32d28b5fc3d91481aa975284c9113e",
-      "translation": "källsynfälten, på samma sätt."
+      "translation": "källbildfälten, på samma sätt."
     },
     {
       "context": "what was segmented.",
@@ -4488,7 +4488,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": ":func:`fieldset_id` of the images — a hash of the pixels, so two runs over the same three fields share it and two runs over different fields never do, whatever the folders were called.",
       "source_sha256": "ab671752ba4b0dceee18fde2eee760acc38db891293e5bfa2d0846174ffec840",
-      "translation": ":func:`fieldset_id` för bilderna — en hash av pixlarna, så att två körningar över samma tre synfält delar den och två körningar över olika synfält aldrig gör det, oavsett vad mapparna hette."
+      "translation": ":func:`fieldset_id` för bilderna — en hash av pixlarna, så att två körningar över samma tre bildfält delar den och två körningar över olika bildfält aldrig gör det, oavsett vad mapparna hette."
     },
     {
       "context": "an easy-to-read description of the field set: the field count, the source folder and the first field names.",
@@ -4496,7 +4496,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "a human-readable description of the field set: the field count, the source folder and the first field names.",
       "source_sha256": "99a8553f46295b8cfcb696a36edd7a4f2039318e5a14c7379811f1dd33a5dd89",
-      "translation": "en läsbar beskrivning av uppsättningen synfält: antalet synfält, källmappen och de första synfältens namn."
+      "translation": "en läsbar beskrivning av uppsättningen bildfält: antalet bildfält, källmappen och de första bildfältens namn."
     },
     {
       "context": "one :class:`FieldBenchmark` per field, in field order.",
@@ -4504,7 +4504,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "one :class:`FieldBenchmark` per field, in field order.",
       "source_sha256": "5636e50842f2d41b79e7aae7d28777fb4e073cb98d3a6950ed8f2da51a522c5a",
-      "translation": "en :class:`FieldBenchmark` per synfält, i synfältsordning."
+      "translation": "en :class:`FieldBenchmark` per bildfält, i bildfältsordning."
     },
     {
       "context": "wall-clock seconds the model spent segmenting.",
@@ -4552,7 +4552,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Every field this model was benchmarked on.",
       "source_sha256": "ce55971c19887a66c0a10b3d83ff63bad5450d78a3277376060cbffc355e24a8",
-      "translation": "Varje synfält som denna modell prestandatestades på."
+      "translation": "Varje bildfält som denna modell prestandatestades på."
     },
     {
       "context": "the field names.",
@@ -4560,7 +4560,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "the field names.",
       "source_sha256": "5ad69ed468d2dc47008e7f5765872b0ebebbf2083af18f3a15ad134ee6b32c60",
-      "translation": "synfältens namn."
+      "translation": "bildfältens namn."
     },
     {
       "context": "Objects per microscope field of view.",
@@ -4568,7 +4568,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Objects per field.",
       "source_sha256": "41676f8d022ba2895546830ed866b35b8978adc18d8e3de37ad24e3a4f4b9302",
-      "translation": "Objekt per synfält."
+      "translation": "Objekt per bildfält."
     },
     {
       "context": "NaN rather than zero when nothing was benchmarked: no fields is a different statement from a model that found nothing.",
@@ -4576,7 +4576,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "NaN rather than zero when nothing was benchmarked: no fields is a different statement from a model that found nothing.",
       "source_sha256": "645830fbf6da9208c62fe7b1d400e84747da89dcf29ebbfb712d5933be03bcb5",
-      "translation": "NaN i stället för noll när inget prestandatestades: inga synfält är ett annat påstående än en modell som inte hittade något."
+      "translation": "NaN i stället för noll när inget prestandatestades: inga bildfält är ett annat påstående än en modell som inte hittade något."
     },
     {
       "context": "the mean, or NaN.",
@@ -4592,7 +4592,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Fields :mod:`spacr.seg_qc` scored ``'fail'``.",
       "source_sha256": "63901ee69e613e38202aa90eb35cde410c9f1fa8a6e4c608405acfac70610bfa",
-      "translation": "Synfält som :mod:`spacr.seg_qc` bedömde som ``'fail'``."
+      "translation": "Bildfält som :mod:`spacr.seg_qc` bedömde som ``'fail'``."
     },
     {
       "context": "How many fields were benchmarked.",
@@ -4600,7 +4600,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "How many fields were benchmarked.",
       "source_sha256": "07375a8fe3e7c5f704234d0ce05310eaa1f6f813b6973ba6d285a4ea23d50a02",
-      "translation": "Hur många synfält som prestandatestades."
+      "translation": "Hur många bildfält som prestandatestades."
     },
     {
       "context": "the field count.",
@@ -4608,7 +4608,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "the field count.",
       "source_sha256": "40c9f46ffd5bd14059bf6d465b0aa5c0d5edc09cb087e62efd7ae71737a342c5",
-      "translation": "antalet synfält."
+      "translation": "antalet bildfält."
     },
     {
       "context": "How many fields came back without a quality complaint.",
@@ -4616,7 +4616,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "How many fields came back without a quality complaint.",
       "source_sha256": "5833ec94eb7b9ddef2d21415dab07619ef49a8e70f5b753f9db39b55e7f1b18f",
-      "translation": "Hur många synfält som kom tillbaka utan kvalitetsanmärkning."
+      "translation": "Hur många bildfält som kom tillbaka utan kvalitetsanmärkning."
     },
     {
       "context": "the count of fields at severity ``ok``.",
@@ -4624,7 +4624,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "the count of fields at severity ``ok``.",
       "source_sha256": "bb0691ad9af16f3b69ef7ca9830aa60bd3d607bdaa9d2500d8c3588e5ec99f03",
-      "translation": "antalet synfält med allvarlighetsgraden ``ok``."
+      "translation": "antalet bildfält med allvarlighetsgraden ``ok``."
     },
     {
       "context": "Fraction of fields seg_qc scored ``'ok'``; ``nan`` without QC.",
@@ -4632,7 +4632,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Fraction of fields seg_qc scored ``'ok'``; ``nan`` without QC.",
       "source_sha256": "90bc87ae6bd2b0f362c13d5996a38a2b33d5a8c69081235c0a1e976178412b72",
-      "translation": "Andel synfält som seg_qc bedömde som ``'ok'``; ``nan`` utan QC."
+      "translation": "Andel bildfält som seg_qc bedömde som ``'ok'``; ``nan`` utan QC."
     },
     {
       "context": "A quality-control verdict on this model's own masks — it says the masks are not obviously broken, not that they are right. There is no ground truth in a benchmark (see the module docstring), so the zoo reports no accuracy score.",
@@ -4648,7 +4648,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The model, what it found, over how many fields, and its QC score.",
       "source_sha256": "f5c1e0e5accaad854343481af86a5b6845240970a680c010d69df4cbf637da0b",
-      "translation": "Modellen, vad den hittade, över hur många synfält, och dess QC-poäng."
+      "translation": "Modellen, vad den hittade, över hur många bildfält, och dess QC-poäng."
     },
     {
       "context": "a one-line summary.",
@@ -4664,7 +4664,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Every object the model found, across all fields.",
       "source_sha256": "cae787a9fb03f135230020d58a8f30901e7e4911e01a6dea722eaabea91d741b",
-      "translation": "Varje objekt som modellen hittade, över alla synfält."
+      "translation": "Varje objekt som modellen hittade, över alla bildfält."
     },
     {
       "context": "the object count.",
@@ -4696,7 +4696,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "One field's result for one model.",
       "source_sha256": "089267520ab09a8620f673a4f9e4bf71c0ac10c03af6b4899b10bef91bd1f75d",
-      "translation": "Ett synfälts resultat för en modell."
+      "translation": "Ett bildfälts resultat för en modell."
     },
     {
       "context": "the field name.",
@@ -4704,7 +4704,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "the field name.",
       "source_sha256": "03f813e76c3f68102b90005261093d189679e5309864615d4e746b9f1788d71d",
-      "translation": "synfältets namn."
+      "translation": "bildfältets namn."
     },
     {
       "context": "labels in the mask this model produced.",
@@ -4744,7 +4744,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Benchmarks from different field sets cannot be ranked against each other.",
       "source_sha256": "02d7fe5077edb37ed5f4d62e5c20b644631c79d51ec1f4603df7992a29eb353e",
-      "translation": "Prestandatester från olika uppsättningar synfält kan inte rangordnas mot varandra."
+      "translation": "Prestandatester från olika uppsättningar bildfält kan inte rangordnas mot varandra."
     },
     {
       "context": "Record of one model: its location, checksum and provenance.",
@@ -5024,7 +5024,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Run one model over N fields and report what came out. \"Test on 3 fields\".",
       "source_sha256": "e3cd8c31e890dfcd90e7f8f901b86925fdb8e74994eb0610a9a5ae549e1afdd6",
-      "translation": "Kör en modell över N synfält och rapportera vad som kom ut. \"Test on 3 fields\"."
+      "translation": "Kör en modell över N bildfält och rapportera vad som kom ut. \"Test on 3 fields\"."
     },
     {
       "context": "This is :mod:`spacr.model_compare`'s harness with one model instead of two: the same :func:`~spacr.model_compare.load_fields` reader, the same :class:`~spacr.model_compare.ModelConfig` (so the same arguments are honoured and the same ones reported as ignored), the same :func:`~spacr.model_compare.segment_with_cellpose` backend, and the same :mod:`spacr.seg_qc` scorecards. To put two models side by side use :func:`compare_entries`, which calls :func:`~spacr.model_compare.compare_models` proper.",
@@ -5064,7 +5064,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "index into the last axis for multi-channel fields.",
       "source_sha256": "fda008f247b325f98d38dd0366fca30c59d4d69537c3d0bdbe8b59a9ea877d87",
-      "translation": "index i den sista axeln för synfält med flera kanaler."
+      "translation": "index i den sista axeln för bildfält med flera kanaler."
     },
     {
       "context": "``fn(message, done, total)``.",
@@ -5096,7 +5096,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "when there is no field, or the model returned the wrong number of masks.",
       "source_sha256": "24f06be9e36a7b33fdbead7d80b619ff209ed3c2e4d84587d48c4a6fe08c2d35",
-      "translation": "när det inte finns något synfält, eller modellen returnerade fel antal masker."
+      "translation": "när det inte finns något bildfält, eller modellen returnerade fel antal masker."
     },
     {
       "context": "The checkpoint is checked before it is loaded, so a missing or corrupt file fails with its own name in the message rather than a torch ``KeyError``.",
@@ -5120,7 +5120,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "fields already in memory; None loads them from ``source``.",
       "source_sha256": "a7856eaeeeba42152eb1ff17f62b8ae68abfa1f693e6fe90cb451664a97ccfef",
-      "translation": "synfält som redan finns i minnet; None läser in dem från ``source``."
+      "translation": "bildfält som redan finns i minnet; None läser in dem från ``source``."
     },
     {
       "context": "a folder of fields (``.tif`` / ``.png`` / ``.npy`` / ``.npz``), read by :func:`spacr.model_compare.load_fields`.",
@@ -5128,7 +5128,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "a folder of fields (``.tif`` / ``.png`` / ``.npy`` / ``.npz``), read by :func:`spacr.model_compare.load_fields`.",
       "source_sha256": "af44e2935ffa2216643e0d9ffb3b01018e853e7e9f45a4c7e06e657a47b5005c",
-      "translation": "en mapp med synfält (``.tif`` / ``.png`` / ``.npy`` / ``.npz``), läst av :func:`spacr.model_compare.load_fields`."
+      "translation": "en mapp med bildfält (``.tif`` / ``.png`` / ``.npy`` / ``.npz``), läst av :func:`spacr.model_compare.load_fields`."
     },
     {
       "context": "how many fields to take from ``source``.",
@@ -5136,7 +5136,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "how many fields to take from ``source``.",
       "source_sha256": "297fe2c0632051a9c8ea25929fe4811759f19d4785208a3a034bff1349493027",
-      "translation": "hur många synfält som ska tas från ``source``."
+      "translation": "hur många bildfält som ska tas från ``source``."
     },
     {
       "context": "names for the rows.",
@@ -5280,7 +5280,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Compare two zoo entries on the same fields.",
       "source_sha256": "d0bac109138c4a0cae3fb3bc8e4fb45aa7509d247a2fcf674bf9027ba366a295",
-      "translation": "Jämför två poster i modellsamlingen på samma synfält."
+      "translation": "Jämför två poster i modellsamlingen på samma bildfält."
     },
     {
       "context": "Straight delegation to :func:`spacr.model_compare.compare_models` — the metrics, the split/merge attribution and the \"neither model is ground truth\" wording all come from there, unchanged. This function's only job is turning two :class:`ModelEntry` objects into two :class:`~spacr.model_compare.ModelConfig` objects.",
@@ -5328,7 +5328,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "fields already in memory; None loads them from ``source``.",
       "source_sha256": "a7856eaeeeba42152eb1ff17f62b8ae68abfa1f693e6fe90cb451664a97ccfef",
-      "translation": "synfält som redan finns i minnet; None läser in dem från ``source``."
+      "translation": "bildfält som redan finns i minnet; None läser in dem från ``source``."
     },
     {
       "context": "a folder of fields.",
@@ -5336,7 +5336,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "a folder of fields.",
       "source_sha256": "11529d08b9a76ee5394eccc09ce8dc2accbd68fdfc07afed96fe88acb776ffc2",
-      "translation": "en mapp med synfält."
+      "translation": "en mapp med bildfält."
     },
     {
       "context": "how many fields to take from ``source``.",
@@ -5344,7 +5344,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "how many fields to take from ``source``.",
       "source_sha256": "297fe2c0632051a9c8ea25929fe4811759f19d4785208a3a034bff1349493027",
-      "translation": "hur många synfält som ska tas från ``source``."
+      "translation": "hur många bildfält som ska tas från ``source``."
     },
     {
       "context": "names for the rows.",
@@ -5760,7 +5760,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "A stable id for a set of fields, taken from the **pixels**.",
       "source_sha256": "62b52fac206e4d10e67170c16e902b4eb93bb290dce06672f82bd7312d1dc06e",
-      "translation": "Ett stabilt id för en uppsättning synfält, hämtat från **pixlarna**."
+      "translation": "Ett stabilt id för en uppsättning bildfält, hämtat från **pixlarna**."
     },
     {
       "context": "Folder names are not identity: ``plate1/1`` on two machines is two different sets of images, and the same three images copied to a new folder are the same benchmark input. So the id hashes each array's bytes, shape and dtype together with its name.",
@@ -5776,7 +5776,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": ":func:`rank` uses this id to refuse results from different field sets; without it, benchmarks run on different data would be sorted together.",
       "source_sha256": "ffebc97f501f013aaaeb0e026fba3335a539bf448fdd8baf5fb09d623ad08989",
-      "translation": ":func:`rank` använder detta id för att vägra resultat från olika uppsättningar synfält; utan det skulle prestandatester som körts på olika data sorteras tillsammans."
+      "translation": ":func:`rank` använder detta id för att vägra resultat från olika uppsättningar bildfält; utan det skulle prestandatester som körts på olika data sorteras tillsammans."
     },
     {
       "context": "field names, in order.",
@@ -5784,7 +5784,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "field names, in order.",
       "source_sha256": "92069eed464f14897bc2f7d4a12658aebb49c256e1a68fef49a9b0fb1c24170c",
-      "translation": "synfältens namn, i ordning."
+      "translation": "bildfältens namn, i ordning."
     },
     {
       "context": "the arrays, in the same order.",
@@ -5808,7 +5808,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Render benchmarks **grouped by field set**, ranked only within a group.",
       "source_sha256": "b9897e10ef7cf158ccabe13ec3cbeec668ad4d04d148f5da61f929d2cd3fb051",
-      "translation": "Återge prestandatester **grupperade efter uppsättning synfält**, rangordnade endast inom en grupp."
+      "translation": "Återge prestandatester **grupperade efter uppsättning bildfält**, rangordnade endast inom en grupp."
     },
     {
       "context": "Two models benchmarked on different fields appear under two headers with a line saying the two blocks cannot be compared. This is the alternative to :func:`rank`'s refusal, and the only function in this module that shows results from different field sets together.",
@@ -5816,7 +5816,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Two models benchmarked on different fields appear under two headers with a line saying the two blocks cannot be compared. This is the alternative to :func:`rank`'s refusal, and the only function in this module that shows results from different field sets together.",
       "source_sha256": "5bfbf3fbadc5dc83e757bfd76d83f7ec9017089c509bfb2abe5c2d8932c1654e",
-      "translation": "Två modeller som prestandatestats på olika synfält visas under två rubriker med en rad som anger att de två blocken inte kan jämföras. Detta är alternativet till vägran i :func:`rank`, och den enda funktionen i denna modul som visar resultat från olika uppsättningar synfält tillsammans."
+      "translation": "Två modeller som prestandatestats på olika bildfält visas under två rubriker med en rad som anger att de två blocken inte kan jämföras. Detta är alternativet till vägran i :func:`rank`, och den enda funktionen i denna modul som visar resultat från olika uppsättningar bildfält tillsammans."
     },
     {
       "context": "benchmarks, from any number of field sets.",
@@ -5824,7 +5824,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "benchmarks, from any number of field sets.",
       "source_sha256": "e5bc0986008772b86aa5ce72b5ca0af5f410bb0192ac2c31715ebff36b033a2c",
-      "translation": "prestandatester, från valfritt antal uppsättningar synfält."
+      "translation": "prestandatester, från valfritt antal uppsättningar bildfält."
     },
     {
       "context": "one of :data:`RANK_KEYS`.",
@@ -5880,7 +5880,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Bucket benchmarks by the field set they ran on, first-seen order.",
       "source_sha256": "f22a7f5d4191e1776691c257c2947a41bd6695ddf3e0ffba9eb2a35df8f80648",
-      "translation": "Sortera prestandatester i grupper efter den uppsättning synfält de kördes på, i ordningen de först förekommer."
+      "translation": "Sortera prestandatester i grupper efter den uppsättning bildfält de kördes på, i ordningen de först förekommer."
     },
     {
       "context": "Performance benchmark results.",
@@ -6512,7 +6512,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Order benchmarks best-first — **within one field set only**.",
       "source_sha256": "733801703a6c71ba83a9a2d82a0275ef091d6a6b02e67f46b845c6425c7b0da8",
-      "translation": "Ordna prestandatester med det bästa först — **endast inom en uppsättning synfält**."
+      "translation": "Ordna prestandatester med det bästa först — **endast inom en uppsättning bildfält**."
     },
     {
       "context": "A model's numbers on your three fields say nothing about its numbers on somebody else's: different cell density, different exposure, different magnification. Sorting results from two field sets into one list would produce a ranking that looks valid but compares unrelated numbers, so this function raises instead.",
@@ -6520,7 +6520,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "A model's numbers on your three fields say nothing about its numbers on somebody else's: different cell density, different exposure, different magnification. Sorting results from two field sets into one list would produce a ranking that looks valid but compares unrelated numbers, so this function raises instead.",
       "source_sha256": "7a098d5dd9c9c939448239b84adeebe152bdf1668e0ae6525240283f73a3ae66",
-      "translation": "En modells siffror på dina tre synfält säger ingenting om dess siffror på någon annans: annan celltäthet, annan exponering, annan förstoring. Att sortera resultat från två uppsättningar synfält i en lista skulle ge en rangordning som ser giltig ut men jämför orelaterade tal, så denna funktion utlöser i stället ett undantag."
+      "translation": "En modells siffror på dina tre bildfält säger ingenting om dess siffror på någon annans: annan celltäthet, annan exponering, annan förstoring. Att sortera resultat från två uppsättningar bildfält i en lista skulle ge en rangordning som ser giltig ut men jämför orelaterade tal, så denna funktion utlöser i stället ett undantag."
     },
     {
       "context": "benchmarks, all from the same field set.",
@@ -6528,7 +6528,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "benchmarks, all from the same field set.",
       "source_sha256": "7980628a7445489efeefcb308f230e1172921b24e18fc77ac2895522ad5d1a00",
-      "translation": "prestandatester, alla från samma uppsättning synfält."
+      "translation": "prestandatester, alla från samma uppsättning bildfält."
     },
     {
       "context": "one of :data:`RANK_KEYS`.",
@@ -6552,7 +6552,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "when the results span more than one field set. Use :func:`rank_groups` or :func:`format_benchmarks`, which group and label instead.",
       "source_sha256": "f894f057fc1944ca0abb3864e1d29fbefec65fdf61810490ae6bea720e08bbb0",
-      "translation": "när resultaten spänner över mer än en uppsättning synfält. Använd :func:`rank_groups` eller :func:`format_benchmarks`, som i stället grupperar och märker."
+      "translation": "när resultaten spänner över mer än en uppsättning bildfält. Använd :func:`rank_groups` eller :func:`format_benchmarks`, som i stället grupperar och märker."
     },
     {
       "context": "on an unknown ``key``.",
@@ -6568,7 +6568,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Rank inside each field set, keeping the sets apart.",
       "source_sha256": "104438b0c236e696ef1f9a821af33c53663cfa3c0b1fc9aba18111dec0796626",
-      "translation": "Rangordna inom varje uppsättning synfält och håll uppsättningarna åtskilda."
+      "translation": "Rangordna inom varje uppsättning bildfält och håll uppsättningarna åtskilda."
     },
     {
       "context": "benchmarks from any number of field sets.",
@@ -6576,7 +6576,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "benchmarks from any number of field sets.",
       "source_sha256": "a8245bacfc42d2d7f9ae2f9388856a88c2a272dcc21e56f635a52f8f803e01f6",
-      "translation": "prestandatester från valfritt antal uppsättningar synfält."
+      "translation": "prestandatester från valfritt antal uppsättningar bildfält."
     },
     {
       "context": "one of :data:`RANK_KEYS`.",
@@ -6664,7 +6664,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The matched-stock export: the measurement, the stock model's value on the same fields and their difference, with the evaluation set and its counts. Values are copied from the entries, never recomputed. A model with no measurement still gets one row, whose ``state`` says so.",
       "source_sha256": "24254aec6c6fd82295bd076df1b0ddffedeccdc77db0eb1d79bcd9587893e3b7",
-      "translation": "Exporten med matchad standardmodell: mätningen, standardmodellens värde på samma synfält och deras skillnad, med utvärderingsuppsättningen och dess antal. Värdena kopieras från posterna och beräknas aldrig om. En modell utan mätning får ändå en rad, vars ``state`` anger detta."
+      "translation": "Exporten med matchad standardmodell: mätningen, standardmodellens värde på samma bildfält och deras skillnad, med utvärderingsuppsättningen och dess antal. Värdena kopieras från posterna och beräknas aldrig om. En modell utan mätning får ändå en rad, vars ``state`` anger detta."
     },
     {
       "context": "zoo rows; defaults to every builtin declaration, bound as the Model Zoo binds it.",
@@ -6760,7 +6760,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The network runs over tiles of ``tile`` pixels with ``halo`` pixels of context on every side, so a large field never needs the whole image on the network at once, and the three heads are stitched before :func:`mitonet_instances` turns them into labels. MitoNet was trained on electron micrographs with dark membranes; it is not a fluorescence model.",
       "source_sha256": "018aeef7dce7f0732242f19f59786e6377966c5666a5b9a347112bd5691db384",
-      "translation": "Nätverket körs över plattor om ``tile`` pixlar med ``halo`` pixlar sammanhang på varje sida, så att ett stort synfält aldrig behöver ha hela bilden i nätverket på en gång, och de tre huvudena sys ihop innan :func:`mitonet_instances` omvandlar dem till etiketter. MitoNet tränades på elektronmikroskopibilder med mörka membran; det är inte en fluorescensmodell."
+      "translation": "Nätverket körs över plattor om ``tile`` pixlar med ``halo`` pixlar sammanhang på varje sida, så att ett stort bildfält aldrig behöver ha hela bilden i nätverket på en gång, och de tre huvudena sys ihop innan :func:`mitonet_instances` omvandlar dem till etiketter. MitoNet tränades på elektronmikroskopibilder med mörka membran; det är inte en fluorescensmodell."
     },
     {
       "context": "called as ``on_tile(done, total)`` after each tile; an exception it raises stops the run.",
@@ -9096,7 +9096,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "One imaging field's identity — the key of every measurement row.",
       "source_sha256": "99cde70ef50f6892640acd4b98096504de0595a02f518f6d2bf4a339092c245c",
-      "translation": "Ett avbildningssynfälts identitet — nyckeln för varje mätrad."
+      "translation": "Ett avbildningsbildfälts identitet — nyckeln för varje mätrad."
     },
     {
       "context": "laboratory microplate identifier, escaped when composed into a microscope field of view structured-data name.",
@@ -9104,7 +9104,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "plate identifier, escaped when composed into a field key.",
       "source_sha256": "5a08f48c1e373d035d02c80ba24aee2573b0ad7a536c0b46455860c3cf70cc0d",
-      "translation": "plattidentifierare, escapad när den sätts samman till en synfältsnyckel."
+      "translation": "plattidentifierare, escapad när den sätts samman till en bildfältsnyckel."
     },
     {
       "context": "stored row component, normally ``r<N>`` but potentially a legacy positional-well passthrough.",
@@ -9120,7 +9120,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "canonical ``f<label>`` imaging-field component.",
       "source_sha256": "4a6d115b8dc2077ce700d2df65a3c93b37f8b64cf8969f936abe009fe395f9d7",
-      "translation": "kanonisk ``f<label>``-komponent för avbildningssynfältet."
+      "translation": "kanonisk ``f<label>``-komponent för avbildningsbildfältet."
     },
     {
       "context": "canonical ``t<label>`` timepoint component inserted after the field, or ``None`` outside a timelapse.",
@@ -9128,7 +9128,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "canonical ``t<label>`` timepoint component inserted after the field, or ``None`` outside a timelapse.",
       "source_sha256": "65cbe614bb315aac08852731f62a7b2ea2adff1667a704cc3561e232e10f55ad",
-      "translation": "kanonisk ``t<label>``-komponent för tidpunkt som infogas efter synfältet, eller ``None`` utanför en tidsserie."
+      "translation": "kanonisk ``t<label>``-komponent för tidpunkt som infogas efter bildfältet, eller ``None`` utanför en tidsserie."
     },
     {
       "context": "Construct from a microplate sample position string, or from a row and column.",
@@ -9160,7 +9160,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "field token.",
       "source_sha256": "d2e980951d995eb8c4c8070c427917741464f8191afba242f670a2e99a062f5d",
-      "translation": "synfältstoken."
+      "translation": "bildfältstoken."
     },
     {
       "context": "timepoint token, or ``None``.",
@@ -9192,7 +9192,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "reject unparseable field/time tokens and odd wells.",
       "source_sha256": "f5da4ea96cc5f6de1c95710189613ad7dd8ee8b9c30db0514718f29834163f5f",
-      "translation": "avvisa synfälts-/tidstoken som inte kan tolkas och udda brunnar."
+      "translation": "avvisa bildfälts-/tidstoken som inte kan tolkas och udda brunnar."
     },
     {
       "context": "the :class:`FieldID`.",
@@ -9232,7 +9232,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The ``prcf`` field key, with the timepoint when there is one.",
       "source_sha256": "6b9d206c4e40ddd3023043c282215d85d377b246dbbaf21c8d3e2945fd0f6da1",
-      "translation": "Synfältsnyckeln ``prcf``, med tidpunkten när det finns en."
+      "translation": "Bildfältsnyckeln ``prcf``, med tidpunkten när det finns en."
     },
     {
       "context": "Return the identity as the key-value mapping the tables carry.",
@@ -9264,7 +9264,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Return the :class:`ObjectID` for one object in this field.",
       "source_sha256": "f36d06f5d54d4dae757b22660fa83652ea87908ebd68bbf08ddc25e356d1c114",
-      "translation": "Returnera :class:`ObjectID` för ett objekt i detta synfält."
+      "translation": "Returnera :class:`ObjectID` för ett objekt i detta bildfält."
     },
     {
       "context": "object label, bare or already prefixed.",
@@ -9280,7 +9280,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "which object table it came from, or ``None`` for \"not stated\". A nucleus and a pathogen with the same label in the same field are two objects, and without this they are one key.",
       "source_sha256": "3f17f9172c8182182992c29d0a4bdc15a1876e52e5c22e26d5298afd495006f8",
-      "translation": "vilken objekttabell den kom från, eller ``None`` för \"not stated\". En cellkärna och en patogen med samma etikett i samma synfält är två objekt, och utan detta är de en nyckel."
+      "translation": "vilken objekttabell den kom från, eller ``None`` för \"not stated\". En cellkärna och en patogen med samma etikett i samma bildfält är två objekt, och utan detta är de en nyckel."
     },
     {
       "context": "A key token was absent, or was rejected under ``strict=True``.",
@@ -9304,7 +9304,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "plate identifier carried by the containing field and escaped when composed into a field or object key.",
       "source_sha256": "395a590e8c28a63b6f40511777cd3a62bcf38ffaae2ecbf6413a8f1b874517b1",
-      "translation": "plattidentifierare som bärs av det omgivande synfältet och escapas när den sätts samman till en synfälts- eller objektnyckel."
+      "translation": "plattidentifierare som bärs av det omgivande bildfältet och escapas när den sätts samman till en bildfälts- eller objektnyckel."
     },
     {
       "context": "stored row component, normally ``r<N>`` but potentially a legacy positional-well passthrough.",
@@ -9328,7 +9328,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "canonical ``f<label>`` imaging-field component.",
       "source_sha256": "4a6d115b8dc2077ce700d2df65a3c93b37f8b64cf8969f936abe009fe395f9d7",
-      "translation": "kanonisk ``f<label>``-komponent för avbildningssynfältet."
+      "translation": "kanonisk ``f<label>``-komponent för avbildningsbildfältet."
     },
     {
       "context": "``o<label>`` when the object's type is not stated, or ``<type><label>`` when it is. The type lives *inside* this microscope field of view rather than beside it so that two :class:`ObjectID` values compare equal exactly when they name the same object — a separate ``objectType`` microscope field of view would let ``('o7', 'nucleus')`` and ``('nucleus7', None)`` describe one object and compare unequal.",
@@ -9344,7 +9344,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "canonical ``t<label>`` timepoint component inserted between field and object, or ``None`` outside a timelapse.",
       "source_sha256": "92f5e7f60aa70231dd87432144320f8c2dcd13b74ed7886b0c8c6ba509be6bf6",
-      "translation": "kanonisk ``t<label>``-komponent för tidpunkt som infogas mellan synfält och objekt, eller ``None`` utanför en tidsserie."
+      "translation": "kanonisk ``t<label>``-komponent för tidpunkt som infogas mellan bildfält och objekt, eller ``None`` utanför en tidsserie."
     },
     {
       "context": "The microscope field of view this object sits in.",
@@ -9352,7 +9352,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The field this object sits in.",
       "source_sha256": "d1c93330558cc06c8fef3e67573ea16e8ae6ecd1cde7b7fba5fe95648aa662e8",
-      "translation": "Synfältet som detta objekt ligger i."
+      "translation": "Bildfältet som detta objekt ligger i."
     },
     {
       "context": "The label with the type (or ``'o'``) taken back off: ``'7'``.",
@@ -9384,7 +9384,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The ``prcf`` of the containing field.",
       "source_sha256": "7eaeca8262bb654f740b5be8694985cd323b063aec21cc3de0f61ce49ce647bd",
-      "translation": "``prcf`` för det omgivande synfältet."
+      "translation": "``prcf`` för det omgivande bildfältet."
     },
     {
       "context": "The ``prcfo`` object key.",
@@ -10216,7 +10216,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Return the ``prcf`` field key.",
       "source_sha256": "02bc9e7e25eb11a7b0f5aad693feaf0174477a0439cae16c0865fbc151c341e1",
-      "translation": "Returnera synfältsnyckeln ``prcf``."
+      "translation": "Returnera bildfältsnyckeln ``prcf``."
     },
     {
       "context": "``'plate1_r1_c1_f2'``, or ``'plate1_r1_c1_f2_t3'`` when ``time`` is given. The timepoint goes **after** the field — that is the order ``_map_wells(timelapse=True)`` writes and every table on disk carries.",
@@ -10224,7 +10224,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``'plate1_r1_c1_f2'``, or ``'plate1_r1_c1_f2_t3'`` when ``time`` is given. The timepoint goes **after** the field — that is the order ``_map_wells(timelapse=True)`` writes and every table on disk carries.",
       "source_sha256": "de7d1ab9997abc7a74c1660bb79be0b1b7e3d6228c394f07a7601863e8b87d1b",
-      "translation": "``'plate1_r1_c1_f2'``, eller ``'plate1_r1_c1_f2_t3'`` när ``time`` anges. Tidpunkten kommer **efter** synfältet — det är den ordning som ``_map_wells(timelapse=True)`` skriver och som varje tabell på disk bär."
+      "translation": "``'plate1_r1_c1_f2'``, eller ``'plate1_r1_c1_f2_t3'`` när ``time`` anges. Tidpunkten kommer **efter** bildfältet — det är den ordning som ``_map_wells(timelapse=True)`` skriver och som varje tabell på disk bär."
     },
     {
       "context": "plate id.",
@@ -10256,7 +10256,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "field token.",
       "source_sha256": "d2e980951d995eb8c4c8070c427917741464f8191afba242f670a2e99a062f5d",
-      "translation": "synfältstoken."
+      "translation": "bildfältstoken."
     },
     {
       "context": "timepoint token, or ``None`` outside a timelapse.",
@@ -10336,7 +10336,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "field token.",
       "source_sha256": "d2e980951d995eb8c4c8070c427917741464f8191afba242f670a2e99a062f5d",
-      "translation": "synfältstoken."
+      "translation": "bildfältstoken."
     },
     {
       "context": "object label, bare, ``'o<N>'`` or ``'<type><N>'``.",
@@ -10424,7 +10424,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Escape the plate component of a merged-stack field stem.",
       "source_sha256": "84a3047465d8c3fab31b40f6c23f02765c44ba0449892427b6f625c838556aa4",
-      "translation": "Escapa plattkomponenten i en synfältsstam för en sammanslagen stack."
+      "translation": "Escapa plattkomponenten i en bildfältsstam för en sammanslagen stack."
     },
     {
       "context": "Parameters",
@@ -10512,7 +10512,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Return the canonical ``'f<N>'`` field id.",
       "source_sha256": "66827c67eb05e955b4b51e0cb4a5adf1dfdda5dfcfd736a7a52bba2f056bf658",
-      "translation": "Returnera det kanoniska synfälts-id:t ``'f<N>'``."
+      "translation": "Returnera det kanoniska bildfälts-id:t ``'f<N>'``."
     },
     {
       "context": "``'3'``, ``'003'``, ``'s3'``, ``'F003'`` and ``3`` all give ``'f3'``. A token holding no integer is preserved (``'xy'`` → ``'fxy'``) rather than becoming ``'f0'``; see the module docstring for why.",
@@ -10528,7 +10528,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "field token.",
       "source_sha256": "d2e980951d995eb8c4c8070c427917741464f8191afba242f670a2e99a062f5d",
-      "translation": "synfältstoken."
+      "translation": "bildfältstoken."
     },
     {
       "context": "raise instead of preserving an unparseable token.",
@@ -10560,7 +10560,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "prefixed field id or numeric field token.",
       "source_sha256": "bf0c1616bb6d89716435c4db910f5cc45730ddd82a16d68b17fcdb341f9f677f",
-      "translation": "synfälts-id med prefix eller numeriskt synfältstoken."
+      "translation": "bildfälts-id med prefix eller numeriskt bildfältstoken."
     },
     {
       "context": "The form a column name is looked up by: lower case, no punctuation.",
@@ -11184,7 +11184,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "The vocabulary is **closed**: :data:`OBJECT_TYPES` and nothing else. An open one would mean every unrecognised token in the object slot became a type, and ``'plate1_r1_c1_f2_x7'`` — which is not an object key — would parse as object 7 of type ``'x'``. A wider vocabulary would turn a malformed key into a plausible wrong answer instead of an error, and a closed vocabulary is the same choice :data:`KEY_PREFIXES` already makes for rows, columns, fields and timepoints.",
       "source_sha256": "cd21d6ebcf999f636c02e940e7f967e4c61131216028202458e66f2e67d5d860",
-      "translation": "Vokabulären är **sluten**: :data:`OBJECT_TYPES` och inget annat. En öppen vokabulär skulle innebära att varje okänt token på objektplatsen blev en typ, och ``'plate1_r1_c1_f2_x7'`` — som inte är en objektnyckel — skulle tolkas som objekt 7 av typen ``'x'``. En bredare vokabulär skulle förvandla en felformad nyckel till ett rimligt men felaktigt svar i stället för ett fel, och en sluten vokabulär är samma val som :data:`KEY_PREFIXES` redan gör för rader, kolumner, synfält och tidpunkter."
+      "translation": "Vokabulären är **sluten**: :data:`OBJECT_TYPES` och inget annat. En öppen vokabulär skulle innebära att varje okänt token på objektplatsen blev en typ, och ``'plate1_r1_c1_f2_x7'`` — som inte är en objektnyckel — skulle tolkas som objekt 7 av typen ``'x'``. En bredare vokabulär skulle förvandla en felformad nyckel till ett rimligt men felaktigt svar i stället för ett fel, och en sluten vokabulär är samma val som :data:`KEY_PREFIXES` redan gör för rader, kolumner, bildfält och tidpunkter."
     },
     {
       "context": "A caller holding a table name it is not sure about asks :func:`is_object_type` first and leaves the frame untyped otherwise — an untyped structured-data name is exactly what spaCR wrote before, so that is a no-change, not a failure.",
@@ -11240,7 +11240,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "name : Any File name, path, or stem in ``plate_well_field[_time]`` form. timelapse : bool, default=False Parse a required trailing timepoint and include it in the identity. strict : bool, default=False Reject non-numeric field/time tokens and nonstandard wells.",
       "source_sha256": "b743d947653dddc1749f6dbc396b87f3dceef5f48e55cd28a80d1ace776c6726",
-      "translation": "name : Any Filnamn, sökväg eller stam på formen ``plate_well_field[_time]``. timelapse : bool, default=False Tolka en obligatorisk avslutande tidpunkt och inkludera den i identiteten. strict : bool, default=False Avvisa icke-numeriska synfälts-/tidstoken och brunnar som inte följer standard."
+      "translation": "name : Any Filnamn, sökväg eller stam på formen ``plate_well_field[_time]``. timelapse : bool, default=False Tolka en obligatorisk avslutande tidpunkt och inkludera den i identiteten. strict : bool, default=False Avvisa icke-numeriska bildfälts-/tidstoken och brunnar som inte följer standard."
     },
     {
       "context": "Returns",
@@ -11256,7 +11256,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "FieldID Parsed plate, well, field, and optional timepoint identity.",
       "source_sha256": "312f3c71942f82782e7fd8604a4a39909f2cbd79daf28e6ef5d4e8e2f18bd946",
-      "translation": "FieldID Tolkad identitet för platta, brunn, synfält och valfri tidpunkt."
+      "translation": "FieldID Tolkad identitet för platta, brunn, bildfält och valfri tidpunkt."
     },
     {
       "context": "Raises",
@@ -11304,7 +11304,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Vendor prefixes are understood, because they are a spelling of a number rather than a different number: an ImageXpress site ``s3``, a CellVoyager field ``F003`` and a bare ``3`` are the same field, and a pipeline that gave them three different ids would be just as wrong as one that gave them all ``f0``.",
       "source_sha256": "273295986927e4c02d10925bcdfdfbd945cc4b84424a3c16b04d744bc4830d8b",
-      "translation": "Leverantörsprefix förstås, eftersom de är en stavning av ett tal snarare än ett annat tal: en ImageXpress-position ``s3``, ett CellVoyager-synfält ``F003`` och en ensam ``3`` är samma synfält, och en pipeline som gav dem tre olika id:n skulle vara lika fel som en som gav dem alla ``f0``."
+      "translation": "Leverantörsprefix förstås, eftersom de är en stavning av ett tal snarare än ett annat tal: en ImageXpress-position ``s3``, ett CellVoyager-bildfält ``F003`` och en ensam ``3`` är samma bildfält, och en pipeline som gav dem tre olika id:n skulle vara lika fel som en som gav dem alla ``f0``."
     },
     {
       "context": "strip one or two leading ASCII letters when what follows is all digits. Default ``True``.",
@@ -11352,7 +11352,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "name : Any File name, path, or stem in ``plate_well_field[_time]_object`` form. timelapse : bool, default=False Parse a timepoint between the field and object components. strict : bool, default=False Reject non-numeric identity tokens and nonstandard wells.",
       "source_sha256": "2998050d70a9382856340d8593434efa5352ed7c531cb5f62f58f692090f1d35",
-      "translation": "name : Any Filnamn, sökväg eller stam på formen ``plate_well_field[_time]_object``. timelapse : bool, default=False Tolka en tidpunkt mellan synfälts- och objektkomponenterna. strict : bool, default=False Avvisa icke-numeriska identitetstoken och brunnar som inte följer standard."
+      "translation": "name : Any Filnamn, sökväg eller stam på formen ``plate_well_field[_time]_object``. timelapse : bool, default=False Tolka en tidpunkt mellan bildfälts- och objektkomponenterna. strict : bool, default=False Avvisa icke-numeriska identitetstoken och brunnar som inte följer standard."
     },
     {
       "context": "Returns",
@@ -11368,7 +11368,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "ObjectID Parsed field identity with the final object label attached.",
       "source_sha256": "6fb1d8ceff0c4b9305348a02cdd7260a16880fbf33fad8f7c3d306f4240188b6",
-      "translation": "ObjectID Tolkad synfältsidentitet med den sista objektetiketten kopplad."
+      "translation": "ObjectID Tolkad bildfältsidentitet med den sista objektetiketten kopplad."
     },
     {
       "context": "Raises",
@@ -11424,7 +11424,7 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``'plate1_r1_c1_f1_f2'`` — a key one level too deep, or a key whose components are not what they claim. Absorbing it would return ``plateID='plate1_r1'``, ``rowID='c1'``, ``columnID='f1'`` — half the well inside the plate and a field id in the column slot — and every per-well figure grouped on that would be silently wrong.",
       "source_sha256": "c3dedcdcf8bac1c04ad15b07e0397d6bdcbfffb469085568a9e9e6b2712b3f31",
-      "translation": "``'plate1_r1_c1_f1_f2'`` — en nyckel en nivå för djup, eller en nyckel vars komponenter inte är vad de utger sig för att vara. Att absorbera den skulle returnera ``plateID='plate1_r1'``, ``rowID='c1'``, ``columnID='f1'`` — halva brunnen inuti plattan och ett synfälts-id på kolumnplatsen — och varje figur per brunn som grupperas på detta skulle tyst bli fel."
+      "translation": "``'plate1_r1_c1_f1_f2'`` — en nyckel en nivå för djup, eller en nyckel vars komponenter inte är vad de utger sig för att vara. Att absorbera den skulle returnera ``plateID='plate1_r1'``, ``rowID='c1'``, ``columnID='f1'`` — halva brunnen inuti plattan och ett bildfälts-id på kolumnplatsen — och varje figur per brunn som grupperas på detta skulle tyst bli fel."
     },
     {
       "context": "The two are told apart with :func:`is_row_column_pair`, which is the same guard ``ml._split_prc`` applies for the same reason. Anything else with extra components is refused rather than guessed at.",

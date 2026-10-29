@@ -6,7 +6,9 @@
       "label": "spacr.plaque.segment_plaque_image#7",
       "source": "the well-resize plan (:func:`_well_resize_plan`), ``None`` for off, or ``\"settings\"`` to read it from ``settings`` without downloading the well detector. When on, each detected well is resized so its longest side is ``side`` pixels (enlargement capped at ``max_factor``), scaled to its 1st/99th percentiles and segmented at that scale with no diameter, the way plaque model v6 was trained; the plaques are mapped back to original pixels and given unique ids. Thresholds the plan carries from the model replace ``CP_prob``, ``flow_threshold`` and ``minimum_object_size``.",
       "source_sha256": "0fd9d5321938331e5972bbbcb5e211bc1825998317a968f3cd45e23f6fa8093b",
-      "translation": "孔尺寸调整方案（:func:`_well_resize_plan`），``None`` 表示关闭，``\"settings\"`` 表示从 ``settings`` 读取且不下载孔检测器。开启时，每个检测到的孔会被调整尺寸，使其最长边为 ``side`` 像素（放大倍数上限为 ``max_factor``），按其第 1 和第 99 百分位数缩放，并在该尺度下不使用直径进行分割，与斑块模型 v6 的训练方式一致；斑块会映射回原始像素并获得唯一 ID。方案从模型获取的阈值会取代 ``CP_prob``、``flow_threshold`` 和 ``minimum_object_size``。"
+      "translation": "孔尺寸调整方案（:func:`_well_resize_plan`），``None`` 表示关闭，``\"settings\"`` 表示从 ``settings`` 读取且不下载孔检测器。开启时，每个检测到的孔会被调整尺寸，使其最长边为 ``side`` 像素（放大倍数上限为 ``max_factor``），按其第 1 和第 99 百分位数缩放，并在该尺度下不使用直径进行分割，与斑块模型 v6 的训练方式一致；斑块会映射回原始像素并获得唯一 ID。方案从模型获取的阈值会取代 ``CP_prob``、``flow_threshold`` 和 ``minimum_object_size``。",
+      "retired": true,
+      "retired_reason": "Plaque diameter now follows original input pixels through resizing; explicit segmentation thresholds take precedence."
     },
     {
       "context": "with well resize on, treat the image as one well instead of detecting microplate sample positions (a Figure mode extracted image region already is one).",

@@ -2,11 +2,95 @@
   "language": "zh_CN",
   "records": [
     {
+      "key": "concentration_column",
+      "source": "Concentration column",
+      "source_sha256": "c9cc0a0bcbfc2ffb6b3044f8370f682d50c5ea48dc84b92c7d24e4683bce5464",
+      "table": "setting_labels",
+      "translation": "浓度列"
+    },
+    {
+      "key": "concentration_unit",
+      "source": "Concentration unit",
+      "source_sha256": "fb791faed3dd0b848800ac17b4cac4790ff1986d5394f5938a79409d28fe2e40",
+      "table": "setting_labels",
+      "translation": "浓度单位"
+    },
+    {
+      "key": "drug_column",
+      "source": "Drug column",
+      "source_sha256": "6a4a83e10be9c366282d74987044a4899b6aa102b29ace32244baae32dcdf3dd",
+      "table": "setting_labels",
+      "translation": "药物列"
+    },
+    {
+      "key": "drug_data",
+      "source": "Drug data",
+      "source_sha256": "08be96b12254260929f59a88f678cce2d78e37fbb342ca0532c03bfc5cb4adfc",
+      "table": "setting_labels",
+      "translation": "药物数据"
+    },
+    {
+      "key": "drug_table",
+      "source": "Drug table",
+      "source_sha256": "9069fc4960fdb3ddc65da70f8e236b12b94db61b90f663ba2dd11186eda17833",
+      "table": "setting_labels",
+      "translation": "药物表"
+    },
+    {
       "key": "sequencer",
       "source": "Sequencer",
       "source_sha256": "e60186dc1918687d32d3490f4ff27578741d075a2d09bc2020d181c85e219230",
       "table": "setting_labels",
       "translation": "测序仪"
+    },
+    {
+      "key": "treatment_map",
+      "source": "Treatment map",
+      "source_sha256": "7d60b7d91083e704f2c687a2ab64bcb05e39b6a5be7125ae3418ab4a8bf09af6",
+      "table": "setting_labels",
+      "translation": "处理板图"
+    },
+    {
+      "key": "vehicle_control",
+      "source": "Vehicle control",
+      "source_sha256": "782b25833731a4ebfe4f88b5c5ecb685210a95b26d40f9a8a28efe814bac7924",
+      "table": "setting_labels",
+      "translation": "溶剂对照"
+    },
+    {
+      "key": "concentration_column",
+      "source": "Drug-screen mode only: the column holding each well's concentration, a number in concentration_unit. Every non-vehicle well needs a positive concentration; the vehicle wells' value is not read. Default 'concentration'.",
+      "source_sha256": "d1197df19a6de1355dcb776e64f5f24ab55f76c859288341593f10fc1929973d",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式：保存每个孔浓度的列，其值为以 concentration_unit 为单位的数字。每个非溶剂对照孔都需要正的浓度；溶剂对照孔的值不会被读取。默认值 'concentration'。"
+    },
+    {
+      "key": "concentration_unit",
+      "source": "Drug-screen mode only, required: the unit of concentration_column, for example uM or nM. It is kept as part of every drug-at-concentration level and on the figure axis; spaCR does not convert units. Default None.",
+      "source_sha256": "bda6c9a7d074a4513bf4c96f3fbce695b3e1ddf9724b3f3d02d7f188c4639f0b",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式，必填：concentration_column 的单位，例如 uM 或 nM。它会作为每个“药物–浓度”水平的一部分保留，并显示在图的坐标轴上；spaCR 不会换算单位。默认值 None。"
+    },
+    {
+      "key": "drug_column",
+      "source": "Drug-screen mode only: the column naming the compound in each well; the vehicle wells carry the value set in vehicle_control. Default 'drug'.",
+      "source_sha256": "1e839c067e6b39e954cf1a3b1d3c0cb53e907c36fe8913b06f2a6f1e52fb6d7c",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式：指明每个孔中化合物的列；溶剂对照孔的值为 vehicle_control 中设定的值。默认值 'drug'。"
+    },
+    {
+      "key": "drug_data",
+      "source": "Drug-screen mode only: the spaCR measurements database, or a CSV/Parquet/Excel table, holding the response named by dependent_variable, one row per object or per well. Each row needs its well: a prc column, plateID with rowID and columnID, or a well name such as A01 (with plateID when there are several plates). Image crops are not needed. Default ''.",
+      "source_sha256": "c1230079fc407f738f6b4856c04c8f7272985bcb1280fdb895226c0b8d68884e",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式：spaCR 测量数据库，或 CSV/Parquet/Excel 表，其中包含 dependent_variable 指定的响应，每个对象或每个孔一行。每一行都需要标明其孔：prc 列、plateID 加 rowID 和 columnID，或 A01 之类的孔名（有多块板时还需 plateID）。不需要图像裁剪。默认值 ''。"
+    },
+    {
+      "key": "drug_table",
+      "source": "Drug-screen mode only: the table of drug_data to read when it is a database, for example cell, nucleus or a per-well table. Ignored for a file table. Default 'cell'.",
+      "source_sha256": "d97453274022dd3e8eb5b840b0486529f36dcbf2a392651f0822e4d92ff29edd",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式：当 drug_data 是数据库时要读取的表，例如 cell、nucleus 或逐孔表。若为文件表格，则忽略此项。默认值 'cell'。"
     },
     {
       "key": "mode",
@@ -16,11 +100,39 @@
       "translation": "条码提取的读段配对策略：'paired' 在 R1 和 R2 的反向互补序列中定位 target_sequence，并逐碱基合并为按质量加权的共有序列；'single' 只扫描一个配对读段，由 single_direction 选择；'mixed' 将每个同时具有两个配对读段的样本按 paired 解码，将每个只有一个配对读段的样本从其 single_direction 文件解码，并跳过只有另一配对读段的样本。paired 判定条码更准确，但会丢弃任一配对读段中缺少锚定序列的读段。默认值 'paired'。"
     },
     {
+      "key": "replicate_column",
+      "source": "Drug-screen mode only, optional: a column naming the biological replicate of each well. It is counted per level in drug_effects.csv and not modelled. Default None.",
+      "source_sha256": "c34b7d6e1bf37cb32bc9c920b72c76c9e18dbaa89cb1ee518145cfc8adf198bd",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式，可选：指明每个孔所属生物学重复的列。它会在 drug_effects.csv 中按水平计数，但不纳入模型。默认值 None。"
+    },
+    {
+      "key": "screen_type",
+      "source": "What the Regression module analyses. 'pooled' (default) regresses phenotype scores on the mapped guide or barcode counts of a pooled screen. 'drug_screen' reads no guides or barcodes: it compares each drug and concentration with the vehicle wells named by vehicle_control, using the response in drug_data and each well's drug and concentration. Each drug-at-concentration is its own level in one linear model, with a plate fixed effect when the wells span several plates; doses are never pooled, and dose curves belong to Dose-Response. Default 'pooled'.",
+      "source_sha256": "20ca763aa740e33d967359e995b480622e77862a40cb9582ba2689ff1f79280b",
+      "table": "setting_tooltips",
+      "translation": "回归模块分析的内容。'pooled'（默认）将表型评分对混池筛选中已映射的引导序列或条形码计数进行回归。'drug_screen' 不读取引导序列或条形码：它使用 drug_data 中的响应以及每个孔的药物和浓度，将每种药物和浓度与 vehicle_control 指定的溶剂对照孔进行比较。每个“药物–浓度”组合都是同一线性模型中的独立水平，当孔分布在多块板上时加入板固定效应；剂量从不合并，剂量曲线属于剂量反应模块。默认值 'pooled'。"
+    },
+    {
       "key": "sequencer",
       "source": "The machine that produced the reads: 'auto' (default) reads the platform from the FASTQ headers where they identify one; 'illumina', 'element' (AVITI), 'mgi' (DNBSEQ), 'ultima', 'ont' (Oxford Nanopore), 'pacbio' or 'other'. It sets no decoding parameter: headers that follow another platform's convention are refused, and Ultima, Oxford Nanopore and PacBio reads must use mode 'single' because those runs produce no mate pairs. Illumina and Element headers look alike, so auto reports them as Illumina-style.",
       "source_sha256": "f5b92248bbf97c9e44c3f2dab328fdab91c91692364bd1a4c2e738d77a29f550",
       "table": "setting_tooltips",
       "translation": "生成读段的测序仪：'auto'（默认）在 FASTQ 标头能识别平台时从中读取平台；'illumina'、'element'（AVITI）、'mgi'（DNBSEQ）、'ultima'、'ont'（Oxford Nanopore）、'pacbio' 或 'other'。它不设定任何解码参数：遵循其他平台约定的标头会被拒绝；Ultima、Oxford Nanopore 和 PacBio 读段必须使用 mode 'single'，因为这些运行不产生配对读段。Illumina 和 Element 的标头看起来相似，因此 auto 将其报告为 Illumina 风格。"
+    },
+    {
+      "key": "treatment_map",
+      "source": "Drug-screen mode only: a plate map naming each well's drug and concentration, with the same well columns as drug_data. Leave empty when drug_data itself carries drug_column and concentration_column. A well given two treatments is refused. Default None.",
+      "source_sha256": "1275ad9cdaa2b18bbe6e70e1b6468d3b000370eec19bd9aeb717c73d769a7b3f",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式：指明每个孔药物和浓度的板图，其孔列与 drug_data 相同。如果 drug_data 本身包含 drug_column 和 concentration_column，则留空。被赋予两种处理的孔会被拒绝。默认值 None。"
+    },
+    {
+      "key": "vehicle_control",
+      "source": "Drug-screen mode only, required: the drug_column value or values of the vehicle wells, for example DMSO. Every effect is the difference from these wells, plate-adjusted when there are several plates, and each plate with treated wells needs vehicle wells of its own. Default None.",
+      "source_sha256": "0f5a5bfefc3372af320d4f8aaaad06367d9e4bd589fd32180c28b29db759556a",
+      "table": "setting_tooltips",
+      "translation": "仅限药物筛选模式，必填：溶剂对照孔的一个或多个 drug_column 值，例如 DMSO。每个效应都是相对于这些孔的差值，有多块板时按板校正；每块含处理孔的板都需要有自己的溶剂对照孔。默认值 None。"
     },
     {
       "key": "Choose the read format, the sequencer and the pairing. Map Barcodes reads gzip-compressed or plain FASTQ with recognized mate filenames and matching barcode references, and checks the read headers against the chosen sequencer.",
@@ -35,6 +147,13 @@
       "source_sha256": "21324ba81fec8dbb6964af71ad675e0bbf47ede60398843c0377c14256718bdc",
       "table": "ui",
       "translation": "“复制 Graphviz”会将当前图作为 DOT 文本复制到系统剪贴板；不会写入文件。"
+    },
+    {
+      "key": "Dose–Response fits a curve per compound; Regression in drug-screen mode compares each drug-at-concentration level with the vehicle wells, without pooling doses. Both need each well's drug and concentration, the concentration unit and the vehicle; neither needs guide or barcode columns or image crops.",
+      "source": "Dose–Response fits a curve per compound; Regression in drug-screen mode compares each drug-at-concentration level with the vehicle wells, without pooling doses. Both need each well's drug and concentration, the concentration unit and the vehicle; neither needs guide or barcode columns or image crops.",
+      "source_sha256": "de9f80f09324c69b90eba12a93a469e1c363a64162f3de11215e4dd9f7feeb11",
+      "table": "ui",
+      "translation": "剂量反应模块为每种化合物拟合一条曲线；药物筛选模式下的回归模块将每个“药物–浓度”水平与溶剂对照孔进行比较，不合并剂量。两者都需要每个孔的药物和浓度、浓度单位以及溶剂对照；两者都不需要引导序列或条形码列，也不需要图像裁剪。"
     },
     {
       "key": "Download about 370 MB of example data for Measure: sixteen fields across four wells, already segmented, so Measure can be run without generating masks first. Later presses reuse the downloaded copy instead of downloading it again.",
@@ -112,6 +231,13 @@
       "source_sha256": "5acf0c6360c4b788e8ea8e819767783f28d84699744891f572b0984e2801835c",
       "table": "ui",
       "translation": "双端或单端读段。AVITI 的 FASTQ 标头遵循 Illumina 布局，因此无法通过标头区分两者。"
+    },
+    {
+      "key": "Regression starts in drug-screen mode: name the vehicle (vehicle_control) and the concentration unit, and the drug and concentration columns or a plate map, before running it.",
+      "source": "Regression starts in drug-screen mode: name the vehicle (vehicle_control) and the concentration unit, and the drug and concentration columns or a plate map, before running it.",
+      "source_sha256": "4412c7fc4930f29e7b2d78d4efbed60b8b1e16b0e9e4c083f87aa3aa499ce3a4",
+      "table": "ui",
+      "translation": "回归模块以药物筛选模式启动：运行前请指定溶剂对照（vehicle_control）和浓度单位，以及药物列和浓度列或板图。"
     },
     {
       "key": "Samples with both mates are decoded as pairs; samples with one mate are read from the chosen orientation, and samples holding only the other mate are skipped with a warning.",

@@ -2,11 +2,95 @@
   "language": "fr",
   "records": [
     {
+      "key": "concentration_column",
+      "source": "Concentration column",
+      "source_sha256": "c9cc0a0bcbfc2ffb6b3044f8370f682d50c5ea48dc84b92c7d24e4683bce5464",
+      "table": "setting_labels",
+      "translation": "Colonne de concentration"
+    },
+    {
+      "key": "concentration_unit",
+      "source": "Concentration unit",
+      "source_sha256": "fb791faed3dd0b848800ac17b4cac4790ff1986d5394f5938a79409d28fe2e40",
+      "table": "setting_labels",
+      "translation": "Unité de concentration"
+    },
+    {
+      "key": "drug_column",
+      "source": "Drug column",
+      "source_sha256": "6a4a83e10be9c366282d74987044a4899b6aa102b29ace32244baae32dcdf3dd",
+      "table": "setting_labels",
+      "translation": "Colonne de médicament"
+    },
+    {
+      "key": "drug_data",
+      "source": "Drug data",
+      "source_sha256": "08be96b12254260929f59a88f678cce2d78e37fbb342ca0532c03bfc5cb4adfc",
+      "table": "setting_labels",
+      "translation": "Données de médicaments"
+    },
+    {
+      "key": "drug_table",
+      "source": "Drug table",
+      "source_sha256": "9069fc4960fdb3ddc65da70f8e236b12b94db61b90f663ba2dd11186eda17833",
+      "table": "setting_labels",
+      "translation": "Table de médicaments"
+    },
+    {
       "key": "sequencer",
       "source": "Sequencer",
       "source_sha256": "e60186dc1918687d32d3490f4ff27578741d075a2d09bc2020d181c85e219230",
       "table": "setting_labels",
       "translation": "Séquenceur"
+    },
+    {
+      "key": "treatment_map",
+      "source": "Treatment map",
+      "source_sha256": "7d60b7d91083e704f2c687a2ab64bcb05e39b6a5be7125ae3418ab4a8bf09af6",
+      "table": "setting_labels",
+      "translation": "Plan de traitement"
+    },
+    {
+      "key": "vehicle_control",
+      "source": "Vehicle control",
+      "source_sha256": "782b25833731a4ebfe4f88b5c5ecb685210a95b26d40f9a8a28efe814bac7924",
+      "table": "setting_labels",
+      "translation": "Contrôle véhicule"
+    },
+    {
+      "key": "concentration_column",
+      "source": "Drug-screen mode only: the column holding each well's concentration, a number in concentration_unit. Every non-vehicle well needs a positive concentration; the vehicle wells' value is not read. Default 'concentration'.",
+      "source_sha256": "d1197df19a6de1355dcb776e64f5f24ab55f76c859288341593f10fc1929973d",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement : la colonne contenant la concentration de chaque puits, un nombre exprimé en concentration_unit. Chaque puits hors véhicule nécessite une concentration positive ; la valeur des puits de véhicule n’est pas lue. Valeur par défaut : 'concentration'."
+    },
+    {
+      "key": "concentration_unit",
+      "source": "Drug-screen mode only, required: the unit of concentration_column, for example uM or nM. It is kept as part of every drug-at-concentration level and on the figure axis; spaCR does not convert units. Default None.",
+      "source_sha256": "bda6c9a7d074a4513bf4c96f3fbce695b3e1ddf9724b3f3d02d7f188c4639f0b",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement, obligatoire : l’unité de concentration_column, par exemple uM ou nM. Elle est conservée dans chaque niveau « médicament à une concentration » et sur l’axe de la figure ; spaCR ne convertit pas les unités. Valeur par défaut : None."
+    },
+    {
+      "key": "drug_column",
+      "source": "Drug-screen mode only: the column naming the compound in each well; the vehicle wells carry the value set in vehicle_control. Default 'drug'.",
+      "source_sha256": "1e839c067e6b39e954cf1a3b1d3c0cb53e907c36fe8913b06f2a6f1e52fb6d7c",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement : la colonne qui nomme le composé de chaque puits ; les puits de véhicule portent la valeur définie dans vehicle_control. Valeur par défaut : 'drug'."
+    },
+    {
+      "key": "drug_data",
+      "source": "Drug-screen mode only: the spaCR measurements database, or a CSV/Parquet/Excel table, holding the response named by dependent_variable, one row per object or per well. Each row needs its well: a prc column, plateID with rowID and columnID, or a well name such as A01 (with plateID when there are several plates). Image crops are not needed. Default ''.",
+      "source_sha256": "c1230079fc407f738f6b4856c04c8f7272985bcb1280fdb895226c0b8d68884e",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement : la base de données de mesures de spaCR, ou une table CSV/Parquet/Excel, contenant la réponse nommée par dependent_variable, une ligne par objet ou par puits. Chaque ligne doit indiquer son puits : une colonne prc, plateID avec rowID et columnID, ou un nom de puits comme A01 (avec plateID lorsqu’il y a plusieurs plaques). Les vignettes d’images ne sont pas nécessaires. Valeur par défaut : ''."
+    },
+    {
+      "key": "drug_table",
+      "source": "Drug-screen mode only: the table of drug_data to read when it is a database, for example cell, nucleus or a per-well table. Ignored for a file table. Default 'cell'.",
+      "source_sha256": "d97453274022dd3e8eb5b840b0486529f36dcbf2a392651f0822e4d92ff29edd",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement : la table de drug_data à lire lorsqu’il s’agit d’une base de données, par exemple cell, nucleus ou une table par puits. Ignoré pour une table dans un fichier. Valeur par défaut : 'cell'."
     },
     {
       "key": "mode",
@@ -16,11 +100,39 @@
       "translation": "Stratégie d’appariement des lectures pour l’extraction des codes-barres : 'paired' localise target_sequence dans R1 et dans le complément inverse de R2 et les fusionne base par base en un consensus pondéré par la qualité ; 'single' parcourt un seul des deux brins, choisi par single_direction ; 'mixed' décode comme apparié chaque échantillon qui possède les deux brins, et chaque échantillon n’ayant qu’un brin à partir de son fichier single_direction, en ignorant les échantillons qui n’ont que l’autre brin. Le mode apparié identifie les codes-barres plus précisément mais écarte toute lecture dont l’ancre manque dans l’un ou l’autre brin. Valeur par défaut : 'paired'."
     },
     {
+      "key": "replicate_column",
+      "source": "Drug-screen mode only, optional: a column naming the biological replicate of each well. It is counted per level in drug_effects.csv and not modelled. Default None.",
+      "source_sha256": "c34b7d6e1bf37cb32bc9c920b72c76c9e18dbaa89cb1ee518145cfc8adf198bd",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement, facultatif : une colonne qui nomme le réplicat biologique de chaque puits. Il est compté par niveau dans drug_effects.csv et n’est pas modélisé. Valeur par défaut : None."
+    },
+    {
+      "key": "screen_type",
+      "source": "What the Regression module analyses. 'pooled' (default) regresses phenotype scores on the mapped guide or barcode counts of a pooled screen. 'drug_screen' reads no guides or barcodes: it compares each drug and concentration with the vehicle wells named by vehicle_control, using the response in drug_data and each well's drug and concentration. Each drug-at-concentration is its own level in one linear model, with a plate fixed effect when the wells span several plates; doses are never pooled, and dose curves belong to Dose-Response. Default 'pooled'.",
+      "source_sha256": "20ca763aa740e33d967359e995b480622e77862a40cb9582ba2689ff1f79280b",
+      "table": "setting_tooltips",
+      "translation": "Ce qu’analyse le module Régression. 'pooled' (par défaut) effectue la régression des scores de phénotype sur les comptages de guides ou de codes-barres attribués d’un criblage groupé. 'drug_screen' ne lit ni guides ni codes-barres : il compare chaque médicament et chaque concentration aux puits de véhicule nommés par vehicle_control, à partir de la réponse dans drug_data et du médicament et de la concentration de chaque puits. Chaque « médicament à une concentration » forme son propre niveau dans un seul modèle linéaire, avec un effet fixe de plaque lorsque les puits s’étendent sur plusieurs plaques ; les doses ne sont jamais regroupées, et les courbes dose-réponse relèvent de Dose-Response. Valeur par défaut : 'pooled'."
+    },
+    {
       "key": "sequencer",
       "source": "The machine that produced the reads: 'auto' (default) reads the platform from the FASTQ headers where they identify one; 'illumina', 'element' (AVITI), 'mgi' (DNBSEQ), 'ultima', 'ont' (Oxford Nanopore), 'pacbio' or 'other'. It sets no decoding parameter: headers that follow another platform's convention are refused, and Ultima, Oxford Nanopore and PacBio reads must use mode 'single' because those runs produce no mate pairs. Illumina and Element headers look alike, so auto reports them as Illumina-style.",
       "source_sha256": "f5b92248bbf97c9e44c3f2dab328fdab91c91692364bd1a4c2e738d77a29f550",
       "table": "setting_tooltips",
       "translation": "La machine qui a produit les lectures : 'auto' (par défaut) lit la plateforme dans les en-têtes FASTQ lorsqu’ils en identifient une ; 'illumina', 'element' (AVITI), 'mgi' (DNBSEQ), 'ultima', 'ont' (Oxford Nanopore), 'pacbio' ou 'other'. Ce réglage ne définit aucun paramètre de décodage : les en-têtes qui suivent la convention d’une autre plateforme sont refusés, et les lectures Ultima, Oxford Nanopore et PacBio doivent utiliser le mode 'single', car ces exécutions ne produisent pas de paires de lectures. Les en-têtes Illumina et Element se ressemblent, donc auto les signale comme de type Illumina."
+    },
+    {
+      "key": "treatment_map",
+      "source": "Drug-screen mode only: a plate map naming each well's drug and concentration, with the same well columns as drug_data. Leave empty when drug_data itself carries drug_column and concentration_column. A well given two treatments is refused. Default None.",
+      "source_sha256": "1275ad9cdaa2b18bbe6e70e1b6468d3b000370eec19bd9aeb717c73d769a7b3f",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement : un plan de plaque qui nomme le médicament et la concentration de chaque puits, avec les mêmes colonnes de puits que drug_data. Laissez vide lorsque drug_data contient lui-même drug_column et concentration_column. Un puits auquel deux traitements sont attribués est refusé. Valeur par défaut : None."
+    },
+    {
+      "key": "vehicle_control",
+      "source": "Drug-screen mode only, required: the drug_column value or values of the vehicle wells, for example DMSO. Every effect is the difference from these wells, plate-adjusted when there are several plates, and each plate with treated wells needs vehicle wells of its own. Default None.",
+      "source_sha256": "0f5a5bfefc3372af320d4f8aaaad06367d9e4bd589fd32180c28b29db759556a",
+      "table": "setting_tooltips",
+      "translation": "Mode criblage de médicaments uniquement, obligatoire : la ou les valeurs de drug_column des puits de véhicule, par exemple DMSO. Chaque effet est la différence par rapport à ces puits, ajustée par plaque lorsqu’il y a plusieurs plaques, et chaque plaque comportant des puits traités a besoin de ses propres puits de véhicule. Valeur par défaut : None."
     },
     {
       "key": "Choose the read format, the sequencer and the pairing. Map Barcodes reads gzip-compressed or plain FASTQ with recognized mate filenames and matching barcode references, and checks the read headers against the chosen sequencer.",
@@ -35,6 +147,13 @@
       "source_sha256": "21324ba81fec8dbb6964af71ad675e0bbf47ede60398843c0377c14256718bdc",
       "table": "ui",
       "translation": "Copier Graphviz copie le graphe actuel sous forme de texte DOT dans le presse-papiers du système ; aucun fichier n’est écrit."
+    },
+    {
+      "key": "Dose–Response fits a curve per compound; Regression in drug-screen mode compares each drug-at-concentration level with the vehicle wells, without pooling doses. Both need each well's drug and concentration, the concentration unit and the vehicle; neither needs guide or barcode columns or image crops.",
+      "source": "Dose–Response fits a curve per compound; Regression in drug-screen mode compares each drug-at-concentration level with the vehicle wells, without pooling doses. Both need each well's drug and concentration, the concentration unit and the vehicle; neither needs guide or barcode columns or image crops.",
+      "source_sha256": "de9f80f09324c69b90eba12a93a469e1c363a64162f3de11215e4dd9f7feeb11",
+      "table": "ui",
+      "translation": "Dose–Response ajuste une courbe par composé ; Régression en mode criblage de médicaments compare chaque niveau « médicament à une concentration » aux puits de véhicule, sans regrouper les doses. Les deux nécessitent le médicament et la concentration de chaque puits, l’unité de concentration et le véhicule ; aucun des deux n’a besoin de colonnes de guides ou de codes-barres ni de vignettes d’images."
     },
     {
       "key": "Download about 370 MB of example data for Measure: sixteen fields across four wells, already segmented, so Measure can be run without generating masks first. Later presses reuse the downloaded copy instead of downloading it again.",
@@ -112,6 +231,13 @@
       "source_sha256": "5acf0c6360c4b788e8ea8e819767783f28d84699744891f572b0984e2801835c",
       "table": "ui",
       "translation": "Lectures appariées ou simples. Les en-têtes FASTQ AVITI suivent la disposition Illumina, de sorte que les en-têtes ne permettent pas de distinguer les deux."
+    },
+    {
+      "key": "Regression starts in drug-screen mode: name the vehicle (vehicle_control) and the concentration unit, and the drug and concentration columns or a plate map, before running it.",
+      "source": "Regression starts in drug-screen mode: name the vehicle (vehicle_control) and the concentration unit, and the drug and concentration columns or a plate map, before running it.",
+      "source_sha256": "4412c7fc4930f29e7b2d78d4efbed60b8b1e16b0e9e4c083f87aa3aa499ce3a4",
+      "table": "ui",
+      "translation": "Régression démarre en mode criblage de médicaments : indiquez le véhicule (vehicle_control) et l’unité de concentration, ainsi que les colonnes de médicament et de concentration ou un plan de plaque, avant de l’exécuter."
     },
     {
       "key": "Samples with both mates are decoded as pairs; samples with one mate are read from the chosen orientation, and samples holding only the other mate are skipped with a warning.",

@@ -1,0 +1,1208 @@
+{
+  "language": "ko",
+  "note": "Item 678 Korean API tail, batch 5 (150 blocks): spacr.annotation_power, spacr.crop_loader, spacr.custom_features, spacr.example_data, spacr.fit_resources, spacr.gpu_reduce, spacr.image_colors, spacr.intensity_rescale, spacr.localisation, spacr.object_settings_table, spacr.response_distribution, spacr.version, spacr.well_spec. Module names, code literals and roles stay in English.",
+  "records": [
+    {
+      "context": "Estimate which guide assignments a pooled screening experiment can support.",
+      "label": "spacr.annotation_power#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Estimate which guide assignments a pooled screen can support.",
+      "source_sha256": "e66c0fdd0ac72b7e87c49d9a94488894c4067cc253d22e1a66ead8050db4a0e9",
+      "translation": "풀링 스크린이 뒷받침할 수 있는 가이드 할당을 추정합니다."
+    },
+    {
+      "context": "The calculations combine each guide's within-well fraction with machine-learning classification model sensitivity and specificity. They report the minimum fraction required for a phenotype-positive call to reach a requested posterior probability, identify guides that never reach that fraction, and estimate the screening experiment design needed to improve coverage.",
+      "label": "spacr.annotation_power#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The calculations combine each guide's within-well fraction with classifier sensitivity and specificity. They report the minimum fraction required for a phenotype-positive call to reach a requested posterior probability, identify guides that never reach that fraction, and estimate the screen design needed to improve coverage.",
+      "source_sha256": "ee1dce768d0336f18f62f5db3b2f9b76a44f7377c893e0d0fc866f561b56c032",
+      "translation": "이 계산은 각 가이드의 웰 내 비율을 분류기의 민감도 및 특이도와 결합합니다. 표현형 양성 판정이 요청한 사후 확률에 도달하는 데 필요한 최소 비율을 보고하고, 그 비율에 결코 도달하지 못하는 가이드를 식별하며, 적용 범위를 개선하는 데 필요한 스크린 설계를 추정합니다."
+    },
+    {
+      "context": "Increasing the number of cells in a microplate sample position increases the number of possible assignments but does not change the posterior probability for an individual cell. That probability changes when guide fractions or machine-learning classification model performance change. The functions in this module therefore keep annotation coverage and assignment confidence as separate quantities.",
+      "label": "spacr.annotation_power#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Increasing the number of cells in a well increases the number of possible assignments but does not change the posterior probability for an individual cell. That probability changes when guide fractions or classifier performance change. The functions in this module therefore keep annotation coverage and assignment confidence as separate quantities.",
+      "source_sha256": "d1212d6c8053dc76c2de02f64d9bc7fe8261fa6f06407c58252c607e474e6b4f",
+      "translation": "웰의 세포 수를 늘리면 가능한 할당의 수는 늘지만 개별 세포의 사후 확률은 바뀌지 않습니다. 그 확률은 가이드 비율이나 분류기 성능이 바뀔 때 바뀝니다. 따라서 이 모듈의 함수들은 주석 적용 범위와 할당 신뢰도를 별개의 양으로 유지합니다."
+    },
+    {
+      "context": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float machine-learning classification model performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. cells_per_well : mapping, optional Cell count for each microplate sample position. When supplied, the result includes an upper bound on the number of reachable cells.",
+      "label": "spacr.annotation_power.annotatable#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float Classifier performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. cells_per_well : mapping, optional Cell count for each well. When supplied, the result includes an upper bound on the number of reachable cells.",
+      "source_sha256": "359043ecce2652551f18200080dfa3fe0df359eda4eca85f84791a047a761f5f",
+      "translation": "fractions : mapping 중첩 매핑 ``{well: {guide: fraction}}``입니다. sensitivity, specificity : float 최소 가이드 비율을 계산하는 데 쓰는 분류기 성능입니다. decision : float, default=0.55 가이드 할당에 필요한 사후 확률입니다. cells_per_well : mapping, optional 웰별 세포 수입니다. 제공하면 결과에 도달 가능한 세포 수의 상한이 포함됩니다."
+    },
+    {
+      "context": "prior : float Guide fraction before observing the machine-learning classification model call. sensitivity : float Probability of a positive call for a guide-carrying cell. specificity : float Probability of a negative call for a cell without the guide.",
+      "label": "spacr.annotation_power.posterior_for_prior#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "prior : float Guide fraction before observing the classifier call. sensitivity : float Probability of a positive call for a guide-carrying cell. specificity : float Probability of a negative call for a cell without the guide.",
+      "source_sha256": "a3c632cc262496725a712b015565c7a01beb3a076709c433346247c94bb3ea88",
+      "translation": "prior : float 분류기 판정을 관측하기 전의 가이드 비율입니다. sensitivity : float 가이드를 가진 세포가 양성 판정을 받을 확률입니다. specificity : float 가이드가 없는 세포가 음성 판정을 받을 확률입니다."
+    },
+    {
+      "context": "float Posterior guide probability, or ``nan`` when the call has zero total probability under the supplied rates.",
+      "label": "spacr.annotation_power.posterior_for_prior#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "float Posterior guide probability, or ``nan`` when the call has zero total probability under the supplied rates.",
+      "source_sha256": "bb18117c0c94557ab2f9f630c30222b98c994e6e223b1ce2ef5b967255900751",
+      "translation": "float 가이드의 사후 확률이며, 제공된 비율에서 해당 판정의 전체 확률이 0이면 ``nan``입니다."
+    },
+    {
+      "context": "verdicts : mapping Mapping from method name to :class:`spacr.annotation_validation.Verdict`. power : mapping, optional Result from :func:`annotatable`. size : mapping, optional Result from :func:`screen_size_for`. width : int, default=78 Rule width used in the text layout.",
+      "label": "spacr.annotation_power.quality_report#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "verdicts : mapping Mapping from method name to :class:`spacr.annotation_validation.Verdict`. power : mapping, optional Result from :func:`annotatable`. size : mapping, optional Result from :func:`screen_size_for`. width : int, default=78 Rule width used in the text layout.",
+      "source_sha256": "ad5dfa8b7416ff0a7185ce629955fcef84e964d9c4c0863b6d0eb02810fb345e",
+      "translation": "verdicts : mapping 방법 이름에서 :class:`spacr.annotation_validation.Verdict`로의 매핑입니다. power : mapping, optional :func:`annotatable`의 결과입니다. size : mapping, optional :func:`screen_size_for`의 결과입니다. width : int, default=78 텍스트 레이아웃에 쓰는 구분선 폭입니다."
+    },
+    {
+      "context": "str Report that presents coverage, precision, and recall separately, followed by optional reachability and screen-size estimates.",
+      "label": "spacr.annotation_power.quality_report#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "str Report that presents coverage, precision, and recall separately, followed by optional reachability and screen-size estimates.",
+      "source_sha256": "cdc88561c1199baac29685c5172f95e7d85954b99ba39dc232aa3619b2bd3fd3",
+      "translation": "str 적용 범위, 정밀도, 재현율을 따로 제시하고 선택적으로 도달 가능성과 스크린 크기 추정을 덧붙인 보고서입니다."
+    },
+    {
+      "context": "probability of a positive call for a guide-carrying cell.",
+      "label": "spacr.annotation_power.required_fraction#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "probability of a positive call for a guide-carrying cell.",
+      "source_sha256": "6e2971fefe0190fe1912066da6473c9073d81018768ff6e63ff8c8afb6eb09a3",
+      "translation": "가이드를 가진 세포가 양성 판정을 받을 확률입니다."
+    },
+    {
+      "context": "probability of a negative call without the guide.",
+      "label": "spacr.annotation_power.required_fraction#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "probability of a negative call without the guide.",
+      "source_sha256": "2f7266a4b538ed0b32b54e2ec2224adbd8b2f7a39862be07e4a2695d67b216b7",
+      "translation": "가이드가 없을 때 음성 판정을 받을 확률입니다."
+    },
+    {
+      "context": "``decision`` is the minimum probability that a phenotype-positive cell carries the guide. The calculation accounts for false positives among cells that do not carry the guide.",
+      "label": "spacr.annotation_power.required_fraction#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``decision`` is the minimum probability that a phenotype-positive cell carries the guide. The calculation accounts for false positives among cells that do not carry the guide.",
+      "source_sha256": "d0ad19432237974a79df845badb4c729230625fd40220ebdaf0c929b6b5b92ff",
+      "translation": "``decision``은 표현형 양성 세포가 그 가이드를 가지고 있을 최소 확률입니다. 계산은 가이드를 가지지 않은 세포 중의 거짓 양성을 고려합니다."
+    },
+    {
+      "context": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float machine-learning classification model performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. target : float, default=0.80 Target share recorded in the result for reporting.",
+      "label": "spacr.annotation_power.screen_size_for#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float Classifier performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. target : float, default=0.80 Target share recorded in the result for reporting.",
+      "source_sha256": "1a7df34f87639671b1ebe9d4c294cb7eb2f0bc1200c5258a6e6ef1bd209f7c96",
+      "translation": "fractions : mapping 중첩 매핑 ``{well: {guide: fraction}}``입니다. sensitivity, specificity : float 최소 가이드 비율을 계산하는 데 쓰는 분류기 성능입니다. decision : float, default=0.55 가이드 할당에 필요한 사후 확률입니다. target : float, default=0.80 보고용으로 결과에 기록되는 목표 비율입니다."
+    },
+    {
+      "context": "key-value mapping Current application view shape, estimated guides per microplate sample position and microplate sample positions required, size multiplier, and the specificity required at the current shape.",
+      "label": "spacr.annotation_power.screen_size_for#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict Current screen shape, estimated guides per well and wells required, size multiplier, and the specificity required at the current shape.",
+      "source_sha256": "0886eb5bc37f14fe69567f529b05f056302e6d706e6d24254bf8636bd15f036a",
+      "translation": "dict 현재 스크린 형태, 추정된 웰당 가이드 수와 필요한 웰 수, 크기 배수, 그리고 현재 형태에서 필요한 특이도입니다."
+    },
+    {
+      "context": "This module selects extracted image regions from a plate and loads them as one pixel stack, for example for :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`. It works in two steps so a GUI stays responsive between them.",
+      "label": "spacr.crop_loader#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This module selects crops from a plate and loads them as one pixel stack, for example for :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`. It works in two steps so a GUI stays responsive between them.",
+      "source_sha256": "a7cec46d6d931e3f0b7a2c6a3d0d5ebfd7dd4e0fc8483c1cc6228f935bc294d8",
+      "translation": "이 모듈은 플레이트에서 크롭을 선택하여 하나의 픽셀 스택으로 불러옵니다. 예를 들어 :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`에 사용합니다. 두 단계로 동작하므로 그 사이에 GUI가 계속 응답합니다."
+    },
+    {
+      "context": "Planning and loading are separate. :func:`plan_crops` asks the database or the folder *which objects match* and reads no pixels at all: a ``COUNT`` and a ``SELECT`` of identifiers, or one ``scandir``. It is milliseconds on a plate of sixty thousand extracted image regions, so a screen can execute it on a click and tell the user what they asked for before committing to reading any of it. :func:`load_crops` then reads the pixels in pages, reporting after each one. A caller that executes the second half on a background execution unit gets a progress number per page and a stop that takes effect within a page rather than at the end.",
+      "label": "spacr.crop_loader#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Planning and loading are separate. :func:`plan_crops` asks the database or the folder *which objects match* and reads no pixels at all: a ``COUNT`` and a ``SELECT`` of identifiers, or one ``scandir``. It is milliseconds on a plate of sixty thousand crops, so a screen can run it on a click and tell the user what they asked for before committing to reading any of it. :func:`load_crops` then reads the pixels in pages, reporting after each one. A caller that runs the second half on a worker thread gets a progress number per page and a stop that takes effect within a page rather than at the end.",
+      "source_sha256": "7a36e3a65c0666a9720e19a018b603185d410b45d257581658e70c45e988c336",
+      "translation": "계획과 불러오기는 별개입니다. :func:`plan_crops`는 데이터베이스나 폴더에 *어떤 객체가 일치하는지*만 묻고 픽셀은 전혀 읽지 않습니다. ``COUNT`` 하나와 식별자에 대한 ``SELECT``, 또는 ``scandir`` 한 번입니다. 크롭 6만 개짜리 플레이트에서도 수 밀리초이므로, 화면은 클릭할 때 이를 실행하여 어떤 것도 읽기 전에 사용자가 요청한 내용을 알려 줄 수 있습니다. 그다음 :func:`load_crops`가 픽셀을 페이지 단위로 읽고 페이지마다 진행 상황을 보고합니다. 두 번째 절반을 작업자 스레드에서 실행하는 호출자는 페이지마다 진행 숫자를 받고, 중지는 끝이 아니라 한 페이지 안에서 적용됩니다."
+    },
+    {
+      "context": "The input is either a ``measurements.db`` -- where the extracted image regions are chosen by object class, by plate, or by a predicate over ``png_list`` -- or a folder of extracted image region PNGs. The pixels come from :func:`spacr.crops.resolve_crop_source`, which decides whether to read pre-generated extracted image regions or cut them from ``merged/*.npy``, and a legacy folder is corrected on load as it is elsewhere.",
+      "label": "spacr.crop_loader#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The input is either a ``measurements.db`` -- where the crops are chosen by object class, by plate, or by a predicate over ``png_list`` -- or a folder of crop PNGs. The pixels come from :func:`spacr.crops.resolve_crop_source`, which decides whether to read pre-generated crops or cut them from ``merged/*.npy``, and a legacy folder is corrected on load as it is elsewhere.",
+      "source_sha256": "e2d2d369001b1bfd3d2d43b5b227b556c99a99d47209eba70ad8951d2e79adb4",
+      "translation": "입력은 ``measurements.db``(객체 클래스, 플레이트 또는 ``png_list``에 대한 조건식으로 크롭을 선택) 또는 크롭 PNG 폴더입니다. 픽셀은 :func:`spacr.crops.resolve_crop_source`에서 오며, 이 함수가 미리 생성된 크롭을 읽을지 ``merged/*.npy``에서 잘라 낼지 결정합니다. 레거시 폴더는 다른 곳에서와 마찬가지로 불러올 때 보정됩니다."
+    },
+    {
+      "context": "The output is one ``(objects, height, width, channels)`` uint8 array, which is the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the extracted image region shape, and how many extracted image regions had to be conformed to it.",
+      "label": "spacr.crop_loader#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The output is one ``(objects, height, width, channels)`` uint8 array, which is the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the crop shape, and how many crops had to be conformed to it.",
+      "source_sha256": "2dc463b78b0876693294852e1ee684857c77835b352b0bbee51e26e9b76c5f3e",
+      "translation": "출력은 ``(objects, height, width, channels)`` uint8 배열 하나로, :func:`spacr.embeddings.embed_array`가 문서화하고 :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`가 요구하는 레이아웃입니다. 여기에 실제로 읽은 내용(일치한 수, 가져온 수, 크롭 모양, 그 모양에 맞춰야 했던 크롭 수)을 담은 JSON 직렬화 가능한 ``record``가 더해집니다."
+    },
+    {
+      "context": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
+      "label": "spacr.crop_loader#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
+      "source_sha256": "2bac6b2abbefa246e9492394ed854f727d1cfc407bb83364445d4df6f3b922f4",
+      "translation": "배열은 Embeddings 화면이나 :func:`spacr.embeddings.embed_array`에 넘길 수 있습니다."
+    },
+    {
+      "context": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
+      "label": "spacr.crop_loader#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
+      "source_sha256": "7f483bda810095966168bbde528ff00456a80903ac0ec268f35c8fe8af5a7a80",
+      "translation": "다른 이유로 빠진 행은 상한과 별도로 셉니다. 병합 경로는 잘라 낼 수 없는 모든 행을 빼는데, 이를 상한으로 보고하면 도달하지도 않은 한도를 올리라고 제안하는 셈이 됩니다. :attr:`CropPlan.matched`, :attr:`CropPlan.selected`, :attr:`CropPlan.count`는 세 개의 숫자이고, :attr:`CropPlan.capped`는 앞의 두 숫자 사이의 차이, :attr:`CropPlan.dropped`는 뒤의 두 숫자 사이의 차이이며, 패널에는 별개의 구절로 표시됩니다."
+    },
+    {
+      "context": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
+      "label": "spacr.crop_loader#8",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
+      "source_sha256": "4f41ff7970b4706488688ff17061663f820d3bf1d2474bcdd577e0ec22e3f481",
+      "translation": "빈 결과는 빈 배열로 반환하지 않고 이유와 함께 보고합니다. 아무것도 일치하지 않은 계획은 :attr:`CropPlan.empty_reason`을 담으며, 이는 요청된 테이블, 클래스, 플레이트, 조건식과 데이터베이스에 실제로 있는 것을 밝힙니다. 예를 들어 8개 플레이트로 된 스크린에서 플레이트 9를 요청한 경우입니다."
+    },
+    {
+      "context": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
+      "label": "spacr.crop_loader#9",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
+      "source_sha256": "c1e5770eafff138fd6860f51597883e6aedd6476f3aaef99cd169a33f9d09ea6",
+      "translation": "조건식은 SQL이며 데이터베이스는 읽기 전용으로 열립니다. ``where``는 사용자 자신의 파일에 대한 SQL 조각입니다. 이는 ``WHERE`` 절에 끼워 넣어지므로, 연결은 ``readonly=True``로 열리며(엔진 수준에서 모든 쓰기를 거부하는 SQLite의 ``query_only``), 문장 구분자를 포함한 조건식은 보내기 전에 거부됩니다."
+    },
+    {
+      "context": "The message is a sentence suitable for a status bar: every raise in this module names the path, the class or the predicate that produced it, since the calling application view shows this text as the explanation.",
+      "label": "spacr.crop_loader.CropLoadError#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The message is a sentence suitable for a status bar: every raise in this module names the path, the class or the predicate that produced it, since the calling screen shows this text as the explanation.",
+      "source_sha256": "a74b42242c480b441ea9109b0112c5085da0fbccb5be993744b9f63f2a702c6f",
+      "translation": "메시지는 상태 표시줄에 알맞은 문장입니다. 호출하는 화면이 이 텍스트를 설명으로 보여 주므로, 이 모듈의 모든 예외는 그것을 일으킨 경로, 클래스 또는 조건식을 밝힙니다."
+    },
+    {
+      "context": "Three counts are kept because rows are removed at two stages, for different reasons. ``matched`` is what the query found, ``selected`` is what the limit left of it, and ``count`` is what survived the merged route's join -- which drops every row with no single object label (``'omulti'`` / ``'onone'``) or no merged array recorded. Only the first gap is a cap, and only a cap is repaired by raising 'At most'; raising a limit that was not reached returns the same rows.",
+      "label": "spacr.crop_loader.CropPlan#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Three counts are kept because rows are removed at two stages, for different reasons. ``matched`` is what the query found, ``selected`` is what the limit left of it, and ``count`` is what survived the merged route's join -- which drops every row with no single object label (``'omulti'`` / ``'onone'``) or no merged array recorded. Only the first gap is a cap, and only a cap is repaired by raising 'At most'; raising a limit that was not reached returns the same rows.",
+      "source_sha256": "dfc1f901a2ece095c936bab1ef83e0a80a924339aabfe020778341efa9276f77",
+      "translation": "행이 서로 다른 이유로 두 단계에서 제거되므로 세 개의 개수를 유지합니다. ``matched``는 쿼리가 찾은 것, ``selected``는 그중 한도가 남긴 것, ``count``는 병합 경로의 조인을 통과한 것입니다. 이 조인은 단일 객체 레이블이 없거나(``'omulti'`` / ``'onone'``) 기록된 병합 배열이 없는 행을 모두 뺍니다. 첫 번째 차이만 상한이며, 상한만 'At most'를 올려서 해결됩니다. 도달하지 않은 한도를 올리면 같은 행이 반환됩니다."
+    },
+    {
+      "context": "Against :attr:`selected`, never against :attr:`count`: a merged-route load that lost rows to the join has ``matched > count`` without reaching the limit, and that is not a cap.",
+      "label": "spacr.crop_loader.CropPlan.capped#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Against :attr:`selected`, never against :attr:`count`: a merged-route load that lost rows to the join has ``matched > count`` without reaching the limit, and that is not a cap.",
+      "source_sha256": "55086767b68ebf5137d0e972fed1de547d97f0a591f4d6fd08b3d095a5d0eae7",
+      "translation": "항상 :attr:`selected`와 비교하며, :attr:`count`와는 절대 비교하지 않습니다. 조인 때문에 행을 잃은 병합 경로 불러오기는 한도에 도달하지 않고도 ``matched > count``이며, 이는 상한이 아닙니다."
+    },
+    {
+      "context": "The extracted image region is padded, not resized: a stack has to be rectangular before a backbone sees it, and rescaling an extracted image region changes the apparent size of the object in it, which is a phenotype. Zero-padding changes the background, which is not. It is also what :func:`spacr.crop_source.crop_at` already does to a box that runs off the edge of a microscope field of view, so two extracted image regions of the same object arrive the same way whichever route cut them.",
+      "label": "spacr.crop_loader.conform_crop#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The crop is padded, not resized: a stack has to be rectangular before a backbone sees it, and rescaling a crop changes the apparent size of the object in it, which is a phenotype. Zero-padding changes the background, which is not. It is also what :func:`spacr.crop_source.crop_at` already does to a box that runs off the edge of a field, so two crops of the same object arrive the same way whichever route cut them.",
+      "source_sha256": "3678c3c8747b35c3e985e6098c58447c5e1b830631c553f551259be1cd61b743",
+      "translation": "크롭은 크기를 바꾸지 않고 여백을 채웁니다. 스택은 백본이 보기 전에 직사각형이어야 하는데, 크롭의 배율을 바꾸면 그 안 객체의 겉보기 크기, 즉 표현형이 바뀝니다. 0으로 채우면 배경이 바뀌는데, 배경은 표현형이 아닙니다. 이는 :func:`spacr.crop_source.crop_at`이 시야 가장자리를 넘는 상자에 이미 하는 방식이기도 하므로, 같은 객체의 두 크롭은 어느 경로로 잘렸든 같은 방식으로 도착합니다."
+    },
+    {
+      "context": "a :class:`CropPlan`. Check :attr:`CropPlan.is_empty` before loading -- an empty plan is not an error, and it carries an explanation in :attr:`CropPlan.empty_reason`.",
+      "label": "spacr.crop_loader.plan_crops#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a :class:`CropPlan`. Check :attr:`CropPlan.is_empty` before loading -- an empty plan is not an error, and it carries an explanation in :attr:`CropPlan.empty_reason`.",
+      "source_sha256": "e2e5dc66d2b2f038958e7c608ff92cc6a502c01fedfee86bf3334a2534380299",
+      "translation": ":class:`CropPlan`입니다. 불러오기 전에 :attr:`CropPlan.is_empty`를 확인하십시오. 빈 계획은 오류가 아니며 :attr:`CropPlan.empty_reason`에 설명을 담고 있습니다."
+    },
+    {
+      "context": "2-D uint16 image aligned with ``mask``.",
+      "label": "spacr.custom_features.call_feature#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "2-D uint16 image aligned with ``mask``.",
+      "source_sha256": "a93b9f83bfb82265c4901b3ee5b64f06dcf1677082f4276cc8bc2e3271de547a",
+      "translation": "``mask``와 정렬된 2-D uint16 이미지입니다."
+    },
+    {
+      "context": "mapping of DB column name → scalar. Empty key-value mapping on exception.",
+      "label": "spacr.custom_features.call_feature#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "mapping of DB column name → scalar. Empty dict on exception.",
+      "source_sha256": "3ecdfbc2c430ebf6e4630871307abfc2c4fb0a2ddb665e2ed21e7e343aa40496",
+      "translation": "DB 열 이름 → 스칼라의 매핑입니다. 예외가 발생하면 빈 dict입니다."
+    },
+    {
+      "context": "Files whose names start with ``_`` are skipped. A file that fails to import is skipped, and its path and the error are logged at INFO level.",
+      "label": "spacr.custom_features.discover_features#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Files whose names start with ``_`` are skipped. A file that fails to import is skipped, and its path and the error are logged at INFO level.",
+      "source_sha256": "9b62e232a0cc19dcaf204ebe3b904157cf8a31000e0f749874efd7a6447551dd",
+      "translation": "이름이 ``_``로 시작하는 파일은 건너뜁니다. 가져오기에 실패한 파일도 건너뛰며, 그 경로와 오류는 INFO 수준으로 로그에 기록됩니다."
+    },
+    {
+      "context": "Download, validate, and cache the optional example-screen data.",
+      "label": "spacr.example_data#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Download, validate, and cache the optional example-screen data.",
+      "source_sha256": "2a125fe745d47d1f889c940dbbee12753f255be67a5e447c558b81d4c1d44fba",
+      "translation": "선택적인 예시 스크린 데이터를 내려받고, 검증하고, 캐시합니다."
+    },
+    {
+      "context": "The example CSV files are distributed as release assets rather than package data. They are downloaded only when requested, validated against the bundled manifest, and reused from the user's cache on subsequent runs. This module has no Qt dependency and can also be used from scripts.",
+      "label": "spacr.example_data#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The example CSV files are distributed as release assets rather than package data. They are downloaded only when requested, validated against the bundled manifest, and reused from the user's cache on subsequent runs. This module has no Qt dependency and can also be used from scripts.",
+      "source_sha256": "e58b862474443a8e9bf972252ec17bf6f39cf6f47504d9988f419aee8933d436",
+      "translation": "예시 CSV 파일은 패키지 데이터가 아니라 릴리스 자산으로 배포됩니다. 요청할 때만 내려받고, 함께 제공되는 매니페스트로 검증하며, 이후 실행에서는 사용자 캐시에서 재사용합니다. 이 모듈은 Qt 의존성이 없으며 스크립트에서도 사용할 수 있습니다."
+    },
+    {
+      "context": "counts : list of str Cached per-microplate sample position guide-count tables. scores : list of str Cached per-cell classification-score tables. downloaded : list of str Files downloaded during this fetch; other returned files were cached. folder : str Directory containing the validated files.",
+      "label": "spacr.example_data.Fetched#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "counts : list of str Cached per-well guide-count tables. scores : list of str Cached per-cell classification-score tables. downloaded : list of str Files downloaded during this fetch; other returned files were cached. folder : str Directory containing the validated files.",
+      "source_sha256": "743399a4c780f4f1002684494d17f47dc78543ecd8a72d4f2c38509af4f565e7",
+      "translation": "counts : list of str 캐시된 웰별 가이드 개수 테이블입니다. scores : list of str 캐시된 세포별 분류 점수 테이블입니다. downloaded : list of str 이번 가져오기 중에 내려받은 파일이며, 반환된 다른 파일은 캐시에 있던 것입니다. folder : str 검증된 파일을 담은 디렉터리입니다."
+    },
+    {
+      "context": "``SPACR_EXAMPLE_DATA`` overrides the location. Otherwise the function uses ``XDG_CACHE_HOME`` or the platform-neutral ``~/.cache`` fallback.",
+      "label": "spacr.example_data.cache_folder#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``SPACR_EXAMPLE_DATA`` overrides the location. Otherwise the function uses ``XDG_CACHE_HOME`` or the platform-neutral ``~/.cache`` fallback.",
+      "source_sha256": "0327e71e24dd4254210bf064d62e0eda3cde9fd00a50b5170d5a403d603aa89b",
+      "translation": "``SPACR_EXAMPLE_DATA``가 위치를 재정의합니다. 그렇지 않으면 함수는 ``XDG_CACHE_HOME`` 또는 플랫폼 중립적인 대체 경로 ``~/.cache``를 사용합니다."
+    },
+    {
+      "context": "``\"counts\"``, ``\"scores\"``, or ``None`` for everything.",
+      "label": "spacr.example_data.entries_of_kind#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``\"counts\"``, ``\"scores\"``, or ``None`` for everything.",
+      "source_sha256": "3940cefea1cf05404be839a8cc4461799f9eaf922847f357e0218d2af04efe27",
+      "translation": "``\"counts\"``, ``\"scores\"`` 또는 전체를 뜻하는 ``None``입니다."
+    },
+    {
+      "context": "for a kind the manifest does not contain, rather than returning an empty list -- a typo would otherwise download nothing and report success.",
+      "label": "spacr.example_data.entries_of_kind#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "for a kind the manifest does not contain, rather than returning an empty list -- a typo would otherwise download nothing and report success.",
+      "source_sha256": "a80b1f749697fc2970b85cbe7a9520e51cb655d41fd312ccc29c0dd20cb759f6",
+      "translation": "매니페스트에 없는 종류일 때 빈 리스트를 반환하지 않고 발생합니다. 그렇지 않으면 오타 때문에 아무것도 내려받지 않고 성공을 보고하게 됩니다."
+    },
+    {
+      "context": "folder : path-like, optional Cache directory. The standard example cache is used when omitted. progress : callable, optional Called as ``progress(name, received_bytes, total_bytes)`` while each file downloads. cancelled : callable, optional Zero-argument callback. A true result cancels the active download. download : bool, default=True If false, require every file to be present in the cache and do not use the network.",
+      "label": "spacr.example_data.fetch#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "folder : path-like, optional Cache directory. The standard example cache is used when omitted. progress : callable, optional Called as ``progress(name, received_bytes, total_bytes)`` while each file downloads. cancelled : callable, optional Zero-argument callback. A true result cancels the active download. download : bool, default=True If false, require every file to be present in the cache and do not use the network.",
+      "source_sha256": "9134863146acb9614c7798faded278134dc43912cf438dd83ee8ca2f681e5018",
+      "translation": "folder : path-like, optional 캐시 디렉터리입니다. 생략하면 표준 예시 캐시를 사용합니다. progress : callable, optional 각 파일을 내려받는 동안 ``progress(name, received_bytes, total_bytes)``로 호출됩니다. cancelled : callable, optional 인수가 없는 콜백입니다. 참을 반환하면 진행 중인 다운로드를 취소합니다. download : bool, default=True 거짓이면 모든 파일이 캐시에 있어야 하며 네트워크를 사용하지 않습니다."
+    },
+    {
+      "context": "Fetched Validated count and score paths plus download status.",
+      "label": "spacr.example_data.fetch#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Fetched Validated count and score paths plus download status.",
+      "source_sha256": "39db7ddf8c7cf66698db9ae4f1fdc2431e3d4e8865256fe3a742f38568a3ae2d",
+      "translation": "Fetched 검증된 개수 및 점수 경로와 다운로드 상태입니다."
+    },
+    {
+      "context": "ExampleDataError If a file cannot be downloaded, validation fails, the operation is cancelled, or downloading is disabled while files are missing.",
+      "label": "spacr.example_data.fetch#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "ExampleDataError If a file cannot be downloaded, validation fails, the operation is cancelled, or downloading is disabled while files are missing.",
+      "source_sha256": "f6e643a46fad049fb35e71f328a368c81a6a56cc24f3a115355053f50cac4d9f",
+      "translation": "ExampleDataError 파일을 내려받을 수 없거나, 검증에 실패하거나, 작업이 취소되었거나, 파일이 없는데 다운로드가 비활성화된 경우 발생합니다."
+    },
+    {
+      "context": "file whose size and SHA-256 digest are to be checked.",
+      "label": "spacr.example_data.is_whole#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "file whose size and SHA-256 digest are to be checked.",
+      "source_sha256": "bb91b0aefdbb3bd324fd96aac32783b32655063883800ef28b7dde3ce452492c",
+      "translation": "크기와 SHA-256 다이제스트를 확인할 파일입니다."
+    },
+    {
+      "context": "manifest mapping containing the expected ``bytes`` and ``sha256`` values.",
+      "label": "spacr.example_data.is_whole#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "manifest mapping containing the expected ``bytes`` and ``sha256`` values.",
+      "source_sha256": "a56c475c76651158b9d91b4c9d84917f15b7e7a64f0cbda487b2beb72dc85038",
+      "translation": "예상되는 ``bytes``와 ``sha256`` 값을 담은 매니페스트 매핑입니다."
+    },
+    {
+      "context": "The inexpensive size check runs before the SHA-256 digest is calculated.",
+      "label": "spacr.example_data.is_whole#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The inexpensive size check runs before the SHA-256 digest is calculated.",
+      "source_sha256": "2978f5d55cf774fb4a1a12912d1ab12b6e6d010a19be75b10a6a32fea0da9d88",
+      "translation": "비용이 적은 크기 검사를 SHA-256 다이제스트를 계산하기 전에 실행합니다."
+    },
+    {
+      "context": "restrict to one kind. Regression can fetch its counts and its scores separately, because a user checking one of them should not wait for the other.",
+      "label": "spacr.example_data.missing#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "restrict to one kind. Regression can fetch its counts and its scores separately, because a user checking one of them should not wait for the other.",
+      "source_sha256": "fcdd226b14f511c16b15b6713b31c49886adc086cbb920ccaf22d89ec2fed4b0",
+      "translation": "한 종류로 제한합니다. Regression은 개수와 점수를 따로 가져올 수 있습니다. 그중 하나를 확인하는 사용자가 다른 하나를 기다려서는 안 되기 때문입니다."
+    },
+    {
+      "context": "Record process and GPU memory use for each regression stage.",
+      "label": "spacr.fit_resources#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Record process and GPU memory use for each regression stage.",
+      "source_sha256": "682b8036e98be9465b964812389ee816020fac7b981805660be81fb1a4b75ef9",
+      "translation": "회귀의 각 단계에서 프로세스 및 GPU 메모리 사용량을 기록합니다."
+    },
+    {
+      "context": "Stage readings are included in run summaries and failure reports so resource exhaustion can be distinguished from other failures. Measurements are best-effort: missing ``psutil``, an unavailable Torch runtime, or unsupported container metrics produce an unavailable reading rather than failing the fit.",
+      "label": "spacr.fit_resources#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Stage readings are included in run summaries and failure reports so resource exhaustion can be distinguished from other failures. Measurements are best-effort: missing ``psutil``, an unavailable Torch runtime, or unsupported container metrics produce an unavailable reading rather than failing the fit.",
+      "source_sha256": "7db495459082eaea9fa2fd44d2e57801fc2050f9cf573d6d005711c406d2c3d1",
+      "translation": "단계별 측정값은 실행 요약과 실패 보고서에 포함되므로 자원 고갈을 다른 실패와 구별할 수 있습니다. 측정은 최선의 노력으로 이루어집니다. ``psutil``이 없거나, Torch 런타임을 사용할 수 없거나, 컨테이너 지표가 지원되지 않으면 적합을 실패시키지 않고 사용할 수 없음 측정값을 냅니다."
+    },
+    {
+      "context": "mapping-like fit settings carrying the recorded resource history.",
+      "label": "spacr.fit_resources.describe_resources#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "mapping-like fit settings carrying the recorded resource history.",
+      "source_sha256": "650e6c104fd96ea083728a9e04f59bc234f5e2ae7fdce104fff5e9df01c6d797",
+      "translation": "기록된 자원 이력을 담은 매핑 형식의 적합 설정입니다."
+    },
+    {
+      "context": "Read only if torch is already imported. Importing it to take a measurement would make the measurement the most expensive thing in the stage, and a settings panel must not import torch (`tests/test_a_settings_panel_does_not_import_torch.py`).",
+      "label": "spacr.fit_resources.gpu_allocated#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Read only if torch is already imported. Importing it to take a measurement would make the measurement the most expensive thing in the stage, and a settings panel must not import torch (`tests/test_a_settings_panel_does_not_import_torch.py`).",
+      "source_sha256": "bc6aa320121efae1fbbbec2427649083205d8b554892c5e976cc8ba66b132e0c",
+      "translation": "torch를 이미 가져온 경우에만 읽습니다. 측정을 위해 그것을 가져오면 측정이 그 단계에서 가장 비용이 큰 일이 되며, 설정 패널은 torch를 가져와서는 안 됩니다(`tests/test_a_settings_panel_does_not_import_torch.py`)."
+    },
+    {
+      "context": "Uses ``max_memory_allocated`` rather than the current allocation because fit tensors may already be released when a stage boundary is recorded. The high-water mark is cumulative across the process and therefore reports the largest allocation reached across a sequence of fits.",
+      "label": "spacr.fit_resources.gpu_allocated#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Uses ``max_memory_allocated`` rather than the current allocation because fit tensors may already be released when a stage boundary is recorded. The high-water mark is cumulative across the process and therefore reports the largest allocation reached across a sequence of fits.",
+      "source_sha256": "2d7472f9fecd09dcab254295c6df2f2b890dfc44dfcba49e4ddbcccf7c9c9453",
+      "translation": "단계 경계를 기록할 때 적합 텐서가 이미 해제되었을 수 있으므로 현재 할당 대신 ``max_memory_allocated``를 사용합니다. 최고 수위는 프로세스 전체에 걸쳐 누적되므로, 여러 적합에 걸쳐 도달한 가장 큰 할당을 보고합니다."
+    },
+    {
+      "context": "`/proc/self/statm` first because it needs no dependency and no import; psutil second. A container that reports neither gets ``None``, which the caller must not spell as zero -- \"nothing was using memory\" and \"nobody measured\" are opposite findings.",
+      "label": "spacr.fit_resources.host_rss#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "`/proc/self/statm` first because it needs no dependency and no import; psutil second. A container that reports neither gets ``None``, which the caller must not spell as zero -- \"nothing was using memory\" and \"nobody measured\" are opposite findings.",
+      "source_sha256": "203d8a8dd36cbe96028ac1548acd3096a45d00b2a9c0240810faf98c68966649",
+      "translation": "`/proc/self/statm`을 먼저 사용합니다. 의존성도 가져오기도 필요 없기 때문입니다. 그다음이 psutil입니다. 둘 다 보고하지 않는 컨테이너는 ``None``을 받으며, 호출자는 이를 0으로 표기해서는 안 됩니다. \"nothing was using memory\"(아무것도 메모리를 쓰지 않음)와 \"nobody measured\"(아무도 측정하지 않음)는 정반대의 결과입니다."
+    },
+    {
+      "context": "Empty when nothing was recorded -- not zero, for the reason `host_rss` gives.",
+      "label": "spacr.fit_resources.peak#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Empty when nothing was recorded -- not zero, for the reason `host_rss` gives.",
+      "source_sha256": "e0e9d004ba9cd714273e63a2b1f5c212021e7e2c344e25c2f63395df142c4bf8",
+      "translation": "아무것도 기록되지 않았으면 비어 있습니다. `host_rss`가 밝히는 이유로 0이 아닙니다."
+    },
+    {
+      "context": "byte count to format, or None when no measurement exists.",
+      "label": "spacr.fit_resources.readable#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "byte count to format, or None when no measurement exists.",
+      "source_sha256": "36b8294d911a5f1a0a58e9c2b9e46adceb3a5b04857875d61142e45be3f57c73",
+      "translation": "형식화할 바이트 수이며, 측정값이 없으면 None입니다."
+    },
+    {
+      "context": "Updates the stage and resource-history entries in ``settings`` when it is mutable. Measurement and storage failures are ignored so diagnostics do not interrupt the fit.",
+      "label": "spacr.fit_resources.record_stage#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Updates the stage and resource-history entries in ``settings`` when it is mutable. Measurement and storage failures are ignored so diagnostics do not interrupt the fit.",
+      "source_sha256": "54a3d34f59f06bcef35ea5973dd37b3fa6badf59e9f2ef5630f1c90d7f759b1c",
+      "translation": "``settings``가 변경 가능하면 그 안의 단계 및 자원 이력 항목을 갱신합니다. 진단이 적합을 방해하지 않도록 측정 및 저장 실패는 무시합니다."
+    },
+    {
+      "context": "Mutable fit settings or another mapping-like object.",
+      "label": "spacr.fit_resources.record_stage#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Mutable fit settings or another mapping-like object.",
+      "source_sha256": "41d5a5d4db2095ec799972bcfdd1bfc84edd27b6b19394724eb41070cd346a41",
+      "translation": "변경 가능한 적합 설정 또는 다른 매핑 형식 객체입니다."
+    },
+    {
+      "context": "Name of the stage being entered.",
+      "label": "spacr.fit_resources.record_stage#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Name of the stage being entered.",
+      "source_sha256": "c5bbf2a7a2fc7d5ca2488fbdd208b9e5ad09b164fd478b576e1f1d7a90de1bd7",
+      "translation": "진입하는 단계의 이름입니다."
+    },
+    {
+      "context": "Key-value mapping containing the stage, resident memory, and allocated GPU memory. Unavailable measurements are ``None``.",
+      "label": "spacr.fit_resources.record_stage#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Dictionary containing the stage, resident memory, and allocated GPU memory. Unavailable measurements are ``None``.",
+      "source_sha256": "a70b1ce854c1b2d93feb918d0f418c6ef6583fe6cef6d3f936df6c0525979462",
+      "translation": "단계, 상주 메모리, 할당된 GPU 메모리를 담은 사전입니다. 사용할 수 없는 측정값은 ``None``입니다."
+    },
+    {
+      "context": "Mirrors :func:`spacr.regression_backends.availability_entry`, so the panel takes one mapping shape and neither caller imports the other.",
+      "label": "spacr.gpu_reduce.availability_entry#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Mirrors :func:`spacr.regression_backends.availability_entry`, so the panel takes one mapping shape and neither caller imports the other.",
+      "source_sha256": "2160af0b90e096f5f139696e1b55e40a905e2e66d0d9d67cd3094427520a9aa5",
+      "translation": ":func:`spacr.regression_backends.availability_entry`를 그대로 따르므로, 패널은 하나의 매핑 형태만 받고 두 호출자 모두 서로를 가져오지 않습니다."
+    },
+    {
+      "context": "reducer name. Only algorithms in :data:`ACCELERATED` can select cuML; unsupported names remain on the CPU path.",
+      "label": "spacr.gpu_reduce.backend_for#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "reducer name. Only algorithms in :data:`ACCELERATED` can select cuML; unsupported names remain on the CPU path.",
+      "source_sha256": "7c87c43334749a3c9bc46f11cc1fd6ce1175dd26a15d3206f88d6280cb08141d",
+      "translation": "리듀서 이름입니다. :data:`ACCELERATED`에 있는 알고리즘만 cuML을 선택할 수 있으며, 지원되지 않는 이름은 CPU 경로에 남습니다."
+    },
+    {
+      "context": "opt in. Default False, so an existing caller keeps the CPU path and the reproducibility that goes with it.",
+      "label": "spacr.gpu_reduce.backend_for#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "opt in. Default False, so an existing caller keeps the CPU path and the reproducibility that goes with it.",
+      "source_sha256": "0dabf1b2687ee75ffc74b0926c419fd9afad8d8d382a9c7f16e2eab21a6d4ab2",
+      "translation": "사용하도록 선택합니다. 기본값은 False이므로 기존 호출자는 CPU 경로와 그에 따른 재현성을 유지합니다."
+    },
+    {
+      "context": "the backend that will actually run.",
+      "label": "spacr.gpu_reduce.backend_for#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the backend that will actually run.",
+      "source_sha256": "79a22f2fd54e60d5a568994c8fddf44b9cd02e7891d376e92b0b0af44c486c8b",
+      "translation": "실제로 실행될 백엔드입니다."
+    },
+    {
+      "context": "The Image UMAP's GPU acceleration and the regression backend picker ask the same question, so they answer it in the same vocabulary and one hover panel serves both. This is the bridge -- :func:`install_plan` keeps its own key-value mapping because the Hyperparameter screening experiment already reads it.",
+      "label": "spacr.gpu_reduce.install_offer#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The Image UMAP's GPU acceleration and the regression backend picker ask the same question, so they answer it in the same vocabulary and one hover panel serves both. This is the bridge -- :func:`install_plan` keeps its own dict because the Hyperparameter screen already reads it.",
+      "source_sha256": "1ef14c4c863610b0c29bf76a9622b1ab598a98839ed4ce819b15b1e7e87bd393",
+      "translation": "Image UMAP의 GPU 가속과 회귀 백엔드 선택기는 같은 질문을 하므로 같은 어휘로 답하며, 하나의 호버 패널이 둘 다에 쓰입니다. 이 함수가 그 다리입니다. Hyperparameter 창이 이미 :func:`install_plan`의 dict를 읽으므로 그 함수는 자체 dict를 유지합니다."
+    },
+    {
+      "context": "a :class:`spacr.updater.InstallOffer`, whose ``action`` is ``ready``, ``install``, ``elsewhere`` or ``impossible``.",
+      "label": "spacr.gpu_reduce.install_offer#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a :class:`spacr.updater.InstallOffer`, whose ``action`` is ``ready``, ``install``, ``elsewhere`` or ``impossible``.",
+      "source_sha256": "ecb3f0afcee906457b3534556f2ef234bc969e51233c4571f1edecdd4be87da9",
+      "translation": ":class:`spacr.updater.InstallOffer`이며, 그 ``action``은 ``ready``, ``install``, ``elsewhere`` 또는 ``impossible``입니다."
+    },
+    {
+      "context": "``{action, message}``. ``action`` is ``ready`` when cuML and a device are available; ``install`` when this interpreter can install it; ``wrong_python`` when another Python version is required; or ``no_device`` when installing more cannot provide a CUDA device.",
+      "label": "spacr.gpu_reduce.install_plan#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``{action, message}``. ``action`` is ``ready`` when cuML and a device are available; ``install`` when this interpreter can install it; ``wrong_python`` when another Python version is required; or ``no_device`` when installing more cannot provide a CUDA device.",
+      "source_sha256": "e0a917dcfaeb422542c3434f14733ac7f6d8159970ceab5f37770b1488414600",
+      "translation": "``{action, message}``입니다. ``action``은 cuML과 장치를 사용할 수 있으면 ``ready``, 이 인터프리터가 설치할 수 있으면 ``install``, 다른 Python 버전이 필요하면 ``wrong_python``, 더 설치해도 CUDA 장치를 제공할 수 없으면 ``no_device``입니다."
+    },
+    {
+      "context": "This function only reports; the caller performs the installation, which needs a confirmation and a progress bar. Keeping the two separate allows the plan to be queried without side effects.",
+      "label": "spacr.gpu_reduce.install_plan#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This function only reports; the caller performs the installation, which needs a confirmation and a progress bar. Keeping the two separate allows the plan to be queried without side effects.",
+      "source_sha256": "a1be3084830607bca0bad55d973c7f881efe58c0d075d009c3fa02db50d7a1e7",
+      "translation": "이 함수는 보고만 합니다. 설치는 확인과 진행률 표시줄이 필요하므로 호출자가 수행합니다. 둘을 분리하면 부작용 없이 계획을 조회할 수 있습니다."
+    },
+    {
+      "context": "reducer name understood by the cuML or CPU estimator factories (``umap``, ``tsne``, ``pca``, ``dbscan`` or ``kmeans``).",
+      "label": "spacr.gpu_reduce.make_reducer#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "reducer name understood by the cuML or CPU estimator factories (``umap``, ``tsne``, ``pca``, ``dbscan`` or ``kmeans``).",
+      "source_sha256": "ef8bbd8ae7a98cd30094aedd81c5ad9be8c2fa9ba4b4add72dd825b8eaa45b54",
+      "translation": "cuML 또는 CPU 추정기 팩토리가 이해하는 리듀서 이름입니다(``umap``, ``tsne``, ``pca``, ``dbscan`` 또는 ``kmeans``)."
+    },
+    {
+      "context": "passed to the estimator. The parameter names cuML shares with the CPU libraries -- ``n_neighbors``, ``min_dist``, ``n_components``, ``eps``, ``min_samples``, ``n_clusters`` -- carry through unchanged, which is what makes one call site serve both.",
+      "label": "spacr.gpu_reduce.make_reducer#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "passed to the estimator. The parameter names cuML shares with the CPU libraries -- ``n_neighbors``, ``min_dist``, ``n_components``, ``eps``, ``min_samples``, ``n_clusters`` -- carry through unchanged, which is what makes one call site serve both.",
+      "source_sha256": "776ba53fa256d83f76c123f568e3abec1d3d3a70b2d17256c2e5a2c81f905784",
+      "translation": "추정기로 전달됩니다. cuML이 CPU 라이브러리와 공유하는 매개변수 이름(``n_neighbors``, ``min_dist``, ``n_components``, ``eps``, ``min_samples``, ``n_clusters``)은 그대로 전달되며, 그 덕분에 하나의 호출 지점이 둘 다에 쓰일 수 있습니다."
+    },
+    {
+      "context": "``(estimator, backend)``. The backend is returned rather than logged only, so a caller can record which one produced a figure.",
+      "label": "spacr.gpu_reduce.make_reducer#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(estimator, backend)``. The backend is returned rather than logged only, so a caller can record which one produced a figure.",
+      "source_sha256": "ea0662ad1f9b142f8b7ab31d32fb4632b628cfea47c7a3097d75d0cf495fc799",
+      "translation": "``(estimator, backend)``입니다. 백엔드를 로그로만 남기지 않고 반환하므로, 호출자는 어느 백엔드가 그림을 만들었는지 기록할 수 있습니다."
+    },
+    {
+      "context": "the CPU library for ``method`` is missing. A missing optional GPU is a fallback; a missing required CPU library is a genuine setup problem and is not silently worked around.",
+      "label": "spacr.gpu_reduce.make_reducer#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the CPU library for ``method`` is missing. A missing optional GPU is a fallback; a missing required CPU library is a genuine setup problem and is not silently worked around.",
+      "source_sha256": "53037c311c8bcd50be5ecb99e437c0367dc98c33738d1000a1ba3a8a95ec20b4",
+      "translation": "``method``에 대한 CPU 라이브러리가 없을 때 발생합니다. 선택적 GPU가 없는 것은 대체로 처리되지만, 필수 CPU 라이브러리가 없는 것은 실제 설정 문제이므로 조용히 우회하지 않습니다."
+    },
+    {
+      "context": "Both are checked because cuML can import on a machine with no GPU and then fail at fit time. Returns False when :data:`ENV_FLAG` disables RAPIDS.",
+      "label": "spacr.gpu_reduce.rapids_available#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Both are checked because cuML can import on a machine with no GPU and then fail at fit time. Returns False when :data:`ENV_FLAG` disables RAPIDS.",
+      "source_sha256": "cedb10a8a3149ab61300ee84da9e5d8c3c3a8909a89a4dad7a8121f6f1528af0",
+      "translation": "cuML은 GPU가 없는 컴퓨터에서도 가져올 수 있고 적합 시점에 실패할 수 있으므로 둘 다 확인합니다. :data:`ENV_FLAG`가 RAPIDS를 비활성화하면 False를 반환합니다."
+    },
+    {
+      "context": "Colour-order boundaries for OpenCV.",
+      "label": "spacr.image_colors#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Colour-order boundaries for OpenCV.",
+      "source_sha256": "3d6e49a23a7ed815332499b0d99ccc4bac89a96b75b5fbfaafa83c288d7f60ec",
+      "translation": "OpenCV를 위한 색 순서 경계입니다."
+    },
+    {
+      "context": "spaCR's in-memory colour contract is RGB (or RGBA).  OpenCV is the one major dependency that decodes and encodes three-image data channel images as BGR, so conversions belong directly beside ``imread``/``imwrite`` rather than in plotting or model code.  Grayscale arrays pass through unchanged.",
+      "label": "spacr.image_colors#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR's in-memory colour contract is RGB (or RGBA).  OpenCV is the one major dependency that decodes and encodes three-channel images as BGR, so conversions belong directly beside ``imread``/``imwrite`` rather than in plotting or model code.  Grayscale arrays pass through unchanged.",
+      "source_sha256": "4bf27f0df5b27245911f67b15ebdc9736afa774c192f9e16a6650f12e07552b9",
+      "translation": "spaCR의 메모리 내 색 규약은 RGB(또는 RGBA)입니다.  OpenCV는 3채널 이미지를 BGR로 디코딩하고 인코딩하는 유일한 주요 의존성이므로, 변환은 플로팅이나 모델 코드가 아니라 ``imread``/``imwrite`` 바로 옆에 있어야 합니다.  회색조 배열은 변경 없이 통과합니다."
+    },
+    {
+      "context": "decoded OpenCV array, grayscale array, or ``None``.",
+      "label": "spacr.image_colors.cv2_to_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "decoded OpenCV array, grayscale array, or ``None``.",
+      "source_sha256": "3607cad49ca409c19d5c3ad05574a81b5b90f4baed0e157a88748b9341d6afe9",
+      "translation": "디코딩된 OpenCV 배열, 회색조 배열 또는 ``None``입니다."
+    },
+    {
+      "context": "contiguous RGB/RGBA data for three- or four-image data channel inputs; ``None``, grayscale, and other image data channel counts pass through unchanged.",
+      "label": "spacr.image_colors.cv2_to_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "contiguous RGB/RGBA data for three- or four-channel inputs; ``None``, grayscale, and other channel counts pass through unchanged.",
+      "source_sha256": "0a62bf26e577669b65f2f1124366eb1987787ff80d6437f2a969cfbb22239342",
+      "translation": "3채널 또는 4채널 입력에 대한 연속된 RGB/RGBA 데이터입니다. ``None``, 회색조 및 다른 채널 수는 변경 없이 통과합니다."
+    },
+    {
+      "context": "image path accepted by OpenCV.",
+      "label": "spacr.image_colors.read_image_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "image path accepted by OpenCV.",
+      "source_sha256": "3f0e060d319b832130fcfc2f0e9b1c92f4e87149072b01ea57ee2478fd5c3d1b",
+      "translation": "OpenCV가 받는 이미지 경로입니다."
+    },
+    {
+      "context": "OpenCV read mode; ``-1`` preserves the stored dtype and alpha channel.",
+      "label": "spacr.image_colors.read_image_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "OpenCV read mode; ``-1`` preserves the stored dtype and alpha channel.",
+      "source_sha256": "2b139528749008676fcf6730a6dd644dc6e9965c652a9b657907092cc06154c1",
+      "translation": "OpenCV 읽기 모드입니다. ``-1``은 저장된 dtype과 알파 채널을 보존합니다."
+    },
+    {
+      "context": "RGB/RGBA or grayscale image data, or ``None`` when OpenCV cannot read the path.",
+      "label": "spacr.image_colors.read_image_rgb#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "RGB/RGBA or grayscale image data, or ``None`` when OpenCV cannot read the path.",
+      "source_sha256": "f9ab92745f5adac7b0378c842982199f14c42e5818d17975ec14ce1116a0901b",
+      "translation": "RGB/RGBA 또는 회색조 이미지 데이터이며, OpenCV가 경로를 읽을 수 없으면 ``None``입니다."
+    },
+    {
+      "context": "spaCR RGB/RGBA array, or a grayscale array to pass through.",
+      "label": "spacr.image_colors.rgb_to_cv2#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR RGB/RGBA array, or a grayscale array to pass through.",
+      "source_sha256": "59f4f7f2464600f5ddba85fff348a1a64c0aff37f37ca711dbe003f5ca54d04e",
+      "translation": "spaCR RGB/RGBA 배열 또는 그대로 통과시킬 회색조 배열입니다."
+    },
+    {
+      "context": "contiguous BGR/BGRA data for three- or four-channel inputs; grayscale and other channel counts pass through unchanged.",
+      "label": "spacr.image_colors.rgb_to_cv2#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "contiguous BGR/BGRA data for three- or four-channel inputs; grayscale and other channel counts pass through unchanged.",
+      "source_sha256": "2cafd584a5c5214786c79b04919684f4825f7f5da2a33665e497823fc4f5c167",
+      "translation": "3채널 또는 4채널 입력에 대한 연속된 BGR/BGRA 데이터입니다. 회색조 및 다른 채널 수는 변경 없이 통과합니다."
+    },
+    {
+      "context": "output image path passed to OpenCV.",
+      "label": "spacr.image_colors.write_image_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "output image path passed to OpenCV.",
+      "source_sha256": "f9a5f69c1bd0ce33174c029511073a2907aa162bbff964750057e51178c19fd1",
+      "translation": "OpenCV로 전달되는 출력 이미지 경로입니다."
+    },
+    {
+      "context": "spaCR RGB/RGBA array, converted immediately before encoding.",
+      "label": "spacr.image_colors.write_image_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR RGB/RGBA array, converted immediately before encoding.",
+      "source_sha256": "941ec07ffec45e2f6b62a9784f964728c280f8bdcd4d8df1f2b5f426928a96c0",
+      "translation": "spaCR RGB/RGBA 배열로, 인코딩 직전에 변환됩니다."
+    },
+    {
+      "context": "optional OpenCV encoder parameter sequence.",
+      "label": "spacr.image_colors.write_image_rgb#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "optional OpenCV encoder parameter sequence.",
+      "source_sha256": "1b8ccb1a89266708900201266589629a4ccb905eebf16ae477d72f5d028eeb0e",
+      "translation": "선택적인 OpenCV 인코더 매개변수 시퀀스입니다."
+    },
+    {
+      "context": "whether OpenCV encoded and wrote the image successfully.",
+      "label": "spacr.image_colors.write_image_rgb#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "whether OpenCV encoded and wrote the image successfully.",
+      "source_sha256": "9ffb5714aa2d7d0e336380af0f736e178e1d25ae02b49586b8e65edd11a6e083",
+      "translation": "OpenCV가 이미지를 성공적으로 인코딩하고 기록했는지 여부입니다."
+    },
+    {
+      "context": "Auditable intensity scaling for merged measurement fields.",
+      "label": "spacr.intensity_rescale#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Auditable intensity scaling for merged measurement fields.",
+      "source_sha256": "3dc4f805dcba2118423c7c31473ae6060c7530a8e3de89b0486e38d1f54f30a5",
+      "translation": "병합된 측정 시야를 위한 감사 가능한 강도 스케일링입니다."
+    },
+    {
+      "context": "The measurement worker stores merged arrays as ``uint16`` while label image layers must remain integer identities.  This module makes the conversion decision a plate-level, serialisable plan so every worker uses the same scale and the decision can be written into ``measurements.db``.",
+      "label": "spacr.intensity_rescale#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The measurement worker stores merged arrays as ``uint16`` while label planes must remain integer identities.  This module makes the conversion decision a plate-level, serialisable plan so every worker uses the same scale and the decision can be written into ``measurements.db``.",
+      "source_sha256": "fd1f7998a82d63d72e6ba7c5cfd4e28c67426af1a36e9f7c337b173c069b9617",
+      "translation": "측정 작업자는 병합된 배열을 ``uint16``으로 저장하지만 레이블 평면은 정수 식별자로 유지되어야 합니다.  이 모듈은 변환 결정을 플레이트 수준의 직렬화 가능한 계획으로 만들어, 모든 작업자가 같은 배율을 사용하고 그 결정을 ``measurements.db``에 기록할 수 있게 합니다."
+    },
+    {
+      "context": "directory containing the merged array files.",
+      "label": "spacr.intensity_rescale.build_plate_plan#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "directory containing the merged array files.",
+      "source_sha256": "23cb7dc0862b529dc7ffcb0db94299549c1fe62025677c47af9c2e30c7085a35",
+      "translation": "병합된 배열 파일을 담은 디렉터리입니다."
+    },
+    {
+      "context": "merged-array filenames to inspect as one plate set.",
+      "label": "spacr.intensity_rescale.build_plate_plan#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "merged-array filenames to inspect as one plate set.",
+      "source_sha256": "003548f5b966148286d4478f78ef5e4c1491bbdcf26f91d6696670bbbdcad42b",
+      "translation": "하나의 플레이트 집합으로 검사할 병합 배열 파일 이름들입니다."
+    },
+    {
+      "context": "resolved parsing and mask image layer settings.",
+      "label": "spacr.intensity_rescale.build_plate_plan#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "resolved parsing and mask-plane settings.",
+      "source_sha256": "e6699962d2f4f795a235a10969b5e3cfca5df4da6835f8f6ac6263055ae300a7",
+      "translation": "해석된 구문 분석 설정과 마스크 평면 설정입니다."
+    },
+    {
+      "context": "Raw-valued microscope fields of view on a laboratory microplate share ``65535 / plate_max`` when any one of them exceeds the uint16 ceiling.  Normalised floating-point microscope fields of view retain their well-defined fixed conversion of ``x65535``.  A file that cannot be inspected is left in ``failures`` and its worker will make (and record) a per-microscope field of view fallback decision.",
+      "label": "spacr.intensity_rescale.build_plate_plan#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raw-valued fields on a plate share ``65535 / plate_max`` when any one of them exceeds the uint16 ceiling.  Normalised floating-point fields retain their well-defined fixed conversion of ``x65535``.  A file that cannot be inspected is left in ``failures`` and its worker will make (and record) a per-field fallback decision.",
+      "source_sha256": "6a2c5afe1f9b7a20ade9f86e739a0efa6cc915e3583ffc1561ed1183a8f41175",
+      "translation": "플레이트의 원시 값 시야 중 하나라도 uint16 상한을 넘으면 모두 ``65535 / plate_max``를 공유합니다.  정규화된 부동소수점 시야는 잘 정의된 고정 변환인 ``x65535``를 유지합니다.  검사할 수 없는 파일은 ``failures``에 남고, 그 작업자가 시야별 대체 결정을 내리고 기록합니다."
+    },
+    {
+      "context": "loaded merged field array to characterize.",
+      "label": "spacr.intensity_rescale.fallback_record#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "loaded merged field array to characterize.",
+      "source_sha256": "20af72754a19ddc011d33b7acaad1a2b5dbb20712f2eda3780789911cdb9c031",
+      "translation": "특성을 파악할, 불러온 병합 시야 배열입니다."
+    },
+    {
+      "context": "microscope field of view filename used to recover the laboratory microplate identifier.",
+      "label": "spacr.intensity_rescale.fallback_record#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "field filename used to recover the plate identifier.",
+      "source_sha256": "fd5d12f0bfdd44f3b71397faf33901d06b5fcfc27f603c2698f77a64aeeb70f6",
+      "translation": "플레이트 식별자를 복구하는 데 쓰는 시야 파일 이름입니다."
+    },
+    {
+      "context": "merged microscope field of view array whose last axis contains image layers.",
+      "label": "spacr.intensity_rescale.mask_planes#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "merged field array whose last axis contains image planes.",
+      "source_sha256": "fe9162a5af23ac370e7e29d452b0bdac080f625f106b0a75445136a759330a6a",
+      "translation": "마지막 축에 이미지 평면을 담은 병합 시야 배열입니다."
+    },
+    {
+      "context": "multiplicative intensity conversion factor to classify.",
+      "label": "spacr.intensity_rescale.needs_warning#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "multiplicative intensity conversion factor to classify.",
+      "source_sha256": "81a084785d8f41ac47f12d98108e8fc9e54eb70ef7937663193ebaec36768e6b",
+      "translation": "분류할 곱셈 강도 변환 계수입니다."
+    },
+    {
+      "context": "field filename used to locate its planned record.",
+      "label": "spacr.intensity_rescale.resolve_record#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "field filename used to locate its planned record.",
+      "source_sha256": "f9e7da2a5f5305e1059a1a56d7dd777f93b726e8f7d1ecae1cea3e377cf7b2e2",
+      "translation": "계획된 레코드를 찾는 데 쓰는 시야 파일 이름입니다."
+    },
+    {
+      "context": "resolved settings containing the optional plate plan.",
+      "label": "spacr.intensity_rescale.resolve_record#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "resolved settings containing the optional plate plan.",
+      "source_sha256": "dd71ff5769546759605a6030a876e51fe84b32f2e00995c31ebe44890ae84b49",
+      "translation": "선택적인 플레이트 계획을 담은 해석된 설정입니다."
+    },
+    {
+      "context": "resolved mask-dimension settings used to exclude label image layers from the intensity scan.",
+      "label": "spacr.intensity_rescale.signal_max#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "resolved mask-dimension settings used to exclude label planes from the intensity scan.",
+      "source_sha256": "10e6d9fc1054d7a139d33757465f28c935ae493676d80b45e4590fe2a87cf8da",
+      "translation": "강도 스캔에서 레이블 평면을 제외하는 데 쓰는 해석된 마스크 차원 설정입니다."
+    },
+    {
+      "context": "Protein-localization metadata for compartment-aware figure colouring.",
+      "label": "spacr.localisation#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Protein-localization metadata for compartment-aware figure colouring.",
+      "source_sha256": "b8a4fca4885deed53940d518ac3f863dd7f4d794e0eef20763afa2ce3a5a6b7b",
+      "translation": "구획을 고려한 그림 색칠을 위한 단백질 위치 메타데이터입니다."
+    },
+    {
+      "context": "Interactive volcano plots can highlight genes from one selected LOPIT compartment while leaving the remaining genes grey.",
+      "label": "spacr.localisation#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Interactive volcano plots can highlight genes from one selected LOPIT compartment while leaving the remaining genes grey.",
+      "source_sha256": "3fc1e126e7d9d120edf07182ac7d9b67c218b8f8a8e958d801ead1c651c4f0d3",
+      "translation": "대화형 화산 플롯은 선택한 LOPIT 구획 하나의 유전자를 강조하고 나머지 유전자는 회색으로 둘 수 있습니다."
+    },
+    {
+      "context": "Figures highlight one selected compartment against grey to keep the comparison legible. Coefficient feature names are resolved to bare gene identifiers with :func:`spacr.hits.gene_of` before joining the bundled TAGM/LOPIT table.",
+      "label": "spacr.localisation#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Figures highlight one selected compartment against grey to keep the comparison legible. Coefficient feature names are resolved to bare gene identifiers with :func:`spacr.hits.gene_of` before joining the bundled TAGM/LOPIT table.",
+      "source_sha256": "98f424f6bc6912076bd7b1ade91bc817d3a10fc030c9e30fa2dff47d979a61d1",
+      "translation": "그림은 비교를 읽기 쉽게 하기 위해 선택한 구획 하나를 회색 배경에 대비해 강조합니다. 계수 특성 이름은 함께 제공되는 TAGM/LOPIT 테이블과 조인하기 전에 :func:`spacr.hits.gene_of`로 순수 유전자 식별자로 해석됩니다."
+    },
+    {
+      "context": "table whose feature names are classified and whose index is preserved on the returned boolean Series.",
+      "label": "spacr.localisation.mask#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "table whose feature names are classified and whose index is preserved on the returned boolean Series.",
+      "source_sha256": "64cf1acbcf8f409bdbde55e911866d67ed2931a21fc70429828caf8e81ba5bc6",
+      "translation": "특성 이름을 분류할 테이블로, 그 인덱스는 반환되는 불리언 Series에 유지됩니다."
+    },
+    {
+      "context": "``None`` or ``\"\"`` selects nothing, so a caller can pass the menu's state straight through without a branch.",
+      "label": "spacr.localisation.mask#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``None`` or ``\"\"`` selects nothing, so a caller can pass the menu's state straight through without a branch.",
+      "source_sha256": "f2f574bf14ef94811935590f921fe2d8f7d4cce12ba1de59f60bf6d41e84ab57",
+      "translation": "``None`` 또는 ``\"\"``은 아무것도 선택하지 않으므로, 호출자는 분기 없이 메뉴 상태를 그대로 넘길 수 있습니다."
+    },
+    {
+      "context": "result frame whose feature identifiers are to be looked up.",
+      "label": "spacr.localisation.of#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "result frame whose feature identifiers are to be looked up.",
+      "source_sha256": "066b64ed64f92044a463c03a4b1af13f44c0c4121621a89635ae0f509dd70da8",
+      "translation": "특성 식별자를 조회할 결과 프레임입니다."
+    },
+    {
+      "context": "a pandas Series of compartment names, empty string where the gene is not in the table.",
+      "label": "spacr.localisation.of#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a pandas Series of compartment names, empty string where the gene is not in the table.",
+      "source_sha256": "04719690a7be3f6dd86c31bcf4435f4ccb577996ae72182e429512ee55669628",
+      "translation": "구획 이름의 pandas Series로, 유전자가 테이블에 없으면 빈 문자열입니다."
+    },
+    {
+      "context": "Joined through :func:`spacr.hits.gene_of`, which maps design terms to gene ids. Both the per-gene and the per-guide rows resolve; a guide row takes its gene's compartment.",
+      "label": "spacr.localisation.of#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Joined through :func:`spacr.hits.gene_of`, which maps design terms to gene ids. Both the per-gene and the per-guide rows resolve; a guide row takes its gene's compartment.",
+      "source_sha256": "c4cfb4edcf39e83b8892cf0270bd3e2fa945a71e85322b98d77103838e0918ee",
+      "translation": "설계 항을 유전자 id로 매핑하는 :func:`spacr.hits.gene_of`를 통해 조인합니다. 유전자별 행과 가이드별 행이 모두 해석되며, 가이드 행은 그 유전자의 구획을 따릅니다."
+    },
+    {
+      "context": "result frame whose represented compartments are to be counted.",
+      "label": "spacr.localisation.present#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "result frame whose represented compartments are to be counted.",
+      "source_sha256": "6bffd337e3b266473ec7f939310e21919954eda14ec31715ba46ac74f02aaffe",
+      "translation": "나타난 구획을 셀 결과 프레임입니다."
+    },
+    {
+      "context": "Only compartments present in the screen are returned, not all 27 in the reference table, so a menu built from them offers no choice that colours nothing.",
+      "label": "spacr.localisation.present#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Only compartments present in the screen are returned, not all 27 in the reference table, so a menu built from them offers no choice that colours nothing.",
+      "source_sha256": "834508410a34e5d6249f3e11502dc294f1dd0f4005a43193929accb47e61e090",
+      "translation": "참조 테이블의 27개 구획 전부가 아니라 스크린에 존재하는 구획만 반환하므로, 이를 바탕으로 만든 메뉴에는 아무것도 색칠하지 않는 선택지가 없습니다."
+    },
+    {
+      "context": "Cached: the file is 3,832 rows and is read to build a right-click menu, which happens on the main GUI execution path every time the user opens one.",
+      "label": "spacr.localisation.table#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Cached: the file is 3,832 rows and is read to build a right-click menu, which happens on the GUI thread every time the user opens one.",
+      "source_sha256": "d3f57ec5b64ba75d6542bd16ff72bd08def492056a3072a5267240d692fd2ab9",
+      "translation": "캐시됩니다. 파일은 3,832행이며 오른쪽 클릭 메뉴를 만들 때 읽는데, 이는 사용자가 메뉴를 열 때마다 GUI 스레드에서 일어납니다."
+    },
+    {
+      "context": "an empty key-value mapping when the table is missing, never raising -- a screen of a different organism has no reason to carry this file.",
+      "label": "spacr.localisation.table#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "an empty dict when the table is missing, never raising -- a screen of a different organism has no reason to carry this file.",
+      "source_sha256": "e637290e3fb35dbf2cee8ea7e97256fe5616559ba63fe71ed8c070872b9cb5de",
+      "translation": "테이블이 없으면 빈 dict이며, 절대 예외를 발생시키지 않습니다. 다른 생물종의 스크린에는 이 파일이 있을 이유가 없습니다."
+    },
+    {
+      "context": "Convert per-object settings between flat structured-data names and a table with one row per question.",
+      "label": "spacr.object_settings_table#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Convert per-object settings between flat keys and a table with one row per question.",
+      "source_sha256": "e05438aee8b68569bbc28e5ccc785c7344db4b094d2b7331723b4c024ff9a066",
+      "translation": "객체별 설정을 평면 키와 질문당 한 행인 테이블 사이에서 변환합니다."
+    },
+    {
+      "context": "This module is only the model: it reads a flat settings key-value mapping into a table and writes a table back out, losslessly. It draws nothing. A GUI renders :func:`to_table` and calls :func:`from_table` on edit, and the headless path never has to know the table exists -- the stored structured-data names are unchanged, so no settings file, notebook or tutorial migrates.",
+      "label": "spacr.object_settings_table#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This module is only the model: it reads a flat settings dict into a table and writes a table back out, losslessly. It draws nothing. A GUI renders :func:`to_table` and calls :func:`from_table` on edit, and the headless path never has to know the table exists -- the stored keys are unchanged, so no settings file, notebook or tutorial migrates.",
+      "source_sha256": "3903cd8449bdff07087873dfe49e34568ccad47722c5f3670d58fa5911d86c04",
+      "translation": "이 모듈은 모델일 뿐입니다. 평면 설정 dict를 테이블로 읽고 테이블을 손실 없이 다시 써 냅니다. 아무것도 그리지 않습니다. GUI는 :func:`to_table`을 렌더링하고 편집 시 :func:`from_table`을 호출하며, 헤드리스 경로는 테이블의 존재를 알 필요가 없습니다. 저장되는 키는 바뀌지 않으므로 어떤 설정 파일, 노트북, 튜토리얼도 마이그레이션되지 않습니다."
+    },
+    {
+      "context": "Storing a nested ``{question: {object: value}}`` structure instead would be a file-format change, and every saved settings file, every published tutorial, and the headless ``spacr-run`` path would have to change with it. Only the presentation changes.",
+      "label": "spacr.object_settings_table#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Storing a nested ``{question: {object: value}}`` structure instead would be a file-format change, and every saved settings file, every published tutorial, and the headless ``spacr-run`` path would have to change with it. Only the presentation changes.",
+      "source_sha256": "0989d19f79a1a566cfc975dd75ae4e508b9508d284be9a43da64b64213745946",
+      "translation": "대신 중첩된 ``{question: {object: value}}`` 구조로 저장하면 파일 형식이 바뀌며, 저장된 모든 설정 파일, 게시된 모든 튜토리얼, 헤드리스 ``spacr-run`` 경로가 함께 바뀌어야 합니다. 바뀌는 것은 표시 방식뿐입니다."
+    },
+    {
+      "context": "``organelleb`` is a storage spelling, not a thing a user recognises. The letter suffixes exist because object types are embedded in underscore-separated object identifiers and ``organelle2`` is ambiguous with label 2 -- an implementation constraint that has no business appearing in a column header.",
+      "label": "spacr.object_settings_table.column_label#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``organelleb`` is a storage spelling, not a thing a user recognises. The letter suffixes exist because object types are embedded in underscore-separated object keys and ``organelle2`` is ambiguous with label 2 -- an implementation constraint that has no business appearing in a column header.",
+      "source_sha256": "3f549a36154bb66ceca0338d423df3212d160f2e2395afcf3405a2c55374a537",
+      "translation": "``organelleb``는 저장용 철자이지 사용자가 알아볼 수 있는 것이 아닙니다. 문자 접미사는 객체 유형이 밑줄로 구분된 객체 키에 포함되어 있고 ``organelle2``가 레이블 2와 혼동되기 때문에 존재합니다. 이는 열 머리글에 나타날 이유가 없는 구현상의 제약입니다."
+    },
+    {
+      "context": "The inverse of :func:`to_table`, without loss: the table is the settings file rearranged, not transformed, so it can be used as an editing surface. A test round-trips every default settings key-value mapping.",
+      "label": "spacr.object_settings_table.from_table#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The inverse of :func:`to_table`, without loss: the table is the settings file rearranged, not transformed, so it can be used as an editing surface. A test round-trips every default settings dict.",
+      "source_sha256": "98c4acd3cc88931e9f2c77360586d3aa3c0237b06ed1f4fe37748e3ec916ffea",
+      "translation": ":func:`to_table`의 손실 없는 역함수입니다. 테이블은 설정 파일을 변환한 것이 아니라 재배열한 것이므로 편집 화면으로 사용할 수 있습니다. 테스트가 모든 기본 설정 dict를 왕복 변환합니다."
+    },
+    {
+      "context": "Compare a response distribution before and after transformation.",
+      "label": "spacr.response_distribution#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Compare a response distribution before and after transformation.",
+      "source_sha256": "e0c465d5767dbe239725a6468e7c2c20c2d8b772a5c644780a3249684427ebe7",
+      "translation": "변환 전후의 반응 분포를 비교합니다."
+    },
+    {
+      "context": "The module applies the same transformation and distribution machine-learning classification model used by the regression workflow. Its combined histogram therefore provides a diagnostic of how the selected transformation changes the response and the candidate model family.",
+      "label": "spacr.response_distribution#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The module applies the same transformation and distribution classifier used by the regression pipeline. Its combined histogram therefore provides a diagnostic of how the selected transformation changes the response and the candidate model family.",
+      "source_sha256": "d86b9052ed5f828ab5d04d493bebc810b20d4a996f3cc0763696040043954672",
+      "translation": "이 모듈은 회귀 파이프라인이 사용하는 것과 같은 변환과 분포 분류기를 적용합니다. 따라서 결합 히스토그램은 선택한 변환이 반응과 후보 모델 패밀리를 어떻게 바꾸는지에 대한 진단을 제공합니다."
+    },
+    {
+      "context": "response-distribution comparison result to render.",
+      "label": "spacr.response_distribution.caption#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "response-distribution comparison result to render.",
+      "source_sha256": "1e244d7ac356d80ad6aea3dc934b6426b32735f8feda7feeb25608813b4e53bf",
+      "translation": "렌더링할 반응 분포 비교 결과입니다."
+    },
+    {
+      "context": "values : sequence of float Response values. Non-finite values are excluded. transform : str Transformation to evaluate.",
+      "label": "spacr.response_distribution.compare#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : sequence of float Response values. Non-finite values are excluded. transform : str Transformation to evaluate.",
+      "source_sha256": "3e36afc80652bd758fe1433d65d9cf11d0fd73ee5e8a0fd05e19831fca0b68dd",
+      "translation": "values : sequence of float 반응 값입니다. 유한하지 않은 값은 제외됩니다. transform : str 평가할 변환입니다."
+    },
+    {
+      "context": "key-value mapping The original and transformed arrays, their summaries, the normalized transformation name, and flags indicating whether values changed and whether the transformed values require a separate axis.",
+      "label": "spacr.response_distribution.compare#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict The original and transformed arrays, their summaries, the normalized transformation name, and flags indicating whether values changed and whether the transformed values require a separate axis.",
+      "source_sha256": "568f9cbb8836bcc05deac408747e05bd2ebb8866230c99d37d539c34526e4b39",
+      "translation": "dict 원래 배열과 변환된 배열, 각각의 요약, 정규화된 변환 이름, 그리고 값이 바뀌었는지와 변환된 값에 별도의 축이 필요한지를 나타내는 플래그입니다."
+    },
+    {
+      "context": "values : sequence of float Response values before or after transformation. Non-finite values are excluded.",
+      "label": "spacr.response_distribution.describe#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : sequence of float Response values before or after transformation. Non-finite values are excluded.",
+      "source_sha256": "cbea614531c72568d72849803c60e7b297e9f55dcb37096e05b29bf54f598108",
+      "translation": "values : sequence of float 변환 전 또는 후의 반응 값입니다. 유한하지 않은 값은 제외됩니다."
+    },
+    {
+      "context": "key-value mapping Sample size, range, skewness, D'Agostino normality-test p-value, regression-family identifier, and display label. The family is empty when fewer than eight finite observations are available or classification fails.",
+      "label": "spacr.response_distribution.describe#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict Sample size, range, skewness, D'Agostino normality-test p-value, regression-family identifier, and display label. The family is empty when fewer than eight finite observations are available or classification fails.",
+      "source_sha256": "23055abc4e0f0146128df50105b829312996042e7fa1adb9ebf44f567e45dfba",
+      "translation": "dict 표본 크기, 범위, 왜도, D'Agostino 정규성 검정 p-값, 회귀 패밀리 식별자 및 표시 레이블입니다. 유한한 관측이 여덟 개 미만이거나 분류에 실패하면 패밀리는 비어 있습니다."
+    },
+    {
+      "context": "The same picture :func:`panel` draws, on the screen's own renderer, so the figure a run writes and the figure a tab shows are one scene. Both distributions go on ONE pair of axes as outlines rather than on two stacked panels: the question is whether the transform moved the shape, and two shapes on separate axes with separate scales is the one layout that cannot answer it.",
+      "label": "spacr.response_distribution.fast_panel#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The same picture :func:`panel` draws, on the screen's own renderer, so the figure a run writes and the figure a tab shows are one scene. Both distributions go on ONE pair of axes as outlines rather than on two stacked panels: the question is whether the transform moved the shape, and two shapes on separate axes with separate scales is the one layout that cannot answer it.",
+      "source_sha256": "b876d7cc775b61d1046b13f66122598a490fdf0387eb6a3b6a0147cd184e8d0a",
+      "translation": ":func:`panel`이 그리는 것과 같은 그림을 화면 자체의 렌더러로 그리므로, 실행이 기록하는 그림과 탭이 보여 주는 그림이 하나의 장면입니다. 두 분포는 위아래로 쌓인 두 패널이 아니라 하나의(ONE) 축 쌍 위에 윤곽선으로 그립니다. 질문은 변환이 모양을 바꿨는지이며, 축과 척도가 서로 다른 두 모양은 그 질문에 답할 수 없는 유일한 레이아웃이기 때문입니다."
+    },
+    {
+      "context": "values : sequence of float Response values. Non-finite values are excluded. transform : str Transformation name, as :func:`transformed` accepts. plot : FastPlot or None, default=None Where to draw. One is created when omitted. dependent_variable : str, default=\"\" The response's name, for the axis label.",
+      "label": "spacr.response_distribution.fast_panel#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : sequence of float Response values. Non-finite values are excluded. transform : str Transformation name, as :func:`transformed` accepts. plot : FastPlot or None, default=None Where to draw. One is created when omitted. dependent_variable : str, default=\"\" The response's name, for the axis label.",
+      "source_sha256": "32d394b5717f6a0a489e2f835e1fe1167041a9134bc72acee8f786bca2a8f619",
+      "translation": "values : sequence of float 반응 값입니다. 유한하지 않은 값은 제외됩니다. transform : str :func:`transformed`가 받는 변환 이름입니다. plot : FastPlot or None, default=None 그릴 위치입니다. 생략하면 하나를 만듭니다. dependent_variable : str, default=\"\" 축 레이블에 쓸 반응의 이름입니다."
+    },
+    {
+      "context": "FastPlot or None The plot drawn on, or None when there is nothing finite to draw.",
+      "label": "spacr.response_distribution.fast_panel#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "FastPlot or None The plot drawn on, or None when there is nothing finite to draw.",
+      "source_sha256": "e8d8d94ff99b17f71ac379afcf9b098da50441e6b1ffc8698889da943db3ecb0",
+      "translation": "FastPlot or None 그려진 플롯이며, 그릴 유한한 값이 없으면 None입니다."
+    },
+    {
+      "context": "values : sequence of float Response values to compare. transform : str Transformation to apply. ax : matplotlib.axes.Axes, optional Axes on which to draw. A standalone figure and axes are created when omitted. dependent_variable : str, optional Response name shown on the horizontal axis.",
+      "label": "spacr.response_distribution.panel#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : sequence of float Response values to compare. transform : str Transformation to apply. ax : matplotlib.axes.Axes, optional Axes on which to draw. A standalone figure and axes are created when omitted. dependent_variable : str, optional Response name shown on the horizontal axis.",
+      "source_sha256": "5f05a48110fe4385ffdeaac532f2f33645dc656691179848530cb42a0ef0508c",
+      "translation": "values : sequence of float 비교할 반응 값입니다. transform : str 적용할 변환입니다. ax : matplotlib.axes.Axes, optional 그릴 축입니다. 생략하면 독립된 그림과 축을 만듭니다. dependent_variable : str, optional 가로축에 표시할 반응 이름입니다."
+    },
+    {
+      "context": "key-value mapping Result from :func:`compare`, augmented with the primary axes under ``\"axes\"``.",
+      "label": "spacr.response_distribution.panel#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict Result from :func:`compare`, augmented with the primary axes under ``\"axes\"``.",
+      "source_sha256": "a73c388a19d6a0250613270fb16db85010a79ba233e99f7aa67dfb1f43d672d9",
+      "translation": "dict :func:`compare`의 결과에 기본 축을 ``\"axes\"`` 아래에 추가한 것입니다."
+    },
+    {
+      "context": "values : sequence of float Response values to transform. transform : str Transformation accepted by :func:`spacr.ml.apply_transformation`.",
+      "label": "spacr.response_distribution.transformed#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : sequence of float Response values to transform. transform : str Transformation accepted by :func:`spacr.ml.apply_transformation`.",
+      "source_sha256": "3c49f417451210ff8a9435ec1af59228948d8bf892e7e367654d5da6563d7791",
+      "translation": "values : sequence of float 변환할 반응 값입니다. transform : str :func:`spacr.ml.apply_transformation`이 받는 변환입니다."
+    },
+    {
+      "context": "numpy.ndarray Transformed values. Values are returned unchanged for ``\"none\"``, an unsupported transformation, or a transformation that cannot be applied.",
+      "label": "spacr.response_distribution.transformed#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "numpy.ndarray Transformed values. Values are returned unchanged for ``\"none\"``, an unsupported transformation, or a transformation that cannot be applied.",
+      "source_sha256": "4c6ec63ae0073950312bcbd5f36ab5870f6c1f86c09948761e2985a61e8836e8",
+      "translation": "numpy.ndarray 변환된 값입니다. ``\"none\"``, 지원되지 않는 변환 또는 적용할 수 없는 변환이면 값을 변경 없이 반환합니다."
+    },
+    {
+      "context": "The installed spaCR version, and the environment report built from it.",
+      "label": "spacr.version#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The installed spaCR version, and the environment report built from it.",
+      "source_sha256": "a4f47ec34c9b7051f812a91ccbd698a62529467c90ffd2f4d3bb6590b4ce7a8b",
+      "translation": "설치된 spaCR 버전과 이를 바탕으로 만든 환경 보고서입니다."
+    },
+    {
+      "context": "A source checkout or editable install reports the version in its own ``spacr/_version.py``, because its installed metadata can be stale; an installed wheel or frozen installer reports its distribution metadata.",
+      "label": "spacr.version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A source checkout or editable install reports the version in its own ``spacr/_version.py``, because its installed metadata can be stale; an installed wheel or frozen installer reports its distribution metadata.",
+      "source_sha256": "5a23a81234f8e8e11fbc85becda5dd79e6b84cf3dcea3ff42e10bf5b2ecf73fd",
+      "translation": "소스 체크아웃이나 편집 가능 설치는 설치된 메타데이터가 오래되었을 수 있으므로 자체 ``spacr/_version.py``의 버전을 보고합니다. 설치된 휠이나 고정 설치 프로그램은 배포 메타데이터를 보고합니다."
+    },
+    {
+      "context": "Resolve ``version_str`` lazily (PEP 562).",
+      "label": "spacr.version.__getattr__#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Resolve ``version_str`` lazily (PEP 562).",
+      "source_sha256": "31330605d174b14912f06e5d094fb50f02576bfb6cb23cb5481ac737f76bb162",
+      "translation": "``version_str``을 지연 해석합니다(PEP 562)."
+    },
+    {
+      "context": "Module attribute requested by Python's fallback lookup.",
+      "label": "spacr.version.__getattr__#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Module attribute requested by Python's fallback lookup.",
+      "source_sha256": "0da00f5c09165a80c14a018c68592dc96209c9ebde5ed3e4be27a43d4a03b3f9",
+      "translation": "Python의 대체 조회가 요청한 모듈 속성입니다."
+    },
+    {
+      "context": "The formatted environment report for ``version_str``.",
+      "label": "spacr.version.__getattr__#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The formatted environment report for ``version_str``.",
+      "source_sha256": "07b6f82a5ea2457445d9ae1247e227b97015f54eab374df3c05447885e3991fb",
+      "translation": "``version_str``에 대한 형식화된 환경 보고서입니다."
+    },
+    {
+      "context": "If ``name`` is not ``version_str``.",
+      "label": "spacr.version.__getattr__#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "If ``name`` is not ``version_str``.",
+      "source_sha256": "995b55654453c1e1c4326749fe67a461e40da87312e18f33d92c0e61571dc47a",
+      "translation": "``name``이 ``version_str``이 아닐 때 발생합니다."
+    },
+    {
+      "context": "``format_version_info()`` calls ``get_torch_version()``, which imports torch — roughly 0.94 s. Resolving ``version_str`` lazily keeps ``import spacr`` from importing torch, so light entry points such as :mod:`spacr.validate` can answer in about a second before a run starts.",
+      "label": "spacr.version.__getattr__#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``format_version_info()`` calls ``get_torch_version()``, which imports torch — roughly 0.94 s. Resolving ``version_str`` lazily keeps ``import spacr`` from importing torch, so light entry points such as :mod:`spacr.validate` can answer in about a second before a run starts.",
+      "source_sha256": "dca61ac4348045483dab1c1a6071f11f95fb84f740516aeb9ccba8a3668e81f1",
+      "translation": "``format_version_info()``는 ``get_torch_version()``을 호출하고, 이 함수는 torch를 가져오며 약 0.94 s가 걸립니다. ``version_str``을 지연 해석하면 ``import spacr``가 torch를 가져오지 않으므로, :mod:`spacr.validate` 같은 가벼운 진입점은 실행이 시작되기 전에 약 1초 안에 응답할 수 있습니다."
+    },
+    {
+      "context": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "label": "spacr.version.__getattr__#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "source_sha256": "7dd50fc5213ae47f427d9a21419855b5ccbef3c9fdf93f520ceeda2abe8cf61d",
+      "translation": "``from spacr.version import version_str``은 변경 없이 여전히 동작합니다. torch는 ``version_str``에 접근할 때만 가져옵니다."
+    },
+    {
+      "context": "Tab-aligned version report suitable for CLI display.",
+      "label": "spacr.version.format_version_info#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Tab-aligned version report suitable for CLI display.",
+      "source_sha256": "6e917ae49e4ef3e5589e889a0df66dd946baf5e6119359cbbb519e67a8196013",
+      "translation": "CLI 표시에 알맞은 탭 정렬 버전 보고서입니다."
+    },
+    {
+      "context": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "label": "spacr.version.get_torch_version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "source_sha256": "cef07f49aa1f0458c2e1b72145b37dd855d02a0f27dd79e5315683b4a7a98c85",
+      "translation": "가져올 수 있으면 ``torch.__version__``, 그렇지 않으면 자리 표시자 문자열입니다."
+    },
+    {
+      "context": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "label": "spacr.version.get_version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "source_sha256": "d7146150e92961e2c59cde83ccbed7cffb91611b91f8fa248092b86c2de31c3e",
+      "translation": "소스 체크아웃이나 편집 가능 설치는 자체 ``spacr/_version.py``의 버전을 보고합니다. 설치된 휠이나 고정 설치 프로그램은 배포 메타데이터를 보고하고, 메타데이터가 없으면 그 리터럴을 보고합니다."
+    },
+    {
+      "context": "The version string of the spacr package that is actually imported.",
+      "label": "spacr.version.get_version#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The version string of the spacr package that is actually imported.",
+      "source_sha256": "7117431ecf386ec03f4939635e5dc01d72f6273c771ba2b832f72b8760c4c436",
+      "translation": "실제로 가져온 spacr 패키지의 버전 문자열입니다."
+    },
+    {
+      "context": "Mapping with structured-data names ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "label": "spacr.version.get_version_info#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Mapping with keys ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "source_sha256": "5a8d3473b2cb13cf679b06ee004728637ddc82edc15a68b9a10389c390b30412",
+      "translation": "키 ``spacr_version``, ``platform``, ``python_version``, ``torch_version``을 가진 매핑입니다."
+    },
+    {
+      "context": "the processing session's settings mapping.",
+      "label": "spacr.well_spec.control_block_wells#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the run's settings mapping.",
+      "source_sha256": "e3933fd3f7ff0e4db41ff652b3595399f54a71949ad18c4b88ebc99531e52f7a",
+      "translation": "실행의 설정 매핑입니다."
+    },
+    {
+      "context": "well/row/column names, in the order the blocks are declared, with duplicates removed and order otherwise preserved.",
+      "label": "spacr.well_spec.control_block_wells#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "well/row/column names, in the order the blocks are declared, with duplicates removed and order otherwise preserved.",
+      "source_sha256": "5871bf71365c0533c815bf43c313a8328494982570357c68182ffb79a1c14fbc",
+      "translation": "블록이 선언된 순서대로의 웰/행/열 이름으로, 중복은 제거하고 그 외의 순서는 유지합니다."
+    },
+    {
+      "context": "Pure-control microplate sample positions are excluded from regression because each contains a guide fixed by design rather than a random draw from the screened library. A strong control left in the model can otherwise become a high-leverage observation for a gene under test.",
+      "label": "spacr.well_spec.control_block_wells#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Pure-control wells are excluded from regression because each contains a guide fixed by design rather than a random draw from the screened library. A strong control left in the model can otherwise become a high-leverage observation for a gene under test.",
+      "source_sha256": "326d9fe209c071c407027864183231e596a53ec593159aebe32c9c137bf40856",
+      "translation": "순수 대조군 웰은 회귀에서 제외됩니다. 각 웰에는 스크린 라이브러리에서 무작위로 뽑힌 것이 아니라 설계상 고정된 가이드가 들어 있기 때문입니다. 그렇지 않으면 모델에 남은 강한 대조군이 검정 중인 유전자에 대해 영향력이 큰 관측치가 될 수 있습니다."
+    },
+    {
+      "context": "delimited string or iterable of row, column, and well tokens.",
+      "label": "spacr.well_spec.parse#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "delimited string or iterable of row, column, and well tokens.",
+      "source_sha256": "c6a66631c345351a77816ea94c2edaa3e360a8e083ed134113e6a0c94f5f0ce9",
+      "translation": "행, 열, 웰 토큰으로 된 구분 문자열 또는 반복 가능 객체입니다."
+    },
+    {
+      "context": "The value ``\"r1, c1, A01\"`` selects the union of the named row, column, and individual well.",
+      "label": "spacr.well_spec.parse#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The value ``\"r1, c1, A01\"`` selects the union of the named row, column, and individual well.",
+      "source_sha256": "98ec8952f8f432fc0687aa7361d44036eb4630fe4e20d0476e5b5db4b4593aeb",
+      "translation": "값 ``\"r1, c1, A01\"``은 이름이 지정된 행, 열, 개별 웰의 합집합을 선택합니다."
+    },
+    {
+      "context": "single row, column, or well token to resolve.",
+      "label": "spacr.well_spec.parse_one#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "single row, column, or well token to resolve.",
+      "source_sha256": "4cb6e585a7c813a8d24e13ebee644ce646cc11016dfcccc69eb89219b181c5d9",
+      "translation": "해석할 단일 행, 열 또는 웰 토큰입니다."
+    },
+    {
+      "context": "WellSpecError If the token is malformed or outside the selected layout. The error identifies both the token and laboratory microplate dimensions.",
+      "label": "spacr.well_spec.parse_one#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "WellSpecError If the token is malformed or outside the selected layout. The error identifies both the token and plate dimensions.",
+      "source_sha256": "ec2fe2fbb61176122bc927cd8d5de9948df21e1844718541d922f9945633e6e2",
+      "translation": "WellSpecError 토큰의 형식이 잘못되었거나 선택한 레이아웃을 벗어나면 발생합니다. 오류는 토큰과 플레이트 크기를 모두 밝힙니다."
+    },
+    {
+      "context": "one-based laboratory microplate row number.",
+      "label": "spacr.well_spec.row_label#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "one-based plate row number.",
+      "source_sha256": "214415c5548ecf665ff5836061b99e9956b01833b0c63ab4a50994aeecad9db2",
+      "translation": "1부터 시작하는 플레이트 행 번호입니다."
+    },
+    {
+      "context": "alphabetic laboratory microplate-map row label.",
+      "label": "spacr.well_spec.row_number#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "alphabetic plate-map row label.",
+      "source_sha256": "a6e303958c371aa652f1a3e00bfd7b5275ad1e81cf36c4b0ed5b390143018e7e",
+      "translation": "알파벳으로 된 플레이트 맵 행 레이블입니다."
+    },
+    {
+      "context": "WellSpecError If ``layout`` is not one of the supported microplate sample position counts.",
+      "label": "spacr.well_spec.shape#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "WellSpecError If ``layout`` is not one of the supported well counts.",
+      "source_sha256": "737dec1fcc6b7c95781bef2a9af3d60c15b84ac74c901942f6dd91a6315c9f35",
+      "translation": "WellSpecError ``layout``이 지원되는 웰 수 중 하나가 아니면 발생합니다."
+    },
+    {
+      "context": "iterable of one-based ``(row, column)`` coordinates.",
+      "label": "spacr.well_spec.to_text#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "iterable of one-based ``(row, column)`` coordinates.",
+      "source_sha256": "4350f966d102f443fe33424390a0d735f2792e7280728a7bcaf16c6a3aed625c",
+      "translation": "1부터 시작하는 ``(row, column)`` 좌표의 반복 가능 객체입니다."
+    },
+    {
+      "context": "Complete rows and columns become ``rN`` and ``cN`` tokens. Remaining coordinates are written as individual well labels, ensuring the result can be parsed again without introducing an unsupported range syntax.",
+      "label": "spacr.well_spec.to_text#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Complete rows and columns become ``rN`` and ``cN`` tokens. Remaining coordinates are written as individual well labels, ensuring the result can be parsed again without introducing an unsupported range syntax.",
+      "source_sha256": "208ef7e826cddba1ec7eff73cb0e57b02c32d9c90f88f3d6d48cc25c043740d2",
+      "translation": "완전한 행과 열은 ``rN``과 ``cN`` 토큰이 됩니다. 나머지 좌표는 개별 웰 레이블로 기록되므로, 지원되지 않는 범위 구문을 도입하지 않고도 결과를 다시 구문 분석할 수 있습니다."
+    },
+    {
+      "context": "one-based laboratory microplate column number.",
+      "label": "spacr.well_spec.well_label#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "one-based plate column number.",
+      "source_sha256": "7d331a917dc659bb0ff18be87ff466064f04a11896ef19bf760eed00062791ab",
+      "translation": "1부터 시작하는 플레이트 열 번호입니다."
+    }
+  ],
+  "review_kind": "Direct AI translation with AI technical review against the English source; no human/native-speaker signoff.",
+  "schema": 1
+}

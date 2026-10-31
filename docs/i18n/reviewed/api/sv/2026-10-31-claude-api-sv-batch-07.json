@@ -1,0 +1,1208 @@
+{
+  "language": "sv",
+  "note": "Item 678 Swedish API tail, batch 7 (150 blocks): spacr.annotation_power, spacr.api, spacr.cancellation, spacr.image_colors, spacr.object_settings_table, spacr.outlier_filter, spacr.restart_state, spacr.rra, spacr.run_recommendations, spacr.version. Module names, code literals and roles stay in English.",
+  "records": [
+    {
+      "context": "Estimate which guide assignments a pooled screening experiment can support.",
+      "label": "spacr.annotation_power#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Estimate which guide assignments a pooled screen can support.",
+      "source_sha256": "e66c0fdd0ac72b7e87c49d9a94488894c4067cc253d22e1a66ead8050db4a0e9",
+      "translation": "Skatta vilka guidetilldelningar som en poolad screening kan stödja."
+    },
+    {
+      "context": "The calculations combine each guide's within-well fraction with machine-learning classification model sensitivity and specificity. They report the minimum fraction required for a phenotype-positive call to reach a requested posterior probability, identify guides that never reach that fraction, and estimate the screening experiment design needed to improve coverage.",
+      "label": "spacr.annotation_power#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The calculations combine each guide's within-well fraction with classifier sensitivity and specificity. They report the minimum fraction required for a phenotype-positive call to reach a requested posterior probability, identify guides that never reach that fraction, and estimate the screen design needed to improve coverage.",
+      "source_sha256": "ee1dce768d0336f18f62f5db3b2f9b76a44f7377c893e0d0fc866f561b56c032",
+      "translation": "Beräkningarna kombinerar varje guides andel inom brunnen med klassificerarens sensitivitet och specificitet. De rapporterar den minsta andel som krävs för att ett fenotyp-positivt anrop ska nå en begärd posteriorsannolikhet, identifierar guider som aldrig når den andelen och skattar den screeningdesign som behövs för att förbättra täckningen."
+    },
+    {
+      "context": "Increasing the number of cells in a microplate sample position increases the number of possible assignments but does not change the posterior probability for an individual cell. That probability changes when guide fractions or machine-learning classification model performance change. The functions in this module therefore keep annotation coverage and assignment confidence as separate quantities.",
+      "label": "spacr.annotation_power#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Increasing the number of cells in a well increases the number of possible assignments but does not change the posterior probability for an individual cell. That probability changes when guide fractions or classifier performance change. The functions in this module therefore keep annotation coverage and assignment confidence as separate quantities.",
+      "source_sha256": "d1212d6c8053dc76c2de02f64d9bc7fe8261fa6f06407c58252c607e474e6b4f",
+      "translation": "Att öka antalet celler i en brunn ökar antalet möjliga tilldelningar men ändrar inte posteriorsannolikheten för en enskild cell. Den sannolikheten ändras när guideandelarna eller klassificerarens prestanda ändras. Funktionerna i den här modulen håller därför annoteringstäckning och tilldelningskonfidens som separata storheter."
+    },
+    {
+      "context": "Summarize the annotatable portion of a screen.",
+      "label": "spacr.annotation_power.annotatable#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Summarize the annotatable portion of a screen.",
+      "source_sha256": "49958daf6b989acc305a7ab8d042b7e3e1ef50f89233f10b5d886cc79115963d",
+      "translation": "Sammanfatta den annoterbara delen av en screening."
+    },
+    {
+      "context": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float machine-learning classification model performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. cells_per_well : mapping, optional Cell count for each microplate sample position. When supplied, the result includes an upper bound on the number of reachable cells.",
+      "label": "spacr.annotation_power.annotatable#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float Classifier performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. cells_per_well : mapping, optional Cell count for each well. When supplied, the result includes an upper bound on the number of reachable cells.",
+      "source_sha256": "359043ecce2652551f18200080dfa3fe0df359eda4eca85f84791a047a761f5f",
+      "translation": "fractions : mapping Nästlad mappning ``{well: {guide: fraction}}``. sensitivity, specificity : float Klassificerarprestanda som används för att beräkna den minsta guideandelen. decision : float, default=0.55 Begärd posteriorsannolikhet för en guidetilldelning. cells_per_well : mapping, optional Antal celler för varje brunn. När det anges innehåller resultatet en övre gräns för antalet nåbara celler."
+    },
+    {
+      "context": "Return guide probability after a phenotype-positive machine-learning classification model call.",
+      "label": "spacr.annotation_power.posterior_for_prior#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return guide probability after a phenotype-positive classifier call.",
+      "source_sha256": "f51b0e4d42ba4bf4fcaf23f203d77bf86650b705dcc957f0f592cea5903b0368",
+      "translation": "Returnera guidesannolikheten efter ett fenotyp-positivt anrop från klassificeraren."
+    },
+    {
+      "context": "prior : float Guide fraction before observing the machine-learning classification model call. sensitivity : float Probability of a positive call for a guide-carrying cell. specificity : float Probability of a negative call for a cell without the guide.",
+      "label": "spacr.annotation_power.posterior_for_prior#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "prior : float Guide fraction before observing the classifier call. sensitivity : float Probability of a positive call for a guide-carrying cell. specificity : float Probability of a negative call for a cell without the guide.",
+      "source_sha256": "a3c632cc262496725a712b015565c7a01beb3a076709c433346247c94bb3ea88",
+      "translation": "prior : float Guideandel innan klassificerarens anrop observeras. sensitivity : float Sannolikheten för ett positivt anrop för en cell som bär guiden. specificity : float Sannolikheten för ett negativt anrop för en cell utan guiden."
+    },
+    {
+      "context": "float Posterior guide probability, or ``nan`` when the call has zero total probability under the supplied rates.",
+      "label": "spacr.annotation_power.posterior_for_prior#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "float Posterior guide probability, or ``nan`` when the call has zero total probability under the supplied rates.",
+      "source_sha256": "bb18117c0c94557ab2f9f630c30222b98c994e6e223b1ce2ef5b967255900751",
+      "translation": "float Posterior guidesannolikhet, eller ``nan`` när anropet har total sannolikhet noll under de angivna frekvenserna."
+    },
+    {
+      "context": "verdicts : mapping Mapping from method name to :class:`spacr.annotation_validation.Verdict`. power : mapping, optional Result from :func:`annotatable`. size : mapping, optional Result from :func:`screen_size_for`. width : int, default=78 Rule width used in the text layout.",
+      "label": "spacr.annotation_power.quality_report#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "verdicts : mapping Mapping from method name to :class:`spacr.annotation_validation.Verdict`. power : mapping, optional Result from :func:`annotatable`. size : mapping, optional Result from :func:`screen_size_for`. width : int, default=78 Rule width used in the text layout.",
+      "source_sha256": "ad5dfa8b7416ff0a7185ce629955fcef84e964d9c4c0863b6d0eb02810fb345e",
+      "translation": "verdicts : mapping Mappning från metodnamn till :class:`spacr.annotation_validation.Verdict`. power : mapping, optional Resultat från :func:`annotatable`. size : mapping, optional Resultat från :func:`screen_size_for`. width : int, default=78 Linjebredd som används i textlayouten."
+    },
+    {
+      "context": "str Report that presents coverage, precision, and recall separately, followed by optional reachability and screen-size estimates.",
+      "label": "spacr.annotation_power.quality_report#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "str Report that presents coverage, precision, and recall separately, followed by optional reachability and screen-size estimates.",
+      "source_sha256": "cdc88561c1199baac29685c5172f95e7d85954b99ba39dc232aa3619b2bd3fd3",
+      "translation": "str Rapport som presenterar täckning, precision och återkallelse separat, följt av valfria skattningar av nåbarhet och screeningstorlek."
+    },
+    {
+      "context": "Return the minimum guide fraction for a requested posterior.",
+      "label": "spacr.annotation_power.required_fraction#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the minimum guide fraction for a requested posterior.",
+      "source_sha256": "7ebb4b4767bab28e9ac306519e4f9ba3a79f5afb3c8760c830a978610ca69c4b",
+      "translation": "Returnera den minsta guideandelen för en begärd posterior."
+    },
+    {
+      "context": "probability of a positive call for a guide-carrying cell.",
+      "label": "spacr.annotation_power.required_fraction#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "probability of a positive call for a guide-carrying cell.",
+      "source_sha256": "6e2971fefe0190fe1912066da6473c9073d81018768ff6e63ff8c8afb6eb09a3",
+      "translation": "sannolikheten för ett positivt anrop för en cell som bär guiden."
+    },
+    {
+      "context": "probability of a negative call without the guide.",
+      "label": "spacr.annotation_power.required_fraction#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "probability of a negative call without the guide.",
+      "source_sha256": "2f7266a4b538ed0b32b54e2ec2224adbd8b2f7a39862be07e4a2695d67b216b7",
+      "translation": "sannolikheten för ett negativt anrop utan guiden."
+    },
+    {
+      "context": "``decision`` is the minimum probability that a phenotype-positive cell carries the guide. The calculation accounts for false positives among cells that do not carry the guide.",
+      "label": "spacr.annotation_power.required_fraction#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``decision`` is the minimum probability that a phenotype-positive cell carries the guide. The calculation accounts for false positives among cells that do not carry the guide.",
+      "source_sha256": "d0ad19432237974a79df845badb4c729230625fd40220ebdaf0c929b6b5b92ff",
+      "translation": "``decision`` är den minsta sannolikheten att en fenotyp-positiv cell bär guiden. Beräkningen tar hänsyn till falskt positiva bland celler som inte bär guiden."
+    },
+    {
+      "context": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float machine-learning classification model performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. target : float, default=0.80 Target share recorded in the result for reporting.",
+      "label": "spacr.annotation_power.screen_size_for#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "fractions : mapping Nested mapping ``{well: {guide: fraction}}``. sensitivity, specificity : float Classifier performance used to compute the minimum guide fraction. decision : float, default=0.55 Required posterior probability for a guide assignment. target : float, default=0.80 Target share recorded in the result for reporting.",
+      "source_sha256": "1a7df34f87639671b1ebe9d4c294cb7eb2f0bc1200c5258a6e6ef1bd209f7c96",
+      "translation": "fractions : mapping Nästlad mappning ``{well: {guide: fraction}}``. sensitivity, specificity : float Klassificerarprestanda som används för att beräkna den minsta guideandelen. decision : float, default=0.55 Begärd posteriorsannolikhet för en guidetilldelning. target : float, default=0.80 Målandel som registreras i resultatet för rapportering."
+    },
+    {
+      "context": "key-value mapping Current application view shape, estimated guides per microplate sample position and microplate sample positions required, size multiplier, and the specificity required at the current shape.",
+      "label": "spacr.annotation_power.screen_size_for#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict Current screen shape, estimated guides per well and wells required, size multiplier, and the specificity required at the current shape.",
+      "source_sha256": "0886eb5bc37f14fe69567f529b05f056302e6d706e6d24254bf8636bd15f036a",
+      "translation": "dict Screeningens nuvarande form, skattat antal guider per brunn och antal brunnar som krävs, storleksmultiplikator och den specificitet som krävs vid den nuvarande formen."
+    },
+    {
+      "context": "The estimate holds library size and mean microplate sample positions per guide fixed. It raises typical guide fractions by placing fewer guides in each microplate sample position and therefore increasing the number of microplate sample positions proportionally.",
+      "label": "spacr.annotation_power.screen_size_for#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The estimate holds library size and mean wells per guide fixed. It raises typical guide fractions by placing fewer guides in each well and therefore increasing the number of wells proportionally.",
+      "source_sha256": "ebc739ac9c6949545e8637076dc9fbf62c757a5f7001a170a099c5f30b0d4ef3",
+      "translation": "Skattningen håller biblioteksstorleken och medelantalet brunnar per guide fasta. Den höjer typiska guideandelar genom att placera färre guider i varje brunn och därmed öka antalet brunnar proportionellt."
+    },
+    {
+      "context": "Stable, lightweight entry points for scripted spaCR workflows.",
+      "label": "spacr.api#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Stable, lightweight entry points for scripted spaCR workflows.",
+      "source_sha256": "f585ac38eb5deed615ec7dea307476d78996891be47af032e966ca2fe9954aca",
+      "translation": "Stabila, lätta ingångspunkter för skriptade spaCR-arbetsflöden."
+    },
+    {
+      "context": "The workflow modules remain importable for backward compatibility. This module is the smaller interface recommended for new scripts: typed configuration objects expand through the same defaults used by the GUI, and the heavy image stack is imported only when a processing session starts.",
+      "label": "spacr.api#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The pipeline modules remain importable for backward compatibility. This module is the smaller interface recommended for new scripts: typed configuration objects expand through the same defaults used by the GUI, and the heavy image stack is imported only when a run starts.",
+      "source_sha256": "fe8ffedf484f8ff6703d346f6598bac3dfbe52759eede67db0dac8fc64c354ad",
+      "translation": "Pipelinemodulerna förblir importerbara för bakåtkompatibilitet. Den här modulen är det mindre gränssnitt som rekommenderas för nya skript: typade konfigurationsobjekt expanderas genom samma standardvärden som GUI:t använder, och den tunga bildstacken importeras först när en körning startar."
+    },
+    {
+      "context": "Configuration for image preparation and Cellpose segmentation.",
+      "label": "spacr.api.MaskConfig#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Configuration for image preparation and Cellpose segmentation.",
+      "source_sha256": "7847efa3fb23b3888b79c9b2322c82e0cbfae5169a8a9bf4a42b545ebce15215",
+      "translation": "Konfiguration för bildförberedelse och Cellpose-segmentering."
+    },
+    {
+      "context": "Return the complete settings key-value mapping consumed by Mask.",
+      "label": "spacr.api.MaskConfig.to_settings#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the complete settings dictionary consumed by Mask.",
+      "source_sha256": "ec9634727470c757e3074fe17abb1fd3ed42b61120882a11e76305f0f69e3c69",
+      "translation": "Returnera den fullständiga inställningsordbok som Mask använder."
+    },
+    {
+      "context": "key-value mapping A fresh key-value mapping containing spaCR defaults and this configuration's overrides.",
+      "label": "spacr.api.MaskConfig.to_settings#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict A fresh dictionary containing spaCR defaults and this configuration's overrides.",
+      "source_sha256": "1b53d8a978f87017ad39ba3289ef5308eb906b0ecc99e1167bf8e014ddea3220",
+      "translation": "dict En ny ordbok som innehåller spaCR:s standardvärden och den här konfigurationens åsidosättningar."
+    },
+    {
+      "context": "ValueError If no segmentation channel is selected, the workflow style is unknown, or ``extra`` repeats a typed setting.",
+      "label": "spacr.api.MaskConfig.to_settings#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "ValueError If no segmentation channel is selected, the pipeline style is unknown, or ``extra`` repeats a typed setting.",
+      "source_sha256": "6fe3c151498cbb7272f2a4b9726c65999fef2dee03927fa3164ba57f077f62af",
+      "translation": "ValueError Om ingen segmenteringskanal är vald, pipelinestilen är okänd, eller ``extra`` upprepar en typad inställning."
+    },
+    {
+      "context": "Configuration for object measurement and extracted-image-region generation.",
+      "label": "spacr.api.MeasureConfig#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Configuration for object measurement and crop generation.",
+      "source_sha256": "dd9494e937083813ecbfe9f163f596b79560aed5cf34e3d2419bab664e513642",
+      "translation": "Konfiguration för objektmätning och generering av utsnitt."
+    },
+    {
+      "context": "src: A ``merged`` folder, or sequence of folders, produced by Mask. cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: Image layer index holding each label mask. Use ``None`` for object types not present in the merged arrays. image data channels: Intensity image layers measured for every selected object. crop_mode: Object types for which PNG extracted image regions are written when ``save_png`` is true. png_channel_mapping: Mapping from ``r``, ``g`` and ``b`` to source intensity image layers. extra: Advanced settings not represented by typed microscope fields of view.",
+      "label": "spacr.api.MeasureConfig#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "src: A ``merged`` folder, or sequence of folders, produced by Mask. cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: Plane index holding each label mask. Use ``None`` for object types not present in the merged arrays. channels: Intensity planes measured for every selected object. crop_mode: Object types for which PNG crops are written when ``save_png`` is true. png_channel_mapping: Mapping from ``r``, ``g`` and ``b`` to source intensity planes. extra: Advanced settings not represented by typed fields.",
+      "source_sha256": "5af7ddd23154826f2641df440ec4762c3eac0d1ca4a50640510a661b8ac881be",
+      "translation": "src: En ``merged``-mapp, eller en sekvens av mappar, som Mask har producerat. cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: Planindex som innehåller varje etikettmask. Använd ``None`` för objekttyper som inte finns i de sammanslagna arrayerna. channels: Intensitetsplan som mäts för varje valt objekt. crop_mode: Objekttyper för vilka PNG-utsnitt skrivs när ``save_png`` är sant. png_channel_mapping: Mappning från ``r``, ``g`` och ``b`` till källintensitetsplan. extra: Avancerade inställningar som inte representeras av typade fält."
+    },
+    {
+      "context": "save_png: Write per-object extracted image regions for the requested ``crop_mode`` values and register their paths in ``measurements.db`` for annotation, classification, and image plots; timelapse measurement disables extracted image region writing. test_mode: Copy a random subset of up to ``test_nr`` merged microscope fields of view into ``test/merged``, redirect measurement there, and enable verbose diagnostic plots. dry_run: Run Measure preflight and return its reported problems before heavy imports, worker creation, database writes, or measurement. resume: Validate an interrupted Measure run, skip microscope fields of view complete in every owned output, and clear partial rows before retrying incomplete microscope fields of view.",
+      "label": "spacr.api.MeasureConfig#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "save_png: Write per-object crops for the requested ``crop_mode`` values and register their paths in ``measurements.db`` for annotation, classification, and image plots; timelapse measurement disables crop writing. test_mode: Copy a random subset of up to ``test_nr`` merged fields into ``test/merged``, redirect measurement there, and enable verbose diagnostic plots. dry_run: Run Measure preflight and return its reported problems before heavy imports, worker creation, database writes, or measurement. resume: Validate an interrupted Measure run, skip fields complete in every owned output, and clear partial rows before retrying incomplete fields.",
+      "source_sha256": "16110a035801e66c24919407ac3455dd13b81db51bb82e9ed682f75a530dae78",
+      "translation": "save_png: Skriv utsnitt per objekt för de begärda ``crop_mode``-värdena och registrera deras sökvägar i ``measurements.db`` för annotering, klassificering och bilddiagram; mätning av tidsserier inaktiverar skrivning av utsnitt. test_mode: Kopiera en slumpmässig delmängd av upp till ``test_nr`` sammanslagna fält till ``test/merged``, dirigera om mätningen dit och aktivera utförliga diagnostiska diagram. dry_run: Kör Measures förkontroll och returnera de problem den rapporterar före tunga importer, skapande av arbetare, databasskrivningar eller mätning. resume: Validera en avbruten Measure-körning, hoppa över fält som är kompletta i varje ägd utdata och rensa partiella rader innan ofullständiga fält försöks igen."
+    },
+    {
+      "context": "Return the complete settings key-value mapping consumed by Measure.",
+      "label": "spacr.api.MeasureConfig.to_settings#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the complete settings dictionary consumed by Measure.",
+      "source_sha256": "1cb0e411d40d94db95ac1ac2e2096a265d0411ccbb231cf432ef9b32e07dfb97",
+      "translation": "Returnera den fullständiga inställningsordbok som Measure använder."
+    },
+    {
+      "context": "Run Mask from a typed configuration or an existing settings mapping.",
+      "label": "spacr.api.run_mask#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Run Mask from a typed configuration or an existing settings mapping.",
+      "source_sha256": "2ea24f9555ba993c500cd0acb5305008ff72bf71342ee773c913935545e267bf",
+      "translation": "Kör Mask från en typad konfiguration eller en befintlig inställningsmappning."
+    },
+    {
+      "context": "typed mask configuration or compatible settings mapping.",
+      "label": "spacr.api.run_mask#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "typed mask configuration or compatible settings mapping.",
+      "source_sha256": "c3c6e28e5648aee31718b43b36d269bba60fc8177cbce30cefa9043f3bccd854",
+      "translation": "typad maskkonfiguration eller kompatibel inställningsmappning."
+    },
+    {
+      "context": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "label": "spacr.api.run_mask#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "source_sha256": "e39ed9a3df5b8654edc0ce508c3ec21368635f0953aace108ec95129d57d87cb",
+      "translation": "En konfiguration med ``dry_run=True`` returnerar förkontrollens problem och skriver ingenting. En vanlig körning returnerar ``None`` efter att ha skrivit sina utdata."
+    },
+    {
+      "context": "Run Measure from a typed configuration or existing settings mapping.",
+      "label": "spacr.api.run_measure#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Run Measure from a typed configuration or existing settings mapping.",
+      "source_sha256": "b647babe1751c2623da6387f78c8796f826a0f77d7fb609265e8c4c84eee86be",
+      "translation": "Kör Measure från en typad konfiguration eller en befintlig inställningsmappning."
+    },
+    {
+      "context": "typed measurement configuration or settings mapping.",
+      "label": "spacr.api.run_measure#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "typed measurement configuration or settings mapping.",
+      "source_sha256": "11c148ad4b24560134b2d702c87a347757fd26b2a383413c42ce7698908b038e",
+      "translation": "typad mätkonfiguration eller inställningsmappning."
+    },
+    {
+      "context": "Cooperative cancellation for long-running spaCR workflows.",
+      "label": "spacr.cancellation#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Cooperative cancellation for long-running spaCR pipelines.",
+      "source_sha256": "3f84354a540370637d573e4799537b53d19d83e1bcb3c7200c3c4aecba4faabe",
+      "translation": "Kooperativ avbrytning för långvariga spaCR-pipelines."
+    },
+    {
+      "context": "Qt cannot safely kill a Python independent execution path that may be writing a TIFF, committing a SQLite transaction, or updating several related artifacts.  Instead, the GUI installs one :class:`CancellationToken` in each background execution unit and workflow code calls :func:`checkpoint` only at boundaries where the previous unit is fully durable and the next unit has not started.",
+      "label": "spacr.cancellation#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Qt cannot safely kill a Python thread that may be writing a TIFF, committing a SQLite transaction, or updating several related artifacts.  Instead, the GUI installs one :class:`CancellationToken` in each worker thread and pipeline code calls :func:`checkpoint` only at boundaries where the previous unit is fully durable and the next unit has not started.",
+      "source_sha256": "2913bf081e7703398cfb252b645cde3cef515cd24397edfb1f25adb74ad4c6c1",
+      "translation": "Qt kan inte på ett säkert sätt döda en Python-tråd som kanske skriver en TIFF, genomför en SQLite-transaktion eller uppdaterar flera relaterade artefakter.  I stället installerar GUI:t en :class:`CancellationToken` i varje arbetstråd, och pipelinekoden anropar :func:`checkpoint` bara vid gränser där den föregående enheten är helt beständig och nästa enhet inte har påbörjats."
+    },
+    {
+      "context": "The module is intentionally standard-library only.  Core workflows may import it without importing Qt, torch, or any GUI dependency.",
+      "label": "spacr.cancellation#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The module is intentionally standard-library only.  Core workflows may import it without importing Qt, torch, or any GUI dependency.",
+      "source_sha256": "f5c1c1e707b8c029a01ae25afddbdd13df94b7af5be7891774af7a5ff3e8e094",
+      "translation": "Modulen använder avsiktligt bara standardbiblioteket.  Kärnarbetsflöden kan importera den utan att importera Qt, torch eller något GUI-beroende."
+    },
+    {
+      "context": "default user-facing reason raised by :meth:`checkpoint`.",
+      "label": "spacr.cancellation.CancellationToken#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "default user-facing reason raised by :meth:`checkpoint`.",
+      "source_sha256": "9b8473577bba23a0b7462c3235e53115d19744a7cfe9ae99b415d720fe9344b4",
+      "translation": "standardorsak, riktad till användaren, som kastas av :meth:`checkpoint`."
+    },
+    {
+      "context": "Request cancellation and return True only for the first request.",
+      "label": "spacr.cancellation.CancellationToken.cancel#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Request cancellation and return True only for the first request.",
+      "source_sha256": "c104c4e14b381e32553b74ad4bcedf5fcd94030439fd014dd768ae42276a2b97",
+      "translation": "Begär avbrytning och returnera True bara för den första begäran."
+    },
+    {
+      "context": "Repeated Stop clicks are harmless and do not replace the original reason, which keeps logs and manifests deterministic.",
+      "label": "spacr.cancellation.CancellationToken.cancel#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Repeated Stop clicks are harmless and do not replace the original reason, which keeps logs and manifests deterministic.",
+      "source_sha256": "4cdc52bf4e3da6b2300e898a626d1e19d48a5030471b526c03f9a5ea06a45c64",
+      "translation": "Upprepade klick på Stop är ofarliga och ersätter inte den ursprungliga orsaken, vilket håller loggar och manifest deterministiska."
+    },
+    {
+      "context": "Whether cancellation has been requested.",
+      "label": "spacr.cancellation.CancellationToken.cancelled#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Whether cancellation has been requested.",
+      "source_sha256": "2cac6d2238796d9d523d7680310c4f539a1a000f34cc12af7a280ec66faffa22",
+      "translation": "Om avbrytning har begärts."
+    },
+    {
+      "context": "Throw :class:`PipelineCancelled` when cancellation was requested.",
+      "label": "spacr.cancellation.CancellationToken.checkpoint#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raise :class:`PipelineCancelled` when cancellation was requested.",
+      "source_sha256": "5cf2f1eba48824b0b6ebc14f45d6c7a6c0ad4e9c4715d80faac690afd828822f",
+      "translation": "Kasta :class:`PipelineCancelled` när avbrytning har begärts."
+    },
+    {
+      "context": "The first cancellation reason supplied to :meth:`cancel`.",
+      "label": "spacr.cancellation.CancellationToken.reason#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The first cancellation reason supplied to :meth:`cancel`.",
+      "source_sha256": "41f6c9fd711a29d9d9fcac9ba38210ee501d53ececf346a2ce242b68157d5efe",
+      "translation": "Den första avbrytningsorsaken som angavs till :meth:`cancel`."
+    },
+    {
+      "context": "Raised at a safe boundary after cancellation has been requested.",
+      "label": "spacr.cancellation.PipelineCancelled#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raised at a safe boundary after cancellation has been requested.",
+      "source_sha256": "459009f1f9ca19ab5de7be52b68c0b3b60efe24dc2b2a7dc06f27dcb4cf1721a",
+      "translation": "Kastas vid en säker gräns efter att avbrytning har begärts."
+    },
+    {
+      "context": "This is a normal control-flow outcome, not a workflow failure.  Callers that catch broad :class:`Exception` values must throw the same exception again so the worker can record the processing session as ``cancelled`` rather than as a failed item.",
+      "label": "spacr.cancellation.PipelineCancelled#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This is a normal control-flow outcome, not a pipeline failure.  Callers that catch broad :class:`Exception` values must re-raise it so the worker can record the run as ``cancelled`` rather than as a failed item.",
+      "source_sha256": "e16261666e4c9ad169a92fb5d511df6fc4ad61a2656a12181c68b9217d036739",
+      "translation": "Detta är ett normalt utfall i kontrollflödet, inte ett pipelinefel.  Anropare som fångar breda :class:`Exception`-värden måste kasta det vidare så att arbetaren kan registrera körningen som ``cancelled`` i stället för som en misslyckad post."
+    },
+    {
+      "context": "Return whether the calling worker has a pending cancellation request.",
+      "label": "spacr.cancellation.cancellation_requested#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return whether the calling worker has a pending cancellation request.",
+      "source_sha256": "a206995a25de0c374c6675a618391bdf9653481b3ac5c99d41d16f192f4b28a8",
+      "translation": "Returnera om den anropande arbetaren har en väntande begäran om avbrytning."
+    },
+    {
+      "context": "Throw :class:`PipelineCancelled` if this thread's token was cancelled.",
+      "label": "spacr.cancellation.checkpoint#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raise :class:`PipelineCancelled` if this thread's token was cancelled.",
+      "source_sha256": "3cd647c98a3542b9e40fa82e56499420d2c5a24d2e6aec0b8a4506b6eee8381a",
+      "translation": "Kasta :class:`PipelineCancelled` om den här trådens token har avbrutits."
+    },
+    {
+      "context": "Calls outside a managed worker are intentionally no-ops, so the same workflow functions work through the GUI, CLI, notebooks, and tests.",
+      "label": "spacr.cancellation.checkpoint#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Calls outside a managed worker are intentionally no-ops, so the same pipeline functions work through the GUI, CLI, notebooks, and tests.",
+      "source_sha256": "9d97bfb97aa615dd9befc5eeaae7953e9a13a601f979801f5bdadc2befdac921",
+      "translation": "Anrop utanför en hanterad arbetare gör avsiktligt ingenting, så att samma pipelinefunktioner fungerar via GUI, CLI, notebooks och tester."
+    },
+    {
+      "context": "Return the token installed for the calling thread, if any.",
+      "label": "spacr.cancellation.current_token#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the token installed for the calling thread, if any.",
+      "source_sha256": "d2969e4d3a22ef2d4df8d5325b4216762e923e5e0f7988616b896e38c022b53f",
+      "translation": "Returnera den token som är installerad för den anropande tråden, om någon."
+    },
+    {
+      "context": "Install ``token`` for this thread and restore any prior token on exit.",
+      "label": "spacr.cancellation.installed_token#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Install ``token`` for this thread and restore any prior token on exit.",
+      "source_sha256": "96f232c8110c2264c1cd75d3ac6cc21e72a3d462ef0ada866249bef634f64a12",
+      "translation": "Installera ``token`` för den här tråden och återställ eventuell tidigare token vid utgång."
+    },
+    {
+      "context": "cancellation token to expose within the context.",
+      "label": "spacr.cancellation.installed_token#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "cancellation token to expose within the context.",
+      "source_sha256": "f5e87dfed9bd1668b38b928ef8b23524bf8573cd5f848e2cb478d42961cdbf28",
+      "translation": "avbrytningstoken som ska exponeras inom kontexten."
+    },
+    {
+      "context": "Colour-order boundaries for OpenCV.",
+      "label": "spacr.image_colors#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Colour-order boundaries for OpenCV.",
+      "source_sha256": "3d6e49a23a7ed815332499b0d99ccc4bac89a96b75b5fbfaafa83c288d7f60ec",
+      "translation": "Gränser för färgordning mot OpenCV."
+    },
+    {
+      "context": "spaCR's in-memory colour contract is RGB (or RGBA).  OpenCV is the one major dependency that decodes and encodes three-image data channel images as BGR, so conversions belong directly beside ``imread``/``imwrite`` rather than in plotting or model code.  Grayscale arrays pass through unchanged.",
+      "label": "spacr.image_colors#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR's in-memory colour contract is RGB (or RGBA).  OpenCV is the one major dependency that decodes and encodes three-channel images as BGR, so conversions belong directly beside ``imread``/``imwrite`` rather than in plotting or model code.  Grayscale arrays pass through unchanged.",
+      "source_sha256": "4bf27f0df5b27245911f67b15ebdc9736afa774c192f9e16a6650f12e07552b9",
+      "translation": "spaCR:s färgkontrakt i minnet är RGB (eller RGBA).  OpenCV är det enda större beroende som avkodar och kodar trekanaliga bilder som BGR, så konverteringarna hör hemma direkt bredvid ``imread``/``imwrite`` snarare än i diagram- eller modellkod.  Gråskalearrayer passerar oförändrade."
+    },
+    {
+      "context": "Convert an OpenCV BGR/BGRA array to spaCR's RGB/RGBA contract.",
+      "label": "spacr.image_colors.cv2_to_rgb#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Convert an OpenCV BGR/BGRA array to spaCR's RGB/RGBA contract.",
+      "source_sha256": "485ccf8efcb274d5a5eb602191f615d3330d6f7c3619504f0a57cdc6003fb5fe",
+      "translation": "Konvertera en OpenCV-array i BGR/BGRA till spaCR:s RGB/RGBA-kontrakt."
+    },
+    {
+      "context": "decoded OpenCV array, grayscale array, or ``None``.",
+      "label": "spacr.image_colors.cv2_to_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "decoded OpenCV array, grayscale array, or ``None``.",
+      "source_sha256": "3607cad49ca409c19d5c3ad05574a81b5b90f4baed0e157a88748b9341d6afe9",
+      "translation": "avkodad OpenCV-array, gråskalearray eller ``None``."
+    },
+    {
+      "context": "contiguous RGB/RGBA data for three- or four-image data channel inputs; ``None``, grayscale, and other image data channel counts pass through unchanged.",
+      "label": "spacr.image_colors.cv2_to_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "contiguous RGB/RGBA data for three- or four-channel inputs; ``None``, grayscale, and other channel counts pass through unchanged.",
+      "source_sha256": "0a62bf26e577669b65f2f1124366eb1987787ff80d6437f2a969cfbb22239342",
+      "translation": "sammanhängande RGB/RGBA-data för indata med tre eller fyra kanaler; ``None``, gråskala och andra kanalantal passerar oförändrade."
+    },
+    {
+      "context": "Read with OpenCV and immediately return RGB/RGBA in memory.",
+      "label": "spacr.image_colors.read_image_rgb#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Read with OpenCV and immediately return RGB/RGBA in memory.",
+      "source_sha256": "64b5e951dbadee1420cdc8808dbdbb34658078c25e6f4b30ffa5e713d4a47fd0",
+      "translation": "Läs med OpenCV och returnera omedelbart RGB/RGBA i minnet."
+    },
+    {
+      "context": "image path accepted by OpenCV.",
+      "label": "spacr.image_colors.read_image_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "image path accepted by OpenCV.",
+      "source_sha256": "3f0e060d319b832130fcfc2f0e9b1c92f4e87149072b01ea57ee2478fd5c3d1b",
+      "translation": "bildsökväg som OpenCV godtar."
+    },
+    {
+      "context": "OpenCV read mode; ``-1`` preserves the stored dtype and alpha channel.",
+      "label": "spacr.image_colors.read_image_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "OpenCV read mode; ``-1`` preserves the stored dtype and alpha channel.",
+      "source_sha256": "2b139528749008676fcf6730a6dd644dc6e9965c652a9b657907092cc06154c1",
+      "translation": "läsläge för OpenCV; ``-1`` bevarar den lagrade dtype och alfakanalen."
+    },
+    {
+      "context": "RGB/RGBA or grayscale image data, or ``None`` when OpenCV cannot read the path.",
+      "label": "spacr.image_colors.read_image_rgb#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "RGB/RGBA or grayscale image data, or ``None`` when OpenCV cannot read the path.",
+      "source_sha256": "f9ab92745f5adac7b0378c842982199f14c42e5818d17975ec14ce1116a0901b",
+      "translation": "bilddata i RGB/RGBA eller gråskala, eller ``None`` när OpenCV inte kan läsa sökvägen."
+    },
+    {
+      "context": "Convert an RGB/RGBA array only for an immediate OpenCV write call.",
+      "label": "spacr.image_colors.rgb_to_cv2#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Convert an RGB/RGBA array only for an immediate OpenCV write call.",
+      "source_sha256": "144ff95ce778d08eae4c3d912a31996e489b4c4819fb0a9d98b2cbfbb19c7626",
+      "translation": "Konvertera en RGB/RGBA-array endast för ett omedelbart skrivanrop till OpenCV."
+    },
+    {
+      "context": "spaCR RGB/RGBA array, or a grayscale array to pass through.",
+      "label": "spacr.image_colors.rgb_to_cv2#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR RGB/RGBA array, or a grayscale array to pass through.",
+      "source_sha256": "59f4f7f2464600f5ddba85fff348a1a64c0aff37f37ca711dbe003f5ca54d04e",
+      "translation": "spaCR-array i RGB/RGBA, eller en gråskalearray som ska passera igenom."
+    },
+    {
+      "context": "contiguous BGR/BGRA data for three- or four-channel inputs; grayscale and other channel counts pass through unchanged.",
+      "label": "spacr.image_colors.rgb_to_cv2#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "contiguous BGR/BGRA data for three- or four-channel inputs; grayscale and other channel counts pass through unchanged.",
+      "source_sha256": "2cafd584a5c5214786c79b04919684f4825f7f5da2a33665e497823fc4f5c167",
+      "translation": "sammanhängande BGR/BGRA-data för indata med tre eller fyra kanaler; gråskala och andra kanalantal passerar oförändrade."
+    },
+    {
+      "context": "Write an RGB/RGBA array through OpenCV without leaking BGR internally.",
+      "label": "spacr.image_colors.write_image_rgb#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Write an RGB/RGBA array through OpenCV without leaking BGR internally.",
+      "source_sha256": "1afb062870f70e1a20f3ccf4951dff38b361ebbf46bba5b9e1f9bd16bf7ac023",
+      "translation": "Skriv en RGB/RGBA-array genom OpenCV utan att BGR läcker ut internt."
+    },
+    {
+      "context": "output image path passed to OpenCV.",
+      "label": "spacr.image_colors.write_image_rgb#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "output image path passed to OpenCV.",
+      "source_sha256": "f9a5f69c1bd0ce33174c029511073a2907aa162bbff964750057e51178c19fd1",
+      "translation": "sökväg för utdatabilden som skickas till OpenCV."
+    },
+    {
+      "context": "spaCR RGB/RGBA array, converted immediately before encoding.",
+      "label": "spacr.image_colors.write_image_rgb#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "spaCR RGB/RGBA array, converted immediately before encoding.",
+      "source_sha256": "941ec07ffec45e2f6b62a9784f964728c280f8bdcd4d8df1f2b5f426928a96c0",
+      "translation": "spaCR-array i RGB/RGBA, som konverteras omedelbart före kodningen."
+    },
+    {
+      "context": "optional OpenCV encoder parameter sequence.",
+      "label": "spacr.image_colors.write_image_rgb#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "optional OpenCV encoder parameter sequence.",
+      "source_sha256": "1b8ccb1a89266708900201266589629a4ccb905eebf16ae477d72f5d028eeb0e",
+      "translation": "valfri sekvens av kodarparametrar för OpenCV."
+    },
+    {
+      "context": "whether OpenCV encoded and wrote the image successfully.",
+      "label": "spacr.image_colors.write_image_rgb#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "whether OpenCV encoded and wrote the image successfully.",
+      "source_sha256": "9ffb5714aa2d7d0e336380af0f736e178e1d25ae02b49586b8e65edd11a6e083",
+      "translation": "om OpenCV kodade och skrev bilden utan fel."
+    },
+    {
+      "context": "Convert per-object settings between flat structured-data names and a table with one row per question.",
+      "label": "spacr.object_settings_table#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Convert per-object settings between flat keys and a table with one row per question.",
+      "source_sha256": "e05438aee8b68569bbc28e5ccc785c7344db4b094d2b7331723b4c024ff9a066",
+      "translation": "Konvertera inställningar per objekt mellan platta nycklar och en tabell med en rad per fråga."
+    },
+    {
+      "context": "This module is only the model: it reads a flat settings key-value mapping into a table and writes a table back out, losslessly. It draws nothing. A GUI renders :func:`to_table` and calls :func:`from_table` on edit, and the headless path never has to know the table exists -- the stored structured-data names are unchanged, so no settings file, notebook or tutorial migrates.",
+      "label": "spacr.object_settings_table#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This module is only the model: it reads a flat settings dict into a table and writes a table back out, losslessly. It draws nothing. A GUI renders :func:`to_table` and calls :func:`from_table` on edit, and the headless path never has to know the table exists -- the stored keys are unchanged, so no settings file, notebook or tutorial migrates.",
+      "source_sha256": "3903cd8449bdff07087873dfe49e34568ccad47722c5f3670d58fa5911d86c04",
+      "translation": "Den här modulen är bara modellen: den läser en platt inställnings-dict till en tabell och skriver tillbaka en tabell, förlustfritt. Den ritar ingenting. Ett GUI återger :func:`to_table` och anropar :func:`from_table` vid redigering, och den gränssnittslösa vägen behöver aldrig veta att tabellen finns -- de lagrade nycklarna är oförändrade, så ingen inställningsfil, notebook eller handledning behöver migreras."
+    },
+    {
+      "context": "Storing a nested ``{question: {object: value}}`` structure instead would be a file-format change, and every saved settings file, every published tutorial, and the headless ``spacr-run`` path would have to change with it. Only the presentation changes.",
+      "label": "spacr.object_settings_table#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Storing a nested ``{question: {object: value}}`` structure instead would be a file-format change, and every saved settings file, every published tutorial, and the headless ``spacr-run`` path would have to change with it. Only the presentation changes.",
+      "source_sha256": "0989d19f79a1a566cfc975dd75ae4e508b9508d284be9a43da64b64213745946",
+      "translation": "Att i stället lagra en nästlad ``{question: {object: value}}``-struktur vore en ändring av filformatet, och varje sparad inställningsfil, varje publicerad handledning och den gränssnittslösa ``spacr-run``-vägen skulle behöva ändras med den. Bara presentationen ändras."
+    },
+    {
+      "context": "Return the column header text for ``obj``.",
+      "label": "spacr.object_settings_table.column_label#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the column header text for ``obj``.",
+      "source_sha256": "ef58193853eceb17f8cf8d1fbe6948d0b41ba56216f82f3e8ebdadb99f8a2f31",
+      "translation": "Returnera kolumnrubrikens text för ``obj``."
+    },
+    {
+      "context": "``organelleb`` is a storage spelling, not a thing a user recognises. The letter suffixes exist because object types are embedded in underscore-separated object identifiers and ``organelle2`` is ambiguous with label 2 -- an implementation constraint that has no business appearing in a column header.",
+      "label": "spacr.object_settings_table.column_label#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``organelleb`` is a storage spelling, not a thing a user recognises. The letter suffixes exist because object types are embedded in underscore-separated object keys and ``organelle2`` is ambiguous with label 2 -- an implementation constraint that has no business appearing in a column header.",
+      "source_sha256": "3f549a36154bb66ceca0338d423df3212d160f2e2395afcf3405a2c55374a537",
+      "translation": "``organelleb`` är en lagringsstavning, inte något som en användare känner igen. Bokstavssuffixen finns eftersom objekttyper är inbäddade i objektnycklar separerade med understreck och ``organelle2`` kan förväxlas med etikett 2 -- en implementationsbegränsning som inte har något att göra i en kolumnrubrik."
+    },
+    {
+      "context": "``{question: [objects that ask it]}``, objects in display order.",
+      "label": "spacr.object_settings_table.families#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``{question: [objects that ask it]}``, objects in display order.",
+      "source_sha256": "3aa5019a006a1b8b9ef507729ce75151d0219c48d2635e21a5e0d99ebad0ca53",
+      "translation": "``{question: [objects that ask it]}``, objekten i visningsordning."
+    },
+    {
+      "context": "Flatten a table back to setting names, over ``base`` if given.",
+      "label": "spacr.object_settings_table.from_table#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Flatten a table back to settings keys, over ``base`` if given.",
+      "source_sha256": "ac22d77495f804c14928e4ae9a9ddeba86acc0d4808f5714efeb7328c2b9cf9b",
+      "translation": "Platta ut en tabell tillbaka till inställningsnycklar, ovanpå ``base`` om den anges."
+    },
+    {
+      "context": "The inverse of :func:`to_table`, without loss: the table is the settings file rearranged, not transformed, so it can be used as an editing surface. A test round-trips every default settings key-value mapping.",
+      "label": "spacr.object_settings_table.from_table#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The inverse of :func:`to_table`, without loss: the table is the settings file rearranged, not transformed, so it can be used as an editing surface. A test round-trips every default settings dict.",
+      "source_sha256": "98c4acd3cc88931e9f2c77360586d3aa3c0237b06ed1f4fe37748e3ec916ffea",
+      "translation": "Inversen till :func:`to_table`, utan förlust: tabellen är inställningsfilen omordnad, inte omvandlad, så den kan användas som redigeringsyta. Ett test gör en rundresa med varje standardinställnings-dict."
+    },
+    {
+      "context": "the settings the table came from. structured-data names that the table does not cover are carried through unchanged, so a caller can edit the per-object half without holding the rest.",
+      "label": "spacr.object_settings_table.from_table#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the settings the table came from. Keys the table does not cover are carried through unchanged, so a caller can edit the per-object half without holding the rest.",
+      "source_sha256": "34f6641c2eb31e78cc5239fc7060c7f0efb3e0c6a349417f04269363a7af8f29",
+      "translation": "de inställningar som tabellen kom från. Nycklar som tabellen inte täcker förs vidare oförändrade, så att en anropare kan redigera halvan per objekt utan att hålla resten."
+    },
+    {
+      "context": "The distinct questions in ``keys``, in first-seen order.",
+      "label": "spacr.object_settings_table.questions#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The distinct questions in ``keys``, in first-seen order.",
+      "source_sha256": "d4a50d1dc09b7bb8b56a5d4aa12a57ff97254d625066415fff88d6aaa8b4df8f",
+      "translation": "De distinkta frågorna i ``keys``, i den ordning de först förekommer."
+    },
+    {
+      "context": "One entry per question, however many objects ask it: ``cell_diameter`` and ``nucleus_diameter`` are one question, ``diameter``.",
+      "label": "spacr.object_settings_table.questions#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One entry per question, however many objects ask it: ``cell_diameter`` and ``nucleus_diameter`` are one question, ``diameter``.",
+      "source_sha256": "45949edbc8e7fa781d6a328bdac15b8316df56f6da1bcdea9e9a4c833bcbc7cd",
+      "translation": "En post per fråga, hur många objekt som än ställer den: ``cell_diameter`` och ``nucleus_diameter`` är en fråga, ``diameter``."
+    },
+    {
+      "context": "Read a flat settings key-value mapping as ``{question: {object: value}}``.",
+      "label": "spacr.object_settings_table.to_table#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Read a flat settings dict as ``{question: {object: value}}``.",
+      "source_sha256": "46a9c3355bf544fba8ee9aadc8ebd9d78a7af0eccff570dceee56e1ceb3e8d57",
+      "translation": "Läs en platt inställnings-dict som ``{question: {object: value}}``."
+    },
+    {
+      "context": "Only the structured-data names that ARE per-object questions are taken. Everything else -- ``src``, ``verbose``, ``n_jobs`` -- is not a table row and is left where it is; a caller wanting the whole settings key-value mapping back uses :func:`from_table` with the original.",
+      "label": "spacr.object_settings_table.to_table#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Only the keys that ARE per-object questions are taken. Everything else -- ``src``, ``verbose``, ``n_jobs`` -- is not a table row and is left where it is; a caller wanting the whole settings dict back uses :func:`from_table` with the original.",
+      "source_sha256": "974d5d7408e41c60b4035494d58d2e1a8fedfe0501a25ae551b7e126441f6d0f",
+      "translation": "Bara de nycklar som ÄR frågor per objekt tas med. Allt annat -- ``src``, ``verbose``, ``n_jobs`` -- är inte en tabellrad och lämnas där det är; en anropare som vill ha tillbaka hela inställnings-dict:en använder :func:`from_table` med originalet."
+    },
+    {
+      "context": "Return a copy of ``table`` with a column for ``obj``, copying ``like``'s answers where it has them.",
+      "label": "spacr.object_settings_table.widen#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return a copy of ``table`` with a column for ``obj``, copying ``like``'s answers where it has them.",
+      "source_sha256": "a9b87c8f02270ee3bf3ef73da9cd60544edd6837efa2836be78ef73c1be24f08",
+      "translation": "Returnera en kopia av ``table`` med en kolumn för ``obj``, där svaren från ``like`` kopieras där det har sådana."
+    },
+    {
+      "context": "Adding an organelle is one call that adds one column; in the flat vocabulary it is twenty new settings that every consumer, tooltip table and translation catalog has to include.",
+      "label": "spacr.object_settings_table.widen#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Adding an organelle is one call that adds one column; in the flat vocabulary it is twenty new settings that every consumer, tooltip table and translation catalog has to include.",
+      "source_sha256": "631a08b6d58f142da73aa893f4bd049fd4f3ecfeecbc8c9ec7a0c0e9384b0bcc",
+      "translation": "Att lägga till en organell är ett anrop som lägger till en kolumn; i den platta vokabulären är det tjugo nya inställningar som varje konsument, tooltip-tabell och översättningskatalog måste ta med."
+    },
+    {
+      "context": "the object to add, e.g. ``'organellec'``.",
+      "label": "spacr.object_settings_table.widen#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the object to add, e.g. ``'organellec'``.",
+      "source_sha256": "d80b7a228d5205c4e0a3ece9ddde47258d2788b9de408f23b4d2d2fee5803b14",
+      "translation": "objektet som ska läggas till, t.ex. ``'organellec'``."
+    },
+    {
+      "context": "an existing object whose answers to copy as the starting point. Defaults to the first organelle when ``obj`` is one, because a second mitochondrion should start where the first one is rather than at a global default nobody chose.",
+      "label": "spacr.object_settings_table.widen#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "an existing object whose answers to copy as the starting point. Defaults to the first organelle when ``obj`` is one, because a second mitochondrion should start where the first one is rather than at a global default nobody chose.",
+      "source_sha256": "e0fcbaede2d8cd404e7d6894a2b412e6232b1b72de30eb714e15a5788012fda9",
+      "translation": "ett befintligt objekt vars svar kopieras som utgångspunkt. Standard är den första organellen när ``obj`` är en organell, eftersom ett andra mitokondrium ska börja där det första är i stället för vid ett globalt standardvärde som ingen valde."
+    },
+    {
+      "context": "Remove robustly defined object outliers before guide annotation.",
+      "label": "spacr.outlier_filter#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Remove robustly defined object outliers before guide annotation.",
+      "source_sha256": "b90f218dd4731ae577f8e8cb7cf6f7aff3b7974cc737f66e935bd80e63f075c0",
+      "translation": "Ta bort robust definierade objektavvikare före guideannoteringen."
+    },
+    {
+      "context": "Optional filters operate on cell or nucleus area and intensity. Each filter uses distance from the median in scaled median absolute deviations (MADs), which is less sensitive to skewed measurements than a standard-deviation threshold. Filtering precedes fraction-based annotation so excluded objects do not contribute to normalization denominators.",
+      "label": "spacr.outlier_filter#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Optional filters operate on cell or nucleus area and intensity. Each filter uses distance from the median in scaled median absolute deviations (MADs), which is less sensitive to skewed measurements than a standard-deviation threshold. Filtering precedes fraction-based annotation so excluded objects do not contribute to normalization denominators.",
+      "source_sha256": "134cacf5c4ce5723d9d121537982cbb65dc599edb2746cc9e85d1eac141e590b",
+      "translation": "Valfria filter verkar på cellens eller kärnans area och intensitet. Varje filter använder avståndet från medianen i skalade medianabsoluta avvikelser (MADs), vilket är mindre känsligt för skeva mätningar än en tröskel baserad på standardavvikelse. Filtreringen sker före den andelsbaserade annoteringen så att uteslutna objekt inte bidrar till normaliseringens nämnare."
+    },
+    {
+      "context": "Apply enabled outlier criteria to an object table.",
+      "label": "spacr.outlier_filter.apply#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Apply enabled outlier criteria to an object table.",
+      "source_sha256": "de81022564da7266bb7fd48a1741b0ba8078285972ac9af448169275ee2288ae",
+      "translation": "Tillämpa aktiverade avvikarkriterier på en objekttabell."
+    },
+    {
+      "context": "frame : pandas.DataFrame Object-level measurements. settings : dict, optional Thresholds keyed as ``\"<criterion>_outlier_mads\"``. Missing or ``None`` values disable that criterion; nonpositive thresholds also disable it without adding a report row.",
+      "label": "spacr.outlier_filter.apply#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "frame : pandas.DataFrame Object-level measurements. settings : dict, optional Thresholds keyed as ``\"<criterion>_outlier_mads\"``. Missing or ``None`` values disable that criterion; nonpositive thresholds also disable it without adding a report row.",
+      "source_sha256": "9f9c3537350acbc544c4cb42eea61ddde9d7cddee18bd3019dc892987eb42f60",
+      "translation": "frame : pandas.DataFrame Mätningar på objektnivå. settings : dict, optional Trösklar med nycklar på formen ``\"<criterion>_outlier_mads\"``. Saknade värden eller ``None`` inaktiverar det kriteriet; icke-positiva trösklar inaktiverar det också utan att lägga till en rapportrad."
+    },
+    {
+      "context": "pandas.DataFrame Rows retained after all enabled criteria. list of key-value mapping Per-criterion measurement column, threshold, removal count, and any validation note.",
+      "label": "spacr.outlier_filter.apply#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "pandas.DataFrame Rows retained after all enabled criteria. list of dict Per-criterion measurement column, threshold, removal count, and any validation note.",
+      "source_sha256": "74cc85019bfe60a613f502f5837f1e6d9a4d84df7999aaf24bf699087aa3a877",
+      "translation": "pandas.DataFrame Rader som behålls efter alla aktiverade kriterier. list of dict Mätkolumn, tröskel, antal borttagna och eventuell valideringsanteckning per kriterium."
+    },
+    {
+      "context": "Resolve the measurement column used by an outlier criterion.",
+      "label": "spacr.outlier_filter.column_for#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Resolve the measurement column used by an outlier criterion.",
+      "source_sha256": "ae495c59b063ada817e561019187f89382471fb079f40f0a4335e5f70034df7d",
+      "translation": "Lös upp den mätkolumn som ett avvikarkriterium använder."
+    },
+    {
+      "context": "object-measurement table whose columns are searched.",
+      "label": "spacr.outlier_filter.column_for#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "object-measurement table whose columns are searched.",
+      "source_sha256": "83e19efe3474b38bc16057d108808cca652278a1fd874ab9117cc5cd6b324d5f",
+      "translation": "objektmättabell vars kolumner genomsöks."
+    },
+    {
+      "context": "supported outlier-filter setting from :data:`CRITERIA`.",
+      "label": "spacr.outlier_filter.column_for#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "supported outlier-filter setting from :data:`CRITERIA`.",
+      "source_sha256": "c3efa408ece3be1572c17cf37a0a81a95a2a4ec4f9e27fda521cd954b461c507",
+      "translation": "stödd inställning för avvikarfilter från :data:`CRITERIA`."
+    },
+    {
+      "context": "first matching measurement-column name, or ``None`` when this table cannot supply the criterion.",
+      "label": "spacr.outlier_filter.column_for#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "first matching measurement-column name, or ``None`` when this table cannot supply the criterion.",
+      "source_sha256": "a3c589422843a98d4f353f416943817c1abc39ad2347e3c0c69c7ec12b33b2c8",
+      "translation": "namnet på den första matchande mätkolumnen, eller ``None`` när den här tabellen inte kan tillhandahålla kriteriet."
+    },
+    {
+      "context": "Format the per-criterion outlier report for processing-session output.",
+      "label": "spacr.outlier_filter.describe#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Format the per-criterion outlier report for run output.",
+      "source_sha256": "3f929332d967d80c45a0cadf344fadbc85ca07821ebd5b2ce323360aa9fb7696",
+      "translation": "Formatera avvikarrapporten per kriterium för körningens utdata."
+    },
+    {
+      "context": "per-criterion records returned by :func:`apply`.",
+      "label": "spacr.outlier_filter.describe#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "per-criterion records returned by :func:`apply`.",
+      "source_sha256": "0ab2c995cf6a34fde94d9dd701025d7cb516e14754e85d26ebd535d7c2030764",
+      "translation": "poster per kriterium som returneras av :func:`apply`."
+    },
+    {
+      "context": "multiline run summary, or ``\"\"`` for an empty report.",
+      "label": "spacr.outlier_filter.describe#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "multiline run summary, or ``\"\"`` for an empty report.",
+      "source_sha256": "f9893585c520c640a69028f00c871ce2e4f7e7e8bda52cd781c80f37d3b0ddf1",
+      "translation": "körningssammanfattning på flera rader, eller ``\"\"`` för en tom rapport."
+    },
+    {
+      "context": "Identify values beyond a scaled-MAD threshold.",
+      "label": "spacr.outlier_filter.outliers#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Identify values beyond a scaled-MAD threshold.",
+      "source_sha256": "43b03f19fe43a623bf7dfe74ab9f09c1c2160c8d5b855eca1f9546065a9c4013",
+      "translation": "Identifiera värden bortom en tröskel i skalad MAD."
+    },
+    {
+      "context": "values : array-like Values to evaluate. Non-numeric and non-finite values are not flagged. mads : float, default=DEFAULT_MADS Distance from the median in robust sigma units, computed as ``1.4826 * MAD``. Nonpositive or non-finite values disable detection.",
+      "label": "spacr.outlier_filter.outliers#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "values : array-like Values to evaluate. Non-numeric and non-finite values are not flagged. mads : float, default=DEFAULT_MADS Distance from the median in robust sigma units, computed as ``1.4826 * MAD``. Nonpositive or non-finite values disable detection.",
+      "source_sha256": "33738985f988b94f15073cd9c5f9e367c5ea6212202bbc528218e6c5743dc3df",
+      "translation": "values : array-like Värden som ska utvärderas. Icke-numeriska och icke-ändliga värden flaggas inte. mads : float, default=DEFAULT_MADS Avstånd från medianen i robusta sigmaenheter, beräknat som ``1.4826 * MAD``. Icke-positiva eller icke-ändliga värden inaktiverar detekteringen."
+    },
+    {
+      "context": "numpy.ndarray Boolean outlier mask. Fewer than three finite values or a zero MAD produces an all-false mask.",
+      "label": "spacr.outlier_filter.outliers#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "numpy.ndarray Boolean outlier mask. Fewer than three finite values or a zero MAD produces an all-false mask.",
+      "source_sha256": "5efdf4ade0bc5e0b356d3b76628cc8c3bfa263264d7cdbde1898e6a4e8e54983",
+      "translation": "numpy.ndarray Boolesk avvikarmask. Färre än tre ändliga värden eller en MAD på noll ger en mask som är falsk överallt."
+    },
+    {
+      "context": "str A comma-separated summary, or an empty string when no named runs are present.",
+      "label": "spacr.restart_state.describe_running#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "str A comma-separated summary, or an empty string when no named runs are present.",
+      "source_sha256": "5c1a1d5073389de9306de891d1735d313ea59dea50e23f68903ba78fd1681b6e",
+      "translation": "str En kommaseparerad sammanfattning, eller en tom sträng när inga namngivna körningar finns."
+    },
+    {
+      "context": "Remove the pending restart record.",
+      "label": "spacr.restart_state.discard#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Remove the pending restart record.",
+      "source_sha256": "2812dcb2cfc5fb450f55dad1a77991ebd4bd10400a44977faacdb890e3a45f41",
+      "translation": "Ta bort den väntande omstartsposten."
+    },
+    {
+      "context": "bool ``True`` when a record was removed; otherwise ``False``.",
+      "label": "spacr.restart_state.discard#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "bool ``True`` when a record was removed; otherwise ``False``.",
+      "source_sha256": "3f1c9d0fa2deb34017eec4ef7bb127df2bbce6de3c509763d7d1994b4add4550",
+      "translation": "bool ``True`` när en post togs bort; annars ``False``."
+    },
+    {
+      "context": "Read the pending restart record without consuming it.",
+      "label": "spacr.restart_state.peek#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Read the pending restart record without consuming it.",
+      "source_sha256": "56b7dc8d75a20c301b4eee1875e9308341aac80adbf52205945521e91fcbf0f8",
+      "translation": "Läs den väntande omstartsposten utan att förbruka den."
+    },
+    {
+      "context": "key-value mapping or None The saved record, or ``None`` when no valid record can be read.",
+      "label": "spacr.restart_state.peek#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "dict or None The saved record, or ``None`` when no valid record can be read.",
+      "source_sha256": "78bb08d90be4d80ee9c48a479c7eff13d955ffaf0f298c4365a5d4abdc91bba0",
+      "translation": "dict or None Den sparade posten, eller ``None`` när ingen giltig post kan läsas."
+    },
+    {
+      "context": "Write and verify a pending restart record.",
+      "label": "spacr.restart_state.save#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Write and verify a pending restart record.",
+      "source_sha256": "ccf5d91bad0d62512331bca0ae9d53d9f583b7dd0eb75754cc224eea1fcdaaf2",
+      "translation": "Skriv och verifiera en väntande omstartspost."
+    },
+    {
+      "context": "module Structured-data name of the module to reopen. settings Module settings to restore. Values that JSON cannot encode directly are converted to strings. executing Active-processing-session records to display in the restart summary. run_folders Paths that may contain partial output from interrupted runs. saved Optional ISO 8601 timestamp. The current UTC time is used by default.",
+      "label": "spacr.restart_state.save#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "module Key of the module to reopen. settings Module settings to restore. Values that JSON cannot encode directly are converted to strings. running Active-run records to display in the restart summary. run_folders Paths that may contain partial output from interrupted runs. saved Optional ISO 8601 timestamp. The current UTC time is used by default.",
+      "source_sha256": "6a60cbee444cf03f0ec18440b6b78b3d79ffcd389fe829700ade2599fedb1e31",
+      "translation": "module Nyckel för den modul som ska öppnas igen. settings Modulinställningar som ska återställas. Värden som JSON inte kan koda direkt konverteras till strängar. running Poster för aktiva körningar som ska visas i omstartssammanfattningen. run_folders Sökvägar som kan innehålla partiella utdata från avbrutna körningar. saved Valfri tidsstämpel enligt ISO 8601. Aktuell UTC-tid används som standard."
+    },
+    {
+      "context": "pathlib.Path or None Path to the verified record, or ``None`` when it could not be written and the restart must be cancelled.",
+      "label": "spacr.restart_state.save#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "pathlib.Path or None Path to the verified record, or ``None`` when it could not be written and the restart must be cancelled.",
+      "source_sha256": "0b80c9a261515dc7ae0c5a98c8d479eab5fc6353c4d5b2f7b0019bc1ef3eab71",
+      "translation": "pathlib.Path or None Sökväg till den verifierade posten, eller ``None`` när den inte kunde skrivas och omstarten måste avbrytas."
+    },
+    {
+      "context": "The function logs write errors instead of throwing because it is called during shutdown. Callers must not restart when ``None`` is returned.",
+      "label": "spacr.restart_state.save#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The function logs write errors instead of raising because it is called during shutdown. Callers must not restart when ``None`` is returned.",
+      "source_sha256": "9ae1dfe5ff6a72cdddfa7556119cbaa8eda74ac8ffa91489669280c37ce16cff",
+      "translation": "Funktionen loggar skrivfel i stället för att kasta dem eftersom den anropas under avstängning. Anropare får inte starta om när ``None`` returneras."
+    },
+    {
+      "context": "Return the path used for the pending restart record.",
+      "label": "spacr.restart_state.state_path#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the path used for the pending restart record.",
+      "source_sha256": "93f852d603dc69d8b8f4c68f8037584fe60201f0ad70a18016af9ea1aeb7810b",
+      "translation": "Returnera den sökväg som används för den väntande omstartsposten."
+    },
+    {
+      "context": "Build the confirmation text shown before a forced restart.",
+      "label": "spacr.restart_state.warning_text#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Build the confirmation text shown before a forced restart.",
+      "source_sha256": "33239068ff3588ae99856ef5e6cc1082800e59c51d819662cc3ad72893c99520",
+      "translation": "Bygg bekräftelsetexten som visas före en tvingad omstart."
+    },
+    {
+      "context": "The text identifies runs that will stop, explains that settings will be restored, and lists the locations of partial output when available.",
+      "label": "spacr.restart_state.warning_text#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The text identifies runs that will stop, explains that settings will be restored, and lists the locations of partial output when available.",
+      "source_sha256": "ea9e2ac909f0c98b890da107d65eecae33449e9be667ec28b5fee3d8ef564813",
+      "translation": "Texten identifierar körningar som kommer att stoppas, förklarar att inställningarna kommer att återställas och listar platserna för partiella utdata när sådana finns."
+    },
+    {
+      "context": "executing Active-processing-session records accepted by :func:`describe_running`. run_folders Paths that may contain output written before the restart.",
+      "label": "spacr.restart_state.warning_text#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "running Active-run records accepted by :func:`describe_running`. run_folders Paths that may contain output written before the restart.",
+      "source_sha256": "11f114b92a9fb988d84f2cfe8e513885a30989a4d8985acb8b6075a4e47b05b5",
+      "translation": "running Poster för aktiva körningar som godtas av :func:`describe_running`. run_folders Sökvägar som kan innehålla utdata som skrevs före omstarten."
+    },
+    {
+      "context": "str Paragraphs suitable for a restart confirmation dialog.",
+      "label": "spacr.restart_state.warning_text#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "str Paragraphs suitable for a restart confirmation dialog.",
+      "source_sha256": "6cbac59f03f1640a5060d41643cf887550966b098a7dbeb816d952c3f558320b",
+      "translation": "str Stycken lämpliga för en dialog som bekräftar omstart."
+    },
+    {
+      "context": "Aggregate guide-level scores into gene-level calls using alpha-RRA.",
+      "label": "spacr.rra#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Aggregate guide-level scores into gene-level calls using alpha-RRA.",
+      "source_sha256": "dcb05bad351ea5e4edbe97249adc71ba7b96b5d07a4aeaa3124b9d391dfeea41",
+      "translation": "Aggregera poäng på guidenivå till anrop på gennivå med alpha-RRA."
+    },
+    {
+      "context": "RRA ranks guides and tests whether a gene's guides occupy unusually strong positions. It therefore remains usable when a gene-fraction regression design is singular.",
+      "label": "spacr.rra#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "RRA ranks guides and tests whether a gene's guides occupy unusually strong positions. It therefore remains usable when a gene-fraction regression design is singular.",
+      "source_sha256": "60c972c4a6bdf73940d7bfe605dcee735b84bfd510fb3649717704c3c6d91e68",
+      "translation": "RRA rangordnar guider och testar om en gens guider intar ovanligt starka positioner. Den förblir därför användbar när en regressionsdesign med genandelar är singulär."
+    },
+    {
+      "context": "Statistic",
+      "label": "spacr.rra#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Statistic",
+      "source_sha256": "855c126e96f97f40bcb741294da94f58b7651373f682e02f5f4b6beb039fdcc9",
+      "translation": "Statistika"
+    },
+    {
+      "context": "Within each direction, rank every guide by score. A gene with ``k`` guides occupies normalized ranks ``r_1 <= ... <= r_k`` in ``(0, 1]``. Under the global null, ``r_i`` follows ``Beta(i, k - i + 1)``. The statistic is",
+      "label": "spacr.rra#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Within each direction, rank every guide by score. A gene with ``k`` guides occupies normalized ranks ``r_1 <= ... <= r_k`` in ``(0, 1]``. Under the global null, ``r_i`` follows ``Beta(i, k - i + 1)``. The statistic is",
+      "source_sha256": "770779f0ca9dc527fde8627072e51ff43ed9743fa62234c9ca9ade802b8bb50f",
+      "translation": "Inom varje riktning rangordnas varje guide efter poäng. En gen med ``k`` guider intar normaliserade rangordningar ``r_1 <= ... <= r_k`` i ``(0, 1]``. Under den globala nollhypotesen följer ``r_i`` fördelningen ``Beta(i, k - i + 1)``. Statistikan är"
+    },
+    {
+      "context": "where the minimum is restricted to ranks in the top ``alpha`` fraction. Permutation p values are estimated by reassigning guides among genes with the same guide count. Depletion and enrichment are evaluated separately.",
+      "label": "spacr.rra#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "where the minimum is restricted to ranks in the top ``alpha`` fraction. Permutation p values are estimated by reassigning guides among genes with the same guide count. Depletion and enrichment are evaluated separately.",
+      "source_sha256": "82033bb91d75c965724a42f49ab1816bf66a28866c811aea8c9799a4457e119a",
+      "translation": "där minimum begränsas till rangordningar i den översta andelen ``alpha``. Permutations-p-värden skattas genom att guider omfördelas mellan gener med samma antal guider. Utarmning och anrikning utvärderas separat."
+    },
+    {
+      "context": "Return the formula and model guidance for the model tab's text box.",
+      "label": "spacr.rra.describe#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the formula and model guidance for the model tab's text box.",
+      "source_sha256": "57e9a296748b2f4554c5d16ae2654a46059168465b27794af596841675a3413a",
+      "translation": "Returnera formeln och modellvägledningen för modellflikens textruta."
+    },
+    {
+      "context": "top-rank cutoff to interpolate into the explanation; this formatter does not validate the supplied value.",
+      "label": "spacr.rra.describe#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "top-rank cutoff to interpolate into the explanation; this formatter does not validate the supplied value.",
+      "source_sha256": "c6bfaf60fccc51ba0137c68a16b3b799b0ea1e0b9278d16d5e04715be2a73a0c",
+      "translation": "tröskel för de högst rangordnade som infogas i förklaringen; den här formateraren validerar inte det angivna värdet."
+    },
+    {
+      "context": "alpha-RRA formula, interpretation, and CRISPR-screening experiment guidance.",
+      "label": "spacr.rra.describe#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "alpha-RRA formula, interpretation, and CRISPR-screen guidance.",
+      "source_sha256": "3c4a5b242f55fee48775a2acf03eee09fe287694e501fa105fec5c1cd898badf",
+      "translation": "formeln för alpha-RRA, tolkning och vägledning för CRISPR-screeningar."
+    },
+    {
+      "context": "Aggregate per-guide scores to per-gene calls by rank.",
+      "label": "spacr.rra.rank_aggregate#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Aggregate per-guide scores to per-gene calls by rank.",
+      "source_sha256": "dd1646325a2000ff52c26ff8bebefd2a481cd3c9e241c881f9f7289a7bdae56c",
+      "translation": "Aggregera poäng per guide till anrop per gen via rangordning."
+    },
+    {
+      "context": "one score per guide -- a coefficient, a log fold change, anything where more negative means more depleted.",
+      "label": "spacr.rra.rank_aggregate#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "one score per guide -- a coefficient, a log fold change, anything where more negative means more depleted.",
+      "source_sha256": "8383bc1a506a0e947fd5d2b6f68372823f6f03a15a35d1f03d135759e7480bc5",
+      "translation": "en poäng per guide -- en koefficient, en log fold change, vad som helst där mer negativt betyder mer utarmad."
+    },
+    {
+      "context": "``scores`` and ``groups`` differ in length, ``alpha`` is outside (0, 1], or ``direction`` is not one of :data:`DIRECTIONS`.",
+      "label": "spacr.rra.rank_aggregate#10",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``scores`` and ``groups`` differ in length, ``alpha`` is outside (0, 1], or ``direction`` is not one of :data:`DIRECTIONS`.",
+      "source_sha256": "4c4a440a9fd46b6d9bc06c142186e96fbfc9d24770291653613a82096b2aa01e",
+      "translation": "``scores`` och ``groups`` har olika längd, ``alpha`` ligger utanför (0, 1], eller ``direction`` är inte en av :data:`DIRECTIONS`."
+    },
+    {
+      "context": "Guides with non-finite scores are omitted rather than ranked. This keeps an unestimated guide from being interpreted as strongly depleted.",
+      "label": "spacr.rra.rank_aggregate#11",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Guides with non-finite scores are omitted rather than ranked. This keeps an unestimated guide from being interpreted as strongly depleted.",
+      "source_sha256": "9645d1089a151c31d94734343fd53d1d0709cf384bc6dbc98ddf4ea267ad96de",
+      "translation": "Guider med icke-ändliga poäng utelämnas i stället för att rangordnas. Detta hindrar att en oskattad guide tolkas som kraftigt utarmad."
+    },
+    {
+      "context": "the gene each guide belongs to, same length.",
+      "label": "spacr.rra.rank_aggregate#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the gene each guide belongs to, same length.",
+      "source_sha256": "84e9cd5906e6511b18b754c9393b88f21d7298c02de9a9899878f949b0a9df04",
+      "translation": "den gen som varje guide tillhör, med samma längd."
+    },
+    {
+      "context": "the top fraction of the ranking to aggregate over.",
+      "label": "spacr.rra.rank_aggregate#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the top fraction of the ranking to aggregate over.",
+      "source_sha256": "f51ed93141ae06cdc6ff9bb5a8ed63ac7f6aa22f0748de03c0c82154543f7824",
+      "translation": "den översta andelen av rangordningen som aggregeringen görs över."
+    },
+    {
+      "context": "draws per distinct guide count.",
+      "label": "spacr.rra.rank_aggregate#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "draws per distinct guide count.",
+      "source_sha256": "2d251c6496f3516b80dbd2a92ad7b65083693915eaf3ecd82a2232e63c68f2b3",
+      "translation": "dragningar per distinkt antal guider."
+    },
+    {
+      "context": "the permutation seed, so a re-run of the same screen gives the same P values.",
+      "label": "spacr.rra.rank_aggregate#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the permutation seed, so a re-run of the same screen gives the same P values.",
+      "source_sha256": "d1ca5aa15d17c152740bba732a512d3d96fae10836fda61e1865927d52ba423a",
+      "translation": "permutationsfröet, så att en omkörning av samma screening ger samma P-värden."
+    },
+    {
+      "context": "any method :mod:`spacr.multiple_testing` accepts.",
+      "label": "spacr.rra.rank_aggregate#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "any method :mod:`spacr.multiple_testing` accepts.",
+      "source_sha256": "f2c94798af733c2225eae5f47d4440a64935fe88a914927b8946ce76069fe4ef",
+      "translation": "vilken metod som helst som :mod:`spacr.multiple_testing` godtar."
+    },
+    {
+      "context": "a DataFrame, one row per gene, sorted by the strongest direction's P value.",
+      "label": "spacr.rra.rank_aggregate#9",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a DataFrame, one row per gene, sorted by the strongest direction's P value.",
+      "source_sha256": "b0f538772edb0c5cbfd8457bae689684598d35c76f3548cc80bd3f5c8bd64c94",
+      "translation": "en DataFrame, en rad per gen, sorterad efter P-värdet för den starkaste riktningen."
+    },
+    {
+      "context": "Generate reproducible recommendations from regression diagnostics.",
+      "label": "spacr.run_recommendations#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Generate reproducible recommendations from regression diagnostics.",
+      "source_sha256": "348a476c7fbb64fa6f869b5764dce75936e0ba65a138b72e6438ed4ae38c3c2b",
+      "translation": "Generera reproducerbara rekommendationer från regressionsdiagnostik."
+    },
+    {
+      "context": "Each recommendation is a fixed rule triggered by a measured threshold. The result names the setting to change, the proposed action, the evidence that triggered it, and whether the issue blocks interpretation. Rules that do not fire are omitted, so the summary contains only actions supported by the current processing session.",
+      "label": "spacr.run_recommendations#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Each recommendation is a fixed rule triggered by a measured threshold. The result names the setting to change, the proposed action, the evidence that triggered it, and whether the issue blocks interpretation. Rules that do not fire are omitted, so the summary contains only actions supported by the current run.",
+      "source_sha256": "7011536ea8e650a61c05f27c945b62692b96e1818353bcb3d99be52003259617",
+      "translation": "Varje rekommendation är en fast regel som utlöses av en uppmätt tröskel. Resultatet namnger den inställning som ska ändras, den föreslagna åtgärden, det underlag som utlöste den och om problemet blockerar tolkningen. Regler som inte utlöses utelämnas, så att sammanfattningen bara innehåller åtgärder som stöds av den aktuella körningen."
+    },
+    {
+      "context": "One thing to change, why, and how strongly.",
+      "label": "spacr.run_recommendations.Recommendation#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One thing to change, why, and how strongly.",
+      "source_sha256": "bdaf0d8358f9843a5495aabb67606970e69b9828a69e32ab996ac83466863025",
+      "translation": "En sak att ändra, varför, och hur starkt."
+    },
+    {
+      "context": "The installed spaCR version, and the environment report built from it.",
+      "label": "spacr.version#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The installed spaCR version, and the environment report built from it.",
+      "source_sha256": "a4f47ec34c9b7051f812a91ccbd698a62529467c90ffd2f4d3bb6590b4ce7a8b",
+      "translation": "Den installerade spaCR-versionen, och miljörapporten som byggs från den."
+    },
+    {
+      "context": "A source checkout or editable install reports the version in its own ``spacr/_version.py``, because its installed metadata can be stale; an installed wheel or frozen installer reports its distribution metadata.",
+      "label": "spacr.version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A source checkout or editable install reports the version in its own ``spacr/_version.py``, because its installed metadata can be stale; an installed wheel or frozen installer reports its distribution metadata.",
+      "source_sha256": "5a23a81234f8e8e11fbc85becda5dd79e6b84cf3dcea3ff42e10bf5b2ecf73fd",
+      "translation": "En källkodsutcheckning eller redigerbar installation rapporterar versionen i sin egen ``spacr/_version.py``, eftersom dess installerade metadata kan vara inaktuella; en installerad wheel eller ett fryst installationsprogram rapporterar sina distributionsmetadata."
+    },
+    {
+      "context": "Resolve ``version_str`` lazily (PEP 562).",
+      "label": "spacr.version.__getattr__#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Resolve ``version_str`` lazily (PEP 562).",
+      "source_sha256": "31330605d174b14912f06e5d094fb50f02576bfb6cb23cb5481ac737f76bb162",
+      "translation": "Lös upp ``version_str`` lat (PEP 562)."
+    },
+    {
+      "context": "Module attribute requested by Python's fallback lookup.",
+      "label": "spacr.version.__getattr__#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Module attribute requested by Python's fallback lookup.",
+      "source_sha256": "0da00f5c09165a80c14a018c68592dc96209c9ebde5ed3e4be27a43d4a03b3f9",
+      "translation": "Modulattribut som begärs av reservuppslagningen i Python."
+    },
+    {
+      "context": "The formatted environment report for ``version_str``.",
+      "label": "spacr.version.__getattr__#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The formatted environment report for ``version_str``.",
+      "source_sha256": "07b6f82a5ea2457445d9ae1247e227b97015f54eab374df3c05447885e3991fb",
+      "translation": "Den formaterade miljörapporten för ``version_str``."
+    },
+    {
+      "context": "If ``name`` is not ``version_str``.",
+      "label": "spacr.version.__getattr__#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "If ``name`` is not ``version_str``.",
+      "source_sha256": "995b55654453c1e1c4326749fe67a461e40da87312e18f33d92c0e61571dc47a",
+      "translation": "Om ``name`` inte är ``version_str``."
+    },
+    {
+      "context": "``format_version_info()`` calls ``get_torch_version()``, which imports torch — roughly 0.94 s. Resolving ``version_str`` lazily keeps ``import spacr`` from importing torch, so light entry points such as :mod:`spacr.validate` can answer in about a second before a run starts.",
+      "label": "spacr.version.__getattr__#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``format_version_info()`` calls ``get_torch_version()``, which imports torch — roughly 0.94 s. Resolving ``version_str`` lazily keeps ``import spacr`` from importing torch, so light entry points such as :mod:`spacr.validate` can answer in about a second before a run starts.",
+      "source_sha256": "dca61ac4348045483dab1c1a6071f11f95fb84f740516aeb9ccba8a3668e81f1",
+      "translation": "``format_version_info()`` anropar ``get_torch_version()``, som importerar torch — ungefär 0.94 s. Att lösa upp ``version_str`` lat hindrar ``import spacr`` från att importera torch, så att lätta ingångspunkter som :mod:`spacr.validate` kan svara på ungefär en sekund innan en körning startar."
+    },
+    {
+      "context": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "label": "spacr.version.__getattr__#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "source_sha256": "7dd50fc5213ae47f427d9a21419855b5ccbef3c9fdf93f520ceeda2abe8cf61d",
+      "translation": "``from spacr.version import version_str`` fungerar fortfarande oförändrat; torch importeras bara när ``version_str`` används."
+    },
+    {
+      "context": "Return an easy-to-read multi-line summary of the current environment.",
+      "label": "spacr.version.format_version_info#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return a human-readable multi-line summary of the current environment.",
+      "source_sha256": "484a97874c635ab805fd2abc814dd9daf8702a5b340866509298aac5b022fb9d",
+      "translation": "Returnera en läsbar sammanfattning på flera rader av den aktuella miljön."
+    },
+    {
+      "context": "Tab-aligned version report suitable for CLI display.",
+      "label": "spacr.version.format_version_info#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Tab-aligned version report suitable for CLI display.",
+      "source_sha256": "6e917ae49e4ef3e5589e889a0df66dd946baf5e6119359cbbb519e67a8196013",
+      "translation": "Tabbjusterad versionsrapport lämplig för visning i CLI."
+    },
+    {
+      "context": "Return the installed PyTorch version, or ``\"not available\"`` if torch is missing.",
+      "label": "spacr.version.get_torch_version#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the installed PyTorch version, or ``\"not available\"`` if torch is missing.",
+      "source_sha256": "0dffba4ff0d4c9863eed8b3eaf60079acb8355c34ac045e54d29a67acb05ed4e",
+      "translation": "Returnera den installerade PyTorch-versionen, eller ``\"not available\"`` om torch saknas."
+    },
+    {
+      "context": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "label": "spacr.version.get_torch_version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "source_sha256": "cef07f49aa1f0458c2e1b72145b37dd855d02a0f27dd79e5315683b4a7a98c85",
+      "translation": "``torch.__version__`` när det går att importera, annars en platshållarsträng."
+    },
+    {
+      "context": "Return the running spacr version, or ``\"unknown\"`` if it cannot be found.",
+      "label": "spacr.version.get_version#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return the running spacr version, or ``\"unknown\"`` if it cannot be found.",
+      "source_sha256": "e42b4d73edada16be6faa41440fd44eeaf46abcbb911f8f7ed88e1bc48a2bb9c",
+      "translation": "Returnera den körande spacr-versionen, eller ``\"unknown\"`` om den inte kan hittas."
+    },
+    {
+      "context": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "label": "spacr.version.get_version#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "source_sha256": "d7146150e92961e2c59cde83ccbed7cffb91611b91f8fa248092b86c2de31c3e",
+      "translation": "En källkodsutcheckning eller redigerbar installation rapporterar versionen i sin egen ``spacr/_version.py``; en installerad wheel eller ett fryst installationsprogram rapporterar sina distributionsmetadata, och sedan den literalen när inga metadata finns."
+    },
+    {
+      "context": "The version string of the spacr package that is actually imported.",
+      "label": "spacr.version.get_version#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The version string of the spacr package that is actually imported.",
+      "source_sha256": "7117431ecf386ec03f4939635e5dc01d72f6273c771ba2b832f72b8760c4c436",
+      "translation": "Versionssträngen för det spacr-paket som faktiskt importeras."
+    },
+    {
+      "context": "Return a key-value mapping of spacr, platform, Python, and torch version strings.",
+      "label": "spacr.version.get_version_info#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Return a dict of spacr, platform, Python, and torch version strings.",
+      "source_sha256": "5fa47258fa28a286b26e901cc53b55c96f6c22c01e1c2b0dc0079b9263718dd0",
+      "translation": "Returnera en dict med versionssträngar för spacr, plattform, Python och torch."
+    },
+    {
+      "context": "Mapping with structured-data names ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "label": "spacr.version.get_version_info#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Mapping with keys ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "source_sha256": "5a8d3473b2cb13cf679b06ee004728637ddc82edc15a68b9a10389c390b30412",
+      "translation": "Mappning med nycklarna ``spacr_version``, ``platform``, ``python_version``, ``torch_version``."
+    }
+  ],
+  "review_kind": "Direct AI translation with AI technical review against the English source; no human/native-speaker signoff.",
+  "schema": 1
+}

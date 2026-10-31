@@ -1,0 +1,1420 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "The canonical nuclear map, composed one window at a time.",
+      "label": "spacr.ops_compose#0",
+      "source": "The canonical nuclear map, composed one window at a time.",
+      "source_sha256": "e0ffa3fde7d170f91a0ea9f177fbef9ac63dfffc0080ad91de9542fe1b79d875",
+      "translation": "मानक nuclear map, एक समय में एक window करके compose किया गया।"
+    },
+    {
+      "context": "`ops_stitch` solves where every microscope image field sits and deliberately does not hold the pixels -- well A1 is 26,855 x 26,865, which is 1.4 GB as uint16 for one channel, and every later phase would read through it. This module composes the same well window by window instead, which is what segmentation wants anyway: segment once, on the composite, a window at a time.",
+      "label": "spacr.ops_compose#1",
+      "source": "`ops_stitch` solves where every tile sits and deliberately does not hold the pixels -- well A1 is 26,855 x 26,865, which is 1.4 GB as uint16 for one channel, and every later phase would read through it. This module composes the same well window by window instead, which is what segmentation wants anyway: segment once, on the composite, a window at a time.",
+      "source_sha256": "2ad58aa0e9f7cc2b2580e159ab7fe962ed89ce3391b5627bff80558a515a8ba8",
+      "translation": "`ops_stitch` यह हल करता है कि हर tile कहाँ बैठती है और जानबूझकर पिक्सेल नहीं रखता -- वेल A1 26,855 x 26,865 का है, जो एक channel के लिए uint16 के रूप में 1.4 GB है, और हर बाद का चरण इसी के माध्यम से पढ़ता। यह मॉड्यूल इसके बजाय उसी वेल को window दर window compose करता है, जो segmentation वैसे भी चाहता है: composite पर एक बार segmentation, एक समय में एक window।"
+    },
+    {
+      "context": "A window that a segmenter can hold is also a window a composer can build, so nothing ever materialises the whole canvas. The join key the object numbering needs -- a laboratory microplate-level object number in the microplate sample position frame -- survives because every window carries its own offset into that frame.",
+      "label": "spacr.ops_compose#2",
+      "source": "A window that a segmenter can hold is also a window a composer can build, so nothing ever materialises the whole canvas. The join key the object numbering needs -- a plate-level object number in the well frame -- survives because every window carries its own offset into that frame.",
+      "source_sha256": "58d0e1f61e726e9ac2760071e7b35559dee7c5fcc674c0e184a3e15abc8a51dd",
+      "translation": "जो window segmenter रख सकता है, वही window composer बना भी सकता है, इसलिए कुछ भी कभी पूरे canvas को साकार नहीं करता। object क्रमांकन को जिस join key की आवश्यकता है -- well frame में एक प्लेट-स्तरीय object संख्या -- वह बनी रहती है क्योंकि हर window उस frame में अपना offset साथ रखती है।"
+    },
+    {
+      "context": "Exception used when a window cannot be composed, with the reason.",
+      "label": "spacr.ops_compose.ComposeError#0",
+      "source": "Raised when a window cannot be composed, with the reason.",
+      "source_sha256": "a754bddd5fa5df0ee543244e10ac037b13cc24d4c5523e31a3d7b4db119f1522",
+      "translation": "जब कोई window compose न की जा सके, तब कारण सहित उठाया जाता है।"
+    },
+    {
+      "context": "A rectangle of the microplate sample position frame, and where it sits in it.",
+      "label": "spacr.ops_compose.Window#0",
+      "source": "A rectangle of the well frame, and where it sits in it.",
+      "source_sha256": "c8adc791935a617cad89cac0d9e616bf02d53a4ae034e7f993128fe102d0e312",
+      "translation": "well frame का एक आयत, और वह उसमें कहाँ स्थित है।"
+    },
+    {
+      "context": "rows.",
+      "label": "spacr.ops_compose.Window#3",
+      "source": "rows.",
+      "source_sha256": "88da8229ed0577065ba78933b6e1001568edd23b39280ae95cbeadfc139b230e",
+      "translation": "पंक्तियाँ।"
+    },
+    {
+      "context": "columns.",
+      "label": "spacr.ops_compose.Window#4",
+      "source": "columns.",
+      "source_sha256": "6a308b5c47639ee6385971a1b778abf53b80bdc73b3850b61ca52d7523085865",
+      "translation": "स्तंभ।"
+    },
+    {
+      "context": "One past the last row.",
+      "label": "spacr.ops_compose.Window.bottom#0",
+      "source": "One past the last row.",
+      "source_sha256": "ecc3724fe01763738dc8e1f6cb78bfd6be14c4773afcfdca3ba6bf711d840930",
+      "translation": "अंतिम पंक्ति से एक आगे।"
+    },
+    {
+      "context": "``(top, left)`` -- what a local coordinate adds to reach the microplate sample position.",
+      "label": "spacr.ops_compose.Window.offset#0",
+      "source": "``(top, left)`` -- what a local coordinate adds to reach the well.",
+      "source_sha256": "e3a4bfc6b86f0a4580550c5456fceced420e85d783d7a44e1bef073ed7470d59",
+      "translation": "``(top, left)`` -- वेल तक पहुँचने के लिए स्थानीय निर्देशांक में क्या जोड़ा जाता है।"
+    },
+    {
+      "context": "One past the last column.",
+      "label": "spacr.ops_compose.Window.right#0",
+      "source": "One past the last column.",
+      "source_sha256": "efda55c447879de45385f2e52a1de292bdff3b764090c1f19fee8ea6382ef29c",
+      "translation": "अंतिम स्तंभ से एक आगे।"
+    },
+    {
+      "context": "Average every microscope image field that overlaps ``window`` into one image.",
+      "label": "spacr.ops_compose.compose_window#0",
+      "source": "Average every tile that overlaps ``window`` into one image.",
+      "source_sha256": "87bdb396643a477bb627e2d4642b38d75f7bd3cfa8f7c25a35ad84cb9fbd50a8",
+      "translation": "``window`` से overlap करने वाली हर tile का औसत लेकर एक छवि बनाता है।"
+    },
+    {
+      "context": "Averaged, not last-writer-wins. A tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge. Averaging removes the seam and also gives the 1.15x noise gain.",
+      "label": "spacr.ops_compose.compose_window#1",
+      "source": "Averaged, not last-writer-wins. A tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge. Averaging removes the seam and also gives the 1.15x noise gain.",
+      "source_sha256": "431c78f05bdec709aa44adb9e5e002e7d359459a4df25cf996cbbd6af5f7bdf6",
+      "translation": "औसत लिया जाता है, last-writer-wins नहीं। पड़ोसी के ऊपर चिपकाई गई tile वहाँ seam छोड़ती है जहाँ दो tiles असहमत होती हैं, और segmenter उस seam को किनारे के रूप में पहचान सकता है। औसत लेने से seam हट जाता है और 1.15x noise gain भी मिलता है।"
+    },
+    {
+      "context": "the rectangle of the microplate sample position frame to build.",
+      "label": "spacr.ops_compose.compose_window#2",
+      "source": "the rectangle of the well frame to build.",
+      "source_sha256": "ac2abf6417d5790e55dd5746790c064aa3f1b887543dfcfee4df4f1ca224891c",
+      "translation": "बनाया जाने वाला well frame का आयत।"
+    },
+    {
+      "context": "called with a site number, returns that microscope image field. Called only for microscope image fields that touch the window, so a microplate sample position of 333 microscope image fields costs a handful of reads per window rather than 333.",
+      "label": "spacr.ops_compose.compose_window#4",
+      "source": "called with a site number, returns that tile. Called only for tiles that touch the window, so a well of 333 tiles costs a handful of reads per window rather than 333.",
+      "source_sha256": "5611d4617e6baf5b1851e98b6e7caa517f25b031d1cec515c5f46fb164d4b161",
+      "translation": "site संख्या के साथ कॉल किया जाता है, वह tile लौटाता है। केवल window को छूने वाली tiles के लिए कॉल किया जाता है, इसलिए 333 tiles वाले वेल में प्रति window 333 के बजाय कुछ ही reads लगते हैं।"
+    },
+    {
+      "context": "``(height, width)``; read from the first tile when omitted.",
+      "label": "spacr.ops_compose.compose_window#5",
+      "source": "``(height, width)``; read from the first tile when omitted.",
+      "source_sha256": "d7ce9174385c9756b107097d86928744ce14e7d1a4d0a98890db2064e8409d3a",
+      "translation": "``(height, width)``; छोड़ दिए जाने पर पहली tile से पढ़ा जाता है।"
+    },
+    {
+      "context": "``(image, coverage)`` -- the averaged window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart.",
+      "label": "spacr.ops_compose.compose_window#6",
+      "source": "``(image, coverage)`` -- the averaged window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart.",
+      "source_sha256": "226bd1c2fe7f87b5fd2ae1252f710cd5d702e01daa3dfbf443dd55e15ab1e501",
+      "translation": "``(image, coverage)`` -- औसत window और प्रत्येक पिक्सेल में कितनी tiles ने योगदान दिया। coverage इसलिए लौटाया जाता है क्योंकि जिस पिक्सेल तक कोई tile नहीं पहुँची वह काला पिक्सेल नहीं है, और केवल गिनती ही दोनों में भेद करती है।"
+    },
+    {
+      "context": "The noise gain from averaging, over pixels a tile reached.",
+      "label": "spacr.ops_compose.overlap_gain#0",
+      "source": "The noise gain from averaging, over pixels a tile reached.",
+      "source_sha256": "9ee0984c5223ace2a730ff79176509b71a54203514d7304fee2f2df5f26fcf7c",
+      "translation": "औसत लेने से मिलने वाला noise gain, उन पिक्सेल पर जिन तक कोई tile पहुँची।"
+    },
+    {
+      "context": "sqrt of the mean coverage: averaging n independent samples of one signal divides the noise by sqrt(n). Reported over covered pixels only, because a microplate sample position's corners are reached by one microscope image field and including the uncovered background would report a gain for pixels nothing measured.",
+      "label": "spacr.ops_compose.overlap_gain#1",
+      "source": "sqrt of the mean coverage: averaging n independent samples of one signal divides the noise by sqrt(n). Reported over covered pixels only, because a well's corners are reached by one tile and including the uncovered background would report a gain for pixels nothing measured.",
+      "source_sha256": "4062e881cfb4891cbc22af1e958b056b8ff879219e442580f9426f2e11ff0d68",
+      "translation": "माध्य coverage का sqrt: एक signal के n स्वतंत्र samples का औसत noise को sqrt(n) से भाग देता है। केवल covered पिक्सेल पर बताया जाता है, क्योंकि वेल के कोनों तक एक ही tile पहुँचती है और uncovered पृष्ठभूमि को शामिल करने से उन पिक्सेल के लिए gain बताया जाएगा जिन्हें किसी ने मापा ही नहीं।"
+    },
+    {
+      "context": "the coverage array from :func:`compose_window`.",
+      "label": "spacr.ops_compose.overlap_gain#3",
+      "source": "the coverage array from :func:`compose_window`.",
+      "source_sha256": "4802cc79e512cb5d3c19046eb9c357f0e916736c1a017a339d55de61c610051c",
+      "translation": ":func:`compose_window` से मिला coverage array।"
+    },
+    {
+      "context": "``(height, width)`` of the microplate sample position frame.",
+      "label": "spacr.ops_compose.windows_over#2",
+      "source": "``(height, width)`` of the well frame.",
+      "source_sha256": "5fd2da00e9ba4dccea7b96d40f9e7c5f1571ad527aa282cd625ee79eec663344",
+      "translation": "well frame का ``(height, width)``।"
+    },
+    {
+      "context": "window edge in pixels.",
+      "label": "spacr.ops_compose.windows_over#3",
+      "source": "window edge in pixels.",
+      "source_sha256": "7446032b6fb00a83a0a8f3f580218756645806d129e7f196c786388bce4e876c",
+      "translation": "पिक्सेल में window का किनारा।"
+    },
+    {
+      "context": "how much neighbouring windows share.",
+      "label": "spacr.ops_compose.windows_over#4",
+      "source": "how much neighbouring windows share.",
+      "source_sha256": "53747ea6692116a69328604abfec580c74bbdaf5a2795b48887b0d399d987251",
+      "translation": "पड़ोसी windows कितना भाग साझा करती हैं।"
+    },
+    {
+      "context": "Registering one field across the sequencing cycles that imaged it.",
+      "label": "spacr.ops_cycles#0",
+      "source": "Registering one field across the sequencing cycles that imaged it.",
+      "source_sha256": "fe31e9bfe3333ee8779a4ec8407f1e89c9ee49f6db75491a7964ae5f7f89ae74",
+      "translation": "एक field को उन sequencing cycles में register करना जिन्होंने उसकी छवि ली।"
+    },
+    {
+      "context": "Registration across cycles differs from registration across microscope image fields. :mod:`spacr.ops_register` places two different microscope fields of view that overlap by a fraction of a microscope image field; here the same microscope field of view is imaged eleven times and the stage returns to it, so the displacement is a handful of pixels rather than a pitch.",
+      "label": "spacr.ops_cycles#1",
+      "source": "Registration across cycles differs from registration across tiles. :mod:`spacr.ops_register` places two different fields that overlap by a fraction of a tile; here the same field is imaged eleven times and the stage returns to it, so the displacement is a handful of pixels rather than a pitch.",
+      "source_sha256": "bf255d21c46e612af23e3cab54c60f9318473342b2fdc42dfec9dff79888ed9d",
+      "translation": "cycles में registration tiles में registration से अलग है। :mod:`spacr.ops_register` दो अलग fields रखता है जो tile के एक अंश जितना overlap करते हैं; यहाँ उसी field की छवि ग्यारह बार ली जाती है और stage उस पर लौटता है, इसलिए विस्थापन एक pitch के बजाय कुछ ही पिक्सेल होता है।"
+    },
+    {
+      "context": "Cycle registration cannot use Hoechst. Measured on the reference acquisition: cycle 1 holds one five-image data channel ``DAPI-CY3-A594-CY5-CY7`` stack per site, and cycles 2 to 11 hold four separate base-image data channel files with no DAPI image data channel. So the image data channel every microscope image field-axis registration runs on does not exist on this axis after the first cycle, and averaging Hoechst across cycles is not available here either.",
+      "label": "spacr.ops_cycles#2",
+      "source": "Cycle registration cannot use Hoechst. Measured on the reference acquisition: cycle 1 holds one five-channel ``DAPI-CY3-A594-CY5-CY7`` stack per site, and cycles 2 to 11 hold four separate base-channel files with no DAPI channel. So the channel every tile-axis registration runs on does not exist on this axis after the first cycle, and averaging Hoechst across cycles is not available here either.",
+      "source_sha256": "5b09b2c774f6680772ddf1dcaf4903099c962ccabcba0f7e937b993934cd6953",
+      "translation": "cycle registration Hoechst का उपयोग नहीं कर सकता। reference acquisition पर मापा गया: cycle 1 में प्रति site एक पाँच-channel ``DAPI-CY3-A594-CY5-CY7`` stack है, और cycles 2 से 11 में चार अलग base-channel फ़ाइलें हैं, जिनमें कोई DAPI channel नहीं। इसलिए जिस channel पर हर tile-axis registration चलता है, वह पहले cycle के बाद इस अक्ष पर मौजूद नहीं होता, और cycles में Hoechst का औसत लेना भी यहाँ उपलब्ध नहीं है।"
+    },
+    {
+      "context": "site 100   peak/mean 169 to 236   shift (-6..-27,  0..10) site 200   peak/mean 218 to 281   shift (-4..-25, 11..21)",
+      "label": "spacr.ops_cycles#4",
+      "source": "site 100   peak/mean 169 to 236   shift (-6..-27,  0..10) site 200   peak/mean 218 to 281   shift (-4..-25, 11..21)",
+      "source_sha256": "249061af88ef246039fe588712acd9cfcbb86b67e741dc3b8a73428c7d380608",
+      "translation": "site 100   peak/mean 169 से 236   shift (-6..-27,  0..10) site 200   peak/mean 218 से 281   shift (-4..-25, 11..21)"
+    },
+    {
+      "context": "20 of 20 cycles registered.",
+      "label": "spacr.ops_cycles#5",
+      "source": "20 of 20 cycles registered.",
+      "source_sha256": "e307f8e489de0b346aecb63071c668c463ae5ab6261b7e819d07a3457d249492",
+      "translation": "20 में से 20 cycles register हुए।"
+    },
+    {
+      "context": "This target gives stronger correlation peaks than DAPI: microscope image field registration on DAPI peaks at 23 to 85; this target peaks at 169 to 281. Spots are punctate and abundant while nuclei are smooth and few, so the missing Hoechst image data channel does not reduce registration quality.",
+      "label": "spacr.ops_cycles#6",
+      "source": "This target gives stronger correlation peaks than DAPI: tile registration on DAPI peaks at 23 to 85; this target peaks at 169 to 281. Spots are punctate and abundant while nuclei are smooth and few, so the missing Hoechst channel does not reduce registration quality.",
+      "source_sha256": "9e5c91b9056003fd018c349546d192354603eca225ef388e00b2b7cfcbbf75a7",
+      "translation": "यह target DAPI की तुलना में अधिक मज़बूत correlation peaks देता है: DAPI पर tile registration के peaks 23 से 85 तक होते हैं; इस target के 169 से 281 तक। spots बिंदुवत और प्रचुर होते हैं जबकि nuclei चिकने और कम होते हैं, इसलिए अनुपस्थित Hoechst channel registration की गुणवत्ता को कम नहीं करता।"
+    },
+    {
+      "context": "The cycles whose registration was accepted, in ascending order.",
+      "label": "spacr.ops_cycles.accepted_cycles#0",
+      "source": "The cycles whose registration was accepted, in ascending order.",
+      "source_sha256": "1b008a01e060c51669c54d914c727ea184a5d791f79a3bbcdbfc66b82afeb14b",
+      "translation": "वे cycles जिनका registration स्वीकार किया गया, आरोही क्रम में।"
+    },
+    {
+      "context": "the result of :func:`register_cycles`.",
+      "label": "spacr.ops_cycles.accepted_cycles#1",
+      "source": "the result of :func:`register_cycles`.",
+      "source_sha256": "189ef2c640cc4948f8cd45eac06526124706e0dfa6f7a086988f80cf59613c70",
+      "translation": ":func:`register_cycles` का परिणाम।"
+    },
+    {
+      "context": "the accepted cycle numbers, ascending.",
+      "label": "spacr.ops_cycles.accepted_cycles#2",
+      "source": "the accepted cycle numbers, ascending.",
+      "source_sha256": "6b12fc84c5912cbd94c651980d85c0fe65d96f8f13d143068bc78ff89511f293",
+      "translation": "स्वीकृत cycle संख्याएँ, आरोही।"
+    },
+    {
+      "context": "Place every cycle of one field against that field's reference.",
+      "label": "spacr.ops_cycles.register_cycles#0",
+      "source": "Place every cycle of one field against that field's reference.",
+      "source_sha256": "b4ed40222baaf09d1045844108e9031df11f1f48ccc5eb74a99c87767782c016",
+      "translation": "एक field के हर cycle को उस field के reference के विरुद्ध रखता है।"
+    },
+    {
+      "context": "Each cycle is registered against the reference directly, never against its predecessor. Chaining c1->c2->c3 saves one registration and makes every later cycle depend on every earlier one: a single bad link displaces the rest and the residual does not say which link failed. Registering each cycle independently lets one cycle be dropped without affecting the others, so a cycle that does not register does not cost the microplate sample position.",
+      "label": "spacr.ops_cycles.register_cycles#1",
+      "source": "Each cycle is registered against the reference directly, never against its predecessor. Chaining c1->c2->c3 saves one registration and makes every later cycle depend on every earlier one: a single bad link displaces the rest and the residual does not say which link failed. Registering each cycle independently lets one cycle be dropped without affecting the others, so a cycle that does not register does not cost the well.",
+      "source_sha256": "4a0bfb2b43283e4176b488c07fffce84b6eeed7f060cc43630202a9580688998",
+      "translation": "हर cycle को सीधे reference के विरुद्ध register किया जाता है, कभी उसके पिछले cycle के विरुद्ध नहीं। c1->c2->c3 की श्रृंखला एक registration बचाती है और हर बाद के cycle को हर पिछले cycle पर निर्भर बना देती है: एक ख़राब कड़ी बाकी सबको खिसका देती है और residual यह नहीं बताता कि कौन-सी कड़ी विफल हुई। हर cycle को स्वतंत्र रूप से register करने से एक cycle को दूसरों को प्रभावित किए बिना हटाया जा सकता है, इसलिए register न होने वाले cycle के कारण वेल नहीं खोता।"
+    },
+    {
+      "context": "the reference cycle's target, from :func:`sbs_mean_target`.",
+      "label": "spacr.ops_cycles.register_cycles#2",
+      "source": "the reference cycle's target, from :func:`sbs_mean_target`.",
+      "source_sha256": "929d5ea897e0c467240b54b505133588441737d7a9ba0e4d95f32fd30de13c28",
+      "translation": "reference cycle का target, :func:`sbs_mean_target` से।"
+    },
+    {
+      "context": "cycle number to that cycle's target.",
+      "label": "spacr.ops_cycles.register_cycles#3",
+      "source": "cycle number to that cycle's target.",
+      "source_sha256": "39ad02ad11d6a84112f08e56f99b8f8222774a8d97f97c03ee67602572d175e5",
+      "translation": "cycle संख्या से उस cycle के target तक।"
+    },
+    {
+      "context": "passed to :func:`spacr.ops_register.phase_correlate`.",
+      "label": "spacr.ops_cycles.register_cycles#5",
+      "source": "passed to :func:`spacr.ops_register.phase_correlate`.",
+      "source_sha256": "c59a1e0612cf4f629e785ca821ffe717a8878eaad508d8567ef2dc801b975227",
+      "translation": ":func:`spacr.ops_register.phase_correlate` को दिया जाता है।"
+    },
+    {
+      "context": "cycle number to its :class:`Registration`, including the refused ones -- a caller reporting `n_cycles` needs to know a cycle was tried and refused, not merely that it is absent.",
+      "label": "spacr.ops_cycles.register_cycles#6",
+      "source": "cycle number to its :class:`Registration`, including the refused ones -- a caller reporting `n_cycles` needs to know a cycle was tried and refused, not merely that it is absent.",
+      "source_sha256": "90f42c33b07de85de39c0e99b97db3f6e522da3d813a10d34a6a4cbf6e0c42dd",
+      "translation": "cycle संख्या से उसके :class:`Registration` तक, अस्वीकृत वाले भी शामिल -- `n_cycles` रिपोर्ट करने वाले कॉलर को यह जानना होता है कि किसी cycle को आज़माया गया और अस्वीकार किया गया, न कि केवल यह कि वह अनुपस्थित है।"
+    },
+    {
+      "context": "Turn one cycle's base channels into a single registration target.",
+      "label": "spacr.ops_cycles.sbs_mean_target#0",
+      "source": "Turn one cycle's base channels into a single registration target.",
+      "source_sha256": "6db6b85f4f75403b2dd58619fb180ab5203b8b50b9b490f06c19ea79c0104386",
+      "translation": "एक cycle के base channels को एक एकल registration target में बदलता है।"
+    },
+    {
+      "context": "The maximum over channels is used, not the mean. A read is bright in exactly one channel per cycle -- that is what a base call is -- so averaging the four divides every spot by four and leaves the background where it was. The maximum keeps each spot at its own brightness whichever channel carried it.",
+      "label": "spacr.ops_cycles.sbs_mean_target#1",
+      "source": "The maximum over channels is used, not the mean. A read is bright in exactly one channel per cycle -- that is what a base call is -- so averaging the four divides every spot by four and leaves the background where it was. The maximum keeps each spot at its own brightness whichever channel carried it.",
+      "source_sha256": "3c639893a99340d38230d629859f9576dabae03c12608cc4c190819c8a9cf4ac",
+      "translation": "channels पर माध्य नहीं, अधिकतम उपयोग किया जाता है। एक read प्रति cycle ठीक एक channel में चमकीला होता है -- base call यही है -- इसलिए चारों का औसत हर spot को चार से भाग देता है और पृष्ठभूमि को वहीं छोड़ देता है जहाँ वह थी। अधिकतम हर spot को उसकी अपनी चमक पर रखता है, चाहे किसी भी channel ने उसे वहन किया हो।"
+    },
+    {
+      "context": "the base channels for one cycle of one microscope field of view.",
+      "label": "spacr.ops_cycles.sbs_mean_target#2",
+      "source": "the base channels for one cycle of one field.",
+      "source_sha256": "d6a0f7452e4cdb7a3fd3972dbeb35cced9d0c18c4fa453513eceb45eb86908ce",
+      "translation": "एक field के एक cycle के base channels।"
+    },
+    {
+      "context": "the percentile the result is divided by.",
+      "label": "spacr.ops_cycles.sbs_mean_target#3",
+      "source": "the percentile the result is divided by.",
+      "source_sha256": "f3d3b1c5c446ceb480673975be351649340ff1648f2e9e3eb8a482af8e2d628b",
+      "translation": "वह percentile जिससे परिणाम को भाग दिया जाता है।"
+    },
+    {
+      "context": "the value the result is clipped at afterwards, so a saturated spot cannot dominate the correlation on its own.",
+      "label": "spacr.ops_cycles.sbs_mean_target#4",
+      "source": "the value the result is clipped at afterwards, so a saturated spot cannot dominate the correlation on its own.",
+      "source_sha256": "2030330d4011bd9fee4b1c2dfc1bb7e356b5e42d631099c22641a879e5dc13c0",
+      "translation": "वह मान जिस पर परिणाम को बाद में सीमित किया जाता है, ताकि कोई saturated spot अकेले correlation पर हावी न हो सके।"
+    },
+    {
+      "context": "a float32 image, the same shape as one image layer.",
+      "label": "spacr.ops_cycles.sbs_mean_target#5",
+      "source": "a float32 image, the same shape as one plane.",
+      "source_sha256": "6a935c89571df1480c53c063d93ab36b0bc3dcc14c15ec53f7eed1955b802c59",
+      "translation": "एक float32 छवि, एक plane जैसे आकार की।"
+    },
+    {
+      "context": "when no image layers are given, or they disagree in shape.",
+      "label": "spacr.ops_cycles.sbs_mean_target#6",
+      "source": "when no planes are given, or they disagree in shape.",
+      "source_sha256": "bb960a6c641e084bf65fc91c45228734d52308daf9a5ffb99b3692c8eaca0389",
+      "translation": "जब कोई planes न दिए गए हों, या उनके आकार असहमत हों।"
+    },
+    {
+      "context": "The microscope image field grid is computed from a circle model, not reconstructed from the links that register. Reconstructing it from registered links infers the grid from the edges that are missing, and on one acquisition placed only 27 of 333 microscope image fields.",
+      "label": "spacr.ops_layout#1",
+      "source": "The tile grid is computed from a circle model, not reconstructed from the links that register. Reconstructing it from registered links infers the grid from the edges that are missing, and on one acquisition placed only 27 of 333 tiles.",
+      "source_sha256": "68de5377f6bc54057af6a6c18e9e0a94677ea79a593bc0256082b4f59fd7696a",
+      "translation": "tile grid की गणना वृत्त मॉडल से की जाती है, register होने वाले links से पुनर्निर्मित नहीं की जाती। registered links से पुनर्निर्माण अनुपस्थित edges से grid का अनुमान लगाता है, और एक acquisition पर इसने 333 में से केवल 27 tiles रखीं।"
+    },
+    {
+      "context": "The microplate sample position is round. Each column holds as many microscope fields of view as fit inside the circle at that x, so the columns have different heights and the index offset to the next column is that column's height -- which is why the measured horizontal offsets were +11, +4, -11, -9, -4, -13 and -5 rather than one number. Fitting the circle takes four parameters and answers every microscope image field at once",
+      "label": "spacr.ops_layout#2",
+      "source": "The well is round. Each column holds as many fields as fit inside the circle at that x, so the columns have different heights and the index offset to the next column is that column's height -- which is why the measured horizontal offsets were +11, +4, -11, -9, -4, -13 and -5 rather than one number. Fitting the circle takes four parameters and answers every tile at once",
+      "source_sha256": "40c2c1a93242a50efff041abcb5400bf365c10509ca5ad6277043f02f0c7128c",
+      "translation": "वेल गोल है। हर स्तंभ में उतने fields होते हैं जितने उस x पर वृत्त के भीतर समाते हैं, इसलिए स्तंभों की ऊँचाइयाँ अलग होती हैं और अगले स्तंभ तक का index offset उस स्तंभ की ऊँचाई होता है -- इसीलिए मापे गए क्षैतिज offsets एक संख्या के बजाय +11, +4, -11, -9, -4, -13 और -5 थे। वृत्त को fit करने में चार parameters लगते हैं और हर tile का उत्तर एक साथ मिल जाता है"
+    },
+    {
+      "context": "The model was validated by prediction. Seven measured offsets against four free parameters would only be a fit; the model was then asked to predict the four neighbours of six sites it had never seen -- 20, 60, 140, 200, 260, 300 -- and registration confirmed 24 of 24, at peak/mean 23.6 to 53.1 against control pairs at 9.0 to 15.6. The controls came back at shift (0,0), which is the no-overlap signature behaving as it should.",
+      "label": "spacr.ops_layout#3",
+      "source": "The model was validated by prediction. Seven measured offsets against four free parameters would only be a fit; the model was then asked to predict the four neighbours of six sites it had never seen -- 20, 60, 140, 200, 260, 300 -- and registration confirmed 24 of 24, at peak/mean 23.6 to 53.1 against control pairs at 9.0 to 15.6. The controls came back at shift (0,0), which is the no-overlap signature behaving as it should.",
+      "source_sha256": "979074b95b904e4aac07d4a6ce56a2f99caf56334990a1553dfd62f2c57fcb57",
+      "translation": "मॉडल को भविष्यवाणी द्वारा मान्य किया गया। चार मुक्त parameters के विरुद्ध सात मापे गए offsets केवल एक fit होते; फिर मॉडल से छह ऐसी sites के चार पड़ोसियों की भविष्यवाणी करने को कहा गया जिन्हें उसने कभी नहीं देखा था -- 20, 60, 140, 200, 260, 300 -- और registration ने 24 में से 24 की पुष्टि की, peak/mean 23.6 से 53.1 पर, जबकि नियंत्रण जोड़े 9.0 से 15.6 पर थे। नियंत्रण shift (0,0) पर लौटे, जो no-overlap का संकेत है और अपेक्षा के अनुरूप व्यवहार कर रहा है।"
+    },
+    {
+      "context": "Rows are absolute grid rows, not counted from each column's own top. In a round well every column starts at a different row, so \"row 3 of column c\" and \"row 3 of column c+1\" are not side by side. The neighbour is at the same absolute grid row, which is why :meth:`WellLayout.position` returns absolute rows and :meth:`WellLayout.neighbours` looks them up directly.",
+      "label": "spacr.ops_layout#4",
+      "source": "Rows are absolute grid rows, not counted from each column's own top. In a round well every column starts at a different row, so \"row 3 of column c\" and \"row 3 of column c+1\" are not side by side. The neighbour is at the same absolute grid row, which is why :meth:`WellLayout.position` returns absolute rows and :meth:`WellLayout.neighbours` looks them up directly.",
+      "source_sha256": "ae230e874e194970126c41dcfbf07dd9353649883c5b2d010fdd2360ec5a8598",
+      "translation": "पंक्तियाँ निरपेक्ष grid पंक्तियाँ हैं, हर स्तंभ के अपने शीर्ष से नहीं गिनी जातीं। गोल वेल में हर स्तंभ अलग पंक्ति से शुरू होता है, इसलिए \"row 3 of column c\" और \"row 3 of column c+1\" अगल-बगल नहीं होते। पड़ोसी उसी निरपेक्ष grid पंक्ति पर होता है, इसीलिए :meth:`WellLayout.position` निरपेक्ष पंक्तियाँ लौटाता है और :meth:`WellLayout.neighbours` उन्हें सीधे खोजता है।"
+    },
+    {
+      "context": "How many fields each column holds, left to right.",
+      "label": "spacr.ops_layout.WellLayout.heights#0",
+      "source": "How many fields each column holds, left to right.",
+      "source_sha256": "05200b6a43b57c3a50592097da2a0f3172d8d53f413a5806183000644afdb9dd",
+      "translation": "हर स्तंभ में कितने fields हैं, बाएँ से दाएँ।"
+    },
+    {
+      "context": "Where the reference implementation says a tile is, in microns.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#0",
+      "source": "Where the reference implementation says a tile is, in microns.",
+      "source_sha256": "f5435ed49fafdd002a9b65d04bb6a4b9686b9febbf62a4ef2effe496ec784af2",
+      "translation": "reference implementation के अनुसार एक tile कहाँ है, microns में।"
+    },
+    {
+      "context": "A stitch is scored by its residual against this position, not by how many microscope image fields were placed.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#1",
+      "source": "A stitch is scored by its residual against this position, not by how many tiles were placed.",
+      "source_sha256": "f06b1193444b5bf8cf02e3914344fc4839c18590e2a1dfd15671c281dd36dad2",
+      "translation": "stitch का स्कोर इस position के विरुद्ध उसके residual से दिया जाता है, इस बात से नहीं कि कितनी tiles रखी गईं।"
+    },
+    {
+      "context": "the site index.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#2",
+      "source": "the site index.",
+      "source_sha256": "a5458d6148f6b18f42e2cf27c2722d6cb3d4829c34dfba9b714fe3635bf9b39f",
+      "translation": "site index।"
+    },
+    {
+      "context": "``(x, y)`` in microns, relative to the circle's centre.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#4",
+      "source": "``(x, y)`` in microns, relative to the circle's centre.",
+      "source_sha256": "93608f4712e9aed31119e6942bb6911621678d7181a8333274bd624fecf37aa1",
+      "translation": "microns में ``(x, y)``, वृत्त के केंद्र के सापेक्ष।"
+    },
+    {
+      "context": "The sites physically adjacent to one site.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#0",
+      "source": "The sites physically adjacent to one site.",
+      "source_sha256": "27c767570796de48b02731a7040712364824f85d53cdc9eb21590af7fc7b970c",
+      "translation": "एक site से भौतिक रूप से सटी हुई sites।"
+    },
+    {
+      "context": "At most four candidates, each a real adjacency, rather than a band of index neighbours such as `max_site_gap`'s window, of which at most four could touch.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#1",
+      "source": "At most four candidates, each a real adjacency, rather than a band of index neighbours such as `max_site_gap`'s window, of which at most four could touch.",
+      "source_sha256": "0a2e775178768310d2d36ed8375cf109c9190ef5b84e7b8b80e80d62670b058f",
+      "translation": "अधिकतम चार उम्मीदवार, हर एक वास्तविक निकटता, न कि `max_site_gap` की window जैसे index पड़ोसियों का एक पट्टा, जिनमें से अधिकतम चार छू सकते थे।"
+    },
+    {
+      "context": "the site index.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#2",
+      "source": "the site index.",
+      "source_sha256": "a5458d6148f6b18f42e2cf27c2722d6cb3d4829c34dfba9b714fe3635bf9b39f",
+      "translation": "site index।"
+    },
+    {
+      "context": "``{direction: site}`` for the neighbours that exist.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#3",
+      "source": "``{direction: site}`` for the neighbours that exist.",
+      "source_sha256": "7da6f97984b5534598203748bce972b499d6043f80d5fc5251b31f51d5fd9fd3",
+      "translation": "मौजूद पड़ोसियों के लिए ``{direction: site}``।"
+    },
+    {
+      "context": "Every adjacent pair once, as ``(first, second, axis)``.",
+      "label": "spacr.ops_layout.WellLayout.pairs#0",
+      "source": "Every adjacent pair once, as ``(first, second, axis)``.",
+      "source_sha256": "8788811a9e9333e82ce1f50eadcb755c31618bb734ceff53f32150c4a3bd89fb",
+      "translation": "हर सटा हुआ जोड़ा एक बार, ``(first, second, axis)`` के रूप में।"
+    },
+    {
+      "context": "Once, not twice: registering a pair in both directions doubles the work and asks the same question. The axis is \"vertical\" or \"horizontal\", which the caller wants because a vertical link continues a column and a horizontal one crosses a snake turn -- and because the two carry different expected shifts.",
+      "label": "spacr.ops_layout.WellLayout.pairs#1",
+      "source": "Once, not twice: registering a pair in both directions doubles the work and asks the same question. The axis is \"vertical\" or \"horizontal\", which the caller wants because a vertical link continues a column and a horizontal one crosses a snake turn -- and because the two carry different expected shifts.",
+      "source_sha256": "54ca933a0300ce4f5de4be1183d617faffbb51d187a91191752d670749c4f0a9",
+      "translation": "एक बार, दो बार नहीं: किसी जोड़े को दोनों दिशाओं में register करना काम को दोगुना करता है और वही प्रश्न पूछता है। axis \"vertical\" या \"horizontal\" है, जो कॉलर चाहता है क्योंकि vertical link एक स्तंभ को आगे बढ़ाता है और horizontal link snake turn को पार करता है -- और क्योंकि दोनों अलग-अलग अपेक्षित shifts रखते हैं।"
+    },
+    {
+      "context": "Ordered by geometry, not by site index: the second microscope image field is always the one below for a vertical pair and the one to the right for a horizontal one, because a caller cropping an overlap band assumes that -- `register_edge` takes the bottom of the first and the top of the second. Ordering by index is wrong on every odd column, because the raster snakes and in a bottom-to-top column the microscope image field above carries the higher index. That error is silent: edges are lost while each surviving component still solves with a residual of 0.00 px.",
+      "label": "spacr.ops_layout.WellLayout.pairs#2",
+      "source": "Ordered by geometry, not by site index: the second tile is always the one below for a vertical pair and the one to the right for a horizontal one, because a caller cropping an overlap band assumes that -- `register_edge` takes the bottom of the first and the top of the second. Ordering by index is wrong on every odd column, because the raster snakes and in a bottom-to-top column the tile above carries the higher index. That error is silent: edges are lost while each surviving component still solves with a residual of 0.00 px.",
+      "source_sha256": "cedfac7cda177611257e3735dc09115c7cb9b5cb7fa6510b9d5b935fb25f4376",
+      "translation": "ज्यामिति के अनुसार क्रमबद्ध, site index के अनुसार नहीं: vertical जोड़े में दूसरी tile हमेशा नीचे वाली होती है और horizontal जोड़े में दाईं ओर वाली, क्योंकि overlap पट्टी काटने वाला कॉलर यही मानता है -- `register_edge` पहली का निचला भाग और दूसरी का ऊपरी भाग लेता है। index के अनुसार क्रम हर विषम स्तंभ पर ग़लत है, क्योंकि raster snake करता है और नीचे-से-ऊपर वाले स्तंभ में ऊपर की tile का index अधिक होता है। यह त्रुटि चुपचाप होती है: edges खो जाते हैं जबकि हर बचा हुआ component फिर भी 0.00 px के residual के साथ solve होता है।"
+    },
+    {
+      "context": "the pairs, ordered by their first site.",
+      "label": "spacr.ops_layout.WellLayout.pairs#3",
+      "source": "the pairs, ordered by their first site.",
+      "source_sha256": "4c9b967908948d8e027a247eac38833e7f34dd27d2a70b8a74dabab9ba57fcb7",
+      "translation": "जोड़े, उनकी पहली site के अनुसार क्रमबद्ध।"
+    },
+    {
+      "context": "The ``(column, row)`` of one site.",
+      "label": "spacr.ops_layout.WellLayout.position#0",
+      "source": "The ``(column, row)`` of one site.",
+      "source_sha256": "32a29efe9cc46b6b3b8f18349a619d26a9ac2df4cbc1bd57682dba4f8a4a8c1a",
+      "translation": "एक site का ``(column, row)``।"
+    },
+    {
+      "context": "the site index.",
+      "label": "spacr.ops_layout.WellLayout.position#1",
+      "source": "the site index.",
+      "source_sha256": "a5458d6148f6b18f42e2cf27c2722d6cb3d4829c34dfba9b714fe3635bf9b39f",
+      "translation": "site index।"
+    },
+    {
+      "context": "the column and the absolute grid row -- not the row counted from this column's own top. See the module note.",
+      "label": "spacr.ops_layout.WellLayout.position#2",
+      "source": "the column and the absolute grid row -- not the row counted from this column's own top. See the module note.",
+      "source_sha256": "220543c4f526a8010b77b6ad65a3ea31e49fc02792568b41e19363dfb7a6d795",
+      "translation": "स्तंभ और निरपेक्ष grid पंक्ति -- इस स्तंभ के अपने शीर्ष से गिनी गई पंक्ति नहीं। मॉड्यूल टिप्पणी देखें।"
+    },
+    {
+      "context": "when the microplate sample position holds no such site.",
+      "label": "spacr.ops_layout.WellLayout.position#3",
+      "source": "when the well holds no such site.",
+      "source_sha256": "275e92376a6e210c1956a05baf1c6e2983544384afc8b81e11f3039653e4840a",
+      "translation": "जब वेल में ऐसी कोई site न हो।"
+    },
+    {
+      "context": "``site -> (column, row)`` for every site, in index order.",
+      "label": "spacr.ops_layout.WellLayout.positions#0",
+      "source": "``site -> (column, row)`` for every site, in index order.",
+      "source_sha256": "40e435a3c7e93ddee51f22a63c8fde45c937c99aa68703b582462205fa450e2a",
+      "translation": "हर site के लिए ``site -> (column, row)``, index क्रम में।"
+    },
+    {
+      "context": "The site index at one grid position, or None when it is empty.",
+      "label": "spacr.ops_layout.WellLayout.site#0",
+      "source": "The site index at one grid position, or None when it is empty.",
+      "source_sha256": "cbc795c42947639e4d823c957c0a26406f1bb43858e12c79e07f6f599271be00",
+      "translation": "एक grid position पर site index, या None जब वह खाली हो।"
+    },
+    {
+      "context": "the absolute grid row.",
+      "label": "spacr.ops_layout.WellLayout.site#2",
+      "source": "the absolute grid row.",
+      "source_sha256": "592c92de07f8c0b80837e00849d4ee48e2cb00593aec1fdd3be4011990d7cb56",
+      "translation": "निरपेक्ष grid पंक्ति।"
+    },
+    {
+      "context": "the site index, or None outside the circle.",
+      "label": "spacr.ops_layout.WellLayout.site#3",
+      "source": "the site index, or None outside the circle.",
+      "source_sha256": "5c2ede49c270e3cacec8e74a093d9f8f56c5231df11b8c19e52d1220c707e05e",
+      "translation": "site index, या वृत्त के बाहर None।"
+    },
+    {
+      "context": "How many microscope image fields the microplate sample position holds.",
+      "label": "spacr.ops_layout.WellLayout.site_count#0",
+      "source": "How many tiles the well holds.",
+      "source_sha256": "cff47dba157f65752746b2cc42d7422896e449f2728380f71dd92dfc4ddf613c",
+      "translation": "वेल में कितनी tiles हैं।"
+    },
+    {
+      "context": "Raised for an unusable object list; the message states the remedy.",
+      "label": "spacr.ops_objects.ObjectsError#0",
+      "source": "Raised for an unusable object list; the message states the remedy.",
+      "source_sha256": "e7b71f5308db2585c171f2708e05cea56203db41a88cc8f730eba21fad2302e1",
+      "translation": "अनुपयोगी object सूची के लिए उठाया जाता है; संदेश उपाय बताता है।"
+    },
+    {
+      "context": "The field names are the ``ops_objects`` columns the storage contract specifies, so the table is written from these without a translation layer.",
+      "label": "spacr.ops_objects.PlateObject#1",
+      "source": "The field names are the ``ops_objects`` columns the storage contract specifies, so the table is written from these without a translation layer.",
+      "source_sha256": "617f96dff5915a91f13f109e95842c1b44df36dc77bf6cf9ce00f9da31796eae",
+      "translation": "field नाम वे ``ops_objects`` स्तंभ हैं जिन्हें storage अनुबंध निर्दिष्ट करता है, इसलिए तालिका इन्हीं से बिना किसी अनुवाद परत के लिखी जाती है।"
+    },
+    {
+      "context": "row of the centroid, same frame.",
+      "label": "spacr.ops_objects.PlateObject#4",
+      "source": "row of the centroid, same frame.",
+      "source_sha256": "642d2e1a7e1a5a857e204be52b3dc56fd052f4890ab19d05aea9ee7f351e7978",
+      "translation": "centroid की पंक्ति, वही frame।"
+    },
+    {
+      "context": "pixel count of the mask that was kept, which is the unclipped observation wherever one exists.",
+      "label": "spacr.ops_objects.PlateObject#5",
+      "source": "pixel count of the mask that was kept, which is the unclipped observation wherever one exists.",
+      "source_sha256": "941966ba7c852fbf58563a461b054f78efaed10daf1cdea9dade4b36df76b455",
+      "translation": "रखे गए mask की पिक्सेल गिनती, जो जहाँ भी उपलब्ध हो, बिना कटा observation है।"
+    },
+    {
+      "context": "the window whose observation was kept, as ``(row, col)``. Recorded so a suspect object can be traced back to the pixels it was segmented from.",
+      "label": "spacr.ops_objects.PlateObject#7",
+      "source": "the window whose observation was kept, as ``(row, col)``. Recorded so a suspect object can be traced back to the pixels it was segmented from.",
+      "source_sha256": "015b9666b0dbca7b2fa380d289f46f461a6e3d76dff95fa2d8219f8aa91481a8",
+      "translation": "वह window जिसका observation रखा गया, ``(row, col)`` के रूप में। दर्ज किया जाता है ताकि किसी संदिग्ध object को उन पिक्सेल तक वापस खोजा जा सके जिनसे उसका segmentation हुआ।"
+    },
+    {
+      "context": "One ``ops_objects`` row.",
+      "label": "spacr.ops_objects.PlateObject.row#0",
+      "source": "One ``ops_objects`` row.",
+      "source_sha256": "e456b1d04ba53925c6cd89e3bdf19056eb2998a1516beda9850e73d05e958665",
+      "translation": "एक ``ops_objects`` पंक्ति।"
+    },
+    {
+      "context": "the window it was segmented in, so a disagreement can be traced back to the pixels that produced it.",
+      "label": "spacr.ops_objects.WindowObject#1",
+      "source": "the window it was segmented in, so a disagreement can be traced back to the pixels that produced it.",
+      "source_sha256": "b19805146c0e651281562808614a7c4d8595a3ed21d97e6a54bdcf6c6ca56b96",
+      "translation": "वह window जिसमें इसका segmentation हुआ, ताकि किसी असहमति को उन पिक्सेल तक वापस खोजा जा सके जिन्होंने उसे उत्पन्न किया।"
+    },
+    {
+      "context": "its label value within that window's label image.",
+      "label": "spacr.ops_objects.WindowObject#2",
+      "source": "its label value within that window's label image.",
+      "source_sha256": "b54e7e0613ded479cdf1952602068302efb28e97e78cab851ac882c474d93cb1",
+      "translation": "उस window की label छवि में इसका label मान।"
+    },
+    {
+      "context": "whether its mask touches a window edge that is not also a canvas edge -- meaning this window did not see all of it. A clipped observation is never preferred and never emitted alone.",
+      "label": "spacr.ops_objects.WindowObject#3",
+      "source": "whether its mask touches a window edge that is not also a canvas edge -- meaning this window did not see all of it. A clipped observation is never preferred and never emitted alone.",
+      "source_sha256": "0608802da7e6cefe9f19ecfe41306a25482b5be080be9ac4cc3b5a5f5e502501",
+      "translation": "क्या इसका mask किसी ऐसे window किनारे को छूता है जो canvas का किनारा नहीं है -- यानी इस window ने इसका पूरा भाग नहीं देखा। कटे हुए observation को कभी प्राथमिकता नहीं दी जाती और कभी अकेले नहीं निकाला जाता।"
+    },
+    {
+      "context": "column of the same centroid, same frame.",
+      "label": "spacr.ops_objects.WindowObject#5",
+      "source": "column of the same centroid, same frame.",
+      "source_sha256": "22c94bc7a739e222cb1d8f00a13e848bcf51527ae0bba819bf3418b2ff31b16e",
+      "translation": "उसी centroid का स्तंभ, वही frame।"
+    },
+    {
+      "context": "The ``ops_objects`` table, as a DataFrame.",
+      "label": "spacr.ops_objects.objects_frame#0",
+      "source": "The ``ops_objects`` table, as a DataFrame.",
+      "source_sha256": "a2647c8fa2880da295a546330d0f53fc545fa7146419b926f81074915a45f331",
+      "translation": "``ops_objects`` तालिका, DataFrame के रूप में।"
+    },
+    {
+      "context": "Imported locally so this module stays usable -- and testable -- without pandas, which is the same reason :mod:`spacr.scorecard` reaches for the standard library.",
+      "label": "spacr.ops_objects.objects_frame#1",
+      "source": "Imported locally so this module stays usable -- and testable -- without pandas, which is the same reason :mod:`spacr.scorecard` reaches for the standard library.",
+      "source_sha256": "a3bdb3ee3ce7366d950e77d0d51ae6dc7fe8b98fe4c3c29114a488ff1fd38875",
+      "translation": "स्थानीय रूप से import किया जाता है ताकि यह मॉड्यूल pandas के बिना उपयोगी -- और परीक्षण-योग्य -- बना रहे, यही कारण है कि :mod:`spacr.scorecard` standard library का उपयोग करता है।"
+    },
+    {
+      "context": "the numbered objects, one row each, in the order given.",
+      "label": "spacr.ops_objects.objects_frame#2",
+      "source": "the numbered objects, one row each, in the order given.",
+      "source_sha256": "55fc8b2a9e28565f111ff72dc29fa9449f47c854f412ba834fbfb67865401506",
+      "translation": "क्रमांकित objects, हर एक की एक पंक्ति, दिए गए क्रम में।"
+    },
+    {
+      "context": "where this label image sits in the microplate sample position.",
+      "label": "spacr.ops_objects.objects_in_window#1",
+      "source": "where this label image sits in the well.",
+      "source_sha256": "f4bc21a570e5c9e5a25d6489b73230efe969c06fd6ed9830a32462a9992b0f49",
+      "translation": "यह label छवि वेल में कहाँ स्थित है।"
+    },
+    {
+      "context": "integer label image, zero is background, as a segmenter returns it. Must match the window's shape.",
+      "label": "spacr.ops_objects.objects_in_window#2",
+      "source": "integer label image, zero is background, as a segmenter returns it. Must match the window's shape.",
+      "source_sha256": "1688aca06fd7b5b44c55efd9b8edf5142d9caa6151b0e6855914222e94baf469",
+      "translation": "integer label छवि, शून्य पृष्ठभूमि है, जैसा segmenter लौटाता है। window के आकार से मेल खाना चाहिए।"
+    },
+    {
+      "context": "the microplate sample position's ``(height, width)``. Used only to tell a window edge that is also the microplate sample position edge -- where an object ends -- from an interior seam, where a touching object is clipped. Omitted, every edge is treated as interior, which is the safe direction: it can only make this function more cautious.",
+      "label": "spacr.ops_objects.objects_in_window#3",
+      "source": "the well's ``(height, width)``. Used only to tell a window edge that is also the well edge -- where an object ends -- from an interior seam, where a touching object is clipped. Omitted, every edge is treated as interior, which is the safe direction: it can only make this function more cautious.",
+      "source_sha256": "ac3d34b0146bf5267e250b7cd1d40f774a6125ee31a91bc6d47db611a05f8871",
+      "translation": "वेल का ``(height, width)``। केवल यह पहचानने के लिए उपयोग किया जाता है कि कौन-सा window किनारा वेल का किनारा भी है -- जहाँ object समाप्त होता है -- और कौन-सा आंतरिक seam है, जहाँ छूने वाला object कट जाता है। छोड़ दिए जाने पर हर किनारे को आंतरिक माना जाता है, जो सुरक्षित दिशा है: यह इस फ़ंक्शन को केवल अधिक सतर्क बना सकता है।"
+    },
+    {
+      "context": "when ``labels`` is not the window's shape, because every coordinate below would be silently wrong.",
+      "label": "spacr.ops_objects.objects_in_window#4",
+      "source": "when ``labels`` is not the window's shape, because every coordinate below would be silently wrong.",
+      "source_sha256": "3da708ae70291d0d11a6d8b65f78a043d3b2a1925b9a996b270373ec9a43a222",
+      "translation": "जब ``labels`` window के आकार का न हो, क्योंकि नीचे का हर निर्देशांक चुपचाप ग़लत होगा।"
+    },
+    {
+      "context": "Run a segmenter over each window and collect the observations.",
+      "label": "spacr.ops_objects.segment_windows#0",
+      "source": "Run a segmenter over each window and collect the observations.",
+      "source_sha256": "f0ef2a40ee9de0d28442159f43c64fdac35c3f2eaa9845b3fbc2417d0a5a9dfd",
+      "translation": "हर window पर segmenter चलाता है और observations एकत्र करता है।"
+    },
+    {
+      "context": "The segmenter is injected, exactly as ``compose_window`` takes its ``read_tile``. This module never imports cellpose, never chooses a model and never decides a diameter -- it is the geometry of doing that window by window, and it is testable on planted labels with no model present.",
+      "label": "spacr.ops_objects.segment_windows#1",
+      "source": "The segmenter is injected, exactly as ``compose_window`` takes its ``read_tile``. This module never imports cellpose, never chooses a model and never decides a diameter -- it is the geometry of doing that window by window, and it is testable on planted labels with no model present.",
+      "source_sha256": "24bf9efd98341708af031f53aa036edb9981c41239a1d208a9b76145a98821c5",
+      "translation": "segmenter inject किया जाता है, ठीक वैसे ही जैसे ``compose_window`` अपना ``read_tile`` लेता है। यह मॉड्यूल कभी cellpose import नहीं करता, कभी मॉडल नहीं चुनता और कभी व्यास तय नहीं करता -- यह उसे window दर window करने की ज्यामिति है, और इसे बिना किसी मॉडल के रोपे गए labels पर परखा जा सकता है।"
+    },
+    {
+      "context": "from :func:`spacr.ops_compose.windows_over`.",
+      "label": "spacr.ops_objects.segment_windows#2",
+      "source": "from :func:`spacr.ops_compose.windows_over`.",
+      "source_sha256": "75fb35bff3eb6254fdc7bf22158da0c61ef6bac28c744e6e00188407c128d97f",
+      "translation": ":func:`spacr.ops_compose.windows_over` से।"
+    },
+    {
+      "context": "called with one window, returns its label image. A caller composes the pixels (``compose_window``) and segments them inside this callable, so the composite is never held whole.",
+      "label": "spacr.ops_objects.segment_windows#3",
+      "source": "called with one window, returns its label image. A caller composes the pixels (``compose_window``) and segments them inside this callable, so the composite is never held whole.",
+      "source_sha256": "ecebc70bda18e3729d15194bf63ed5a83f3dd47b84aad191ee4bbffe6e86a3e6",
+      "translation": "एक window के साथ कॉल किया जाता है, उसकी label छवि लौटाता है। कॉलर पिक्सेल compose करता है (``compose_window``) और इसी callable के भीतर उनका segmentation करता है, ताकि composite कभी पूरा एक साथ न रखा जाए।"
+    },
+    {
+      "context": "the microplate sample position's shape, passed through to :func:`objects_in_window`.",
+      "label": "spacr.ops_objects.segment_windows#4",
+      "source": "the well's shape, passed through to :func:`objects_in_window`.",
+      "source_sha256": "e5e102cc8cb400d9d36a197afdf5389581288ca903ee667075a20743a92738ef",
+      "translation": "वेल का आकार, :func:`objects_in_window` तक आगे भेजा जाता है।"
+    },
+    {
+      "context": "every observation from every window, unsewn and unnumbered.",
+      "label": "spacr.ops_objects.segment_windows#5",
+      "source": "every observation from every window, unsewn and unnumbered.",
+      "source_sha256": "1536007fb225aaa0e1c9ebd7a0a087f2defcbc44748276ac2158e4b9c05584d2",
+      "translation": "हर window से हर observation, बिना जोड़े और बिना क्रमांक के।"
+    },
+    {
+      "context": ":func:`_unseen_report` names only the largest group and the remedy. These records describe every refused group while the observations are still in memory, so a processing session report can later tell Cellpose fragments with no counterpart from clips whose complete observation the join missed, without segmenting the microplate sample position again.",
+      "label": "spacr.ops_objects.unseen_records#1",
+      "source": ":func:`_unseen_report` names only the largest group and the remedy. These records describe every refused group while the observations are still in memory, so a run report can later tell Cellpose fragments with no counterpart from clips whose complete observation the join missed, without segmenting the well again.",
+      "source_sha256": "d5970ba4ca04c30c5534b09ad85fb03bfd232f0b336de77095e66373af24d057",
+      "translation": ":func:`_unseen_report` केवल सबसे बड़े समूह और उपाय का नाम बताता है। ये records हर अस्वीकृत समूह का वर्णन करते हैं जब observations अभी memory में हों, ताकि बाद में रन रिपोर्ट वेल का दोबारा segmentation किए बिना बता सके कि कौन-से बिना समकक्ष वाले Cellpose fragments हैं और कौन-से ऐसे clips जिनका पूरा observation join से छूट गया।"
+    },
+    {
+      "context": "The other half is :func:`spacr.ops_engine.run_ops`'s, which compares each box against the objects that were numbered: a refusal with a numbered object over it is a join that missed, and one with empty microplate sample position frame around it is a fragment.",
+      "label": "spacr.ops_objects.unseen_records#2",
+      "source": "The other half is :func:`spacr.ops_engine.run_ops`'s, which compares each box against the objects that were numbered: a refusal with a numbered object over it is a join that missed, and one with empty well frame around it is a fragment.",
+      "source_sha256": "b4dfb9b3a6f981d9ae80e4e6701d1b916b02f6e391e01e52b0a507cf9d9b6e53",
+      "translation": "दूसरा आधा :func:`spacr.ops_engine.run_ops` का है, जो हर box की तुलना क्रमांकित objects से करता है: जिस अस्वीकृति के ऊपर कोई क्रमांकित object हो वह छूटा हुआ join है, और जिसके चारों ओर खाली well frame हो वह fragment है।"
+    },
+    {
+      "context": "NaN-aware, because :func:`sample_objects` returns NaN for an object this cycle did not cover, and an object measured in nine cycles of eleven should get the mean of the nine rather than NaN.",
+      "label": "spacr.ops_sample.average_over_cycles#3",
+      "source": "NaN-aware, because :func:`sample_objects` returns NaN for an object this cycle did not cover, and an object measured in nine cycles of eleven should get the mean of the nine rather than NaN.",
+      "source_sha256": "999e434c9425c7ce81a9ad676b73d4f43b8c6829c03d4e8effe70347cce92aef",
+      "translation": "NaN-aware, क्योंकि :func:`sample_objects` उस object के लिए NaN लौटाता है जिसे इस cycle ने कवर नहीं किया, और ग्यारह में से नौ cycles में मापे गए object को NaN के बजाय उन नौ का माध्य मिलना चाहिए।"
+    },
+    {
+      "context": "one array of per-object values per cycle, every array the same length and in the same object order. The order is the caller's to keep: nothing here can detect two cycles sampled against different object tables.",
+      "label": "spacr.ops_sample.average_over_cycles#4",
+      "source": "one array of per-object values per cycle, every array the same length and in the same object order. The order is the caller's to keep: nothing here can detect two cycles sampled against different object tables.",
+      "source_sha256": "dc73c4c0969c3fb1d578a8503b31ee009dd102b9c96f70d6b5658e6a659da850",
+      "translation": "प्रति cycle प्रति-object मानों का एक array, हर array की लंबाई समान और object क्रम समान। क्रम बनाए रखना कॉलर की ज़िम्मेदारी है: यहाँ कुछ भी यह नहीं पकड़ सकता कि दो cycles अलग-अलग object तालिकाओं के विरुद्ध sample किए गए थे।"
+    },
+    {
+      "context": "Stack per-cycle, per-channel samples into ``call_reads``' input.",
+      "label": "spacr.ops_sample.decode_input#0",
+      "source": "Stack per-cycle, per-channel samples into ``call_reads``' input.",
+      "source_sha256": "0625510160f5879e2a8bff85e4250817ef0c636c0f040b5d23dfc733df251c18",
+      "translation": "प्रति-cycle, प्रति-channel samples को ``call_reads`` के input में stack करता है।"
+    },
+    {
+      "context": "``per_cycle[c][k]`` is :func:`sample_objects`' output for cycle ``c``, channel ``k``. Every entry must be the same length.",
+      "label": "spacr.ops_sample.decode_input#1",
+      "source": "``per_cycle[c][k]`` is :func:`sample_objects`' output for cycle ``c``, channel ``k``. Every entry must be the same length.",
+      "source_sha256": "b71147c9e60d8756d56457f50a234fe630ea967b43928e71dd9c79e45ed4cca3",
+      "translation": "``per_cycle[c][k]`` :func:`sample_objects` का output है, cycle ``c``, channel ``k`` के लिए। हर प्रविष्टि की लंबाई समान होनी चाहिए।"
+    },
+    {
+      "context": "``(objects, cycles, channels)`` -- the shape :func:`spacr.ops_sbs.call_reads` expects.",
+      "label": "spacr.ops_sample.decode_input#2",
+      "source": "``(objects, cycles, channels)`` -- the shape :func:`spacr.ops_sbs.call_reads` expects.",
+      "source_sha256": "45c996e1214ad971ad78bed41a3a02ebb73d386569fcf7f54f5e1f3d2a4ddfa6",
+      "translation": "``(objects, cycles, channels)`` -- वह आकार जिसकी :func:`spacr.ops_sbs.call_reads` अपेक्षा करता है।"
+    },
+    {
+      "context": "when a cycle is missing channels, when the lengths disagree, or -- the one that matters -- when only one cycle is offered, which is what a caller who has already averaged them hands over.",
+      "label": "spacr.ops_sample.decode_input#3",
+      "source": "when a cycle is missing channels, when the lengths disagree, or -- the one that matters -- when only one cycle is offered, which is what a caller who has already averaged them hands over.",
+      "source_sha256": "9b90ac7585feef1748cb012abcbb0db30097ca323f6a3d64242de40ae9bad03b",
+      "translation": "जब किसी cycle में channels अनुपस्थित हों, जब लंबाइयाँ मेल न खाएँ, या -- जो वास्तव में मायने रखता है -- जब केवल एक cycle दी गई हो, जो वही है जो उन्हें पहले ही औसत कर चुका कॉलर सौंपता है।"
+    },
+    {
+      "context": "``ops_reads`` rows: one per object per cycle, per the storage contract's columns.",
+      "label": "spacr.ops_sample.reads_rows#0",
+      "source": "``ops_reads`` rows: one per object per cycle, per the storage contract's columns.",
+      "source_sha256": "5ca9f841278a6e14118261f044b081cd0cf47aa452b26d86ed6577abc2fc11da",
+      "translation": "``ops_reads`` पंक्तियाँ: प्रति object प्रति cycle एक, storage अनुबंध के स्तंभों के अनुसार।"
+    },
+    {
+      "context": "the numbered objects the values were sampled at, in the same order as ``values``' first axis.",
+      "label": "spacr.ops_sample.reads_rows#1",
+      "source": "the numbered objects the values were sampled at, in the same order as ``values``' first axis.",
+      "source_sha256": "1ecd48e068d7695a1991eb821908ec41269a119586d8f8fcde5faa51b8e93448",
+      "translation": "वे क्रमांकित objects जिन पर मान sample किए गए, ``values`` के पहले अक्ष वाले क्रम में।"
+    },
+    {
+      "context": "``(objects, cycles, channels)`` from :func:`decode_input`.",
+      "label": "spacr.ops_sample.reads_rows#2",
+      "source": "``(objects, cycles, channels)`` from :func:`decode_input`.",
+      "source_sha256": "fc03a6bc8a19e36e9503e7c3c89b70749717ac2deda416b7b48c469149937bfc",
+      "translation": "``(objects, cycles, channels)``, :func:`decode_input` से।"
+    },
+    {
+      "context": "a name per channel, for the column names.",
+      "label": "spacr.ops_sample.reads_rows#3",
+      "source": "a name per channel, for the column names.",
+      "source_sha256": "47ea3f1890a83b161115d7e15aeec049cf17758147067ef2f8e5e27852e19423",
+      "translation": "स्तंभ नामों के लिए, प्रति channel एक नाम।"
+    },
+    {
+      "context": "the letter each channel votes for; when given, each row carries the base this cycle called and its margin.",
+      "label": "spacr.ops_sample.reads_rows#4",
+      "source": "the letter each channel votes for; when given, each row carries the base this cycle called and its margin.",
+      "source_sha256": "152e14b0b4e59c52496fe0ee694e39007b0ae8ed852f383d7e4e3f83492bbeef",
+      "translation": "वह अक्षर जिसके लिए हर channel मत देता है; दिए जाने पर, हर पंक्ति में इस cycle द्वारा पहचाना गया base और उसका margin होता है।"
+    },
+    {
+      "context": "Read ``image`` at each object's centroid, through ``transform``.",
+      "label": "spacr.ops_sample.sample_objects#0",
+      "source": "Read ``image`` at each object's centroid, through ``transform``.",
+      "source_sha256": "e1ee1baa401cacae9d2ee538b8ac1ef592de2c3331f4ecf9bc7794cdf20d0915",
+      "translation": "``image`` को हर object के centroid पर, ``transform`` के माध्यम से, पढ़ता है।"
+    },
+    {
+      "context": ":class:`spacr.ops_objects.PlateObject` values, or anything with ``centroid_y`` and ``centroid_x`` in the microplate sample position frame.",
+      "label": "spacr.ops_sample.sample_objects#1",
+      "source": ":class:`spacr.ops_objects.PlateObject` values, or anything with ``centroid_y`` and ``centroid_x`` in the well frame.",
+      "source_sha256": "982aecff80806e6d358cda45cb609dc59fb9e38d24861e5f21e7806cea79042d",
+      "translation": ":class:`spacr.ops_objects.PlateObject` मान, या कोई भी वस्तु जिसमें well frame में ``centroid_y`` और ``centroid_x`` हों।"
+    },
+    {
+      "context": "one channel of one cycle, in that cycle's own frame.",
+      "label": "spacr.ops_sample.sample_objects#2",
+      "source": "one channel of one cycle, in that cycle's own frame.",
+      "source_sha256": "d5ba07deac747a9cce2942f9ef9404576984ab2a08c3ea617f35f6ec45f408c1",
+      "translation": "एक cycle का एक channel, उस cycle के अपने frame में।"
+    },
+    {
+      "context": "maps a microplate sample position-frame ``(y, x)`` into this image's frame. ``None`` means the image is already in the microplate sample position frame.",
+      "label": "spacr.ops_sample.sample_objects#3",
+      "source": "maps a well-frame ``(y, x)`` into this image's frame. ``None`` means the image is already in the well frame.",
+      "source_sha256": "f28049244c8eb91276ab9f670d54e7dad285d4a0e9ad92a8f1b23b5db08fa2c2",
+      "translation": "well-frame ``(y, x)`` को इस छवि के frame में map करता है। ``None`` का अर्थ है कि छवि पहले से well frame में है।"
+    },
+    {
+      "context": "half-width of the square averaged around each point. The default 1 gives a 3x3, which is what a diffraction-limited spot occupies; 0 reads the single pixel.",
+      "label": "spacr.ops_sample.sample_objects#4",
+      "source": "half-width of the square averaged around each point. The default 1 gives a 3x3, which is what a diffraction-limited spot occupies; 0 reads the single pixel.",
+      "source_sha256": "364225fae62eb9ffd2aad6610381d7c696a0a9831b8aeddc246521b522245fbb",
+      "translation": "हर बिंदु के चारों ओर औसत किए जाने वाले वर्ग की आधी चौड़ाई। डिफ़ॉल्ट 1 से 3x3 मिलता है, जो diffraction-limited spot का आकार है; 0 एकल पिक्सेल पढ़ता है।"
+    },
+    {
+      "context": "one float per object, NaN where the point falls outside.",
+      "label": "spacr.ops_sample.sample_objects#5",
+      "source": "one float per object, NaN where the point falls outside.",
+      "source_sha256": "9fdce103c4c731d8ed6c60400a1563b58b8bae7a92290296c959a30a6315aa14",
+      "translation": "प्रति object एक float, जहाँ बिंदु बाहर पड़ता है वहाँ NaN।"
+    },
+    {
+      "context": "NaN rather than a clamped edge pixel: an object whose coordinates land off this cycle's field was not measured in it, and the brightness of the nearest border pixel would be averaged into a barcode as if it were a measurement.",
+      "label": "spacr.ops_sample.sample_objects#6",
+      "source": "NaN rather than a clamped edge pixel: an object whose coordinates land off this cycle's field was not measured in it, and the brightness of the nearest border pixel would be averaged into a barcode as if it were a measurement.",
+      "source_sha256": "16cf83fb1949881a0ea44dcd98fa6d6a0ba6f4bd28b3b5fa2e350a95c1662540",
+      "translation": "सीमा पर दबाए गए किनारे के पिक्सेल के बजाय NaN: जिस object के निर्देशांक इस cycle के क्षेत्र से बाहर पड़ते हैं, वह उसमें मापा नहीं गया, और निकटतम सीमा पिक्सेल की चमक barcode में ऐसे औसत हो जाती मानो वह कोई माप हो।"
+    },
+    {
+      "context": "Absolute microscope image field positions from the pairwise displacements one microplate sample position produced.",
+      "label": "spacr.ops_solve#0",
+      "source": "Absolute tile positions from the pairwise displacements one well produced.",
+      "source_sha256": "8f23a8992a6aa831795dfe889f0cee3f54963734469ae164754b7f9811208ca1",
+      "translation": "एक वेल द्वारा उत्पन्न जोड़ीवार विस्थापनों से निरपेक्ष tile positions।"
+    },
+    {
+      "context": ":mod:`spacr.ops_layout` determines which tiles touch, :mod:`spacr.ops_register` measures how far apart a touching pair is, and this module computes where every tile ends up. It is kept separate from both because ``ops_layout`` is pure geometry that imports only :mod:`math` and should stay importable anywhere, and ``ops_register`` handles only two tiles and one shift at a time.",
+      "label": "spacr.ops_solve#1",
+      "source": ":mod:`spacr.ops_layout` determines which tiles touch, :mod:`spacr.ops_register` measures how far apart a touching pair is, and this module computes where every tile ends up. It is kept separate from both because ``ops_layout`` is pure geometry that imports only :mod:`math` and should stay importable anywhere, and ``ops_register`` handles only two tiles and one shift at a time.",
+      "source_sha256": "25bc15368e912a35af5bba662076021d42167e9c33550b29d856d35de22c6e45",
+      "translation": ":mod:`spacr.ops_layout` तय करता है कि कौन-सी tiles छूती हैं, :mod:`spacr.ops_register` मापता है कि छूने वाला जोड़ा कितनी दूरी पर है, और यह मॉड्यूल गणना करता है कि हर tile अंततः कहाँ जाती है। इसे दोनों से अलग रखा गया है क्योंकि ``ops_layout`` शुद्ध ज्यामिति है जो केवल :mod:`math` import करता है और हर जगह import-योग्य रहना चाहिए, और ``ops_register`` एक समय में केवल दो tiles और एक shift संभालता है।"
+    },
+    {
+      "context": "Absolute tile positions from the pairwise displacements.",
+      "label": "spacr.ops_solve.solve_placements#0",
+      "source": "Absolute tile positions from the pairwise displacements.",
+      "source_sha256": "e270080e0482f3b9c74753f2e6f9ffff20266c00f1b25a80d3b67326058135c4",
+      "translation": "जोड़ीवार विस्थापनों से निरपेक्ष tile positions।"
+    },
+    {
+      "context": "The origin is pinned to the lowest-numbered site of each connected component, so a microplate sample position that registers in two pieces still returns both rather than failing -- the caller can see the components in the result and say so.",
+      "label": "spacr.ops_solve.solve_placements#2",
+      "source": "The origin is pinned to the lowest-numbered site of each connected component, so a well that registers in two pieces still returns both rather than failing -- the caller can see the components in the result and say so.",
+      "source_sha256": "508f9bbfd090167eb74548d27805081fe4070165e04c9bb8701c0c826a507c1e",
+      "translation": "मूल बिंदु हर जुड़े component की सबसे कम संख्या वाली site पर स्थिर किया जाता है, ताकि दो टुकड़ों में register होने वाला वेल विफल होने के बजाय फिर भी दोनों लौटाए -- कॉलर परिणाम में components देख सकता है और यह बता सकता है।"
+    },
+    {
+      "context": "``(a, b) -> (dy, dx)``, b's position minus a's.",
+      "label": "spacr.ops_solve.solve_placements#3",
+      "source": "``(a, b) -> (dy, dx)``, b's position minus a's.",
+      "source_sha256": "f62d74a324e2ebfe590ec954902ceb82f6053d831f1d3c5d585744dc8ef5f6ad",
+      "translation": "``(a, b) -> (dy, dx)``, b की position घटा a की।"
+    },
+    {
+      "context": "every site to place, including any with no edge.",
+      "label": "spacr.ops_solve.solve_placements#4",
+      "source": "every site to place, including any with no edge.",
+      "source_sha256": "7501874718789b7ab65bac72fdb4b29b26abc70a8ec73d891845c8ea8311269d",
+      "translation": "रखी जाने वाली हर site, बिना edge वाली भी शामिल।"
+    },
+    {
+      "context": "``site -> (y, x)`` in pixels, one component pinned at the origin and the others pinned at their own lowest site.",
+      "label": "spacr.ops_solve.solve_placements#5",
+      "source": "``site -> (y, x)`` in pixels, one component pinned at the origin and the others pinned at their own lowest site.",
+      "source_sha256": "e07ef893ee680af6adc17fd6580c96ab8518acb0af427504140c5209a079caa3",
+      "translation": "पिक्सेल में ``site -> (y, x)``, एक component मूल बिंदु पर स्थिर और बाकी अपनी-अपनी सबसे कम site पर स्थिर।"
+    },
+    {
+      "context": "One microplate sample position, one cycle, from a folder of microscope image fields to a table of positions.",
+      "label": "spacr.ops_stitch#0",
+      "source": "One well, one cycle, from a folder of tiles to a table of positions.",
+      "source_sha256": "844455288d4f68f13e53d9197cfa5409cea7fb2195a50d8adf13d0789f19eb25",
+      "translation": "एक वेल, एक cycle, tiles के फ़ोल्डर से positions की तालिका तक।"
+    },
+    {
+      "context": ":mod:`spacr.ops_layout` says which microscope image fields touch, :mod:`spacr.ops_register` says how far apart a touching pair is, :mod:`spacr.ops_solve` says where each microscope image field ends up, and this runs the three of them over a microplate sample position and reports what happened.",
+      "label": "spacr.ops_stitch#1",
+      "source": ":mod:`spacr.ops_layout` says which tiles touch, :mod:`spacr.ops_register` says how far apart a touching pair is, :mod:`spacr.ops_solve` says where each tile ends up, and this runs the three of them over a well and reports what happened.",
+      "source_sha256": "0650d275e74117b7bd6f906723c8adf14925c776637dc55d38b2e2029721e755",
+      "translation": ":mod:`spacr.ops_layout` बताता है कि कौन-सी tiles छूती हैं, :mod:`spacr.ops_register` बताता है कि छूने वाला जोड़ा कितनी दूरी पर है, :mod:`spacr.ops_solve` बताता है कि हर tile अंततः कहाँ जाती है, और यह तीनों को एक वेल पर चलाकर बताता है कि क्या हुआ।"
+    },
+    {
+      "context": "The output is coordinates, not pixels. A microplate sample position of this acquisition is 26,855 x 26,865 px, enough to exhaust a machine's memory; the transform table is a few kilobytes and every later phase reads through it. A canvas, if anybody wants one, is rendered from this at whatever downsample suits the application view.",
+      "label": "spacr.ops_stitch#2",
+      "source": "The output is coordinates, not pixels. A well of this acquisition is 26,855 x 26,865 px, enough to exhaust a machine's memory; the transform table is a few kilobytes and every later phase reads through it. A canvas, if anybody wants one, is rendered from this at whatever downsample suits the screen.",
+      "source_sha256": "d45cc41e95040dae18452295c2e13d24dd280e9b877d4a8575c2b535968e0646",
+      "translation": "output निर्देशांक है, पिक्सेल नहीं। इस acquisition का एक वेल 26,855 x 26,865 px का है, जो किसी मशीन की memory समाप्त करने के लिए पर्याप्त है; transform तालिका कुछ किलोबाइट की है और हर बाद का चरण इसी के माध्यम से पढ़ता है। canvas, यदि किसी को चाहिए, इससे उस downsample पर render किया जाता है जो screen के अनुकूल हो।"
+    },
+    {
+      "context": "It reports three numbers, not two. An early end-to-end run of this workflow reported",
+      "label": "spacr.ops_stitch#3",
+      "source": "It reports three numbers, not two. An early end-to-end run of this pipeline reported",
+      "source_sha256": "660a634f9e77386f15093a32430c8da8c09df254b6dac688a1d1d20b8798ac21",
+      "translation": "यह दो नहीं, तीन संख्याएँ बताता है। इस pipeline के एक शुरुआती end-to-end रन ने बताया"
+    },
+    {
+      "context": "333 of 333 placed    residual median 0.2 px    canvas 35,374 x 35,367",
+      "label": "spacr.ops_stitch#4",
+      "source": "333 of 333 placed    residual median 0.2 px    canvas 35,374 x 35,367",
+      "source_sha256": "537647c673449bcb4b5ac1c66b09665becc26201103eee2d9d0485228493fef4",
+      "translation": "333 में से 333 रखी गईं    residual माध्यिका 0.2 px    canvas 35,374 x 35,367"
+    },
+    {
+      "context": "and was wrong: the driver negated the correlation's shift, the unwrap then chose the representative one period out, identically in every edge of a direction, and the microplate sample position came out one pitch per column too large in both axes. Every edge still agreed with every other edge, so the residual was perfect and the count was perfect. A uniform error is invisible to a residual. Only the canvas said otherwise, and only because 21 columns of a known pitch has an arithmetic answer -- 20 x 1267 + 1480 = 26,820 -- to check it against.",
+      "label": "spacr.ops_stitch#5",
+      "source": "and was wrong: the driver negated the correlation's shift, the unwrap then chose the representative one period out, identically in every edge of a direction, and the well came out one pitch per column too large in both axes. Every edge still agreed with every other edge, so the residual was perfect and the count was perfect. A uniform error is invisible to a residual. Only the canvas said otherwise, and only because 21 columns of a known pitch has an arithmetic answer -- 20 x 1267 + 1480 = 26,820 -- to check it against.",
+      "source_sha256": "4c266deec9de47a33dc46d621bfd34fd96854061f2d2898d79886b3c906a8ba6",
+      "translation": "और ग़लत था: driver ने correlation के shift का चिह्न उलट दिया, फिर unwrap ने प्रतिनिधि को एक period दूर चुना, किसी दिशा के हर edge में एक जैसे, और वेल दोनों अक्षों में प्रति स्तंभ एक pitch बहुत बड़ा निकला। हर edge फिर भी हर दूसरे edge से सहमत था, इसलिए residual पूर्ण था और गिनती पूर्ण थी। एकसमान त्रुटि residual को दिखाई नहीं देती। केवल canvas ने कुछ और कहा, और केवल इसलिए कि ज्ञात pitch के 21 स्तंभों का एक अंकगणितीय उत्तर है -- 20 x 1267 + 1480 = 26,820 -- जिससे इसकी जाँच की जा सके।"
+    },
+    {
+      "context": "So :meth:`StitchedWell.summary` gives the count, the residual and the canvas in one line, and :attr:`StitchedWell.expected_canvas` carries what the layout says the canvas should be, because a number with nothing to compare it to is not a check.",
+      "label": "spacr.ops_stitch#6",
+      "source": "So :meth:`StitchedWell.summary` gives the count, the residual and the canvas in one line, and :attr:`StitchedWell.expected_canvas` carries what the layout says the canvas should be, because a number with nothing to compare it to is not a check.",
+      "source_sha256": "9e71ec2bc211ecc1948a1c71f2da32e725236b75f7d69789ccfaaab88b1f9f54",
+      "translation": "इसलिए :meth:`StitchedWell.summary` गिनती, residual और canvas एक पंक्ति में देता है, और :attr:`StitchedWell.expected_canvas` वह रखता है जो layout के अनुसार canvas होना चाहिए, क्योंकि जिस संख्या की तुलना के लिए कुछ न हो वह जाँच नहीं है।"
+    },
+    {
+      "context": "Result of one microplate sample position's stitch: positions, registrations and geometry.",
+      "label": "spacr.ops_stitch.StitchedWell#0",
+      "source": "Result of one well's stitch: positions, registrations and geometry.",
+      "source_sha256": "305e020f1ba6130a4eea9c42955b2a84dedbbfae4c4838e8327d21ad9808d6f5",
+      "translation": "एक वेल के stitch का परिणाम: positions, registrations और ज्यामिति।"
+    },
+    {
+      "context": "``(a, b) -> Registration`` for every pair the layout proposed, accepted or not. A refused pair is a fact about the acquisition and belongs in `ops_geometry`, not in a debug log.",
+      "label": "spacr.ops_stitch.StitchedWell#2",
+      "source": "``(a, b) -> Registration`` for every pair the layout proposed, accepted or not. A refused pair is a fact about the acquisition and belongs in `ops_geometry`, not in a debug log.",
+      "source_sha256": "dd4cdeda1b2664bfce265e7a664f9e3755e22012529b45557f9a4edfde77a846",
+      "translation": "``(a, b) -> Registration``, हर उस जोड़े के लिए जिसे layout ने प्रस्तावित किया, स्वीकृत हो या नहीं। अस्वीकृत जोड़ा acquisition के बारे में एक तथ्य है और `ops_geometry` में होना चाहिए, debug log में नहीं।"
+    },
+    {
+      "context": "``(height, width)`` of one tile.",
+      "label": "spacr.ops_stitch.StitchedWell#3",
+      "source": "``(height, width)`` of one tile.",
+      "source_sha256": "9a5bb278f16b22842ce2df21abc31c81862d0c7c9ae934bc29737f378b0f33a9",
+      "translation": "एक tile का ``(height, width)``।"
+    },
+    {
+      "context": "the microplate sample position model the pairs came from.",
+      "label": "spacr.ops_stitch.StitchedWell#4",
+      "source": "the well model the pairs came from.",
+      "source_sha256": "39ce1ae857629f68d8835894ae8e64716eb61ba55088a6079ad39abb916fa7b1",
+      "translation": "वेल मॉडल जिससे जोड़े आए।"
+    },
+    {
+      "context": "the overlap in pixels the run was told to expect, or None when it was not told.",
+      "label": "spacr.ops_stitch.StitchedWell#5",
+      "source": "the overlap in pixels the run was told to expect, or None when it was not told.",
+      "source_sha256": "32ef50073a504010c1395b87267d489baf59839e47820bd5a0635061f87a762c",
+      "translation": "पिक्सेल में वह overlap जिसकी रन को अपेक्षा करने को कहा गया था, या None जब नहीं कहा गया।"
+    },
+    {
+      "context": "How many proposed pairs registered.",
+      "label": "spacr.ops_stitch.StitchedWell.accepted#0",
+      "source": "How many proposed pairs registered.",
+      "source_sha256": "87babd5dcfd605183c587e3502827e7ef8c72d4b1a9cf00a042ce164d8b68dcc",
+      "translation": "कितने प्रस्तावित जोड़े register हुए।"
+    },
+    {
+      "context": "``(height, width)`` the placed tiles span, in pixels.",
+      "label": "spacr.ops_stitch.StitchedWell.canvas#0",
+      "source": "``(height, width)`` the placed tiles span, in pixels.",
+      "source_sha256": "b603e5ed5c87958ac73b07ce0e8e04ca812522a00869a2e9b31b35797c3b6138",
+      "translation": "रखी गई tiles द्वारा घेरा गया ``(height, width)``, पिक्सेल में।"
+    },
+    {
+      "context": "Whether the measured canvas matches the layout's arithmetic.",
+      "label": "spacr.ops_stitch.StitchedWell.canvas_agrees#0",
+      "source": "Whether the measured canvas matches the layout's arithmetic.",
+      "source_sha256": "287c5782b6b555ad8928eb92e7cd6a65e8d1fbc497ee309a1fec48bda7c7f75f",
+      "translation": "क्या मापा गया canvas layout के अंकगणित से मेल खाता है।"
+    },
+    {
+      "context": "allowed fractional difference on either axis. One per cent, because the layout's number is exact and the stitch's is not: it carries the real stage's skew.",
+      "label": "spacr.ops_stitch.StitchedWell.canvas_agrees#1",
+      "source": "allowed fractional difference on either axis. One per cent, because the layout's number is exact and the stitch's is not: it carries the real stage's skew.",
+      "source_sha256": "58c48059a257ddf6c3ba4171fcb616626d365055298f39e4b864722fa8db9e16",
+      "translation": "किसी भी अक्ष पर स्वीकार्य भिन्नात्मक अंतर। एक प्रतिशत, क्योंकि layout की संख्या सटीक है और stitch की नहीं: उसमें वास्तविक stage का skew होता है।"
+    },
+    {
+      "context": "True when both axes agree within ``tolerance``.",
+      "label": "spacr.ops_stitch.StitchedWell.canvas_agrees#2",
+      "source": "True when both axes agree within ``tolerance``.",
+      "source_sha256": "4dcbee82cee473acf1795707c3ca8caa933117967b08f1dab1aecf9553daa7c3",
+      "translation": "True जब दोनों अक्ष ``tolerance`` के भीतर सहमत हों।"
+    },
+    {
+      "context": "What the layout says the canvas should be.",
+      "label": "spacr.ops_stitch.StitchedWell.expected_canvas#0",
+      "source": "What the layout says the canvas should be.",
+      "source_sha256": "509aa11166602ffcd0f47e2df4f33d87d0d6a7e88699dc69defce851905daff2",
+      "translation": "layout के अनुसार canvas क्या होना चाहिए।"
+    },
+    {
+      "context": "This check catches a uniform placement error that residuals miss. Columns minus one pitches plus one microscope image field, and the same down the tallest column. A measured canvas with nothing to compare it to is a number, not a check.",
+      "label": "spacr.ops_stitch.StitchedWell.expected_canvas#1",
+      "source": "This check catches a uniform placement error that residuals miss. Columns minus one pitches plus one tile, and the same down the tallest column. A measured canvas with nothing to compare it to is a number, not a check.",
+      "source_sha256": "a4cfb01fa1957253f56ddd4bc9737296ad47e4e7571481680b74211e5fecb0a4",
+      "translation": "यह जाँच वह एकसमान स्थान-निर्धारण त्रुटि पकड़ती है जो residuals से छूट जाती है। (स्तंभों की संख्या घटा एक) pitches, जोड़ एक tile, और सबसे ऊँचे स्तंभ में नीचे की ओर भी यही। जिस मापे गए canvas की तुलना के लिए कुछ न हो वह एक संख्या है, जाँच नहीं।"
+    },
+    {
+      "context": "How many tiles got a position.",
+      "label": "spacr.ops_stitch.StitchedWell.placed#0",
+      "source": "How many tiles got a position.",
+      "source_sha256": "720a41344fc61166b94cd57a925c2af103408f1dc6c78f20c9ac525bba1220eb",
+      "translation": "कितनी tiles को position मिली।"
+    },
+    {
+      "context": "How many pairs the layout offered.",
+      "label": "spacr.ops_stitch.StitchedWell.proposed#0",
+      "source": "How many pairs the layout offered.",
+      "source_sha256": "1b51a00b339762a592f77dab01110203958ed760c6c634e8234172cc08acd2eb",
+      "translation": "layout ने कितने जोड़े प्रस्तुत किए।"
+    },
+    {
+      "context": "Per-edge disagreement between the solve and the measurement.",
+      "label": "spacr.ops_stitch.StitchedWell.residuals#0",
+      "source": "Per-edge disagreement between the solve and the measurement.",
+      "source_sha256": "70565cc6a557025f1f3b37693695c926d5042799aaeede3c06c2343ffc6bc6ea",
+      "translation": "solve और माप के बीच प्रति-edge असहमति।"
+    },
+    {
+      "context": "The distance, in pixels, between where an accepted edge said its two microscope image fields sit relative to each other and where the solve put them. Sub-pixel across a microplate sample position is what says the geometry closed.",
+      "label": "spacr.ops_stitch.StitchedWell.residuals#1",
+      "source": "The distance, in pixels, between where an accepted edge said its two tiles sit relative to each other and where the solve put them. Sub-pixel across a well is what says the geometry closed.",
+      "source_sha256": "13f4c455e4b2f4d7f8f551086d700293562a21a6b1eaa27191222cdbe330bff0",
+      "translation": "पिक्सेल में वह दूरी, जहाँ एक स्वीकृत edge के अनुसार उसकी दोनों tiles एक-दूसरे के सापेक्ष होनी चाहिए और जहाँ solve ने उन्हें रखा, उनके बीच। पूरे वेल में sub-pixel होना ही बताता है कि ज्यामिति पूरी तरह बंद हुई।"
+    },
+    {
+      "context": "Return the placed count, residual and canvas on one line.",
+      "label": "spacr.ops_stitch.StitchedWell.summary#0",
+      "source": "Return the placed count, residual and canvas on one line.",
+      "source_sha256": "a1d1d7a268f39b2b75b2ee15b1ae98c893920816ec9d3bfd74b6e2c5d1332dc2",
+      "translation": "रखी गई गिनती, residual और canvas एक पंक्ति में लौटाता है।"
+    },
+    {
+      "context": "when the microplate sample position holds no microscope image fields at all, which is a caller error rather than an empty result.",
+      "label": "spacr.ops_stitch.stitch_well#11",
+      "source": "when the well holds no tiles at all, which is a caller error rather than an empty result.",
+      "source_sha256": "e3ac86deecc1c78e097ef5e932bb234c98445422eae473a5eacd1433463aa60c",
+      "translation": "जब वेल में कोई tile ही न हो, जो खाली परिणाम के बजाय कॉलर की त्रुटि है।"
+    },
+    {
+      "context": "``site -> 2-D array``, or a callable taking a site.",
+      "label": "spacr.ops_stitch.stitch_well#2",
+      "source": "``site -> 2-D array``, or a callable taking a site.",
+      "source_sha256": "22941aa206938334f2f2ab25b1333ee459705e121b944b942c5a365afdcefed7",
+      "translation": "``site -> 2-D array``, या एक callable जो site लेता है।"
+    },
+    {
+      "context": "passed through to the registration.",
+      "label": "spacr.ops_stitch.stitch_well#7",
+      "source": "passed through to the registration.",
+      "source_sha256": "619fe2f54b87486c408939f16a83a2d4d5697c7ce074ceeeb236691220338189",
+      "translation": "registration तक आगे भेजा जाता है।"
+    },
+    {
+      "context": "passed to :func:`spacr.ops_register.register_edge`.",
+      "label": "spacr.ops_stitch.stitch_well#9",
+      "source": "passed to :func:`spacr.ops_register.register_edge`.",
+      "source_sha256": "8db2c073d7a9ece7ca6e300f0290065eb40f39db0cbbf68da5ef0bcd25599f07",
+      "translation": ":func:`spacr.ops_register.register_edge` को दिया जाता है।"
+    },
+    {
+      "context": "Storage of an OPS run's tables, and the check that its objects exist.",
+      "label": "spacr.ops_store#0",
+      "source": "Storage of an OPS run's tables, and the check that its objects exist.",
+      "source_sha256": "764897d9acf6098c2f8cd296abb7273eac1b8361564cbaf05c96e9f03cacc83c",
+      "translation": "OPS रन की तालिकाओं का storage, और यह जाँच कि उसके objects मौजूद हैं।"
+    },
+    {
+      "context": "SQLite is authoritative and Parquet is a cache. The two can disagree, so one of them has to be right by definition -- otherwise a reader that picked the faster one would sometimes be reading yesterday's numbers with no way to tell. :func:`write_table` writes both in one call and asserts the counts match before either is visible as complete; :func:`read_table` prefers the cache and falls back without complaining, because a missing cache is a performance question and not a correctness one.",
+      "label": "spacr.ops_store#2",
+      "source": "SQLite is authoritative and Parquet is a cache. The two can disagree, so one of them has to be right by definition -- otherwise a reader that picked the faster one would sometimes be reading yesterday's numbers with no way to tell. :func:`write_table` writes both in one call and asserts the counts match before either is visible as complete; :func:`read_table` prefers the cache and falls back without complaining, because a missing cache is a performance question and not a correctness one.",
+      "source_sha256": "d6fd1905000a51f8beb9073b44b42e43a09d3f4b7df7f3880dbbfc23b4d97303",
+      "translation": "SQLite प्रामाणिक है और Parquet एक cache है। दोनों असहमत हो सकते हैं, इसलिए परिभाषा के अनुसार उनमें से एक को सही होना ही चाहिए -- अन्यथा तेज़ वाला चुनने वाला reader कभी-कभी कल की संख्याएँ पढ़ रहा होता और यह जानने का कोई तरीका नहीं होता। :func:`write_table` दोनों को एक कॉल में लिखता है और किसी के भी पूर्ण दिखने से पहले पुष्टि करता है कि गिनतियाँ मेल खाती हैं; :func:`read_table` cache को प्राथमिकता देता है और बिना शिकायत के fallback करता है, क्योंकि अनुपस्थित cache प्रदर्शन का प्रश्न है, शुद्धता का नहीं।"
+    },
+    {
+      "context": "Readiness is checked before any channel is read: no sequencing or phenotype channel is read until ``ops_objects`` is on disk and its row count checked. :func:`objects_ready` performs this check and returns a reason when the answer is no, so the operator can see which condition failed.",
+      "label": "spacr.ops_store#3",
+      "source": "Readiness is checked before any channel is read: no sequencing or phenotype channel is read until ``ops_objects`` is on disk and its row count checked. :func:`objects_ready` performs this check and returns a reason when the answer is no, so the operator can see which condition failed.",
+      "source_sha256": "e3dd075f58aaad1e61e8323c791c5cf24c4ebc8dbf9db08a7c2a642d86b32427",
+      "translation": "किसी भी channel को पढ़ने से पहले तैयारी जाँची जाती है: जब तक ``ops_objects`` disk पर न हो और उसकी पंक्ति गिनती जाँची न जाए, कोई sequencing या phenotype channel नहीं पढ़ा जाता। :func:`objects_ready` यह जाँच करता है और उत्तर नहीं होने पर कारण लौटाता है, ताकि operator देख सके कि कौन-सी शर्त विफल हुई।"
+    },
+    {
+      "context": "Other measurement tables use the same object ids, so later steps need no special case. The numbering is deterministic for that reason: those ids join tables written at different times.",
+      "label": "spacr.ops_store#4",
+      "source": "Other measurement tables use the same object ids, so later steps need no special case. The numbering is deterministic for that reason: those ids join tables written at different times.",
+      "source_sha256": "a3038e969629b415c61f67a630292f6af922ad9a4a354fc49e9f4c9ef0010133",
+      "translation": "अन्य माप तालिकाएँ वही object ids उपयोग करती हैं, इसलिए बाद के चरणों को किसी विशेष मामले की आवश्यकता नहीं होती। इसी कारण क्रमांकन नियतात्मक है: वे ids अलग-अलग समय पर लिखी गई तालिकाओं को जोड़ती हैं।"
+    },
+    {
+      "context": "Whether object sampling may start, and why not when it may not.",
+      "label": "spacr.ops_store.Readiness#0",
+      "source": "Whether object sampling may start, and why not when it may not.",
+      "source_sha256": "0c5fba8d60a7525b8eecd488fa414f32b3eaea0b938d2c1b01acd73569080336",
+      "translation": "क्या object sampling शुरू हो सकता है, और न हो सकने पर क्यों नहीं।"
+    },
+    {
+      "context": "the verdict. Also what ``bool(readiness)`` answers, so a caller can write ``if not objects_ready(db):`` and still reach :attr:`reason` when it needs to say why.",
+      "label": "spacr.ops_store.Readiness#1",
+      "source": "the verdict. Also what ``bool(readiness)`` answers, so a caller can write ``if not objects_ready(db):`` and still reach :attr:`reason` when it needs to say why.",
+      "source_sha256": "577c68a02b08a65661cc3e265cea36efb7e006267a91300d77a16651ef90ec16",
+      "translation": "निर्णय। ``bool(readiness)`` भी यही उत्तर देता है, ताकि कॉलर ``if not objects_ready(db):`` लिख सके और कारण बताने की आवश्यकता होने पर फिर भी :attr:`reason` तक पहुँच सके।"
+    },
+    {
+      "context": "how many objects the table holds, or ``None`` when there is no table to count -- which is a different failure from a table with no rows in it, and the two are told apart here rather than by the caller.",
+      "label": "spacr.ops_store.Readiness#2",
+      "source": "how many objects the table holds, or ``None`` when there is no table to count -- which is a different failure from a table with no rows in it, and the two are told apart here rather than by the caller.",
+      "source_sha256": "f7c85820406fb6e82f4f85717bca0c5573f674e81450d802055dd991d43ab47a",
+      "translation": "तालिका में कितने objects हैं, या ``None`` जब गिनने के लिए कोई तालिका ही न हो -- जो बिना पंक्तियों वाली तालिका से अलग विफलता है, और दोनों का भेद कॉलर के बजाय यहीं किया जाता है।"
+    },
+    {
+      "context": "one sentence naming which of the three things went wrong, empty when nothing did.",
+      "label": "spacr.ops_store.Readiness#3",
+      "source": "one sentence naming which of the three things went wrong, empty when nothing did.",
+      "source_sha256": "4cacd542e217100bc03696c3d05924a88f8d1e286b86f0bdb7cf7dda84d183d1",
+      "translation": "एक वाक्य जो बताता है कि तीन में से कौन-सी बात ग़लत हुई, कुछ भी ग़लत न होने पर खाली।"
+    },
+    {
+      "context": "The verdict alone, so the result reads as a condition.",
+      "label": "spacr.ops_store.Readiness.__bool__#0",
+      "source": "The verdict alone, so the result reads as a condition.",
+      "source_sha256": "dc34292a75e343ceebb0579a4980bc70c694f286aa3c951e08a3452c301f2dca",
+      "translation": "केवल निर्णय, ताकि परिणाम एक शर्त की तरह पढ़ा जाए।"
+    },
+    {
+      "context": "``if not objects_ready(db):`` is the natural way to write the data-selection boundary, and it must answer the verdict rather than \"an object exists\". :attr:`reason` is still there to say why the answer was no.",
+      "label": "spacr.ops_store.Readiness.__bool__#1",
+      "source": "``if not objects_ready(db):`` is the natural way to write the gate, and it must answer the verdict rather than \"an object exists\". :attr:`reason` is still there to say why the answer was no.",
+      "source_sha256": "cb8a478d0983e28888e6bdb8d51a31a0f34ab10fa2ee7908d19ba0085cf8b09e",
+      "translation": "``if not objects_ready(db):`` gate लिखने का स्वाभाविक तरीका है, और इसे \"an object exists\" (एक object मौजूद है) के बजाय निर्णय का उत्तर देना चाहिए। उत्तर नहीं होने का कारण बताने के लिए :attr:`reason` अब भी मौजूद है।"
+    },
+    {
+      "context": "Raised for an inconsistent OPS store; the message says how to recover.",
+      "label": "spacr.ops_store.StoreError#0",
+      "source": "Raised for an inconsistent OPS store; the message says how to recover.",
+      "source_sha256": "cf30a1c134b4c9c883553d3038a65e6f6e1ff0f9758e5845f4ed356e29d0fd22",
+      "translation": "असंगत OPS store के लिए उठाया जाता है; संदेश बताता है कि कैसे उबरें।"
+    },
+    {
+      "context": "Check whether ``ops_objects`` is ready so that channels may be read.",
+      "label": "spacr.ops_store.objects_ready#0",
+      "source": "Check whether ``ops_objects`` is ready so that channels may be read.",
+      "source_sha256": "71ecc8157b9ebbfa62dcd61284a7d65aebeb9bfbbb33828d77981d2dac0f2a14",
+      "translation": "जाँचता है कि ``ops_objects`` तैयार है या नहीं, ताकि channels पढ़े जा सकें।"
+    },
+    {
+      "context": "The data-selection boundary is one sentence -- \"no sequencing or phenotype channel is read until `ops_objects` is on disk and its row count checked\" -- and both halves matter. On disk without a count check would pass an empty table, and an empty ops_objects means every later phase silently produces nothing while appearing to run.",
+      "label": "spacr.ops_store.objects_ready#1",
+      "source": "The gate is one sentence -- \"no sequencing or phenotype channel is read until `ops_objects` is on disk and its row count checked\" -- and both halves matter. On disk without a count check would pass an empty table, and an empty ops_objects means every later phase silently produces nothing while appearing to run.",
+      "source_sha256": "e4ea704c5807e26f9c9eedd5688598779aee1d01a53f7174dbc3f5e6a0d1dfa2",
+      "translation": "gate एक वाक्य है -- \"जब तक `ops_objects` disk पर न हो और उसकी पंक्ति गिनती जाँची न जाए, कोई sequencing या phenotype channel नहीं पढ़ा जाता\" -- और दोनों आधे मायने रखते हैं। गिनती जाँच के बिना केवल disk पर होना खाली तालिका को पास कर देगा, और खाली ops_objects का अर्थ है कि हर बाद का चरण चलता हुआ दिखते हुए भी चुपचाप कुछ नहीं बनाता।"
+    },
+    {
+      "context": "It returns a reason, not just a verdict. \"Not yet\" leaves the operator guessing which of three things went wrong: no database, no table, or a table with nothing in it. Those have different fixes.",
+      "label": "spacr.ops_store.objects_ready#2",
+      "source": "It returns a reason, not just a verdict. \"Not yet\" leaves the operator guessing which of three things went wrong: no database, no table, or a table with nothing in it. Those have different fixes.",
+      "source_sha256": "29efdb6370ed887320aeb6bf828194adeb267de1d8809cabd24217fbf71afe49",
+      "translation": "यह केवल निर्णय नहीं, कारण भी लौटाता है। \"Not yet\" (अभी नहीं) operator को अनुमान लगाने पर छोड़ देता है कि तीन में से कौन-सी बात ग़लत हुई: कोई database नहीं, कोई तालिका नहीं, या ऐसी तालिका जिसमें कुछ नहीं। इनके सुधार अलग-अलग हैं।"
+    },
+    {
+      "context": "the run's sqlite database. Its absence is one of the three answers, so this is not required to exist.",
+      "label": "spacr.ops_store.objects_ready#4",
+      "source": "the run's sqlite database. Its absence is one of the three answers, so this is not required to exist.",
+      "source_sha256": "b741e83d93a5e6de3d7b1ac19e087935ce1e24c414094b63ade608d2b9781f25",
+      "translation": "रन का sqlite database। इसकी अनुपस्थिति तीन उत्तरों में से एक है, इसलिए इसका मौजूद होना आवश्यक नहीं है।"
+    },
+    {
+      "context": "Read one OPS table, preferring its parquet cache.",
+      "label": "spacr.ops_store.read_table#0",
+      "source": "Read one OPS table, preferring its parquet cache.",
+      "source_sha256": "b869c9d1a5e19a7314cf6981d36010efe238c151c131fc10560e2d06096a8795",
+      "translation": "एक OPS तालिका पढ़ता है, उसके parquet cache को प्राथमिकता देते हुए।"
+    },
+    {
+      "context": "A missing or unreadable cache falls back to sqlite silently, because that is a speed question. A cache whose row count disagrees with the database is not silent -- it is removed and the authority is returned, since a disagreement is the one failure this arrangement can produce.",
+      "label": "spacr.ops_store.read_table#1",
+      "source": "A missing or unreadable cache falls back to sqlite silently, because that is a speed question. A cache whose row count disagrees with the database is not silent -- it is removed and the authority is returned, since a disagreement is the one failure this arrangement can produce.",
+      "source_sha256": "86e4631a7278931d6ee6e3e9f1c661539d19b95e688292f78c1ae63723deadd3",
+      "translation": "अनुपस्थित या अपठनीय cache चुपचाप sqlite पर लौट जाता है, क्योंकि यह गति का प्रश्न है। जिस cache की पंक्ति गिनती database से मेल नहीं खाती वह चुप नहीं रहता -- उसे हटा दिया जाता है और प्रामाणिक स्रोत लौटाया जाता है, क्योंकि असहमति ही वह एक विफलता है जो यह व्यवस्था उत्पन्न कर सकती है।"
+    },
+    {
+      "context": "the run's sqlite database, which is the authority.",
+      "label": "spacr.ops_store.read_table#2",
+      "source": "the run's sqlite database, which is the authority.",
+      "source_sha256": "c004087e2767007b6bc241e38bfca759c6f6d3a501c8f97c8aeace83f81c23c3",
+      "translation": "रन का sqlite database, जो प्रामाणिक स्रोत है।"
+    },
+    {
+      "context": "which of :data:`OPS_TABLES` to read.",
+      "label": "spacr.ops_store.read_table#3",
+      "source": "which of :data:`OPS_TABLES` to read.",
+      "source_sha256": "175a69ef07cf381992667d5bc5caff50e05513cbc1f3e6bc55eca89938d07750",
+      "translation": ":data:`OPS_TABLES` में से कौन-सी पढ़नी है।"
+    },
+    {
+      "context": "when the table is not in the database at all.",
+      "label": "spacr.ops_store.read_table#4",
+      "source": "when the table is not in the database at all.",
+      "source_sha256": "67961b53eb8d5098a0aed3ad962df2b520fa66500f796d4814b3832815f967ac",
+      "translation": "जब तालिका database में बिल्कुल न हो।"
+    },
+    {
+      "context": "Rows in one table, or ``None`` when the table is not there.",
+      "label": "spacr.ops_store.row_count#0",
+      "source": "Rows in one table, or ``None`` when the table is not there.",
+      "source_sha256": "787aba4b1186c7703626f3d8525a97122f882ea9f58e3d865b384d56e7405007",
+      "translation": "एक तालिका में पंक्तियाँ, या ``None`` जब तालिका मौजूद न हो।"
+    },
+    {
+      "context": "the run's sqlite database.",
+      "label": "spacr.ops_store.row_count#1",
+      "source": "the run's sqlite database.",
+      "source_sha256": "c488bf512539664e4bd8cb267d77d6fb719c14a01f631e6da0e2d9920b71691e",
+      "translation": "रन का sqlite database।"
+    },
+    {
+      "context": "the table to count.",
+      "label": "spacr.ops_store.row_count#2",
+      "source": "the table to count.",
+      "source_sha256": "46a8070a9a172688837269a35ca996e53b6ee3d67e3f5e3f5cfd98cf3474ccf7",
+      "translation": "गिनी जाने वाली तालिका।"
+    },
+    {
+      "context": "Resolve recorded extracted image region paths after a dataset is moved or remounted.",
+      "label": "spacr.portable_paths#0",
+      "source": "Resolve recorded crop paths after a dataset is moved or remounted.",
+      "source_sha256": "3572011e229dac9e9401a111bd863f9df90a554f9aae244edfe7de6811feea3a",
+      "translation": "dataset को स्थानांतरित या पुनः mount किए जाने के बाद दर्ज crop पथों को हल करता है।"
+    },
+    {
+      "context": "``png_list.png_path`` is absolute when written. If the dataset later moves to another computer or mount point, the prefix changes while the directory structure below the screen remains the same",
+      "label": "spacr.portable_paths#1",
+      "source": "``png_list.png_path`` is absolute when written. If the dataset later moves to another computer or mount point, the prefix changes while the directory structure below the screen remains the same",
+      "source_sha256": "c30f0b982f0f777e625c3823d0fcad63572b3c944c5ce8b103ce64f6c172b831",
+      "translation": "``png_list.png_path`` लिखे जाते समय निरपेक्ष होता है। यदि dataset बाद में किसी अन्य कंप्यूटर या mount point पर चला जाए, तो prefix बदल जाता है जबकि स्क्रीनिंग के नीचे की directory संरचना वही रहती है"
+    },
+    {
+      "context": "Resolution selects the deepest recorded suffix that exists below the current root. The root may be a database file, measurements folder, plate folder, or application view folder. Paths are changed only when the reconstructed file exists, and the database itself is never modified.",
+      "label": "spacr.portable_paths#2",
+      "source": "Resolution selects the deepest recorded suffix that exists below the current root. The root may be a database file, measurements folder, plate folder, or screen folder. Paths are changed only when the reconstructed file exists, and the database itself is never modified.",
+      "source_sha256": "669f31b4c8692b261983fe803167268c7769c460de41590139694017cb76c2ae",
+      "translation": "समाधान दर्ज किए गए सबसे गहरे suffix को चुनता है जो वर्तमान root के नीचे मौजूद हो। root कोई database फ़ाइल, measurements फ़ोल्डर, प्लेट फ़ोल्डर या स्क्रीनिंग फ़ोल्डर हो सकता है। पथ केवल तभी बदले जाते हैं जब पुनर्निर्मित फ़ाइल मौजूद हो, और database स्वयं कभी संशोधित नहीं होता।"
+    },
+    {
+      "context": "Result of one re-rooting pass: how many paths moved and how many did not.",
+      "label": "spacr.portable_paths.RerootReport#0",
+      "source": "Result of one re-rooting pass: how many paths moved and how many did not.",
+      "source_sha256": "1b632fd0a7d20540afd6b02926d8496e01203c66563e2168b28a4cd9a57bb574",
+      "translation": "एक re-rooting pass का परिणाम: कितने पथ स्थानांतरित हुए और कितने नहीं।"
+    },
+    {
+      "context": "The last two fields are the reason this is a record and not a bare count. A path with no recognisable structure under the root is returned unchanged and otherwise fails later as a missing file with less context. The report counts unresolved paths and includes an example so callers can explain the problem where re-rooting was attempted.",
+      "label": "spacr.portable_paths.RerootReport#1",
+      "source": "The last two fields are the reason this is a record and not a bare count. A path with no recognisable structure under the root is returned unchanged and otherwise fails later as a missing file with less context. The report counts unresolved paths and includes an example so callers can explain the problem where re-rooting was attempted.",
+      "source_sha256": "3f2c4e6b51594a54de9c38647b6c25dd39254a0631c46c38a8f24e2bd9059e97",
+      "translation": "अंतिम दो fields ही कारण हैं कि यह केवल एक गिनती नहीं, बल्कि एक record है। root के नीचे बिना पहचानने योग्य संरचना वाला पथ अपरिवर्तित लौटाया जाता है और अन्यथा बाद में कम संदर्भ के साथ अनुपस्थित फ़ाइल के रूप में विफल होता है। रिपोर्ट अनसुलझे पथों की गिनती करती है और एक उदाहरण शामिल करती है ताकि कॉलर वहीं समस्या समझा सकें जहाँ re-rooting का प्रयास किया गया।"
+    },
+    {
+      "context": "DataFrame column inspected and, when at least one value moves, rewritten in place.",
+      "label": "spacr.portable_paths.RerootReport#2",
+      "source": "DataFrame column inspected and, when at least one value moves, rewritten in place.",
+      "source_sha256": "beed3bc149bbe39ed56f008aedd85dd5c1f6d66c3572108cb404ff851cb8282f",
+      "translation": "जाँचा गया DataFrame स्तंभ, और जब कम से कम एक मान स्थानांतरित हो, तो उसी स्थान पर फिर से लिखा गया।"
+    },
+    {
+      "context": "number of nonblank path values replaced by existing paths discovered below a candidate root.",
+      "label": "spacr.portable_paths.RerootReport#3",
+      "source": "number of nonblank path values replaced by existing paths discovered below a candidate root.",
+      "source_sha256": "dce636727fde85b4b9172c97a9cb22617461e449fe4cee5ec489601dc5bd0977",
+      "translation": "उन गैर-रिक्त पथ मानों की संख्या जिन्हें किसी उम्मीदवार root के नीचे खोजे गए मौजूदा पथों से बदला गया।"
+    },
+    {
+      "context": "number of nonblank string paths that remained missing after re-rooting; existing, blank, and non-string values do not count.",
+      "label": "spacr.portable_paths.RerootReport#4",
+      "source": "number of nonblank string paths that remained missing after re-rooting; existing, blank, and non-string values do not count.",
+      "source_sha256": "c8071d87791d13cfc0b9df2f78dd0f75b45d3117eeefd2cc22f76437315a8a70",
+      "translation": "उन गैर-रिक्त string पथों की संख्या जो re-rooting के बाद भी अनुपस्थित रहे; मौजूदा, रिक्त और non-string मान नहीं गिने जाते।"
+    },
+    {
+      "context": "first unresolved source path encountered, or an empty string when none remained.",
+      "label": "spacr.portable_paths.RerootReport#5",
+      "source": "first unresolved source path encountered, or an empty string when none remained.",
+      "source_sha256": "abc9b4ad2f09e1efc38f53dc95af582370cf4a9a23d07d60ea08290146d23c72",
+      "translation": "मिला पहला अनसुलझा स्रोत पथ, या कोई न बचने पर खाली string।"
+    },
+    {
+      "context": "first normalized candidate derived from ``src_root``, used in report messages; it need not be the ancestor where a match was found.",
+      "label": "spacr.portable_paths.RerootReport#6",
+      "source": "first normalized candidate derived from ``src_root``, used in report messages; it need not be the ancestor where a match was found.",
+      "source_sha256": "8dbca15d131a65857e682f3921b6fe74ae7e6ecdf85298a90a105142ddeb6c87",
+      "translation": "``src_root`` से निकाला गया पहला सामान्यीकृत उम्मीदवार, जो रिपोर्ट संदेशों में उपयोग होता है; आवश्यक नहीं कि यह वही पूर्वज हो जहाँ मिलान मिला।"
+    },
+    {
+      "context": "Return whether at least one path was moved to a new root.",
+      "label": "spacr.portable_paths.RerootReport.__bool__#0",
+      "source": "Return whether at least one path was moved to a new root.",
+      "source_sha256": "75221974697c443f13e5a2f44e571de8d011db1d65909e062afb260c8b76adf3",
+      "translation": "लौटाता है कि क्या कम से कम एक पथ नए root पर स्थानांतरित हुआ।"
+    },
+    {
+      "context": "Return the number of paths moved to a new root.",
+      "label": "spacr.portable_paths.RerootReport.__int__#0",
+      "source": "Return the number of paths moved to a new root.",
+      "source_sha256": "7f0fcce5b641663791626d35a85b0047c3b5c4c6d9ab560eb1dfb33b87497ebc",
+      "translation": "नए root पर स्थानांतरित पथों की संख्या लौटाता है।"
+    },
+    {
+      "context": "True when no path in this column moved and at least one stayed unresolved.",
+      "label": "spacr.portable_paths.RerootReport.absent#0",
+      "source": "True when no path in this column moved and at least one stayed unresolved.",
+      "source_sha256": "41fd74a9b5034578c9fd7e236cd9ad9a8d1fe7be730095a92444252c62e6f826",
+      "translation": "True जब इस स्तंभ में कोई पथ स्थानांतरित नहीं हुआ और कम से कम एक अनसुलझा रहा।"
+    },
+    {
+      "context": "Return one line for a caller to print, or ``\"\"`` when nothing moved or failed.",
+      "label": "spacr.portable_paths.RerootReport.describe#0",
+      "source": "Return one line for a caller to print, or ``\"\"`` when nothing moved or failed.",
+      "source_sha256": "2d50466b807e91878a3b06e0bf9d7fa2b979b13ca99fd34becb7e8e2fb387849",
+      "translation": "कॉलर के print करने के लिए एक पंक्ति लौटाता है, या ``\"\"`` जब कुछ भी स्थानांतरित या विफल न हुआ हो।"
+    },
+    {
+      "context": "True when some paths in this column moved and some stayed unresolved.",
+      "label": "spacr.portable_paths.RerootReport.partial#0",
+      "source": "True when some paths in this column moved and some stayed unresolved.",
+      "source_sha256": "8044713127219126eaf89266f0b3deb8c6e0e515b955b11fdc023a8a0517c878",
+      "translation": "True जब इस स्तंभ में कुछ पथ स्थानांतरित हुए और कुछ अनसुलझे रहे।"
+    },
+    {
+      "context": "This separates a partial failure from a route whose files are not on this machine. A column where nothing moved usually belongs to such a route -- an application view with PNG extracted image regions and no ``merged/`` folder has 60,816 unplaceable ``path_name`` values and is healthy (see :attr:`absent`). A column where most paths resolved and a few did not is the partial failure that a caller should report.",
+      "label": "spacr.portable_paths.RerootReport.partial#1",
+      "source": "This separates a partial failure from a route whose files are not on this machine. A column where nothing moved usually belongs to such a route -- a screen with PNG crops and no ``merged/`` folder has 60,816 unplaceable ``path_name`` values and is healthy (see :attr:`absent`). A column where most paths resolved and a few did not is the partial failure that a caller should report.",
+      "source_sha256": "97eb665578a2e552bb31812ac83acb313219623883d95a2536124e517f47eaa9",
+      "translation": "यह आंशिक विफलता को उस route से अलग करता है जिसकी फ़ाइलें इस मशीन पर नहीं हैं। जिस स्तंभ में कुछ भी स्थानांतरित नहीं हुआ वह प्रायः ऐसे route का होता है -- PNG crops वाले और बिना ``merged/`` फ़ोल्डर वाले screen प्रयोग (स्क्रीन) में 60,816 न रखे जा सकने वाले ``path_name`` मान होते हैं और वह स्वस्थ है (:attr:`absent` देखें)। जिस स्तंभ में अधिकांश पथ हल हो गए और कुछ नहीं हुए, वही आंशिक विफलता है जिसकी कॉलर को रिपोर्ट करनी चाहिए।"
+    },
+    {
+      "context": "Return the candidate root folders derived from ``root``, nearest first.",
+      "label": "spacr.portable_paths.candidate_roots#0",
+      "source": "Return the candidate root folders derived from ``root``, nearest first.",
+      "source_sha256": "020297871b03ebff602aa3e56f535c164872d1e886257a2672dd8bdd2d7ed68d",
+      "translation": "``root`` से निकाले गए उम्मीदवार root फ़ोल्डर लौटाता है, निकटतम पहले।"
+    },
+    {
+      "context": "plate, application view, measurements folder, or database path to normalize into candidate roots; ``None`` yields no candidates.",
+      "label": "spacr.portable_paths.candidate_roots#1",
+      "source": "plate, screen, measurements folder, or database path to normalize into candidate roots; ``None`` yields no candidates.",
+      "source_sha256": "b2512c1e93649305fe440f2d576fbce56524a6d4629b1515c0504983238aadd5",
+      "translation": "प्लेट, स्क्रीनिंग, measurements फ़ोल्डर या database पथ, जिसे उम्मीदवार roots में सामान्यीकृत करना है; ``None`` से कोई उम्मीदवार नहीं मिलता।"
+    },
+    {
+      "context": "Accepts the plate folder, the application view folder, the ``measurements/`` folder, or the ``measurements.db`` file itself -- callers hold different ones and should not each have to normalise.",
+      "label": "spacr.portable_paths.candidate_roots#2",
+      "source": "Accepts the plate folder, the screen folder, the ``measurements/`` folder, or the ``measurements.db`` file itself -- callers hold different ones and should not each have to normalise.",
+      "source_sha256": "968aae41087a2511e563f2a9fb0bf001fa32a8132f9fbcd1bae99f887135d699",
+      "translation": "प्लेट फ़ोल्डर, स्क्रीनिंग फ़ोल्डर, ``measurements/`` फ़ोल्डर, या स्वयं ``measurements.db`` फ़ाइल स्वीकार करता है -- कॉलर अलग-अलग चीज़ें रखते हैं और हर एक को अलग से सामान्यीकरण नहीं करना चाहिए।"
+    },
+    {
+      "context": "Re-root one path column of ``frame`` in place; files on disk are not changed.",
+      "label": "spacr.portable_paths.reroot_column#0",
+      "source": "Re-root one path column of ``frame`` in place; files on disk are not changed.",
+      "source_sha256": "fec3015447f0524ef5aaa02061687b1e8a88e5394be4e138b60bbc97d462cc47",
+      "translation": "``frame`` के एक पथ स्तंभ को उसी स्थान पर re-root करता है; disk पर फ़ाइलें नहीं बदलतीं।"
+    },
+    {
+      "context": "any DataFrame; a missing column is not an error, because the PNG route and the merged route carry different ones and a caller should be able to ask for both.",
+      "label": "spacr.portable_paths.reroot_column#1",
+      "source": "any DataFrame; a missing column is not an error, because the PNG route and the merged route carry different ones and a caller should be able to ask for both.",
+      "source_sha256": "d08b27d4edb22891d639c3e0e4533cb0656eb2b419d5f1a51e62387a5392c6fb",
+      "translation": "कोई भी DataFrame; अनुपस्थित स्तंभ त्रुटि नहीं है, क्योंकि PNG route और merged route अलग-अलग स्तंभ रखते हैं और कॉलर को दोनों के लिए पूछने में सक्षम होना चाहिए।"
+    },
+    {
+      "context": "name of the path-bearing column to resolve and, when any paths move, replace in place.",
+      "label": "spacr.portable_paths.reroot_column#2",
+      "source": "name of the path-bearing column to resolve and, when any paths move, replace in place.",
+      "source_sha256": "6be90ec0d9722b2f386448423fa83b488cd957783715bbf1f551726f0fd1234a",
+      "translation": "हल किए जाने वाले पथ-युक्त स्तंभ का नाम, जिसे कोई पथ स्थानांतरित होने पर उसी स्थान पर बदला जाता है।"
+    },
+    {
+      "context": "anything :func:`candidate_roots` accepts.",
+      "label": "spacr.portable_paths.reroot_column#3",
+      "source": "anything :func:`candidate_roots` accepts.",
+      "source_sha256": "4d2fe0a81bc6f83ce501fc4e88fb2d1577258ccc85499b9ccf1c20a213e58ec4",
+      "translation": "कुछ भी जो :func:`candidate_roots` स्वीकार करता है।"
+    },
+    {
+      "context": "a :class:`RerootReport`, which counts as its own ``moved`` in a boolean or integer context, so a caller that only wants the number still gets it.",
+      "label": "spacr.portable_paths.reroot_column#4",
+      "source": "a :class:`RerootReport`, which counts as its own ``moved`` in a boolean or integer context, so a caller that only wants the number still gets it.",
+      "source_sha256": "9eafae782940328ef1405600db3c06702538c9ac2edf2b21b547991e7b998a63",
+      "translation": "एक :class:`RerootReport`, जो boolean या integer संदर्भ में अपने ``moved`` के रूप में गिना जाता है, ताकि केवल संख्या चाहने वाले कॉलर को भी वह मिल जाए।"
+    },
+    {
+      "context": "Resolves the first dead path against the filesystem, then applies the prefix that worked to the rest -- 60,816 rows cost one search plus one string replacement each, rather than 60,816 searches. Any row the prefix does not fix is still resolved on its own, so a frame holding extracted image regions from two different screens is not half-abandoned.",
+      "label": "spacr.portable_paths.reroot_column#5",
+      "source": "Resolves the first dead path against the filesystem, then applies the prefix that worked to the rest -- 60,816 rows cost one search plus one string replacement each, rather than 60,816 searches. Any row the prefix does not fix is still resolved on its own, so a frame holding crops from two different screens is not half-abandoned.",
+      "source_sha256": "6c4bab4b87e69ebfe38144b859c312d0bf99d80a5688bbb50805a4b157cb493a",
+      "translation": "पहले मृत पथ को filesystem के विरुद्ध हल करता है, फिर काम करने वाला prefix बाकी पर लागू करता है -- 60,816 पंक्तियों पर 60,816 खोजों के बजाय एक खोज और प्रति पंक्ति एक string प्रतिस्थापन लगता है। जिस पंक्ति को prefix ठीक नहीं करता वह फिर भी अलग से हल की जाती है, ताकि दो अलग स्क्रीनिंग के crops वाला frame आधा न छूट जाए।"
+    },
+    {
+      "context": "``path`` as it exists under ``src_root``, or ``path`` unchanged.",
+      "label": "spacr.portable_paths.reroot_crop_path#0",
+      "source": "``path`` as it exists under ``src_root``, or ``path`` unchanged.",
+      "source_sha256": "f1f20e041a10d3b2d3562d9ec48043d38a629183827e4e3a028ab067582929c0",
+      "translation": "``path`` जैसा वह ``src_root`` के नीचे मौजूद है, या ``path`` अपरिवर्तित।"
+    },
+    {
+      "context": "the recorded absolute path, or anything falsy.",
+      "label": "spacr.portable_paths.reroot_crop_path#1",
+      "source": "the recorded absolute path, or anything falsy.",
+      "source_sha256": "b3e5842143b5f61bbeaa5c69f4fa9ce117f6fa8b611e8a835bdfe192ad375b95",
+      "translation": "दर्ज निरपेक्ष पथ, या कोई भी falsy मान।"
+    },
+    {
+      "context": "the plate folder, the application view folder, the ``measurements`` folder, or the database file. All four resolve.",
+      "label": "spacr.portable_paths.reroot_crop_path#2",
+      "source": "the plate folder, the screen folder, the ``measurements`` folder, or the database file. All four resolve.",
+      "source_sha256": "b681299a0e6ef0875c7ac39b99cfe68861673824cad0cf890bbbf8e099861d05",
+      "translation": "प्लेट फ़ोल्डर, स्क्रीनिंग फ़ोल्डर, ``measurements`` फ़ोल्डर, या database फ़ाइल। चारों हल होते हैं।"
+    },
+    {
+      "context": "a path that EXISTS when one could be built; otherwise the input untouched, so a caller's error still names what was recorded.",
+      "label": "spacr.portable_paths.reroot_crop_path#3",
+      "source": "a path that EXISTS when one could be built; otherwise the input untouched, so a caller's error still names what was recorded.",
+      "source_sha256": "17a5038a3aef044522474b28dcfbf4063293acb1396188e439dfaeb9beda27e9",
+      "translation": "ऐसा पथ जो मौजूद है (EXISTS), जब कोई बनाया जा सके; अन्यथा input अछूता, ताकि कॉलर की त्रुटि में फिर भी वही नाम हो जो दर्ज किया गया था।"
+    },
+    {
+      "context": "The plate folder a ``measurements.db`` belongs to.",
+      "label": "spacr.portable_paths.source_root_for_database#0",
+      "source": "The plate folder a ``measurements.db`` belongs to.",
+      "source_sha256": "918b7f2d6a1979836835f00628c7824f1772c849c8bb366506cc0cff439fb1b0",
+      "translation": "वह प्लेट फ़ोल्डर जिससे कोई ``measurements.db`` संबंधित है।"
+    },
+    {
+      "context": "path to the measurements database; an empty path yields an empty result.",
+      "label": "spacr.portable_paths.source_root_for_database#1",
+      "source": "path to the measurements database; an empty path yields an empty result.",
+      "source_sha256": "7fe787f9be27e7ff6ee4c279c0edc1fa0cf700c132f17e4f3d0511c07bf3f564",
+      "translation": "measurements database का पथ; खाली पथ से खाली परिणाम मिलता है।"
+    }
+  ],
+  "schema": 1
+}

@@ -1,0 +1,1413 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "The workflow tunes an embedding on one control subset, evaluates separation on held-out controls, and summarizes each annotated cell by the fraction of nearby controls that are positive. Guide-level purity can then be compared with independently estimated effect signs by permutation testing.",
+      "label": "spacr.annotation_umap_qc#1",
+      "source": "The workflow tunes an embedding on one control subset, evaluates separation on held-out controls, and summarizes each annotated cell by the fraction of nearby controls that are positive. Guide-level purity can then be compared with independently estimated effect signs by permutation testing.",
+      "source_sha256": "c0e0fbc5a4fd800ffac4cf7508409257923c72c410d5abd10e2801dc29e7303f",
+      "translation": "workflow एक नियंत्रण उपसमुच्चय पर embedding को tune करता है, अलग रखे गए नियंत्रणों पर पृथक्करण का मूल्यांकन करता है, और हर annotate की गई cell का सारांश आसपास के उन नियंत्रणों के अंश से देता है जो positive हैं। फिर guide-स्तरीय purity की तुलना permutation testing द्वारा स्वतंत्र रूप से अनुमानित effect चिह्नों से की जा सकती है।"
+    },
+    {
+      "context": "Return a warning when control agreement is not independent.",
+      "label": "spacr.annotation_umap_qc.circularity_warning#0",
+      "source": "Return a warning when control agreement is not independent.",
+      "source_sha256": "8f2d57ba6f9c1ca15c9e4d8120d5301de7377689cfab2668dc2b360d5d078e8e",
+      "translation": "जब नियंत्रण सहमति स्वतंत्र न हो, तब चेतावनी लौटाता है।"
+    },
+    {
+      "context": "An empty string means that neither the method name nor the supplied feature flag identifies a known circularity.",
+      "label": "spacr.annotation_umap_qc.circularity_warning#2",
+      "source": "An empty string means that neither the method name nor the supplied feature flag identifies a known circularity.",
+      "source_sha256": "45119916813c65596845c7d35ee0b47875e20542a0de88d479beadbb4b8f29ad",
+      "translation": "खाली string का अर्थ है कि न तो विधि का नाम और न ही दिया गया feature flag किसी ज्ञात circularity की पहचान करता है।"
+    },
+    {
+      "context": "Test whether guide effects agree with positive-control proximity.",
+      "label": "spacr.annotation_umap_qc.effect_agreement#0",
+      "source": "Test whether guide effects agree with positive-control proximity.",
+      "source_sha256": "60f2d13a73081c922f532227a12dce7b8d16a01c93aa78299da9f1f7da869d60",
+      "translation": "परखता है कि क्या guide प्रभाव positive-control निकटता से सहमत हैं।"
+    },
+    {
+      "context": "guide summaries containing mean ``purity`` values.",
+      "label": "spacr.annotation_umap_qc.effect_agreement#1",
+      "source": "guide summaries containing mean ``purity`` values.",
+      "source_sha256": "f0ea4689a7b4c4286567f896e17473cd5d5bb32b6af13b5fefa37bb568b48aaa",
+      "translation": "माध्य ``purity`` मानों वाले guide सारांश।"
+    },
+    {
+      "context": "numeric effect estimate keyed by guide.",
+      "label": "spacr.annotation_umap_qc.effect_agreement#2",
+      "source": "numeric effect estimate keyed by guide.",
+      "source_sha256": "b7c803ded0fb841abfd2d27e68710c1bb062e2c8c7c3f71724b9b436c4241c15",
+      "translation": "guide द्वारा keyed संख्यात्मक effect अनुमान।"
+    },
+    {
+      "context": "The observed statistic is Spearman correlation between guide effect and mean neighbour purity. The permutation null shuffles effects between guides while preserving the purity values and guide counts. The result includes the correlation, two-sided permutation p-value, group means for positive and negative effects, and a boolean separation call.",
+      "label": "spacr.annotation_umap_qc.effect_agreement#3",
+      "source": "The observed statistic is Spearman correlation between guide effect and mean neighbour purity. The permutation null shuffles effects between guides while preserving the purity values and guide counts. The result includes the correlation, two-sided permutation p-value, group means for positive and negative effects, and a boolean separation call.",
+      "source_sha256": "055d90ab1a8d01b673261a9d13226a3b9bf666dc169336b7081771884231d336",
+      "translation": "देखा गया आँकड़ा guide प्रभाव और माध्य पड़ोसी purity के बीच Spearman correlation है। permutation null purity मानों और guide गिनतियों को बनाए रखते हुए guides के बीच प्रभावों को shuffle करता है। परिणाम में correlation, two-sided permutation p-value, positive और negative प्रभावों के समूह माध्य, और एक boolean पृथक्करण निर्णय शामिल होते हैं।"
+    },
+    {
+      "context": "Select an embedding recipe using held-out control separation.",
+      "label": "spacr.annotation_umap_qc.fit_on_controls#0",
+      "source": "Select an embedding recipe using held-out control separation.",
+      "source_sha256": "624590476beced6e0f16b4444116f264ba6adf3bd3a57fd60d6ad4c74b5a9bf9",
+      "translation": "अलग रखे गए नियंत्रण पृथक्करण का उपयोग करके एक embedding recipe चुनता है।"
+    },
+    {
+      "context": "features : numpy.ndarray Control-cell feature matrix with shape ``(n_cells, n_features)``. labels : sequence of str :data:`POSITIVE` or :data:`NEGATIVE` for each control cell. recipes : sequence of mappings Candidate UMAP parameter key-value mappings. seed : int, default=0 Random seed for splitting and embedding. holdout : float, default=0.5 Fraction of controls reserved for evaluation. neighbours : int, default=15 Neighbour count passed to the embedding score. groups : sequence, optional One group identity per control cell, usually the microplate sample position. Control cells from one microplate sample position share illumination, seeding and fixation, so a split that puts siblings on both sides reports an inflated held-out silhouette. When groups are given no group appears on both sides; when they are omitted the split is per object and the result says so in ``split_level``. group_by : str, default='well' The level ``groups`` names, one of the shared split ladder.",
+      "label": "spacr.annotation_umap_qc.fit_on_controls#2",
+      "source": "features : numpy.ndarray Control-cell feature matrix with shape ``(n_cells, n_features)``. labels : sequence of str :data:`POSITIVE` or :data:`NEGATIVE` for each control cell. recipes : sequence of mappings Candidate UMAP parameter dictionaries. seed : int, default=0 Random seed for splitting and embedding. holdout : float, default=0.5 Fraction of controls reserved for evaluation. neighbours : int, default=15 Neighbour count passed to the embedding score. groups : sequence, optional One group identity per control cell, usually the well. Control cells from one well share illumination, seeding and fixation, so a split that puts siblings on both sides reports an inflated held-out silhouette. When groups are given no group appears on both sides; when they are omitted the split is per object and the result says so in ``split_level``. group_by : str, default='well' The level ``groups`` names, one of the shared split ladder.",
+      "source_sha256": "8087d4ed2adb714fc5804c599b7b890da4c3a9e0561c49eb6a4a0aeff9c4284a",
+      "translation": "features : numpy.ndarray ``(n_cells, n_features)`` आकार का नियंत्रण-cell feature matrix। labels : sequence of str हर नियंत्रण cell के लिए :data:`POSITIVE` या :data:`NEGATIVE`। recipes : sequence of mappings उम्मीदवार UMAP parameter dictionaries। seed : int, default=0 splitting और embedding के लिए random seed। holdout : float, default=0.5 मूल्यांकन के लिए आरक्षित नियंत्रणों का अंश। neighbours : int, default=15 embedding score को दी जाने वाली पड़ोसी गिनती। groups : sequence, optional प्रति नियंत्रण cell एक समूह पहचान, प्रायः वेल। एक वेल की नियंत्रण cells illumination, seeding और fixation साझा करती हैं, इसलिए जो split सहोदर cells को दोनों ओर रखता है वह बढ़ा-चढ़ा held-out silhouette बताता है। groups दिए जाने पर कोई समूह दोनों ओर नहीं आता; छोड़ दिए जाने पर split प्रति object होता है और परिणाम ``split_level`` में यह बताता है। group_by : str, default='well' वह स्तर जिसका नाम ``groups`` देता है, साझा split ladder में से एक।"
+    },
+    {
+      "context": "key-value mapping Winning recipe, tuned and held-out silhouette scores, overfit gap, trustworthiness flag, the split level used, and all attempted trials. Error key-value mappings are returned when the controls cannot be split or scored.",
+      "label": "spacr.annotation_umap_qc.fit_on_controls#4",
+      "source": "dict Winning recipe, tuned and held-out silhouette scores, overfit gap, trustworthiness flag, the split level used, and all attempted trials. Error dictionaries are returned when the controls cannot be split or scored.",
+      "source_sha256": "61e664e85e6018cc5cefdd2316a3eeb0fdfce0774e3f06eccff917aad08307e2",
+      "translation": "dict विजेता recipe, tuned और held-out silhouette scores, overfit अंतर, trustworthiness flag, उपयोग किया गया split स्तर, और सभी आज़माए गए trials। जब नियंत्रणों को split या score न किया जा सके, तो error dictionaries लौटाई जाती हैं।"
+    },
+    {
+      "context": "Compute the positive-control share among each cell's neighbours.",
+      "label": "spacr.annotation_umap_qc.neighbour_purity#0",
+      "source": "Compute the positive-control share among each cell's neighbours.",
+      "source_sha256": "ffea150e291e2d3b1702816965fd7f5ccd9f11ca2837b43de589ad7f5d2c4c89",
+      "translation": "हर cell के पड़ोसियों में positive-control अंश की गणना करता है।"
+    },
+    {
+      "context": "control label, or ``None``, aligned to each row.",
+      "label": "spacr.annotation_umap_qc.neighbour_purity#2",
+      "source": "control label, or ``None``, aligned to each row.",
+      "source_sha256": "c25eb7fc3c3c3b9f297deec8c7dfeda926dbaa5acf0b0e9090050976d22a931a",
+      "translation": "नियंत्रण label, या ``None``, हर पंक्ति से संरेखित।"
+    },
+    {
+      "context": "Summarize neighbour purity for each sufficiently represented guide.",
+      "label": "spacr.annotation_umap_qc.purity_by_guide#0",
+      "source": "Summarize neighbour purity for each sufficiently represented guide.",
+      "source_sha256": "96cf59adbab8a3a5858d11dbbd959fc9a470ad0b844d5f6618780affbd537e5b",
+      "translation": "हर पर्याप्त रूप से प्रतिनिधित्व वाले guide के लिए पड़ोसी purity का सारांश देता है।"
+    },
+    {
+      "context": "per-cell neighbour-purity values.",
+      "label": "spacr.annotation_umap_qc.purity_by_guide#1",
+      "source": "per-cell neighbour-purity values.",
+      "source_sha256": "8bc0d377d96b0d4d06c596e9607c0e6b93c929a6e81db8883edc13f267b62511",
+      "translation": "प्रति-cell पड़ोसी-purity मान।"
+    },
+    {
+      "context": "guide name aligned to each purity value.",
+      "label": "spacr.annotation_umap_qc.purity_by_guide#2",
+      "source": "guide name aligned to each purity value.",
+      "source_sha256": "47a3b7fbe6e84ae6c4427e448038d3c6c6da408636791c02cd9aeb6ce89876d5",
+      "translation": "हर purity मान से संरेखित guide नाम।"
+    },
+    {
+      "context": "The abstention label is excluded. Guides with fewer than ``minimum_cells`` finite values are omitted; retained rows report mean purity, standard deviation, and cell count.",
+      "label": "spacr.annotation_umap_qc.purity_by_guide#3",
+      "source": "The abstention label is excluded. Guides with fewer than ``minimum_cells`` finite values are omitted; retained rows report mean purity, standard deviation, and cell count.",
+      "source_sha256": "0f503142f074d5442c4c47ae787703432af7bc19affc6b364f494480e51e6508",
+      "translation": "abstention label को बाहर रखा जाता है। ``minimum_cells`` से कम finite मानों वाले guides छोड़ दिए जाते हैं; रखी गई पंक्तियाँ माध्य purity, मानक विचलन और cell गिनती बताती हैं।"
+    },
+    {
+      "context": "Stable, lightweight entry points for scripted spaCR workflows.",
+      "label": "spacr.api#0",
+      "source": "Stable, lightweight entry points for scripted spaCR workflows.",
+      "source_sha256": "f585ac38eb5deed615ec7dea307476d78996891be47af032e966ca2fe9954aca",
+      "translation": "scripted spaCR workflows के लिए स्थिर, हल्के प्रवेश बिंदु।"
+    },
+    {
+      "context": "The workflow modules remain importable for backward compatibility. This module is the smaller interface recommended for new scripts: typed configuration objects expand through the same defaults used by the GUI, and the heavy image stack is imported only when a processing session starts.",
+      "label": "spacr.api#1",
+      "source": "The pipeline modules remain importable for backward compatibility. This module is the smaller interface recommended for new scripts: typed configuration objects expand through the same defaults used by the GUI, and the heavy image stack is imported only when a run starts.",
+      "source_sha256": "fe8ffedf484f8ff6703d346f6598bac3dfbe52759eede67db0dac8fc64c354ad",
+      "translation": "pipeline मॉड्यूल backward compatibility के लिए import-योग्य बने रहते हैं। यह मॉड्यूल नई scripts के लिए अनुशंसित छोटा interface है: typed configuration objects उन्हीं डिफ़ॉल्ट मानों के माध्यम से विस्तारित होते हैं जो GUI उपयोग करता है, और भारी image stack केवल रन शुरू होने पर import होता है।"
+    },
+    {
+      "context": "Configuration for image preparation and Cellpose segmentation.",
+      "label": "spacr.api.MaskConfig#0",
+      "source": "Configuration for image preparation and Cellpose segmentation.",
+      "source_sha256": "7847efa3fb23b3888b79c9b2322c82e0cbfae5169a8a9bf4a42b545ebce15215",
+      "translation": "image तैयारी और Cellpose segmentation के लिए configuration।"
+    },
+    {
+      "context": "Return the complete settings key-value mapping consumed by Mask.",
+      "label": "spacr.api.MaskConfig.to_settings#0",
+      "source": "Return the complete settings dictionary consumed by Mask.",
+      "source_sha256": "ec9634727470c757e3074fe17abb1fd3ed42b61120882a11e76305f0f69e3c69",
+      "translation": "Mask द्वारा उपयोग की जाने वाली पूरी settings dictionary लौटाता है।"
+    },
+    {
+      "context": "key-value mapping A fresh key-value mapping containing spaCR defaults and this configuration's overrides.",
+      "label": "spacr.api.MaskConfig.to_settings#2",
+      "source": "dict A fresh dictionary containing spaCR defaults and this configuration's overrides.",
+      "source_sha256": "1b53d8a978f87017ad39ba3289ef5308eb906b0ecc99e1167bf8e014ddea3220",
+      "translation": "dict एक नई dictionary जिसमें spaCR डिफ़ॉल्ट मान और इस configuration के overrides हैं।"
+    },
+    {
+      "context": "ValueError If no segmentation channel is selected, the workflow style is unknown, or ``extra`` repeats a typed setting.",
+      "label": "spacr.api.MaskConfig.to_settings#4",
+      "source": "ValueError If no segmentation channel is selected, the pipeline style is unknown, or ``extra`` repeats a typed setting.",
+      "source_sha256": "6fe3c151498cbb7272f2a4b9726c65999fef2dee03927fa3164ba57f077f62af",
+      "translation": "ValueError यदि कोई segmentation channel नहीं चुना गया, pipeline style अज्ञात है, या ``extra`` किसी typed setting को दोहराता है।"
+    },
+    {
+      "context": "Configuration for object measurement and extracted-image-region generation.",
+      "label": "spacr.api.MeasureConfig#0",
+      "source": "Configuration for object measurement and crop generation.",
+      "source_sha256": "dd9494e937083813ecbfe9f163f596b79560aed5cf34e3d2419bab664e513642",
+      "translation": "object माप और crop निर्माण के लिए configuration।"
+    },
+    {
+      "context": "src: A ``merged`` folder, or sequence of folders, produced by Mask. cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: Image layer index holding each label mask. Use ``None`` for object types not present in the merged arrays. image data channels: Intensity image layers measured for every selected object. crop_mode: Object types for which PNG extracted image regions are written when ``save_png`` is true. png_channel_mapping: Mapping from ``r``, ``g`` and ``b`` to source intensity image layers. extra: Advanced settings not represented by typed microscope fields of view.",
+      "label": "spacr.api.MeasureConfig#2",
+      "source": "src: A ``merged`` folder, or sequence of folders, produced by Mask. cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: Plane index holding each label mask. Use ``None`` for object types not present in the merged arrays. channels: Intensity planes measured for every selected object. crop_mode: Object types for which PNG crops are written when ``save_png`` is true. png_channel_mapping: Mapping from ``r``, ``g`` and ``b`` to source intensity planes. extra: Advanced settings not represented by typed fields.",
+      "source_sha256": "5af7ddd23154826f2641df440ec4762c3eac0d1ca4a50640510a661b8ac881be",
+      "translation": "src: Mask द्वारा बनाया गया एक ``merged`` फ़ोल्डर, या फ़ोल्डरों का अनुक्रम। cell_mask_dim, nucleus_mask_dim, pathogen_mask_dim: हर label mask रखने वाला plane index। merged arrays में मौजूद न होने वाले object types के लिए ``None`` उपयोग करें। channels: हर चुने गए object के लिए मापे जाने वाले intensity planes। crop_mode: वे object types जिनके लिए ``save_png`` true होने पर PNG crops लिखे जाते हैं। png_channel_mapping: ``r``, ``g`` और ``b`` से स्रोत intensity planes तक mapping। extra: typed fields द्वारा न दर्शाई गई उन्नत settings।"
+    },
+    {
+      "context": "Return the complete settings key-value mapping consumed by Measure.",
+      "label": "spacr.api.MeasureConfig.to_settings#0",
+      "source": "Return the complete settings dictionary consumed by Measure.",
+      "source_sha256": "1cb0e411d40d94db95ac1ac2e2096a265d0411ccbb231cf432ef9b32e07dfb97",
+      "translation": "Measure द्वारा उपयोग की जाने वाली पूरी settings dictionary लौटाता है।"
+    },
+    {
+      "context": "Run Mask from a typed configuration or an existing settings mapping.",
+      "label": "spacr.api.run_mask#0",
+      "source": "Run Mask from a typed configuration or an existing settings mapping.",
+      "source_sha256": "2ea24f9555ba993c500cd0acb5305008ff72bf71342ee773c913935545e267bf",
+      "translation": "typed configuration या मौजूदा settings mapping से Mask चलाता है।"
+    },
+    {
+      "context": "typed mask configuration or compatible settings mapping.",
+      "label": "spacr.api.run_mask#1",
+      "source": "typed mask configuration or compatible settings mapping.",
+      "source_sha256": "c3c6e28e5648aee31718b43b36d269bba60fc8177cbce30cefa9043f3bccd854",
+      "translation": "typed mask configuration या संगत settings mapping।"
+    },
+    {
+      "context": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "label": "spacr.api.run_mask#2",
+      "source": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "source_sha256": "e39ed9a3df5b8654edc0ce508c3ec21368635f0953aace108ec95129d57d87cb",
+      "translation": "``dry_run=True`` वाली configuration preflight समस्याएँ लौटाती है और कुछ नहीं लिखती। सामान्य रन अपने outputs लिखने के बाद ``None`` लौटाता है।"
+    },
+    {
+      "context": "Run Measure from a typed configuration or existing settings mapping.",
+      "label": "spacr.api.run_measure#0",
+      "source": "Run Measure from a typed configuration or existing settings mapping.",
+      "source_sha256": "b647babe1751c2623da6387f78c8796f826a0f77d7fb609265e8c4c84eee86be",
+      "translation": "typed configuration या मौजूदा settings mapping से Measure चलाता है।"
+    },
+    {
+      "context": "typed measurement configuration or settings mapping.",
+      "label": "spacr.api.run_measure#1",
+      "source": "typed measurement configuration or settings mapping.",
+      "source_sha256": "11c148ad4b24560134b2d702c87a347757fd26b2a383413c42ce7698908b038e",
+      "translation": "typed measurement configuration या settings mapping।"
+    },
+    {
+      "context": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "label": "spacr.api.run_measure#2",
+      "source": "A configuration with ``dry_run=True`` returns preflight problems and writes nothing. A normal run returns ``None`` after writing its outputs.",
+      "source_sha256": "e39ed9a3df5b8654edc0ce508c3ec21368635f0953aace108ec95129d57d87cb",
+      "translation": "``dry_run=True`` वाली configuration preflight समस्याएँ लौटाती है और कुछ नहीं लिखती। सामान्य रन अपने outputs लिखने के बाद ``None`` लौटाता है।"
+    },
+    {
+      "context": "Persist model-based guide attributions in ``png_list`` on explicit request.",
+      "label": "spacr.attribution_columns#0",
+      "source": "Persist model-based guide attributions in ``png_list`` on explicit request.",
+      "source_sha256": "fff38ddb23828a2a4937d90eae2c4951d3f61f0a45332d63a50e90ac11c99d48",
+      "translation": "स्पष्ट अनुरोध पर मॉडल-आधारित guide attributions को ``png_list`` में स्थायी रूप से सहेजता है।"
+    },
+    {
+      "context": "The pooled design does not observe which guide each individual cell carries. These columns therefore store inferred attributions, their probabilities, and coverage diagnostics rather than genotypes. A database note records that interpretation beside the values. The module is GUI-independent and requires the caller to confirm every write.",
+      "label": "spacr.attribution_columns#1",
+      "source": "The pooled design does not observe which guide each individual cell carries. These columns therefore store inferred attributions, their probabilities, and coverage diagnostics rather than genotypes. A database note records that interpretation beside the values. The module is GUI-independent and requires the caller to confirm every write.",
+      "source_sha256": "9aa626606331648e7ade8eea7b6805a04164f506800d47d33d59f8acda08e9bb",
+      "translation": "pooled design यह नहीं देखता कि हर व्यक्तिगत cell में कौन-सा guide है। इसलिए ये स्तंभ genotypes के बजाय अनुमानित attributions, उनकी प्रायिकताएँ और coverage निदान संग्रहीत करते हैं। एक database टिप्पणी मानों के बगल में यह व्याख्या दर्ज करती है। यह मॉड्यूल GUI से स्वतंत्र है और कॉलर से हर write की पुष्टि माँगता है।"
+    },
+    {
+      "context": "Exception used when an attribution write cannot be completed safely.",
+      "label": "spacr.attribution_columns.AttributionWriteError#0",
+      "source": "Raised when an attribution write cannot be completed safely.",
+      "source_sha256": "6b2901dca614735bc45bac9f13626439ff7c42577a74260ba48fedb61f4d2cd4",
+      "translation": "जब कोई attribution write सुरक्षित रूप से पूरा न किया जा सके, तब उठाया जाता है।"
+    },
+    {
+      "context": "Summarize a proposed attribution write for user confirmation.",
+      "label": "spacr.attribution_columns.describe#0",
+      "source": "Summarize a proposed attribution write for user confirmation.",
+      "source_sha256": "9435a1b379217d2526850f453fe035a7ba783dba71649384695fef7f8e15bfe8",
+      "translation": "उपयोगकर्ता पुष्टि के लिए प्रस्तावित attribution write का सारांश देता है।"
+    },
+    {
+      "context": "proposed per-cell attribution rows.",
+      "label": "spacr.attribution_columns.describe#1",
+      "source": "proposed per-cell attribution rows.",
+      "source_sha256": "7d1098958318b4ea722526ae56df28c20d9f88e98d46ba85e23c27d7c35b5568",
+      "translation": "प्रस्तावित प्रति-cell attribution पंक्तियाँ।"
+    },
+    {
+      "context": "Convert guide-attribution results into database records.",
+      "label": "spacr.attribution_columns.rows_from#0",
+      "source": "Convert guide-attribution results into database records.",
+      "source_sha256": "4ab818b079a61df164b9f8003574ac2eb7d0735a91952753eeda2407580873e5",
+      "translation": "guide-attribution परिणामों को database records में बदलता है।"
+    },
+    {
+      "context": "list of key-value mapping Records ready for :func:`write`.",
+      "label": "spacr.attribution_columns.rows_from#4",
+      "source": "list of dict Records ready for :func:`write`.",
+      "source_sha256": "14dac1fb9b046f76b3fe064236e90746500a45aa96d19c809bfdcd80ca9ccc37",
+      "translation": "list of dict :func:`write` के लिए तैयार records।"
+    },
+    {
+      "context": "Write model-based cell attributions to a ``png_list`` table.",
+      "label": "spacr.attribution_columns.write#0",
+      "source": "Write model-based cell attributions to a ``png_list`` table.",
+      "source_sha256": "32b269166227e65807da270dc8c4f248b38ea98b256774558ece7a62fc96086b",
+      "translation": "मॉडल-आधारित cell attributions को ``png_list`` तालिका में लिखता है।"
+    },
+    {
+      "context": "db_path : str Measurement database containing ``png_list``. rows : iterable of mappings Records carrying ``key_column`` and any microscope fields of view in :data:`COLUMNS`. key_column : str, default='prcfo' Column used to match records to ``png_list``. ``file_name`` supports databases created before the per-object ``prcfo`` structured-data name was available. confirmed : bool, default=False Must be ``True``. The function refuses automatic or implicit writes.",
+      "label": "spacr.attribution_columns.write#2",
+      "source": "db_path : str Measurement database containing ``png_list``. rows : iterable of mappings Records carrying ``key_column`` and any fields in :data:`COLUMNS`. key_column : str, default='prcfo' Column used to match records to ``png_list``. ``file_name`` supports databases created before the per-object ``prcfo`` key was available. confirmed : bool, default=False Must be ``True``. The function refuses automatic or implicit writes.",
+      "source_sha256": "1960e245f750bfb5273ebd0c6b2badb9a87adcb2f44a149a184099c484beab52",
+      "translation": "db_path : str ``png_list`` वाला measurement database। rows : iterable of mappings ``key_column`` और :data:`COLUMNS` के कोई भी fields रखने वाले records। key_column : str, default='prcfo' records को ``png_list`` से मिलाने के लिए उपयोग किया जाने वाला स्तंभ। ``file_name`` उन databases का समर्थन करता है जो प्रति-object ``prcfo`` key उपलब्ध होने से पहले बने थे। confirmed : bool, default=False ``True`` होना चाहिए। फ़ंक्शन स्वचालित या अंतर्निहित writes को अस्वीकार करता है।"
+    },
+    {
+      "context": "key-value mapping Counts of matched rows and newly added columns.",
+      "label": "spacr.attribution_columns.write#4",
+      "source": "dict Counts of matched rows and newly added columns.",
+      "source_sha256": "25fe6c30642f07e9e530e6583eaddb4bff6ebd998a40d40c82ac5fd36f4a66d1",
+      "translation": "dict मेल खाने वाली पंक्तियों और नए जोड़े गए स्तंभों की गिनतियाँ।"
+    },
+    {
+      "context": "AttributionWriteError If confirmation is absent, ``png_list`` is missing, or the match key is unavailable.",
+      "label": "spacr.attribution_columns.write#6",
+      "source": "AttributionWriteError If confirmation is absent, ``png_list`` is missing, or the match key is unavailable.",
+      "source_sha256": "553a1a79db6f695ccb94f3ae9bad88dfe4ca34f455c0b258a1054b4452e9b07b",
+      "translation": "AttributionWriteError यदि पुष्टि अनुपस्थित है, ``png_list`` अनुपस्थित है, या match key अनुपलब्ध है।"
+    },
+    {
+      "context": "Join dependent-variable values to object-level measurement rows.",
+      "label": "spacr.dependent_join#0",
+      "source": "Join dependent-variable values to object-level measurement rows.",
+      "source_sha256": "63538accbcf5dd0904fd30d8780f7c351fa2841b4496c2cb91914308918d6078",
+      "translation": "dependent-variable मानों को object-स्तरीय माप पंक्तियों से जोड़ता है।"
+    },
+    {
+      "context": "The direct identifier columns are preferred. When they are incomplete, extracted image region paths provide a documented fallback from which laboratory microplate, microplate sample position, microscope field of view, and object identifiers can be recovered. Each successful join reports the route used and the number of matched rows; a join with no matches raises an error.",
+      "label": "spacr.dependent_join#1",
+      "source": "The direct identifier columns are preferred. When they are incomplete, crop paths provide a documented fallback from which plate, well, field, and object identifiers can be recovered. Each successful join reports the route used and the number of matched rows; a join with no matches raises an error.",
+      "source_sha256": "6eb814aaa48f36d16773cc87a9d3c83e3e711884b26c27b6054f8c7c6316cc12",
+      "translation": "सीधे पहचानकर्ता स्तंभों को प्राथमिकता दी जाती है। जब वे अधूरे हों, तो crop पथ एक प्रलेखित fallback देते हैं जिससे प्लेट, वेल, field और object पहचानकर्ता प्राप्त किए जा सकते हैं। हर सफल join उपयोग किया गया मार्ग और मेल खाने वाली पंक्तियों की संख्या बताता है; बिना मिलान वाला join त्रुटि उठाता है।"
+    },
+    {
+      "context": "Format the join route and matched-row count for display.",
+      "label": "spacr.dependent_join.describe#0",
+      "source": "Format the join route and matched-row count for display.",
+      "source_sha256": "ce157896972d6e1c7cdf5e184a87b70740ae02d4bc54e32ba17586b94d121227",
+      "translation": "प्रदर्शन के लिए join मार्ग और मेल खाने वाली पंक्तियों की गिनती format करता है।"
+    },
+    {
+      "context": "dependent-variable join report to summarize.",
+      "label": "spacr.dependent_join.describe#1",
+      "source": "dependent-variable join report to summarize.",
+      "source_sha256": "279fda0127d8bc6b2bc3d99e1fba12cdbbc0ef302565760c79921bf73603fd92",
+      "translation": "सारांशित की जाने वाली dependent-variable join रिपोर्ट।"
+    },
+    {
+      "context": "Attach dependent-variable columns to object-level rows.",
+      "label": "spacr.dependent_join.join#0",
+      "source": "Attach dependent-variable columns to object-level rows.",
+      "source_sha256": "ed005eedbf818ac3da386acd2f558278f0b7de0e383226d7b98cabc1be27da1b",
+      "translation": "dependent-variable स्तंभों को object-स्तरीय पंक्तियों से जोड़ता है।"
+    },
+    {
+      "context": "objects : pandas.DataFrame Object-level measurement rows. dependent : pandas.DataFrame Table containing dependent variables and join identifiers or paths. value : str, optional Single dependent-variable column to add. When omitted, all columns not already present in ``objects`` are added.",
+      "label": "spacr.dependent_join.join#2",
+      "source": "objects : pandas.DataFrame Object-level measurement rows. dependent : pandas.DataFrame Table containing dependent variables and join identifiers or paths. value : str, optional Single dependent-variable column to add. When omitted, all columns not already present in ``objects`` are added.",
+      "source_sha256": "6096d7eea428d531140f57b9f91278cfe02c17584b7291b7f6c11a301712f572",
+      "translation": "objects : pandas.DataFrame object-स्तरीय माप पंक्तियाँ। dependent : pandas.DataFrame dependent variables और join पहचानकर्ता या पथ वाली तालिका। value : str, optional जोड़ा जाने वाला एकल dependent-variable स्तंभ। छोड़ दिए जाने पर, ``objects`` में पहले से मौजूद न होने वाले सभी स्तंभ जोड़े जाते हैं।"
+    },
+    {
+      "context": "pandas.DataFrame Copy of ``objects`` with matched dependent-variable columns. key-value mapping Join route, matched-row count, total-row count, attempted routes, and names of added columns.",
+      "label": "spacr.dependent_join.join#4",
+      "source": "pandas.DataFrame Copy of ``objects`` with matched dependent-variable columns. dict Join route, matched-row count, total-row count, attempted routes, and names of added columns.",
+      "source_sha256": "3324a4c1d6ca2ddbfae1c04c6494f399eef7cad408fb6480465e2f62a1cf271c",
+      "translation": "pandas.DataFrame ``objects`` की प्रति, मेल खाने वाले dependent-variable स्तंभों के साथ। dict join मार्ग, मेल खाने वाली पंक्तियों की गिनती, कुल पंक्तियों की गिनती, आज़माए गए मार्ग, और जोड़े गए स्तंभों के नाम।"
+    },
+    {
+      "context": "ValueError If the dependent table is empty or no route matches any object row.",
+      "label": "spacr.dependent_join.join#6",
+      "source": "ValueError If the dependent table is empty or no route matches any object row.",
+      "source_sha256": "0d790807a952d25423c97d9d9680bde2614a2ad0b1c017b577c770dae02034d1",
+      "translation": "ValueError यदि dependent तालिका खाली है या कोई भी मार्ग किसी object पंक्ति से मेल नहीं खाता।"
+    },
+    {
+      "context": "Extract object identifiers from an extracted image region-image path.",
+      "label": "spacr.dependent_join.parts_from_path#0",
+      "source": "Extract object identifiers from a crop-image path.",
+      "source_sha256": "b1d869a0f9c007ea355a670529771ae3d8986b5af92cb2ed0ce4da93ac847320",
+      "translation": "crop-image पथ से object पहचानकर्ता निकालता है।"
+    },
+    {
+      "context": "path : str Path whose stem contains ``plate_well_field_object``.",
+      "label": "spacr.dependent_join.parts_from_path#2",
+      "source": "path : str Path whose stem contains ``plate_well_field_object``.",
+      "source_sha256": "9dda27fee22d4ee764166ccb3b09e298000bb7b09fed4a14fea22fa9ec552468",
+      "translation": "path : str वह पथ जिसके stem में ``plate_well_field_object`` है।"
+    },
+    {
+      "context": "key-value mapping Canonical laboratory microplate, row, column, microscope field of view, and object identifiers plus the parsed microplate sample position name. An empty mapping is returned when the pattern is not present.",
+      "label": "spacr.dependent_join.parts_from_path#4",
+      "source": "dict Canonical plate, row, column, field, and object identifiers plus the parsed well name. An empty mapping is returned when the pattern is not present.",
+      "source_sha256": "87ea28460b4dd4ba6cdb011d0ab1a1477364f0742da1a6f05f1773241fd9d180",
+      "translation": "dict मानक प्लेट, पंक्ति, स्तंभ, field और object पहचानकर्ता, साथ में parse किया गया वेल नाम। pattern मौजूद न होने पर खाली mapping लौटाई जाती है।"
+    },
+    {
+      "context": "Convert a microplate sample position name to canonical row and column identifiers.",
+      "label": "spacr.dependent_join.well_to_row_and_column#0",
+      "source": "Convert a well name to canonical row and column identifiers.",
+      "source_sha256": "c4f0ac566d0855bfe28b176d1a6bcd4b3d31a0b7e7be786251451de632f32ea7",
+      "translation": "वेल नाम को मानक पंक्ति और स्तंभ पहचानकर्ताओं में बदलता है।"
+    },
+    {
+      "context": "well : str Microplate sample position name such as ``\"A01\"`` or canonical identifier such as ``\"r1c1\"``.",
+      "label": "spacr.dependent_join.well_to_row_and_column#2",
+      "source": "well : str Well name such as ``\"A01\"`` or canonical identifier such as ``\"r1c1\"``.",
+      "source_sha256": "0b87235ce92e7b551c24487138d2c04ad18afdc21b40f6db6013683066e64739",
+      "translation": "well : str वेल नाम जैसे ``\"A01\"`` या मानक पहचानकर्ता जैसे ``\"r1c1\"``।"
+    },
+    {
+      "context": "tuple of str Canonical ``(rowID, columnID)`` values, for example ``(\"r1\", \"c1\")``. Invalid microplate sample position names return two empty strings.",
+      "label": "spacr.dependent_join.well_to_row_and_column#4",
+      "source": "tuple of str Canonical ``(rowID, columnID)`` values, for example ``(\"r1\", \"c1\")``. Invalid well names return two empty strings.",
+      "source_sha256": "38839ecb7bda70d936b5bbf48ca58a129b41ff2c982129435499b40ef72efa15",
+      "translation": "tuple of str मानक ``(rowID, columnID)`` मान, उदाहरण के लिए ``(\"r1\", \"c1\")``। अमान्य वेल नाम दो खाली strings लौटाते हैं।"
+    },
+    {
+      "context": "Register the Open Sans font bundled with spaCR for Matplotlib figures.",
+      "label": "spacr.figure_font#0",
+      "source": "Register the Open Sans font bundled with spaCR for Matplotlib figures.",
+      "source_sha256": "039ec1ce1b88f5efa8fb707b9545334d953dc37a8008911dbc488635d15407a6",
+      "translation": "Matplotlib figures के लिए spaCR के साथ आया Open Sans font पंजीकृत करता है।"
+    },
+    {
+      "context": "Matplotlib's default is DejaVu Sans, and asking for \"Helvetica\" on a Linux machine that has no Helvetica silently falls back to it too, so figures would be drawn in a different face from the interface and in a different face on each machine.",
+      "label": "spacr.figure_font#1",
+      "source": "Matplotlib's default is DejaVu Sans, and asking for \"Helvetica\" on a Linux machine that has no Helvetica silently falls back to it too, so figures would be drawn in a different face from the interface and in a different face on each machine.",
+      "source_sha256": "c56f8b7f9d707cf34359da0c0882ad51b23c2253a3fc390548bf72d13d69f93d",
+      "translation": "Matplotlib का डिफ़ॉल्ट DejaVu Sans है, और Helvetica-रहित Linux मशीन पर \"Helvetica\" माँगना भी चुपचाप उसी पर लौट जाता है, इसलिए figures interface से अलग face में, और हर मशीन पर अलग face में बनते।"
+    },
+    {
+      "context": "spaCR ships Open Sans (``spacr/resources/font/open_sans``), so the face is always present. It must also be registered: setting the rcParam alone names a family matplotlib may not have, and a name it cannot resolve is a silent fallback rather than an error. Adding the bundled files to the font manager makes the name resolve on a machine where Open Sans was never installed.",
+      "label": "spacr.figure_font#2",
+      "source": "spaCR ships Open Sans (``spacr/resources/font/open_sans``), so the face is always present. It must also be registered: setting the rcParam alone names a family matplotlib may not have, and a name it cannot resolve is a silent fallback rather than an error. Adding the bundled files to the font manager makes the name resolve on a machine where Open Sans was never installed.",
+      "source_sha256": "cb346ddeb16d48c483658fc8bdbee1fbab7810c5ed7bcd5e0176a24ecf6d8b1c",
+      "translation": "spaCR Open Sans (``spacr/resources/font/open_sans``) साथ देता है, इसलिए face हमेशा मौजूद रहता है। इसे पंजीकृत भी करना होता है: केवल rcParam सेट करना ऐसी family का नाम देता है जो matplotlib के पास शायद न हो, और जिस नाम को वह हल नहीं कर सकता वह त्रुटि के बजाय चुपचाप fallback होता है। साथ आई फ़ाइलों को font manager में जोड़ने से नाम उस मशीन पर भी हल होता है जहाँ Open Sans कभी स्थापित नहीं हुआ।"
+    },
+    {
+      "context": "Every bundled TrueType or OpenType face.",
+      "label": "spacr.figure_font.bundled_faces#0",
+      "source": "Every bundled TrueType or OpenType face.",
+      "source_sha256": "5d676eda63eb4e30a6a460b56cd0b414e9db9f9697333dfe9e6547b2fb1128cb",
+      "translation": "साथ आया हर TrueType या OpenType face।"
+    },
+    {
+      "context": "Absolute paths in filename order. A missing or unreadable font directory returns an empty list rather than throwing -- a figure drawn in the wrong font is a blemish, and never a reason for a plot not to appear.",
+      "label": "spacr.figure_font.bundled_faces#1",
+      "source": "Absolute paths in filename order. A missing or unreadable font directory returns an empty list rather than raising -- a figure drawn in the wrong font is a blemish, and never a reason for a plot not to appear.",
+      "source_sha256": "c270cddc5886d7cc9f5583df8507d109b624df8b643392e7227e2cfa140f3327",
+      "translation": "फ़ाइल नाम क्रम में निरपेक्ष पथ। अनुपस्थित या अपठनीय font directory त्रुटि उठाने के बजाय खाली सूची लौटाती है -- ग़लत font में बना figure एक दोष है, और plot के न दिखने का कारण कभी नहीं।"
+    },
+    {
+      "context": "The directory holding the bundled static faces.",
+      "label": "spacr.figure_font.font_dir#0",
+      "source": "The directory holding the bundled static faces.",
+      "source_sha256": "2964abd4fde9364d1f1b023fce7810be7a6a9b77df7f4a547db08ad60167b7e5",
+      "translation": "साथ आए static faces वाली directory।"
+    },
+    {
+      "context": "an absolute path. It exists in an installed build too, because the fonts are package data.",
+      "label": "spacr.figure_font.font_dir#1",
+      "source": "an absolute path. It exists in an installed build too, because the fonts are package data.",
+      "source_sha256": "893cc03eece4a9120c7910a5a7d28fc1742a79111e03a551628f405e662b77e9",
+      "translation": "एक निरपेक्ष पथ। यह स्थापित build में भी मौजूद है, क्योंकि fonts package data हैं।"
+    },
+    {
+      "context": "Register the bundled faces with Matplotlib's font manager.",
+      "label": "spacr.figure_font.use_open_sans_for_figures#0",
+      "source": "Register the bundled faces with Matplotlib's font manager.",
+      "source_sha256": "d44ad3a9fa0999ec898f96e3c7b542e391b97bebb06163131907f91cadccd219",
+      "translation": "साथ आए faces को Matplotlib के font manager में पंजीकृत करता है।"
+    },
+    {
+      "context": "Idempotent and safe to call before any figure is drawn.  This deliberately does not alter process-wide ``rcParams``: the two house-style helpers put Open Sans in their scoped parameter key-value mappings instead.",
+      "label": "spacr.figure_font.use_open_sans_for_figures#1",
+      "source": "Idempotent and safe to call before any figure is drawn.  This deliberately does not alter process-wide ``rcParams``: the two house-style helpers put Open Sans in their scoped parameter dictionaries instead.",
+      "source_sha256": "398cb3dd1197f8c6c305170c4b1c6b6ff3813d6ada46eb4ed6110a23eaaf5c48",
+      "translation": "idempotent है और किसी भी figure के बनने से पहले कॉल करना सुरक्षित है।  यह जानबूझकर प्रक्रिया-व्यापी ``rcParams`` नहीं बदलता: दोनों house-style helpers इसके बजाय Open Sans को अपनी scoped parameter dictionaries में रखते हैं।"
+    },
+    {
+      "context": "whether Open Sans is now resolvable by name.",
+      "label": "spacr.figure_font.use_open_sans_for_figures#2",
+      "source": "whether Open Sans is now resolvable by name.",
+      "source_sha256": "2d7b2a4898bcf415a8229f84a43a836779ff8f2d02b18136da1d90310064b08d",
+      "translation": "क्या अब Open Sans नाम से हल किया जा सकता है।"
+    },
+    {
+      "context": "Protein-localization metadata for compartment-aware figure colouring.",
+      "label": "spacr.localisation#0",
+      "source": "Protein-localization metadata for compartment-aware figure colouring.",
+      "source_sha256": "b8a4fca4885deed53940d518ac3f863dd7f4d794e0eef20763afa2ce3a5a6b7b",
+      "translation": "compartment-aware figure रंगने के लिए protein-localization metadata।"
+    },
+    {
+      "context": "Interactive volcano plots can highlight genes from one selected LOPIT compartment while leaving the remaining genes grey.",
+      "label": "spacr.localisation#1",
+      "source": "Interactive volcano plots can highlight genes from one selected LOPIT compartment while leaving the remaining genes grey.",
+      "source_sha256": "3fc1e126e7d9d120edf07182ac7d9b67c218b8f8a8e958d801ead1c651c4f0d3",
+      "translation": "interactive volcano plots एक चुने गए LOPIT compartment के genes को उजागर कर सकते हैं जबकि शेष genes ग्रे रहते हैं।"
+    },
+    {
+      "context": "Figures highlight one selected compartment against grey to keep the comparison legible. Coefficient feature names are resolved to bare gene identifiers with :func:`spacr.hits.gene_of` before joining the bundled TAGM/LOPIT table.",
+      "label": "spacr.localisation#2",
+      "source": "Figures highlight one selected compartment against grey to keep the comparison legible. Coefficient feature names are resolved to bare gene identifiers with :func:`spacr.hits.gene_of` before joining the bundled TAGM/LOPIT table.",
+      "source_sha256": "98f424f6bc6912076bd7b1ade91bc817d3a10fc030c9e30fa2dff47d979a61d1",
+      "translation": "तुलना पठनीय रखने के लिए figures एक चुने गए compartment को ग्रे के विरुद्ध उजागर करते हैं। साथ आई TAGM/LOPIT तालिका से जोड़ने से पहले coefficient feature नामों को :func:`spacr.hits.gene_of` से केवल gene पहचानकर्ताओं में हल किया जाता है।"
+    },
+    {
+      "context": "A boolean Series: which rows are in ``compartment``.",
+      "label": "spacr.localisation.mask#0",
+      "source": "A boolean Series: which rows are in ``compartment``.",
+      "source_sha256": "834121918250b9cc9da305e2453841921a09e262c6361ed299d626a89c135297",
+      "translation": "एक boolean Series: कौन-सी पंक्तियाँ ``compartment`` में हैं।"
+    },
+    {
+      "context": "table whose feature names are classified and whose index is preserved on the returned boolean Series.",
+      "label": "spacr.localisation.mask#1",
+      "source": "table whose feature names are classified and whose index is preserved on the returned boolean Series.",
+      "source_sha256": "64cf1acbcf8f409bdbde55e911866d67ed2931a21fc70429828caf8e81ba5bc6",
+      "translation": "वह तालिका जिसके feature नाम वर्गीकृत किए जाते हैं और जिसका index लौटाई गई boolean Series पर बना रहता है।"
+    },
+    {
+      "context": "``None`` or ``\"\"`` selects nothing, so a caller can pass the menu's state straight through without a branch.",
+      "label": "spacr.localisation.mask#2",
+      "source": "``None`` or ``\"\"`` selects nothing, so a caller can pass the menu's state straight through without a branch.",
+      "source_sha256": "f2f574bf14ef94811935590f921fe2d8f7d4cce12ba1de59f60bf6d41e84ab57",
+      "translation": "``None`` या ``\"\"`` कुछ भी नहीं चुनता, ताकि कॉलर menu की स्थिति को बिना किसी branch के सीधे आगे दे सके।"
+    },
+    {
+      "context": "The compartment of each row of ``frame``, as a Series aligned to it.",
+      "label": "spacr.localisation.of#0",
+      "source": "The compartment of each row of ``frame``, as a Series aligned to it.",
+      "source_sha256": "c62e21c13c9bab6adb84329683d4bb1538ab9a9379c02961039b16d5532ae399",
+      "translation": "``frame`` की हर पंक्ति का compartment, उससे संरेखित Series के रूप में।"
+    },
+    {
+      "context": "result frame whose feature identifiers are to be looked up.",
+      "label": "spacr.localisation.of#1",
+      "source": "result frame whose feature identifiers are to be looked up.",
+      "source_sha256": "066b64ed64f92044a463c03a4b1af13f44c0c4121621a89635ae0f509dd70da8",
+      "translation": "परिणाम frame जिसके feature पहचानकर्ता खोजे जाने हैं।"
+    },
+    {
+      "context": "a pandas Series of compartment names, empty string where the gene is not in the table.",
+      "label": "spacr.localisation.of#2",
+      "source": "a pandas Series of compartment names, empty string where the gene is not in the table.",
+      "source_sha256": "04719690a7be3f6dd86c31bcf4435f4ccb577996ae72182e429512ee55669628",
+      "translation": "compartment नामों की pandas Series, जहाँ gene तालिका में नहीं है वहाँ खाली string।"
+    },
+    {
+      "context": "Joined through :func:`spacr.hits.gene_of`, which maps design terms to gene ids. Both the per-gene and the per-guide rows resolve; a guide row takes its gene's compartment.",
+      "label": "spacr.localisation.of#3",
+      "source": "Joined through :func:`spacr.hits.gene_of`, which maps design terms to gene ids. Both the per-gene and the per-guide rows resolve; a guide row takes its gene's compartment.",
+      "source_sha256": "c4cfb4edcf39e83b8892cf0270bd3e2fa945a71e85322b98d77103838e0918ee",
+      "translation": ":func:`spacr.hits.gene_of` के माध्यम से जोड़ा जाता है, जो design terms को gene ids से map करता है। प्रति-gene और प्रति-guide दोनों पंक्तियाँ हल होती हैं; guide पंक्ति अपने gene का compartment लेती है।"
+    },
+    {
+      "context": "The compartments this screen actually has, commonest first.",
+      "label": "spacr.localisation.present#0",
+      "source": "The compartments this screen actually has, commonest first.",
+      "source_sha256": "71b47bef64ae337f7b76f3b3a5db57e9cfdd3164217e0eaf7b9318906e491346",
+      "translation": "वे compartments जो इस स्क्रीनिंग में वास्तव में हैं, सबसे सामान्य पहले।"
+    },
+    {
+      "context": "result frame whose represented compartments are to be counted.",
+      "label": "spacr.localisation.present#1",
+      "source": "result frame whose represented compartments are to be counted.",
+      "source_sha256": "6bffd337e3b266473ec7f939310e21919954eda14ec31715ba46ac74f02aaffe",
+      "translation": "परिणाम frame जिसके प्रतिनिधित्व वाले compartments गिने जाने हैं।"
+    },
+    {
+      "context": "Only compartments present in the screen are returned, not all 27 in the reference table, so a menu built from them offers no choice that colours nothing.",
+      "label": "spacr.localisation.present#2",
+      "source": "Only compartments present in the screen are returned, not all 27 in the reference table, so a menu built from them offers no choice that colours nothing.",
+      "source_sha256": "834508410a34e5d6249f3e11502dc294f1dd0f4005a43193929accb47e61e090",
+      "translation": "केवल स्क्रीनिंग में मौजूद compartments लौटाए जाते हैं, reference तालिका के सभी 27 नहीं, ताकि उनसे बना menu ऐसा कोई विकल्प न दे जो कुछ भी न रंगे।"
+    },
+    {
+      "context": "``{gene number: compartment}`` from the bundled TAGM/LOPIT table.",
+      "label": "spacr.localisation.table#0",
+      "source": "``{gene number: compartment}`` from the bundled TAGM/LOPIT table.",
+      "source_sha256": "dcef5af763f2626c6fa8ce80f0f6a6c9b90862aae5e807bdfc148ab9557b7a55",
+      "translation": "साथ आई TAGM/LOPIT तालिका से ``{gene number: compartment}``।"
+    },
+    {
+      "context": "Cached: the file is 3,832 rows and is read to build a right-click menu, which happens on the main GUI execution path every time the user opens one.",
+      "label": "spacr.localisation.table#1",
+      "source": "Cached: the file is 3,832 rows and is read to build a right-click menu, which happens on the GUI thread every time the user opens one.",
+      "source_sha256": "d3f57ec5b64ba75d6542bd16ff72bd08def492056a3072a5267240d692fd2ab9",
+      "translation": "cache किया गया: फ़ाइल 3,832 पंक्तियों की है और right-click menu बनाने के लिए पढ़ी जाती है, जो हर बार उपयोगकर्ता के menu खोलने पर GUI thread पर होता है।"
+    },
+    {
+      "context": "an empty key-value mapping when the table is missing, never raising -- a screen of a different organism has no reason to carry this file.",
+      "label": "spacr.localisation.table#2",
+      "source": "an empty dict when the table is missing, never raising -- a screen of a different organism has no reason to carry this file.",
+      "source_sha256": "e637290e3fb35dbf2cee8ea7e97256fe5616559ba63fe71ed8c070872b9cb5de",
+      "translation": "तालिका अनुपस्थित होने पर खाली dict, कभी त्रुटि नहीं -- किसी अन्य organism की स्क्रीनिंग के पास यह फ़ाइल रखने का कोई कारण नहीं है।"
+    },
+    {
+      "context": "Remove robustly defined object outliers before guide annotation.",
+      "label": "spacr.outlier_filter#0",
+      "source": "Remove robustly defined object outliers before guide annotation.",
+      "source_sha256": "b90f218dd4731ae577f8e8cb7cf6f7aff3b7974cc737f66e935bd80e63f075c0",
+      "translation": "guide annotation से पहले मज़बूती से परिभाषित object outliers हटाता है।"
+    },
+    {
+      "context": "Apply enabled outlier criteria to an object table.",
+      "label": "spacr.outlier_filter.apply#0",
+      "source": "Apply enabled outlier criteria to an object table.",
+      "source_sha256": "de81022564da7266bb7fd48a1741b0ba8078285972ac9af448169275ee2288ae",
+      "translation": "सक्षम outlier मानदंडों को object तालिका पर लागू करता है।"
+    },
+    {
+      "context": "frame : pandas.DataFrame Object-level measurements. settings : dict, optional Thresholds keyed as ``\"<criterion>_outlier_mads\"``. Missing or ``None`` values disable that criterion; nonpositive thresholds also disable it without adding a report row.",
+      "label": "spacr.outlier_filter.apply#2",
+      "source": "frame : pandas.DataFrame Object-level measurements. settings : dict, optional Thresholds keyed as ``\"<criterion>_outlier_mads\"``. Missing or ``None`` values disable that criterion; nonpositive thresholds also disable it without adding a report row.",
+      "source_sha256": "9f9c3537350acbc544c4cb42eea61ddde9d7cddee18bd3019dc892987eb42f60",
+      "translation": "frame : pandas.DataFrame object-स्तरीय माप। settings : dict, optional ``\"<criterion>_outlier_mads\"`` के रूप में keyed thresholds। अनुपस्थित या ``None`` मान उस मानदंड को निष्क्रिय करते हैं; अधनात्मक thresholds भी उसे बिना रिपोर्ट पंक्ति जोड़े निष्क्रिय करती हैं।"
+    },
+    {
+      "context": "pandas.DataFrame Rows retained after all enabled criteria. list of key-value mapping Per-criterion measurement column, threshold, removal count, and any validation note.",
+      "label": "spacr.outlier_filter.apply#4",
+      "source": "pandas.DataFrame Rows retained after all enabled criteria. list of dict Per-criterion measurement column, threshold, removal count, and any validation note.",
+      "source_sha256": "74cc85019bfe60a613f502f5837f1e6d9a4d84df7999aaf24bf699087aa3a877",
+      "translation": "pandas.DataFrame सभी सक्षम मानदंडों के बाद रखी गई पंक्तियाँ। list of dict प्रति-मानदंड माप स्तंभ, threshold, हटाने की गिनती, और कोई भी सत्यापन टिप्पणी।"
+    },
+    {
+      "context": "Resolve the measurement column used by an outlier criterion.",
+      "label": "spacr.outlier_filter.column_for#0",
+      "source": "Resolve the measurement column used by an outlier criterion.",
+      "source_sha256": "ae495c59b063ada817e561019187f89382471fb079f40f0a4335e5f70034df7d",
+      "translation": "किसी outlier मानदंड द्वारा उपयोग किया जाने वाला माप स्तंभ हल करता है।"
+    },
+    {
+      "context": "object-measurement table whose columns are searched.",
+      "label": "spacr.outlier_filter.column_for#1",
+      "source": "object-measurement table whose columns are searched.",
+      "source_sha256": "83e19efe3474b38bc16057d108808cca652278a1fd874ab9117cc5cd6b324d5f",
+      "translation": "object-माप तालिका जिसके स्तंभ खोजे जाते हैं।"
+    },
+    {
+      "context": "supported outlier-filter setting from :data:`CRITERIA`.",
+      "label": "spacr.outlier_filter.column_for#2",
+      "source": "supported outlier-filter setting from :data:`CRITERIA`.",
+      "source_sha256": "c3efa408ece3be1572c17cf37a0a81a95a2a4ec4f9e27fda521cd954b461c507",
+      "translation": ":data:`CRITERIA` से समर्थित outlier-filter setting।"
+    },
+    {
+      "context": "first matching measurement-column name, or ``None`` when this table cannot supply the criterion.",
+      "label": "spacr.outlier_filter.column_for#3",
+      "source": "first matching measurement-column name, or ``None`` when this table cannot supply the criterion.",
+      "source_sha256": "a3c589422843a98d4f353f416943817c1abc39ad2347e3c0c69c7ec12b33b2c8",
+      "translation": "पहला मेल खाने वाला माप-स्तंभ नाम, या ``None`` जब यह तालिका मानदंड प्रदान नहीं कर सकती।"
+    },
+    {
+      "context": "Format the per-criterion outlier report for processing-session output.",
+      "label": "spacr.outlier_filter.describe#0",
+      "source": "Format the per-criterion outlier report for run output.",
+      "source_sha256": "3f929332d967d80c45a0cadf344fadbc85ca07821ebd5b2ce323360aa9fb7696",
+      "translation": "रन output के लिए प्रति-मानदंड outlier रिपोर्ट format करता है।"
+    },
+    {
+      "context": "per-criterion records returned by :func:`apply`.",
+      "label": "spacr.outlier_filter.describe#1",
+      "source": "per-criterion records returned by :func:`apply`.",
+      "source_sha256": "0ab2c995cf6a34fde94d9dd701025d7cb516e14754e85d26ebd535d7c2030764",
+      "translation": ":func:`apply` द्वारा लौटाए गए प्रति-मानदंड records।"
+    },
+    {
+      "context": "multiline run summary, or ``\"\"`` for an empty report.",
+      "label": "spacr.outlier_filter.describe#2",
+      "source": "multiline run summary, or ``\"\"`` for an empty report.",
+      "source_sha256": "f9893585c520c640a69028f00c871ce2e4f7e7e8bda52cd781c80f37d3b0ddf1",
+      "translation": "बहु-पंक्ति रन सारांश, या खाली रिपोर्ट के लिए ``\"\"``।"
+    },
+    {
+      "context": "Identify values beyond a scaled-MAD threshold.",
+      "label": "spacr.outlier_filter.outliers#0",
+      "source": "Identify values beyond a scaled-MAD threshold.",
+      "source_sha256": "43b03f19fe43a623bf7dfe74ab9f09c1c2160c8d5b855eca1f9546065a9c4013",
+      "translation": "scaled-MAD threshold से परे के मानों की पहचान करता है।"
+    },
+    {
+      "context": "values : array-like Values to evaluate. Non-numeric and non-finite values are not flagged. mads : float, default=DEFAULT_MADS Distance from the median in robust sigma units, computed as ``1.4826 * MAD``. Nonpositive or non-finite values disable detection.",
+      "label": "spacr.outlier_filter.outliers#2",
+      "source": "values : array-like Values to evaluate. Non-numeric and non-finite values are not flagged. mads : float, default=DEFAULT_MADS Distance from the median in robust sigma units, computed as ``1.4826 * MAD``. Nonpositive or non-finite values disable detection.",
+      "source_sha256": "33738985f988b94f15073cd9c5f9e367c5ea6212202bbc528218e6c5743dc3df",
+      "translation": "values : array-like मूल्यांकन किए जाने वाले मान। non-numeric और non-finite मान चिह्नित नहीं किए जाते। mads : float, default=DEFAULT_MADS robust sigma इकाइयों में माध्यिका से दूरी, ``1.4826 * MAD`` के रूप में गणना की गई। अधनात्मक या non-finite मान पहचान को निष्क्रिय करते हैं।"
+    },
+    {
+      "context": "numpy.ndarray Boolean outlier mask. Fewer than three finite values or a zero MAD produces an all-false mask.",
+      "label": "spacr.outlier_filter.outliers#4",
+      "source": "numpy.ndarray Boolean outlier mask. Fewer than three finite values or a zero MAD produces an all-false mask.",
+      "source_sha256": "5efdf4ade0bc5e0b356d3b76628cc8c3bfa263264d7cdbde1898e6a4e8e54983",
+      "translation": "numpy.ndarray boolean outlier mask। तीन से कम finite मान या शून्य MAD होने पर पूरी तरह false mask बनता है।"
+    },
+    {
+      "context": "Resolve extracted image region records stored in the ``png_list`` database table.",
+      "label": "spacr.png_list#0",
+      "source": "Resolve crop records stored in the ``png_list`` database table.",
+      "source_sha256": "ef3832313081bf9177b1fc17509d76264bfed8691b43188d4170997dce337ea2",
+      "translation": "``png_list`` database तालिका में संग्रहीत crop records को हल करता है।"
+    },
+    {
+      "context": "The public helper joins ``png_list`` rows to measurement-table locations so the corresponding object can be cut from ``merged/*.npy``. This lightweight module avoids importing segmentation or model dependencies; :mod:`spacr.io` re-exports the helper for compatibility.",
+      "label": "spacr.png_list#1",
+      "source": "The public helper joins ``png_list`` rows to measurement-table locations so the corresponding object can be cut from ``merged/*.npy``. This lightweight module avoids importing segmentation or model dependencies; :mod:`spacr.io` re-exports the helper for compatibility.",
+      "source_sha256": "6fe92bf81078f789ce571c54100096ff8dbc3a5362305b73a61a5316325bfcdb",
+      "translation": "public helper ``png_list`` पंक्तियों को measurement-table स्थानों से जोड़ता है ताकि संबंधित object को ``merged/*.npy`` से काटा जा सके। यह हल्का मॉड्यूल segmentation या मॉडल निर्भरताओं को import करने से बचता है; :mod:`spacr.io` संगतता के लिए helper को फिर से export करता है।"
+    },
+    {
+      "context": "Add the locations and labels required to cut ``png_list`` objects.",
+      "label": "spacr.png_list.crop_rows_from_png_list#0",
+      "source": "Add the locations and labels required to cut ``png_list`` objects.",
+      "source_sha256": "ba2f661dfcb1697dedb61cda880e10807156864f00e79c91835871cb05433d36",
+      "translation": "``png_list`` objects को काटने के लिए आवश्यक स्थान और labels जोड़ता है।"
+    },
+    {
+      "context": "``png_list`` records where an extracted image region was *written* and which object it came from (``<object>_id``), but not which merged array produced it. This joins the object table on laboratory microplate/row/column/microscope field of view to recover ``path_name``, and turns ``'o12'`` into ``12``.",
+      "label": "spacr.png_list.crop_rows_from_png_list#1",
+      "source": "``png_list`` records where a crop was *written* and which object it came from (``<object>_id``), but not which merged array produced it. This joins the object table on plate/row/column/field to recover ``path_name``, and turns ``'o12'`` into ``12``.",
+      "source_sha256": "e14aecd247909b04a7a8546d07e9fc6310e40eeef1e6cd67c666df387d232aa7",
+      "translation": "``png_list`` दर्ज करता है कि crop कहाँ *लिखा* गया और वह किस object से आया (``<object>_id``), लेकिन यह नहीं कि किस merged array ने उसे बनाया। यह object तालिका को plate/row/column/field पर जोड़कर ``path_name`` प्राप्त करता है, और ``'o12'`` को ``12`` में बदलता है।"
+    },
+    {
+      "context": "Rows whose object id is ``'omulti'`` / ``'onone'`` (an extracted image region overlapping several objects or none) cannot be cut from a single label and are dropped, with a count, rather than silently producing the wrong object.",
+      "label": "spacr.png_list.crop_rows_from_png_list#2",
+      "source": "Rows whose object id is ``'omulti'`` / ``'onone'`` (a crop overlapping several objects or none) cannot be cut from a single label and are dropped, with a count, rather than silently producing the wrong object.",
+      "source_sha256": "2a5d287705062bc8965015f008511792e9c7059d0213386a2cf712cc411a8759",
+      "translation": "जिन पंक्तियों का object id ``'omulti'`` / ``'onone'`` है (कई objects या किसी से भी overlap न करने वाला crop) उन्हें एकल label से नहीं काटा जा सकता और चुपचाप ग़लत object बनाने के बजाय, गिनती के साथ, हटा दिया जाता है।"
+    },
+    {
+      "context": "path to the ``measurements.db`` that contains ``png_df``.",
+      "label": "spacr.png_list.crop_rows_from_png_list#3",
+      "source": "path to the ``measurements.db`` that contains ``png_df``.",
+      "source_sha256": "c97ad6652f74ee42515c27fa6cc5e9d3367c378da678b517e033f17604a00130",
+      "translation": "``measurements.db`` का पथ, जिसमें ``png_df`` है।"
+    },
+    {
+      "context": "rows read from ``png_list`` or a compatible object table.",
+      "label": "spacr.png_list.crop_rows_from_png_list#4",
+      "source": "rows read from ``png_list`` or a compatible object table.",
+      "source_sha256": "daa9418c8197407136cdafbf4d535362e3b13ec801e28a842043a1e43b45bd06",
+      "translation": "``png_list`` या संगत object तालिका से पढ़ी गई पंक्तियाँ।"
+    },
+    {
+      "context": "extracted-image-region mode used to select the object-id column. The default is ``'cell'``; supported names are the structured-data names of :data:`PNG_LIST_ID_COLUMNS`.",
+      "label": "spacr.png_list.crop_rows_from_png_list#5",
+      "source": "crop mode used to select the object-id column. The default is ``'cell'``; supported names are the keys of :data:`PNG_LIST_ID_COLUMNS`.",
+      "source_sha256": "c80807c7278b9408833925153e7ff0555f9871dc8f940a029707d451943042f4",
+      "translation": "object-id स्तंभ चुनने के लिए उपयोग किया जाने वाला crop mode। डिफ़ॉल्ट ``'cell'`` है; समर्थित नाम :data:`PNG_LIST_ID_COLUMNS` की keys हैं।"
+    },
+    {
+      "context": "print the number of unusable rows when ``True``.",
+      "label": "spacr.png_list.crop_rows_from_png_list#6",
+      "source": "print the number of unusable rows when ``True``.",
+      "source_sha256": "ced3e30b9140ee9864498bd210106936e600174abddf4dc5191e2cc4624f8f5d",
+      "translation": "``True`` होने पर अनुपयोगी पंक्तियों की संख्या print करता है।"
+    },
+    {
+      "context": "a copy of ``png_df`` with ``path_name``, ``object_label``, ``object_type`` and ``object_label_type`` columns, minus the rows that cannot be cut. ``object_type`` is what was asked for and is what the extracted image region cutter reads to choose a mask image layer; ``object_label_type`` is which object's labels were actually available, and the two differ when a png_list written for one extracted-image-region mode is read for another.",
+      "label": "spacr.png_list.crop_rows_from_png_list#7",
+      "source": "a copy of ``png_df`` with ``path_name``, ``object_label``, ``object_type`` and ``object_label_type`` columns, minus the rows that cannot be cut. ``object_type`` is what was asked for and is what the crop cutter reads to choose a mask plane; ``object_label_type`` is which object's labels were actually available, and the two differ when a png_list written for one crop mode is read for another.",
+      "source_sha256": "75fcee756eeabaaa9d2b976a6756574d51b9ef25d8fab442ac1e115d3fd7ca7a",
+      "translation": "``png_df`` की एक प्रति जिसमें ``path_name``, ``object_label``, ``object_type`` और ``object_label_type`` स्तंभ हैं, न काटी जा सकने वाली पंक्तियों के बिना। ``object_type`` वह है जो माँगा गया और जिसे crop cutter mask plane चुनने के लिए पढ़ता है; ``object_label_type`` बताता है कि वास्तव में किस object के labels उपलब्ध थे, और दोनों तब भिन्न होते हैं जब एक crop mode के लिए लिखी गई png_list दूसरे के लिए पढ़ी जाती है।"
+    },
+    {
+      "context": "if ``object_type`` is unsupported, or if its ID column is absent while multiple other object-ID columns make fallback ambiguous.",
+      "label": "spacr.png_list.crop_rows_from_png_list#8",
+      "source": "if ``object_type`` is unsupported, or if its ID column is absent while multiple other object-ID columns make fallback ambiguous.",
+      "source_sha256": "8c03003db283db3762624391d4608b341bf7df06efea695d16289affadac0db2",
+      "translation": "यदि ``object_type`` असमर्थित है, या उसका ID स्तंभ अनुपस्थित है जबकि कई अन्य object-ID स्तंभ fallback को अस्पष्ट बनाते हैं।"
+    },
+    {
+      "context": "Describe and group the statistical assumptions of regression families.",
+      "label": "spacr.regression_families#0",
+      "source": "Describe and group the statistical assumptions of regression families.",
+      "source_sha256": "9ede0518815032fb1998d0ce81ebdc398ad569294ebf2ec89601d2df4966fe79",
+      "translation": "regression families की सांख्यिकीय मान्यताओं का वर्णन और समूहीकरण करता है।"
+    },
+    {
+      "context": "The available families are organized into three methodological groups:",
+      "label": "spacr.regression_families#1",
+      "source": "The available families are organized into three methodological groups:",
+      "source_sha256": "2cf71dd4f44c5b357e4cd665dd2703d5d006af0ed666d1f4c96c62cc2b14c142",
+      "translation": "उपलब्ध families को तीन पद्धतिगत समूहों में व्यवस्थित किया गया है:"
+    },
+    {
+      "context": "Distribution-free inference is independent of these effect-estimation groups. Any coefficient-producing family can be paired with a permutation null. The stored regression-type values are retained for settings-file compatibility.",
+      "label": "spacr.regression_families#3",
+      "source": "Distribution-free inference is independent of these effect-estimation groups. Any coefficient-producing family can be paired with a permutation null. The stored regression-type values are retained for settings-file compatibility.",
+      "source_sha256": "d5fc4d7e0ddd9b15b1a851c736bba055683bbd45883cfc9b706b918183fb8db7",
+      "translation": "distribution-free inference इन effect-estimation समूहों से स्वतंत्र है। coefficient देने वाली किसी भी family को permutation null के साथ जोड़ा जा सकता है। संग्रहीत regression-type मान settings-फ़ाइल संगतता के लिए बनाए रखे जाते हैं।"
+    },
+    {
+      "context": "Which of the three kinds a family is.",
+      "label": "spacr.regression_families.family_group#0",
+      "source": "Which of the three kinds a family is.",
+      "source_sha256": "c9b8cdb3828627202c1fe4e2105f53e62ef32dec2006ea2cc96a01811cd18952",
+      "translation": "कोई family तीन प्रकारों में से किस प्रकार की है।"
+    },
+    {
+      "context": "a stored ``regression_type`` value.",
+      "label": "spacr.regression_families.family_group#1",
+      "source": "a stored ``regression_type`` value.",
+      "source_sha256": "20fc61023940372d4f1c8e5211a0a40e56f097dacd032e3af9595c804416cfc1",
+      "translation": "एक संग्रहीत ``regression_type`` मान।"
+    },
+    {
+      "context": "a family this table does not place, which means the family inventory was extended without updating this table.",
+      "label": "spacr.regression_families.family_group#3",
+      "source": "a family this table does not place, which means the family inventory was extended without updating this table.",
+      "source_sha256": "48f5ea46fb8b4dbf850f7d9c7c2a8825b929747ffb032ff297fd1faef537d597",
+      "translation": "ऐसी family जिसे यह तालिका स्थान नहीं देती, जिसका अर्थ है कि family सूची को इस तालिका को अद्यतन किए बिना बढ़ाया गया।"
+    },
+    {
+      "context": "The one line a dropdown shows for a family: its kind and its assumption.",
+      "label": "spacr.regression_families.family_label#0",
+      "source": "The one line a dropdown shows for a family: its kind and its assumption.",
+      "source_sha256": "8afbef4819725da4b775eab94feb74b3b2161e8b5876a3d3e3f3f5bae2837161",
+      "translation": "वह एक पंक्ति जो dropdown किसी family के लिए दिखाता है: उसका प्रकार और उसकी मान्यता।"
+    },
+    {
+      "context": "stored regression-family value to label.",
+      "label": "spacr.regression_families.family_label#1",
+      "source": "stored regression-family value to label.",
+      "source_sha256": "6a352398721bf2549471630e10a4f0b20a96a3fe5cdba8ed1692272f245b1ea2",
+      "translation": "label दिया जाने वाला संग्रहीत regression-family मान।"
+    },
+    {
+      "context": "the stored value, family-group title, and statistical assumption as one menu label.",
+      "label": "spacr.regression_families.family_label#2",
+      "source": "the stored value, family-group title, and statistical assumption as one menu label.",
+      "source_sha256": "351c579b082f627c674ba2b6fcb7001156e10e24548362d481021dd081a40c7e",
+      "translation": "संग्रहीत मान, family-समूह शीर्षक और सांख्यिकीय मान्यता, एक menu label के रूप में।"
+    },
+    {
+      "context": "if ``name`` has no registered assumption or family group.",
+      "label": "spacr.regression_families.family_label#3",
+      "source": "if ``name`` has no registered assumption or family group.",
+      "source_sha256": "6ee40ba406247d71c1743ab802c95048bcb53c335dae2dafa7effcff4cef8172",
+      "translation": "यदि ``name`` की कोई पंजीकृत मान्यता या family समूह नहीं है।"
+    },
+    {
+      "context": "The stored value leads, because that is what a user is looking for and what every settings file and results folder is named after.",
+      "label": "spacr.regression_families.family_label#4",
+      "source": "The stored value leads, because that is what a user is looking for and what every settings file and results folder is named after.",
+      "source_sha256": "ba166a08aef709c8d9ee4c892f94a53b348070f10e0ea0950f6b535ba9bf8be8",
+      "translation": "संग्रहीत मान पहले आता है, क्योंकि उपयोगकर्ता वही खोज रहा होता है और हर settings फ़ाइल और results फ़ोल्डर का नाम उसी पर होता है।"
+    },
+    {
+      "context": "Every fittable family as ``(stored value, label)``, grouped.",
+      "label": "spacr.regression_families.regression_family_choices#0",
+      "source": "Every fittable family as ``(stored value, label)``, grouped.",
+      "source_sha256": "8c5bc9e1fc0896701940fd65b59a78159ab422d189115227d90648483fc9e12b",
+      "translation": "हर fit-योग्य family ``(stored value, label)`` के रूप में, समूहित।"
+    },
+    {
+      "context": "Parametric first, then robust/semiparametric, then rank-based; the stored value is unchanged, so a panel that renders these writes exactly what it wrote before and every settings file already on disk still means what it meant.",
+      "label": "spacr.regression_families.regression_family_choices#1",
+      "source": "Parametric first, then robust/semiparametric, then rank-based; the stored value is unchanged, so a panel that renders these writes exactly what it wrote before and every settings file already on disk still means what it meant.",
+      "source_sha256": "b5df614fa6f713ab00d2497612f290c19fafc509bdf987073504e753c407453a",
+      "translation": "पहले parametric, फिर robust/semiparametric, फिर rank-based; संग्रहीत मान अपरिवर्तित है, इसलिए इन्हें render करने वाला panel ठीक वही लिखता है जो पहले लिखता था और disk पर पहले से मौजूद हर settings फ़ाइल का अब भी वही अर्थ है जो पहले था।"
+    },
+    {
+      "context": "ordered ``(stored value, label)`` pairs for every fittable regression family.",
+      "label": "spacr.regression_families.regression_family_choices#2",
+      "source": "ordered ``(stored value, label)`` pairs for every fittable regression family.",
+      "source_sha256": "533e97b9f81ee3bfac7353ef12d9f66c0d9fe2181f28aaa7e47abc53e1bc8efd",
+      "translation": "हर fit-योग्य regression family के लिए क्रमबद्ध ``(stored value, label)`` जोड़े।"
+    },
+    {
+      "context": "Publication panel packages for regression and permutation results.",
+      "label": "spacr.regression_panels#0",
+      "source": "Publication panel packages for regression and permutation results.",
+      "source_sha256": "17761e2f1eb4730b68d295d7d3a1cb432652226da15a836077f7b2ebb21c2874",
+      "translation": "regression और permutation परिणामों के लिए प्रकाशन panel packages।"
+    },
+    {
+      "context": "One call writes exactly four files for one manuscript panel: a vector PDF with its narrative legend, a plot-only PNG, a point-level data CSV, and a key-value statistics CSV.  The numerical result table remains the source of truth; this module only applies a declared call rule and renders it.",
+      "label": "spacr.regression_panels#1",
+      "source": "One call writes exactly four files for one manuscript panel: a vector PDF with its narrative legend, a plot-only PNG, a point-level data CSV, and a key-value statistics CSV.  The numerical result table remains the source of truth; this module only applies a declared call rule and renders it.",
+      "source_sha256": "697b6d99e2825824891acec7e753cf02bde003437d5ea41f48771ebad38ac34c",
+      "translation": "एक कॉल एक manuscript panel के लिए ठीक चार फ़ाइलें लिखती है: अपने वर्णनात्मक legend के साथ एक vector PDF, केवल-plot PNG, बिंदु-स्तरीय डेटा CSV, और key-value आँकड़े CSV।  संख्यात्मक परिणाम तालिका ही सत्य का स्रोत रहती है; यह मॉड्यूल केवल एक घोषित call नियम लागू करता है और उसे render करता है।"
+    },
+    {
+      "context": "Text placed below a panel in its PDF deliverable.",
+      "label": "spacr.regression_panels.PanelNarrative#0",
+      "source": "Text placed below a panel in its PDF deliverable.",
+      "source_sha256": "48f49aa94c43f3b123cb3e01f474f16319eb2ca0dcc0601d8646d619138ccd9e",
+      "translation": "PDF deliverable में किसी panel के नीचे रखा गया पाठ।"
+    },
+    {
+      "context": "legend : str Panel-specific opening of the legend. The writer appends the shared palette and statistical-threshold explanations. purpose : str Scientific question or comparison the panel was designed to address. shows : str Direct visual result a reader should be able to find in the panel. implications : str Interpretation supported by the displayed data, kept distinct from the observation in ``shows``.",
+      "label": "spacr.regression_panels.PanelNarrative#2",
+      "source": "legend : str Panel-specific opening of the legend. The writer appends the shared palette and statistical-threshold explanations. purpose : str Scientific question or comparison the panel was designed to address. shows : str Direct visual result a reader should be able to find in the panel. implications : str Interpretation supported by the displayed data, kept distinct from the observation in ``shows``.",
+      "source_sha256": "a50e2771bfe92c0dd886830439b028a0794d6f1d37facc95c3a12581f128964f",
+      "translation": "legend : str legend की panel-विशिष्ट शुरुआत। लेखक साझा palette और सांख्यिकीय-threshold व्याख्याएँ जोड़ता है। purpose : str वह वैज्ञानिक प्रश्न या तुलना जिसे संबोधित करने के लिए panel बनाया गया था। shows : str प्रत्यक्ष दृश्य परिणाम जिसे पाठक panel में खोज सके। implications : str प्रदर्शित डेटा द्वारा समर्थित व्याख्या, जिसे ``shows`` के अवलोकन से अलग रखा गया है।"
+    },
+    {
+      "context": "Visual settings shared by all manuscript panels.",
+      "label": "spacr.regression_panels.PanelStyle#0",
+      "source": "Visual settings shared by all manuscript panels.",
+      "source_sha256": "eb37bb4671a3cf9ec5ab63219cdc6c773239ff6b48cd784a3c3be116bb7a11cf",
+      "translation": "सभी manuscript panels द्वारा साझा दृश्य settings।"
+    },
+    {
+      "context": "point_size : float Scatter-marker area in squared typographic points; must be positive. point_alpha : float Marker and box opacity in the interval ``(0, 1]``. line_width : float Width in points for threshold lines, spines, ticks, and box outlines. line_color : str Matplotlib-compatible color for those lines and outlines. figure_width : float Width in inches shared by raster, vector, and PDF deliverables. plot_height : float Height in inches of the standalone PNG and SVG plot canvas. pdf_height : float Height in inches of the PDF page containing plot and narrative text. png_dpi : int Raster resolution in dots per inch used for the PNG deliverable. axes_left : float Left edge of the plotting axes in normalized figure coordinates. axes_width : float Width of the plotting axes as a fraction of the figure width. pdf_axes_bottom : float Bottom edge of the PDF plotting axes in normalized figure coordinates. pdf_axes_height : float Height of the PDF plotting axes as a fraction of the page height.",
+      "label": "spacr.regression_panels.PanelStyle#2",
+      "source": "point_size : float Scatter-marker area in squared typographic points; must be positive. point_alpha : float Marker and box opacity in the interval ``(0, 1]``. line_width : float Width in points for threshold lines, spines, ticks, and box outlines. line_color : str Matplotlib-compatible color for those lines and outlines. figure_width : float Width in inches shared by raster, vector, and PDF deliverables. plot_height : float Height in inches of the standalone PNG and SVG plot canvas. pdf_height : float Height in inches of the PDF page containing plot and narrative text. png_dpi : int Raster resolution in dots per inch used for the PNG deliverable. axes_left : float Left edge of the plotting axes in normalized figure coordinates. axes_width : float Width of the plotting axes as a fraction of the figure width. pdf_axes_bottom : float Bottom edge of the PDF plotting axes in normalized figure coordinates. pdf_axes_height : float Height of the PDF plotting axes as a fraction of the page height.",
+      "source_sha256": "41bf2cc7d40836271d8e3f990101eb3da1b117376c9e7ce78146dda6ca939fe4",
+      "translation": "point_size : float squared typographic points में scatter-marker क्षेत्रफल; धनात्मक होना चाहिए। point_alpha : float अंतराल ``(0, 1]`` में marker और box की अपारदर्शिता। line_width : float threshold रेखाओं, spines, ticks और box outlines की points में चौड़ाई। line_color : str उन रेखाओं और outlines के लिए Matplotlib-संगत रंग। figure_width : float raster, vector और PDF deliverables द्वारा साझा inches में चौड़ाई। plot_height : float स्वतंत्र PNG और SVG plot canvas की inches में ऊँचाई। pdf_height : float plot और वर्णनात्मक पाठ वाले PDF पृष्ठ की inches में ऊँचाई। png_dpi : int PNG deliverable के लिए dots per inch में raster resolution। axes_left : float सामान्यीकृत figure निर्देशांकों में plotting axes का बायाँ किनारा। axes_width : float figure चौड़ाई के अंश के रूप में plotting axes की चौड़ाई। pdf_axes_bottom : float सामान्यीकृत figure निर्देशांकों में PDF plotting axes का निचला किनारा। pdf_axes_height : float पृष्ठ ऊँचाई के अंश के रूप में PDF plotting axes की ऊँचाई।"
+    },
+    {
+      "context": "Attach the common BH-plus-positive-gRNA-cut call fields.",
+      "label": "spacr.regression_panels.apply_primary_call#0",
+      "source": "Attach the common BH-plus-positive-gRNA-cut call fields.",
+      "source_sha256": "51032660980adc68ffee7568ecae590ba5627265c7634c2e7079982394ff41cc",
+      "translation": "सामान्य BH-plus-positive-gRNA-cut call fields जोड़ता है।"
+    },
+    {
+      "context": "Validate a declared run manifest, then write every panel and figure.",
+      "label": "spacr.regression_panels.build_manifest_packages#0",
+      "source": "Validate a declared run manifest, then write every panel and figure.",
+      "source_sha256": "6af6f172576f61be4943fe6b7b703e8bb5d1d019f4ead1b9695efb2a4b9a055b",
+      "translation": "एक घोषित run manifest को मान्य करता है, फिर हर panel और figure लिखता है।"
+    },
+    {
+      "context": "Compose one vector page and transform every URI link rectangle.",
+      "label": "spacr.regression_panels.compose_vector_figure#0",
+      "source": "Compose one vector page and transform every URI link rectangle.",
+      "source_sha256": "62339a002e41c1fd72f664a2c975e85e1e9998ab20a9be1b35a1a59f78d22391",
+      "translation": "एक vector पृष्ठ compose करता है और हर URI link आयत को transform करता है।"
+    },
+    {
+      "context": "Return arithmetic mean + ``multiplier`` sample SD of NT gRNAs.",
+      "label": "spacr.regression_panels.guide_control_threshold#0",
+      "source": "Return arithmetic mean + ``multiplier`` sample SD of NT gRNAs.",
+      "source_sha256": "6d380eb87b5406607dad10fa1e34ce4150c8ea9c3c752131b50fd61d5779a23a",
+      "translation": "NT gRNAs का अंकगणितीय माध्य + ``multiplier`` sample SD लौटाता है।"
+    },
+    {
+      "context": "Return finite padded limits shared by a set of matched panels.",
+      "label": "spacr.regression_panels.shared_limits#0",
+      "source": "Return finite padded limits shared by a set of matched panels.",
+      "source_sha256": "c3f1013551062527b2672d3c6c923dfe16df40c2bc5412572f98f73e7909cda4",
+      "translation": "मेल खाते panels के किसी set द्वारा साझा finite, padding वाली सीमाएँ लौटाता है।"
+    },
+    {
+      "context": "Write one deterministic box-and-jitter four-file panel package.",
+      "label": "spacr.regression_panels.write_box_jitter_package#0",
+      "source": "Write one deterministic box-and-jitter four-file panel package.",
+      "source_sha256": "3bf217b72aee585433ba56c06f012fb473644aa5e73368e48221fc9f70ff743a",
+      "translation": "एक नियतात्मक box-and-jitter चार-फ़ाइल panel package लिखता है।"
+    },
+    {
+      "context": "Write the PDF, PNG, stats CSV, and plotted-data CSV for one panel.",
+      "label": "spacr.regression_panels.write_panel_package#0",
+      "source": "Write the PDF, PNG, stats CSV, and plotted-data CSV for one panel.",
+      "source_sha256": "2e46b1a5d55dec400fffb1f6cf5f6458d33b86a9077f818f9f679c215efcfc5c",
+      "translation": "एक panel के लिए PDF, PNG, stats CSV और plotted-data CSV लिखता है।"
+    },
+    {
+      "context": "General row-exclusion rules shared by UMAP and its parameter search.",
+      "label": "spacr.row_exclusions#0",
+      "source": "General row-exclusion rules shared by UMAP and its parameter search.",
+      "source_sha256": "5205ad3dcf4ca138f54c142227168b6a324d653fcc8d107989380a580225b1f4",
+      "translation": "UMAP और उसकी parameter खोज द्वारा साझा सामान्य पंक्ति-exclusion नियम।"
+    },
+    {
+      "context": "Drop rows matching any configured column/value rule.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#0",
+      "source": "Drop rows matching any configured column/value rule.",
+      "source_sha256": "9ae32a1fd377abb1a5dfea71622da4f0f4b24303f05f7ec27f096689d37674a5",
+      "translation": "किसी भी configured column/value नियम से मेल खाने वाली पंक्तियाँ हटाता है।"
+    },
+    {
+      "context": "table whose rows should be filtered.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#1",
+      "source": "table whose rows should be filtered.",
+      "source_sha256": "bdff5ab93cf90dfcbba0084d43dd3971b782b411289b9240a127453b4d9b31f5",
+      "translation": "वह तालिका जिसकी पंक्तियाँ filter की जानी हैं।"
+    },
+    {
+      "context": "mapping or serialized row-exclusion rules.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#2",
+      "source": "mapping or serialized row-exclusion rules.",
+      "source_sha256": "c11a26a8187a0cfec7650a9a96a27605b570b4016d3f20fd348448952ebe56bc",
+      "translation": "mapping या serialized पंक्ति-exclusion नियम।"
+    },
+    {
+      "context": "Values are compared both in their native dtype and as stripped strings. This lets a value selected from SQLite text match the equivalent pandas numeric value without changing identifiers such as ``\"001\"``.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#3",
+      "source": "Values are compared both in their native dtype and as stripped strings. This lets a value selected from SQLite text match the equivalent pandas numeric value without changing identifiers such as ``\"001\"``.",
+      "source_sha256": "b3c9327a76d73f6232addb2a9cb40f2af7619cdbb99cb4558190bc35f7726698",
+      "translation": "मानों की तुलना उनके मूल dtype में और stripped strings के रूप में, दोनों तरह की जाती है। इससे SQLite text से चुना गया मान समतुल्य pandas संख्यात्मक मान से मेल खा सकता है, ``\"001\"`` जैसे पहचानकर्ताओं को बदले बिना।"
+    },
+    {
+      "context": "``(filtered_frame, notes)``. Each note names the column, values, and number of rows removed.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#4",
+      "source": "``(filtered_frame, notes)``. Each note names the column, values, and number of rows removed.",
+      "source_sha256": "e6012fbb3b0abf575ef1811eea4f394591b1a06bfc944d30cbd04a9658905350",
+      "translation": "``(filtered_frame, notes)``। हर टिप्पणी स्तंभ, मान और हटाई गई पंक्तियों की संख्या बताती है।"
+    },
+    {
+      "context": "for unknown columns or rules that remove every row.",
+      "label": "spacr.row_exclusions.exclude_matching_rows#5",
+      "source": "for unknown columns or rules that remove every row.",
+      "source_sha256": "e51f4ed36296a05d5f042f67d1cc65a78aafc97f0275afe745a4445aad27d3d1",
+      "translation": "अज्ञात स्तंभों या हर पंक्ति हटाने वाले नियमों के लिए।"
+    },
+    {
+      "context": "Return ``{column: [values...]}`` from settings or CSV text.",
+      "label": "spacr.row_exclusions.normalize_row_exclusions#0",
+      "source": "Return ``{column: [values...]}`` from settings or CSV text.",
+      "source_sha256": "64b32dcef3b225e47213e6c017bae88b26c393f8057a9dd3c4780cbabc51ebf7",
+      "translation": "settings या CSV पाठ से ``{column: [values...]}`` लौटाता है।"
+    },
+    {
+      "context": "mapping or serialized mapping of columns to excluded values.",
+      "label": "spacr.row_exclusions.normalize_row_exclusions#1",
+      "source": "mapping or serialized mapping of columns to excluded values.",
+      "source_sha256": "98b679cb9ba6742b0b7483f9dc69bdfd3d373b5fab319419be9e403f2adc9c83",
+      "translation": "स्तंभों से बाहर रखे गए मानों तक mapping, या serialized mapping।"
+    },
+    {
+      "context": "``None`` and an empty value mean no exclusions. A scalar value is accepted as a one-item list so hand-written settings remain convenient.",
+      "label": "spacr.row_exclusions.normalize_row_exclusions#2",
+      "source": "``None`` and an empty value mean no exclusions. A scalar value is accepted as a one-item list so hand-written settings remain convenient.",
+      "source_sha256": "00958f462043902cec1df0950798621ca53cd4596678bc5ffe9000a349f5e967",
+      "translation": "``None`` और खाली मान का अर्थ है कोई exclusion नहीं। एक scalar मान को एक-item सूची के रूप में स्वीकार किया जाता है ताकि हाथ से लिखी settings सुविधाजनक रहें।"
+    },
+    {
+      "context": "stripped column names mapped to ordered, deduplicated values.",
+      "label": "spacr.row_exclusions.normalize_row_exclusions#3",
+      "source": "stripped column names mapped to ordered, deduplicated values.",
+      "source_sha256": "232616af794b688ba3f43dd6a2423b6ab5be82f33a59f8f80df04c34925ec50f",
+      "translation": "stripped स्तंभ नाम, क्रमबद्ध और दोहराव-रहित मानों से mapped।"
+    },
+    {
+      "context": "when a nonempty value cannot be parsed as a mapping.",
+      "label": "spacr.row_exclusions.normalize_row_exclusions#4",
+      "source": "when a nonempty value cannot be parsed as a mapping.",
+      "source_sha256": "b4bc05b28a800d85d69b25a95689474d526949e1ca48fc85fa99e4928a3f5255",
+      "translation": "जब किसी गैर-रिक्त मान को mapping के रूप में parse न किया जा सके।"
+    },
+    {
+      "context": "Generate reproducible recommendations from regression diagnostics.",
+      "label": "spacr.run_recommendations#0",
+      "source": "Generate reproducible recommendations from regression diagnostics.",
+      "source_sha256": "348a476c7fbb64fa6f869b5764dce75936e0ba65a138b72e6438ed4ae38c3c2b",
+      "translation": "regression निदान से पुनरुत्पादनीय सिफ़ारिशें बनाता है।"
+    },
+    {
+      "context": "Each recommendation is a fixed rule triggered by a measured threshold. The result names the setting to change, the proposed action, the evidence that triggered it, and whether the issue blocks interpretation. Rules that do not fire are omitted, so the summary contains only actions supported by the current processing session.",
+      "label": "spacr.run_recommendations#1",
+      "source": "Each recommendation is a fixed rule triggered by a measured threshold. The result names the setting to change, the proposed action, the evidence that triggered it, and whether the issue blocks interpretation. Rules that do not fire are omitted, so the summary contains only actions supported by the current run.",
+      "source_sha256": "7011536ea8e650a61c05f27c945b62692b96e1818353bcb3d99be52003259617",
+      "translation": "हर सिफ़ारिश एक स्थिर नियम है जो किसी मापी गई threshold से सक्रिय होता है। परिणाम बदलने वाली setting, प्रस्तावित कार्रवाई, उसे सक्रिय करने वाला प्रमाण, और यह बताता है कि क्या समस्या व्याख्या को अवरुद्ध करती है। जो नियम सक्रिय नहीं होते वे छोड़ दिए जाते हैं, इसलिए सारांश में केवल वर्तमान रन द्वारा समर्थित कार्रवाइयाँ होती हैं।"
+    },
+    {
+      "context": "One thing to change, why, and how strongly.",
+      "label": "spacr.run_recommendations.Recommendation#0",
+      "source": "One thing to change, why, and how strongly.",
+      "source_sha256": "bdaf0d8358f9843a5495aabb67606970e69b9828a69e32ab996ac83466863025",
+      "translation": "बदलने के लिए एक चीज़, क्यों, और कितनी दृढ़ता से।"
+    },
+    {
+      "context": "spaCR setting name the recommendation proposes changing.",
+      "label": "spacr.run_recommendations.Recommendation#1",
+      "source": "spaCR setting key the recommendation proposes changing.",
+      "source_sha256": "9aaba580fc29d39e0d12502f4f1ef0f693d84536783dac89ca3e91146fd073e3",
+      "translation": "spaCR setting key जिसे बदलने का प्रस्ताव सिफ़ारिश करती है।"
+    },
+    {
+      "context": "easy-to-read proposed value or action; it is display prose and is not applied automatically.",
+      "label": "spacr.run_recommendations.Recommendation#2",
+      "source": "human-readable proposed value or action; it is display prose and is not applied automatically.",
+      "source_sha256": "091e8b51fc50855e8158a7e916443ff327d790c3fb89d37cb6a6933d082c1cb9",
+      "translation": "मानव-पठनीय प्रस्तावित मान या कार्रवाई; यह प्रदर्शन के लिए गद्य है और स्वचालित रूप से लागू नहीं होता।"
+    },
+    {
+      "context": "measured evidence explaining why the recommendation fired.",
+      "label": "spacr.run_recommendations.Recommendation#3",
+      "source": "measured evidence explaining why the recommendation fired.",
+      "source_sha256": "22f665d33ade45c697ab6efbc254820077ce09bff96a1eb08e9b1310e9a0a061",
+      "translation": "मापा गया प्रमाण जो बताता है कि सिफ़ारिश क्यों सक्रिय हुई।"
+    },
+    {
+      "context": "``\"blocking\"`` for a result that should not be trusted until addressed; ``\"consider\"`` by default, with every other value rendered as advisory.",
+      "label": "spacr.run_recommendations.Recommendation#4",
+      "source": "``\"blocking\"`` for a result that should not be trusted until addressed; ``\"consider\"`` by default, with every other value rendered as advisory.",
+      "source_sha256": "900e4ec7f479c8ea20a3c41d92faf7a19f519b1d02257c5428662b2873fe0104",
+      "translation": "``\"blocking\"`` ऐसे परिणाम के लिए जिस पर समाधान होने तक भरोसा नहीं करना चाहिए; डिफ़ॉल्ट रूप से ``\"consider\"``, और हर अन्य मान सलाह के रूप में दिखाया जाता है।"
+    },
+    {
+      "context": "Return the two-line display block for this recommendation.",
+      "label": "spacr.run_recommendations.Recommendation.line#0",
+      "source": "Return the two-line display block for this recommendation.",
+      "source_sha256": "9db15a5bf1e5822998481c0e1a9ba2cf90812866477b05087c6213b920df9212",
+      "translation": "इस सिफ़ारिश के लिए दो-पंक्ति का प्रदर्शन block लौटाता है।"
+    },
+    {
+      "context": "Format recommendations for the end of a run summary.",
+      "label": "spacr.run_recommendations.format_recommendations#0",
+      "source": "Format recommendations for the end of a run summary.",
+      "source_sha256": "7de5317a1ceb1305b2fb29647f3168b8ea33681eb4eb165db0cba06d6dbd243e",
+      "translation": "रन सारांश के अंत के लिए सिफ़ारिशें format करता है।"
+    },
+    {
+      "context": "ordered run recommendations to render.",
+      "label": "spacr.run_recommendations.format_recommendations#1",
+      "source": "ordered run recommendations to render.",
+      "source_sha256": "1ab2c39c6bc4afa568237ebfca059f2eb0a86b87f84fbd8ce6304c867a1f9df2",
+      "translation": "render की जाने वाली क्रमबद्ध रन सिफ़ारिशें।"
+    },
+    {
+      "context": "An empty input is reported explicitly so a completed check with no recommendations is distinguishable from a missing result.",
+      "label": "spacr.run_recommendations.format_recommendations#2",
+      "source": "An empty input is reported explicitly so a completed check with no recommendations is distinguishable from a missing result.",
+      "source_sha256": "ebd9a809f6261e8eff3bf06ea46ed0727447eafbca4eedc47f69d36b027310af",
+      "translation": "खाली input की स्पष्ट रिपोर्ट की जाती है ताकि बिना सिफ़ारिशों वाली पूर्ण जाँच को अनुपस्थित परिणाम से अलग पहचाना जा सके।"
+    },
+    {
+      "context": "Derive recommendations from a run's measured diagnostics.",
+      "label": "spacr.run_recommendations.recommend#0",
+      "source": "Derive recommendations from a run's measured diagnostics.",
+      "source_sha256": "f7ab26ea65b09a07163a7026157b71c0588af9f7d60d728262d56dbb44a039bf",
+      "translation": "किसी रन के मापे गए निदान से सिफ़ारिशें निकालता है।"
+    },
+    {
+      "context": "the numbers the QC computed.",
+      "label": "spacr.run_recommendations.recommend#1",
+      "source": "the numbers the QC computed.",
+      "source_sha256": "4f90c9043cbd6f48e0149d9c6913144874a9f989b28ca8e6caa8fbb5d77bd736",
+      "translation": "QC द्वारा गणना की गई संख्याएँ।"
+    },
+    {
+      "context": "settings used for the processing session. Recommendations already satisfied by these values are omitted.",
+      "label": "spacr.run_recommendations.recommend#2",
+      "source": "settings used for the run. Recommendations already satisfied by these values are omitted.",
+      "source_sha256": "f2e3a9f9f8d161f972bcd176f230b27d7d4110d2fd1dd9a758f64adc7c967b8f",
+      "translation": "रन के लिए उपयोग की गई settings। इन मानों से पहले से संतुष्ट सिफ़ारिशें छोड़ दी जाती हैं।"
+    },
+    {
+      "context": "the recommendations that fired, blocking ones first.",
+      "label": "spacr.run_recommendations.recommend#3",
+      "source": "the recommendations that fired, blocking ones first.",
+      "source_sha256": "e4f2bed9658d4584346676aa2d4792e1cf9ed0af6f7dddc6e6f7ab65a239ad56",
+      "translation": "सक्रिय हुई सिफ़ारिशें, अवरोधक वाली पहले।"
+    },
+    {
+      "context": "Calculate effect-size thresholds for regression coefficients.",
+      "label": "spacr.thresholds#0",
+      "source": "Calculate effect-size thresholds for regression coefficients.",
+      "source_sha256": "cd94a16f0e9853bdd848aaa1013e0c1b2345673e556e96ec4e58a2d37f5e1fde",
+      "translation": "regression coefficients के लिए effect-size thresholds की गणना करता है।"
+    },
+    {
+      "context": "The estimators describe the spread around the coefficient centre. When negative-control guides are available, callers should estimate that spread from the controls so biological effects do not widen the null distribution. Each estimator returns a width in coefficient units except ``var``, which is retained for compatibility and returns squared units.",
+      "label": "spacr.thresholds#1",
+      "source": "The estimators describe the spread around the coefficient centre. When negative-control guides are available, callers should estimate that spread from the controls so biological effects do not widen the null distribution. Each estimator returns a width in coefficient units except ``var``, which is retained for compatibility and returns squared units.",
+      "source_sha256": "388c5545e03340b1de0a65dcb51520486992fd9233b229f06001bdd05a83ecb9",
+      "translation": "estimators coefficient केंद्र के आसपास के फैलाव का वर्णन करते हैं। जब negative-control guides उपलब्ध हों, तो कॉलरों को वह फैलाव नियंत्रणों से अनुमानित करना चाहिए ताकि जैविक प्रभाव null वितरण को चौड़ा न करें। ``var`` को छोड़कर हर estimator coefficient इकाइयों में चौड़ाई लौटाता है; वह संगतता के लिए रखा गया है और वर्ग इकाइयाँ लौटाता है।"
+    },
+    {
+      "context": "The canonical name for ``method``.",
+      "label": "spacr.thresholds.canonical#0",
+      "source": "The canonical name for ``method``.",
+      "source_sha256": "23a2f2b499be09ac59d685a6e1e573b24584a17a640b60d6c16fc9415da58495",
+      "translation": "``method`` का मानक नाम।"
+    },
+    {
+      "context": "threshold method name or accepted alias; falsey values mean ``\"none\"``.",
+      "label": "spacr.thresholds.canonical#1",
+      "source": "threshold method name or accepted alias; falsey values mean ``\"none\"``.",
+      "source_sha256": "3f37f164898f0634da4254c776386c6864dbe7307e669d4e9789bae511cf3af0",
+      "translation": "threshold विधि का नाम या स्वीकृत उपनाम; falsey मानों का अर्थ ``\"none\"`` है।"
+    },
+    {
+      "context": "naming every method, rather than falling back to a default the caller did not ask for.",
+      "label": "spacr.thresholds.canonical#2",
+      "source": "naming every method, rather than falling back to a default the caller did not ask for.",
+      "source_sha256": "61eecdcd3302272c139b02f059f8b5ca5bec49b1f335299b19dae779cafad837",
+      "translation": "हर विधि का नाम बताते हुए, ऐसे डिफ़ॉल्ट पर लौटने के बजाय जिसे कॉलर ने माँगा नहीं।"
+    },
+    {
+      "context": "``(threshold, sentence)`` for a set of control coefficients.",
+      "label": "spacr.thresholds.coefficient_threshold#0",
+      "source": "``(threshold, sentence)`` for a set of control coefficients.",
+      "source_sha256": "f2cb3b7287b9e847028d81f3972c32ee1dfb67871f6a82141f96522a08b7431b",
+      "translation": "नियंत्रण coefficients के किसी set के लिए ``(threshold, sentence)``।"
+    },
+    {
+      "context": "the control coefficients -- the null.",
+      "label": "spacr.thresholds.coefficient_threshold#1",
+      "source": "the control coefficients -- the null.",
+      "source_sha256": "19f7c9ed2dd8da273c3cca36905897f095a7acf8810e75680cf1473b05b0fdad",
+      "translation": "नियंत्रण coefficients -- null।"
+    },
+    {
+      "context": "one of :data:`METHODS`, or an alias.",
+      "label": "spacr.thresholds.coefficient_threshold#2",
+      "source": "one of :data:`METHODS`, or an alias.",
+      "source_sha256": "42e044b338dca9a47c32c8b35dc09a86ad777eab8a3f61c26b802c9f5bdef0b7",
+      "translation": ":data:`METHODS` में से एक, या कोई उपनाम।"
+    },
+    {
+      "context": "how many spreads wide the cut is.",
+      "label": "spacr.thresholds.coefficient_threshold#3",
+      "source": "how many spreads wide the cut is.",
+      "source_sha256": "6260f536a315f88e210237c43dc45f2250323ce67d86ae3493403ac751c1e304",
+      "translation": "cut कितने फैलावों जितना चौड़ा है।"
+    },
+    {
+      "context": "what to measure from; the median of ``values`` by default, which is not moved by one control guide with a real phenotype. This screening experiment has one -- `000000_22` is a non-targeting control and the strongest effect in the run at +4.37.",
+      "label": "spacr.thresholds.coefficient_threshold#4",
+      "source": "what to measure from; the median of ``values`` by default, which is not moved by one control guide with a real phenotype. This screen has one -- `000000_22` is a non-targeting control and the strongest effect in the run at +4.37.",
+      "source_sha256": "6118eed7614265f34c680706ae95de787b6d36f325549e0987c55594a2c10d02",
+      "translation": "किससे मापना है; डिफ़ॉल्ट रूप से ``values`` की माध्यिका, जो वास्तविक phenotype वाले एक नियंत्रण guide से नहीं खिसकती। इस स्क्रीनिंग में ऐसा एक है -- `000000_22` एक non-targeting नियंत्रण है और +4.37 पर रन का सबसे मज़बूत प्रभाव है।"
+    },
+    {
+      "context": "``(None, reason)`` when no cut can be made, never a silent 0.",
+      "label": "spacr.thresholds.coefficient_threshold#5",
+      "source": "``(None, reason)`` when no cut can be made, never a silent 0.",
+      "source_sha256": "5eb9d349e580d53ed7a89f2fcdb7303ed0a2f032ee9fddd786758b1a43d7553b",
+      "translation": "``(None, reason)`` जब कोई cut न बनाया जा सके, कभी चुपचाप 0 नहीं।"
+    },
+    {
+      "context": "The sentence is required: a threshold a reader cannot attribute is a threshold they cannot report, and it goes on the panel beside the line.",
+      "label": "spacr.thresholds.coefficient_threshold#6",
+      "source": "The sentence is required: a threshold a reader cannot attribute is a threshold they cannot report, and it goes on the panel beside the line.",
+      "source_sha256": "0fb0ae13be9c488ebd5aa65864ff181339a57c1177486af53780ec036beb9f0e",
+      "translation": "वाक्य आवश्यक है: जिस threshold का स्रोत पाठक नहीं बता सकता, उसकी वह रिपोर्ट नहीं कर सकता, और यह panel पर रेखा के बगल में जाता है।"
+    },
+    {
+      "context": "One line saying what a method measures.",
+      "label": "spacr.thresholds.describe#0",
+      "source": "One line saying what a method measures.",
+      "source_sha256": "2880c7a383d823154dd07d176362d0d3da127fe21de55c8b80be5f20b543ea2f",
+      "translation": "एक पंक्ति जो बताती है कि कोई विधि क्या मापती है।"
+    },
+    {
+      "context": "threshold method name or accepted alias to describe.",
+      "label": "spacr.thresholds.describe#1",
+      "source": "threshold method name or accepted alias to describe.",
+      "source_sha256": "8afdd2e205f532c08c94280b3923872d1fe36b6a57d03840e70b264c8a7d44f0",
+      "translation": "वर्णित की जाने वाली threshold विधि का नाम या स्वीकृत उपनाम।"
+    },
+    {
+      "context": "Cellpose predicts, per pixel, a flow toward the centre of the object the pixel belongs to. Timeflows adds the same idea through time: per pixel of frame ``t``, where the centre of that object is in frame ``t+1``, and whether it has a successor at all (cells die, divide, leave the microscope field of view). Linking objects between frames then reads the model instead of guessing from overlap, which is where the plain IoU stitcher fails: fast cells that move more than their own size between frames (the MuSC movies move 3-4 diameters per frame at p95).",
+      "label": "spacr.timeflows_model#1",
+      "source": "Cellpose predicts, per pixel, a flow toward the centre of the object the pixel belongs to. Timeflows adds the same idea through time: per pixel of frame ``t``, where the centre of that object is in frame ``t+1``, and whether it has a successor at all (cells die, divide, leave the field). Linking objects between frames then reads the model instead of guessing from overlap, which is where the plain IoU stitcher fails: fast cells that move more than their own size between frames (the MuSC movies move 3-4 diameters per frame at p95).",
+      "source_sha256": "98971f55a28c0fb92e90903e69dfd3664ab388648673b8f995963ca4910828a5",
+      "translation": "Cellpose प्रति पिक्सेल उस object के केंद्र की ओर एक flow की भविष्यवाणी करता है जिससे पिक्सेल संबंधित है। Timeflows यही विचार समय में जोड़ता है: frame ``t`` के प्रति पिक्सेल, उस object का केंद्र frame ``t+1`` में कहाँ है, और क्या उसका कोई उत्तराधिकारी है भी (cells मरती हैं, विभाजित होती हैं, field छोड़ देती हैं)। frames के बीच objects को जोड़ना तब overlap से अनुमान लगाने के बजाय मॉडल को पढ़ता है, और ठीक यहीं साधारण IoU stitcher विफल होता है: तेज़ cells जो frames के बीच अपने आकार से अधिक चलती हैं (MuSC movies p95 पर प्रति frame 3-4 व्यास चलती हैं)।"
+    },
+    {
+      "context": "Contents, all runnable on a CPU:",
+      "label": "spacr.timeflows_model#2",
+      "source": "Contents, all runnable on a CPU:",
+      "source_sha256": "2a3ddfa1c5c7083619361607839afb19870bb12a2a2b263e6ac8fca92e7f412f",
+      "translation": "सामग्री, सब CPU पर चलने योग्य:"
+    },
+    {
+      "context": ":func:`augment_pair` -- one flip/rotation applied identically to both frames and both label images; the targets are computed after it from the labels, so a flip can never teach a displacement that did not happen.",
+      "label": "spacr.timeflows_model#5",
+      "source": ":func:`augment_pair` -- one flip/rotation applied identically to both frames and both label images; the targets are computed after it from the labels, so a flip can never teach a displacement that did not happen.",
+      "source_sha256": "1b9655fd09ef8d1be1b1ce0f78a67d716a4384989c3aa0359445c726731356ac",
+      "translation": ":func:`augment_pair` -- एक flip/rotation जो दोनों frames और दोनों label छवियों पर एक जैसा लागू होता है; targets की गणना उसके बाद labels से होती है, इसलिए flip कभी ऐसा विस्थापन नहीं सिखा सकता जो हुआ ही नहीं।"
+    },
+    {
+      "context": "One random flip and quarter-turn, the same for every frame and label.",
+      "label": "spacr.timeflows_model.augment_pair#0",
+      "source": "One random flip and quarter-turn, the same for every frame and label.",
+      "source_sha256": "380dd196526b6d00a89ca02e5d8fd0cccc5bc7b6c5a9d870848f7d11571b876f",
+      "translation": "एक यादृच्छिक flip और quarter-turn, हर frame और label के लिए एक जैसा।"
+    },
+    {
+      "context": "A flip applied to frame ``t`` and not ``t+1`` teaches a displacement that never happened, producing a model that trains well but does not track. Targets are computed from the augmented labels afterwards, so the vectors follow automatically.",
+      "label": "spacr.timeflows_model.augment_pair#1",
+      "source": "A flip applied to frame ``t`` and not ``t+1`` teaches a displacement that never happened, producing a model that trains well but does not track. Targets are computed from the augmented labels afterwards, so the vectors follow automatically.",
+      "source_sha256": "cb87459fc1303ba14210191d9e396d306b1ec734c5deed4e085f3487b4b35238",
+      "translation": "frame ``t`` पर लागू और ``t+1`` पर नहीं लागू flip ऐसा विस्थापन सिखाता है जो कभी हुआ ही नहीं, जिससे ऐसा मॉडल बनता है जो अच्छी तरह प्रशिक्षित होता है पर track नहीं करता। targets की गणना बाद में augmented labels से होती है, इसलिए vectors स्वतः अनुसरण करते हैं।"
+    },
+    {
+      "context": "Most consecutive frames are nearly still, so drawing pairs uniformly shows the head mostly easy pairs. Each pair's median displacement over diameter falls in one of ``bins`` equal-width bins across the range seen, and a pair's weight is the inverse of its bin's size. Quantile bins are not used because they collapse when most pairs move alike.",
+      "label": "spacr.timeflows_model.pair_sampling_weights#1",
+      "source": "Most consecutive frames are nearly still, so drawing pairs uniformly shows the head mostly easy pairs. Each pair's median displacement over diameter falls in one of ``bins`` equal-width bins across the range seen, and a pair's weight is the inverse of its bin's size. Quantile bins are not used because they collapse when most pairs move alike.",
+      "source_sha256": "62057319933bd53838180245486693b2a4300d452fbe4c2d8187adca6b069b4d",
+      "translation": "अधिकांश लगातार frames लगभग स्थिर होते हैं, इसलिए जोड़ों को समान रूप से चुनने से head को अधिकतर आसान जोड़े दिखते हैं। हर जोड़े का माध्यिका विस्थापन भाग व्यास, देखी गई परास में ``bins`` बराबर-चौड़ाई वाले bins में से एक में पड़ता है, और किसी जोड़े का भार उसके bin के आकार का व्युत्क्रम है। quantile bins उपयोग नहीं किए जाते क्योंकि जब अधिकांश जोड़े एक जैसे चलते हैं तो वे ढह जाते हैं।"
+    },
+    {
+      "context": "One ``size`` square, the same window of every frame and label.",
+      "label": "spacr.timeflows_model.random_window#0",
+      "source": "One ``size`` square, the same window of every frame and label.",
+      "source_sha256": "4e712d5fd1f58da954c89226bc26b5724c06538e94fee67df5a89bed497abf53",
+      "translation": "एक ``size`` वर्ग, हर frame और label की वही window।"
+    },
+    {
+      "context": "Centred on a random object of the first label image, jittered by up to a quarter window, so windows hold cells rather than empty background. A window shared by both frames leaves every displacement unchanged.",
+      "label": "spacr.timeflows_model.random_window#1",
+      "source": "Centred on a random object of the first label image, jittered by up to a quarter window, so windows hold cells rather than empty background. A window shared by both frames leaves every displacement unchanged.",
+      "source_sha256": "11c9f73e7a898d0e85523dd6b70994ac41d14857590faf34be7f372b786754c0",
+      "translation": "पहली label छवि के किसी यादृच्छिक object पर केंद्रित, अधिकतम एक चौथाई window तक jitter के साथ, ताकि windows में खाली पृष्ठभूमि के बजाय cells हों। दोनों frames द्वारा साझा window हर विस्थापन को अपरिवर्तित छोड़ती है।"
+    },
+    {
+      "context": "The vector is supervised only where there is a successor (``vector_weight``); the successor flag everywhere inside an object (``object_weight``). Background is supervised by neither.",
+      "label": "spacr.timeflows_model.time_targets#4",
+      "source": "The vector is supervised only where there is a successor (``vector_weight``); the successor flag everywhere inside an object (``object_weight``). Background is supervised by neither.",
+      "source_sha256": "b34eedefa8fd42cd6f926a59960c584665efa36cb33e6e4cdd4d1e16d3fd6151",
+      "translation": "vector को केवल वहीं supervise किया जाता है जहाँ उत्तराधिकारी हो (``vector_weight``); successor flag को object के भीतर हर जगह (``object_weight``)। पृष्ठभूमि को किसी के द्वारा supervise नहीं किया जाता।"
+    },
+    {
+      "context": "Full object masks labelled with their track ids.",
+      "label": "spacr.timeflows_model.track_masks_from_ctc#0",
+      "source": "Full object masks labelled with their track ids.",
+      "source_sha256": "0565bf6e67f09acc63283b03c03fdb064eb7232a858d055ea580535097d1689d",
+      "translation": "पूरे object masks, उनकी track ids से labelled।"
+    },
+    {
+      "context": "The Cell Tracking Challenge publishes tracking ground truth as markers -- a small blob inside each cell, labelled with its track id in every frame -- and full outlines separately (the silver ``ST/SEG`` masks, labelled per frame). Only one-to-one assignments are retained: the object contains exactly one marker ID and that ID overlaps no other segmented object. Unmarked, merged and split assignments are excluded rather than guessed.",
+      "label": "spacr.timeflows_model.track_masks_from_ctc#1",
+      "source": "The Cell Tracking Challenge publishes tracking ground truth as markers -- a small blob inside each cell, labelled with its track id in every frame -- and full outlines separately (the silver ``ST/SEG`` masks, labelled per frame). Only one-to-one assignments are retained: the object contains exactly one marker ID and that ID overlaps no other segmented object. Unmarked, merged and split assignments are excluded rather than guessed.",
+      "source_sha256": "cc477dc0adb1005be3daf36ae8ee83eb33e82f39dc5abcaec625c49ad1d274b7",
+      "translation": "Cell Tracking Challenge tracking ground truth को markers के रूप में प्रकाशित करता है -- हर cell के भीतर एक छोटा blob, हर frame में उसकी track id से labelled -- और पूरी outlines अलग से (silver ``ST/SEG`` masks, प्रति frame labelled)। केवल एक-से-एक assignments रखे जाते हैं: object में ठीक एक marker ID होता है और वह ID किसी अन्य segmented object से overlap नहीं करता। बिना marker वाले, merged और split assignments को अनुमान लगाने के बजाय बाहर रखा जाता है।"
+    },
+    {
+      "context": "A two-stage curriculum: the backbone's segmentation is already trained, so it is frozen while the new head learns, then everything is trained at a low learning rate. Every pair is augmented identically on both frames before its targets are computed.",
+      "label": "spacr.timeflows_model.train_timeflows#1",
+      "source": "A two-stage curriculum: the backbone's segmentation is already trained, so it is frozen while the new head learns, then everything is trained at a low learning rate. Every pair is augmented identically on both frames before its targets are computed.",
+      "source_sha256": "0fe03371b5f8a4bb29e7fa6466050a97acc613cbd97bfe4ab55ff3ca92eea2eb",
+      "translation": "दो-चरण का curriculum: backbone का segmentation पहले से प्रशिक्षित है, इसलिए नया head सीखते समय उसे frozen रखा जाता है, फिर कम learning rate पर सब कुछ प्रशिक्षित किया जाता है। हर जोड़े को उसके targets की गणना से पहले दोनों frames पर एक जैसा augment किया जाता है।"
+    },
+    {
+      "context": "Resolve ``version_str`` lazily (PEP 562).",
+      "label": "spacr.version.__getattr__#0",
+      "source": "Resolve ``version_str`` lazily (PEP 562).",
+      "source_sha256": "31330605d174b14912f06e5d094fb50f02576bfb6cb23cb5481ac737f76bb162",
+      "translation": "``version_str`` को lazily हल करता है (PEP 562)।"
+    },
+    {
+      "context": "Module attribute requested by Python's fallback lookup.",
+      "label": "spacr.version.__getattr__#1",
+      "source": "Module attribute requested by Python's fallback lookup.",
+      "source_sha256": "0da00f5c09165a80c14a018c68592dc96209c9ebde5ed3e4be27a43d4a03b3f9",
+      "translation": "Python के fallback lookup द्वारा माँगा गया मॉड्यूल attribute।"
+    },
+    {
+      "context": "The formatted environment report for ``version_str``.",
+      "label": "spacr.version.__getattr__#2",
+      "source": "The formatted environment report for ``version_str``.",
+      "source_sha256": "07b6f82a5ea2457445d9ae1247e227b97015f54eab374df3c05447885e3991fb",
+      "translation": "``version_str`` के लिए format की गई environment रिपोर्ट।"
+    },
+    {
+      "context": "If ``name`` is not ``version_str``.",
+      "label": "spacr.version.__getattr__#3",
+      "source": "If ``name`` is not ``version_str``.",
+      "source_sha256": "995b55654453c1e1c4326749fe67a461e40da87312e18f33d92c0e61571dc47a",
+      "translation": "यदि ``name`` ``version_str`` नहीं है।"
+    },
+    {
+      "context": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "label": "spacr.version.__getattr__#5",
+      "source": "``from spacr.version import version_str`` still works unchanged; torch is imported only when ``version_str`` is accessed.",
+      "source_sha256": "7dd50fc5213ae47f427d9a21419855b5ccbef3c9fdf93f520ceeda2abe8cf61d",
+      "translation": "``from spacr.version import version_str`` अब भी बिना बदलाव के काम करता है; torch केवल तभी import होता है जब ``version_str`` तक पहुँचा जाता है।"
+    },
+    {
+      "context": "Return an easy-to-read multi-line summary of the current environment.",
+      "label": "spacr.version.format_version_info#0",
+      "source": "Return a human-readable multi-line summary of the current environment.",
+      "source_sha256": "484a97874c635ab805fd2abc814dd9daf8702a5b340866509298aac5b022fb9d",
+      "translation": "वर्तमान environment का मानव-पठनीय बहु-पंक्ति सारांश लौटाता है।"
+    },
+    {
+      "context": "Tab-aligned version report suitable for CLI display.",
+      "label": "spacr.version.format_version_info#1",
+      "source": "Tab-aligned version report suitable for CLI display.",
+      "source_sha256": "6e917ae49e4ef3e5589e889a0df66dd946baf5e6119359cbbb519e67a8196013",
+      "translation": "CLI प्रदर्शन के लिए उपयुक्त, tab-संरेखित संस्करण रिपोर्ट।"
+    },
+    {
+      "context": "Return the installed PyTorch version, or ``\"not available\"`` if torch is missing.",
+      "label": "spacr.version.get_torch_version#0",
+      "source": "Return the installed PyTorch version, or ``\"not available\"`` if torch is missing.",
+      "source_sha256": "0dffba4ff0d4c9863eed8b3eaf60079acb8355c34ac045e54d29a67acb05ed4e",
+      "translation": "स्थापित PyTorch संस्करण लौटाता है, या torch अनुपस्थित होने पर ``\"not available\"``।"
+    },
+    {
+      "context": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "label": "spacr.version.get_torch_version#1",
+      "source": "``torch.__version__`` when importable, otherwise a placeholder string.",
+      "source_sha256": "cef07f49aa1f0458c2e1b72145b37dd855d02a0f27dd79e5315683b4a7a98c85",
+      "translation": "import-योग्य होने पर ``torch.__version__``, अन्यथा एक placeholder string।"
+    },
+    {
+      "context": "Return the running spacr version, or ``\"unknown\"`` if it cannot be found.",
+      "label": "spacr.version.get_version#0",
+      "source": "Return the running spacr version, or ``\"unknown\"`` if it cannot be found.",
+      "source_sha256": "e42b4d73edada16be6faa41440fd44eeaf46abcbb911f8f7ed88e1bc48a2bb9c",
+      "translation": "चल रहा spacr संस्करण लौटाता है, या न मिलने पर ``\"unknown\"``।"
+    },
+    {
+      "context": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "label": "spacr.version.get_version#1",
+      "source": "A source checkout or editable install reports the version in its own ``spacr/_version.py``; an installed wheel or frozen installer reports its distribution metadata, then that literal when no metadata is present.",
+      "source_sha256": "d7146150e92961e2c59cde83ccbed7cffb91611b91f8fa248092b86c2de31c3e",
+      "translation": "source checkout या editable install अपनी ``spacr/_version.py`` में दिया गया संस्करण बताता है; स्थापित wheel या frozen installer अपना distribution metadata बताता है, और कोई metadata न होने पर वही literal।"
+    },
+    {
+      "context": "The version string of the spacr package that is actually imported.",
+      "label": "spacr.version.get_version#2",
+      "source": "The version string of the spacr package that is actually imported.",
+      "source_sha256": "7117431ecf386ec03f4939635e5dc01d72f6273c771ba2b832f72b8760c4c436",
+      "translation": "वास्तव में import किए गए spacr package की संस्करण string।"
+    },
+    {
+      "context": "Return a key-value mapping of spacr, platform, Python, and torch version strings.",
+      "label": "spacr.version.get_version_info#0",
+      "source": "Return a dict of spacr, platform, Python, and torch version strings.",
+      "source_sha256": "5fa47258fa28a286b26e901cc53b55c96f6c22c01e1c2b0dc0079b9263718dd0",
+      "translation": "spacr, platform, Python और torch संस्करण strings की dict लौटाता है।"
+    },
+    {
+      "context": "Mapping with structured-data names ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "label": "spacr.version.get_version_info#1",
+      "source": "Mapping with keys ``spacr_version``, ``platform``, ``python_version``, ``torch_version``.",
+      "source_sha256": "5a8d3473b2cb13cf679b06ee004728637ddc82edc15a68b9a10389c390b30412",
+      "translation": "``spacr_version``, ``platform``, ``python_version``, ``torch_version`` keys वाली mapping।"
+    }
+  ],
+  "schema": 1
+}

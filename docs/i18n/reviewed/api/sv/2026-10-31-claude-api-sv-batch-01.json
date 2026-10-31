@@ -1,0 +1,1208 @@
+{
+  "language": "sv",
+  "note": "Item 678 Swedish API tail, batch 1 (150 blocks): spacr.ops_accel, spacr.ops_compose, spacr.ops_cycles, spacr.ops_layout, spacr.ops_objects, spacr.ops_sample. Module names, code literals and roles stay in English.",
+  "records": [
+    {
+      "context": "The three array operations OPS uses, run on a GPU when one is available.",
+      "label": "spacr.ops_accel#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The three array operations OPS uses, run on a GPU when one is available.",
+      "source_sha256": "ca627127a4957da5c3e8c50685927a18a406eff7851ee21e425057edbca00546",
+      "translation": "De tre arrayoperationer som OPS använder, körda på en GPU när en sådan finns tillgänglig."
+    },
+    {
+      "context": "The GPU-suitable steps of OPS are the per-window affine warp, peak finding, the unmixing matrix multiply and Cellpose segmentation (which has its own GPU path), and, for the merge, ORB detection with Hamming descriptor matching and mutual-nearest-neighbour cell matching. These reduce to three primitives: a windowed maximum, a matrix multiply and a nearest-neighbour search. They are collected here so device handling lives in one place.",
+      "label": "spacr.ops_accel#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The GPU-suitable steps of OPS are the per-window affine warp, peak finding, the unmixing matrix multiply and Cellpose segmentation (which has its own GPU path), and, for the merge, ORB detection with Hamming descriptor matching and mutual-nearest-neighbour cell matching. These reduce to three primitives: a windowed maximum, a matrix multiply and a nearest-neighbour search. They are collected here so device handling lives in one place.",
+      "source_sha256": "0a0280d85c964b3c0a4579519b126cb825e05f58220d347c2e9e606d9598b819",
+      "translation": "De GPU-lämpliga stegen i OPS är den affina transformationen per fönster, toppsökningen, matrismultiplikationen för avblandning och Cellpose-segmenteringen (som har en egen GPU-väg), samt för sammanslagningen ORB-detektering med matchning av Hamming-deskriptorer och cellmatchning via ömsesidigt närmaste grannar. Dessa reduceras till tre grundoperationer: ett fönsterbaserat maximum, en matrismultiplikation och en närmaste-granne-sökning. De är samlade här så att enhetshanteringen finns på ett enda ställe."
+    },
+    {
+      "context": "Backend order: PyTorch first, CuPy second, NumPy always. Torch is already a spaCR dependency through Cellpose, so nothing new is installed, and one code path reaches CUDA, ROCm and Apple MPS.",
+      "label": "spacr.ops_accel#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Backend order: PyTorch first, CuPy second, NumPy always. Torch is already a spaCR dependency through Cellpose, so nothing new is installed, and one code path reaches CUDA, ROCm and Apple MPS.",
+      "source_sha256": "f629155cbc7f5728ecdcf49f81a21700b9d29b08dd9d35b298098ef9a845028e",
+      "translation": "Ordning för backends: PyTorch först, CuPy därefter, NumPy alltid. Torch är redan ett beroende till spaCR via Cellpose, så inget nytt installeras, och en enda kodväg når CUDA, ROCm och Apple MPS."
+    },
+    {
+      "context": "Every function takes and returns NumPy arrays, so callers do not depend on which backend ran. Each has a test that runs both paths on the same input and asserts they agree.",
+      "label": "spacr.ops_accel#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Every function takes and returns NumPy arrays, so callers do not depend on which backend ran. Each has a test that runs both paths on the same input and asserts they agree.",
+      "source_sha256": "5d4099969c319cc40b98935717492d5f2281a36aac1ca374a0e97982777c3e07",
+      "translation": "Varje funktion tar emot och returnerar NumPy-arrayer, så att anropare inte beror på vilken backend som kördes. Varje funktion har ett test som kör båda vägarna på samma indata och kontrollerar att de stämmer överens."
+    },
+    {
+      "context": "The GPU may be shared, so `ops_gpu=False` refuses a device that exists, and a backend that raises at runtime (an out-of-memory, a driver that went away) falls through to the next rather than failing the plate.",
+      "label": "spacr.ops_accel#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The GPU may be shared, so `ops_gpu=False` refuses a device that exists, and a backend that raises at runtime (an out-of-memory, a driver that went away) falls through to the next rather than failing the plate.",
+      "source_sha256": "f9b6fbb1270d37abc51114c642379cf376b486c6da9d5ee5b6253c94253186a0",
+      "translation": "GPU:n kan vara delad, så `ops_gpu=False` avvisar en enhet som finns, och en backend som kastar ett fel under körning (slut på minne, en drivrutin som försvann) faller vidare till nästa i stället för att plattan misslyckas."
+    },
+    {
+      "context": "The CPU path is a supported path, not an error path: it runs on laptops, in CI and when the GPU is busy.",
+      "label": "spacr.ops_accel#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The CPU path is a supported path, not an error path: it runs on laptops, in CI and when the GPU is busy.",
+      "source_sha256": "47fb76ff6c9e9c2dfdbee54090af31c937524acef8d96314f3eb53e154c94fc5",
+      "translation": "CPU-vägen är en stödd väg, inte en felväg: den körs på bärbara datorer, i CI och när GPU:n är upptagen."
+    },
+    {
+      "context": "Which backends can run here, best first, always ending in \"numpy\".",
+      "label": "spacr.ops_accel.accelerated_backends#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Which backends can run here, best first, always ending in \"numpy\".",
+      "source_sha256": "9f7376944e8e281bca81fa787515557a8a3710a42390467fc5ac617df061f258",
+      "translation": "Vilka backends som kan köras här, den bästa först, alltid med \"numpy\" sist."
+    },
+    {
+      "context": "False refuses the accelerated ones outright.",
+      "label": "spacr.ops_accel.accelerated_backends#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "False refuses the accelerated ones outright.",
+      "source_sha256": "20e97d3e529624305f3ddf3336595b87f2ceead5bb6c1c0843dfe42c7e341de6",
+      "translation": "False avvisar de accelererade direkt."
+    },
+    {
+      "context": "the usable names.",
+      "label": "spacr.ops_accel.accelerated_backends#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the usable names.",
+      "source_sha256": "fc4c5a6b12a2aee899c6469ea4b55c16adfbc660f62800467f33d54bcf40af55",
+      "translation": "de användbara namnen."
+    },
+    {
+      "context": "``first @ second``, on the first available backend.",
+      "label": "spacr.ops_accel.matmul#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``first @ second``, on the first available backend.",
+      "source_sha256": "e995f595ee0ddebef0aac69061395c410a1e9e2fe6e8911713d43e9858ddb561",
+      "translation": "``first @ second``, på den första tillgängliga backenden."
+    },
+    {
+      "context": "Used for unmixing: correcting dye bleed-through applies one small matrix to every spot of every cycle, a large multiply by a tiny operand that suits a GPU.",
+      "label": "spacr.ops_accel.matmul#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Used for unmixing: correcting dye bleed-through applies one small matrix to every spot of every cycle, a large multiply by a tiny operand that suits a GPU.",
+      "source_sha256": "8596e938347e3d8baf8128a4e56368d6108a54a926c199ae5b0430402e3915ed",
+      "translation": "Används för avblandning: korrigering av färgämnesöverhörning tillämpar en liten matris på varje punkt i varje cykel, en stor multiplikation med en mycket liten operand som passar en GPU."
+    },
+    {
+      "context": "left operand.",
+      "label": "spacr.ops_accel.matmul#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "left operand.",
+      "source_sha256": "45fbbe7eade4098353f185e501ae6a99cc38973a94990789b76fcc219be17ff6",
+      "translation": "vänster operand."
+    },
+    {
+      "context": "right operand.",
+      "label": "spacr.ops_accel.matmul#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "right operand.",
+      "source_sha256": "09331ec19dfd6c4a95614c1d69fa1a7c56bad13cb9f2873068f8c41c40c2411a",
+      "translation": "höger operand."
+    },
+    {
+      "context": "False keeps it on the CPU.",
+      "label": "spacr.ops_accel.matmul#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "False keeps it on the CPU.",
+      "source_sha256": "b48cf147a409cd0670658bcde874cbdce77ef7a65855f4bb028ec08a5b4c360b",
+      "translation": "False håller den på CPU:n."
+    },
+    {
+      "context": "force one.",
+      "label": "spacr.ops_accel.matmul#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "force one.",
+      "source_sha256": "fadd6142fae0bafa9fcade07e6a03954058a377a62a73b2c981149ec2cd1db44",
+      "translation": "tvinga fram en."
+    },
+    {
+      "context": "the product, as float32 NumPy.",
+      "label": "spacr.ops_accel.matmul#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the product, as float32 NumPy.",
+      "source_sha256": "36239f30993fc6a9951c608cceebe0315fe6edbc86b193dc8d4567aeb51ea748",
+      "translation": "produkten, som float32 i NumPy."
+    },
+    {
+      "context": "The maximum of each ``size x size`` window, centred on every pixel.",
+      "label": "spacr.ops_accel.maximum_filter#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The maximum of each ``size x size`` window, centred on every pixel.",
+      "source_sha256": "db53750c7ab8ead2bef60334a1c059898c48a5a60f6c289d7a38448ebfb113e7",
+      "translation": "Maximum för varje ``size x size``-fönster, centrerat på varje pixel."
+    },
+    {
+      "context": "Used for peak finding: a read is a local maximum of the spot score, and \"local\" means this. On a microplate sample position-sized microscope field of view it is also the most expensive thing in the decode chain, and it is a max-pool, which GPUs run efficiently.",
+      "label": "spacr.ops_accel.maximum_filter#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Used for peak finding: a read is a local maximum of the spot score, and \"local\" means this. On a well-sized field it is also the most expensive thing in the decode chain, and it is a max-pool, which GPUs run efficiently.",
+      "source_sha256": "b38f29ae64a73e1315aee908a8c4f39e5d55cc52124820c50be7d72d2bf14889",
+      "translation": "Används för toppsökning: en läsning är ett lokalt maximum av punktpoängen, och \"local\" (lokalt) betyder detta. På ett fält av brunnsstorlek är det också det dyraste steget i avkodningskedjan, och det är en max-pool, som GPUs kör effektivt."
+    },
+    {
+      "context": "Edges repeat the border pixel, matching `scipy.ndimage.maximum_filter` with ``mode=\"nearest\"``, because the alternative is a rim of false maxima all the way round the field.",
+      "label": "spacr.ops_accel.maximum_filter#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Edges repeat the border pixel, matching `scipy.ndimage.maximum_filter` with ``mode=\"nearest\"``, because the alternative is a rim of false maxima all the way round the field.",
+      "source_sha256": "0ce27fb85aab385f9bca9377480671e647bea06589349535088d2954b39f9331",
+      "translation": "Kanterna upprepar kantpixeln, i linje med `scipy.ndimage.maximum_filter` med ``mode=\"nearest\"``, eftersom alternativet är en kant av falska maxima runt hela fältet."
+    },
+    {
+      "context": "a 2-D array.",
+      "label": "spacr.ops_accel.maximum_filter#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a 2-D array.",
+      "source_sha256": "546146a4c9f6d3df9993c5461fdaffc1b3fb1295983f0dcab83ea0e6351e4d7d",
+      "translation": "en 2D-array."
+    },
+    {
+      "context": "the window edge, in pixels. Even sizes are raised to the next odd one: a window with no centre cannot be centred.",
+      "label": "spacr.ops_accel.maximum_filter#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the window edge, in pixels. Even sizes are raised to the next odd one: a window with no centre cannot be centred.",
+      "source_sha256": "2e217f1d202aa71c3b963f428bec1766f7981ba82addfa578d2b9454d47536d5",
+      "translation": "fönstrets kantlängd i pixlar. Jämna storlekar höjs till närmaste udda: ett fönster utan mittpunkt kan inte centreras."
+    },
+    {
+      "context": "the filtered field, same shape and dtype-compatible.",
+      "label": "spacr.ops_accel.maximum_filter#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the filtered field, same shape and dtype-compatible.",
+      "source_sha256": "c9b9c7d65976728de27acfbc743e867b4dcd6464352b87ab8211e5d43ec34471",
+      "translation": "det filtrerade fältet, med samma form och kompatibel dtype."
+    },
+    {
+      "context": "For each row of ``source``, the closest row of ``target``.",
+      "label": "spacr.ops_accel.nearest_neighbours#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "For each row of ``source``, the closest row of ``target``.",
+      "source_sha256": "8d11c1fa658312f0288c8ba50089f19a2b604d8824ac2744ff190359332417ae",
+      "translation": "För varje rad i ``source``, den närmaste raden i ``target``."
+    },
+    {
+      "context": "Always chunked. A microplate sample position can carry a hundred thousand nuclei, and the full distance matrix between two such sets is 40 GB -- more than the card and more than the host. Chunking the first set bounds the working set at ``chunk x M`` however large the microplate sample position is.",
+      "label": "spacr.ops_accel.nearest_neighbours#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Always chunked. A well can carry a hundred thousand nuclei, and the full distance matrix between two such sets is 40 GB -- more than the card and more than the host. Chunking the first set bounds the working set at ``chunk x M`` however large the well is.",
+      "source_sha256": "d4ab110ee7242624aac30d23a77dc0b964841496618d7ef9c495860dd25b0509",
+      "translation": "Alltid uppdelat i bitar. En brunn kan innehålla hundra tusen kärnor, och den fullständiga avståndsmatrisen mellan två sådana mängder är 40 GB -- mer än grafikkortet och mer än värddatorn. Att dela upp den första mängden begränsar arbetsmängden till ``chunk x M`` hur stor brunnen än är."
+    },
+    {
+      "context": "Ties go to the lower index, on every backend, so a caller that pairs mutual nearest neighbours gets the same pairs whatever ran.",
+      "label": "spacr.ops_accel.nearest_neighbours#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Ties go to the lower index, on every backend, so a caller that pairs mutual nearest neighbours gets the same pairs whatever ran.",
+      "source_sha256": "af9029fadadf2f279fbce6bd1267a07edcf9338dc7b6f0013e1600c6e09d4657",
+      "translation": "Lika avstånd går till det lägre indexet, på varje backend, så att en anropare som parar ömsesidigt närmaste grannar får samma par oavsett vad som kördes."
+    },
+    {
+      "context": "``(N, D)`` points.",
+      "label": "spacr.ops_accel.nearest_neighbours#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(N, D)`` points.",
+      "source_sha256": "fdc6218a190c04c5ebae807051bf88719e54fef14899fcb78303910976285384",
+      "translation": "``(N, D)`` punkter."
+    },
+    {
+      "context": "``(M, D)`` points.",
+      "label": "spacr.ops_accel.nearest_neighbours#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(M, D)`` points.",
+      "source_sha256": "14cbc8d2ac12f68b94c088f83ff5b0487ff87e415ed43ad7b2d9681c809300e3",
+      "translation": "``(M, D)`` punkter."
+    },
+    {
+      "context": "rows of ``source`` per pass.",
+      "label": "spacr.ops_accel.nearest_neighbours#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "rows of ``source`` per pass.",
+      "source_sha256": "74d2febe588d2cafbe26efa0707278ed4f160bab85acf8de5f2154f308937981",
+      "translation": "rader i ``source`` per omgång."
+    },
+    {
+      "context": "``(indices, distances)``, both length N.",
+      "label": "spacr.ops_accel.nearest_neighbours#8",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(indices, distances)``, both length N.",
+      "source_sha256": "4e34f910f108c2819bfe523d9133c11544a209f0fe253984b6330618755ab609",
+      "translation": "``(indices, distances)``, båda med längden N."
+    },
+    {
+      "context": "The canonical nuclear map, composed one window at a time.",
+      "label": "spacr.ops_compose#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The canonical nuclear map, composed one window at a time.",
+      "source_sha256": "e0ffa3fde7d170f91a0ea9f177fbef9ac63dfffc0080ad91de9542fe1b79d875",
+      "translation": "Den kanoniska kärnkartan, sammansatt ett fönster i taget."
+    },
+    {
+      "context": "A window that a segmenter can hold is also a window a composer can build, so nothing ever materialises the whole canvas. The join key the object numbering needs -- a laboratory microplate-level object number in the microplate sample position frame -- survives because every window carries its own offset into that frame.",
+      "label": "spacr.ops_compose#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A window that a segmenter can hold is also a window a composer can build, so nothing ever materialises the whole canvas. The join key the object numbering needs -- a plate-level object number in the well frame -- survives because every window carries its own offset into that frame.",
+      "source_sha256": "58d0e1f61e726e9ac2760071e7b35559dee7c5fcc674c0e184a3e15abc8a51dd",
+      "translation": "Ett fönster som en segmenterare kan hålla är också ett fönster som en sammansättare kan bygga, så ingenting materialiserar någonsin hela duken. Kopplingsnyckeln som objektnumreringen behöver -- ett objektnummer på plattnivå i brunnens koordinatsystem -- bevaras eftersom varje fönster bär sin egen förskjutning i det koordinatsystemet."
+    },
+    {
+      "context": "Averaging the overlaps gives a measured noise gain of about 1.15x on the image data channel segmentation runs on. There is only one DAPI acquisition, so averaging across cycles does not apply; the gain comes from the raster's 14% overlap, where two microscope image fields imaged the same nuclei.",
+      "label": "spacr.ops_compose#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Averaging the overlaps gives a measured noise gain of about 1.15x on the channel segmentation runs on. There is only one DAPI acquisition, so averaging across cycles does not apply; the gain comes from the raster's 14% overlap, where two tiles imaged the same nuclei.",
+      "source_sha256": "e597f926d67ffb350fd38a23c3fc55049152067f192fd7a11349d5121049a31a",
+      "translation": "Medelvärdesbildning över överlappen ger en uppmätt brusvinst på ungefär 1.15x för den kanal som segmenteringen körs på. Det finns bara en DAPI-avbildning, så medelvärdesbildning över cykler är inte tillämplig; vinsten kommer från rastrets 14 % överlapp, där två rutor avbildade samma kärnor."
+    },
+    {
+      "context": "Exception used when a window cannot be composed, with the reason.",
+      "label": "spacr.ops_compose.ComposeError#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raised when a window cannot be composed, with the reason.",
+      "source_sha256": "a754bddd5fa5df0ee543244e10ac037b13cc24d4c5523e31a3d7b4db119f1522",
+      "translation": "Kastas när ett fönster inte kan sättas samman, med orsaken."
+    },
+    {
+      "context": "A rectangle of the microplate sample position frame, and where it sits in it.",
+      "label": "spacr.ops_compose.Window#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A rectangle of the well frame, and where it sits in it.",
+      "source_sha256": "c8adc791935a617cad89cac0d9e616bf02d53a4ae034e7f993128fe102d0e312",
+      "translation": "En rektangel i brunnens koordinatsystem, och var den ligger i det."
+    },
+    {
+      "context": "rows.",
+      "label": "spacr.ops_compose.Window#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "rows.",
+      "source_sha256": "88da8229ed0577065ba78933b6e1001568edd23b39280ae95cbeadfc139b230e",
+      "translation": "rader."
+    },
+    {
+      "context": "columns.",
+      "label": "spacr.ops_compose.Window#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "columns.",
+      "source_sha256": "6a308b5c47639ee6385971a1b778abf53b80bdc73b3850b61ca52d7523085865",
+      "translation": "kolumner."
+    },
+    {
+      "context": "One past the last row.",
+      "label": "spacr.ops_compose.Window.bottom#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One past the last row.",
+      "source_sha256": "ecc3724fe01763738dc8e1f6cb78bfd6be14c4773afcfdca3ba6bf711d840930",
+      "translation": "Ett steg förbi den sista raden."
+    },
+    {
+      "context": "``(top, left)`` -- what a local coordinate adds to reach the microplate sample position.",
+      "label": "spacr.ops_compose.Window.offset#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(top, left)`` -- what a local coordinate adds to reach the well.",
+      "source_sha256": "e3a4bfc6b86f0a4580550c5456fceced420e85d783d7a44e1bef073ed7470d59",
+      "translation": "``(top, left)`` -- det som en lokal koordinat adderar för att nå brunnen."
+    },
+    {
+      "context": "One past the last column.",
+      "label": "spacr.ops_compose.Window.right#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One past the last column.",
+      "source_sha256": "efda55c447879de45385f2e52a1de292bdff3b764090c1f19fee8ea6382ef29c",
+      "translation": "Ett steg förbi den sista kolumnen."
+    },
+    {
+      "context": "Average every microscope image field that overlaps ``window`` into one image.",
+      "label": "spacr.ops_compose.compose_window#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Average every tile that overlaps ``window`` into one image.",
+      "source_sha256": "87bdb396643a477bb627e2d4642b38d75f7bd3cfa8f7c25a35ad84cb9fbd50a8",
+      "translation": "Beräkna medelvärdet av varje ruta som överlappar ``window`` till en bild."
+    },
+    {
+      "context": "Averaged, not last-writer-wins. A tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge. Averaging removes the seam and also gives the 1.15x noise gain.",
+      "label": "spacr.ops_compose.compose_window#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Averaged, not last-writer-wins. A tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge. Averaging removes the seam and also gives the 1.15x noise gain.",
+      "source_sha256": "431c78f05bdec709aa44adb9e5e002e7d359459a4df25cf996cbbd6af5f7bdf6",
+      "translation": "Medelvärde, inte att den sista skrivaren vinner. En ruta som klistras över sin granne lämnar en söm där två rutor inte stämmer överens, och en segmenterare kan detektera den sömmen som en kant. Medelvärdesbildningen tar bort sömmen och ger också brusvinsten på 1.15x."
+    },
+    {
+      "context": "the rectangle of the microplate sample position frame to build.",
+      "label": "spacr.ops_compose.compose_window#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the rectangle of the well frame to build.",
+      "source_sha256": "ac2abf6417d5790e55dd5746790c064aa3f1b887543dfcfee4df4f1ca224891c",
+      "translation": "den rektangel i brunnens koordinatsystem som ska byggas."
+    },
+    {
+      "context": "called with a site number, returns that microscope image field. Called only for microscope image fields that touch the window, so a microplate sample position of 333 microscope image fields costs a handful of reads per window rather than 333.",
+      "label": "spacr.ops_compose.compose_window#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "called with a site number, returns that tile. Called only for tiles that touch the window, so a well of 333 tiles costs a handful of reads per window rather than 333.",
+      "source_sha256": "5611d4617e6baf5b1851e98b6e7caa517f25b031d1cec515c5f46fb164d4b161",
+      "translation": "anropas med ett positionsnummer och returnerar den rutan. Anropas bara för rutor som berör fönstret, så en brunn med 333 rutor kostar en handfull läsningar per fönster i stället för 333."
+    },
+    {
+      "context": "``(height, width)``; read from the first tile when omitted.",
+      "label": "spacr.ops_compose.compose_window#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(height, width)``; read from the first tile when omitted.",
+      "source_sha256": "d7ce9174385c9756b107097d86928744ce14e7d1a4d0a98890db2064e8409d3a",
+      "translation": "``(height, width)``; läses från den första rutan när det utelämnas."
+    },
+    {
+      "context": "sqrt of the mean coverage: averaging n independent samples of one signal divides the noise by sqrt(n). Reported over covered pixels only, because a microplate sample position's corners are reached by one microscope image field and including the uncovered background would report a gain for pixels nothing measured.",
+      "label": "spacr.ops_compose.overlap_gain#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "sqrt of the mean coverage: averaging n independent samples of one signal divides the noise by sqrt(n). Reported over covered pixels only, because a well's corners are reached by one tile and including the uncovered background would report a gain for pixels nothing measured.",
+      "source_sha256": "4062e881cfb4891cbc22af1e958b056b8ff879219e442580f9426f2e11ff0d68",
+      "translation": "kvadratroten av medeltäckningen: medelvärdet av n oberoende stickprov av en signal delar bruset med sqrt(n). Rapporteras endast över täckta pixlar, eftersom en brunns hörn nås av en enda ruta och att ta med den otäckta bakgrunden skulle rapportera en vinst för pixlar som ingenting mätte."
+    },
+    {
+      "context": "the coverage array from :func:`compose_window`.",
+      "label": "spacr.ops_compose.overlap_gain#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the coverage array from :func:`compose_window`.",
+      "source_sha256": "4802cc79e512cb5d3c19046eb9c357f0e916736c1a017a339d55de61c610051c",
+      "translation": "täckningsarrayen från :func:`compose_window`."
+    },
+    {
+      "context": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "label": "spacr.ops_compose.windows_over#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The windows overlap so objects can be sewn across them: an object straddling a window boundary is one object, and it can only be matched across the seam if both windows saw all of it. The overlap has to exceed the largest object, not merely touch.",
+      "source_sha256": "198c4990eeeb51728b304877b8e0a4ce1ccc126e469ea58a76f731ebd287b7dc",
+      "translation": "Fönstren överlappar så att objekt kan sys ihop över dem: ett objekt som ligger över en fönstergräns är ett enda objekt, och det kan bara matchas över sömmen om båda fönstren såg hela det. Överlappet måste vara större än det största objektet, inte bara nudda det."
+    },
+    {
+      "context": "``(height, width)`` of the microplate sample position frame.",
+      "label": "spacr.ops_compose.windows_over#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(height, width)`` of the well frame.",
+      "source_sha256": "5fd2da00e9ba4dccea7b96d40f9e7c5f1571ad527aa282cd625ee79eec663344",
+      "translation": "``(height, width)`` för brunnens koordinatsystem."
+    },
+    {
+      "context": "window edge in pixels.",
+      "label": "spacr.ops_compose.windows_over#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "window edge in pixels.",
+      "source_sha256": "7446032b6fb00a83a0a8f3f580218756645806d129e7f196c786388bce4e876c",
+      "translation": "fönstrets kantlängd i pixlar."
+    },
+    {
+      "context": "how much neighbouring windows share.",
+      "label": "spacr.ops_compose.windows_over#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "how much neighbouring windows share.",
+      "source_sha256": "53747ea6692116a69328604abfec580c74bbdaf5a2795b48887b0d399d987251",
+      "translation": "hur mycket angränsande fönster delar."
+    },
+    {
+      "context": "Registering one field across the sequencing cycles that imaged it.",
+      "label": "spacr.ops_cycles#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Registering one field across the sequencing cycles that imaged it.",
+      "source_sha256": "fe31e9bfe3333ee8779a4ec8407f1e89c9ee49f6db75491a7964ae5f7f89ae74",
+      "translation": "Registrering av ett fält över de sekvenseringscykler som avbildade det."
+    },
+    {
+      "context": "Registration across cycles differs from registration across microscope image fields. :mod:`spacr.ops_register` places two different microscope fields of view that overlap by a fraction of a microscope image field; here the same microscope field of view is imaged eleven times and the stage returns to it, so the displacement is a handful of pixels rather than a pitch.",
+      "label": "spacr.ops_cycles#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Registration across cycles differs from registration across tiles. :mod:`spacr.ops_register` places two different fields that overlap by a fraction of a tile; here the same field is imaged eleven times and the stage returns to it, so the displacement is a handful of pixels rather than a pitch.",
+      "source_sha256": "bf255d21c46e612af23e3cab54c60f9318473342b2fdc42dfec9dff79888ed9d",
+      "translation": "Registrering över cykler skiljer sig från registrering över rutor. :mod:`spacr.ops_register` placerar två olika fält som överlappar med en bråkdel av en ruta; här avbildas samma fält elva gånger och mikroskopbordet återvänder till det, så förskjutningen är en handfull pixlar snarare än ett rutavstånd."
+    },
+    {
+      "context": "Cycle registration cannot use Hoechst. Measured on the reference acquisition: cycle 1 holds one five-image data channel ``DAPI-CY3-A594-CY5-CY7`` stack per site, and cycles 2 to 11 hold four separate base-image data channel files with no DAPI image data channel. So the image data channel every microscope image field-axis registration runs on does not exist on this axis after the first cycle, and averaging Hoechst across cycles is not available here either.",
+      "label": "spacr.ops_cycles#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Cycle registration cannot use Hoechst. Measured on the reference acquisition: cycle 1 holds one five-channel ``DAPI-CY3-A594-CY5-CY7`` stack per site, and cycles 2 to 11 hold four separate base-channel files with no DAPI channel. So the channel every tile-axis registration runs on does not exist on this axis after the first cycle, and averaging Hoechst across cycles is not available here either.",
+      "source_sha256": "5b09b2c774f6680772ddf1dcaf4903099c962ccabcba0f7e937b993934cd6953",
+      "translation": "Cykelregistrering kan inte använda Hoechst. Uppmätt på referensavbildningen: cykel 1 innehåller en femkanalig ``DAPI-CY3-A594-CY5-CY7``-stack per position, och cyklerna 2 till 11 innehåller fyra separata baskanalfiler utan DAPI-kanal. Den kanal som varje registrering längs rutaxeln körs på finns alltså inte längs den här axeln efter den första cykeln, och medelvärdesbildning av Hoechst över cykler är inte heller möjlig här."
+    },
+    {
+      "context": "site 100   peak/mean 169 to 236   shift (-6..-27,  0..10) site 200   peak/mean 218 to 281   shift (-4..-25, 11..21)",
+      "label": "spacr.ops_cycles#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "site 100   peak/mean 169 to 236   shift (-6..-27,  0..10) site 200   peak/mean 218 to 281   shift (-4..-25, 11..21)",
+      "source_sha256": "249061af88ef246039fe588712acd9cfcbb86b67e741dc3b8a73428c7d380608",
+      "translation": "position 100   topp/medel 169 till 236   förskjutning (-6..-27,  0..10) position 200   topp/medel 218 till 281   förskjutning (-4..-25, 11..21)"
+    },
+    {
+      "context": "20 of 20 cycles registered.",
+      "label": "spacr.ops_cycles#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "20 of 20 cycles registered.",
+      "source_sha256": "e307f8e489de0b346aecb63071c668c463ae5ab6261b7e819d07a3457d249492",
+      "translation": "20 av 20 cykler registrerade."
+    },
+    {
+      "context": "This target gives stronger correlation peaks than DAPI: microscope image field registration on DAPI peaks at 23 to 85; this target peaks at 169 to 281. Spots are punctate and abundant while nuclei are smooth and few, so the missing Hoechst image data channel does not reduce registration quality.",
+      "label": "spacr.ops_cycles#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This target gives stronger correlation peaks than DAPI: tile registration on DAPI peaks at 23 to 85; this target peaks at 169 to 281. Spots are punctate and abundant while nuclei are smooth and few, so the missing Hoechst channel does not reduce registration quality.",
+      "source_sha256": "9e5c91b9056003fd018c349546d192354603eca225ef388e00b2b7cfcbbf75a7",
+      "translation": "Det här målet ger starkare korrelationstoppar än DAPI: rutregistrering på DAPI har toppar på 23 till 85; det här målet har toppar på 169 till 281. Punkterna är punktformiga och talrika medan kärnor är släta och få, så den saknade Hoechst-kanalen sänker inte registreringskvaliteten."
+    },
+    {
+      "context": "The offset depends on the site, not only on the cycle. Site 100 sits at x = 0 to 10 across the eleven cycles and site 200 at x = 11 to 21. One rigid transform per cycle for a whole well would carry that difference into every microscope field of view, so each site is registered against its own reference -- which is also what the reference implementation does, one microscope field of view's cycle stack at a time.",
+      "label": "spacr.ops_cycles#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The offset depends on the site, not only on the cycle. Site 100 sits at x = 0 to 10 across the eleven cycles and site 200 at x = 11 to 21. One rigid transform per cycle for a whole well would carry that difference into every field, so each site is registered against its own reference -- which is also what the reference implementation does, one field's cycle stack at a time.",
+      "source_sha256": "371e219bc449eb96da74bc74775f96baff362db6a96f9b0fb9e1ab15dd6f8e0c",
+      "translation": "Förskjutningen beror på positionen, inte bara på cykeln. Position 100 ligger vid x = 0 till 10 över de elva cyklerna och position 200 vid x = 11 till 21. En enda stel transformation per cykel för en hel brunn skulle föra över den skillnaden till varje fält, så varje position registreras mot sin egen referens -- vilket också är vad referensimplementationen gör, ett fälts cykelstack i taget."
+    },
+    {
+      "context": "The cycles whose registration was accepted, in ascending order.",
+      "label": "spacr.ops_cycles.accepted_cycles#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The cycles whose registration was accepted, in ascending order.",
+      "source_sha256": "1b008a01e060c51669c54d914c727ea184a5d791f79a3bbcdbfc66b82afeb14b",
+      "translation": "De cykler vars registrering godtogs, i stigande ordning."
+    },
+    {
+      "context": "the result of :func:`register_cycles`.",
+      "label": "spacr.ops_cycles.accepted_cycles#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the result of :func:`register_cycles`.",
+      "source_sha256": "189ef2c640cc4948f8cd45eac06526124706e0dfa6f7a086988f80cf59613c70",
+      "translation": "resultatet från :func:`register_cycles`."
+    },
+    {
+      "context": "the accepted cycle numbers, ascending.",
+      "label": "spacr.ops_cycles.accepted_cycles#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the accepted cycle numbers, ascending.",
+      "source_sha256": "6b12fc84c5912cbd94c651980d85c0fe65d96f8f13d143068bc78ff89511f293",
+      "translation": "de godtagna cykelnumren, i stigande ordning."
+    },
+    {
+      "context": "Place every cycle of one field against that field's reference.",
+      "label": "spacr.ops_cycles.register_cycles#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Place every cycle of one field against that field's reference.",
+      "source_sha256": "b4ed40222baaf09d1045844108e9031df11f1f48ccc5eb74a99c87767782c016",
+      "translation": "Placera varje cykel i ett fält mot det fältets referens."
+    },
+    {
+      "context": "Each cycle is registered against the reference directly, never against its predecessor. Chaining c1->c2->c3 saves one registration and makes every later cycle depend on every earlier one: a single bad link displaces the rest and the residual does not say which link failed. Registering each cycle independently lets one cycle be dropped without affecting the others, so a cycle that does not register does not cost the microplate sample position.",
+      "label": "spacr.ops_cycles.register_cycles#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Each cycle is registered against the reference directly, never against its predecessor. Chaining c1->c2->c3 saves one registration and makes every later cycle depend on every earlier one: a single bad link displaces the rest and the residual does not say which link failed. Registering each cycle independently lets one cycle be dropped without affecting the others, so a cycle that does not register does not cost the well.",
+      "source_sha256": "4a0bfb2b43283e4176b488c07fffce84b6eeed7f060cc43630202a9580688998",
+      "translation": "Varje cykel registreras direkt mot referensen, aldrig mot sin föregångare. Att kedja c1->c2->c3 sparar en registrering och gör varje senare cykel beroende av varje tidigare: en enda dålig länk förskjuter resten och residualen säger inte vilken länk som misslyckades. Att registrera varje cykel oberoende gör att en cykel kan uteslutas utan att påverka de andra, så en cykel som inte registreras kostar inte brunnen."
+    },
+    {
+      "context": "the reference cycle's target, from :func:`sbs_mean_target`.",
+      "label": "spacr.ops_cycles.register_cycles#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the reference cycle's target, from :func:`sbs_mean_target`.",
+      "source_sha256": "929d5ea897e0c467240b54b505133588441737d7a9ba0e4d95f32fd30de13c28",
+      "translation": "referenscykelns mål, från :func:`sbs_mean_target`."
+    },
+    {
+      "context": "cycle number to that cycle's target.",
+      "label": "spacr.ops_cycles.register_cycles#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "cycle number to that cycle's target.",
+      "source_sha256": "39ad02ad11d6a84112f08e56f99b8f8222774a8d97f97c03ee67602572d175e5",
+      "translation": "cykelnummer till den cykelns mål."
+    },
+    {
+      "context": "passed to :func:`spacr.ops_register.phase_correlate`.",
+      "label": "spacr.ops_cycles.register_cycles#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "passed to :func:`spacr.ops_register.phase_correlate`.",
+      "source_sha256": "c59a1e0612cf4f629e785ca821ffe717a8878eaad508d8567ef2dc801b975227",
+      "translation": "skickas vidare till :func:`spacr.ops_register.phase_correlate`."
+    },
+    {
+      "context": "cycle number to its :class:`Registration`, including the refused ones -- a caller reporting `n_cycles` needs to know a cycle was tried and refused, not merely that it is absent.",
+      "label": "spacr.ops_cycles.register_cycles#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "cycle number to its :class:`Registration`, including the refused ones -- a caller reporting `n_cycles` needs to know a cycle was tried and refused, not merely that it is absent.",
+      "source_sha256": "90f42c33b07de85de39c0e99b97db3f6e522da3d813a10d34a6a4cbf6e0c42dd",
+      "translation": "cykelnummer till dess :class:`Registration`, inklusive de avvisade -- en anropare som rapporterar `n_cycles` behöver veta att en cykel provades och avvisades, inte bara att den saknas."
+    },
+    {
+      "context": "Turn one cycle's base channels into a single registration target.",
+      "label": "spacr.ops_cycles.sbs_mean_target#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Turn one cycle's base channels into a single registration target.",
+      "source_sha256": "6db6b85f4f75403b2dd58619fb180ab5203b8b50b9b490f06c19ea79c0104386",
+      "translation": "Gör om en cykels baskanaler till ett enda registreringsmål."
+    },
+    {
+      "context": "The maximum over channels is used, not the mean. A read is bright in exactly one channel per cycle -- that is what a base call is -- so averaging the four divides every spot by four and leaves the background where it was. The maximum keeps each spot at its own brightness whichever channel carried it.",
+      "label": "spacr.ops_cycles.sbs_mean_target#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The maximum over channels is used, not the mean. A read is bright in exactly one channel per cycle -- that is what a base call is -- so averaging the four divides every spot by four and leaves the background where it was. The maximum keeps each spot at its own brightness whichever channel carried it.",
+      "source_sha256": "3c639893a99340d38230d629859f9576dabae03c12608cc4c190819c8a9cf4ac",
+      "translation": "Maximum över kanalerna används, inte medelvärdet. En läsning är ljus i exakt en kanal per cykel -- det är vad ett basanrop är -- så medelvärdesbildning av de fyra delar varje punkt med fyra och lämnar bakgrunden där den var. Maximum behåller varje punkt vid sin egen ljusstyrka oavsett vilken kanal som bar den."
+    },
+    {
+      "context": "the base channels for one cycle of one microscope field of view.",
+      "label": "spacr.ops_cycles.sbs_mean_target#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the base channels for one cycle of one field.",
+      "source_sha256": "d6a0f7452e4cdb7a3fd3972dbeb35cced9d0c18c4fa453513eceb45eb86908ce",
+      "translation": "baskanalerna för en cykel i ett fält."
+    },
+    {
+      "context": "the percentile the result is divided by.",
+      "label": "spacr.ops_cycles.sbs_mean_target#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the percentile the result is divided by.",
+      "source_sha256": "f3d3b1c5c446ceb480673975be351649340ff1648f2e9e3eb8a482af8e2d628b",
+      "translation": "den percentil som resultatet divideras med."
+    },
+    {
+      "context": "the value the result is clipped at afterwards, so a saturated spot cannot dominate the correlation on its own.",
+      "label": "spacr.ops_cycles.sbs_mean_target#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the value the result is clipped at afterwards, so a saturated spot cannot dominate the correlation on its own.",
+      "source_sha256": "2030330d4011bd9fee4b1c2dfc1bb7e356b5e42d631099c22641a879e5dc13c0",
+      "translation": "det värde som resultatet klipps vid efteråt, så att en mättad punkt inte ensam kan dominera korrelationen."
+    },
+    {
+      "context": "a float32 image, the same shape as one image layer.",
+      "label": "spacr.ops_cycles.sbs_mean_target#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a float32 image, the same shape as one plane.",
+      "source_sha256": "6a935c89571df1480c53c063d93ab36b0bc3dcc14c15ec53f7eed1955b802c59",
+      "translation": "en float32-bild med samma form som ett plan."
+    },
+    {
+      "context": "when no image layers are given, or they disagree in shape.",
+      "label": "spacr.ops_cycles.sbs_mean_target#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "when no planes are given, or they disagree in shape.",
+      "source_sha256": "bb960a6c641e084bf65fc91c45228734d52308daf9a5ffb99b3692c8eaca0389",
+      "translation": "när inga plan ges, eller när deras former inte stämmer överens."
+    },
+    {
+      "context": "Compute every microscope image field position of a round well in closed form.",
+      "label": "spacr.ops_layout#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Compute every tile position of a round well in closed form.",
+      "source_sha256": "3cb03110d1d19ffe50efcad96540944a593ae1a31448be5733943896985430a9",
+      "translation": "Beräkna varje rutposition i en rund brunn i sluten form."
+    },
+    {
+      "context": "The microscope image field grid is computed from a circle model, not reconstructed from the links that register. Reconstructing it from registered links infers the grid from the edges that are missing, and on one acquisition placed only 27 of 333 microscope image fields.",
+      "label": "spacr.ops_layout#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The tile grid is computed from a circle model, not reconstructed from the links that register. Reconstructing it from registered links infers the grid from the edges that are missing, and on one acquisition placed only 27 of 333 tiles.",
+      "source_sha256": "68de5377f6bc54057af6a6c18e9e0a94677ea79a593bc0256082b4f59fd7696a",
+      "translation": "Rutnätet beräknas från en cirkelmodell, inte rekonstruerat från de länkar som registreras. Att rekonstruera det från registrerade länkar härleder rutnätet från de kanter som saknas, och på en avbildning placerade det bara 27 av 333 rutor."
+    },
+    {
+      "context": "The microplate sample position is round. Each column holds as many microscope fields of view as fit inside the circle at that x, so the columns have different heights and the index offset to the next column is that column's height -- which is why the measured horizontal offsets were +11, +4, -11, -9, -4, -13 and -5 rather than one number. Fitting the circle takes four parameters and answers every microscope image field at once",
+      "label": "spacr.ops_layout#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The well is round. Each column holds as many fields as fit inside the circle at that x, so the columns have different heights and the index offset to the next column is that column's height -- which is why the measured horizontal offsets were +11, +4, -11, -9, -4, -13 and -5 rather than one number. Fitting the circle takes four parameters and answers every tile at once",
+      "source_sha256": "40c2c1a93242a50efff041abcb5400bf365c10509ca5ad6277043f02f0c7128c",
+      "translation": "Brunnen är rund. Varje kolumn innehåller så många fält som ryms inom cirkeln vid det x-värdet, så kolumnerna har olika höjd och indexförskjutningen till nästa kolumn är den kolumnens höjd -- vilket är varför de uppmätta horisontella förskjutningarna var +11, +4, -11, -9, -4, -13 och -5 i stället för ett enda tal. Att anpassa cirkeln kräver fyra parametrar och besvarar alla rutor på en gång"
+    },
+    {
+      "context": "The model was validated by prediction. Seven measured offsets against four free parameters would only be a fit; the model was then asked to predict the four neighbours of six sites it had never seen -- 20, 60, 140, 200, 260, 300 -- and registration confirmed 24 of 24, at peak/mean 23.6 to 53.1 against control pairs at 9.0 to 15.6. The controls came back at shift (0,0), which is the no-overlap signature behaving as it should.",
+      "label": "spacr.ops_layout#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The model was validated by prediction. Seven measured offsets against four free parameters would only be a fit; the model was then asked to predict the four neighbours of six sites it had never seen -- 20, 60, 140, 200, 260, 300 -- and registration confirmed 24 of 24, at peak/mean 23.6 to 53.1 against control pairs at 9.0 to 15.6. The controls came back at shift (0,0), which is the no-overlap signature behaving as it should.",
+      "source_sha256": "979074b95b904e4aac07d4a6ce56a2f99caf56334990a1553dfd62f2c57fcb57",
+      "translation": "Modellen validerades genom prediktion. Sju uppmätta förskjutningar mot fyra fria parametrar skulle bara vara en anpassning; modellen fick sedan förutsäga de fyra grannarna till sex positioner den aldrig hade sett -- 20, 60, 140, 200, 260, 300 -- och registreringen bekräftade 24 av 24, vid topp/medel 23.6 till 53.1 mot kontrollpar vid 9.0 till 15.6. Kontrollerna gav förskjutningen (0,0), vilket är signaturen för inget överlapp som beter sig som den ska."
+    },
+    {
+      "context": "Rows are absolute grid rows, not counted from each column's own top. In a round well every column starts at a different row, so \"row 3 of column c\" and \"row 3 of column c+1\" are not side by side. The neighbour is at the same absolute grid row, which is why :meth:`WellLayout.position` returns absolute rows and :meth:`WellLayout.neighbours` looks them up directly.",
+      "label": "spacr.ops_layout#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Rows are absolute grid rows, not counted from each column's own top. In a round well every column starts at a different row, so \"row 3 of column c\" and \"row 3 of column c+1\" are not side by side. The neighbour is at the same absolute grid row, which is why :meth:`WellLayout.position` returns absolute rows and :meth:`WellLayout.neighbours` looks them up directly.",
+      "source_sha256": "ae230e874e194970126c41dcfbf07dd9353649883c5b2d010fdd2360ec5a8598",
+      "translation": "Rader är absoluta rutnätsrader, inte räknade från varje kolumns egen topp. I en rund brunn börjar varje kolumn på en annan rad, så \"rad 3 i kolumn c\" och \"rad 3 i kolumn c+1\" ligger inte bredvid varandra. Grannen ligger på samma absoluta rutnätsrad, vilket är varför :meth:`WellLayout.position` returnerar absoluta rader och :meth:`WellLayout.neighbours` slår upp dem direkt."
+    },
+    {
+      "context": "How many fields each column holds, left to right.",
+      "label": "spacr.ops_layout.WellLayout.heights#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "How many fields each column holds, left to right.",
+      "source_sha256": "05200b6a43b57c3a50592097da2a0f3172d8d53f413a5806183000644afdb9dd",
+      "translation": "Hur många fält varje kolumn innehåller, från vänster till höger."
+    },
+    {
+      "context": "Where the reference implementation says a tile is, in microns.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Where the reference implementation says a tile is, in microns.",
+      "source_sha256": "f5435ed49fafdd002a9b65d04bb6a4b9686b9febbf62a4ef2effe496ec784af2",
+      "translation": "Var referensimplementationen säger att en ruta ligger, i mikrometer."
+    },
+    {
+      "context": "A stitch is scored by its residual against this position, not by how many microscope image fields were placed.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "A stitch is scored by its residual against this position, not by how many tiles were placed.",
+      "source_sha256": "f06b1193444b5bf8cf02e3914344fc4839c18590e2a1dfd15671c281dd36dad2",
+      "translation": "En sammanfogning poängsätts efter sin residual mot den här positionen, inte efter hur många rutor som placerades."
+    },
+    {
+      "context": "the site index.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the site index.",
+      "source_sha256": "a5458d6148f6b18f42e2cf27c2722d6cb3d4829c34dfba9b714fe3635bf9b39f",
+      "translation": "positionsindexet."
+    },
+    {
+      "context": "``(x, y)`` in microns, relative to the circle's centre.",
+      "label": "spacr.ops_layout.WellLayout.micron_position#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(x, y)`` in microns, relative to the circle's centre.",
+      "source_sha256": "93608f4712e9aed31119e6942bb6911621678d7181a8333274bd624fecf37aa1",
+      "translation": "``(x, y)`` i mikrometer, relativt cirkelns mittpunkt."
+    },
+    {
+      "context": "The sites physically adjacent to one site.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The sites physically adjacent to one site.",
+      "source_sha256": "27c767570796de48b02731a7040712364824f85d53cdc9eb21590af7fc7b970c",
+      "translation": "De positioner som fysiskt gränsar till en position."
+    },
+    {
+      "context": "At most four candidates, each a real adjacency, rather than a band of index neighbours such as `max_site_gap`'s window, of which at most four could touch.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "At most four candidates, each a real adjacency, rather than a band of index neighbours such as `max_site_gap`'s window, of which at most four could touch.",
+      "source_sha256": "0a2e775178768310d2d36ed8375cf109c9190ef5b84e7b8b80e80d62670b058f",
+      "translation": "Högst fyra kandidater, var och en en verklig granne, i stället för ett band av indexgrannar som fönstret i `max_site_gap`, av vilka högst fyra kan beröra varandra."
+    },
+    {
+      "context": "``{direction: site}`` for the neighbours that exist.",
+      "label": "spacr.ops_layout.WellLayout.neighbours#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``{direction: site}`` for the neighbours that exist.",
+      "source_sha256": "7da6f97984b5534598203748bce972b499d6043f80d5fc5251b31f51d5fd9fd3",
+      "translation": "``{direction: site}`` för de grannar som finns."
+    },
+    {
+      "context": "Every adjacent pair once, as ``(first, second, axis)``.",
+      "label": "spacr.ops_layout.WellLayout.pairs#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Every adjacent pair once, as ``(first, second, axis)``.",
+      "source_sha256": "8788811a9e9333e82ce1f50eadcb755c31618bb734ceff53f32150c4a3bd89fb",
+      "translation": "Varje angränsande par en gång, som ``(first, second, axis)``."
+    },
+    {
+      "context": "Once, not twice: registering a pair in both directions doubles the work and asks the same question. The axis is \"vertical\" or \"horizontal\", which the caller wants because a vertical link continues a column and a horizontal one crosses a snake turn -- and because the two carry different expected shifts.",
+      "label": "spacr.ops_layout.WellLayout.pairs#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Once, not twice: registering a pair in both directions doubles the work and asks the same question. The axis is \"vertical\" or \"horizontal\", which the caller wants because a vertical link continues a column and a horizontal one crosses a snake turn -- and because the two carry different expected shifts.",
+      "source_sha256": "54ca933a0300ce4f5de4be1183d617faffbb51d187a91191752d670749c4f0a9",
+      "translation": "En gång, inte två: att registrera ett par i båda riktningarna fördubblar arbetet och ställer samma fråga. Axeln är \"vertical\" eller \"horizontal\", vilket anroparen vill ha eftersom en vertikal länk fortsätter en kolumn och en horisontell korsar en ormvändning -- och eftersom de två har olika förväntade förskjutningar."
+    },
+    {
+      "context": "Ordered by geometry, not by site index: the second microscope image field is always the one below for a vertical pair and the one to the right for a horizontal one, because a caller cropping an overlap band assumes that -- `register_edge` takes the bottom of the first and the top of the second. Ordering by index is wrong on every odd column, because the raster snakes and in a bottom-to-top column the microscope image field above carries the higher index. That error is silent: edges are lost while each surviving component still solves with a residual of 0.00 px.",
+      "label": "spacr.ops_layout.WellLayout.pairs#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Ordered by geometry, not by site index: the second tile is always the one below for a vertical pair and the one to the right for a horizontal one, because a caller cropping an overlap band assumes that -- `register_edge` takes the bottom of the first and the top of the second. Ordering by index is wrong on every odd column, because the raster snakes and in a bottom-to-top column the tile above carries the higher index. That error is silent: edges are lost while each surviving component still solves with a residual of 0.00 px.",
+      "source_sha256": "cedfac7cda177611257e3735dc09115c7cb9b5cb7fa6510b9d5b935fb25f4376",
+      "translation": "Ordnade efter geometri, inte efter positionsindex: den andra rutan är alltid den nedanför för ett vertikalt par och den till höger för ett horisontellt, eftersom en anropare som beskär ett överlappsband förutsätter det -- `register_edge` tar nederkanten av den första och överkanten av den andra. Ordning efter index är fel i varje udda kolumn, eftersom rastret går i ormmönster och i en kolumn från botten till topp har rutan ovanför det högre indexet. Det felet är tyst: kanter går förlorade medan varje kvarvarande komponent ändå löses med en residual på 0.00 px."
+    },
+    {
+      "context": "the pairs, ordered by their first site.",
+      "label": "spacr.ops_layout.WellLayout.pairs#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the pairs, ordered by their first site.",
+      "source_sha256": "4c9b967908948d8e027a247eac38833e7f34dd27d2a70b8a74dabab9ba57fcb7",
+      "translation": "paren, ordnade efter sin första position."
+    },
+    {
+      "context": "The ``(column, row)`` of one site.",
+      "label": "spacr.ops_layout.WellLayout.position#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The ``(column, row)`` of one site.",
+      "source_sha256": "32a29efe9cc46b6b3b8f18349a619d26a9ac2df4cbc1bd57682dba4f8a4a8c1a",
+      "translation": "``(column, row)`` för en position."
+    },
+    {
+      "context": "the column and the absolute grid row -- not the row counted from this column's own top. See the module note.",
+      "label": "spacr.ops_layout.WellLayout.position#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the column and the absolute grid row -- not the row counted from this column's own top. See the module note.",
+      "source_sha256": "220543c4f526a8010b77b6ad65a3ea31e49fc02792568b41e19363dfb7a6d795",
+      "translation": "kolumnen och den absoluta rutnätsraden -- inte raden räknad från den här kolumnens egen topp. Se modulanteckningen."
+    },
+    {
+      "context": "when the microplate sample position holds no such site.",
+      "label": "spacr.ops_layout.WellLayout.position#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "when the well holds no such site.",
+      "source_sha256": "275e92376a6e210c1956a05baf1c6e2983544384afc8b81e11f3039653e4840a",
+      "translation": "när brunnen inte innehåller någon sådan position."
+    },
+    {
+      "context": "``site -> (column, row)`` for every site, in index order.",
+      "label": "spacr.ops_layout.WellLayout.positions#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``site -> (column, row)`` for every site, in index order.",
+      "source_sha256": "40e435a3c7e93ddee51f22a63c8fde45c937c99aa68703b582462205fa450e2a",
+      "translation": "``site -> (column, row)`` för varje position, i indexordning."
+    },
+    {
+      "context": "The site index at one grid position, or None when it is empty.",
+      "label": "spacr.ops_layout.WellLayout.site#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The site index at one grid position, or None when it is empty.",
+      "source_sha256": "cbc795c42947639e4d823c957c0a26406f1bb43858e12c79e07f6f599271be00",
+      "translation": "Positionsindexet vid en rutnätsposition, eller None när den är tom."
+    },
+    {
+      "context": "the absolute grid row.",
+      "label": "spacr.ops_layout.WellLayout.site#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the absolute grid row.",
+      "source_sha256": "592c92de07f8c0b80837e00849d4ee48e2cb00593aec1fdd3be4011990d7cb56",
+      "translation": "den absoluta rutnätsraden."
+    },
+    {
+      "context": "the site index, or None outside the circle.",
+      "label": "spacr.ops_layout.WellLayout.site#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the site index, or None outside the circle.",
+      "source_sha256": "5c2ede49c270e3cacec8e74a093d9f8f56c5231df11b8c19e52d1220c707e05e",
+      "translation": "positionsindexet, eller None utanför cirkeln."
+    },
+    {
+      "context": "How many microscope image fields the microplate sample position holds.",
+      "label": "spacr.ops_layout.WellLayout.site_count#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "How many tiles the well holds.",
+      "source_sha256": "cff47dba157f65752746b2cc42d7422896e449f2728380f71dd92dfc4ddf613c",
+      "translation": "Hur många rutor brunnen innehåller."
+    },
+    {
+      "context": "Raised for an unusable object list; the message states the remedy.",
+      "label": "spacr.ops_objects.ObjectsError#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raised for an unusable object list; the message states the remedy.",
+      "source_sha256": "e7b71f5308db2585c171f2708e05cea56203db41a88cc8f730eba21fad2302e1",
+      "translation": "Kastas för en oanvändbar objektlista; meddelandet anger åtgärden."
+    },
+    {
+      "context": "Raised rather than returned empty for the same reason :class:`spacr.ops_compose.ComposeError` is: every one of these is a sentence an operator can act on -- \"raise the window overlap above the largest nucleus\" -- and a caller that swallowed it would carry on with a count that is quietly wrong.",
+      "label": "spacr.ops_objects.ObjectsError#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raised rather than returned empty for the same reason :class:`spacr.ops_compose.ComposeError` is: every one of these is a sentence an operator can act on -- \"raise the window overlap above the largest nucleus\" -- and a caller that swallowed it would carry on with a count that is quietly wrong.",
+      "source_sha256": "21b98ccae9abc7261fb50f18ce4c7ccb99f09dd961be2ab74c6d182c9599f85e",
+      "translation": "Kastas i stället för att returneras tom av samma skäl som :class:`spacr.ops_compose.ComposeError`: vart och ett av dessa är en mening som en operatör kan agera på -- \"höj fönsteröverlappet över den största kärnan\" -- och en anropare som svalde det skulle fortsätta med ett antal som i tysthet är fel."
+    },
+    {
+      "context": "One nucleus, numbered for the whole well. The join key for sampling.",
+      "label": "spacr.ops_objects.PlateObject#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One nucleus, numbered for the whole well. The join key for sampling.",
+      "source_sha256": "dd14870f427a77beb13b68ed45b483d218419e890c2e93fb8fa3770de0288a70",
+      "translation": "En kärna, numrerad för hela brunnen. Kopplingsnyckeln för provtagning."
+    },
+    {
+      "context": "The field names are the ``ops_objects`` columns the storage contract specifies, so the table is written from these without a translation layer.",
+      "label": "spacr.ops_objects.PlateObject#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The field names are the ``ops_objects`` columns the storage contract specifies, so the table is written from these without a translation layer.",
+      "source_sha256": "617f96dff5915a91f13f109e95842c1b44df36dc77bf6cf9ce00f9da31796eae",
+      "translation": "Fältnamnen är de ``ops_objects``-kolumner som lagringskontraktet anger, så tabellen skrivs från dessa utan något översättningslager."
+    },
+    {
+      "context": "the well-wide number, unique across the whole well; per-window numbering would give two windows an object #1 apiece.",
+      "label": "spacr.ops_objects.PlateObject#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the well-wide number, unique across the whole well; per-window numbering would give two windows an object #1 apiece.",
+      "source_sha256": "e076921333f7f40f74e5a07af850cc04f7845c5a6fc49b530a0af605cc33864d",
+      "translation": "det brunnsövergripande numret, unikt i hela brunnen; numrering per fönster skulle ge två fönster var sitt objekt #1."
+    },
+    {
+      "context": "row of the centroid, same frame.",
+      "label": "spacr.ops_objects.PlateObject#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "row of the centroid, same frame.",
+      "source_sha256": "642d2e1a7e1a5a857e204be52b3dc56fd052f4890ab19d05aea9ee7f351e7978",
+      "translation": "centroidens rad, i samma koordinatsystem."
+    },
+    {
+      "context": "pixel count of the mask that was kept, which is the unclipped observation wherever one exists.",
+      "label": "spacr.ops_objects.PlateObject#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "pixel count of the mask that was kept, which is the unclipped observation wherever one exists.",
+      "source_sha256": "941966ba7c852fbf58563a461b054f78efaed10daf1cdea9dade4b36df76b455",
+      "translation": "pixelantalet för den mask som behölls, vilket är den oklippta observationen överallt där en sådan finns."
+    },
+    {
+      "context": "the window whose observation was kept, as ``(row, col)``. Recorded so a suspect object can be traced back to the pixels it was segmented from.",
+      "label": "spacr.ops_objects.PlateObject#7",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the window whose observation was kept, as ``(row, col)``. Recorded so a suspect object can be traced back to the pixels it was segmented from.",
+      "source_sha256": "015b9666b0dbca7b2fa380d289f46f461a6e3d76dff95fa2d8219f8aa91481a8",
+      "translation": "det fönster vars observation behölls, som ``(row, col)``. Registreras så att ett misstänkt objekt kan spåras tillbaka till de pixlar det segmenterades från."
+    },
+    {
+      "context": "how many windows saw this nucleus. Greater than one means it sat in an overlap and the observations were sewn.",
+      "label": "spacr.ops_objects.PlateObject#8",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "how many windows saw this nucleus. Greater than one means it sat in an overlap and the observations were sewn.",
+      "source_sha256": "9d6587e77fa9bd5eb5ccd239102f86825c4e32e93aae003b0c1f7214d13fddf2",
+      "translation": "hur många fönster som såg den här kärnan. Större än ett betyder att den låg i ett överlapp och att observationerna syddes ihop."
+    },
+    {
+      "context": "One ``ops_objects`` row.",
+      "label": "spacr.ops_objects.PlateObject.row#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One ``ops_objects`` row.",
+      "source_sha256": "e456b1d04ba53925c6cd89e3bdf19056eb2998a1516beda9850e73d05e958665",
+      "translation": "En ``ops_objects``-rad."
+    },
+    {
+      "context": "the window it was segmented in, so a disagreement can be traced back to the pixels that produced it.",
+      "label": "spacr.ops_objects.WindowObject#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the window it was segmented in, so a disagreement can be traced back to the pixels that produced it.",
+      "source_sha256": "b19805146c0e651281562808614a7c4d8595a3ed21d97e6a54bdcf6c6ca56b96",
+      "translation": "fönstret där det segmenterades, så att en oenighet kan spåras tillbaka till de pixlar som gav upphov till den."
+    },
+    {
+      "context": "its label value within that window's label image.",
+      "label": "spacr.ops_objects.WindowObject#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "its label value within that window's label image.",
+      "source_sha256": "b54e7e0613ded479cdf1952602068302efb28e97e78cab851ac882c474d93cb1",
+      "translation": "dess etikettvärde i det fönstrets etikettbild."
+    },
+    {
+      "context": "whether its mask touches a window edge that is not also a canvas edge -- meaning this window did not see all of it. A clipped observation is never preferred and never emitted alone.",
+      "label": "spacr.ops_objects.WindowObject#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "whether its mask touches a window edge that is not also a canvas edge -- meaning this window did not see all of it. A clipped observation is never preferred and never emitted alone.",
+      "source_sha256": "0608802da7e6cefe9f19ecfe41306a25482b5be080be9ac4cc3b5a5f5e502501",
+      "translation": "om dess mask berör en fönsterkant som inte också är en dukkant -- vilket betyder att det här fönstret inte såg hela objektet. En klippt observation föredras aldrig och skickas aldrig ensam."
+    },
+    {
+      "context": "column of the same centroid, same frame.",
+      "label": "spacr.ops_objects.WindowObject#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "column of the same centroid, same frame.",
+      "source_sha256": "22c94bc7a739e222cb1d8f00a13e848bcf51527ae0bba819bf3418b2ff31b16e",
+      "translation": "kolumnen för samma centroid, i samma koordinatsystem."
+    },
+    {
+      "context": "the mask's pixel count as this window saw it. Smaller than the truth whenever ``clipped`` is set, which is what makes it usable as the tie-break between two observations of one nucleus.",
+      "label": "spacr.ops_objects.WindowObject#6",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the mask's pixel count as this window saw it. Smaller than the truth whenever ``clipped`` is set, which is what makes it usable as the tie-break between two observations of one nucleus.",
+      "source_sha256": "1a8727fd6d97a011ac4e5e53440b5a0ff83ddfab2e1b838a684a48bb94d61d08",
+      "translation": "maskens pixelantal så som det här fönstret såg den. Mindre än det sanna värdet när ``clipped`` är satt, vilket är det som gör den användbar som avgörande mellan två observationer av samma kärna."
+    },
+    {
+      "context": "The ``ops_objects`` table, as a DataFrame.",
+      "label": "spacr.ops_objects.objects_frame#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The ``ops_objects`` table, as a DataFrame.",
+      "source_sha256": "a2647c8fa2880da295a546330d0f53fc545fa7146419b926f81074915a45f331",
+      "translation": "Tabellen ``ops_objects`` som en DataFrame."
+    },
+    {
+      "context": "Imported locally so this module stays usable -- and testable -- without pandas, which is the same reason :mod:`spacr.scorecard` reaches for the standard library.",
+      "label": "spacr.ops_objects.objects_frame#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Imported locally so this module stays usable -- and testable -- without pandas, which is the same reason :mod:`spacr.scorecard` reaches for the standard library.",
+      "source_sha256": "a3bdb3ee3ce7366d950e77d0d51ae6dc7fe8b98fe4c3c29114a488ff1fd38875",
+      "translation": "Importeras lokalt så att den här modulen förblir användbar -- och testbar -- utan pandas, vilket är samma skäl som att :mod:`spacr.scorecard` använder standardbiblioteket."
+    },
+    {
+      "context": "the numbered objects, one row each, in the order given.",
+      "label": "spacr.ops_objects.objects_frame#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the numbered objects, one row each, in the order given.",
+      "source_sha256": "55fc8b2a9e28565f111ff72dc29fa9449f47c854f412ba834fbfb67865401506",
+      "translation": "de numrerade objekten, en rad vardera, i den angivna ordningen."
+    },
+    {
+      "context": "where this label image sits in the microplate sample position.",
+      "label": "spacr.ops_objects.objects_in_window#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "where this label image sits in the well.",
+      "source_sha256": "f4bc21a570e5c9e5a25d6489b73230efe969c06fd6ed9830a32462a9992b0f49",
+      "translation": "var den här etikettbilden ligger i brunnen."
+    },
+    {
+      "context": "integer label image, zero is background, as a segmenter returns it. Must match the window's shape.",
+      "label": "spacr.ops_objects.objects_in_window#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "integer label image, zero is background, as a segmenter returns it. Must match the window's shape.",
+      "source_sha256": "1688aca06fd7b5b44c55efd9b8edf5142d9caa6151b0e6855914222e94baf469",
+      "translation": "etikettbild med heltal, noll är bakgrund, så som en segmenterare returnerar den. Måste ha samma form som fönstret."
+    },
+    {
+      "context": "the microplate sample position's ``(height, width)``. Used only to tell a window edge that is also the microplate sample position edge -- where an object ends -- from an interior seam, where a touching object is clipped. Omitted, every edge is treated as interior, which is the safe direction: it can only make this function more cautious.",
+      "label": "spacr.ops_objects.objects_in_window#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the well's ``(height, width)``. Used only to tell a window edge that is also the well edge -- where an object ends -- from an interior seam, where a touching object is clipped. Omitted, every edge is treated as interior, which is the safe direction: it can only make this function more cautious.",
+      "source_sha256": "ac3d34b0146bf5267e250b7cd1d40f774a6125ee31a91bc6d47db611a05f8871",
+      "translation": "brunnens ``(height, width)``. Används bara för att skilja en fönsterkant som också är brunnens kant -- där ett objekt slutar -- från en inre söm, där ett objekt som berör den är klippt. Om det utelämnas behandlas varje kant som inre, vilket är den säkra riktningen: det kan bara göra den här funktionen mer försiktig."
+    },
+    {
+      "context": "when ``labels`` is not the window's shape, because every coordinate below would be silently wrong.",
+      "label": "spacr.ops_objects.objects_in_window#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "when ``labels`` is not the window's shape, because every coordinate below would be silently wrong.",
+      "source_sha256": "3da708ae70291d0d11a6d8b65f78a043d3b2a1925b9a996b270373ec9a43a222",
+      "translation": "när ``labels`` inte har fönstrets form, eftersom varje koordinat nedan då i tysthet skulle bli fel."
+    },
+    {
+      "context": "Run a segmenter over each window and collect the observations.",
+      "label": "spacr.ops_objects.segment_windows#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Run a segmenter over each window and collect the observations.",
+      "source_sha256": "f0ef2a40ee9de0d28442159f43c64fdac35c3f2eaa9845b3fbc2417d0a5a9dfd",
+      "translation": "Kör en segmenterare över varje fönster och samla observationerna."
+    },
+    {
+      "context": "The segmenter is injected, exactly as ``compose_window`` takes its ``read_tile``. This module never imports cellpose, never chooses a model and never decides a diameter -- it is the geometry of doing that window by window, and it is testable on planted labels with no model present.",
+      "label": "spacr.ops_objects.segment_windows#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The segmenter is injected, exactly as ``compose_window`` takes its ``read_tile``. This module never imports cellpose, never chooses a model and never decides a diameter -- it is the geometry of doing that window by window, and it is testable on planted labels with no model present.",
+      "source_sha256": "24bf9efd98341708af031f53aa036edb9981c41239a1d208a9b76145a98821c5",
+      "translation": "Segmenteraren injiceras, precis som ``compose_window`` tar sin ``read_tile``. Den här modulen importerar aldrig cellpose, väljer aldrig en modell och bestämmer aldrig en diameter -- den är geometrin för att göra det fönster för fönster, och den är testbar på planterade etiketter utan någon modell."
+    },
+    {
+      "context": "from :func:`spacr.ops_compose.windows_over`.",
+      "label": "spacr.ops_objects.segment_windows#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "from :func:`spacr.ops_compose.windows_over`.",
+      "source_sha256": "75fb35bff3eb6254fdc7bf22158da0c61ef6bac28c744e6e00188407c128d97f",
+      "translation": "från :func:`spacr.ops_compose.windows_over`."
+    },
+    {
+      "context": "called with one window, returns its label image. A caller composes the pixels (``compose_window``) and segments them inside this callable, so the composite is never held whole.",
+      "label": "spacr.ops_objects.segment_windows#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "called with one window, returns its label image. A caller composes the pixels (``compose_window``) and segments them inside this callable, so the composite is never held whole.",
+      "source_sha256": "ecebc70bda18e3729d15194bf63ed5a83f3dd47b84aad191ee4bbffe6e86a3e6",
+      "translation": "anropas med ett fönster och returnerar dess etikettbild. En anropare sätter samman pixlarna (``compose_window``) och segmenterar dem i den här anropbara funktionen, så att den sammansatta bilden aldrig hålls i sin helhet."
+    },
+    {
+      "context": "the microplate sample position's shape, passed through to :func:`objects_in_window`.",
+      "label": "spacr.ops_objects.segment_windows#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the well's shape, passed through to :func:`objects_in_window`.",
+      "source_sha256": "e5e102cc8cb400d9d36a197afdf5389581288ca903ee667075a20743a92738ef",
+      "translation": "brunnens form, som skickas vidare till :func:`objects_in_window`."
+    },
+    {
+      "context": "every observation from every window, unsewn and unnumbered.",
+      "label": "spacr.ops_objects.segment_windows#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "every observation from every window, unsewn and unnumbered.",
+      "source_sha256": "1536007fb225aaa0e1c9ebd7a0a087f2defcbc44748276ac2158e4b9c05584d2",
+      "translation": "varje observation från varje fönster, inte ihopsydd och onumrerad."
+    },
+    {
+      "context": ":func:`_unseen_report` names only the largest group and the remedy. These records describe every refused group while the observations are still in memory, so a processing session report can later tell Cellpose fragments with no counterpart from clips whose complete observation the join missed, without segmenting the microplate sample position again.",
+      "label": "spacr.ops_objects.unseen_records#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": ":func:`_unseen_report` names only the largest group and the remedy. These records describe every refused group while the observations are still in memory, so a run report can later tell Cellpose fragments with no counterpart from clips whose complete observation the join missed, without segmenting the well again.",
+      "source_sha256": "d5970ba4ca04c30c5534b09ad85fb03bfd232f0b336de77095e66373af24d057",
+      "translation": ":func:`_unseen_report` namnger bara den största gruppen och åtgärden. Dessa poster beskriver varje avvisad grupp medan observationerna fortfarande finns i minnet, så att en körningsrapport senare kan skilja Cellpose-fragment utan motsvarighet från klipp vars fullständiga observation kopplingen missade, utan att segmentera brunnen igen."
+    },
+    {
+      "context": "The other half is :func:`spacr.ops_engine.run_ops`'s, which compares each box against the objects that were numbered: a refusal with a numbered object over it is a join that missed, and one with empty microplate sample position frame around it is a fragment.",
+      "label": "spacr.ops_objects.unseen_records#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The other half is :func:`spacr.ops_engine.run_ops`'s, which compares each box against the objects that were numbered: a refusal with a numbered object over it is a join that missed, and one with empty well frame around it is a fragment.",
+      "source_sha256": "b4dfb9b3a6f981d9ae80e4e6701d1b916b02f6e391e01e52b0a507cf9d9b6e53",
+      "translation": "Den andra halvan hör till :func:`spacr.ops_engine.run_ops`, som jämför varje begränsningsram mot de objekt som numrerades: en avvisning med ett numrerat objekt över sig är en koppling som missades, och en med tom brunnsyta runt sig är ett fragment."
+    },
+    {
+      "context": "Every other channel, sampled at the coordinates the numbering assigned.",
+      "label": "spacr.ops_sample#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Every other channel, sampled at the coordinates the numbering assigned.",
+      "source_sha256": "dc308f703c0ca6de281ff93633809ceb34fd2d60d21c253efc83c7c50e5a93f1",
+      "translation": "Varje annan kanal, samplad vid de koordinater som numreringen tilldelade."
+    },
+    {
+      "context": "Sampling every other channel at the object coordinates the numbering step assigned -- the part that can be built and checked without a real cycle stack. The numbering step produced a laboratory microplate-level object id and a microplate sample position-frame centroid for every nucleus; this is what reads the remaining channels at those coordinates and keys the result to those ids.",
+      "label": "spacr.ops_sample#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Sampling every other channel at the object coordinates the numbering step assigned -- the part that can be built and checked without a real cycle stack. The numbering step produced a plate-level object id and a well-frame centroid for every nucleus; this is what reads the remaining channels at those coordinates and keys the result to those ids.",
+      "source_sha256": "c63508064a30d0206d0635734559be50e368bd9472c306c27596509a380149f3",
+      "translation": "Sampling av varje annan kanal vid de objektkoordinater som numreringssteget tilldelade -- den del som kan byggas och kontrolleras utan en verklig cykelstack. Numreringssteget gav ett objekt-id på plattnivå och en centroid i brunnens koordinatsystem för varje kärna; det här är det som läser de återstående kanalerna vid de koordinaterna och knyter resultatet till de id:na."
+    },
+    {
+      "context": "C1 sequencing channels, per cycle ... NEVER averaged across cycles -- that is the one operation that destroys a barcode while leaving it decodable.",
+      "label": "spacr.ops_sample#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "C1  SEQUENCING CHANNELS, PER CYCLE ... NEVER averaged across cycles -- that is the one operation that destroys a barcode while leaving it decodable.",
+      "source_sha256": "d17356a68d3aeeb7978db29341fa101d00cb70c0d22f6ecd3deb7d8e41397848",
+      "translation": "C1  SEKVENSERINGSKANALER, PER CYKEL ... ALDRIG medelvärdesbildade över cykler -- det är den enda operation som förstör en streckkod men ändå lämnar den avkodbar."
+    },
+    {
+      "context": "This constraint is enforced in code. A mean across cycles of a four-image data channel readout still looks like a four-image data channel readout: ``call_reads`` accepts it, returns a barcode of the right length, and every downstream table fills in. The processing session completes, the numbers are plausible, and the barcodes are noise. There is no later check that can catch it, because nothing downstream knows what the per-cycle values were. So :func:`decode_input` refuses an array whose cycle axis has been collapsed, and this module offers no way to average one.",
+      "label": "spacr.ops_sample#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "This constraint is enforced in code. A mean across cycles of a four-channel readout still looks like a four-channel readout: ``call_reads`` accepts it, returns a barcode of the right length, and every downstream table fills in. The run completes, the numbers are plausible, and the barcodes are noise. There is no later check that can catch it, because nothing downstream knows what the per-cycle values were. So :func:`decode_input` refuses an array whose cycle axis has been collapsed, and this module offers no way to average one.",
+      "source_sha256": "a4498cf1ac372123f2977013478120f9956db51332712e17d2dae0004c2ff7d3",
+      "translation": "Den här begränsningen upprätthålls i koden. Ett medelvärde över cykler av en fyrkanalig avläsning ser fortfarande ut som en fyrkanalig avläsning: ``call_reads`` accepterar det, returnerar en streckkod med rätt längd, och varje nedströms tabell fylls i. Körningen slutförs, siffrorna är rimliga och streckkoderna är brus. Det finns ingen senare kontroll som kan fånga det, eftersom ingenting nedströms vet vilka värdena per cykel var. Därför avvisar :func:`decode_input` en array vars cykelaxel har slagits ihop, och den här modulen erbjuder inget sätt att medelvärdesbilda en."
+    },
+    {
+      "context": "The phenotype path is the opposite case, which is why the two are separate functions rather than one with a flag. A phenotype channel measured in several cycles is several samples of one quantity and averaging it is the right thing, and what it emits is the schema ``measure`` already emits. Same laboratory microplate, same objects, opposite correct answer; a shared flag would make that a caller's choice, and it is not one.",
+      "label": "spacr.ops_sample#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The phenotype path is the opposite case, which is why the two are separate functions rather than one with a flag. A phenotype channel measured in several cycles is several samples of one quantity and averaging it is the right thing, and what it emits is the schema ``measure`` already emits. Same plate, same objects, opposite correct answer; a shared flag would make that a caller's choice, and it is not one.",
+      "source_sha256": "4d34a80e206b6fb1a8c51359b3f2fc44b06d3b42cb652956c4cb43b881300c40",
+      "translation": "Fenotypvägen är det motsatta fallet, vilket är varför de två är separata funktioner i stället för en med en flagga. En fenotypkanal som mätts i flera cykler är flera stickprov av en och samma storhet och att medelvärdesbilda den är rätt, och det den ger ut är det schema som ``measure`` redan ger ut. Samma platta, samma objekt, motsatt korrekt svar; en gemensam flagga skulle göra det till anroparens val, och det är det inte."
+    },
+    {
+      "context": "The samplers are injected, as they are in :mod:`spacr.ops_compose` and :mod:`spacr.ops_objects`: nothing here opens a file or knows a transform's provenance, so all of it is testable on planted truth.",
+      "label": "spacr.ops_sample#5",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "The samplers are injected, as they are in :mod:`spacr.ops_compose` and :mod:`spacr.ops_objects`: nothing here opens a file or knows a transform's provenance, so all of it is testable on planted truth.",
+      "source_sha256": "dc785e99606e9d41b8e09c02fe174b95c19f6665e9bcfd194c0b319512de1a36",
+      "translation": "Samplarna injiceras, precis som i :mod:`spacr.ops_compose` och :mod:`spacr.ops_objects`: ingenting här öppnar en fil eller känner till en transformations ursprung, så allt är testbart på planterad sanning."
+    },
+    {
+      "context": "Raised for an invalid sampling; the message states the remedy.",
+      "label": "spacr.ops_sample.SampleError#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Raised for an invalid sampling; the message states the remedy.",
+      "source_sha256": "df281d1bf10e1156b25808c7ee7605baaa6e3fb51e00158664f7d73affcfcbba",
+      "translation": "Kastas för en ogiltig sampling; meddelandet anger åtgärden."
+    },
+    {
+      "context": "Mean of one phenotype channel across cycles.",
+      "label": "spacr.ops_sample.average_over_cycles#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Mean of one phenotype channel across cycles.",
+      "source_sha256": "ea160edd692f48c71e9c41b52f4ff5e05940328ff114d53dc16c47df0ca83df2",
+      "translation": "Medelvärde av en fenotypkanal över cykler."
+    },
+    {
+      "context": "Phenotype channels are sampled \"at the same object ids\", and a phenotype measured in several cycles is several samples of one quantity -- so averaging raises its precision, exactly as averaging the Hoechst across microscope image fields does when they overlap.",
+      "label": "spacr.ops_sample.average_over_cycles#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Phenotype channels are sampled \"at the same object ids\", and a phenotype measured in several cycles is several samples of one quantity -- so averaging raises its precision, exactly as averaging the Hoechst across tiles does when they overlap.",
+      "source_sha256": "9a80c9b50012e60cfa0f9577326ad16757339055099b1bf0c1eeebcab0a85621",
+      "translation": "Fenotypkanaler samplas \"vid samma objekt-id:n\", och en fenotyp som mätts i flera cykler är flera stickprov av en och samma storhet -- så medelvärdesbildning höjer dess precision, precis som medelvärdesbildning av Hoechst över rutor gör när de överlappar."
+    },
+    {
+      "context": "Separate from :func:`decode_input`: the same operation is right for a phenotype channel and destroys a sequencing one, so it is two functions and not one with a flag: a flag would make that a caller's decision, and it is a property of the channel.",
+      "label": "spacr.ops_sample.average_over_cycles#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Separate from :func:`decode_input`: the same operation is right for a phenotype channel and destroys a sequencing one, so it is two functions and not one with a flag: a flag would make that a caller's decision, and it is a property of the channel.",
+      "source_sha256": "80880854f86b94d594249cea64fe3caa7039ea49846afb1ba5b4f8411676a579",
+      "translation": "Separat från :func:`decode_input`: samma operation är rätt för en fenotypkanal och förstör en sekvenseringskanal, så det är två funktioner och inte en med en flagga: en flagga skulle göra det till anroparens beslut, och det är en egenskap hos kanalen."
+    },
+    {
+      "context": "NaN-aware, because :func:`sample_objects` returns NaN for an object this cycle did not cover, and an object measured in nine cycles of eleven should get the mean of the nine rather than NaN.",
+      "label": "spacr.ops_sample.average_over_cycles#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "NaN-aware, because :func:`sample_objects` returns NaN for an object this cycle did not cover, and an object measured in nine cycles of eleven should get the mean of the nine rather than NaN.",
+      "source_sha256": "999e434c9425c7ce81a9ad676b73d4f43b8c6829c03d4e8effe70347cce92aef",
+      "translation": "NaN-medveten, eftersom :func:`sample_objects` returnerar NaN för ett objekt som den här cykeln inte täckte, och ett objekt som mätts i nio av elva cykler ska få medelvärdet av de nio i stället för NaN."
+    },
+    {
+      "context": "one array of per-object values per cycle, every array the same length and in the same object order. The order is the caller's to keep: nothing here can detect two cycles sampled against different object tables.",
+      "label": "spacr.ops_sample.average_over_cycles#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "one array of per-object values per cycle, every array the same length and in the same object order. The order is the caller's to keep: nothing here can detect two cycles sampled against different object tables.",
+      "source_sha256": "dc73c4c0969c3fb1d578a8503b31ee009dd102b9c96f70d6b5658e6a659da850",
+      "translation": "en array med värden per objekt för varje cykel, alla arrayer med samma längd och i samma objektordning. Ordningen är anroparens ansvar: ingenting här kan upptäcka två cykler som samplats mot olika objekttabeller."
+    },
+    {
+      "context": "Stack per-cycle, per-channel samples into ``call_reads``' input.",
+      "label": "spacr.ops_sample.decode_input#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "Stack per-cycle, per-channel samples into ``call_reads``' input.",
+      "source_sha256": "0625510160f5879e2a8bff85e4250817ef0c636c0f040b5d23dfc733df251c18",
+      "translation": "Stapla sampel per cykel och per kanal till indata för ``call_reads``."
+    },
+    {
+      "context": "``per_cycle[c][k]`` is :func:`sample_objects`' output for cycle ``c``, channel ``k``. Every entry must be the same length.",
+      "label": "spacr.ops_sample.decode_input#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``per_cycle[c][k]`` is :func:`sample_objects`' output for cycle ``c``, channel ``k``. Every entry must be the same length.",
+      "source_sha256": "b71147c9e60d8756d56457f50a234fe630ea967b43928e71dd9c79e45ed4cca3",
+      "translation": "``per_cycle[c][k]`` är utdata från :func:`sample_objects` för cykel ``c``, kanal ``k``. Varje post måste ha samma längd."
+    },
+    {
+      "context": "``(objects, cycles, channels)`` -- the shape :func:`spacr.ops_sbs.call_reads` expects.",
+      "label": "spacr.ops_sample.decode_input#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(objects, cycles, channels)`` -- the shape :func:`spacr.ops_sbs.call_reads` expects.",
+      "source_sha256": "45c996e1214ad971ad78bed41a3a02ebb73d386569fcf7f54f5e1f3d2a4ddfa6",
+      "translation": "``(objects, cycles, channels)`` -- formen som :func:`spacr.ops_sbs.call_reads` förväntar sig."
+    },
+    {
+      "context": "when a cycle is missing channels, when the lengths disagree, or -- the one that matters -- when only one cycle is offered, which is what a caller who has already averaged them hands over.",
+      "label": "spacr.ops_sample.decode_input#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "when a cycle is missing channels, when the lengths disagree, or -- the one that matters -- when only one cycle is offered, which is what a caller who has already averaged them hands over.",
+      "source_sha256": "9b90ac7585feef1748cb012abcbb0db30097ca323f6a3d64242de40ae9bad03b",
+      "translation": "när en cykel saknar kanaler, när längderna inte stämmer överens, eller -- det som spelar roll -- när bara en cykel erbjuds, vilket är vad en anropare som redan har medelvärdesbildat dem lämnar över."
+    },
+    {
+      "context": "One cycle is refused. A barcode is a sequence across cycles; a single \"cycle\" reaching here is either a run that lost its cycle axis or a caller who collapsed it. Both produce a decodable barcode of noise, and neither is visible downstream. If a single-cycle experiment ever needs decoding it should say so explicitly rather than arrive looking like this mistake.",
+      "label": "spacr.ops_sample.decode_input#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "One cycle is refused. A barcode is a sequence across cycles; a single \"cycle\" reaching here is either a run that lost its cycle axis or a caller who collapsed it. Both produce a decodable barcode of noise, and neither is visible downstream. If a single-cycle experiment ever needs decoding it should say so explicitly rather than arrive looking like this mistake.",
+      "source_sha256": "2be2b6ce9f004d807296685a4191e03ba1af0d6e403291d1641edbbb8f12431f",
+      "translation": "En enda cykel avvisas. En streckkod är en sekvens över cykler; en enda \"cycle\" (cykel) som når hit är antingen en körning som tappat sin cykelaxel eller en anropare som slagit ihop den. Båda ger en avkodbar streckkod av brus, och ingetdera syns nedströms. Om ett experiment med en enda cykel någonsin behöver avkodas bör det säga det uttryckligen i stället för att komma fram och se ut som det här misstaget."
+    },
+    {
+      "context": "``ops_reads`` rows: one per object per cycle, per the storage contract's columns.",
+      "label": "spacr.ops_sample.reads_rows#0",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``ops_reads`` rows: one per object per cycle, per the storage contract's columns.",
+      "source_sha256": "5ca9f841278a6e14118261f044b081cd0cf47aa452b26d86ed6577abc2fc11da",
+      "translation": "``ops_reads``-rader: en per objekt och cykel, enligt lagringskontraktets kolumner."
+    },
+    {
+      "context": "the numbered objects the values were sampled at, in the same order as ``values``' first axis.",
+      "label": "spacr.ops_sample.reads_rows#1",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the numbered objects the values were sampled at, in the same order as ``values``' first axis.",
+      "source_sha256": "1ecd48e068d7695a1991eb821908ec41269a119586d8f8fcde5faa51b8e93448",
+      "translation": "de numrerade objekt som värdena samplades vid, i samma ordning som den första axeln i ``values``."
+    },
+    {
+      "context": "``(objects, cycles, channels)`` from :func:`decode_input`.",
+      "label": "spacr.ops_sample.reads_rows#2",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "``(objects, cycles, channels)`` from :func:`decode_input`.",
+      "source_sha256": "fc03a6bc8a19e36e9503e7c3c89b70749717ac2deda416b7b48c469149937bfc",
+      "translation": "``(objects, cycles, channels)`` från :func:`decode_input`."
+    },
+    {
+      "context": "a name per channel, for the column names.",
+      "label": "spacr.ops_sample.reads_rows#3",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "a name per channel, for the column names.",
+      "source_sha256": "47ea3f1890a83b161115d7e15aeec049cf17758147067ef2f8e5e27852e19423",
+      "translation": "ett namn per kanal, för kolumnnamnen."
+    },
+    {
+      "context": "the letter each channel votes for; when given, each row carries the base this cycle called and its margin.",
+      "label": "spacr.ops_sample.reads_rows#4",
+      "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
+      "source": "the letter each channel votes for; when given, each row carries the base this cycle called and its margin.",
+      "source_sha256": "152e14b0b4e59c52496fe0ee694e39007b0ae8ed852f383d7e4e3f83492bbeef",
+      "translation": "den bokstav som varje kanal röstar på; när den anges bär varje rad den bas som den här cykeln anropade och dess marginal."
+    }
+  ],
+  "review_kind": "Direct AI translation with AI technical review against the English source; no human/native-speaker signoff.",
+  "schema": 1
+}

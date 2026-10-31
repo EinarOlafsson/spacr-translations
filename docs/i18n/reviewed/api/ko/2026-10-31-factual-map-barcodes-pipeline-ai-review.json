@@ -1,0 +1,202 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "label": "spacr.io.parse_gz_files#0",
+      "source": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "source_sha256": "40e7df19a9c41d84915afed19ce1a1e20c31e6b712f245a682ebcac31b392eb8",
+      "translation": "``folder_path``의 FASTQ 파일을 샘플 이름과 읽기 방향별로 묶습니다."
+    },
+    {
+      "context": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "label": "spacr.io.parse_gz_files#1",
+      "source": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "source_sha256": "f9e81496a8059912ce2ebb501afdd1610b2bb3693f540521f05a7e3ef815dbe0",
+      "translation": "``.fastq.gz``, ``.fq.gz``, ``.fastq``, ``.fq`` 이름을 읽습니다. 파일이 gzip 압축인지는 파일을 읽을 때 그 바이트로 판단합니다. 실제로 쓰이는 두 가지 이름 규칙을 모두 받아들입니다. Illumina 실행의 ``<sample>_R1_...``와 ENA 또는 SRA의 ``<run>_1.fastq.gz``입니다. :data:`_MATE_SPELLINGS`를 참조하십시오."
+    },
+    {
+      "context": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "label": "spacr.io.parse_gz_files#2",
+      "source": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "source_sha256": "549564ce0b77b0c892337251c15a8bbe7218ccc270ecba3b507ebb3baa9d6395",
+      "translation": "짝을 식별할 수 없는 파일은 빈 ``{sample: {}}`` 항목을 만들지 않고 아무것도 추가하지 않습니다. 빈 항목은 나중에 ``KeyError: 'R1'``을 일으키기 때문입니다(:func:`spacr.sequencing.generate_barecode_mapping`에서). 인덱스 리드(``_I1``/``_I2``)는 스크린 바코드가 아니라 시퀀서의 샘플 인덱스를 담고 있으므로 인식된 뒤 제외됩니다. 두 파일이 한 샘플의 같은 메이트를 주장하면(``S_R1.fastq`` 옆에 ``S_R1.fastq.gz``가 있는 경우) 둘 다 사용하지 않고, 두 파일의 이름을 모두 밝히는 경고를 표시합니다."
+    },
+    {
+      "context": "Directory containing FASTQ files.",
+      "label": "spacr.io.parse_gz_files#3",
+      "source": "Directory containing FASTQ files.",
+      "source_sha256": "78833b8778731e0f53602c8dfa600cde79912ed9982bfee3ee3566ab3dfc099b",
+      "translation": "FASTQ 파일이 들어 있는 디렉터리입니다."
+    },
+    {
+      "context": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The processing session also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A processing session that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a processing session that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "label": "spacr.sequencing#4",
+      "source": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The run also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A run that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a run that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "source_sha256": "5d307f679105e9a989a3b68c4c1894e5ce4917c76151ce2c724bb8e005a17c31",
+      "translation": "``src``에는 spaCR이 R1과 R2 리드를 짝지을 수 있는 이름을 가진 FASTQ 파일(``.fastq.gz``, ``.fq.gz``, ``.fastq`` 또는 ``.fq``, gzip 압축 또는 비압축)이 있어야 합니다. BAM/CRAM, SRA 아카이브, BCL 염기 호출 데이터, FASTA, bzip2/zstd/ORA 압축 리드는 형식을 밝히고 필요한 변환 방법과 함께 거부됩니다.  실행에는 또한 ``sequence`` 및 ``name`` 열이 있는 바코드별 CSV 참조 테이블이 필요합니다.  spaCR이 제공해 온 세 바코드를 해독하는 실행은 이를 ``row_csv``, ``column_csv``, ``grna_csv``로 지정하고, 그 밖의 개수의 바코드를 해독하는 실행은 대신 ``barcode_set`` 아래에 바코드마다 항목 하나씩 나열합니다.  ``target_sequence``는 바코드 창의 기준점이 되며, ``offset_start``, ``expected_end``, 그리고 바코드마다 그룹 하나를 지정하는 정규식이 그 구성을 설명합니다.  제공되는 정규식은 ``columnID``, ``grna``, ``rowID``를 지정합니다.  품질 가중 R1/R2 합의 서열에는 ``mode='paired'``를, 한쪽 메이트만 읽어야 할 때는 ``mode='single'``을 ``single_direction``과 함께, 둘 다 들어 있는 폴더에는 ``mode='mixed'``를 사용하십시오: 쌍을 이룬 샘플은 합의 서열을 얻고, 쌍이 없는 샘플은 ``single_direction`` 메이트에서 읽습니다.  ``sequencer``는 장비를 지정합니다. 리드 헤더를 이와 대조하며, 단일 리드 플랫폼(Oxford Nanopore, PacBio, Ultima)은 single 모드로만 해독합니다."
+    },
+    {
+      "context": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Processing-session manifests and failure records identify samples that were skipped or could not be processed.",
+      "label": "spacr.sequencing#6",
+      "source": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Run manifests and failure records identify samples that were skipped or could not be processed.",
+      "source_sha256": "5a558dc258632ff67d065387901c74772790e4c5b814080e709cdc3e30e2deda",
+      "translation": "각 샘플은 ``src`` 아래에 자체 출력 디렉터리를 가집니다.  핵심 산출물은 ``unique_combinations.csv``(행과 열별 가이드 카운트)와 ``qc.csv``입니다. 또한 ``annotated_reads.h5``는 ``save_h5``가 활성화된 경우 기록되며, ``read_inputs.json``에는 각 샘플을 해독할 때 사용한 파일, 압축, 헤더 규칙, 시퀀서, 페어링이 기록됩니다.  선택적 바코드 QC는 ``barcode_qc`` 아래에 보고서와 그래프를 추가합니다. 실행 매니페스트와 실패 기록은 건너뛰었거나 처리할 수 없었던 샘플을 식별합니다."
+    },
+    {
+      "context": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "label": "spacr.sequencing.generate_barecode_mapping#1",
+      "source": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "source_sha256": "5228eaf29805a7707c601b94ee829066ee1f9effee6c06b86c7accd77c7ba1d2",
+      "translation": "``src`` 아래에서 각 샘플의 R1 및 R2 파일을 찾습니다. 쌍말단, 단일말단 또는 혼합 디코딩과 R1/R2 방향은 ``settings['mode']``와 ``single_direction``으로 정합니다. 샘플을 디코딩하기 전에 파일을 검사합니다: 각 파일은 gzip 압축 또는 비압축 FASTQ여야 하고, 리드 헤더가 ``sequencer`` 이외의 플랫폼에 속해서는 안 되며, 쌍의 첫 리드들은 같은 이름을 공유해야 합니다."
+    },
+    {
+      "context": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "label": "spacr.sequencing.generate_barecode_mapping#10",
+      "source": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "source_sha256": "19aaec12779f9c1d3ce12b444bfe3d92a23005d15a444efc370e31ba9b7b8192",
+      "translation": "``target_sequence``, ``offset_start``, ``expected_end`` — 바코드 영역을 찾는 데 사용하는 기준 서열과 자르기 창입니다."
+    },
+    {
+      "context": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "label": "spacr.sequencing.generate_barecode_mapping#11",
+      "source": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "source_sha256": "3d9be3a73324e0694c6df9f462f3535c0203b6755d316f073f83a609081ed793",
+      "translation": "``column_csv`` / ``row_csv`` / ``grna_csv`` — spaCR이 제공해 온 세 바코드의 바코드->이름 조회 CSV입니다."
+    },
+    {
+      "context": "``barcode_set`` — the barcodes to decode when a processing session has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the processing session decodes the three named above.",
+      "label": "spacr.sequencing.generate_barecode_mapping#12",
+      "source": "``barcode_set`` — the barcodes to decode when a run has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the run decodes the three named above.",
+      "source_sha256": "be6b3cc3ffa8a8b89a54b676312a00c93803c81634182ae1bd23f2fcf09d585a",
+      "translation": "``barcode_set`` — 실행에 그 세 가지 이외의 바코드가 있을 때 해독할 바코드로, 바코드마다 항목 하나를 담은 목록입니다. 각 항목은 바코드 이름, 그 서열에 이름을 붙이는 참조 CSV, 그것을 포착하는 정규식 그룹을 지정합니다. 지정하지 않으면 -- 세트 기능이 생기기 전에 기록된 모든 설정 파일이 그렇듯이 -- 실행은 위에서 지정한 세 바코드를 해독합니다."
+    },
+    {
+      "context": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "label": "spacr.sequencing.generate_barecode_mapping#13",
+      "source": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "source_sha256": "f3531e87cd866cdf0a99ccccb9444d95085389f37541d0fc1e5319d665f4bb0b",
+      "translation": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 출력 조정값입니다."
+    },
+    {
+      "context": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#14",
+      "source": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "source_sha256": "338cd188bcae7dbbbbd5e473501488e20220342f969116c12a31301e6e6165be",
+      "translation": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``."
+    },
+    {
+      "context": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "label": "spacr.sequencing.generate_barecode_mapping#15",
+      "source": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "source_sha256": "771ca49565901e6ffad8dccfd0d915b1f28c0538d7f83e608c9e28311848954c",
+      "translation": "``barcode_qc`` — 참이면 완료된 각 샘플을 :func:`spacr.sequencing_qc.barcode_qc`로 QC하여 ``<dst>/barcode_qc``에 그래프와 보고서를 기록합니다(기본값 False이며, 설정 기본값으로 채워지지 않음)."
+    },
+    {
+      "context": "``target_grnas_per_well`` — expected gRNAs per microplate sample position, from which that QC step derives its abundance threshold (default 1).",
+      "label": "spacr.sequencing.generate_barecode_mapping#16",
+      "source": "``target_grnas_per_well`` — expected gRNAs per well, from which that QC step derives its abundance threshold (default 1).",
+      "source_sha256": "f4f495d3143852634bfec2c9bc2ed6df9cbabb6922717e65472570379015b89e",
+      "translation": "``target_grnas_per_well`` — 웰당 예상 gRNAs 수로, 그 QC 단계가 이를 바탕으로 존재량 임계값을 도출합니다(기본값 1)."
+    },
+    {
+      "context": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "label": "spacr.sequencing.generate_barecode_mapping#17",
+      "source": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "source_sha256": "7f0a2876c751cac95b0e2dd4a1a974febe4bbec6ed7d610c3c2fd0f43beafda6",
+      "translation": "None입니다. 샘플별 출력을 ``<src>/<sample>_<mode>[_<direction>]/``에 기록하며, 혼합 실행에서는 각 샘플의 이름에 그 샘플을 해독한 모드를 사용합니다."
+    },
+    {
+      "context": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "label": "spacr.sequencing.generate_barecode_mapping#18",
+      "source": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "source_sha256": "896c1487d53213031c40de42f2ebb8bb3b706f3255d2214da0e68818fbbec836",
+      "translation": "알 수 없는 모드나 시퀀서, 먼저 변환해야 하는 형식의 리드만 들어 있는 폴더, 또는 파일이 FASTQ가 아니거나 다른 플랫폼의 헤더를 따르거나 같은 순서의 메이트가 아닌 샘플의 경우."
+    },
+    {
+      "context": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#20",
+      "source": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "source_sha256": "a24b201e8ac8ad15ccf8cb452cb2130a305d8a454c58d0a86185334693d6dffe",
+      "translation": "함께 보기: :func:`map_sequences_to_names` — 내부 바코드->이름 조회입니다. :func:`spacr.ml.perform_regression` — 결과 ``unique_combinations.csv``를 ``count_data``로 사용합니다."
+    },
+    {
+      "context": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "label": "spacr.sequencing.generate_barecode_mapping#5",
+      "source": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "source_sha256": "9cc5fb2707c75ff2da90c9b15b4b231e7f6a1274fe40c708b09237dc16c3dce1",
+      "translation": "``src`` — ``.fastq.gz``, ``.fq.gz``, ``.fastq`` 또는 ``.fq`` 리드가 들어 있는 폴더입니다."
+    },
+    {
+      "context": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "label": "spacr.sequencing.generate_barecode_mapping#6",
+      "source": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "source_sha256": "94d4d318007a023385d5048636849c63089e17377342c6a14294f1528cba52df",
+      "translation": "``mode`` — ``'paired'``, ``'single'`` 또는 ``'mixed'``입니다(두 메이트가 모두 있는 각 샘플은 쌍으로, 메이트가 하나인 각 샘플은 해당 ``single_direction`` 파일에서 읽으며, 그 밖의 샘플은 경고와 함께 건너뜁니다)."
+    },
+    {
+      "context": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "label": "spacr.sequencing.generate_barecode_mapping#7",
+      "source": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "source_sha256": "2883ecd55a489607b0cdb28224bfae0b7803ff15a51cb6146747ea2b1c820b21",
+      "translation": "``single_direction`` — ``'R1'`` 또는 ``'R2'``입니다(``mode='single'`` 및 ``mode='mixed'``의 쌍이 없는 샘플)."
+    },
+    {
+      "context": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#8",
+      "source": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "source_sha256": "e3b9173c74c6f55b011a8dac42207c6856d808c81f8f87c090489a93e292a563",
+      "translation": "``sequencer`` — ``'auto'``(기본값), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` 또는 ``'other'``입니다. 디코딩 매개변수는 설정하지 않습니다. 다른 플랫폼의 규칙을 따르는 리드 헤더는 거부되며, 단일 리드 플랫폼에는 ``mode='single'``이 필요합니다."
+    },
+    {
+      "context": "``regex`` — regex extracting barcodes from a read.",
+      "label": "spacr.sequencing.generate_barecode_mapping#9",
+      "source": "``regex`` — regex extracting barcodes from a read.",
+      "source_sha256": "365c2dea13aa27eb06c9a0f6b075a4d4ab32a5effd8e526ffda8077d6f9dc020",
+      "translation": "``regex`` — 리드에서 바코드를 추출하는 정규식입니다."
+    },
+    {
+      "context": "R1 fastq path, gzip-compressed or plain.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#2",
+      "source": "R1 FASTQ path, gzip-compressed or plain.",
+      "source_sha256": "35f58e0f27db45481aa54c1b3e7acf8dbf657c5bf100ce0c3f3be9a6c7a70e81",
+      "translation": "R1 FASTQ 경로입니다(gzip 압축 또는 비압축)."
+    },
+    {
+      "context": "R2 fastq path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#3",
+      "source": "R2 FASTQ path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "source_sha256": "f0167fa00165a0afca6bb1cb63f2413bbeb3e41a1fa412eda8568f408b391cd8",
+      "translation": "R2 FASTQ 경로입니다(gzip 압축 또는 비압축). 각 R2 리드는 옆에 있는 R1 리드의 이름을 지녀야 하며, 순서가 어긋난 쌍은 디코딩되지 않고 거부됩니다."
+    },
+    {
+      "context": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "label": "spacr.sequencing.single_read_chunked_processing#1",
+      "source": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "source_sha256": "93e06b16ea6e249ead2635e6346a14a0d18ad23a404faf3993824b26d804099e",
+      "translation": "디코딩할 메이트의 FASTQ 경로입니다(gzip 압축 또는 비압축)."
+    },
+    {
+      "context": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "label": "spacr.utils.count_reads_in_fastq#0",
+      "source": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "source_sha256": "9fbba2ad6634a678f737c58b203b7a8961e64d2e0f7adc7929d8e7c94c5eb700",
+      "translation": "FASTQ 파일(gzip 압축 또는 비압축)의 리드 수를 반환합니다."
+    },
+    {
+      "context": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "label": "spacr.utils.count_reads_in_fastq#1",
+      "source": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "source_sha256": "c09e30586411356db3ee0c2b554930d30238a7838d7fe14e194e3cc4392d1221",
+      "translation": "전체 줄 수를 세어 4(FASTQ 레코드 길이)로 나눕니다. 압축 여부는 파일 이름이 아니라 파일의 첫 바이트로 인식합니다."
+    },
+    {
+      "context": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "label": "spacr.utils.count_reads_in_fastq#2",
+      "source": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "source_sha256": "713b0caf98dd47fbf610018291218746dd9d03c6af2a36c10bf1714652af7320",
+      "translation": "``.fastq.gz``, ``.fq.gz``, ``.fastq`` 또는 ``.fq`` 파일의 경로입니다."
+    }
+  ],
+  "schema": 1
+}

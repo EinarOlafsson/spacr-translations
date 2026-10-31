@@ -1,0 +1,202 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "label": "spacr.io.parse_gz_files#0",
+      "source": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "source_sha256": "40e7df19a9c41d84915afed19ce1a1e20c31e6b712f245a682ebcac31b392eb8",
+      "translation": "Regroupe les fichiers FASTQ de ``folder_path`` par nom d’échantillon et sens de lecture."
+    },
+    {
+      "context": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "label": "spacr.io.parse_gz_files#1",
+      "source": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "source_sha256": "f9e81496a8059912ce2ebb501afdd1610b2bb3693f540521f05a7e3ef815dbe0",
+      "translation": "Lit les noms ``.fastq.gz``, ``.fq.gz``, ``.fastq`` et ``.fq`` ; la compression gzip d’un fichier est déterminée d’après ses octets au moment où il est lu. Accepte les deux conventions de nommage rencontrées en pratique : ``<sample>_R1_...`` d’une exécution Illumina, et ``<run>_1.fastq.gz`` de l’ENA ou de la SRA. Voir :data:`_MATE_SPELLINGS`."
+    },
+    {
+      "context": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "label": "spacr.io.parse_gz_files#2",
+      "source": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "source_sha256": "549564ce0b77b0c892337251c15a8bbe7218ccc270ecba3b507ebb3baa9d6395",
+      "translation": "Un fichier dont le fichier apparié ne peut pas être identifié ne fournit rien, plutôt qu’une entrée vide ``{sample: {}}`` qui provoquerait sinon un ``KeyError: 'R1'`` plus loin dans :func:`spacr.sequencing.generate_barecode_mapping`. Les lectures d’index (``_I1``/``_I2``) sont reconnues et exclues, car elles portent l’index d’échantillon du séquenceur plutôt qu’un code-barres de crible. Lorsque deux fichiers revendiquent la même lecture appariée d’un échantillon (``S_R1.fastq`` à côté de ``S_R1.fastq.gz``), aucun des deux n’est utilisé et un avertissement les nomme tous les deux."
+    },
+    {
+      "context": "Directory containing FASTQ files.",
+      "label": "spacr.io.parse_gz_files#3",
+      "source": "Directory containing FASTQ files.",
+      "source_sha256": "78833b8778731e0f53602c8dfa600cde79912ed9982bfee3ee3566ab3dfc099b",
+      "translation": "Répertoire contenant des fichiers FASTQ."
+    },
+    {
+      "context": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The processing session also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A processing session that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a processing session that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "label": "spacr.sequencing#4",
+      "source": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The run also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A run that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a run that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "source_sha256": "5d307f679105e9a989a3b68c4c1894e5ce4917c76151ce2c724bb8e005a17c31",
+      "translation": "``src`` doit contenir des fichiers FASTQ (``.fastq.gz``, ``.fq.gz``, ``.fastq`` ou ``.fq``, compressés par gzip ou non) dont les noms permettent à spaCR d’apparier les lectures R1 et R2. Les fichiers BAM/CRAM, les archives SRA, les appels de bases BCL, le FASTA et les lectures compressées en bzip2/zstd/ORA sont signalés par leur nom et refusés, avec la conversion dont ils ont besoin.  L’exécution nécessite aussi une table de référence CSV par code-barres, avec les colonnes ``sequence`` et ``name``.  Une exécution qui décode les trois codes-barres fournis par spaCR les nomme ``row_csv``, ``column_csv`` et ``grna_csv``, et une exécution qui décode un autre nombre de codes-barres les liste plutôt sous ``barcode_set``, une entrée par code-barres.  ``target_sequence`` ancre la fenêtre des codes-barres, tandis que ``offset_start``, ``expected_end`` et une expression régulière nommant un groupe par code-barres décrivent son organisation.  L’expression régulière fournie nomme ``columnID``, ``grna`` et ``rowID``.  Utilisez ``mode='paired'`` pour un consensus R1/R2 pondéré par la qualité, ``mode='single'`` avec ``single_direction`` lorsqu’un seul des deux brins appariés doit être lu, ou ``mode='mixed'`` pour un dossier contenant les deux : les échantillons appariés obtiennent le consensus et les échantillons non appariés sont lus depuis leur brin ``single_direction``.  ``sequencer`` nomme la machine ; les en-têtes des lectures sont vérifiés par rapport à elle, et les plateformes à lectures simples (Oxford Nanopore, PacBio, Ultima) ne sont décodées qu’en mode simple."
+    },
+    {
+      "context": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Processing-session manifests and failure records identify samples that were skipped or could not be processed.",
+      "label": "spacr.sequencing#6",
+      "source": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Run manifests and failure records identify samples that were skipped or could not be processed.",
+      "source_sha256": "5a558dc258632ff67d065387901c74772790e4c5b814080e709cdc3e30e2deda",
+      "translation": "Chaque échantillon obtient son propre répertoire de sortie sous ``src``.  Les artefacts essentiels sont ``unique_combinations.csv`` (comptages de guides par rangée et par colonne) et ``qc.csv`` ; ``annotated_reads.h5`` est également écrit lorsque ``save_h5`` est activé, et ``read_inputs.json`` enregistre les fichiers, la compression, la convention d’en-tête, le séquenceur et l’appariement avec lesquels chaque échantillon a été décodé.  Le QC facultatif des codes-barres ajoute un rapport et des graphiques sous ``barcode_qc``. Les manifestes d’exécution et les enregistrements d’échec identifient les échantillons ignorés ou qui n’ont pas pu être traités."
+    },
+    {
+      "context": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "label": "spacr.sequencing.generate_barecode_mapping#1",
+      "source": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "source_sha256": "5228eaf29805a7707c601b94ee829066ee1f9effee6c06b86c7accd77c7ba1d2",
+      "translation": "Repère les fichiers R1 et R2 de chaque échantillon sous ``src``. Le décodage apparié, simple ou mixte et l’orientation R1/R2 sont choisis d’après ``settings['mode']`` et ``single_direction``. Avant le décodage d’un échantillon, ses fichiers sont vérifiés : chacun doit être un FASTQ compressé par gzip ou non compressé, ses en-têtes de lecture ne doivent pas appartenir à une autre plateforme que ``sequencer``, et les premières lectures d’une paire doivent porter le même nom."
+    },
+    {
+      "context": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "label": "spacr.sequencing.generate_barecode_mapping#10",
+      "source": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "source_sha256": "19aaec12779f9c1d3ce12b444bfe3d92a23005d15a444efc370e31ba9b7b8192",
+      "translation": "``target_sequence``, ``offset_start``, ``expected_end`` — ancre et fenêtre de découpe servant à localiser la région des codes-barres."
+    },
+    {
+      "context": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "label": "spacr.sequencing.generate_barecode_mapping#11",
+      "source": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "source_sha256": "3d9be3a73324e0694c6df9f462f3535c0203b6755d316f073f83a609081ed793",
+      "translation": "``column_csv`` / ``row_csv`` / ``grna_csv`` — CSV de correspondance code-barres->nom pour les trois codes-barres fournis par spaCR."
+    },
+    {
+      "context": "``barcode_set`` — the barcodes to decode when a processing session has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the processing session decodes the three named above.",
+      "label": "spacr.sequencing.generate_barecode_mapping#12",
+      "source": "``barcode_set`` — the barcodes to decode when a run has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the run decodes the three named above.",
+      "source_sha256": "be6b3cc3ffa8a8b89a54b676312a00c93803c81634182ae1bd23f2fcf09d585a",
+      "translation": "``barcode_set`` — les codes-barres à décoder lorsqu’une exécution en comporte d’autres que ces trois-là, sous forme de liste avec une entrée par code-barres. Chaque entrée nomme le code-barres, le CSV de référence qui nomme ses séquences et le groupe de l’expression régulière qui le capture. En son absence, ce qui est le cas de tous les fichiers de réglages écrits avant l’existence des ensembles, l’exécution décode les trois codes-barres cités ci-dessus."
+    },
+    {
+      "context": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "label": "spacr.sequencing.generate_barecode_mapping#13",
+      "source": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "source_sha256": "f3531e87cd866cdf0a99ccccb9444d95085389f37541d0fc1e5319d665f4bb0b",
+      "translation": "``save_h5``, ``comp_type``, ``comp_level`` — paramètres de la sortie HDF5."
+    },
+    {
+      "context": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#14",
+      "source": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "source_sha256": "338cd188bcae7dbbbbd5e473501488e20220342f969116c12a31301e6e6165be",
+      "translation": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``."
+    },
+    {
+      "context": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "label": "spacr.sequencing.generate_barecode_mapping#15",
+      "source": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "source_sha256": "771ca49565901e6ffad8dccfd0d915b1f28c0538d7f83e608c9e28311848954c",
+      "translation": "``barcode_qc`` — si vrai, effectue le QC de chaque échantillon terminé avec :func:`spacr.sequencing_qc.barcode_qc`, en écrivant des graphiques et un rapport dans ``<dst>/barcode_qc`` (False par défaut ; non renseigné par les valeurs par défaut des réglages)."
+    },
+    {
+      "context": "``target_grnas_per_well`` — expected gRNAs per microplate sample position, from which that QC step derives its abundance threshold (default 1).",
+      "label": "spacr.sequencing.generate_barecode_mapping#16",
+      "source": "``target_grnas_per_well`` — expected gRNAs per well, from which that QC step derives its abundance threshold (default 1).",
+      "source_sha256": "f4f495d3143852634bfec2c9bc2ed6df9cbabb6922717e65472570379015b89e",
+      "translation": "``target_grnas_per_well`` — nombre attendu de gRNAs par puits, dont cette étape de QC dérive son seuil d’abondance (1 par défaut)."
+    },
+    {
+      "context": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "label": "spacr.sequencing.generate_barecode_mapping#17",
+      "source": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "source_sha256": "7f0a2876c751cac95b0e2dd4a1a974febe4bbec6ed7d610c3c2fd0f43beafda6",
+      "translation": "None. Écrit les sorties par échantillon dans ``<src>/<sample>_<mode>[_<direction>]/``, où une exécution mixte nomme chaque échantillon d’après le mode dans lequel il a été décodé."
+    },
+    {
+      "context": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "label": "spacr.sequencing.generate_barecode_mapping#18",
+      "source": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "source_sha256": "896c1487d53213031c40de42f2ebb8bb3b706f3255d2214da0e68818fbbec836",
+      "translation": "pour un mode ou un séquenceur inconnu, un dossier ne contenant que des lectures dans un format qui doit d’abord être converti, ou un échantillon dont les fichiers ne sont pas au format FASTQ, suivent les en-têtes d’une autre plateforme ou ne sont pas des lectures appariées dans le même ordre."
+    },
+    {
+      "context": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#20",
+      "source": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "source_sha256": "a24b201e8ac8ad15ccf8cb452cb2130a305d8a454c58d0a86185334693d6dffe",
+      "translation": "Voir aussi : :func:`map_sequences_to_names` — correspondance interne code-barres->nom. :func:`spacr.ml.perform_regression` — utilise le ``unique_combinations.csv`` obtenu comme ``count_data``."
+    },
+    {
+      "context": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "label": "spacr.sequencing.generate_barecode_mapping#5",
+      "source": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "source_sha256": "9cc5fb2707c75ff2da90c9b15b4b231e7f6a1274fe40c708b09237dc16c3dce1",
+      "translation": "``src`` — dossier contenant des lectures ``.fastq.gz``, ``.fq.gz``, ``.fastq`` ou ``.fq``."
+    },
+    {
+      "context": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "label": "spacr.sequencing.generate_barecode_mapping#6",
+      "source": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "source_sha256": "94d4d318007a023385d5048636849c63089e17377342c6a14294f1528cba52df",
+      "translation": "``mode`` — ``'paired'``, ``'single'`` ou ``'mixed'`` (chaque échantillon ayant les deux brins est apparié, chaque échantillon n’ayant qu’un brin est lu depuis son fichier ``single_direction`` ; les autres échantillons sont ignorés avec un avertissement)."
+    },
+    {
+      "context": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "label": "spacr.sequencing.generate_barecode_mapping#7",
+      "source": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "source_sha256": "2883ecd55a489607b0cdb28224bfae0b7803ff15a51cb6146747ea2b1c820b21",
+      "translation": "``single_direction`` — ``'R1'`` ou ``'R2'`` (``mode='single'`` et les échantillons non appariés de ``mode='mixed'``)."
+    },
+    {
+      "context": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#8",
+      "source": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "source_sha256": "e3b9173c74c6f55b011a8dac42207c6856d808c81f8f87c090489a93e292a563",
+      "translation": "``sequencer`` — ``'auto'`` (par défaut), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` ou ``'other'``. Ne définit aucun paramètre de décodage ; les en-têtes de lecture qui suivent la convention d’une autre plateforme sont refusés, et les plateformes à lectures simples exigent ``mode='single'``."
+    },
+    {
+      "context": "``regex`` — regex extracting barcodes from a read.",
+      "label": "spacr.sequencing.generate_barecode_mapping#9",
+      "source": "``regex`` — regex extracting barcodes from a read.",
+      "source_sha256": "365c2dea13aa27eb06c9a0f6b075a4d4ab32a5effd8e526ffda8077d6f9dc020",
+      "translation": "``regex`` — expression régulière extrayant les codes-barres d’une lecture."
+    },
+    {
+      "context": "R1 fastq path, gzip-compressed or plain.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#2",
+      "source": "R1 FASTQ path, gzip-compressed or plain.",
+      "source_sha256": "35f58e0f27db45481aa54c1b3e7acf8dbf657c5bf100ce0c3f3be9a6c7a70e81",
+      "translation": "chemin du FASTQ R1, compressé par gzip ou non."
+    },
+    {
+      "context": "R2 fastq path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#3",
+      "source": "R2 FASTQ path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "source_sha256": "f0167fa00165a0afca6bb1cb63f2413bbeb3e41a1fa412eda8568f408b391cd8",
+      "translation": "chemin du FASTQ R2, compressé par gzip ou non. Chaque lecture R2 doit porter le nom de la lecture R1 qui lui correspond ; une paire désynchronisée est refusée plutôt que décodée."
+    },
+    {
+      "context": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "label": "spacr.sequencing.single_read_chunked_processing#1",
+      "source": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "source_sha256": "93e06b16ea6e249ead2635e6346a14a0d18ad23a404faf3993824b26d804099e",
+      "translation": "chemin du FASTQ du brin à décoder, compressé par gzip ou non."
+    },
+    {
+      "context": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "label": "spacr.utils.count_reads_in_fastq#0",
+      "source": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "source_sha256": "9fbba2ad6634a678f737c58b203b7a8961e64d2e0f7adc7929d8e7c94c5eb700",
+      "translation": "Renvoie le nombre de lectures d’un fichier FASTQ, compressé par gzip ou non."
+    },
+    {
+      "context": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "label": "spacr.utils.count_reads_in_fastq#1",
+      "source": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "source_sha256": "c09e30586411356db3ee0c2b554930d30238a7838d7fe14e194e3cc4392d1221",
+      "translation": "Compte le nombre total de lignes et le divise par quatre (la longueur d’un enregistrement FASTQ). La compression est reconnue d’après les premiers octets du fichier, et non d’après son nom."
+    },
+    {
+      "context": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "label": "spacr.utils.count_reads_in_fastq#2",
+      "source": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "source_sha256": "713b0caf98dd47fbf610018291218746dd9d03c6af2a36c10bf1714652af7320",
+      "translation": "Chemin d’un fichier ``.fastq.gz``, ``.fq.gz``, ``.fastq`` ou ``.fq``."
+    }
+  ],
+  "schema": 1
+}

@@ -3608,7 +3608,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``src`` must contain gzip-compressed FASTQ files whose names let spaCR pair R1 and R2 reads.  The run also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A run that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a run that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus or ``mode='single'`` with ``single_direction`` when only one mate should be read.",
       "source_sha256": "d8d0426ed527dfbf4d6c429cfd2ee61ba09b9e7c345633ef0941ae6fc2b03c79",
-      "translation": "``src`` debe contener archivos FASTQ comprimidos con gzip cuyos nombres permitan a spaCR emparejar las lecturas R1 y R2.  La ejecución también necesita una tabla de referencia CSV por código de barras, con las columnas ``sequence`` y ``name``.  Una ejecución que decodifica los tres códigos de barras incluidos en spaCR los nombra como ``row_csv``, ``column_csv`` y ``grna_csv``, y una ejecución que decodifica cualquier otro número de códigos de barras los enumera bajo ``barcode_set``, con una entrada por código de barras.  ``target_sequence`` ancla la ventana del código de barras, mientras que ``offset_start``, ``expected_end`` y una expresión regular que nombra un grupo por código de barras describen su disposición.  La expresión regular incluida nombra ``columnID``, ``grna`` y ``rowID``.  Use ``mode='paired'`` para un consenso R1/R2 ponderado por calidad, o ``mode='single'`` con ``single_direction`` cuando solo deba leerse uno de los dos pares."
+      "translation": "``src`` debe contener archivos FASTQ comprimidos con gzip cuyos nombres permitan a spaCR emparejar las lecturas R1 y R2.  La ejecución también necesita una tabla de referencia CSV por código de barras, con las columnas ``sequence`` y ``name``.  Una ejecución que decodifica los tres códigos de barras incluidos en spaCR los nombra como ``row_csv``, ``column_csv`` y ``grna_csv``, y una ejecución que decodifica cualquier otro número de códigos de barras los enumera bajo ``barcode_set``, con una entrada por código de barras.  ``target_sequence`` ancla la ventana del código de barras, mientras que ``offset_start``, ``expected_end`` y una expresión regular que nombra un grupo por código de barras describen su disposición.  La expresión regular incluida nombra ``columnID``, ``grna`` y ``rowID``.  Use ``mode='paired'`` para un consenso R1/R2 ponderado por calidad, o ``mode='single'`` con ``single_direction`` cuando solo deba leerse uno de los dos pares.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled.  Optional barcode QC adds a report and plots under ``barcode_qc``. Processing-session manifests and failure records identify samples that were skipped or could not be processed.",
@@ -3616,7 +3618,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled.  Optional barcode QC adds a report and plots under ``barcode_qc``. Run manifests and failure records identify samples that were skipped or could not be processed.",
       "source_sha256": "d56ee9e8a13f439eae241d58a2aa7858a47bc3d14e4777fea16bb70b1287fc8b",
-      "translation": "Cada muestra recibe su propio directorio de salida bajo ``src``.  Los artefactos esenciales son ``unique_combinations.csv`` (recuentos de guías por fila y columna) y ``qc.csv``; ``annotated_reads.h5`` también se escribe cuando ``save_h5`` está activado.  El QC opcional de códigos de barras añade un informe y gráficos en ``barcode_qc``. Los manifiestos de ejecución y los registros de fallos identifican las muestras que se omitieron o no pudieron procesarse."
+      "translation": "Cada muestra recibe su propio directorio de salida bajo ``src``.  Los artefactos esenciales son ``unique_combinations.csv`` (recuentos de guías por fila y columna) y ``qc.csv``; ``annotated_reads.h5`` también se escribe cuando ``save_h5`` está activado.  El QC opcional de códigos de barras añade un informe y gráficos en ``barcode_qc``. Los manifiestos de ejecución y los registros de fallos identifican las muestras que se omitieron o no pudieron procesarse.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "Inspect the QC table and unmapped fraction before trusting the counts.  Use ``test=True`` to process one chunk while checking the regex, read direction, and reference orientation, then run the full mapping and pass the resulting ``unique_combinations.csv`` files to :func:`spacr.ml.perform_regression` as ``count_data``.  :func:`barecodes_reverse_complement` can make an opposite-orientation copy of a reference CSV.",
@@ -3808,7 +3812,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Discovers the R1 and R2 files of each sample under ``src``. Paired vs single-end and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``.",
       "source_sha256": "2248ee778f5a212033ec0a8e295a683216ef3f8c9f3bba0200531e9d9a81fbd9",
-      "translation": "Encuentra los archivos R1 y R2 de cada muestra bajo ``src``. El modo de lectura emparejada o simple y la orientación R1/R2 se eligen a partir de ``settings['mode']`` y ``single_direction``."
+      "translation": "Encuentra los archivos R1 y R2 de cada muestra bajo ``src``. El modo de lectura emparejada o simple y la orientación R1/R2 se eligen a partir de ``settings['mode']`` y ``single_direction``.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
@@ -3816,7 +3822,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
       "source_sha256": "3d9be3a73324e0694c6df9f462f3535c0203b6755d316f073f83a609081ed793",
-      "translation": "``column_csv`` / ``row_csv`` / ``grna_csv`` — CSV de consulta código de barras->nombre para los tres códigos de barras incluidos en spaCR."
+      "translation": "``column_csv`` / ``row_csv`` / ``grna_csv`` — CSV de consulta código de barras->nombre para los tres códigos de barras incluidos en spaCR.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``barcode_set`` — the barcodes to decode when a processing session has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the processing session decodes the three named above.",
@@ -3824,7 +3832,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``barcode_set`` — the barcodes to decode when a run has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the run decodes the three named above.",
       "source_sha256": "be6b3cc3ffa8a8b89a54b676312a00c93803c81634182ae1bd23f2fcf09d585a",
-      "translation": "``barcode_set`` — los códigos de barras que se decodifican cuando una ejecución tiene otros distintos de esos tres, como una lista con una entrada por código de barras. Cada entrada nombra el código de barras, el CSV de referencia que da nombre a sus secuencias y el grupo de la expresión regular que lo captura. Si falta, como ocurre en todo archivo de ajustes escrito antes de que existieran los conjuntos, la ejecución decodifica los tres indicados arriba."
+      "translation": "``barcode_set`` — los códigos de barras que se decodifican cuando una ejecución tiene otros distintos de esos tres, como una lista con una entrada por código de barras. Cada entrada nombra el código de barras, el CSV de referencia que da nombre a sus secuencias y el grupo de la expresión regular que lo captura. Si falta, como ocurre en todo archivo de ajustes escrito antes de que existieran los conjuntos, la ejecución decodifica los tres indicados arriba.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
@@ -3832,7 +3842,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
       "source_sha256": "f3531e87cd866cdf0a99ccccb9444d95085389f37541d0fc1e5319d665f4bb0b",
-      "translation": "``save_h5``, ``comp_type``, ``comp_level`` — parámetros de la salida HDF5."
+      "translation": "``save_h5``, ``comp_type``, ``comp_level`` — parámetros de la salida HDF5.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
@@ -3840,7 +3852,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
       "source_sha256": "771ca49565901e6ffad8dccfd0d915b1f28c0538d7f83e608c9e28311848954c",
-      "translation": "``barcode_qc`` — si es verdadero, aplica el QC a cada muestra terminada con :func:`spacr.sequencing_qc.barcode_qc`, escribiendo gráficos y un informe en ``<dst>/barcode_qc`` (por defecto False; los valores predeterminados de los ajustes no lo rellenan)."
+      "translation": "``barcode_qc`` — si es verdadero, aplica el QC a cada muestra terminada con :func:`spacr.sequencing_qc.barcode_qc`, escribiendo gráficos y un informe en ``<dst>/barcode_qc`` (por defecto False; los valores predeterminados de los ajustes no lo rellenan).",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``target_grnas_per_well`` — expected gRNAs per microplate sample position, from which that QC step derives its abundance threshold (default 1).",
@@ -3848,7 +3862,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``target_grnas_per_well`` — expected gRNAs per well, from which that QC step derives its abundance threshold (default 1).",
       "source_sha256": "f4f495d3143852634bfec2c9bc2ed6df9cbabb6922717e65472570379015b89e",
-      "translation": "``target_grnas_per_well`` — gRNAs esperados por pocillo, a partir de los cuales ese paso de QC deriva su umbral de abundancia (por defecto 1)."
+      "translation": "``target_grnas_per_well`` — gRNAs esperados por pocillo, a partir de los cuales ese paso de QC deriva su umbral de abundancia (por defecto 1).",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``.",
@@ -3856,7 +3872,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``.",
       "source_sha256": "a7fe975417879cedce9ec21c5e3469994afc21924a2aa56fcd93783a567740c1",
-      "translation": "None. Escribe los resultados de cada muestra en ``<src>/<sample>_<mode>[_<direction>]/``."
+      "translation": "None. Escribe los resultados de cada muestra en ``<src>/<sample>_<mode>[_<direction>]/``.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
@@ -3864,7 +3882,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
       "source_sha256": "a24b201e8ac8ad15ccf8cb452cb2130a305d8a454c58d0a86185334693d6dffe",
-      "translation": "Véase también: :func:`map_sequences_to_names` — consulta interna código de barras->nombre. :func:`spacr.ml.perform_regression` — consume el ``unique_combinations.csv`` resultante como ``count_data``."
+      "translation": "Véase también: :func:`map_sequences_to_names` — consulta interna código de barras->nombre. :func:`spacr.ml.perform_regression` — consume el ``unique_combinations.csv`` resultante como ``count_data``.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "From every read it extracts each barcode the run decodes, using the configured regex and offset window. Each extracted sequence is then turned into a name through that barcode's own lookup CSV (see :func:`map_sequences_to_names`).",
@@ -3896,7 +3916,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``src`` — folder containing ``*.fastq.gz`` reads.",
       "source_sha256": "f54a5bcf96a34bc69980c5b0465753a07fce5cb2579df44aebdf7c0682c1ff31",
-      "translation": "``src`` — carpeta que contiene las lecturas ``*.fastq.gz``."
+      "translation": "``src`` — carpeta que contiene las lecturas ``*.fastq.gz``.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` only).",
@@ -3904,7 +3926,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` only).",
       "source_sha256": "cf1fd210aaad17548a90101828746fd0317ffe9a79d5c4ded0d5a1849ea9f213",
-      "translation": "``single_direction`` — ``'R1'`` o ``'R2'`` (solo con ``mode='single'``)."
+      "translation": "``single_direction`` — ``'R1'`` o ``'R2'`` (solo con ``mode='single'``).",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``regex`` — regex extracting barcodes from a read.",
@@ -3912,7 +3936,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``regex`` — regex extracting barcodes from a read.",
       "source_sha256": "365c2dea13aa27eb06c9a0f6b075a4d4ab32a5effd8e526ffda8077d6f9dc020",
-      "translation": "``regex`` — expresión regular que extrae los códigos de barras de una lectura."
+      "translation": "``regex`` — expresión regular que extrae los códigos de barras de una lectura.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
@@ -3920,7 +3946,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
       "source_sha256": "19aaec12779f9c1d3ce12b444bfe3d92a23005d15a444efc370e31ba9b7b8192",
-      "translation": "``target_sequence``, ``offset_start``, ``expected_end`` — ancla y ventana de recorte usadas para localizar la región del código de barras."
+      "translation": "``target_sequence``, ``offset_start``, ``expected_end`` — ancla y ventana de recorte usadas para localizar la región del código de barras.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "Return the higher-quality base from two ``(base, quality)`` pairs, preferring non-``N``.",
@@ -4176,7 +4204,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "gzipped R1 FASTQ path.",
       "source_sha256": "46e8c8fe51e8ed65147aaad2f4a879ac5610e61f37c74d3e214e25390d0318a2",
-      "translation": "ruta del FASTQ R1 comprimido con gzip."
+      "translation": "ruta del FASTQ R1 comprimido con gzip.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "fill unmapped IDs with raw barcode sequences.",
@@ -4200,7 +4230,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "gzipped R2 FASTQ path.",
       "source_sha256": "2e55fd1420381e57acc5dc445078539b77171a01fb98bdc6251ca92c9d1723d8",
-      "translation": "ruta del FASTQ R2 comprimido con gzip."
+      "translation": "ruta del FASTQ R2 comprimido con gzip.",
+      "retired": true,
+      "retired_reason": "Map Barcodes read-format docstring rewrite (2026-10-31) changed or moved this block; the current block is bound in 2026-10-31-factual-map-barcodes-pipeline-ai-review.json."
     },
     {
       "context": "regex naming one group per barcode. The three spaCR shipped are read from ``rowID``, ``columnID`` and ``grna``.",

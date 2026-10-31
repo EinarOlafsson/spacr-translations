@@ -1,0 +1,202 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "label": "spacr.io.parse_gz_files#0",
+      "source": "Group FASTQ files in ``folder_path`` by sample name and read direction.",
+      "source_sha256": "40e7df19a9c41d84915afed19ce1a1e20c31e6b712f245a682ebcac31b392eb8",
+      "translation": "按样本名称和读取方向对 ``folder_path`` 中的 FASTQ 文件进行分组。"
+    },
+    {
+      "context": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "label": "spacr.io.parse_gz_files#1",
+      "source": "Reads ``.fastq.gz``, ``.fq.gz``, ``.fastq`` and ``.fq`` names; whether a file is gzip-compressed is decided from its bytes when it is read. Accepts both naming conventions in the wild: ``<sample>_R1_...`` from an Illumina run, and ``<run>_1.fastq.gz`` from ENA or the SRA. See :data:`_MATE_SPELLINGS`.",
+      "source_sha256": "f9e81496a8059912ce2ebb501afdd1610b2bb3693f540521f05a7e3ef815dbe0",
+      "translation": "读取名称为 ``.fastq.gz``、``.fq.gz``、``.fastq`` 和 ``.fq`` 的文件；文件是否经过 gzip 压缩，在读取时根据其字节判断。接受实际使用中的两种命名约定：来自 Illumina 运行的 ``<sample>_R1_...``，以及来自 ENA 或 SRA 的 ``<run>_1.fastq.gz``。参见 :data:`_MATE_SPELLINGS`。"
+    },
+    {
+      "context": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "label": "spacr.io.parse_gz_files#2",
+      "source": "A file whose mate cannot be identified contributes nothing rather than an empty ``{sample: {}}`` entry, which would otherwise cause a ``KeyError: 'R1'`` later in :func:`spacr.sequencing.generate_barecode_mapping`. Index reads (``_I1``/``_I2``) are recognised and left out, since they carry the sequencer's sample index rather than a screen barcode. When two files claim the same mate of one sample (``S_R1.fastq`` beside ``S_R1.fastq.gz``), neither is used and a warning names both.",
+      "source_sha256": "549564ce0b77b0c892337251c15a8bbe7218ccc270ecba3b507ebb3baa9d6395",
+      "translation": "无法识别其配对文件的文件不贡献任何内容，而不是生成一个空的 ``{sample: {}}`` 条目，否则该条目之后会引发 ``KeyError: 'R1'``（在 :func:`spacr.sequencing.generate_barecode_mapping` 中）。索引读段（``_I1``/``_I2``）会被识别并排除，因为它们携带的是测序仪的样本索引，而非筛选条形码。当两个文件声称是同一样本的同一配对端时（``S_R1.fastq`` 与 ``S_R1.fastq.gz`` 并存），两者都不使用，并发出一条列出两者名称的警告。"
+    },
+    {
+      "context": "Directory containing FASTQ files.",
+      "label": "spacr.io.parse_gz_files#3",
+      "source": "Directory containing FASTQ files.",
+      "source_sha256": "78833b8778731e0f53602c8dfa600cde79912ed9982bfee3ee3566ab3dfc099b",
+      "translation": "包含 FASTQ 文件的目录。"
+    },
+    {
+      "context": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The processing session also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A processing session that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a processing session that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "label": "spacr.sequencing#4",
+      "source": "``src`` must contain FASTQ files (``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq``, gzip-compressed or plain) whose names let spaCR pair R1 and R2 reads. BAM/CRAM, SRA archives, BCL base calls, FASTA and bzip2/zstd/ORA-compressed reads are named and refused with the conversion they need.  The run also needs a CSV reference table per barcode, with ``sequence`` and ``name`` columns.  A run that decodes the three barcodes spaCR shipped names them as ``row_csv``, ``column_csv`` and ``grna_csv``, and a run that decodes any other number of barcodes lists them under ``barcode_set`` instead, one entry per barcode.  ``target_sequence`` anchors the barcode window, while ``offset_start``, ``expected_end``, and a regex naming one group per barcode describe its layout.  The shipped regex names ``columnID``, ``grna`` and ``rowID``.  Use ``mode='paired'`` for a quality-weighted R1/R2 consensus, ``mode='single'`` with ``single_direction`` when only one mate should be read, or ``mode='mixed'`` for a folder holding both: paired samples get the consensus and unpaired ones are read from their ``single_direction`` mate.  ``sequencer`` names the machine; read headers are checked against it, and single-read platforms (Oxford Nanopore, PacBio, Ultima) are decoded in single mode only.",
+      "source_sha256": "5d307f679105e9a989a3b68c4c1894e5ce4917c76151ce2c724bb8e005a17c31",
+      "translation": "``src`` 必须包含 FASTQ 文件（``.fastq.gz``、``.fq.gz``、``.fastq`` 或 ``.fq``，gzip 压缩或未压缩），其文件名应能让 spaCR 将 R1 和 R2 读段配对。BAM/CRAM、SRA 归档、BCL 碱基识别数据、FASTA 以及 bzip2/zstd/ORA 压缩的读段会被识别并拒绝，同时指明所需的转换方式。运行还需要为每个条形码提供一张 CSV 参考表，包含 ``sequence`` 和 ``name`` 列。解码 spaCR 自带三个条形码的运行将它们命名为 ``row_csv``、``column_csv`` 和 ``grna_csv``；解码其他数量条形码的运行则在 ``barcode_set`` 下列出，每个条形码一项。``target_sequence`` 锚定条形码窗口，而 ``offset_start``、``expected_end`` 以及为每个条形码命名一个组的正则表达式描述其布局。自带的正则表达式命名了 ``columnID``、``grna`` 和 ``rowID``。使用 ``mode='paired'`` 可得到按质量加权的 R1/R2 一致序列；只应读取一端时，使用 ``mode='single'`` 并配合 ``single_direction``；文件夹同时包含两者时，使用 ``mode='mixed'``：配对样本得到一致序列，未配对样本从其 ``single_direction`` 配对端读取。``sequencer`` 指明测序仪；读段标头会与其核对，单读段平台（Oxford Nanopore、PacBio、Ultima）只能以单端模式解码。"
+    },
+    {
+      "context": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Processing-session manifests and failure records identify samples that were skipped or could not be processed.",
+      "label": "spacr.sequencing#6",
+      "source": "Each sample gets its own output directory beneath ``src``.  The essential artifacts are ``unique_combinations.csv`` (guide counts by row and column) and ``qc.csv``; ``annotated_reads.h5`` is also written when ``save_h5`` is enabled, and ``read_inputs.json`` records the files, compression, header convention, sequencer and pairing each sample was decoded with.  Optional barcode QC adds a report and plots under ``barcode_qc``. Run manifests and failure records identify samples that were skipped or could not be processed.",
+      "source_sha256": "5a558dc258632ff67d065387901c74772790e4c5b814080e709cdc3e30e2deda",
+      "translation": "每个样本在 ``src`` 下都有自己的输出目录。核心产物是 ``unique_combinations.csv``（按行和列的向导序列计数）和 ``qc.csv``；还会写出 ``annotated_reads.h5``（当启用 ``save_h5`` 时），``read_inputs.json`` 则记录每个样本解码时所用的文件、压缩方式、标头约定、测序仪和配对方式。可选的条形码 QC 会在 ``barcode_qc`` 下添加一份报告和若干图形。运行清单和失败记录会标明被跳过或无法处理的样本。"
+    },
+    {
+      "context": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "label": "spacr.sequencing.generate_barecode_mapping#1",
+      "source": "Discovers the R1 and R2 files of each sample under ``src``. Paired, single-end or mixed decoding and R1/R2 orientation are chosen from ``settings['mode']`` and ``single_direction``. Before a sample is decoded its files are checked: each must be gzip-compressed or plain FASTQ, its read headers must not belong to another platform than ``sequencer``, and the first reads of a pair must share one name.",
+      "source_sha256": "5228eaf29805a7707c601b94ee829066ee1f9effee6c06b86c7accd77c7ba1d2",
+      "translation": "在 ``src`` 下查找每个样本的 R1 和 R2 文件。双端、单端或混合解码以及 R1/R2 方向根据 ``settings['mode']`` 和 ``single_direction`` 选择。解码样本之前会检查其文件：每个文件必须是 gzip 压缩或未压缩的 FASTQ，其读段标头不得属于 ``sequencer`` 以外的其他平台，并且一对文件的前几条读段必须名称相同。"
+    },
+    {
+      "context": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "label": "spacr.sequencing.generate_barecode_mapping#10",
+      "source": "``target_sequence``, ``offset_start``, ``expected_end`` — anchor and slice window used to locate the barcode region.",
+      "source_sha256": "19aaec12779f9c1d3ce12b444bfe3d92a23005d15a444efc370e31ba9b7b8192",
+      "translation": "``target_sequence``、``offset_start``、``expected_end`` —— 用于定位条形码区域的锚点和截取窗口。"
+    },
+    {
+      "context": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "label": "spacr.sequencing.generate_barecode_mapping#11",
+      "source": "``column_csv`` / ``row_csv`` / ``grna_csv`` — barcode->name lookup CSVs for the three barcodes spaCR shipped.",
+      "source_sha256": "3d9be3a73324e0694c6df9f462f3535c0203b6755d316f073f83a609081ed793",
+      "translation": "``column_csv`` / ``row_csv`` / ``grna_csv`` —— spaCR 自带三个条形码的条形码->名称查找 CSV。"
+    },
+    {
+      "context": "``barcode_set`` — the barcodes to decode when a processing session has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the processing session decodes the three named above.",
+      "label": "spacr.sequencing.generate_barecode_mapping#12",
+      "source": "``barcode_set`` — the barcodes to decode when a run has other than those three, as a list with one entry per barcode. Each entry names the barcode, the reference CSV that names its sequences and the regex group that captures it. Absent, which is what every settings file written before sets existed is, the run decodes the three named above.",
+      "source_sha256": "be6b3cc3ffa8a8b89a54b676312a00c93803c81634182ae1bd23f2fcf09d585a",
+      "translation": "``barcode_set`` —— 当运行使用的条形码不是这三个时要解码的条形码，形式为每个条形码一项的列表。每一项指明条形码、为其序列命名的参考 CSV，以及捕获它的正则表达式组。未提供时（在可以定义集合之前写出的所有设置文件都是如此），运行解码上面列出的三个条形码。"
+    },
+    {
+      "context": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "label": "spacr.sequencing.generate_barecode_mapping#13",
+      "source": "``save_h5``, ``comp_type``, ``comp_level`` — HDF5 output knobs.",
+      "source_sha256": "f3531e87cd866cdf0a99ccccb9444d95085389f37541d0fc1e5319d665f4bb0b",
+      "translation": "``save_h5``、``comp_type``、``comp_level`` —— HDF5 输出参数。"
+    },
+    {
+      "context": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#14",
+      "source": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``.",
+      "source_sha256": "338cd188bcae7dbbbbd5e473501488e20220342f969116c12a31301e6e6165be",
+      "translation": "``chunk_size``, ``n_jobs``, ``test``, ``fill_na``."
+    },
+    {
+      "context": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "label": "spacr.sequencing.generate_barecode_mapping#15",
+      "source": "``barcode_qc`` — when true, QC each finished sample with :func:`spacr.sequencing_qc.barcode_qc`, writing plots and a report into ``<dst>/barcode_qc`` (default False; not filled in by the settings defaults).",
+      "source_sha256": "771ca49565901e6ffad8dccfd0d915b1f28c0538d7f83e608c9e28311848954c",
+      "translation": "``barcode_qc`` —— 为 true 时，用 :func:`spacr.sequencing_qc.barcode_qc` 对每个已完成的样本进行 QC，将图形和报告写入 ``<dst>/barcode_qc``（默认为 False；设置默认值中不会填写此项）。"
+    },
+    {
+      "context": "``target_grnas_per_well`` — expected gRNAs per microplate sample position, from which that QC step derives its abundance threshold (default 1).",
+      "label": "spacr.sequencing.generate_barecode_mapping#16",
+      "source": "``target_grnas_per_well`` — expected gRNAs per well, from which that QC step derives its abundance threshold (default 1).",
+      "source_sha256": "f4f495d3143852634bfec2c9bc2ed6df9cbabb6922717e65472570379015b89e",
+      "translation": "``target_grnas_per_well`` —— 每孔预期的 gRNAs 数量，该 QC 步骤据此推导丰度阈值（默认为 1）。"
+    },
+    {
+      "context": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "label": "spacr.sequencing.generate_barecode_mapping#17",
+      "source": "None. Writes per-sample outputs into ``<src>/<sample>_<mode>[_<direction>]/``, where a mixed run names each sample by the mode it was decoded in.",
+      "source_sha256": "7f0a2876c751cac95b0e2dd4a1a974febe4bbec6ed7d610c3c2fd0f43beafda6",
+      "translation": "None。将每个样本的输出写入 ``<src>/<sample>_<mode>[_<direction>]/``，其中混合运行按每个样本实际解码所用的模式为其命名。"
+    },
+    {
+      "context": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "label": "spacr.sequencing.generate_barecode_mapping#18",
+      "source": "for an unknown mode or sequencer, a folder holding only reads in a format that must be converted first, or a sample whose files are not FASTQ, follow another platform's headers or are not mates in the same order.",
+      "source_sha256": "896c1487d53213031c40de42f2ebb8bb3b706f3255d2214da0e68818fbbec836",
+      "translation": "当模式或测序仪未知、文件夹中仅包含必须先转换格式的读段，或某个样本的文件不是 FASTQ、遵循其他平台的标头或不是顺序一致的配对文件时。"
+    },
+    {
+      "context": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#20",
+      "source": "See Also: :func:`map_sequences_to_names` — inner barcode->name lookup. :func:`spacr.ml.perform_regression` — consumes the resulting ``unique_combinations.csv`` as ``count_data``.",
+      "source_sha256": "a24b201e8ac8ad15ccf8cb452cb2130a305d8a454c58d0a86185334693d6dffe",
+      "translation": "另请参阅：:func:`map_sequences_to_names` —— 内部的条形码->名称查找。:func:`spacr.ml.perform_regression` —— 将所得的 ``unique_combinations.csv`` 作为 ``count_data`` 使用。"
+    },
+    {
+      "context": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "label": "spacr.sequencing.generate_barecode_mapping#5",
+      "source": "``src`` — folder containing ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` reads.",
+      "source_sha256": "9cc5fb2707c75ff2da90c9b15b4b231e7f6a1274fe40c708b09237dc16c3dce1",
+      "translation": "``src`` —— 包含 ``.fastq.gz``、``.fq.gz``、``.fastq`` 或 ``.fq`` 读段的文件夹。"
+    },
+    {
+      "context": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "label": "spacr.sequencing.generate_barecode_mapping#6",
+      "source": "``mode`` — ``'paired'``, ``'single'`` or ``'mixed'`` (each sample with both mates paired, each sample with one mate read from its ``single_direction`` file; other samples are skipped with a warning).",
+      "source_sha256": "94d4d318007a023385d5048636849c63089e17377342c6a14294f1528cba52df",
+      "translation": "``mode`` —— ``'paired'``、``'single'`` 或 ``'mixed'``（同时具有两个配对端的每个样本按双端处理，只有一个配对端的每个样本从其 ``single_direction`` 文件读取；其他样本会被跳过并给出警告）。"
+    },
+    {
+      "context": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "label": "spacr.sequencing.generate_barecode_mapping#7",
+      "source": "``single_direction`` — ``'R1'`` or ``'R2'`` (``mode='single'`` and the unpaired samples of ``mode='mixed'``).",
+      "source_sha256": "2883ecd55a489607b0cdb28224bfae0b7803ff15a51cb6146747ea2b1c820b21",
+      "translation": "``single_direction`` —— ``'R1'`` 或 ``'R2'``（用于 ``mode='single'`` 以及 ``mode='mixed'`` 的未配对样本）。"
+    },
+    {
+      "context": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "label": "spacr.sequencing.generate_barecode_mapping#8",
+      "source": "``sequencer`` — ``'auto'`` (default), ``'illumina'``, ``'element'``, ``'mgi'``, ``'ultima'``, ``'ont'``, ``'pacbio'`` or ``'other'``. It sets no decoding parameter; read headers that follow another platform's convention are refused, and the single-read platforms require ``mode='single'``.",
+      "source_sha256": "e3b9173c74c6f55b011a8dac42207c6856d808c81f8f87c090489a93e292a563",
+      "translation": "``sequencer`` —— ``'auto'``（默认）、``'illumina'``、``'element'``、``'mgi'``、``'ultima'``、``'ont'``、``'pacbio'`` 或 ``'other'``。它不设定任何解码参数；遵循其他平台约定的读段标头会被拒绝，单读段平台要求 ``mode='single'``。"
+    },
+    {
+      "context": "``regex`` — regex extracting barcodes from a read.",
+      "label": "spacr.sequencing.generate_barecode_mapping#9",
+      "source": "``regex`` — regex extracting barcodes from a read.",
+      "source_sha256": "365c2dea13aa27eb06c9a0f6b075a4d4ab32a5effd8e526ffda8077d6f9dc020",
+      "translation": "``regex`` —— 从读段中提取条形码的正则表达式。"
+    },
+    {
+      "context": "R1 fastq path, gzip-compressed or plain.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#2",
+      "source": "R1 FASTQ path, gzip-compressed or plain.",
+      "source_sha256": "35f58e0f27db45481aa54c1b3e7acf8dbf657c5bf100ce0c3f3be9a6c7a70e81",
+      "translation": "R1 FASTQ 路径，gzip 压缩或未压缩。"
+    },
+    {
+      "context": "R2 fastq path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "label": "spacr.sequencing.paired_read_chunked_processing#3",
+      "source": "R2 FASTQ path, gzip-compressed or plain. Each R2 read must carry the name of the R1 read beside it; a pair out of step is refused rather than decoded.",
+      "source_sha256": "f0167fa00165a0afca6bb1cb63f2413bbeb3e41a1fa412eda8568f408b391cd8",
+      "translation": "R2 FASTQ 路径，gzip 压缩或未压缩。每条 R2 读段必须带有与之并列的 R1 读段的名称；不同步的读段对会被拒绝，而不会被解码。"
+    },
+    {
+      "context": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "label": "spacr.sequencing.single_read_chunked_processing#1",
+      "source": "FASTQ path of the mate to decode, gzip-compressed or plain.",
+      "source_sha256": "93e06b16ea6e249ead2635e6346a14a0d18ad23a404faf3993824b26d804099e",
+      "translation": "要解码的配对端的 FASTQ 路径，gzip 压缩或未压缩。"
+    },
+    {
+      "context": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "label": "spacr.utils.count_reads_in_fastq#0",
+      "source": "Return the number of reads in a FASTQ file, gzip-compressed or plain.",
+      "source_sha256": "9fbba2ad6634a678f737c58b203b7a8961e64d2e0f7adc7929d8e7c94c5eb700",
+      "translation": "返回 FASTQ 文件（gzip 压缩或未压缩）中的读段数。"
+    },
+    {
+      "context": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "label": "spacr.utils.count_reads_in_fastq#1",
+      "source": "Counts total lines and divides by four (the FASTQ record length). Compression is recognised from the file's first bytes, not its name.",
+      "source_sha256": "c09e30586411356db3ee0c2b554930d30238a7838d7fe14e194e3cc4392d1221",
+      "translation": "统计总行数并除以四（FASTQ 记录的行数）。压缩格式根据文件的前几个字节识别，而非文件名。"
+    },
+    {
+      "context": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "label": "spacr.utils.count_reads_in_fastq#2",
+      "source": "Path to a ``.fastq.gz``, ``.fq.gz``, ``.fastq`` or ``.fq`` file.",
+      "source_sha256": "713b0caf98dd47fbf610018291218746dd9d03c6af2a36c10bf1714652af7320",
+      "translation": "``.fastq.gz``、``.fq.gz``、``.fastq`` 或 ``.fq`` 文件的路径。"
+    }
+  ],
+  "schema": 1
+}

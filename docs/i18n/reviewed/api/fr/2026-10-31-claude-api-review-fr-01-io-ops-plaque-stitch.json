@@ -377,7 +377,7 @@
       "label": "spacr.ops_accel.maximum_filter#1",
       "source": "Used for peak finding: a read is a local maximum of the spot score, and \"local\" means this. On a well-sized field it is also the most expensive thing in the decode chain, and it is a max-pool, which GPUs run efficiently.",
       "source_sha256": "b38f29ae64a73e1315aee908a8c4f39e5d55cc52124820c50be7d72d2bf14889",
-      "translation": "Utilisé pour la recherche de pics : une lecture est un maximum local du score de spot, et « local » signifie ceci. Sur un champ de taille ordinaire, c’est aussi l’opération la plus coûteuse de la chaîne de décodage, et c’est un max-pool, que les GPU exécutent efficacement."
+      "translation": "Utilisé pour la recherche de pics : une lecture est un maximum local du score de spot, et \"local\" signifie ceci. Sur un champ de taille ordinaire, c’est aussi l’opération la plus coûteuse de la chaîne de décodage, et c’est un max-pool, que les GPUs exécutent efficacement."
     },
     {
       "context": "Edges repeat the border pixel, matching `scipy.ndimage.maximum_filter` with ``mode=\"nearest\"``, because the alternative is a rim of false maxima all the way round the field.",
@@ -573,7 +573,7 @@
       "label": "spacr.ops_compose.compose_window#4",
       "source": "called with a site number, returns that tile. Called only for tiles that touch the window, so a well of 333 tiles costs a handful of reads per window rather than 333.",
       "source_sha256": "5611d4617e6baf5b1851e98b6e7caa517f25b031d1cec515c5f46fb164d4b161",
-      "translation": "appelé avec un numéro de site, renvoie cette tuile. Appelé uniquement pour les tuiles qui touchent la fenêtre, si bien qu’un puits de 333 tuiles coûte quelques lectures par fenêtre au lieu de 333."
+      "translation": "appelé avec un numéro de site, renvoie cette tuile. Appelé uniquement pour les tuiles qui touchent la fenêtre, de sorte qu’un puits de 333 tuiles coûte quelques lectures par fenêtre au lieu de 333."
     },
     {
       "context": "``(height, width)``; read from the first tile when omitted.",
@@ -720,7 +720,7 @@
       "label": "spacr.ops_cycles.register_cycles#1",
       "source": "Each cycle is registered against the reference directly, never against its predecessor. Chaining c1->c2->c3 saves one registration and makes every later cycle depend on every earlier one: a single bad link displaces the rest and the residual does not say which link failed. Registering each cycle independently lets one cycle be dropped without affecting the others, so a cycle that does not register does not cost the well.",
       "source_sha256": "4a0bfb2b43283e4176b488c07fffce84b6eeed7f060cc43630202a9580688998",
-      "translation": "Chaque cycle est recalé directement sur la référence, jamais sur son prédécesseur. Enchaîner c1->c2->c3 économise un recalage et rend chaque cycle ultérieur dépendant de tous les précédents : un seul maillon défaillant déplace tous les suivants, et le résidu ne dit pas quel maillon a échoué. Recaler chaque cycle indépendamment permet d’écarter un cycle sans affecter les autres, si bien qu’un cycle qui ne se recale pas ne coûte pas le puits."
+      "translation": "Chaque cycle est recalé directement sur la référence, jamais sur son prédécesseur. Enchaîner c1->c2->c3 économise un recalage et rend chaque cycle ultérieur dépendant de tous les précédents : un seul maillon défaillant déplace tous les suivants, et le résidu ne dit pas quel maillon a échoué. Recaler chaque cycle indépendamment permet d’écarter un cycle sans affecter les autres, de sorte qu’un cycle qui ne se recale pas ne coûte pas le puits."
     },
     {
       "context": "the reference cycle's target, from :func:`sbs_mean_target`.",
@@ -902,7 +902,7 @@
       "label": "spacr.ops_layout.WellLayout.pairs#1",
       "source": "Once, not twice: registering a pair in both directions doubles the work and asks the same question. The axis is \"vertical\" or \"horizontal\", which the caller wants because a vertical link continues a column and a horizontal one crosses a snake turn -- and because the two carry different expected shifts.",
       "source_sha256": "54ca933a0300ce4f5de4be1183d617faffbb51d187a91191752d670749c4f0a9",
-      "translation": "Une fois, pas deux : recaler une paire dans les deux sens double le travail et pose la même question. L’axe est « vertical » ou « horizontal », ce dont l’appelant a besoin, car un lien vertical prolonge une colonne et un lien horizontal traverse un virage du serpentin -- et parce que les deux portent des décalages attendus différents."
+      "translation": "Une fois, pas deux : recaler une paire dans les deux sens double le travail et pose la même question. L’axe vaut \"vertical\" ou \"horizontal\", ce dont l’appelant a besoin, car un lien vertical prolonge une colonne et un lien horizontal traverse un virage du serpentin -- et parce que les deux portent des décalages attendus différents."
     },
     {
       "context": "Ordered by geometry, not by site index: the second microscope image field is always the one below for a vertical pair and the one to the right for a horizontal one, because a caller cropping an overlap band assumes that -- `register_edge` takes the bottom of the first and the top of the second. Ordering by index is wrong on every odd column, because the raster snakes and in a bottom-to-top column the microscope image field above carries the higher index. That error is silent: edges are lost while each surviving component still solves with a residual of 0.00 px.",
@@ -1294,7 +1294,7 @@
       "label": "spacr.ops_sample.decode_input#4",
       "source": "One cycle is refused. A barcode is a sequence across cycles; a single \"cycle\" reaching here is either a run that lost its cycle axis or a caller who collapsed it. Both produce a decodable barcode of noise, and neither is visible downstream. If a single-cycle experiment ever needs decoding it should say so explicitly rather than arrive looking like this mistake.",
       "source_sha256": "2be2b6ce9f004d807296685a4191e03ba1af0d6e403291d1641edbbb8f12431f",
-      "translation": "Un cycle unique est refusé. Un code-barres est une séquence à travers les cycles ; un « cycle » unique qui arrive ici provient soit d’une exécution qui a perdu son axe de cycles, soit d’un appelant qui l’a écrasé. Les deux produisent un code-barres de bruit décodable, et aucun n’est visible en aval. Si une expérience à cycle unique doit un jour être décodée, elle doit le dire explicitement plutôt que d’arriver sous l’apparence de cette erreur."
+      "translation": "Un cycle unique est refusé. Un code-barres est une séquence à travers les cycles ; un \"cycle\" unique qui arrive ici provient soit d’une exécution qui a perdu son axe de cycles, soit d’un appelant qui l’a écrasé. Les deux produisent un code-barres de bruit décodable, et aucun n’est visible en aval. Si une expérience à cycle unique doit un jour être décodée, elle doit le dire explicitement plutôt que d’arriver sous l’apparence de cette erreur."
     },
     {
       "context": "``ops_reads`` rows: one per object per cycle, per the storage contract's columns.",
@@ -1714,7 +1714,7 @@
       "label": "spacr.ops_store.Readiness.__bool__#1",
       "source": "``if not objects_ready(db):`` is the natural way to write the gate, and it must answer the verdict rather than \"an object exists\". :attr:`reason` is still there to say why the answer was no.",
       "source_sha256": "cb8a478d0983e28888e6bdb8d51a31a0f34ab10fa2ee7908d19ba0085cf8b09e",
-      "translation": "``if not objects_ready(db):`` est la façon naturelle d’écrire la barrière, et elle doit renvoyer le verdict plutôt que « un objet existe ». :attr:`reason` est toujours là pour dire pourquoi la réponse était non."
+      "translation": "``if not objects_ready(db):`` est la façon naturelle d’écrire la barrière, et elle doit renvoyer le verdict plutôt que \"an object exists\" (un objet existe). :attr:`reason` est toujours là pour dire pourquoi la réponse était non."
     },
     {
       "context": "Raised for an inconsistent OPS store; the message says how to recover.",
@@ -1742,7 +1742,7 @@
       "label": "spacr.ops_store.objects_ready#2",
       "source": "It returns a reason, not just a verdict. \"Not yet\" leaves the operator guessing which of three things went wrong: no database, no table, or a table with nothing in it. Those have different fixes.",
       "source_sha256": "29efdb6370ed887320aeb6bf828194adeb267de1d8809cabd24217fbf71afe49",
-      "translation": "Elle renvoie une raison, pas seulement un verdict. « Pas encore » laisse l’opérateur deviner laquelle des trois choses a mal tourné : pas de base de données, pas de table, ou une table vide. Ces cas ont des corrections différentes."
+      "translation": "Elle renvoie une raison, pas seulement un verdict. \"Not yet\" (pas encore) laisse l’opérateur deviner laquelle des trois choses a mal tourné : pas de base de données, pas de table, ou une table vide. Ces cas ont des corrections différentes."
     },
     {
       "context": "the fewest objects a real well can have. One is the lowest meaningful value -- a well with a single nucleus is a bad well, not an impossible one -- so this exists to be raised by a caller who knows their laboratory microplate, not to encode a guess here.",

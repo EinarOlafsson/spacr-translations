@@ -1,0 +1,434 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "label": "spacr.align.default_settings#0",
+      "source": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "source_sha256": "b8ced4d82d3601081f556f7d802300c6f5a01606b7e5e881043dbfd635c289c7",
+      "translation": "वे सेटिंग्स लौटाएँ जिन्हें :func:`align_folder` पढ़ता है, उनके डिफ़ॉल्ट के साथ।"
+    },
+    {
+      "context": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "label": "spacr.batch_correction.correct_batch_effects#1",
+      "source": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "source_sha256": "6477122d776bba2e579f07e50f5ef030f674a161e5300bb57eccd38b550342c1",
+      "translation": "``center`` वैश्विक माध्य बनाए रखते हुए प्रति-बैच माध्य खिसकाव हटाता है। ``zscore`` प्रति-बैच माध्यों और प्रसरणों को वैश्विक वितरण से संरेखित करता है। ``robust_zscore`` यही median/MAD से करता है और भारी पूँछ वाले एकल-कोशिका मापनों के प्रति कम संवेदनशील है। ``control_center`` हर बैच में ऋणात्मक/संदर्भ नियंत्रणों से केवल स्थान खिसकाव का अनुमान लगाता है और उपचार फैलाव बनाए रखता है।"
+    },
+    {
+      "context": "This module executes workflows without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "label": "spacr.cli#2",
+      "source": "This module runs pipelines without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "source_sha256": "8eec4ab9ff918cf1f790d5faf7ac934e2115f2f5280da5ba3db62ac8642a6509",
+      "translation": "यह मॉड्यूल बिना GUI के पाइपलाइन चलाता है। ``spacr.cli`` आयात करने से Qt, Tk, torch, cellpose, numpy या pandas आयात नहीं होते। हर भारी चीज़ उसी कमांड के भीतर आयात होती है जिसे उसकी आवश्यकता है, इसलिए ``spacr-run --help`` और ``spacr-run --list`` उन लाइब्रेरियों को आयात किए बिना चलते हैं, और ``--dry-run`` किसी GPU को छुए बिना 40-प्लेट सेटिंग्स फ़ाइल सत्यापित करता है।"
+    },
+    {
+      "context": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "label": "spacr.cli.build_parser#1",
+      "source": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "source_sha256": "4729e0e3d697f6f24dc405c14690484c4839adebf5dd24fb2a85c66ee69dcfe5",
+      "translation": "पार्सर बनाने में मानक लाइब्रेरी के अलावा कुछ आयात नहीं होता, इसलिए ``spacr-run --help`` ठंडे NFS कैश से कोई spaCR या तृतीय-पक्ष मॉड्यूल नहीं पढ़ता।"
+    },
+    {
+      "context": "Calls the same helper the workflow itself uses to canonicalize its settings, so the resolved key-value mapping the CLI prints is the one the workflow will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the workflows that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "label": "spacr.cli.module_defaults#1",
+      "source": "Calls the same helper the pipeline itself uses to canonicalize its settings, so the resolved dict the CLI prints is the one the pipeline will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the pipelines that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "source_sha256": "db36e56420f97bff519d4d7dd40fdf5a296a8e3f11a7f1b85271929b252c6fe1",
+      "translation": "वही सहायक बुलाता है जिसे पाइपलाइन स्वयं अपनी सेटिंग्स मानकीकृत करने के लिए उपयोग करती है, इसलिए CLI द्वारा मुद्रित हल किया गया dict वही है जो पाइपलाइन देखेगी। वह आमतौर पर एक :mod:`spacr.settings` फ़ंक्शन (:attr:`Module.defaults`) होता है; अपने स्वयं के सहायक रखने वाली पाइपलाइनों के लिए यह :attr:`Module.defaults_entry` है, जो मॉड्यूल लोड के बजाय यहाँ आयात होता है ताकि ``--list`` उसे आयात न करे।"
+    },
+    {
+      "context": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "label": "spacr.cli_download#4",
+      "source": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "source_sha256": "021c5750df8a3ef4914a65b4fc6b39242819066f050a900abc1849f158ffe10e",
+      "translation": "इस मॉड्यूल का आयात हल्का रहना चाहिए -- न Qt, न torch, न matplotlib -- ताकि ``spacr-download --help`` लॉगिन नोड पर ठंडे NFS कैश से उन लाइब्रेरियों को लोड न करे। इसीलिए डाउनलोड मूल साधन :mod:`spacr.example_archives` में रहते हैं, न कि :mod:`spacr.qt.hf_download` में, जो मॉड्यूल स्तर पर PySide6 आयात करता है। ``tests/test_cli_download.py`` इसे सुनिश्चित करता है।"
+    },
+    {
+      "context": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "label": "spacr.cli_download.build_parser#1",
+      "source": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "source_sha256": "cc2619f8b4d373fc74b258091c895fe9ae14330ad9116aa5ec6dedb688a258ed",
+      "translation": "इसे बनाने में मानक लाइब्रेरी और दो हल्की-निर्भरता वाले spaCR मॉड्यूलों के अलावा कुछ आयात नहीं होता, इसलिए ``--help`` कोई Qt, torch या matplotlib लोड नहीं करता।"
+    },
+    {
+      "context": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "label": "spacr.convert.default_settings#0",
+      "source": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "source_sha256": "ad3ba48639b2716bb5f6501826655500caca6a2f83d5ad4eff85858ca9d44708",
+      "translation": "वे सेटिंग्स लौटाता है जिन्हें :func:`convert_folder` पढ़ता है, उनके डिफ़ॉल्ट सहित।"
+    },
+    {
+      "context": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "label": "spacr.crashreport.main#2",
+      "source": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "source_sha256": "894edc3dda48ef42f9570c38c1b34a83cf92332659aaa9305a2db2185366e371",
+      "translation": "बंडल लिखे जाने पर ``0``, न लिखे जा सकने पर ``1``; एकत्र न हो सकने वाला खंड निकास कोड नहीं बदलता। अमान्य तर्क और ``--help`` कुछ भी लिखे जाने से पहले :mod:`argparse` के माध्यम से बाहर निकलते हैं (कोड 2 या 0 के साथ ``SystemExit``)।"
+    },
+    {
+      "context": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "label": "spacr.crop_source.inapplicable_settings#2",
+      "source": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "source_sha256": "7928c62f5bdacf4baed0d2a05649d91593fb3f7f632fed6b6beaeb0a39d43363",
+      "translation": ":data:`CROP_SOURCE_ALIASES` में सूचीबद्ध कोई भी वर्तनी स्वीकार होती है, क्योंकि पैनल के हाथ में सेटिंग्स फ़ाइल में संग्रहीत मान होता है, न कि वह नाम जिस पर इस मॉड्यूल ने उसे हल किया।"
+    },
+    {
+      "context": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could execute in this project right now; 5. it was written by a processing session that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "label": "spacr.data_manager#10",
+      "source": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could run in this project right now; 5. it was written by a run that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "source_sha256": "3004b0373e5465b2a12e79f19fc444c33a636436be1caced4aa57b805551a6bd",
+      "translation": "1. रजिस्ट्री में उसका रिकॉर्ड है — कोई भी अपंजीकृत चीज़ कभी उम्मीदवार नहीं होती; 2. उसका प्रकार **मूल** (:data:`ORIGINAL_KINDS`) नहीं है: :mod:`spacr.ports` में कुछ भी घोषित नहीं करता कि वह कच्ची छवियाँ या सीक्वेंसिंग रीड्स उत्पन्न करता है, इसलिए कुछ भी उन्हें दोबारा नहीं बना सकता; 3. उसके प्रकार के लिए एक घोषित **उत्पादक मॉड्यूल** मौजूद है, और रजिस्ट्री द्वारा दर्ज मॉड्यूल उनमें से एक है; 4. उस मॉड्यूल के **इनपुट पूर्ण हैं** — हर दर्ज इनपुट आर्टिफ़ैक्ट अब भी पंजीकृत और डिस्क पर है, और :func:`spacr.ports.check_ready` कहता है कि मॉड्यूल इस प्रोजेक्ट में अभी चल सकता है; 5. इसे ऐसे निष्पादन ने लिखा था जो **पूर्ण हुआ** (``status == \"complete\"``); 6. डिस्क पर जो है उसका फ़िंगरप्रिंट अब भी **पंजीकृत सामग्री से मेल खाता है**, इसलिए ऐसा फ़ोल्डर छँटाई योग्य नहीं है जिसमें किसी ने बाद में कोई फ़ाइल डाल दी हो; 7. यह **प्रोजेक्ट के भीतर** स्थित है, किसी सिमलिंक का अनुसरण किए बिना पहुँचा गया; 8. उसका पथ साझा करने वाला **हर** आर्टिफ़ैक्ट ऊपर की सभी शर्तें पूरी करता है — ``measurements.db`` में तीन प्रकार रहते हैं, और उनमें से एक के लिए फ़ाइल हटाने से बाकी दो नष्ट हो जाते हैं; 9. कोई अन्य पंजीकृत आर्टिफ़ैक्ट इसके भीतर या इसके चारों ओर नहीं है, क्योंकि बाइट्स सबसे भीतरी आर्टिफ़ैक्ट के हैं और योजना को हटाई जाने वाली सामग्री को कम नहीं बताना चाहिए।"
+    },
+    {
+      "context": "Bytes under artifacts that have a registry record.",
+      "label": "spacr.data_manager.ProjectUsage.registered_bytes#0",
+      "source": "Bytes under artifacts that have a registry record.",
+      "source_sha256": "a435c0df0c862d1a84a6185e970c75fa41c9a18babceab234c8990a06eba0ef4",
+      "translation": "उन आर्टिफ़ैक्ट्स के अंतर्गत बाइट्स जिनका रजिस्ट्री में रिकॉर्ड है।"
+    },
+    {
+      "context": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "label": "spacr.deep_spacr.class_labels#3",
+      "source": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "source_sha256": "bc3e88230be596f89487bb38d81dbb569b1baf0598952c0d09677ea22c37733a",
+      "translation": "``str`` की सूची, लंबाई ``num_classes``। अभाव में ``class_0, class_1, …`` पर लौटता है। जब ``metrics`` में न ``num_classes`` हो और न ``per_class_accuracy``, तो सूची खाली होती है।"
+    },
+    {
+      "context": "Return the settings :func:`import_project` reads, with their defaults.",
+      "label": "spacr.foreign.default_settings#0",
+      "source": "Return the settings :func:`import_project` reads, with their defaults.",
+      "source_sha256": "2c413037aadcd4dec8263eeb47ac429bb2e3e77a0986a5647b3867ea9852cdb1",
+      "translation": "वे सेटिंग्स लौटाएँ जिन्हें :func:`import_project` पढ़ता है, उनके डिफ़ॉल्ट के साथ।"
+    },
+    {
+      "context": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "label": "spacr.foreign.is_spacr_name#2",
+      "source": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "source_sha256": "453875a97a4d6dfd1fd6e54c49e02b5011e1c6e63620d5df10f27877ee776953",
+      "translation": "दूसरे parser के बजाय :func:`spacr.feature_dict.parse_column` को सौंपा गया: वह मॉड्यूल पहले से पूरा व्याकरण लागू करता है (``<object>_channel_<i>_<stat>``, radial-distribution और organelle-summary रूप, merge प्रत्यय) और हर मेटाडेटा कॉलम सूचीबद्ध करता है। ``family == 'unknown'`` ठीक \"spaCR would not write this\" है।"
+    },
+    {
+      "context": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "label": "spacr.hyperparam#3",
+      "source": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "source_sha256": "1ad00b7e85e920056de010840ddf3c7b29a255bdea70c1596564bd404fa66048",
+      "translation": "**UMAP का कोई ground truth नहीं है।** ऐसा कोई मापन नहीं है जो बताए कि एक एम्बेडिंग सही है और दूसरी गलत। यहाँ का हर मानदंड (trustworthiness, continuity, silhouette) एक *अलग* गुण को पुरस्कृत करता है, और वे प्रायः इस पर असहमत होते हैं कि कौन-सा ``n_neighbors``/``min_dist`` जीतता है। स्कोर उन एम्बेडिंग के पैनल को क्रम देने में सहायक हैं जिन्हें आप फिर देखते हैं; वे निर्णय नहीं हैं। मानदंड का नाम बताए बिना \"best embedding\" प्रिंट करने वाली कोई भी चीज़ भ्रामक है, इसलिए :func:`format_search` हमेशा उसका नाम बताता है, और UMAP तथा activation मानदंडों के लिए उसकी चेतावनी प्रिंट करता है।"
+    },
+    {
+      "context": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "label": "spacr.hyperparam#5",
+      "source": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "source_sha256": "a7b11a014c50dfaf65033685d9f55fdbb45ade64f78f43de7a46f1faa5f5e36b",
+      "translation": "**विजेता को उसके फैलाव के साथ रिपोर्ट किया जाता है।** जब शीर्ष तीन कॉन्फ़िगरेशन fold-दर-fold मानक विचलन के भीतर हों, तो हाइपरपैरामीटर का कोई महत्व नहीं था और \"winner\" शोर है। हर :class:`SearchResult` फैलाव रिपोर्ट करता है और ऐसा होने पर ``within_noise`` फ़्लैग लगाता है।"
+    },
+    {
+      "context": "Build PyTorch data loaders for training, validation, or testing.",
+      "label": "spacr.io.generate_loaders#0",
+      "source": "Build PyTorch data loaders for training, validation, or testing.",
+      "source_sha256": "604027a9aaec86f3f8db67d6535985fba174a34949b522db10b3898752cf1483",
+      "translation": "प्रशिक्षण, validation या परीक्षण के लिए PyTorch डेटा loaders बनाएँ।"
+    },
+    {
+      "context": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "label": "spacr.io.generate_loaders#1",
+      "source": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "source_sha256": "167670b3c328080f6e8fa2d0b1741038ca8985177dae562d7bc47f9a003c0cc4",
+      "translation": "``src/<mode>`` के अंतर्गत क्लास उप-फ़ोल्डर पढ़ता है, अनुरोधित रूपांतरण (चैनल चयन, वैकल्पिक सामान्यीकरण, वैकल्पिक संवर्धन) लागू करता है और ``batch_size`` के आकार वाले loaders लौटाता है। loaders ``torch.utils.data.DataLoader`` ऑब्जेक्ट हैं (macOS पर ``spacr.torch_loader.ArrayDataLoader``), :class:`spacrDataLoader` नहीं।"
+    },
+    {
+      "context": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "label": "spacr.io.save_object_mask#1",
+      "source": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "source_sha256": "66fa0fcc2b5689e6a12e0f94ef6a29db82dec82094c5f47f23f50d966cbfa59d",
+      "translation": "मास्क TIFF के रूप में (.npy नहीं) सहेजे जाते हैं ताकि ImageJ/अन्य टूल उन्हें पढ़ सकें, lossless संपीड़न के साथ (डिफ़ॉल्ट LZW)। लेबल मान अपरिवर्तित लिखे जाते हैं: सबसे बड़ा लेबल 65535 या उससे कम होने पर uint16 के रूप में, उससे ऊपर uint32 के रूप में।"
+    },
+    {
+      "context": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "label": "spacr.io.save_object_mask#7",
+      "source": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "source_sha256": "c5d9f15fdc466bd51e14f370f2ff64954a18042383a12a016451922aa8ef6ad5",
+      "translation": "ऋणात्मक, भिन्नात्मक या अपरिमित लेबलों के लिए, या uint32 सीमा से ऊपर के लेबलों के लिए।"
+    },
+    {
+      "context": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "label": "spacr.io.spacrDataLoader#1",
+      "source": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "source_sha256": "a1db2376e72295f45bb802f2c12be60242de486c233ae29860d8d0ba8a935a22",
+      "translation": "``torch.utils.data.DataLoader`` को लपेटता है और एक daemon thread चलाता है जो I/O विलंब छिपाने के लिए उपभोग से एक या अधिक बैच आगे रहता है। स्ट्रीम का अंत एक sentinel से संकेतित होता है। धीमे producer की प्रतीक्षा की जाती है, हर 60 s पर एक चेतावनी के साथ; sentinel के बिना रुकने वाला producer pass को जल्दी समाप्त करने के बजाय ``RuntimeError`` उठाता है।"
+    },
+    {
+      "context": "Start a pass over the data and return self.",
+      "label": "spacr.io.spacrDataLoader.__iter__#0",
+      "source": "Start a pass over the data and return self.",
+      "source_sha256": "95a435ad4dba8c78ce1e8cf3f11347b1ec9e3ef2baee05f47b4980bf5782d7b6",
+      "translation": "डेटा पर एक pass शुरू करें और self लौटाएँ।"
+    },
+    {
+      "context": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "label": "spacr.io.spacrDataLoader.__iter__#1",
+      "source": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "source_sha256": "3a4642ca217b5a08193129c1f4aa49961e474e5dd8737ce63e0d3cdec816e65c",
+      "translation": "ऐसा सक्रिय pass जिसने अभी तक कोई बैच नहीं दिया है, पुनः उपयोग किया जाता है (``list(iter(dl))`` इसे दो बार कॉल करता है), इसलिए स्ट्रीम दोगुनी नहीं होती। ऐसा सक्रिय pass जो पहले ही बैच दे चुका है, एक चेतावनी के साथ त्याग दिया जाता है और एक पूरा नया pass शुरू होता है।"
+    },
+    {
+      "context": "Waits while the producer is alive, logging a warning every 60 s without a batch. Throws ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "label": "spacr.io.spacrDataLoader.__next__#1",
+      "source": "Waits while the producer is alive, logging a warning every 60 s without a batch. Raises ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "source_sha256": "319872d77f2b8ef7fdce0d1500c49073687991faa024c675c7076a98201a9c02",
+      "translation": "producer के जीवित रहने तक प्रतीक्षा करता है, बिना बैच के हर 60 s पर एक चेतावनी लॉग करते हुए। जब producer अंत का संकेत दिए बिना समाप्त हो जाए तो ``RuntimeError`` उठाता है, और ``StopIteration`` तब, जब :meth:`cleanup` ने pass रोक दिया हो।"
+    },
+    {
+      "context": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.border_color#2",
+      "source": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "51134f5cb277ea81eb5fd9638adf0d906b42ef41aeaf11efb361770967ab7031",
+      "translation": "रूपरेखा रंग सेट करें, `to_rgba` द्वारा स्वीकार किया जाने वाला कोई भी रूप स्वीकार करते हुए।"
+    },
+    {
+      "context": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.face_color#2",
+      "source": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "c749a14087b2398f131d91e933c50944d69dbd75c60e538c10fa32da8681ff1f",
+      "translation": "भराव रंग सेट करें, `to_rgba` द्वारा स्वीकार किया जाने वाला कोई भी रूप स्वीकार करते हुए।"
+    },
+    {
+      "context": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the laboratory microplate view and the extracted-image-region grid use, so selecting a node in the tree publishes a structured-data name every other view already reads. A child's parent is resolved *within its own microscope field of view*: ``cell_id`` is a label, not a structured-data name, and label 7 exists in every microscope field of view on the laboratory microplate.",
+      "label": "spacr.lineage#6",
+      "source": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the plate view and the crop grid use, so selecting a node in the tree publishes a key every other view already reads. A child's parent is resolved *within its own field*: ``cell_id`` is a label, not a key, and label 7 exists in every field on the plate.",
+      "source_sha256": "a3898a38fa640972263c1efee852b098e22b4e9d5157cb4aa89f2dbf63ecda27",
+      "translation": "नोड :func:`spacr.selection.object_keys` से कुंजीबद्ध होते हैं, वही स्ट्रिंग जिसे UMAP, प्लेट दृश्य और निकाले-गए-छवि-क्षेत्र ग्रिड उपयोग करते हैं, इसलिए वृक्ष में नोड चुनने से ऐसी कुंजी प्रकाशित होती है जिसे हर अन्य दृश्य पहले से पढ़ता है। संतान का पैरेंट *उसके अपने छवि क्षेत्र के भीतर* हल होता है: ``cell_id`` लेबल है, कुंजी नहीं, और लेबल 7 प्लेट के हर छवि क्षेत्र में मौजूद है।"
+    },
+    {
+      "context": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "label": "spacr.macro#11",
+      "source": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "source_sha256": "cd55b791356a566d1e4affee3e123ff5166752eeef08d300806eaafb111fe8c5",
+      "translation": "*दर्ज करने की त्रुटि निष्पादन को नहीं रोकती।* दर्ज करना :func:`begin_recording` / :func:`finish_recording` के बीच होता है, जो दोनों हर अपवाद पकड़ते हैं। न लिखा जा सकने वाला मैक्रो एक लॉग पंक्ति की कीमत पर आता है।"
+    },
+    {
+      "context": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "label": "spacr.macro.read_macro#4",
+      "source": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "source_sha256": "c03a164307ffb092f6fd6cdb757e1bc3e29d44c2181e36ac9685fb479e8111ff",
+      "translation": "जब फ़ाइल में कोई :data:`MACRO` न हो, या उसकी स्कीमा उससे नई हो जिसे यह बिल्ड समर्थित करता है।"
+    },
+    {
+      "context": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "label": "spacr.ml.save_summary_to_file#5",
+      "source": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "source_sha256": "f33031848dc92f089bfe2a9ed51b4e54eab1f01cef169624c5be011d429154f5",
+      "translation": "इसे हर तालिका लिखे जाने के बाद कॉल किया जाता है, इसलिए किसी बैकएंड के ``summary()`` से आया exception प्रिंट किया जाता है और ``None`` लौटाया जाता है। फ़ोल्डर बनाने या फ़ाइल लिखने की त्रुटियाँ (``OSError``) उठाई जाती हैं।"
+    },
+    {
+      "context": "Return the zoo's model entries without scanning the user's disks.",
+      "label": "spacr.model_zoo.catalogue#0",
+      "source": "Return the zoo's model entries without scanning the user's disks.",
+      "source_sha256": "c7f4ad3d5173888bb91acfb1c73750e998796e03a043e22e72d3c3849d59ab31",
+      "translation": "उपयोगकर्ता की डिस्क स्कैन किए बिना मॉडल संग्रह की मॉडल प्रविष्टियाँ लौटाएँ।"
+    },
+    {
+      "context": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "label": "spacr.model_zoo.catalogue#1",
+      "source": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "source_sha256": "5626123712e92a2c6417ee941c3683360391c9c800dad53057f03868d563d3fd",
+      "translation": "अर्थात: स्थापित पैकेज के साथ शामिल मॉडल (जो कुछ :func:`spacr.utils.download_models` ने ``resources/models`` में रखा है); मानक Cellpose मॉडल, वैकल्पिक विभाजन बैकएंड और उनके मॉडल; ``remote`` चालू होने पर, कैश की गई bioimage.io पंक्तियाँ, :data:`BUNDLED_REMOTE_MODELS` और, यदि विन्यस्त हो, ``catalogue_path`` या :data:`CATALOGUE_ENV_VAR` पर्यावरण चर द्वारा नामित JSON कैटलॉग; और ``include_plugins`` के साथ, स्थापित मॉडल प्रदाताओं की प्रविष्टियाँ। :data:`RETIRED_MODEL_NAMES` में दिए नाम हटा दिए जाते हैं।"
+    },
+    {
+      "context": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "label": "spacr.model_zoo.catalogue#5",
+      "source": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "source_sha256": "721f834e01676b6674726e704da50cd84b73ba37a9c46544137eedca6818c3a6",
+      "translation": "``remote`` चालू होने पर जोड़ा जाने वाला JSON कैटलॉग; डिफ़ॉल्ट ``$SPACR_MODEL_CATALOGUE`` है जब वह किसी फ़ाइल का नाम देता है।"
+    },
+    {
+      "context": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "label": "spacr.model_zoo.catalogue#8",
+      "source": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "source_sha256": "a36e805f1f8e04a38b57eaf987e30b16ee0533cbdcd20966045a9ac6ace3186c",
+      "translation": "ऊपर दिए क्रम में प्रविष्टियाँ। जिस प्रविष्टि का ``(key, name)`` पहले से सूचीबद्ध है उसे दोबारा नहीं जोड़ा जाता, इसलिए डाउनलोड किया गया मॉडल एक बार, स्थानीय फ़ाइल के रूप में, सूचीबद्ध होता है।"
+    },
+    {
+      "context": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "label": "spacr.model_zoo.source_of#1",
+      "source": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "source_sha256": "f967d783f8a7f84208f73cf49e28eed7f25f85f4d43fbe2ef6aa6e3b74895245",
+      "translation": "पंक्ति के अपने ``source``, ``kind`` और ``uri`` से तय किया जाता है, जिसमें नामों की एक सूची पहले जाँची जाती है: जिस पंक्ति की ``key`` :data:`THIRD_PARTY_MODEL_KEYS` में है वह ``Third-party`` के अंतर्गत रखी जाती है, जब तक कि वह ऐसी समुदाय पंक्ति न हो जिसे spaCR ने प्रकाशित नहीं किया। हर अन्य पंक्ति उसके अपने क्षेत्रों से वर्गीकृत होती है, इसलिए उस सूची से छूटे मॉडल को भी एक शीर्षक मिलता है।"
+    },
+    {
+      "context": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per microplate sample position), so the importances are in-sample.",
+      "label": "spacr.nonparametric_fits#5",
+      "source": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per well), so the importances are in-sample.",
+      "source_sha256": "bd994265c69528c586d78dabde21e1f043a0570ef50628665490ab6a717a5fac",
+      "translation": "यहाँ की कोई भी विधि डेटा को विभाजित नहीं करती। :func:`agreement` अपना मॉडल फ़िट करता है और उन्हीं पंक्तियों (प्रति वेल एक पंक्ति) पर permutation महत्त्व की गणना करता है, इसलिए महत्त्व in-sample हैं।"
+    },
+    {
+      "context": "the microplate sample position each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "label": "spacr.nonparametric_fits.agreement#4",
+      "source": "the well each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "source_sha256": "47ae258c48d036b06debae8d39f91f052b1f8b92c1afbd434dab3d53743c05a9",
+      "translation": "वह वेल जिसकी प्रत्येक पंक्ति है। स्वीकार किया जाता है पर उपयोग नहीं होता: कोई विभाजन नहीं किया जाता, और मॉडल सभी पंक्तियों पर फ़िट किया जाता है और उसके permutation महत्त्व की गणना सभी पंक्तियों पर होती है।"
+    },
+    {
+      "context": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "label": "spacr.ops_objects.sew#3",
+      "source": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "source_sha256": "cd8b6bd045c0fb09fa7be363a718e3cae707ca5dfc9fc072d2215099e5e519d4",
+      "translation": "एक ही विंडो के दो पूरे लेबल कभी एक ऑब्जेक्ट नहीं होते, क्योंकि लेबल छवि एक नाभिक को दो लेबल नहीं देती; एक ही विंडो के दो कटे हुए लेबल एक ही पूरे अवलोकन से जुड़ सकते हैं। अलग-अलग विंडो के दो पूरे अवलोकन एक नाभिक होते हैं जब उनके केंद्रक हर अक्ष पर ``tolerance`` के भीतर मिलते हों और या तो उनके क्षेत्रफल ``area_ratio`` तक मिलते हों या उनके केंद्रक छोटे वाले की समतुल्य त्रिज्या के भीतर हों -- उसके क्षेत्रफल वाली डिस्क की त्रिज्या। जिन जोड़ों के क्षेत्रफल मिलते हैं उन्हें पहले जोड़ा जाता है, फिर बाकी को सबसे निकट से शुरू करके, और जो जोड़ किसी समूह को एक विंडो के दो लेबल दे, उसे अस्वीकार किया जाता है।"
+    },
+    {
+      "context": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "label": "spacr.outlier_filter#0",
+      "source": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "source_sha256": "5d80f87a94531910a9b9279d44204cf042a59d723560cd151f386cb23ec936ec",
+      "translation": "guide annotation से पहले उन objects को हटाता है जो माध्यिका से, स्केल किए गए MADs में, दूर हैं।"
+    },
+    {
+      "context": "Return the subset of a picture-settings key-value mapping that the extracted image region layer reads.",
+      "label": "spacr.picture_settings.to_crop_settings#0",
+      "source": "Return the subset of a picture-settings dict that the crop layer reads.",
+      "source_sha256": "de886c6dd289b67d8e9dc6a22c76de4ff9fe66e6660d9fef58337e5073a0674c",
+      "translation": "चित्र-सेटिंग शब्दकोश का वह उपसमुच्चय लौटाएँ जिसे क्रॉप परत पढ़ती है।"
+    },
+    {
+      "context": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "label": "spacr.plate_qc.parse_column_label#1",
+      "source": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "source_sha256": "b0202ae9a9c887ebc37d7d98cf55b1afef54f9494facf71cba35b075d191e1b4",
+      "translation": "``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` और ``12`` स्वीकार करता है।"
+    },
+    {
+      "context": "Accepts every row spelling spaCR and laboratory microplate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 laboratory microplates go past Z).",
+      "label": "spacr.plate_qc.parse_row_label#1",
+      "source": "Accepts every row spelling spaCR and plate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 plates go past Z).",
+      "source_sha256": "305f72cede6e7b5e394d3eae79b6f9dff875fa446d0afe60552cc351634d68ab",
+      "translation": "spaCR और प्लेट रीडरों द्वारा बनाई जाने वाली हर पंक्ति वर्तनी स्वीकार करता है: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (अक्षर पंक्तियाँ) और ``'AA'`` (1536 प्लेटें Z से आगे जाती हैं)।"
+    },
+    {
+      "context": "(always available; what ``\"auto\"`` falls back to)",
+      "label": "spacr.power_model#11",
+      "source": "(always available; what ``\"auto\"`` falls back to)",
+      "source_sha256": "37bcabb4da9efb6f38ef0054324ad0cfb99ea2d1878a583be809db3b637dd79e",
+      "translation": "(हमेशा उपलब्ध; ``\"auto\"`` अंततः इसी पर लौटता है)"
+    },
+    {
+      "context": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "label": "spacr.power_model#13",
+      "source": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "source_sha256": "f05053bb30202acb63144b47ee57dbef4560b20db1192538f2de947aaec7e09c",
+      "translation": "``\"numpyro\"`` / ``\"pymc\"`` (वैकल्पिक, आलसी रूप से आयात) सटीक NUTS, यदि उपयोगकर्ता ने इनमें से कोई स्थापित किया हो।  कभी ``install_requires`` में नहीं जोड़ा जाता। ``\"auto\"`` (डिफ़ॉल्ट) numpyro, अन्यथा pymc, अन्यथा torch — और यह *बताता है कि कौन सा*, लॉग में भी और :attr:`PowerFit.backend` में भी, ताकि किसी परिणाम को कभी किसी अन्य विधि से बना न समझा जाए।  यदि दो मशीनों को बिट-दर-बिट सहमत होना है तो ``backend=`` स्पष्ट रूप से स्थिर करें।"
+    },
+    {
+      "context": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "label": "spacr.schema.add_screen_column#5",
+      "source": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "source_sha256": "e1f286a49160a3a9e8f90f7f011a0fc41ee413c1cea2382578b378906440a4df",
+      "translation": "खाली मान कभी खाली नहीं छोड़े जाते: ``None``, ``NaN`` और ``''`` ``screen`` बन जाते हैं जब वह दिया गया हो, और अन्यथा :data:`DEFAULT_SCREEN`, क्योंकि खाली स्क्रीनिंग आईडी कोई पहचान नहीं है और उसे रखने वाली हर पंक्ति बाकी सभी के साथ समूहित हो जाएगी।"
+    },
+    {
+      "context": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask workflows let it end the processing session. Other QC errors are printed as skipped and the processing session continues.",
+      "label": "spacr.seg_qc.Finding#1",
+      "source": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask pipelines let it end the run. Other QC errors are printed as skipped and the run continues.",
+      "source_sha256": "84f343be819268a08e18d39001ed4a9489d33aa402caa73359f6eb3a396c2485",
+      "translation": "``'fail'``, ``'warn'`` या ``'ok'`` — banner इसे किस रंग में दिखाए। कोई finding किसी चीज़ को नहीं रोकती; केवल :func:`run_segmentation_qc`, ``mode='stop'`` के साथ, विफल प्लेट के लिए :class:`SegmentationQCFailed` उठाता है, और classic तथा V2 Mask दोनों पाइपलाइनें उसे रन समाप्त करने देती हैं। अन्य QC त्रुटियाँ skipped के रूप में प्रिंट होती हैं और रन जारी रहता है।"
+    },
+    {
+      "context": "always ``False``; the digest reports QC and does not stop a processing session. A processing session is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "label": "spacr.seg_qc.QCDigest#10",
+      "source": "always ``False``; the digest reports QC and does not stop a run. A run is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "source_sha256": "f2e5208f829e86dd81f9e95297e3d414b8e5951febba355c7c47ffc282ae3b8d",
+      "translation": "हमेशा ``False``; digest QC की रिपोर्ट करता है और रन नहीं रोकता। रन केवल :func:`run_segmentation_qc` द्वारा ``mode='stop'`` के साथ रुकता है, जिसका विफल प्लेट के लिए :class:`SegmentationQCFailed` classic या V2 Mask रन को समाप्त करता है।"
+    },
+    {
+      "context": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "label": "spacr.sequencing.graph_sequencing_stats.find_and_visualize_fraction_threshold#6",
+      "source": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "source_sha256": "9161b71c1d9467c54f7120c5a63723f29624b7a02d2fd118af22534a9ce234d0",
+      "translation": "``<dst>/results/fraction_threshold.pdf`` लिखता है और निर्देशिकाएँ बनाता है। ``None`` होने पर ``TypeError`` उठता है, :func:`os.path.join` से। एकमात्र कॉलर हमेशा पथ देता है।"
+    },
+    {
+      "context": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "label": "spacr.sequencing_qc.sweep_grid#6",
+      "source": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "source_sha256": "3f33caf61a5a8b0abaeed13cdb3270a6f377eba48243463b32ea657e18701d4e",
+      "translation": "``(0, 1]`` में सीमाओं का क्रमबद्ध अद्वितीय ऐरे, जिसमें स्वयं ``threshold`` होता है जब वह अधिकतम 1 हो, ताकि निकाला गया बिंदु वक्र पर हो, केवल उसके पास नहीं।"
+    },
+    {
+      "context": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "label": "spacr.surrogate.explain_cv_default_settings#0",
+      "source": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "source_sha256": "90922bf5865b48a391524e5774c10a887b68d7ec315fa504ec5f681a001f49a0",
+      "translation": "Explain CV Model मॉड्यूल के डिफ़ॉल्ट भरकर ``settings`` लौटाएँ।"
+    },
+    {
+      "context": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a processing session — those folds are loaded as part of that processing session. A ``fold_<i>`` folder under a folder that is not a processing session is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "label": "spacr.train_compare.find_runs#1",
+      "source": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a run — those folds are loaded as part of that run. A ``fold_<i>`` folder under a folder that is not a run is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "source_sha256": "9583efbc3282bc257ab5327258ef40163e12ed00add13803d8574ef27d9d1270",
+      "translation": "अधिकतम ``max_depth`` स्तरों तक जाता है, छिपे फ़ोल्डर छोड़ता है, और ऐसे ``fold_<i>`` फ़ोल्डर में प्रवेश नहीं करता जिसका पैरेंट स्वयं एक निष्पादन हो — वे फ़ोल्ड उस निष्पादन के भाग के रूप में लोड होते हैं। ऐसे फ़ोल्डर के नीचे का ``fold_<i>`` फ़ोल्डर जो निष्पादन नहीं है, किसी अन्य फ़ोल्डर की तरह स्कैन किया जाता है। ``root`` को सीधे किसी फ़ोल्ड फ़ोल्डर पर इंगित करने से वह एक फ़ोल्ड लोड होता है।"
+    },
+    {
+      "context": "A folder counts as a processing session when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "label": "spacr.train_compare.find_runs#2",
+      "source": "A folder counts as a run when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "source_sha256": "6ba68336ec644b245dd06a2b6d35e8ef564a6f3425712cb7228011e27f9ce7f2",
+      "translation": "कोई फ़ोल्डर तब निष्पादन माना जाता है जब उसमें progress CSV, ``.pth`` checkpoint, ``*_per_fold.csv`` या वक्रों वाले ``fold_<i>`` उप-फ़ोल्डर हों। टूटे निष्पादन (बिना वक्र, बिना सेटिंग्स, शून्य-एपॉक लॉग) छोड़ने के बजाय उनकी टिप्पणियों के साथ लौटाए जाते हैं; अन्य फ़ोल्डर नहीं लौटाए जाते।"
+    },
+    {
+      "context": "normalized recipe containing only fields this version defines.",
+      "label": "spacr.umap_search.UmapRecipe.from_dict#2",
+      "source": "normalized recipe containing only fields this version defines.",
+      "source_sha256": "9c4bb464211c6626d1830956c4ee49c5abb3a5961ca77a15b08aa3068e95d940",
+      "translation": "सामान्यीकृत नुस्खा जिसमें केवल वे क्षेत्र हैं जिन्हें यह संस्करण परिभाषित करता है।"
+    },
+    {
+      "context": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "label": "spacr.updater#1",
+      "source": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "source_sha256": "1db272e5c8e694eb19405f733d3528eadd7e80868473cd91c45c84909a95a2b2",
+      "translation": "एक छोटा API उपलब्ध कराता है जिसे Qt GUI की Help → \"Check for updates\" मेनू प्रविष्टि बुला सकती है। संस्करण जाँच और कोई भी उन्नयन केवल तब चलते हैं जब उपयोगकर्ता उन्हें शुरू करे, और उन्नयन की पहले पुष्टि की जाती है। रिलीज़ नोट्स की प्राप्ति उपयोगकर्ता द्वारा शुरू नहीं होती: Home का News पैनल और अद्यतन के बाद के नोट्स :func:`fetch_release_notes` को स्वयं बुलाते हैं, जब तक कि News refresh वरीयता बंद न हो या ``SPACR_NO_NETWORK`` सेट न हो।"
+    },
+    {
+      "context": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "label": "spacr.updater#6",
+      "source": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "source_sha256": "3b336f8f74eba4c3840421931297311eeddc3a117d8171d21f766d0ac7c51bbf",
+      "translation": "दोनों प्राप्तियाँ अतिरिक्त HTTP निर्भरता से बचने के लिए stdlib के ``urllib`` का उपयोग करती हैं। समय-सीमाएँ छोटी हैं (संस्करण जाँच के लिए 3 s, रिलीज़ नोट्स के लिए 4 s) ताकि धीमा / ऑफ़लाइन नेटवर्क UI को न रोके। त्रुटियाँ समाहित की जाती हैं और \"couldn't check\" के रूप में दिखाई जाती हैं — कभी क्रैश नहीं।"
+    },
+    {
+      "context": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "label": "spacr.utils.cleanup_pipeline_folders#2",
+      "source": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "source_sha256": "b88ee61c69c7f4815abac6b82c2f7cb56dd5adb9704259b7e93d1678371bc801",
+      "translation": "जब तक ``merged/`` में कम से कम एक ``.npy`` न हो, कुछ नहीं हटाया जाता। तब ``stack/``, ``masks/`` और क्रमांकित फ़ोल्डर केवल तब हटाए जाते हैं जब हर ``stack/*.npy`` का एक मेल खाता ``merged/*.npy`` हो; ``stack/`` के बिना प्रति-क्षेत्र जाँच नहीं होती। ``keep_original`` False होने पर, ``orig/`` केवल तब हटाया जाता है जब हर ``stack/*.npy`` क्षेत्र का ऐसा ``merged/`` ऐरे हो जो पूरी तरह लोड होता है। अन्यथा ``orig/`` रखा जाता है, तब भी जब जाँचने के लिए कोई ``stack/`` सूची न हो, और लुप्त या अपूर्ण क्षेत्रों का नाम बताने वाला संदेश ``verbose=False`` होने पर भी प्रिंट होता है।"
+    },
+    {
+      "context": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "label": "spacr.utils.cleanup_pipeline_folders#6",
+      "source": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "source_sha256": "510168a3faf971845ce53779e85354933700f513bbd55469b0535038844a8a0e",
+      "translation": "हटाए गए फ़ोल्डर पथों की सूची; रखा गया ``orig/`` उसमें नहीं होता।"
+    },
+    {
+      "context": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "label": "spacr.utils.plot_umap_images#7",
+      "source": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "source_sha256": "2a24e1ef74bb12af39be7e7bac05ab425e79ac963daf4b9576d1b0ca99ec510d",
+      "translation": ":func:`plot_images_by_cluster` को दिया जाता है, जो इसे नहीं पढ़ता। कोई रंग नहीं बनाया जाता और इसकी लंबाई यह सीमित नहीं करती कि किन क्लस्टरों पर जाया जाए। अप्रयुक्त (``None`` ठीक है) जब ``plot_by_cluster`` false हो।"
+    },
+    {
+      "context": "Build from a key-value mapping, ignoring structured-data names this version does not define.",
+      "label": "spacr.volcano_style.VolcanoStyle.from_dict#0",
+      "source": "Build from a dict, ignoring keys this version does not define.",
+      "source_sha256": "8e4cf2cf235b33c301f0d2ffaeecbeaba7031f2a9a6a423c8b9edc7cfdebb5c4",
+      "translation": "dict से बनाता है, उन कुंजियों को अनदेखा करते हुए जिन्हें यह संस्करण परिभाषित नहीं करता।"
+    },
+    {
+      "context": "A z-stack is ``n_z`` times a microscope field of view, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given microscope field of view; the workflow processes **one microscope field of view at a time** and never holds a laboratory microplate. For a 2048x2048 microscope field of view at 21 image layers in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "label": "spacr.zstack#9",
+      "source": "A z-stack is ``n_z`` times a field, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given field; the pipeline processes **one field at a time** and never holds a plate. For a 2048x2048 field at 21 planes in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "source_sha256": "6d1b3e75314f5f53e042bd8412352b001aee9e411d488abebe475f9b1fd36a8c",
+      "translation": "z-stack एक फ़ील्ड का ``n_z`` गुना है, और volumetric विभाजन को अस्थायी रूप से उसकी कई प्रतियाँ चाहिए। :func:`estimate_peak_bytes` किसी दिए गए फ़ील्ड के लिए संख्या देता है; पाइपलाइन **एक समय में एक फ़ील्ड** संसाधित करती है और कभी पूरी प्लेट नहीं रखती। float32 में 21 प्लेन वाले 2048x2048 फ़ील्ड के लिए volume ~350 MB है, और :func:`estimate_peak_bytes` anisotropy 5 पर :data:`MODE_VOLUMETRIC` में शिखर ~8.1 GB देता है (isotropic प्रति ``anisotropy`` गुना ऊँची होती है, और अनुमान उसे चार बार गिनता है)। इसीलिए :data:`MODE_VOLUMETRIC` डिफ़ॉल्ट नहीं है।"
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) of the API docstring blocks the item 678 factual review corrected to match the code. No native-speaker sign-off.",
+  "schema": 1
+}

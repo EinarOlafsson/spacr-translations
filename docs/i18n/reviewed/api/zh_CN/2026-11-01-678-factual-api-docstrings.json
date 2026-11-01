@@ -1,0 +1,434 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "label": "spacr.align.default_settings#0",
+      "source": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "source_sha256": "b8ced4d82d3601081f556f7d802300c6f5a01606b7e5e881043dbfd635c289c7",
+      "translation": "返回 :func:`align_folder` 读取的设置及其默认值。"
+    },
+    {
+      "context": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "label": "spacr.batch_correction.correct_batch_effects#1",
+      "source": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "source_sha256": "6477122d776bba2e579f07e50f5ef030f674a161e5300bb57eccd38b550342c1",
+      "translation": "``center`` 去除每个批次的均值偏移，同时保留全局均值。``zscore`` 将每个批次的均值和方差对齐到全局分布。``robust_zscore`` 使用中位数/MAD 做同样的处理，对重尾的单细胞测量值不那么敏感。``control_center`` 只根据每个批次中的阴性/参考对照估计位置偏移，保留处理的离散程度。"
+    },
+    {
+      "context": "This module executes workflows without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "label": "spacr.cli#2",
+      "source": "This module runs pipelines without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "source_sha256": "8eec4ab9ff918cf1f790d5faf7ac934e2115f2f5280da5ba3db62ac8642a6509",
+      "translation": "本模块在没有 GUI 的情况下运行流程。导入 ``spacr.cli`` 不会导入 Qt、Tk、torch、cellpose、numpy 或 pandas。所有重量级依赖都在需要它们的命令内部导入，因此 ``spacr-run --help`` 和 ``spacr-run --list`` 运行时不会导入这些库，而 ``--dry-run`` 可以在不触碰 GPU 的情况下校验一个包含 40 块板的设置文件。"
+    },
+    {
+      "context": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "label": "spacr.cli.build_parser#1",
+      "source": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "source_sha256": "4729e0e3d697f6f24dc405c14690484c4839adebf5dd24fb2a85c66ee69dcfe5",
+      "translation": "构建解析器只导入标准库，因此 ``spacr-run --help`` 不会从冷启动的 NFS 缓存中读取任何 spaCR 或第三方模块。"
+    },
+    {
+      "context": "Calls the same helper the workflow itself uses to canonicalize its settings, so the resolved key-value mapping the CLI prints is the one the workflow will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the workflows that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "label": "spacr.cli.module_defaults#1",
+      "source": "Calls the same helper the pipeline itself uses to canonicalize its settings, so the resolved dict the CLI prints is the one the pipeline will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the pipelines that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "source_sha256": "db36e56420f97bff519d4d7dd40fdf5a296a8e3f11a7f1b85271929b252c6fe1",
+      "translation": "调用流程自身用于规范化其设置的同一辅助函数，因此 CLI 打印的解析后字典就是流程将看到的字典。它通常是 :mod:`spacr.settings` 中的函数（:attr:`Module.defaults`）；对于保留各自辅助函数的流程，则是 :attr:`Module.defaults_entry`，它在此处而不是在模块加载时导入，以使 ``--list`` 不会导入它。"
+    },
+    {
+      "context": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "label": "spacr.cli_download#4",
+      "source": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "source_sha256": "021c5750df8a3ef4914a65b4fc6b39242819066f050a900abc1849f158ffe10e",
+      "translation": "导入本模块必须保持轻量——不导入 Qt、torch 或 matplotlib——以便 ``spacr-download --help`` 在登录节点上不会从冷启动的 NFS 缓存中加载这些库。这就是下载原语位于 :mod:`spacr.example_archives` 而不是 :mod:`spacr.qt.hf_download` 中的原因，后者在模块作用域导入 PySide6。``tests/test_cli_download.py`` 固定了这一点。"
+    },
+    {
+      "context": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "label": "spacr.cli_download.build_parser#1",
+      "source": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "source_sha256": "cc2619f8b4d373fc74b258091c895fe9ae14330ad9116aa5ec6dedb688a258ed",
+      "translation": "构建它只导入标准库以及两个依赖很少的 spaCR 模块，因此 ``--help`` 不会加载 Qt、torch 或 matplotlib。"
+    },
+    {
+      "context": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "label": "spacr.convert.default_settings#0",
+      "source": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "source_sha256": "ad3ba48639b2716bb5f6501826655500caca6a2f83d5ad4eff85858ca9d44708",
+      "translation": "返回 :func:`convert_folder` 读取的设置及其默认值。"
+    },
+    {
+      "context": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "label": "spacr.crashreport.main#2",
+      "source": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "source_sha256": "894edc3dda48ef42f9570c38c1b34a83cf92332659aaa9305a2db2185366e371",
+      "translation": "数据包写出时为 ``0``，无法写出时为 ``1``；无法收集的部分不会改变退出码。无效参数和 ``--help`` 会在写出任何内容之前通过 :mod:`argparse` 退出（``SystemExit``，退出码为 2 或 0）。"
+    },
+    {
+      "context": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "label": "spacr.crop_source.inapplicable_settings#2",
+      "source": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "source_sha256": "7928c62f5bdacf4baed0d2a05649d91593fb3f7f632fed6b6beaeb0a39d43363",
+      "translation": ":data:`CROP_SOURCE_ALIASES` 中列出的任何拼写都会被接受，因为面板手中持有的是设置文件中存储的值，而不是本模块将其解析成的名称。"
+    },
+    {
+      "context": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could execute in this project right now; 5. it was written by a processing session that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "label": "spacr.data_manager#10",
+      "source": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could run in this project right now; 5. it was written by a run that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "source_sha256": "3004b0373e5465b2a12e79f19fc444c33a636436be1caced4aa57b805551a6bd",
+      "translation": "1. 注册表中有它的记录——任何未注册的内容都绝不会成为候选；2. 它的种类不是**原始数据**（:data:`ORIGINAL_KINDS`）：:mod:`spacr.ports` 中没有任何模块声明产出原始图像或测序读数，因此没有任何东西能再次生成它们；3. 其种类存在已声明的**产出模块**，且注册表记录的模块是其中之一；4. 该模块的**输入完整**——每个已记录的输入产物仍处于注册状态且仍在磁盘上，并且 :func:`spacr.ports.check_ready` 表明该模块此刻可以在此项目中运行；5. 它由一次**已完成**的运行写入（``status == \"complete\"``）；6. 磁盘上的内容的指纹**仍与注册时一致**，因此此后被人放入文件的文件夹不可清理；7. 它位于**项目内部**，且无需跟随符号链接即可到达；8. 与它共享路径的**每一个**产物都满足上述所有条件——有三种种类位于 ``measurements.db`` 中，为其中一种删除该文件会破坏另外两种；9. 没有其他已注册产物位于其内部或包含它，因为字节属于最内层的产物，而计划不得少报它所删除的内容。"
+    },
+    {
+      "context": "Bytes under artifacts that have a registry record.",
+      "label": "spacr.data_manager.ProjectUsage.registered_bytes#0",
+      "source": "Bytes under artifacts that have a registry record.",
+      "source_sha256": "a435c0df0c862d1a84a6185e970c75fa41c9a18babceab234c8990a06eba0ef4",
+      "translation": "具有注册表记录的产物下的字节数。"
+    },
+    {
+      "context": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "label": "spacr.deep_spacr.class_labels#3",
+      "source": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "source_sha256": "bc3e88230be596f89487bb38d81dbb569b1baf0598952c0d09677ea22c37733a",
+      "translation": "``str`` 列表，长度为 ``num_classes``。无法获取时退回为 ``class_0, class_1, …``。当 ``metrics`` 既不包含 ``num_classes`` 也不包含 ``per_class_accuracy`` 时，该列表为空。"
+    },
+    {
+      "context": "Return the settings :func:`import_project` reads, with their defaults.",
+      "label": "spacr.foreign.default_settings#0",
+      "source": "Return the settings :func:`import_project` reads, with their defaults.",
+      "source_sha256": "2c413037aadcd4dec8263eeb47ac429bb2e3e77a0986a5647b3867ea9852cdb1",
+      "translation": "返回 :func:`import_project` 读取的设置及其默认值。"
+    },
+    {
+      "context": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "label": "spacr.foreign.is_spacr_name#2",
+      "source": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "source_sha256": "453875a97a4d6dfd1fd6e54c49e02b5011e1c6e63620d5df10f27877ee776953",
+      "translation": "委托给 :func:`spacr.feature_dict.parse_column`，而不是再写一个解析器：该模块已实现完整的语法（``<object>_channel_<i>_<stat>``、径向分布和细胞器汇总形式、合并后缀），并且列出了每一个元数据列。``family == 'unknown'`` 恰好表示 \"spaCR would not write this\"（这不会由本软件写出）。"
+    },
+    {
+      "context": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "label": "spacr.hyperparam#3",
+      "source": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "source_sha256": "1ad00b7e85e920056de010840ddf3c7b29a255bdea70c1596564bd404fa66048",
+      "translation": "**UMAP 没有基准真值。** 没有任何测量能够说明一个嵌入是正确的而另一个是错误的。这里的每个标准（trustworthiness、continuity、silhouette）奖励的都是*不同*的属性，而且它们对于哪组 ``n_neighbors``/``min_dist`` 胜出常常意见不一。这些得分是帮助你对一组嵌入进行排序、然后再逐一查看的工具；它们不是定论。任何不指明标准就打印 \"best embedding\" 的做法都具有误导性，因此 :func:`format_search` 总会指明标准，并针对 UMAP 和激活标准打印相应的注意事项。"
+    },
+    {
+      "context": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "label": "spacr.hyperparam#5",
+      "source": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "source_sha256": "a7b11a014c50dfaf65033685d9f55fdbb45ade64f78f43de7a46f1faa5f5e36b",
+      "translation": "**胜出者会连同其离散程度一起报告。** 当排名前三的配置都位于各折之间的标准差范围内时，说明该超参数无关紧要，所谓的 \"winner\" 只是噪声。每个 :class:`SearchResult` 都会报告离散程度，并在出现这种情况时设置 ``within_noise`` 标志。"
+    },
+    {
+      "context": "Build PyTorch data loaders for training, validation, or testing.",
+      "label": "spacr.io.generate_loaders#0",
+      "source": "Build PyTorch data loaders for training, validation, or testing.",
+      "source_sha256": "604027a9aaec86f3f8db67d6535985fba174a34949b522db10b3898752cf1483",
+      "translation": "构建用于训练、验证或测试的 PyTorch 数据加载器。"
+    },
+    {
+      "context": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "label": "spacr.io.generate_loaders#1",
+      "source": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "source_sha256": "167670b3c328080f6e8fa2d0b1741038ca8985177dae562d7bc47f9a003c0cc4",
+      "translation": "读取 ``src/<mode>`` 下的类别子文件夹，应用所请求的变换（通道选择、可选的归一化、可选的数据增强），并返回批大小为 ``batch_size`` 的加载器。这些加载器是 ``torch.utils.data.DataLoader`` 对象（在 macOS 上为 ``spacr.torch_loader.ArrayDataLoader``），而不是 :class:`spacrDataLoader`。"
+    },
+    {
+      "context": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "label": "spacr.io.save_object_mask#1",
+      "source": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "source_sha256": "66fa0fcc2b5689e6a12e0f94ef6a29db82dec82094c5f47f23f50d966cbfa59d",
+      "translation": "掩膜保存为 TIFF（而不是 .npy），以便 ImageJ 或其他工具读取，并使用无损压缩（默认 LZW）。标签值原样写入：当最大标签不超过 65535 时写为 uint16，超过时写为 uint32。"
+    },
+    {
+      "context": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "label": "spacr.io.save_object_mask#7",
+      "source": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "source_sha256": "c5d9f15fdc466bd51e14f370f2ff64954a18042383a12a016451922aa8ef6ad5",
+      "translation": "当标签为负数、小数或非有限值，或超出 uint32 范围时。"
+    },
+    {
+      "context": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "label": "spacr.io.spacrDataLoader#1",
+      "source": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "source_sha256": "a1db2376e72295f45bb802f2c12be60242de486c233ae29860d8d0ba8a935a22",
+      "translation": "封装 ``torch.utils.data.DataLoader``，并运行一个守护线程，使其比消费进度提前一个或多个批次，以隐藏 I/O 延迟。数据流结束通过哨兵值发出信号。对于缓慢的生产者会持续等待，并每 60 s 发出一次警告；未发出哨兵值就停止的生产者会引发 ``RuntimeError``，而不是提前结束本轮遍历。"
+    },
+    {
+      "context": "Start a pass over the data and return self.",
+      "label": "spacr.io.spacrDataLoader.__iter__#0",
+      "source": "Start a pass over the data and return self.",
+      "source_sha256": "95a435ad4dba8c78ce1e8cf3f11347b1ec9e3ef2baee05f47b4980bf5782d7b6",
+      "translation": "开始一轮数据遍历并返回 self。"
+    },
+    {
+      "context": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "label": "spacr.io.spacrDataLoader.__iter__#1",
+      "source": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "source_sha256": "3a4642ca217b5a08193129c1f4aa49961e474e5dd8737ce63e0d3cdec816e65c",
+      "translation": "尚未产出任何批次的活动遍历会被复用（``list(iter(dl))`` 会调用它两次），因此数据流不会重复。已经产出批次的活动遍历会被丢弃并发出警告，然后开始一轮完整的新遍历。"
+    },
+    {
+      "context": "Waits while the producer is alive, logging a warning every 60 s without a batch. Throws ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "label": "spacr.io.spacrDataLoader.__next__#1",
+      "source": "Waits while the producer is alive, logging a warning every 60 s without a batch. Raises ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "source_sha256": "319872d77f2b8ef7fdce0d1500c49073687991faa024c675c7076a98201a9c02",
+      "translation": "在生产者存活期间持续等待，每 60 s 未收到批次时记录一次警告。当生产者在未发出结束信号的情况下消失时引发 ``RuntimeError``；引发 ``StopIteration`` 的情形则是 :meth:`cleanup` 已停止本轮遍历之后。"
+    },
+    {
+      "context": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.border_color#2",
+      "source": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "51134f5cb277ea81eb5fd9638adf0d906b42ef41aeaf11efb361770967ab7031",
+      "translation": "设置轮廓颜色，接受 `to_rgba` 所接受的任何写法。"
+    },
+    {
+      "context": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.face_color#2",
+      "source": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "c749a14087b2398f131d91e933c50944d69dbd75c60e538c10fa32da8681ff1f",
+      "translation": "设置填充颜色，接受 `to_rgba` 所接受的任何写法。"
+    },
+    {
+      "context": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the laboratory microplate view and the extracted-image-region grid use, so selecting a node in the tree publishes a structured-data name every other view already reads. A child's parent is resolved *within its own microscope field of view*: ``cell_id`` is a label, not a structured-data name, and label 7 exists in every microscope field of view on the laboratory microplate.",
+      "label": "spacr.lineage#6",
+      "source": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the plate view and the crop grid use, so selecting a node in the tree publishes a key every other view already reads. A child's parent is resolved *within its own field*: ``cell_id`` is a label, not a key, and label 7 exists in every field on the plate.",
+      "source_sha256": "a3898a38fa640972263c1efee852b098e22b4e9d5157cb4aa89f2dbf63ecda27",
+      "translation": "节点以 :func:`spacr.selection.object_keys` 为键，与 UMAP、板视图和裁剪图网格所用的字符串相同，因此在树中选中一个节点会发布一个其他所有视图都已在读取的键。子对象的父对象在*其自身所在的视野内*解析：``cell_id`` 是一个标签而不是键，而标签 7 存在于板上的每个视野中。"
+    },
+    {
+      "context": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "label": "spacr.macro#11",
+      "source": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "source_sha256": "cd55b791356a566d1e4affee3e123ff5166752eeef08d300806eaafb111fe8c5",
+      "translation": "*记录错误不会中止运行。*记录过程由 :func:`begin_recording` / :func:`finish_recording` 包围，两者都会捕获所有异常。一个无法写出的宏只会耗费一行日志。"
+    },
+    {
+      "context": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "label": "spacr.macro.read_macro#4",
+      "source": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "source_sha256": "c03a164307ffb092f6fd6cdb757e1bc3e29d44c2181e36ac9685fb479e8111ff",
+      "translation": "当文件中没有 :data:`MACRO`，或其结构版本比当前版本所支持的更新时。"
+    },
+    {
+      "context": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "label": "spacr.ml.save_summary_to_file#5",
+      "source": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "source_sha256": "f33031848dc92f089bfe2a9ed51b4e54eab1f01cef169624c5be011d429154f5",
+      "translation": "此函数在所有表格写入之后调用，因此后端 ``summary()`` 抛出的异常会被打印，并返回 ``None``。创建文件夹或写入文件时的错误（``OSError``）会被抛出。"
+    },
+    {
+      "context": "Return the zoo's model entries without scanning the user's disks.",
+      "label": "spacr.model_zoo.catalogue#0",
+      "source": "Return the zoo's model entries without scanning the user's disks.",
+      "source_sha256": "c7f4ad3d5173888bb91acfb1c73750e998796e03a043e22e72d3c3849d59ab31",
+      "translation": "返回模型库的模型条目，无需扫描用户磁盘。"
+    },
+    {
+      "context": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "label": "spacr.model_zoo.catalogue#1",
+      "source": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "source_sha256": "5626123712e92a2c6417ee941c3683360391c9c800dad53057f03868d563d3fd",
+      "translation": "即：随已安装软件包提供的模型（:func:`spacr.utils.download_models` 放入 ``resources/models`` 的任何内容）；内置的 Cellpose 模型、可选的分割后端及其模型；启用 ``remote`` 时，还包括缓存的 bioimage.io 条目、:data:`BUNDLED_REMOTE_MODELS`，以及（若已配置）由 ``catalogue_path`` 或 :data:`CATALOGUE_ENV_VAR` 环境变量指定的 JSON 目录；启用 ``include_plugins`` 时，还包括已安装模型提供方的条目。:data:`RETIRED_MODEL_NAMES` 中的名称会被去掉。"
+    },
+    {
+      "context": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "label": "spacr.model_zoo.catalogue#5",
+      "source": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "source_sha256": "721f834e01676b6674726e704da50cd84b73ba37a9c46544137eedca6818c3a6",
+      "translation": "启用 ``remote`` 时要添加的 JSON 目录；当 ``$SPACR_MODEL_CATALOGUE`` 指向一个文件时默认使用它。"
+    },
+    {
+      "context": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "label": "spacr.model_zoo.catalogue#8",
+      "source": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "source_sha256": "a36e805f1f8e04a38b57eaf987e30b16ee0533cbdcd20966045a9ac6ace3186c",
+      "translation": "按上述顺序排列的条目。``(key, name)`` 已被列出的条目不会再次添加，因此已下载的模型只作为本地文件列出一次。"
+    },
+    {
+      "context": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "label": "spacr.model_zoo.source_of#1",
+      "source": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "source_sha256": "f967d783f8a7f84208f73cf49e28eed7f25f85f4d43fbe2ef6aa6e3b74895245",
+      "translation": "根据该行自身的 ``source``、``kind`` 和 ``uri`` 决定，并先检查一个名称列表：``key`` 位于 :data:`THIRD_PARTY_MODEL_KEYS` 中的行归入 ``Third-party``，除非它是一个并非由 spaCR 发布的社区条目。其他所有行都按其自身字段归类，因此缺失于该列表的模型仍会获得一个标题。"
+    },
+    {
+      "context": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per microplate sample position), so the importances are in-sample.",
+      "label": "spacr.nonparametric_fits#5",
+      "source": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per well), so the importances are in-sample.",
+      "source_sha256": "bd994265c69528c586d78dabde21e1f043a0570ef50628665490ab6a717a5fac",
+      "translation": "这里没有任何方法会划分数据。:func:`agreement` 在相同的行上（每个孔一行）拟合其模型并计算置换重要性，因此这些重要性是样本内的。"
+    },
+    {
+      "context": "the microplate sample position each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "label": "spacr.nonparametric_fits.agreement#4",
+      "source": "the well each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "source_sha256": "47ae258c48d036b06debae8d39f91f052b1f8b92c1afbd434dab3d53743c05a9",
+      "translation": "每一行所属的孔。接受但不使用：不进行划分，模型的拟合及其置换重要性的计算都在所有行上进行。"
+    },
+    {
+      "context": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "label": "spacr.ops_objects.sew#3",
+      "source": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "source_sha256": "cd8b6bd045c0fb09fa7be363a718e3cae707ca5dfc9fc072d2215099e5e519d4",
+      "translation": "同一窗口的两个完整标签绝不会是同一个对象，因为标签图不会给一个细胞核两个标签；同一窗口的两个被截断的标签可能并入同一个完整观测。来自不同窗口的两个完整观测，当它们的质心在每个轴上相差不超过 ``tolerance``，并且面积之比达到 ``area_ratio`` 或者质心位于较小者的等效半径之内时，就是同一个细胞核 -- 等效半径即与其面积相同的圆盘的半径。面积一致的对先合并，其余的按距离由近到远合并，而会让一个组含有同一窗口两个标签的合并会被拒绝。"
+    },
+    {
+      "context": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "label": "spacr.outlier_filter#0",
+      "source": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "source_sha256": "5d80f87a94531910a9b9279d44204cf042a59d723560cd151f386cb23ec936ec",
+      "translation": "在向导标注之前，移除与中位数相距较远（以缩放后的 MADs 为单位）的对象。"
+    },
+    {
+      "context": "Return the subset of a picture-settings key-value mapping that the extracted image region layer reads.",
+      "label": "spacr.picture_settings.to_crop_settings#0",
+      "source": "Return the subset of a picture-settings dict that the crop layer reads.",
+      "source_sha256": "de886c6dd289b67d8e9dc6a22c76de4ff9fe66e6660d9fef58337e5073a0674c",
+      "translation": "返回图片设置字典中裁剪层读取的子集。"
+    },
+    {
+      "context": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "label": "spacr.plate_qc.parse_column_label#1",
+      "source": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "source_sha256": "b0202ae9a9c887ebc37d7d98cf55b1afef54f9494facf71cba35b075d191e1b4",
+      "translation": "接受 ``'c12'``、``'C12'``、``'column12'``、``'12'`` 和 ``12``。"
+    },
+    {
+      "context": "Accepts every row spelling spaCR and laboratory microplate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 laboratory microplates go past Z).",
+      "label": "spacr.plate_qc.parse_row_label#1",
+      "source": "Accepts every row spelling spaCR and plate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 plates go past Z).",
+      "source_sha256": "305f72cede6e7b5e394d3eae79b6f9dff875fa446d0afe60552cc351634d68ab",
+      "translation": "接受 spaCR 和酶标仪生成的所有行拼写：``'r3'``、``'R3'``、``'row3'``、``3``、``'C'``（字母行）和 ``'AA'``（1536 孔板的行超过 Z）。"
+    },
+    {
+      "context": "(always available; what ``\"auto\"`` falls back to)",
+      "label": "spacr.power_model#11",
+      "source": "(always available; what ``\"auto\"`` falls back to)",
+      "source_sha256": "37bcabb4da9efb6f38ef0054324ad0cfb99ea2d1878a583be809db3b637dd79e",
+      "translation": "（始终可用；``\"auto\"`` 的回退选项）"
+    },
+    {
+      "context": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "label": "spacr.power_model#13",
+      "source": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "source_sha256": "f05053bb30202acb63144b47ee57dbef4560b20db1192538f2de947aaec7e09c",
+      "translation": "``\"numpyro\"`` / ``\"pymc\"``（可选，延迟导入）精确的 NUTS，前提是用户安装了其中之一。从不添加到 ``install_requires`` 中。``\"auto\"``（默认）优先 numpyro，其次 pymc，最后 torch——并且它会*说明使用的是哪一个*，同时记录在日志和 :attr:`PowerFit.backend` 中，使结果永远不会被误认为是由另一种方法产生的。如果需要两台机器的结果逐位一致，请显式固定 ``backend=``。"
+    },
+    {
+      "context": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "label": "spacr.schema.add_screen_column#5",
+      "source": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "source_sha256": "e1f286a49160a3a9e8f90f7f011a0fc41ee413c1cea2382578b378906440a4df",
+      "translation": "空白值绝不会保持空白：``None``、``NaN`` 和 ``''`` 在给定 ``screen`` 时会变为该值，否则变为 :data:`DEFAULT_SCREEN`，因为空的筛选 ID 不构成身份标识，所有带有空 ID 的行都会与其他所有此类行归为一组。"
+    },
+    {
+      "context": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask workflows let it end the processing session. Other QC errors are printed as skipped and the processing session continues.",
+      "label": "spacr.seg_qc.Finding#1",
+      "source": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask pipelines let it end the run. Other QC errors are printed as skipped and the run continues.",
+      "source_sha256": "84f343be819268a08e18d39001ed4a9489d33aa402caa73359f6eb3a396c2485",
+      "translation": "``'fail'``、``'warn'`` 或 ``'ok'`` —— 横幅应以何种颜色显示它。发现项本身不会阻止任何操作；只有 :func:`run_segmentation_qc` 在 ``mode='stop'`` 时会针对未通过的板引发 :class:`SegmentationQCFailed`，经典 Mask 流程和 V2 Mask 流程都会让它结束运行。其他 QC 错误会作为已跳过打印出来，运行继续进行。"
+    },
+    {
+      "context": "always ``False``; the digest reports QC and does not stop a processing session. A processing session is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "label": "spacr.seg_qc.QCDigest#10",
+      "source": "always ``False``; the digest reports QC and does not stop a run. A run is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "source_sha256": "f2e5208f829e86dd81f9e95297e3d414b8e5951febba355c7c47ffc282ae3b8d",
+      "translation": "总是 ``False``；摘要报告 QC 结果，不会中止运行。只有 :func:`run_segmentation_qc` 在 ``mode='stop'`` 时会中止运行，它针对未通过的板引发的 :class:`SegmentationQCFailed` 会结束经典或 V2 Mask 运行。"
+    },
+    {
+      "context": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "label": "spacr.sequencing.graph_sequencing_stats.find_and_visualize_fraction_threshold#6",
+      "source": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "source_sha256": "9161b71c1d9467c54f7120c5a63723f29624b7a02d2fd118af22534a9ce234d0",
+      "translation": "写入 ``<dst>/results/fraction_threshold.pdf`` 并创建所需目录。``None`` 会引发 ``TypeError``（来自 :func:`os.path.join`）。唯一的调用方总是传入路径。"
+    },
+    {
+      "context": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "label": "spacr.sequencing_qc.sweep_grid#6",
+      "source": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "source_sha256": "3f33caf61a5a8b0abaeed13cdb3270a6f377eba48243463b32ea657e18701d4e",
+      "translation": "``(0, 1]`` 内排序后的唯一截断值数组，当 ``threshold`` 不大于 1 时包含其本身，使推导出的点位于曲线上，而不仅仅是靠近曲线。"
+    },
+    {
+      "context": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "label": "spacr.surrogate.explain_cv_default_settings#0",
+      "source": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "source_sha256": "90922bf5865b48a391524e5774c10a887b68d7ec315fa504ec5f681a001f49a0",
+      "translation": "返回已填入 Explain CV Model 模块默认值的 ``settings``。"
+    },
+    {
+      "context": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a processing session — those folds are loaded as part of that processing session. A ``fold_<i>`` folder under a folder that is not a processing session is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "label": "spacr.train_compare.find_runs#1",
+      "source": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a run — those folds are loaded as part of that run. A ``fold_<i>`` folder under a folder that is not a run is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "source_sha256": "9583efbc3282bc257ab5327258ef40163e12ed00add13803d8574ef27d9d1270",
+      "translation": "最多遍历 ``max_depth`` 层，跳过隐藏文件夹，并且不会进入其父文件夹本身就是运行的 ``fold_<i>`` 文件夹——这些折会作为该运行的一部分被加载。位于非运行文件夹之下的 ``fold_<i>`` 文件夹会像其他文件夹一样被扫描。若将 ``root`` 直接指向一个折文件夹，则会加载该折。"
+    },
+    {
+      "context": "A folder counts as a processing session when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "label": "spacr.train_compare.find_runs#2",
+      "source": "A folder counts as a run when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "source_sha256": "6ba68336ec644b245dd06a2b6d35e8ef564a6f3425712cb7228011e27f9ce7f2",
+      "translation": "当文件夹包含进度 CSV、``.pth`` 检查点、``*_per_fold.csv`` 或带有曲线的 ``fold_<i>`` 子文件夹时，即视为一次运行。损坏的运行（没有曲线、没有设置、零轮次日志）会连同其说明一起返回，而不是被跳过；其他文件夹不会被返回。"
+    },
+    {
+      "context": "normalized recipe containing only fields this version defines.",
+      "label": "spacr.umap_search.UmapRecipe.from_dict#2",
+      "source": "normalized recipe containing only fields this version defines.",
+      "source_sha256": "9c4bb464211c6626d1830956c4ee49c5abb3a5961ca77a15b08aa3068e95d940",
+      "translation": "只包含此版本所定义字段的规范化配方。"
+    },
+    {
+      "context": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "label": "spacr.updater#1",
+      "source": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "source_sha256": "1db272e5c8e694eb19405f733d3528eadd7e80868473cd91c45c84909a95a2b2",
+      "translation": "提供一个小型 API，供 Qt GUI 的 Help → \"Check for updates\" 菜单项调用。版本检查和任何升级只在用户启动时运行，并且升级会先经过确认。获取发布说明并非由用户启动：Home 的 News 面板和更新后的说明会自行调用 :func:`fetch_release_notes`，除非关闭了 News 刷新偏好设置或设置了 ``SPACR_NO_NETWORK``。"
+    },
+    {
+      "context": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "label": "spacr.updater#6",
+      "source": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "source_sha256": "3b336f8f74eba4c3840421931297311eeddc3a117d8171d21f766d0ac7c51bbf",
+      "translation": "两次获取都使用标准库中的 ``urllib``，以避免引入额外的 HTTP 依赖。超时时间很短（版本检查为 3 s，发布说明为 4 s），因此缓慢或离线的网络不会阻塞 UI。错误会被吸收并呈现为 \"couldn't check\"——绝不会导致崩溃。"
+    },
+    {
+      "context": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "label": "spacr.utils.cleanup_pipeline_folders#2",
+      "source": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "source_sha256": "b88ee61c69c7f4815abac6b82c2f7cb56dd5adb9704259b7e93d1678371bc801",
+      "translation": "除非 ``merged/`` 中至少有一个 ``.npy``，否则不会删除任何内容。随后，``stack/``、``masks/`` 和编号文件夹只有在每个 ``stack/*.npy`` 都有匹配的 ``merged/*.npy`` 时才会被删除；没有 ``stack/`` 时不进行逐视野检查。当 ``keep_original`` 为 False 时，``orig/`` 只有在每个 ``stack/*.npy`` 视野都有一个可完整加载的 ``merged/`` 数组时才会被删除。否则保留 ``orig/``（没有可供核对的 ``stack/`` 列表时也会保留），并且即使 ``verbose=False``，也会打印一条指出缺失或不完整视野的消息。"
+    },
+    {
+      "context": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "label": "spacr.utils.cleanup_pipeline_folders#6",
+      "source": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "source_sha256": "510168a3faf971845ce53779e85354933700f513bbd55469b0535038844a8a0e",
+      "translation": "已删除的文件夹路径列表；被保留的 ``orig/`` 不在其中。"
+    },
+    {
+      "context": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "label": "spacr.utils.plot_umap_images#7",
+      "source": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "source_sha256": "2a24e1ef74bb12af39be7e7bac05ab425e79ac963daf4b9576d1b0ca99ec510d",
+      "translation": "传给 :func:`plot_images_by_cluster`，但该函数不会读取它。不会绘制任何颜色，其长度也不会限制访问哪些簇。可以为 ``None``：当 ``plot_by_cluster`` 为 false 时不使用此参数。"
+    },
+    {
+      "context": "Build from a key-value mapping, ignoring structured-data names this version does not define.",
+      "label": "spacr.volcano_style.VolcanoStyle.from_dict#0",
+      "source": "Build from a dict, ignoring keys this version does not define.",
+      "source_sha256": "8e4cf2cf235b33c301f0d2ffaeecbeaba7031f2a9a6a423c8b9edc7cfdebb5c4",
+      "translation": "根据字典构建，忽略此版本未定义的键。"
+    },
+    {
+      "context": "A z-stack is ``n_z`` times a microscope field of view, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given microscope field of view; the workflow processes **one microscope field of view at a time** and never holds a laboratory microplate. For a 2048x2048 microscope field of view at 21 image layers in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "label": "spacr.zstack#9",
+      "source": "A z-stack is ``n_z`` times a field, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given field; the pipeline processes **one field at a time** and never holds a plate. For a 2048x2048 field at 21 planes in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "source_sha256": "6d1b3e75314f5f53e042bd8412352b001aee9e411d488abebe475f9b1fd36a8c",
+      "translation": "一个 z-stack 是一个视野的 ``n_z`` 倍，而体积分割在处理过程中会临时需要它的多个副本。:func:`estimate_peak_bytes` 给出给定视野的数值；流程**一次处理一个视野**，绝不会同时持有整块板。对于 21 个平面、float32 格式的 2048x2048 视野，体积数据约为 ~350 MB，而 :func:`estimate_peak_bytes` 给出在各向异性为 5 时 :data:`MODE_VOLUMETRIC` 的峰值约为 ~8.1 GB（各向同性副本的高度是原来的 ``anisotropy`` 倍，且该估计将其计入四次）。这就是 :data:`MODE_VOLUMETRIC` 不是默认模式的原因。"
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) of the API docstring blocks the item 678 factual review corrected to match the code. No native-speaker sign-off.",
+  "schema": 1
+}

@@ -2619,7 +2619,9 @@
       "label": "spacr.hyperparam#3",
       "source": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it and always prints the caveat.",
       "source_sha256": "47ec1d622d9ff3036d1b7e950f91f8859b91a1652f0d8a3348fb487fda5b97ca",
-      "translation": "**UMAP 근본적인 진실은 없다.** 하나의 임베딩이 올바르고 다른 하나가 잘못되었다고 말하는 측정은 없습니다. 여기서 모든 기준 (신뢰성, 연속성, 실루엣)은 보상을 받습니다. *다른 것들* 자산, 그리고 그들은 일상적으로 어떤 것에 동의하지 않는다. ``n_neighbors``/``min_dist`` 승리. 점수는 당신이 볼 수있는 포장 패널을 순위하는 데 도움이됩니다; 그들은 판결이 아닙니다. \"best embedding\" 그 기준을 명칭하지 않고는 잘못된 것입니다, 그래서 :func:`format_search` 언제나 이름을 붙이고 언제나 카페트를 인쇄합니다."
+      "translation": "**UMAP 근본적인 진실은 없다.** 하나의 임베딩이 올바르고 다른 하나가 잘못되었다고 말하는 측정은 없습니다. 여기서 모든 기준 (신뢰성, 연속성, 실루엣)은 보상을 받습니다. *다른 것들* 자산, 그리고 그들은 일상적으로 어떤 것에 동의하지 않는다. ``n_neighbors``/``min_dist`` 승리. 점수는 당신이 볼 수있는 포장 패널을 순위하는 데 도움이됩니다; 그들은 판결이 아닙니다. \"best embedding\" 그 기준을 명칭하지 않고는 잘못된 것입니다, 그래서 :func:`format_search` 언제나 이름을 붙이고 언제나 카페트를 인쇄합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "**Selecting on the test split leaks.** :func:`cv_search` scores every trial on cross-validation folds, never on test, and refuses to execute if a caller hands it folds that touch the held-out test indices. It defaults to *grouped* folds (``group_by='well'``) and reuses :func:`spacr.io.make_cv_folds` — extracted image regions from one microplate sample position share focus, illumination and seeding density, so an ungrouped search picks the model that memorised microplate sample positions and reports an inflated score.",
@@ -3407,7 +3409,9 @@
       "label": "spacr.lineage#6",
       "source": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the plate view and the crop grid use, so selecting a node in the tree publishes something every other view already understands. A child's parent is resolved *within its own field*: ``cell_id`` is a label, not a key, and label 7 exists in every field on the plate.",
       "source_sha256": "d216c9d6dcebf63684c62c529a07b0940a4cafbbb60a51c91aaaeec763f63530",
-      "translation": "나무 노드는 :func:`spacr.selection.object_keys`을 사용합니다. 같은 식별자는 3 개의 뷰에서 나타납니다: UMAP, 플레이트 뷰, 그리고 크롭 네트워크. 나무 코드를 선택하면 따라서 3 개 모두가 이해하는 식별자를 게시합니다. 각 어린이의 부모 *만 자신의 필드* 내부에서 해결합니다. ``cell_id``는 독특한 키가 아닌 레이블입니다. 레이블 7은 각 필드에 나타날 수 있습니다."
+      "translation": "나무 노드는 :func:`spacr.selection.object_keys`을 사용합니다. 같은 식별자는 3 개의 뷰에서 나타납니다: UMAP, 플레이트 뷰, 그리고 크롭 네트워크. 나무 코드를 선택하면 따라서 3 개 모두가 이해하는 식별자를 게시합니다. 각 어린이의 부모 *만 자신의 필드* 내부에서 해결합니다. ``cell_id``는 독특한 키가 아닌 레이블입니다. 레이블 7은 각 필드에 나타날 수 있습니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": ":data:`spacr.selection.OBJECT_KEY_COLUMNS` used to be the microscope field of view plus the object label, with no table in it, so a nucleus labelled 1 and a pathogen labelled 1 in the same microscope field of view had **the same structured-data name**. A lineage tree is where that became visible, because a cell's own children are exactly the objects most likely to collide: four objects opened as three extracted image regions and which one you got depended on the row order of ``png_list``.",
@@ -4145,14 +4149,18 @@
       "label": "spacr.nonparametric_fits#5",
       "source": "Splits are grouped by well. Cells in one well are not independent, so any split these methods need goes through the well, never through the cell.",
       "source_sha256": "5139d8c8b65fbe89b5f35dc498fe201ac2a2c90402f4a578ea901db906898ca6",
-      "translation": "하나의 마이크로플레이트 시료 위치에 있는 세포는 독립적이지 않으므로 이러한 방법을 분할 할 필요가있는 것은 결코 세포를 통과하지 않습니다."
+      "translation": "하나의 마이크로플레이트 시료 위치에 있는 세포는 독립적이지 않으므로 이러한 방법을 분할 할 필요가있는 것은 결코 세포를 통과하지 않습니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the microplate sample position each row belongs to. Passed to the splitter so one microplate sample position's rows never straddle a split -- cells in one microplate sample position share that microplate sample position's phenotype, and a split that crossed one would score a model on its own training data.",
       "label": "spacr.nonparametric_fits.agreement#4",
       "source": "the well each row belongs to. Passed to the splitter so one well's rows never straddle a split -- cells in one well share that well's phenotype, and a split that crossed one would score a model on its own training data.",
       "source_sha256": "11c59eceb23ebfbcc514e17010d4cca115b3a9caf2bd08cf9b3fa3456a3a97f0",
-      "translation": "마이크로 플레이트 샘플 위치 각 라인에 속합니다. 분할기에 통과 한 마이크로플레이트 시료 위치의 라인은 결코 분할을 분할하지 않습니다 - 마이크로플레이트 시료 위치에있는 세포는 마이크로플레이트 시료 위치의 현상 유형을 공유하고, 하나를 건너 분할은 자신의 훈련 데이터에 모델을 점수 할 것입니다."
+      "translation": "마이크로 플레이트 샘플 위치 각 라인에 속합니다. 분할기에 통과 한 마이크로플레이트 시료 위치의 라인은 결코 분할을 분할하지 않습니다 - 마이크로플레이트 시료 위치에있는 세포는 마이크로플레이트 시료 위치의 현상 유형을 공유하고, 하나를 건너 분할은 자신의 훈련 데이터에 모델을 점수 할 것입니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the completed fit's design matrix. Guide-design columns are matched back to coefficient feature names.",
@@ -4780,7 +4788,9 @@
       "label": "spacr.outlier_filter#0",
       "source": "Remove robustly defined object outliers before guide annotation.",
       "source_sha256": "b90f218dd4731ae577f8e8cb7cf6f7aff3b7974cc737f66e935bd80e63f075c0",
-      "translation": "안정적으로 정의된 개체 출력기를 가이드 어노테이션을 하기 전에 제거합니다."
+      "translation": "안정적으로 정의된 개체 출력기를 가이드 어노테이션을 하기 전에 제거합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "pandas.DataFrame Rows retained after all enabled criteria. list of key-value mapping Per-criterion measurement column, threshold, removal count, and any validation note.",
@@ -12226,7 +12236,9 @@
       "label": "spacr.zstack#9",
       "source": "A z-stack is ``n_z`` times a field, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given field; the pipeline processes **one field at a time** and never holds a plate. For a 2048x2048 field at 21 planes in float32 that is ~350 MB for the volume, and ~1.4 GB peak in :data:`MODE_VOLUMETRIC` with resampling at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller). This is why :data:`MODE_VOLUMETRIC` is not the default.",
       "source_sha256": "81c2b8c1cac4345acfd9a8048f073ce1a28794f1bc7dc30cdc1e2c6a5a5949bc",
-      "translation": "z-stack은 현미경 시야의 ``n_z`` 배이며, 볼륨 분할은 통과적으로 그것의 여러 복사본이 필요합니다. :func:`estimate_peak_bytes`은 특정 마이크로스코프 시야의 숫자를 제공합니다. 작업 흐름은 시간**에서**one 미크로스코프 시야를 처리하고 결코 실험실 마이크로 플레이트를 보유하지 않습니다. 2048x2048 마이크로스코프 필드의 시각은 float32에서 21 개의 이미지 레이어에 ~350 MB의 볼륨이며, :data:`MODE_VOLUMETRIC`에서 ~1.4 GB의 피크는 anisotropy 5에서 다시 샘플링합니다 (이소트로피 복사본은 ``anisotropy`` 배 더 높습니다). 그래서 :data:`MODE_VOLUMETRIC`은 기본이 아닙니다."
+      "translation": "z-stack은 현미경 시야의 ``n_z`` 배이며, 볼륨 분할은 통과적으로 그것의 여러 복사본이 필요합니다. :func:`estimate_peak_bytes`은 특정 마이크로스코프 시야의 숫자를 제공합니다. 작업 흐름은 시간**에서**one 미크로스코프 시야를 처리하고 결코 실험실 마이크로 플레이트를 보유하지 않습니다. 2048x2048 마이크로스코프 필드의 시각은 float32에서 21 개의 이미지 레이어에 ~350 MB의 볼륨이며, :data:`MODE_VOLUMETRIC`에서 ~1.4 GB의 피크는 anisotropy 5에서 다시 샘플링합니다 (이소트로피 복사본은 ``anisotropy`` 배 더 높습니다). 그래서 :data:`MODE_VOLUMETRIC`은 기본이 아닙니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "Raised only by ``detect_z_axis(..., strict=True)``. Guessing here picks between segmenting a volume and segmenting a transposed one, so the shape is reported back to the user instead.",

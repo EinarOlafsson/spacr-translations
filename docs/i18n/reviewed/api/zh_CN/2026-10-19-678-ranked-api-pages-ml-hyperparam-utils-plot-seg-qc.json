@@ -32,7 +32,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it and always prints the caveat.",
       "source_sha256": "47ec1d622d9ff3036d1b7e950f91f8859b91a1652f0d8a3348fb487fda5b97ca",
-      "translation": "**UMAP 没有基准真值。** 没有任何测量能够说明一个嵌入是正确的而另一个是错误的。这里的每个标准（trustworthiness、continuity、silhouette）奖励的都是*不同*的属性，而且它们对于哪组 ``n_neighbors``/``min_dist`` 胜出常常意见不一。这些得分是帮助你对一组嵌入进行排序、然后再逐一查看的工具；它们不是定论。任何不指明标准就打印 \"best embedding\" 的做法都具有误导性，因此 :func:`format_search` 总会指明标准，并总会打印这条注意事项。"
+      "translation": "**UMAP 没有基准真值。** 没有任何测量能够说明一个嵌入是正确的而另一个是错误的。这里的每个标准（trustworthiness、continuity、silhouette）奖励的都是*不同*的属性，而且它们对于哪组 ``n_neighbors``/``min_dist`` 胜出常常意见不一。这些得分是帮助你对一组嵌入进行排序、然后再逐一查看的工具；它们不是定论。任何不指明标准就打印 \"best embedding\" 的做法都具有误导性，因此 :func:`format_search` 总会指明标准，并总会打印这条注意事项。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "**Selecting on the test split leaks.** :func:`cv_search` scores every trial on cross-validation folds, never on test, and refuses to execute if a caller hands it folds that touch the held-out test indices. It defaults to *grouped* folds (``group_by='well'``) and reuses :func:`spacr.io.make_cv_folds` — extracted image regions from one microplate sample position share focus, illumination and seeding density, so an ungrouped search picks the model that memorised microplate sample positions and reports an inflated score.",
@@ -48,7 +50,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "**A winner is reported with its spread.** When the top ten configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
       "source_sha256": "bba21fc1ef783f21cc5915988710e7ac77e1c69d6f66260e2a22156ae4d912f7",
-      "translation": "**胜出者会连同其离散程度一起报告。** 当排名前十的配置都位于各折之间的标准差范围内时，说明该超参数无关紧要，所谓的 \"winner\" 只是噪声。每个 :class:`SearchResult` 都会报告离散程度，并在出现这种情况时设置 ``within_noise`` 标志。"
+      "translation": "**胜出者会连同其离散程度一起报告。** 当排名前十的配置都位于各折之间的标准差范围内时，说明该超参数无关紧要，所谓的 \"winner\" 只是噪声。每个 :class:`SearchResult` 都会报告离散程度，并在出现这种情况时设置 ``within_noise`` 标志。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "2-D numeric matrix, one row per object.",
@@ -3430,7 +3434,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Never raises. This is called after every table has been written, so an exception from a backend's ``summary()`` is not propagated; ``None`` is returned instead.",
       "source_sha256": "418229d69dea6073d7e5aec77aa73aa1727289a0d33d822bc4c6d3254e0b0a74",
-      "translation": "从不抛出异常。此函数在所有表格写入之后调用，因此后端 ``summary()`` 抛出的异常不会传播；改为返回 ``None``。"
+      "translation": "从不抛出异常。此函数在所有表格写入之后调用，因此后端 ``summary()`` 抛出的异常不会传播；改为返回 ``None``。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "Constant columns are passed through unchanged. ``MinMaxScaler`` maps a column with zero range to all-zeros, and patsy's intercept is exactly such a column, so scaling a design matrix used to silently delete its intercept: statsmodels then fitted a model through the origin and still printed an ``Intercept`` row, of 0.000, in the summary. Every coefficient in that fit absorbs the mean it can no longer estimate.",
@@ -5854,7 +5860,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. Never a gate: nothing in this module blocks anything.",
       "source_sha256": "11ce87002b1d1dfde0b5366fad29912a17aafb7cbd88317cfac78d7ee5f29198",
-      "translation": "``'fail'``、``'warn'`` 或 ``'ok'`` —— 横幅应以何种颜色显示它。它绝不是关卡：本模块中的任何内容都不会阻止任何操作。"
+      "translation": "``'fail'``、``'warn'`` 或 ``'ok'`` —— 横幅应以何种颜色显示它。它绝不是关卡：本模块中的任何内容都不会阻止任何操作。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the field names implicated, in name order.",
@@ -8440,7 +8448,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Heavily guarded so it never destroys un-merged data: ``stack/`` + ``masks/`` are only removed when ``merged/`` is non-empty AND every ``stack/*.npy`` has a matching ``merged/*.npy`` (i.e. every field of view was merged).",
       "source_sha256": "7b4b2361848c663eacd28b7b0ec986502131201f52a312e9f80f7a62750628cb",
-      "translation": "有严格的保护措施，绝不会破坏未合并的数据：``stack/`` + ``masks/`` 只有在以下情况才会被删除：``merged/`` 非空，并且（AND）每个 ``stack/*.npy`` 都有匹配的 ``merged/*.npy``（即每个视野都已合并）。"
+      "translation": "有严格的保护措施，绝不会破坏未合并的数据：``stack/`` + ``masks/`` 只有在以下情况才会被删除：``merged/`` 非空，并且（AND）每个 ``stack/*.npy`` 都有匹配的 ``merged/*.npy``（即每个视野都已合并）。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "processing-session root folder (holds ``merged/``, ``stack/``, ``masks/``, ``orig/``).",
@@ -8472,7 +8482,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "list of folder paths that were deleted.",
       "source_sha256": "75c314caf0502ba2d2b718b149830500ae627dccd1458966bbc6e4e0b64a4fc5",
-      "translation": "已删除的文件夹路径列表。"
+      "translation": "已删除的文件夹路径列表。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "DataFrame with one row per feature, holding the importance and the ANOVA or Kruskal-Wallis statistic and p-value.",
@@ -10934,7 +10946,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "only zipped against ``np.unique(labels)`` to drive the iteration; the color itself is never drawn. Its LENGTH is therefore a silent limit, and because ``np.unique`` includes the ``-1`` noise label a palette sized to the real clusters leaves the last cluster with no images. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
       "source_sha256": "9000ab8de570b60611557123b79d9ef04cbb8cb0cd3d0f6d6f9d3389d8461c0a",
-      "translation": "只与 ``np.unique(labels)`` 配对以驱动迭代；颜色本身从不会被绘制。因此它的长度是一个隐性的限制，而且由于 ``np.unique`` 包含 ``-1`` 噪声标签，按真实聚类数确定大小的调色板会使最后一个聚类没有图像。不使用该参数（传入 ``None`` 即可）的情形：``plot_by_cluster`` 为 false 时。"
+      "translation": "只与 ``np.unique(labels)`` 配对以驱动迭代；颜色本身从不会被绘制。因此它的长度是一个隐性的限制，而且由于 ``np.unique`` 包含 ``-1`` 噪声标签，按真实聚类数确定大小的调色板会使最后一个聚类没有图像。不使用该参数（传入 ``None`` 即可）的情形：``plot_by_cluster`` 为 false 时。",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "true samples per cluster and skips label ``-1``; false ignores ``labels`` and ``colors`` entirely and samples globally.",

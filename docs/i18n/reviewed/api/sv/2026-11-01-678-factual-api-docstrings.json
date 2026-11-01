@@ -1,0 +1,434 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "context": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "label": "spacr.align.default_settings#0",
+      "source": "Return the settings :func:`align_folder` reads, with their defaults.",
+      "source_sha256": "b8ced4d82d3601081f556f7d802300c6f5a01606b7e5e881043dbfd635c289c7",
+      "translation": "Returnera de inställningar som :func:`align_folder` läser, med deras standardvärden."
+    },
+    {
+      "context": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "label": "spacr.batch_correction.correct_batch_effects#1",
+      "source": "``center`` removes per-batch mean shifts while preserving the global mean. ``zscore`` aligns per-batch means and variances to the global distribution. ``robust_zscore`` does the same with median/MAD and is less sensitive to heavy-tailed single-cell measurements. ``control_center`` estimates only a location shift from negative/reference controls in every batch, preserving treatment dispersion.",
+      "source_sha256": "6477122d776bba2e579f07e50f5ef030f674a161e5300bb57eccd38b550342c1",
+      "translation": "``center`` tar bort medelvärdesförskjutningar per batch och bevarar det globala medelvärdet. ``zscore`` justerar medelvärden och varianser per batch efter den globala fördelningen. ``robust_zscore`` gör detsamma med median/MAD och är mindre känslig för enskilda cellmätningar med tunga svansar. ``control_center`` skattar bara en lägesförskjutning från negativa kontroller/referenskontroller i varje batch, vilket bevarar behandlingens spridning."
+    },
+    {
+      "context": "This module executes workflows without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "label": "spacr.cli#2",
+      "source": "This module runs pipelines without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` run without importing those libraries, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
+      "source_sha256": "8eec4ab9ff918cf1f790d5faf7ac934e2115f2f5280da5ba3db62ac8642a6509",
+      "translation": "Denna modul kör pipelines utan GUI. Att importera ``spacr.cli`` importerar inte Qt, Tk, torch, cellpose, numpy eller pandas. Allt tungt importeras inuti det kommando som behöver det, så att ``spacr-run --help`` och ``spacr-run --list`` körs utan att importera dessa bibliotek, och ``--dry-run`` validerar en inställningsfil för 40 plattor utan att röra en GPU."
+    },
+    {
+      "context": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "label": "spacr.cli.build_parser#1",
+      "source": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` reads no spaCR or third-party modules from a cold NFS cache.",
+      "source_sha256": "4729e0e3d697f6f24dc405c14690484c4839adebf5dd24fb2a85c66ee69dcfe5",
+      "translation": "Att bygga tolken importerar inget utöver standardbiblioteket, så att ``spacr-run --help`` inte läser några spaCR-moduler eller tredjepartsmoduler från en kall NFS-cache."
+    },
+    {
+      "context": "Calls the same helper the workflow itself uses to canonicalize its settings, so the resolved key-value mapping the CLI prints is the one the workflow will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the workflows that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "label": "spacr.cli.module_defaults#1",
+      "source": "Calls the same helper the pipeline itself uses to canonicalize its settings, so the resolved dict the CLI prints is the one the pipeline will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the pipelines that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` does not import it.",
+      "source_sha256": "db36e56420f97bff519d4d7dd40fdf5a296a8e3f11a7f1b85271929b252c6fe1",
+      "translation": "Anropar samma hjälpfunktion som pipelinen själv använder för att kanonisera sina inställningar, så att den upplösta ordbok som CLI skriver ut är den som pipelinen kommer att se. Det är oftast en funktion i :mod:`spacr.settings` (:attr:`Module.defaults`); för pipelines som har sin egen är det :attr:`Module.defaults_entry`, som importeras här i stället för vid modulinläsningen så att ``--list`` inte importerar den."
+    },
+    {
+      "context": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "label": "spacr.cli_download#4",
+      "source": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` does not load those libraries from a cold NFS cache on a login node. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
+      "source_sha256": "021c5750df8a3ef4914a65b4fc6b39242819066f050a900abc1849f158ffe10e",
+      "translation": "Att importera denna modul måste förbli lätt -- inget Qt, ingen torch, ingen matplotlib -- så att ``spacr-download --help`` inte läser in dessa bibliotek från en kall NFS-cache på en inloggningsnod. Därför finns nedladdningsprimitiverna i :mod:`spacr.example_archives` snarare än i :mod:`spacr.qt.hf_download`, som importerar PySide6 på modulnivå. ``tests/test_cli_download.py`` låser det."
+    },
+    {
+      "context": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "label": "spacr.cli_download.build_parser#1",
+      "source": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` loads no Qt, torch or matplotlib.",
+      "source_sha256": "cc2619f8b4d373fc74b258091c895fe9ae14330ad9116aa5ec6dedb688a258ed",
+      "translation": "Att bygga den importerar inget utöver standardbiblioteket och två spaCR-moduler med få beroenden, så att ``--help`` inte läser in Qt, torch eller matplotlib."
+    },
+    {
+      "context": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "label": "spacr.convert.default_settings#0",
+      "source": "Return the settings :func:`convert_folder` reads, with their defaults.",
+      "source_sha256": "ad3ba48639b2716bb5f6501826655500caca6a2f83d5ad4eff85858ca9d44708",
+      "translation": "Returnera de inställningar som :func:`convert_folder` läser, med deras standardvärden."
+    },
+    {
+      "context": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "label": "spacr.crashreport.main#2",
+      "source": "``0`` when the bundle was written, ``1`` when it could not be; a section that could not be gathered does not change the exit code. Invalid arguments and ``--help`` leave through :mod:`argparse` (``SystemExit`` with code 2 or 0) before anything is written.",
+      "source_sha256": "894edc3dda48ef42f9570c38c1b34a83cf92332659aaa9305a2db2185366e371",
+      "translation": "``0`` när paketet skrevs, ``1`` när det inte kunde skrivas; en sektion som inte kunde samlas in ändrar inte slutkoden. Ogiltiga argument och ``--help`` avslutar via :mod:`argparse` (``SystemExit`` med kod 2 eller 0) innan något skrivs."
+    },
+    {
+      "context": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "label": "spacr.crop_source.inapplicable_settings#2",
+      "source": "Any spelling listed in :data:`CROP_SOURCE_ALIASES` is accepted, because what a panel has in hand is the value stored in the settings file, not the name this module resolved it to.",
+      "source_sha256": "7928c62f5bdacf4baed0d2a05649d91593fb3f7f632fed6b6beaeb0a39d43363",
+      "translation": "Varje stavning som finns i :data:`CROP_SOURCE_ALIASES` godtas, eftersom det som en panel har till hands är det värde som lagras i inställningsfilen, inte det namn som denna modul löste upp det till."
+    },
+    {
+      "context": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could execute in this project right now; 5. it was written by a processing session that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "label": "spacr.data_manager#10",
+      "source": "1. the registry has a record of it — anything unregistered is never a candidate; 2. its kind is not an **original** (:data:`ORIGINAL_KINDS`): nothing in :mod:`spacr.ports` declares that it produces raw images or sequencing reads, so nothing can make them again; 3. a declared **producing module** exists for its kind, and the module the registry recorded is one of them; 4. that module's **inputs are complete** — every recorded input artifact is still registered and still on disk, and :func:`spacr.ports.check_ready` says the module could run in this project right now; 5. it was written by a run that **finished** (``status == \"complete\"``); 6. what is on disk still **fingerprints to what was registered**, so a folder somebody has since dropped a file into is not prunable; 7. it lives **inside the project**, reached without following a symlink; 8. **every** artifact sharing its path passes all of the above — three kinds live in ``measurements.db``, and deleting the file for one of them destroys the other two; 9. no other registered artifact sits inside it or around it, because the bytes belong to the innermost one and a plan must not under-report what it deletes.",
+      "source_sha256": "3004b0373e5465b2a12e79f19fc444c33a636436be1caced4aa57b805551a6bd",
+      "translation": "1. registret har en post för den — inget oregistrerat är någonsin en kandidat; 2. dess typ är inte ett **original** (:data:`ORIGINAL_KINDS`): inget i :mod:`spacr.ports` deklarerar att det producerar råa bilder eller sekvenseringsläsningar, så inget kan skapa dem igen; 3. en deklarerad **producerande modul** finns för dess typ, och den modul som registret registrerade är en av dem; 4. modulens **indata är fullständiga** — varje registrerad indataartefakt är fortfarande registrerad och finns fortfarande på disk, och :func:`spacr.ports.check_ready` säger att modulen skulle kunna köras i detta projekt just nu; 5. den skrevs av en körning som **slutfördes** (``status == \"complete\"``); 6. det som finns på disk har fortfarande **samma fingeravtryck som det som registrerades**, så att en mapp som någon sedan dess har släppt en fil i inte kan rensas; 7. den ligger **inuti projektet**, nådd utan att följa en symbolisk länk; 8. **varje** artefakt som delar dess sökväg klarar allt ovan — tre typer finns i ``measurements.db``, och att ta bort filen för en av dem förstör de andra två; 9. ingen annan registrerad artefakt ligger inuti den eller runt den, eftersom byten tillhör den innersta och en plan inte får underrapportera vad den tar bort."
+    },
+    {
+      "context": "Bytes under artifacts that have a registry record.",
+      "label": "spacr.data_manager.ProjectUsage.registered_bytes#0",
+      "source": "Bytes under artifacts that have a registry record.",
+      "source_sha256": "a435c0df0c862d1a84a6185e970c75fa41c9a18babceab234c8990a06eba0ef4",
+      "translation": "Byte under artefakter som har en post i registret."
+    },
+    {
+      "context": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "label": "spacr.deep_spacr.class_labels#3",
+      "source": "list of ``str``, length ``num_classes``. Falls back to ``class_0, class_1, …``. The list is empty when ``metrics`` holds neither ``num_classes`` nor ``per_class_accuracy``.",
+      "source_sha256": "bc3e88230be596f89487bb38d81dbb569b1baf0598952c0d09677ea22c37733a",
+      "translation": "lista av ``str``, med längden ``num_classes``. Faller tillbaka på ``class_0, class_1, …``. Listan är tom när ``metrics`` varken innehåller ``num_classes`` eller ``per_class_accuracy``."
+    },
+    {
+      "context": "Return the settings :func:`import_project` reads, with their defaults.",
+      "label": "spacr.foreign.default_settings#0",
+      "source": "Return the settings :func:`import_project` reads, with their defaults.",
+      "source_sha256": "2c413037aadcd4dec8263eeb47ac429bb2e3e77a0986a5647b3867ea9852cdb1",
+      "translation": "Returnera de inställningar som :func:`import_project` läser, med deras standardvärden."
+    },
+    {
+      "context": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "label": "spacr.foreign.is_spacr_name#2",
+      "source": "Delegated to :func:`spacr.feature_dict.parse_column` rather than a second parser: that module already implements the whole grammar (``<object>_channel_<i>_<stat>``, the radial-distribution and organelle-summary forms, the merge suffixes) and lists every metadata column. ``family == 'unknown'`` is exactly \"spaCR would not write this\".",
+      "source_sha256": "453875a97a4d6dfd1fd6e54c49e02b5011e1c6e63620d5df10f27877ee776953",
+      "translation": "Delegeras till :func:`spacr.feature_dict.parse_column` i stället för till en andra tolk: den modulen implementerar redan hela grammatiken (``<object>_channel_<i>_<stat>``, formerna för radiell fördelning och organellsammanfattning, sammanslagningssuffixen) och listar varje metadatakolumn. ``family == 'unknown'`` är exakt \"spaCR would not write this\" (detta skulle inte skrivas)."
+    },
+    {
+      "context": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "label": "spacr.hyperparam#3",
+      "source": "**UMAP has no ground truth.** There is no measurement that says one embedding is correct and another is wrong. Every criterion here (trustworthiness, continuity, silhouette) rewards a *different* property, and they routinely disagree about which ``n_neighbors``/``min_dist`` wins. The scores are an aid for ranking a panel of embeddings you then look at; they are not a verdict. Anything that prints \"best embedding\" without naming the criterion is misleading, so :func:`format_search` always names it, and prints its caveat for the UMAP and activation criteria.",
+      "source_sha256": "1ad00b7e85e920056de010840ddf3c7b29a255bdea70c1596564bd404fa66048",
+      "translation": "**UMAP har inget facit.** Det finns inget mått som säger att en inbäddning är korrekt och en annan fel. Varje kriterium här (trustworthiness, continuity, silhouette) belönar en *annan* egenskap, och de är ofta oense om vilket ``n_neighbors``/``min_dist`` som vinner. Poängen är ett hjälpmedel för att rangordna en panel av inbäddningar som man sedan tittar på; de är ingen dom. Allt som skriver ut \"best embedding\" utan att namnge kriteriet är vilseledande, så :func:`format_search` namnger det alltid och skriver ut dess förbehåll för UMAP-kriterierna och aktiveringskriterierna."
+    },
+    {
+      "context": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "label": "spacr.hyperparam#5",
+      "source": "**A winner is reported with its spread.** When the top three configurations sit inside the fold-to-fold standard deviation, the hyperparameter did not matter and the \"winner\" is noise. Every :class:`SearchResult` reports the spread and raises a ``within_noise`` flag when that is what happened.",
+      "source_sha256": "a7b11a014c50dfaf65033685d9f55fdbb45ade64f78f43de7a46f1faa5f5e36b",
+      "translation": "**En vinnare rapporteras med sin spridning.** När de tre bästa konfigurationerna ligger inom standardavvikelsen mellan veck spelade hyperparametern ingen roll och \"winner\" (vinnaren) är brus. Varje :class:`SearchResult` rapporterar spridningen och sätter flaggan ``within_noise`` när det är det som har hänt."
+    },
+    {
+      "context": "Build PyTorch data loaders for training, validation, or testing.",
+      "label": "spacr.io.generate_loaders#0",
+      "source": "Build PyTorch data loaders for training, validation, or testing.",
+      "source_sha256": "604027a9aaec86f3f8db67d6535985fba174a34949b522db10b3898752cf1483",
+      "translation": "Bygg PyTorch-dataladdare för träning, validering eller testning."
+    },
+    {
+      "context": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "label": "spacr.io.generate_loaders#1",
+      "source": "Reads class subfolders under ``src/<mode>``, applies the requested transforms (channel selection, optional normalisation, optional augmentation) and returns loaders sized to ``batch_size``. The loaders are ``torch.utils.data.DataLoader`` objects (``spacr.torch_loader.ArrayDataLoader`` on macOS), not :class:`spacrDataLoader`.",
+      "source_sha256": "167670b3c328080f6e8fa2d0b1741038ca8985177dae562d7bc47f9a003c0cc4",
+      "translation": "Läser klassundermappar under ``src/<mode>``, tillämpar de begärda transformationerna (kanalval, valfri normalisering, valfri augmentering) och returnerar laddare med storleken ``batch_size``. Laddarna är ``torch.utils.data.DataLoader``-objekt (``spacr.torch_loader.ArrayDataLoader`` på macOS), inte :class:`spacrDataLoader`."
+    },
+    {
+      "context": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "label": "spacr.io.save_object_mask#1",
+      "source": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
+      "source_sha256": "66fa0fcc2b5689e6a12e0f94ef6a29db82dec82094c5f47f23f50d966cbfa59d",
+      "translation": "Masker sparas som TIFF (inte .npy) så att de kan läsas av ImageJ och andra verktyg, med förlustfri komprimering (standard LZW). Etikettvärdena skrivs oförändrade: som uint16 när den största etiketten är 65535 eller mindre, som uint32 över det."
+    },
+    {
+      "context": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "label": "spacr.io.save_object_mask#7",
+      "source": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
+      "source_sha256": "c5d9f15fdc466bd51e14f370f2ff64954a18042383a12a016451922aa8ef6ad5",
+      "translation": "för negativa, icke-heltaliga eller icke-ändliga etiketter, eller etiketter över uint32-intervallet."
+    },
+    {
+      "context": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "label": "spacr.io.spacrDataLoader#1",
+      "source": "Wraps ``torch.utils.data.DataLoader`` and runs a daemon thread that stays one or more batches ahead of consumption to hide I/O latency. End-of-stream is signalled with a sentinel. A slow producer is waited for, with a warning every 60 s; a producer that stops without the sentinel raises ``RuntimeError`` instead of ending the pass early.",
+      "source_sha256": "a1db2376e72295f45bb802f2c12be60242de486c233ae29860d8d0ba8a935a22",
+      "translation": "Omsluter ``torch.utils.data.DataLoader`` och kör en daemontråd som ligger en eller flera batcher före förbrukningen för att dölja I/O-latens. Slutet på strömmen signaleras med en sentinel. På en långsam producent väntas det, med en varning var 60:e s; en producent som stoppar utan sentinel ger ``RuntimeError`` i stället för att avsluta passet i förtid."
+    },
+    {
+      "context": "Start a pass over the data and return self.",
+      "label": "spacr.io.spacrDataLoader.__iter__#0",
+      "source": "Start a pass over the data and return self.",
+      "source_sha256": "95a435ad4dba8c78ce1e8cf3f11347b1ec9e3ef2baee05f47b4980bf5782d7b6",
+      "translation": "Starta ett pass över data och returnera self."
+    },
+    {
+      "context": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "label": "spacr.io.spacrDataLoader.__iter__#1",
+      "source": "An active pass that has yielded no batch yet is reused (``list(iter(dl))`` calls this twice), so the stream is not doubled. An active pass that has already yielded batches is discarded with a warning and a full new pass starts.",
+      "source_sha256": "3a4642ca217b5a08193129c1f4aa49961e474e5dd8737ce63e0d3cdec816e65c",
+      "translation": "Ett aktivt pass som ännu inte har gett någon batch återanvänds (``list(iter(dl))`` anropar detta två gånger), så strömmen dubbleras inte. Ett aktivt pass som redan har gett batcher kasseras med en varning och ett helt nytt pass startar."
+    },
+    {
+      "context": "Waits while the producer is alive, logging a warning every 60 s without a batch. Throws ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "label": "spacr.io.spacrDataLoader.__next__#1",
+      "source": "Waits while the producer is alive, logging a warning every 60 s without a batch. Raises ``RuntimeError`` when the producer is gone without signalling the end, and ``StopIteration`` after :meth:`cleanup` stopped the pass.",
+      "source_sha256": "319872d77f2b8ef7fdce0d1500c49073687991faa024c675c7076a98201a9c02",
+      "translation": "Väntar medan producenten lever och loggar en varning för varje 60 s utan en batch. Ger ``RuntimeError`` när producenten har försvunnit utan att signalera slutet, och ``StopIteration`` efter att :meth:`cleanup` har stoppat passet."
+    },
+    {
+      "context": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.border_color#2",
+      "source": "Set the outline colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "51134f5cb277ea81eb5fd9638adf0d906b42ef41aeaf11efb361770967ab7031",
+      "translation": "Ange konturfärgen; alla skrivsätt som `to_rgba` accepterar godtas."
+    },
+    {
+      "context": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "label": "spacr.layers.PointsLayer.face_color#2",
+      "source": "Set the fill colour, accepting any spelling `to_rgba` accepts.",
+      "source_sha256": "c749a14087b2398f131d91e933c50944d69dbd75c60e538c10fa32da8681ff1f",
+      "translation": "Ange fyllnadsfärgen; alla skrivsätt som `to_rgba` accepterar godtas."
+    },
+    {
+      "context": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the laboratory microplate view and the extracted-image-region grid use, so selecting a node in the tree publishes a structured-data name every other view already reads. A child's parent is resolved *within its own microscope field of view*: ``cell_id`` is a label, not a structured-data name, and label 7 exists in every microscope field of view on the laboratory microplate.",
+      "label": "spacr.lineage#6",
+      "source": "Nodes are keyed by :func:`spacr.selection.object_keys`, the same string the UMAP, the plate view and the crop grid use, so selecting a node in the tree publishes a key every other view already reads. A child's parent is resolved *within its own field*: ``cell_id`` is a label, not a key, and label 7 exists in every field on the plate.",
+      "source_sha256": "a3898a38fa640972263c1efee852b098e22b4e9d5157cb4aa89f2dbf63ecda27",
+      "translation": "Noder nycklas med :func:`spacr.selection.object_keys`, samma sträng som UMAP, plattvyn och utklippsrutnätet använder, så att val av en nod i trädet publicerar en nyckel som varje annan vy redan läser. Ett barns förälder löses upp *inom dess eget bildfält*: ``cell_id`` är en etikett, inte en nyckel, och etikett 7 finns i varje bildfält på plattan."
+    },
+    {
+      "context": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "label": "spacr.macro#11",
+      "source": "*A recording error does not stop the run.* Recording is bracketed by :func:`begin_recording` / :func:`finish_recording`, both of which catch every exception. A macro that could not be written costs one log line.",
+      "source_sha256": "cd55b791356a566d1e4affee3e123ff5166752eeef08d300806eaafb111fe8c5",
+      "translation": "*Ett inspelningsfel stoppar inte körningen.* Inspelningen omges av :func:`begin_recording` / :func:`finish_recording`, som båda fångar varje undantag. Ett makro som inte kunde skrivas kostar en loggrad."
+    },
+    {
+      "context": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "label": "spacr.macro.read_macro#4",
+      "source": "when the file has no :data:`MACRO`, or its schema is newer than this build supports.",
+      "source_sha256": "c03a164307ffb092f6fd6cdb757e1bc3e29d44c2181e36ac9685fb479e8111ff",
+      "translation": "när filen saknar :data:`MACRO`, eller dess schema är nyare än vad detta bygge stöder."
+    },
+    {
+      "context": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "label": "spacr.ml.save_summary_to_file#5",
+      "source": "This is called after every table has been written, so an exception from a backend's ``summary()`` is printed and ``None`` is returned. Errors creating the folder or writing the file (``OSError``) are raised.",
+      "source_sha256": "f33031848dc92f089bfe2a9ed51b4e54eab1f01cef169624c5be011d429154f5",
+      "translation": "Detta anropas efter att varje tabell har skrivits, så ett undantag från en backends ``summary()`` skrivs ut och ``None`` returneras. Fel när mappen skapas eller filen skrivs (``OSError``) ges vidare."
+    },
+    {
+      "context": "Return the zoo's model entries without scanning the user's disks.",
+      "label": "spacr.model_zoo.catalogue#0",
+      "source": "Return the zoo's model entries without scanning the user's disks.",
+      "source_sha256": "c7f4ad3d5173888bb91acfb1c73750e998796e03a043e22e72d3c3849d59ab31",
+      "translation": "Returnera modellsamlingens modellposter utan att genomsöka användarens diskar."
+    },
+    {
+      "context": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "label": "spacr.model_zoo.catalogue#1",
+      "source": "That is: the models bundled with the installed package (whatever :func:`spacr.utils.download_models` has put in ``resources/models``); the stock Cellpose models, the optional segmentation backends and their models; with ``remote`` on, the cached bioimage.io rows, :data:`BUNDLED_REMOTE_MODELS` and, if one is configured, the JSON catalogue named by ``catalogue_path`` or the :data:`CATALOGUE_ENV_VAR` environment variable; and, with ``include_plugins``, the entries of installed model providers. Names in :data:`RETIRED_MODEL_NAMES` are dropped.",
+      "source_sha256": "5626123712e92a2c6417ee941c3683360391c9c800dad53057f03868d563d3fd",
+      "translation": "Det vill säga: modellerna som medföljer det installerade paketet (det som :func:`spacr.utils.download_models` har lagt i ``resources/models``); standardmodellerna från Cellpose, de valfria segmenteringsbackendarna och deras modeller; med ``remote`` påslaget, de cachade raderna från bioimage.io, :data:`BUNDLED_REMOTE_MODELS` och, om en sådan är konfigurerad, den JSON-katalog som anges av ``catalogue_path`` eller miljövariabeln :data:`CATALOGUE_ENV_VAR`; och, med ``include_plugins``, posterna från installerade modellleverantörer. Namn i :data:`RETIRED_MODEL_NAMES` tas bort."
+    },
+    {
+      "context": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "label": "spacr.model_zoo.catalogue#5",
+      "source": "a JSON catalogue to add when ``remote`` is on; defaults to ``$SPACR_MODEL_CATALOGUE`` when that names a file.",
+      "source_sha256": "721f834e01676b6674726e704da50cd84b73ba37a9c46544137eedca6818c3a6",
+      "translation": "en JSON-katalog att lägga till när ``remote`` är påslaget; standard är ``$SPACR_MODEL_CATALOGUE`` när den anger en fil."
+    },
+    {
+      "context": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "label": "spacr.model_zoo.catalogue#8",
+      "source": "entries in the order above. An entry whose ``(key, name)`` is already listed is not added again, so a downloaded model is listed once, as the local file.",
+      "source_sha256": "a36e805f1f8e04a38b57eaf987e30b16ee0533cbdcd20966045a9ac6ace3186c",
+      "translation": "poster i ordningen ovan. En post vars ``(key, name)`` redan finns i listan läggs inte till igen, så en nedladdad modell listas en gång, som den lokala filen."
+    },
+    {
+      "context": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "label": "spacr.model_zoo.source_of#1",
+      "source": "Decided from the row's own ``source``, ``kind`` and ``uri``, with one list of names checked first: a row whose ``key`` is in :data:`THIRD_PARTY_MODEL_KEYS` is filed under ``Third-party`` unless it is a community row that spaCR did not publish. Every other row is filed by its own fields, so a model missing from that list still gets a heading.",
+      "source_sha256": "f967d783f8a7f84208f73cf49e28eed7f25f85f4d43fbe2ef6aa6e3b74895245",
+      "translation": "Avgörs från radens egna ``source``, ``kind`` och ``uri``, med en lista med namn som kontrolleras först: en rad vars ``key`` finns i :data:`THIRD_PARTY_MODEL_KEYS` sorteras under ``Third-party`` om den inte är en communityrad som spaCR inte har publicerat. Varje annan rad sorteras efter sina egna fält, så en modell som saknas i den listan får ändå en rubrik."
+    },
+    {
+      "context": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per microplate sample position), so the importances are in-sample.",
+      "label": "spacr.nonparametric_fits#5",
+      "source": "No method here splits the data. :func:`agreement` fits its model and computes permutation importance on the same rows (one row per well), so the importances are in-sample.",
+      "source_sha256": "bd994265c69528c586d78dabde21e1f043a0570ef50628665490ab6a717a5fac",
+      "translation": "Ingen metod här delar upp data. :func:`agreement` anpassar sin modell och beräknar permutationsbetydelse på samma rader (en rad per brunn), så betydelserna är inom urvalet."
+    },
+    {
+      "context": "the microplate sample position each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "label": "spacr.nonparametric_fits.agreement#4",
+      "source": "the well each row belongs to. Accepted and not used: no split is made, and the model is fitted and its permutation importance computed on all rows.",
+      "source_sha256": "47ae258c48d036b06debae8d39f91f052b1f8b92c1afbd434dab3d53743c05a9",
+      "translation": "den brunn som varje rad tillhör. Godtas men används inte: ingen uppdelning görs, och modellen anpassas och dess permutationsbetydelse beräknas på alla rader."
+    },
+    {
+      "context": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "label": "spacr.ops_objects.sew#3",
+      "source": "Two complete labels of one window are never one object, because a label image does not give one nucleus two labels; two clipped labels of one window may join the same complete observation. Two complete observations from different windows are one nucleus when their centroids agree within ``tolerance`` on each axis and either their areas agree to ``area_ratio`` or their centroids lie within the smaller one's equivalent radius -- the radius of a disc of its area. Pairs whose areas agree are joined first, then the rest closest first, and a join that would give a group two labels of one window is refused.",
+      "source_sha256": "cd8b6bd045c0fb09fa7be363a718e3cae707ca5dfc9fc072d2215099e5e519d4",
+      "translation": "Två fullständiga etiketter från samma fönster är aldrig ett och samma objekt, eftersom en etikettbild inte ger en kärna två etiketter; två avklippta etiketter från samma fönster kan förenas med samma fullständiga observation. Två fullständiga observationer från olika fönster är en kärna när deras tyngdpunkter stämmer inom ``tolerance`` på varje axel och antingen deras areor stämmer till ``area_ratio`` eller deras tyngdpunkter ligger inom den mindres ekvivalenta radie -- radien hos en skiva med dess area. Par vars areor stämmer slås ihop först, därefter resten närmast först, och en sammanslagning som skulle ge en grupp två etiketter från ett fönster vägras."
+    },
+    {
+      "context": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "label": "spacr.outlier_filter#0",
+      "source": "Remove objects far from the median, in scaled MADs, before guide annotation.",
+      "source_sha256": "5d80f87a94531910a9b9279d44204cf042a59d723560cd151f386cb23ec936ec",
+      "translation": "Ta bort objekt långt från medianen, mätt i skalade MADs, före guideannoteringen."
+    },
+    {
+      "context": "Return the subset of a picture-settings key-value mapping that the extracted image region layer reads.",
+      "label": "spacr.picture_settings.to_crop_settings#0",
+      "source": "Return the subset of a picture-settings dict that the crop layer reads.",
+      "source_sha256": "de886c6dd289b67d8e9dc6a22c76de4ff9fe66e6660d9fef58337e5073a0674c",
+      "translation": "Returnera den delmängd av en ordbok med bildinställningar som beskärningslagret läser."
+    },
+    {
+      "context": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "label": "spacr.plate_qc.parse_column_label#1",
+      "source": "Accepts ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` and ``12``.",
+      "source_sha256": "b0202ae9a9c887ebc37d7d98cf55b1afef54f9494facf71cba35b075d191e1b4",
+      "translation": "Godtar ``'c12'``, ``'C12'``, ``'column12'``, ``'12'`` och ``12``."
+    },
+    {
+      "context": "Accepts every row spelling spaCR and laboratory microplate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 laboratory microplates go past Z).",
+      "label": "spacr.plate_qc.parse_row_label#1",
+      "source": "Accepts every row spelling spaCR and plate readers produce: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (letter rows) and ``'AA'`` (1536 plates go past Z).",
+      "source_sha256": "305f72cede6e7b5e394d3eae79b6f9dff875fa446d0afe60552cc351634d68ab",
+      "translation": "Godtar varje radstavning som spaCR och plattläsare producerar: ``'r3'``, ``'R3'``, ``'row3'``, ``3``, ``'C'`` (bokstavsrader) och ``'AA'`` (1536-plattor går förbi Z)."
+    },
+    {
+      "context": "(always available; what ``\"auto\"`` falls back to)",
+      "label": "spacr.power_model#11",
+      "source": "(always available; what ``\"auto\"`` falls back to)",
+      "source_sha256": "37bcabb4da9efb6f38ef0054324ad0cfb99ea2d1878a583be809db3b637dd79e",
+      "translation": "(alltid tillgänglig; det som ``\"auto\"`` faller tillbaka på)"
+    },
+    {
+      "context": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "label": "spacr.power_model#13",
+      "source": "``\"numpyro\"`` / ``\"pymc\"`` (optional, lazily imported) Exact NUTS, if the user has installed either.  Never added to ``install_requires``. ``\"auto\"`` (default) numpyro, else pymc, else torch — and it *says which*, both in the log and in :attr:`PowerFit.backend`, so a result can never be mistaken for one produced by a different method.  Pin ``backend=`` explicitly if you need two machines to agree bit for bit.",
+      "source_sha256": "f05053bb30202acb63144b47ee57dbef4560b20db1192538f2de947aaec7e09c",
+      "translation": "``\"numpyro\"`` / ``\"pymc\"`` (valfria, importeras lat) Exakt NUTS, om användaren har installerat någon av dem.  Läggs aldrig till i ``install_requires``. ``\"auto\"`` (standard) numpyro, annars pymc, annars torch — och den *säger vilken*, både i loggen och i :attr:`PowerFit.backend`, så att ett resultat aldrig kan misstas för ett som producerats med en annan metod.  Lås ``backend=`` uttryckligen om du behöver att två maskiner stämmer överens bit för bit."
+    },
+    {
+      "context": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "label": "spacr.schema.add_screen_column#5",
+      "source": "Blanks are never left blank: ``None``, ``NaN`` and ``''`` become ``screen`` when it is given and :data:`DEFAULT_SCREEN` otherwise, because an empty screen id is not an identity and every row carrying one would group with every other.",
+      "source_sha256": "e1f286a49160a3a9e8f90f7f011a0fc41ee413c1cea2382578b378906440a4df",
+      "translation": "Tomma värden lämnas aldrig tomma: ``None``, ``NaN`` och ``''`` blir ``screen`` när den anges och annars :data:`DEFAULT_SCREEN`, eftersom ett tomt screen-id inte är en identitet och varje rad som bär ett sådant skulle grupperas med alla andra."
+    },
+    {
+      "context": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask workflows let it end the processing session. Other QC errors are printed as skipped and the processing session continues.",
+      "label": "spacr.seg_qc.Finding#1",
+      "source": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask pipelines let it end the run. Other QC errors are printed as skipped and the run continues.",
+      "source_sha256": "84f343be819268a08e18d39001ed4a9489d33aa402caa73359f6eb3a396c2485",
+      "translation": "``'fail'``, ``'warn'`` eller ``'ok'`` — hur en banderoll ska färga det. Ett fynd blockerar ingenting; endast :func:`run_segmentation_qc` med ``mode='stop'`` ger :class:`SegmentationQCFailed` för en underkänd platta, och både den klassiska och V2 Mask-pipelinen låter det avsluta körningen. Andra QC-fel skrivs ut som överhoppade och körningen fortsätter."
+    },
+    {
+      "context": "always ``False``; the digest reports QC and does not stop a processing session. A processing session is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "label": "spacr.seg_qc.QCDigest#10",
+      "source": "always ``False``; the digest reports QC and does not stop a run. A run is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",
+      "source_sha256": "f2e5208f829e86dd81f9e95297e3d414b8e5951febba355c7c47ffc282ae3b8d",
+      "translation": "alltid ``False``; sammanfattningen rapporterar QC och stoppar inte en körning. En körning stoppas endast av :func:`run_segmentation_qc` med ``mode='stop'``, vars :class:`SegmentationQCFailed` för en underkänd platta avslutar en klassisk körning eller en V2 Mask-körning."
+    },
+    {
+      "context": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "label": "spacr.sequencing.graph_sequencing_stats.find_and_visualize_fraction_threshold#6",
+      "source": "writes ``<dst>/results/fraction_threshold.pdf``, creating the directories. ``None`` raises ``TypeError`` from :func:`os.path.join`. The sole caller always passes a path.",
+      "source_sha256": "9161b71c1d9467c54f7120c5a63723f29624b7a02d2fd118af22534a9ce234d0",
+      "translation": "skriver ``<dst>/results/fraction_threshold.pdf`` och skapar katalogerna. ``None`` ger ``TypeError`` från :func:`os.path.join`. Den enda anroparen skickar alltid en sökväg."
+    },
+    {
+      "context": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "label": "spacr.sequencing_qc.sweep_grid#6",
+      "source": "sorted unique array of cutoffs in ``(0, 1]``, containing ``threshold`` itself when it is at most 1, so the derived point is on the curve and not merely near it.",
+      "source_sha256": "3f33caf61a5a8b0abaeed13cdb3270a6f377eba48243463b32ea657e18701d4e",
+      "translation": "sorterad array med unika gränser i ``(0, 1]``, som innehåller ``threshold`` själv när den är högst 1, så att den härledda punkten ligger på kurvan och inte bara nära den."
+    },
+    {
+      "context": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "label": "spacr.surrogate.explain_cv_default_settings#0",
+      "source": "Return ``settings`` with the Explain CV Model module's defaults filled in.",
+      "source_sha256": "90922bf5865b48a391524e5774c10a887b68d7ec315fa504ec5f681a001f49a0",
+      "translation": "Returnera ``settings`` med standardvärdena för modulen Explain CV Model ifyllda."
+    },
+    {
+      "context": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a processing session — those folds are loaded as part of that processing session. A ``fold_<i>`` folder under a folder that is not a processing session is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "label": "spacr.train_compare.find_runs#1",
+      "source": "Walks at most ``max_depth`` levels, skips hidden folders, and does not enter a ``fold_<i>`` folder whose parent is itself a run — those folds are loaded as part of that run. A ``fold_<i>`` folder under a folder that is not a run is scanned like any other. Pointing ``root`` straight at a fold folder loads that one fold.",
+      "source_sha256": "9583efbc3282bc257ab5327258ef40163e12ed00add13803d8574ef27d9d1270",
+      "translation": "Går igenom högst ``max_depth`` nivåer, hoppar över dolda mappar och går inte in i en ``fold_<i>``-mapp vars överordnade mapp själv är en körning — de vecken läses in som en del av den körningen. En ``fold_<i>``-mapp under en mapp som inte är en körning genomsöks som vilken annan mapp som helst. Att peka ``root`` direkt mot en veckmapp läser in det enda vecket."
+    },
+    {
+      "context": "A folder counts as a processing session when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "label": "spacr.train_compare.find_runs#2",
+      "source": "A folder counts as a run when it holds a progress CSV, a ``.pth`` checkpoint, a ``*_per_fold.csv`` or ``fold_<i>`` subfolders with curves. Runs that are broken (no curves, no settings, zero-epoch log) are returned with their notes rather than skipped; other folders are not returned.",
+      "source_sha256": "6ba68336ec644b245dd06a2b6d35e8ef564a6f3425712cb7228011e27f9ce7f2",
+      "translation": "En mapp räknas som en körning när den innehåller en förlopps-CSV, en ``.pth``-kontrollpunkt, en ``*_per_fold.csv`` eller ``fold_<i>``-undermappar med kurvor. Körningar som är trasiga (inga kurvor, inga inställningar, logg med noll epoker) returneras med sina anteckningar i stället för att hoppas över; andra mappar returneras inte."
+    },
+    {
+      "context": "normalized recipe containing only fields this version defines.",
+      "label": "spacr.umap_search.UmapRecipe.from_dict#2",
+      "source": "normalized recipe containing only fields this version defines.",
+      "source_sha256": "9c4bb464211c6626d1830956c4ee49c5abb3a5961ca77a15b08aa3068e95d940",
+      "translation": "normaliserat recept som endast innehåller fält som denna version definierar."
+    },
+    {
+      "context": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "label": "spacr.updater#1",
+      "source": "Exposes a small API the Qt GUI's Help → \"Check for updates\" menu entry can call. The version check and any upgrade run only when the user starts them, and an upgrade is confirmed first. The release-notes fetch is not user-started: Home's News panel and the post-update notes call :func:`fetch_release_notes` on their own unless the News refresh preference is off or ``SPACR_NO_NETWORK`` is set.",
+      "source_sha256": "1db272e5c8e694eb19405f733d3528eadd7e80868473cd91c45c84909a95a2b2",
+      "translation": "Exponerar ett litet API som menyposten Help → \"Check for updates\" i Qt-GUI kan anropa. Versionskontrollen och eventuella uppgraderingar körs bara när användaren startar dem, och en uppgradering bekräftas först. Hämtningen av versionsinformation startas inte av användaren: Homes News-panel och informationen efter uppdatering anropar :func:`fetch_release_notes` på egen hand, såvida inte inställningen för uppdatering av News är avstängd eller ``SPACR_NO_NETWORK`` är satt."
+    },
+    {
+      "context": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "label": "spacr.updater#6",
+      "source": "Both fetches use ``urllib`` from the stdlib to avoid pulling in an extra HTTP dependency. Timeouts are short (3 s for the version check, 4 s for the release notes) so a slow / offline network doesn't block the UI. Errors are absorbed and surfaced as \"couldn't check\" — never a crash.",
+      "source_sha256": "3b336f8f74eba4c3840421931297311eeddc3a117d8171d21f766d0ac7c51bbf",
+      "translation": "Båda hämtningarna använder ``urllib`` från standardbiblioteket för att undvika ett extra HTTP-beroende. Tidsgränserna är korta (3 s för versionskontrollen, 4 s för versionsinformationen) så att ett långsamt / frånkopplat nätverk inte blockerar UI. Fel fångas upp och visas som \"couldn't check\" — aldrig en krasch."
+    },
+    {
+      "context": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "label": "spacr.utils.cleanup_pipeline_folders#2",
+      "source": "Nothing is removed unless ``merged/`` holds at least one ``.npy``. ``stack/``, ``masks/`` and the numbered folders are then removed only when every ``stack/*.npy`` has a matching ``merged/*.npy``; without ``stack/`` there is no per-field check. With ``keep_original`` False, ``orig/`` is removed only when every ``stack/*.npy`` field has a ``merged/`` array that loads completely. Otherwise ``orig/`` is kept, also when there is no ``stack/`` list to check against, and a message naming the missing or incomplete fields is printed even with ``verbose=False``.",
+      "source_sha256": "b88ee61c69c7f4815abac6b82c2f7cb56dd5adb9704259b7e93d1678371bc801",
+      "translation": "Inget tas bort om inte ``merged/`` innehåller minst en ``.npy``. ``stack/``, ``masks/`` och de numrerade mapparna tas då bort endast när varje ``stack/*.npy`` har en motsvarande ``merged/*.npy``; utan ``stack/`` görs ingen kontroll per fält. Med ``keep_original`` False tas ``orig/`` bort endast när varje ``stack/*.npy``-fält har en ``merged/``-array som kan läsas in fullständigt. Annars behålls ``orig/``, även när det inte finns någon ``stack/``-lista att kontrollera mot, och ett meddelande som namnger de saknade eller ofullständiga fälten skrivs ut även med ``verbose=False``."
+    },
+    {
+      "context": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "label": "spacr.utils.cleanup_pipeline_folders#6",
+      "source": "list of folder paths that were deleted; a kept ``orig/`` is not in it.",
+      "source_sha256": "510168a3faf971845ce53779e85354933700f513bbd55469b0535038844a8a0e",
+      "translation": "lista med sökvägar till de mappar som raderades; en behållen ``orig/`` ingår inte."
+    },
+    {
+      "context": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "label": "spacr.utils.plot_umap_images#7",
+      "source": "passed to :func:`plot_images_by_cluster`, which does not read it. No colour is drawn and its length does not limit which clusters are visited. Unused (``None`` is fine) when ``plot_by_cluster`` is false.",
+      "source_sha256": "2a24e1ef74bb12af39be7e7bac05ab425e79ac963daf4b9576d1b0ca99ec510d",
+      "translation": "skickas till :func:`plot_images_by_cluster`, som inte läser den. Ingen färg ritas och dess längd begränsar inte vilka kluster som besöks. Används inte (``None`` går bra) när ``plot_by_cluster`` är falskt."
+    },
+    {
+      "context": "Build from a key-value mapping, ignoring structured-data names this version does not define.",
+      "label": "spacr.volcano_style.VolcanoStyle.from_dict#0",
+      "source": "Build from a dict, ignoring keys this version does not define.",
+      "source_sha256": "8e4cf2cf235b33c301f0d2ffaeecbeaba7031f2a9a6a423c8b9edc7cfdebb5c4",
+      "translation": "Bygg från en ordbok och ignorera nycklar som denna version inte definierar."
+    },
+    {
+      "context": "A z-stack is ``n_z`` times a microscope field of view, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given microscope field of view; the workflow processes **one microscope field of view at a time** and never holds a laboratory microplate. For a 2048x2048 microscope field of view at 21 image layers in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "label": "spacr.zstack#9",
+      "source": "A z-stack is ``n_z`` times a field, and volumetric segmentation transiently needs several copies of it. :func:`estimate_peak_bytes` gives the number for a given field; the pipeline processes **one field at a time** and never holds a plate. For a 2048x2048 field at 21 planes in float32 that is ~350 MB for the volume, and :func:`estimate_peak_bytes` gives ~8.1 GB peak in :data:`MODE_VOLUMETRIC` at anisotropy 5 (the isotropic copy is ``anisotropy`` times taller, and the estimate counts it four times). This is why :data:`MODE_VOLUMETRIC` is not the default.",
+      "source_sha256": "6d1b3e75314f5f53e042bd8412352b001aee9e411d488abebe475f9b1fd36a8c",
+      "translation": "En z-stack är ``n_z`` gånger ett fält, och volymetrisk segmentering behöver tillfälligt flera kopior av den. :func:`estimate_peak_bytes` ger talet för ett givet fält; pipelinen bearbetar **ett fält i taget** och håller aldrig en hel platta. För ett fält på 2048x2048 med 21 plan i float32 är det ~350 MB för volymen, och :func:`estimate_peak_bytes` ger en topp på ~8.1 GB i :data:`MODE_VOLUMETRIC` vid anisotropin 5 (den isotropa kopian är ``anisotropy`` gånger högre, och skattningen räknar den fyra gånger). Detta är skälet till att :data:`MODE_VOLUMETRIC` inte är standard."
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) of the API docstring blocks the item 678 factual review corrected to match the code. No native-speaker sign-off.",
+  "schema": 1
+}

@@ -32,7 +32,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "This module runs pipelines without a GUI. Importing ``spacr.cli`` does not import Qt, Tk, torch, cellpose, numpy or pandas. Everything heavy is imported inside the command that needs it, so ``spacr-run --help`` and ``spacr-run --list`` answer instantly on a login node, and ``--dry-run`` validates a 40-plate settings file without touching a GPU.",
       "source_sha256": "75292d496a29b57ff0b3477368b4d8ebf0cd376f399c5c0f1c3fb7241a10beb9",
-      "translation": "이 모듈은 GUI 없이 파이프라인을 실행합니다. ``spacr.cli`` 모듈을 가져와도 Qt, Tk, torch, cellpose, numpy, pandas는 가져오지 않습니다. 무거운 것은 모두 그것이 필요한 명령 안에서 가져오므로, ``spacr-run --help``와 ``spacr-run --list``는 로그인 노드에서 즉시 응답하며, ``--dry-run``은 GPU를 건드리지 않고 40개 플레이트 설정 파일을 검증합니다."
+      "translation": "이 모듈은 GUI 없이 파이프라인을 실행합니다. ``spacr.cli`` 모듈을 가져와도 Qt, Tk, torch, cellpose, numpy, pandas는 가져오지 않습니다. 무거운 것은 모두 그것이 필요한 명령 안에서 가져오므로, ``spacr-run --help``와 ``spacr-run --list``는 로그인 노드에서 즉시 응답하며, ``--dry-run``은 GPU를 건드리지 않고 40개 플레이트 설정 파일을 검증합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "Usage",
@@ -232,7 +234,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Building the parser imports nothing beyond the standard library, so ``spacr-run --help`` is instant even on a node with a cold NFS cache.",
       "source_sha256": "e5610541e6b98e46b7c8a7e3df5d716c23ad7ab7f5d15481b34c09cb4c1d820c",
-      "translation": "파서를 만드는 데는 표준 라이브러리 외에 아무것도 가져오지 않으므로, ``spacr-run --help``는 NFS 캐시가 비어 있는 노드에서도 즉시 응답합니다."
+      "translation": "파서를 만드는 데는 표준 라이브러리 외에 아무것도 가져오지 않으므로, ``spacr-run --help``는 NFS 캐시가 비어 있는 노드에서도 즉시 응답합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the parser.",
@@ -384,7 +388,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Calls the same helper the pipeline itself uses to canonicalize its settings, so the resolved dict the CLI prints is the one the pipeline will see. That is usually a :mod:`spacr.settings` function (:attr:`Module.defaults`); for the pipelines that keep their own it is :attr:`Module.defaults_entry`, imported here rather than at module load so ``--list`` stays instant.",
       "source_sha256": "8c19e82ffd235c4cb18852d9b14778cb613a6e987d2a757dc21a7636f74102f7",
-      "translation": "파이프라인 자체가 설정을 정규화하는 데 사용하는 것과 같은 도우미를 호출하므로, CLI가 출력하는 확인된 dict가 곧 파이프라인이 보게 될 dict입니다. 대개 이는 :mod:`spacr.settings` 함수(:attr:`Module.defaults`)이며, 자체 도우미를 가진 파이프라인의 경우 :attr:`Module.defaults_entry`로, ``--list``가 즉시 응답하도록 모듈 로드 시점이 아니라 여기서 가져옵니다."
+      "translation": "파이프라인 자체가 설정을 정규화하는 데 사용하는 것과 같은 도우미를 호출하므로, CLI가 출력하는 확인된 dict가 곧 파이프라인이 보게 될 dict입니다. 대개 이는 :mod:`spacr.settings` 함수(:attr:`Module.defaults`)이며, 자체 도우미를 가진 파이프라인의 경우 :attr:`Module.defaults_entry`로, ``--list``가 즉시 응답하도록 모듈 로드 시점이 아니라 여기서 가져옵니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the module whose defaults are wanted.",
@@ -568,7 +574,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Importing this module must stay light -- no Qt, no torch, no matplotlib -- so ``spacr-download --help`` answers instantly on a login node with a cold NFS cache. That is why the download primitives live in :mod:`spacr.example_archives` rather than in :mod:`spacr.qt.hf_download`, which imports PySide6 at module scope. ``tests/test_cli_download.py`` pins it.",
       "source_sha256": "b6f1588ae166059044d2846c17eeace7a0336fed0de64c439e841d04b90b8306",
-      "translation": "이 모듈을 가져오는 것은 가벼워야 합니다 -- Qt도, torch도, matplotlib도 없이 -- 그래야 ``spacr-download --help``가 NFS 캐시가 비어 있는 로그인 노드에서 즉시 응답합니다. 그래서 다운로드 기본 요소는 :mod:`spacr.example_archives`에 있으며, 모듈 범위에서 PySide6을 가져오는 :mod:`spacr.qt.hf_download`에는 있지 않습니다. ``tests/test_cli_download.py`` 파일이 이를 고정합니다."
+      "translation": "이 모듈을 가져오는 것은 가벼워야 합니다 -- Qt도, torch도, matplotlib도 없이 -- 그래야 ``spacr-download --help``가 NFS 캐시가 비어 있는 로그인 노드에서 즉시 응답합니다. 그래서 다운로드 기본 요소는 :mod:`spacr.example_archives`에 있으며, 모듈 범위에서 PySide6을 가져오는 :mod:`spacr.qt.hf_download`에는 있지 않습니다. ``tests/test_cli_download.py`` 파일이 이를 고정합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "Usage",
@@ -680,7 +688,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Building it imports nothing beyond the standard library and two dependency-light spaCR modules, so ``--help`` is instant.",
       "source_sha256": "515f60350932662bfc88a32d2bf5575cc877c75599b67e9ad6ada5c4adb9f9cc",
-      "translation": "이를 만드는 데는 표준 라이브러리와 의존성이 가벼운 spaCR 모듈 두 개 외에 아무것도 가져오지 않으므로, ``--help``는 즉시 응답합니다."
+      "translation": "이를 만드는 데는 표준 라이브러리와 의존성이 가벼운 spaCR 모듈 두 개 외에 아무것도 가져오지 않으므로, ``--help``는 즉시 응답합니다.",
+      "retired": true,
+      "retired_reason": "2026-11-01: the item 678 factual API docstring review rewrote this block to match the code; the current block is bound in 2026-11-01-678-factual-api-docstrings.json."
     },
     {
       "context": "the example sets to include.",

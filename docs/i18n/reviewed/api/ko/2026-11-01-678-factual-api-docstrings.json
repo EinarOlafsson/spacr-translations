@@ -135,11 +135,25 @@
       "translation": "``src/<mode>`` 아래의 클래스 하위 폴더를 읽고, 요청된 변환(채널 선택, 선택적 정규화, 선택적 증강)을 적용한 뒤, ``batch_size`` 크기의 로더를 반환합니다. 로더는 ``torch.utils.data.DataLoader`` 객체(macOS에서는 ``spacr.torch_loader.ArrayDataLoader``)이며, :class:`spacrDataLoader`가 아닙니다."
     },
     {
+      "context": "extracted image region decoding policy recorded on each loader; defaults to declared channel order and high-byte uint8 narrowing.",
+      "label": "spacr.io.generate_loaders#17",
+      "source": "crop decoding policy recorded on each loader; defaults to declared channel order and high-byte uint8 narrowing.",
+      "source_sha256": "8b43c9604e7ffe3693012e51a8fa36a44b595b7f2296da1c83601d3b54b362bf",
+      "translation": "각 로더에 기록되는 크롭 디코딩 정책입니다. 기본값은 선언된 채널 순서와 상위 바이트 기준 uint8 축소입니다."
+    },
+    {
       "context": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
       "label": "spacr.io.save_object_mask#1",
       "source": "Masks are saved as TIFF (not .npy) so they're readable by ImageJ/other tools, with lossless compression (default LZW). Label values are written unchanged: as uint16 when the largest label is 65535 or less, as uint32 above that.",
       "source_sha256": "66fa0fcc2b5689e6a12e0f94ef6a29db82dec82094c5f47f23f50d966cbfa59d",
       "translation": "마스크는 ImageJ 등 다른 도구에서 읽을 수 있도록 .npy가 아닌 TIFF로, 무손실 압축(기본값 LZW)을 사용하여 저장됩니다. 레이블 값은 변경 없이 기록됩니다. 가장 큰 레이블이 65535 이하이면 uint16으로, 그보다 크면 uint32로 기록됩니다."
+    },
+    {
+      "context": "the path written.",
+      "label": "spacr.io.save_object_mask#6",
+      "source": "the path written.",
+      "source_sha256": "8138d15977925d7bbd3244f9f1ee67e7e1720c96671be8079d459f85932c86a7",
+      "translation": "기록된 경로입니다."
     },
     {
       "context": "for negative, fractional or non-finite labels, or labels above the uint32 range.",
@@ -329,6 +343,13 @@
       "source": "``'fail'``, ``'warn'`` or ``'ok'`` — how a banner should colour it. A finding blocks nothing; only :func:`run_segmentation_qc` with ``mode='stop'`` raises :class:`SegmentationQCFailed` for a failed plate, and both the classic and the V2 Mask pipelines let it end the run. Other QC errors are printed as skipped and the run continues.",
       "source_sha256": "84f343be819268a08e18d39001ed4a9489d33aa402caa73359f6eb3a396c2485",
       "translation": "``'fail'``, ``'warn'`` 또는 ``'ok'`` — 배너가 어떤 색으로 표시해야 하는지 나타냅니다. 발견 사항 자체는 아무것도 차단하지 않습니다. :func:`run_segmentation_qc`를 ``mode='stop'``로 호출할 때만 실패한 플레이트에 대해 :class:`SegmentationQCFailed`를 발생하며, 기존(classic) 파이프라인과 V2 Mask 파이프라인 모두 이 예외로 실행을 끝냅니다. 그 밖의 QC 오류는 건너뛴 것으로 출력되고 실행은 계속됩니다."
+    },
+    {
+      "context": "what was segmented.",
+      "label": "spacr.seg_qc.Finding#8",
+      "source": "what was segmented.",
+      "source_sha256": "1ecafee02d09abf87787c7f21ea0e6298fc4ec974868c98c3753b40dab1e081c",
+      "translation": "분할된 대상입니다."
     },
     {
       "context": "always ``False``; the digest reports QC and does not stop a processing session. A processing session is stopped only by :func:`run_segmentation_qc` with ``mode='stop'``, whose :class:`SegmentationQCFailed` for a failed plate ends a classic or V2 Mask run.",

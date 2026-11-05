@@ -1,0 +1,49 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "context": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on laboratory microplate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every microscope field of view with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "label": "spacr.submodules.analyze_recruitment#1",
+      "source": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on plate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every field with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "source_sha256": "30b6e2a92f075d3afefdd2c0180ff0adcf272d29c86eebdc9fe58baf0d560bf8",
+      "translation": "Lee las tablas de características combinadas de células/núcleos/patógenos/citoplasma de un ``measurements.db`` de spacr, anota cada fila con el tipo celular / patógeno / tratamiento a partir de los metadatos de la placa, filtra los objetos por tamaño e intensidad, calcula el cociente de intensidad media patógeno/citoplasma para ``channel_of_interest``, agrupa por pocillo y escribe ``results/cells.csv`` y ``results/wells.csv`` junto con gráficos de reclutamiento. Con ``field_qc`` también escribe ``results/field_qc.csv`` (cada campo con su motivo de aprobación / rechazo); con ``confounder_covariates`` escribe ``results/confounder_report.csv``; con ``adjust_covariates`` escribe ``results/covariate_model.csv``."
+    },
+    {
+      "context": "``field_qc`` — when True, count cells and pathogens per microscope field of view, flag crowded / sparse / over-infected microscope fields of view and drop their objects before the per-microplate sample position grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "label": "spacr.submodules.analyze_recruitment#14",
+      "source": "``field_qc`` — when True, count cells and pathogens per field, flag crowded / sparse / over-infected fields and drop their objects before the per-well grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "source_sha256": "d6f7d9dfb4c8482ac7edcc818a631d83ecba786b57e4f0d4c30c2af237158da1",
+      "translation": "``field_qc`` — si es True, cuenta las células y los patógenos por campo, marca los campos sobrepoblados / demasiado dispersos / sobreinfectados y descarta sus objetos antes de la agrupación por pocillo. Se ajusta con ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` y ``field_qc_columns``. Valor predeterminado: False."
+    },
+    {
+      "context": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "label": "spacr.submodules.analyze_recruitment#15",
+      "source": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "source_sha256": "1e56b3900374c0ec061696d363d8da6b257d64ed39d6ec43602e01ce99826c45",
+      "translation": "``confounder_covariates`` — columnas que se examinan como factores de confusión de ``recruitment`` entre valores de ``condition``. Las columnas de densidad por campo ``n_cells_field``, ``n_pathogens_field`` y ``pathogens_per_cell_field`` se añaden cuando se solicitan."
+    },
+    {
+      "context": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per microplate sample position. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "label": "spacr.submodules.analyze_recruitment#16",
+      "source": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per well. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "source_sha256": "8089e04d2def3de9ee89737f6a997da9eb5d087ea6750d7120ff457ea96aab31",
+      "translation": "``adjust_covariates`` — columnas cuyo efecto se elimina de ``recruitment`` mediante regresión (ANCOVA intracondición común), lo que añade ``recruitment_adjusted`` por objeto y por pocillo. Indique solo variables que la condición no cause: un mediador (por ejemplo, el tamaño de la vacuola cuando la pregunta es si un mutante crece más despacio) se elimina junto con el efecto real. ``adjust_log_outcome`` modela el logaritmo de la razón."
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "Lista ``[cells, wells]`` — los DataFrames de reclutamiento por célula hospedadora y por pocillo, que también se escriben como CSV en ``src/results``."
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "Véase también: :func:`analyze_plaques` — ensayo de recuento/tamaño de placas de lisis. :func:`spacr.ml.generate_ml_scores` — clasificador basado en características como alternativa a los cocientes de reclutamiento."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

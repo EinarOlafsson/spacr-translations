@@ -1,0 +1,49 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on laboratory microplate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every microscope field of view with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "label": "spacr.submodules.analyze_recruitment#1",
+      "source": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on plate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every field with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "source_sha256": "30b6e2a92f075d3afefdd2c0180ff0adcf272d29c86eebdc9fe58baf0d560bf8",
+      "translation": "spacr ``measurements.db`` से मर्ज की गई कोशिका/नाभिक/रोगजनक/साइटोप्लाज़्म फ़ीचर तालिकाएँ पढ़ता है, प्लेट मेटाडेटा के आधार पर हर पंक्ति को कोशिका प्रकार / रोगजनक / उपचार से एनोटेट करता है, ऑब्जेक्ट को आकार और तीव्रता से फ़िल्टर करता है, ``channel_of_interest`` के लिए रोगजनक-से-साइटोप्लाज़्म माध्य-तीव्रता अनुपात की गणना करता है, वेल के अनुसार समूह बनाता है और भर्ती प्लॉट के साथ ``results/cells.csv`` और ``results/wells.csv`` दोनों लिखता है। ``field_qc`` के साथ यह ``results/field_qc.csv`` भी लिखता है (हर फ़ील्ड, उसके पास / फ़ेल होने के कारण सहित); ``confounder_covariates`` के साथ यह ``results/confounder_report.csv`` लिखता है; ``adjust_covariates`` के साथ यह ``results/covariate_model.csv`` लिखता है।"
+    },
+    {
+      "context": "``field_qc`` — when True, count cells and pathogens per microscope field of view, flag crowded / sparse / over-infected microscope fields of view and drop their objects before the per-microplate sample position grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "label": "spacr.submodules.analyze_recruitment#14",
+      "source": "``field_qc`` — when True, count cells and pathogens per field, flag crowded / sparse / over-infected fields and drop their objects before the per-well grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "source_sha256": "d6f7d9dfb4c8482ac7edcc818a631d83ecba786b57e4f0d4c30c2af237158da1",
+      "translation": "``field_qc`` — True होने पर प्रति फ़ील्ड कोशिकाओं और रोगजनकों की गिनती करता है, अत्यधिक भीड़ वाले / बहुत विरल / अति-संक्रमित फ़ील्ड को चिह्नित करता है और प्रति-वेल समूहन से पहले उनके ऑब्जेक्ट हटा देता है। ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` और ``field_qc_columns`` द्वारा नियंत्रित। डिफ़ॉल्ट False।"
+    },
+    {
+      "context": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "label": "spacr.submodules.analyze_recruitment#15",
+      "source": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "source_sha256": "1e56b3900374c0ec061696d363d8da6b257d64ed39d6ec43602e01ce99826c45",
+      "translation": "``confounder_covariates`` — वे स्तंभ जिनकी जाँच ``recruitment`` के भ्रामक कारकों के रूप में ``condition`` के पार की जाती है। अनुरोध किए जाने पर फ़ील्ड घनत्व स्तंभ ``n_cells_field``, ``n_pathogens_field`` और ``pathogens_per_cell_field`` जोड़े जाते हैं।"
+    },
+    {
+      "context": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per microplate sample position. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "label": "spacr.submodules.analyze_recruitment#16",
+      "source": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per well. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "source_sha256": "8089e04d2def3de9ee89737f6a997da9eb5d087ea6750d7120ff457ea96aab31",
+      "translation": "``adjust_covariates`` — वे स्तंभ जिनका प्रभाव ``recruitment`` से रिग्रेशन द्वारा हटाया जाता है (pooled स्थिति-भीतर ANCOVA), और प्रति ऑब्जेक्ट तथा प्रति वेल ``recruitment_adjusted`` जोड़ा जाता है। केवल वे चर सूचीबद्ध करें जिन्हें स्थिति उत्पन्न नहीं करती: एक mediator (उदाहरण के लिए रिक्तिका का आकार, जब प्रश्न यह हो कि क्या कोई mutant धीमे विकसित होता है) वास्तविक प्रभाव के साथ ही हट जाता है। ``adjust_log_outcome`` लॉग अनुपात का मॉडल बनाता है।"
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "सूची ``[cells, wells]`` — मेज़बान-कोशिका और प्रति-वेल भर्ती DataFrames, जो ``src/results`` के अंतर्गत CSV में भी लिखे जाते हैं।"
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "यह भी देखें: :func:`analyze_plaques` — प्लेक-कंक/आकार का मूल्यांकन. :func:`spacr.ml.generate_ml_scores` — फ़ीचर-आधारित मशीन-लर्निंग वर्गीकरण मॉडल भर्ती अनुपात के लिए एक विकल्प के रूप में।"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

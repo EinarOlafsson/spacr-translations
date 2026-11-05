@@ -1,0 +1,49 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "context": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on laboratory microplate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every microscope field of view with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "label": "spacr.submodules.analyze_recruitment#1",
+      "source": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on plate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every field with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "source_sha256": "30b6e2a92f075d3afefdd2c0180ff0adcf272d29c86eebdc9fe58baf0d560bf8",
+      "translation": "Les sameinaðar eiginleikatöflur frumna/kjarna/sýkla/umfrymis úr spacr ``measurements.db``, merkir hverja röð með frumugerð / sýkli / meðhöndlun út frá lýsigögnum plötunnar, síar hluti eftir stærð og styrk, reiknar hlutfall meðalstyrks sýkils og umfrymis fyrir ``channel_of_interest``, flokkar eftir brunni og skrifar bæði ``results/cells.csv`` og ``results/wells.csv`` ásamt nýliðunarritum. Með ``field_qc`` skrifar fallið einnig ``results/field_qc.csv`` (hvern myndreit ásamt ástæðu þess að hann stóðst eða féll); með ``confounder_covariates`` skrifar það ``results/confounder_report.csv``; með ``adjust_covariates`` skrifar það ``results/covariate_model.csv``."
+    },
+    {
+      "context": "``field_qc`` — when True, count cells and pathogens per microscope field of view, flag crowded / sparse / over-infected microscope fields of view and drop their objects before the per-microplate sample position grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "label": "spacr.submodules.analyze_recruitment#14",
+      "source": "``field_qc`` — when True, count cells and pathogens per field, flag crowded / sparse / over-infected fields and drop their objects before the per-well grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "source_sha256": "d6f7d9dfb4c8482ac7edcc818a631d83ecba786b57e4f0d4c30c2af237158da1",
+      "translation": "``field_qc`` — ef True, eru frumur og sýklar taldir í hverjum myndreit, yfirfullir / of strjálir / ofsýktir myndreitir merktir og hlutum þeirra hent áður en flokkað er eftir brunni. Stillt með ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` og ``field_qc_columns``. Sjálfgefið False."
+    },
+    {
+      "context": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "label": "spacr.submodules.analyze_recruitment#15",
+      "source": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "source_sha256": "1e56b3900374c0ec061696d363d8da6b257d64ed39d6ec43602e01ce99826c45",
+      "translation": "``confounder_covariates`` — dálkar sem eru skimaðir sem truflunarbreytur ``recruitment`` milli gilda ``condition``. Þéttleikadálkum myndreita ``n_cells_field``, ``n_pathogens_field`` og ``pathogens_per_cell_field`` er bætt við þegar beðið er um þá."
+    },
+    {
+      "context": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per microplate sample position. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "label": "spacr.submodules.analyze_recruitment#16",
+      "source": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per well. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "source_sha256": "8089e04d2def3de9ee89737f6a997da9eb5d087ea6750d7120ff457ea96aab31",
+      "translation": "``adjust_covariates`` — dálkar sem eru aðhvarfaðir út úr ``recruitment`` (ANCOVA með sameiginlegum halla innan skilyrða), og ``recruitment_adjusted`` er bætt við fyrir hvern hlut og hvern brunn. Tilgreindu aðeins breytur sem skilyrðið veldur ekki: miðlunarbreyta (til dæmis stærð safabólu þegar spurningin er hvort stökkbrigði vaxi hægar) er fjarlægð ásamt raunverulegu áhrifunum. ``adjust_log_outcome`` líkanar lógaritma hlutfallsins."
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "Listi ``[cells, wells]`` — nýliðunar-DataFrames fyrir hýsilfrumur og brunna, einnig skrifuð sem CSV undir ``src/results``."
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "Sjá einnig: :func:`analyze_plaques` — mæling á fjölda/stærð skellna. :func:`spacr.ml.generate_ml_scores` — eiginleikabyggður flokkari sem valkostur við nýliðunarhlutföll."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,49 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on laboratory microplate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every microscope field of view with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "label": "spacr.submodules.analyze_recruitment#1",
+      "source": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on plate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every field with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "source_sha256": "30b6e2a92f075d3afefdd2c0180ff0adcf272d29c86eebdc9fe58baf0d560bf8",
+      "translation": "spacr ``measurements.db`` 에서 병합된 세포/핵/병원체/세포질 특징 테이블을 읽고, 플레이트 메타데이터를 기반으로 각 행에 세포 유형/병원체/처리 조건을 주석으로 달고, 크기와 강도로 객체를 필터링하고, ``channel_of_interest`` 에 대한 병원체 대 세포질 평균 강도 비율을 계산하고, 시료 위치별로 그룹화한 뒤 리크루트먼트 플롯과 함께 ``results/cells.csv`` 와 ``results/wells.csv`` 를 모두 기록합니다. ``field_qc`` 를 사용하면 ``results/field_qc.csv`` 도 기록하며(모든 시야와 각 시야의 통과 / 실패 사유 포함), ``confounder_covariates`` 를 사용하면 ``results/confounder_report.csv`` 를, ``adjust_covariates`` 를 사용하면 ``results/covariate_model.csv`` 를 기록합니다."
+    },
+    {
+      "context": "``field_qc`` — when True, count cells and pathogens per microscope field of view, flag crowded / sparse / over-infected microscope fields of view and drop their objects before the per-microplate sample position grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "label": "spacr.submodules.analyze_recruitment#14",
+      "source": "``field_qc`` — when True, count cells and pathogens per field, flag crowded / sparse / over-infected fields and drop their objects before the per-well grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "source_sha256": "d6f7d9dfb4c8482ac7edcc818a631d83ecba786b57e4f0d4c30c2af237158da1",
+      "translation": "``field_qc`` — True 이면 시야별로 세포와 병원체 수를 세고, 과밀하거나 너무 희소하거나 과감염된 시야를 표시한 뒤 시료 위치별 그룹화 전에 그 시야의 객체를 제거합니다. ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` 및 ``field_qc_columns`` 로 조정합니다. 기본값 False."
+    },
+    {
+      "context": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "label": "spacr.submodules.analyze_recruitment#15",
+      "source": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "source_sha256": "1e56b3900374c0ec061696d363d8da6b257d64ed39d6ec43602e01ce99826c45",
+      "translation": "``confounder_covariates`` — ``recruitment`` 의 ``condition`` 간 교란 변수로 검사할 열입니다. 요청하면 시야 밀도 열 ``n_cells_field``, ``n_pathogens_field`` 및 ``pathogens_per_cell_field`` 가 추가됩니다."
+    },
+    {
+      "context": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per microplate sample position. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "label": "spacr.submodules.analyze_recruitment#16",
+      "source": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per well. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "source_sha256": "8089e04d2def3de9ee89737f6a997da9eb5d087ea6750d7120ff457ea96aab31",
+      "translation": "``adjust_covariates`` — ``recruitment`` 에서 회귀로 제거할 열(조건 내 공통 기울기를 사용하는 ANCOVA)이며, 객체별 및 시료 위치별로 ``recruitment_adjusted`` 를 추가합니다. 조건이 유발하지 않는 변수만 나열하십시오. 매개 변수(예를 들어 돌연변이체가 더 느리게 자라는지가 질문일 때의 공포 크기)는 실제 효과와 함께 제거됩니다. ``adjust_log_outcome`` 는 로그 비율을 모델링합니다."
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "목록 ``[cells, wells]`` — 숙주 세포별 및 시료 위치별 리크루트먼트 DataFrames 이며, ``src/results`` 아래에 CSV 로도 기록됩니다."
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "또한 참조: :func:`analyze_plaques` — 플래크 계산/ 크기 평가. :func:`spacr.ml.generate_ml_scores` — 특징 기반 기계 학습 분류 모델은 고용 비율에 대한 대안입니다."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

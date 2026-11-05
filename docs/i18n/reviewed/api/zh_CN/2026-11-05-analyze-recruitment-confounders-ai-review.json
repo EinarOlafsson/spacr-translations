@@ -1,0 +1,49 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on laboratory microplate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every microscope field of view with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "label": "spacr.submodules.analyze_recruitment#1",
+      "source": "Reads the merged cell/nucleus/pathogen/cytoplasm feature tables from a spacr ``measurements.db``, annotates each row with cell type / pathogen / treatment based on plate metadata, filters objects by size and intensity, computes the pathogen-to-cytoplasm mean-intensity ratio for ``channel_of_interest``, groups by well and writes both ``results/cells.csv`` and ``results/wells.csv`` alongside recruitment plots. With ``field_qc`` it also writes ``results/field_qc.csv`` (every field with its pass / fail reason); with ``confounder_covariates`` it writes ``results/confounder_report.csv``; with ``adjust_covariates`` it writes ``results/covariate_model.csv``.",
+      "source_sha256": "30b6e2a92f075d3afefdd2c0180ff0adcf272d29c86eebdc9fe58baf0d560bf8",
+      "translation": "从 spacr ``measurements.db`` 中读取合并后的细胞/细胞核/病原体/细胞质特征表，根据板元数据为每一行标注细胞类型/病原体/处理，按大小和强度过滤对象，计算 ``channel_of_interest`` 的病原体与细胞质平均强度之比，按孔分组，并写出 ``results/cells.csv`` 和 ``results/wells.csv`` 以及募集图。设置 ``field_qc`` 时还会写出 ``results/field_qc.csv``（列出每个视野及其通过/未通过的原因）；设置 ``confounder_covariates`` 时写出 ``results/confounder_report.csv``；设置 ``adjust_covariates`` 时写出 ``results/covariate_model.csv``。"
+    },
+    {
+      "context": "``field_qc`` — when True, count cells and pathogens per microscope field of view, flag crowded / sparse / over-infected microscope fields of view and drop their objects before the per-microplate sample position grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "label": "spacr.submodules.analyze_recruitment#14",
+      "source": "``field_qc`` — when True, count cells and pathogens per field, flag crowded / sparse / over-infected fields and drop their objects before the per-well grouping. Tuned by ``field_qc_mad``, ``field_qc_min_cells``, ``field_qc_max_pathogens_per_cell`` and ``field_qc_columns``. Default False.",
+      "source_sha256": "d6f7d9dfb4c8482ac7edcc818a631d83ecba786b57e4f0d4c30c2af237158da1",
+      "translation": "``field_qc`` — 为 True 时，统计每个视野中的细胞数和病原体数，标记过度拥挤/过于稀疏/感染过度的视野，并在按孔分组之前丢弃这些视野中的对象。由 ``field_qc_mad``、``field_qc_min_cells``、``field_qc_max_pathogens_per_cell`` 和 ``field_qc_columns`` 调节。默认值为 False。"
+    },
+    {
+      "context": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "label": "spacr.submodules.analyze_recruitment#15",
+      "source": "``confounder_covariates`` — columns screened as confounders of ``recruitment`` across ``condition``. The field density columns ``n_cells_field``, ``n_pathogens_field`` and ``pathogens_per_cell_field`` are attached when requested.",
+      "source_sha256": "1e56b3900374c0ec061696d363d8da6b257d64ed39d6ec43602e01ce99826c45",
+      "translation": "``confounder_covariates`` — 作为 ``recruitment`` 在各 ``condition`` 间的混杂因素加以筛查的列。按需附加视野密度列 ``n_cells_field``、``n_pathogens_field`` 和 ``pathogens_per_cell_field``。"
+    },
+    {
+      "context": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per microplate sample position. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "label": "spacr.submodules.analyze_recruitment#16",
+      "source": "``adjust_covariates`` — columns regressed out of ``recruitment`` (pooled within-condition ANCOVA), adding ``recruitment_adjusted`` per object and per well. Only list variables the condition does not cause: a mediator (for example vacuole size when the question is whether a mutant grows slower) is removed together with the true effect. ``adjust_log_outcome`` models the log ratio.",
+      "source_sha256": "8089e04d2def3de9ee89737f6a997da9eb5d087ea6750d7120ff457ea96aab31",
+      "translation": "``adjust_covariates`` — 从 ``recruitment`` 中回归去除的列（合并条件内 ANCOVA），并为每个对象和每个孔添加 ``recruitment_adjusted``。只应列出不由条件引起的变量：中介变量（例如当问题是某突变体是否生长更慢时的液泡大小）会连同真实效应一起被去除。``adjust_log_outcome`` 对比率的对数建模。"
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "列表 ``[cells, wells]``——按宿主细胞和按孔的募集 DataFrames，同时以 CSV 格式写入 ``src/results``。"
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "此外,请参见: :func:`analyze_plaques` - 平板计算/尺寸评估. :func:`spacr.ml.generate_ml_scores` — 基于特征的机械学习分类模型作为招聘比例的替代品。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

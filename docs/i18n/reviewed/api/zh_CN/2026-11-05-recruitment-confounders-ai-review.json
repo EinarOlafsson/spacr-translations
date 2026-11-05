@@ -1,0 +1,357 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Microscope field of view quality control and confounder adjustment for image-based readouts.",
+      "label": "spacr.recruitment_confounders#0",
+      "source": "Field quality control and confounder adjustment for image-based readouts.",
+      "source_sha256": "fc09eef44a830571f9d3ba0018107ca270427e0f311361efc9dd02a104909345",
+      "translation": "针对基于图像的读出值的视野质量控制和混杂因素校正。"
+    },
+    {
+      "context": "A recruitment ratio (or a vacuole size) measured per object is not only a function of the condition in the microplate sample position. It also moves with things the experimenter did not set on purpose: how crowded the microscope field of view was, how many parasites landed in it, how large the host cell is, how bright the parasite marker is (spectral spill-over into the readout channel), where on the laboratory microplate the microplate sample position sits. When such a variable differs between the conditions being compared *and* moves the readout inside a condition, it confounds the comparison.",
+      "label": "spacr.recruitment_confounders#1",
+      "source": "A recruitment ratio (or a vacuole size) measured per object is not only a function of the condition in the well. It also moves with things the experimenter did not set on purpose: how crowded the field was, how many parasites landed in it, how large the host cell is, how bright the parasite marker is (spectral spill-over into the readout channel), where on the plate the well sits. When such a variable differs between the conditions being compared *and* moves the readout inside a condition, it confounds the comparison.",
+      "source_sha256": "4d4ed259a3c33ce22f2395882bde43a9e7ed7ca5670eab1d1afc56123db0779f",
+      "translation": "按对象测得的募集比率（或液泡大小）并不仅仅是孔中条件的函数。它还会随实验者并非有意设定的因素而变化：视野有多拥挤、其中落入了多少寄生虫、宿主细胞有多大、寄生虫标记物有多亮（光谱串扰进入读出通道）、孔位于板上的什么位置。当这样一个变量在被比较的条件之间存在差异，*并且*在同一条件内使读出值发生变化时，它就会混杂这一比较。"
+    },
+    {
+      "context": "This module does three things, in the order an analysis needs them:",
+      "label": "spacr.recruitment_confounders#2",
+      "source": "This module does three things, in the order an analysis needs them:",
+      "source_sha256": "2868f11b113466f32e55239b3b6161aff8f926a0987d0b8a26bb72d88b5c32dd",
+      "translation": "本模块按分析所需的顺序完成三件事："
+    },
+    {
+      "context": "``field_density`` / ``flag_crowded_fields`` Count host cells and parasites per imaged microscope field of view straight from ``measurements.db`` and flag microscope fields of view that are crowded beyond a robust (median + k·MAD) limit, have too few host cells to be informative, or carry too many parasites per host cell. Over-infected microscope fields of view are where vacuoles fuse, masks merge and host cells lyse, so they are excluded, not adjusted.",
+      "label": "spacr.recruitment_confounders#3",
+      "source": "``field_density`` / ``flag_crowded_fields`` Count host cells and parasites per imaged field straight from ``measurements.db`` and flag fields that are crowded beyond a robust (median + k·MAD) limit, have too few host cells to be informative, or carry too many parasites per host cell. Over-infected fields are where vacuoles fuse, masks merge and host cells lyse, so they are excluded, not adjusted.",
+      "source_sha256": "51f86ff8242f44cf9d1eaa332e3847e53aba58ea7b2f94c3eee3ae47cb75dbd3",
+      "translation": "``field_density`` / ``flag_crowded_fields`` 直接从 ``measurements.db`` 统计每个成像视野中的宿主细胞和寄生虫数量，并标记以下视野：拥挤程度超过稳健（median + k·MAD）上限的视野、宿主细胞过少而无法提供信息的视野，或每个宿主细胞中寄生虫过多的视野。过度感染的视野中液泡会融合、掩膜会合并、宿主细胞会裂解，因此这些视野被排除，而不是被校正。"
+    },
+    {
+      "context": "``confounder_report`` For each candidate covariate: its within-condition slope on the outcome (condition fixed effects, so a difference *between* conditions is not mistaken for a slope), and how unevenly it is distributed across conditions (eta squared). A covariate is a likely confounder when both are non-trivial.",
+      "label": "spacr.recruitment_confounders#4",
+      "source": "``confounder_report`` For each candidate covariate: its within-condition slope on the outcome (condition fixed effects, so a difference *between* conditions is not mistaken for a slope), and how unevenly it is distributed across conditions (eta squared). A covariate is a likely confounder when both are non-trivial.",
+      "source_sha256": "f8d62f49f0390ce8a206af492e267d13bcf07278509bec387247123617497c3f",
+      "translation": "``confounder_report`` 对每个候选协变量给出：它在条件内对结果变量的斜率（采用条件固定效应，因此不会把条件*之间*的差异误认为斜率），以及它在各条件间分布的不均衡程度（eta squared）。当两者都不可忽略时，该协变量很可能是混杂因素。"
+    },
+    {
+      "context": "``adjust_for_covariates`` ANCOVA-style adjustment with a pooled within-condition slope: ``y = alpha_condition + sum_k beta_k * z_k``, where ``z_k`` are the covariates standardised over all rows. The adjusted value is ``y - sum_k beta_k * z_k``, i.e. every object is moved to the grand mean of every covariate. Because the slopes are estimated within conditions, the adjustment cannot absorb a true condition effect into a covariate; it only removes the part of the difference explained by covariate imbalance.",
+      "label": "spacr.recruitment_confounders#5",
+      "source": "``adjust_for_covariates`` ANCOVA-style adjustment with a pooled within-condition slope: ``y = alpha_condition + sum_k beta_k * z_k``, where ``z_k`` are the covariates standardised over all rows. The adjusted value is ``y - sum_k beta_k * z_k``, i.e. every object is moved to the grand mean of every covariate. Because the slopes are estimated within conditions, the adjustment cannot absorb a true condition effect into a covariate; it only removes the part of the difference explained by covariate imbalance.",
+      "source_sha256": "01f321882990b464a7538b7772c996480980394d9c96d070a88ed4e7a450e834",
+      "translation": "``adjust_for_covariates`` 采用合并条件内斜率的 ANCOVA 式校正：``y = alpha_condition + sum_k beta_k * z_k``，其中 ``z_k`` 是在所有行上标准化后的协变量。校正值为 ``y - sum_k beta_k * z_k``，即把每个对象移到每个协变量的总均值处。由于斜率是在条件内估计的，校正不会把真实的条件效应吸收到协变量中；它只去除差异中由协变量不平衡所解释的部分。"
+    },
+    {
+      "context": "Only adjust for variables the condition does not itself cause. A variable on the causal path (a mediator) - for example vacuole size when the question is whether a mutant grows slower - is removed together with the effect it carries. ``confounder_report`` cannot tell the two apart; that decision belongs to the experimenter.",
+      "label": "spacr.recruitment_confounders#6",
+      "source": "Only adjust for variables the condition does not itself cause. A variable on the causal path (a mediator) - for example vacuole size when the question is whether a mutant grows slower - is removed together with the effect it carries. ``confounder_report`` cannot tell the two apart; that decision belongs to the experimenter.",
+      "source_sha256": "63912a2d79a44e5a23c3c11bff3bec3b21463dd71d057caf8787739890aeeb02",
+      "translation": "只应针对不由条件本身引起的变量进行校正。位于因果路径上的变量（中介变量）——例如当问题是某突变体是否生长更慢时的液泡大小——会连同它所承载的效应一起被去除。``confounder_report`` 无法区分这两者；这一判断属于实验者。"
+    },
+    {
+      "context": "All functions are pure pandas/numpy and do not modify their input.",
+      "label": "spacr.recruitment_confounders#7",
+      "source": "All functions are pure pandas/numpy and do not modify their input.",
+      "source_sha256": "ae42c52c5a6ca413f9a5e00862d3282f99ccc81d9eb0e3ba365a6b193803ed18",
+      "translation": "所有函数都是纯 pandas/numpy 实现，不会修改其输入。"
+    },
+    {
+      "context": "Remove the covariate-explained part of ``outcome`` (pooled within-group ANCOVA).",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#0",
+      "source": "Remove the covariate-explained part of ``outcome`` (pooled within-group ANCOVA).",
+      "source_sha256": "e6fcff3043d360dee38bc99f563a5d563e97e4868f43d1c3a2c28950a254c9d7",
+      "translation": "去除 ``outcome`` 中由协变量解释的部分（合并组内 ANCOVA）。"
+    },
+    {
+      "context": "Fits ``outcome ~ group + z_1 + ... + z_k`` jointly, with every covariate standardised over all rows, and returns ``adjusted = outcome - sum_k beta_k * z_k`` (on the log scale when ``log_outcome``, back-transformed afterwards). Each row is thereby moved to the grand mean of every covariate; the condition means of the adjusted column are the ANCOVA adjusted means.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#1",
+      "source": "Fits ``outcome ~ group + z_1 + ... + z_k`` jointly, with every covariate standardised over all rows, and returns ``adjusted = outcome - sum_k beta_k * z_k`` (on the log scale when ``log_outcome``, back-transformed afterwards). Each row is thereby moved to the grand mean of every covariate; the condition means of the adjusted column are the ANCOVA adjusted means.",
+      "source_sha256": "20dd1a4225cf0b4c4ae8acb73ce3ce6e01868f7480df7632f1be6a67f4564fd1",
+      "translation": "在所有协变量均于全部行上标准化的情况下联合拟合 ``outcome ~ group + z_1 + ... + z_k``，并返回 ``adjusted = outcome - sum_k beta_k * z_k``（当 ``log_outcome`` 时在 log 尺度上计算，之后再反变换）。由此每一行都被移到每个协变量的总均值处；校正后列的各条件均值即为 ANCOVA 校正均值。"
+    },
+    {
+      "context": "Rows with a missing outcome or covariate keep ``NaN`` in the adjusted column.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#2",
+      "source": "Rows with a missing outcome or covariate keep ``NaN`` in the adjusted column.",
+      "source_sha256": "1694b77f47b39c0360e97a04f3618c3c58bac171f34d8f798bd0ee9ab7acce3f",
+      "translation": "结果变量或协变量缺失的行在校正后的列中保持为 ``NaN``。"
+    },
+    {
+      "context": "object-level frame.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#3",
+      "source": "object-level frame.",
+      "source_sha256": "1518d3e20572e991fd722ee2cb8dd4d1f3cf86290dbb7889071f64933594464f",
+      "translation": "对象级数据框。"
+    },
+    {
+      "context": "readout column to adjust, e.g. ``'recruitment'``.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#4",
+      "source": "readout column to adjust, e.g. ``'recruitment'``.",
+      "source_sha256": "dbae4ca08704426c80e205b7293f4d84c8c810bf4a95b218eaa95234aa49e3e9",
+      "translation": "要校正的读出值列，例如 ``'recruitment'``。"
+    },
+    {
+      "context": "condition column; the slopes are pooled within it.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#5",
+      "source": "condition column; the slopes are pooled within it.",
+      "source_sha256": "10e5ca20381d16618eb4b845f4392f9c7478c5af11d808bc22697100114333ec",
+      "translation": "条件列；斜率在其内部合并。"
+    },
+    {
+      "context": "columns to regress out; columns absent from ``df`` are skipped.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#6",
+      "source": "columns to regress out; columns absent from ``df`` are skipped.",
+      "source_sha256": "4756b119d04236544f575683bfb8bb0574a8d46f1c6c143b2261bb29e4670e4a",
+      "translation": "要通过回归去除其影响的列；``df`` 中不存在的列会被跳过。"
+    },
+    {
+      "context": "adjust ``log(outcome)`` and back-transform.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#7",
+      "source": "adjust ``log(outcome)`` and back-transform.",
+      "source_sha256": "8176d6de627bc36dc9fda8232fb08ec0a313d2100eaca59c6ed943a1bc4876fe",
+      "translation": "对 ``log(outcome)`` 进行校正，然后反变换回原始尺度。"
+    },
+    {
+      "context": "``True`` (all), ``False`` (none) or a list of covariates to ``log1p`` before standardising.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#8",
+      "source": "``True`` (all), ``False`` (none) or a list of covariates to ``log1p`` before standardising.",
+      "source_sha256": "dd8bce96cce9bbc617e7118b6bfe8f3d5fccd866fb19d7f4e64064233c7311bb",
+      "translation": "``True``（全部）、``False``（无）或在标准化之前要进行 ``log1p`` 变换的协变量列表。"
+    },
+    {
+      "context": "name of the adjusted column; ``None`` names it ``f'{outcome}_adjusted'``.",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#9",
+      "source": "name of the adjusted column; ``None`` names it ``f'{outcome}_adjusted'``.",
+      "source_sha256": "f884b711caaa7fe8d37edb84755462924bf8062f26352566a3c3166280181b20",
+      "translation": "校正后列的名称；为 ``None`` 时命名为 ``f'{outcome}_adjusted'``。"
+    },
+    {
+      "context": "``(frame, model)`` - a copy of ``df`` with ``out_column`` (default ``f'{outcome}_adjusted'``) added, and a table of the fitted slopes (``covariate``, ``beta_per_sd``, ``se``, ``t``, ``mean``, ``sd``, ``n``).",
+      "label": "spacr.recruitment_confounders.adjust_for_covariates#10",
+      "source": "``(frame, model)`` - a copy of ``df`` with ``out_column`` (default ``f'{outcome}_adjusted'``) added, and a table of the fitted slopes (``covariate``, ``beta_per_sd``, ``se``, ``t``, ``mean``, ``sd``, ``n``).",
+      "source_sha256": "c0b4594916f5854d55588835fbcccca63c7c026a86b198de53afbac5662bfd0b",
+      "translation": "``(frame, model)`` - ``df`` 的副本（添加了 ``out_column`` 列，默认 ``f'{outcome}_adjusted'``），以及拟合斜率表（``covariate``、``beta_per_sd``、``se``、``t``、``mean``、``sd``、``n``）。"
+    },
+    {
+      "context": "Attach per-microscope field of view density columns to object rows and drop failed microscope fields of view.",
+      "label": "spacr.recruitment_confounders.apply_field_qc#0",
+      "source": "Attach per-field density columns to object rows and drop failed fields.",
+      "source_sha256": "1047aba6c9a181955ec182155d23c500c1c60a553276f1a257b52ffbc37f6483",
+      "translation": "将每个视野的密度列附加到对象行上，并丢弃未通过的视野。"
+    },
+    {
+      "context": "object-level frame with the :data:`FIELD_KEYS` columns.",
+      "label": "spacr.recruitment_confounders.apply_field_qc#1",
+      "source": "object-level frame with the :data:`FIELD_KEYS` columns.",
+      "source_sha256": "a66ce3983c17675df230e3737e56c4944632132cd48f35b2afd6300713e1a523",
+      "translation": "包含 :data:`FIELD_KEYS` 列的对象级数据框。"
+    },
+    {
+      "context": "output of :func:`flag_crowded_fields`.",
+      "label": "spacr.recruitment_confounders.apply_field_qc#2",
+      "source": "output of :func:`flag_crowded_fields`.",
+      "source_sha256": "1442dcbabb9edacc74ebe0381236565efb547509bd8662e74d542babe02b45b3",
+      "translation": ":func:`flag_crowded_fields` 的输出。"
+    },
+    {
+      "context": "microscope field of view columns to copy onto every object row.",
+      "label": "spacr.recruitment_confounders.apply_field_qc#3",
+      "source": "field columns to copy onto every object row.",
+      "source_sha256": "8749e2b383168b90201862706cfd9ab6aa0c8c49ba9d5e0bb299b2d282300098",
+      "translation": "要复制到每个对象行上的视野列。"
+    },
+    {
+      "context": "remove rows from fields where ``field_qc_pass`` is False.",
+      "label": "spacr.recruitment_confounders.apply_field_qc#4",
+      "source": "remove rows from fields where ``field_qc_pass`` is False.",
+      "source_sha256": "0f3ea6d274f42f842eb4a45b94d89cfca1defbe5dd8d76d39bda824092d54dc5",
+      "translation": "移除 ``field_qc_pass`` 为 False 的视野中的行。"
+    },
+    {
+      "context": "a new frame; rows from fields absent from ``fields`` are kept and marked as passing (nothing is known against them).",
+      "label": "spacr.recruitment_confounders.apply_field_qc#5",
+      "source": "a new frame; rows from fields absent from ``fields`` are kept and marked as passing (nothing is known against them).",
+      "source_sha256": "2bd8061ecb1a66e6a4f03af0a4b225eedc6a2a0fd3333b0f4114a4dd9dd7cdf2",
+      "translation": "一个新的数据框；来自 ``fields`` 中不存在的视野的行会被保留并标记为通过（没有任何已知的不利信息）。"
+    },
+    {
+      "context": "Screen candidate covariates for confounding of ``outcome`` across ``group``.",
+      "label": "spacr.recruitment_confounders.confounder_report#0",
+      "source": "Screen candidate covariates for confounding of ``outcome`` across ``group``.",
+      "source_sha256": "ecef9e7448bd9fe6292d4358f3b3675c526fbb75fcf4be816e2383c616e699a6",
+      "translation": "筛查候选协变量是否使 ``outcome`` 在 ``group`` 之间产生混杂。"
+    },
+    {
+      "context": "Each covariate is fitted on its own (``outcome ~ group + z``), which answers \"does this variable move the readout inside a condition?\" without the answer depending on which other covariates were offered.",
+      "label": "spacr.recruitment_confounders.confounder_report#1",
+      "source": "Each covariate is fitted on its own (``outcome ~ group + z``), which answers \"does this variable move the readout inside a condition?\" without the answer depending on which other covariates were offered.",
+      "source_sha256": "894d78c41a8953a441658386f1194acab61da5d11caf30986fd9e160dfd90549",
+      "translation": "每个协变量单独拟合（``outcome ~ group + z``），以回答“这个变量是否会在同一条件内使读出值发生变化？”，且答案不取决于同时提供了哪些其他协变量。"
+    },
+    {
+      "context": "object-level frame.",
+      "label": "spacr.recruitment_confounders.confounder_report#2",
+      "source": "object-level frame.",
+      "source_sha256": "1518d3e20572e991fd722ee2cb8dd4d1f3cf86290dbb7889071f64933594464f",
+      "translation": "对象级数据框。"
+    },
+    {
+      "context": "readout column, e.g. ``'recruitment'``.",
+      "label": "spacr.recruitment_confounders.confounder_report#3",
+      "source": "readout column, e.g. ``'recruitment'``.",
+      "source_sha256": "ba2915669091f45a6dc7c0136ac603576449349181d90490ab5804c33df67ce3",
+      "translation": "读出值列，例如 ``'recruitment'``。"
+    },
+    {
+      "context": "condition column; slopes are estimated within it.",
+      "label": "spacr.recruitment_confounders.confounder_report#4",
+      "source": "condition column; slopes are estimated within it.",
+      "source_sha256": "9fb1f21aa50c696472185e3a4b92b0ecd70b277ca123747c4ff72c60ba08bbda",
+      "translation": "条件列；斜率在其内部估计。"
+    },
+    {
+      "context": "candidate confounder columns.",
+      "label": "spacr.recruitment_confounders.confounder_report#5",
+      "source": "candidate confounder columns.",
+      "source_sha256": "33d5054a5c5a14373d71c264f1eed6de97beb4d1264fe73fa46f05c58a036a37",
+      "translation": "候选混杂因素列。"
+    },
+    {
+      "context": "model ``log(outcome)`` (ratios and areas are multiplicative).",
+      "label": "spacr.recruitment_confounders.confounder_report#6",
+      "source": "model ``log(outcome)`` (ratios and areas are multiplicative).",
+      "source_sha256": "8b0e8ced50476a7eaabaaf171fbd38b1fd2cd4ae7157fd27c2ca334a8d3752d7",
+      "translation": "对 ``log(outcome)`` 建模（比率和面积是乘性的）。"
+    },
+    {
+      "context": "``True`` (all), ``False`` (none) or a list of covariates to ``log1p`` before standardising.",
+      "label": "spacr.recruitment_confounders.confounder_report#7",
+      "source": "``True`` (all), ``False`` (none) or a list of covariates to ``log1p`` before standardising.",
+      "source_sha256": "dd8bce96cce9bbc617e7118b6bfe8f3d5fccd866fb19d7f4e64064233c7311bb",
+      "translation": "``True``（全部）、``False``（无）或在标准化之前要进行 ``log1p`` 变换的协变量列表。"
+    },
+    {
+      "context": "smallest within-condition effect per SD (on the modelled scale) counted as relevant. 0.02 on a log scale is ~2 %.",
+      "label": "spacr.recruitment_confounders.confounder_report#8",
+      "source": "smallest within-condition effect per SD (on the modelled scale) counted as relevant. 0.02 on a log scale is ~2 %.",
+      "source_sha256": "f256919c8c3dd8e06d74f645d6803370429588bdda011a4b00af2075d11d90a1",
+      "translation": "被视为相关的每 SD 最小条件内效应（在建模尺度上）。在 log 尺度上 0.02 为 ~2 %。"
+    },
+    {
+      "context": "smallest between-condition imbalance counted as relevant.",
+      "label": "spacr.recruitment_confounders.confounder_report#9",
+      "source": "smallest between-condition imbalance counted as relevant.",
+      "source_sha256": "93e4ce4becfec980b61a24b92ddb4f29e66169331f5616e21dc611afd1ca9b61",
+      "translation": "被视为相关的最小条件间不平衡。"
+    },
+    {
+      "context": "one row per covariate - ``beta_per_sd``, ``se``, ``t``, ``imbalance_eta2`` (share of the covariate's variance explained by ``group``), ``bias_proxy`` (``|beta| * sqrt(eta2)``, the shift the covariate can induce between conditions, in outcome units per SD) and ``likely_confounder``. Sorted by ``bias_proxy``.",
+      "label": "spacr.recruitment_confounders.confounder_report#10",
+      "source": "one row per covariate - ``beta_per_sd``, ``se``, ``t``, ``imbalance_eta2`` (share of the covariate's variance explained by ``group``), ``bias_proxy`` (``|beta| * sqrt(eta2)``, the shift the covariate can induce between conditions, in outcome units per SD) and ``likely_confounder``. Sorted by ``bias_proxy``.",
+      "source_sha256": "1fd3f00a00e11ec9b742a90a724519c48ddef273c04d71a0a66583a437cedb13",
+      "translation": "每个协变量一行——``beta_per_sd``、``se``、``t``、``imbalance_eta2``（协变量方差中由 ``group`` 解释的比例）、``bias_proxy``（``|beta| * sqrt(eta2)``，即该协变量可在条件之间引起的偏移，以每 SD 的结果单位表示）以及 ``likely_confounder``。按 ``bias_proxy`` 排序。"
+    },
+    {
+      "context": "Count host cells and parasites in every imaged microscope field of view of a laboratory microplate.",
+      "label": "spacr.recruitment_confounders.field_density#0",
+      "source": "Count host cells and parasites in every imaged field of a plate.",
+      "source_sha256": "21ae8e72f1119507f9d28ecedfe66edd489097eef68334ecee1c19398c5c8089",
+      "translation": "统计一块板上每个成像视野中的宿主细胞和寄生虫数量。"
+    },
+    {
+      "context": "path to a spacr ``measurements.db``.",
+      "label": "spacr.recruitment_confounders.field_density#1",
+      "source": "path to a spacr ``measurements.db``.",
+      "source_sha256": "87e15f4befab3513047b13ad39682c0a6bdeabb000ce1d9174fbd2712f8eec22",
+      "translation": "spacr ``measurements.db`` 的路径。"
+    },
+    {
+      "context": "table holding one row per host cell (or per object to count, e.g. the vacuole table of a replication laboratory microplate).",
+      "label": "spacr.recruitment_confounders.field_density#2",
+      "source": "table holding one row per host cell (or per object to count, e.g. the vacuole table of a replication plate).",
+      "source_sha256": "8c755151cdd51ee391ba789d3be56c8fa87af1a6b06839e66ce79150c7377116",
+      "translation": "每个宿主细胞占一行的表（或每个待计数对象占一行，例如复制实验板的液泡表）。"
+    },
+    {
+      "context": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "label": "spacr.recruitment_confounders.field_density#3",
+      "source": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "source_sha256": "703597f92013dbc9142fc73fbbd57c94a522d4eded565582117738e29fe9867f",
+      "translation": "每个寄生虫 / 液泡占一行的表，或设为 ``None`` 以只统计 ``cell_table``。"
+    },
+    {
+      "context": "one row per field with ``n_cells_field``, ``n_pathogens_field``, ``n_pathogens_in_cells_field`` (pathogens assigned to a host cell) and ``pathogens_per_cell_field``.",
+      "label": "spacr.recruitment_confounders.field_density#4",
+      "source": "one row per field with ``n_cells_field``, ``n_pathogens_field``, ``n_pathogens_in_cells_field`` (pathogens assigned to a host cell) and ``pathogens_per_cell_field``.",
+      "source_sha256": "8f3cd731020bf2754d1f9e7b97aa93431f783941a27786462c8943b4ffe4cfcf",
+      "translation": "每个视野一行，包含 ``n_cells_field``、``n_pathogens_field``、``n_pathogens_in_cells_field``（分配给某个宿主细胞的病原体）和 ``pathogens_per_cell_field``。"
+    },
+    {
+      "context": "Flag imaged fields that are over-crowded or too sparse to use.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#0",
+      "source": "Flag imaged fields that are over-crowded or too sparse to use.",
+      "source_sha256": "6bb37c7c83347fcf8ae31fda54d8b5f4be2e8c90e3aeb056ca3fd5212b38c9f5",
+      "translation": "标记过度拥挤或过于稀疏而无法使用的成像视野。"
+    },
+    {
+      "context": "A microscope field of view fails when any of ``columns`` exceeds ``median + mad_threshold * MAD`` (computed per ``by`` group, i.e. per laboratory microplate), when it has fewer than ``min_cells`` host cells, or when its parasites-per-cell exceeds ``max_pathogens_per_cell``. The robust limit adapts to each laboratory microplate's own infection level, so a laboratory microplate infected at a higher MOI is not emptied.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#1",
+      "source": "A field fails when any of ``columns`` exceeds ``median + mad_threshold * MAD`` (computed per ``by`` group, i.e. per plate), when it has fewer than ``min_cells`` host cells, or when its parasites-per-cell exceeds ``max_pathogens_per_cell``. The robust limit adapts to each plate's own infection level, so a plate infected at a higher MOI is not emptied.",
+      "source_sha256": "b1caaa1fe85519c6655ed8be51ef9458907735d35eafa1237739cf5a80722eb9",
+      "translation": "当 ``columns`` 中任一列超过 ``median + mad_threshold * MAD``（按 ``by`` 分组计算，即按板计算）、宿主细胞少于 ``min_cells`` 个，或每细胞寄生虫数超过 ``max_pathogens_per_cell`` 时，该视野判为未通过。稳健上限会适应每块板自身的感染水平，因此以更高 MOI 感染的板不会被清空。"
+    },
+    {
+      "context": "output of :func:`field_density`, one row per field.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#2",
+      "source": "output of :func:`field_density`, one row per field.",
+      "source_sha256": "d68cb74774359baa0041e2938ad0b6388eb510df91298ae0ed80bc35b7ecc550",
+      "translation": ":func:`field_density` 的输出，每个视野一行。"
+    },
+    {
+      "context": "robust standard deviations above the median at which a field fails; ``None`` skips the robust limit.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#3",
+      "source": "robust standard deviations above the median at which a field fails; ``None`` skips the robust limit.",
+      "source_sha256": "8c28052f3164fafa453fb39d093d175f9d53f13afc0dbbad03c6e98dc02d5e2d",
+      "translation": "高于中位数多少个稳健标准差时视野判为未通过；``None`` 表示跳过稳健上限。"
+    },
+    {
+      "context": "field columns tested against the robust limit.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#4",
+      "source": "field columns tested against the robust limit.",
+      "source_sha256": "5054299b45b0808cd58a3cb73c645b6986ab4c7bed03a1d7e65385c1e948d67b",
+      "translation": "与稳健上限进行比较检验的视野列。"
+    },
+    {
+      "context": "fewest host cells a field may hold; ``None`` skips it.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#5",
+      "source": "fewest host cells a field may hold; ``None`` skips it.",
+      "source_sha256": "50dc7aa3b702c1dfc6aab72f5b589b3ca6ac83702a2dccf8613a2ae11855a988",
+      "translation": "一个视野至少应包含的宿主细胞数；``None`` 表示跳过此项检查。"
+    },
+    {
+      "context": "absolute ceiling on parasites per host cell; ``None`` sets no ceiling.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#6",
+      "source": "absolute ceiling on parasites per host cell; ``None`` sets no ceiling.",
+      "source_sha256": "f7d6adf87cda7b2e33b37025e63dd4e35270f689952879d02250a4a706927ddb",
+      "translation": "每个宿主细胞寄生虫数的绝对上限；``None`` 表示不设上限。"
+    },
+    {
+      "context": "column whose groups get their own limit, normally the laboratory microplate; ``None`` uses one limit for all microscope fields of view.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#7",
+      "source": "column whose groups get their own limit, normally the plate; ``None`` uses one limit for all fields.",
+      "source_sha256": "92c4892ee98a5e97d7024d5368ac24467fb95760a29e95e62fba4b0d27ecc74a",
+      "translation": "其每个分组各自获得独立上限的列，通常为板；``None`` 表示所有视野使用同一个上限。"
+    },
+    {
+      "context": "``fields`` plus ``field_qc_pass`` (bool), ``field_qc_reason`` (``''`` when passing, ``;``-joined reasons otherwise) and one ``limit_<column>`` column per robust limit applied.",
+      "label": "spacr.recruitment_confounders.flag_crowded_fields#8",
+      "source": "``fields`` plus ``field_qc_pass`` (bool), ``field_qc_reason`` (``''`` when passing, ``;``-joined reasons otherwise) and one ``limit_<column>`` column per robust limit applied.",
+      "source_sha256": "3d35da8af1ceaa0cb4b8563c8aef921c8a0886495ad7f696e12ed3f1e2ead42f",
+      "translation": "``fields`` 加上 ``field_qc_pass``（bool）、``field_qc_reason``（通过时为 ``''``，否则为以 ``;`` 连接的原因）以及每个所应用的稳健上限对应的一个 ``limit_<column>`` 列。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

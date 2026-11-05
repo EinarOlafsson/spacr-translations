@@ -1,0 +1,1196 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Two methods are alpha (feature item 770): ``tvn`` (typical variation normalisation, a whitening fitted on the negative controls) and ``harmony`` (Harmony integration of a PCA embedding, through the optional ``harmonypy`` package). ``harmony`` returns an *embedding*, not the input features.",
+      "label": "spacr.batch_correction#2",
+      "source": "Two methods are alpha (feature item 770): ``tvn`` (typical variation normalisation, a whitening fitted on the negative controls) and ``harmony`` (Harmony integration of a PCA embedding, through the optional ``harmonypy`` package). ``harmony`` returns an *embedding*, not the input features.",
+      "source_sha256": "8844ee4c32101ca94db21a020448d87483c9d39cf629c9d3345415cece08ea96",
+      "translation": "有两种方法处于 alpha 阶段（功能条目 770）：``tvn``（典型变异归一化，一种在阴性对照上拟合的白化）和 ``harmony``（通过可选的 ``harmonypy`` 包对 PCA 嵌入进行 Harmony 整合）。``harmony`` 返回的是一个*嵌入*，而不是输入特征。"
+    },
+    {
+      "context": "Methods that return a corrected embedding instead of the input features.",
+      "label": "spacr.batch_correction.EMBEDDING_METHODS#0",
+      "source": "Methods that return a corrected embedding instead of the input features.",
+      "source_sha256": "d9de66371503f0c510044054daa74556a62446e86ed076c715a487bf863b3600",
+      "translation": "返回校正后嵌入而非输入特征的方法。"
+    },
+    {
+      "context": "They are API-only: the GUI application views write corrected values back into named feature columns, so their batch_correction dropdowns offer ``set(METHODS) - set(EMBEDDING_METHODS)``.",
+      "label": "spacr.batch_correction.EMBEDDING_METHODS#1",
+      "source": "They are API-only: the GUI screens write corrected values back into named feature columns, so their batch_correction dropdowns offer ``set(METHODS) - set(EMBEDDING_METHODS)``.",
+      "source_sha256": "bb4868e081e837f3f2078209e1133cdd54ff2c498dcb3c40a43f3602c86da5f8",
+      "translation": "它们仅限 API 使用：GUI 界面会把校正后的值写回具名特征列，因此其 batch_correction 下拉菜单提供的是 ``set(METHODS) - set(EMBEDDING_METHODS)``。"
+    },
+    {
+      "context": "Error text reported as an exception when ``harmony`` is requested without ``harmonypy``.",
+      "label": "spacr.batch_correction.HARMONY_MISSING_MESSAGE#0",
+      "source": "Error text raised when ``harmony`` is requested without ``harmonypy``.",
+      "source_sha256": "4f8ed6fd949992a61512b19773d8ee02bf1645d87d8be9eca207945996e9b6dd",
+      "translation": "请求 ``harmony`` 但未安装 ``harmonypy`` 时抛出的错误文本。"
+    },
+    {
+      "context": "Where ``tvn`` fits its whitening: on all controls, or per batch.",
+      "label": "spacr.batch_correction.TVN_SCOPES#0",
+      "source": "Where ``tvn`` fits its whitening: on all controls, or per batch.",
+      "source_sha256": "1779f285b377c5a2b579e76e4accfdcdb2ebb0494686e4d7dbc69efd5c31874d",
+      "translation": "``tvn`` 拟合其白化的范围：在全部对照上，或按批次。"
+    },
+    {
+      "context": "Whitening transforms accepted by ``tvn`` (pycytominer ``Spherize`` names).",
+      "label": "spacr.batch_correction.TVN_WHITENINGS#0",
+      "source": "Whitening transforms accepted by ``tvn`` (pycytominer ``Spherize`` names).",
+      "source_sha256": "01ccc34fc3d0998cb6af739609cd9af90b42ad442a71b50a5bb5b7817b3698c7",
+      "translation": "``tvn`` 接受的白化变换（pycytominer ``Spherize`` 名称）。"
+    },
+    {
+      "context": "``tvn`` (alpha) is typical variation normalisation (Ando et al. 2017). With ``tvn_center_batches`` each batch is first centred on the median of its reference controls; :func:`spherize_features` then whitens every row with a transform fitted on the controls, once on all of them (``tvn_scope=\"global\"``) or per batch (``\"batch\"``). Like ``control_center`` it needs ``control`` and ``control_values``.",
+      "label": "spacr.batch_correction.correct_batch_effects#4",
+      "source": "``tvn`` (alpha) is typical variation normalisation (Ando et al. 2017). With ``tvn_center_batches`` each batch is first centred on the median of its reference controls; :func:`spherize_features` then whitens every row with a transform fitted on the controls, once on all of them (``tvn_scope=\"global\"``) or per batch (``\"batch\"``). Like ``control_center`` it needs ``control`` and ``control_values``.",
+      "source_sha256": "5aab53635305bbefd4178d39e3d32f6eba4bcfbff5483dd565fa901e0a6f5a4e",
+      "translation": "``tvn``（alpha）是典型变异归一化（Ando et al. 2017）。启用 ``tvn_center_batches`` 时，每个批次先以其参考对照的中位数为中心进行居中；随后 :func:`spherize_features` 用在对照上拟合的变换对每一行进行白化，可以在全部对照上拟合一次（``tvn_scope=\"global\"``），也可以按批次拟合（``\"batch\"``）。与 ``control_center`` 一样，它需要 ``control`` 和 ``control_values``。"
+    },
+    {
+      "context": "``harmony`` (alpha) integrates a PCA embedding with Harmony (Korsunsky et al. 2019) through the optional ``harmonypy`` package; see :func:`harmony_embedding`. It returns the corrected **embedding** (columns ``harmony_1 ...``), not the input features, so a caller that needs named features must use another method.",
+      "label": "spacr.batch_correction.correct_batch_effects#5",
+      "source": "``harmony`` (alpha) integrates a PCA embedding with Harmony (Korsunsky et al. 2019) through the optional ``harmonypy`` package; see :func:`harmony_embedding`. It returns the corrected **embedding** (columns ``harmony_1 ...``), not the input features, so a caller that needs named features must use another method.",
+      "source_sha256": "606a8b21763a198fe74a7414e752d6f34e85cb225b0cc848a523b50e15f19677",
+      "translation": "``harmony``（alpha）通过可选的 ``harmonypy`` 包，用 Harmony（Korsunsky et al. 2019）整合 PCA 嵌入；参见 :func:`harmony_embedding`。它返回校正后的**嵌入**（列 ``harmony_1 ...``），而不是输入特征，因此需要具名特征的调用方必须使用其他方法。"
+    },
+    {
+      "context": "numeric feature DataFrame; metadata must not be included.",
+      "label": "spacr.batch_correction.correct_batch_effects#6",
+      "source": "numeric feature DataFrame; metadata must not be included.",
+      "source_sha256": "4ecd66b615d88a2298b7d77e8fb2b1cd69a06295e6b3f545571e270e92eb1538",
+      "translation": "数值特征 DataFrame；不得包含元数据。"
+    },
+    {
+      "context": "batch/plate label aligned to ``features.index``.",
+      "label": "spacr.batch_correction.correct_batch_effects#7",
+      "source": "batch/plate label aligned to ``features.index``.",
+      "source_sha256": "7cf9d944e648e415f23aee789123f6c03ed00cf5e67ccf6ea8b5a18627cc6a68",
+      "translation": "与 ``features.index`` 对齐的批次/板标签。"
+    },
+    {
+      "context": "one of :data:`METHODS`.",
+      "label": "spacr.batch_correction.correct_batch_effects#8",
+      "source": "one of :data:`METHODS`.",
+      "source_sha256": "e377e65e5c68838c70fd61a5b0f382cbca68d1a60a87c0e7b2989e6da8ad185a",
+      "translation": ":data:`METHODS` 中的一项。"
+    },
+    {
+      "context": "easy-to-read source column for diagnostics.",
+      "label": "spacr.batch_correction.correct_batch_effects#9",
+      "source": "human-readable source column for diagnostics.",
+      "source_sha256": "bafa968b6e5501c7d40bf59b0af66cf7417895907a2d2223d5d1a86240affd7a",
+      "translation": "用于诊断的可读源列名。"
+    },
+    {
+      "context": "optional aligned series used by ``control_center``.",
+      "label": "spacr.batch_correction.correct_batch_effects#10",
+      "source": "optional aligned series used by ``control_center``.",
+      "source_sha256": "049af44a1911538a9729a6a1359499ac67e37fe4e64983dcb899cd0d2fdf7f62",
+      "translation": "``control_center`` 使用的可选对齐序列。"
+    },
+    {
+      "context": "scalar/list values selecting reference controls.",
+      "label": "spacr.batch_correction.correct_batch_effects#11",
+      "source": "scalar/list values selecting reference controls.",
+      "source_sha256": "7743c3e51cf499fc11a389cd7c01eb2e38362d3c4d2460a6f82ddf691e4bc493",
+      "translation": "选择参考对照的标量/列表值。"
+    },
+    {
+      "context": "required by ``combat`` and ignored by every other method -- a Series or DataFrame of biology to preserve, aligned to ``features.index``, or :data:`NO_COVARIATE` to declare there is none.",
+      "label": "spacr.batch_correction.correct_batch_effects#12",
+      "source": "required by ``combat`` and ignored by every other method -- a Series or DataFrame of biology to preserve, aligned to ``features.index``, or :data:`NO_COVARIATE` to declare there is none.",
+      "source_sha256": "d50e7f5b408123716b887f1951a00b120933baa72f939d4c8fa01099c4076325",
+      "translation": "``combat`` 需要它，其他所有方法都会忽略它 -- 要保留的生物学因素的 Series 或 DataFrame，与 ``features.index`` 对齐；或传入 :data:`NO_COVARIATE` 声明没有。"
+    },
+    {
+      "context": "correct only the additive batch shift and leave each batch's dispersion alone. The right choice when laboratory microplates differ in offset but the assay's noise model is stable, and when rescaling a variance would manufacture significance.",
+      "label": "spacr.batch_correction.correct_batch_effects#13",
+      "source": "correct only the additive batch shift and leave each batch's dispersion alone. The right choice when plates differ in offset but the assay's noise model is stable, and when rescaling a variance would manufacture significance.",
+      "source_sha256": "f68910b3ced025ec38ff899d9b6ce7cd7a82857daa4ee1b5e633959798faaf78",
+      "translation": "只校正加性的批次偏移，不改变各批次的离散程度。当各板只在偏移量上不同、而实验的噪声模型稳定时，以及重新缩放方差会人为制造显著性时，这是正确的选择。"
+    },
+    {
+      "context": "``False`` uses raw per-feature batch estimates with no shrinkage. Only sensible with many rows per batch; it exists so a test can show the shrinkage is doing something.",
+      "label": "spacr.batch_correction.correct_batch_effects#14",
+      "source": "``False`` uses raw per-feature batch estimates with no shrinkage. Only sensible with many rows per batch; it exists so a test can show the shrinkage is doing something.",
+      "source_sha256": "44ceb6fcfaba99f999947743866f66fba5763e6c139cd928f96275097c77cdac",
+      "translation": "``False`` 使用未经收缩的原始逐特征批次估计值。只有在每个批次的行数很多时才合理；它的存在是为了让测试能够证明收缩确实起了作用。"
+    },
+    {
+      "context": "minimum rows (or controls) required per batch.",
+      "label": "spacr.batch_correction.correct_batch_effects#15",
+      "source": "minimum rows (or controls) required per batch.",
+      "source_sha256": "ebd9c59031f65c92e6ca2b9a92202e62a1c47e5775f1377c06d0abb5b6f11a80",
+      "translation": "每个批次所需的最少行数（或对照数）。"
+    },
+    {
+      "context": "``\"error\"`` or ``\"skip\"`` for a batch lacking enough reference-control rows.",
+      "label": "spacr.batch_correction.correct_batch_effects#16",
+      "source": "``\"error\"`` or ``\"skip\"`` for a batch lacking enough reference-control rows.",
+      "source_sha256": "42ef95dfac1ae60d17a591fd35045c85562d0643ff39a5ec5e806d3ab215639b",
+      "translation": "当某个批次缺少足够的参考对照行时，取 ``\"error\"`` 或 ``\"skip\"``。"
+    },
+    {
+      "context": "``tvn`` whitening, one of :data:`TVN_WHITENINGS`; the default ``\"ZCA-cor\"`` is pycytominer ``normalize``'s.",
+      "label": "spacr.batch_correction.correct_batch_effects#17",
+      "source": "``tvn`` whitening, one of :data:`TVN_WHITENINGS`; the default ``\"ZCA-cor\"`` is pycytominer ``normalize``'s.",
+      "source_sha256": "d9d318ed7fb0d1fd7964c4aa30d0ca1834fb938da882dec2ffe5b8dc35b254b0",
+      "translation": "``tvn`` 白化方式，为 :data:`TVN_WHITENINGS` 之一；默认值 ``\"ZCA-cor\"`` 与 pycytominer ``normalize`` 的默认值相同。"
+    },
+    {
+      "context": "``tvn`` eigenvalue regularisation.",
+      "label": "spacr.batch_correction.correct_batch_effects#18",
+      "source": "``tvn`` eigenvalue regularisation.",
+      "source_sha256": "7b75972b2e2d40b33c3455885a72b2c9cd587235828d84b84536c215d5d09b1d",
+      "translation": "``tvn`` 特征值正则化。"
+    },
+    {
+      "context": "``\"global\"`` or ``\"batch\"``, see :data:`TVN_SCOPES`.",
+      "label": "spacr.batch_correction.correct_batch_effects#19",
+      "source": "``\"global\"`` or ``\"batch\"``, see :data:`TVN_SCOPES`.",
+      "source_sha256": "540bdeb4531bbb828fc7d1647880d3ea3295553bc98b40d5b172fd484f132249",
+      "translation": "``\"global\"`` 或 ``\"batch\"``，参见 :data:`TVN_SCOPES`。"
+    },
+    {
+      "context": "centre each batch on its controls before whitening.",
+      "label": "spacr.batch_correction.correct_batch_effects#20",
+      "source": "centre each batch on its controls before whitening.",
+      "source_sha256": "d742be2ba45e408ccf98a55a84b4716208f1841c6243bc1c6b4a54ace154bc28",
+      "translation": "白化前将每个批次以其对照为中心进行居中。"
+    },
+    {
+      "context": "``\"auto\"`` (the directions the controls span), ``None`` (all of them, as pycytominer) or an integer.",
+      "label": "spacr.batch_correction.correct_batch_effects#21",
+      "source": "``\"auto\"`` (the directions the controls span), ``None`` (all of them, as pycytominer) or an integer.",
+      "source_sha256": "aba0d1bed0d74a9b5c0e232e97a94d79c14d33df24af646f5044d64cc85a8e8f",
+      "translation": "``\"auto\"``（对照所张成的方向）、``None``（全部方向，与 pycytominer 相同）或一个整数。"
+    },
+    {
+      "context": "principal components Harmony integrates.",
+      "label": "spacr.batch_correction.correct_batch_effects#22",
+      "source": "principal components Harmony integrates.",
+      "source_sha256": "143fdfcdb61a0271c073f51a5c53ea01e772d01c320690830f07e859f24c5a5c",
+      "translation": "Harmony 整合的主成分数。"
+    },
+    {
+      "context": "Harmony diversity penalty.",
+      "label": "spacr.batch_correction.correct_batch_effects#23",
+      "source": "Harmony diversity penalty.",
+      "source_sha256": "81ef850ac1f2aa279701862f5b48560b5596168bd24909f8e1e85eefc654ee06",
+      "translation": "Harmony 多样性惩罚。"
+    },
+    {
+      "context": "Harmony random state.",
+      "label": "spacr.batch_correction.correct_batch_effects#24",
+      "source": "Harmony random state.",
+      "source_sha256": "06b04e86985f205e12f98dc5a85881b4063530f90ce71d8a67dbebd3de6a0e8e",
+      "translation": "Harmony 随机状态。"
+    },
+    {
+      "context": "``(corrected_features, report)``.",
+      "label": "spacr.batch_correction.correct_batch_effects#25",
+      "source": "``(corrected_features, report)``.",
+      "source_sha256": "8a34666e5e78e2ae95f3319f3bea1045f41c3ab87e4611ea0fadca720b329999",
+      "translation": "``(corrected_features, report)``."
+    },
+    {
+      "context": "for unknown methods, misaligned metadata, non-numeric features, missing batches, insufficient required controls, a missing ``combat`` covariate, or a covariate confounded with batch.",
+      "label": "spacr.batch_correction.correct_batch_effects#26",
+      "source": "for unknown methods, misaligned metadata, non-numeric features, missing batches, insufficient required controls, a missing ``combat`` covariate, or a covariate confounded with batch.",
+      "source_sha256": "74015b7580a07c528565254421982347b958862fc5a4a393bf53582dea93e5cd",
+      "translation": "对于未知的方法、错误的金属数据、非数字特征、缺少的集合、不够的需要控制、缺失的``combat``集合或与集合混淆的集成集合。"
+    },
+    {
+      "context": "Batch-integrate a PCA embedding with Harmony (Korsunsky et al. 2019).",
+      "label": "spacr.batch_correction.harmony_embedding#0",
+      "source": "Batch-integrate a PCA embedding with Harmony (Korsunsky et al. 2019).",
+      "source_sha256": "5f3daf01ca11ccea3b02b923c954fa0a4d485b9a9dd3106aaf0d8eee740ccde2",
+      "translation": "用 Harmony（Korsunsky et al. 2019）对 PCA 嵌入进行批次整合。"
+    },
+    {
+      "context": "Harmony does **not** correct the features themselves. It clusters a low-dimensional embedding with soft k-means, penalises clusters that one batch dominates (strength ``theta``) and moves every row by a cluster-weighted, batch-specific linear correction until the clusters mix the batches. The returned frame is that corrected embedding (columns ``harmony_1 ...``): use it for neighbours, clustering, UMAP or a machine-learning classification model, not as per-feature measurements.",
+      "label": "spacr.batch_correction.harmony_embedding#1",
+      "source": "Harmony does **not** correct the features themselves. It clusters a low-dimensional embedding with soft k-means, penalises clusters that one batch dominates (strength ``theta``) and moves every row by a cluster-weighted, batch-specific linear correction until the clusters mix the batches. The returned frame is that corrected embedding (columns ``harmony_1 ...``): use it for neighbours, clustering, UMAP or a classifier, not as per-feature measurements.",
+      "source_sha256": "38b3337c83e2fbf8d5dd9325d72dbe389ffce12e7137b2502d18e83f527e14bd",
+      "translation": "Harmony **不会**校正特征本身。它用软 k-means 对低维嵌入进行聚类，惩罚由单一批次主导的簇（强度为 ``theta``），并用按簇加权、批次特异的线性校正移动每一行，直到各簇中的批次充分混合。返回的数据框就是该校正后的嵌入（列 ``harmony_1 ...``）：可将其用于近邻搜索、聚类、UMAP 或分类器，但不能当作逐特征的测量值。"
+    },
+    {
+      "context": "Steps: optional standardisation of every feature over all rows, PCA to ``n_components`` (capped by the rank of the data), then ``harmonypy.run_harmony`` with the batch as its only covariate. ``harmonypy`` is an optional dependency that spaCR does not install.",
+      "label": "spacr.batch_correction.harmony_embedding#2",
+      "source": "Steps: optional standardisation of every feature over all rows, PCA to ``n_components`` (capped by the rank of the data), then ``harmonypy.run_harmony`` with the batch as its only covariate. ``harmonypy`` is an optional dependency that spaCR does not install.",
+      "source_sha256": "d89df8579c0ef00d9a1abe518564b81616c94e80ac588cd0632634382f8049e9",
+      "translation": "步骤：可选地在所有行上对每个特征进行标准化，PCA 降至 ``n_components``（以数据的秩为上限），然后以批次作为唯一协变量调用 ``harmonypy.run_harmony``。``harmonypy`` 是 spaCR 不会安装的可选依赖。"
+    },
+    {
+      "context": "numeric feature frame without missing values.",
+      "label": "spacr.batch_correction.harmony_embedding#3",
+      "source": "numeric feature frame without missing values.",
+      "source_sha256": "c0eef8487728300ca02662deabd6884fc7b4c8c3b4fecdd0a47b76fd3ee0a325",
+      "translation": "不含缺失值的数值特征数据框。"
+    },
+    {
+      "context": "batch label aligned to ``features``.",
+      "label": "spacr.batch_correction.harmony_embedding#4",
+      "source": "batch label aligned to ``features``.",
+      "source_sha256": "2db1c44394ad906a1a71e037dc36deedf5c2e1a147035af4d4b88d544a02e66b",
+      "translation": "与 ``features`` 对齐的批次标签。"
+    },
+    {
+      "context": "number of principal components to integrate.",
+      "label": "spacr.batch_correction.harmony_embedding#5",
+      "source": "number of principal components to integrate.",
+      "source_sha256": "bb35e670bc06c15179c15e06962721a64abe943b5a08b8dcda6d71a5e31cef6c",
+      "translation": "要整合的主成分数。"
+    },
+    {
+      "context": "Harmony diversity penalty; 0 turns the batch penalty off.",
+      "label": "spacr.batch_correction.harmony_embedding#6",
+      "source": "Harmony diversity penalty; 0 turns the batch penalty off.",
+      "source_sha256": "9be1d46d3c33f3f8ac251474072b5dc9dfccf4d21836655286265a5c87da792a",
+      "translation": "Harmony 多样性惩罚；0 表示关闭批次惩罚。"
+    },
+    {
+      "context": "z-score every feature over all rows before the PCA.",
+      "label": "spacr.batch_correction.harmony_embedding#7",
+      "source": "z-score every feature over all rows before the PCA.",
+      "source_sha256": "b6457164f40d32b335315e86cb2d3bb14c4466ebbc3d82a7562fe3d652678ea4",
+      "translation": "在 PCA 之前对每个特征在所有行上计算 z 分数。"
+    },
+    {
+      "context": "random state passed to Harmony.",
+      "label": "spacr.batch_correction.harmony_embedding#8",
+      "source": "random state passed to Harmony.",
+      "source_sha256": "566a578a1797a7e968e989928e2974e8a0b7f4cbec864669ab38a1162b3e4794",
+      "translation": "传给 Harmony 的随机状态。"
+    },
+    {
+      "context": "maximum Harmony rounds.",
+      "label": "spacr.batch_correction.harmony_embedding#9",
+      "source": "maximum Harmony rounds.",
+      "source_sha256": "5ce661865613d6c050387f6d2c3bd58c391dbcb6616b534645a22d345e08aeaa",
+      "translation": "Harmony 的最大迭代轮数。"
+    },
+    {
+      "context": "``(embedding, info)``; ``info`` holds ``n_components``, ``theta``, ``explained_variance_ratio`` and ``harmonypy_version``.",
+      "label": "spacr.batch_correction.harmony_embedding#10",
+      "source": "``(embedding, info)``; ``info`` holds ``n_components``, ``theta``, ``explained_variance_ratio`` and ``harmonypy_version``.",
+      "source_sha256": "0a3304ad719bcd1f02120c4901bdc5b3a63f616ae571d953506d18b14634656c",
+      "translation": "``(embedding, info)``；``info`` 包含 ``n_components``、``theta``、``explained_variance_ratio`` 和 ``harmonypy_version``。"
+    },
+    {
+      "context": "with :data:`HARMONY_MISSING_MESSAGE` when ``harmonypy`` is not installed.",
+      "label": "spacr.batch_correction.harmony_embedding#11",
+      "source": "with :data:`HARMONY_MISSING_MESSAGE` when ``harmonypy`` is not installed.",
+      "source_sha256": "2e71f16c7e48f9cd02178763f9c6923530f16515b25ee9ec1047911a637cd5be",
+      "translation": "附带 :data:`HARMONY_MISSING_MESSAGE`，在未安装 ``harmonypy`` 时抛出。"
+    },
+    {
+      "context": "for missing values or fewer than two batches.",
+      "label": "spacr.batch_correction.harmony_embedding#12",
+      "source": "for missing values or fewer than two batches.",
+      "source_sha256": "552a18284df127edd65ea4685590b1a0f5bf7c072b50fdc81e0d9f2cde2563af",
+      "translation": "存在缺失值或批次少于两个时。"
+    },
+    {
+      "context": "Whiten features with a transform fitted on reference (control) rows.",
+      "label": "spacr.batch_correction.spherize_features#0",
+      "source": "Whiten features with a transform fitted on reference (control) rows.",
+      "source_sha256": "a3036bc73520107f753220d21b929d06a8271a817684bde01e0701a2de3a98ca",
+      "translation": "用在参考（对照）行上拟合的变换对特征进行白化。"
+    },
+    {
+      "context": "This is the sphering step of typical variation normalisation (TVN; Ando, McLean & Berndl 2017, bioRxiv 161422) with the semantics of pycytominer's ``Spherize`` (Serrano et al. 2025, pycytominer, ``pycytominer/operations/transform.py``): the reference rows are centred on their mean, their covariance (for the ``-cor`` variants, their correlation) is eigendecomposed as ``U diag(s) U^T``, and every row is mapped by ``W = diag(1/sqrt(s + epsilon)) U^T`` (PCA) or ``U diag(1/sqrt(s + epsilon)) U^T`` (ZCA), the ``-cor`` variants first dividing by the reference standard deviation. Afterwards the reference rows have identity covariance, so variation that is typical of the controls -- laboratory microplate, position and staining noise -- no longer dominates distances.",
+      "label": "spacr.batch_correction.spherize_features#1",
+      "source": "This is the sphering step of typical variation normalisation (TVN; Ando, McLean & Berndl 2017, bioRxiv 161422) with the semantics of pycytominer's ``Spherize`` (Serrano et al. 2025, pycytominer, ``pycytominer/operations/transform.py``): the reference rows are centred on their mean, their covariance (for the ``-cor`` variants, their correlation) is eigendecomposed as ``U diag(s) U^T``, and every row is mapped by ``W = diag(1/sqrt(s + epsilon)) U^T`` (PCA) or ``U diag(1/sqrt(s + epsilon)) U^T`` (ZCA), the ``-cor`` variants first dividing by the reference standard deviation. Afterwards the reference rows have identity covariance, so variation that is typical of the controls -- plate, position and staining noise -- no longer dominates distances.",
+      "source_sha256": "27da3d09c01c1a8189fb2e419e2eb77451686b67c759728064ba5a551d3ef593",
+      "translation": "这是典型变异归一化（TVN；Ando, McLean & Berndl 2017, bioRxiv 161422）中的球化步骤，语义与 pycytominer 的 ``Spherize`` 相同（Serrano et al. 2025, pycytominer, ``pycytominer/operations/transform.py``）：参考行先以其均值为中心进行居中，再将其协方差（对 ``-cor`` 变体而言为相关矩阵）特征分解为 ``U diag(s) U^T``，然后每一行通过 ``W = diag(1/sqrt(s + epsilon)) U^T``（PCA）或 ``U diag(1/sqrt(s + epsilon)) U^T``（ZCA）进行映射，``-cor`` 变体会先除以参考标准差。此后参考行的协方差为单位矩阵，因此对照中典型的变异——板、位置和染色噪声——不再主导距离。"
+    },
+    {
+      "context": "The four whitenings differ only by a rotation when every direction is kept and ``epsilon`` is negligible, so cosine and Euclidean distances between transformed rows agree; they differ once ``n_components`` truncates.",
+      "label": "spacr.batch_correction.spherize_features#2",
+      "source": "The four whitenings differ only by a rotation when every direction is kept and ``epsilon`` is negligible, so cosine and Euclidean distances between transformed rows agree; they differ once ``n_components`` truncates.",
+      "source_sha256": "9089264d4fdde0f17fd64f962d4698dbc67212284aabb90327ec809913dbdbbf",
+      "translation": "当保留所有方向且 ``epsilon`` 可忽略时，四种白化方式仅相差一个旋转，因此变换后各行之间的余弦距离和欧氏距离一致；一旦 ``n_components`` 进行截断，它们就会不同。"
+    },
+    {
+      "context": "The reference needs more rows than features to be full rank. With fewer, the directions the controls never vary along have eigenvalue 0 and are multiplied by ``1/sqrt(epsilon)`` (1000 at the pycytominer default), so noise in those directions can dominate. ``n_components=\"auto\"`` keeps only the directions the reference spans; an integer keeps that many.",
+      "label": "spacr.batch_correction.spherize_features#3",
+      "source": "The reference needs more rows than features to be full rank. With fewer, the directions the controls never vary along have eigenvalue 0 and are multiplied by ``1/sqrt(epsilon)`` (1000 at the pycytominer default), so noise in those directions can dominate. ``n_components=\"auto\"`` keeps only the directions the reference spans; an integer keeps that many.",
+      "source_sha256": "9aa6bf1fd50f02c8d154b7a449ca54ea6732a9d69e52c595eeae0c87549e559a",
+      "translation": "参考行数必须多于特征数才能满秩。若行数较少，对照从不沿其变化的方向特征值为 0，会被乘以 ``1/sqrt(epsilon)``（在 pycytominer 默认值下为 1000），因此这些方向上的噪声可能占主导。``n_components=\"auto\"`` 只保留参考所张成的方向；整数则保留相应数量的方向。"
+    },
+    {
+      "context": "numeric feature frame without missing values.",
+      "label": "spacr.batch_correction.spherize_features#4",
+      "source": "numeric feature frame without missing values.",
+      "source_sha256": "c0eef8487728300ca02662deabd6884fc7b4c8c3b4fecdd0a47b76fd3ee0a325",
+      "translation": "不含缺失值的数值特征数据框。"
+    },
+    {
+      "context": "boolean Series aligned to ``features`` marking the rows the transform is fitted on (normally negative-control microplate sample positions); ``None`` fits on every row.",
+      "label": "spacr.batch_correction.spherize_features#5",
+      "source": "boolean Series aligned to ``features`` marking the rows the transform is fitted on (normally negative-control wells); ``None`` fits on every row.",
+      "source_sha256": "8a0f0c024fe530e0835d4a1c3176e3155f2f3cd8650278a3dbd11d78a7e2c8ac",
+      "translation": "与 ``features`` 对齐的布尔 Series，标记用于拟合变换的行（通常是阴性对照孔）；``None`` 表示在每一行上拟合。"
+    },
+    {
+      "context": "one of :data:`TVN_WHITENINGS`.",
+      "label": "spacr.batch_correction.spherize_features#6",
+      "source": "one of :data:`TVN_WHITENINGS`.",
+      "source_sha256": "8685809f66eb6728d159743a28daecd4ad1bd7fda8b1ee8779876e7d174154ed",
+      "translation": ":data:`TVN_WHITENINGS` 之一。"
+    },
+    {
+      "context": "regularisation added to every eigenvalue.",
+      "label": "spacr.batch_correction.spherize_features#7",
+      "source": "regularisation added to every eigenvalue.",
+      "source_sha256": "102bb2ed7057f7ea1dfb0d37a1d83627ee7a5417c177d2c0fc6ab51c591929e2",
+      "translation": "加到每个特征值上的正则化项。"
+    },
+    {
+      "context": "subtract the reference mean before transforming.",
+      "label": "spacr.batch_correction.spherize_features#8",
+      "source": "subtract the reference mean before transforming.",
+      "source_sha256": "efd273504dd00c75cdeac0884e5d4c908cf0eb1a4aa3f69bddde9d74c2f4eedc",
+      "translation": "变换前减去参考均值。"
+    },
+    {
+      "context": "``None`` keeps every direction (pycytominer), ``\"auto\"`` keeps those with eigenvalue above ``1e-10`` of the largest, an integer keeps the largest that many.",
+      "label": "spacr.batch_correction.spherize_features#9",
+      "source": "``None`` keeps every direction (pycytominer), ``\"auto\"`` keeps those with eigenvalue above ``1e-10`` of the largest, an integer keeps the largest that many.",
+      "source_sha256": "35c8e39ddc79bba3a0cbf4c41b7ba2c9420141b023d09b0a776b4409a4886943",
+      "translation": "``None`` 保留每个方向（与 pycytominer 相同），``\"auto\"`` 保留特征值高于最大特征值 ``1e-10`` 倍的方向，整数则保留相应数量的最大方向。"
+    },
+    {
+      "context": "``(whitened, info)``. ZCA variants keep the input columns; PCA variants return columns ``tvn_PC1 ...``. ``info`` holds ``method``, ``epsilon``, ``rank``, ``n_components``, ``n_reference`` and ``warnings``.",
+      "label": "spacr.batch_correction.spherize_features#10",
+      "source": "``(whitened, info)``. ZCA variants keep the input columns; PCA variants return columns ``tvn_PC1 ...``. ``info`` holds ``method``, ``epsilon``, ``rank``, ``n_components``, ``n_reference`` and ``warnings``.",
+      "source_sha256": "29d4f5d5d17974a1454905e161ee19c2c2a5a4986c1abbed131a75c77df968c7",
+      "translation": "``(whitened, info)``。ZCA 变体保留输入列；PCA 变体返回列 ``tvn_PC1 ...``。``info`` 包含 ``method``、``epsilon``、``rank``、``n_components``、``n_reference`` 和 ``warnings``。"
+    },
+    {
+      "context": "for an unknown method, missing values, fewer than two reference rows, or a ``-cor`` method with a feature that is constant in the reference.",
+      "label": "spacr.batch_correction.spherize_features#11",
+      "source": "for an unknown method, missing values, fewer than two reference rows, or a ``-cor`` method with a feature that is constant in the reference.",
+      "source_sha256": "a2ea3b4e8ee3ce1d0c92bc3d85c01735f5d2fc5604ff2fd400779fe07c1755ac",
+      "translation": "遇到未知方法、缺失值、参考行少于两行，或 ``-cor`` 方法下某个特征在参考中为常量时。"
+    },
+    {
+      "context": "What tracked cells do before they divide (alpha, feature item 771).",
+      "label": "spacr.division_analysis#0",
+      "source": "What tracked cells do before they divide (alpha, feature item 771).",
+      "source_sha256": "0b866d9f0c90d4b67d9fb91d6fa6447d1ef21050117e7c7ff2906a7a747ccf48",
+      "translation": "被追踪细胞在分裂前的行为（alpha，功能条目 771）。"
+    },
+    {
+      "context": "A tracked label stack says, for every frame, which pixels belong to which cell, and a lineage table says which cell came from which. Together they hold the whole history of every division in the movie. This module turns them into one question with a control: does a measurement change in the frames before a division more than it changes in cells that are *not* about to divide?",
+      "label": "spacr.division_analysis#1",
+      "source": "A tracked label stack says, for every frame, which pixels belong to which cell, and a lineage table says which cell came from which. Together they hold the whole history of every division in the movie. This module turns them into one question with a control: does a measurement change in the frames before a division more than it changes in cells that are *not* about to divide?",
+      "source_sha256": "f3c88bc37befa27e05da7d8a53177fd6a4284e46a98555cbd0ec5ff6ed06a12a",
+      "translation": "追踪得到的标签堆栈说明了每一帧中哪些像素属于哪个细胞，谱系表则说明了哪个细胞来自哪个细胞。两者合在一起，保存了影片中每一次分裂的完整历史。本模块把它们转化为一个带对照的问题：某个测量值在分裂前若干帧中的变化，是否大于*并非*即将分裂的细胞中的变化？"
+    },
+    {
+      "context": "The steps, each a function so a caller can stop or swap any of them:",
+      "label": "spacr.division_analysis#2",
+      "source": "The steps, each a function so a caller can stop or swap any of them:",
+      "source_sha256": "6c093768918d0c99f46b23d413116e30b4226cceec029222168f1035967eba19",
+      "translation": "各个步骤都是独立的函数，调用方可以在任意一步停下或替换其中任何一步："
+    },
+    {
+      "context": "1. :func:`measure_label_stack` -- per cell, per frame: area, major and minor axis length, aspect ratio, eccentricity, circularity, solidity and mean intensity (normalised to the frame median, so a drifting lamp or bleaching does not read as biology). :func:`add_motion_features` adds centroid speed, displacement from the track start and turning angle. 2. :func:`division_events` -- one row per division. Two lineage conventions are read: *fission* (CTC ``man_track``: the parent ends, its daughters start on the next frame) and *budding* (the mother continues; a bud is a daughter whose start lies inside the mother's lifetime). For both, the alignment frame ``t_div`` is the last frame before a daughter is seen. 3. :func:`control_slots` and :func:`match_controls` -- for every division, a control from the same movie: another track, observed over the same window length, overlapping the division in time, with a similar size at the start of the window, and **not** dividing in the window nor within ``horizon`` frames after its pseudo-division time. :func:`shuffled_alignment` aligns the dividing tracks themselves on a random time away from their division; it should show nothing, and when it does the effect is a property of dividing tracks rather than of the approach to division. 4. :func:`align_units` and :func:`unit_changes` -- trajectories on ``rel_t = t - t_div`` and, per unit, the change from a baseline window at the start of the window to a late window that ends at ``rel_t = 0``. 5. :func:`effect_size` -- Hedges' g (dividing vs control change) with a bootstrap 95% confidence interval and its large-sample variance. 6. :func:`random_effects_meta` -- DerSimonian-Laird random-effects pooling with tau^2, Q and I^2. 7. :func:`cell_cycles` and :func:`size_control_fits` -- size at birth vs size at division and added size, the slopes that separate sizer (0 / -1), adder (1 / 0) and timer (2 / 1) control.",
+      "label": "spacr.division_analysis#3",
+      "source": "1. :func:`measure_label_stack` -- per cell, per frame: area, major and minor axis length, aspect ratio, eccentricity, circularity, solidity and mean intensity (normalised to the frame median, so a drifting lamp or bleaching does not read as biology). :func:`add_motion_features` adds centroid speed, displacement from the track start and turning angle. 2. :func:`division_events` -- one row per division. Two lineage conventions are read: *fission* (CTC ``man_track``: the parent ends, its daughters start on the next frame) and *budding* (the mother continues; a bud is a daughter whose start lies inside the mother's lifetime). For both, the alignment frame ``t_div`` is the last frame before a daughter is seen. 3. :func:`control_slots` and :func:`match_controls` -- for every division, a control from the same movie: another track, observed over the same window length, overlapping the division in time, with a similar size at the start of the window, and **not** dividing in the window nor within ``horizon`` frames after its pseudo-division time. :func:`shuffled_alignment` aligns the dividing tracks themselves on a random time away from their division; it should show nothing, and when it does the effect is a property of dividing tracks rather than of the approach to division. 4. :func:`align_units` and :func:`unit_changes` -- trajectories on ``rel_t = t - t_div`` and, per unit, the change from a baseline window at the start of the window to a late window that ends at ``rel_t = 0``. 5. :func:`effect_size` -- Hedges' g (dividing vs control change) with a bootstrap 95% confidence interval and its large-sample variance. 6. :func:`random_effects_meta` -- DerSimonian-Laird random-effects pooling with tau^2, Q and I^2. 7. :func:`cell_cycles` and :func:`size_control_fits` -- size at birth vs size at division and added size, the slopes that separate sizer (0 / -1), adder (1 / 0) and timer (2 / 1) control.",
+      "source_sha256": "35dfdfcbb6eef75e1e5b670a7dbe11552fd5685c5abc8f8d5c5e966e07b148db",
+      "translation": "1. :func:`measure_label_stack` —— 逐细胞、逐帧：面积、长轴和短轴长度、长宽比、离心率、圆度、实心度和平均强度（以该帧中位数归一化，使灯源漂移或光漂白不会被误读为生物学现象）。:func:`add_motion_features` 增加质心速度、相对轨迹起点的位移以及转向角。2. :func:`division_events` —— 每次分裂一行。可读取两种谱系约定：*fission*（CTC ``man_track``：母细胞结束，其子细胞在下一帧开始）和 *budding*（母细胞继续存在；芽是起始时间位于母细胞生存期内的子细胞）。对两者而言，对齐帧 ``t_div`` 都是首次看到子细胞之前的最后一帧。3. :func:`control_slots` 和 :func:`match_controls` —— 为每次分裂从同一影片中选取一个对照：另一条轨迹，在相同窗口长度内被观察到，在时间上与该分裂重叠，在窗口起点大小相近，并且在窗口内以及其伪分裂时间之后 ``horizon`` 帧内**不**分裂。:func:`shuffled_alignment` 将正在分裂的轨迹本身对齐到远离其分裂的随机时间；它应当显示不出任何效应，如果显示出效应，则该效应是分裂轨迹本身的属性，而不是接近分裂过程的属性。4. :func:`align_units` 和 :func:`unit_changes` —— 以 ``rel_t = t - t_div`` 表示的轨迹，以及每个单元从窗口起始处的基线窗口到结束于 ``rel_t = 0`` 的后期窗口的变化。5. :func:`effect_size` —— Hedges' g（分裂与对照的变化对比），附带自助法 95% 置信区间及其大样本方差。6. :func:`random_effects_meta` —— DerSimonian-Laird 随机效应合并，给出 tau^2、Q 和 I^2。7. :func:`cell_cycles` 和 :func:`size_control_fits` —— 出生大小与分裂大小以及增加大小的关系，其斜率可区分 sizer (0 / -1)、adder (1 / 0) 和 timer (2 / 1) 三种大小控制模式。"
+    },
+    {
+      "context": "Nothing here reads images from disk, runs a model or needs a GPU: the caller passes arrays and tables. Units are frames and pixels unless the caller converts; the module never guesses a frame interval.",
+      "label": "spacr.division_analysis#4",
+      "source": "Nothing here reads images from disk, runs a model or needs a GPU: the caller passes arrays and tables. Units are frames and pixels unless the caller converts; the module never guesses a frame interval.",
+      "source_sha256": "a033e35c5cc6e1c8c75e50d4b165556e524c253b51069e2d0f4244ad4272df10",
+      "translation": "这里不会从磁盘读取图像、运行模型或需要 GPU：由调用方传入数组和表格。除非调用方自行换算，单位均为帧和像素；本模块从不猜测帧间隔。"
+    },
+    {
+      "context": "Add speed, displacement and turning angle to a per-frame table.",
+      "label": "spacr.division_analysis.add_motion_features#0",
+      "source": "Add speed, displacement and turning angle to a per-frame table.",
+      "source_sha256": "c380f3c2da771726c5d00303d918cb946953eff26bdd1e136be2fdf00cd5d40f",
+      "translation": "向逐帧表添加速度、位移和转向角。"
+    },
+    {
+      "context": "``speed`` is the centroid step to the previous observation divided by the frames between them (pixels per frame). ``displacement`` is the distance from the track's first centroid. ``turning`` is the unsigned angle in radians between consecutive steps, left empty when either step is shorter than ``min_step`` pixels (a direction that small is pixel noise) or when a frame is missing between them.",
+      "label": "spacr.division_analysis.add_motion_features#1",
+      "source": "``speed`` is the centroid step to the previous observation divided by the frames between them (pixels per frame). ``displacement`` is the distance from the track's first centroid. ``turning`` is the unsigned angle in radians between consecutive steps, left empty when either step is shorter than ``min_step`` pixels (a direction that small is pixel noise) or when a frame is missing between them.",
+      "source_sha256": "684de67403ff10a13ed6645b33105f205644b82c5a2058ea1bfd5f0d414ce75d",
+      "translation": "``speed`` 是质心相对上一次观察的步长除以两次观察之间的帧数（像素/帧）。``displacement`` 是相对轨迹第一个质心的距离。``turning`` 是相邻两步之间的无符号夹角（弧度）；当任一步短于 ``min_step`` 像素（如此小的方向只是像素噪声），或两步之间缺失某一帧时，该值留空。"
+    },
+    {
+      "context": "per-frame table with ``track_id``, ``t``, ``centroid_y`` and ``centroid_x``, as from :func:`measure_label_stack`.",
+      "label": "spacr.division_analysis.add_motion_features#2",
+      "source": "per-frame table with ``track_id``, ``t``, ``centroid_y`` and ``centroid_x``, as from :func:`measure_label_stack`.",
+      "source_sha256": "6c7542005dc9aea74d0298e9a063b1049a17a956ec281b1f26352ed0318bccb6",
+      "translation": "包含 ``track_id``、``t``、``centroid_y`` 和 ``centroid_x`` 的逐帧表，例如来自 :func:`measure_label_stack`。"
+    },
+    {
+      "context": "the shortest step, in pixels, that has a direction.",
+      "label": "spacr.division_analysis.add_motion_features#3",
+      "source": "the shortest step, in pixels, that has a direction.",
+      "source_sha256": "55731c07fd5ba76ae9ac05c11141f6ec57837824bec13fab08f5feacf3555863",
+      "translation": "具有方向的最短步长（像素）。"
+    },
+    {
+      "context": "a copy sorted by track and frame with ``speed``, ``displacement`` and ``turning`` added.",
+      "label": "spacr.division_analysis.add_motion_features#4",
+      "source": "a copy sorted by track and frame with ``speed``, ``displacement`` and ``turning`` added.",
+      "source_sha256": "07bfc3c1e0eaf6e6d3493aa4fcbb5a485e917a732641e7d1afa8954500daf0d8",
+      "translation": "按轨迹和帧排序的副本，并添加了 ``speed``、``displacement`` 和 ``turning``。"
+    },
+    {
+      "context": "Measurements of each unit's track on ``rel_t = t - t0``.",
+      "label": "spacr.division_analysis.align_units#0",
+      "source": "Measurements of each unit's track on ``rel_t = t - t0``.",
+      "source_sha256": "4f981c2a44b47c3ebb8199eedc4daa9c6804d0e28d7aadd76352a0ca3e779bb0",
+      "translation": "每个单元的轨迹在 ``rel_t = t - t0`` 上的测量值。"
+    },
+    {
+      "context": "``units`` needs ``unit_id``, ``track_id`` and ``t0``; with an optional ``daughters`` column (tuples of track ids) the daughters are added for ``rel_t = 1 .. after`` with ``role='daughter'``. The unit's own track is read for ``rel_t = -window .. after`` with ``role='self'`` (a fission parent simply has no rows after 0; a budding mother continues).",
+      "label": "spacr.division_analysis.align_units#1",
+      "source": "``units`` needs ``unit_id``, ``track_id`` and ``t0``; with an optional ``daughters`` column (tuples of track ids) the daughters are added for ``rel_t = 1 .. after`` with ``role='daughter'``. The unit's own track is read for ``rel_t = -window .. after`` with ``role='self'`` (a fission parent simply has no rows after 0; a budding mother continues).",
+      "source_sha256": "9e917395b6586d2a17d0f09d44ccb1e516c225b5600b0c349656b21490926e3d",
+      "translation": "``units`` 需要 ``unit_id``、``track_id`` 和 ``t0``；若有可选的 ``daughters`` 列（轨迹 ID 元组），则子细胞会在 ``rel_t = 1 .. after`` 上以 ``role='daughter'`` 加入。单元自身的轨迹在 ``rel_t = -window .. after`` 上以 ``role='self'`` 读取（fission 母细胞在 0 之后自然没有行；budding 母细胞则继续存在）。"
+    },
+    {
+      "context": "per-frame table with ``track_id``, ``t`` and the measurement columns.",
+      "label": "spacr.division_analysis.align_units#2",
+      "source": "per-frame table with ``track_id``, ``t`` and the measurement columns.",
+      "source_sha256": "c2e0cf0fb697ba0c8ae037e3dcb30ea23831416a28deb2478798af94dbd6a33e",
+      "translation": "包含 ``track_id``、``t`` 和测量列的逐帧表。"
+    },
+    {
+      "context": "the dividing or control units to align.",
+      "label": "spacr.division_analysis.align_units#3",
+      "source": "the dividing or control units to align.",
+      "source_sha256": "3d1790e4164da8f3fd7abf6c03a6339f37a579ff308d21d5bac732dce5d82382",
+      "translation": "要对齐的分裂单元或对照单元。"
+    },
+    {
+      "context": "frames read before ``t0``.",
+      "label": "spacr.division_analysis.align_units#4",
+      "source": "frames read before ``t0``.",
+      "source_sha256": "d3d341844b6773545ef4b0a96fc37cd6e5a0503f5c3f0f474ee1d901d0d3cbf7",
+      "translation": "在 ``t0`` 之前读取的帧数。"
+    },
+    {
+      "context": "frames read after ``t0``.",
+      "label": "spacr.division_analysis.align_units#5",
+      "source": "frames read after ``t0``.",
+      "source_sha256": "81fda16f991ffa7c0ebfe777a1a6b63070fa11c90d7e2a3cc00953d8960ddd01",
+      "translation": "在 ``t0`` 之后读取的帧数。"
+    },
+    {
+      "context": "the measurements to carry; absent ones are skipped.",
+      "label": "spacr.division_analysis.align_units#6",
+      "source": "the measurements to carry; absent ones are skipped.",
+      "source_sha256": "6d1760d79a8beaaf357da196584b2e9705a7310bb41cda39c683614a94000e7a",
+      "translation": "要携带的测量值；不存在的会被跳过。"
+    },
+    {
+      "context": "one row per unit, track and frame with ``unit_id``, ``track_id``, ``t0``, ``rel_t``, ``t``, ``role`` and the measurements.",
+      "label": "spacr.division_analysis.align_units#7",
+      "source": "one row per unit, track and frame with ``unit_id``, ``track_id``, ``t0``, ``rel_t``, ``t``, ``role`` and the measurements.",
+      "source_sha256": "0ecce076579b43e840d4396b2fd982be8ab77dc060b43a875571f9d2e6388f57",
+      "translation": "每个单元、轨迹和帧一行，包含 ``unit_id``、``track_id``、``t0``、``rel_t``、``t``、``role`` 和各测量值。"
+    },
+    {
+      "context": "Complete fission cycles: born at an observed two-daughter division and seen to divide into two.",
+      "label": "spacr.division_analysis.cell_cycles#0",
+      "source": "Complete fission cycles: born at an observed two-daughter division and seen to divide into two.",
+      "source_sha256": "86616e3a2e776114ad84386576ce3bc561ada2ed22d041124dc9f31256ee825f",
+      "translation": "完整的 fission 周期：诞生于一次观察到的两子细胞分裂，并被观察到分裂成两个。"
+    },
+    {
+      "context": "Birth size is the size on the first frame, division size on the last.",
+      "label": "spacr.division_analysis.cell_cycles#1",
+      "source": "Birth size is the size on the first frame, division size on the last.",
+      "source_sha256": "82ffd8576341c510cdca59e78ea04a52987bdc7b23e74a8d7e3da939797a7a4d",
+      "translation": "出生大小是第一帧上的大小，分裂大小是最后一帧上的大小。"
+    },
+    {
+      "context": "per-frame table with ``track_id``, ``t`` and the size columns.",
+      "label": "spacr.division_analysis.cell_cycles#2",
+      "source": "per-frame table with ``track_id``, ``t`` and the size columns.",
+      "source_sha256": "06280d1b3e79dfe2b30e73528b615ad312ae025280a1be76fa8d636d770894f3",
+      "translation": "包含 ``track_id``、``t`` 和大小列的逐帧表。"
+    },
+    {
+      "context": "lineage table with ``label``, ``t_start`` and ``t_end``.",
+      "label": "spacr.division_analysis.cell_cycles#3",
+      "source": "lineage table with ``label``, ``t_start`` and ``t_end``.",
+      "source_sha256": "1fa9b553cb99dae90fddb4b30887e04f45daad32c489c096f793acd56cba670d",
+      "translation": "包含 ``label``、``t_start`` 和 ``t_end`` 的谱系表。"
+    },
+    {
+      "context": "division events from :func:`division_events`.",
+      "label": "spacr.division_analysis.cell_cycles#4",
+      "source": "division events from :func:`division_events`.",
+      "source_sha256": "65f32bef662d7ad78f1e635a578a8885bd651ee5ae13f58642f13d642cc806f9",
+      "translation": "来自 :func:`division_events` 的分裂事件。"
+    },
+    {
+      "context": "the measurements read at birth and division.",
+      "label": "spacr.division_analysis.cell_cycles#5",
+      "source": "the measurements read at birth and division.",
+      "source_sha256": "0d70a817560227f7485d2c1fb7b979406e5d7df71e987b2489d50af4afef6e47",
+      "translation": "在出生和分裂时读取的测量值。"
+    },
+    {
+      "context": "one row per cycle with ``track_id``, ``t_birth``, ``t_division``, ``duration`` and, per size column, ``<col>_birth``, ``<col>_division`` and ``<col>_added``.",
+      "label": "spacr.division_analysis.cell_cycles#6",
+      "source": "one row per cycle with ``track_id``, ``t_birth``, ``t_division``, ``duration`` and, per size column, ``<col>_birth``, ``<col>_division`` and ``<col>_added``.",
+      "source_sha256": "fb0d115f57190a8860fadcfefc8c9503b8ac77ed5a73b0b645065415a8c86240",
+      "translation": "每个周期一行，包含 ``track_id``、``t_birth``、``t_division``、``duration``，以及每个大小列对应的 ``<col>_birth``、``<col>_division`` 和 ``<col>_added``。"
+    },
+    {
+      "context": "Every (track, pseudo-division time) that can serve as a control.",
+      "label": "spacr.division_analysis.control_slots#0",
+      "source": "Every (track, pseudo-division time) that can serve as a control.",
+      "source_sha256": "94c9c8aca9935aaf4d0da7f50826aaa2be16aafebd27c4e0e9ee3f8d646617d9",
+      "translation": "所有可用作对照的（轨迹，伪分裂时间）组合。"
+    },
+    {
+      "context": "A slot ``(track_id, tp)`` qualifies when the track is seen at ``tp - window`` (the baseline size) and at ``tp + horizon`` (its fate over the horizon is known), is seen on at least ``min_coverage`` of the frames ``tp - window .. tp``, and has no division event in ``tp - window .. tp + horizon``. ``base_size`` is the size at ``tp - window``.",
+      "label": "spacr.division_analysis.control_slots#1",
+      "source": "A slot ``(track_id, tp)`` qualifies when the track is seen at ``tp - window`` (the baseline size) and at ``tp + horizon`` (its fate over the horizon is known), is seen on at least ``min_coverage`` of the frames ``tp - window .. tp``, and has no division event in ``tp - window .. tp + horizon``. ``base_size`` is the size at ``tp - window``.",
+      "source_sha256": "20cc01e3b9864a62f6e68084e62f1c8f281edcc7f3ff888814bb30a8300b7642",
+      "translation": "槽位 ``(track_id, tp)`` 符合条件的要求是：轨迹在 ``tp - window`` 处（基线大小）和 ``tp + horizon`` 处（其在该时间范围内的结局已知）被观察到，在至少 ``min_coverage`` 的帧 ``tp - window .. tp`` 上被观察到，并且在 ``tp - window .. tp + horizon`` 内没有分裂事件。``base_size`` 是 ``tp - window`` 处的大小。"
+    },
+    {
+      "context": "per-frame table with ``track_id``, ``t`` and ``size_column``.",
+      "label": "spacr.division_analysis.control_slots#2",
+      "source": "per-frame table with ``track_id``, ``t`` and ``size_column``.",
+      "source_sha256": "ca72d17f196bd09b398b088f14627eb206e76d5dc3715980309ce5b2473a1090",
+      "translation": "包含 ``track_id``、``t`` 和 ``size_column`` 的逐帧表。"
+    },
+    {
+      "context": "division events with ``parent`` and ``t_div``.",
+      "label": "spacr.division_analysis.control_slots#3",
+      "source": "division events with ``parent`` and ``t_div``.",
+      "source_sha256": "67f59914302fe80f3d287ca25938b8364dcba68db501cf3f32d4dd8e2f57f303",
+      "translation": "包含 ``parent`` 和 ``t_div`` 的分裂事件。"
+    },
+    {
+      "context": "frames before the pseudo-division time that must be observed.",
+      "label": "spacr.division_analysis.control_slots#4",
+      "source": "frames before the pseudo-division time that must be observed.",
+      "source_sha256": "5e192fd6e7b3ea51050be55c50b805f16625e9917238f59b4992b0f8758697cb",
+      "translation": "伪分裂时间之前必须被观察到的帧数。"
+    },
+    {
+      "context": "frames after it over which the track must not divide.",
+      "label": "spacr.division_analysis.control_slots#5",
+      "source": "frames after it over which the track must not divide.",
+      "source_sha256": "823ed0c5615fe96b65d9fdcad0feb1f892fafbafcacc2708d814929be8d65cde",
+      "translation": "伪分裂时间之后轨迹不得分裂的帧数。"
+    },
+    {
+      "context": "the smallest share of the window the track must be seen on.",
+      "label": "spacr.division_analysis.control_slots#6",
+      "source": "the smallest share of the window the track must be seen on.",
+      "source_sha256": "3b2cae240b69b23abdbe023a9722a44c2f1cff9fbb48e84a41935faa07607d89",
+      "translation": "轨迹必须被观察到的窗口最小比例。"
+    },
+    {
+      "context": "the measurement used as the baseline size.",
+      "label": "spacr.division_analysis.control_slots#7",
+      "source": "the measurement used as the baseline size.",
+      "source_sha256": "799df4e78a76500c23bc574a659da93e10508b1bedf9bd18a3bd0e49cac0098e",
+      "translation": "用作基线大小的测量值。"
+    },
+    {
+      "context": "one row per slot with ``track_id``, ``tp`` and ``base_size``, sorted by ``tp``.",
+      "label": "spacr.division_analysis.control_slots#8",
+      "source": "one row per slot with ``track_id``, ``tp`` and ``base_size``, sorted by ``tp``.",
+      "source_sha256": "51f4f345b256eb0fa9246f2c8f00b0245c0904e07176b1b13e4aa62715093550",
+      "translation": "每个槽位一行，包含 ``track_id``、``tp`` 和 ``base_size``，按 ``tp`` 排序。"
+    },
+    {
+      "context": "One row per division: parent, alignment frame, kind and daughters.",
+      "label": "spacr.division_analysis.division_events#0",
+      "source": "One row per division: parent, alignment frame, kind and daughters.",
+      "source_sha256": "ee93ce1fab6b1a02ecce955d85918934b7d42a2b8b7249d4921f460035c7455f",
+      "translation": "每次分裂一行：母细胞、对齐帧、类型和子细胞。"
+    },
+    {
+      "context": "``mode='fission'`` reads only daughters that start within ``max_gap`` frames after the parent's last frame; ``'budding'`` reads only daughters that start while the mother is alive (each bud is one event); ``'auto'`` reads both. ``t_div`` is the last frame before the daughter(s) appear.",
+      "label": "spacr.division_analysis.division_events#1",
+      "source": "``mode='fission'`` reads only daughters that start within ``max_gap`` frames after the parent's last frame; ``'budding'`` reads only daughters that start while the mother is alive (each bud is one event); ``'auto'`` reads both. ``t_div`` is the last frame before the daughter(s) appear.",
+      "source_sha256": "c8ac219d5b8e47893dc97f01cfff1c4ca6797b3e6552873ef303b935a605cf6a",
+      "translation": "``mode='fission'`` 只读取在母细胞最后一帧之后 ``max_gap`` 帧内开始的子细胞；``'budding'`` 只读取在母细胞存活期间开始的子细胞（每个芽为一个事件）；``'auto'`` 两者都读取。``t_div`` 是子细胞出现前的最后一帧。"
+    },
+    {
+      "context": "lineage table with ``label``, ``t_start``, ``t_end`` and ``parent`` (0 for no parent).",
+      "label": "spacr.division_analysis.division_events#2",
+      "source": "lineage table with ``label``, ``t_start``, ``t_end`` and ``parent`` (0 for no parent).",
+      "source_sha256": "c083a4e4c739288bc6f53fa575c9d72ef390aba6906fe9d79ee5d19d4abec271",
+      "translation": "包含 ``label``、``t_start``、``t_end`` 和 ``parent``（0 表示无母细胞）的谱系表。"
+    },
+    {
+      "context": "``'auto'``, ``'fission'`` or ``'budding'``.",
+      "label": "spacr.division_analysis.division_events#3",
+      "source": "``'auto'``, ``'fission'`` or ``'budding'``.",
+      "source_sha256": "6e7ccb74d8d0c1aab2d15f32fe67ffb6a87c3fba963284a22a0cec310f3c1983",
+      "translation": "``'auto'``、``'fission'`` 或 ``'budding'``。"
+    },
+    {
+      "context": "the most frames a fission daughter may start after its parent's last frame.",
+      "label": "spacr.division_analysis.division_events#4",
+      "source": "the most frames a fission daughter may start after its parent's last frame.",
+      "source_sha256": "f1062f44c7da23c47a1fce7aad05136d566d02999cbb085f5eb1848138f649fd",
+      "translation": "fission 子细胞在其母细胞最后一帧之后最多可延迟开始的帧数。"
+    },
+    {
+      "context": "one row per division with ``parent``, ``t_div``, ``kind``, ``n_daughters`` and ``daughters`` (a tuple of labels), sorted by ``t_div``.",
+      "label": "spacr.division_analysis.division_events#5",
+      "source": "one row per division with ``parent``, ``t_div``, ``kind``, ``n_daughters`` and ``daughters`` (a tuple of labels), sorted by ``t_div``.",
+      "source_sha256": "55d99b1c9e9408ba64ee20bc5f540d9e607e0f5d708f364a27fa1554d91baec9",
+      "translation": "每次分裂一行，包含 ``parent``、``t_div``、``kind``、``n_daughters`` 和 ``daughters``（标签元组），按 ``t_div`` 排序。"
+    },
+    {
+      "context": "for an unknown ``mode``.",
+      "label": "spacr.division_analysis.division_events#6",
+      "source": "for an unknown ``mode``.",
+      "source_sha256": "2ffc79f907e98faf91e6171026aaea24a438c6f67d3f7f6ff17acebab5f0faa8",
+      "translation": "遇到未知的 ``mode`` 时。"
+    },
+    {
+      "context": "Hedges' g of ``treated`` vs ``control`` with a bootstrap 95% CI.",
+      "label": "spacr.division_analysis.effect_size#0",
+      "source": "Hedges' g of ``treated`` vs ``control`` with a bootstrap 95% CI.",
+      "source_sha256": "8265edf52fb7054f3852b4d8a0c1a9708fa4cfb59b0083bedd813071523d380b",
+      "translation": "``treated`` 对 ``control`` 的 Hedges' g，附带自助法 95% CI。"
+    },
+    {
+      "context": "Non-finite values are dropped first.",
+      "label": "spacr.division_analysis.effect_size#1",
+      "source": "Non-finite values are dropped first.",
+      "source_sha256": "9db70a861b1402cbebfb612cacd9eeef59d204f5bc150058d3c84d35cdb25cfb",
+      "translation": "先删除非有限值。"
+    },
+    {
+      "context": "values of the treated group (dividing units).",
+      "label": "spacr.division_analysis.effect_size#2",
+      "source": "values of the treated group (dividing units).",
+      "source_sha256": "4077f3518db73f109f88b92dcfb24a319d738afa15f57e8632f3386a4816bd3a",
+      "translation": "处理组（分裂单元）的值。"
+    },
+    {
+      "context": "values of the control group.",
+      "label": "spacr.division_analysis.effect_size#3",
+      "source": "values of the control group.",
+      "source_sha256": "0cf5314f0d2960beb438b52bbbe9804edfb1916e6f2e55cd43995303b42e4702",
+      "translation": "对照组的值。"
+    },
+    {
+      "context": "bootstrap resamples; 0 skips the interval.",
+      "label": "spacr.division_analysis.effect_size#4",
+      "source": "bootstrap resamples; 0 skips the interval.",
+      "source_sha256": "60d41c260279c9cc4c6f22bafc6e19570ee3c7a2aa4f2b97937594849040a94e",
+      "translation": "自助法重抽样次数；0 表示跳过区间计算。"
+    },
+    {
+      "context": "seed or generator for the resampling.",
+      "label": "spacr.division_analysis.effect_size#5",
+      "source": "seed or generator for the resampling.",
+      "source_sha256": "a668a8a30c59c4dc70fd4cfd8d36819e650fd6b10ed117c78af2c15c0edb6200",
+      "translation": "用于重抽样的种子或生成器。"
+    },
+    {
+      "context": "``g``, ``var_g`` (large-sample variance used for meta-analysis), ``ci_low`` and ``ci_high`` (percentile bootstrap, each group resampled independently), ``mean_diff``, ``n_treated`` and ``n_control``.",
+      "label": "spacr.division_analysis.effect_size#6",
+      "source": "``g``, ``var_g`` (large-sample variance used for meta-analysis), ``ci_low`` and ``ci_high`` (percentile bootstrap, each group resampled independently), ``mean_diff``, ``n_treated`` and ``n_control``.",
+      "source_sha256": "ce7d5fe72f30e5015a8a691047d4a0b925d214772b20ca440b602fe713003ce5",
+      "translation": "``g``、``var_g``（用于荟萃分析的大样本方差）、``ci_low`` 和 ``ci_high``（百分位自助法，每组独立重抽样）、``mean_diff``、``n_treated`` 和 ``n_control``。"
+    },
+    {
+      "context": "Pick one matched control slot per division event.",
+      "label": "spacr.division_analysis.match_controls#0",
+      "source": "Pick one matched control slot per division event.",
+      "source_sha256": "0686ec31fd5b0c77ab89e802e049a44c19ca90c4cdc2601cd91980fe74e18ea2",
+      "translation": "为每个分裂事件选取一个匹配的对照槽位。"
+    },
+    {
+      "context": "``events`` needs ``event_id``, ``parent``, ``t_div``, ``base_size`` and ``daughters``. A slot is eligible when its pseudo time lies within ``window`` frames of the division, its track is neither the parent nor a daughter, and its base size is within a factor ``1 +/- size_tol`` of the parent's (on a log scale). One eligible slot is drawn at random; events with none are returned with ``matched=False``.",
+      "label": "spacr.division_analysis.match_controls#1",
+      "source": "``events`` needs ``event_id``, ``parent``, ``t_div``, ``base_size`` and ``daughters``. A slot is eligible when its pseudo time lies within ``window`` frames of the division, its track is neither the parent nor a daughter, and its base size is within a factor ``1 +/- size_tol`` of the parent's (on a log scale). One eligible slot is drawn at random; events with none are returned with ``matched=False``.",
+      "source_sha256": "a4dc29ae5d686453c976bfb9d3d624c0cc2b57eb45e365b67c00972a57722726",
+      "translation": "``events`` 需要 ``event_id``、``parent``、``t_div``、``base_size`` 和 ``daughters``。当槽位的伪时间与分裂相距不超过 ``window`` 帧、其轨迹既不是母细胞也不是子细胞，且其基线大小在母细胞基线大小的 ``1 +/- size_tol`` 倍范围内（在对数尺度上）时，该槽位才符合条件。从符合条件的槽位中随机抽取一个；没有符合条件槽位的事件以 ``matched=False`` 返回。"
+    },
+    {
+      "context": "the division events to match.",
+      "label": "spacr.division_analysis.match_controls#2",
+      "source": "the division events to match.",
+      "source_sha256": "70db567073e652d3720d71bbad0e7b606af53dce903a7df77e8a375c190b5de6",
+      "translation": "要匹配的分裂事件。"
+    },
+    {
+      "context": "control slots from :func:`control_slots`.",
+      "label": "spacr.division_analysis.match_controls#3",
+      "source": "control slots from :func:`control_slots`.",
+      "source_sha256": "27a9e1f81940d803fb2c2561e28cc740515ff208718907c78f62861a7e9a3195",
+      "translation": "来自 :func:`control_slots` 的对照槽位。"
+    },
+    {
+      "context": "the most frames a slot's pseudo time may lie from the division.",
+      "label": "spacr.division_analysis.match_controls#4",
+      "source": "the most frames a slot's pseudo time may lie from the division.",
+      "source_sha256": "8b4f0391ad7c3bc11231840256d1ff034b367b34b1fa9a99446ef28b122644a4",
+      "translation": "槽位的伪时间与分裂之间最多可相距的帧数。"
+    },
+    {
+      "context": "the relative base-size difference a control may have.",
+      "label": "spacr.division_analysis.match_controls#5",
+      "source": "the relative base-size difference a control may have.",
+      "source_sha256": "d462e9b1d82280481a486c5d3aaba8da06ae0866763cfd3567327be9cbf91e38",
+      "translation": "对照允许的相对基线大小差异。"
+    },
+    {
+      "context": "seed or generator for the random draw.",
+      "label": "spacr.division_analysis.match_controls#6",
+      "source": "seed or generator for the random draw.",
+      "source_sha256": "7cae8b7e43ae1559a10c6fe492884eedf80bb3833eda6d5087cb86a982cf3ab1",
+      "translation": "用于随机抽取的种子或生成器。"
+    },
+    {
+      "context": "one row per event with ``event_id``, ``track_id``, ``t0``, ``size_ratio`` and ``matched``.",
+      "label": "spacr.division_analysis.match_controls#7",
+      "source": "one row per event with ``event_id``, ``track_id``, ``t0``, ``size_ratio`` and ``matched``.",
+      "source_sha256": "a7003f6f6663998a52a1783b75efd4c9e497dbf71c3d394118371e93bd44149c",
+      "translation": "每个事件一行，包含 ``event_id``、``track_id``、``t0``、``size_ratio`` 和 ``matched``。"
+    },
+    {
+      "context": "Measure every labelled object in every frame of a tracked stack.",
+      "label": "spacr.division_analysis.measure_label_stack#0",
+      "source": "Measure every labelled object in every frame of a tracked stack.",
+      "source_sha256": "111ddb84bbaeeb709f2717a7ed79de0c2e4f2a1bf052d187a2ceb11219398d83",
+      "translation": "测量追踪堆栈中每一帧里的每个标注对象。"
+    },
+    {
+      "context": "2D integer label image layers; the label value is the track id.",
+      "label": "spacr.division_analysis.measure_label_stack#1",
+      "source": "2D integer label planes; the label value is the track id.",
+      "source_sha256": "c7ef4ebffee8d41309a6704642ecf4d1bb97c681bf1586fafb105af161a8a04c",
+      "translation": "二维整数标签平面；标签值即轨迹 ID。"
+    },
+    {
+      "context": "optional matching intensity image layers (2D, or image-channel-first 3D of which image data channel 0 is measured). Mean intensity is divided by the frame median so slow illumination drift and bleaching cancel.",
+      "label": "spacr.division_analysis.measure_label_stack#2",
+      "source": "optional matching intensity planes (2D, or channel-first 3D of which channel 0 is measured). Mean intensity is divided by the frame median so slow illumination drift and bleaching cancel.",
+      "source_sha256": "8c68a04d592dd7ce557386b2e33cdf98996f36bdf811589ed8c8a29fff146853",
+      "translation": "可选的对应强度平面（二维，或通道优先的三维，其中测量通道 0）。平均强度除以该帧中位数，以抵消缓慢的照明漂移和光漂白。"
+    },
+    {
+      "context": "frame time of each image layer; defaults to ``0, 1, 2, ...``.",
+      "label": "spacr.division_analysis.measure_label_stack#3",
+      "source": "frame time of each plane; defaults to ``0, 1, 2, ...``.",
+      "source_sha256": "a5a6bfe6e3b3087da2753dd4f7b742223d6a0ab8cf2dacd254a73a73e1d409bc",
+      "translation": "每个平面的帧时间；默认为 ``0, 1, 2, ...``。"
+    },
+    {
+      "context": "objects smaller than this many pixels are dropped.",
+      "label": "spacr.division_analysis.measure_label_stack#4",
+      "source": "objects smaller than this many pixels are dropped.",
+      "source_sha256": "1698b9043166ed1c43d0c84ead768d493de43640e64b6e63b85d9cf693f6b9df",
+      "translation": "小于该像素数的对象会被丢弃。"
+    },
+    {
+      "context": "one row per (``t``, ``track_id``) with :data:`SHAPE_MEASURES` and the centroid (``centroid_y``, ``centroid_x``) in pixels.",
+      "label": "spacr.division_analysis.measure_label_stack#5",
+      "source": "one row per (``t``, ``track_id``) with :data:`SHAPE_MEASURES` and the centroid (``centroid_y``, ``centroid_x``) in pixels.",
+      "source_sha256": "0491a3c7d105eb5893c6172ea3f78447018fac5b4b90556fde517e00b8e07d92",
+      "translation": "每个 (``t``, ``track_id``) 一行，包含 :data:`SHAPE_MEASURES` 和以像素为单位的质心（``centroid_y``、``centroid_x``）。"
+    },
+    {
+      "context": "when ``images`` or ``times`` does not match the number of masks, a mask is not 2D, or an image's shape differs from its mask's.",
+      "label": "spacr.division_analysis.measure_label_stack#6",
+      "source": "when ``images`` or ``times`` does not match the number of masks, a mask is not 2D, or an image's shape differs from its mask's.",
+      "source_sha256": "7c3c1ffd35e8401eb90d0b6b81ca3a6ecde91acc4c677aa35233e338ef70f31d",
+      "translation": "当 ``images`` 或 ``times`` 与掩膜数量不符、某个掩膜不是二维，或某个图像的形状与其掩膜不同时。"
+    },
+    {
+      "context": "Median observed cycle length in frames (NaN when none is observed).",
+      "label": "spacr.division_analysis.median_cycle_frames#0",
+      "source": "Median observed cycle length in frames (NaN when none is observed).",
+      "source_sha256": "fc39f7b2a1bdbae2750ce525421a4c02ee9ea78be24ed148e73850004d78912a",
+      "translation": "以帧为单位的观察周期长度中位数（未观察到周期时为 NaN）。"
+    },
+    {
+      "context": "Fission: tracks born at an observed division that themselves divide. Budding: frames between consecutive buds of the same mother.",
+      "label": "spacr.division_analysis.median_cycle_frames#1",
+      "source": "Fission: tracks born at an observed division that themselves divide. Budding: frames between consecutive buds of the same mother.",
+      "source_sha256": "77d798942632909744308fa3deb41af641ee3c0808397a1db88c0ae05bc3f111",
+      "translation": "Fission：诞生于一次观察到的分裂且自身也发生分裂的轨迹。Budding：同一母细胞相邻两次出芽之间的帧数。"
+    },
+    {
+      "context": "lineage table with ``label``, ``t_start`` and ``t_end``.",
+      "label": "spacr.division_analysis.median_cycle_frames#2",
+      "source": "lineage table with ``label``, ``t_start`` and ``t_end``.",
+      "source_sha256": "1fa9b553cb99dae90fddb4b30887e04f45daad32c489c096f793acd56cba670d",
+      "translation": "包含 ``label``、``t_start`` 和 ``t_end`` 的谱系表。"
+    },
+    {
+      "context": "division events from :func:`division_events`.",
+      "label": "spacr.division_analysis.median_cycle_frames#3",
+      "source": "division events from :func:`division_events`.",
+      "source_sha256": "65f32bef662d7ad78f1e635a578a8885bd651ee5ae13f58642f13d642cc806f9",
+      "translation": "来自 :func:`division_events` 的分裂事件。"
+    },
+    {
+      "context": "the median cycle length in frames, or NaN.",
+      "label": "spacr.division_analysis.median_cycle_frames#4",
+      "source": "the median cycle length in frames, or NaN.",
+      "source_sha256": "bc5328197a4b83889ea85d9409baeb3b8eb4dccf134fa08eea04108b4fac1078",
+      "translation": "以帧为单位的周期长度中位数，或 NaN。"
+    },
+    {
+      "context": "DerSimonian-Laird random-effects pooling.",
+      "label": "spacr.division_analysis.random_effects_meta#0",
+      "source": "DerSimonian-Laird random-effects pooling.",
+      "source_sha256": "1f33515aaa71cc708bde83b4734c0e75ff9e3392a7350c125dd72f0eee3f32b5",
+      "translation": "DerSimonian-Laird 随机效应合并。"
+    },
+    {
+      "context": "Studies with a non-finite effect or non-positive variance are skipped.",
+      "label": "spacr.division_analysis.random_effects_meta#1",
+      "source": "Studies with a non-finite effect or non-positive variance are skipped.",
+      "source_sha256": "ff4b0895cf52177e828b3c8e479613d0e45744eee50cb2a5f3074a24dde63fe4",
+      "translation": "效应非有限或方差非正的研究会被跳过。"
+    },
+    {
+      "context": "one effect size per study.",
+      "label": "spacr.division_analysis.random_effects_meta#2",
+      "source": "one effect size per study.",
+      "source_sha256": "e1133a563155a2ff91872b50ceeb60d84efd9b8ee4a69e1f9da7b3752f96bed9",
+      "translation": "每项研究一个效应量。"
+    },
+    {
+      "context": "the matching variances.",
+      "label": "spacr.division_analysis.random_effects_meta#3",
+      "source": "the matching variances.",
+      "source_sha256": "68558275edadebb6ed546bd7fb2609a6a89e836812baa4e9600d04d924b7b847",
+      "translation": "对应的方差。"
+    },
+    {
+      "context": "the pooled effect ``mu`` with ``se``, a normal 95% CI (``ci_low``, ``ci_high``), ``z``, two-sided ``p``, between-study variance ``tau2``, Cochran's ``Q``, ``I2`` (percent) and ``k`` studies.",
+      "label": "spacr.division_analysis.random_effects_meta#4",
+      "source": "the pooled effect ``mu`` with ``se``, a normal 95% CI (``ci_low``, ``ci_high``), ``z``, two-sided ``p``, between-study variance ``tau2``, Cochran's ``Q``, ``I2`` (percent) and ``k`` studies.",
+      "source_sha256": "0e2efb29e9b24636cd80c92233012a658c37f1e2605d6fb7b6e676938d44708f",
+      "translation": "合并效应 ``mu`` 及其 ``se``、正态 95% CI（``ci_low``、``ci_high``）、``z``、双侧 ``p``、研究间方差 ``tau2``、Cochran's ``Q``、``I2``（百分比）以及研究数 ``k``。"
+    },
+    {
+      "context": "Read a lineage CSV (``label, t_start, t_end, parent``; CTC semantics).",
+      "label": "spacr.division_analysis.read_lineage_table#0",
+      "source": "Read a lineage CSV (``label, t_start, t_end, parent``; CTC semantics).",
+      "source_sha256": "e33594ad889d7d8ad9a9b58ac2e6b23ec51c44b098896588b203f41ea5124976",
+      "translation": "读取谱系 CSV（``label, t_start, t_end, parent``；CTC 语义）。"
+    },
+    {
+      "context": "CSV file with at least the :data:`LINEAGE_COLUMNS`.",
+      "label": "spacr.division_analysis.read_lineage_table#1",
+      "source": "CSV file with at least the :data:`LINEAGE_COLUMNS`.",
+      "source_sha256": "c012371b961ecffeb496148bc16911d6491c1db1f9035c12310c1458b72bc283",
+      "translation": "至少包含 :data:`LINEAGE_COLUMNS` 的 CSV 文件。"
+    },
+    {
+      "context": "those four columns as integers.",
+      "label": "spacr.division_analysis.read_lineage_table#2",
+      "source": "those four columns as integers.",
+      "source_sha256": "8e0f1014902e29b7ff9e23f853e395151c3d3f03ee05220ba3d5becf1aa8e179",
+      "translation": "这四列，均为整数。"
+    },
+    {
+      "context": "when a lineage column is missing.",
+      "label": "spacr.division_analysis.read_lineage_table#3",
+      "source": "when a lineage column is missing.",
+      "source_sha256": "0eef04a385a1fe615ed16e7380ee919186f4f570b581416729177915460ba092",
+      "translation": "缺少某个谱系列时。"
+    },
+    {
+      "context": "Align each dividing parent on a random eligible time of its own track.",
+      "label": "spacr.division_analysis.shuffled_alignment#0",
+      "source": "Align each dividing parent on a random eligible time of its own track.",
+      "source_sha256": "0f73ef07d17fffe2b3ade3b85dd3d332f4a2f3065e3cc8ed8c9e5746c588ad4b",
+      "translation": "将每个分裂的母细胞对齐到其自身轨迹上一个随机的符合条件的时间。"
+    },
+    {
+      "context": "The time comes from the same slot table as the controls, so it is at least ``horizon`` frames before any division of that track. An effect that survives this shuffle belongs to dividing tracks, not to the approach to division.",
+      "label": "spacr.division_analysis.shuffled_alignment#1",
+      "source": "The time comes from the same slot table as the controls, so it is at least ``horizon`` frames before any division of that track. An effect that survives this shuffle belongs to dividing tracks, not to the approach to division.",
+      "source_sha256": "0fee7e095e439185ffc8324db2e04ac7b7da5aba5e4b4b1065596450e4abbe37",
+      "translation": "该时间与对照来自同一个槽位表，因此它至少位于该轨迹任何分裂之前 ``horizon`` 帧。经过这种打乱后仍然存在的效应属于分裂轨迹本身，而不属于接近分裂的过程。"
+    },
+    {
+      "context": "division events with ``event_id`` and ``parent``.",
+      "label": "spacr.division_analysis.shuffled_alignment#2",
+      "source": "division events with ``event_id`` and ``parent``.",
+      "source_sha256": "21e8cb0875e17ae3c85675fd244c921f33ab5765397b8cdc4b2b86140f97edb5",
+      "translation": "包含 ``event_id`` 和 ``parent`` 的分裂事件。"
+    },
+    {
+      "context": "control slots from :func:`control_slots`.",
+      "label": "spacr.division_analysis.shuffled_alignment#3",
+      "source": "control slots from :func:`control_slots`.",
+      "source_sha256": "27a9e1f81940d803fb2c2561e28cc740515ff208718907c78f62861a7e9a3195",
+      "translation": "来自 :func:`control_slots` 的对照槽位。"
+    },
+    {
+      "context": "seed or generator for the random draw.",
+      "label": "spacr.division_analysis.shuffled_alignment#4",
+      "source": "seed or generator for the random draw.",
+      "source_sha256": "7cae8b7e43ae1559a10c6fe492884eedf80bb3833eda6d5087cb86a982cf3ab1",
+      "translation": "用于随机抽取的种子或生成器。"
+    },
+    {
+      "context": "one row per event with ``event_id``, ``track_id``, ``t0`` and ``matched``.",
+      "label": "spacr.division_analysis.shuffled_alignment#5",
+      "source": "one row per event with ``event_id``, ``track_id``, ``t0`` and ``matched``.",
+      "source_sha256": "3633d9ca2f9b353784ad8c766c582255d7c992e56f02074d7a4a23f504aad240",
+      "translation": "每个事件一行，包含 ``event_id``、``track_id``、``t0`` 和 ``matched``。"
+    },
+    {
+      "context": "Slopes of division size and added size on birth size, with bootstrap CIs.",
+      "label": "spacr.division_analysis.size_control_fits#0",
+      "source": "Slopes of division size and added size on birth size, with bootstrap CIs.",
+      "source_sha256": "310882b4dc126c9ec7c67071eec6cc786e6dafd8d5aeb41506f1774a5bb1bb45",
+      "translation": "分裂大小和增加大小对出生大小的斜率，附带自助法 CI。"
+    },
+    {
+      "context": "Reference slopes (division ~ birth / added ~ birth): sizer 0 / -1, adder 1 / 0, timer (exponential growth, fixed duration) 2 / 1.",
+      "label": "spacr.division_analysis.size_control_fits#1",
+      "source": "Reference slopes (division ~ birth / added ~ birth): sizer 0 / -1, adder 1 / 0, timer (exponential growth, fixed duration) 2 / 1.",
+      "source_sha256": "33491980e5048ab14a08293797da7a9734d3b9e19674e0b3b37afac3cb6ece30",
+      "translation": "参考斜率（分裂 ~ 出生 / 增加 ~ 出生）：sizer 0 / -1，adder 1 / 0，timer（指数生长，固定时长）2 / 1。"
+    },
+    {
+      "context": "size at birth, one value per cycle.",
+      "label": "spacr.division_analysis.size_control_fits#2",
+      "source": "size at birth, one value per cycle.",
+      "source_sha256": "8d0a858d1dbbedb72f03fc5eb5a1676274b9a0ca1403e0de1a68168f78a91b40",
+      "translation": "出生时的大小，每个周期一个值。"
+    },
+    {
+      "context": "size at division, matching ``birth``.",
+      "label": "spacr.division_analysis.size_control_fits#3",
+      "source": "size at division, matching ``birth``.",
+      "source_sha256": "0ac9352cd958fcf328bc99007a2c06b593469dc66609a1ec4c49ce675c19e770",
+      "translation": "分裂时的大小，与 ``birth`` 对应。"
+    },
+    {
+      "context": "bootstrap resamples; 0 skips the intervals.",
+      "label": "spacr.division_analysis.size_control_fits#4",
+      "source": "bootstrap resamples; 0 skips the intervals.",
+      "source_sha256": "563aad4648b328276b5f5c2470a17c0f5229e5a7fb271978542b6819baa1147d",
+      "translation": "自助法重抽样次数；0 表示跳过区间计算。"
+    },
+    {
+      "context": "seed or generator for the resampling.",
+      "label": "spacr.division_analysis.size_control_fits#5",
+      "source": "seed or generator for the resampling.",
+      "source_sha256": "a668a8a30c59c4dc70fd4cfd8d36819e650fd6b10ed117c78af2c15c0edb6200",
+      "translation": "用于重抽样的种子或生成器。"
+    },
+    {
+      "context": "``n``, ``slope_division`` and ``slope_added`` with their ``_ci_low`` and ``_ci_high`` bounds, and ``pearson_r_added``; NaN slopes with fewer than three cycles or constant birth size.",
+      "label": "spacr.division_analysis.size_control_fits#6",
+      "source": "``n``, ``slope_division`` and ``slope_added`` with their ``_ci_low`` and ``_ci_high`` bounds, and ``pearson_r_added``; NaN slopes with fewer than three cycles or constant birth size.",
+      "source_sha256": "8a552a7d79aecf29ad13d75f884eb19101a0b38222c826b841ec1c73a7706b15",
+      "translation": "``n``、``slope_division`` 和 ``slope_added`` 及其 ``_ci_low`` 和 ``_ci_high`` 边界，以及 ``pearson_r_added``；周期少于三个或出生大小为常量时斜率为 NaN。"
+    },
+    {
+      "context": "Per unit: change from the baseline window to the late window.",
+      "label": "spacr.division_analysis.unit_changes#0",
+      "source": "Per unit: change from the baseline window to the late window.",
+      "source_sha256": "50d982d4b53f79c24af983b855f9f2920864740227fa087fa939f2648e16791c",
+      "translation": "逐单元：从基线窗口到后期窗口的变化。"
+    },
+    {
+      "context": "Baseline = mean over ``rel_t = -window .. -window + k - 1``; late = mean over ``rel_t = -k + 1 .. 0`` (the unit's own track only). The change is ``log(late / baseline)`` for :data:`LOG_MEASURES` and ``late - baseline`` otherwise. Needs ``2 * k <= window + 1`` so the windows do not overlap.",
+      "label": "spacr.division_analysis.unit_changes#1",
+      "source": "Baseline = mean over ``rel_t = -window .. -window + k - 1``; late = mean over ``rel_t = -k + 1 .. 0`` (the unit's own track only). The change is ``log(late / baseline)`` for :data:`LOG_MEASURES` and ``late - baseline`` otherwise. Needs ``2 * k <= window + 1`` so the windows do not overlap.",
+      "source_sha256": "b41328079e15e5341363af22465d80273969c89e56da59e3170fe92a57c33cdc",
+      "translation": "基线 = ``rel_t = -window .. -window + k - 1`` 上的均值；后期 = ``rel_t = -k + 1 .. 0`` 上的均值（仅限单元自身的轨迹）。变化量为 ``log(late / baseline)``（适用于 :data:`LOG_MEASURES`），其他情况下为 ``late - baseline``。需要满足 ``2 * k <= window + 1``，以免两个窗口重叠。"
+    },
+    {
+      "context": "aligned measurements from :func:`align_units`.",
+      "label": "spacr.division_analysis.unit_changes#2",
+      "source": "aligned measurements from :func:`align_units`.",
+      "source_sha256": "03bc0e349a5b4bfb4fe005d1971e6d17dcb2240de8e97f6b0dd1fee4f898e80f",
+      "translation": "来自 :func:`align_units` 的对齐测量值。"
+    },
+    {
+      "context": "the alignment window used for ``aligned``.",
+      "label": "spacr.division_analysis.unit_changes#3",
+      "source": "the alignment window used for ``aligned``.",
+      "source_sha256": "7fa7e403b8443d34817c7f7a94b3b6fdea7597f98c1f9e1e4e947133c10a4f86",
+      "translation": "用于 ``aligned`` 的对齐窗口。"
+    },
+    {
+      "context": "frames in each of the baseline and late windows.",
+      "label": "spacr.division_analysis.unit_changes#4",
+      "source": "frames in each of the baseline and late windows.",
+      "source_sha256": "5895eae08778ddb5fc75f27aed987fa98dbc62dbeeed9eaa12e571f0c8eab981",
+      "translation": "基线窗口和后期窗口各自包含的帧数。"
+    },
+    {
+      "context": "the measurements to compare; absent ones are skipped.",
+      "label": "spacr.division_analysis.unit_changes#5",
+      "source": "the measurements to compare; absent ones are skipped.",
+      "source_sha256": "302228192faa9b27bc034ef85a3cb46bf1846b8359717ed816e08654bb107c85",
+      "translation": "要比较的测量值；不存在的会被跳过。"
+    },
+    {
+      "context": "one row per unit with ``unit_id`` and one change per measurement.",
+      "label": "spacr.division_analysis.unit_changes#6",
+      "source": "one row per unit with ``unit_id`` and one change per measurement.",
+      "source_sha256": "fdff07a9ea747496c6081e46c38b674cf020b20f4678d775d4211613e17451f0",
+      "translation": "每个单元一行，包含 ``unit_id`` 以及每个测量值的一个变化量。"
+    },
+    {
+      "context": "when the two windows would overlap.",
+      "label": "spacr.division_analysis.unit_changes#7",
+      "source": "when the two windows would overlap.",
+      "source_sha256": "59eb76bb7b25c5a1ee1e28a1e81f5206453a5f93e24449b73d15c60ebb176f2c",
+      "translation": "当两个窗口会重叠时。"
+    },
+    {
+      "context": "Feature QC",
+      "label": "spacr.sp_stats#8",
+      "source": "Feature QC",
+      "source_sha256": "adce8cd2af37a363daf97dcf8eb0a64e390c217a13db8a5dd07aa7c390b56840",
+      "translation": "特征 QC"
+    },
+    {
+      "context": ":func:`flag_degenerate_features` finds per-object feature columns that carry no usable signal: all or mostly missing, numerically zero, constant, or spike-dominated (a bulk with no spread and a few extreme rows, as the first Zernike moment shows: ~1e-15 with rare ~3e-3 values, which after per-laboratory microplate scaling dominates every similarity). Measure reports the flagged columns at the end of every complete run, beside ``measurements.db``, and removes them from the object tables only when ``feature_qc_drop`` is on.",
+      "label": "spacr.sp_stats#9",
+      "source": ":func:`flag_degenerate_features` finds per-object feature columns that carry no usable signal: all or mostly missing, numerically zero, constant, or spike-dominated (a bulk with no spread and a few extreme rows, as the first Zernike moment shows: ~1e-15 with rare ~3e-3 values, which after per-plate scaling dominates every similarity). Measure reports the flagged columns at the end of every complete run, beside ``measurements.db``, and removes them from the object tables only when ``feature_qc_drop`` is on.",
+      "source_sha256": "18f233eb2e19834887648549d77ea73ca26c4c50ded9b20e87e75e597a6b1921",
+      "translation": ":func:`flag_degenerate_features` 查找不携带可用信号的逐对象特征列：全部或大部分缺失、数值上为零、恒定不变，或由尖峰主导（主体没有离散度，只有少数极端行，第一个 Zernike 矩就是如此：值约为 ~1e-15，偶有 ~3e-3，经过逐板缩放后会主导所有相似度）。Measure 会在每次完整运行结束时，在 ``measurements.db`` 旁报告被标记的列，并且只有在启用 ``feature_qc_drop`` 时才从对象表中删除这些列。"
+    },
+    {
+      "context": "Flag the feature columns of a per-object table that carry no signal.",
+      "label": "spacr.sp_stats.flag_degenerate_features#0",
+      "source": "Flag the feature columns of a per-object table that carry no signal.",
+      "source_sha256": "13b4e0969679d3b8c8432cac1bd3fc8a84b878e0be0fad208d3ea2a223d2eee1",
+      "translation": "标记逐对象表中不携带信号的特征列。"
+    },
+    {
+      "context": "Every column is judged on its finite values; NaN and infinity count as missing. The first matching reason is reported, in this order:",
+      "label": "spacr.sp_stats.flag_degenerate_features#1",
+      "source": "Every column is judged on its finite values; NaN and infinity count as missing. The first matching reason is reported, in this order:",
+      "source_sha256": "9b0ccdfd43b03ca2263ec67aff7540ee0cfa8ac439f4f4fabe2f760f3ccaab5c",
+      "translation": "每一列都依据其有限值进行判定；NaN 和无穷大计为缺失。按以下顺序报告第一个匹配的原因："
+    },
+    {
+      "context": "``all_missing``: no finite value.",
+      "label": "spacr.sp_stats.flag_degenerate_features#2",
+      "source": "``all_missing``: no finite value.",
+      "source_sha256": "05d339d26e899490371e55e0093199d91a14604784cffb6bfb7c8cf584e657f5",
+      "translation": "``all_missing``：没有有限值。"
+    },
+    {
+      "context": "``mostly_missing``: more than ``missing_fraction`` of the rows are missing.",
+      "label": "spacr.sp_stats.flag_degenerate_features#3",
+      "source": "``mostly_missing``: more than ``missing_fraction`` of the rows are missing.",
+      "source_sha256": "d81c05dfca73d356ddf5ed33805a5559193e13d3786073103f7417ffaef93ef4",
+      "translation": "``mostly_missing``：超过 ``missing_fraction`` 的行缺失。"
+    },
+    {
+      "context": "``numerical_zero``: every finite value is within ``zero_tolerance`` of zero, float noise rather than a measurement.",
+      "label": "spacr.sp_stats.flag_degenerate_features#4",
+      "source": "``numerical_zero``: every finite value is within ``zero_tolerance`` of zero, float noise rather than a measurement.",
+      "source_sha256": "05e31458a50f502a5ffa6f671246e9e3ede020d3c3328aedd691f2f73a828ba7",
+      "translation": "``numerical_zero``：每个有限值与零的差都在 ``zero_tolerance`` 以内，属于浮点噪声而非测量值。"
+    },
+    {
+      "context": "``constant``: no finite value differs from the median by more than ``relative_tolerance`` times the column's largest magnitude.",
+      "label": "spacr.sp_stats.flag_degenerate_features#5",
+      "source": "``constant``: no finite value differs from the median by more than ``relative_tolerance`` times the column's largest magnitude.",
+      "source_sha256": "b14d54790fc2bf4417a1cc7eef9384fddd7012b2aad2a0d26dea018b4fee9642",
+      "translation": "``constant``：没有任何有限值与中位数的偏差超过 ``relative_tolerance`` 乘以该列最大绝对值。"
+    },
+    {
+      "context": "``spike_dominated``: the median absolute deviation (MAD) is below ``relative_tolerance`` times the largest deviation, and at most ``spike_fraction`` of the values deviate at all, so a few extreme rows carry the whole spread. Needs ``min_values`` finite values.",
+      "label": "spacr.sp_stats.flag_degenerate_features#6",
+      "source": "``spike_dominated``: the median absolute deviation (MAD) is below ``relative_tolerance`` times the largest deviation, and at most ``spike_fraction`` of the values deviate at all, so a few extreme rows carry the whole spread. Needs ``min_values`` finite values.",
+      "source_sha256": "dbc1af9bb82ce88edf9648cae97ce0731fb1ff9744cfe26e444678b1b5d94ad7",
+      "translation": "``spike_dominated``：中位数绝对偏差（MAD）低于 ``relative_tolerance`` 乘以最大偏差，且至多 ``spike_fraction`` 的值存在任何偏离，因此少数极端行承载了全部离散度。需要 ``min_values`` 个有限值。"
+    },
+    {
+      "context": "A count that is zero in most objects is not spike-dominated as long as more than ``spike_fraction`` of them are non-zero.",
+      "label": "spacr.sp_stats.flag_degenerate_features#7",
+      "source": "A count that is zero in most objects is not spike-dominated as long as more than ``spike_fraction`` of them are non-zero.",
+      "source_sha256": "75537f5c720f21882aefa4f654423ee8b0804481372663438417dd3ad0120763",
+      "translation": "在大多数对象中为零的计数，只要其中超过 ``spike_fraction`` 的对象不为零，就不算由尖峰主导。"
+    },
+    {
+      "context": "one row per object.",
+      "label": "spacr.sp_stats.flag_degenerate_features#8",
+      "source": "one row per object.",
+      "source_sha256": "2e0175a97ddabed091a0bc7e9a2eefd65d3d81a49b3a1210a831b4a557149e02",
+      "translation": "每个对象一行。"
+    },
+    {
+      "context": "the columns to judge; ``None`` judges every numeric measurement column (:func:`_profile_features`).",
+      "label": "spacr.sp_stats.flag_degenerate_features#9",
+      "source": "the columns to judge; ``None`` judges every numeric measurement column (:func:`_profile_features`).",
+      "source_sha256": "f2774f97a3f231cfa4ccd19d7b77a94511eba41cef3e51287318d3cecbcacfc6",
+      "translation": "要判定的列；``None`` 表示判定每个数值测量列（:func:`_profile_features`）。"
+    },
+    {
+      "context": "the largest missing share a column may have.",
+      "label": "spacr.sp_stats.flag_degenerate_features#10",
+      "source": "the largest missing share a column may have.",
+      "source_sha256": "c30df7af317fd80794f6a7ba8adec8dd42b955742b09583b5cbd3c3730a22947",
+      "translation": "一列允许的最大缺失比例。"
+    },
+    {
+      "context": "the magnitude below which a value is zero.",
+      "label": "spacr.sp_stats.flag_degenerate_features#11",
+      "source": "the magnitude below which a value is zero.",
+      "source_sha256": "bd14002df17586a13c9a25ab62e88490f870d753443bf66a91c8b3d4004394e8",
+      "translation": "低于此绝对值的值视为零。"
+    },
+    {
+      "context": "the spread, relative to the column's scale, below which values are taken as equal.",
+      "label": "spacr.sp_stats.flag_degenerate_features#12",
+      "source": "the spread, relative to the column's scale, below which values are taken as equal.",
+      "source_sha256": "07b70bf0ca12143b86ba3f16e48b71e07c6b222d9513f3aef6bb23edef4fa3d8",
+      "translation": "相对于该列尺度的离散度，低于此值的值视为相等。"
+    },
+    {
+      "context": "the largest share of deviating values that still counts as spikes.",
+      "label": "spacr.sp_stats.flag_degenerate_features#13",
+      "source": "the largest share of deviating values that still counts as spikes.",
+      "source_sha256": "ac77563bb5e96f5daead192e615706646e7da9cb58260fe3cad0d09983ed967a",
+      "translation": "仍可算作尖峰的偏离值的最大比例。"
+    },
+    {
+      "context": "the fewest finite values needed to call a spike.",
+      "label": "spacr.sp_stats.flag_degenerate_features#14",
+      "source": "the fewest finite values needed to call a spike.",
+      "source_sha256": "a392d7c2a4963a0727de7809a59952cb087a37d3aa0b3795a53cbfda4bed4452",
+      "translation": "判定尖峰所需的最少有限值数量。"
+    },
+    {
+      "context": "one row per flagged column with ``feature``, ``reason``, ``n``, ``n_finite``, ``missing_fraction``, ``median``, ``mad``, ``max_abs``, ``max_deviation`` and ``spike_fraction``; empty when nothing is flagged.",
+      "label": "spacr.sp_stats.flag_degenerate_features#15",
+      "source": "one row per flagged column with ``feature``, ``reason``, ``n``, ``n_finite``, ``missing_fraction``, ``median``, ``mad``, ``max_abs``, ``max_deviation`` and ``spike_fraction``; empty when nothing is flagged.",
+      "source_sha256": "d00f1f07fd9fda612360afc727a18f30021b8b4907c249fe460801f859efe957",
+      "translation": "每个被标记的列一行，包含 ``feature``、``reason``、``n``、``n_finite``、``missing_fraction``、``median``、``mad``、``max_abs``、``max_deviation`` 和 ``spike_fraction``；没有列被标记时为空。"
+    }
+  ],
+  "schema": 1
+}

@@ -1,0 +1,49 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "``(cycle, channel)`` pairs whose background shift the spot registration overruled (``channel_mode='spots'`` only).",
+      "label": "spacr.ops_cycles.AlignedField#8",
+      "source": "``(cycle, channel)`` pairs whose background shift the spot registration overruled (``channel_mode='spots'`` only).",
+      "source_sha256": "77a6f14a801106c224112584afffb6117022291f686e8d4b80b070bffb4a19de",
+      "translation": "스폿 정합이 배경 이동을 무효화한 ``(cycle, channel)`` 쌍입니다(``channel_mode='spots'``에서만)."
+    },
+    {
+      "context": "one of :data:`CHANNEL_MODES`. ``spots`` runs the background registration first and then checks every channel against the reference cycle's spots, replacing the shifts the spots disagree with; :attr:`AlignedField.spot_replaced` lists those.",
+      "label": "spacr.ops_cycles.align_field#6",
+      "source": "one of :data:`CHANNEL_MODES`. ``spots`` runs the background registration first and then checks every channel against the reference cycle's spots, replacing the shifts the spots disagree with; :attr:`AlignedField.spot_replaced` lists those.",
+      "source_sha256": "39a6df538c52841af940da29eb543f6ef47224170cdf7e1b9430d35b1222ab90",
+      "translation": ":data:`CHANNEL_MODES` 중 하나입니다. ``spots``는 먼저 배경 정합을 실행한 다음 모든 채널을 기준 사이클의 스폿과 대조하여, 스폿과 일치하지 않는 이동을 대체합니다. :attr:`AlignedField.spot_replaced`에 그 목록이 있습니다."
+    },
+    {
+      "context": "the aligned field.",
+      "label": "spacr.ops_cycles.align_field#7",
+      "source": "the aligned field.",
+      "source_sha256": "ed752024a436f66df9a5e8118075d0e2392f5e8a202440dcab808b7a7ef503b7",
+      "translation": "정렬된 필드."
+    },
+    {
+      "context": "when no cycle has image layers, when the reference cycle has none, or for an unknown ``channel_mode``.",
+      "label": "spacr.ops_cycles.align_field#8",
+      "source": "when no cycle has planes, when the reference cycle has none, or for an unknown ``channel_mode``.",
+      "source_sha256": "c60c632f8b251d89db1d36789ad2047ff8118748bf54854dac9a992a07a3ff5a",
+      "translation": "평면이 있는 사이클이 없을 때, 기준 사이클에 평면이 없을 때, 또는 알 수 없는 ``channel_mode``일 때."
+    },
+    {
+      "context": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a microplate sample position can be stitched once and decoded again. The alpha phenotype path (item 752) adds ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"`` and ``\"aggregate\"``, asked for by name and run after those four; a run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its microplate sample positions from ``ops_phenotype``, and adds to each microplate sample position's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the microplate sample positions run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "label": "spacr.ops_engine.run_ops#4",
+      "source": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a well can be stitched once and decoded again. The alpha phenotype path (item 752) adds ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"`` and ``\"aggregate\"``, asked for by name and run after those four; a run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its wells from ``ops_phenotype``, and adds to each well's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the wells run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "source_sha256": "52a69cb28701bf1ff6af14eab53ee2eae10f0c62d98d2e3d9433ea4eb96bef03",
+      "translation": "``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"``, ``\"decode\"`` 중 임의의 조합이며, 이 순서로 실행됩니다. 빠진 단계는 필요한 것을 데이터베이스에서 읽으므로, 한 번 스티칭한 시료 위치를 다시 디코딩할 수 있습니다. 알파 표현형 경로(항목 752)는 ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"``, ``\"aggregate\"``를 추가하며, 이들은 이름으로 요청되고 앞의 네 단계 뒤에 실행됩니다. 이들만 실행할 때는 ``dst_root``와 ``plate``가 필요하지만 ``genotype_source``는 필요 없고, 시료 위치를 ``ops_phenotype``에서 가져오며, 각 시료 위치의 ``ops_report.json``을 대체하지 않고 내용을 추가합니다. ``aggregate``는 실행된 시료 위치를 합쳐 ``ops_guides_<plate>``와 ``ops_genes_<plate>``를 씁니다."
+    },
+    {
+      "context": "``\"percentile\"`` takes spots above ``percentile`` in a channel; ``\"median\"`` takes spots where the channel is the argmax. Percentile is the more robust of the two when one base is rare, which is the case a median call gets wrong. ``\"argmax_median\"`` is brieflow's ``transform_medians``: each channel is first divided by its median over the spots, each channel's axis is the MEDIAN of the spots where it is the argmax, and the axes are scaled to sum to one rather than to unit length, which keeps the corrected channels on the scale the argmax compares. On 116 microscope fields of view of the Funk et al. 2022 laboratory microplates, after the per-cycle normalisation, it raised the library-exact read rate from 0.558 to 0.574 and lowered the decoy match rate.",
+      "label": "spacr.ops_sbs.compensate_crosstalk#4",
+      "source": "``\"percentile\"`` takes spots above ``percentile`` in a channel; ``\"median\"`` takes spots where the channel is the argmax. Percentile is the more robust of the two when one base is rare, which is the case a median call gets wrong. ``\"argmax_median\"`` is brieflow's ``transform_medians``: each channel is first divided by its median over the spots, each channel's axis is the MEDIAN of the spots where it is the argmax, and the axes are scaled to sum to one rather than to unit length, which keeps the corrected channels on the scale the argmax compares. On 116 fields of the Funk et al. 2022 plates, after the per-cycle normalisation, it raised the library-exact read rate from 0.558 to 0.574 and lowered the decoy match rate.",
+      "source_sha256": "d1c8f0c2ebf590dca497b035f6590395df8f7723de73d4f856d69b612c34d08a",
+      "translation": "``\"percentile\"``은 채널에서 ``percentile``을 넘는 점을 취하고, ``\"median\"``은 채널이 argmax인 점을 취합니다. 한 염기가 드물 때는 백분위수 방식이 둘 중 더 로버스트하며, 이는 중앙값 판정이 틀리는 경우입니다. ``\"argmax_median\"``은 brieflow의 ``transform_medians``입니다. 각 채널을 먼저 점들에 대한 그 채널의 중앙값으로 나누고, 각 채널의 축은 그 채널이 argmax인 점들의 중앙값이며, 축은 단위 길이가 아니라 합이 1이 되도록 스케일링되어 보정된 채널이 argmax가 비교하는 척도에 머무릅니다. Funk et al. 2022 플레이트의 필드 116개에서 사이클별 정규화 후, 라이브러리와 정확히 일치하는 리드 비율을 0.558에서 0.574로 높이고 디코이 일치율을 낮췄습니다."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

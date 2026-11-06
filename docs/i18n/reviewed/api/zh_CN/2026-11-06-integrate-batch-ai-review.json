@@ -1,0 +1,1484 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Keep spaCR's GPU work inside the memory a shared card has free.",
+      "label": "spacr._gpu_governor#0",
+      "source": "Keep spaCR's GPU work inside the memory a shared card has free.",
+      "source_sha256": "b7bcf8794d02da2d59808afb8a8056695c6f8f590c9e1f2b5065b05737ef0a4f",
+      "translation": "让 spaCR 的 GPU 工作保持在共享显卡的空闲内存之内。"
+    },
+    {
+      "context": "A workstation GPU is often shared by several jobs: a segmentation run, a measurement run and a training processing session can all hold memory on one card. Each of them sizes its batches for an empty card, so whichever allocates last runs out of memory and, before this module, stopped. This module is the one place that decides how much a spaCR GPU call may take:",
+      "label": "spacr._gpu_governor#1",
+      "source": "A workstation GPU is often shared by several jobs: a segmentation run, a measurement run and a training run can all hold memory on one card. Each of them sizes its batches for an empty card, so whichever allocates last runs out of memory and, before this module, stopped. This module is the one place that decides how much a spaCR GPU call may take:",
+      "source_sha256": "771112ccf7b7d2466e3f3e8e7082f269052f4f3b5fe3e0e1a32db2583b4dd78b",
+      "translation": "工作站 GPU 常常由多个作业共享：分割运行、测量运行和训练运行可能同时在一块显卡上占用内存。每个作业都按空显卡来确定批大小，因此最后分配内存的那个作业会内存不足，而在有本模块之前它会就此停止。本模块是唯一决定一次 spaCR GPU 调用可以占用多少内存的地方："
+    },
+    {
+      "context": "before each batch it reads the free memory of the device and, when the batch is estimated not to fit with ``gpu_memory_margin_gb`` to spare, shrinks the batch or waits for memory to be freed;",
+      "label": "spacr._gpu_governor#2",
+      "source": "before each batch it reads the free memory of the device and, when the batch is estimated not to fit with ``gpu_memory_margin_gb`` to spare, shrinks the batch or waits for memory to be freed;",
+      "source_sha256": "aca67fb7bdf5806bc7613c68c33ae828478372bbb8a7db35eb5e962823421674",
+      "translation": "在每个批之前，它读取设备的空闲内存；当估计该批在保留 ``gpu_memory_margin_gb`` 余量后放不下时，就缩小批或等待内存被释放；"
+    },
+    {
+      "context": "on an out-of-memory error from PyTorch or CuPy it releases the cached blocks, halves the batch and retries the same item; after a few failed retries at batch size 1 the item executes on the CPU. No item is dropped and the processing session never stops on an out-of-memory error;",
+      "label": "spacr._gpu_governor#3",
+      "source": "on an out-of-memory error from PyTorch or CuPy it releases the cached blocks, halves the batch and retries the same item; after a few failed retries at batch size 1 the item runs on the CPU. No item is dropped and the run never stops on an out-of-memory error;",
+      "source_sha256": "65de712d1a7e6e178edcd81f2689e08ec4fe6533a45e822c41bff56d214e0f2e",
+      "translation": "遇到来自 PyTorch 或 CuPy 的内存不足错误时，它释放缓存块，将批减半并重试同一项；在批大小为 1 时重试数次仍失败后，该项改在 CPU 上运行。不会丢弃任何项，运行也绝不会因内存不足错误而停止；"
+    },
+    {
+      "context": "after each item it releases the cached memory, so a co-tenant can use it;",
+      "label": "spacr._gpu_governor#4",
+      "source": "after each item it releases the cached memory, so a co-tenant can use it;",
+      "source_sha256": "48be3caab3c1fee2264072e8ad5b9c0d0129c0167b46b344534f8024b7b90412",
+      "translation": "每项完成后，它释放缓存的内存，以便共用显卡的其他作业使用；"
+    },
+    {
+      "context": "after a run of clean items it doubles the batch again, up to the size the caller asked for;",
+      "label": "spacr._gpu_governor#5",
+      "source": "after a run of clean items it doubles the batch again, up to the size the caller asked for;",
+      "source_sha256": "61a5cfcfee453c4956d2e2fb9ca1dd4e54367b1866fccddc512791c27bc14ec8",
+      "translation": "连续多项顺利完成后，它再次将批加倍，直至调用方请求的大小；"
+    },
+    {
+      "context": "``gpu_memory_fraction`` sets a hard ceiling through ``torch.cuda.set_per_process_memory_fraction``. That call caps the memory PyTorch's caching allocator RESERVES, which is more than it has allocated by the allocator's fragmentation, so every need and cap here is sized from ``torch.cuda.max_memory_reserved`` and never below 1.5 times the allocated peak; a ceiling set lower than what the work needs is raised, with a message, rather than turning every larger item into an out-of-memory retry;",
+      "label": "spacr._gpu_governor#6",
+      "source": "``gpu_memory_fraction`` sets a hard ceiling through ``torch.cuda.set_per_process_memory_fraction``. That call caps the memory PyTorch's caching allocator RESERVES, which is more than it has allocated by the allocator's fragmentation, so every need and cap here is sized from ``torch.cuda.max_memory_reserved`` and never below 1.5 times the allocated peak; a ceiling set lower than what the work needs is raised, with a message, rather than turning every larger item into an out-of-memory retry;",
+      "source_sha256": "2f0a0c5d5d4a6aacd15624867977914ef9dda8d8c58f78a9332c17f8f8a4a3ee",
+      "translation": "``gpu_memory_fraction`` 通过 ``torch.cuda.set_per_process_memory_fraction`` 设置硬上限。该调用限制的是 PyTorch 缓存分配器所 RESERVES（预留）的内存，由于分配器的碎片化，这比已分配的内存更多，因此这里的每项需求和上限都依据 ``torch.cuda.max_memory_reserved`` 计算，且绝不低于已分配峰值的 1.5 倍；设置得低于工作所需的上限会被提高并给出消息，而不是让每个较大的项都变成内存不足重试；"
+    },
+    {
+      "context": "when CUDA has not been initialised yet and ``PYTORCH_CUDA_ALLOC_CONF`` is unset, :func:`_configure` sets it to ``expandable_segments:True``, which lets the allocator grow segments in place instead of reserving new ones, so reserved memory stays close to allocated memory. An existing value is never changed, and a process that already holds a CUDA context keeps the allocator it has;",
+      "label": "spacr._gpu_governor#7",
+      "source": "when CUDA has not been initialised yet and ``PYTORCH_CUDA_ALLOC_CONF`` is unset, :func:`_configure` sets it to ``expandable_segments:True``, which lets the allocator grow segments in place instead of reserving new ones, so reserved memory stays close to allocated memory. An existing value is never changed, and a process that already holds a CUDA context keeps the allocator it has;",
+      "source_sha256": "ce42941ba594308d1bc1eed9625db37c82dcab1d0a33bc3e1a64a50fd2acfb9b",
+      "translation": "当 CUDA 尚未初始化且 ``PYTORCH_CUDA_ALLOC_CONF`` 未设置时，:func:`_configure` 将其设为 ``expandable_segments:True``，使分配器就地扩展段而不是预留新段，从而让预留内存接近已分配内存。已有的值绝不会被更改，已持有 CUDA 上下文的进程保留其现有的分配器；"
+    },
+    {
+      "context": "every process is counted with about 0.4 GB of CUDA context on top of what its allocator reserves, in the ledger and in the budget;",
+      "label": "spacr._gpu_governor#8",
+      "source": "every process is counted with about 0.4 GB of CUDA context on top of what its allocator reserves, in the ledger and in the budget;",
+      "source_sha256": "a816e81e1460ab07bdc756cb6b16e462035cbe3605ade3fa27e01be3156f77f3",
+      "translation": "在账本和预算中，每个进程除其分配器预留的内存外，还按约 0.4 GB 的 CUDA 上下文计算；"
+    },
+    {
+      "context": "a ledger file under the user cache directory records what every spaCR GPU process on the machine is using and about to claim, so a new job counts what the others are about to take and an executing job shrinks while room is needed. Entries of processes that no longer exist are ignored;",
+      "label": "spacr._gpu_governor#9",
+      "source": "a ledger file under the user cache directory records what every spaCR GPU process on the machine is using and about to claim, so a new job counts what the others are about to take and a running job shrinks while room is needed. Entries of processes that no longer exist are ignored;",
+      "source_sha256": "8a8188b4c2a9baf4c6f69e96df11af702cc08cb68d63451d717f33792f2295fc",
+      "translation": "用户缓存目录下的一个账本文件记录机器上每个 spaCR GPU 进程正在使用和即将申请的内存，因此新作业会把其他作业即将占用的内存计算在内，而正在运行的作业在需要腾出空间时会缩小。已不存在的进程的条目会被忽略；"
+    },
+    {
+      "context": "while a site is adapting, a line such as ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)`` is printed every 50 items or 60 seconds, and a warning when more than 3 % of a site's items ran on the CPU;",
+      "label": "spacr._gpu_governor#10",
+      "source": "while a site is adapting, a line such as ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)`` is printed every 50 items or 60 seconds, and a warning when more than 3 % of a site's items ran on the CPU;",
+      "source_sha256": "6f57232fbd1592ad2efc4f210ac017bcb01adec7fb23271d02b4e493f9840117",
+      "translation": "当某个调用点正在自适应调整时，每 50 项或每 60 秒打印一行，例如 ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)``；当某个调用点超过 3 % 的项在 CPU 上运行时，会给出警告；"
+    },
+    {
+      "context": "every item's compute path (``gpu`` or ``cpu``) is recorded. Measure writes it as a ``compute_path`` column on its object rows when ``measure_gpu`` is on, and the run report says whether the run stayed on one path. ``gpu_fallback_policy='pause'`` never falls back: an item that does not fit even at batch size 1 waits for the GPU instead, so a run stays on one path;",
+      "label": "spacr._gpu_governor#11",
+      "source": "every item's compute path (``gpu`` or ``cpu``) is recorded. Measure writes it as a ``compute_path`` column on its object rows when ``measure_gpu`` is on, and the run report says whether the run stayed on one path. ``gpu_fallback_policy='pause'`` never falls back: an item that does not fit even at batch size 1 waits for the GPU instead, so a run stays on one path;",
+      "source_sha256": "51ca642013e8b64148401c8407b83795b285a01923d04a19f095cb94c578c818",
+      "translation": "每项的计算路径（``gpu`` 或 ``cpu``）都会被记录。Measure 会将其作为 ``compute_path`` 列写入对象行（在 ``measure_gpu`` 开启时），运行报告会说明运行是否始终在同一路径上。``gpu_fallback_policy='pause'`` 从不回退：即使在批大小为 1 时也放不下的项会改为等待 GPU，从而使运行保持在同一路径上；"
+    },
+    {
+      "context": "the shrink, wait, retry, fallback and ramp-up counts are summarised in the run log at the end of a run.",
+      "label": "spacr._gpu_governor#12",
+      "source": "the shrink, wait, retry, fallback and ramp-up counts are summarised in the run log at the end of a run.",
+      "source_sha256": "622f7185e4951b88d08b684965ddfb5d6a63c6a79e708d7bd9ebbaf4414525ca",
+      "translation": "缩小、等待、重试、回退和回升的次数会在运行结束时汇总到运行日志中。"
+    },
+    {
+      "context": "``gpu_adaptive_batch=False`` turns the batch control off: every call then runs exactly as asked, with only the optional fraction applied. On a machine without a visible CUDA device every call also runs exactly as asked.",
+      "label": "spacr._gpu_governor#13",
+      "source": "``gpu_adaptive_batch=False`` turns the batch control off: every call then runs exactly as asked, with only the optional fraction applied. On a machine without a visible CUDA device every call also runs exactly as asked.",
+      "source_sha256": "78aeecd1091aba8200cb63f347f6cf0b0d9d85c57797f558a987c4c6720390b9",
+      "translation": "``gpu_adaptive_batch=False`` 关闭批控制：此时每次调用都完全按请求运行，只施加可选的内存比例。在没有可见 CUDA 设备的机器上，每次调用也完全按请求运行。"
+    },
+    {
+      "context": "How to label the x axis of one graph.",
+      "label": "spacr.assay_panels.axis_layout#0",
+      "source": "How to label the x axis of one graph.",
+      "source_sha256": "f25516e5b117330621621c7368934cb9efe7a7b374efb44f41d72f98814f0245",
+      "translation": "如何为一个图的 x 轴添加标签。"
+    },
+    {
+      "context": "{condition: [(variable, factor), ...]} (see :func:`condition_parts`).",
+      "label": "spacr.assay_panels.axis_layout#1",
+      "source": "{condition: [(variable, factor), ...]} (see :func:`condition_parts`).",
+      "source_sha256": "4e4264e3c89d3c756fd4a318e0e610ac0f569b1df10f52877ded5b7a06497264",
+      "translation": "{condition: [(variable, factor), ...]}（参见 :func:`condition_parts`）。"
+    },
+    {
+      "context": "``'auto'`` (labels when at most one variable varies along this axis, else the matrix), ``'matrix'`` or ``'labels'``.",
+      "label": "spacr.assay_panels.axis_layout#2",
+      "source": "``'auto'`` (labels when at most one variable varies along this axis, else the matrix), ``'matrix'`` or ``'labels'``.",
+      "source_sha256": "bf41216c1daa2c7f66a2d5d1a97d04fea140c550738d2ef240d8e38633d43a3a",
+      "translation": "``'auto'``（沿此轴最多只有一个变量变化时使用标签，否则使用矩阵）、``'matrix'`` 或 ``'labels'``。"
+    },
+    {
+      "context": "matrix rows in display order (raw or display names); other rows follow by variable, then first appearance.",
+      "label": "spacr.assay_panels.axis_layout#3",
+      "source": "matrix rows in display order (raw or display names); other rows follow by variable, then first appearance.",
+      "source_sha256": "2c4b78422f9dfdc6e6f2f720b81ceb803e1f6498fccff462aee1c54932ba0192",
+      "translation": "按显示顺序排列的矩阵行（原始名或显示名）；其他行随后按变量排列，再按首次出现的顺序排列。"
+    },
+    {
+      "context": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``.",
+      "label": "spacr.assay_panels.axis_layout#4",
+      "source": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``.",
+      "source_sha256": "46fd92f3058f114cde85ca6ac7c5fcceb8483911e9cd8ea7de7a553dba07c039",
+      "translation": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``."
+    },
+    {
+      "context": "``'mad'``, ``'iqr'`` (see :func:`mark_outliers`), None, or ``'policy'`` (default) to use the active :class:`outlier_policy`. Outliers stay in ``data`` with ``outlier = True`` and are left out of the drawing and the test; ``stats['outliers']`` counts them per group.",
+      "label": "spacr.assay_panels.bar_spec#13",
+      "source": "``'mad'``, ``'iqr'`` (see :func:`mark_outliers`), None, or ``'policy'`` (default) to use the active :class:`outlier_policy`. Outliers stay in ``data`` with ``outlier = True`` and are left out of the drawing and the test; ``stats['outliers']`` counts them per group.",
+      "source_sha256": "d6dfd017a682b27fab409e3d3e7e462df34c9e7abe2bcdff016bd2feb938a5ed",
+      "translation": "``'mad'``、``'iqr'``（参见 :func:`mark_outliers`）、None，或 ``'policy'``（默认）以使用当前生效的 :class:`outlier_policy`。离群值保留在 ``data`` 中并标记 ``outlier = True``，但不参与绘图和检验；``stats['outliers']`` 按组统计其数量。"
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "label": "spacr.assay_panels.bar_spec#14",
+      "source": "a dict spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "source_sha256": "90f667c0d6aaf77ba09eec74a714c9990e8412454a8b00c939056e9b7db65d5d",
+      "translation": "一个 dict 规格，``kind`` 为 ``'bar'``，:func:`select_and_run_test` 的结果位于 ``stats`` 下。"
+    },
+    {
+      "context": "Split a condition into (variable, factor) parts.",
+      "label": "spacr.assay_panels.condition_parts#0",
+      "source": "Split a condition into (variable, factor) parts.",
+      "source_sha256": "5f64e499177e167a2647bcc99accc531f55dd1ec3efe34244b7eae0553a7d60a",
+      "translation": "将一个条件拆分为 (variable, factor) 部分。"
+    },
+    {
+      "context": "{variable (slot or column): value} of the condition.",
+      "label": "spacr.assay_panels.condition_parts#1",
+      "source": "{variable (slot or column): value} of the condition.",
+      "source_sha256": "6b0665dbc9e2e62cecb5a15ced19780bd1e405eb02bb8f2ec007bf116c685068",
+      "translation": "该条件的 {variable (slot or column): value}。"
+    },
+    {
+      "context": "``condition_factors`` - {value: [factor, ...]}; a value listed there contributes one part per factor (variable ``<var>#<i>`` for the i-th factor, so backgrounds and genotypes form separate variables), any other value is one part of its own variable.",
+      "label": "spacr.assay_panels.condition_parts#2",
+      "source": "``condition_factors`` - {value: [factor, ...]}; a value listed there contributes one part per factor (variable ``<var>#<i>`` for the i-th factor, so backgrounds and genotypes form separate variables), any other value is one part of its own variable.",
+      "source_sha256": "c35610a4fa4ea7e57e3e5bef18669428feecf670f1fdf8f0b059edba1f951862",
+      "translation": "``condition_factors`` - {value: [factor, ...]}；列在其中的值按每个因子贡献一个部分（第 i 个因子的变量为 ``<var>#<i>``，因此遗传背景和基因型构成不同的变量），其他任何值自成其变量的一个部分。"
+    },
+    {
+      "context": "``'significant'`` (default), ``'all'`` or ``'none'``.",
+      "label": "spacr.assay_panels.draw_bar_panel#7",
+      "source": "``'significant'`` (default), ``'all'`` or ``'none'``.",
+      "source_sha256": "a9fcd76bbdaee6e663f68dd5e1d5e3d07ecf9af5725a4007adea4fc28f1fe3cc",
+      "translation": "``'significant'``（默认）、``'all'`` 或 ``'none'``。"
+    },
+    {
+      "context": "which pairs get a bracket (:func:`select_bracket_pairs`): ``'one_factor'`` (significant pairs that differ in one factor of ``parts``; all significant pairs without factor structure), ``'all'`` or an explicit list of pairs. At most ``max_brackets`` are drawn (the smallest p values); every pair stays in ``stats_posthoc.csv``.",
+      "label": "spacr.assay_panels.draw_bar_panel#8",
+      "source": "which pairs get a bracket (:func:`select_bracket_pairs`): ``'one_factor'`` (significant pairs that differ in one factor of ``parts``; all significant pairs without factor structure), ``'all'`` or an explicit list of pairs. At most ``max_brackets`` are drawn (the smallest p values); every pair stays in ``stats_posthoc.csv``.",
+      "source_sha256": "7baf1e36483c59ab33aad2f771b42be8b86c52207bcea270b55b7061a5b08ba7",
+      "translation": "哪些配对获得括号（:func:`select_bracket_pairs`）：``'one_factor'``（在 ``parts`` 的一个因子上不同的显著配对；没有因子结构时为所有显著配对）、``'all'`` 或明确的配对列表。最多绘制 ``max_brackets`` 个（p 值最小的那些）；所有配对都保留在 ``stats_posthoc.csv`` 中。"
+    },
+    {
+      "context": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "label": "spacr.assay_panels.draw_bar_panel#9",
+      "source": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
+      "translation": "y 轴下限（``None``：0，若数据为负则为数据最小值）。"
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.draw_bar_panel#10",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "面板标题；检验结果会添加在其下方。"
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.draw_bar_panel#11",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "y 轴标签；``None`` 则使用将下划线替换为空格后的 ``value``。"
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_bar_panel#12",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "原始组值 -> x 轴刻度标签。"
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_bar_panel#13",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "行名 -> {group: text}，在 x 轴下方绘制的对齐文本行。"
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.draw_bar_panel#14",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "虚线参考线的 y 值，或 ``None``。"
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``.",
+      "label": "spacr.assay_panels.draw_bar_panel#15",
+      "source": "group -> colour, or a list of colours in ``order``.",
+      "source_sha256": "ec7e98e3a4fed663981d46580b89562d033f96591bc0546a025f74fd7708fd1c",
+      "translation": "组 -> 颜色，或按 ``order`` 排列的颜色列表。"
+    },
+    {
+      "context": "most post hoc brackets drawn.",
+      "label": "spacr.assay_panels.draw_bar_panel#16",
+      "source": "most post hoc brackets drawn.",
+      "source_sha256": "00441f5914e4a068ff83d73e1daf66a13adac3df8fb14d3096139a1b81afb031",
+      "translation": "最多绘制的事后检验括号数。"
+    },
+    {
+      "context": "random seed of the horizontal jitter of the dots.",
+      "label": "spacr.assay_panels.draw_bar_panel#17",
+      "source": "random seed of the horizontal jitter of the dots.",
+      "source_sha256": "48a27673929bbb431da5cbde183e62d75b77eecd3b289f943eef4ef2e998fd45",
+      "translation": "点的水平抖动所用的随机种子。"
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_bar_panel#18",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "True for points beyond the robust fence of their group.",
+      "label": "spacr.assay_panels.mark_outliers#0",
+      "source": "True for points beyond the robust fence of their group.",
+      "source_sha256": "81b8e298fe5b8010c53d56fb2922646ccafca748f4428f63b7af18569ce3c2c8",
+      "translation": "对超出其组稳健界限的点为 True。"
+    },
+    {
+      "context": "``mad``: ``|x - median| > fence * 1.4826 * MAD``; ``iqr``: outside ``[Q1 - fence * IQR, Q3 + fence * IQR]``. Groups with fewer than 4 points or no spread (MAD or IQR 0) keep every point.",
+      "label": "spacr.assay_panels.mark_outliers#1",
+      "source": "``mad``: ``|x - median| > fence * 1.4826 * MAD``; ``iqr``: outside ``[Q1 - fence * IQR, Q3 + fence * IQR]``. Groups with fewer than 4 points or no spread (MAD or IQR 0) keep every point.",
+      "source_sha256": "7bfa2ad5672095a6a60694a3abee5a7451f4be8188ec1fd4da7c13305aa55b5d",
+      "translation": "``mad``：``|x - median| > fence * 1.4826 * MAD``；``iqr``：位于 ``[Q1 - fence * IQR, Q3 + fence * IQR]`` 之外。少于 4 个点或没有离散（MAD 或 IQR 为 0）的组保留所有点。"
+    },
+    {
+      "context": "column or list of columns defining the groups.",
+      "label": "spacr.assay_panels.mark_outliers#2",
+      "source": "column or list of columns defining the groups.",
+      "source_sha256": "f9c52341c82cac763ce14e8c08f7a71a95771f51f62bae9113469127fbef07ea",
+      "translation": "定义分组的列或列的列表。"
+    },
+    {
+      "context": "Context manager: default outlier method of :func:`bar_spec` inside the block.",
+      "label": "spacr.assay_panels.outlier_policy#0",
+      "source": "Context manager: default outlier method of :func:`bar_spec` inside the block.",
+      "source_sha256": "9a33cd1aae4daa63d990f7037aaa61a639b9597119d0eeb8b197c1f8458dd24c",
+      "translation": "上下文管理器：在代码块内设置 :func:`bar_spec` 的默认离群值方法。"
+    },
+    {
+      "context": "``with outlier_policy('mad'): ...`` makes every bar panel built inside mark and leave out points beyond the robust fence of their group.",
+      "label": "spacr.assay_panels.outlier_policy#1",
+      "source": "``with outlier_policy('mad'): ...`` makes every bar panel built inside mark and leave out points beyond the robust fence of their group.",
+      "source_sha256": "6b06bc233577708a2fd5915346d4c850dfd6c03138d9bfeea339e5c44766baf5",
+      "translation": "``with outlier_policy('mad'): ...`` 使在其中构建的每个柱状面板都标记并排除超出其组稳健界限的点。"
+    },
+    {
+      "context": "Points and removed outliers per group (and per ``by`` level).",
+      "label": "spacr.assay_panels.outlier_table#0",
+      "source": "Points and removed outliers per group (and per ``by`` level).",
+      "source_sha256": "4b662c31de8c1883ff7ccc1dea2941fc26d5d68a729e591ce3f7493e49d2e7c3",
+      "translation": "每组（以及每个 ``by`` 水平）的点数和被移除的离群值数。"
+    },
+    {
+      "context": "Stack level of every bracket: shortest spans lowest, brackets on one level never overlap.",
+      "label": "spacr.assay_panels.pack_brackets#0",
+      "source": "Stack level of every bracket: shortest spans lowest, brackets on one level never overlap.",
+      "source_sha256": "96586035db1f7de9c4bc8f8591a696b545968cffa7a6e4f480654306fd733d76",
+      "translation": "每个括号的堆叠层级：跨度最短的在最下层，同一层级上的括号绝不重叠。"
+    },
+    {
+      "context": "``'mad'`` / ``'iqr'`` (default fences 3.5 and 1.5) or ``'mad:3'`` -> (name, fence); None -> None.",
+      "label": "spacr.assay_panels.parse_outlier_method#0",
+      "source": "``'mad'`` / ``'iqr'`` (default fences 3.5 and 1.5) or ``'mad:3'`` -> (name, fence); None -> None.",
+      "source_sha256": "fa55ff3f26536e44258ebfe60ca75908d3d4aa652f2135e2010bb4143481b739",
+      "translation": "``'mad'`` / ``'iqr'``（默认界限为 3.5 和 1.5）或 ``'mad:3'`` -> (name, fence)；None -> None。"
+    },
+    {
+      "context": "Post hoc pairs that get a bracket, and how many qualifying pairs were left out.",
+      "label": "spacr.assay_panels.select_bracket_pairs#0",
+      "source": "Post hoc pairs that get a bracket, and how many qualifying pairs were left out.",
+      "source_sha256": "53b838471b32aa4041920f214963ba482e22b075ed2db3a301612b8e06fb8f11",
+      "translation": "获得括号的事后检验配对，以及有多少符合条件的配对被省略。"
+    },
+    {
+      "context": "``'one_factor'``: significant pairs that differ in exactly one factor of ``parts`` (same host with another strain, same strain in another host); every significant pair when the conditions have no factor structure (at most one variable). ``'all'``: every significant pair. A list of pairs: those pairs, significant or not. Beyond ``max_n`` the pairs with the smallest p values are kept.",
+      "label": "spacr.assay_panels.select_bracket_pairs#1",
+      "source": "``'one_factor'``: significant pairs that differ in exactly one factor of ``parts`` (same host with another strain, same strain in another host); every significant pair when the conditions have no factor structure (at most one variable). ``'all'``: every significant pair. A list of pairs: those pairs, significant or not. Beyond ``max_n`` the pairs with the smallest p values are kept.",
+      "source_sha256": "953d247b18a083f51985d3ff056d428efefb27234b96fbbfd1e9e241a851bff0",
+      "translation": "``'one_factor'``：在 ``parts`` 的恰好一个因子上不同的显著配对（同一宿主搭配另一虫株，同一虫株处于另一宿主中）；当各条件没有因子结构（最多一个变量）时，为每个显著配对。``'all'``：每个显著配对。配对列表：即这些配对，无论是否显著。超过 ``max_n`` 时，保留 p 值最小的配对。"
+    },
+    {
+      "context": "(DataFrame of chosen pairs, number of qualifying pairs not drawn).",
+      "label": "spacr.assay_panels.select_bracket_pairs#2",
+      "source": "(DataFrame of chosen pairs, number of qualifying pairs not drawn).",
+      "source_sha256": "618da887bd64c8544c757eae87af0ee865468c029c1caf3e003e8438890b70e0",
+      "translation": "（所选配对的 DataFrame，未绘制的符合条件配对数）。"
+    },
+    {
+      "context": "``color`` darkened to ``factor`` (0 black, 1 unchanged), as an RGB tuple.",
+      "label": "spacr.assay_panels.shade#0",
+      "source": "``color`` darkened to ``factor`` (0 black, 1 unchanged), as an RGB tuple.",
+      "source_sha256": "952b54ed80606b48035928adcd641ec943eef921af2546d7db0eb47456ea0aa3",
+      "translation": "将 ``color`` 加深到 ``factor``（0 为黑色，1 不变），以 RGB 元组返回。"
+    },
+    {
+      "context": "Fallback decomposition: the tokens of the condition string, by position.",
+      "label": "spacr.assay_panels.string_parts#0",
+      "source": "Fallback decomposition: the tokens of the condition string, by position.",
+      "source_sha256": "dc1c7c336cc5a0e2696d5eda74efd5216e1351c4ee34d4d35be96712447753c8",
+      "translation": "后备分解：按位置取条件字符串中的各个词元。"
+    },
+    {
+      "context": "Light horizontal grid behind the data, top and right spines removed.",
+      "label": "spacr.assay_panels.style_axes#0",
+      "source": "Light horizontal grid behind the data, top and right spines removed.",
+      "source_sha256": "1f9b6fe369b21cf6222da70e14aeae4c066180b6b826eae149f4578e888203ca",
+      "translation": "数据后方的浅色水平网格，去除顶部和右侧轴脊。"
+    },
+    {
+      "context": "Standard assay report: A4 pages with pagination, 16-bit tiles and a figure legend.",
+      "label": "spacr.assay_report#0",
+      "source": "Standard assay report: A4 pages with pagination, 16-bit tiles and a figure legend.",
+      "source_sha256": "9984f66e30af61f7f5bf779469102d0e23b32e4880df4806b14fa71f0a3dc1e2",
+      "translation": "标准实验报告：带分页的 A4 页面、16 位图块和图注。"
+    },
+    {
+      "context": "Used by :func:`spacr.submodules.analyze_recruitment` (``report`` setting) and written to be reused by other laboratory microplate assays. Three building blocks:",
+      "label": "spacr.assay_report#1",
+      "source": "Used by :func:`spacr.submodules.analyze_recruitment` (``report`` setting) and written to be reused by other plate assays. Three building blocks:",
+      "source_sha256": "31f2857300954be1154acf723c922d34571a85978410fd7142ea15deea323f05",
+      "translation": "由 :func:`spacr.submodules.analyze_recruitment`（``report`` 设置）使用，并且编写时考虑了供其他板式实验复用。包含三个构建模块："
+    },
+    {
+      "context": "**Layout engine** (:class:`ReportItem`, :class:`ReportBlock`, :func:`paginate`, :func:`render_report`). A report is a list of blocks, each a heading plus panel items. An item is half or full page width with a height in mm. Items are packed into rows (two half items, or one full item), rows into A4 portrait pages (210 x 297 mm). A block that does not fit the rest of a page starts on a new page; a block taller than a page flows on, row by row, with its heading repeated. Text sizes are fixed in points (never below 5 pt), so a long report gets more pages, never smaller text. Panels whose condition axis does not fit the page width are split into chunks of conditions (:func:`condition_chunks`) drawn as consecutive rows.",
+      "label": "spacr.assay_report#2",
+      "source": "**Layout engine** (:class:`ReportItem`, :class:`ReportBlock`, :func:`paginate`, :func:`render_report`). A report is a list of blocks, each a heading plus panel items. An item is half or full page width with a height in mm. Items are packed into rows (two half items, or one full item), rows into A4 portrait pages (210 x 297 mm). A block that does not fit the rest of a page starts on a new page; a block taller than a page flows on, row by row, with its heading repeated. Text sizes are fixed in points (never below 5 pt), so a long report gets more pages, never smaller text. Panels whose condition axis does not fit the page width are split into chunks of conditions (:func:`condition_chunks`) drawn as consecutive rows.",
+      "source_sha256": "f70c18085abd09fc7fbe0d012e65517982fcc4feadbef90c96dd34fb76280c7f",
+      "translation": "**版式引擎**（:class:`ReportItem`、:class:`ReportBlock`、:func:`paginate`、:func:`render_report`）。报告是一个块列表，每个块由一个标题和若干面板项组成。一项占半页或整页宽度，高度以 mm 计。各项被排入行（两个半宽项或一个全宽项），各行再排入 A4 纵向页面（210 x 297 mm）。放不进当前页剩余空间的块从新页开始；比一页还高的块逐行延续，并重复其标题。文字大小以点为单位固定（绝不小于 5 pt），因此长报告会增加页数，而不会缩小文字。条件轴放不进页面宽度的面板会被拆分为若干条件分块（:func:`condition_chunks`），绘制为连续的行。"
+    },
+    {
+      "context": "**Tiles** (:func:`select_tiles`, :func:`extract_tile`, :func:`render_tile`, :func:`build_tiles`). Extracted image regions of host cells around their mask centroid from the spaCR merged arrays (image data channels then mask image layers). The raw extracted image region is written as a multichannel TIFF with the input dtype and unchanged values; the RGB composite and the montage are written as 16-bit PNG (OpenCV, BGR order) and 16-bit TIFF (RGB). Only the figure PDF / PNG are 8-bit.",
+      "label": "spacr.assay_report#3",
+      "source": "**Tiles** (:func:`select_tiles`, :func:`extract_tile`, :func:`render_tile`, :func:`build_tiles`). Crops of host cells around their mask centroid from the spaCR merged arrays (image channels then mask planes). The raw crop is written as a multichannel TIFF with the input dtype and unchanged values; the RGB composite and the montage are written as 16-bit PNG (OpenCV, BGR order) and 16-bit TIFF (RGB). Only the figure PDF / PNG are 8-bit.",
+      "source_sha256": "d0bffd61dc4d572bffed1aa228872c8bc4f2715101fcdc13d6e0bb59049333be",
+      "translation": "**图块**（:func:`select_tiles`、:func:`extract_tile`、:func:`render_tile`、:func:`build_tiles`）。从 spaCR 合并数组（先是图像通道，然后是掩膜平面）中围绕宿主细胞掩膜质心裁剪的图像。原始裁剪图以输入 dtype 和未改变的数值写为多通道 TIFF；RGB 合成图和拼图写为 16 位 PNG（OpenCV，BGR 顺序）和 16 位 TIFF（RGB）。只有组图的 PDF / PNG 是 8 位的。"
+    },
+    {
+      "context": "**Legend** (:func:`describe_test`, :func:`filter_sentences`, :func:`write_legend`). Generic text for every panel: what is plotted, unit of statistics, n per group, test and why, filters with their counts.",
+      "label": "spacr.assay_report#4",
+      "source": "**Legend** (:func:`describe_test`, :func:`filter_sentences`, :func:`write_legend`). Generic text for every panel: what is plotted, unit of statistics, n per group, test and why, filters with their counts.",
+      "source_sha256": "68041f1a6b21939ae28ad145bfd9aebdb73eab7006a4c8074425cc2cbcf45e57",
+      "translation": "**图注**（:func:`describe_test`、:func:`filter_sentences`、:func:`write_legend`）。为每个面板生成通用文本：绘制的内容、统计单位、每组 n、所用检验及其原因、各过滤步骤及其计数。"
+    },
+    {
+      "context": "Statistics come from :func:`spacr.assay_panels.select_and_run_test`.",
+      "label": "spacr.assay_report#5",
+      "source": "Statistics come from :func:`spacr.assay_panels.select_and_run_test`.",
+      "source_sha256": "196c3d8561bcefccb57afa37aaa341b1c959358e1b920dfad5e008d8390c4bac",
+      "translation": "统计结果来自 :func:`spacr.assay_panels.select_and_run_test`。"
+    },
+    {
+      "context": "Page geometry and type sizes of a report layout (all lengths in mm, fonts in pt).",
+      "label": "spacr.assay_report.Layout#0",
+      "source": "Page geometry and type sizes of a report layout (all lengths in mm, fonts in pt).",
+      "source_sha256": "45e5e3d4f71ef533ea979383b1ae694c89528e59dbbef90bc2c4e70d3eccbbf6",
+      "translation": "报告版式的页面几何和字号（所有长度以 mm 计，字号以 pt 计）。"
+    },
+    {
+      "context": "``compact`` draws 5-6 pt text, slim bars and small markers and first tries to fit the whole figure on one page (:func:`paginate`); ``spacious`` is the roomy layout with 8-10 pt text that paginates freely.",
+      "label": "spacr.assay_report.Layout#1",
+      "source": "``compact`` draws 5-6 pt text, slim bars and small markers and first tries to fit the whole figure on one page (:func:`paginate`); ``spacious`` is the roomy layout with 8-10 pt text that paginates freely.",
+      "source_sha256": "f0150d4a0a661368425d3961b07ed743b2c535b619f4169d048353e1b40363ca",
+      "translation": "``compact`` 使用 5-6 pt 文字、细柱和小标记，并首先尝试将整个组图放在一页上（:func:`paginate`）；``spacious`` 是宽松版式，使用 8-10 pt 文字并自由分页。"
+    },
+    {
+      "context": "A heading plus panel items. Consecutive blocks with the same ``group`` are kept on one page when the compact layout has to paginate.",
+      "label": "spacr.assay_report.ReportBlock#0",
+      "source": "A heading plus panel items. Consecutive blocks with the same ``group`` are kept on one page when the compact layout has to paginate.",
+      "source_sha256": "7c9d2c55617985ec4502ef63f1fa011174157b26cec4c944a55a8642b8aa5642",
+      "translation": "一个标题加若干面板项。当 compact 版式需要分页时，具有相同 ``group`` 的连续块会保持在同一页上。"
+    },
+    {
+      "context": "One panel (or one chunk of a panel) on a page.",
+      "label": "spacr.assay_report.ReportItem#0",
+      "source": "One panel (or one chunk of a panel) on a page.",
+      "source_sha256": "7be8d5b1846ad522e55c7c23f72138394a97c142ac05ead4d829faf87a53c9be",
+      "translation": "页面上的一个面板（或面板的一个分块）。"
+    },
+    {
+      "context": "``draw(fig, rect)`` with ``rect = (x0, y0, w, h)`` in figure fractions; it adds its own axes inside the rect.",
+      "label": "spacr.assay_report.ReportItem#1",
+      "source": "``draw(fig, rect)`` with ``rect = (x0, y0, w, h)`` in figure fractions; it adds its own axes inside the rect.",
+      "source_sha256": "eda898064139fb4022194c7042acf03d6099f5fce00aa0f97394a430d589699a",
+      "translation": "``draw(fig, rect)``，其中 ``rect = (x0, y0, w, h)`` 以组图比例表示；它在 rect 内添加自己的坐标轴。"
+    },
+    {
+      "context": "fraction of the content width (or ``'half'``, ``'full'``, ``'third'``, ``'quarter'``).",
+      "label": "spacr.assay_report.ReportItem#2",
+      "source": "fraction of the content width (or ``'half'``, ``'full'``, ``'third'``, ``'quarter'``).",
+      "source_sha256": "e3f77a2073ac16e8cecb4bec4e6ada9ac5d7b2d40d3fc01022007c6030706c62",
+      "translation": "内容宽度的比例（或 ``'half'``、``'full'``、``'third'``、``'quarter'``）。"
+    },
+    {
+      "context": "height reserved on the page, panel ID strip included.",
+      "label": "spacr.assay_report.ReportItem#3",
+      "source": "height reserved on the page, panel ID strip included.",
+      "source_sha256": "a6cbd8b1604a926ab7055e3ece1c6c4a038baea7af07322e55398f1d77debd6e",
+      "translation": "在页面上预留的高度，包括面板 ID 条。"
+    },
+    {
+      "context": "smallest height the one-page fit may shrink it to.",
+      "label": "spacr.assay_report.ReportItem#4",
+      "source": "smallest height the one-page fit may shrink it to.",
+      "source_sha256": "35a61fbc00ee1f8e280e060fe1de907c79d9f7918a619bba9d700341e4bf2eb4",
+      "translation": "单页适配时可将其缩小到的最小高度。"
+    },
+    {
+      "context": "start a new row with this item.",
+      "label": "spacr.assay_report.ReportItem#5",
+      "source": "start a new row with this item.",
+      "source_sha256": "97356799a05bf03424aaea2460f193996ba9a987d3b881dc2a25bb474868e4e5",
+      "translation": "从此项开始新的一行。"
+    },
+    {
+      "context": "Build the standard report: one figure per data version, plate heatmaps, legends.",
+      "label": "spacr.assay_report.build_assay_report#0",
+      "source": "Build the standard report: one figure per data version, plate heatmaps, legends.",
+      "source_sha256": "27152ff927bcb7ba2c293a86f9dba267e16b35d2f0a64733eca173c91211262b",
+      "translation": "构建标准报告：每个数据版本一个组图、板热图、图注。"
+    },
+    {
+      "context": "Two figures, FILTERED then UNFILTERED, each on its own A4 pages: microscope image fields of that version (``tiles``), the representative object per condition and, under every value graph, its extracted-image-region grid (``crops``), the value per condition at well and replicate level (half page width), the well-level controls (no statistics), and the figure legend printed under the panels (following pages when needed). Laboratory microplate heatmaps follow as an appendix. Graphs carry no titles or test names: significant post hoc pairs are brackets with stars; tests are in stats.csv and the legend.",
+      "label": "spacr.assay_report.build_assay_report#1",
+      "source": "Two figures, FILTERED then UNFILTERED, each on its own A4 pages: tiles of that version (``tiles``), the representative object per condition and, under every value graph, its crop grid (``crops``), the value per condition at well and replicate level (half page width), the well-level controls (no statistics), and the figure legend printed under the panels (following pages when needed). Plate heatmaps follow as an appendix. Graphs carry no titles or test names: significant post hoc pairs are brackets with stars; tests are in stats.csv and the legend.",
+      "source_sha256": "dbf4f2627ddd9d7820a59fa122ecd3a31f5e076bcd6df0261bd243080871ca54",
+      "translation": "两个组图，先 FILTERED（过滤后）再 UNFILTERED（未过滤），各自占用独立的 A4 页面：该版本的图块（``tiles``），每个条件的代表性对象以及每个数值图下方的裁剪图网格（``crops``），在孔和重复水平上每个条件的数值（半页宽），孔水平对照（不含统计），以及打印在面板下方的图注（需要时延续到后续页面）。板热图作为附录放在后面。各图不带标题或检验名称：显著的事后检验配对以带星号的括号表示；检验结果见 stats.csv 和图注。"
+    },
+    {
+      "context": "Images (tiles, representative extracted image regions, extracted image region grids) come in three versions - merged colour, image data channel of interest in grey, and the same with the outline of every object type - scaled per image data channel to the 2nd-98th percentile of all extracted image regions of that figure, written as 16-bit PNG/TIFF (``build_tiles``).",
+      "label": "spacr.assay_report.build_assay_report#2",
+      "source": "Images (tiles, representative crops, crop grids) come in three versions - merged colour, channel of interest in grey, and the same with the outline of every object type - scaled per channel to the 2nd-98th percentile of all crops of that figure, written as 16-bit PNG/TIFF (``build_tiles``).",
+      "source_sha256": "5751b3516ad0cfee102237d4f59aee64f6c0487df0e3eb5900518930aab16917",
+      "translation": "图像（图块、代表性裁剪图、裁剪图网格）有三个版本——彩色合并图、灰度显示的目标通道，以及在其上叠加每种对象类型轮廓的同一图像——按通道缩放到该组图所有裁剪图的第 2 至第 98 百分位，写为 16 位 PNG/TIFF（``build_tiles``）。"
+    },
+    {
+      "context": "``{'unfiltered': df, 'filtered': df}``, one row per ``row_object``.",
+      "label": "spacr.assay_report.build_assay_report#3",
+      "source": "``{'unfiltered': df, 'filtered': df}``, one row per ``row_object``.",
+      "source_sha256": "0a05426b5e5008738f3d9d95faef67967f8a654f4d330918525382895d7d8d87",
+      "translation": "``{'unfiltered': df, 'filtered': df}``，每个 ``row_object`` 一行。"
+    },
+    {
+      "context": "None to skip images, else ``merged_dir``, ``mask_dims``, ``colour_map``, ``n``, ``size``, ``seed`` and ``mono_channel``.",
+      "label": "spacr.assay_report.build_assay_report#4",
+      "source": "None to skip images, else ``merged_dir``, ``mask_dims``, ``colour_map``, ``n``, ``size``, ``seed`` and ``mono_channel``.",
+      "source_sha256": "251a3bfa0fb102df26a89fd9569db8a066499d90d82bc206b9085d5fc8aacc57",
+      "translation": "None 表示跳过图像，否则为 ``merged_dir``、``mask_dims``、``colour_map``、``n``、``size``、``seed`` 和 ``mono_channel``。"
+    },
+    {
+      "context": "None, or ``{'n': k}`` for representative extracted image regions.",
+      "label": "spacr.assay_report.build_assay_report#5",
+      "source": "None, or ``{'n': k}`` for representative crops.",
+      "source_sha256": "e511dc84c43ea81693c19c462020b243179706d5065938c5c8df982f34fd5a1d",
+      "translation": "None，或用于代表性裁剪图的 ``{'n': k}``。"
+    },
+    {
+      "context": "{condition: [(variable, factor), ...]} for the x axis (:func:`spacr.assay_panels.condition_parts`); None splits the condition names on '_'.",
+      "label": "spacr.assay_report.build_assay_report#6",
+      "source": "{condition: [(variable, factor), ...]} for the x axis (:func:`spacr.assay_panels.condition_parts`); None splits the condition names on '_'.",
+      "source_sha256": "dc81351dc3c056a11c5965673c906d59732a47264a8959bd55b1e368c217e454",
+      "translation": "用于 x 轴的 {condition: [(variable, factor), ...]}（:func:`spacr.assay_panels.condition_parts`）；None 按 '_' 拆分条件名。"
+    },
+    {
+      "context": "``'one_factor'``, ``'all'`` or a list of pairs (:func:`spacr.assay_panels.select_bracket_pairs`).",
+      "label": "spacr.assay_report.build_assay_report#7",
+      "source": "``'one_factor'``, ``'all'`` or a list of pairs (:func:`spacr.assay_panels.select_bracket_pairs`).",
+      "source_sha256": "f3010d8a6a62e38f680adaa280ea87b887bada91f7d5e0241c4367adab7a73c3",
+      "translation": "``'one_factor'``、``'all'`` 或配对列表（:func:`spacr.assay_panels.select_bracket_pairs`）。"
+    },
+    {
+      "context": "``'auto'`` (+/- matrix when two or more variables vary on a graph, else labels of the varying part), ``'matrix'``, ``'labels'``.",
+      "label": "spacr.assay_report.build_assay_report#8",
+      "source": "``'auto'`` (+/- matrix when two or more variables vary on a graph, else labels of the varying part), ``'matrix'``, ``'labels'``.",
+      "source_sha256": "d152e3c3d9df5c6a5b3e4d9a28325732208d9c36fba1ab2089508b867c829862",
+      "translation": "``'auto'``（一个图上有两个或更多变量变化时使用 +/- 矩阵，否则使用变化部分的标签）、``'matrix'``、``'labels'``。"
+    },
+    {
+      "context": "key-value mapping with ``pdf`` (combined), ``figures`` {version: pdf}, ``png``, ``legend``, ``panels``, ``n_pages``, ``n_figure_pages``, ``n_main_pages`` and ``n_legend_pages`` (0: legends are on the figures).",
+      "label": "spacr.assay_report.build_assay_report#9",
+      "source": "dict with ``pdf`` (combined), ``figures`` {version: pdf}, ``png``, ``legend``, ``panels``, ``n_pages``, ``n_figure_pages``, ``n_main_pages`` and ``n_legend_pages`` (0: legends are on the figures).",
+      "source_sha256": "ffc32ae850eba5ab66ff7178925b179b03a85a93980a1091879fac18488acde6",
+      "translation": "dict，包含 ``pdf``（合并文件）、``figures`` {version: pdf}、``png``、``legend``、``panels``、``n_pages``、``n_figure_pages``、``n_main_pages`` 和 ``n_legend_pages``（0：图注位于组图上）。"
+    },
+    {
+      "context": "Pick, extracted image region, render and write the representative tiles of every group.",
+      "label": "spacr.assay_report.build_tiles#0",
+      "source": "Pick, crop, render and write the representative tiles of every group.",
+      "source_sha256": "b53e615b971cd5a2ff9db3f5df93ecca8a6179658286d5b8a3569bb6748c6eda",
+      "translation": "挑选、裁剪、渲染并写出每个组的代表性图块。"
+    },
+    {
+      "context": "{'cell': plane, 'pathogen': plane, ...}; ``object_column`` holds the host cell label. Extracted image regions are centred on the ``center_object`` objects of the host cell (pathogen; see :func:`extract_tile`), or on the host cell when that mask is absent. At most ``max_attempts`` candidates are tried per group.",
+      "label": "spacr.assay_report.build_tiles#1",
+      "source": "{'cell': plane, 'pathogen': plane, ...}; ``object_column`` holds the host cell label. Crops are centred on the ``center_object`` objects of the host cell (pathogen; see :func:`extract_tile`), or on the host cell when that mask is absent. At most ``max_attempts`` candidates are tried per group.",
+      "source_sha256": "f248c38b5e48bb5ffd4cc2325e3341d23ce27f7a78fa3247c28699efc7db0179",
+      "translation": "{'cell': plane, 'pathogen': plane, ...}；``object_column`` 存放宿主细胞标签。裁剪以宿主细胞的 ``center_object`` 对象（病原体；参见 :func:`extract_tile`）为中心，若该掩膜不存在则以宿主细胞为中心。每组最多尝试 ``max_attempts`` 个候选。"
+    },
+    {
+      "context": "``'random'`` (seeded, objects away from the edge first) or ``'median'`` (objects closest to the median of ``value_column`` in their group first: typical objects).",
+      "label": "spacr.assay_report.build_tiles#2",
+      "source": "``'random'`` (seeded, objects away from the edge first) or ``'median'`` (objects closest to the median of ``value_column`` in their group first: typical objects).",
+      "source_sha256": "b5e4d88ad3f9fb8211fa80acec8fe892d27fbdf5436e5cc8b1d9292a71f6ac4a",
+      "translation": "``'random'``（使用种子，优先选择远离边缘的对象）或 ``'median'``（优先选择最接近其组内 ``value_column`` 中位数的对象：典型对象）。"
+    },
+    {
+      "context": "``'fields'`` (display range from the pixels of the microscope fields of view the microscope image fields come from) or ``'crops'`` (from the pixels of the extracted image regions themselves, so every extracted image region of the figure is comparable).",
+      "label": "spacr.assay_report.build_tiles#3",
+      "source": "``'fields'`` (display range from the pixels of the fields the tiles come from) or ``'crops'`` (from the pixels of the crops themselves, so every crop of the figure is comparable).",
+      "source_sha256": "f6f188cc0a9fb2b8e66bbfb1203ce9d619222005d4311466f573f377f1cc66e0",
+      "translation": "``'fields'``（显示范围取自图块所在视野的像素）或 ``'crops'``（取自裁剪图本身的像素，使组图中的每张裁剪图都可相互比较）。"
+    },
+    {
+      "context": "folder for the per extracted image region files; ``montage_name`` the stem of the 16-bit montage.",
+      "label": "spacr.assay_report.build_tiles#4",
+      "source": "folder for the per-crop files; ``montage_name`` the stem of the 16-bit montage.",
+      "source_sha256": "873e36d875b05b51f1d95b5c9ce142ce0d1558f22f176037be142bbc16dccc94",
+      "translation": "存放逐裁剪图文件的文件夹；``montage_name`` 是 16 位拼图的文件名主干。"
+    },
+    {
+      "context": "channel shown in the two monochrome versions (the channel of interest; default the first channel of ``colour_map``).",
+      "label": "spacr.assay_report.build_tiles#5",
+      "source": "channel shown in the two monochrome versions (the channel of interest; default the first channel of ``colour_map``).",
+      "source_sha256": "5b8776770450e4ad1e1a81d4d4d5dd8cb49cc20994732a15552c07513c0d810e",
+      "translation": "两个单色版本中显示的通道（目标通道；默认为 ``colour_map`` 的第一个通道）。"
+    },
+    {
+      "context": "Three versions of every extracted image region are written, each a 16-bit set of its own: ``merged/`` (colour composite, no outlines), ``mono/`` (``mono_channel`` in grey, no outlines) and ``outlines/`` (the same grey with the outline of every object type of the host cell - the cell itself and every other mask object overlapping it - in its own colour at ``outline_alpha`` opacity). Each holds ``<subdir>/<group>_<k>.png/.tif`` and ``<montage_name>.png/.tif`` (rows = extracted image regions, columns = groups, ``gap`` px white hairlines). ``raw/`` holds the unchanged multichannel extracted image region (all image and mask image layers, input dtype). Display ranges: per image data channel the ``percentiles`` of the pixels of every extracted image region of the figure (``range_source='crops'``).",
+      "label": "spacr.assay_report.build_tiles#6",
+      "source": "Three versions of every crop are written, each a 16-bit set of its own: ``merged/`` (colour composite, no outlines), ``mono/`` (``mono_channel`` in grey, no outlines) and ``outlines/`` (the same grey with the outline of every object type of the host cell - the cell itself and every other mask object overlapping it - in its own colour at ``outline_alpha`` opacity). Each holds ``<subdir>/<group>_<k>.png/.tif`` and ``<montage_name>.png/.tif`` (rows = crops, columns = groups, ``gap`` px white hairlines). ``raw/`` holds the unchanged multichannel crop (all image and mask planes, input dtype). Display ranges: per channel the ``percentiles`` of the pixels of every crop of the figure (``range_source='crops'``).",
+      "source_sha256": "1837a3949601581b53267b51434eba2db0f815301054d144cc44e05856cec996",
+      "translation": "每张裁剪图写出三个版本，每个版本各成一套 16 位文件：``merged/``（彩色合成图，无轮廓）、``mono/``（以灰度显示 ``mono_channel``，无轮廓）和 ``outlines/``（同一灰度图，叠加宿主细胞每种对象类型的轮廓——细胞本身以及与其重叠的每个其他掩膜对象——各用自己的颜色，不透明度为 ``outline_alpha``）。每个版本包含 ``<subdir>/<group>_<k>.png/.tif`` 和 ``<montage_name>.png/.tif``（行 = 裁剪图，列 = 组，``gap`` px 白色细分隔线）。``raw/`` 存放未改变的多通道裁剪图（所有图像和掩膜平面，输入 dtype）。显示范围：每个通道取该组图所有裁剪图像素的 ``percentiles``（``range_source='crops'``）。"
+    },
+    {
+      "context": "key-value mapping with ``tiles`` {version: {group: [rgb16]}}, ``table`` (one row per tile), ``ranges``, ``montage`` (uint16 RGB, rows = tiles, columns = groups), ``files`` and ``notes``.",
+      "label": "spacr.assay_report.build_tiles#7",
+      "source": "dict with ``tiles`` {version: {group: [rgb16]}}, ``table`` (one row per tile), ``ranges``, ``montage`` (uint16 RGB, rows = tiles, columns = groups), ``files`` and ``notes``.",
+      "source_sha256": "6bc8d68082fcb4d6ed403571946f4ba399527bf6f5ffdbc2cb7d22edeef666a5",
+      "translation": "dict，包含 ``tiles`` {version: {group: [rgb16]}}、``table``（每个图块一行）、``ranges``、``montage``（uint16 RGB，行 = 图块，列 = 组）、``files`` 和 ``notes``。"
+    },
+    {
+      "context": "Restyle a drawn panel for the compact layout: 5-6 pt text, slim bars, small dots.",
+      "label": "spacr.assay_report.compact_style#0",
+      "source": "Restyle a drawn panel for the compact layout: 5-6 pt text, slim bars, small dots.",
+      "source_sha256": "36b19ff8434a7ba77087defc32015d6de85a5b131c4c1336d04568e089aa5849",
+      "translation": "为 compact 版式重新设置已绘制面板的样式：5-6 pt 文字、细柱、小点。"
+    },
+    {
+      "context": "x tick labels are wrapped at word boundaries and drawn at 45 degrees.",
+      "label": "spacr.assay_report.compact_style#1",
+      "source": "x tick labels are wrapped at word boundaries and drawn at 45 degrees.",
+      "source_sha256": "c65a502dd65848672d45e8d7d6b8cde226b72e2b9fab303ca4e8209b6119f24b",
+      "translation": "x 轴刻度标签在单词边界处换行，并以 45 度角绘制。"
+    },
+    {
+      "context": "Split the condition order into chunks that fit one page width.",
+      "label": "spacr.assay_report.condition_chunks#0",
+      "source": "Split the condition order into chunks that fit one page width.",
+      "source_sha256": "ef14c0bb43cffac9ebc64a8cc43fe3b63257ab9681d6537f7a4bcc40f68d9eb9",
+      "translation": "将条件顺序拆分为能放进一页宽度的分块。"
+    },
+    {
+      "context": "(width, chunks). Without ``layout`` width is ``'half'`` or ``'full'`` (spacious); with a layout it is the smallest width fraction of ``layout.widths`` (at least ``min_frac``) that holds the panel.",
+      "label": "spacr.assay_report.condition_chunks#1",
+      "source": "(width, chunks). Without ``layout`` width is ``'half'`` or ``'full'`` (spacious); with a layout it is the smallest width fraction of ``layout.widths`` (at least ``min_frac``) that holds the panel.",
+      "source_sha256": "ad3caedf7882c7176f6f88f3a0343546338cb00caa62a2aacbc8bf87f43c878f",
+      "translation": "(width, chunks)。没有 ``layout`` 时，宽度为 ``'half'`` 或 ``'full'``（spacious）；有版式时，为 ``layout.widths`` 中能容纳该面板的最小宽度比例（至少为 ``min_frac``）。"
+    },
+    {
+      "context": "How objects of type ``obj`` are counted per microplate sample position (see :func:`well_counts`).",
+      "label": "spacr.assay_report.count_source#0",
+      "source": "How objects of type ``obj`` are counted per well (see :func:`well_counts`).",
+      "source_sha256": "4c40c313765f229c050c3ae920bd532a3ebfd78f4dc0666e856abba0a84b89a8",
+      "translation": "类型为 ``obj`` 的对象如何按孔计数（参见 :func:`well_counts`）。"
+    },
+    {
+      "context": "Draw callback, height and minimum height (mm) of an extracted image region figure.",
+      "label": "spacr.assay_report.crop_drawer#0",
+      "source": "Draw callback, height and minimum height (mm) of a crop figure.",
+      "source_sha256": "6eb4d427e393cc7dffa567f07c551f18fa7e18b76fd5adeac3336b0158b3eb04",
+      "translation": "裁剪图组图的绘制回调、高度和最小高度（mm）。"
+    },
+    {
+      "context": "The three image versions (merged, image data channel of interest, image data channel of interest with outlines) are drawn side by side when the tiles stay at least ``min_tile_mm`` wide, else stacked. Each version is one tight montage (1 px hairlines), one column per condition, with the condition labels - or the +/- matrix of ``axis`` - under the columns. Images are drawn at native resolution (interpolation 'none').",
+      "label": "spacr.assay_report.crop_drawer#1",
+      "source": "The three image versions (merged, channel of interest, channel of interest with outlines) are drawn side by side when the tiles stay at least ``min_tile_mm`` wide, else stacked. Each version is one tight montage (1 px hairlines), one column per condition, with the condition labels - or the +/- matrix of ``axis`` - under the columns. Images are drawn at native resolution (interpolation 'none').",
+      "source_sha256": "0787ffd46f8e29041ba3672ca41e069ffc08b00b8f332ffb827345c25ff87c37",
+      "translation": "当图块宽度能保持至少 ``min_tile_mm`` 时，三个图像版本（合并图、目标通道、带轮廓的目标通道）并排绘制，否则上下堆叠。每个版本是一张紧凑的拼图（1 px 细分隔线），每个条件一列，列下方是条件标签或 ``axis`` 的 +/- 矩阵。图像以原始分辨率绘制（插值 'none'）。"
+    },
+    {
+      "context": "Report items of an extracted image region figure, split into condition chunks when wide.",
+      "label": "spacr.assay_report.crop_items#0",
+      "source": "Report items of a crop figure, split into condition chunks when wide.",
+      "source_sha256": "d6dc8a7e2e0bba9918a81ac0d18936912405267b9657995a06e9779a6c6a720b",
+      "translation": "裁剪图组图的报告项，过宽时拆分为条件分块。"
+    },
+    {
+      "context": "Object tables of a measurements.db: tables with plateID, rowID and columnID.",
+      "label": "spacr.assay_report.db_object_tables#0",
+      "source": "Object tables of a measurements.db: tables with plateID, rowID and columnID.",
+      "source_sha256": "7e449ccc430d0ee04976d4c34b6509827224111a3e1d0a4fb16c2c7891aaf6ed",
+      "translation": "measurements.db 的对象表：包含 plateID、rowID 和 columnID 的表。"
+    },
+    {
+      "context": "Bookkeeping tables (png_list, intensity_rescale, ...), versioned copies (``cell_1`` when ``cell`` exists) and ``skip`` (cytoplasm, one per cell) are left out. cell, nucleus and pathogen come first.",
+      "label": "spacr.assay_report.db_object_tables#1",
+      "source": "Bookkeeping tables (png_list, intensity_rescale, ...), versioned copies (``cell_1`` when ``cell`` exists) and ``skip`` (cytoplasm, one per cell) are left out. cell, nucleus and pathogen come first.",
+      "source_sha256": "25f924e9b47e89360dc2304af01e76a30f563456b15212607cb156cbaacddafa",
+      "translation": "簿记表（png_list、intensity_rescale 等）、版本化副本（``cell_1``，当 ``cell`` 存在时）以及 ``skip``（细胞质，每个细胞一个）会被排除。cell、nucleus 和 pathogen 排在最前。"
+    },
+    {
+      "context": "Rows per microplate sample position in every object table of measurements.db, for the microplate sample positions of ``frame``.",
+      "label": "spacr.assay_report.db_well_counts#0",
+      "source": "Rows per well in every object table of measurements.db, for the wells of ``frame``.",
+      "source_sha256": "7c57a71ec90928732f787b351f6fb4887ff6be42348d2e1b605f76a42def4d40",
+      "translation": "measurements.db 每个对象表中每孔的行数，针对 ``frame`` 中的孔。"
+    },
+    {
+      "context": "long table with ``group``, well structured-data names, ``object_type``, ``objects_per_well`` and ``count_source`` (``measurements.db table <t>``).",
+      "label": "spacr.assay_report.db_well_counts#1",
+      "source": "long table with ``group``, well keys, ``object_type``, ``objects_per_well`` and ``count_source`` (``measurements.db table <t>``).",
+      "source_sha256": "e268c2ffd0de2fb222e322564e59532269b638eb1bb14e5c436ea1ba848e2b0c",
+      "translation": "长表，包含 ``group``、孔键、``object_type``、``objects_per_well`` 和 ``count_source``（``measurements.db table <t>``）。"
+    },
+    {
+      "context": "One sentence: the omnibus test, its result and why it was chosen.",
+      "label": "spacr.assay_report.describe_test#0",
+      "source": "One sentence: the omnibus test, its result and why it was chosen.",
+      "source_sha256": "75fcd091982798ad57916a673d2f1c1e6b5278626815940cb5a52b6d14affe70",
+      "translation": "一句话：总体检验、其结果以及选择它的原因。"
+    },
+    {
+      "context": "Per channel (low, high) percentiles over pixels of several microscope fields of view.",
+      "label": "spacr.assay_report.display_ranges#0",
+      "source": "Per channel (low, high) percentiles over pixels of several fields.",
+      "source_sha256": "8a01fcea3f5a8dec20ee645713bc79779715f82d5ff23d2b341314a71e6bcba0",
+      "translation": "基于多个视野像素计算的每通道 (low, high) 百分位数。"
+    },
+    {
+      "context": "Draw a :func:`grouped_spec`: mean ± SD of unit values per object type, dots per unit.",
+      "label": "spacr.assay_report.draw_grouped_panel#0",
+      "source": "Draw a :func:`grouped_spec`: mean ± SD of unit values per object type, dots per unit.",
+      "source_sha256": "fb6815dcd48bb14818462ecccd44c7aca862f4a42df98fa123b9c4989e739aaa",
+      "translation": "绘制 :func:`grouped_spec`：每种对象类型的单位值均值 ± SD，每个单位一个点。"
+    },
+    {
+      "context": "Laboratory microplate heatmap with a colour bar inside ``rect``; failed QC microplate sample positions marked with a red x.",
+      "label": "spacr.assay_report.draw_heatmap#0",
+      "source": "Plate heatmap with a colour bar inside ``rect``; failed QC wells marked with a red x.",
+      "source_sha256": "0407fe478d2ca05d5f369c98271d29ad0e9d86e5f89a0eca0ea36a13bfb4d5dc",
+      "translation": "在 ``rect`` 内绘制带颜色条的板热图；QC 不合格的孔以红色 x 标记。"
+    },
+    {
+      "context": "Extracted image region a ``size`` x ``size`` window around host cell ``label``.",
+      "label": "spacr.assay_report.extract_tile#0",
+      "source": "Crop a ``size`` x ``size`` window around host cell ``label``.",
+      "source_sha256": "0c9a8064fcd91b4a88008c084de9404d48062f716ffe46ce6a482352f1417b61",
+      "translation": "裁剪一个 ``size`` x ``size`` 窗口，以宿主细胞 ``label`` 为中心。"
+    },
+    {
+      "context": "With ``center_plane`` (the pathogen mask image layer) the window is centred on the centroid of the union of the pathogen objects that overlap the host cell, and the cell is rejected (None) when it has no pathogen object, when a pathogen object touches the microscope field of view edge, or when the pathogen objects do not lie fully inside the extracted image region. Without it the window is centred on the host cell mask centroid.",
+      "label": "spacr.assay_report.extract_tile#1",
+      "source": "With ``center_plane`` (the pathogen mask plane) the window is centred on the centroid of the union of the pathogen objects that overlap the host cell, and the cell is rejected (None) when it has no pathogen object, when a pathogen object touches the field edge, or when the pathogen objects do not lie fully inside the crop. Without it the window is centred on the host cell mask centroid.",
+      "source_sha256": "9c20603403c1e01c6fb10c93422f9697e6b78ddb809ed25d2d50ad9f8979d29a",
+      "translation": "给定 ``center_plane``（病原体掩膜平面）时，窗口以与宿主细胞重叠的病原体对象并集的质心为中心；当该细胞没有病原体对象、某个病原体对象接触视野边缘，或病原体对象不完全位于裁剪范围内时，该细胞被拒绝（None）。未给定时，窗口以宿主细胞掩膜质心为中心。"
+    },
+    {
+      "context": "reject extracted image regions that reach beyond the microscope field of view (default: True when centring on the pathogen, else False - the extracted image region is then zero padded).",
+      "label": "spacr.assay_report.extract_tile#2",
+      "source": "reject crops that reach beyond the field (default: True when centring on the pathogen, else False - the crop is then zero padded).",
+      "source_sha256": "b4692554d5886a6f2e109430064839f508741b2957b939a374cd69b1c6496139",
+      "translation": "拒绝超出视野范围的裁剪（默认：以病原体为中心时为 True，否则为 False——此时裁剪图用零填充）。"
+    },
+    {
+      "context": "(raw, box, padded) - ``raw`` is the exact in-microscope field of view slice ``arr[y0:y1, x0:x1, :]`` (input dtype, values unchanged), ``box`` is ``(y0, y1, x0, x1)`` and ``padded`` the slice zero padded to the full tile size (equal to ``raw`` when the extracted image region is inside the microscope field of view), or None.",
+      "label": "spacr.assay_report.extract_tile#3",
+      "source": "(raw, box, padded) - ``raw`` is the exact in-field slice ``arr[y0:y1, x0:x1, :]`` (input dtype, values unchanged), ``box`` is ``(y0, y1, x0, x1)`` and ``padded`` the slice zero padded to the full tile size (equal to ``raw`` when the crop is inside the field), or None.",
+      "source_sha256": "9d4cb731b7e85e35075816ea9b820617c5f47d7d1dd5f5db0983d7e15478f723",
+      "translation": "(raw, box, padded)——``raw`` 是视野内的精确切片 ``arr[y0:y1, x0:x1, :]``（输入 dtype，数值未改变），``box`` 为 ``(y0, y1, x0, x1)``，``padded`` 是用零填充到完整图块大小的切片（裁剪位于视野内时与 ``raw`` 相同），或为 None。"
+    },
+    {
+      "context": "Text of the filter steps in ``filter_summary`` (objects removed / remaining).",
+      "label": "spacr.assay_report.filter_sentences#0",
+      "source": "Text of the filter steps in ``filter_summary`` (objects removed / remaining).",
+      "source_sha256": "da6aa911255d68a04a646872abed898576aaee49c3613ba0f0011dd66be20932",
+      "translation": "``filter_summary`` 中各过滤步骤的文本（移除 / 剩余的对象）。"
+    },
+    {
+      "context": "Shrink ``ax`` until its tight bounding box (labels, title, legend) fits ``rect``.",
+      "label": "spacr.assay_report.fit_axes#0",
+      "source": "Shrink ``ax`` until its tight bounding box (labels, title, legend) fits ``rect``.",
+      "source_sha256": "eeb0c3a378b41543848420cce7a5509c9c4931005bd0ef741d0c40861ff4e832",
+      "translation": "缩小 ``ax``，直到其紧凑边界框（标签、标题、图例）能放进 ``rect``。"
+    },
+    {
+      "context": "Grouped bars (one colour per object type) with one test per object type.",
+      "label": "spacr.assay_report.grouped_spec#0",
+      "source": "Grouped bars (one colour per object type) with one test per object type.",
+      "source_sha256": "bd6470bed5f308fb018b7a473aaac01b5149732070b4c86d7928b33317a8d2cc",
+      "translation": "分组柱状图（每种对象类型一种颜色），每种对象类型一次检验。"
+    },
+    {
+      "context": "Outlier points are marked per object type and group with the active :class:`spacr.assay_panels.outlier_policy` (``outlier`` column) and left out of the drawing and the tests.",
+      "label": "spacr.assay_report.grouped_spec#1",
+      "source": "Outlier points are marked per object type and group with the active :class:`spacr.assay_panels.outlier_policy` (``outlier`` column) and left out of the drawing and the tests.",
+      "source_sha256": "f1128085bbd26b36b0ea0fd743fbb480511b110b3cdad5a5a75751bc044770e3",
+      "translation": "离群点按对象类型和组，使用当前生效的 :class:`spacr.assay_panels.outlier_policy` 标记（``outlier`` 列），并排除在绘图和检验之外。"
+    },
+    {
+      "context": "Laboratory microplate heatmap of microplate sample position values; ``failed`` = {(plate, row, column)} drawn with a red x.",
+      "label": "spacr.assay_report.heatmap_spec#0",
+      "source": "Plate heatmap of well values; ``failed`` = {(plate, row, column)} drawn with a red x.",
+      "source_sha256": "32817c2cd0b606d7c1b56cc94cb83ae863dd0241c1ed9ad600b4b5df84d43274",
+      "translation": "孔数值的板热图；``failed`` = {(plate, row, column)} 以红色 x 绘制。"
+    },
+    {
+      "context": "Rows = tile rank, columns = groups; white 16-bit gaps; missing tiles stay black.",
+      "label": "spacr.assay_report.montage16#0",
+      "source": "Rows = tile rank, columns = groups; white 16-bit gaps; missing tiles stay black.",
+      "source_sha256": "50c59598859b32f1dd26e585c5858265d1b739185294f6e94f26885c22156812",
+      "translation": "行 = 图块排名，列 = 组；16 位白色间隔；缺失的图块保持黑色。"
+    },
+    {
+      "context": "Colour per object type: fixed for cell/nucleus/cytoplasm/pathogen, others in name order.",
+      "label": "spacr.assay_report.object_colours#0",
+      "source": "Colour per object type: fixed for cell/nucleus/cytoplasm/pathogen, others in name order.",
+      "source_sha256": "5fb788343f6bd2f6f2918cc77f3d186c344edb488e959e9790d8ee1c94502ddd",
+      "translation": "每种对象类型的颜色：cell/nucleus/cytoplasm/pathogen 为固定颜色，其他按名称顺序分配。"
+    },
+    {
+      "context": "Object-level QC: per plate, condition group and object type, objects beyond the robust fence.",
+      "label": "spacr.assay_report.object_qc_mask#0",
+      "source": "Object-level QC: per plate, condition group and object type, objects beyond the robust fence.",
+      "source_sha256": "34eda94a12d7cc0166273e3086877d5df1e918d7b86c2c17d8ddea8c11845baf",
+      "translation": "对象水平 QC：按板、条件组和对象类型，找出超出稳健界限的对象。"
+    },
+    {
+      "context": "Area and image data channel mean intensities are compared on log scale (values <= 0 are never flagged) with the objects of the same plate and ``group`` value, or of the whole plate when ``group`` is None or holds fewer than ``min_objects`` objects there.",
+      "label": "spacr.assay_report.object_qc_mask#1",
+      "source": "Area and channel mean intensities are compared on log scale (values <= 0 are never flagged) with the objects of the same plate and ``group`` value, or of the whole plate when ``group`` is None or holds fewer than ``min_objects`` objects there.",
+      "source_sha256": "4c52c0e677a78438d60b5ef6eae291d9e30feda9046176b82fa351f006f95da2",
+      "translation": "面积和各通道平均强度在对数尺度上（值 <= 0 从不标记）与同一板上相同 ``group`` 值的对象比较；当 ``group`` 为 None 或该组在该板上少于 ``min_objects`` 个对象时，与整块板的对象比较。"
+    },
+    {
+      "context": "(keep mask, summary with ``object_type``, ``measure``, ``column``, ``objects_removed``, ``objects``, ``qc_group`` and ``groups_on_plate_fallback`` - an object can fail several measures).",
+      "label": "spacr.assay_report.object_qc_mask#2",
+      "source": "(keep mask, summary with ``object_type``, ``measure``, ``column``, ``objects_removed``, ``objects``, ``qc_group`` and ``groups_on_plate_fallback`` - an object can fail several measures).",
+      "source_sha256": "ab72c03816cd0f5e9f5270ce0d6d0641d8253bbef01ac12431a49f7f66b0c58a",
+      "translation": "（保留掩膜，以及包含 ``object_type``、``measure``、``column``、``objects_removed``、``objects``、``qc_group`` 和 ``groups_on_plate_fallback`` 的汇总——一个对象可能在多项指标上不合格）。"
+    },
+    {
+      "context": "Object prefixes with ``<obj>_channel_<c>_mean_intensity`` columns.",
+      "label": "spacr.assay_report.object_types#0",
+      "source": "Object prefixes with ``<obj>_channel_<c>_mean_intensity`` columns.",
+      "source_sha256": "137ab4924225adc424b0ec46305d49c6277f880f3d90ffea9f623c23b98ae15d",
+      "translation": "具有 ``<obj>_channel_<c>_mean_intensity`` 列的对象前缀。"
+    },
+    {
+      "context": "cell, nucleus, cytoplasm and pathogen come first, any other prefix (organelles ...) after them in alphabetical order.",
+      "label": "spacr.assay_report.object_types#1",
+      "source": "cell, nucleus, cytoplasm and pathogen come first, any other prefix (organelles ...) after them in alphabetical order.",
+      "source_sha256": "79698b11451b7dc8a62b9e6988d045c9980adab7c5ed8fd3effd46cf18d162f3",
+      "translation": "cell、nucleus、cytoplasm 和 pathogen 排在最前，其他任何前缀（细胞器等）按字母顺序排在其后。"
+    },
+    {
+      "context": "Place blocks on A4 pages.",
+      "label": "spacr.assay_report.paginate#0",
+      "source": "Place blocks on A4 pages.",
+      "source_sha256": "6b0999976da7dba7dbb36113f35893eaff34a8072971c68ac5d3929dd52c7e92",
+      "translation": "将块放置到 A4 页面上。"
+    },
+    {
+      "context": "Spacious: blocks flow over pages; a block that does not fit the rest of a page starts on a new page (unless most of it fits), a block taller than a page flows on row by row with its heading repeated.",
+      "label": "spacr.assay_report.paginate#1",
+      "source": "Spacious: blocks flow over pages; a block that does not fit the rest of a page starts on a new page (unless most of it fits), a block taller than a page flows on row by row with its heading repeated.",
+      "source_sha256": "250b6d960d747965f9ff459a401b8bee83b96201fb35d5bd443eacacf5472cb0",
+      "translation": "Spacious：块跨页排布；放不进当前页剩余空间的块从新页开始（除非其大部分能放下），比一页还高的块逐行延续，并重复其标题。"
+    },
+    {
+      "context": "Compact (``fit_one_page``): the whole figure is first fitted on one page by shrinking panel heights towards their minimum. If that fails, whole block groups (consecutive blocks sharing ``group``, e.g. the control blocks before and after filtering) are packed page by page, each page shrunk to fit; a group that cannot fit one page on its own flows row by row as in the spacious layout.",
+      "label": "spacr.assay_report.paginate#2",
+      "source": "Compact (``fit_one_page``): the whole figure is first fitted on one page by shrinking panel heights towards their minimum. If that fails, whole block groups (consecutive blocks sharing ``group``, e.g. the control blocks before and after filtering) are packed page by page, each page shrunk to fit; a group that cannot fit one page on its own flows row by row as in the spacious layout.",
+      "source_sha256": "541aa107b6a8b6005fa9cb96e6a36a42f84181b570f1ce880b787575d3de7401",
+      "translation": "Compact（``fit_one_page``）：首先通过将面板高度向其最小值缩小，尝试把整个组图放在一页上。若失败，则逐页排入整组块（共享 ``group`` 的连续块，例如过滤前后的对照块），每页都缩小以适配；单独一组也放不进一页时，按 spacious 版式逐行延续。"
+    },
+    {
+      "context": "one list per page of placements, each a key-value mapping with ``kind`` (``'heading'`` or ``'item'``), ``text`` / ``item`` and ``rect_mm`` ``(x0, y_top, w, h)`` measured from the top-left page corner.",
+      "label": "spacr.assay_report.paginate#3",
+      "source": "one list per page of placements, each a dict with ``kind`` (``'heading'`` or ``'item'``), ``text`` / ``item`` and ``rect_mm`` ``(x0, y_top, w, h)`` measured from the top-left page corner.",
+      "source_sha256": "8dde48436254eb198aa098a5c1b356439402d72d42703e64d014832d2b1855aa",
+      "translation": "每页一个放置列表，每个放置是一个 dict，包含 ``kind``（``'heading'`` 或 ``'item'``）、``text`` / ``item`` 以及从页面左上角起测量的 ``rect_mm`` ``(x0, y_top, w, h)``。"
+    },
+    {
+      "context": "One report item per plate of a heatmap spec.",
+      "label": "spacr.assay_report.plate_heatmap_items#0",
+      "source": "One report item per plate of a heatmap spec.",
+      "source_sha256": "e8d463486c8d9653f5af55a32e1c4c15918e334b1ca6a47d0f470477e5e2931f",
+      "translation": "热图规格中每块板一个报告项。"
+    },
+    {
+      "context": "{plate: (matrix rows x columns, nan where no data)} of well values.",
+      "label": "spacr.assay_report.plate_matrices#0",
+      "source": "{plate: (matrix rows x columns, nan where no data)} of well values.",
+      "source_sha256": "0921847f36a0cd7e14924cbaeecb8a04b36c2dfb4a35e77f6fd91183b374e7e6",
+      "translation": "孔数值的 {plate: (matrix rows x columns, nan where no data)}。"
+    },
+    {
+      "context": "Standard laboratory microplate layout holding the given row / column numbers.",
+      "label": "spacr.assay_report.plate_shape#0",
+      "source": "Standard plate layout holding the given row / column numbers.",
+      "source_sha256": "9e8580fd9724da39cc448175b9ad23b36cfe7fe9571d2d9b6ee4a71ccfb2a2a5",
+      "translation": "能容纳给定行 / 列编号的标准板布局。"
+    },
+    {
+      "context": "Object types with an area or an image data channel mean-intensity column.",
+      "label": "spacr.assay_report.qc_object_types#0",
+      "source": "Object types with an area or a channel mean-intensity column.",
+      "source_sha256": "b16f0513892b54cfc1eb0eeb6270e0fef833b648f53ff1a7b2c0b3311a6f1f8e",
+      "translation": "具有面积列或通道平均强度列的对象类型。"
+    },
+    {
+      "context": "Draw paginated placements, then the legend on pages of its own, into one PDF.",
+      "label": "spacr.assay_report.render_report#0",
+      "source": "Draw paginated placements, then the legend on pages of its own, into one PDF.",
+      "source_sha256": "f2d4828200293fb5a840e7412dfd5332cd3c59981f8dc5cf6afe2c55b16e308c",
+      "translation": "将分页后的放置内容绘制出来，然后在单独的页面上绘制图注，全部写入一个 PDF。"
+    },
+    {
+      "context": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``. PNG files are ``<stem>.png`` for page 1 and ``<stem>_page_NN.png`` for the next pages.",
+      "label": "spacr.assay_report.render_report#1",
+      "source": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``. PNG files are ``<stem>.png`` for page 1 and ``<stem>_page_NN.png`` for the next pages.",
+      "source_sha256": "75893356f128611b6cd5c56ee9d24cce788a397019de1eeadef57be6f2f7614f",
+      "translation": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``。PNG 文件第 1 页为 ``<stem>.png``，后续页面为 ``<stem>_page_NN.png``。"
+    },
+    {
+      "context": "16-bit RGB composite of an extracted image region.",
+      "label": "spacr.assay_report.render_tile#0",
+      "source": "16-bit RGB composite of an image crop.",
+      "source_sha256": "814e7b3bf827c2cd568b70c9100c0e9c074ea69324e92d09a7696a8c2f32caca",
+      "translation": "图像裁剪图的 16 位 RGB 合成图。"
+    },
+    {
+      "context": "{channel index: colour name or (r, g, b) in 0-1}.",
+      "label": "spacr.assay_report.render_tile#1",
+      "source": "{channel index: colour name or (r, g, b) in 0-1}.",
+      "source_sha256": "8b8c176e72414640c200b9af68f4f22d42b87df1989beb52e19a036cb8669792",
+      "translation": "{channel index: colour name or (r, g, b) in 0-1}."
+    },
+    {
+      "context": "{channel index: (low, high)} display range, the same for every tile.",
+      "label": "spacr.assay_report.render_tile#2",
+      "source": "{channel index: (low, high)} display range, the same for every tile.",
+      "source_sha256": "8674246f64e37586e3125b6858e2fcd2388edc80d91486a26f58f02b0337495b",
+      "translation": "{channel index: (low, high)} 显示范围，对每个图块都相同。"
+    },
+    {
+      "context": "[(binary mask, (r, g, b) in 0-1)], drawn 1 px wide.",
+      "label": "spacr.assay_report.render_tile#3",
+      "source": "[(binary mask, (r, g, b) in 0-1)], drawn 1 px wide.",
+      "source_sha256": "e57bb3cd7aef8f9eec93e897eec3cc1112d8c67ec3800bf11a559e17d17660f2",
+      "translation": "[(binary mask, (r, g, b) in 0-1)]，以 1 px 宽度绘制。"
+    },
+    {
+      "context": "uint16 array (h, w, 3), RGB order.",
+      "label": "spacr.assay_report.render_tile#4",
+      "source": "uint16 array (h, w, 3), RGB order.",
+      "source_sha256": "a4dfd6050cde856682ac4371a4361fe66183c1dc07f7dd1def741e424416ba38",
+      "translation": "uint16 数组 (h, w, 3)，RGB 顺序。"
+    },
+    {
+      "context": "Image layer index of each object mask: ``overrides``, else the image layer layout sidecar of the merged folder, else the last ``len(names)`` image layers in order.",
+      "label": "spacr.assay_report.resolve_mask_dims#0",
+      "source": "Plane index of each object mask: ``overrides``, else the plane layout sidecar of the merged folder, else the last ``len(names)`` planes in order.",
+      "source_sha256": "5e12b0a3c71f9b492f539c4c80c3ec11e60c029e23609458a8853da2b11cebd9",
+      "translation": "每个对象掩膜的平面索引：优先使用 ``overrides``，其次是 merged 文件夹的平面布局附属文件，否则按顺序取最后 ``len(names)`` 个平面。"
+    },
+    {
+      "context": "PDF/PNG of every version (``<version>/<stem>_<version>``) and of all three (``<stem>``).",
+      "label": "spacr.assay_report.save_crop_panel#0",
+      "source": "PDF/PNG of every version (``<version>/<stem>_<version>``) and of all three (``<stem>``).",
+      "source_sha256": "25132ed3e0acf3411f5ed48216b1e4bc3231800b4fb4c134c36c5a8466873bf5",
+      "translation": "每个版本（``<version>/<stem>_<version>``）以及三者合并（``<stem>``）的 PDF/PNG。"
+    },
+    {
+      "context": "Candidates per group ordered by distance to the group median of ``value`` (typical first).",
+      "label": "spacr.assay_report.select_median#0",
+      "source": "Candidates per group ordered by distance to the group median of ``value`` (typical first).",
+      "source_sha256": "e184bf32cd0d82c87d303f69e726aa8012d32f327c39117c3ebc7410d7a4d89e",
+      "translation": "每组候选按与组内 ``value`` 中位数的距离排序（典型的在前）。"
+    },
+    {
+      "context": "Random objects per group, objects away from the microscope field of view edge first.",
+      "label": "spacr.assay_report.select_tiles#0",
+      "source": "Random objects per group, objects away from the field edge first.",
+      "source_sha256": "b8edcd516950c9509a1c96f8b4b77f53ec521eb73f4aa21e5558041fba283484",
+      "translation": "每组随机选取的对象，远离视野边缘的对象优先。"
+    },
+    {
+      "context": "An object is preferred when ``edge_column`` (distance of the centre of its pathogen object to the microscope field of view edge) is at least half the tile size, so the extracted image region can lie inside the microscope field of view. Candidates are shuffled with ``seed``; the caller takes the first ``n`` that pass :func:`extract_tile`.",
+      "label": "spacr.assay_report.select_tiles#1",
+      "source": "An object is preferred when ``edge_column`` (distance of the centre of its pathogen object to the field edge) is at least half the tile size, so the crop can lie inside the field. Candidates are shuffled with ``seed``; the caller takes the first ``n`` that pass :func:`extract_tile`.",
+      "source_sha256": "df32aac21a806df71287e66c20809b344f0ba61302cc10fd5f3e856cdcad4ff3",
+      "translation": "当 ``edge_column``（其病原体对象中心到视野边缘的距离）至少为图块大小的一半时，该对象优先，以便裁剪范围能位于视野内。候选用 ``seed`` 打乱；调用方取前 ``n`` 个通过 :func:`extract_tile` 的候选。"
+    },
+    {
+      "context": "{group value: DataFrame of candidates in pick order}.",
+      "label": "spacr.assay_report.select_tiles#2",
+      "source": "{group value: DataFrame of candidates in pick order}.",
+      "source_sha256": "06c3860b56089d1124cb720170a8528dfe9b5a1f1d1fac66c8c783b5043bb441",
+      "translation": "{group value: DataFrame of candidates in pick order}."
+    },
+    {
+      "context": "Report items for a bar / grouped spec, split into condition chunks if needed.",
+      "label": "spacr.assay_report.spec_items#0",
+      "source": "Report items for a bar / grouped spec, split into condition chunks if needed.",
+      "source_sha256": "f6813497e5ef0ec20b5315f8aa2c7234d91c64ff98f51e6852aa3f97b5324d2f",
+      "translation": "柱状 / 分组规格的报告项，需要时拆分为条件分块。"
+    },
+    {
+      "context": "number of panels drawn side by side as one group (the recruitment panels, the channel panels ...); in the compact layout a group of up to four shares one row in equal widths.",
+      "label": "spacr.assay_report.spec_items#1",
+      "source": "number of panels drawn side by side as one group (the recruitment panels, the channel panels ...); in the compact layout a group of up to four shares one row in equal widths.",
+      "source_sha256": "bfff643d843192822bcf86a3d19e7e20d17fd6f2a5beded742ea310f535446bd",
+      "translation": "作为一组并排绘制的面板数（募集面板、通道面板等）；在 compact 版式中，最多四个面板的一组以相等宽度共享一行。"
+    },
+    {
+      "context": "Test, assumptions, post hoc and descriptive tables of a spec in one long table.",
+      "label": "spacr.assay_report.stats_long#0",
+      "source": "Test, assumptions, post hoc and descriptive tables of a spec in one long table.",
+      "source_sha256": "c8f4dbb88591a019bd1565933402d7774448652ec2df6c7d3f18165940f11259",
+      "translation": "将一个规格的检验、假设、事后检验和描述统计表合并为一张长表。"
+    },
+    {
+      "context": "One report item per legend paragraph (flows over pages with the panels).",
+      "label": "spacr.assay_report.text_items#0",
+      "source": "One report item per legend paragraph (flows over pages with the panels).",
+      "source_sha256": "808f319f441c87651138a48b2d61a334b43f6ecc68cfbda94f26fccef4be3aae",
+      "translation": "每个图注段落一个报告项（与面板一起跨页排布）。"
+    },
+    {
+      "context": "Microplate sample position means of one column per object type in long format ({object type: column}).",
+      "label": "spacr.assay_report.well_column_long#0",
+      "source": "Well means of one column per object type in long format ({object type: column}).",
+      "source_sha256": "2680ce1c6909b163e7f8965b08a2bf68d3e8d9ef90ce2c0532e61c1012c351a7",
+      "translation": "每种对象类型某一列的孔均值，长格式（{object type: column}）。"
+    },
+    {
+      "context": "Objects of type ``obj`` per microplate sample position in the analysed frame.",
+      "label": "spacr.assay_report.well_counts#0",
+      "source": "Objects of type ``obj`` per well in the analysed frame.",
+      "source_sha256": "a39204fd426e08611655b192bdc4a75ca5686cec25ac5421cb9d7b76ad8b0bee",
+      "translation": "所分析数据框中每孔类型为 ``obj`` 的对象数。"
+    },
+    {
+      "context": "The frame has one row per ``row_object`` (the host cell in recruitment): rows are counted for that type; other types sum ``<obj>_prcfo_count`` (objects of that type merged into each row) when present, else count rows with a ``<obj>_area`` value. Counting from the frame, not the database tables, means the count follows every filter applied to the frame.",
+      "label": "spacr.assay_report.well_counts#1",
+      "source": "The frame has one row per ``row_object`` (the host cell in recruitment): rows are counted for that type; other types sum ``<obj>_prcfo_count`` (objects of that type merged into each row) when present, else count rows with a ``<obj>_area`` value. Counting from the frame, not the database tables, means the count follows every filter applied to the frame.",
+      "source_sha256": "c1c7a31da5e601a86fc29684af81e515cffc265797ed6b36f81049c580ebd2d0",
+      "translation": "数据框每个 ``row_object``（募集分析中为宿主细胞）一行：该类型按行计数；其他类型在存在时对 ``<obj>_prcfo_count``（并入每行的该类型对象数）求和，否则对具有 ``<obj>_area`` 值的行计数。从数据框而非数据库表计数，意味着计数会反映施加于数据框的每个过滤。"
+    },
+    {
+      "context": "Mean intensity of ``channel`` per microplate sample position for every object type (long format).",
+      "label": "spacr.assay_report.well_intensity_long#0",
+      "source": "Mean intensity of ``channel`` per well for every object type (long format).",
+      "source_sha256": "dff649c75db9c561fe753e5b2f34f48141d6a30785f7fc604cfabdfde19d50b5",
+      "translation": "每种对象类型每孔 ``channel`` 的平均强度（长格式）。"
+    },
+    {
+      "context": "columns ``group``, well structured-data names, ``object_type``, ``column``, ``mean_intensity``, ``n_objects``.",
+      "label": "spacr.assay_report.well_intensity_long#1",
+      "source": "columns ``group``, well keys, ``object_type``, ``column``, ``mean_intensity``, ``n_objects``.",
+      "source_sha256": "5528a8c48ece1b98349ab39f4917f08c87c271c68b35b80574595bf00bd5e6b3",
+      "translation": "列为 ``group``、孔键、``object_type``、``column``、``mean_intensity``、``n_objects``。"
+    },
+    {
+      "context": "Microplate sample position-level QC: every microplate sample position against the other microplate sample positions of its condition group on its laboratory microplate.",
+      "label": "spacr.assay_report.well_qc_table#0",
+      "source": "Well-level QC: every well against the other wells of its condition group on its plate.",
+      "source_sha256": "681f431648dfbf6113b37067c4132be9743a390aef4c5ee8e483d703fd176fb4",
+      "translation": "孔水平 QC：将每个孔与其所在板上同一条件组的其他孔比较。"
+    },
+    {
+      "context": "Per microplate sample position, for every object type: object count (rows for ``row_object``, else the sum of ``<obj>_prcfo_count``), median ``<obj>_area`` and median ``<obj>_channel_<c>_mean_intensity`` per channel. A microplate sample position fails when any measure lies more than ``mad`` x 1.4826 x MAD from the median of the reference microplate sample positions (measures with MAD 0 flag nothing). The reference is the microplate sample positions of the same laboratory microplate and the same ``group`` value (so real differences between conditions are not flagged), or the whole laboratory microplate when ``group`` is None or its group has fewer than ``min_wells`` microplate sample positions on that laboratory microplate.",
+      "label": "spacr.assay_report.well_qc_table#1",
+      "source": "Per well, for every object type: object count (rows for ``row_object``, else the sum of ``<obj>_prcfo_count``), median ``<obj>_area`` and median ``<obj>_channel_<c>_mean_intensity`` per channel. A well fails when any measure lies more than ``mad`` x 1.4826 x MAD from the median of the reference wells (measures with MAD 0 flag nothing). The reference is the wells of the same plate and the same ``group`` value (so real differences between conditions are not flagged), or the whole plate when ``group`` is None or its group has fewer than ``min_wells`` wells on that plate.",
+      "source_sha256": "ad316598f288bb6bbd9a5d1c923af9bef85dae1e7ad24ffe13e224909231fce6",
+      "translation": "对每个孔和每种对象类型：对象数（``row_object`` 为行数，否则为 ``<obj>_prcfo_count`` 之和）、``<obj>_area`` 中位数以及每个通道的 ``<obj>_channel_<c>_mean_intensity`` 中位数。任一指标偏离参考孔中位数超过 ``mad`` x 1.4826 x MAD 时，该孔不合格（MAD 为 0 的指标不标记任何孔）。参考孔为同一板上相同 ``group`` 值的孔（因此条件之间的真实差异不会被标记）；当 ``group`` 为 None 或其组在该板上少于 ``min_wells`` 个孔时，参考为整块板。"
+    },
+    {
+      "context": "column of ``df`` with the condition group, or None (per laboratory microplate).",
+      "label": "spacr.assay_report.well_qc_table#2",
+      "source": "column of ``df`` with the condition group, or None (per plate).",
+      "source_sha256": "e2f19550e567657b878be0681a9cfd0dac8bfa8e92fee5f9dddf9a1e4e0cc9c8",
+      "translation": "``df`` 中表示条件组的列，或 None（按板）。"
+    },
+    {
+      "context": "subset of ``('count', 'area', 'intensity')``; None = all.",
+      "label": "spacr.assay_report.well_qc_table#3",
+      "source": "subset of ``('count', 'area', 'intensity')``; None = all.",
+      "source_sha256": "a347e9ebb2bcb6799067826addd263cb531bd26f0e3466521a7e7b9303088aae",
+      "translation": "``('count', 'area', 'intensity')`` 的子集；None = 全部。"
+    },
+    {
+      "context": "one row per well: well structured-data names, ``qc_group``, ``qc_reference``, ``<measure>`` and ``<measure>_z`` columns, ``well_qc_pass`` and ``well_qc_reason`` (measures that failed).",
+      "label": "spacr.assay_report.well_qc_table#4",
+      "source": "one row per well: well keys, ``qc_group``, ``qc_reference``, ``<measure>`` and ``<measure>_z`` columns, ``well_qc_pass`` and ``well_qc_reason`` (measures that failed).",
+      "source_sha256": "417cc50f4508a512d68b925cf526dcbe01d0303ee35965abce2602b6b1c43681",
+      "translation": "每孔一行：孔键、``qc_group``、``qc_reference``、``<measure>`` 和 ``<measure>_z`` 列、``well_qc_pass`` 和 ``well_qc_reason``（未通过的指标）。"
+    },
+    {
+      "context": "One panel folder: ``<Rnn_name>.pdf/.png``, ``data.csv`` and ``stats.csv``.",
+      "label": "spacr.assay_report.write_panel_folder#0",
+      "source": "One panel folder: ``<Rnn_name>.pdf/.png``, ``data.csv`` and ``stats.csv``.",
+      "source_sha256": "1d9668c1ba2f791cb6ee8adcb9292401fd4adb07bba1121bea939e17ee61a693",
+      "translation": "一个面板文件夹：``<Rnn_name>.pdf/.png``、``data.csv`` 和 ``stats.csv``。"
+    },
+    {
+      "context": "``draw(fig, rect)`` as for :class:`ReportItem`.",
+      "label": "spacr.assay_report.write_panel_folder#1",
+      "source": "``draw(fig, rect)`` as for :class:`ReportItem`.",
+      "source_sha256": "b74c04f119a573be985ce04b73c58247854884d07f28f855bb440e6e0902833e",
+      "translation": "``draw(fig, rect)``，与 :class:`ReportItem` 相同。"
+    },
+    {
+      "context": "folder path.",
+      "label": "spacr.assay_report.write_panel_folder#2",
+      "source": "folder path.",
+      "source_sha256": "e67141b4703b6fbc4be7ff55b89a1636d25785120e6ffdb1df18e856703eec25",
+      "translation": "文件夹路径。"
+    },
+    {
+      "context": "Write an RGB uint16 array as ``<stem>.png`` (OpenCV, BGR order) and ``<stem>.tif``.",
+      "label": "spacr.assay_report.write_rgb16#0",
+      "source": "Write an RGB uint16 array as ``<stem>.png`` (OpenCV, BGR order) and ``<stem>.tif``.",
+      "source_sha256": "b909f012e6cf7e21b417d92eb8681426d5bafbd1aeb027a1a4210e7b2c1e55e9",
+      "translation": "将 RGB uint16 数组写为 ``<stem>.png``（OpenCV，BGR 顺序）和 ``<stem>.tif``。"
+    },
+    {
+      "context": "Measure also edits the label image layers in memory (it merges cells that share a nucleus or pathogen, applies the size limits and the uninfected rule). Where that changed an image layer, it records the measured image layer in ``merged/.spacr_measured_masks/<fov>.npz`` and :class:`MergedField` serves it in place of the microscope field of view's own, so an extracted image region cut by label is the measured object. The merged file itself is never rewritten.",
+      "label": "spacr.crops#8",
+      "source": "Measure also edits the label planes in memory (it merges cells that share a nucleus or pathogen, applies the size limits and the uninfected rule). Where that changed a plane, it records the measured plane in ``merged/.spacr_measured_masks/<fov>.npz`` and :class:`MergedField` serves it in place of the field's own, so a crop cut by label is the measured object. The merged file itself is never rewritten.",
+      "source_sha256": "b34f264fe365b3d50a523233303b97be34364a7a0c7c319dee9d3d662eafe8ec",
+      "translation": "Measure 还会在内存中编辑标签平面（合并共享同一细胞核或病原体的细胞，施加大小限制和未感染规则）。凡是平面因此被改变的地方，它都会将测量所用的平面记录到 ``merged/.spacr_measured_masks/<fov>.npz``，而 :class:`MergedField` 会用它代替该视野自身的平面，因此按标签裁剪出的就是被测量的对象。合并文件本身绝不会被重写。"
+    },
+    {
+      "context": "Fidelity",
+      "label": "spacr.crops#9",
+      "source": "Fidelity",
+      "source_sha256": "66279f04fa24667ab34b92646ed42689b63679ea26c56d014c4442b13b5c1d2b",
+      "translation": "保真度"
+    },
+    {
+      "context": ":func:`extract_crop` reproduces the PNG path in ``spacr.measure._measure_crop_core`` step for step: same image data channel selection (``png_dims``), same region definition (object mask, optionally replaced by its padded bounding box, optionally dilated), same ``_crop_center`` centering/padding, same ``normalize_to_dtype`` percentile normalisation, same dtype. :func:`png_view` turns that array into what a consumer sees after the PNG round trip, and :func:`read_crop_png` reads an extracted-image-region PNG back into the same thing -- the two are the two halves of one contract, and ``tests/test_crops.py`` asserts they agree.",
+      "label": "spacr.crops#10",
+      "source": ":func:`extract_crop` reproduces the PNG path in ``spacr.measure._measure_crop_core`` step for step: same channel selection (``png_dims``), same region definition (object mask, optionally replaced by its padded bounding box, optionally dilated), same ``_crop_center`` centering/padding, same ``normalize_to_dtype`` percentile normalisation, same dtype. :func:`png_view` turns that array into what a consumer sees after the PNG round trip, and :func:`read_crop_png` reads a crop PNG back into the same thing -- the two are the two halves of one contract, and ``tests/test_crops.py`` asserts they agree.",
+      "source_sha256": "b1d3243a99cddf75dc7ff3e16b1bc749dac092eb084ad946e18e18413fa47b22",
+      "translation": ":func:`extract_crop` 会逐步复现 ``spacr.measure._measure_crop_core`` 中的 PNG 路径：相同的通道选择（``png_dims``）、相同的区域定义（对象掩膜，可选地替换为带边距的边界框，并可选地膨胀）、相同的 ``_crop_center`` 居中/填充、相同的 ``normalize_to_dtype`` 百分位归一化，以及相同的 dtype。:func:`png_view` 把该数组转换为使用方经过 PNG 往返后看到的内容，:func:`read_crop_png` 则把裁剪图 PNG 读回为同样的内容——两者是同一约定的两半，``tests/test_crops.py`` 会断言它们一致。"
+    },
+    {
+      "context": "Extracted-image-region PNG format",
+      "label": "spacr.crops#11",
+      "source": "Crop PNG format",
+      "source_sha256": "a69a10f48f04a4550ea90ffb452cd18291d0d3f07a0836b99ce959e8ca263464",
+      "translation": "裁剪图 PNG 格式"
+    },
+    {
+      "context": "This module is also the authority on **what an extracted-image-region PNG on disk means** -- see the \"Crop PNG format\" section below. In short: the current format is 3 (\"declared_rgb\", :data:`CROP_FORMAT_CURRENT`), whose red, green and blue slots hold exactly the source image data channels ``settings['png_channel_mapping']`` names; format 1 (\"legacy\", unmarked) holds the same bytes for the default mapping and is returned untouched; format 2, written for eleven days in 2026, is the one that is reversed, and :func:`read_crop_png` is what reverses it back. A folder says which format it is via a ``.spacr_crop_format.json`` sidecar, and an unmarked folder is format 1.",
+      "label": "spacr.crops#12",
+      "source": "This module is also the authority on **what a crop PNG on disk means** -- see the \"Crop PNG format\" section below. In short: the current format is 3 (\"declared_rgb\", :data:`CROP_FORMAT_CURRENT`), whose red, green and blue slots hold exactly the source channels ``settings['png_channel_mapping']`` names; format 1 (\"legacy\", unmarked) holds the same bytes for the default mapping and is returned untouched; format 2, written for eleven days in 2026, is the one that is reversed, and :func:`read_crop_png` is what reverses it back. A folder says which format it is via a ``.spacr_crop_format.json`` sidecar, and an unmarked folder is format 1.",
+      "source_sha256": "81e6fbe69dce5f7feda64a72470139dc3501d1adcebd48a9d8e609625a6c19ea",
+      "translation": "本模块也是判定 **磁盘上的裁剪图 PNG 含义** 的权威——参见下文的 \"Crop PNG format\" 一节。简而言之：当前格式为 3（\"declared_rgb\"，:data:`CROP_FORMAT_CURRENT`），其红、绿、蓝槽位恰好存放 ``settings['png_channel_mapping']`` 所指定的源通道；格式 1（\"legacy\"，无标记）在默认映射下存放相同的字节，原样返回；格式 2 在 2026 年写入了十一天，是通道顺序被颠倒的格式，:func:`read_crop_png` 负责将其还原。文件夹通过 ``.spacr_crop_format.json`` 附属文件说明其格式，无标记的文件夹为格式 1。"
+    },
+    {
+      "context": "Dependencies",
+      "label": "spacr.crops#13",
+      "source": "Dependencies",
+      "source_sha256": "2e41b118eb209c139f2bcbf690486f6e1509ab978aa96feb053877a70a1a5a09",
+      "translation": "依赖项"
+    },
+    {
+      "context": "numpy, and the standard library (plus PIL only inside :func:`read_crop_png` and cv2 only inside :func:`migrate_crop_folder`, both imported lazily). No torch, no cellpose, no scipy, no skimage -- importing this module must stay cheap enough for a GUI thumbnail path, and ``spacr.measure`` imports it for the writer helpers, so it must not import ``spacr`` back.",
+      "label": "spacr.crops#14",
+      "source": "numpy, and the standard library (plus PIL only inside :func:`read_crop_png` and cv2 only inside :func:`migrate_crop_folder`, both imported lazily). No torch, no cellpose, no scipy, no skimage -- importing this module must stay cheap enough for a GUI thumbnail path, and ``spacr.measure`` imports it for the writer helpers, so it must not import ``spacr`` back.",
+      "source_sha256": "7bcce33b23491e8d4981a7d9c6574a13b5e79b61a37f2de4d84ded5d7d865551",
+      "translation": "numpy 和标准库（另外仅在 :func:`read_crop_png` 内使用 PIL，仅在 :func:`migrate_crop_folder` 内使用 cv2，两者都延迟导入）。不依赖 torch、cellpose、scipy、skimage——导入本模块的开销必须足够低，以适用于 GUI 缩略图路径；而且 ``spacr.measure`` 会为写入辅助函数导入本模块，因此本模块不能反过来导入 ``spacr``。"
+    },
+    {
+      "context": "Where Measure recorded the image layers it measured (it changed the objects by merging, size filtering or exclusion), the recorded image layer is returned instead of the microscope field of view's own, so every extracted image region is cut from the objects the measurements describe. The record is ignored once the microscope field of view's label image layers no longer match the ones it was made from.",
+      "label": "spacr.crops.MergedField.mask_plane#2",
+      "source": "Where Measure recorded the planes it measured (it changed the objects by merging, size filtering or exclusion), the recorded plane is returned instead of the field's own, so every crop is cut from the objects the measurements describe. The record is ignored once the field's label planes no longer match the ones it was made from.",
+      "source_sha256": "83d8faf8c4a8b12f1ca8731f586a839e752b9351ad8c35a5baefdfec9a11cffd",
+      "translation": "凡是 Measure 记录了其测量所用平面的地方（它通过合并、大小过滤或排除改变了对象），返回的是记录的平面而不是该视野自身的平面，因此每张裁剪图都从测量所描述的对象中裁出。一旦该视野的标签平面与生成记录时所依据的平面不再一致，该记录就会被忽略。"
+    },
+    {
+      "context": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` come back as a view on the memory-mapped array, so nothing is read off disk until pixels are touched. ``'cytoplasm'`` is the derived image layer and costs a full pass over the microscope field of view to build, so it is cached on this microscope field of view and every later call is free.",
+      "label": "spacr.crops.MergedField.mask_plane#3",
+      "source": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` come back as a view on the memory-mapped array, so nothing is read off disk until pixels are touched. ``'cytoplasm'`` is the derived plane and costs a full pass over the field to build, so it is cached on this field and every later call is free.",
+      "source_sha256": "3f7348153f0d2d7d5a71a2dd03e9c6f41f1ce8db4260854f458cb188d889e7e7",
+      "translation": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` 以内存映射数组的视图形式返回，因此在访问像素之前不会从磁盘读取任何内容。``'cytoplasm'`` 是推导出的平面，构建时需要对视野完整遍历一次，因此会缓存在此视野上，之后的每次调用都没有额外开销。"
+    },
+    {
+      "context": "Logits of one part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._governed_logits.on_cpu#0",
+      "source": "Logits of one part with the model moved to the CPU.",
+      "source_sha256": "868a22dc74dc26b2025df6e3ec73367c1143c0403902abad9d7715c5d09c2cee",
+      "translation": "将模型移到 CPU 上计算一个部分的 logits。"
+    },
+    {
+      "context": "Score one part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._governed_predictions.on_cpu#0",
+      "source": "Score one part with the model moved to the CPU.",
+      "source_sha256": "a8ba199843fa2163eeb0611fae0f4fd484d5dd1048b447bb4932ab2c6d00c9ca",
+      "translation": "将模型移到 CPU 上为一个部分打分。"
+    },
+    {
+      "context": "One part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._train_batch.on_cpu#0",
+      "source": "One part with the model moved to the CPU.",
+      "source_sha256": "824b131053d1e72e62589a3cf0bfddd6c40d3467ecd71c0722081e79782984d5",
+      "translation": "将模型移到 CPU 上处理一个部分。"
+    },
+    {
+      "context": "One part on the training device.",
+      "label": "spacr.deep_spacr._train_batch.on_gpu#0",
+      "source": "One part on the training device.",
+      "source_sha256": "894f36c1ce4e03118e444fecdfbce6b22798fdb229374f2da8c8b02937d27662",
+      "translation": "在训练设备上处理一个部分。"
+    },
+    {
+      "context": "Put the gradients back to what they were before this batch.",
+      "label": "spacr.deep_spacr._train_batch.restore#0",
+      "source": "Put the gradients back to what they were before this batch.",
+      "source_sha256": "ba6a6106aa10cbad01b2c99918a53601d85813c271da42dbae271e7d757c97f4",
+      "translation": "将梯度恢复到此批之前的状态。"
+    },
+    {
+      "context": "Forward and backward ``rows`` of the batch on ``on_device``.",
+      "label": "spacr.deep_spacr._train_batch.step#0",
+      "source": "Forward and backward ``rows`` of the batch on ``on_device``.",
+      "source_sha256": "c69d33ee79c2e3ac6890548c43cf00894b161749956926266f3240f503343856",
+      "translation": "对批中的 ``rows`` 执行前向和反向传播，在 ``on_device`` 上进行。"
+    },
+    {
+      "context": "Read ``f`` by its real format rather than by its extension.",
+      "label": "spacr.embeddings._zip_safetensors_loadable.load#0",
+      "source": "Read ``f`` by its real format rather than by its extension.",
+      "source_sha256": "28943462f33b0222a7e9ab68625e5b77bf68a6e25e346e3aec29204a692eeca3",
+      "translation": "按 ``f`` 的真实格式而非扩展名读取它。"
+    },
+    {
+      "context": "An extracted image region window cut from a microscope field of view is corrected on its own, with the gains of its place in the microscope field of view",
+      "label": "spacr.illumination#17",
+      "source": "A crop window cut from a field is corrected on its own, with the gains of its place in the field",
+      "source_sha256": "f40003fc5953396a7f8f454edfb64f9130e60a0c509d54578ef2db5631d3ea40",
+      "translation": "从视野中裁出的裁剪窗口会单独校正，使用的是它在视野中所处位置的增益"
+    },
+    {
+      "context": "Nothing in this module executes unless one of those calls is made, and :func:`disable_illumination_correction` returns the process to a state where ``measure_crop`` measures exactly what it measured before.",
+      "label": "spacr.illumination#18",
+      "source": "Nothing in this module runs unless one of those calls is made, and :func:`disable_illumination_correction` returns the process to a state where ``measure_crop`` measures exactly what it measured before.",
+      "source_sha256": "846a78d60f88982c90017fa847f7f0c9c39ce458dd170a2c48d2d6e746f4b486",
+      "translation": "除非进行了上述调用之一，否则本模块中的任何内容都不会运行，而 :func:`disable_illumination_correction` 会使进程恢复到 ``measure_crop`` 的测量结果与以前完全相同的状态。"
+    },
+    {
+      "context": "In the GUI the same two routes exist and end here: the \"Illumination Correction\" category on the Measure panel, which turns the correction on for that Measure run, and the Illumination button on that application view's masthead, which opens this module's own settings form and Run button so the microscope field of view can be estimated and QC'd without measuring the laboratory microplate. Neither route is a tile: the module has no tile of its own.",
+      "label": "spacr.illumination#19",
+      "source": "In the GUI the same two routes exist and end here: the \"Illumination Correction\" category on the Measure panel, which turns the correction on for that Measure run, and the Illumination button on that screen's masthead, which opens this module's own settings form and Run button so the field can be estimated and QC'd without measuring the plate. Neither route is a tile: the module has no tile of its own.",
+      "source_sha256": "65c0def81d6497e4b0365b12578c046fa776193781654a922a98b3af866c20c4",
+      "translation": "在 GUI 中也有同样的两种途径，最终都到达这里：Measure 面板上的 \"Illumination Correction\" 类别，用于为该次 Measure 运行开启校正；以及该界面标题栏上的 Illumination 按钮，它会打开本模块自己的设置表单和 Run 按钮，以便在不测量整块板的情况下估计光照场并进行 QC。两种途径都不是图块：本模块没有自己的图块。"
+    },
+    {
+      "context": "Correct an extracted image region window cut from a microscope field of view, without the rest of the microscope field of view.",
+      "label": "spacr.illumination.IlluminationField.correct_window#0",
+      "source": "Correct a crop window cut from a field, without the rest of the field.",
+      "source_sha256": "c300f9f68fbd97e83e25df351cd7fb1503b9927a28e0ec20a15156bcd29241a3",
+      "translation": "校正从视野中裁出的裁剪窗口，无需视野的其余部分。"
+    },
+    {
+      "context": "The gain and offset maps are sliced to the window's place in the field, so every pixel gets exactly the value the whole-field correction gives it: ``(observed - dark) * (1 / flatfield)`` in float32.",
+      "label": "spacr.illumination.IlluminationField.correct_window#1",
+      "source": "The gain and offset maps are sliced to the window's place in the field, so every pixel gets exactly the value the whole-field correction gives it: ``(observed - dark) * (1 / flatfield)`` in float32.",
+      "source_sha256": "7fd462f7144aa510808696a841376b03cdd102f52e43239bafb805acb430eb3f",
+      "translation": "增益图和偏移图会按窗口在视野中的位置切片，因此每个像素得到的值与全视野校正给出的值完全相同：float32 下的 ``(observed - dark) * (1 / flatfield)``。"
+    },
+    {
+      "context": "``(h, w, C)`` intensities, or ``(h, w)`` for one image data channel, cut from a microscope field of view of this laboratory microplate at rows ``y0:y0 + h`` and columns ``x0:x0 + w``.",
+      "label": "spacr.illumination.IlluminationField.correct_window#2",
+      "source": "``(h, w, C)`` intensities, or ``(h, w)`` for one channel, cut from a field of this plate at rows ``y0:y0 + h`` and columns ``x0:x0 + w``.",
+      "source_sha256": "5d6705da77e1fe3c89e3711638360af8f4c4a6bb3c1693ad9e34cedb9a9aace2",
+      "translation": "``(h, w, C)`` 强度，单通道时为 ``(h, w)``，裁自此板某个视野的第 ``y0:y0 + h`` 行和第 ``x0:x0 + w`` 列。"
+    },
+    {
+      "context": "the merged-stack image data channel of each image layer of ``window``, in order.",
+      "label": "spacr.illumination.IlluminationField.correct_window#3",
+      "source": "the merged-stack channel of each plane of ``window``, in order.",
+      "source_sha256": "2904a2dbf438e0efcf2de6df2f1845213d14f1ef7144c15b5cf0d515878f5a42",
+      "translation": "``window`` 中每个平面对应的合并堆栈通道，按顺序排列。"
+    },
+    {
+      "context": "the field row of the window's first row. It may be negative, as for a window zero-padded past the field's edge (:meth:`spacr.crops.MergedField.read_window`).",
+      "label": "spacr.illumination.IlluminationField.correct_window#4",
+      "source": "the field row of the window's first row. It may be negative, as for a window zero-padded past the field's edge (:meth:`spacr.crops.MergedField.read_window`).",
+      "source_sha256": "19aa887074fe92a1d8bf7778e81317a340e81d6bc99b9f56db4ef140bcfd67af",
+      "translation": "窗口第一行在视野中的行号。它可以为负，例如窗口越过视野边缘而用零填充时（:meth:`spacr.crops.MergedField.read_window`）。"
+    },
+    {
+      "context": "the field column of the window's first column; negative allowed as for ``y0``.",
+      "label": "spacr.illumination.IlluminationField.correct_window#5",
+      "source": "the field column of the window's first column; negative allowed as for ``y0``.",
+      "source_sha256": "6adde5b1413ca1a28751e5bbe064a463ed53ded13a4f2466f21beeb9cc420aa1",
+      "translation": "窗口第一列在视野中的列号；与 ``y0`` 一样允许为负。"
+    },
+    {
+      "context": "the corrected window as float32, in ``window``'s shape. Pixels that lie outside the field are padding and come back as 0.",
+      "label": "spacr.illumination.IlluminationField.correct_window#6",
+      "source": "the corrected window as float32, in ``window``'s shape. Pixels that lie outside the field are padding and come back as 0.",
+      "source_sha256": "d86082fab306cf5270bad07161c853aaac647ac02594a9e713ec611dd21a9a7a",
+      "translation": "校正后的窗口，float32，形状与 ``window`` 相同。位于视野之外的像素属于填充，返回为 0。"
+    },
+    {
+      "context": "when the window has no pixel inside the microscope field of view, its channel count differs from ``channels``, or the model does not cover one of the channels.",
+      "label": "spacr.illumination.IlluminationField.correct_window#7",
+      "source": "when the window has no pixel inside the field, its channel count differs from ``channels``, or the model does not cover one of the channels.",
+      "source_sha256": "92a338cffcb9a4765312de181624ca4a71f3e06a9446fab6977c61fc2841d406",
+      "translation": "当窗口在视野内没有任何像素、其通道数与 ``channels`` 不同，或模型未覆盖其中某个通道时。"
+    },
+    {
+      "context": "Existing results are never deleted. Re-screening an analyzed project needs a fresh project if excluded fields already have measurement rows. The ``image`` table is skipped: screening writes its own verdicts there.",
+      "label": "spacr.image_quality.ensure_no_retained_measurements#1",
+      "source": "Existing results are never deleted. Re-screening an analyzed project needs a fresh project if excluded fields already have measurement rows. The ``image`` table is skipped: screening writes its own verdicts there.",
+      "source_sha256": "bd04cb62ba4ff6d83d3ebf0b115f9eb8a7f54e9ca1d32a94985c1bfaa672685b",
+      "translation": "已有结果绝不会被删除。如果被排除的视野已有测量行，对已分析的项目重新检查就需要一个新的项目。``image`` 表会被跳过：检查会在其中写入自己的判定结果。"
+    },
+    {
+      "context": "The cuCIM table, copied back to host arrays.",
+      "label": "spacr.measure._cucim_morphology_table._gpu_columns#0",
+      "source": "The cuCIM table, copied back to host arrays.",
+      "source_sha256": "e0313460332fb04ce26e20266ffb4472045ca9714472e4ecc6d728df7bab80e7",
+      "translation": "cuCIM 表，已复制回主机数组。"
+    },
+    {
+      "context": "``ml_classes`` — ``None`` for the binary fit, or a list of three or more class values (each a value or a list pooled into one class) for a multiclass fit; the results then hold one probability column per class and ``<model>_model_confusion_matrix.csv``.",
+      "label": "spacr.ml.generate_ml_scores#9",
+      "source": "``ml_classes`` — ``None`` for the binary fit, or a list of three or more class values (each a value or a list pooled into one class) for a multiclass fit; the results then hold one probability column per class and ``<model>_model_confusion_matrix.csv``.",
+      "source_sha256": "f971455e235ff27e9cabe84d1d3c4a84e5cbba7dd87853a3e318ccb705b9a5f6",
+      "translation": "``ml_classes`` — ``None`` 表示二分类拟合，或者为三个或更多类别值的列表（每个是一个值，或合并为一个类别的值列表）用于多类别拟合；此时结果中每个类别一列概率，并生成 ``<model>_model_confusion_matrix.csv``。"
+    },
+    {
+      "context": "``annotation_column`` — override controls with a PNG-level annotation column.",
+      "label": "spacr.ml.generate_ml_scores#10",
+      "source": "``annotation_column`` — override controls with a PNG-level annotation column.",
+      "source_sha256": "3f461869af6c98fe2d7759f49c734fccd7f0b7c383b2fa64eb823648a04fc723",
+      "translation": "``annotation_column`` — 用 PNG 级注释列覆盖对照。"
+    },
+    {
+      "context": "``location_column`` — ``'columnID'`` or ``'rowID'``.",
+      "label": "spacr.ml.generate_ml_scores#11",
+      "source": "``location_column`` — ``'columnID'`` or ``'rowID'``.",
+      "source_sha256": "ff6d95d3dcfbaab265aae863ebbc3b2c960830aae94685accd7aba8d945926a6",
+      "translation": "``location_column`` — ``'columnID'`` 或 ``'rowID'``。"
+    },
+    {
+      "context": "``heatmap_feature`` — feature plotted on the plate heatmap.",
+      "label": "spacr.ml.generate_ml_scores#12",
+      "source": "``heatmap_feature`` — feature plotted on the plate heatmap.",
+      "source_sha256": "cb0a243031c3f5cd2044fa67b61c4530305e7a250c7f099e31997ed1060c88bd",
+      "translation": "``heatmap_feature`` — 在微孔板热图上绘制的特征。"
+    },
+    {
+      "context": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``.",
+      "label": "spacr.ml.generate_ml_scores#13",
+      "source": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``.",
+      "source_sha256": "9ee6eb15ffb9c7c8b469af9de56cb2e3a364b2e82bd2b7eca004b0cf69ffac0b",
+      "translation": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``."
+    },
+    {
+      "context": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``.",
+      "label": "spacr.ml.generate_ml_scores#14",
+      "source": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``.",
+      "source_sha256": "8e71bc18b22baf009410bf097bb2d18e10e4036a160107f9f3d79bff96643800",
+      "translation": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``."
+    },
+    {
+      "context": "The two-element list ``[output, plate_heatmap]``, where ``output`` is the 10-element result list of :func:`ml_analysis` and ``plate_heatmap`` is the plate-heatmap ``matplotlib`` figure. The CSVs and figures are written to ``results/`` as a side effect; their paths are not returned.",
+      "label": "spacr.ml.generate_ml_scores#15",
+      "source": "The two-element list ``[output, plate_heatmap]``, where ``output`` is the 10-element result list of :func:`ml_analysis` and ``plate_heatmap`` is the plate-heatmap ``matplotlib`` figure. The CSVs and figures are written to ``results/`` as a side effect; their paths are not returned.",
+      "source_sha256": "5661bcf2e30846a03f05e929308fdd631e7c245d24503eba7564d48966745773",
+      "translation": "二元素列表 ``[output, plate_heatmap]``，其中 ``output`` 是 :func:`ml_analysis` 的 10 元素结果列表，``plate_heatmap`` 是微孔板热图的 ``matplotlib`` 图。CSV 和图形会作为副作用写入 ``results/``；不返回其路径。"
+    },
+    {
+      "context": "if ``tables`` is empty, duplicated, contains an unknown table or has no object table; or if ``annotation_column`` is set but the ``png_list`` table lacks ``prcfo`` / that column, its object IDs do not join to the measurements, it contains fewer than two observed classes, or if ``heatmap_feature`` is not among the trained features.",
+      "label": "spacr.ml.generate_ml_scores#16",
+      "source": "if ``tables`` is empty, duplicated, contains an unknown table or has no object table; or if ``annotation_column`` is set but the ``png_list`` table lacks ``prcfo`` / that column, its object IDs do not join to the measurements, it contains fewer than two observed classes, or if ``heatmap_feature`` is not among the trained features.",
+      "source_sha256": "5a470148591a6c5b5d4ada5c0c37f6e9a5f846af39454a28bca135366411ebf5",
+      "translation": "当 ``tables`` 为空、包含重复项或未知表，或没有对象表时；或者设置了 ``annotation_column``，但 ``png_list`` 表缺少 ``prcfo`` / 该列、其对象标识符无法与测量数据连接，或其中观察到的类别少于两类时；或者 ``heatmap_feature`` 不属于训练所用的特征时。"
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.ml.generate_ml_scores#17",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "示例："
+    },
+    {
+      "context": "See Also: :func:`ml_analysis` — the underlying fit/evaluate routine. :func:`perform_regression` — mixed-effects regression on per-microplate sample position ML scores.",
+      "label": "spacr.ml.generate_ml_scores#18",
+      "source": "See Also: :func:`ml_analysis` — the underlying fit/evaluate routine. :func:`perform_regression` — mixed-effects regression on per-well ML scores.",
+      "source_sha256": "b5db5f640b266ebd5a8e7480f63f5bff4db4be47ed071cfc86ab558eb87e704d",
+      "translation": "另请参阅：:func:`ml_analysis` — 底层拟合/评估例程。:func:`perform_regression` — 对各孔位 ML 得分执行混合效应回归。"
+    },
+    {
+      "context": "``None`` (default) trains the binary negative/positive model. A list of three or more entries trains one class per entry: each entry is a value of ``location_column``, or a list of values pooled into that class, and class ``i`` is the ``i``-th entry. The scored frame then has one ``prediction_probability_class_i`` column per class and a ``predicted_class`` column holding the entry's label, the metrics have one precision/recall row per class with its ``class_label``, and the model carries the test confusion matrix as ``spacr_confusion_matrix_`` (rows true class, columns predicted class; summed over folds under cross-validation). A list of two entries is ``[negative_control, positive_control]`` and gives exactly the binary output.",
+      "label": "spacr.ml.ml_analysis#31",
+      "source": "``None`` (default) trains the binary negative/positive model. A list of three or more entries trains one class per entry: each entry is a value of ``location_column``, or a list of values pooled into that class, and class ``i`` is the ``i``-th entry. The scored frame then has one ``prediction_probability_class_i`` column per class and a ``predicted_class`` column holding the entry's label, the metrics have one precision/recall row per class with its ``class_label``, and the model carries the test confusion matrix as ``spacr_confusion_matrix_`` (rows true class, columns predicted class; summed over folds under cross-validation). A list of two entries is ``[negative_control, positive_control]`` and gives exactly the binary output.",
+      "source_sha256": "0a44149cec313567650821a0048ce813841b46ac711ec5b53488ab2a80e81cd8",
+      "translation": "``None``（默认）训练二分类阴性/阳性模型。由三个或更多条目组成的列表为每个条目训练一个类别：每个条目是 ``location_column`` 的一个值，或合并为该类别的值列表，类别 ``i`` 即第 ``i`` 个条目。此时打分后的数据框每个类别有一列 ``prediction_probability_class_i``，另有一列 ``predicted_class`` 存放条目的标签；指标中每个类别有一行精确率/召回率，并附其 ``class_label``；模型以 ``spacr_confusion_matrix_`` 携带测试集混淆矩阵（行为真实类别，列为预测类别；交叉验证时对各折求和）。由两个条目组成的列表即 ``[negative_control, positive_control]``，给出与二分类完全相同的输出。"
+    },
+    {
+      "context": "Tuple ``(output, figs)`` where ``output`` is a positional tuple of ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` and ``figs`` is ``(permutation_fig, feature_importance_fig)``.",
+      "label": "spacr.ml.ml_analysis#32",
+      "source": "Tuple ``(output, figs)`` where ``output`` is a positional tuple of ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` and ``figs`` is ``(permutation_fig, feature_importance_fig)``.",
+      "source_sha256": "68b076c47f5de7a856b2fe75b4f43a0c43761dbe457554df5ae4ffd2dec6cd6b",
+      "translation": "元组 ``(output, figs)``，其中 ``output`` 是 ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` 的位置元组，``figs`` 是 ``(permutation_fig, feature_importance_fig)``。"
+    },
+    {
+      "context": "on unsupported ``model_type``, when positive / negative control rows cannot be located in ``location_column``, when ``classes`` has fewer than two entries, or when a class matches no rows.",
+      "label": "spacr.ml.ml_analysis#33",
+      "source": "on unsupported ``model_type``, when positive / negative control rows cannot be located in ``location_column``, when ``classes`` has fewer than two entries, or when a class matches no rows.",
+      "source_sha256": "67b0bc766a2b68758e00eeb5011ba43b8e24cb835c84498e870a420c6ec00c71",
+      "translation": "当 ``model_type`` 不受支持、在 ``location_column`` 中找不到阳性 / 阴性对照行、``classes`` 少于两个条目，或某个类别没有匹配任何行时。"
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.ml.ml_analysis#34",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "示例："
+    },
+    {
+      "context": "See Also: :func:`generate_ml_scores` — wraps this call with DB I/O.",
+      "label": "spacr.ml.ml_analysis#35",
+      "source": "See Also: :func:`generate_ml_scores` — wraps this call with DB I/O.",
+      "source_sha256": "fdafafab1593af5d5d1e19413bef494addfec93348222d77104827f48778748e",
+      "translation": "另请参阅：:func:`generate_ml_scores` — 用数据库 I/O 包装此调用。"
+    },
+    {
+      "context": "what the GPU memory governor did during the processing session: how many GPU items ran, how many batches were shrunk to fit, waited for, retried after an out-of-memory error, halved, sent to the CPU or ramped back up, and how many items ran on the GPU and on the CPU. Filled when the processing session ends.",
+      "label": "spacr.runctx.RunContext#14",
+      "source": "what the GPU memory governor did during the run: how many GPU items ran, how many batches were shrunk to fit, waited for, retried after an out-of-memory error, halved, sent to the CPU or ramped back up, and how many items ran on the GPU and on the CPU. Filled when the run ends.",
+      "source_sha256": "d04676b3b3d4eb226c0f4adc40709b3dad970f74258ff5702fd2be2b51da127d",
+      "translation": "GPU 内存调控器在运行期间所做的工作：运行了多少 GPU 项，有多少批被缩小以适配、等待、在内存不足错误后重试、减半、转到 CPU 或重新增大，以及有多少项在 GPU 上和在 CPU 上运行。在运行结束时填充。"
+    },
+    {
+      "context": "``\"gpu\"`` or ``\"cpu\"`` when every governed GPU item of the run took that path, ``\"mixed\"`` when some fell back to the CPU, ``\"\"`` when the run had none.",
+      "label": "spacr.runctx.RunContext#15",
+      "source": "``\"gpu\"`` or ``\"cpu\"`` when every governed GPU item of the run took that path, ``\"mixed\"`` when some fell back to the CPU, ``\"\"`` when the run had none.",
+      "source_sha256": "51aa8f8db975e40a643e863a91c6b6054bfdb7e315c1f2300f2daba3c9808554",
+      "translation": "当运行中每个受调控的 GPU 项都走同一路径时为 ``\"gpu\"`` 或 ``\"cpu\"``，有些项回退到 CPU 时为 ``\"mixed\"``，运行中没有此类项时为 ``\"\"``。"
+    },
+    {
+      "context": "Background median per image data channel of one microscope field of view, read from its merged array.",
+      "label": "spacr.submodules._field_background.one#0",
+      "source": "Background median per channel of one field, read from its merged array.",
+      "source_sha256": "ed5c4b97ed3836fb6d7a2f10f96f06eab4596e04fbbb742d1385c749b3efd713",
+      "translation": "一个视野每个通道的背景中位数，从其合并数组读取。"
+    },
+    {
+      "context": "Add the report grouping column to ``frame`` (a copy); unchanged when it is ``condition``.",
+      "label": "spacr.submodules._report_grouping.add_group#0",
+      "source": "Add the report grouping column to ``frame`` (a copy); unchanged when it is ``condition``.",
+      "source_sha256": "b170c9a28218c481134f7c1e185ce2f57c98b371b6de9cdc0c573ee994985f1a",
+      "translation": "向 ``frame``（副本）添加报告分组列；当其为 ``condition`` 时保持不变。"
+    },
+    {
+      "context": "``report`` — write the standard report (Default False) into ``results/report``: ``recruitment_report.pdf`` (A4 portrait pages, panels R01, R02 ...: representative microscope image fields per condition; recruitment unfiltered / filtered at well and replicate level; well-level control graphs before and after the opt-in filters - every image data channel in every object type, and objects per well per object type), PNG pages, ``figure_legend.txt`` (also the last PDF pages) and ``panels/Rnn_<name>/`` with PDF, PNG, ``data.csv`` and ``stats.csv`` (plus 16-bit microscope image fields for R01). Unfiltered means the frame before field_qc, max_vacuoles_per_cell, exclude_edge_objects, background_filters, min_solidity and confounder_filter (the cells_per_well rule applies to both). Microscope image fields are read from ``merged_dir`` (default ``<src>/merged``) and tuned by ``report_tiles_per_condition``, ``report_tile_size``, ``report_tile_seed`` and ``report_tile_channels``; ``report_max_conditions_per_row`` splits long condition axes; ``report_layout`` 'compact' (default) fits the figure on one A4 page when it can, 'spacious' uses larger type over more pages. Objects per well are counted from the object tables of measurements.db before filtering and from the analysed table after it. See :mod:`spacr.assay_report`.",
+      "label": "spacr.submodules.analyze_recruitment#28",
+      "source": "``report`` — write the standard report (Default False) into ``results/report``: ``recruitment_report.pdf`` (A4 portrait pages, panels R01, R02 ...: representative tiles per condition; recruitment unfiltered / filtered at well and replicate level; well-level control graphs before and after the opt-in filters - every channel in every object type, and objects per well per object type), PNG pages, ``figure_legend.txt`` (also the last PDF pages) and ``panels/Rnn_<name>/`` with PDF, PNG, ``data.csv`` and ``stats.csv`` (plus 16-bit tiles for R01). Unfiltered means the frame before field_qc, max_vacuoles_per_cell, exclude_edge_objects, background_filters, min_solidity and confounder_filter (the cells_per_well rule applies to both). Tiles are read from ``merged_dir`` (default ``<src>/merged``) and tuned by ``report_tiles_per_condition``, ``report_tile_size``, ``report_tile_seed`` and ``report_tile_channels``; ``report_max_conditions_per_row`` splits long condition axes; ``report_layout`` 'compact' (default) fits the figure on one A4 page when it can, 'spacious' uses larger type over more pages. Objects per well are counted from the object tables of measurements.db before filtering and from the analysed table after it. See :mod:`spacr.assay_report`.",
+      "source_sha256": "1f81f0dba82fae0327a8f237c9a45dc71c025ac4e2bfe708cfe74a53fe35a2b5",
+      "translation": "``report`` — 将标准报告（默认值为 False）写入 ``results/report``：``recruitment_report.pdf``（A4 纵向页面，面板 R01、R02 ……：每个条件的代表性图块；在孔和重复水平上未过滤 / 过滤后的募集；可选过滤前后的孔水平对照图——每种对象类型中的每个通道，以及每种对象类型的每孔对象数）、PNG 页面、``figure_legend.txt``（也是 PDF 的最后几页），以及 ``panels/Rnn_<name>/``，其中包含 PDF、PNG、``data.csv`` 和 ``stats.csv``（R01 另含 16 位图块）。未过滤指 field_qc、max_vacuoles_per_cell、exclude_edge_objects、background_filters、min_solidity 和 confounder_filter 之前的数据框（cells_per_well 规则对两者都适用）。图块从 ``merged_dir``（默认为 ``<src>/merged``）读取，并由 ``report_tiles_per_condition``、``report_tile_size``、``report_tile_seed`` 和 ``report_tile_channels`` 调整；``report_max_conditions_per_row`` 拆分过长的条件轴；``report_layout`` 为 'compact'（默认）时尽可能将组图放在一页 A4 上，为 'spacious' 时以更大的字号排布在更多页面上。每孔对象数在过滤前从 measurements.db 的对象表计数，过滤后从所分析的表计数。参见 :mod:`spacr.assay_report`。"
+    },
+    {
+      "context": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "label": "spacr.submodules.analyze_recruitment#29",
+      "source": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "source_sha256": "fb8fe355c9b22b5c92cac792d9ca2a9ae12324ee04e7ade76b76001bdb909fca",
+      "translation": "GUI 路径（Home > Toxoplasma > Recruitment）保持不变；这些设置通过 API 或设置文件进行设置。"
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#30",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "列表 ``[cells, wells]``——按宿主细胞和按孔的募集 DataFrames，同时以 CSV 格式写入 ``src/results``。"
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.submodules.analyze_recruitment#31",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "示例："
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#32",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "另请参阅：:func:`analyze_plaques` — 噬斑计数/大小实验。:func:`spacr.ml.generate_ml_scores` — 基于特征的分类器，可替代募集比率。"
+    },
+    {
+      "context": "Each object is measured inside its own bounding box, padded by the reach of the neighbourhood operations, so the cost follows the object sizes rather than the image size times the object count.",
+      "label": "spacr.utils.merge_touching_objects#1",
+      "source": "Each object is measured inside its own bounding box, padded by the reach of the neighbourhood operations, so the cost follows the object sizes rather than the image size times the object count.",
+      "source_sha256": "2547904ed66eaf3b50daae40214dbe3c6950232012dce1966e0a894c46f314f6",
+      "translation": "每个对象都在其自身的边界框内测量，边界框按邻域运算的作用范围扩展，因此开销取决于对象大小，而不是图像大小乘以对象数。"
+    },
+    {
+      "context": "labeled mask.",
+      "label": "spacr.utils.merge_touching_objects#2",
+      "source": "labeled mask.",
+      "source_sha256": "32297d2cee295d3a1f7db8fd35f6d0c72c9b04ed5eca6ed4f10d594f25b8cfc6",
+      "translation": "带标签的掩膜。"
+    },
+    {
+      "context": "fraction of the smaller perimeter required to merge.",
+      "label": "spacr.utils.merge_touching_objects#3",
+      "source": "fraction of the smaller perimeter required to merge.",
+      "source_sha256": "2eb0129be9f5f1b11ec3b79f714e437076bca1ff8a39ffc5bbfaf699bfb39d18",
+      "translation": "合并所需的较小周长的比例。"
+    },
+    {
+      "context": "merged label mask.",
+      "label": "spacr.utils.merge_touching_objects#4",
+      "source": "merged label mask.",
+      "source_sha256": "5854d07a8d6351515df8889331c057653cd836cbf9c3566c7fd52078c64bf5f2",
+      "translation": "合并后的标签掩膜。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

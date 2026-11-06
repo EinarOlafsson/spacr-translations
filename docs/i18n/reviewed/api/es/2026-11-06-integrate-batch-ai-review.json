@@ -1,0 +1,1484 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "context": "Keep spaCR's GPU work inside the memory a shared card has free.",
+      "label": "spacr._gpu_governor#0",
+      "source": "Keep spaCR's GPU work inside the memory a shared card has free.",
+      "source_sha256": "b7bcf8794d02da2d59808afb8a8056695c6f8f590c9e1f2b5065b05737ef0a4f",
+      "translation": "Mantiene el trabajo de GPU de spaCR dentro de la memoria libre de una tarjeta compartida."
+    },
+    {
+      "context": "A workstation GPU is often shared by several jobs: a segmentation run, a measurement run and a training processing session can all hold memory on one card. Each of them sizes its batches for an empty card, so whichever allocates last runs out of memory and, before this module, stopped. This module is the one place that decides how much a spaCR GPU call may take:",
+      "label": "spacr._gpu_governor#1",
+      "source": "A workstation GPU is often shared by several jobs: a segmentation run, a measurement run and a training run can all hold memory on one card. Each of them sizes its batches for an empty card, so whichever allocates last runs out of memory and, before this module, stopped. This module is the one place that decides how much a spaCR GPU call may take:",
+      "source_sha256": "771112ccf7b7d2466e3f3e8e7082f269052f4f3b5fe3e0e1a32db2583b4dd78b",
+      "translation": "La GPU de una estación de trabajo suele estar compartida por varios trabajos: una ejecución de segmentación, una de medición y una de entrenamiento pueden ocupar memoria en la misma tarjeta. Cada una dimensiona sus lotes para una tarjeta vacía, de modo que la que reserva en último lugar se queda sin memoria y, antes de este módulo, se detenía. Este módulo es el único lugar que decide cuánto puede ocupar una llamada de GPU de spaCR:"
+    },
+    {
+      "context": "before each batch it reads the free memory of the device and, when the batch is estimated not to fit with ``gpu_memory_margin_gb`` to spare, shrinks the batch or waits for memory to be freed;",
+      "label": "spacr._gpu_governor#2",
+      "source": "before each batch it reads the free memory of the device and, when the batch is estimated not to fit with ``gpu_memory_margin_gb`` to spare, shrinks the batch or waits for memory to be freed;",
+      "source_sha256": "aca67fb7bdf5806bc7613c68c33ae828478372bbb8a7db35eb5e962823421674",
+      "translation": "antes de cada lote lee la memoria libre del dispositivo y, cuando estima que el lote no cabe dejando ``gpu_memory_margin_gb`` de margen, reduce el lote o espera a que se libere memoria;"
+    },
+    {
+      "context": "on an out-of-memory error from PyTorch or CuPy it releases the cached blocks, halves the batch and retries the same item; after a few failed retries at batch size 1 the item executes on the CPU. No item is dropped and the processing session never stops on an out-of-memory error;",
+      "label": "spacr._gpu_governor#3",
+      "source": "on an out-of-memory error from PyTorch or CuPy it releases the cached blocks, halves the batch and retries the same item; after a few failed retries at batch size 1 the item runs on the CPU. No item is dropped and the run never stops on an out-of-memory error;",
+      "source_sha256": "65de712d1a7e6e178edcd81f2689e08ec4fe6533a45e822c41bff56d214e0f2e",
+      "translation": "ante un error de falta de memoria de PyTorch o CuPy libera los bloques en caché, divide el lote a la mitad y reintenta el mismo elemento; tras unos pocos reintentos fallidos con tamaño de lote 1, el elemento se ejecuta en la CPU. No se descarta ningún elemento y la ejecución nunca se detiene por un error de falta de memoria;"
+    },
+    {
+      "context": "after each item it releases the cached memory, so a co-tenant can use it;",
+      "label": "spacr._gpu_governor#4",
+      "source": "after each item it releases the cached memory, so a co-tenant can use it;",
+      "source_sha256": "48be3caab3c1fee2264072e8ad5b9c0d0129c0167b46b344534f8024b7b90412",
+      "translation": "después de cada elemento libera la memoria en caché, para que otro trabajo de la tarjeta pueda usarla;"
+    },
+    {
+      "context": "after a run of clean items it doubles the batch again, up to the size the caller asked for;",
+      "label": "spacr._gpu_governor#5",
+      "source": "after a run of clean items it doubles the batch again, up to the size the caller asked for;",
+      "source_sha256": "61a5cfcfee453c4956d2e2fb9ca1dd4e54367b1866fccddc512791c27bc14ec8",
+      "translation": "tras una serie de elementos sin errores vuelve a duplicar el lote, hasta el tamaño que pidió quien llama;"
+    },
+    {
+      "context": "``gpu_memory_fraction`` sets a hard ceiling through ``torch.cuda.set_per_process_memory_fraction``. That call caps the memory PyTorch's caching allocator RESERVES, which is more than it has allocated by the allocator's fragmentation, so every need and cap here is sized from ``torch.cuda.max_memory_reserved`` and never below 1.5 times the allocated peak; a ceiling set lower than what the work needs is raised, with a message, rather than turning every larger item into an out-of-memory retry;",
+      "label": "spacr._gpu_governor#6",
+      "source": "``gpu_memory_fraction`` sets a hard ceiling through ``torch.cuda.set_per_process_memory_fraction``. That call caps the memory PyTorch's caching allocator RESERVES, which is more than it has allocated by the allocator's fragmentation, so every need and cap here is sized from ``torch.cuda.max_memory_reserved`` and never below 1.5 times the allocated peak; a ceiling set lower than what the work needs is raised, with a message, rather than turning every larger item into an out-of-memory retry;",
+      "source_sha256": "2f0a0c5d5d4a6aacd15624867977914ef9dda8d8c58f78a9332c17f8f8a4a3ee",
+      "translation": "``gpu_memory_fraction`` fija un límite estricto mediante ``torch.cuda.set_per_process_memory_fraction``. Esa llamada limita la memoria que RESERVA el asignador con caché de PyTorch, que supera a la asignada en la fragmentación del asignador, por lo que cada necesidad y cada límite se dimensionan aquí a partir de ``torch.cuda.max_memory_reserved`` y nunca por debajo de 1.5 veces el pico asignado; un límite fijado por debajo de lo que necesita el trabajo se eleva, con un mensaje, en lugar de convertir cada elemento más grande en un reintento por falta de memoria;"
+    },
+    {
+      "context": "when CUDA has not been initialised yet and ``PYTORCH_CUDA_ALLOC_CONF`` is unset, :func:`_configure` sets it to ``expandable_segments:True``, which lets the allocator grow segments in place instead of reserving new ones, so reserved memory stays close to allocated memory. An existing value is never changed, and a process that already holds a CUDA context keeps the allocator it has;",
+      "label": "spacr._gpu_governor#7",
+      "source": "when CUDA has not been initialised yet and ``PYTORCH_CUDA_ALLOC_CONF`` is unset, :func:`_configure` sets it to ``expandable_segments:True``, which lets the allocator grow segments in place instead of reserving new ones, so reserved memory stays close to allocated memory. An existing value is never changed, and a process that already holds a CUDA context keeps the allocator it has;",
+      "source_sha256": "ce42941ba594308d1bc1eed9625db37c82dcab1d0a33bc3e1a64a50fd2acfb9b",
+      "translation": "cuando CUDA aún no se ha inicializado y ``PYTORCH_CUDA_ALLOC_CONF`` no está definido, :func:`_configure` lo establece en ``expandable_segments:True``, lo que permite al asignador ampliar los segmentos in situ en lugar de reservar otros nuevos, de modo que la memoria reservada se mantiene cerca de la asignada. Un valor existente nunca se modifica, y un proceso que ya tiene un contexto CUDA conserva el asignador que tiene;"
+    },
+    {
+      "context": "every process is counted with about 0.4 GB of CUDA context on top of what its allocator reserves, in the ledger and in the budget;",
+      "label": "spacr._gpu_governor#8",
+      "source": "every process is counted with about 0.4 GB of CUDA context on top of what its allocator reserves, in the ledger and in the budget;",
+      "source_sha256": "a816e81e1460ab07bdc756cb6b16e462035cbe3605ade3fa27e01be3156f77f3",
+      "translation": "cada proceso se contabiliza con unos 0.4 GB de contexto CUDA además de lo que reserva su asignador, tanto en el registro compartido como en el presupuesto;"
+    },
+    {
+      "context": "a ledger file under the user cache directory records what every spaCR GPU process on the machine is using and about to claim, so a new job counts what the others are about to take and an executing job shrinks while room is needed. Entries of processes that no longer exist are ignored;",
+      "label": "spacr._gpu_governor#9",
+      "source": "a ledger file under the user cache directory records what every spaCR GPU process on the machine is using and about to claim, so a new job counts what the others are about to take and a running job shrinks while room is needed. Entries of processes that no longer exist are ignored;",
+      "source_sha256": "8a8188b4c2a9baf4c6f69e96df11af702cc08cb68d63451d717f33792f2295fc",
+      "translation": "un archivo de registro compartido en el directorio de caché del usuario anota lo que cada proceso de GPU de spaCR de la máquina está usando y está a punto de reclamar, de modo que un trabajo nuevo tiene en cuenta lo que los demás están a punto de ocupar y un trabajo en curso se reduce mientras se necesita espacio. Las entradas de procesos que ya no existen se ignoran;"
+    },
+    {
+      "context": "while a site is adapting, a line such as ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)`` is printed every 50 items or 60 seconds, and a warning when more than 3 % of a site's items ran on the CPU;",
+      "label": "spacr._gpu_governor#10",
+      "source": "while a site is adapting, a line such as ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)`` is printed every 50 items or 60 seconds, and a warning when more than 3 % of a site's items ran on the CPU;",
+      "source_sha256": "6f57232fbd1592ad2efc4f210ac017bcb01adec7fb23271d02b4e493f9840117",
+      "translation": "mientras un punto de llamada se está adaptando, se imprime una línea como ``[gpu] site=measure_intensity items=200 shrinks=0 oom_retries=6 cpu_fallbacks=2 (1.0%)`` cada 50 elementos o 60 segundos, y una advertencia cuando más del 3 % de los elementos de un punto de llamada se ejecutaron en la CPU;"
+    },
+    {
+      "context": "every item's compute path (``gpu`` or ``cpu``) is recorded. Measure writes it as a ``compute_path`` column on its object rows when ``measure_gpu`` is on, and the run report says whether the run stayed on one path. ``gpu_fallback_policy='pause'`` never falls back: an item that does not fit even at batch size 1 waits for the GPU instead, so a run stays on one path;",
+      "label": "spacr._gpu_governor#11",
+      "source": "every item's compute path (``gpu`` or ``cpu``) is recorded. Measure writes it as a ``compute_path`` column on its object rows when ``measure_gpu`` is on, and the run report says whether the run stayed on one path. ``gpu_fallback_policy='pause'`` never falls back: an item that does not fit even at batch size 1 waits for the GPU instead, so a run stays on one path;",
+      "source_sha256": "51ca642013e8b64148401c8407b83795b285a01923d04a19f095cb94c578c818",
+      "translation": "se registra la ruta de cálculo de cada elemento (``gpu`` o ``cpu``). Measure la escribe como una columna ``compute_path`` en sus filas de objetos cuando ``measure_gpu`` está activado, y el informe de la ejecución indica si la ejecución se mantuvo en una sola ruta. ``gpu_fallback_policy='pause'`` nunca recurre al respaldo: un elemento que no cabe ni siquiera con tamaño de lote 1 espera a la GPU, de modo que la ejecución se mantiene en una sola ruta;"
+    },
+    {
+      "context": "the shrink, wait, retry, fallback and ramp-up counts are summarised in the run log at the end of a run.",
+      "label": "spacr._gpu_governor#12",
+      "source": "the shrink, wait, retry, fallback and ramp-up counts are summarised in the run log at the end of a run.",
+      "source_sha256": "622f7185e4951b88d08b684965ddfb5d6a63c6a79e708d7bd9ebbaf4414525ca",
+      "translation": "los recuentos de reducciones, esperas, reintentos, respaldos y aumentos se resumen en el registro de la ejecución al final de cada ejecución."
+    },
+    {
+      "context": "``gpu_adaptive_batch=False`` turns the batch control off: every call then runs exactly as asked, with only the optional fraction applied. On a machine without a visible CUDA device every call also runs exactly as asked.",
+      "label": "spacr._gpu_governor#13",
+      "source": "``gpu_adaptive_batch=False`` turns the batch control off: every call then runs exactly as asked, with only the optional fraction applied. On a machine without a visible CUDA device every call also runs exactly as asked.",
+      "source_sha256": "78aeecd1091aba8200cb63f347f6cf0b0d9d85c57797f558a987c4c6720390b9",
+      "translation": "``gpu_adaptive_batch=False`` desactiva el control de lotes: cada llamada se ejecuta entonces exactamente como se pidió, aplicando solo la fracción opcional. En una máquina sin un dispositivo CUDA visible, cada llamada también se ejecuta exactamente como se pidió."
+    },
+    {
+      "context": "How to label the x axis of one graph.",
+      "label": "spacr.assay_panels.axis_layout#0",
+      "source": "How to label the x axis of one graph.",
+      "source_sha256": "f25516e5b117330621621c7368934cb9efe7a7b374efb44f41d72f98814f0245",
+      "translation": "Cómo etiquetar el eje x de un gráfico."
+    },
+    {
+      "context": "{condition: [(variable, factor), ...]} (see :func:`condition_parts`).",
+      "label": "spacr.assay_panels.axis_layout#1",
+      "source": "{condition: [(variable, factor), ...]} (see :func:`condition_parts`).",
+      "source_sha256": "4e4264e3c89d3c756fd4a318e0e610ac0f569b1df10f52877ded5b7a06497264",
+      "translation": "{condition: [(variable, factor), ...]} (véase :func:`condition_parts`)."
+    },
+    {
+      "context": "``'auto'`` (labels when at most one variable varies along this axis, else the matrix), ``'matrix'`` or ``'labels'``.",
+      "label": "spacr.assay_panels.axis_layout#2",
+      "source": "``'auto'`` (labels when at most one variable varies along this axis, else the matrix), ``'matrix'`` or ``'labels'``.",
+      "source_sha256": "bf41216c1daa2c7f66a2d5d1a97d04fea140c550738d2ef240d8e38633d43a3a",
+      "translation": "``'auto'`` (etiquetas cuando varía como máximo una variable a lo largo de este eje; si no, la matriz), ``'matrix'`` o ``'labels'``."
+    },
+    {
+      "context": "matrix rows in display order (raw or display names); other rows follow by variable, then first appearance.",
+      "label": "spacr.assay_panels.axis_layout#3",
+      "source": "matrix rows in display order (raw or display names); other rows follow by variable, then first appearance.",
+      "source_sha256": "2c4b78422f9dfdc6e6f2f720b81ceb803e1f6498fccff462aee1c54932ba0192",
+      "translation": "filas de la matriz en orden de visualización (nombres sin procesar o de visualización); las demás filas siguen por variable y después por orden de aparición."
+    },
+    {
+      "context": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``.",
+      "label": "spacr.assay_panels.axis_layout#4",
+      "source": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``.",
+      "source_sha256": "46fd92f3058f114cde85ca6ac7c5fcceb8483911e9cd8ea7de7a553dba07c039",
+      "translation": "``{'matrix': bool, 'annotations': {row: {condition: '+'/'-'}}, 'labels': {condition: text}, 'constant': [display texts shared by every condition], 'varying': [variables]}``."
+    },
+    {
+      "context": "``'mad'``, ``'iqr'`` (see :func:`mark_outliers`), None, or ``'policy'`` (default) to use the active :class:`outlier_policy`. Outliers stay in ``data`` with ``outlier = True`` and are left out of the drawing and the test; ``stats['outliers']`` counts them per group.",
+      "label": "spacr.assay_panels.bar_spec#13",
+      "source": "``'mad'``, ``'iqr'`` (see :func:`mark_outliers`), None, or ``'policy'`` (default) to use the active :class:`outlier_policy`. Outliers stay in ``data`` with ``outlier = True`` and are left out of the drawing and the test; ``stats['outliers']`` counts them per group.",
+      "source_sha256": "d6dfd017a682b27fab409e3d3e7e462df34c9e7abe2bcdff016bd2feb938a5ed",
+      "translation": "``'mad'``, ``'iqr'`` (véase :func:`mark_outliers`), None o ``'policy'`` (predeterminado) para usar la :class:`outlier_policy` activa. Los valores atípicos permanecen en ``data`` con ``outlier = True`` y se excluyen del dibujo y de la prueba; ``stats['outliers']`` los cuenta por grupo."
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "label": "spacr.assay_panels.bar_spec#14",
+      "source": "a dict spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "source_sha256": "90f667c0d6aaf77ba09eec74a714c9990e8412454a8b00c939056e9b7db65d5d",
+      "translation": "una especificación dict con ``kind`` ``'bar'`` y el resultado de :func:`select_and_run_test` en ``stats``."
+    },
+    {
+      "context": "Split a condition into (variable, factor) parts.",
+      "label": "spacr.assay_panels.condition_parts#0",
+      "source": "Split a condition into (variable, factor) parts.",
+      "source_sha256": "5f64e499177e167a2647bcc99accc531f55dd1ec3efe34244b7eae0553a7d60a",
+      "translation": "Divide una condición en partes (variable, factor)."
+    },
+    {
+      "context": "{variable (slot or column): value} of the condition.",
+      "label": "spacr.assay_panels.condition_parts#1",
+      "source": "{variable (slot or column): value} of the condition.",
+      "source_sha256": "6b0665dbc9e2e62cecb5a15ced19780bd1e405eb02bb8f2ec007bf116c685068",
+      "translation": "{variable (slot or column): value} de la condición."
+    },
+    {
+      "context": "``condition_factors`` - {value: [factor, ...]}; a value listed there contributes one part per factor (variable ``<var>#<i>`` for the i-th factor, so backgrounds and genotypes form separate variables), any other value is one part of its own variable.",
+      "label": "spacr.assay_panels.condition_parts#2",
+      "source": "``condition_factors`` - {value: [factor, ...]}; a value listed there contributes one part per factor (variable ``<var>#<i>`` for the i-th factor, so backgrounds and genotypes form separate variables), any other value is one part of its own variable.",
+      "source_sha256": "c35610a4fa4ea7e57e3e5bef18669428feecf670f1fdf8f0b059edba1f951862",
+      "translation": "``condition_factors`` - {value: [factor, ...]}; un valor indicado ahí aporta una parte por factor (variable ``<var>#<i>`` para el i-ésimo factor, de modo que los fondos genéticos y los genotipos forman variables separadas); cualquier otro valor es una parte de su propia variable."
+    },
+    {
+      "context": "``'significant'`` (default), ``'all'`` or ``'none'``.",
+      "label": "spacr.assay_panels.draw_bar_panel#7",
+      "source": "``'significant'`` (default), ``'all'`` or ``'none'``.",
+      "source_sha256": "a9fcd76bbdaee6e663f68dd5e1d5e3d07ecf9af5725a4007adea4fc28f1fe3cc",
+      "translation": "``'significant'`` (predeterminado), ``'all'`` o ``'none'``."
+    },
+    {
+      "context": "which pairs get a bracket (:func:`select_bracket_pairs`): ``'one_factor'`` (significant pairs that differ in one factor of ``parts``; all significant pairs without factor structure), ``'all'`` or an explicit list of pairs. At most ``max_brackets`` are drawn (the smallest p values); every pair stays in ``stats_posthoc.csv``.",
+      "label": "spacr.assay_panels.draw_bar_panel#8",
+      "source": "which pairs get a bracket (:func:`select_bracket_pairs`): ``'one_factor'`` (significant pairs that differ in one factor of ``parts``; all significant pairs without factor structure), ``'all'`` or an explicit list of pairs. At most ``max_brackets`` are drawn (the smallest p values); every pair stays in ``stats_posthoc.csv``.",
+      "source_sha256": "7baf1e36483c59ab33aad2f771b42be8b86c52207bcea270b55b7061a5b08ba7",
+      "translation": "qué pares reciben un corchete (:func:`select_bracket_pairs`): ``'one_factor'`` (pares significativos que difieren en un factor de ``parts``; todos los pares significativos si no hay estructura de factores), ``'all'`` o una lista explícita de pares. Se dibujan como máximo ``max_brackets`` (los de valores p más pequeños); todos los pares siguen en ``stats_posthoc.csv``."
+    },
+    {
+      "context": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "label": "spacr.assay_panels.draw_bar_panel#9",
+      "source": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
+      "translation": "límite inferior del eje y (``None``: 0, o el mínimo de los datos si es negativo)."
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.draw_bar_panel#10",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "título del panel; el resultado de la prueba se añade debajo."
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.draw_bar_panel#11",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "etiqueta del eje y; ``None`` usa ``value`` con espacios en lugar de guiones bajos."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_bar_panel#12",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "valor sin procesar del grupo -> etiqueta de la marca del eje x."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_bar_panel#13",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "nombre de fila -> {group: text}, filas de texto alineadas bajo el eje x."
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.draw_bar_panel#14",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "valor y de una línea de referencia discontinua, o ``None``."
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``.",
+      "label": "spacr.assay_panels.draw_bar_panel#15",
+      "source": "group -> colour, or a list of colours in ``order``.",
+      "source_sha256": "ec7e98e3a4fed663981d46580b89562d033f96591bc0546a025f74fd7708fd1c",
+      "translation": "grupo -> color, o una lista de colores en el orden de ``order``."
+    },
+    {
+      "context": "most post hoc brackets drawn.",
+      "label": "spacr.assay_panels.draw_bar_panel#16",
+      "source": "most post hoc brackets drawn.",
+      "source_sha256": "00441f5914e4a068ff83d73e1daf66a13adac3df8fb14d3096139a1b81afb031",
+      "translation": "número máximo de corchetes post hoc que se dibujan."
+    },
+    {
+      "context": "random seed of the horizontal jitter of the dots.",
+      "label": "spacr.assay_panels.draw_bar_panel#17",
+      "source": "random seed of the horizontal jitter of the dots.",
+      "source_sha256": "48a27673929bbb431da5cbde183e62d75b77eecd3b289f943eef4ef2e998fd45",
+      "translation": "semilla aleatoria de la dispersión horizontal de los puntos."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_bar_panel#18",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "True for points beyond the robust fence of their group.",
+      "label": "spacr.assay_panels.mark_outliers#0",
+      "source": "True for points beyond the robust fence of their group.",
+      "source_sha256": "81b8e298fe5b8010c53d56fb2922646ccafca748f4428f63b7af18569ce3c2c8",
+      "translation": "True para los puntos que quedan fuera del límite robusto de su grupo."
+    },
+    {
+      "context": "``mad``: ``|x - median| > fence * 1.4826 * MAD``; ``iqr``: outside ``[Q1 - fence * IQR, Q3 + fence * IQR]``. Groups with fewer than 4 points or no spread (MAD or IQR 0) keep every point.",
+      "label": "spacr.assay_panels.mark_outliers#1",
+      "source": "``mad``: ``|x - median| > fence * 1.4826 * MAD``; ``iqr``: outside ``[Q1 - fence * IQR, Q3 + fence * IQR]``. Groups with fewer than 4 points or no spread (MAD or IQR 0) keep every point.",
+      "source_sha256": "7bfa2ad5672095a6a60694a3abee5a7451f4be8188ec1fd4da7c13305aa55b5d",
+      "translation": "``mad``: ``|x - median| > fence * 1.4826 * MAD``; ``iqr``: fuera de ``[Q1 - fence * IQR, Q3 + fence * IQR]``. Los grupos con menos de 4 puntos o sin dispersión (MAD o IQR 0) conservan todos los puntos."
+    },
+    {
+      "context": "column or list of columns defining the groups.",
+      "label": "spacr.assay_panels.mark_outliers#2",
+      "source": "column or list of columns defining the groups.",
+      "source_sha256": "f9c52341c82cac763ce14e8c08f7a71a95771f51f62bae9113469127fbef07ea",
+      "translation": "columna o lista de columnas que definen los grupos."
+    },
+    {
+      "context": "Context manager: default outlier method of :func:`bar_spec` inside the block.",
+      "label": "spacr.assay_panels.outlier_policy#0",
+      "source": "Context manager: default outlier method of :func:`bar_spec` inside the block.",
+      "source_sha256": "9a33cd1aae4daa63d990f7037aaa61a639b9597119d0eeb8b197c1f8458dd24c",
+      "translation": "Gestor de contexto: método predeterminado de valores atípicos de :func:`bar_spec` dentro del bloque."
+    },
+    {
+      "context": "``with outlier_policy('mad'): ...`` makes every bar panel built inside mark and leave out points beyond the robust fence of their group.",
+      "label": "spacr.assay_panels.outlier_policy#1",
+      "source": "``with outlier_policy('mad'): ...`` makes every bar panel built inside mark and leave out points beyond the robust fence of their group.",
+      "source_sha256": "6b06bc233577708a2fd5915346d4c850dfd6c03138d9bfeea339e5c44766baf5",
+      "translation": "``with outlier_policy('mad'): ...`` hace que cada panel de barras construido dentro marque y excluya los puntos que quedan fuera del límite robusto de su grupo."
+    },
+    {
+      "context": "Points and removed outliers per group (and per ``by`` level).",
+      "label": "spacr.assay_panels.outlier_table#0",
+      "source": "Points and removed outliers per group (and per ``by`` level).",
+      "source_sha256": "4b662c31de8c1883ff7ccc1dea2941fc26d5d68a729e591ce3f7493e49d2e7c3",
+      "translation": "Puntos y valores atípicos eliminados por grupo (y por nivel de ``by``)."
+    },
+    {
+      "context": "Stack level of every bracket: shortest spans lowest, brackets on one level never overlap.",
+      "label": "spacr.assay_panels.pack_brackets#0",
+      "source": "Stack level of every bracket: shortest spans lowest, brackets on one level never overlap.",
+      "source_sha256": "96586035db1f7de9c4bc8f8591a696b545968cffa7a6e4f480654306fd733d76",
+      "translation": "Nivel de apilamiento de cada corchete: los tramos más cortos abajo; los corchetes de un mismo nivel nunca se solapan."
+    },
+    {
+      "context": "``'mad'`` / ``'iqr'`` (default fences 3.5 and 1.5) or ``'mad:3'`` -> (name, fence); None -> None.",
+      "label": "spacr.assay_panels.parse_outlier_method#0",
+      "source": "``'mad'`` / ``'iqr'`` (default fences 3.5 and 1.5) or ``'mad:3'`` -> (name, fence); None -> None.",
+      "source_sha256": "fa55ff3f26536e44258ebfe60ca75908d3d4aa652f2135e2010bb4143481b739",
+      "translation": "``'mad'`` / ``'iqr'`` (límites predeterminados 3.5 y 1.5) o ``'mad:3'`` -> (nombre, límite); None -> None."
+    },
+    {
+      "context": "Post hoc pairs that get a bracket, and how many qualifying pairs were left out.",
+      "label": "spacr.assay_panels.select_bracket_pairs#0",
+      "source": "Post hoc pairs that get a bracket, and how many qualifying pairs were left out.",
+      "source_sha256": "53b838471b32aa4041920f214963ba482e22b075ed2db3a301612b8e06fb8f11",
+      "translation": "Pares post hoc que reciben un corchete y cuántos pares que cumplen el criterio se omitieron."
+    },
+    {
+      "context": "``'one_factor'``: significant pairs that differ in exactly one factor of ``parts`` (same host with another strain, same strain in another host); every significant pair when the conditions have no factor structure (at most one variable). ``'all'``: every significant pair. A list of pairs: those pairs, significant or not. Beyond ``max_n`` the pairs with the smallest p values are kept.",
+      "label": "spacr.assay_panels.select_bracket_pairs#1",
+      "source": "``'one_factor'``: significant pairs that differ in exactly one factor of ``parts`` (same host with another strain, same strain in another host); every significant pair when the conditions have no factor structure (at most one variable). ``'all'``: every significant pair. A list of pairs: those pairs, significant or not. Beyond ``max_n`` the pairs with the smallest p values are kept.",
+      "source_sha256": "953d247b18a083f51985d3ff056d428efefb27234b96fbbfd1e9e241a851bff0",
+      "translation": "``'one_factor'``: pares significativos que difieren exactamente en un factor de ``parts`` (el mismo huésped con otra cepa, la misma cepa en otro huésped); todos los pares significativos cuando las condiciones no tienen estructura de factores (como máximo una variable). ``'all'``: todos los pares significativos. Una lista de pares: esos pares, significativos o no. Por encima de ``max_n`` se conservan los pares con los valores p más pequeños."
+    },
+    {
+      "context": "(DataFrame of chosen pairs, number of qualifying pairs not drawn).",
+      "label": "spacr.assay_panels.select_bracket_pairs#2",
+      "source": "(DataFrame of chosen pairs, number of qualifying pairs not drawn).",
+      "source_sha256": "618da887bd64c8544c757eae87af0ee865468c029c1caf3e003e8438890b70e0",
+      "translation": "(DataFrame de los pares elegidos, número de pares que cumplen el criterio y no se dibujan)."
+    },
+    {
+      "context": "``color`` darkened to ``factor`` (0 black, 1 unchanged), as an RGB tuple.",
+      "label": "spacr.assay_panels.shade#0",
+      "source": "``color`` darkened to ``factor`` (0 black, 1 unchanged), as an RGB tuple.",
+      "source_sha256": "952b54ed80606b48035928adcd641ec943eef921af2546d7db0eb47456ea0aa3",
+      "translation": "``color`` oscurecido hasta ``factor`` (0 negro, 1 sin cambios), como una tupla RGB."
+    },
+    {
+      "context": "Fallback decomposition: the tokens of the condition string, by position.",
+      "label": "spacr.assay_panels.string_parts#0",
+      "source": "Fallback decomposition: the tokens of the condition string, by position.",
+      "source_sha256": "dc1c7c336cc5a0e2696d5eda74efd5216e1351c4ee34d4d35be96712447753c8",
+      "translation": "Descomposición de reserva: los fragmentos de la cadena de la condición, por posición."
+    },
+    {
+      "context": "Light horizontal grid behind the data, top and right spines removed.",
+      "label": "spacr.assay_panels.style_axes#0",
+      "source": "Light horizontal grid behind the data, top and right spines removed.",
+      "source_sha256": "1f9b6fe369b21cf6222da70e14aeae4c066180b6b826eae149f4578e888203ca",
+      "translation": "Cuadrícula horizontal clara detrás de los datos; se eliminan los bordes superior y derecho."
+    },
+    {
+      "context": "Standard assay report: A4 pages with pagination, 16-bit tiles and a figure legend.",
+      "label": "spacr.assay_report#0",
+      "source": "Standard assay report: A4 pages with pagination, 16-bit tiles and a figure legend.",
+      "source_sha256": "9984f66e30af61f7f5bf779469102d0e23b32e4880df4806b14fa71f0a3dc1e2",
+      "translation": "Informe de ensayo estándar: páginas A4 con paginación, teselas de 16 bits y una leyenda de figura."
+    },
+    {
+      "context": "Used by :func:`spacr.submodules.analyze_recruitment` (``report`` setting) and written to be reused by other laboratory microplate assays. Three building blocks:",
+      "label": "spacr.assay_report#1",
+      "source": "Used by :func:`spacr.submodules.analyze_recruitment` (``report`` setting) and written to be reused by other plate assays. Three building blocks:",
+      "source_sha256": "31f2857300954be1154acf723c922d34571a85978410fd7142ea15deea323f05",
+      "translation": "Lo usa :func:`spacr.submodules.analyze_recruitment` (ajuste ``report``) y está escrito para que otros ensayos en placa lo reutilicen. Tres componentes:"
+    },
+    {
+      "context": "**Layout engine** (:class:`ReportItem`, :class:`ReportBlock`, :func:`paginate`, :func:`render_report`). A report is a list of blocks, each a heading plus panel items. An item is half or full page width with a height in mm. Items are packed into rows (two half items, or one full item), rows into A4 portrait pages (210 x 297 mm). A block that does not fit the rest of a page starts on a new page; a block taller than a page flows on, row by row, with its heading repeated. Text sizes are fixed in points (never below 5 pt), so a long report gets more pages, never smaller text. Panels whose condition axis does not fit the page width are split into chunks of conditions (:func:`condition_chunks`) drawn as consecutive rows.",
+      "label": "spacr.assay_report#2",
+      "source": "**Layout engine** (:class:`ReportItem`, :class:`ReportBlock`, :func:`paginate`, :func:`render_report`). A report is a list of blocks, each a heading plus panel items. An item is half or full page width with a height in mm. Items are packed into rows (two half items, or one full item), rows into A4 portrait pages (210 x 297 mm). A block that does not fit the rest of a page starts on a new page; a block taller than a page flows on, row by row, with its heading repeated. Text sizes are fixed in points (never below 5 pt), so a long report gets more pages, never smaller text. Panels whose condition axis does not fit the page width are split into chunks of conditions (:func:`condition_chunks`) drawn as consecutive rows.",
+      "source_sha256": "f70c18085abd09fc7fbe0d012e65517982fcc4feadbef90c96dd34fb76280c7f",
+      "translation": "**Motor de diseño** (:class:`ReportItem`, :class:`ReportBlock`, :func:`paginate`, :func:`render_report`). Un informe es una lista de bloques, cada uno con un encabezado y elementos de panel. Un elemento ocupa media página o la página entera de ancho, con una altura en mm. Los elementos se agrupan en filas (dos elementos de media página o uno de página entera) y las filas en páginas A4 verticales (210 x 297 mm). Un bloque que no cabe en el resto de una página empieza en una página nueva; un bloque más alto que una página continúa, fila a fila, repitiendo su encabezado. Los tamaños de texto son fijos en puntos (nunca por debajo de 5 pt), de modo que un informe largo tiene más páginas, nunca texto más pequeño. Los paneles cuyo eje de condiciones no cabe en el ancho de página se dividen en grupos de condiciones (:func:`condition_chunks`) dibujados como filas consecutivas."
+    },
+    {
+      "context": "**Tiles** (:func:`select_tiles`, :func:`extract_tile`, :func:`render_tile`, :func:`build_tiles`). Extracted image regions of host cells around their mask centroid from the spaCR merged arrays (image data channels then mask image layers). The raw extracted image region is written as a multichannel TIFF with the input dtype and unchanged values; the RGB composite and the montage are written as 16-bit PNG (OpenCV, BGR order) and 16-bit TIFF (RGB). Only the figure PDF / PNG are 8-bit.",
+      "label": "spacr.assay_report#3",
+      "source": "**Tiles** (:func:`select_tiles`, :func:`extract_tile`, :func:`render_tile`, :func:`build_tiles`). Crops of host cells around their mask centroid from the spaCR merged arrays (image channels then mask planes). The raw crop is written as a multichannel TIFF with the input dtype and unchanged values; the RGB composite and the montage are written as 16-bit PNG (OpenCV, BGR order) and 16-bit TIFF (RGB). Only the figure PDF / PNG are 8-bit.",
+      "source_sha256": "d0bffd61dc4d572bffed1aa228872c8bc4f2715101fcdc13d6e0bb59049333be",
+      "translation": "**Teselas** (:func:`select_tiles`, :func:`extract_tile`, :func:`render_tile`, :func:`build_tiles`). Recortes de células huésped alrededor del centroide de su máscara a partir de las matrices fusionadas de spaCR (canales de imagen y después planos de máscara). El recorte sin procesar se escribe como un TIFF multicanal con el dtype de entrada y los valores sin modificar; el compuesto RGB y el mosaico se escriben como PNG de 16 bits (OpenCV, orden BGR) y TIFF de 16 bits (RGB). Solo el PDF / PNG de la figura son de 8 bits."
+    },
+    {
+      "context": "**Legend** (:func:`describe_test`, :func:`filter_sentences`, :func:`write_legend`). Generic text for every panel: what is plotted, unit of statistics, n per group, test and why, filters with their counts.",
+      "label": "spacr.assay_report#4",
+      "source": "**Legend** (:func:`describe_test`, :func:`filter_sentences`, :func:`write_legend`). Generic text for every panel: what is plotted, unit of statistics, n per group, test and why, filters with their counts.",
+      "source_sha256": "68041f1a6b21939ae28ad145bfd9aebdb73eab7006a4c8074425cc2cbcf45e57",
+      "translation": "**Leyenda** (:func:`describe_test`, :func:`filter_sentences`, :func:`write_legend`). Texto genérico para cada panel: qué se representa, unidad estadística, n por grupo, prueba y motivo, filtros con sus recuentos."
+    },
+    {
+      "context": "Statistics come from :func:`spacr.assay_panels.select_and_run_test`.",
+      "label": "spacr.assay_report#5",
+      "source": "Statistics come from :func:`spacr.assay_panels.select_and_run_test`.",
+      "source_sha256": "196c3d8561bcefccb57afa37aaa341b1c959358e1b920dfad5e008d8390c4bac",
+      "translation": "Las estadísticas proceden de :func:`spacr.assay_panels.select_and_run_test`."
+    },
+    {
+      "context": "Page geometry and type sizes of a report layout (all lengths in mm, fonts in pt).",
+      "label": "spacr.assay_report.Layout#0",
+      "source": "Page geometry and type sizes of a report layout (all lengths in mm, fonts in pt).",
+      "source_sha256": "45e5e3d4f71ef533ea979383b1ae694c89528e59dbbef90bc2c4e70d3eccbbf6",
+      "translation": "Geometría de página y tamaños de letra de un diseño de informe (todas las longitudes en mm, las fuentes en pt)."
+    },
+    {
+      "context": "``compact`` draws 5-6 pt text, slim bars and small markers and first tries to fit the whole figure on one page (:func:`paginate`); ``spacious`` is the roomy layout with 8-10 pt text that paginates freely.",
+      "label": "spacr.assay_report.Layout#1",
+      "source": "``compact`` draws 5-6 pt text, slim bars and small markers and first tries to fit the whole figure on one page (:func:`paginate`); ``spacious`` is the roomy layout with 8-10 pt text that paginates freely.",
+      "source_sha256": "f0150d4a0a661368425d3961b07ed743b2c535b619f4169d048353e1b40363ca",
+      "translation": "``compact`` dibuja texto de 5-6 pt, barras estrechas y marcadores pequeños, e intenta primero que toda la figura quepa en una página (:func:`paginate`); ``spacious`` es el diseño holgado con texto de 8-10 pt que pagina libremente."
+    },
+    {
+      "context": "A heading plus panel items. Consecutive blocks with the same ``group`` are kept on one page when the compact layout has to paginate.",
+      "label": "spacr.assay_report.ReportBlock#0",
+      "source": "A heading plus panel items. Consecutive blocks with the same ``group`` are kept on one page when the compact layout has to paginate.",
+      "source_sha256": "7c9d2c55617985ec4502ef63f1fa011174157b26cec4c944a55a8642b8aa5642",
+      "translation": "Un encabezado con elementos de panel. Los bloques consecutivos con el mismo ``group`` se mantienen en una página cuando el diseño compacto tiene que paginar."
+    },
+    {
+      "context": "One panel (or one chunk of a panel) on a page.",
+      "label": "spacr.assay_report.ReportItem#0",
+      "source": "One panel (or one chunk of a panel) on a page.",
+      "source_sha256": "7be8d5b1846ad522e55c7c23f72138394a97c142ac05ead4d829faf87a53c9be",
+      "translation": "Un panel (o un fragmento de un panel) en una página."
+    },
+    {
+      "context": "``draw(fig, rect)`` with ``rect = (x0, y0, w, h)`` in figure fractions; it adds its own axes inside the rect.",
+      "label": "spacr.assay_report.ReportItem#1",
+      "source": "``draw(fig, rect)`` with ``rect = (x0, y0, w, h)`` in figure fractions; it adds its own axes inside the rect.",
+      "source_sha256": "eda898064139fb4022194c7042acf03d6099f5fce00aa0f97394a430d589699a",
+      "translation": "``draw(fig, rect)`` con ``rect = (x0, y0, w, h)`` en fracciones de la figura; añade sus propios ejes dentro del rectángulo."
+    },
+    {
+      "context": "fraction of the content width (or ``'half'``, ``'full'``, ``'third'``, ``'quarter'``).",
+      "label": "spacr.assay_report.ReportItem#2",
+      "source": "fraction of the content width (or ``'half'``, ``'full'``, ``'third'``, ``'quarter'``).",
+      "source_sha256": "e3f77a2073ac16e8cecb4bec4e6ada9ac5d7b2d40d3fc01022007c6030706c62",
+      "translation": "fracción del ancho del contenido (o ``'half'``, ``'full'``, ``'third'``, ``'quarter'``)."
+    },
+    {
+      "context": "height reserved on the page, panel ID strip included.",
+      "label": "spacr.assay_report.ReportItem#3",
+      "source": "height reserved on the page, panel ID strip included.",
+      "source_sha256": "a6cbd8b1604a926ab7055e3ece1c6c4a038baea7af07322e55398f1d77debd6e",
+      "translation": "altura reservada en la página, incluida la franja del ID del panel."
+    },
+    {
+      "context": "smallest height the one-page fit may shrink it to.",
+      "label": "spacr.assay_report.ReportItem#4",
+      "source": "smallest height the one-page fit may shrink it to.",
+      "source_sha256": "35a61fbc00ee1f8e280e060fe1de907c79d9f7918a619bba9d700341e4bf2eb4",
+      "translation": "altura mínima a la que puede reducirlo el ajuste a una página."
+    },
+    {
+      "context": "start a new row with this item.",
+      "label": "spacr.assay_report.ReportItem#5",
+      "source": "start a new row with this item.",
+      "source_sha256": "97356799a05bf03424aaea2460f193996ba9a987d3b881dc2a25bb474868e4e5",
+      "translation": "empieza una fila nueva con este elemento."
+    },
+    {
+      "context": "Build the standard report: one figure per data version, plate heatmaps, legends.",
+      "label": "spacr.assay_report.build_assay_report#0",
+      "source": "Build the standard report: one figure per data version, plate heatmaps, legends.",
+      "source_sha256": "27152ff927bcb7ba2c293a86f9dba267e16b35d2f0a64733eca173c91211262b",
+      "translation": "Construye el informe estándar: una figura por versión de los datos, mapas de calor de placa y leyendas."
+    },
+    {
+      "context": "Two figures, FILTERED then UNFILTERED, each on its own A4 pages: microscope image fields of that version (``tiles``), the representative object per condition and, under every value graph, its extracted-image-region grid (``crops``), the value per condition at well and replicate level (half page width), the well-level controls (no statistics), and the figure legend printed under the panels (following pages when needed). Laboratory microplate heatmaps follow as an appendix. Graphs carry no titles or test names: significant post hoc pairs are brackets with stars; tests are in stats.csv and the legend.",
+      "label": "spacr.assay_report.build_assay_report#1",
+      "source": "Two figures, FILTERED then UNFILTERED, each on its own A4 pages: tiles of that version (``tiles``), the representative object per condition and, under every value graph, its crop grid (``crops``), the value per condition at well and replicate level (half page width), the well-level controls (no statistics), and the figure legend printed under the panels (following pages when needed). Plate heatmaps follow as an appendix. Graphs carry no titles or test names: significant post hoc pairs are brackets with stars; tests are in stats.csv and the legend.",
+      "source_sha256": "dbf4f2627ddd9d7820a59fa122ecd3a31f5e076bcd6df0261bd243080871ca54",
+      "translation": "Dos figuras, FILTRADA y después SIN FILTRAR, cada una en sus propias páginas A4: teselas de esa versión (``tiles``), el objeto representativo por condición y, bajo cada gráfico de valores, su cuadrícula de recortes (``crops``), el valor por condición a nivel de pocillo y de réplica (media página de ancho), los controles a nivel de pocillo (sin estadísticas) y la leyenda de la figura impresa bajo los paneles (en páginas siguientes si es necesario). Los mapas de calor de placa siguen como apéndice. Los gráficos no llevan títulos ni nombres de pruebas: los pares post hoc significativos son corchetes con asteriscos; las pruebas están en stats.csv y en la leyenda."
+    },
+    {
+      "context": "Images (tiles, representative extracted image regions, extracted image region grids) come in three versions - merged colour, image data channel of interest in grey, and the same with the outline of every object type - scaled per image data channel to the 2nd-98th percentile of all extracted image regions of that figure, written as 16-bit PNG/TIFF (``build_tiles``).",
+      "label": "spacr.assay_report.build_assay_report#2",
+      "source": "Images (tiles, representative crops, crop grids) come in three versions - merged colour, channel of interest in grey, and the same with the outline of every object type - scaled per channel to the 2nd-98th percentile of all crops of that figure, written as 16-bit PNG/TIFF (``build_tiles``).",
+      "source_sha256": "5751b3516ad0cfee102237d4f59aee64f6c0487df0e3eb5900518930aab16917",
+      "translation": "Las imágenes (teselas, recortes representativos, cuadrículas de recortes) se presentan en tres versiones - color combinado, canal de interés en gris y lo mismo con el contorno de cada tipo de objeto - escaladas por canal a los percentiles 2-98 de todos los recortes de esa figura y escritas como PNG/TIFF de 16 bits (``build_tiles``)."
+    },
+    {
+      "context": "``{'unfiltered': df, 'filtered': df}``, one row per ``row_object``.",
+      "label": "spacr.assay_report.build_assay_report#3",
+      "source": "``{'unfiltered': df, 'filtered': df}``, one row per ``row_object``.",
+      "source_sha256": "0a05426b5e5008738f3d9d95faef67967f8a654f4d330918525382895d7d8d87",
+      "translation": "``{'unfiltered': df, 'filtered': df}``, una fila por ``row_object``."
+    },
+    {
+      "context": "None to skip images, else ``merged_dir``, ``mask_dims``, ``colour_map``, ``n``, ``size``, ``seed`` and ``mono_channel``.",
+      "label": "spacr.assay_report.build_assay_report#4",
+      "source": "None to skip images, else ``merged_dir``, ``mask_dims``, ``colour_map``, ``n``, ``size``, ``seed`` and ``mono_channel``.",
+      "source_sha256": "251a3bfa0fb102df26a89fd9569db8a066499d90d82bc206b9085d5fc8aacc57",
+      "translation": "None para omitir las imágenes; si no, ``merged_dir``, ``mask_dims``, ``colour_map``, ``n``, ``size``, ``seed`` y ``mono_channel``."
+    },
+    {
+      "context": "None, or ``{'n': k}`` for representative extracted image regions.",
+      "label": "spacr.assay_report.build_assay_report#5",
+      "source": "None, or ``{'n': k}`` for representative crops.",
+      "source_sha256": "e511dc84c43ea81693c19c462020b243179706d5065938c5c8df982f34fd5a1d",
+      "translation": "None, o ``{'n': k}`` para los recortes representativos."
+    },
+    {
+      "context": "{condition: [(variable, factor), ...]} for the x axis (:func:`spacr.assay_panels.condition_parts`); None splits the condition names on '_'.",
+      "label": "spacr.assay_report.build_assay_report#6",
+      "source": "{condition: [(variable, factor), ...]} for the x axis (:func:`spacr.assay_panels.condition_parts`); None splits the condition names on '_'.",
+      "source_sha256": "dc81351dc3c056a11c5965673c906d59732a47264a8959bd55b1e368c217e454",
+      "translation": "{condition: [(variable, factor), ...]} para el eje x (:func:`spacr.assay_panels.condition_parts`); None divide los nombres de las condiciones por '_'."
+    },
+    {
+      "context": "``'one_factor'``, ``'all'`` or a list of pairs (:func:`spacr.assay_panels.select_bracket_pairs`).",
+      "label": "spacr.assay_report.build_assay_report#7",
+      "source": "``'one_factor'``, ``'all'`` or a list of pairs (:func:`spacr.assay_panels.select_bracket_pairs`).",
+      "source_sha256": "f3010d8a6a62e38f680adaa280ea87b887bada91f7d5e0241c4367adab7a73c3",
+      "translation": "``'one_factor'``, ``'all'`` o una lista de pares (:func:`spacr.assay_panels.select_bracket_pairs`)."
+    },
+    {
+      "context": "``'auto'`` (+/- matrix when two or more variables vary on a graph, else labels of the varying part), ``'matrix'``, ``'labels'``.",
+      "label": "spacr.assay_report.build_assay_report#8",
+      "source": "``'auto'`` (+/- matrix when two or more variables vary on a graph, else labels of the varying part), ``'matrix'``, ``'labels'``.",
+      "source_sha256": "d152e3c3d9df5c6a5b3e4d9a28325732208d9c36fba1ab2089508b867c829862",
+      "translation": "``'auto'`` (matriz +/- cuando varían dos o más variables en un gráfico; si no, etiquetas de la parte que varía), ``'matrix'``, ``'labels'``."
+    },
+    {
+      "context": "key-value mapping with ``pdf`` (combined), ``figures`` {version: pdf}, ``png``, ``legend``, ``panels``, ``n_pages``, ``n_figure_pages``, ``n_main_pages`` and ``n_legend_pages`` (0: legends are on the figures).",
+      "label": "spacr.assay_report.build_assay_report#9",
+      "source": "dict with ``pdf`` (combined), ``figures`` {version: pdf}, ``png``, ``legend``, ``panels``, ``n_pages``, ``n_figure_pages``, ``n_main_pages`` and ``n_legend_pages`` (0: legends are on the figures).",
+      "source_sha256": "ffc32ae850eba5ab66ff7178925b179b03a85a93980a1091879fac18488acde6",
+      "translation": "dict con ``pdf`` (combinado), ``figures`` {version: pdf}, ``png``, ``legend``, ``panels``, ``n_pages``, ``n_figure_pages``, ``n_main_pages`` y ``n_legend_pages`` (0: las leyendas están en las figuras)."
+    },
+    {
+      "context": "Pick, extracted image region, render and write the representative tiles of every group.",
+      "label": "spacr.assay_report.build_tiles#0",
+      "source": "Pick, crop, render and write the representative tiles of every group.",
+      "source_sha256": "b53e615b971cd5a2ff9db3f5df93ecca8a6179658286d5b8a3569bb6748c6eda",
+      "translation": "Elige, recorta, renderiza y escribe las teselas representativas de cada grupo."
+    },
+    {
+      "context": "{'cell': plane, 'pathogen': plane, ...}; ``object_column`` holds the host cell label. Extracted image regions are centred on the ``center_object`` objects of the host cell (pathogen; see :func:`extract_tile`), or on the host cell when that mask is absent. At most ``max_attempts`` candidates are tried per group.",
+      "label": "spacr.assay_report.build_tiles#1",
+      "source": "{'cell': plane, 'pathogen': plane, ...}; ``object_column`` holds the host cell label. Crops are centred on the ``center_object`` objects of the host cell (pathogen; see :func:`extract_tile`), or on the host cell when that mask is absent. At most ``max_attempts`` candidates are tried per group.",
+      "source_sha256": "f248c38b5e48bb5ffd4cc2325e3341d23ce27f7a78fa3247c28699efc7db0179",
+      "translation": "{'cell': plane, 'pathogen': plane, ...}; ``object_column`` contiene la etiqueta de la célula huésped. Los recortes se centran en los objetos ``center_object`` de la célula huésped (el patógeno; véase :func:`extract_tile`), o en la célula huésped cuando falta esa máscara. Se prueban como máximo ``max_attempts`` candidatos por grupo."
+    },
+    {
+      "context": "``'random'`` (seeded, objects away from the edge first) or ``'median'`` (objects closest to the median of ``value_column`` in their group first: typical objects).",
+      "label": "spacr.assay_report.build_tiles#2",
+      "source": "``'random'`` (seeded, objects away from the edge first) or ``'median'`` (objects closest to the median of ``value_column`` in their group first: typical objects).",
+      "source_sha256": "b5e4d88ad3f9fb8211fa80acec8fe892d27fbdf5436e5cc8b1d9292a71f6ac4a",
+      "translation": "``'random'`` (con semilla, primero los objetos alejados del borde) o ``'median'`` (primero los objetos más cercanos a la mediana de ``value_column`` en su grupo: objetos típicos)."
+    },
+    {
+      "context": "``'fields'`` (display range from the pixels of the microscope fields of view the microscope image fields come from) or ``'crops'`` (from the pixels of the extracted image regions themselves, so every extracted image region of the figure is comparable).",
+      "label": "spacr.assay_report.build_tiles#3",
+      "source": "``'fields'`` (display range from the pixels of the fields the tiles come from) or ``'crops'`` (from the pixels of the crops themselves, so every crop of the figure is comparable).",
+      "source_sha256": "f6f188cc0a9fb2b8e66bbfb1203ce9d619222005d4311466f573f377f1cc66e0",
+      "translation": "``'fields'`` (rango de visualización a partir de los píxeles de los campos de los que proceden las teselas) o ``'crops'`` (a partir de los píxeles de los propios recortes, de modo que todos los recortes de la figura sean comparables)."
+    },
+    {
+      "context": "folder for the per extracted image region files; ``montage_name`` the stem of the 16-bit montage.",
+      "label": "spacr.assay_report.build_tiles#4",
+      "source": "folder for the per-crop files; ``montage_name`` the stem of the 16-bit montage.",
+      "source_sha256": "873e36d875b05b51f1d95b5c9ce142ce0d1558f22f176037be142bbc16dccc94",
+      "translation": "carpeta para los archivos de cada recorte; ``montage_name`` es la raíz del nombre del mosaico de 16 bits."
+    },
+    {
+      "context": "channel shown in the two monochrome versions (the channel of interest; default the first channel of ``colour_map``).",
+      "label": "spacr.assay_report.build_tiles#5",
+      "source": "channel shown in the two monochrome versions (the channel of interest; default the first channel of ``colour_map``).",
+      "source_sha256": "5b8776770450e4ad1e1a81d4d4d5dd8cb49cc20994732a15552c07513c0d810e",
+      "translation": "canal mostrado en las dos versiones monocromas (el canal de interés; por defecto, el primer canal de ``colour_map``)."
+    },
+    {
+      "context": "Three versions of every extracted image region are written, each a 16-bit set of its own: ``merged/`` (colour composite, no outlines), ``mono/`` (``mono_channel`` in grey, no outlines) and ``outlines/`` (the same grey with the outline of every object type of the host cell - the cell itself and every other mask object overlapping it - in its own colour at ``outline_alpha`` opacity). Each holds ``<subdir>/<group>_<k>.png/.tif`` and ``<montage_name>.png/.tif`` (rows = extracted image regions, columns = groups, ``gap`` px white hairlines). ``raw/`` holds the unchanged multichannel extracted image region (all image and mask image layers, input dtype). Display ranges: per image data channel the ``percentiles`` of the pixels of every extracted image region of the figure (``range_source='crops'``).",
+      "label": "spacr.assay_report.build_tiles#6",
+      "source": "Three versions of every crop are written, each a 16-bit set of its own: ``merged/`` (colour composite, no outlines), ``mono/`` (``mono_channel`` in grey, no outlines) and ``outlines/`` (the same grey with the outline of every object type of the host cell - the cell itself and every other mask object overlapping it - in its own colour at ``outline_alpha`` opacity). Each holds ``<subdir>/<group>_<k>.png/.tif`` and ``<montage_name>.png/.tif`` (rows = crops, columns = groups, ``gap`` px white hairlines). ``raw/`` holds the unchanged multichannel crop (all image and mask planes, input dtype). Display ranges: per channel the ``percentiles`` of the pixels of every crop of the figure (``range_source='crops'``).",
+      "source_sha256": "1837a3949601581b53267b51434eba2db0f815301054d144cc44e05856cec996",
+      "translation": "Se escriben tres versiones de cada recorte, cada una como un conjunto propio de 16 bits: ``merged/`` (compuesto en color, sin contornos), ``mono/`` (``mono_channel`` en gris, sin contornos) y ``outlines/`` (el mismo gris con el contorno de cada tipo de objeto de la célula huésped - la propia célula y cualquier otro objeto de máscara que se solape con ella - en su propio color con opacidad ``outline_alpha``). Cada una contiene ``<subdir>/<group>_<k>.png/.tif`` y ``<montage_name>.png/.tif`` (filas = recortes, columnas = grupos, líneas finas blancas de ``gap`` px). ``raw/`` contiene el recorte multicanal sin modificar (todos los planos de imagen y de máscara, dtype de entrada). Rangos de visualización: por canal, los ``percentiles`` de los píxeles de todos los recortes de la figura (``range_source='crops'``)."
+    },
+    {
+      "context": "key-value mapping with ``tiles`` {version: {group: [rgb16]}}, ``table`` (one row per tile), ``ranges``, ``montage`` (uint16 RGB, rows = tiles, columns = groups), ``files`` and ``notes``.",
+      "label": "spacr.assay_report.build_tiles#7",
+      "source": "dict with ``tiles`` {version: {group: [rgb16]}}, ``table`` (one row per tile), ``ranges``, ``montage`` (uint16 RGB, rows = tiles, columns = groups), ``files`` and ``notes``.",
+      "source_sha256": "6bc8d68082fcb4d6ed403571946f4ba399527bf6f5ffdbc2cb7d22edeef666a5",
+      "translation": "dict con ``tiles`` {version: {group: [rgb16]}}, ``table`` (una fila por tesela), ``ranges``, ``montage`` (RGB uint16, filas = teselas, columnas = grupos), ``files`` y ``notes``."
+    },
+    {
+      "context": "Restyle a drawn panel for the compact layout: 5-6 pt text, slim bars, small dots.",
+      "label": "spacr.assay_report.compact_style#0",
+      "source": "Restyle a drawn panel for the compact layout: 5-6 pt text, slim bars, small dots.",
+      "source_sha256": "36b19ff8434a7ba77087defc32015d6de85a5b131c4c1336d04568e089aa5849",
+      "translation": "Cambia el estilo de un panel dibujado para el diseño compacto: texto de 5-6 pt, barras estrechas, puntos pequeños."
+    },
+    {
+      "context": "x tick labels are wrapped at word boundaries and drawn at 45 degrees.",
+      "label": "spacr.assay_report.compact_style#1",
+      "source": "x tick labels are wrapped at word boundaries and drawn at 45 degrees.",
+      "source_sha256": "c65a502dd65848672d45e8d7d6b8cde226b72e2b9fab303ca4e8209b6119f24b",
+      "translation": "las etiquetas de las marcas del eje x se dividen en los límites de palabra y se dibujan a 45 grados."
+    },
+    {
+      "context": "Split the condition order into chunks that fit one page width.",
+      "label": "spacr.assay_report.condition_chunks#0",
+      "source": "Split the condition order into chunks that fit one page width.",
+      "source_sha256": "ef14c0bb43cffac9ebc64a8cc43fe3b63257ab9681d6537f7a4bcc40f68d9eb9",
+      "translation": "Divide el orden de las condiciones en grupos que caben en un ancho de página."
+    },
+    {
+      "context": "(width, chunks). Without ``layout`` width is ``'half'`` or ``'full'`` (spacious); with a layout it is the smallest width fraction of ``layout.widths`` (at least ``min_frac``) that holds the panel.",
+      "label": "spacr.assay_report.condition_chunks#1",
+      "source": "(width, chunks). Without ``layout`` width is ``'half'`` or ``'full'`` (spacious); with a layout it is the smallest width fraction of ``layout.widths`` (at least ``min_frac``) that holds the panel.",
+      "source_sha256": "ad3caedf7882c7176f6f88f3a0343546338cb00caa62a2aacbc8bf87f43c878f",
+      "translation": "(ancho, grupos). Sin ``layout``, el ancho es ``'half'`` o ``'full'`` (spacious); con un diseño, es la fracción de ancho más pequeña de ``layout.widths`` (al menos ``min_frac``) en la que cabe el panel."
+    },
+    {
+      "context": "How objects of type ``obj`` are counted per microplate sample position (see :func:`well_counts`).",
+      "label": "spacr.assay_report.count_source#0",
+      "source": "How objects of type ``obj`` are counted per well (see :func:`well_counts`).",
+      "source_sha256": "4c40c313765f229c050c3ae920bd532a3ebfd78f4dc0666e856abba0a84b89a8",
+      "translation": "Cómo se cuentan por pocillo los objetos de tipo ``obj`` (véase :func:`well_counts`)."
+    },
+    {
+      "context": "Draw callback, height and minimum height (mm) of an extracted image region figure.",
+      "label": "spacr.assay_report.crop_drawer#0",
+      "source": "Draw callback, height and minimum height (mm) of a crop figure.",
+      "source_sha256": "6eb4d427e393cc7dffa567f07c551f18fa7e18b76fd5adeac3336b0158b3eb04",
+      "translation": "Función de dibujo, altura y altura mínima (mm) de una figura de recortes."
+    },
+    {
+      "context": "The three image versions (merged, image data channel of interest, image data channel of interest with outlines) are drawn side by side when the tiles stay at least ``min_tile_mm`` wide, else stacked. Each version is one tight montage (1 px hairlines), one column per condition, with the condition labels - or the +/- matrix of ``axis`` - under the columns. Images are drawn at native resolution (interpolation 'none').",
+      "label": "spacr.assay_report.crop_drawer#1",
+      "source": "The three image versions (merged, channel of interest, channel of interest with outlines) are drawn side by side when the tiles stay at least ``min_tile_mm`` wide, else stacked. Each version is one tight montage (1 px hairlines), one column per condition, with the condition labels - or the +/- matrix of ``axis`` - under the columns. Images are drawn at native resolution (interpolation 'none').",
+      "source_sha256": "0787ffd46f8e29041ba3672ca41e069ffc08b00b8f332ffb827345c25ff87c37",
+      "translation": "Las tres versiones de imagen (combinada, canal de interés, canal de interés con contornos) se dibujan una junto a otra cuando las teselas mantienen al menos ``min_tile_mm`` de ancho; si no, apiladas. Cada versión es un mosaico compacto (líneas finas de 1 px), una columna por condición, con las etiquetas de las condiciones - o la matriz +/- de ``axis`` - bajo las columnas. Las imágenes se dibujan a resolución nativa (interpolación 'none')."
+    },
+    {
+      "context": "Report items of an extracted image region figure, split into condition chunks when wide.",
+      "label": "spacr.assay_report.crop_items#0",
+      "source": "Report items of a crop figure, split into condition chunks when wide.",
+      "source_sha256": "d6dc8a7e2e0bba9918a81ac0d18936912405267b9657995a06e9779a6c6a720b",
+      "translation": "Elementos de informe de una figura de recortes, divididos en grupos de condiciones cuando es ancha."
+    },
+    {
+      "context": "Object tables of a measurements.db: tables with plateID, rowID and columnID.",
+      "label": "spacr.assay_report.db_object_tables#0",
+      "source": "Object tables of a measurements.db: tables with plateID, rowID and columnID.",
+      "source_sha256": "7e449ccc430d0ee04976d4c34b6509827224111a3e1d0a4fb16c2c7891aaf6ed",
+      "translation": "Tablas de objetos de un measurements.db: tablas con plateID, rowID y columnID."
+    },
+    {
+      "context": "Bookkeeping tables (png_list, intensity_rescale, ...), versioned copies (``cell_1`` when ``cell`` exists) and ``skip`` (cytoplasm, one per cell) are left out. cell, nucleus and pathogen come first.",
+      "label": "spacr.assay_report.db_object_tables#1",
+      "source": "Bookkeeping tables (png_list, intensity_rescale, ...), versioned copies (``cell_1`` when ``cell`` exists) and ``skip`` (cytoplasm, one per cell) are left out. cell, nucleus and pathogen come first.",
+      "source_sha256": "25f924e9b47e89360dc2304af01e76a30f563456b15212607cb156cbaacddafa",
+      "translation": "Se omiten las tablas auxiliares (png_list, intensity_rescale, ...), las copias versionadas (``cell_1`` cuando existe ``cell``) y ``skip`` (cytoplasm, uno por célula). cell, nucleus y pathogen van primero."
+    },
+    {
+      "context": "Rows per microplate sample position in every object table of measurements.db, for the microplate sample positions of ``frame``.",
+      "label": "spacr.assay_report.db_well_counts#0",
+      "source": "Rows per well in every object table of measurements.db, for the wells of ``frame``.",
+      "source_sha256": "7c57a71ec90928732f787b351f6fb4887ff6be42348d2e1b605f76a42def4d40",
+      "translation": "Filas por pocillo en cada tabla de objetos de measurements.db, para los pocillos de ``frame``."
+    },
+    {
+      "context": "long table with ``group``, well structured-data names, ``object_type``, ``objects_per_well`` and ``count_source`` (``measurements.db table <t>``).",
+      "label": "spacr.assay_report.db_well_counts#1",
+      "source": "long table with ``group``, well keys, ``object_type``, ``objects_per_well`` and ``count_source`` (``measurements.db table <t>``).",
+      "source_sha256": "e268c2ffd0de2fb222e322564e59532269b638eb1bb14e5c436ea1ba848e2b0c",
+      "translation": "tabla larga con ``group``, claves de pocillo, ``object_type``, ``objects_per_well`` y ``count_source`` (``measurements.db table <t>``)."
+    },
+    {
+      "context": "One sentence: the omnibus test, its result and why it was chosen.",
+      "label": "spacr.assay_report.describe_test#0",
+      "source": "One sentence: the omnibus test, its result and why it was chosen.",
+      "source_sha256": "75fcd091982798ad57916a673d2f1c1e6b5278626815940cb5a52b6d14affe70",
+      "translation": "Una frase: la prueba ómnibus, su resultado y por qué se eligió."
+    },
+    {
+      "context": "Per channel (low, high) percentiles over pixels of several microscope fields of view.",
+      "label": "spacr.assay_report.display_ranges#0",
+      "source": "Per channel (low, high) percentiles over pixels of several fields.",
+      "source_sha256": "8a01fcea3f5a8dec20ee645713bc79779715f82d5ff23d2b341314a71e6bcba0",
+      "translation": "Percentiles (bajo, alto) por canal sobre los píxeles de varios campos."
+    },
+    {
+      "context": "Draw a :func:`grouped_spec`: mean ± SD of unit values per object type, dots per unit.",
+      "label": "spacr.assay_report.draw_grouped_panel#0",
+      "source": "Draw a :func:`grouped_spec`: mean ± SD of unit values per object type, dots per unit.",
+      "source_sha256": "fb6815dcd48bb14818462ecccd44c7aca862f4a42df98fa123b9c4989e739aaa",
+      "translation": "Dibuja un :func:`grouped_spec`: media ± DE de los valores por unidad para cada tipo de objeto, con puntos por unidad."
+    },
+    {
+      "context": "Laboratory microplate heatmap with a colour bar inside ``rect``; failed QC microplate sample positions marked with a red x.",
+      "label": "spacr.assay_report.draw_heatmap#0",
+      "source": "Plate heatmap with a colour bar inside ``rect``; failed QC wells marked with a red x.",
+      "source_sha256": "0407fe478d2ca05d5f369c98271d29ad0e9d86e5f89a0eca0ea36a13bfb4d5dc",
+      "translation": "Mapa de calor de placa con una barra de color dentro de ``rect``; los pocillos que no superan el QC se marcan con una x roja."
+    },
+    {
+      "context": "Extracted image region a ``size`` x ``size`` window around host cell ``label``.",
+      "label": "spacr.assay_report.extract_tile#0",
+      "source": "Crop a ``size`` x ``size`` window around host cell ``label``.",
+      "source_sha256": "0c9a8064fcd91b4a88008c084de9404d48062f716ffe46ce6a482352f1417b61",
+      "translation": "Recorta una ventana de ``size`` x ``size`` alrededor de la célula huésped ``label``."
+    },
+    {
+      "context": "With ``center_plane`` (the pathogen mask image layer) the window is centred on the centroid of the union of the pathogen objects that overlap the host cell, and the cell is rejected (None) when it has no pathogen object, when a pathogen object touches the microscope field of view edge, or when the pathogen objects do not lie fully inside the extracted image region. Without it the window is centred on the host cell mask centroid.",
+      "label": "spacr.assay_report.extract_tile#1",
+      "source": "With ``center_plane`` (the pathogen mask plane) the window is centred on the centroid of the union of the pathogen objects that overlap the host cell, and the cell is rejected (None) when it has no pathogen object, when a pathogen object touches the field edge, or when the pathogen objects do not lie fully inside the crop. Without it the window is centred on the host cell mask centroid.",
+      "source_sha256": "9c20603403c1e01c6fb10c93422f9697e6b78ddb809ed25d2d50ad9f8979d29a",
+      "translation": "Con ``center_plane`` (el plano de máscara del patógeno), la ventana se centra en el centroide de la unión de los objetos patógenos que se solapan con la célula huésped, y la célula se rechaza (None) cuando no tiene ningún objeto patógeno, cuando un objeto patógeno toca el borde del campo o cuando los objetos patógenos no quedan totalmente dentro del recorte. Sin él, la ventana se centra en el centroide de la máscara de la célula huésped."
+    },
+    {
+      "context": "reject extracted image regions that reach beyond the microscope field of view (default: True when centring on the pathogen, else False - the extracted image region is then zero padded).",
+      "label": "spacr.assay_report.extract_tile#2",
+      "source": "reject crops that reach beyond the field (default: True when centring on the pathogen, else False - the crop is then zero padded).",
+      "source_sha256": "b4692554d5886a6f2e109430064839f508741b2957b939a374cd69b1c6496139",
+      "translation": "rechaza los recortes que se salen del campo (predeterminado: True al centrar en el patógeno; si no, False - el recorte se rellena entonces con ceros)."
+    },
+    {
+      "context": "(raw, box, padded) - ``raw`` is the exact in-microscope field of view slice ``arr[y0:y1, x0:x1, :]`` (input dtype, values unchanged), ``box`` is ``(y0, y1, x0, x1)`` and ``padded`` the slice zero padded to the full tile size (equal to ``raw`` when the extracted image region is inside the microscope field of view), or None.",
+      "label": "spacr.assay_report.extract_tile#3",
+      "source": "(raw, box, padded) - ``raw`` is the exact in-field slice ``arr[y0:y1, x0:x1, :]`` (input dtype, values unchanged), ``box`` is ``(y0, y1, x0, x1)`` and ``padded`` the slice zero padded to the full tile size (equal to ``raw`` when the crop is inside the field), or None.",
+      "source_sha256": "9d4cb731b7e85e35075816ea9b820617c5f47d7d1dd5f5db0983d7e15478f723",
+      "translation": "(raw, box, padded) - ``raw`` es el corte exacto dentro del campo ``arr[y0:y1, x0:x1, :]`` (dtype de entrada, valores sin modificar), ``box`` es ``(y0, y1, x0, x1)`` y ``padded`` el corte rellenado con ceros hasta el tamaño completo de la tesela (igual a ``raw`` cuando el recorte está dentro del campo), o None."
+    },
+    {
+      "context": "Text of the filter steps in ``filter_summary`` (objects removed / remaining).",
+      "label": "spacr.assay_report.filter_sentences#0",
+      "source": "Text of the filter steps in ``filter_summary`` (objects removed / remaining).",
+      "source_sha256": "da6aa911255d68a04a646872abed898576aaee49c3613ba0f0011dd66be20932",
+      "translation": "Texto de los pasos de filtrado de ``filter_summary`` (objetos eliminados / restantes)."
+    },
+    {
+      "context": "Shrink ``ax`` until its tight bounding box (labels, title, legend) fits ``rect``.",
+      "label": "spacr.assay_report.fit_axes#0",
+      "source": "Shrink ``ax`` until its tight bounding box (labels, title, legend) fits ``rect``.",
+      "source_sha256": "eeb0c3a378b41543848420cce7a5509c9c4931005bd0ef741d0c40861ff4e832",
+      "translation": "Reduce ``ax`` hasta que su cuadro delimitador ajustado (etiquetas, título, leyenda) quepa en ``rect``."
+    },
+    {
+      "context": "Grouped bars (one colour per object type) with one test per object type.",
+      "label": "spacr.assay_report.grouped_spec#0",
+      "source": "Grouped bars (one colour per object type) with one test per object type.",
+      "source_sha256": "bd6470bed5f308fb018b7a473aaac01b5149732070b4c86d7928b33317a8d2cc",
+      "translation": "Barras agrupadas (un color por tipo de objeto) con una prueba por tipo de objeto."
+    },
+    {
+      "context": "Outlier points are marked per object type and group with the active :class:`spacr.assay_panels.outlier_policy` (``outlier`` column) and left out of the drawing and the tests.",
+      "label": "spacr.assay_report.grouped_spec#1",
+      "source": "Outlier points are marked per object type and group with the active :class:`spacr.assay_panels.outlier_policy` (``outlier`` column) and left out of the drawing and the tests.",
+      "source_sha256": "f1128085bbd26b36b0ea0fd743fbb480511b110b3cdad5a5a75751bc044770e3",
+      "translation": "Los puntos atípicos se marcan por tipo de objeto y grupo con la :class:`spacr.assay_panels.outlier_policy` activa (columna ``outlier``) y se excluyen del dibujo y de las pruebas."
+    },
+    {
+      "context": "Laboratory microplate heatmap of microplate sample position values; ``failed`` = {(plate, row, column)} drawn with a red x.",
+      "label": "spacr.assay_report.heatmap_spec#0",
+      "source": "Plate heatmap of well values; ``failed`` = {(plate, row, column)} drawn with a red x.",
+      "source_sha256": "32817c2cd0b606d7c1b56cc94cb83ae863dd0241c1ed9ad600b4b5df84d43274",
+      "translation": "Mapa de calor de placa de los valores por pocillo; ``failed`` = {(plate, row, column)} se dibujan con una x roja."
+    },
+    {
+      "context": "Rows = tile rank, columns = groups; white 16-bit gaps; missing tiles stay black.",
+      "label": "spacr.assay_report.montage16#0",
+      "source": "Rows = tile rank, columns = groups; white 16-bit gaps; missing tiles stay black.",
+      "source_sha256": "50c59598859b32f1dd26e585c5858265d1b739185294f6e94f26885c22156812",
+      "translation": "Filas = rango de la tesela, columnas = grupos; separaciones blancas de 16 bits; las teselas que faltan quedan en negro."
+    },
+    {
+      "context": "Colour per object type: fixed for cell/nucleus/cytoplasm/pathogen, others in name order.",
+      "label": "spacr.assay_report.object_colours#0",
+      "source": "Colour per object type: fixed for cell/nucleus/cytoplasm/pathogen, others in name order.",
+      "source_sha256": "5fb788343f6bd2f6f2918cc77f3d186c344edb488e959e9790d8ee1c94502ddd",
+      "translation": "Color por tipo de objeto: fijo para cell/nucleus/cytoplasm/pathogen, los demás por orden de nombre."
+    },
+    {
+      "context": "Object-level QC: per plate, condition group and object type, objects beyond the robust fence.",
+      "label": "spacr.assay_report.object_qc_mask#0",
+      "source": "Object-level QC: per plate, condition group and object type, objects beyond the robust fence.",
+      "source_sha256": "34eda94a12d7cc0166273e3086877d5df1e918d7b86c2c17d8ddea8c11845baf",
+      "translation": "QC a nivel de objeto: por placa, grupo de condición y tipo de objeto, los objetos que quedan fuera del límite robusto."
+    },
+    {
+      "context": "Area and image data channel mean intensities are compared on log scale (values <= 0 are never flagged) with the objects of the same plate and ``group`` value, or of the whole plate when ``group`` is None or holds fewer than ``min_objects`` objects there.",
+      "label": "spacr.assay_report.object_qc_mask#1",
+      "source": "Area and channel mean intensities are compared on log scale (values <= 0 are never flagged) with the objects of the same plate and ``group`` value, or of the whole plate when ``group`` is None or holds fewer than ``min_objects`` objects there.",
+      "source_sha256": "4c52c0e677a78438d60b5ef6eae291d9e30feda9046176b82fa351f006f95da2",
+      "translation": "El área y las intensidades medias de los canales se comparan en escala logarítmica (los valores <= 0 nunca se marcan) con los objetos de la misma placa y del mismo valor de ``group``, o con los de toda la placa cuando ``group`` es None o contiene allí menos de ``min_objects`` objetos."
+    },
+    {
+      "context": "(keep mask, summary with ``object_type``, ``measure``, ``column``, ``objects_removed``, ``objects``, ``qc_group`` and ``groups_on_plate_fallback`` - an object can fail several measures).",
+      "label": "spacr.assay_report.object_qc_mask#2",
+      "source": "(keep mask, summary with ``object_type``, ``measure``, ``column``, ``objects_removed``, ``objects``, ``qc_group`` and ``groups_on_plate_fallback`` - an object can fail several measures).",
+      "source_sha256": "ab72c03816cd0f5e9f5270ce0d6d0641d8253bbef01ac12431a49f7f66b0c58a",
+      "translation": "(máscara de conservación, resumen con ``object_type``, ``measure``, ``column``, ``objects_removed``, ``objects``, ``qc_group`` y ``groups_on_plate_fallback`` - un objeto puede no superar varias medidas)."
+    },
+    {
+      "context": "Object prefixes with ``<obj>_channel_<c>_mean_intensity`` columns.",
+      "label": "spacr.assay_report.object_types#0",
+      "source": "Object prefixes with ``<obj>_channel_<c>_mean_intensity`` columns.",
+      "source_sha256": "137ab4924225adc424b0ec46305d49c6277f880f3d90ffea9f623c23b98ae15d",
+      "translation": "Prefijos de objeto con columnas ``<obj>_channel_<c>_mean_intensity``."
+    },
+    {
+      "context": "cell, nucleus, cytoplasm and pathogen come first, any other prefix (organelles ...) after them in alphabetical order.",
+      "label": "spacr.assay_report.object_types#1",
+      "source": "cell, nucleus, cytoplasm and pathogen come first, any other prefix (organelles ...) after them in alphabetical order.",
+      "source_sha256": "79698b11451b7dc8a62b9e6988d045c9980adab7c5ed8fd3effd46cf18d162f3",
+      "translation": "cell, nucleus, cytoplasm y pathogen van primero; cualquier otro prefijo (orgánulos ...) les sigue en orden alfabético."
+    },
+    {
+      "context": "Place blocks on A4 pages.",
+      "label": "spacr.assay_report.paginate#0",
+      "source": "Place blocks on A4 pages.",
+      "source_sha256": "6b0999976da7dba7dbb36113f35893eaff34a8072971c68ac5d3929dd52c7e92",
+      "translation": "Coloca los bloques en páginas A4."
+    },
+    {
+      "context": "Spacious: blocks flow over pages; a block that does not fit the rest of a page starts on a new page (unless most of it fits), a block taller than a page flows on row by row with its heading repeated.",
+      "label": "spacr.assay_report.paginate#1",
+      "source": "Spacious: blocks flow over pages; a block that does not fit the rest of a page starts on a new page (unless most of it fits), a block taller than a page flows on row by row with its heading repeated.",
+      "source_sha256": "250b6d960d747965f9ff459a401b8bee83b96201fb35d5bd443eacacf5472cb0",
+      "translation": "Spacious: los bloques fluyen a lo largo de las páginas; un bloque que no cabe en el resto de una página empieza en una página nueva (salvo que quepa la mayor parte), y un bloque más alto que una página continúa fila a fila repitiendo su encabezado."
+    },
+    {
+      "context": "Compact (``fit_one_page``): the whole figure is first fitted on one page by shrinking panel heights towards their minimum. If that fails, whole block groups (consecutive blocks sharing ``group``, e.g. the control blocks before and after filtering) are packed page by page, each page shrunk to fit; a group that cannot fit one page on its own flows row by row as in the spacious layout.",
+      "label": "spacr.assay_report.paginate#2",
+      "source": "Compact (``fit_one_page``): the whole figure is first fitted on one page by shrinking panel heights towards their minimum. If that fails, whole block groups (consecutive blocks sharing ``group``, e.g. the control blocks before and after filtering) are packed page by page, each page shrunk to fit; a group that cannot fit one page on its own flows row by row as in the spacious layout.",
+      "source_sha256": "541aa107b6a8b6005fa9cb96e6a36a42f84181b570f1ce880b787575d3de7401",
+      "translation": "Compact (``fit_one_page``): primero se intenta que toda la figura quepa en una página reduciendo la altura de los paneles hacia su mínimo. Si no lo consigue, se colocan grupos de bloques completos (bloques consecutivos que comparten ``group``, p. ej., los bloques de control antes y después del filtrado) página a página, reduciendo cada página para que quepa; un grupo que no cabe por sí solo en una página fluye fila a fila como en el diseño spacious."
+    },
+    {
+      "context": "one list per page of placements, each a key-value mapping with ``kind`` (``'heading'`` or ``'item'``), ``text`` / ``item`` and ``rect_mm`` ``(x0, y_top, w, h)`` measured from the top-left page corner.",
+      "label": "spacr.assay_report.paginate#3",
+      "source": "one list per page of placements, each a dict with ``kind`` (``'heading'`` or ``'item'``), ``text`` / ``item`` and ``rect_mm`` ``(x0, y_top, w, h)`` measured from the top-left page corner.",
+      "source_sha256": "8dde48436254eb198aa098a5c1b356439402d72d42703e64d014832d2b1855aa",
+      "translation": "una lista de ubicaciones por página, cada una un dict con ``kind`` (``'heading'`` o ``'item'``), ``text`` / ``item`` y ``rect_mm`` ``(x0, y_top, w, h)`` medido desde la esquina superior izquierda de la página."
+    },
+    {
+      "context": "One report item per plate of a heatmap spec.",
+      "label": "spacr.assay_report.plate_heatmap_items#0",
+      "source": "One report item per plate of a heatmap spec.",
+      "source_sha256": "e8d463486c8d9653f5af55a32e1c4c15918e334b1ca6a47d0f470477e5e2931f",
+      "translation": "Un elemento de informe por placa de una especificación de mapa de calor."
+    },
+    {
+      "context": "{plate: (matrix rows x columns, nan where no data)} of well values.",
+      "label": "spacr.assay_report.plate_matrices#0",
+      "source": "{plate: (matrix rows x columns, nan where no data)} of well values.",
+      "source_sha256": "0921847f36a0cd7e14924cbaeecb8a04b36c2dfb4a35e77f6fd91183b374e7e6",
+      "translation": "{plate: (matrix rows x columns, nan where no data)} de los valores por pocillo."
+    },
+    {
+      "context": "Standard laboratory microplate layout holding the given row / column numbers.",
+      "label": "spacr.assay_report.plate_shape#0",
+      "source": "Standard plate layout holding the given row / column numbers.",
+      "source_sha256": "9e8580fd9724da39cc448175b9ad23b36cfe7fe9571d2d9b6ee4a71ccfb2a2a5",
+      "translation": "Formato de placa estándar que contiene los números de fila / columna dados."
+    },
+    {
+      "context": "Object types with an area or an image data channel mean-intensity column.",
+      "label": "spacr.assay_report.qc_object_types#0",
+      "source": "Object types with an area or a channel mean-intensity column.",
+      "source_sha256": "b16f0513892b54cfc1eb0eeb6270e0fef833b648f53ff1a7b2c0b3311a6f1f8e",
+      "translation": "Tipos de objeto con una columna de área o de intensidad media de canal."
+    },
+    {
+      "context": "Draw paginated placements, then the legend on pages of its own, into one PDF.",
+      "label": "spacr.assay_report.render_report#0",
+      "source": "Draw paginated placements, then the legend on pages of its own, into one PDF.",
+      "source_sha256": "f2d4828200293fb5a840e7412dfd5332cd3c59981f8dc5cf6afe2c55b16e308c",
+      "translation": "Dibuja las ubicaciones paginadas y después la leyenda en páginas propias, en un único PDF."
+    },
+    {
+      "context": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``. PNG files are ``<stem>.png`` for page 1 and ``<stem>_page_NN.png`` for the next pages.",
+      "label": "spacr.assay_report.render_report#1",
+      "source": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``. PNG files are ``<stem>.png`` for page 1 and ``<stem>_page_NN.png`` for the next pages.",
+      "source_sha256": "75893356f128611b6cd5c56ee9d24cce788a397019de1eeadef57be6f2f7614f",
+      "translation": "``{'pdf', 'png': [paths], 'n_pages', 'n_figure_pages', 'n_legend_pages'}``. Los archivos PNG son ``<stem>.png`` para la página 1 y ``<stem>_page_NN.png`` para las páginas siguientes."
+    },
+    {
+      "context": "16-bit RGB composite of an extracted image region.",
+      "label": "spacr.assay_report.render_tile#0",
+      "source": "16-bit RGB composite of an image crop.",
+      "source_sha256": "814e7b3bf827c2cd568b70c9100c0e9c074ea69324e92d09a7696a8c2f32caca",
+      "translation": "Compuesto RGB de 16 bits de un recorte de imagen."
+    },
+    {
+      "context": "{channel index: colour name or (r, g, b) in 0-1}.",
+      "label": "spacr.assay_report.render_tile#1",
+      "source": "{channel index: colour name or (r, g, b) in 0-1}.",
+      "source_sha256": "8b8c176e72414640c200b9af68f4f22d42b87df1989beb52e19a036cb8669792",
+      "translation": "{channel index: colour name or (r, g, b) in 0-1}."
+    },
+    {
+      "context": "{channel index: (low, high)} display range, the same for every tile.",
+      "label": "spacr.assay_report.render_tile#2",
+      "source": "{channel index: (low, high)} display range, the same for every tile.",
+      "source_sha256": "8674246f64e37586e3125b6858e2fcd2388edc80d91486a26f58f02b0337495b",
+      "translation": "rango de visualización {channel index: (low, high)}, el mismo para todas las teselas."
+    },
+    {
+      "context": "[(binary mask, (r, g, b) in 0-1)], drawn 1 px wide.",
+      "label": "spacr.assay_report.render_tile#3",
+      "source": "[(binary mask, (r, g, b) in 0-1)], drawn 1 px wide.",
+      "source_sha256": "e57bb3cd7aef8f9eec93e897eec3cc1112d8c67ec3800bf11a559e17d17660f2",
+      "translation": "[(máscara binaria, (r, g, b) en 0-1)], dibujadas con 1 px de ancho."
+    },
+    {
+      "context": "uint16 array (h, w, 3), RGB order.",
+      "label": "spacr.assay_report.render_tile#4",
+      "source": "uint16 array (h, w, 3), RGB order.",
+      "source_sha256": "a4dfd6050cde856682ac4371a4361fe66183c1dc07f7dd1def741e424416ba38",
+      "translation": "matriz uint16 (h, w, 3), orden RGB."
+    },
+    {
+      "context": "Image layer index of each object mask: ``overrides``, else the image layer layout sidecar of the merged folder, else the last ``len(names)`` image layers in order.",
+      "label": "spacr.assay_report.resolve_mask_dims#0",
+      "source": "Plane index of each object mask: ``overrides``, else the plane layout sidecar of the merged folder, else the last ``len(names)`` planes in order.",
+      "source_sha256": "5e12b0a3c71f9b492f539c4c80c3ec11e60c029e23609458a8853da2b11cebd9",
+      "translation": "Índice del plano de cada máscara de objeto: ``overrides``; si no, el archivo auxiliar de disposición de planos de la carpeta merged; si no, los últimos ``len(names)`` planos en orden."
+    },
+    {
+      "context": "PDF/PNG of every version (``<version>/<stem>_<version>``) and of all three (``<stem>``).",
+      "label": "spacr.assay_report.save_crop_panel#0",
+      "source": "PDF/PNG of every version (``<version>/<stem>_<version>``) and of all three (``<stem>``).",
+      "source_sha256": "25132ed3e0acf3411f5ed48216b1e4bc3231800b4fb4c134c36c5a8466873bf5",
+      "translation": "PDF/PNG de cada versión (``<version>/<stem>_<version>``) y de las tres juntas (``<stem>``)."
+    },
+    {
+      "context": "Candidates per group ordered by distance to the group median of ``value`` (typical first).",
+      "label": "spacr.assay_report.select_median#0",
+      "source": "Candidates per group ordered by distance to the group median of ``value`` (typical first).",
+      "source_sha256": "e184bf32cd0d82c87d303f69e726aa8012d32f327c39117c3ebc7410d7a4d89e",
+      "translation": "Candidatos por grupo ordenados por distancia a la mediana de ``value`` del grupo (los típicos primero)."
+    },
+    {
+      "context": "Random objects per group, objects away from the microscope field of view edge first.",
+      "label": "spacr.assay_report.select_tiles#0",
+      "source": "Random objects per group, objects away from the field edge first.",
+      "source_sha256": "b8edcd516950c9509a1c96f8b4b77f53ec521eb73f4aa21e5558041fba283484",
+      "translation": "Objetos aleatorios por grupo, primero los alejados del borde del campo."
+    },
+    {
+      "context": "An object is preferred when ``edge_column`` (distance of the centre of its pathogen object to the microscope field of view edge) is at least half the tile size, so the extracted image region can lie inside the microscope field of view. Candidates are shuffled with ``seed``; the caller takes the first ``n`` that pass :func:`extract_tile`.",
+      "label": "spacr.assay_report.select_tiles#1",
+      "source": "An object is preferred when ``edge_column`` (distance of the centre of its pathogen object to the field edge) is at least half the tile size, so the crop can lie inside the field. Candidates are shuffled with ``seed``; the caller takes the first ``n`` that pass :func:`extract_tile`.",
+      "source_sha256": "df32aac21a806df71287e66c20809b344f0ba61302cc10fd5f3e856cdcad4ff3",
+      "translation": "Se prefiere un objeto cuando ``edge_column`` (distancia del centro de su objeto patógeno al borde del campo) es al menos la mitad del tamaño de la tesela, para que el recorte pueda quedar dentro del campo. Los candidatos se barajan con ``seed``; quien llama toma los primeros ``n`` que superan :func:`extract_tile`."
+    },
+    {
+      "context": "{group value: DataFrame of candidates in pick order}.",
+      "label": "spacr.assay_report.select_tiles#2",
+      "source": "{group value: DataFrame of candidates in pick order}.",
+      "source_sha256": "06c3860b56089d1124cb720170a8528dfe9b5a1f1d1fac66c8c783b5043bb441",
+      "translation": "{group value: DataFrame of candidates in pick order}."
+    },
+    {
+      "context": "Report items for a bar / grouped spec, split into condition chunks if needed.",
+      "label": "spacr.assay_report.spec_items#0",
+      "source": "Report items for a bar / grouped spec, split into condition chunks if needed.",
+      "source_sha256": "f6813497e5ef0ec20b5315f8aa2c7234d91c64ff98f51e6852aa3f97b5324d2f",
+      "translation": "Elementos de informe para una especificación de barras / agrupada, divididos en grupos de condiciones si es necesario."
+    },
+    {
+      "context": "number of panels drawn side by side as one group (the recruitment panels, the channel panels ...); in the compact layout a group of up to four shares one row in equal widths.",
+      "label": "spacr.assay_report.spec_items#1",
+      "source": "number of panels drawn side by side as one group (the recruitment panels, the channel panels ...); in the compact layout a group of up to four shares one row in equal widths.",
+      "source_sha256": "bfff643d843192822bcf86a3d19e7e20d17fd6f2a5beded742ea310f535446bd",
+      "translation": "número de paneles dibujados uno junto a otro como un grupo (los paneles de reclutamiento, los paneles de canales ...); en el diseño compacto, un grupo de hasta cuatro comparte una fila con anchos iguales."
+    },
+    {
+      "context": "Test, assumptions, post hoc and descriptive tables of a spec in one long table.",
+      "label": "spacr.assay_report.stats_long#0",
+      "source": "Test, assumptions, post hoc and descriptive tables of a spec in one long table.",
+      "source_sha256": "c8f4dbb88591a019bd1565933402d7774448652ec2df6c7d3f18165940f11259",
+      "translation": "Tablas de la prueba, de los supuestos, post hoc y descriptivas de una especificación en una sola tabla larga."
+    },
+    {
+      "context": "One report item per legend paragraph (flows over pages with the panels).",
+      "label": "spacr.assay_report.text_items#0",
+      "source": "One report item per legend paragraph (flows over pages with the panels).",
+      "source_sha256": "808f319f441c87651138a48b2d61a334b43f6ecc68cfbda94f26fccef4be3aae",
+      "translation": "Un elemento de informe por párrafo de la leyenda (fluye por las páginas junto con los paneles)."
+    },
+    {
+      "context": "Microplate sample position means of one column per object type in long format ({object type: column}).",
+      "label": "spacr.assay_report.well_column_long#0",
+      "source": "Well means of one column per object type in long format ({object type: column}).",
+      "source_sha256": "2680ce1c6909b163e7f8965b08a2bf68d3e8d9ef90ce2c0532e61c1012c351a7",
+      "translation": "Medias por pocillo de una columna por tipo de objeto en formato largo ({object type: column})."
+    },
+    {
+      "context": "Objects of type ``obj`` per microplate sample position in the analysed frame.",
+      "label": "spacr.assay_report.well_counts#0",
+      "source": "Objects of type ``obj`` per well in the analysed frame.",
+      "source_sha256": "a39204fd426e08611655b192bdc4a75ca5686cec25ac5421cb9d7b76ad8b0bee",
+      "translation": "Objetos de tipo ``obj`` por pocillo en la tabla analizada."
+    },
+    {
+      "context": "The frame has one row per ``row_object`` (the host cell in recruitment): rows are counted for that type; other types sum ``<obj>_prcfo_count`` (objects of that type merged into each row) when present, else count rows with a ``<obj>_area`` value. Counting from the frame, not the database tables, means the count follows every filter applied to the frame.",
+      "label": "spacr.assay_report.well_counts#1",
+      "source": "The frame has one row per ``row_object`` (the host cell in recruitment): rows are counted for that type; other types sum ``<obj>_prcfo_count`` (objects of that type merged into each row) when present, else count rows with a ``<obj>_area`` value. Counting from the frame, not the database tables, means the count follows every filter applied to the frame.",
+      "source_sha256": "c1c7a31da5e601a86fc29684af81e515cffc265797ed6b36f81049c580ebd2d0",
+      "translation": "La tabla tiene una fila por ``row_object`` (la célula huésped en el reclutamiento): para ese tipo se cuentan las filas; los demás tipos suman ``<obj>_prcfo_count`` (objetos de ese tipo fusionados en cada fila) cuando existe y, si no, cuentan las filas con un valor de ``<obj>_area``. Contar a partir de la tabla, y no de las tablas de la base de datos, significa que el recuento sigue cada filtro aplicado a la tabla."
+    },
+    {
+      "context": "Mean intensity of ``channel`` per microplate sample position for every object type (long format).",
+      "label": "spacr.assay_report.well_intensity_long#0",
+      "source": "Mean intensity of ``channel`` per well for every object type (long format).",
+      "source_sha256": "dff649c75db9c561fe753e5b2f34f48141d6a30785f7fc604cfabdfde19d50b5",
+      "translation": "Intensidad media de ``channel`` por pocillo para cada tipo de objeto (formato largo)."
+    },
+    {
+      "context": "columns ``group``, well structured-data names, ``object_type``, ``column``, ``mean_intensity``, ``n_objects``.",
+      "label": "spacr.assay_report.well_intensity_long#1",
+      "source": "columns ``group``, well keys, ``object_type``, ``column``, ``mean_intensity``, ``n_objects``.",
+      "source_sha256": "5528a8c48ece1b98349ab39f4917f08c87c271c68b35b80574595bf00bd5e6b3",
+      "translation": "columnas ``group``, claves de pocillo, ``object_type``, ``column``, ``mean_intensity``, ``n_objects``."
+    },
+    {
+      "context": "Microplate sample position-level QC: every microplate sample position against the other microplate sample positions of its condition group on its laboratory microplate.",
+      "label": "spacr.assay_report.well_qc_table#0",
+      "source": "Well-level QC: every well against the other wells of its condition group on its plate.",
+      "source_sha256": "681f431648dfbf6113b37067c4132be9743a390aef4c5ee8e483d703fd176fb4",
+      "translation": "QC a nivel de pocillo: cada pocillo frente a los demás pocillos de su grupo de condición en su placa."
+    },
+    {
+      "context": "Per microplate sample position, for every object type: object count (rows for ``row_object``, else the sum of ``<obj>_prcfo_count``), median ``<obj>_area`` and median ``<obj>_channel_<c>_mean_intensity`` per channel. A microplate sample position fails when any measure lies more than ``mad`` x 1.4826 x MAD from the median of the reference microplate sample positions (measures with MAD 0 flag nothing). The reference is the microplate sample positions of the same laboratory microplate and the same ``group`` value (so real differences between conditions are not flagged), or the whole laboratory microplate when ``group`` is None or its group has fewer than ``min_wells`` microplate sample positions on that laboratory microplate.",
+      "label": "spacr.assay_report.well_qc_table#1",
+      "source": "Per well, for every object type: object count (rows for ``row_object``, else the sum of ``<obj>_prcfo_count``), median ``<obj>_area`` and median ``<obj>_channel_<c>_mean_intensity`` per channel. A well fails when any measure lies more than ``mad`` x 1.4826 x MAD from the median of the reference wells (measures with MAD 0 flag nothing). The reference is the wells of the same plate and the same ``group`` value (so real differences between conditions are not flagged), or the whole plate when ``group`` is None or its group has fewer than ``min_wells`` wells on that plate.",
+      "source_sha256": "ad316598f288bb6bbd9a5d1c923af9bef85dae1e7ad24ffe13e224909231fce6",
+      "translation": "Por pocillo, para cada tipo de objeto: número de objetos (filas para ``row_object``; si no, la suma de ``<obj>_prcfo_count``), mediana de ``<obj>_area`` y mediana de ``<obj>_channel_<c>_mean_intensity`` por canal. Un pocillo no supera el control cuando cualquier medida se aleja más de ``mad`` x 1.4826 x MAD de la mediana de los pocillos de referencia (las medidas con MAD 0 no marcan nada). La referencia son los pocillos de la misma placa y con el mismo valor de ``group`` (de modo que no se marcan las diferencias reales entre condiciones), o toda la placa cuando ``group`` es None o su grupo tiene menos de ``min_wells`` pocillos en esa placa."
+    },
+    {
+      "context": "column of ``df`` with the condition group, or None (per laboratory microplate).",
+      "label": "spacr.assay_report.well_qc_table#2",
+      "source": "column of ``df`` with the condition group, or None (per plate).",
+      "source_sha256": "e2f19550e567657b878be0681a9cfd0dac8bfa8e92fee5f9dddf9a1e4e0cc9c8",
+      "translation": "columna de ``df`` con el grupo de condición, o None (por placa)."
+    },
+    {
+      "context": "subset of ``('count', 'area', 'intensity')``; None = all.",
+      "label": "spacr.assay_report.well_qc_table#3",
+      "source": "subset of ``('count', 'area', 'intensity')``; None = all.",
+      "source_sha256": "a347e9ebb2bcb6799067826addd263cb531bd26f0e3466521a7e7b9303088aae",
+      "translation": "subconjunto de ``('count', 'area', 'intensity')``; None = todas."
+    },
+    {
+      "context": "one row per well: well structured-data names, ``qc_group``, ``qc_reference``, ``<measure>`` and ``<measure>_z`` columns, ``well_qc_pass`` and ``well_qc_reason`` (measures that failed).",
+      "label": "spacr.assay_report.well_qc_table#4",
+      "source": "one row per well: well keys, ``qc_group``, ``qc_reference``, ``<measure>`` and ``<measure>_z`` columns, ``well_qc_pass`` and ``well_qc_reason`` (measures that failed).",
+      "source_sha256": "417cc50f4508a512d68b925cf526dcbe01d0303ee35965abce2602b6b1c43681",
+      "translation": "una fila por pocillo: claves de pocillo, columnas ``qc_group``, ``qc_reference``, ``<measure>`` y ``<measure>_z``, ``well_qc_pass`` y ``well_qc_reason`` (medidas que no se superaron)."
+    },
+    {
+      "context": "One panel folder: ``<Rnn_name>.pdf/.png``, ``data.csv`` and ``stats.csv``.",
+      "label": "spacr.assay_report.write_panel_folder#0",
+      "source": "One panel folder: ``<Rnn_name>.pdf/.png``, ``data.csv`` and ``stats.csv``.",
+      "source_sha256": "1d9668c1ba2f791cb6ee8adcb9292401fd4adb07bba1121bea939e17ee61a693",
+      "translation": "Una carpeta de panel: ``<Rnn_name>.pdf/.png``, ``data.csv`` y ``stats.csv``."
+    },
+    {
+      "context": "``draw(fig, rect)`` as for :class:`ReportItem`.",
+      "label": "spacr.assay_report.write_panel_folder#1",
+      "source": "``draw(fig, rect)`` as for :class:`ReportItem`.",
+      "source_sha256": "b74c04f119a573be985ce04b73c58247854884d07f28f855bb440e6e0902833e",
+      "translation": "``draw(fig, rect)`` como en :class:`ReportItem`."
+    },
+    {
+      "context": "folder path.",
+      "label": "spacr.assay_report.write_panel_folder#2",
+      "source": "folder path.",
+      "source_sha256": "e67141b4703b6fbc4be7ff55b89a1636d25785120e6ffdb1df18e856703eec25",
+      "translation": "ruta de la carpeta."
+    },
+    {
+      "context": "Write an RGB uint16 array as ``<stem>.png`` (OpenCV, BGR order) and ``<stem>.tif``.",
+      "label": "spacr.assay_report.write_rgb16#0",
+      "source": "Write an RGB uint16 array as ``<stem>.png`` (OpenCV, BGR order) and ``<stem>.tif``.",
+      "source_sha256": "b909f012e6cf7e21b417d92eb8681426d5bafbd1aeb027a1a4210e7b2c1e55e9",
+      "translation": "Escribe una matriz RGB uint16 como ``<stem>.png`` (OpenCV, orden BGR) y ``<stem>.tif``."
+    },
+    {
+      "context": "Measure also edits the label image layers in memory (it merges cells that share a nucleus or pathogen, applies the size limits and the uninfected rule). Where that changed an image layer, it records the measured image layer in ``merged/.spacr_measured_masks/<fov>.npz`` and :class:`MergedField` serves it in place of the microscope field of view's own, so an extracted image region cut by label is the measured object. The merged file itself is never rewritten.",
+      "label": "spacr.crops#8",
+      "source": "Measure also edits the label planes in memory (it merges cells that share a nucleus or pathogen, applies the size limits and the uninfected rule). Where that changed a plane, it records the measured plane in ``merged/.spacr_measured_masks/<fov>.npz`` and :class:`MergedField` serves it in place of the field's own, so a crop cut by label is the measured object. The merged file itself is never rewritten.",
+      "source_sha256": "b34f264fe365b3d50a523233303b97be34364a7a0c7c319dee9d3d662eafe8ec",
+      "translation": "Measure también modifica los planos de etiquetas en memoria (fusiona las células que comparten un núcleo o un patógeno, aplica los límites de tamaño y la regla de no infectadas). Donde eso ha modificado un plano, registra el plano medido en ``merged/.spacr_measured_masks/<fov>.npz`` y :class:`MergedField` lo sirve en lugar del propio del campo, de modo que un recorte cortado por etiqueta es el objeto medido. El archivo merged en sí nunca se reescribe."
+    },
+    {
+      "context": "Fidelity",
+      "label": "spacr.crops#9",
+      "source": "Fidelity",
+      "source_sha256": "66279f04fa24667ab34b92646ed42689b63679ea26c56d014c4442b13b5c1d2b",
+      "translation": "Fidelidad"
+    },
+    {
+      "context": ":func:`extract_crop` reproduces the PNG path in ``spacr.measure._measure_crop_core`` step for step: same image data channel selection (``png_dims``), same region definition (object mask, optionally replaced by its padded bounding box, optionally dilated), same ``_crop_center`` centering/padding, same ``normalize_to_dtype`` percentile normalisation, same dtype. :func:`png_view` turns that array into what a consumer sees after the PNG round trip, and :func:`read_crop_png` reads an extracted-image-region PNG back into the same thing -- the two are the two halves of one contract, and ``tests/test_crops.py`` asserts they agree.",
+      "label": "spacr.crops#10",
+      "source": ":func:`extract_crop` reproduces the PNG path in ``spacr.measure._measure_crop_core`` step for step: same channel selection (``png_dims``), same region definition (object mask, optionally replaced by its padded bounding box, optionally dilated), same ``_crop_center`` centering/padding, same ``normalize_to_dtype`` percentile normalisation, same dtype. :func:`png_view` turns that array into what a consumer sees after the PNG round trip, and :func:`read_crop_png` reads a crop PNG back into the same thing -- the two are the two halves of one contract, and ``tests/test_crops.py`` asserts they agree.",
+      "source_sha256": "b1d3243a99cddf75dc7ff3e16b1bc749dac092eb084ad946e18e18413fa47b22",
+      "translation": ":func:`extract_crop` reproduce paso a paso la ruta de PNG de ``spacr.measure._measure_crop_core``: la misma selección de canales (``png_dims``), la misma definición de región (máscara del objeto, opcionalmente sustituida por su rectángulo delimitador con margen y opcionalmente dilatada), el mismo centrado/relleno de ``_crop_center``, la misma normalización por percentiles de ``normalize_to_dtype`` y el mismo dtype. :func:`png_view` convierte ese array en lo que ve un consumidor tras el viaje de ida y vuelta por PNG, y :func:`read_crop_png` vuelve a leer un PNG de recorte en lo mismo -- ambas son las dos mitades de un mismo contrato, y ``tests/test_crops.py`` comprueba que coinciden."
+    },
+    {
+      "context": "Extracted-image-region PNG format",
+      "label": "spacr.crops#11",
+      "source": "Crop PNG format",
+      "source_sha256": "a69a10f48f04a4550ea90ffb452cd18291d0d3f07a0836b99ce959e8ca263464",
+      "translation": "Formato de los PNG de recorte"
+    },
+    {
+      "context": "This module is also the authority on **what an extracted-image-region PNG on disk means** -- see the \"Crop PNG format\" section below. In short: the current format is 3 (\"declared_rgb\", :data:`CROP_FORMAT_CURRENT`), whose red, green and blue slots hold exactly the source image data channels ``settings['png_channel_mapping']`` names; format 1 (\"legacy\", unmarked) holds the same bytes for the default mapping and is returned untouched; format 2, written for eleven days in 2026, is the one that is reversed, and :func:`read_crop_png` is what reverses it back. A folder says which format it is via a ``.spacr_crop_format.json`` sidecar, and an unmarked folder is format 1.",
+      "label": "spacr.crops#12",
+      "source": "This module is also the authority on **what a crop PNG on disk means** -- see the \"Crop PNG format\" section below. In short: the current format is 3 (\"declared_rgb\", :data:`CROP_FORMAT_CURRENT`), whose red, green and blue slots hold exactly the source channels ``settings['png_channel_mapping']`` names; format 1 (\"legacy\", unmarked) holds the same bytes for the default mapping and is returned untouched; format 2, written for eleven days in 2026, is the one that is reversed, and :func:`read_crop_png` is what reverses it back. A folder says which format it is via a ``.spacr_crop_format.json`` sidecar, and an unmarked folder is format 1.",
+      "source_sha256": "81e6fbe69dce5f7feda64a72470139dc3501d1adcebd48a9d8e609625a6c19ea",
+      "translation": "Este módulo es también la autoridad sobre **lo que significa un PNG de recorte en disco** -- véase la sección \"Crop PNG format\" más abajo. En resumen: el formato actual es el 3 (\"declared_rgb\", :data:`CROP_FORMAT_CURRENT`), cuyas ranuras roja, verde y azul contienen exactamente los canales de origen que indica ``settings['png_channel_mapping']``; el formato 1 (\"legacy\", sin marca) contiene los mismos bytes para la asignación por defecto y se devuelve intacto; el formato 2, escrito durante once días de 2026, es el invertido, y :func:`read_crop_png` es lo que lo vuelve a invertir. Una carpeta indica su formato mediante un archivo auxiliar ``.spacr_crop_format.json``, y una carpeta sin marca es de formato 1."
+    },
+    {
+      "context": "Dependencies",
+      "label": "spacr.crops#13",
+      "source": "Dependencies",
+      "source_sha256": "2e41b118eb209c139f2bcbf690486f6e1509ab978aa96feb053877a70a1a5a09",
+      "translation": "Dependencias"
+    },
+    {
+      "context": "numpy, and the standard library (plus PIL only inside :func:`read_crop_png` and cv2 only inside :func:`migrate_crop_folder`, both imported lazily). No torch, no cellpose, no scipy, no skimage -- importing this module must stay cheap enough for a GUI thumbnail path, and ``spacr.measure`` imports it for the writer helpers, so it must not import ``spacr`` back.",
+      "label": "spacr.crops#14",
+      "source": "numpy, and the standard library (plus PIL only inside :func:`read_crop_png` and cv2 only inside :func:`migrate_crop_folder`, both imported lazily). No torch, no cellpose, no scipy, no skimage -- importing this module must stay cheap enough for a GUI thumbnail path, and ``spacr.measure`` imports it for the writer helpers, so it must not import ``spacr`` back.",
+      "source_sha256": "7bcce33b23491e8d4981a7d9c6574a13b5e79b61a37f2de4d84ded5d7d865551",
+      "translation": "numpy y la biblioteca estándar (además de PIL solo dentro de :func:`read_crop_png` y cv2 solo dentro de :func:`migrate_crop_folder`, ambos importados de forma diferida). Ni torch, ni cellpose, ni scipy, ni skimage -- importar este módulo debe seguir siendo lo bastante barato para una ruta de miniaturas de la GUI, y ``spacr.measure`` lo importa por las funciones auxiliares de escritura, así que no debe importar ``spacr`` a su vez."
+    },
+    {
+      "context": "Where Measure recorded the image layers it measured (it changed the objects by merging, size filtering or exclusion), the recorded image layer is returned instead of the microscope field of view's own, so every extracted image region is cut from the objects the measurements describe. The record is ignored once the microscope field of view's label image layers no longer match the ones it was made from.",
+      "label": "spacr.crops.MergedField.mask_plane#2",
+      "source": "Where Measure recorded the planes it measured (it changed the objects by merging, size filtering or exclusion), the recorded plane is returned instead of the field's own, so every crop is cut from the objects the measurements describe. The record is ignored once the field's label planes no longer match the ones it was made from.",
+      "source_sha256": "83d8faf8c4a8b12f1ca8731f586a839e752b9351ad8c35a5baefdfec9a11cffd",
+      "translation": "Donde Measure registró los planos que midió (modificó los objetos al fusionarlos, filtrarlos por tamaño o excluirlos), se devuelve el plano registrado en lugar del propio del campo, de modo que cada recorte se corta a partir de los objetos que describen las mediciones. El registro se ignora en cuanto los planos de etiquetas del campo dejan de coincidir con aquellos a partir de los que se creó."
+    },
+    {
+      "context": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` come back as a view on the memory-mapped array, so nothing is read off disk until pixels are touched. ``'cytoplasm'`` is the derived image layer and costs a full pass over the microscope field of view to build, so it is cached on this microscope field of view and every later call is free.",
+      "label": "spacr.crops.MergedField.mask_plane#3",
+      "source": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` come back as a view on the memory-mapped array, so nothing is read off disk until pixels are touched. ``'cytoplasm'`` is the derived plane and costs a full pass over the field to build, so it is cached on this field and every later call is free.",
+      "source_sha256": "3f7348153f0d2d7d5a71a2dd03e9c6f41f1ce8db4260854f458cb188d889e7e7",
+      "translation": "``'cell'`` | ``'nucleus'`` | ``'pathogen'`` | ``'organelle'`` se devuelven como vista sobre el array mapeado en memoria, de modo que no se lee nada del disco hasta que se accede a los píxeles. ``'cytoplasm'`` es el plano derivado y construirlo cuesta una pasada completa sobre el campo, así que se guarda en caché en este campo y todas las llamadas posteriores son gratuitas."
+    },
+    {
+      "context": "Logits of one part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._governed_logits.on_cpu#0",
+      "source": "Logits of one part with the model moved to the CPU.",
+      "source_sha256": "868a22dc74dc26b2025df6e3ec73367c1143c0403902abad9d7715c5d09c2cee",
+      "translation": "Logits de una parte con el modelo trasladado a la CPU."
+    },
+    {
+      "context": "Score one part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._governed_predictions.on_cpu#0",
+      "source": "Score one part with the model moved to the CPU.",
+      "source_sha256": "a8ba199843fa2163eeb0611fae0f4fd484d5dd1048b447bb4932ab2c6d00c9ca",
+      "translation": "Puntúa una parte con el modelo trasladado a la CPU."
+    },
+    {
+      "context": "One part with the model moved to the CPU.",
+      "label": "spacr.deep_spacr._train_batch.on_cpu#0",
+      "source": "One part with the model moved to the CPU.",
+      "source_sha256": "824b131053d1e72e62589a3cf0bfddd6c40d3467ecd71c0722081e79782984d5",
+      "translation": "Una parte con el modelo trasladado a la CPU."
+    },
+    {
+      "context": "One part on the training device.",
+      "label": "spacr.deep_spacr._train_batch.on_gpu#0",
+      "source": "One part on the training device.",
+      "source_sha256": "894f36c1ce4e03118e444fecdfbce6b22798fdb229374f2da8c8b02937d27662",
+      "translation": "Una parte en el dispositivo de entrenamiento."
+    },
+    {
+      "context": "Put the gradients back to what they were before this batch.",
+      "label": "spacr.deep_spacr._train_batch.restore#0",
+      "source": "Put the gradients back to what they were before this batch.",
+      "source_sha256": "ba6a6106aa10cbad01b2c99918a53601d85813c271da42dbae271e7d757c97f4",
+      "translation": "Devuelve los gradientes al estado que tenían antes de este lote."
+    },
+    {
+      "context": "Forward and backward ``rows`` of the batch on ``on_device``.",
+      "label": "spacr.deep_spacr._train_batch.step#0",
+      "source": "Forward and backward ``rows`` of the batch on ``on_device``.",
+      "source_sha256": "c69d33ee79c2e3ac6890548c43cf00894b161749956926266f3240f503343856",
+      "translation": "Pasadas hacia delante y hacia atrás de las ``rows`` del lote en ``on_device``."
+    },
+    {
+      "context": "Read ``f`` by its real format rather than by its extension.",
+      "label": "spacr.embeddings._zip_safetensors_loadable.load#0",
+      "source": "Read ``f`` by its real format rather than by its extension.",
+      "source_sha256": "28943462f33b0222a7e9ab68625e5b77bf68a6e25e346e3aec29204a692eeca3",
+      "translation": "Lee ``f`` según su formato real y no según su extensión."
+    },
+    {
+      "context": "An extracted image region window cut from a microscope field of view is corrected on its own, with the gains of its place in the microscope field of view",
+      "label": "spacr.illumination#17",
+      "source": "A crop window cut from a field is corrected on its own, with the gains of its place in the field",
+      "source_sha256": "f40003fc5953396a7f8f454edfb64f9130e60a0c509d54578ef2db5631d3ea40",
+      "translation": "Una ventana de recorte cortada de un campo se corrige por sí sola, con las ganancias de su posición en el campo"
+    },
+    {
+      "context": "Nothing in this module executes unless one of those calls is made, and :func:`disable_illumination_correction` returns the process to a state where ``measure_crop`` measures exactly what it measured before.",
+      "label": "spacr.illumination#18",
+      "source": "Nothing in this module runs unless one of those calls is made, and :func:`disable_illumination_correction` returns the process to a state where ``measure_crop`` measures exactly what it measured before.",
+      "source_sha256": "846a78d60f88982c90017fa847f7f0c9c39ce458dd170a2c48d2d6e746f4b486",
+      "translation": "Nada de este módulo se ejecuta salvo que se haga una de esas llamadas, y :func:`disable_illumination_correction` devuelve el proceso a un estado en el que ``measure_crop`` mide exactamente lo mismo que antes."
+    },
+    {
+      "context": "In the GUI the same two routes exist and end here: the \"Illumination Correction\" category on the Measure panel, which turns the correction on for that Measure run, and the Illumination button on that application view's masthead, which opens this module's own settings form and Run button so the microscope field of view can be estimated and QC'd without measuring the laboratory microplate. Neither route is a tile: the module has no tile of its own.",
+      "label": "spacr.illumination#19",
+      "source": "In the GUI the same two routes exist and end here: the \"Illumination Correction\" category on the Measure panel, which turns the correction on for that Measure run, and the Illumination button on that screen's masthead, which opens this module's own settings form and Run button so the field can be estimated and QC'd without measuring the plate. Neither route is a tile: the module has no tile of its own.",
+      "source_sha256": "65c0def81d6497e4b0365b12578c046fa776193781654a922a98b3af866c20c4",
+      "translation": "En la GUI existen las mismas dos rutas y terminan aquí: la categoría \"Illumination Correction\" en el panel Medir, que activa la corrección para esa ejecución Medir y el botón Ilumination en el mástil de la vista de la aplicación, que abre la forma de configuración de este módulo y el boton Ejecutar para que el campo de visión del microscopio se pueda estimar y QC sin medir la microplaca de laboratorio. Ninguna de las dos rutas es un mosaico: el módulo no tiene mosaicos propios."
+    },
+    {
+      "context": "Correct an extracted image region window cut from a microscope field of view, without the rest of the microscope field of view.",
+      "label": "spacr.illumination.IlluminationField.correct_window#0",
+      "source": "Correct a crop window cut from a field, without the rest of the field.",
+      "source_sha256": "c300f9f68fbd97e83e25df351cd7fb1503b9927a28e0ec20a15156bcd29241a3",
+      "translation": "Corrige una ventana de recorte cortada de un campo, sin el resto del campo."
+    },
+    {
+      "context": "The gain and offset maps are sliced to the window's place in the field, so every pixel gets exactly the value the whole-field correction gives it: ``(observed - dark) * (1 / flatfield)`` in float32.",
+      "label": "spacr.illumination.IlluminationField.correct_window#1",
+      "source": "The gain and offset maps are sliced to the window's place in the field, so every pixel gets exactly the value the whole-field correction gives it: ``(observed - dark) * (1 / flatfield)`` in float32.",
+      "source_sha256": "7fd462f7144aa510808696a841376b03cdd102f52e43239bafb805acb430eb3f",
+      "translation": "Los mapas de ganancia y desplazamiento se recortan a la posición de la ventana en el campo, de modo que cada píxel recibe exactamente el valor que le da la corrección del campo completo: ``(observed - dark) * (1 / flatfield)`` en float32."
+    },
+    {
+      "context": "``(h, w, C)`` intensities, or ``(h, w)`` for one image data channel, cut from a microscope field of view of this laboratory microplate at rows ``y0:y0 + h`` and columns ``x0:x0 + w``.",
+      "label": "spacr.illumination.IlluminationField.correct_window#2",
+      "source": "``(h, w, C)`` intensities, or ``(h, w)`` for one channel, cut from a field of this plate at rows ``y0:y0 + h`` and columns ``x0:x0 + w``.",
+      "source_sha256": "5d6705da77e1fe3c89e3711638360af8f4c4a6bb3c1693ad9e34cedb9a9aace2",
+      "translation": "intensidades ``(h, w, C)``, o ``(h, w)`` para un canal, cortadas de un campo de esta placa en las filas ``y0:y0 + h`` y las columnas ``x0:x0 + w``."
+    },
+    {
+      "context": "the merged-stack image data channel of each image layer of ``window``, in order.",
+      "label": "spacr.illumination.IlluminationField.correct_window#3",
+      "source": "the merged-stack channel of each plane of ``window``, in order.",
+      "source_sha256": "2904a2dbf438e0efcf2de6df2f1845213d14f1ef7144c15b5cf0d515878f5a42",
+      "translation": "el canal de la pila fusionada de cada plano de ``window``, en orden."
+    },
+    {
+      "context": "the field row of the window's first row. It may be negative, as for a window zero-padded past the field's edge (:meth:`spacr.crops.MergedField.read_window`).",
+      "label": "spacr.illumination.IlluminationField.correct_window#4",
+      "source": "the field row of the window's first row. It may be negative, as for a window zero-padded past the field's edge (:meth:`spacr.crops.MergedField.read_window`).",
+      "source_sha256": "19aa887074fe92a1d8bf7778e81317a340e81d6bc99b9f56db4ef140bcfd67af",
+      "translation": "la fila del campo correspondiente a la primera fila de la ventana. Puede ser negativa, como en una ventana rellenada con ceros más allá del borde del campo (:meth:`spacr.crops.MergedField.read_window`)."
+    },
+    {
+      "context": "the field column of the window's first column; negative allowed as for ``y0``.",
+      "label": "spacr.illumination.IlluminationField.correct_window#5",
+      "source": "the field column of the window's first column; negative allowed as for ``y0``.",
+      "source_sha256": "6adde5b1413ca1a28751e5bbe064a463ed53ded13a4f2466f21beeb9cc420aa1",
+      "translation": "la columna del campo correspondiente a la primera columna de la ventana; se admiten valores negativos como en ``y0``."
+    },
+    {
+      "context": "the corrected window as float32, in ``window``'s shape. Pixels that lie outside the field are padding and come back as 0.",
+      "label": "spacr.illumination.IlluminationField.correct_window#6",
+      "source": "the corrected window as float32, in ``window``'s shape. Pixels that lie outside the field are padding and come back as 0.",
+      "source_sha256": "d86082fab306cf5270bad07161c853aaac647ac02594a9e713ec611dd21a9a7a",
+      "translation": "la ventana corregida en float32, con la forma de ``window``. Los píxeles que quedan fuera del campo son relleno y se devuelven como 0."
+    },
+    {
+      "context": "when the window has no pixel inside the microscope field of view, its channel count differs from ``channels``, or the model does not cover one of the channels.",
+      "label": "spacr.illumination.IlluminationField.correct_window#7",
+      "source": "when the window has no pixel inside the field, its channel count differs from ``channels``, or the model does not cover one of the channels.",
+      "source_sha256": "92a338cffcb9a4765312de181624ca4a71f3e06a9446fab6977c61fc2841d406",
+      "translation": "cuando la ventana no tiene ningún píxel dentro del campo, su número de canales difiere de ``channels`` o el modelo no cubre alguno de los canales."
+    },
+    {
+      "context": "Existing results are never deleted. Re-screening an analyzed project needs a fresh project if excluded fields already have measurement rows. The ``image`` table is skipped: screening writes its own verdicts there.",
+      "label": "spacr.image_quality.ensure_no_retained_measurements#1",
+      "source": "Existing results are never deleted. Re-screening an analyzed project needs a fresh project if excluded fields already have measurement rows. The ``image`` table is skipped: screening writes its own verdicts there.",
+      "source_sha256": "bd04cb62ba4ff6d83d3ebf0b115f9eb8a7f54e9ca1d32a94985c1bfaa672685b",
+      "translation": "Los resultados existentes nunca se eliminan. Volver a cribar un proyecto ya analizado requiere un proyecto nuevo si los campos excluidos ya tienen filas de medición. La tabla ``image`` se omite: el cribado escribe allí sus propios veredictos."
+    },
+    {
+      "context": "The cuCIM table, copied back to host arrays.",
+      "label": "spacr.measure._cucim_morphology_table._gpu_columns#0",
+      "source": "The cuCIM table, copied back to host arrays.",
+      "source_sha256": "e0313460332fb04ce26e20266ffb4472045ca9714472e4ecc6d728df7bab80e7",
+      "translation": "La tabla de cuCIM, copiada de vuelta a matrices del host."
+    },
+    {
+      "context": "``ml_classes`` — ``None`` for the binary fit, or a list of three or more class values (each a value or a list pooled into one class) for a multiclass fit; the results then hold one probability column per class and ``<model>_model_confusion_matrix.csv``.",
+      "label": "spacr.ml.generate_ml_scores#9",
+      "source": "``ml_classes`` — ``None`` for the binary fit, or a list of three or more class values (each a value or a list pooled into one class) for a multiclass fit; the results then hold one probability column per class and ``<model>_model_confusion_matrix.csv``.",
+      "source_sha256": "f971455e235ff27e9cabe84d1d3c4a84e5cbba7dd87853a3e318ccb705b9a5f6",
+      "translation": "``ml_classes`` — ``None`` para el ajuste binario, o una lista de tres o más valores de clase (cada uno un valor o una lista agrupada en una clase) para un ajuste multiclase; los resultados contienen entonces una columna de probabilidad por clase y ``<model>_model_confusion_matrix.csv``."
+    },
+    {
+      "context": "``annotation_column`` — override controls with a PNG-level annotation column.",
+      "label": "spacr.ml.generate_ml_scores#10",
+      "source": "``annotation_column`` — override controls with a PNG-level annotation column.",
+      "source_sha256": "3f461869af6c98fe2d7759f49c734fccd7f0b7c383b2fa64eb823648a04fc723",
+      "translation": "``annotation_column`` — sustituye los controles por una columna de anotación a nivel de PNG."
+    },
+    {
+      "context": "``location_column`` — ``'columnID'`` or ``'rowID'``.",
+      "label": "spacr.ml.generate_ml_scores#11",
+      "source": "``location_column`` — ``'columnID'`` or ``'rowID'``.",
+      "source_sha256": "ff6d95d3dcfbaab265aae863ebbc3b2c960830aae94685accd7aba8d945926a6",
+      "translation": "``location_column`` — ``'columnID'`` o ``'rowID'``."
+    },
+    {
+      "context": "``heatmap_feature`` — feature plotted on the plate heatmap.",
+      "label": "spacr.ml.generate_ml_scores#12",
+      "source": "``heatmap_feature`` — feature plotted on the plate heatmap.",
+      "source_sha256": "cb0a243031c3f5cd2044fa67b61c4530305e7a250c7f099e31997ed1060c88bd",
+      "translation": "``heatmap_feature`` — característica representada en el mapa de calor de la placa."
+    },
+    {
+      "context": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``.",
+      "label": "spacr.ml.generate_ml_scores#13",
+      "source": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``.",
+      "source_sha256": "9ee6eb15ffb9c7c8b469af9de56cb2e3a364b2e82bd2b7eca004b0cf69ffac0b",
+      "translation": "``exclude``, ``n_repeats``, ``top_features``, ``test_size``, ``reg_alpha``, ``reg_lambda``, ``learning_rate``, ``n_estimators``, ``n_jobs``."
+    },
+    {
+      "context": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``.",
+      "label": "spacr.ml.generate_ml_scores#14",
+      "source": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``.",
+      "source_sha256": "8e71bc18b22baf009410bf097bb2d18e10e4036a160107f9f3d79bff96643800",
+      "translation": "``remove_low_variance_features``, ``remove_highly_correlated_features``, ``prune_features``, ``cross_validation``, ``verbose``."
+    },
+    {
+      "context": "The two-element list ``[output, plate_heatmap]``, where ``output`` is the 10-element result list of :func:`ml_analysis` and ``plate_heatmap`` is the plate-heatmap ``matplotlib`` figure. The CSVs and figures are written to ``results/`` as a side effect; their paths are not returned.",
+      "label": "spacr.ml.generate_ml_scores#15",
+      "source": "The two-element list ``[output, plate_heatmap]``, where ``output`` is the 10-element result list of :func:`ml_analysis` and ``plate_heatmap`` is the plate-heatmap ``matplotlib`` figure. The CSVs and figures are written to ``results/`` as a side effect; their paths are not returned.",
+      "source_sha256": "5661bcf2e30846a03f05e929308fdd631e7c245d24503eba7564d48966745773",
+      "translation": "La lista de dos elementos ``[output, plate_heatmap]``, donde ``output`` es la lista de diez resultados de :func:`ml_analysis` y ``plate_heatmap`` es la figura ``matplotlib`` del mapa de calor de la placa. Los CSV y las figuras se escriben en ``results/`` como efecto secundario; sus rutas no se devuelven."
+    },
+    {
+      "context": "if ``tables`` is empty, duplicated, contains an unknown table or has no object table; or if ``annotation_column`` is set but the ``png_list`` table lacks ``prcfo`` / that column, its object IDs do not join to the measurements, it contains fewer than two observed classes, or if ``heatmap_feature`` is not among the trained features.",
+      "label": "spacr.ml.generate_ml_scores#16",
+      "source": "if ``tables`` is empty, duplicated, contains an unknown table or has no object table; or if ``annotation_column`` is set but the ``png_list`` table lacks ``prcfo`` / that column, its object IDs do not join to the measurements, it contains fewer than two observed classes, or if ``heatmap_feature`` is not among the trained features.",
+      "source_sha256": "5a470148591a6c5b5d4ada5c0c37f6e9a5f846af39454a28bca135366411ebf5",
+      "translation": "si ``tables`` está vacío, contiene duplicados, incluye una tabla desconocida o no contiene ninguna tabla de objetos; o si se establece ``annotation_column`` pero la tabla ``png_list`` carece de ``prcfo`` / de esa columna, sus identificadores de objeto no se pueden unir a las mediciones, contiene menos de dos clases observadas, o si ``heatmap_feature`` no está entre las características usadas para entrenar."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.ml.generate_ml_scores#17",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "See Also: :func:`ml_analysis` — the underlying fit/evaluate routine. :func:`perform_regression` — mixed-effects regression on per-microplate sample position ML scores.",
+      "label": "spacr.ml.generate_ml_scores#18",
+      "source": "See Also: :func:`ml_analysis` — the underlying fit/evaluate routine. :func:`perform_regression` — mixed-effects regression on per-well ML scores.",
+      "source_sha256": "b5db5f640b266ebd5a8e7480f63f5bff4db4be47ed071cfc86ab558eb87e704d",
+      "translation": "Véase también: :func:`ml_analysis` — la rutina subyacente de ajuste y evaluación. :func:`perform_regression` — regresión de efectos mixtos sobre puntuaciones de aprendizaje automático por pocillo."
+    },
+    {
+      "context": "``None`` (default) trains the binary negative/positive model. A list of three or more entries trains one class per entry: each entry is a value of ``location_column``, or a list of values pooled into that class, and class ``i`` is the ``i``-th entry. The scored frame then has one ``prediction_probability_class_i`` column per class and a ``predicted_class`` column holding the entry's label, the metrics have one precision/recall row per class with its ``class_label``, and the model carries the test confusion matrix as ``spacr_confusion_matrix_`` (rows true class, columns predicted class; summed over folds under cross-validation). A list of two entries is ``[negative_control, positive_control]`` and gives exactly the binary output.",
+      "label": "spacr.ml.ml_analysis#31",
+      "source": "``None`` (default) trains the binary negative/positive model. A list of three or more entries trains one class per entry: each entry is a value of ``location_column``, or a list of values pooled into that class, and class ``i`` is the ``i``-th entry. The scored frame then has one ``prediction_probability_class_i`` column per class and a ``predicted_class`` column holding the entry's label, the metrics have one precision/recall row per class with its ``class_label``, and the model carries the test confusion matrix as ``spacr_confusion_matrix_`` (rows true class, columns predicted class; summed over folds under cross-validation). A list of two entries is ``[negative_control, positive_control]`` and gives exactly the binary output.",
+      "source_sha256": "0a44149cec313567650821a0048ce813841b46ac711ec5b53488ab2a80e81cd8",
+      "translation": "``None`` (predeterminado) entrena el modelo binario negativo/positivo. Una lista de tres o más entradas entrena una clase por entrada: cada entrada es un valor de ``location_column``, o una lista de valores agrupados en esa clase, y la clase ``i`` es la ``i``-ésima entrada. La tabla puntuada tiene entonces una columna ``prediction_probability_class_i`` por clase y una columna ``predicted_class`` con la etiqueta de la entrada, las métricas tienen una fila de precisión/exhaustividad por clase con su ``class_label``, y el modelo lleva la matriz de confusión de prueba como ``spacr_confusion_matrix_`` (filas: clase real; columnas: clase predicha; sumada sobre los pliegues en la validación cruzada). Una lista de dos entradas es ``[negative_control, positive_control]`` y da exactamente la salida binaria."
+    },
+    {
+      "context": "Tuple ``(output, figs)`` where ``output`` is a positional tuple of ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` and ``figs`` is ``(permutation_fig, feature_importance_fig)``.",
+      "label": "spacr.ml.ml_analysis#32",
+      "source": "Tuple ``(output, figs)`` where ``output`` is a positional tuple of ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` and ``figs`` is ``(permutation_fig, feature_importance_fig)``.",
+      "source_sha256": "68b076c47f5de7a856b2fe75b4f43a0c43761dbe457554df5ae4ffd2dec6cd6b",
+      "translation": "Tupla ``(output, figs)``, donde ``output`` es una tupla posicional de ``(scored_df, permutation_df, feature_importance_df, model, X_train, X_test, y_train, y_test, metrics_df, train_features)`` y ``figs`` es ``(permutation_fig, feature_importance_fig)``."
+    },
+    {
+      "context": "on unsupported ``model_type``, when positive / negative control rows cannot be located in ``location_column``, when ``classes`` has fewer than two entries, or when a class matches no rows.",
+      "label": "spacr.ml.ml_analysis#33",
+      "source": "on unsupported ``model_type``, when positive / negative control rows cannot be located in ``location_column``, when ``classes`` has fewer than two entries, or when a class matches no rows.",
+      "source_sha256": "67b0bc766a2b68758e00eeb5011ba43b8e24cb835c84498e870a420c6ec00c71",
+      "translation": "con un ``model_type`` no compatible, cuando no se encuentran las filas de control positivo / negativo en ``location_column``, cuando ``classes`` tiene menos de dos entradas o cuando una clase no coincide con ninguna fila."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.ml.ml_analysis#34",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "See Also: :func:`generate_ml_scores` — wraps this call with DB I/O.",
+      "label": "spacr.ml.ml_analysis#35",
+      "source": "See Also: :func:`generate_ml_scores` — wraps this call with DB I/O.",
+      "source_sha256": "fdafafab1593af5d5d1e19413bef494addfec93348222d77104827f48778748e",
+      "translation": "Véase también: :func:`generate_ml_scores` — envuelve esta llamada con E/S de base de datos."
+    },
+    {
+      "context": "what the GPU memory governor did during the processing session: how many GPU items ran, how many batches were shrunk to fit, waited for, retried after an out-of-memory error, halved, sent to the CPU or ramped back up, and how many items ran on the GPU and on the CPU. Filled when the processing session ends.",
+      "label": "spacr.runctx.RunContext#14",
+      "source": "what the GPU memory governor did during the run: how many GPU items ran, how many batches were shrunk to fit, waited for, retried after an out-of-memory error, halved, sent to the CPU or ramped back up, and how many items ran on the GPU and on the CPU. Filled when the run ends.",
+      "source_sha256": "d04676b3b3d4eb226c0f4adc40709b3dad970f74258ff5702fd2be2b51da127d",
+      "translation": "lo que hizo el regulador de memoria de GPU durante la ejecución: cuántos elementos de GPU se ejecutaron, cuántos lotes se redujeron para que cupieran, esperaron, se reintentaron tras un error de falta de memoria, se dividieron a la mitad, se enviaron a la CPU o volvieron a aumentar, y cuántos elementos se ejecutaron en la GPU y en la CPU. Se rellena al terminar la ejecución."
+    },
+    {
+      "context": "``\"gpu\"`` or ``\"cpu\"`` when every governed GPU item of the run took that path, ``\"mixed\"`` when some fell back to the CPU, ``\"\"`` when the run had none.",
+      "label": "spacr.runctx.RunContext#15",
+      "source": "``\"gpu\"`` or ``\"cpu\"`` when every governed GPU item of the run took that path, ``\"mixed\"`` when some fell back to the CPU, ``\"\"`` when the run had none.",
+      "source_sha256": "51aa8f8db975e40a643e863a91c6b6054bfdb7e315c1f2300f2daba3c9808554",
+      "translation": "``\"gpu\"`` o ``\"cpu\"`` cuando todos los elementos de GPU regulados de la ejecución siguieron esa ruta, ``\"mixed\"`` cuando algunos recurrieron a la CPU, ``\"\"`` cuando la ejecución no tuvo ninguno."
+    },
+    {
+      "context": "Background median per image data channel of one microscope field of view, read from its merged array.",
+      "label": "spacr.submodules._field_background.one#0",
+      "source": "Background median per channel of one field, read from its merged array.",
+      "source_sha256": "ed5c4b97ed3836fb6d7a2f10f96f06eab4596e04fbbb742d1385c749b3efd713",
+      "translation": "Mediana del fondo por canal de un campo, leída de su matriz fusionada."
+    },
+    {
+      "context": "Add the report grouping column to ``frame`` (a copy); unchanged when it is ``condition``.",
+      "label": "spacr.submodules._report_grouping.add_group#0",
+      "source": "Add the report grouping column to ``frame`` (a copy); unchanged when it is ``condition``.",
+      "source_sha256": "b170c9a28218c481134f7c1e185ce2f57c98b371b6de9cdc0c573ee994985f1a",
+      "translation": "Añade la columna de agrupación del informe a ``frame`` (una copia); sin cambios cuando es ``condition``."
+    },
+    {
+      "context": "``report`` — write the standard report (Default False) into ``results/report``: ``recruitment_report.pdf`` (A4 portrait pages, panels R01, R02 ...: representative microscope image fields per condition; recruitment unfiltered / filtered at well and replicate level; well-level control graphs before and after the opt-in filters - every image data channel in every object type, and objects per well per object type), PNG pages, ``figure_legend.txt`` (also the last PDF pages) and ``panels/Rnn_<name>/`` with PDF, PNG, ``data.csv`` and ``stats.csv`` (plus 16-bit microscope image fields for R01). Unfiltered means the frame before field_qc, max_vacuoles_per_cell, exclude_edge_objects, background_filters, min_solidity and confounder_filter (the cells_per_well rule applies to both). Microscope image fields are read from ``merged_dir`` (default ``<src>/merged``) and tuned by ``report_tiles_per_condition``, ``report_tile_size``, ``report_tile_seed`` and ``report_tile_channels``; ``report_max_conditions_per_row`` splits long condition axes; ``report_layout`` 'compact' (default) fits the figure on one A4 page when it can, 'spacious' uses larger type over more pages. Objects per well are counted from the object tables of measurements.db before filtering and from the analysed table after it. See :mod:`spacr.assay_report`.",
+      "label": "spacr.submodules.analyze_recruitment#28",
+      "source": "``report`` — write the standard report (Default False) into ``results/report``: ``recruitment_report.pdf`` (A4 portrait pages, panels R01, R02 ...: representative tiles per condition; recruitment unfiltered / filtered at well and replicate level; well-level control graphs before and after the opt-in filters - every channel in every object type, and objects per well per object type), PNG pages, ``figure_legend.txt`` (also the last PDF pages) and ``panels/Rnn_<name>/`` with PDF, PNG, ``data.csv`` and ``stats.csv`` (plus 16-bit tiles for R01). Unfiltered means the frame before field_qc, max_vacuoles_per_cell, exclude_edge_objects, background_filters, min_solidity and confounder_filter (the cells_per_well rule applies to both). Tiles are read from ``merged_dir`` (default ``<src>/merged``) and tuned by ``report_tiles_per_condition``, ``report_tile_size``, ``report_tile_seed`` and ``report_tile_channels``; ``report_max_conditions_per_row`` splits long condition axes; ``report_layout`` 'compact' (default) fits the figure on one A4 page when it can, 'spacious' uses larger type over more pages. Objects per well are counted from the object tables of measurements.db before filtering and from the analysed table after it. See :mod:`spacr.assay_report`.",
+      "source_sha256": "1f81f0dba82fae0327a8f237c9a45dc71c025ac4e2bfe708cfe74a53fe35a2b5",
+      "translation": "``report`` — escribe el informe estándar (Valor predeterminado: False) en ``results/report``: ``recruitment_report.pdf`` (páginas A4 verticales, paneles R01, R02 ...: teselas representativas por condición; reclutamiento sin filtrar / filtrado a nivel de pocillo y de réplica; gráficos de control a nivel de pocillo antes y después de los filtros opcionales - cada canal en cada tipo de objeto, y objetos por pocillo por tipo de objeto), páginas PNG, ``figure_legend.txt`` (también las últimas páginas del PDF) y ``panels/Rnn_<name>/`` con PDF, PNG, ``data.csv`` y ``stats.csv`` (más teselas de 16 bits para R01). Sin filtrar significa la tabla antes de field_qc, max_vacuoles_per_cell, exclude_edge_objects, background_filters, min_solidity y confounder_filter (la regla cells_per_well se aplica a ambas). Las teselas se leen de ``merged_dir`` (por defecto ``<src>/merged``) y se ajustan con ``report_tiles_per_condition``, ``report_tile_size``, ``report_tile_seed`` y ``report_tile_channels``; ``report_max_conditions_per_row`` divide los ejes de condiciones largos; ``report_layout`` 'compact' (predeterminado) coloca la figura en una página A4 cuando es posible y 'spacious' usa letra más grande en más páginas. Los objetos por pocillo se cuentan a partir de las tablas de objetos de measurements.db antes del filtrado y a partir de la tabla analizada después. Véase :mod:`spacr.assay_report`."
+    },
+    {
+      "context": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "label": "spacr.submodules.analyze_recruitment#29",
+      "source": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "source_sha256": "fb8fe355c9b22b5c92cac792d9ca2a9ae12324ee04e7ade76b76001bdb909fca",
+      "translation": "La ruta de la GUI (Inicio > Toxoplasma > Recruitment) no cambia; estos ajustes se fijan desde la API o desde un archivo de ajustes."
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#30",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "Lista ``[cells, wells]`` — los DataFrames de reclutamiento por célula hospedadora y por pocillo, que también se escriben como CSV en ``src/results``."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.submodules.analyze_recruitment#31",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#32",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "Véase también: :func:`analyze_plaques` — ensayo de recuento/tamaño de placas de lisis. :func:`spacr.ml.generate_ml_scores` — clasificador basado en características como alternativa a los cocientes de reclutamiento."
+    },
+    {
+      "context": "Each object is measured inside its own bounding box, padded by the reach of the neighbourhood operations, so the cost follows the object sizes rather than the image size times the object count.",
+      "label": "spacr.utils.merge_touching_objects#1",
+      "source": "Each object is measured inside its own bounding box, padded by the reach of the neighbourhood operations, so the cost follows the object sizes rather than the image size times the object count.",
+      "source_sha256": "2547904ed66eaf3b50daae40214dbe3c6950232012dce1966e0a894c46f314f6",
+      "translation": "Cada objeto se mide dentro de su propio cuadro delimitador, ampliado con el alcance de las operaciones de vecindad, de modo que el coste depende del tamaño de los objetos y no del tamaño de la imagen multiplicado por el número de objetos."
+    },
+    {
+      "context": "labeled mask.",
+      "label": "spacr.utils.merge_touching_objects#2",
+      "source": "labeled mask.",
+      "source_sha256": "32297d2cee295d3a1f7db8fd35f6d0c72c9b04ed5eca6ed4f10d594f25b8cfc6",
+      "translation": "máscara etiquetada."
+    },
+    {
+      "context": "fraction of the smaller perimeter required to merge.",
+      "label": "spacr.utils.merge_touching_objects#3",
+      "source": "fraction of the smaller perimeter required to merge.",
+      "source_sha256": "2eb0129be9f5f1b11ec3b79f714e437076bca1ff8a39ffc5bbfaf699bfb39d18",
+      "translation": "fracción del perímetro menor necesaria para fusionar."
+    },
+    {
+      "context": "merged label mask.",
+      "label": "spacr.utils.merge_touching_objects#4",
+      "source": "merged label mask.",
+      "source_sha256": "5854d07a8d6351515df8889331c057653cd836cbf9c3566c7fd52078c64bf5f2",
+      "translation": "máscara de etiquetas fusionada."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

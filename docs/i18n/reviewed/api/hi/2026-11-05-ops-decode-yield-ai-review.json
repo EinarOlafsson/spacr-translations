@@ -1,0 +1,49 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "``(cycle, channel)`` pairs whose background shift the spot registration overruled (``channel_mode='spots'`` only).",
+      "label": "spacr.ops_cycles.AlignedField#8",
+      "source": "``(cycle, channel)`` pairs whose background shift the spot registration overruled (``channel_mode='spots'`` only).",
+      "source_sha256": "77a6f14a801106c224112584afffb6117022291f686e8d4b80b070bffb4a19de",
+      "translation": "वे ``(cycle, channel)`` जोड़े जिनके पृष्ठभूमि विस्थापन को स्पॉट पंजीकरण ने बदल दिया (केवल ``channel_mode='spots'`` में)।"
+    },
+    {
+      "context": "one of :data:`CHANNEL_MODES`. ``spots`` runs the background registration first and then checks every channel against the reference cycle's spots, replacing the shifts the spots disagree with; :attr:`AlignedField.spot_replaced` lists those.",
+      "label": "spacr.ops_cycles.align_field#6",
+      "source": "one of :data:`CHANNEL_MODES`. ``spots`` runs the background registration first and then checks every channel against the reference cycle's spots, replacing the shifts the spots disagree with; :attr:`AlignedField.spot_replaced` lists those.",
+      "source_sha256": "39a6df538c52841af940da29eb543f6ef47224170cdf7e1b9430d35b1222ab90",
+      "translation": ":data:`CHANNEL_MODES` में से एक। ``spots`` पहले पृष्ठभूमि पंजीकरण चलाता है और फिर हर चैनल को संदर्भ चक्र के स्पॉट से जाँचता है, और उन विस्थापनों को बदल देता है जिनसे स्पॉट असहमत हों; :attr:`AlignedField.spot_replaced` उन्हें सूचीबद्ध करता है।"
+    },
+    {
+      "context": "the aligned field.",
+      "label": "spacr.ops_cycles.align_field#7",
+      "source": "the aligned field.",
+      "source_sha256": "ed752024a436f66df9a5e8118075d0e2392f5e8a202440dcab808b7a7ef503b7",
+      "translation": "संरेखित फ़ील्ड।"
+    },
+    {
+      "context": "when no cycle has image layers, when the reference cycle has none, or for an unknown ``channel_mode``.",
+      "label": "spacr.ops_cycles.align_field#8",
+      "source": "when no cycle has planes, when the reference cycle has none, or for an unknown ``channel_mode``.",
+      "source_sha256": "c60c632f8b251d89db1d36789ad2047ff8118748bf54854dac9a992a07a3ff5a",
+      "translation": "जब किसी चक्र के प्लेन न हों, जब संदर्भ चक्र के कोई प्लेन न हों, या किसी अज्ञात ``channel_mode`` के लिए।"
+    },
+    {
+      "context": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a microplate sample position can be stitched once and decoded again. The alpha phenotype path (item 752) adds ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"`` and ``\"aggregate\"``, asked for by name and run after those four; a run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its microplate sample positions from ``ops_phenotype``, and adds to each microplate sample position's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the microplate sample positions run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "label": "spacr.ops_engine.run_ops#4",
+      "source": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a well can be stitched once and decoded again. The alpha phenotype path (item 752) adds ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"`` and ``\"aggregate\"``, asked for by name and run after those four; a run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its wells from ``ops_phenotype``, and adds to each well's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the wells run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "source_sha256": "52a69cb28701bf1ff6af14eab53ee2eae10f0c62d98d2e3d9433ea4eb96bef03",
+      "translation": "``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` और ``\"decode\"`` में से कोई भी, उसी क्रम में चलाए जाते हैं। छोड़ा गया चरण जो उसे चाहिए वह डेटाबेस से पढ़ता है, इसलिए किसी वेल को एक बार स्टिच करके फिर से डिकोड किया जा सकता है। अल्फ़ा फ़ीनोटाइप पथ (आइटम 752) ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"merge\"`` और ``\"aggregate\"`` जोड़ता है, जो नाम से माँगे जाते हैं और उन चार के बाद चलते हैं; केवल इन्हीं का रन ``dst_root`` और ``plate`` माँगता है पर ``genotype_source`` नहीं, अपने वेल ``ops_phenotype`` से लेता है, और हर वेल की ``ops_report.json`` को बदलने के बजाय उसमें जोड़ता है। ``aggregate`` चलाए गए वेल को एक साथ मिलाता है और ``ops_guides_<plate>`` तथा ``ops_genes_<plate>`` लिखता है।"
+    },
+    {
+      "context": "``\"percentile\"`` takes spots above ``percentile`` in a channel; ``\"median\"`` takes spots where the channel is the argmax. Percentile is the more robust of the two when one base is rare, which is the case a median call gets wrong. ``\"argmax_median\"`` is brieflow's ``transform_medians``: each channel is first divided by its median over the spots, each channel's axis is the MEDIAN of the spots where it is the argmax, and the axes are scaled to sum to one rather than to unit length, which keeps the corrected channels on the scale the argmax compares. On 116 microscope fields of view of the Funk et al. 2022 laboratory microplates, after the per-cycle normalisation, it raised the library-exact read rate from 0.558 to 0.574 and lowered the decoy match rate.",
+      "label": "spacr.ops_sbs.compensate_crosstalk#4",
+      "source": "``\"percentile\"`` takes spots above ``percentile`` in a channel; ``\"median\"`` takes spots where the channel is the argmax. Percentile is the more robust of the two when one base is rare, which is the case a median call gets wrong. ``\"argmax_median\"`` is brieflow's ``transform_medians``: each channel is first divided by its median over the spots, each channel's axis is the MEDIAN of the spots where it is the argmax, and the axes are scaled to sum to one rather than to unit length, which keeps the corrected channels on the scale the argmax compares. On 116 fields of the Funk et al. 2022 plates, after the per-cycle normalisation, it raised the library-exact read rate from 0.558 to 0.574 and lowered the decoy match rate.",
+      "source_sha256": "d1c8f0c2ebf590dca497b035f6590395df8f7723de73d4f856d69b612c34d08a",
+      "translation": "``\"percentile\"`` किसी चैनल में ``percentile`` से ऊपर के धब्बे लेता है; ``\"median\"`` वे धब्बे लेता है जहाँ चैनल argmax है। जब एक क्षार दुर्लभ हो तो दोनों में percentile अधिक मज़बूत है, जो वही स्थिति है जिसे median निर्णय गलत करता है। ``\"argmax_median\"`` brieflow का ``transform_medians`` है: हर चैनल को पहले धब्बों पर उसके माध्यिका से भाग दिया जाता है, हर चैनल का अक्ष उन धब्बों की माध्यिका है जहाँ वह argmax है, और अक्षों को इकाई लंबाई के बजाय योग एक होने तक स्केल किया जाता है, जिससे सुधारे गए चैनल उसी पैमाने पर रहते हैं जिस पर argmax तुलना करता है। Funk et al. 2022 की प्लेटों के 116 फ़ील्ड पर, प्रति-चक्र सामान्यीकरण के बाद, इसने लाइब्रेरी से बिल्कुल मेल खाने वाले रीड की दर 0.558 से 0.574 तक बढ़ाई और डिकॉय मिलान की दर घटाई।"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-05 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,658 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "context": "Publication panels for laboratory microplate assays: statistics, drawing, saving and figures.",
+      "label": "spacr.assay_panels#0",
+      "source": "Publication panels for plate assays: statistics, drawing, saving and figures.",
+      "source_sha256": "785f7ce825e5b453cde4cbb5c7bacd539c7af99008195d0c0403c7a4099405e4",
+      "translation": "Paneles para publicación de ensayos en placa: estadística, dibujo, guardado y figuras."
+    },
+    {
+      "context": "Used by :func:`spacr.submodules.analyze_recruitment` and :func:`spacr.submodules.analyze_replication` (``panels`` / ``figures`` settings), and usable on any table with one row per object.",
+      "label": "spacr.assay_panels#1",
+      "source": "Used by :func:`spacr.submodules.analyze_recruitment` and :func:`spacr.submodules.analyze_replication` (``panels`` / ``figures`` settings), and usable on any table with one row per object.",
+      "source_sha256": "037a2da852ae581724a75cfd2fdd53d5408e62caf61c14ecbb991a96ac0133e9",
+      "translation": "Lo usan :func:`spacr.submodules.analyze_recruitment` y :func:`spacr.submodules.analyze_replication` (ajustes ``panels`` / ``figures``), y puede usarse con cualquier tabla con una fila por objeto."
+    },
+    {
+      "context": "**Experimental unit.** Objects are averaged per microplate sample position (``plateID``, ``rowID``, ``columnID``), and microplate sample position means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of microplate sample positions or replicates.",
+      "label": "spacr.assay_panels#2",
+      "source": "**Experimental unit.** Objects are averaged per well (``plateID``, ``rowID``, ``columnID``), and well means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of wells or replicates.",
+      "source_sha256": "9e6366abdceecd11607cc30b9d62e82306b4bc54ca0be1e0311c1ae3b4155f29",
+      "translation": "**Unidad experimental.** Los objetos se promedian por pocillo (``plateID``, ``rowID``, ``columnID``) y las medias de los pocillos se promedian por réplica cuando se indica una columna de réplica (:func:`aggregate_to_unit`). Las pruebas se ejecutan sobre estos valores por unidad, nunca sobre células individuales, por lo que la n de una prueba es el número de pocillos o de réplicas."
+    },
+    {
+      "context": "**Test selection for bar panels** (:func:`select_and_run_test`, one test per panel):",
+      "label": "spacr.assay_panels#3",
+      "source": "**Test selection for bar panels** (:func:`select_and_run_test`, one test per panel):",
+      "source_sha256": "2d95d485f2695e9d5c33b17489eee5b4b15ec50cdd0f2a88480504758391b75f",
+      "translation": "**Selección de la prueba para los paneles de barras** (:func:`select_and_run_test`, una prueba por panel):"
+    },
+    {
+      "context": "Shapiro-Wilk normality per group (groups with fewer than 3 values or no spread count as normal) and Levene equal variance (median centred, the Brown-Forsythe variant);",
+      "label": "spacr.assay_panels#4",
+      "source": "Shapiro-Wilk normality per group (groups with fewer than 3 values or no spread count as normal) and Levene equal variance (median centred, the Brown-Forsythe variant);",
+      "source_sha256": "32223f5a15103534aef0feb1c4f1d490f51cacdbc1635671821a46c4173c0329",
+      "translation": "normalidad de Shapiro-Wilk por grupo (los grupos con menos de 3 valores o sin dispersión se consideran normales) e igualdad de varianzas de Levene (centrada en la mediana, la variante de Brown-Forsythe);"
+    },
+    {
+      "context": "every group normal and equal variance: one-way ANOVA, post hoc Tukey HSD;",
+      "label": "spacr.assay_panels#5",
+      "source": "every group normal and equal variance: one-way ANOVA, post hoc Tukey HSD;",
+      "source_sha256": "bdf806ef15a0d8df946f5b59e9201babea06c32ed99f343ba741104e7c4e764d",
+      "translation": "todos los grupos normales y con varianzas iguales: ANOVA de un factor, post hoc HSD de Tukey;"
+    },
+    {
+      "context": "every group normal, unequal variance: Welch ANOVA, post hoc Games-Howell;",
+      "label": "spacr.assay_panels#6",
+      "source": "every group normal, unequal variance: Welch ANOVA, post hoc Games-Howell;",
+      "source_sha256": "b081e9a64e3c8969e0f0e3c3e72810024a6db3006fe4d437eff972f674b26e40",
+      "translation": "todos los grupos normales, con varianzas desiguales: ANOVA de Welch, post hoc de Games-Howell;"
+    },
+    {
+      "context": "any group non-normal: Kruskal-Wallis, post hoc Dunn test with Holm correction.",
+      "label": "spacr.assay_panels#7",
+      "source": "any group non-normal: Kruskal-Wallis, post hoc Dunn test with Holm correction.",
+      "source_sha256": "b0b3910d6875ef782c171b05f2a7a1262cb168781c95107c7fa1b0e032a19655",
+      "translation": "algún grupo no normal: Kruskal-Wallis, post hoc prueba de Dunn con corrección de Holm."
+    },
+    {
+      "context": "**Proportion panels** (:func:`proportion_tests`): object counts per bin, pooled over replicates, compared with a chi-square test of independence or the Fisher-Freeman-Halton exact test (Monte Carlo over tables with the observed margins; the Fisher exact test for a 2 x 2 table). The omnibus test covers every group; each group is also compared with the reference group (Holm correction). Cramer V is the effect size. These tests treat every object as independent, so with thousands of objects they flag small shifts; the replicate-level bar panel drawn next to them is the conservative test.",
+      "label": "spacr.assay_panels#8",
+      "source": "**Proportion panels** (:func:`proportion_tests`): object counts per bin, pooled over replicates, compared with a chi-square test of independence or the Fisher-Freeman-Halton exact test (Monte Carlo over tables with the observed margins; the Fisher exact test for a 2 x 2 table). The omnibus test covers every group; each group is also compared with the reference group (Holm correction). Cramer V is the effect size. These tests treat every object as independent, so with thousands of objects they flag small shifts; the replicate-level bar panel drawn next to them is the conservative test.",
+      "source_sha256": "71cd45066485746878767c3153201cb72d378b9d78094cc366d7ff0fdaace1df",
+      "translation": "**Paneles de proporciones** (:func:`proportion_tests`): recuentos de objetos por intervalo, combinados entre réplicas, que se comparan con una prueba de independencia de chi cuadrado o con la prueba exacta de Fisher-Freeman-Halton (Monte Carlo sobre tablas con los márgenes observados; la prueba exacta de Fisher para una tabla de 2 x 2). La prueba ómnibus abarca todos los grupos; además, cada grupo se compara con el grupo de referencia (corrección de Holm). La V de Cramer es el tamaño del efecto. Estas pruebas tratan cada objeto como independiente, por lo que con miles de objetos detectan desplazamientos pequeños; el panel de barras a nivel de réplica que se dibuja junto a ellas es la prueba conservadora."
+    },
+    {
+      "context": "**Panel layout on disk** (:func:`save_panel`): one folder per panel, ``<out_dir>/<Pnn>_<name>/`` holding ``<Pnn>_<name>.pdf`` and ``.png``, ``data_replicates.csv`` (the plotted unit values), ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` and ``stats_descriptive.csv`` for bar panels, and ``contingency_table_counts.csv`` for stacked panels.",
+      "label": "spacr.assay_panels#9",
+      "source": "**Panel layout on disk** (:func:`save_panel`): one folder per panel, ``<out_dir>/<Pnn>_<name>/`` holding ``<Pnn>_<name>.pdf`` and ``.png``, ``data_replicates.csv`` (the plotted unit values), ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` and ``stats_descriptive.csv`` for bar panels, and ``contingency_table_counts.csv`` for stacked panels.",
+      "source_sha256": "2c6df34c627b174df80954c79e7f84fde304a944fc8db088035434e0e96c9618",
+      "translation": "**Estructura de los paneles en disco** (:func:`save_panel`): una carpeta por panel, ``<out_dir>/<Pnn>_<name>/``, que contiene ``<Pnn>_<name>.pdf`` y ``.png``, ``data_replicates.csv`` (los valores por unidad representados), ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` y ``stats_descriptive.csv`` para los paneles de barras, y ``contingency_table_counts.csv`` para los paneles apilados."
+    },
+    {
+      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "label": "spacr.assay_panels#10",
+      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
+      "translation": "**Orden alineado.** Cada panel toma ``order`` (el orden del eje x) de :func:`condition_order`, de modo que una condición ocupa el mismo lugar en todos los paneles de una figura, y ``labels`` (valor sin procesar -> etiqueta de visualización; los guiones bajos se convierten en espacios cuando no se da ninguna etiqueta). ``annotations`` dibuja filas de texto alineadas bajo el eje x, por ejemplo una tabla +/- de lo que contiene cada condición."
+    },
+    {
+      "context": "Pure functions plus matplotlib; nothing here opens a window.",
+      "label": "spacr.assay_panels#11",
+      "source": "Pure functions plus matplotlib; nothing here opens a window.",
+      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
+      "translation": "Funciones puras más matplotlib; nada de este módulo abre una ventana."
+    },
+    {
+      "context": "Average object values to the experimental unit.",
+      "label": "spacr.assay_panels.aggregate_to_unit#0",
+      "source": "Average object values to the experimental unit.",
+      "source_sha256": "b51696cd54e53847c852cdf7a8001d9d143dce14ac7a7705dae27188776a4353",
+      "translation": "Promedia los valores de los objetos hasta la unidad experimental."
+    },
+    {
+      "context": "Objects -> microplate sample position mean (per ``keys`` + ``well_keys``) -> replicate mean of the microplate sample position means (per ``keys`` + ``replicate_column``) when ``replicate_column`` is given; otherwise the unit is the microplate sample position.",
+      "label": "spacr.assay_panels.aggregate_to_unit#1",
+      "source": "Objects -> well mean (per ``keys`` + ``well_keys``) -> replicate mean of the well means (per ``keys`` + ``replicate_column``) when ``replicate_column`` is given; otherwise the unit is the well.",
+      "source_sha256": "6a68c0aea58136ad191b344358d28b505c5e907013e57d37e3dfcfc0b2b24f16",
+      "translation": "Objetos -> media del pocillo (por ``keys`` + ``well_keys``) -> media por réplica de las medias de los pocillos (por ``keys`` + ``replicate_column``) cuando se indica ``replicate_column``; en caso contrario, la unidad es el pocillo."
+    },
+    {
+      "context": "column name or list of column names to average.",
+      "label": "spacr.assay_panels.aggregate_to_unit#2",
+      "source": "column name or list of column names to average.",
+      "source_sha256": "2d9c41306338e2464952cc4703f8ddcffede7834488e7df3d83dc5594c7a77dc",
+      "translation": "nombre de columna o lista de nombres de columnas que se promedian."
+    },
+    {
+      "context": "grouping columns kept in the output (e.g. the panel group).",
+      "label": "spacr.assay_panels.aggregate_to_unit#3",
+      "source": "grouping columns kept in the output (e.g. the panel group).",
+      "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
+      "translation": "columnas de agrupación que se conservan en la salida (p. ej. el grupo del panel)."
+    },
+    {
+      "context": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
+      "label": "spacr.assay_panels.aggregate_to_unit#4",
+      "source": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
+      "source_sha256": "13b9df840125e540669be793eb6a30cff9d85adab17a7b89d0a740e52220b04e",
+      "translation": "una fila por unidad con ``keys``, las columnas de la unidad, la(s) columna(s) ``value`` promediada(s), ``n_objects`` y (si la unidad es la réplica) ``n_wells``."
+    },
+    {
+      "context": "Assemble panels into one figure with bold panel IDs; write PDF and PNG.",
+      "label": "spacr.assay_panels.assemble_figure#0",
+      "source": "Assemble panels into one figure with bold panel IDs; write PDF and PNG.",
+      "source_sha256": "7fac5353e4cc37e61a6988538d7a81ed2b4596c83cfe524eeef20ca9fef212f2",
+      "translation": "Monta los paneles en una figura con los ID de panel en negrita; escribe PDF y PNG."
+    },
+    {
+      "context": "panel id -> spec (from :func:`bar_spec` / :func:`stacked_spec`).",
+      "label": "spacr.assay_panels.assemble_figure#1",
+      "source": "panel id -> spec (from :func:`bar_spec` / :func:`stacked_spec`).",
+      "source_sha256": "eff49ac85b731a8a0be272e02560468630e4e2719ea8e660cd374b6393c0f756",
+      "translation": "id de panel -> especificación (de :func:`bar_spec` / :func:`stacked_spec`)."
+    },
+    {
+      "context": "ids to place, row by row.",
+      "label": "spacr.assay_panels.assemble_figure#2",
+      "source": "ids to place, row by row.",
+      "source_sha256": "ceb2bc895e4340200ab9d881e2bfcddf7dbaa2a7ff4b2d2eced889a520ce847e",
+      "translation": "ids que se colocan, fila a fila."
+    },
+    {
+      "context": "panels per row.",
+      "label": "spacr.assay_panels.assemble_figure#3",
+      "source": "panels per row.",
+      "source_sha256": "efacdfa6bf33835e136267e089ad454b35d38a7d55c06b23b3a5ef397b2bf64d",
+      "translation": "paneles por fila."
+    },
+    {
+      "context": "output path without extension (an extension is stripped).",
+      "label": "spacr.assay_panels.assemble_figure#4",
+      "source": "output path without extension (an extension is stripped).",
+      "source_sha256": "c1b2cb5d013e0dd05d28cce545f19b755752e57297e24feb02b61b64cf8020ec",
+      "translation": "ruta de salida sin extensión (si tiene una, se elimina)."
+    },
+    {
+      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "label": "spacr.assay_panels.assemble_figure#5",
+      "source": "list of written file paths. Unknown ids raise ``KeyError``.",
+      "source_sha256": "84d7b31fe6fb0307f4e33725106cc7430d2b9bff669582955b73dcd32fd802f1",
+      "translation": "lista de las rutas de los archivos escritos. Los ids desconocidos lanzan ``KeyError``."
+    },
+    {
+      "context": "Run the bar-panel test on unit data and return a panel spec for drawing/saving.",
+      "label": "spacr.assay_panels.bar_spec#0",
+      "source": "Run the bar-panel test on unit data and return a panel spec for drawing/saving.",
+      "source_sha256": "256678a0e319208a2e9d05133a03c2c2a0fad65d0e773a741be4456823865747",
+      "translation": "Ejecuta la prueba del panel de barras sobre los datos por unidad y devuelve una especificación de panel para dibujarlo/guardarlo."
+    },
+    {
+      "context": "Return one x-axis order for a set of condition values.",
+      "label": "spacr.assay_panels.condition_order#0",
+      "source": "Return one x-axis order for a set of condition values.",
+      "source_sha256": "9f369e0997bc3b94a85049a2e5292785b372bc821bb87115b68d07622b5105df",
+      "translation": "Devuelve un único orden del eje x para un conjunto de valores de condición."
+    },
+    {
+      "context": "Values listed in ``preferred`` come first, in the order given (entries not present in ``values`` are skipped); the remaining values follow, sorted naturally (``r2`` before ``r10``). Missing values are dropped. Using the same ``preferred`` list for every panel keeps the conditions aligned.",
+      "label": "spacr.assay_panels.condition_order#1",
+      "source": "Values listed in ``preferred`` come first, in the order given (entries not present in ``values`` are skipped); the remaining values follow, sorted naturally (``r2`` before ``r10``). Missing values are dropped. Using the same ``preferred`` list for every panel keeps the conditions aligned.",
+      "source_sha256": "4bdd58045cc73b3c7b2166c3f4c5163b7c6b3f1d435a4ef3f3a9aa33f643e79a",
+      "translation": "Los valores indicados en ``preferred`` van primero, en el orden dado (las entradas que no están en ``values`` se omiten); los valores restantes van después, en orden natural (``r2`` antes que ``r10``). Los valores faltantes se descartan. Usar la misma lista ``preferred`` en todos los paneles mantiene las condiciones alineadas."
+    },
+    {
+      "context": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
+      "label": "spacr.assay_panels.display_label#0",
+      "source": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
+      "source_sha256": "8e5f525525e73bf9dc447318704e2e52b602b19fd9c315694498b37a3c75495a",
+      "translation": "Texto de visualización de un valor sin procesar: ``labels[value]`` o el valor con espacios en lugar de guiones bajos."
+    },
+    {
+      "context": "Bar of the mean of unit values, SD error bar, one dot per unit, post hoc brackets.",
+      "label": "spacr.assay_panels.draw_bar_panel#0",
+      "source": "Bar of the mean of unit values, SD error bar, one dot per unit, post hoc brackets.",
+      "source_sha256": "704d0b1234e194b12e718d01fa5a13fab533a062e85a57acba9db580c6aa05db",
+      "translation": "Barra de la media de los valores por unidad, barra de error SD, un punto por unidad y corchetes post hoc."
+    },
+    {
+      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "label": "spacr.assay_panels.draw_bar_panel#1",
+      "source": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "source_sha256": "8b2728e8749d8c90fa59782ef2c8e6f0b04b14c83fddbc91540c394fd293fb4e",
+      "translation": "salida de :func:`select_and_run_test`; la prueba ómnibus va en el título y los resultados post hoc se convierten en corchetes."
+    },
+    {
+      "context": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
+      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "source": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
+      "source_sha256": "c957cbce786eac0d2ce5c1b3ee2a29a1c3b62472788e0197d6782f462813d0f8",
+      "translation": "``'significant'`` (predeterminado), ``'all'`` o ``'none'``. Los corchetes se omiten cuando cumplen el criterio más de ``max_brackets`` pares (todos los pares siguen en ``stats_posthoc.csv``)."
+    },
+    {
+      "context": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "source": "lower y limit (``None``: 0, or the data minimum if negative).",
+      "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
+      "translation": "límite inferior del eje y (``None``: 0, o el mínimo de los datos si es negativo)."
+    },
+    {
+      "context": "Draw a spec made by :func:`bar_spec` or :func:`stacked_spec` on ``ax``.",
+      "label": "spacr.assay_panels.draw_panel#0",
+      "source": "Draw a spec made by :func:`bar_spec` or :func:`stacked_spec` on ``ax``.",
+      "source_sha256": "2f7405eb2d42c57edd74c3bd0744341cff00205903aa486f9fff7205cf9a5ff9",
+      "translation": "Dibuja una especificación creada por :func:`bar_spec` o :func:`stacked_spec` sobre ``ax``."
+    },
+    {
+      "context": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
+      "label": "spacr.assay_panels.draw_stacked_panel#0",
+      "source": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
+      "source_sha256": "e3f0df81ffb0e9ff4b9d3de4cb1d7ef6804e71ca88b62d360ae6dc5ac864986b",
+      "translation": "Fracciones medias apiladas sobre las unidades, barra SD en la parte superior de cada segmento y estrellas frente a la referencia."
+    },
+    {
+      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "label": "spacr.assay_panels.draw_stacked_panel#1",
+      "source": "output of :func:`fractions_per_unit` (one row per unit).",
+      "source_sha256": "5336969cd9df8912305b838e3fb81382d15a9bab98562f6782d53a447bc1b1ea",
+      "translation": "salida de :func:`fractions_per_unit` (una fila por unidad)."
+    },
+    {
+      "context": "Format a p value for a panel title.",
+      "label": "spacr.assay_panels.fmt_p#0",
+      "source": "Format a p value for a panel title.",
+      "source_sha256": "17d270c3bb2fb2a42523d27ef3fd485f8c0f2e87b85e1be0145ff798a262cb3b",
+      "translation": "Da formato a un valor p para el título de un panel."
+    },
+    {
+      "context": "Fraction of objects in each bin per unit (replicate if given, else well).",
+      "label": "spacr.assay_panels.fractions_per_unit#0",
+      "source": "Fraction of objects in each bin per unit (replicate if given, else well).",
+      "source_sha256": "3c100a0085f5de96bc3bf883a298d2efb8476ca147cca5e8d58da92524504cde",
+      "translation": "Fracción de objetos en cada intervalo por unidad (la réplica si se indica; si no, el pocillo)."
+    },
+    {
+      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "label": "spacr.assay_panels.fractions_per_unit#1",
+      "source": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "source_sha256": "755985503950bb419344cc565d20dc617d5358595078b1efa173f057a898b95d",
+      "translation": "una fila por unidad con ``keys``, las columnas de la unidad, ``n_objects`` y una columna por intervalo (fracciones que suman 1)."
+    },
+    {
+      "context": "Folder / file stem of a panel, ``<panel_id>_<name>`` with unsafe characters replaced.",
+      "label": "spacr.assay_panels.panel_folder_name#0",
+      "source": "Folder / file stem of a panel, ``<panel_id>_<name>`` with unsafe characters replaced.",
+      "source_sha256": "37e0551fbf03c8715a78eef22091712dba466f09418b3a368155d12c66b4efe0",
+      "translation": "Nombre de carpeta / base de archivo de un panel, ``<panel_id>_<name>``, con los caracteres no seguros sustituidos."
+    },
+    {
+      "context": "Compare bin proportions between groups.",
+      "label": "spacr.assay_panels.proportion_tests#0",
+      "source": "Compare bin proportions between groups.",
+      "source_sha256": "d1aefbe7c8d7b69e8054f8b0ac0d3605dccc52d02058f0e580e74e245e38e46f",
+      "translation": "Compara las proporciones de los intervalos entre grupos."
+    },
+    {
+      "context": "contingency table, one row per group and one column per bin (object counts).",
+      "label": "spacr.assay_panels.proportion_tests#1",
+      "source": "contingency table, one row per group and one column per bin (object counts).",
+      "source_sha256": "228927400f6f99e8556fc656be0926041262386bc271c3b6b499dea96aa2ce8b",
+      "translation": "tabla de contingencia, una fila por grupo y una columna por intervalo (recuentos de objetos)."
+    },
+    {
+      "context": "groups to test (rows of ``counts``), in plotting order.",
+      "label": "spacr.assay_panels.proportion_tests#2",
+      "source": "groups to test (rows of ``counts``), in plotting order.",
+      "source_sha256": "fb2ec09e8e35e9e6885b63feb2ff8695689a9ff895430bc7d94d5e828799c25d",
+      "translation": "grupos que se prueban (filas de ``counts``), en el orden de representación."
+    },
+    {
+      "context": "group every other group is compared with; default ``order[0]``.",
+      "label": "spacr.assay_panels.proportion_tests#3",
+      "source": "group every other group is compared with; default ``order[0]``.",
+      "source_sha256": "0e5b7e81dcb7d66e6ff3e28a292fab6ef5fb5dac2b1fb617d788b6885ab41098",
+      "translation": "grupo con el que se compara cada uno de los demás; por defecto ``order[0]``."
+    },
+    {
+      "context": "``'chi2'`` (chi-square test of independence) or ``'fisher'`` (Fisher-Freeman-Halton exact test by Monte Carlo with ``n_resamples`` tables and ``seed``; the Fisher exact test for 2 x 2).",
+      "label": "spacr.assay_panels.proportion_tests#4",
+      "source": "``'chi2'`` (chi-square test of independence) or ``'fisher'`` (Fisher-Freeman-Halton exact test by Monte Carlo with ``n_resamples`` tables and ``seed``; the Fisher exact test for 2 x 2).",
+      "source_sha256": "4e1298d9804212825b86b0cbf61046ad328cfd57880c8b4a333390ac641e5ef4",
+      "translation": "``'chi2'`` (prueba de independencia de chi cuadrado) o ``'fisher'`` (prueba exacta de Fisher-Freeman-Halton por Monte Carlo con ``n_resamples`` tablas y ``seed``; la prueba exacta de Fisher para 2 x 2)."
+    },
+    {
+      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "label": "spacr.assay_panels.proportion_tests#5",
+      "source": "``(omnibus, pairwise)`` - a dict for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "source_sha256": "7b5fd20ea94d63dd99016e156fb78a43d4f334b39d5e824e1fbf8303e96b52e6",
+      "translation": "``(omnibus, pairwise)`` - un dict para la prueba sobre todos los grupos de ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) y un DataFrame con una fila por grupo frente a la referencia, con ``p_holm`` corregido por Holm y ``significance``."
+    },
+    {
+      "context": "Write one panel folder: graph (PDF + PNG), plotted data and statistics CSVs.",
+      "label": "spacr.assay_panels.save_panel#0",
+      "source": "Write one panel folder: graph (PDF + PNG), plotted data and statistics CSVs.",
+      "source_sha256": "cd56556b32b669a366985d1da3002e74ee6c6b7aa262b3379cf49557171aa93d",
+      "translation": "Escribe una carpeta de panel: gráfico (PDF + PNG), datos representados y CSV de estadísticas."
+    },
+    {
+      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "label": "spacr.assay_panels.save_panel#1",
+      "source": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "source_sha256": "9677f7ed93e5edc2d2e88da61bdd36ea59136244145378065ea402d32a8ae4e3",
+      "translation": "la ruta de la carpeta del panel ``<out_dir>/<panel_id>_<name>``."
+    },
+    {
+      "context": "Choose and run one omnibus test plus its post hoc test.",
+      "label": "spacr.assay_panels.select_and_run_test#0",
+      "source": "Choose and run one omnibus test plus its post hoc test.",
+      "source_sha256": "83fc0540eed20772a1ae07691232c0106ea2e3414d00d83abc766e3a0d00d631",
+      "translation": "Elige y ejecuta una prueba ómnibus más su prueba post hoc."
+    },
+    {
+      "context": "one row per experimental unit (replicate or well).",
+      "label": "spacr.assay_panels.select_and_run_test#1",
+      "source": "one row per experimental unit (replicate or well).",
+      "source_sha256": "84c2771aa1a0654563f41a8877fcdd0d4142fc3a8c171951c2ecf40812456736",
+      "translation": "una fila por unidad experimental (réplica o pocillo)."
+    },
+    {
+      "context": "numeric column compared between groups.",
+      "label": "spacr.assay_panels.select_and_run_test#2",
+      "source": "numeric column compared between groups.",
+      "source_sha256": "520b92ddbb81137dba16929ba11c034902e4b468d16ad59a8505302bc5706188",
+      "translation": "columna numérica que se compara entre grupos."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.select_and_run_test#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "columna que nombra el grupo de cada fila."
+    },
+    {
+      "context": "groups to compare, in plotting order. Groups without data are reported with ``n = 0`` and left out of the test.",
+      "label": "spacr.assay_panels.select_and_run_test#4",
+      "source": "groups to compare, in plotting order. Groups without data are reported with ``n = 0`` and left out of the test.",
+      "source_sha256": "8d5510e432850927417ae0ff41eb48bffbaf0eaf96ac495885c2e48931a42335",
+      "translation": "grupos que se comparan, en el orden de representación. Los grupos sin datos se indican con ``n = 0`` y quedan fuera de la prueba."
+    },
+    {
+      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "label": "spacr.assay_panels.select_and_run_test#5",
+      "source": "dict of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "source_sha256": "dcf12644739848ac140bb28cd77bb4c39102e60e04e0083c4486305c53a80b96",
+      "translation": "dict de DataFrames - ``test`` (una fila: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk por grupo y Levene), ``posthoc`` (cada par: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) y ``descriptive`` (n, mean, std, median, sem por grupo en ``order``)."
+    },
+    {
+      "context": "Run the proportion test and return a stacked-panel spec for drawing/saving.",
+      "label": "spacr.assay_panels.stacked_spec#0",
+      "source": "Run the proportion test and return a stacked-panel spec for drawing/saving.",
+      "source_sha256": "733aab3112135a8e280313badf586b783d53dad2b32d5f881b473dd489d518b5",
+      "translation": "Ejecuta la prueba de proporciones y devuelve una especificación de panel apilado para dibujarlo/guardarlo."
+    },
+    {
+      "context": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
+      "label": "spacr.assay_panels.stars#0",
+      "source": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
+      "source_sha256": "b1c3e166ae1c78c0bd902bb90565576eef781b5e2fd04669d8e497f00aeaae13",
+      "translation": "Estrellas de significación para un valor p ('ns' en 0.05 o por encima, 'n/a' si falta)."
+    },
+    {
+      "context": "Attach the :func:`well_density` columns to object rows (a new frame).",
+      "label": "spacr.recruitment_confounders.apply_well_density#0",
+      "source": "Attach the :func:`well_density` columns to object rows (a new frame).",
+      "source_sha256": "b8598abd0073579f6d0c2dabf12e43164630e5823e89e05a0bb25c93abef1c4e",
+      "translation": "Añade las columnas de :func:`well_density` a las filas de objetos (una tabla nueva)."
+    },
+    {
+      "context": "Laboratory microplate ids are URL-decoded on both sides, as for :func:`apply_field_qc`. Rows from microplate sample positions absent from ``wells`` get ``NaN``.",
+      "label": "spacr.recruitment_confounders.apply_well_density#1",
+      "source": "Plate ids are URL-decoded on both sides, as for :func:`apply_field_qc`. Rows from wells absent from ``wells`` get ``NaN``.",
+      "source_sha256": "ea13702ceb378ef2998fea46a20f976fa504321d1e828e8818234080d750df97",
+      "translation": "Los ids de placa se decodifican como URL en ambos lados, igual que en :func:`apply_field_qc`. Las filas de pocillos ausentes de ``wells`` reciben ``NaN``."
+    },
+    {
+      "context": "Count host cells and parasites in every microplate sample position of a laboratory microplate.",
+      "label": "spacr.recruitment_confounders.well_density#0",
+      "source": "Count host cells and parasites in every well of a plate.",
+      "source_sha256": "88074c70e88c7f9524b0d576104f9cc016a3e32c9b9366f66d7ea9dab1163956",
+      "translation": "Cuenta las células hospedadoras y los parásitos en cada pocillo de una placa."
+    },
+    {
+      "context": "The microplate sample position-level twin of :func:`field_density`, summed over the microscope fields of view of each microplate sample position.",
+      "label": "spacr.recruitment_confounders.well_density#1",
+      "source": "The well-level twin of :func:`field_density`, summed over the fields of each well.",
+      "source_sha256": "c754559cf8f5d8170a6206c45ea871203795e82afbf7dab7fa8dab1c15a798c2",
+      "translation": "El equivalente a nivel de pocillo de :func:`field_density`, sumado sobre los campos de cada pocillo."
+    },
+    {
+      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "label": "spacr.recruitment_confounders.well_density#2",
+      "source": "one row per well (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "source_sha256": "e87475cdc9d26f0ca0ede6fb17c7732b87ec9770d6a7f1be189f7d4921a86509",
+      "translation": "una fila por pocillo (:data:`WELL_KEYS`) con ``n_cells_well``, ``n_pathogens_well`` (cuando existe ``pathogen_table``), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` y ``n_fields_well``."
+    },
+    {
+      "context": "Sort key of one condition: its position in each plate-map slot, then its name.",
+      "label": "spacr.submodules._plate_map_condition_order.key#0",
+      "source": "Sort key of one condition: its position in each plate-map slot, then its name.",
+      "source_sha256": "415a49c07f55923c61d78164290091f9cb55f17bf25adeaea4016ea84f68d4bd",
+      "translation": "Clave de ordenación de una condición: su posición en cada casilla del mapa de placa y, después, su nombre."
+    },
+    {
+      "context": "Number one control panel ``Cnn`` and list it under figure ``fig``.",
+      "label": "spacr.submodules._recruitment_control_specs.add#0",
+      "source": "Number one control panel ``Cnn`` and list it under figure ``fig``.",
+      "source_sha256": "44dbf2688587762fa7417dd684003fd0651e2ca509bf869adfba94658891bead",
+      "translation": "Numera un panel de control ``Cnn`` y lo incluye en la figura ``fig``."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.submodules.analyze_endodyogeny#8",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#7",
+      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
+      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
+    },
+    {
+      "context": "``treatments`` / ``treatment_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#8",
+      "source": "``treatments`` / ``treatment_plate_metadata``.",
+      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
+      "translation": "``treatments`` / ``treatment_plate_metadata``."
+    },
+    {
+      "context": "``*_intensity_range``, ``target_intensity_min``.",
+      "label": "spacr.submodules.analyze_recruitment#12",
+      "source": "``*_intensity_range``, ``target_intensity_min``.",
+      "source_sha256": "26d6e34dde58f5b9dc4605654dc6a2a66ac44a6e538f9c32ff32a567673ec909",
+      "translation": "``*_intensity_range``, ``target_intensity_min``."
+    },
+    {
+      "context": "``plot``, ``plot_nr``, ``figuresize``.",
+      "label": "spacr.submodules.analyze_recruitment#17",
+      "source": "``plot``, ``plot_nr``, ``figuresize``.",
+      "source_sha256": "2dc5134674958c26f152b9da00f3915de014fc0a0e26e3755d69e30b9ff3b886",
+      "translation": "``plot``, ``plot_nr``, ``figuresize``."
+    },
+    {
+      "context": "``plot_control`` — write control panels (Default True): for every image data channel in ``channel_dims`` and every compartment (cell, nucleus, cytoplasm, pathogen) the mean intensity per condition, objects per microplate sample position, and the ratio variants ``pathogen_channel_<c>_cytoplasm_<stat>_ratio``. Each is a bar panel of unit values (replicate or microplate sample position means, aligned condition order, SD bars, one dot per unit, test in the title) saved under ``results/panels/controls/Cnn_<name>/`` with data and statistics CSVs, plus one figure per image data channel in ``results/figures``.",
+      "label": "spacr.submodules.analyze_recruitment#18",
+      "source": "``plot_control`` — write control panels (Default True): for every channel in ``channel_dims`` and every compartment (cell, nucleus, cytoplasm, pathogen) the mean intensity per condition, objects per well, and the ratio variants ``pathogen_channel_<c>_cytoplasm_<stat>_ratio``. Each is a bar panel of unit values (replicate or well means, aligned condition order, SD bars, one dot per unit, test in the title) saved under ``results/panels/controls/Cnn_<name>/`` with data and statistics CSVs, plus one figure per channel in ``results/figures``.",
+      "source_sha256": "701f19556cdf1c7a3b004bcda38a7c5ac270f4bb2e3cf758a10eb54b61c5ae75",
+      "translation": "``plot_control`` — escribe paneles de control (valor predeterminado: True): para cada canal de ``channel_dims`` y cada compartimento (célula, núcleo, citoplasma, patógeno), la intensidad media por condición, los objetos por pocillo y las variantes de cociente ``pathogen_channel_<c>_cytoplasm_<stat>_ratio``. Cada uno es un panel de barras de valores por unidad (medias por réplica o por pocillo, orden de condiciones alineado, barras SD, un punto por unidad, prueba en el título) que se guarda en ``results/panels/controls/Cnn_<name>/`` con CSV de datos y de estadísticas, más una figura por canal en ``results/figures``."
+    },
+    {
+      "context": "Publication panels and extra filters (all opt-in; leaving them at their defaults keeps the output above unchanged):",
+      "label": "spacr.submodules.analyze_recruitment#19",
+      "source": "Publication panels and extra filters (all opt-in; leaving them at their defaults keeps the output above unchanged):",
+      "source_sha256": "5aa977844df5755897c3ae4fe8fd5e3302706d80dc671848487e8ea8888f729e",
+      "translation": "Paneles para publicación y filtros adicionales (todos opcionales; si se dejan en sus valores predeterminados, la salida anterior no cambia):"
+    },
+    {
+      "context": "``panels`` — list of key-value mappings, one bar panel each: ``{'name', 'where': {column: value or list}, 'group': column, 'order': list, 'labels': dict, 'annotations': {row: {group value: text}}, 'value': 'recruitment' or any numeric column, 'ymin', 'title', 'ylabel'}``. ``group`` may be any annotated column (``host_cells``, ``pathogen``, ``treatment``, ``condition``, or a column of your own). Ratio values are drawn from y = 1 when every unit value is at least 1. Panel ``i`` is saved as ``results/panels/Pnn_<name>/`` with ``<Pnn_name>.pdf/.png``, ``data_replicates.csv``, ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` and ``stats_descriptive.csv``. The test is chosen per panel (one-way ANOVA + Tukey HSD, Welch ANOVA + Games-Howell, or Kruskal-Wallis + Dunn test); see :mod:`spacr.assay_panels`.",
+      "label": "spacr.submodules.analyze_recruitment#20",
+      "source": "``panels`` — list of dicts, one bar panel each: ``{'name', 'where': {column: value or list}, 'group': column, 'order': list, 'labels': dict, 'annotations': {row: {group value: text}}, 'value': 'recruitment' or any numeric column, 'ymin', 'title', 'ylabel'}``. ``group`` may be any annotated column (``host_cells``, ``pathogen``, ``treatment``, ``condition``, or a column of your own). Ratio values are drawn from y = 1 when every unit value is at least 1. Panel ``i`` is saved as ``results/panels/Pnn_<name>/`` with ``<Pnn_name>.pdf/.png``, ``data_replicates.csv``, ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` and ``stats_descriptive.csv``. The test is chosen per panel (one-way ANOVA + Tukey HSD, Welch ANOVA + Games-Howell, or Kruskal-Wallis + Dunn test); see :mod:`spacr.assay_panels`.",
+      "source_sha256": "3a8ce2d1929fec08529a3f399d15f9322843bc9848c412750a11d71eac645db4",
+      "translation": "``panels`` — lista de dicts, un panel de barras por cada uno: ``{'name', 'where': {column: value or list}, 'group': column, 'order': list, 'labels': dict, 'annotations': {row: {group value: text}}, 'value': 'recruitment' or any numeric column, 'ymin', 'title', 'ylabel'}``. ``group`` puede ser cualquier columna anotada (``host_cells``, ``pathogen``, ``treatment``, ``condition`` o una columna propia). Los valores de cociente se dibujan desde y = 1 cuando todos los valores por unidad son al menos 1. El panel ``i`` se guarda como ``results/panels/Pnn_<name>/`` con ``<Pnn_name>.pdf/.png``, ``data_replicates.csv``, ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` y ``stats_descriptive.csv``. La prueba se elige por panel (ANOVA de un factor + HSD de Tukey, ANOVA de Welch + Games-Howell, o Kruskal-Wallis + prueba de Dunn); véase :mod:`spacr.assay_panels`."
+    },
+    {
+      "context": "``replicate_column`` — column holding the biological replicate (for example ``'pathogen'`` when replicates were annotated in that slot). The statistical unit is then the replicate mean of microplate sample position means; otherwise it is the microplate sample position mean. Default None.",
+      "label": "spacr.submodules.analyze_recruitment#21",
+      "source": "``replicate_column`` — column holding the biological replicate (for example ``'pathogen'`` when replicates were annotated in that slot). The statistical unit is then the replicate mean of well means; otherwise it is the well mean. Default None.",
+      "source_sha256": "761a01f3b2bf262c143595971291ffcfe7c7ebaeca76259b6334b2fc142f6063",
+      "translation": "``replicate_column`` — columna que contiene la réplica biológica (por ejemplo ``'pathogen'`` cuando las réplicas se anotaron en esa casilla). La unidad estadística es entonces la media por réplica de las medias de los pocillos; en caso contrario, es la media del pocillo. Valor predeterminado: None."
+    },
+    {
+      "context": "``condition_order`` / ``condition_labels`` — global x order (listed values first, the rest sorted naturally) and display labels, used by every panel unless the panel sets its own.",
+      "label": "spacr.submodules.analyze_recruitment#22",
+      "source": "``condition_order`` / ``condition_labels`` — global x order (listed values first, the rest sorted naturally) and display labels, used by every panel unless the panel sets its own.",
+      "source_sha256": "66bef7d8cafe42edbca098a64fbfe0889b0603e655b1e4f95555a05886af75f6",
+      "translation": "``condition_order`` / ``condition_labels`` — orden global del eje x (primero los valores indicados, el resto en orden natural) y etiquetas de visualización, que usan todos los paneles salvo que el panel fije los suyos."
+    },
+    {
+      "context": "``figures`` — ``{name: {'panels': ['P01', 'C03', ...], 'ncol': n}}`` assembled into ``results/figures/<name>.pdf/.png``.",
+      "label": "spacr.submodules.analyze_recruitment#23",
+      "source": "``figures`` — ``{name: {'panels': ['P01', 'C03', ...], 'ncol': n}}`` assembled into ``results/figures/<name>.pdf/.png``.",
+      "source_sha256": "26e22b0d135eaae8cd45f8eed7f0d6731fd09d73f8ca6ba533c64cb01bc9e5c1",
+      "translation": "``figures`` — ``{name: {'panels': ['P01', 'C03', ...], 'ncol': n}}`` montadas en ``results/figures/<name>.pdf/.png``."
+    },
+    {
+      "context": "``max_vacuoles_per_cell`` — keep host cells with at most this many pathogen objects (``pathogen_prcfo_count``), after the merge.",
+      "label": "spacr.submodules.analyze_recruitment#24",
+      "source": "``max_vacuoles_per_cell`` — keep host cells with at most this many pathogen objects (``pathogen_prcfo_count``), after the merge.",
+      "source_sha256": "6c482155a796edf163f128d59b106b0afc23430125756d8d9f36d8ca582db9f1",
+      "translation": "``max_vacuoles_per_cell`` — conserva las células hospedadoras que tienen como máximo este número de objetos patógenos (``pathogen_prcfo_count``), después de la fusión."
+    },
+    {
+      "context": "``exclude_edge_objects`` — drop host cells whose pathogen object is cut by the image edge (``pathogen_distance_to_field_edge`` below half of ``pathogen_equivalent_diameter_area``; spaCR measures the centre-to-edge distance).",
+      "label": "spacr.submodules.analyze_recruitment#25",
+      "source": "``exclude_edge_objects`` — drop host cells whose pathogen object is cut by the image edge (``pathogen_distance_to_field_edge`` below half of ``pathogen_equivalent_diameter_area``; spaCR measures the centre-to-edge distance).",
+      "source_sha256": "2eb5dc1d578bffe9fe7e8082f1d911da998a9516b182fa8fefb78bbeb56839b0",
+      "translation": "``exclude_edge_objects`` — descarta las células hospedadoras cuyo objeto patógeno está cortado por el borde de la imagen (``pathogen_distance_to_field_edge`` por debajo de la mitad de ``pathogen_equivalent_diameter_area``; spaCR mide la distancia del centro al borde)."
+    },
+    {
+      "context": "``confounder_filter`` — ``{column: [min, max]}`` at object level, or ``{column: {'quantiles': [lo, hi] | 'range': [min, max], 'level': 'object' | 'well'}}``. Microplate sample position level drops whole microplate sample positions whose mean lies outside the bounds; quantile bounds are computed per laboratory microplate. The microplate sample position density columns ``n_cells_well``, ``n_pathogens_well`` and ``pathogens_per_cell_well`` are attached from ``measurements.db`` when named.",
+      "label": "spacr.submodules.analyze_recruitment#26",
+      "source": "``confounder_filter`` — ``{column: [min, max]}`` at object level, or ``{column: {'quantiles': [lo, hi] | 'range': [min, max], 'level': 'object' | 'well'}}``. Well level drops whole wells whose mean lies outside the bounds; quantile bounds are computed per plate. The well density columns ``n_cells_well``, ``n_pathogens_well`` and ``pathogens_per_cell_well`` are attached from ``measurements.db`` when named.",
+      "source_sha256": "ced240dad0cd4b32a3e5bbecda40b1ed092b2d23e1e70f389676c00946cf8a7e",
+      "translation": "``confounder_filter`` — ``{column: [min, max]}`` a nivel de objeto, o ``{column: {'quantiles': [lo, hi] | 'range': [min, max], 'level': 'object' | 'well'}}``. El nivel de pocillo descarta pocillos completos cuya media queda fuera de los límites; los límites de cuantiles se calculan por placa. Las columnas de densidad por pocillo ``n_cells_well``, ``n_pathogens_well`` y ``pathogens_per_cell_well`` se añaden desde ``measurements.db`` cuando se nombran."
+    },
+    {
+      "context": "When any of these is set, ``results/filter_summary.csv`` lists every filter step (objects remaining / removed, including ``field_qc`` and ``cells_per_well``) and ``results/filter_kept_per_condition.csv`` the fraction kept per condition.",
+      "label": "spacr.submodules.analyze_recruitment#27",
+      "source": "When any of these is set, ``results/filter_summary.csv`` lists every filter step (objects remaining / removed, including ``field_qc`` and ``cells_per_well``) and ``results/filter_kept_per_condition.csv`` the fraction kept per condition.",
+      "source_sha256": "8d8078ed485f45c4d924a51367f193a3c5ef8dad4a84e3f89e8f0f5c132478b2",
+      "translation": "Cuando se fija cualquiera de ellos, ``results/filter_summary.csv`` enumera cada paso de filtrado (objetos restantes / eliminados, incluidos ``field_qc`` y ``cells_per_well``) y ``results/filter_kept_per_condition.csv`` la fracción conservada por condición."
+    },
+    {
+      "context": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "label": "spacr.submodules.analyze_recruitment#28",
+      "source": "The GUI path (Home > Toxoplasma > Recruitment) is unchanged; these settings are set from the API or a settings file.",
+      "source_sha256": "fb8fe355c9b22b5c92cac792d9ca2a9ae12324ee04e7ade76b76001bdb909fca",
+      "translation": "La ruta de la GUI (Inicio > Toxoplasma > Recruitment) no cambia; estos ajustes se fijan desde la API o desde un archivo de ajustes."
+    },
+    {
+      "context": "List ``[cells, wells]`` — the host-cell and per-microplate sample position recruitment DataFrames, also written to CSV under ``src/results``.",
+      "label": "spacr.submodules.analyze_recruitment#29",
+      "source": "List ``[cells, wells]`` — the host-cell and per-well recruitment DataFrames, also written to CSV under ``src/results``.",
+      "source_sha256": "a361b3555fcb6119b2af0e473de644e51360e86efcabf19fd118ecc10bff870c",
+      "translation": "Lista ``[cells, wells]`` — los DataFrames de reclutamiento por célula hospedadora y por pocillo, que también se escriben como CSV en ``src/results``."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.submodules.analyze_recruitment#30",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based machine-learning classification model as an alternative to recruitment ratios.",
+      "label": "spacr.submodules.analyze_recruitment#31",
+      "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
+      "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
+      "translation": "Véase también: :func:`analyze_plaques` — ensayo de recuento/tamaño de placas de lisis. :func:`spacr.ml.generate_ml_scores` — clasificador basado en características como alternativa a los cocientes de reclutamiento."
+    },
+    {
+      "context": "``cell_types`` / ``pathogen_types`` / ``treatments`` and their ``*_plate_metadata`` well maps, plus ``group_column`` and ``level``.",
+      "label": "spacr.submodules.analyze_replication#14",
+      "source": "``cell_types`` / ``pathogen_types`` / ``treatments`` and their ``*_plate_metadata`` well maps, plus ``group_column`` and ``level``.",
+      "source_sha256": "5b346332c4f65b6505c87c02f164c7f62ce5a4405039420f977104999c7ebaeb",
+      "translation": "``cell_types`` / ``pathogen_types`` / ``treatments`` y sus mapas de pocillos ``*_plate_metadata``, más ``group_column`` y ``level``."
+    },
+    {
+      "context": "Publication panels and filters (opt-in, for both ``direct_count`` and ``size_proxy``; defaults keep the output above unchanged):",
+      "label": "spacr.submodules.analyze_replication#16",
+      "source": "Publication panels and filters (opt-in, for both ``direct_count`` and ``size_proxy``; defaults keep the output above unchanged):",
+      "source_sha256": "8baae420490ad990bbf9ba81cdf847fa98b9e59d282afeb4d420400090384b8b",
+      "translation": "Paneles para publicación y filtros (opcionales, tanto para ``direct_count`` como para ``size_proxy``; los valores predeterminados mantienen sin cambios la salida anterior):"
+    },
+    {
+      "context": "``panels`` — list of key-value mappings ``{'name', 'where': {column: value or list}, 'group', 'order', 'labels', 'annotations', 'reference' (default the first group in the order), 'title', 'n_resamples'}``. Each entry gives three panels: the bins (parasites per vacuole, or size-proxy volume bins) stacked as mean ± SD of replicate (or well) fractions with a chi-square test, the same with the Fisher-Freeman-Halton exact test (Monte Carlo, Fisher exact test for 2 x 2), each with stars for every group against the reference (Holm), and a bar panel of the replicate mean of the per-vacuole value (mean parasites per vacuole, or mean vacuole area) with the test chosen as in :mod:`spacr.assay_panels`. Written to ``<src>/results/analyze_replication/panels/Pnn_<name>_.../`` with PDF, PNG, ``data_replicates.csv``, ``stats_test.csv``, ``contingency_table_counts.csv`` (stacked) or the assumption, post hoc and descriptive tables (bar).",
+      "label": "spacr.submodules.analyze_replication#17",
+      "source": "``panels`` — list of dicts ``{'name', 'where': {column: value or list}, 'group', 'order', 'labels', 'annotations', 'reference' (default the first group in the order), 'title', 'n_resamples'}``. Each entry gives three panels: the bins (parasites per vacuole, or size-proxy volume bins) stacked as mean ± SD of replicate (or well) fractions with a chi-square test, the same with the Fisher-Freeman-Halton exact test (Monte Carlo, Fisher exact test for 2 x 2), each with stars for every group against the reference (Holm), and a bar panel of the replicate mean of the per-vacuole value (mean parasites per vacuole, or mean vacuole area) with the test chosen as in :mod:`spacr.assay_panels`. Written to ``<src>/results/analyze_replication/panels/Pnn_<name>_.../`` with PDF, PNG, ``data_replicates.csv``, ``stats_test.csv``, ``contingency_table_counts.csv`` (stacked) or the assumption, post hoc and descriptive tables (bar).",
+      "source_sha256": "072a66ec245aca396b012f087eda9528c8f017c787d30b801f77baeb54b739a5",
+      "translation": "``panels`` — lista de dicts ``{'name', 'where': {column: value or list}, 'group', 'order', 'labels', 'annotations', 'reference' (default the first group in the order), 'title', 'n_resamples'}``. Cada entrada genera tres paneles: los intervalos (parásitos por vacuola, o intervalos de volumen del indicador indirecto de tamaño) apilados como media ± SD de las fracciones por réplica (o por pocillo) con una prueba de chi cuadrado, lo mismo con la prueba exacta de Fisher-Freeman-Halton (Monte Carlo, prueba exacta de Fisher para 2 x 2), cada uno con estrellas para cada grupo frente a la referencia (Holm), y un panel de barras de la media por réplica del valor por vacuola (media de parásitos por vacuola, o área media de las vacuolas) con la prueba elegida como en :mod:`spacr.assay_panels`. Se escriben en ``<src>/results/analyze_replication/panels/Pnn_<name>_.../`` con PDF, PNG, ``data_replicates.csv``, ``stats_test.csv``, ``contingency_table_counts.csv`` (apilados) o las tablas de supuestos, post hoc y descriptivas (barras)."
+    },
+    {
+      "context": "``replicate_column``, ``condition_order``, ``condition_labels`` and ``figures`` — as in :func:`analyze_recruitment`; figures go to ``.../analyze_replication/figures``.",
+      "label": "spacr.submodules.analyze_replication#18",
+      "source": "``replicate_column``, ``condition_order``, ``condition_labels`` and ``figures`` — as in :func:`analyze_recruitment`; figures go to ``.../analyze_replication/figures``.",
+      "source_sha256": "48ba51f688b46dafea7fba9d8c007194f347babce9f2a9ebcbd0f614385e40b1",
+      "translation": "``replicate_column``, ``condition_order``, ``condition_labels`` y ``figures`` — como en :func:`analyze_recruitment`; las figuras se guardan en ``.../analyze_replication/figures``."
+    },
+    {
+      "context": "``field_qc`` — count objects per microscope field of view from the parasite table (size proxy: the ``compartment`` table) and drop microscope fields of view above the per-laboratory microplate median + ``field_qc_mad`` MAD or below ``field_qc_min_objects``.",
+      "label": "spacr.submodules.analyze_replication#19",
+      "source": "``field_qc`` — count objects per field from the parasite table (size proxy: the ``compartment`` table) and drop fields above the per-plate median + ``field_qc_mad`` MAD or below ``field_qc_min_objects``.",
+      "source_sha256": "058b5d1e20ce4378cb7ef21f521968b7a418ff68dfeb413c7f9e04d86e773b26",
+      "translation": "``field_qc`` — cuenta los objetos por campo a partir de la tabla de parásitos (indicador indirecto de tamaño: la tabla ``compartment``) y descarta los campos por encima de la mediana por placa + ``field_qc_mad`` MAD o por debajo de ``field_qc_min_objects``."
+    },
+    {
+      "context": "``exclude_edge_objects`` — drop vacuoles cut by the field edge (direct count: any parasite whose ``distance_to_field_edge`` is below half its ``equivalent_diameter_area``).",
+      "label": "spacr.submodules.analyze_replication#20",
+      "source": "``exclude_edge_objects`` — drop vacuoles cut by the field edge (direct count: any parasite whose ``distance_to_field_edge`` is below half its ``equivalent_diameter_area``).",
+      "source_sha256": "755289b56dc66b424cb84f1719cc2ef056eef96d072d1553bb8b0c22269aa984",
+      "translation": "``exclude_edge_objects`` — descarta las vacuolas cortadas por el borde del campo (recuento directo: cualquier parásito cuya ``distance_to_field_edge`` esté por debajo de la mitad de su ``equivalent_diameter_area``)."
+    },
+    {
+      "context": "``max_area_quantile`` — drop vacuoles above this quantile of area (fused clumps).",
+      "label": "spacr.submodules.analyze_replication#21",
+      "source": "``max_area_quantile`` — drop vacuoles above this quantile of area (fused clumps).",
+      "source_sha256": "c23960432548ba839b488003c9b013127eaed2e16406e936868c0c6d15097c21",
+      "translation": "``max_area_quantile`` — descarta las vacuolas por encima de este cuantil de área (agregados fusionados)."
+    },
+    {
+      "context": "With any filter on, ``filter_summary.csv``, ``filter_kept_per_condition.csv`` and ``field_qc.csv`` are written to ``.../analyze_replication``.",
+      "label": "spacr.submodules.analyze_replication#22",
+      "source": "With any filter on, ``filter_summary.csv``, ``filter_kept_per_condition.csv`` and ``field_qc.csv`` are written to ``.../analyze_replication``.",
+      "source_sha256": "db97e1bf706d4ae6edcf4569abe9193179f74ba68ae209bb55a7caf9036e4a90",
+      "translation": "Con cualquier filtro activado, ``filter_summary.csv``, ``filter_kept_per_condition.csv`` y ``field_qc.csv`` se escriben en ``.../analyze_replication``."
+    },
+    {
+      "context": "The GUI path is unchanged; these settings are hidden in the form and set from the API or a settings file.",
+      "label": "spacr.submodules.analyze_replication#23",
+      "source": "The GUI path is unchanged; these settings are hidden in the form and set from the API or a settings file.",
+      "source_sha256": "fc131229acacc299d418c1b5eabcdf5be2fed51ba8865b479816cc3aaa0da0a1",
+      "translation": "La ruta de la GUI no cambia; estos ajustes están ocultos en el formulario y se fijan desde la API o desde un archivo de ajustes."
+    },
+    {
+      "context": "key-value mapping with ``vacuoles`` (per-vacuole counts), ``wells`` (per-microplate sample position distribution), ``summary`` (per-condition distribution), ``comparisons`` (pairwise ordered tests), ``chi_squared`` / ``chi_squared_pairwise`` (omnibus proportion tests), ``figures`` and ``vacuole_key`` (the grouping actually used).",
+      "label": "spacr.submodules.analyze_replication#24",
+      "source": "dict with ``vacuoles`` (per-vacuole counts), ``wells`` (per-well distribution), ``summary`` (per-condition distribution), ``comparisons`` (pairwise ordered tests), ``chi_squared`` / ``chi_squared_pairwise`` (omnibus proportion tests), ``figures`` and ``vacuole_key`` (the grouping actually used).",
+      "source_sha256": "c22bcb6d8564d47a1ee5084141e2bdd17da7894d2be65b4821ed59a5c6178720",
+      "translation": "dict con ``vacuoles`` (recuentos por vacuola), ``wells`` (distribución por pocillo), ``summary`` (distribución por condición), ``comparisons`` (pruebas ordenadas por pares), ``chi_squared`` / ``chi_squared_pairwise`` (pruebas ómnibus de proporciones), ``figures`` y ``vacuole_key`` (la agrupación realmente utilizada)."
+    },
+    {
+      "context": "when the parasite table holds no usable rows.",
+      "label": "spacr.submodules.analyze_replication#25",
+      "source": "when the parasite table holds no usable rows.",
+      "source_sha256": "40b015784caed538ed220a497f865a3a7e9a4be9c37d449cd9ee8506ff325d3c",
+      "translation": "cuando la tabla de parásitos no contiene filas utilizables."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.submodules.analyze_replication#26",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Ejemplo:"
+    },
+    {
+      "context": "See Also: :func:`analyze_endodyogeny` — the size-proxy version, for fused rosettes that cannot be resolved into single parasites.",
+      "label": "spacr.submodules.analyze_replication#27",
+      "source": "See Also: :func:`analyze_endodyogeny` — the size-proxy version, for fused rosettes that cannot be resolved into single parasites.",
+      "source_sha256": "5033317b59f56c4de4d95e37f2e3db6bf2ccf3af5ca61a56cea4e9e43114904a",
+      "translation": "Véase también: :func:`analyze_endodyogeny` — la versión basada en el tamaño como indicador indirecto, para rosetas fusionadas que no pueden separarse en parásitos individuales."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

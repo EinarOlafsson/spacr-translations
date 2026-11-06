@@ -16,6 +16,20 @@
       "translation": ":func:`spacr.submodules.analyze_recruitment` 와 :func:`spacr.submodules.analyze_replication` 에서 (``panels`` / ``figures`` 설정으로) 사용되며, 객체당 한 행인 어떤 표에도 사용할 수 있습니다."
     },
     {
+      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "label": "spacr.assay_panels#10",
+      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
+      "translation": "**정렬된 순서.** 모든 패널은 ``order`` (x축 순서)를 :func:`condition_order` 에서 받으므로 한 그림의 모든 패널에서 조건이 같은 위치에 놓이며, ``labels`` (원시 값 -> 표시 레이블, 레이블이 없으면 밑줄이 공백으로 바뀜)도 받습니다. ``annotations`` 는 x축 아래에 정렬된 텍스트 행을 그립니다. 예를 들어 각 조건에 무엇이 들어 있는지 보여 주는 +/- 표입니다."
+    },
+    {
+      "context": "Pure functions plus matplotlib; nothing here opens a window.",
+      "label": "spacr.assay_panels#11",
+      "source": "Pure functions plus matplotlib; nothing here opens a window.",
+      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
+      "translation": "순수 함수와 matplotlib 만 사용하며, 여기서는 어떤 창도 열지 않습니다."
+    },
+    {
       "context": "**Experimental unit.** Objects are averaged per microplate sample position (``plateID``, ``rowID``, ``columnID``), and microplate sample position means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of microplate sample positions or replicates.",
       "label": "spacr.assay_panels#2",
       "source": "**Experimental unit.** Objects are averaged per well (``plateID``, ``rowID``, ``columnID``), and well means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of wells or replicates.",
@@ -72,20 +86,6 @@
       "translation": "**디스크의 패널 구성** (:func:`save_panel`): 패널마다 폴더 하나이며, ``<out_dir>/<Pnn>_<name>/`` 에 ``<Pnn>_<name>.pdf`` 와 ``.png``, ``data_replicates.csv`` (그래프에 그린 단위 값), 막대 패널의 경우 ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` 및 ``stats_descriptive.csv``, 누적 패널의 경우 ``contingency_table_counts.csv`` 가 들어 있습니다."
     },
     {
-      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "label": "spacr.assay_panels#10",
-      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
-      "translation": "**정렬된 순서.** 모든 패널은 ``order`` (x축 순서)를 :func:`condition_order` 에서 받으므로 한 그림의 모든 패널에서 조건이 같은 위치에 놓이며, ``labels`` (원시 값 -> 표시 레이블, 레이블이 없으면 밑줄이 공백으로 바뀜)도 받습니다. ``annotations`` 는 x축 아래에 정렬된 텍스트 행을 그립니다. 예를 들어 각 조건에 무엇이 들어 있는지 보여 주는 +/- 표입니다."
-    },
-    {
-      "context": "Pure functions plus matplotlib; nothing here opens a window.",
-      "label": "spacr.assay_panels#11",
-      "source": "Pure functions plus matplotlib; nothing here opens a window.",
-      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
-      "translation": "순수 함수와 matplotlib 만 사용하며, 여기서는 어떤 창도 열지 않습니다."
-    },
-    {
       "context": "Average object values to the experimental unit.",
       "label": "spacr.assay_panels.aggregate_to_unit#0",
       "source": "Average object values to the experimental unit.",
@@ -100,22 +100,43 @@
       "translation": "객체 -> 웰 평균(``keys`` + ``well_keys`` 별) -> 웰 평균의 반복 평균(``keys`` + ``replicate_column`` 별)으로 계산하며, 이는 ``replicate_column`` 이 주어진 경우입니다. 그렇지 않으면 단위는 웰입니다."
     },
     {
-      "context": "column name or list of column names to average.",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.aggregate_to_unit#2",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "객체 수준 표로, 객체당 한 행입니다."
+    },
+    {
+      "context": "column name or list of column names to average.",
+      "label": "spacr.assay_panels.aggregate_to_unit#3",
       "source": "column name or list of column names to average.",
       "source_sha256": "2d9c41306338e2464952cc4703f8ddcffede7834488e7df3d83dc5594c7a77dc",
       "translation": "평균할 열 이름 또는 열 이름 목록입니다."
     },
     {
       "context": "grouping columns kept in the output (e.g. the panel group).",
-      "label": "spacr.assay_panels.aggregate_to_unit#3",
+      "label": "spacr.assay_panels.aggregate_to_unit#4",
       "source": "grouping columns kept in the output (e.g. the panel group).",
       "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
       "translation": "출력에 유지할 그룹화 열입니다(예: 패널 그룹)."
     },
     {
+      "context": "columns that identify one microplate sample position.",
+      "label": "spacr.assay_panels.aggregate_to_unit#5",
+      "source": "columns that identify one well.",
+      "source_sha256": "02f7d4fd2668972475cdfbae1348e75e702de591fb3b09b45434aea4aeeb6d8c",
+      "translation": "웰 하나를 식별하는 열입니다."
+    },
+    {
+      "context": "column naming the biological replicate; ``None`` makes the microplate sample position the unit.",
+      "label": "spacr.assay_panels.aggregate_to_unit#6",
+      "source": "column naming the biological replicate; ``None`` makes the well the unit.",
+      "source_sha256": "0f103dc542743173aaf500a28b1d3d1accb88f1fc00db936f0e6b828571b5be5",
+      "translation": "생물학적 반복을 지정하는 열입니다. ``None`` 이면 웰이 단위가 됩니다."
+    },
+    {
       "context": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
-      "label": "spacr.assay_panels.aggregate_to_unit#4",
+      "label": "spacr.assay_panels.aggregate_to_unit#7",
       "source": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
       "source_sha256": "13b9df840125e540669be793eb6a30cff9d85adab17a7b89d0a740e52220b04e",
       "translation": "단위당 한 행으로, ``keys``, 단위 열, 평균한 ``value`` 열, ``n_objects`` 및 (반복 단위인 경우) ``n_wells`` 를 가집니다."
@@ -156,8 +177,22 @@
       "translation": "확장자를 뺀 출력 경로입니다(확장자가 있으면 제거됨)."
     },
     {
-      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "context": "figure title, or ``None``.",
       "label": "spacr.assay_panels.assemble_figure#5",
+      "source": "figure title, or ``None``.",
+      "source_sha256": "e52d9b9071dd73b8a9a71120fd0e4c12890250d0d2ca91400980ed592e9dec7a",
+      "translation": "그림 제목 또는 ``None``."
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.assemble_figure#6",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "PNG 의 해상도입니다."
+    },
+    {
+      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "label": "spacr.assay_panels.assemble_figure#7",
       "source": "list of written file paths. Unknown ids raise ``KeyError``.",
       "source_sha256": "84d7b31fe6fb0307f4e33725106cc7430d2b9bff669582955b73dcd32fd802f1",
       "translation": "기록된 파일 경로 목록입니다. 알 수 없는 id 는 ``KeyError`` 를 발생시킵니다."
@@ -168,6 +203,97 @@
       "source": "Run the bar-panel test on unit data and return a panel spec for drawing/saving.",
       "source_sha256": "256678a0e319208a2e9d05133a03c2c2a0fad65d0e773a741be4456823865747",
       "translation": "단위 데이터에 막대 패널 검정을 실행하고 그리기/저장용 패널 사양을 반환합니다."
+    },
+    {
+      "context": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "label": "spacr.assay_panels.bar_spec#1",
+      "source": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "source_sha256": "9fde4c6949a6562bbcd54098d60f392cda90c7eaa01b10e5f82d7500ecd72df4",
+      "translation": ":func:`aggregate_to_unit` 에서 얻은, 실험 단위당 한 행인 표입니다."
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.bar_spec#10",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "점선 기준선의 y 값 또는 ``None``."
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "label": "spacr.assay_panels.bar_spec#11",
+      "source": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "source_sha256": "c57cafd1cef3814e6a9c41a8e474d9f455ae74848d9cd3ef5bc1b0737fbc23df",
+      "translation": "그룹 -> 색상, 또는 ``order`` 순서의 색상 목록입니다. ``None`` 이면 기본 색상을 사용합니다."
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.bar_spec#12",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "파일 이름 줄기 -> 표로, :func:`save_panel` 이 추가 CSV 로 기록합니다."
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "label": "spacr.assay_panels.bar_spec#13",
+      "source": "a dict spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "source_sha256": "90f667c0d6aaf77ba09eec74a714c9990e8412454a8b00c939056e9b7db65d5d",
+      "translation": "``kind`` 가 ``'bar'`` 이고 :func:`select_and_run_test` 결과를 ``stats`` 아래에 담은 사전 사양입니다."
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.bar_spec#2",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "막대로 그릴 숫자 열입니다."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.bar_spec#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "각 행의 그룹을 지정하는 열입니다."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.bar_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x축에 놓을 그룹으로, 순서대로입니다."
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.bar_spec#5",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "패널 제목입니다. 그 아래에 검정 결과가 추가됩니다."
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.bar_spec#6",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "y축 레이블입니다. ``None`` 이면 밑줄을 공백으로 바꾼 ``value`` 를 사용합니다."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.bar_spec#7",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "원시 그룹 값 -> x 눈금 레이블."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.bar_spec#8",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "행 이름 -> {group: text}, x축 아래에 정렬된 텍스트 행."
+    },
+    {
+      "context": "lower y limit; ``None`` chooses it from the data.",
+      "label": "spacr.assay_panels.bar_spec#9",
+      "source": "lower y limit; ``None`` chooses it from the data.",
+      "source_sha256": "25a59ab6b85959faf811b0a2acfa047f59ee45fee0f272c7fcf64a736e8a55a8",
+      "translation": "y축 하한입니다. ``None`` 이면 데이터에서 정합니다."
     },
     {
       "context": "Return one x-axis order for a set of condition values.",
@@ -184,11 +310,53 @@
       "translation": "``preferred`` 에 나열된 값이 주어진 순서대로 먼저 오고(``values`` 에 없는 항목은 건너뜀), 나머지 값은 자연 정렬 순서로 뒤따릅니다(``r2`` 가 ``r10`` 앞). 결측값은 제외됩니다. 모든 패널에 같은 ``preferred`` 목록을 쓰면 조건이 정렬된 상태로 유지됩니다."
     },
     {
+      "context": "condition values, for example a column; duplicates are kept once.",
+      "label": "spacr.assay_panels.condition_order#2",
+      "source": "condition values, for example a column; duplicates are kept once.",
+      "source_sha256": "a9a2e8331d9160e72ce6b64ac30c6423f3fdd46bfb1a219f9cb4f6278692ad70",
+      "translation": "조건 값으로, 예를 들어 열 하나입니다. 중복 값은 한 번만 유지됩니다."
+    },
+    {
+      "context": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "label": "spacr.assay_panels.condition_order#3",
+      "source": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "source_sha256": "0c2456db28ccfb563be511f267cff565e3022e6faa33e5b4cb27ef45621ecc58",
+      "translation": "먼저 놓을 값으로, 이 순서대로입니다. 주어진 그대로 또는 텍스트로 일치시킵니다. ``None`` 이면 모든 값을 자연 정렬합니다."
+    },
+    {
+      "context": "the ordered list of distinct values.",
+      "label": "spacr.assay_panels.condition_order#4",
+      "source": "the ordered list of distinct values.",
+      "source_sha256": "800807ef7e677990c3f2a9ceeb3c9a7ff71d38d7ad34e38fbc0cdda0337683d0",
+      "translation": "서로 다른 값의 정렬된 목록입니다."
+    },
+    {
       "context": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "label": "spacr.assay_panels.display_label#0",
       "source": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "source_sha256": "8e5f525525e73bf9dc447318704e2e52b602b19fd9c315694498b37a3c75495a",
       "translation": "원시 값의 표시 텍스트: ``labels[value]`` 또는 밑줄을 공백으로 바꾼 값입니다."
+    },
+    {
+      "context": "the raw condition value.",
+      "label": "spacr.assay_panels.display_label#1",
+      "source": "the raw condition value.",
+      "source_sha256": "d6f04527e115469bf834370819f81abf8641511202f897d44d8d8cc6284532d0",
+      "translation": "원시 조건 값입니다."
+    },
+    {
+      "context": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "label": "spacr.assay_panels.display_label#2",
+      "source": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "source_sha256": "4ad3f4cb3b03ce12e30a5a548735760e6be58f5c6955512417a37057be408d06",
+      "translation": "원시 값 -> 표시 레이블입니다. 값은 주어진 그대로 찾은 다음 텍스트로 찾습니다. ``None`` 이면 레이블을 사용하지 않습니다."
+    },
+    {
+      "context": "the text to show.",
+      "label": "spacr.assay_panels.display_label#3",
+      "source": "the text to show.",
+      "source_sha256": "55fa210577df062514cfe2d5055b4686256a6d52bc120a6f56d22c13a58377f2",
+      "translation": "표시할 텍스트입니다."
     },
     {
       "context": "Bar of the mean of unit values, SD error bar, one dot per unit, post hoc brackets.",
@@ -198,25 +366,123 @@
       "translation": "단위 값 평균의 막대, SD 오차 막대, 단위당 점 하나, 사후 검정 괄호."
     },
     {
-      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_bar_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "그림을 그릴 matplotlib 축입니다."
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.draw_bar_panel#10",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "y축 레이블입니다. ``None`` 이면 밑줄을 공백으로 바꾼 ``value`` 를 사용합니다."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_bar_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "원시 그룹 값 -> x 눈금 레이블."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_bar_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "행 이름 -> {group: text}, x축 아래에 정렬된 텍스트 행."
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.draw_bar_panel#13",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "점선 기준선의 y 값 또는 ``None``."
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``.",
+      "label": "spacr.assay_panels.draw_bar_panel#14",
+      "source": "group -> colour, or a list of colours in ``order``.",
+      "source_sha256": "ec7e98e3a4fed663981d46580b89562d033f96591bc0546a025f74fd7708fd1c",
+      "translation": "그룹 -> 색상, 또는 ``order`` 순서의 색상 목록입니다."
+    },
+    {
+      "context": "most post hoc brackets drawn.",
+      "label": "spacr.assay_panels.draw_bar_panel#15",
+      "source": "most post hoc brackets drawn.",
+      "source_sha256": "00441f5914e4a068ff83d73e1daf66a13adac3df8fb14d3096139a1b81afb031",
+      "translation": "그릴 사후 검정 괄호의 최대 개수입니다."
+    },
+    {
+      "context": "random seed of the horizontal jitter of the dots.",
+      "label": "spacr.assay_panels.draw_bar_panel#16",
+      "source": "random seed of the horizontal jitter of the dots.",
+      "source_sha256": "48a27673929bbb431da5cbde183e62d75b77eecd3b289f943eef4ef2e998fd45",
+      "translation": "점의 수평 지터에 쓰는 난수 시드입니다."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_bar_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "one row per experimental unit.",
+      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "source": "one row per experimental unit.",
+      "source_sha256": "cb0b4f13cc49ec1c7443584406cc5b0f2a871c10dd72ee2f0beec77e576c6b21",
+      "translation": "실험 단위당 한 행인 표입니다."
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "막대로 그릴 숫자 열입니다."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_bar_panel#4",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "각 행의 그룹을 지정하는 열입니다."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_bar_panel#5",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x축에 놓을 그룹으로, 순서대로입니다."
+    },
+    {
+      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "label": "spacr.assay_panels.draw_bar_panel#6",
       "source": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
       "source_sha256": "8b2728e8749d8c90fa59782ef2c8e6f0b04b14c83fddbc91540c394fd293fb4e",
       "translation": ":func:`select_and_run_test` 의 출력입니다. 총괄 검정은 제목에 들어가고 사후 검정 결과는 괄호가 됩니다."
     },
     {
       "context": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
-      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "label": "spacr.assay_panels.draw_bar_panel#7",
       "source": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
       "source_sha256": "c957cbce786eac0d2ce5c1b3ee2a29a1c3b62472788e0197d6782f462813d0f8",
       "translation": "``'significant'`` (기본값), ``'all'`` 또는 ``'none'``. 해당하는 쌍이 ``max_brackets`` 개보다 많으면 괄호를 생략합니다(모든 쌍은 ``stats_posthoc.csv`` 에 남습니다)."
     },
     {
       "context": "lower y limit (``None``: 0, or the data minimum if negative).",
-      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "label": "spacr.assay_panels.draw_bar_panel#8",
       "source": "lower y limit (``None``: 0, or the data minimum if negative).",
       "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
       "translation": "y축 하한입니다(``None``: 0, 데이터 최솟값이 음수이면 그 최솟값)."
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.draw_bar_panel#9",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "패널 제목입니다. 그 아래에 검정 결과가 추가됩니다."
     },
     {
       "context": "Draw a spec made by :func:`bar_spec` or :func:`stacked_spec` on ``ax``.",
@@ -226,6 +492,34 @@
       "translation": ":func:`bar_spec` 또는 :func:`stacked_spec` 으로 만든 사양을 ``ax`` 에 그립니다."
     },
     {
+      "context": "matplotlib axes to draw on.",
+      "label": "spacr.assay_panels.draw_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "그림을 그릴 matplotlib 축입니다."
+    },
+    {
+      "context": "the panel spec.",
+      "label": "spacr.assay_panels.draw_panel#2",
+      "source": "the panel spec.",
+      "source_sha256": "99b4881f9738a90e2724a6aeb1ea35380a388cf655998083d29d5324a9f851b9",
+      "translation": "패널 사양입니다."
+    },
+    {
+      "context": "draw the bin legend of a stacked panel.",
+      "label": "spacr.assay_panels.draw_panel#3",
+      "source": "draw the bin legend of a stacked panel.",
+      "source_sha256": "d44fc81a9eb0cfdf097ff4c6b49dcd788fec5f7a78ff738365e050dfc58c1890",
+      "translation": "누적 패널의 구간 범례를 그립니다."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_panel#4",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
       "context": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
       "label": "spacr.assay_panels.draw_stacked_panel#0",
       "source": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
@@ -233,11 +527,123 @@
       "translation": "단위에 걸친 누적 평균 비율, 각 구간 위쪽의 SD 막대, 기준 대비 별표."
     },
     {
-      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_stacked_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "그림을 그릴 matplotlib 축입니다."
+    },
+    {
+      "context": "panel title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#10",
+      "source": "panel title.",
+      "source_sha256": "93b004d63c10c4f91f8ae47da207447543857ea5e6449d45a45b943e13c36e9c",
+      "translation": "패널 제목입니다."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "원시 그룹 값 -> x 눈금 레이블."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "행 이름 -> {group: text}, x축 아래에 정렬된 텍스트 행."
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#13",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "구간마다 색상 하나입니다. ``None`` 이면 viridis 를 사용합니다."
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#14",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "y축 레이블입니다."
+    },
+    {
+      "context": "draw the bin legend beside the axes.",
+      "label": "spacr.assay_panels.draw_stacked_panel#15",
+      "source": "draw the bin legend beside the axes.",
+      "source_sha256": "7122879a147c22fac67a69ceea69f8cb2d3bdd3473dff379a4dadf1b0e70d8ca",
+      "translation": "축 옆에 구간 범례를 그립니다."
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.draw_stacked_panel#16",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "구간 범례의 제목입니다."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_stacked_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "label": "spacr.assay_panels.draw_stacked_panel#2",
       "source": "output of :func:`fractions_per_unit` (one row per unit).",
       "source_sha256": "5336969cd9df8912305b838e3fb81382d15a9bab98562f6782d53a447bc1b1ea",
       "translation": ":func:`fractions_per_unit` 의 출력입니다(단위당 한 행)."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_stacked_panel#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "각 행의 그룹을 지정하는 열입니다."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x축에 놓을 그룹으로, 순서대로입니다."
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "아래부터 쌓을 구간으로, 순서대로입니다."
+    },
+    {
+      "context": "legend text per bin; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.draw_stacked_panel#6",
+      "source": "legend text per bin; ``None`` uses the bins.",
+      "source_sha256": "4da4f39b3052b4cf5e4eefcd5065e0af2989fad60d261ee45eff0e5b98c12f39",
+      "translation": "구간별 범례 텍스트입니다. ``None`` 이면 구간을 그대로 사용합니다."
+    },
+    {
+      "context": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#7",
+      "source": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "source_sha256": "500c222927b3a6735a510eeba1fe23982cdf59aae7e0ec958345ba36dffdf28e",
+      "translation": ":func:`proportion_tests` 의 총괄 검정 결과로, 제목에 표시됩니다."
+    },
+    {
+      "context": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "label": "spacr.assay_panels.draw_stacked_panel#8",
+      "source": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "source_sha256": "5ff64c21141aa064432465d2db194df9687a1e9835cc238fb3300d0b3f69bf05",
+      "translation": ":func:`proportion_tests` 의 쌍별 결과로, 별표로 그려집니다."
+    },
+    {
+      "context": "test name shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#9",
+      "source": "test name shown in the title.",
+      "source_sha256": "2d00ce957bf2cbbab578a2ae93eab81ea8de2bfc85579f05c438a13a78be24b7",
+      "translation": "제목에 표시할 검정 이름입니다."
     },
     {
       "context": "Format a p value for a panel title.",
@@ -247,6 +653,20 @@
       "translation": "패널 제목용으로 p 값의 형식을 지정합니다."
     },
     {
+      "context": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "label": "spacr.assay_panels.fmt_p#1",
+      "source": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "source_sha256": "e0989997ca1c3749c9365bcf71777e7eb940ff9fa5eb4606a14269c2229e313f",
+      "translation": "p 값입니다. 유한한 숫자가 아니면 ``'p = n/a'`` 가 됩니다."
+    },
+    {
+      "context": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "label": "spacr.assay_panels.fmt_p#2",
+      "source": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "source_sha256": "2408c5352b45d7aaacbe2fcd51c4d6d1f6f5fbccb1cbeb4062a8937229ba149a",
+      "translation": "``'p < 1e-4'`` 또는 ``'p = '`` 뒤에 유효숫자 세 자리."
+    },
+    {
       "context": "Fraction of objects in each bin per unit (replicate if given, else well).",
       "label": "spacr.assay_panels.fractions_per_unit#0",
       "source": "Fraction of objects in each bin per unit (replicate if given, else well).",
@@ -254,8 +674,50 @@
       "translation": "단위별(반복이 주어지면 반복, 아니면 웰) 각 구간에 속한 객체의 비율입니다."
     },
     {
-      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.fractions_per_unit#1",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "객체 수준 표로, 객체당 한 행입니다."
+    },
+    {
+      "context": "column holding the bin of each object.",
+      "label": "spacr.assay_panels.fractions_per_unit#2",
+      "source": "column holding the bin of each object.",
+      "source_sha256": "bfee67c88e7fda81a86846fe739b9a6ba9eb8f7137c50cc034f110715c01e95b",
+      "translation": "각 객체의 구간을 담은 열입니다."
+    },
+    {
+      "context": "bins to report, in legend order; bins without objects get 0.",
+      "label": "spacr.assay_panels.fractions_per_unit#3",
+      "source": "bins to report, in legend order; bins without objects get 0.",
+      "source_sha256": "18accd9e10b1e8d148cf1193bf1f5a48247aed2877897b049bd11fbbaeacee0f",
+      "translation": "보고할 구간으로, 범례 순서대로입니다. 객체가 없는 구간은 0 이 됩니다."
+    },
+    {
+      "context": "grouping columns kept in the output (e.g. the panel group).",
+      "label": "spacr.assay_panels.fractions_per_unit#4",
+      "source": "grouping columns kept in the output (e.g. the panel group).",
+      "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
+      "translation": "출력에 유지할 그룹화 열입니다(예: 패널 그룹)."
+    },
+    {
+      "context": "columns that identify one microplate sample position; the unit when ``replicate_column`` is ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#5",
+      "source": "columns that identify one well; the unit when ``replicate_column`` is ``None``.",
+      "source_sha256": "4f7db7a2bbded01bb911bf03f0d8352844e1ea658077b8658c50d88627fd93d4",
+      "translation": "웰 하나를 식별하는 열입니다. ``replicate_column`` 이 ``None`` 이면 단위가 됩니다."
+    },
+    {
+      "context": "column naming the biological replicate, or ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#6",
+      "source": "column naming the biological replicate, or ``None``.",
+      "source_sha256": "4760bc603c2222e22c5e77f05e3ce017a604f35a0949f444649c5dfeff54542c",
+      "translation": "생물학적 반복을 지정하는 열 또는 ``None``."
+    },
+    {
+      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "label": "spacr.assay_panels.fractions_per_unit#7",
       "source": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
       "source_sha256": "755985503950bb419344cc565d20dc617d5358595078b1efa173f057a898b95d",
       "translation": "단위당 한 행으로, ``keys``, 단위 열, ``n_objects`` 및 구간마다 한 열(합이 1인 비율)을 가집니다."
@@ -266,6 +728,27 @@
       "source": "Folder / file stem of a panel, ``<panel_id>_<name>`` with unsafe characters replaced.",
       "source_sha256": "37e0551fbf03c8715a78eef22091712dba466f09418b3a368155d12c66b4efe0",
       "translation": "패널의 폴더 / 파일 이름 줄기로, 안전하지 않은 문자를 바꾼 ``<panel_id>_<name>`` 입니다."
+    },
+    {
+      "context": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "label": "spacr.assay_panels.panel_folder_name#1",
+      "source": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "source_sha256": "1684f93cae44fb849fe1c7c77bedf7350f008fb035cbbb1c4bb22b52cedfc6b1",
+      "translation": "패널 id 로, 예를 들어 ``'P01'`` 또는 ``'C03'`` 입니다."
+    },
+    {
+      "context": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "label": "spacr.assay_panels.panel_folder_name#2",
+      "source": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "source_sha256": "65ba8779254b1ea713fa3ed680867c4c4362b309859639ccf9fae084ed601805",
+      "translation": "패널 이름입니다. 문자, 숫자, ``._+-`` 이외의 문자가 연속되면 밑줄 하나로 바뀝니다."
+    },
+    {
+      "context": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "label": "spacr.assay_panels.panel_folder_name#3",
+      "source": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "source_sha256": "99d0d8cd234f42772e72f1def21073069b5fd09bc82f46fec8e862b20e251559",
+      "translation": "파일 이름 줄기, 또는 ``panel_id`` 단독(``name`` 에서 남는 것이 없을 때)입니다."
     },
     {
       "context": "Compare bin proportions between groups.",
@@ -303,8 +786,22 @@
       "translation": "``'chi2'`` (카이제곱 독립성 검정) 또는 ``'fisher'`` (``n_resamples`` 개의 표와 ``seed`` 를 사용한 Monte Carlo 방식의 Fisher-Freeman-Halton 정확 검정, 2 x 2 에는 Fisher 정확 검정)."
     },
     {
-      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "context": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
       "label": "spacr.assay_panels.proportion_tests#5",
+      "source": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
+      "source_sha256": "80d1ca0a7a80234f569ff724f1d569cdbcc4f4db73b606a0ac5f1584b7ef631f",
+      "translation": "Fisher-Freeman-Halton 검정을 위해 생성하는 Monte Carlo 표의 수입니다."
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.proportion_tests#6",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "Monte Carlo 표의 난수 시드입니다."
+    },
+    {
+      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "label": "spacr.assay_panels.proportion_tests#7",
       "source": "``(omnibus, pairwise)`` - a dict for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
       "source_sha256": "7b5fd20ea94d63dd99016e156fb78a43d4f334b39d5e824e1fbf8303e96b52e6",
       "translation": "``(omnibus, pairwise)`` - ``order`` 의 모든 그룹에 대한 검정 결과 사전(test, statistic, dof, p_value, cramers_v, n, significance)과, 기준 대비 그룹당 한 행으로 Holm 보정된 ``p_holm`` 및 ``significance`` 를 담은 DataFrame 입니다."
@@ -317,8 +814,43 @@
       "translation": "패널 폴더 하나를 기록합니다: 그래프(PDF + PNG), 그래프에 그린 데이터 및 통계 CSV."
     },
     {
-      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "context": "folder that receives the panel folder.",
       "label": "spacr.assay_panels.save_panel#1",
+      "source": "folder that receives the panel folder.",
+      "source_sha256": "c3e9798e0bd4e009d52a920a321fbd276e4c155adcc0a8e76503a8f2dbe7dba9",
+      "translation": "패널 폴더가 들어갈 폴더입니다."
+    },
+    {
+      "context": "panel id, for example ``'P01'``.",
+      "label": "spacr.assay_panels.save_panel#2",
+      "source": "panel id, for example ``'P01'``.",
+      "source_sha256": "1d07211a076306936e51476b7000a7e07b1e3ef6c3feb70a5f6487aa609821cf",
+      "translation": "패널 id 로, 예를 들어 ``'P01'`` 입니다."
+    },
+    {
+      "context": "panel name, made safe by :func:`panel_folder_name`.",
+      "label": "spacr.assay_panels.save_panel#3",
+      "source": "panel name, made safe by :func:`panel_folder_name`.",
+      "source_sha256": "1cff0e06aeda07f2529d189d0a046b8cf91b039049b3d2b53749974a1a5fa13e",
+      "translation": "패널 이름으로, :func:`panel_folder_name` 으로 안전하게 만듭니다."
+    },
+    {
+      "context": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "label": "spacr.assay_panels.save_panel#4",
+      "source": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "source_sha256": "dd613bdc86e5f38e32fa5298105901288e55a3a2a3cf8775ca2a7ee1d2f888fd",
+      "translation": ":func:`bar_spec` 또는 :func:`stacked_spec` 에서 얻은 패널 사양입니다. 그 ``folder`` 키는 기록된 폴더로 설정됩니다."
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.save_panel#5",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "PNG 의 해상도입니다."
+    },
+    {
+      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "label": "spacr.assay_panels.save_panel#6",
       "source": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
       "source_sha256": "9677f7ed93e5edc2d2e88da61bdd36ea59136244145378065ea402d32a8ae4e3",
       "translation": "패널 폴더 경로 ``<out_dir>/<panel_id>_<name>`` 입니다."
@@ -359,8 +891,15 @@
       "translation": "비교할 그룹으로, 그래프 순서대로입니다. 데이터가 없는 그룹은 ``n = 0`` 으로 보고되고 검정에서 제외됩니다."
     },
     {
-      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "context": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
       "label": "spacr.assay_panels.select_and_run_test#5",
+      "source": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
+      "source_sha256": "b63590067f5d4475ecf78642ca08f6f81f8d47b4c01f802f4ee921074e17e860",
+      "translation": "검정을 선택하는 Shapiro-Wilk 및 Levene 검사의 유의 수준입니다."
+    },
+    {
+      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "label": "spacr.assay_panels.select_and_run_test#6",
       "source": "dict of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
       "source_sha256": "dcf12644739848ac140bb28cd77bb4c39102e60e04e0083c4486305c53a80b96",
       "translation": "DataFrames 사전 - ``test`` (한 행: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (그룹별 Shapiro-Wilk 및 Levene), ``posthoc`` (모든 쌍: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) 및 ``descriptive`` (``order`` 의 그룹별 n, mean, std, median, sem)."
@@ -373,11 +912,151 @@
       "translation": "비율 검정을 실행하고 그리기/저장용 누적 패널 사양을 반환합니다."
     },
     {
+      "context": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "label": "spacr.assay_panels.stacked_spec#1",
+      "source": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "source_sha256": "20335ccded632caa87e53426fff9a678c96e2bd857804d0db5f1ecbad56e7158",
+      "translation": ":func:`fractions_per_unit` 에서 얻은, 단위당 한 행과 구간당 한 열인 표입니다."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.stacked_spec#10",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "원시 그룹 값 -> x 눈금 레이블."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.stacked_spec#11",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "행 이름 -> {group: text}, x축 아래에 정렬된 텍스트 행."
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.stacked_spec#12",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "구간 범례의 제목입니다."
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.stacked_spec#13",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "y축 레이블입니다."
+    },
+    {
+      "context": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "label": "spacr.assay_panels.stacked_spec#14",
+      "source": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "source_sha256": "b489453be05704135eb729925627c19bce0ee79202f22def1da308aa916682c1",
+      "translation": "Fisher-Freeman-Halton 검정용 Monte Carlo 표의 수입니다."
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.stacked_spec#15",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "Monte Carlo 표의 난수 시드입니다."
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.stacked_spec#16",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "구간마다 색상 하나입니다. ``None`` 이면 viridis 를 사용합니다."
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.stacked_spec#17",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "파일 이름 줄기 -> 표로, :func:`save_panel` 이 추가 CSV 로 기록합니다."
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "label": "spacr.assay_panels.stacked_spec#18",
+      "source": "a dict spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "source_sha256": "d0e47b6291343c9da7369e51d441354d25ca690121757208ffc98bf4802ac49d",
+      "translation": "``kind`` 가 ``'stacked'`` 이고 ``omnibus`` 및 ``pairwise`` 결과와 재색인된 ``counts`` 를 담은 사전 사양입니다."
+    },
+    {
+      "context": "object counts, one row per group and one column per bin.",
+      "label": "spacr.assay_panels.stacked_spec#2",
+      "source": "object counts, one row per group and one column per bin.",
+      "source_sha256": "d33e8e15b0ea6b69e1b021de3f3df64a51742db0f5de262f8a3b33e94dd4e161",
+      "translation": "객체 수로, 그룹당 한 행과 구간당 한 열을 가집니다."
+    },
+    {
+      "context": "column naming the group of each row of ``fractions``.",
+      "label": "spacr.assay_panels.stacked_spec#3",
+      "source": "column naming the group of each row of ``fractions``.",
+      "source_sha256": "0522ac1aa3342bc8470df21818861baf58fa33958bc819834f3e02f1d36c1f75",
+      "translation": "``fractions`` 의 각 행의 그룹을 지정하는 열입니다."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.stacked_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x축에 놓을 그룹으로, 순서대로입니다."
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.stacked_spec#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "아래부터 쌓을 구간으로, 순서대로입니다."
+    },
+    {
+      "context": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.stacked_spec#6",
+      "source": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "source_sha256": "3303c3c4288c49da37b44b93dc0b365200e6ad7982d42534719acbfcdb3dbbf4",
+      "translation": "구간별 범례 텍스트로, ``bins`` 순서대로입니다. ``None`` 이면 구간을 그대로 사용합니다."
+    },
+    {
+      "context": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "label": "spacr.assay_panels.stacked_spec#7",
+      "source": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "source_sha256": "3d355f3aa795a0445975afcb85838583b4ce07629c593f1ccbcd0fc7fb607bba",
+      "translation": "``'chi2'`` 또는 ``'fisher'`` 로, :func:`proportion_tests` 와 같습니다."
+    },
+    {
+      "context": "group every other group is compared with; default ``order[0]``.",
+      "label": "spacr.assay_panels.stacked_spec#8",
+      "source": "group every other group is compared with; default ``order[0]``.",
+      "source_sha256": "0e5b7e81dcb7d66e6ff3e28a292fab6ef5fb5dac2b1fb617d788b6885ab41098",
+      "translation": "다른 모든 그룹과 비교할 기준 그룹입니다. 기본값 ``order[0]``."
+    },
+    {
+      "context": "panel title; the omnibus result is added below it.",
+      "label": "spacr.assay_panels.stacked_spec#9",
+      "source": "panel title; the omnibus result is added below it.",
+      "source_sha256": "d5eec6eb296ddb3eb96a0819c927d9c5d16222cef9510bacea15dda4bfe0ea7d",
+      "translation": "패널 제목입니다. 그 아래에 총괄 검정 결과가 추가됩니다."
+    },
+    {
       "context": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "label": "spacr.assay_panels.stars#0",
       "source": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "source_sha256": "b1c3e166ae1c78c0bd902bb90565576eef781b5e2fd04669d8e497f00aeaae13",
       "translation": "p 값에 대한 유의성 별표입니다(0.05 이상이면 'ns', 없으면 'n/a')."
+    },
+    {
+      "context": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "label": "spacr.assay_panels.stars#1",
+      "source": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "source_sha256": "99fe3c22de428ba3647f229b6a6db98dbbc7d960e533624aab0f0fd5c00f7a6a",
+      "translation": "p 값입니다. 유한한 숫자가 아니면 ``'n/a'`` 가 됩니다."
+    },
+    {
+      "context": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "label": "spacr.assay_panels.stars#2",
+      "source": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "source_sha256": "ef6b5f051d54f453332ae27f21bc33c4c747f0336a6e3f6708f0e74840b44ce5",
+      "translation": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) 또는 ``'ns'``."
     },
     {
       "context": "Attach the :func:`well_density` columns to object rows (a new frame).",
@@ -394,6 +1073,27 @@
       "translation": ":func:`apply_field_qc` 와 마찬가지로 플레이트 id 는 양쪽 모두 URL 디코딩됩니다. ``wells`` 에 없는 웰의 행은 ``NaN`` 값을 받습니다."
     },
     {
+      "context": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "label": "spacr.recruitment_confounders.apply_well_density#2",
+      "source": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "source_sha256": "12e6a462197f6f0ccccad8dd852c0809e8b165b4be3efbefd1196820b207391a",
+      "translation": ":data:`WELL_KEYS` 열을 가진 객체 수준 프레임입니다."
+    },
+    {
+      "context": "output of :func:`well_density`.",
+      "label": "spacr.recruitment_confounders.apply_well_density#3",
+      "source": "output of :func:`well_density`.",
+      "source_sha256": "ad2d19bc11a18bb43dc936f37894a552f42b042bdfa4e434c127726015b4314a",
+      "translation": ":func:`well_density` 의 출력입니다."
+    },
+    {
+      "context": "a copy of ``df`` with the microplate sample position columns added.",
+      "label": "spacr.recruitment_confounders.apply_well_density#4",
+      "source": "a copy of ``df`` with the well columns added.",
+      "source_sha256": "d6c9885aabe176696e4c5bcd515f0931be490f6a4187439eaf8e23a0a136289e",
+      "translation": "웰 열이 추가된 ``df`` 의 복사본입니다."
+    },
+    {
       "context": "Count host cells and parasites in every microplate sample position of a laboratory microplate.",
       "label": "spacr.recruitment_confounders.well_density#0",
       "source": "Count host cells and parasites in every well of a plate.",
@@ -408,8 +1108,29 @@
       "translation": ":func:`field_density` 의 웰 수준 버전으로, 각 웰의 시야에 걸쳐 합산합니다."
     },
     {
-      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "context": "path to a spacr ``measurements.db``.",
       "label": "spacr.recruitment_confounders.well_density#2",
+      "source": "path to a spacr ``measurements.db``.",
+      "source_sha256": "87e15f4befab3513047b13ad39682c0a6bdeabb000ce1d9174fbd2712f8eec22",
+      "translation": "spacr ``measurements.db`` 의 경로입니다."
+    },
+    {
+      "context": "table holding one row per host cell.",
+      "label": "spacr.recruitment_confounders.well_density#3",
+      "source": "table holding one row per host cell.",
+      "source_sha256": "892c0cea4065416282cccd1105814640429bba62f711c7af81726a1a89840f0e",
+      "translation": "숙주 세포당 한 행을 담은 표입니다."
+    },
+    {
+      "context": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "label": "spacr.recruitment_confounders.well_density#4",
+      "source": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "source_sha256": "703597f92013dbc9142fc73fbbd57c94a522d4eded565582117738e29fe9867f",
+      "translation": "기생충 / 액포당 한 행을 담은 표, 또는 ``None`` (``cell_table`` 만 셈)."
+    },
+    {
+      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "label": "spacr.recruitment_confounders.well_density#5",
       "source": "one row per well (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
       "source_sha256": "e87475cdc9d26f0ca0ede6fb17c7732b87ec9770d6a7f1be189f7d4921a86509",
       "translation": "웰당 한 행(:data:`WELL_KEYS`)으로, ``n_cells_well``, ``n_pathogens_well`` (``pathogen_table`` 이 있는 경우), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` 및 ``n_fields_well`` 열을 가집니다."
@@ -434,20 +1155,6 @@
       "source": "Example:",
       "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
       "translation": "예시:"
-    },
-    {
-      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#7",
-      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
-      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
-    },
-    {
-      "context": "``treatments`` / ``treatment_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#8",
-      "source": "``treatments`` / ``treatment_plate_metadata``.",
-      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
-      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``*_intensity_range``, ``target_intensity_min``.",
@@ -560,6 +1267,20 @@
       "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
       "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
       "translation": "또한 참조: :func:`analyze_plaques` — 플래크 개수/크기 분석. :func:`spacr.ml.generate_ml_scores` — 리크루트먼트 비율의 대안인 특징 기반 분류 모델."
+    },
+    {
+      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#7",
+      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
+      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
+    },
+    {
+      "context": "``treatments`` / ``treatment_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#8",
+      "source": "``treatments`` / ``treatment_plate_metadata``.",
+      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
+      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``cell_types`` / ``pathogen_types`` / ``treatments`` and their ``*_plate_metadata`` well maps, plus ``group_column`` and ``level``.",

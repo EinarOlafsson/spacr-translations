@@ -16,6 +16,20 @@
       "translation": "由 :func:`spacr.submodules.analyze_recruitment` 和 :func:`spacr.submodules.analyze_replication` 使用（``panels`` / ``figures`` 设置），也可用于任何每个对象一行的表。"
     },
     {
+      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "label": "spacr.assay_panels#10",
+      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
+      "translation": "**对齐的顺序。** 每个面板都获取 ``order``（x 轴顺序，来自 :func:`condition_order`），因此同一条件在组图的每个面板中都处于相同位置；还会获取 ``labels``（原始值 -> 显示标签；未给出标签时下划线变为空格）。``annotations`` 在 x 轴下方绘制对齐的文本行，例如表示每个条件包含哪些成分的 +/- 表。"
+    },
+    {
+      "context": "Pure functions plus matplotlib; nothing here opens a window.",
+      "label": "spacr.assay_panels#11",
+      "source": "Pure functions plus matplotlib; nothing here opens a window.",
+      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
+      "translation": "纯函数加 matplotlib；这里不会打开任何窗口。"
+    },
+    {
       "context": "**Experimental unit.** Objects are averaged per microplate sample position (``plateID``, ``rowID``, ``columnID``), and microplate sample position means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of microplate sample positions or replicates.",
       "label": "spacr.assay_panels#2",
       "source": "**Experimental unit.** Objects are averaged per well (``plateID``, ``rowID``, ``columnID``), and well means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of wells or replicates.",
@@ -72,20 +86,6 @@
       "translation": "**面板在磁盘上的布局**（:func:`save_panel`）：每个面板一个文件夹 ``<out_dir>/<Pnn>_<name>/``，其中包含 ``<Pnn>_<name>.pdf`` 和 ``.png``、``data_replicates.csv``（绘制的单位值），柱状图面板还包含 ``stats_test.csv``、``stats_assumptions.csv``、``stats_posthoc.csv`` 和 ``stats_descriptive.csv``，堆叠面板则包含 ``contingency_table_counts.csv``。"
     },
     {
-      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "label": "spacr.assay_panels#10",
-      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
-      "translation": "**对齐的顺序。** 每个面板都获取 ``order``（x 轴顺序，来自 :func:`condition_order`），因此同一条件在组图的每个面板中都处于相同位置；还会获取 ``labels``（原始值 -> 显示标签；未给出标签时下划线变为空格）。``annotations`` 在 x 轴下方绘制对齐的文本行，例如表示每个条件包含哪些成分的 +/- 表。"
-    },
-    {
-      "context": "Pure functions plus matplotlib; nothing here opens a window.",
-      "label": "spacr.assay_panels#11",
-      "source": "Pure functions plus matplotlib; nothing here opens a window.",
-      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
-      "translation": "纯函数加 matplotlib；这里不会打开任何窗口。"
-    },
-    {
       "context": "Average object values to the experimental unit.",
       "label": "spacr.assay_panels.aggregate_to_unit#0",
       "source": "Average object values to the experimental unit.",
@@ -100,22 +100,43 @@
       "translation": "对象 -> 孔均值（按 ``keys`` + ``well_keys``）-> 孔均值的重复均值（按 ``keys`` + ``replicate_column``），后一步仅在给定 ``replicate_column`` 时进行；否则单位为孔。"
     },
     {
-      "context": "column name or list of column names to average.",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.aggregate_to_unit#2",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "对象级表，每个对象一行。"
+    },
+    {
+      "context": "column name or list of column names to average.",
+      "label": "spacr.assay_panels.aggregate_to_unit#3",
       "source": "column name or list of column names to average.",
       "source_sha256": "2d9c41306338e2464952cc4703f8ddcffede7834488e7df3d83dc5594c7a77dc",
       "translation": "要取平均的列名或列名列表。"
     },
     {
       "context": "grouping columns kept in the output (e.g. the panel group).",
-      "label": "spacr.assay_panels.aggregate_to_unit#3",
+      "label": "spacr.assay_panels.aggregate_to_unit#4",
       "source": "grouping columns kept in the output (e.g. the panel group).",
       "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
       "translation": "在输出中保留的分组列（例如面板的分组）。"
     },
     {
+      "context": "columns that identify one microplate sample position.",
+      "label": "spacr.assay_panels.aggregate_to_unit#5",
+      "source": "columns that identify one well.",
+      "source_sha256": "02f7d4fd2668972475cdfbae1348e75e702de591fb3b09b45434aea4aeeb6d8c",
+      "translation": "标识单个孔的列。"
+    },
+    {
+      "context": "column naming the biological replicate; ``None`` makes the microplate sample position the unit.",
+      "label": "spacr.assay_panels.aggregate_to_unit#6",
+      "source": "column naming the biological replicate; ``None`` makes the well the unit.",
+      "source_sha256": "0f103dc542743173aaf500a28b1d3d1accb88f1fc00db936f0e6b828571b5be5",
+      "translation": "指明生物学重复的列；``None`` 则以孔为单位。"
+    },
+    {
       "context": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
-      "label": "spacr.assay_panels.aggregate_to_unit#4",
+      "label": "spacr.assay_panels.aggregate_to_unit#7",
       "source": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
       "source_sha256": "13b9df840125e540669be793eb6a30cff9d85adab17a7b89d0a740e52220b04e",
       "translation": "每个单位一行，包含 ``keys``、单位列、取平均后的 ``value`` 列、``n_objects`` 以及（重复单位时）``n_wells``。"
@@ -156,8 +177,22 @@
       "translation": "不带扩展名的输出路径（如有扩展名会被去掉）。"
     },
     {
-      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "context": "figure title, or ``None``.",
       "label": "spacr.assay_panels.assemble_figure#5",
+      "source": "figure title, or ``None``.",
+      "source_sha256": "e52d9b9071dd73b8a9a71120fd0e4c12890250d0d2ca91400980ed592e9dec7a",
+      "translation": "组图标题，或 ``None``。"
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.assemble_figure#6",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "PNG 的分辨率。"
+    },
+    {
+      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "label": "spacr.assay_panels.assemble_figure#7",
       "source": "list of written file paths. Unknown ids raise ``KeyError``.",
       "source_sha256": "84d7b31fe6fb0307f4e33725106cc7430d2b9bff669582955b73dcd32fd802f1",
       "translation": "已写出文件路径的列表。未知的 id 会引发 ``KeyError``。"
@@ -168,6 +203,97 @@
       "source": "Run the bar-panel test on unit data and return a panel spec for drawing/saving.",
       "source_sha256": "256678a0e319208a2e9d05133a03c2c2a0fad65d0e773a741be4456823865747",
       "translation": "对单位数据运行柱状图面板检验，并返回用于绘制/保存的面板规格。"
+    },
+    {
+      "context": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "label": "spacr.assay_panels.bar_spec#1",
+      "source": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "source_sha256": "9fde4c6949a6562bbcd54098d60f392cda90c7eaa01b10e5f82d7500ecd72df4",
+      "translation": "每个实验单位一行，来自 :func:`aggregate_to_unit`。"
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.bar_spec#10",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "虚线参考线的 y 值，或 ``None``。"
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "label": "spacr.assay_panels.bar_spec#11",
+      "source": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "source_sha256": "c57cafd1cef3814e6a9c41a8e474d9f455ae74848d9cd3ef5bc1b0737fbc23df",
+      "translation": "组 -> 颜色，或按 ``order`` 排列的颜色列表；``None`` 则使用默认颜色。"
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.bar_spec#12",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "文件名主干 -> 表，由 :func:`save_panel` 另外写为 CSV。"
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "label": "spacr.assay_panels.bar_spec#13",
+      "source": "a dict spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "source_sha256": "90f667c0d6aaf77ba09eec74a714c9990e8412454a8b00c939056e9b7db65d5d",
+      "translation": "一个 dict 规格，``kind`` 为 ``'bar'``，:func:`select_and_run_test` 的结果位于 ``stats`` 下。"
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.bar_spec#2",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "绘制为柱的数值列。"
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.bar_spec#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "指明每行所属组的列。"
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.bar_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x 轴上的组，按顺序排列。"
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.bar_spec#5",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "面板标题；检验结果会添加在其下方。"
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.bar_spec#6",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "y 轴标签；``None`` 则使用将下划线替换为空格后的 ``value``。"
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.bar_spec#7",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "原始组值 -> x 轴刻度标签。"
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.bar_spec#8",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "行名 -> {group: text}，在 x 轴下方绘制的对齐文本行。"
+    },
+    {
+      "context": "lower y limit; ``None`` chooses it from the data.",
+      "label": "spacr.assay_panels.bar_spec#9",
+      "source": "lower y limit; ``None`` chooses it from the data.",
+      "source_sha256": "25a59ab6b85959faf811b0a2acfa047f59ee45fee0f272c7fcf64a736e8a55a8",
+      "translation": "y 轴下限；``None`` 则根据数据选择。"
     },
     {
       "context": "Return one x-axis order for a set of condition values.",
@@ -184,11 +310,53 @@
       "translation": "``preferred`` 中列出的值按给定顺序排在前面（不在 ``values`` 中的条目会被跳过）；其余值按自然排序跟在后面（``r2`` 在 ``r10`` 之前）。缺失值会被丢弃。每个面板使用相同的 ``preferred`` 列表可使条件保持对齐。"
     },
     {
+      "context": "condition values, for example a column; duplicates are kept once.",
+      "label": "spacr.assay_panels.condition_order#2",
+      "source": "condition values, for example a column; duplicates are kept once.",
+      "source_sha256": "a9a2e8331d9160e72ce6b64ac30c6423f3fdd46bfb1a219f9cb4f6278692ad70",
+      "translation": "条件值，例如一列；重复值只保留一次。"
+    },
+    {
+      "context": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "label": "spacr.assay_panels.condition_order#3",
+      "source": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "source_sha256": "0c2456db28ccfb563be511f267cff565e3022e6faa33e5b4cb27ef45621ecc58",
+      "translation": "要排在前面的值，按此顺序；按原样或按其文本匹配。``None`` 则对所有值进行自然排序。"
+    },
+    {
+      "context": "the ordered list of distinct values.",
+      "label": "spacr.assay_panels.condition_order#4",
+      "source": "the ordered list of distinct values.",
+      "source_sha256": "800807ef7e677990c3f2a9ceeb3c9a7ff71d38d7ad34e38fbc0cdda0337683d0",
+      "translation": "不重复值的有序列表。"
+    },
+    {
       "context": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "label": "spacr.assay_panels.display_label#0",
       "source": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "source_sha256": "8e5f525525e73bf9dc447318704e2e52b602b19fd9c315694498b37a3c75495a",
       "translation": "原始值的显示文本：``labels[value]``，或将下划线替换为空格后的值。"
+    },
+    {
+      "context": "the raw condition value.",
+      "label": "spacr.assay_panels.display_label#1",
+      "source": "the raw condition value.",
+      "source_sha256": "d6f04527e115469bf834370819f81abf8641511202f897d44d8d8cc6284532d0",
+      "translation": "原始条件值。"
+    },
+    {
+      "context": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "label": "spacr.assay_panels.display_label#2",
+      "source": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "source_sha256": "4ad3f4cb3b03ce12e30a5a548735760e6be58f5c6955512417a37057be408d06",
+      "translation": "原始值 -> 显示标签；先按原样查找值，再按其文本查找。``None`` 则不使用标签。"
+    },
+    {
+      "context": "the text to show.",
+      "label": "spacr.assay_panels.display_label#3",
+      "source": "the text to show.",
+      "source_sha256": "55fa210577df062514cfe2d5055b4686256a6d52bc120a6f56d22c13a58377f2",
+      "translation": "要显示的文本。"
     },
     {
       "context": "Bar of the mean of unit values, SD error bar, one dot per unit, post hoc brackets.",
@@ -198,25 +366,123 @@
       "translation": "单位值均值的柱状图，带 SD 误差线、每个单位一个点以及事后检验括号。"
     },
     {
-      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_bar_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "用于绘图的 matplotlib 坐标轴。"
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.draw_bar_panel#10",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "y 轴标签；``None`` 则使用将下划线替换为空格后的 ``value``。"
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_bar_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "原始组值 -> x 轴刻度标签。"
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_bar_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "行名 -> {group: text}，在 x 轴下方绘制的对齐文本行。"
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.draw_bar_panel#13",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "虚线参考线的 y 值，或 ``None``。"
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``.",
+      "label": "spacr.assay_panels.draw_bar_panel#14",
+      "source": "group -> colour, or a list of colours in ``order``.",
+      "source_sha256": "ec7e98e3a4fed663981d46580b89562d033f96591bc0546a025f74fd7708fd1c",
+      "translation": "组 -> 颜色，或按 ``order`` 排列的颜色列表。"
+    },
+    {
+      "context": "most post hoc brackets drawn.",
+      "label": "spacr.assay_panels.draw_bar_panel#15",
+      "source": "most post hoc brackets drawn.",
+      "source_sha256": "00441f5914e4a068ff83d73e1daf66a13adac3df8fb14d3096139a1b81afb031",
+      "translation": "最多绘制的事后检验括号数。"
+    },
+    {
+      "context": "random seed of the horizontal jitter of the dots.",
+      "label": "spacr.assay_panels.draw_bar_panel#16",
+      "source": "random seed of the horizontal jitter of the dots.",
+      "source_sha256": "48a27673929bbb431da5cbde183e62d75b77eecd3b289f943eef4ef2e998fd45",
+      "translation": "点的水平抖动所用的随机种子。"
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_bar_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "one row per experimental unit.",
+      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "source": "one row per experimental unit.",
+      "source_sha256": "cb0b4f13cc49ec1c7443584406cc5b0f2a871c10dd72ee2f0beec77e576c6b21",
+      "translation": "每个实验单位一行。"
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "绘制为柱的数值列。"
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_bar_panel#4",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "指明每行所属组的列。"
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_bar_panel#5",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x 轴上的组，按顺序排列。"
+    },
+    {
+      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "label": "spacr.assay_panels.draw_bar_panel#6",
       "source": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
       "source_sha256": "8b2728e8749d8c90fa59782ef2c8e6f0b04b14c83fddbc91540c394fd293fb4e",
       "translation": ":func:`select_and_run_test` 的输出；总体检验写入标题，事后检验结果绘制为括号。"
     },
     {
       "context": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
-      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "label": "spacr.assay_panels.draw_bar_panel#7",
       "source": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
       "source_sha256": "c957cbce786eac0d2ce5c1b3ee2a29a1c3b62472788e0197d6782f462813d0f8",
       "translation": "``'significant'``（默认）、``'all'`` 或 ``'none'``。当符合条件的配对超过 ``max_brackets`` 时不绘制括号（所有配对仍保留在 ``stats_posthoc.csv`` 中）。"
     },
     {
       "context": "lower y limit (``None``: 0, or the data minimum if negative).",
-      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "label": "spacr.assay_panels.draw_bar_panel#8",
       "source": "lower y limit (``None``: 0, or the data minimum if negative).",
       "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
       "translation": "y 轴下限（``None``：0，若数据为负则为数据最小值）。"
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.draw_bar_panel#9",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "面板标题；检验结果会添加在其下方。"
     },
     {
       "context": "Draw a spec made by :func:`bar_spec` or :func:`stacked_spec` on ``ax``.",
@@ -226,6 +492,34 @@
       "translation": "将由 :func:`bar_spec` 或 :func:`stacked_spec` 生成的规格绘制在 ``ax`` 上。"
     },
     {
+      "context": "matplotlib axes to draw on.",
+      "label": "spacr.assay_panels.draw_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "用于绘图的 matplotlib 坐标轴。"
+    },
+    {
+      "context": "the panel spec.",
+      "label": "spacr.assay_panels.draw_panel#2",
+      "source": "the panel spec.",
+      "source_sha256": "99b4881f9738a90e2724a6aeb1ea35380a388cf655998083d29d5324a9f851b9",
+      "translation": "面板规格。"
+    },
+    {
+      "context": "draw the bin legend of a stacked panel.",
+      "label": "spacr.assay_panels.draw_panel#3",
+      "source": "draw the bin legend of a stacked panel.",
+      "source_sha256": "d44fc81a9eb0cfdf097ff4c6b49dcd788fec5f7a78ff738365e050dfc58c1890",
+      "translation": "绘制堆叠面板的分箱图例。"
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_panel#4",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
       "context": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
       "label": "spacr.assay_panels.draw_stacked_panel#0",
       "source": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
@@ -233,11 +527,123 @@
       "translation": "各单位的平均比例堆叠图，每段顶部带 SD 误差线，并以星号标注相对参照组的显著性。"
     },
     {
-      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_stacked_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "用于绘图的 matplotlib 坐标轴。"
+    },
+    {
+      "context": "panel title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#10",
+      "source": "panel title.",
+      "source_sha256": "93b004d63c10c4f91f8ae47da207447543857ea5e6449d45a45b943e13c36e9c",
+      "translation": "面板标题。"
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "原始组值 -> x 轴刻度标签。"
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "行名 -> {group: text}，在 x 轴下方绘制的对齐文本行。"
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#13",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "每个分箱一种颜色；``None`` 则使用 viridis。"
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#14",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "y 轴标签。"
+    },
+    {
+      "context": "draw the bin legend beside the axes.",
+      "label": "spacr.assay_panels.draw_stacked_panel#15",
+      "source": "draw the bin legend beside the axes.",
+      "source_sha256": "7122879a147c22fac67a69ceea69f8cb2d3bdd3473dff379a4dadf1b0e70d8ca",
+      "translation": "在坐标轴旁绘制分箱图例。"
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.draw_stacked_panel#16",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "分箱图例的标题。"
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_stacked_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "label": "spacr.assay_panels.draw_stacked_panel#2",
       "source": "output of :func:`fractions_per_unit` (one row per unit).",
       "source_sha256": "5336969cd9df8912305b838e3fb81382d15a9bab98562f6782d53a447bc1b1ea",
       "translation": ":func:`fractions_per_unit` 的输出（每个单位一行）。"
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_stacked_panel#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "指明每行所属组的列。"
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x 轴上的组，按顺序排列。"
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "从底部开始堆叠的分箱，按顺序排列。"
+    },
+    {
+      "context": "legend text per bin; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.draw_stacked_panel#6",
+      "source": "legend text per bin; ``None`` uses the bins.",
+      "source_sha256": "4da4f39b3052b4cf5e4eefcd5065e0af2989fad60d261ee45eff0e5b98c12f39",
+      "translation": "每个分箱的图例文本；``None`` 则使用分箱本身。"
+    },
+    {
+      "context": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#7",
+      "source": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "source_sha256": "500c222927b3a6735a510eeba1fe23982cdf59aae7e0ec958345ba36dffdf28e",
+      "translation": ":func:`proportion_tests` 的总体检验结果，显示在标题中。"
+    },
+    {
+      "context": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "label": "spacr.assay_panels.draw_stacked_panel#8",
+      "source": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "source_sha256": "5ff64c21141aa064432465d2db194df9687a1e9835cc238fb3300d0b3f69bf05",
+      "translation": ":func:`proportion_tests` 的成对比较结果，以星号绘制。"
+    },
+    {
+      "context": "test name shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#9",
+      "source": "test name shown in the title.",
+      "source_sha256": "2d00ce957bf2cbbab578a2ae93eab81ea8de2bfc85579f05c438a13a78be24b7",
+      "translation": "显示在标题中的检验名称。"
     },
     {
       "context": "Format a p value for a panel title.",
@@ -247,6 +653,20 @@
       "translation": "为面板标题格式化 p 值。"
     },
     {
+      "context": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "label": "spacr.assay_panels.fmt_p#1",
+      "source": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "source_sha256": "e0989997ca1c3749c9365bcf71777e7eb940ff9fa5eb4606a14269c2229e313f",
+      "translation": "p 值；任何非有限数值都会得到 ``'p = n/a'``。"
+    },
+    {
+      "context": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "label": "spacr.assay_panels.fmt_p#2",
+      "source": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "source_sha256": "2408c5352b45d7aaacbe2fcd51c4d6d1f6f5fbccb1cbeb4062a8937229ba149a",
+      "translation": "``'p < 1e-4'``，或 ``'p = '`` 后接三位有效数字。"
+    },
+    {
       "context": "Fraction of objects in each bin per unit (replicate if given, else well).",
       "label": "spacr.assay_panels.fractions_per_unit#0",
       "source": "Fraction of objects in each bin per unit (replicate if given, else well).",
@@ -254,8 +674,50 @@
       "translation": "每个单位（给定重复时为重复，否则为孔）中各分箱的对象比例。"
     },
     {
-      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.fractions_per_unit#1",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "对象级表，每个对象一行。"
+    },
+    {
+      "context": "column holding the bin of each object.",
+      "label": "spacr.assay_panels.fractions_per_unit#2",
+      "source": "column holding the bin of each object.",
+      "source_sha256": "bfee67c88e7fda81a86846fe739b9a6ba9eb8f7137c50cc034f110715c01e95b",
+      "translation": "存放每个对象所属分箱的列。"
+    },
+    {
+      "context": "bins to report, in legend order; bins without objects get 0.",
+      "label": "spacr.assay_panels.fractions_per_unit#3",
+      "source": "bins to report, in legend order; bins without objects get 0.",
+      "source_sha256": "18accd9e10b1e8d148cf1193bf1f5a48247aed2877897b049bd11fbbaeacee0f",
+      "translation": "要报告的分箱，按图例顺序排列；没有对象的分箱记为 0。"
+    },
+    {
+      "context": "grouping columns kept in the output (e.g. the panel group).",
+      "label": "spacr.assay_panels.fractions_per_unit#4",
+      "source": "grouping columns kept in the output (e.g. the panel group).",
+      "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
+      "translation": "在输出中保留的分组列（例如面板的分组）。"
+    },
+    {
+      "context": "columns that identify one microplate sample position; the unit when ``replicate_column`` is ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#5",
+      "source": "columns that identify one well; the unit when ``replicate_column`` is ``None``.",
+      "source_sha256": "4f7db7a2bbded01bb911bf03f0d8352844e1ea658077b8658c50d88627fd93d4",
+      "translation": "标识单个孔的列；当 ``replicate_column`` 为 ``None`` 时即为单位。"
+    },
+    {
+      "context": "column naming the biological replicate, or ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#6",
+      "source": "column naming the biological replicate, or ``None``.",
+      "source_sha256": "4760bc603c2222e22c5e77f05e3ce017a604f35a0949f444649c5dfeff54542c",
+      "translation": "指明生物学重复的列，或 ``None``。"
+    },
+    {
+      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "label": "spacr.assay_panels.fractions_per_unit#7",
       "source": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
       "source_sha256": "755985503950bb419344cc565d20dc617d5358595078b1efa173f057a898b95d",
       "translation": "每个单位一行，包含 ``keys``、单位列、``n_objects`` 以及每个分箱一列（比例之和为 1）。"
@@ -266,6 +728,27 @@
       "source": "Folder / file stem of a panel, ``<panel_id>_<name>`` with unsafe characters replaced.",
       "source_sha256": "37e0551fbf03c8715a78eef22091712dba466f09418b3a368155d12c66b4efe0",
       "translation": "面板的文件夹 / 文件名主干，``<panel_id>_<name>``，其中不安全的字符会被替换。"
+    },
+    {
+      "context": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "label": "spacr.assay_panels.panel_folder_name#1",
+      "source": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "source_sha256": "1684f93cae44fb849fe1c7c77bedf7350f008fb035cbbb1c4bb22b52cedfc6b1",
+      "translation": "面板 id，例如 ``'P01'`` 或 ``'C03'``。"
+    },
+    {
+      "context": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "label": "spacr.assay_panels.panel_folder_name#2",
+      "source": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "source_sha256": "65ba8779254b1ea713fa3ed680867c4c4362b309859639ccf9fae084ed601805",
+      "translation": "面板名称；字母、数字和 ``._+-`` 以外的连续字符会变为一个下划线。"
+    },
+    {
+      "context": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "label": "spacr.assay_panels.panel_folder_name#3",
+      "source": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "source_sha256": "99d0d8cd234f42772e72f1def21073069b5fd09bc82f46fec8e862b20e251559",
+      "translation": "文件名主干，或仅为 ``panel_id``（当 ``name`` 没有剩余内容时）。"
     },
     {
       "context": "Compare bin proportions between groups.",
@@ -303,8 +786,22 @@
       "translation": "``'chi2'``（卡方独立性检验）或 ``'fisher'``（通过 Monte Carlo 以 ``n_resamples`` 个表和 ``seed`` 进行的 Fisher-Freeman-Halton 精确检验；2 x 2 时为 Fisher 精确检验）。"
     },
     {
-      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "context": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
       "label": "spacr.assay_panels.proportion_tests#5",
+      "source": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
+      "source_sha256": "80d1ca0a7a80234f569ff724f1d569cdbcc4f4db73b606a0ac5f1584b7ef631f",
+      "translation": "为 Fisher-Freeman-Halton 检验抽取的 Monte Carlo 表数。"
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.proportion_tests#6",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "Monte Carlo 表的随机种子。"
+    },
+    {
+      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "label": "spacr.assay_panels.proportion_tests#7",
       "source": "``(omnibus, pairwise)`` - a dict for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
       "source_sha256": "7b5fd20ea94d63dd99016e156fb78a43d4f334b39d5e824e1fbf8303e96b52e6",
       "translation": "``(omnibus, pairwise)`` - 一个 dict，记录对 ``order`` 中所有组的检验（test、statistic、dof、p_value、cramers_v、n、significance），以及一个 DataFrame，每组与参照组的比较占一行，带 Holm 校正后的 ``p_holm`` 和 ``significance``。"
@@ -317,8 +814,43 @@
       "translation": "写出一个面板文件夹：图形（PDF + PNG）、绘图数据和统计 CSVs。"
     },
     {
-      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "context": "folder that receives the panel folder.",
       "label": "spacr.assay_panels.save_panel#1",
+      "source": "folder that receives the panel folder.",
+      "source_sha256": "c3e9798e0bd4e009d52a920a321fbd276e4c155adcc0a8e76503a8f2dbe7dba9",
+      "translation": "接收面板文件夹的文件夹。"
+    },
+    {
+      "context": "panel id, for example ``'P01'``.",
+      "label": "spacr.assay_panels.save_panel#2",
+      "source": "panel id, for example ``'P01'``.",
+      "source_sha256": "1d07211a076306936e51476b7000a7e07b1e3ef6c3feb70a5f6487aa609821cf",
+      "translation": "面板 id，例如 ``'P01'``。"
+    },
+    {
+      "context": "panel name, made safe by :func:`panel_folder_name`.",
+      "label": "spacr.assay_panels.save_panel#3",
+      "source": "panel name, made safe by :func:`panel_folder_name`.",
+      "source_sha256": "1cff0e06aeda07f2529d189d0a046b8cf91b039049b3d2b53749974a1a5fa13e",
+      "translation": "面板名称，由 :func:`panel_folder_name` 处理为安全形式。"
+    },
+    {
+      "context": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "label": "spacr.assay_panels.save_panel#4",
+      "source": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "source_sha256": "dd613bdc86e5f38e32fa5298105901288e55a3a2a3cf8775ca2a7ee1d2f888fd",
+      "translation": "来自 :func:`bar_spec` 或 :func:`stacked_spec` 的面板规格；其 ``folder`` 键会被设为写出的文件夹。"
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.save_panel#5",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "PNG 的分辨率。"
+    },
+    {
+      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "label": "spacr.assay_panels.save_panel#6",
       "source": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
       "source_sha256": "9677f7ed93e5edc2d2e88da61bdd36ea59136244145378065ea402d32a8ae4e3",
       "translation": "面板文件夹路径 ``<out_dir>/<panel_id>_<name>``。"
@@ -359,8 +891,15 @@
       "translation": "要比较的组，按绘图顺序排列。没有数据的组以 ``n = 0`` 报告，并且不参与检验。"
     },
     {
-      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "context": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
       "label": "spacr.assay_panels.select_and_run_test#5",
+      "source": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
+      "source_sha256": "b63590067f5d4475ecf78642ca08f6f81f8d47b4c01f802f4ee921074e17e860",
+      "translation": "用于选择检验的 Shapiro-Wilk 和 Levene 检查的显著性水平。"
+    },
+    {
+      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "label": "spacr.assay_panels.select_and_run_test#6",
       "source": "dict of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
       "source_sha256": "dcf12644739848ac140bb28cd77bb4c39102e60e04e0083c4486305c53a80b96",
       "translation": "DataFrames 的 dict - ``test``（一行：test、statistic、df1、df2、p_value、effect_size_name、effect_size、all_groups_normal、equal_variance、significance）、``assumptions``（每组的 Shapiro-Wilk 和 Levene）、``posthoc``（每个配对：group_1、group_2、mean_1、mean_2、statistic、p_adj、posthoc、significance）以及 ``descriptive``（按 ``order`` 中每组的 n、mean、std、median、sem）。"
@@ -373,11 +912,151 @@
       "translation": "运行比例检验，并返回用于绘制/保存的堆叠面板规格。"
     },
     {
+      "context": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "label": "spacr.assay_panels.stacked_spec#1",
+      "source": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "source_sha256": "20335ccded632caa87e53426fff9a678c96e2bd857804d0db5f1ecbad56e7158",
+      "translation": "每个单位一行、每个分箱一列，来自 :func:`fractions_per_unit`。"
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.stacked_spec#10",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "原始组值 -> x 轴刻度标签。"
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.stacked_spec#11",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "行名 -> {group: text}，在 x 轴下方绘制的对齐文本行。"
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.stacked_spec#12",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "分箱图例的标题。"
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.stacked_spec#13",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "y 轴标签。"
+    },
+    {
+      "context": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "label": "spacr.assay_panels.stacked_spec#14",
+      "source": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "source_sha256": "b489453be05704135eb729925627c19bce0ee79202f22def1da308aa916682c1",
+      "translation": "Fisher-Freeman-Halton 检验的 Monte Carlo 表数。"
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.stacked_spec#15",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "Monte Carlo 表的随机种子。"
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.stacked_spec#16",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "每个分箱一种颜色；``None`` 则使用 viridis。"
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.stacked_spec#17",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "文件名主干 -> 表，由 :func:`save_panel` 另外写为 CSV。"
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "label": "spacr.assay_panels.stacked_spec#18",
+      "source": "a dict spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "source_sha256": "d0e47b6291343c9da7369e51d441354d25ca690121757208ffc98bf4802ac49d",
+      "translation": "一个 dict 规格，``kind`` 为 ``'stacked'``，包含 ``omnibus`` 和 ``pairwise`` 结果以及重新索引后的 ``counts``。"
+    },
+    {
+      "context": "object counts, one row per group and one column per bin.",
+      "label": "spacr.assay_panels.stacked_spec#2",
+      "source": "object counts, one row per group and one column per bin.",
+      "source_sha256": "d33e8e15b0ea6b69e1b021de3f3df64a51742db0f5de262f8a3b33e94dd4e161",
+      "translation": "对象计数，每组一行、每个分箱一列。"
+    },
+    {
+      "context": "column naming the group of each row of ``fractions``.",
+      "label": "spacr.assay_panels.stacked_spec#3",
+      "source": "column naming the group of each row of ``fractions``.",
+      "source_sha256": "0522ac1aa3342bc8470df21818861baf58fa33958bc819834f3e02f1d36c1f75",
+      "translation": "指明 ``fractions`` 中每行所属组的列。"
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.stacked_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "x 轴上的组，按顺序排列。"
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.stacked_spec#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "从底部开始堆叠的分箱，按顺序排列。"
+    },
+    {
+      "context": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.stacked_spec#6",
+      "source": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "source_sha256": "3303c3c4288c49da37b44b93dc0b365200e6ad7982d42534719acbfcdb3dbbf4",
+      "translation": "每个分箱的图例文本，按 ``bins`` 顺序；``None`` 则使用分箱本身。"
+    },
+    {
+      "context": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "label": "spacr.assay_panels.stacked_spec#7",
+      "source": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "source_sha256": "3d355f3aa795a0445975afcb85838583b4ce07629c593f1ccbcd0fc7fb607bba",
+      "translation": "``'chi2'`` 或 ``'fisher'``，与 :func:`proportion_tests` 中相同。"
+    },
+    {
+      "context": "group every other group is compared with; default ``order[0]``.",
+      "label": "spacr.assay_panels.stacked_spec#8",
+      "source": "group every other group is compared with; default ``order[0]``.",
+      "source_sha256": "0e5b7e81dcb7d66e6ff3e28a292fab6ef5fb5dac2b1fb617d788b6885ab41098",
+      "translation": "其他所有组与之比较的组；默认为 ``order[0]``。"
+    },
+    {
+      "context": "panel title; the omnibus result is added below it.",
+      "label": "spacr.assay_panels.stacked_spec#9",
+      "source": "panel title; the omnibus result is added below it.",
+      "source_sha256": "d5eec6eb296ddb3eb96a0819c927d9c5d16222cef9510bacea15dda4bfe0ea7d",
+      "translation": "面板标题；总体检验结果会添加在其下方。"
+    },
+    {
       "context": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "label": "spacr.assay_panels.stars#0",
       "source": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "source_sha256": "b1c3e166ae1c78c0bd902bb90565576eef781b5e2fd04669d8e497f00aeaae13",
       "translation": "p 值对应的显著性星号（大于或等于 0.05 时为 'ns'，缺失时为 'n/a'）。"
+    },
+    {
+      "context": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "label": "spacr.assay_panels.stars#1",
+      "source": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "source_sha256": "99fe3c22de428ba3647f229b6a6db98dbbc7d960e533624aab0f0fd5c00f7a6a",
+      "translation": "p 值；任何非有限数值都会得到 ``'n/a'``。"
+    },
+    {
+      "context": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "label": "spacr.assay_panels.stars#2",
+      "source": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "source_sha256": "ef6b5f051d54f453332ae27f21bc33c4c747f0336a6e3f6708f0e74840b44ce5",
+      "translation": "``'****'``（p < 1e-4）、``'***'``、``'**'``、``'*'``（p < 0.05）或 ``'ns'``。"
     },
     {
       "context": "Attach the :func:`well_density` columns to object rows (a new frame).",
@@ -394,6 +1073,27 @@
       "translation": "与 :func:`apply_field_qc` 一样，两侧的板 id 都会进行 URL 解码。来自 ``wells`` 中不存在的孔的行得到 ``NaN``。"
     },
     {
+      "context": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "label": "spacr.recruitment_confounders.apply_well_density#2",
+      "source": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "source_sha256": "12e6a462197f6f0ccccad8dd852c0809e8b165b4be3efbefd1196820b207391a",
+      "translation": "带有 :data:`WELL_KEYS` 列的对象级数据框。"
+    },
+    {
+      "context": "output of :func:`well_density`.",
+      "label": "spacr.recruitment_confounders.apply_well_density#3",
+      "source": "output of :func:`well_density`.",
+      "source_sha256": "ad2d19bc11a18bb43dc936f37894a552f42b042bdfa4e434c127726015b4314a",
+      "translation": ":func:`well_density` 的输出。"
+    },
+    {
+      "context": "a copy of ``df`` with the microplate sample position columns added.",
+      "label": "spacr.recruitment_confounders.apply_well_density#4",
+      "source": "a copy of ``df`` with the well columns added.",
+      "source_sha256": "d6c9885aabe176696e4c5bcd515f0931be490f6a4187439eaf8e23a0a136289e",
+      "translation": "添加了孔列的 ``df`` 副本。"
+    },
+    {
       "context": "Count host cells and parasites in every microplate sample position of a laboratory microplate.",
       "label": "spacr.recruitment_confounders.well_density#0",
       "source": "Count host cells and parasites in every well of a plate.",
@@ -408,8 +1108,29 @@
       "translation": ":func:`field_density` 的孔级对应函数，对每个孔的各视野求和。"
     },
     {
-      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "context": "path to a spacr ``measurements.db``.",
       "label": "spacr.recruitment_confounders.well_density#2",
+      "source": "path to a spacr ``measurements.db``.",
+      "source_sha256": "87e15f4befab3513047b13ad39682c0a6bdeabb000ce1d9174fbd2712f8eec22",
+      "translation": "spacr ``measurements.db`` 的路径。"
+    },
+    {
+      "context": "table holding one row per host cell.",
+      "label": "spacr.recruitment_confounders.well_density#3",
+      "source": "table holding one row per host cell.",
+      "source_sha256": "892c0cea4065416282cccd1105814640429bba62f711c7af81726a1a89840f0e",
+      "translation": "每个宿主细胞一行的表。"
+    },
+    {
+      "context": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "label": "spacr.recruitment_confounders.well_density#4",
+      "source": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "source_sha256": "703597f92013dbc9142fc73fbbd57c94a522d4eded565582117738e29fe9867f",
+      "translation": "每个寄生虫 / 液泡一行的表，或 ``None`` 表示只统计 ``cell_table``。"
+    },
+    {
+      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "label": "spacr.recruitment_confounders.well_density#5",
       "source": "one row per well (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
       "source_sha256": "e87475cdc9d26f0ca0ede6fb17c7732b87ec9770d6a7f1be189f7d4921a86509",
       "translation": "每个孔一行（:data:`WELL_KEYS`），包含 ``n_cells_well``、``n_pathogens_well``（当 ``pathogen_table`` 存在时）、``n_pathogens_in_cells_well``、``pathogens_per_cell_well`` 和 ``n_fields_well``。"
@@ -434,20 +1155,6 @@
       "source": "Example:",
       "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
       "translation": "示例："
-    },
-    {
-      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#7",
-      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
-      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
-    },
-    {
-      "context": "``treatments`` / ``treatment_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#8",
-      "source": "``treatments`` / ``treatment_plate_metadata``.",
-      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
-      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``*_intensity_range``, ``target_intensity_min``.",
@@ -560,6 +1267,20 @@
       "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
       "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
       "translation": "另请参阅：:func:`analyze_plaques` —— 噬斑计数/大小实验。:func:`spacr.ml.generate_ml_scores` —— 基于特征的分类器，可替代募集比值。"
+    },
+    {
+      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#7",
+      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
+      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
+    },
+    {
+      "context": "``treatments`` / ``treatment_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#8",
+      "source": "``treatments`` / ``treatment_plate_metadata``.",
+      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
+      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``cell_types`` / ``pathogen_types`` / ``treatments`` and their ``*_plate_metadata`` well maps, plus ``group_column`` and ``level``.",

@@ -16,6 +16,20 @@
       "translation": "Utilisé par :func:`spacr.submodules.analyze_recruitment` et :func:`spacr.submodules.analyze_replication` (réglages ``panels`` / ``figures``), et utilisable sur toute table comportant une ligne par objet."
     },
     {
+      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "label": "spacr.assay_panels#10",
+      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
+      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
+      "translation": "**Ordre aligné.** Chaque panneau prend ``order`` (l’ordre de l’axe des x) de :func:`condition_order`, de sorte qu’une condition occupe la même place dans chaque panneau d’une figure, ainsi que ``labels`` (valeur brute -> libellé affiché ; les tirets bas deviennent des espaces en l’absence de libellé). ``annotations`` trace des lignes de texte alignées sous l’axe des x, par exemple une table +/- de ce que contient chaque condition."
+    },
+    {
+      "context": "Pure functions plus matplotlib; nothing here opens a window.",
+      "label": "spacr.assay_panels#11",
+      "source": "Pure functions plus matplotlib; nothing here opens a window.",
+      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
+      "translation": "Fonctions pures plus matplotlib ; rien ici n’ouvre de fenêtre."
+    },
+    {
       "context": "**Experimental unit.** Objects are averaged per microplate sample position (``plateID``, ``rowID``, ``columnID``), and microplate sample position means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of microplate sample positions or replicates.",
       "label": "spacr.assay_panels#2",
       "source": "**Experimental unit.** Objects are averaged per well (``plateID``, ``rowID``, ``columnID``), and well means are averaged per replicate when a replicate column is given (:func:`aggregate_to_unit`). Tests run on these unit values, never on individual cells, so the n of a test is the number of wells or replicates.",
@@ -72,20 +86,6 @@
       "translation": "**Organisation des panneaux sur disque** (:func:`save_panel`) : un dossier par panneau, ``<out_dir>/<Pnn>_<name>/``, contenant ``<Pnn>_<name>.pdf`` et ``.png``, ``data_replicates.csv`` (les valeurs d’unité tracées), ``stats_test.csv``, ``stats_assumptions.csv``, ``stats_posthoc.csv`` et ``stats_descriptive.csv`` pour les panneaux en barres, et ``contingency_table_counts.csv`` pour les panneaux empilés."
     },
     {
-      "context": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "label": "spacr.assay_panels#10",
-      "source": "**Aligned order.** Every panel takes ``order`` (the x-axis order) from :func:`condition_order`, so a condition sits at the same place in every panel of a figure, and ``labels`` (raw value -> display label; underscores become spaces when no label is given). ``annotations`` draws aligned text rows under the x axis, for example a +/- table of what each condition contains.",
-      "source_sha256": "0bac8489a948b6e9111a9ea536d43142eaa8571296c361806a03c8c71c1d518f",
-      "translation": "**Ordre aligné.** Chaque panneau prend ``order`` (l’ordre de l’axe des x) de :func:`condition_order`, de sorte qu’une condition occupe la même place dans chaque panneau d’une figure, ainsi que ``labels`` (valeur brute -> libellé affiché ; les tirets bas deviennent des espaces en l’absence de libellé). ``annotations`` trace des lignes de texte alignées sous l’axe des x, par exemple une table +/- de ce que contient chaque condition."
-    },
-    {
-      "context": "Pure functions plus matplotlib; nothing here opens a window.",
-      "label": "spacr.assay_panels#11",
-      "source": "Pure functions plus matplotlib; nothing here opens a window.",
-      "source_sha256": "c04e570e46f8c21e7f32b87f0f6c778a9bb9ba746558fa0722484cea9a8dcdd9",
-      "translation": "Fonctions pures plus matplotlib ; rien ici n’ouvre de fenêtre."
-    },
-    {
       "context": "Average object values to the experimental unit.",
       "label": "spacr.assay_panels.aggregate_to_unit#0",
       "source": "Average object values to the experimental unit.",
@@ -100,22 +100,43 @@
       "translation": "Objets -> moyenne du puits (par ``keys`` + ``well_keys``) -> moyenne par réplicat des moyennes des puits (par ``keys`` + ``replicate_column``) lorsque ``replicate_column`` est fourni ; sinon l’unité est le puits."
     },
     {
-      "context": "column name or list of column names to average.",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.aggregate_to_unit#2",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "table au niveau des objets, une ligne par objet."
+    },
+    {
+      "context": "column name or list of column names to average.",
+      "label": "spacr.assay_panels.aggregate_to_unit#3",
       "source": "column name or list of column names to average.",
       "source_sha256": "2d9c41306338e2464952cc4703f8ddcffede7834488e7df3d83dc5594c7a77dc",
       "translation": "nom de colonne ou liste de noms de colonnes à moyenner."
     },
     {
       "context": "grouping columns kept in the output (e.g. the panel group).",
-      "label": "spacr.assay_panels.aggregate_to_unit#3",
+      "label": "spacr.assay_panels.aggregate_to_unit#4",
       "source": "grouping columns kept in the output (e.g. the panel group).",
       "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
       "translation": "colonnes de regroupement conservées dans la sortie (p. ex. le groupe du panneau)."
     },
     {
+      "context": "columns that identify one microplate sample position.",
+      "label": "spacr.assay_panels.aggregate_to_unit#5",
+      "source": "columns that identify one well.",
+      "source_sha256": "02f7d4fd2668972475cdfbae1348e75e702de591fb3b09b45434aea4aeeb6d8c",
+      "translation": "colonnes qui identifient un puits."
+    },
+    {
+      "context": "column naming the biological replicate; ``None`` makes the microplate sample position the unit.",
+      "label": "spacr.assay_panels.aggregate_to_unit#6",
+      "source": "column naming the biological replicate; ``None`` makes the well the unit.",
+      "source_sha256": "0f103dc542743173aaf500a28b1d3d1accb88f1fc00db936f0e6b828571b5be5",
+      "translation": "colonne qui nomme le réplicat biologique ; ``None`` fait du puits l’unité."
+    },
+    {
       "context": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
-      "label": "spacr.assay_panels.aggregate_to_unit#4",
+      "label": "spacr.assay_panels.aggregate_to_unit#7",
       "source": "one row per unit with ``keys``, the unit columns, the averaged ``value`` column(s), ``n_objects`` and (replicate unit) ``n_wells``.",
       "source_sha256": "13b9df840125e540669be793eb6a30cff9d85adab17a7b89d0a740e52220b04e",
       "translation": "une ligne par unité avec ``keys``, les colonnes d’unité, la ou les colonnes ``value`` moyennées, ``n_objects`` et (unité réplicat) ``n_wells``."
@@ -156,8 +177,22 @@
       "translation": "chemin de sortie sans extension (une extension éventuelle est retirée)."
     },
     {
-      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "context": "figure title, or ``None``.",
       "label": "spacr.assay_panels.assemble_figure#5",
+      "source": "figure title, or ``None``.",
+      "source_sha256": "e52d9b9071dd73b8a9a71120fd0e4c12890250d0d2ca91400980ed592e9dec7a",
+      "translation": "titre de la figure, ou ``None``."
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.assemble_figure#6",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "résolution du PNG."
+    },
+    {
+      "context": "list of written file paths. Unknown ids throw ``KeyError``.",
+      "label": "spacr.assay_panels.assemble_figure#7",
       "source": "list of written file paths. Unknown ids raise ``KeyError``.",
       "source_sha256": "84d7b31fe6fb0307f4e33725106cc7430d2b9bff669582955b73dcd32fd802f1",
       "translation": "liste des chemins des fichiers écrits. Les identifiants inconnus lèvent ``KeyError``."
@@ -168,6 +203,97 @@
       "source": "Run the bar-panel test on unit data and return a panel spec for drawing/saving.",
       "source_sha256": "256678a0e319208a2e9d05133a03c2c2a0fad65d0e773a741be4456823865747",
       "translation": "Exécute le test du panneau en barres sur les données d’unité et renvoie une spécification de panneau pour le tracé/l’enregistrement."
+    },
+    {
+      "context": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "label": "spacr.assay_panels.bar_spec#1",
+      "source": "one row per experimental unit, from :func:`aggregate_to_unit`.",
+      "source_sha256": "9fde4c6949a6562bbcd54098d60f392cda90c7eaa01b10e5f82d7500ecd72df4",
+      "translation": "une ligne par unité expérimentale, issue de :func:`aggregate_to_unit`."
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.bar_spec#10",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "valeur y d’une ligne de référence en pointillés, ou ``None``."
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "label": "spacr.assay_panels.bar_spec#11",
+      "source": "group -> colour, or a list of colours in ``order``; ``None`` uses the default colours.",
+      "source_sha256": "c57cafd1cef3814e6a9c41a8e474d9f455ae74848d9cd3ef5bc1b0737fbc23df",
+      "translation": "groupe -> couleur, ou une liste de couleurs dans l’ordre de ``order`` ; ``None`` utilise les couleurs par défaut."
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.bar_spec#12",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "racine du nom de fichier -> table, écrite sous forme de CSV supplémentaires par :func:`save_panel`."
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "label": "spacr.assay_panels.bar_spec#13",
+      "source": "a dict spec with ``kind`` ``'bar'`` and the :func:`select_and_run_test` result under ``stats``.",
+      "source_sha256": "90f667c0d6aaf77ba09eec74a714c9990e8412454a8b00c939056e9b7db65d5d",
+      "translation": "une spécification dict avec ``kind`` ``'bar'`` et le résultat de :func:`select_and_run_test` sous ``stats``."
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.bar_spec#2",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "colonne numérique tracée sous forme de barres."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.bar_spec#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "colonne qui nomme le groupe de chaque ligne."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.bar_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "groupes sur l’axe des x, dans l’ordre."
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.bar_spec#5",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "titre du panneau ; le résultat du test est ajouté en dessous."
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.bar_spec#6",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "libellé de l’axe y ; ``None`` utilise ``value`` avec des espaces à la place des tirets bas."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.bar_spec#7",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "valeur brute du groupe -> libellé de graduation de l’axe des x."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.bar_spec#8",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "nom de ligne -> {group: text}, lignes de texte alignées sous l’axe des x."
+    },
+    {
+      "context": "lower y limit; ``None`` chooses it from the data.",
+      "label": "spacr.assay_panels.bar_spec#9",
+      "source": "lower y limit; ``None`` chooses it from the data.",
+      "source_sha256": "25a59ab6b85959faf811b0a2acfa047f59ee45fee0f272c7fcf64a736e8a55a8",
+      "translation": "limite inférieure de l’axe y ; ``None`` la choisit à partir des données."
     },
     {
       "context": "Return one x-axis order for a set of condition values.",
@@ -184,11 +310,53 @@
       "translation": "Les valeurs listées dans ``preferred`` viennent en premier, dans l’ordre donné (les entrées absentes de ``values`` sont ignorées) ; les valeurs restantes suivent, triées naturellement (``r2`` avant ``r10``). Les valeurs manquantes sont supprimées. Utiliser la même liste ``preferred`` pour chaque panneau garde les conditions alignées."
     },
     {
+      "context": "condition values, for example a column; duplicates are kept once.",
+      "label": "spacr.assay_panels.condition_order#2",
+      "source": "condition values, for example a column; duplicates are kept once.",
+      "source_sha256": "a9a2e8331d9160e72ce6b64ac30c6423f3fdd46bfb1a219f9cb4f6278692ad70",
+      "translation": "valeurs de condition, par exemple une colonne ; les doublons ne sont conservés qu’une fois."
+    },
+    {
+      "context": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "label": "spacr.assay_panels.condition_order#3",
+      "source": "values to place first, in this order; matched as given or by their text. ``None`` sorts every value naturally.",
+      "source_sha256": "0c2456db28ccfb563be511f267cff565e3022e6faa33e5b4cb27ef45621ecc58",
+      "translation": "valeurs à placer en premier, dans cet ordre ; appariées telles quelles ou par leur texte. ``None`` trie naturellement toutes les valeurs."
+    },
+    {
+      "context": "the ordered list of distinct values.",
+      "label": "spacr.assay_panels.condition_order#4",
+      "source": "the ordered list of distinct values.",
+      "source_sha256": "800807ef7e677990c3f2a9ceeb3c9a7ff71d38d7ad34e38fbc0cdda0337683d0",
+      "translation": "la liste ordonnée des valeurs distinctes."
+    },
+    {
       "context": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "label": "spacr.assay_panels.display_label#0",
       "source": "Display text of a raw value: ``labels[value]`` or the value with spaces for underscores.",
       "source_sha256": "8e5f525525e73bf9dc447318704e2e52b602b19fd9c315694498b37a3c75495a",
       "translation": "Texte affiché d’une valeur brute : ``labels[value]`` ou la valeur avec des espaces à la place des tirets bas."
+    },
+    {
+      "context": "the raw condition value.",
+      "label": "spacr.assay_panels.display_label#1",
+      "source": "the raw condition value.",
+      "source_sha256": "d6f04527e115469bf834370819f81abf8641511202f897d44d8d8cc6284532d0",
+      "translation": "la valeur brute de la condition."
+    },
+    {
+      "context": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "label": "spacr.assay_panels.display_label#2",
+      "source": "raw value -> display label; a value is looked up as given and then by its text. ``None`` uses no labels.",
+      "source_sha256": "4ad3f4cb3b03ce12e30a5a548735760e6be58f5c6955512417a37057be408d06",
+      "translation": "valeur brute -> libellé affiché ; une valeur est recherchée telle quelle, puis par son texte. ``None`` n’utilise aucun libellé."
+    },
+    {
+      "context": "the text to show.",
+      "label": "spacr.assay_panels.display_label#3",
+      "source": "the text to show.",
+      "source_sha256": "55fa210577df062514cfe2d5055b4686256a6d52bc120a6f56d22c13a58377f2",
+      "translation": "le texte à afficher."
     },
     {
       "context": "Bar of the mean of unit values, SD error bar, one dot per unit, post hoc brackets.",
@@ -198,25 +366,123 @@
       "translation": "Barre de la moyenne des valeurs d’unité, barre d’erreur SD, un point par unité, crochets post hoc."
     },
     {
-      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_bar_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "axes matplotlib sur lesquels tracer."
+    },
+    {
+      "context": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "label": "spacr.assay_panels.draw_bar_panel#10",
+      "source": "y-axis label; ``None`` uses ``value`` with spaces for underscores.",
+      "source_sha256": "758742c4236f507c9432e79c235dc1d00e30dafc7d1b9c1dd9b0a915cdea2db2",
+      "translation": "libellé de l’axe y ; ``None`` utilise ``value`` avec des espaces à la place des tirets bas."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_bar_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "valeur brute du groupe -> libellé de graduation de l’axe des x."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_bar_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "nom de ligne -> {group: text}, lignes de texte alignées sous l’axe des x."
+    },
+    {
+      "context": "y value of a dashed reference line, or ``None``.",
+      "label": "spacr.assay_panels.draw_bar_panel#13",
+      "source": "y value of a dashed reference line, or ``None``.",
+      "source_sha256": "126750f5fca09adf31918aeb99961ffce4e835ef421f7721f36ddc1fb9ca1ad5",
+      "translation": "valeur y d’une ligne de référence en pointillés, ou ``None``."
+    },
+    {
+      "context": "group -> colour, or a list of colours in ``order``.",
+      "label": "spacr.assay_panels.draw_bar_panel#14",
+      "source": "group -> colour, or a list of colours in ``order``.",
+      "source_sha256": "ec7e98e3a4fed663981d46580b89562d033f96591bc0546a025f74fd7708fd1c",
+      "translation": "groupe -> couleur, ou une liste de couleurs dans l’ordre de ``order``."
+    },
+    {
+      "context": "most post hoc brackets drawn.",
+      "label": "spacr.assay_panels.draw_bar_panel#15",
+      "source": "most post hoc brackets drawn.",
+      "source_sha256": "00441f5914e4a068ff83d73e1daf66a13adac3df8fb14d3096139a1b81afb031",
+      "translation": "nombre maximal de crochets post hoc tracés."
+    },
+    {
+      "context": "random seed of the horizontal jitter of the dots.",
+      "label": "spacr.assay_panels.draw_bar_panel#16",
+      "source": "random seed of the horizontal jitter of the dots.",
+      "source_sha256": "48a27673929bbb431da5cbde183e62d75b77eecd3b289f943eef4ef2e998fd45",
+      "translation": "graine aléatoire du décalage horizontal des points."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_bar_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "one row per experimental unit.",
+      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "source": "one row per experimental unit.",
+      "source_sha256": "cb0b4f13cc49ec1c7443584406cc5b0f2a871c10dd72ee2f0beec77e576c6b21",
+      "translation": "une ligne par unité expérimentale."
+    },
+    {
+      "context": "numeric column drawn as bars.",
+      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "source": "numeric column drawn as bars.",
+      "source_sha256": "109176382b50c1444935d8e068416650aeb99e8927de09154a0d682e9d1f7255",
+      "translation": "colonne numérique tracée sous forme de barres."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_bar_panel#4",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "colonne qui nomme le groupe de chaque ligne."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_bar_panel#5",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "groupes sur l’axe des x, dans l’ordre."
+    },
+    {
+      "context": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
+      "label": "spacr.assay_panels.draw_bar_panel#6",
       "source": "output of :func:`select_and_run_test`; the omnibus test goes in the title and post hoc results become brackets.",
       "source_sha256": "8b2728e8749d8c90fa59782ef2c8e6f0b04b14c83fddbc91540c394fd293fb4e",
       "translation": "sortie de :func:`select_and_run_test` ; le test omnibus figure dans le titre et les résultats post hoc deviennent des crochets."
     },
     {
       "context": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
-      "label": "spacr.assay_panels.draw_bar_panel#2",
+      "label": "spacr.assay_panels.draw_bar_panel#7",
       "source": "``'significant'`` (default), ``'all'`` or ``'none'``. Brackets are left out when more than ``max_brackets`` pairs qualify (every pair stays in ``stats_posthoc.csv``).",
       "source_sha256": "c957cbce786eac0d2ce5c1b3ee2a29a1c3b62472788e0197d6782f462813d0f8",
       "translation": "``'significant'`` (par défaut), ``'all'`` ou ``'none'``. Les crochets sont omis lorsque plus de ``max_brackets`` paires sont concernées (chaque paire reste dans ``stats_posthoc.csv``)."
     },
     {
       "context": "lower y limit (``None``: 0, or the data minimum if negative).",
-      "label": "spacr.assay_panels.draw_bar_panel#3",
+      "label": "spacr.assay_panels.draw_bar_panel#8",
       "source": "lower y limit (``None``: 0, or the data minimum if negative).",
       "source_sha256": "cb9cd856eb0568c08e212f98a1167d48c6f14bb698a78082011b60ccb2469ad8",
       "translation": "limite inférieure de l’axe y (``None`` : 0, ou le minimum des données s’il est négatif)."
+    },
+    {
+      "context": "panel title; the test result is added below it.",
+      "label": "spacr.assay_panels.draw_bar_panel#9",
+      "source": "panel title; the test result is added below it.",
+      "source_sha256": "2f50f6a5a9282ff9d1b53bd8ac4fefcbf850cc71305f7a0cdcc44795ba10fa61",
+      "translation": "titre du panneau ; le résultat du test est ajouté en dessous."
     },
     {
       "context": "Draw a spec made by :func:`bar_spec` or :func:`stacked_spec` on ``ax``.",
@@ -226,6 +492,34 @@
       "translation": "Trace une spécification créée par :func:`bar_spec` ou :func:`stacked_spec` sur ``ax``."
     },
     {
+      "context": "matplotlib axes to draw on.",
+      "label": "spacr.assay_panels.draw_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "axes matplotlib sur lesquels tracer."
+    },
+    {
+      "context": "the panel spec.",
+      "label": "spacr.assay_panels.draw_panel#2",
+      "source": "the panel spec.",
+      "source_sha256": "99b4881f9738a90e2724a6aeb1ea35380a388cf655998083d29d5324a9f851b9",
+      "translation": "la spécification du panneau."
+    },
+    {
+      "context": "draw the bin legend of a stacked panel.",
+      "label": "spacr.assay_panels.draw_panel#3",
+      "source": "draw the bin legend of a stacked panel.",
+      "source_sha256": "d44fc81a9eb0cfdf097ff4c6b49dcd788fec5f7a78ff738365e050dfc58c1890",
+      "translation": "trace la légende des classes d’un panneau empilé."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_panel#4",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
       "context": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
       "label": "spacr.assay_panels.draw_stacked_panel#0",
       "source": "Stacked mean fractions over units, SD bar at the top of each segment, stars vs reference.",
@@ -233,11 +527,123 @@
       "translation": "Fractions moyennes empilées sur les unités, barre SD en haut de chaque segment, étoiles par rapport à la référence."
     },
     {
-      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "context": "matplotlib axes to draw on.",
       "label": "spacr.assay_panels.draw_stacked_panel#1",
+      "source": "matplotlib axes to draw on.",
+      "source_sha256": "d165de10713e315ec2e6fe75fe07431f48784c8921471ea52c6791ffec74806a",
+      "translation": "axes matplotlib sur lesquels tracer."
+    },
+    {
+      "context": "panel title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#10",
+      "source": "panel title.",
+      "source_sha256": "93b004d63c10c4f91f8ae47da207447543857ea5e6449d45a45b943e13c36e9c",
+      "translation": "titre du panneau."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#11",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "valeur brute du groupe -> libellé de graduation de l’axe des x."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#12",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "nom de ligne -> {group: text}, lignes de texte alignées sous l’axe des x."
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.draw_stacked_panel#13",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "une couleur par classe ; ``None`` utilise viridis."
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.draw_stacked_panel#14",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "libellé de l’axe y."
+    },
+    {
+      "context": "draw the bin legend beside the axes.",
+      "label": "spacr.assay_panels.draw_stacked_panel#15",
+      "source": "draw the bin legend beside the axes.",
+      "source_sha256": "7122879a147c22fac67a69ceea69f8cb2d3bdd3473dff379a4dadf1b0e70d8ca",
+      "translation": "trace la légende des classes à côté des axes."
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.draw_stacked_panel#16",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "titre de la légende des classes."
+    },
+    {
+      "context": "``ax``.",
+      "label": "spacr.assay_panels.draw_stacked_panel#17",
+      "source": "``ax``.",
+      "source_sha256": "1e598b6c4bf386d23a69b12b1b9e436a057c2f8ac0de96a7756bd421e65a71c0",
+      "translation": "``ax``."
+    },
+    {
+      "context": "output of :func:`fractions_per_unit` (one row per unit).",
+      "label": "spacr.assay_panels.draw_stacked_panel#2",
       "source": "output of :func:`fractions_per_unit` (one row per unit).",
       "source_sha256": "5336969cd9df8912305b838e3fb81382d15a9bab98562f6782d53a447bc1b1ea",
       "translation": "sortie de :func:`fractions_per_unit` (une ligne par unité)."
+    },
+    {
+      "context": "column naming the group of each row.",
+      "label": "spacr.assay_panels.draw_stacked_panel#3",
+      "source": "column naming the group of each row.",
+      "source_sha256": "49d30cfc6b4325a38cff36f11dc9bdf7e5f151fdaa1b1fd4f27b8889dd8cf4e4",
+      "translation": "colonne qui nomme le groupe de chaque ligne."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "groupes sur l’axe des x, dans l’ordre."
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.draw_stacked_panel#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "classes empilées à partir du bas, dans l’ordre."
+    },
+    {
+      "context": "legend text per bin; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.draw_stacked_panel#6",
+      "source": "legend text per bin; ``None`` uses the bins.",
+      "source_sha256": "4da4f39b3052b4cf5e4eefcd5065e0af2989fad60d261ee45eff0e5b98c12f39",
+      "translation": "texte de légende par classe ; ``None`` utilise les classes."
+    },
+    {
+      "context": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#7",
+      "source": "omnibus result of :func:`proportion_tests`, shown in the title.",
+      "source_sha256": "500c222927b3a6735a510eeba1fe23982cdf59aae7e0ec958345ba36dffdf28e",
+      "translation": "résultat omnibus de :func:`proportion_tests`, affiché dans le titre."
+    },
+    {
+      "context": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "label": "spacr.assay_panels.draw_stacked_panel#8",
+      "source": "pairwise results of :func:`proportion_tests`, drawn as stars.",
+      "source_sha256": "5ff64c21141aa064432465d2db194df9687a1e9835cc238fb3300d0b3f69bf05",
+      "translation": "résultats par paires de :func:`proportion_tests`, tracés sous forme d’étoiles."
+    },
+    {
+      "context": "test name shown in the title.",
+      "label": "spacr.assay_panels.draw_stacked_panel#9",
+      "source": "test name shown in the title.",
+      "source_sha256": "2d00ce957bf2cbbab578a2ae93eab81ea8de2bfc85579f05c438a13a78be24b7",
+      "translation": "nom du test affiché dans le titre."
     },
     {
       "context": "Format a p value for a panel title.",
@@ -247,6 +653,20 @@
       "translation": "Met en forme une valeur p pour un titre de panneau."
     },
     {
+      "context": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "label": "spacr.assay_panels.fmt_p#1",
+      "source": "the p value; anything that is not a finite number gives ``'p = n/a'``.",
+      "source_sha256": "e0989997ca1c3749c9365bcf71777e7eb940ff9fa5eb4606a14269c2229e313f",
+      "translation": "la valeur p ; tout ce qui n’est pas un nombre fini donne ``'p = n/a'``."
+    },
+    {
+      "context": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "label": "spacr.assay_panels.fmt_p#2",
+      "source": "``'p < 1e-4'`` or ``'p = '`` followed by three significant digits.",
+      "source_sha256": "2408c5352b45d7aaacbe2fcd51c4d6d1f6f5fbccb1cbeb4062a8937229ba149a",
+      "translation": "``'p < 1e-4'`` ou ``'p = '`` suivi de trois chiffres significatifs."
+    },
+    {
       "context": "Fraction of objects in each bin per unit (replicate if given, else well).",
       "label": "spacr.assay_panels.fractions_per_unit#0",
       "source": "Fraction of objects in each bin per unit (replicate if given, else well).",
@@ -254,8 +674,50 @@
       "translation": "Fraction des objets dans chaque classe par unité (le réplicat s’il est fourni, sinon le puits)."
     },
     {
-      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "context": "object-level table, one row per object.",
       "label": "spacr.assay_panels.fractions_per_unit#1",
+      "source": "object-level table, one row per object.",
+      "source_sha256": "bba78762a3c3594e2e6b81fec47c58a4b51c125ae223d529183c4a4f7e50f035",
+      "translation": "table au niveau des objets, une ligne par objet."
+    },
+    {
+      "context": "column holding the bin of each object.",
+      "label": "spacr.assay_panels.fractions_per_unit#2",
+      "source": "column holding the bin of each object.",
+      "source_sha256": "bfee67c88e7fda81a86846fe739b9a6ba9eb8f7137c50cc034f110715c01e95b",
+      "translation": "colonne contenant la classe de chaque objet."
+    },
+    {
+      "context": "bins to report, in legend order; bins without objects get 0.",
+      "label": "spacr.assay_panels.fractions_per_unit#3",
+      "source": "bins to report, in legend order; bins without objects get 0.",
+      "source_sha256": "18accd9e10b1e8d148cf1193bf1f5a48247aed2877897b049bd11fbbaeacee0f",
+      "translation": "classes à rapporter, dans l’ordre de la légende ; les classes sans objets reçoivent 0."
+    },
+    {
+      "context": "grouping columns kept in the output (e.g. the panel group).",
+      "label": "spacr.assay_panels.fractions_per_unit#4",
+      "source": "grouping columns kept in the output (e.g. the panel group).",
+      "source_sha256": "6b0e2d0204e044a923baa1bbdcc4b4452f553520bedec3a465c64056f560793d",
+      "translation": "colonnes de regroupement conservées dans la sortie (p. ex. le groupe du panneau)."
+    },
+    {
+      "context": "columns that identify one microplate sample position; the unit when ``replicate_column`` is ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#5",
+      "source": "columns that identify one well; the unit when ``replicate_column`` is ``None``.",
+      "source_sha256": "4f7db7a2bbded01bb911bf03f0d8352844e1ea658077b8658c50d88627fd93d4",
+      "translation": "colonnes qui identifient un puits ; l’unité lorsque ``replicate_column`` vaut ``None``."
+    },
+    {
+      "context": "column naming the biological replicate, or ``None``.",
+      "label": "spacr.assay_panels.fractions_per_unit#6",
+      "source": "column naming the biological replicate, or ``None``.",
+      "source_sha256": "4760bc603c2222e22c5e77f05e3ce017a604f35a0949f444649c5dfeff54542c",
+      "translation": "colonne qui nomme le réplicat biologique, ou ``None``."
+    },
+    {
+      "context": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
+      "label": "spacr.assay_panels.fractions_per_unit#7",
       "source": "one row per unit with ``keys``, unit columns, ``n_objects`` and one column per bin (fractions summing to 1).",
       "source_sha256": "755985503950bb419344cc565d20dc617d5358595078b1efa173f057a898b95d",
       "translation": "une ligne par unité avec ``keys``, les colonnes d’unité, ``n_objects`` et une colonne par classe (fractions dont la somme vaut 1)."
@@ -266,6 +728,27 @@
       "source": "Folder / file stem of a panel, ``<panel_id>_<name>`` with unsafe characters replaced.",
       "source_sha256": "37e0551fbf03c8715a78eef22091712dba466f09418b3a368155d12c66b4efe0",
       "translation": "Nom du dossier / racine du nom de fichier d’un panneau, ``<panel_id>_<name>``, les caractères non sûrs étant remplacés."
+    },
+    {
+      "context": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "label": "spacr.assay_panels.panel_folder_name#1",
+      "source": "panel id, for example ``'P01'`` or ``'C03'``.",
+      "source_sha256": "1684f93cae44fb849fe1c7c77bedf7350f008fb035cbbb1c4bb22b52cedfc6b1",
+      "translation": "identifiant du panneau, par exemple ``'P01'`` ou ``'C03'``."
+    },
+    {
+      "context": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "label": "spacr.assay_panels.panel_folder_name#2",
+      "source": "panel name; runs of characters other than letters, digits and ``._+-`` become one underscore.",
+      "source_sha256": "65ba8779254b1ea713fa3ed680867c4c4362b309859639ccf9fae084ed601805",
+      "translation": "nom du panneau ; toute suite de caractères autres que des lettres, des chiffres et ``._+-`` devient un seul tiret bas."
+    },
+    {
+      "context": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "label": "spacr.assay_panels.panel_folder_name#3",
+      "source": "the stem, or ``panel_id`` alone when nothing of ``name`` is left.",
+      "source_sha256": "99d0d8cd234f42772e72f1def21073069b5fd09bc82f46fec8e862b20e251559",
+      "translation": "la racine, ou ``panel_id`` seul lorsqu’il ne reste rien de ``name``."
     },
     {
       "context": "Compare bin proportions between groups.",
@@ -303,8 +786,22 @@
       "translation": "``'chi2'`` (test d’indépendance du khi carré) ou ``'fisher'`` (test exact de Fisher-Freeman-Halton par Monte Carlo avec ``n_resamples`` tables et ``seed`` ; le test exact de Fisher pour 2 x 2)."
     },
     {
-      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "context": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
       "label": "spacr.assay_panels.proportion_tests#5",
+      "source": "Monte Carlo tables drawn for the Fisher-Freeman-Halton test.",
+      "source_sha256": "80d1ca0a7a80234f569ff724f1d569cdbcc4f4db73b606a0ac5f1584b7ef631f",
+      "translation": "tables Monte Carlo tirées pour le test de Fisher-Freeman-Halton."
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.proportion_tests#6",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "graine aléatoire des tables Monte Carlo."
+    },
+    {
+      "context": "``(omnibus, pairwise)`` - a key-value mapping for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
+      "label": "spacr.assay_panels.proportion_tests#7",
       "source": "``(omnibus, pairwise)`` - a dict for the test over every group in ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) and a DataFrame with one row per group against the reference, with Holm-corrected ``p_holm`` and ``significance``.",
       "source_sha256": "7b5fd20ea94d63dd99016e156fb78a43d4f334b39d5e824e1fbf8303e96b52e6",
       "translation": "``(omnibus, pairwise)`` - un dict pour le test sur l’ensemble des groupes de ``order`` (test, statistic, dof, p_value, cramers_v, n, significance) et un DataFrame avec une ligne par groupe comparé à la référence, avec ``p_holm`` corrigé par Holm et ``significance``."
@@ -317,8 +814,43 @@
       "translation": "Écrit un dossier de panneau : graphique (PDF + PNG), données tracées et CSV de statistiques."
     },
     {
-      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "context": "folder that receives the panel folder.",
       "label": "spacr.assay_panels.save_panel#1",
+      "source": "folder that receives the panel folder.",
+      "source_sha256": "c3e9798e0bd4e009d52a920a321fbd276e4c155adcc0a8e76503a8f2dbe7dba9",
+      "translation": "dossier qui reçoit le dossier du panneau."
+    },
+    {
+      "context": "panel id, for example ``'P01'``.",
+      "label": "spacr.assay_panels.save_panel#2",
+      "source": "panel id, for example ``'P01'``.",
+      "source_sha256": "1d07211a076306936e51476b7000a7e07b1e3ef6c3feb70a5f6487aa609821cf",
+      "translation": "identifiant du panneau, par exemple ``'P01'``."
+    },
+    {
+      "context": "panel name, made safe by :func:`panel_folder_name`.",
+      "label": "spacr.assay_panels.save_panel#3",
+      "source": "panel name, made safe by :func:`panel_folder_name`.",
+      "source_sha256": "1cff0e06aeda07f2529d189d0a046b8cf91b039049b3d2b53749974a1a5fa13e",
+      "translation": "nom du panneau, rendu sûr par :func:`panel_folder_name`."
+    },
+    {
+      "context": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "label": "spacr.assay_panels.save_panel#4",
+      "source": "the panel spec from :func:`bar_spec` or :func:`stacked_spec`; its ``folder`` key is set to the folder written.",
+      "source_sha256": "dd613bdc86e5f38e32fa5298105901288e55a3a2a3cf8775ca2a7ee1d2f888fd",
+      "translation": "la spécification du panneau issue de :func:`bar_spec` ou :func:`stacked_spec` ; sa clé ``folder`` reçoit le dossier écrit."
+    },
+    {
+      "context": "resolution of the PNG.",
+      "label": "spacr.assay_panels.save_panel#5",
+      "source": "resolution of the PNG.",
+      "source_sha256": "d0ce1691ecefc6688376c4724f057e101466d57b268e401b4975de2cdacda292",
+      "translation": "résolution du PNG."
+    },
+    {
+      "context": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
+      "label": "spacr.assay_panels.save_panel#6",
       "source": "the panel folder path ``<out_dir>/<panel_id>_<name>``.",
       "source_sha256": "9677f7ed93e5edc2d2e88da61bdd36ea59136244145378065ea402d32a8ae4e3",
       "translation": "le chemin du dossier du panneau ``<out_dir>/<panel_id>_<name>``."
@@ -359,8 +891,15 @@
       "translation": "groupes à comparer, dans l’ordre de tracé. Les groupes sans données sont rapportés avec ``n = 0`` et exclus du test."
     },
     {
-      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "context": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
       "label": "spacr.assay_panels.select_and_run_test#5",
+      "source": "significance level of the Shapiro-Wilk and Levene checks that choose the test.",
+      "source_sha256": "b63590067f5d4475ecf78642ca08f6f81f8d47b4c01f802f4ee921074e17e860",
+      "translation": "seuil de significativité des vérifications de Shapiro-Wilk et de Levene qui choisissent le test."
+    },
+    {
+      "context": "key-value mapping of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
+      "label": "spacr.assay_panels.select_and_run_test#6",
       "source": "dict of DataFrames - ``test`` (one row: test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk per group and Levene), ``posthoc`` (every pair: group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) and ``descriptive`` (n, mean, std, median, sem per group in ``order``).",
       "source_sha256": "dcf12644739848ac140bb28cd77bb4c39102e60e04e0083c4486305c53a80b96",
       "translation": "dict de DataFrames - ``test`` (une ligne : test, statistic, df1, df2, p_value, effect_size_name, effect_size, all_groups_normal, equal_variance, significance), ``assumptions`` (Shapiro-Wilk par groupe et Levene), ``posthoc`` (chaque paire : group_1, group_2, mean_1, mean_2, statistic, p_adj, posthoc, significance) et ``descriptive`` (n, mean, std, median, sem par groupe de ``order``)."
@@ -373,11 +912,151 @@
       "translation": "Exécute le test de proportions et renvoie une spécification de panneau empilé pour le tracé/l’enregistrement."
     },
     {
+      "context": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "label": "spacr.assay_panels.stacked_spec#1",
+      "source": "one row per unit with one column per bin, from :func:`fractions_per_unit`.",
+      "source_sha256": "20335ccded632caa87e53426fff9a678c96e2bd857804d0db5f1ecbad56e7158",
+      "translation": "une ligne par unité avec une colonne par classe, issue de :func:`fractions_per_unit`."
+    },
+    {
+      "context": "raw group value -> x tick label.",
+      "label": "spacr.assay_panels.stacked_spec#10",
+      "source": "raw group value -> x tick label.",
+      "source_sha256": "32300cc3d6fd9b76cf461a851e2a5658f5c0e15b486eb7b35abd17a6d2147af9",
+      "translation": "valeur brute du groupe -> libellé de graduation de l’axe des x."
+    },
+    {
+      "context": "row name -> {group: text}, aligned text rows under the x axis.",
+      "label": "spacr.assay_panels.stacked_spec#11",
+      "source": "row name -> {group: text}, aligned text rows under the x axis.",
+      "source_sha256": "30de46a0ed27e49e1c99422fe7dba3e9f6f901ace9feafad6ec660ab2718d8af",
+      "translation": "nom de ligne -> {group: text}, lignes de texte alignées sous l’axe des x."
+    },
+    {
+      "context": "title of the bin legend.",
+      "label": "spacr.assay_panels.stacked_spec#12",
+      "source": "title of the bin legend.",
+      "source_sha256": "6161a565eb18a9cf3816d0d723ae81f01b0b31040404dec6bb6f9efa669b9720",
+      "translation": "titre de la légende des classes."
+    },
+    {
+      "context": "y-axis label.",
+      "label": "spacr.assay_panels.stacked_spec#13",
+      "source": "y-axis label.",
+      "source_sha256": "e56b92ed121c5b539274d94109ef966bbca4ed47ccd23ba1b54fd7853f368304",
+      "translation": "libellé de l’axe y."
+    },
+    {
+      "context": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "label": "spacr.assay_panels.stacked_spec#14",
+      "source": "Monte Carlo tables for the Fisher-Freeman-Halton test.",
+      "source_sha256": "b489453be05704135eb729925627c19bce0ee79202f22def1da308aa916682c1",
+      "translation": "tables Monte Carlo pour le test de Fisher-Freeman-Halton."
+    },
+    {
+      "context": "random seed of the Monte Carlo tables.",
+      "label": "spacr.assay_panels.stacked_spec#15",
+      "source": "random seed of the Monte Carlo tables.",
+      "source_sha256": "62ac885616949c04ff3be2c42122800a7fb7e887110c94c4a09a5f12dec0ea6a",
+      "translation": "graine aléatoire des tables Monte Carlo."
+    },
+    {
+      "context": "one colour per bin; ``None`` uses viridis.",
+      "label": "spacr.assay_panels.stacked_spec#16",
+      "source": "one colour per bin; ``None`` uses viridis.",
+      "source_sha256": "cf209082a29350406bfb878d61a11a5bb91e58782da85d0665c3edfe550c246b",
+      "translation": "une couleur par classe ; ``None`` utilise viridis."
+    },
+    {
+      "context": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "label": "spacr.assay_panels.stacked_spec#17",
+      "source": "file stem -> table, written as more CSVs by :func:`save_panel`.",
+      "source_sha256": "1f0b78464cb1fbedfabdfee7ef1d3c8f0f7a20c0d922f3be80b7320d6a503d3c",
+      "translation": "racine du nom de fichier -> table, écrite sous forme de CSV supplémentaires par :func:`save_panel`."
+    },
+    {
+      "context": "a key-value mapping spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "label": "spacr.assay_panels.stacked_spec#18",
+      "source": "a dict spec with ``kind`` ``'stacked'``, the ``omnibus`` and ``pairwise`` results and the reindexed ``counts``.",
+      "source_sha256": "d0e47b6291343c9da7369e51d441354d25ca690121757208ffc98bf4802ac49d",
+      "translation": "une spécification dict avec ``kind`` ``'stacked'``, les résultats ``omnibus`` et ``pairwise`` et les ``counts`` réindexés."
+    },
+    {
+      "context": "object counts, one row per group and one column per bin.",
+      "label": "spacr.assay_panels.stacked_spec#2",
+      "source": "object counts, one row per group and one column per bin.",
+      "source_sha256": "d33e8e15b0ea6b69e1b021de3f3df64a51742db0f5de262f8a3b33e94dd4e161",
+      "translation": "comptes d’objets, une ligne par groupe et une colonne par classe."
+    },
+    {
+      "context": "column naming the group of each row of ``fractions``.",
+      "label": "spacr.assay_panels.stacked_spec#3",
+      "source": "column naming the group of each row of ``fractions``.",
+      "source_sha256": "0522ac1aa3342bc8470df21818861baf58fa33958bc819834f3e02f1d36c1f75",
+      "translation": "colonne qui nomme le groupe de chaque ligne de ``fractions``."
+    },
+    {
+      "context": "groups on the x axis, in order.",
+      "label": "spacr.assay_panels.stacked_spec#4",
+      "source": "groups on the x axis, in order.",
+      "source_sha256": "6f12c8dd6e227a6a9d22cae45022648835111cf79989fdbbb62c5ef9a6bfe8ad",
+      "translation": "groupes sur l’axe des x, dans l’ordre."
+    },
+    {
+      "context": "bins stacked from the bottom, in order.",
+      "label": "spacr.assay_panels.stacked_spec#5",
+      "source": "bins stacked from the bottom, in order.",
+      "source_sha256": "4889eb30eb1784759e84a568158b6c600df4f5b7831be4d7cb31f256a5198141",
+      "translation": "classes empilées à partir du bas, dans l’ordre."
+    },
+    {
+      "context": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "label": "spacr.assay_panels.stacked_spec#6",
+      "source": "legend text per bin, in ``bins`` order; ``None`` uses the bins.",
+      "source_sha256": "3303c3c4288c49da37b44b93dc0b365200e6ad7982d42534719acbfcdb3dbbf4",
+      "translation": "texte de légende par classe, dans l’ordre de ``bins`` ; ``None`` utilise les classes."
+    },
+    {
+      "context": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "label": "spacr.assay_panels.stacked_spec#7",
+      "source": "``'chi2'`` or ``'fisher'``, as in :func:`proportion_tests`.",
+      "source_sha256": "3d355f3aa795a0445975afcb85838583b4ce07629c593f1ccbcd0fc7fb607bba",
+      "translation": "``'chi2'`` ou ``'fisher'``, comme dans :func:`proportion_tests`."
+    },
+    {
+      "context": "group every other group is compared with; default ``order[0]``.",
+      "label": "spacr.assay_panels.stacked_spec#8",
+      "source": "group every other group is compared with; default ``order[0]``.",
+      "source_sha256": "0e5b7e81dcb7d66e6ff3e28a292fab6ef5fb5dac2b1fb617d788b6885ab41098",
+      "translation": "groupe auquel chaque autre groupe est comparé ; par défaut ``order[0]``."
+    },
+    {
+      "context": "panel title; the omnibus result is added below it.",
+      "label": "spacr.assay_panels.stacked_spec#9",
+      "source": "panel title; the omnibus result is added below it.",
+      "source_sha256": "d5eec6eb296ddb3eb96a0819c927d9c5d16222cef9510bacea15dda4bfe0ea7d",
+      "translation": "titre du panneau ; le résultat omnibus est ajouté en dessous."
+    },
+    {
       "context": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "label": "spacr.assay_panels.stars#0",
       "source": "Significance stars for a p value ('ns' at or above 0.05, 'n/a' if missing).",
       "source_sha256": "b1c3e166ae1c78c0bd902bb90565576eef781b5e2fd04669d8e497f00aeaae13",
       "translation": "Étoiles de significativité pour une valeur p ('ns' à partir de 0.05, 'n/a' si elle est manquante)."
+    },
+    {
+      "context": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "label": "spacr.assay_panels.stars#1",
+      "source": "the p value; anything that is not a finite number gives ``'n/a'``.",
+      "source_sha256": "99fe3c22de428ba3647f229b6a6db98dbbc7d960e533624aab0f0fd5c00f7a6a",
+      "translation": "la valeur p ; tout ce qui n’est pas un nombre fini donne ``'n/a'``."
+    },
+    {
+      "context": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "label": "spacr.assay_panels.stars#2",
+      "source": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) or ``'ns'``.",
+      "source_sha256": "ef6b5f051d54f453332ae27f21bc33c4c747f0336a6e3f6708f0e74840b44ce5",
+      "translation": "``'****'`` (p < 1e-4), ``'***'``, ``'**'``, ``'*'`` (p < 0.05) ou ``'ns'``."
     },
     {
       "context": "Attach the :func:`well_density` columns to object rows (a new frame).",
@@ -394,6 +1073,27 @@
       "translation": "Les identifiants de plaque sont décodés de l’URL des deux côtés, comme pour :func:`apply_field_qc`. Les lignes des puits absents de ``wells`` reçoivent ``NaN``."
     },
     {
+      "context": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "label": "spacr.recruitment_confounders.apply_well_density#2",
+      "source": "object-level frame with the :data:`WELL_KEYS` columns.",
+      "source_sha256": "12e6a462197f6f0ccccad8dd852c0809e8b165b4be3efbefd1196820b207391a",
+      "translation": "tableau au niveau des objets contenant les colonnes :data:`WELL_KEYS`."
+    },
+    {
+      "context": "output of :func:`well_density`.",
+      "label": "spacr.recruitment_confounders.apply_well_density#3",
+      "source": "output of :func:`well_density`.",
+      "source_sha256": "ad2d19bc11a18bb43dc936f37894a552f42b042bdfa4e434c127726015b4314a",
+      "translation": "sortie de :func:`well_density`."
+    },
+    {
+      "context": "a copy of ``df`` with the microplate sample position columns added.",
+      "label": "spacr.recruitment_confounders.apply_well_density#4",
+      "source": "a copy of ``df`` with the well columns added.",
+      "source_sha256": "d6c9885aabe176696e4c5bcd515f0931be490f6a4187439eaf8e23a0a136289e",
+      "translation": "une copie de ``df`` à laquelle les colonnes de puits sont ajoutées."
+    },
+    {
       "context": "Count host cells and parasites in every microplate sample position of a laboratory microplate.",
       "label": "spacr.recruitment_confounders.well_density#0",
       "source": "Count host cells and parasites in every well of a plate.",
@@ -408,8 +1108,29 @@
       "translation": "L’équivalent au niveau des puits de :func:`field_density`, sommé sur les champs de chaque puits."
     },
     {
-      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "context": "path to a spacr ``measurements.db``.",
       "label": "spacr.recruitment_confounders.well_density#2",
+      "source": "path to a spacr ``measurements.db``.",
+      "source_sha256": "87e15f4befab3513047b13ad39682c0a6bdeabb000ce1d9174fbd2712f8eec22",
+      "translation": "chemin vers un ``measurements.db`` de spacr."
+    },
+    {
+      "context": "table holding one row per host cell.",
+      "label": "spacr.recruitment_confounders.well_density#3",
+      "source": "table holding one row per host cell.",
+      "source_sha256": "892c0cea4065416282cccd1105814640429bba62f711c7af81726a1a89840f0e",
+      "translation": "table contenant une ligne par cellule hôte."
+    },
+    {
+      "context": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "label": "spacr.recruitment_confounders.well_density#4",
+      "source": "table holding one row per parasite / vacuole, or ``None`` to count only ``cell_table``.",
+      "source_sha256": "703597f92013dbc9142fc73fbbd57c94a522d4eded565582117738e29fe9867f",
+      "translation": "table contenant une ligne par parasite / vacuole, ou ``None`` pour ne compter que ``cell_table``."
+    },
+    {
+      "context": "one row per microplate sample position (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
+      "label": "spacr.recruitment_confounders.well_density#5",
       "source": "one row per well (:data:`WELL_KEYS`) with ``n_cells_well``, ``n_pathogens_well`` (when ``pathogen_table`` exists), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` and ``n_fields_well``.",
       "source_sha256": "e87475cdc9d26f0ca0ede6fb17c7732b87ec9770d6a7f1be189f7d4921a86509",
       "translation": "une ligne par puits (:data:`WELL_KEYS`) avec ``n_cells_well``, ``n_pathogens_well`` (lorsque ``pathogen_table`` existe), ``n_pathogens_in_cells_well``, ``pathogens_per_cell_well`` et ``n_fields_well``."
@@ -434,20 +1155,6 @@
       "source": "Example:",
       "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
       "translation": "Exemple :"
-    },
-    {
-      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#7",
-      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
-      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
-      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
-    },
-    {
-      "context": "``treatments`` / ``treatment_plate_metadata``.",
-      "label": "spacr.submodules.analyze_recruitment#8",
-      "source": "``treatments`` / ``treatment_plate_metadata``.",
-      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
-      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``*_intensity_range``, ``target_intensity_min``.",
@@ -560,6 +1267,20 @@
       "source": "See Also: :func:`analyze_plaques` — plaque-count/size assay. :func:`spacr.ml.generate_ml_scores` — feature-based classifier as an alternative to recruitment ratios.",
       "source_sha256": "a3165013e4976fcd9c7a8c2352b1487419add9a4524c1d101fc2215d36a1a530",
       "translation": "Voir aussi : :func:`analyze_plaques` — test de nombre/taille des plages de lyse. :func:`spacr.ml.generate_ml_scores` — classifieur fondé sur les caractéristiques, alternative aux rapports de recrutement."
+    },
+    {
+      "context": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#7",
+      "source": "``pathogen_types`` / ``pathogen_plate_metadata``.",
+      "source_sha256": "99041e50ccb8a33e96fd544282877bf394d360456c9273189b94cba3f7cd1a87",
+      "translation": "``pathogen_types`` / ``pathogen_plate_metadata``."
+    },
+    {
+      "context": "``treatments`` / ``treatment_plate_metadata``.",
+      "label": "spacr.submodules.analyze_recruitment#8",
+      "source": "``treatments`` / ``treatment_plate_metadata``.",
+      "source_sha256": "f41971d5082af24bddf1ed49564ad7e20c3442e9b6ed4d4ca3db98f5a522b035",
+      "translation": "``treatments`` / ``treatment_plate_metadata``."
     },
     {
       "context": "``cell_types`` / ``pathogen_types`` / ``treatments`` and their ``*_plate_metadata`` well maps, plus ``group_column`` and ``level``.",

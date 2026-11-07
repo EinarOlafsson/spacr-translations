@@ -1,0 +1,168 @@
+{
+  "language": "pt",
+  "records": [
+    {
+      "context": "how a timm backbone's input is prepared. ``\"pretrained\"`` resizes each extracted image region to the model's pretrained input size and standardises it by the model's pretrained mean and standard deviation (ImageNet's for ImageNet weights), as the model was trained. ``\"none\"`` feeds the [0, 1] extracted image regions at their own size. Foundation and DINO encoders prepare their own input and ignore it.",
+      "label": "spacr.embeddings.EmbeddingSpec#12",
+      "source": "how a timm backbone's input is prepared. ``\"pretrained\"`` resizes each crop to the model's pretrained input size and standardises it by the model's pretrained mean and standard deviation (ImageNet's for ImageNet weights), as the model was trained. ``\"none\"`` feeds the [0, 1] crops at their own size. Foundation and DINO encoders prepare their own input and ignore it.",
+      "source_sha256": "e148716115e8a35f4840437fa3e5277213494a1e27f71e41ed784678c05a2eb2",
+      "translation": "como a entrada de um backbone timm é preparada. ``\"pretrained\"`` redimensiona cada recorte para o tamanho de entrada pré-treinado do modelo e o padroniza pela média e pelo desvio padrão pré-treinados do modelo (os do ImageNet para pesos ImageNet), tal como o modelo foi treinado. ``\"none\"`` fornece os recortes em [0, 1] no seu próprio tamanho. Os codificadores de modelo fundacional e DINO preparam a sua própria entrada e o ignoram."
+    },
+    {
+      "context": "three channel means replacing the pretrained ones.",
+      "label": "spacr.embeddings.EmbeddingSpec#13",
+      "source": "three channel means replacing the pretrained ones.",
+      "source_sha256": "9d34878775a2ce5475e5ab1b0579095174801a97afd9eeecaffaf1795c8be0ef",
+      "translation": "três médias de canal que substituem as pré-treinadas."
+    },
+    {
+      "context": "three positive standard deviations replacing the pretrained ones.",
+      "label": "spacr.embeddings.EmbeddingSpec#14",
+      "source": "three positive standard deviations replacing the pretrained ones.",
+      "source_sha256": "018df5843140eeae04d195a4e178767888500f0b9d5a776f8ab0da210521265d",
+      "translation": "três desvios padrão positivos que substituem os pré-treinados."
+    },
+    {
+      "context": "side, in pixels, each extracted image region is resized to instead of the pretrained input size; ``0`` keeps the extracted image region size. A backbone with a fixed patch grid is always resized to that grid.",
+      "label": "spacr.embeddings.EmbeddingSpec#15",
+      "source": "side, in pixels, each crop is resized to instead of the pretrained input size; ``0`` keeps the crop size. A backbone with a fixed patch grid is always resized to that grid.",
+      "source_sha256": "ae39302c22ee4cb8aa39f1a83b533f5ccdc8db92ee66623b14821ebd3c49573e",
+      "translation": "lado, em pixels, para o qual cada recorte é redimensionado em vez do tamanho de entrada pré-treinado; ``0`` mantém o tamanho do recorte. Um backbone com grade de patches fixa é sempre redimensionado para essa grade."
+    },
+    {
+      "context": "when ``channel_policy`` is not one of :data:`CHANNEL_POLICIES`, ``batch_size`` is below one, or ``channel_scale`` is set without ``normalize``, holds a negative or non-finite value, or does not give one value per channel in ``channels``; or when the input transform is unknown, a mean or standard deviation is not three finite numbers (the deviations positive), ``input_size`` is negative, or an override is given with the transform switched off.",
+      "label": "spacr.embeddings.EmbeddingSpec.__post_init__#2",
+      "source": "when ``channel_policy`` is not one of :data:`CHANNEL_POLICIES`, ``batch_size`` is below one, or ``channel_scale`` is set without ``normalize``, holds a negative or non-finite value, or does not give one value per channel in ``channels``; or when the input transform is unknown, a mean or standard deviation is not three finite numbers (the deviations positive), ``input_size`` is negative, or an override is given with the transform switched off.",
+      "source_sha256": "4c8f51465ca19cab8862c1feaf089dbb396d02b74d245730378f82a360529cf4",
+      "translation": "quando ``channel_policy`` não é um de :data:`CHANNEL_POLICIES`, ``batch_size`` é menor que um, ou ``channel_scale`` é definido sem ``normalize``, contém um valor negativo ou não finito, ou não fornece um valor por canal em ``channels``; ou quando a transformação de entrada é desconhecida, uma média ou um desvio padrão não são três números finitos (os desvios positivos), ``input_size`` é negativo, ou uma substituição é fornecida com a transformação desativada."
+    },
+    {
+      "context": "Embed an extracted image region store into per-cell embeddings and per-microplate sample position aggregates.",
+      "label": "spacr.embeddings.embed_store#0",
+      "source": "Embed a crop store into per-cell embeddings and per-well aggregates.",
+      "source_sha256": "4ba483628561fac19c796c97acb5c2275aac1f9a01331e633c2e0b881b480a9e",
+      "translation": "Gera embeddings por célula e agregados por poço a partir de um armazenamento de recortes."
+    },
+    {
+      "context": "One fixed scale per channel is estimated from a random sample of the whole store (the 99th percentile of 2,048 extracted image regions) and every extracted image region is divided by it, so a cell's embedding does not depend on which extracted image regions share its batch. The extracted image regions are encoded in chunks on CPU worker processes, then averaged per microplate sample position: the mean and the median of every dimension, with the number of cells.",
+      "label": "spacr.embeddings.embed_store#1",
+      "source": "One fixed scale per channel is estimated from a random sample of the whole store (the 99th percentile of 2,048 crops) and every crop is divided by it, so a cell's embedding does not depend on which crops share its batch. The crops are encoded in chunks on CPU worker processes, then averaged per well: the mean and the median of every dimension, with the number of cells.",
+      "source_sha256": "4a9bc8301be5505006933ca34802a49c82e23df83d73f68833ed293a9d1fb68c",
+      "translation": "Uma escala fixa por canal é estimada a partir de uma amostra aleatória de todo o armazenamento (o percentil 99 de 2.048 recortes) e cada recorte é dividido por ela, de modo que o embedding de uma célula não depende de quais recortes compartilham o seu lote. Os recortes são codificados em blocos em processos de trabalho de CPU e depois agregados por poço: a média e a mediana de cada dimensão, com o número de células."
+    },
+    {
+      "context": "a ``measurements.db`` (extracted image regions chosen by ``object_type``, ``plate`` and ``where``, read as the Embeddings application view reads them), a :class:`spacr.crop_loader.CropQuery`, a ``.npy`` extracted image region array (opened memory-mapped), or any ``(n, height, width, channels)`` array that can be sliced, such as an HDF5 dataset.",
+      "label": "spacr.embeddings.embed_store#2",
+      "source": "a ``measurements.db`` (crops chosen by ``object_type``, ``plate`` and ``where``, read as the Embeddings screen reads them), a :class:`spacr.crop_loader.CropQuery`, a ``.npy`` crop array (opened memory-mapped), or any ``(n, height, width, channels)`` array that can be sliced, such as an HDF5 dataset.",
+      "source_sha256": "7d7b3d4e9bc2974ee35d31c8cffa88ccf054a5104fcc5b868bdb1b03a45c0816",
+      "translation": "um ``measurements.db`` (recortes escolhidos por ``object_type``, ``plate`` e ``where``, lidos como a tela Embeddings os lê), um :class:`spacr.crop_loader.CropQuery`, uma matriz de recortes ``.npy`` (aberta com mapeamento em memória) ou qualquer matriz ``(n, height, width, channels)`` que possa ser fatiada, como um conjunto de dados HDF5."
+    },
+    {
+      "context": "how to embed; the default is per-channel resnet18. A spec that carries ``channel_scale`` is used as it stands.",
+      "label": "spacr.embeddings.embed_store#3",
+      "source": "how to embed; the default is per-channel resnet18. A spec that carries ``channel_scale`` is used as it stands.",
+      "source_sha256": "b44da51991761a0f412139cec87ecee44dd6ad4f5965501e89c1e7304a5891ce",
+      "translation": "como gerar o embedding; o padrão é resnet18 por canal. Uma especificação que contém ``channel_scale`` é usada tal como está."
+    },
+    {
+      "context": "one metadata row per extracted image region, in extracted image region order: a frame or a table path. A database source supplies its own extracted-image-region table rows; without either, rows are numbered ``object``.",
+      "label": "spacr.embeddings.embed_store#4",
+      "source": "one metadata row per crop, in crop order: a frame or a table path. A database source supplies its own crop-table rows; without either, rows are numbered ``object``.",
+      "source_sha256": "7c1c833e6c5148dd61e32e4b80622d1820f9068e7919a1b5df8bc76de793dc3c",
+      "translation": "uma linha de metadados por recorte, na ordem dos recortes: um frame ou o caminho de uma tabela. Uma origem de banco de dados fornece as suas próprias linhas da tabela de recortes; sem nenhum dos dois, as linhas são numeradas em ``object``."
+    },
+    {
+      "context": "folder to write ``cell_embeddings.parquet``, ``well_embeddings_mean.parquet``, ``well_embeddings_median.parquet`` and ``embedding_record.json`` into; ``None`` writes nothing.",
+      "label": "spacr.embeddings.embed_store#5",
+      "source": "folder to write ``cell_embeddings.parquet``, ``well_embeddings_mean.parquet``, ``well_embeddings_median.parquet`` and ``embedding_record.json`` into; ``None`` writes nothing.",
+      "source_sha256": "6cb91b5ddf160cb9a801ed6c14364e4fd7ba25365837a74dc88be3fa0c63746e",
+      "translation": "pasta onde gravar ``cell_embeddings.parquet``, ``well_embeddings_mean.parquet``, ``well_embeddings_median.parquet`` e ``embedding_record.json``; ``None`` não grava nada."
+    },
+    {
+      "context": "object class for a database source.",
+      "label": "spacr.embeddings.embed_store#6",
+      "source": "object class for a database source.",
+      "source_sha256": "7fd2a10a88da5e16e2465f10bf42a79420c23a6e5f603082fc72231fb6e85011",
+      "translation": "classe de objeto para uma origem de banco de dados."
+    },
+    {
+      "context": "one plate for a database source, ``''`` for every plate.",
+      "label": "spacr.embeddings.embed_store#7",
+      "source": "one plate for a database source, ``''`` for every plate.",
+      "source_sha256": "8d7fcb40c2b9885bdb93c8b2083e61172ba49fa9f9cc4e8992b6a81cf1a28d06",
+      "translation": "uma placa para uma origem de banco de dados, ``''`` para todas as placas."
+    },
+    {
+      "context": "SQL condition over the extracted-image-region table for a database source.",
+      "label": "spacr.embeddings.embed_store#8",
+      "source": "SQL condition over the crop table for a database source.",
+      "source_sha256": "4828c168b9062e3059f8160002dae3f2a3222f5428f6dcb29783831669748579",
+      "translation": "condição SQL sobre a tabela de recortes para uma origem de banco de dados."
+    },
+    {
+      "context": "metadata columns that name one microplate sample position. When any is missing, no microplate sample position tables are made.",
+      "label": "spacr.embeddings.embed_store#9",
+      "source": "metadata columns that name one well. When any is missing, no well tables are made.",
+      "source_sha256": "154c07f83357250dc5a06c67887f8dc4ad5ace9f236175ed15861d325a7c32b3",
+      "translation": "colunas de metadados que identificam um poço. Quando alguma está ausente, nenhuma tabela de poços é gerada."
+    },
+    {
+      "context": "the run's record; a ``channel_scale`` already in it is reused, otherwise the estimate is written into it.",
+      "label": "spacr.embeddings.embed_store#10",
+      "source": "the run's record; a ``channel_scale`` already in it is reused, otherwise the estimate is written into it.",
+      "source_sha256": "7e79102954831cb81762729d106a85b54913e01baee1868424577e7002ea71fb",
+      "translation": "o registro da execução; um ``channel_scale`` já presente nele é reutilizado; caso contrário, a estimativa é gravada nele."
+    },
+    {
+      "context": "CPU worker processes; ``0`` or ``None`` derives them from the core count.",
+      "label": "spacr.embeddings.embed_store#11",
+      "source": "CPU worker processes; ``0`` or ``None`` derives them from the core count.",
+      "source_sha256": "e9276fb2007a21af372cbfa9d00d87200332792fb422c140a11ffe0bb46206e4",
+      "translation": "processos de trabalho de CPU; ``0`` ou ``None`` os deriva do número de núcleos."
+    },
+    {
+      "context": "torch independent execution paths per worker; ``0`` or ``None`` derives them from the core count.",
+      "label": "spacr.embeddings.embed_store#12",
+      "source": "torch threads per worker; ``0`` or ``None`` derives them from the core count.",
+      "source_sha256": "17b1d44766a60a0ed3467220d0993a68acf89e8dbe9c7ebb2fb6cf069e9985dc",
+      "translation": "threads do torch por processo de trabalho; ``0`` ou ``None`` as deriva do número de núcleos."
+    },
+    {
+      "context": "a stand-in encoder, as for :func:`embed_array`; it must be picklable when more than one worker executes.",
+      "label": "spacr.embeddings.embed_store#13",
+      "source": "a stand-in encoder, as for :func:`embed_array`; it must be picklable when more than one worker runs.",
+      "source_sha256": "9f7a03fb255715f2277a341d3116fea1944f4e0013ad9c2a46eac1a500b8f961",
+      "translation": "um codificador substituto, como em :func:`embed_array`; ele deve ser serializável com pickle quando mais de um processo de trabalho é executado."
+    },
+    {
+      "context": "``{\"cells\", \"wells_mean\", \"wells_median\", \"record\", \"files\"}``: the per-cell frame (metadata then embedding columns), the two microplate sample position frames (``None`` without microplate sample position columns), the run record and the paths written.",
+      "label": "spacr.embeddings.embed_store#14",
+      "source": "``{\"cells\", \"wells_mean\", \"wells_median\", \"record\", \"files\"}``: the per-cell frame (metadata then embedding columns), the two well frames (``None`` without well columns), the run record and the paths written.",
+      "source_sha256": "970165c6f51d77d60cb42b324cb7ba3c50009d9439e7ec9f6b25ec4252c9c923",
+      "translation": "``{\"cells\", \"wells_mean\", \"wells_median\", \"record\", \"files\"}``: o frame por célula (metadados e depois colunas de embedding), os dois frames de poços (``None`` sem colunas de poço), o registro da execução e os caminhos gravados."
+    },
+    {
+      "context": "when the source cannot be read as extracted image regions, the object rows do not match the extracted image regions, or the spec does not fit them.",
+      "label": "spacr.embeddings.embed_store#15",
+      "source": "when the source cannot be read as crops, the object rows do not match the crops, or the spec does not fit them.",
+      "source_sha256": "e7486eb9717fcf4000ed50065de2da5ed7c1bb663c28ef00bdd153df5b268445",
+      "translation": "quando a origem não pode ser lida como recortes, as linhas de objetos não correspondem aos recortes ou a especificação não é adequada a eles."
+    },
+    {
+      "context": "Report what was written, or why nothing was.",
+      "label": "spacr.qt.screens.embeddings.EmbeddingsScreen._embed_and_export.finished#0",
+      "source": "Report what was written, or why nothing was.",
+      "source_sha256": "235a3f12a05814287c1b902c7e30673651215dc0c714467a575e52c342d48260",
+      "translation": "Informa o que foi gravado ou por que nada foi gravado."
+    },
+    {
+      "context": "Embed and write off the main GUI execution path.",
+      "label": "spacr.qt.screens.embeddings.EmbeddingsScreen._embed_and_export.work#0",
+      "source": "Embed and write off the GUI thread.",
+      "source_sha256": "261287532d290da105e94f03dae8f79a49838792e2d0cff71755d655a5e392cb",
+      "translation": "Gera os embeddings e grava fora da thread da GUI."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

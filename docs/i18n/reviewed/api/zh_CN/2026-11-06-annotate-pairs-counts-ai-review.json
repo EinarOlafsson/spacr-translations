@@ -1,0 +1,77 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Touching label pairs, rendered for a person to call merge or keep.",
+      "label": "spacr._merge_pairs#0",
+      "source": "Touching label pairs, rendered for a person to call merge or keep.",
+      "source_sha256": "42a0fddf656ab138777232ad065928792e82bec41f6bb3d8783e37adc665ecc0",
+      "translation": "相互接触的标签对，渲染后供人工判定合并或保持分开。"
+    },
+    {
+      "context": "A segmenter that cuts one object in two leaves two labels that touch along a long shared edge. :func:`spacr.object_classifier.split_candidates` finds such pairs by geometry; this module turns them into a review set that a person labels one pair at a time.",
+      "label": "spacr._merge_pairs#1",
+      "source": "A segmenter that cuts one object in two leaves two labels that touch along a long shared edge. :func:`spacr.object_classifier.split_candidates` finds such pairs by geometry; this module turns them into a review set that a person labels one pair at a time.",
+      "source_sha256": "97f1e96a04db70827e7ed0ecd55c5e7059640700ee92fb9239dd001cad136cf2",
+      "translation": "分割器若将一个对象切成两个，会留下两个沿较长共享边界相互接触的标签。:func:`spacr.object_classifier.split_candidates` 依据几何特征找出这类标签对；本模块将其转换为审核集合，由人工逐对标注。"
+    },
+    {
+      "context": "The set is an ordinary Annotate source. Every pair is one PNG under ``<folder>/data/merge_pairs/`` with label A outlined white and label B yellow, and one row in ``png_list`` of ``<folder>/measurements/ measurements.db``. The verdict goes to the ``merge`` column: ``1`` one object cut in two, ``2`` two objects, ``3`` cannot tell. A set built here can therefore also be opened in the Annotate grid, and any script that reads ``png_list`` reads the verdicts.",
+      "label": "spacr._merge_pairs#2",
+      "source": "The set is an ordinary Annotate source. Every pair is one PNG under ``<folder>/data/merge_pairs/`` with label A outlined white and label B yellow, and one row in ``png_list`` of ``<folder>/measurements/ measurements.db``. The verdict goes to the ``merge`` column: ``1`` one object cut in two, ``2`` two objects, ``3`` cannot tell. A set built here can therefore also be opened in the Annotate grid, and any script that reads ``png_list`` reads the verdicts.",
+      "source_sha256": "2c1e71b6a9564cec63e95ead973e93624e4c761f6a71106b3f5771a7a553c71b",
+      "translation": "该集合是普通的 Annotate 来源。每个标签对对应 ``<folder>/data/merge_pairs/`` 下的一个 PNG（标签 A 以白色勾勒轮廓，标签 B 以黄色勾勒），以及 ``png_list`` 中的一行（位于 ``<folder>/measurements/ measurements.db``）。判定结果写入 ``merge`` 列：``1`` 表示一个对象被切成两个，``2`` 表示两个对象，``3`` 表示无法判断。因此，在此构建的集合也可以在 Annotate 网格中打开，任何读取 ``png_list`` 的脚本都能读取这些判定结果。"
+    },
+    {
+      "context": "A PNG is named ``<mask stem>_<object><A>-<B>.png``, so a pair keeps the field it came from and the two labels in its name.",
+      "label": "spacr._merge_pairs#3",
+      "source": "A PNG is named ``<mask stem>_<object><A>-<B>.png``, so a pair keeps the field it came from and the two labels in its name.",
+      "source_sha256": "482c066d8246322dd3c88c05b59701697f59bb5f86f413cb96653dfcb745909c",
+      "translation": "PNG 的命名为 ``<mask stem>_<object><A>-<B>.png``，因此标签对的名称中保留了其来源视野和两个标签。"
+    },
+    {
+      "context": "The display range of each image layer is fixed for the whole set: the 1st and 99.8th percentile of pixels pooled from every pair window. No extracted image region is stretched on its own, so two pairs that look alike are alike.",
+      "label": "spacr._merge_pairs#4",
+      "source": "The display range of each image plane is fixed for the whole set: the 1st and 99.8th percentile of pixels pooled from every pair window. No crop is stretched on its own, so two pairs that look alike are alike.",
+      "source_sha256": "ec876f7fca6a4483f99eef5cce5e7e46bc9245ee07c874aaeede5f01b458f29b",
+      "translation": "每个图像平面的显示范围在整个集合中固定：取所有标签对窗口中汇总像素的第 1 和第 99.8 百分位数。不会单独拉伸任何裁剪图像，因此看起来相似的两个标签对确实相似。"
+    },
+    {
+      "context": "Choose extracted image regions out of a folder of ``*.png`` or ``*.tif``, reading no pixels.",
+      "label": "spacr.crop_loader.plan_from_folder#0",
+      "source": "Choose crops out of a folder of ``*.png`` or ``*.tif``, reading no pixels.",
+      "source_sha256": "624d284ecf82635234a2bb417ebbba29fe89522f7cc8d497a4fd32af159f5c1c",
+      "translation": "从 ``*.png`` 或 ``*.tif`` 文件夹中选择裁剪图，不读取像素。"
+    },
+    {
+      "context": "PNGs are read as the 8-bit display extracted image regions they are. A folder with no PNG and with ``.tif`` or ``.tiff`` files is read raw: 16-bit and multichannel extracted image regions keep their values and every image layer.",
+      "label": "spacr.crop_loader.plan_from_folder#1",
+      "source": "PNGs are read as the 8-bit display crops they are. A folder with no PNG and with ``.tif`` or ``.tiff`` files is read raw: 16-bit and multichannel crops keep their values and every plane.",
+      "source_sha256": "a1c05f55878822be5ce2d4ed325bf59d0e06b8697bbffe014126c1dba9f1ecef",
+      "translation": "PNG 按其本身的 8 位显示裁剪图读取。没有 PNG、但含有 ``.tif`` 或 ``.tiff`` 文件的文件夹会以原始方式读取：16 位和多通道裁剪图保留其数值和所有平面。"
+    },
+    {
+      "context": "what to select. Only ``path`` and ``limit`` apply: a folder records no class and no plate, and saying so in :attr:`CropPlan.source_label` is better than filtering on a filename convention that no run guarantees.",
+      "label": "spacr.crop_loader.plan_from_folder#2",
+      "source": "what to select. Only ``path`` and ``limit`` apply: a folder records no class and no plate, and saying so in :attr:`CropPlan.source_label` is better than filtering on a filename convention that no run guarantees.",
+      "source_sha256": "46d6502567fd73dd3c51c1f5e1439cfef8d5279a35f91413eddf5ddc7fd6f476",
+      "translation": "要选择的内容。只有 ``path`` 和 ``limit`` 适用：文件夹不记录类别，也不记录板；在 :attr:`CropPlan.source_label` 中说明这一点，好过按照任何运行都无法保证的文件名约定进行过滤。"
+    },
+    {
+      "context": "a :class:`CropPlan`, possibly an empty one carrying :attr:`CropPlan.empty_reason`.",
+      "label": "spacr.crop_loader.plan_from_folder#3",
+      "source": "a :class:`CropPlan`, possibly an empty one carrying :attr:`CropPlan.empty_reason`.",
+      "source_sha256": "23fda222011167b529de1eacf25bade8196f0b39b67a214506f38cc772af509d",
+      "translation": "一个 :class:`CropPlan`，可能是携带 :attr:`CropPlan.empty_reason` 的空规划。"
+    },
+    {
+      "context": "no folder was chosen, or it is not a directory.",
+      "label": "spacr.crop_loader.plan_from_folder#4",
+      "source": "no folder was chosen, or it is not a directory.",
+      "source_sha256": "de6e6a1912cee21e2fa6a73bf3f9308020a409ce4f9f0f2c4ea48d1959dc4cd3",
+      "translation": "未选择文件夹，或所选路径不是目录。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

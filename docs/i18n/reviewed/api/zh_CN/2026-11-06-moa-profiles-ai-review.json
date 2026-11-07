@@ -1,0 +1,245 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Aggregate per-cell or per-microplate sample position embeddings into one profile per treatment.",
+      "label": "spacr.embeddings.aggregate_profiles#0",
+      "source": "Aggregate per-cell or per-well embeddings into one profile per treatment.",
+      "source_sha256": "fa193c7c6cfdd1fdb014911d07282d42319aafe067b9754baa3ec591158274b2",
+      "translation": "将逐细胞或逐孔嵌入聚合为每个处理一个特征谱。"
+    },
+    {
+      "context": "With ``well_columns``, rows (normally cells) are first averaged per microplate sample position by ``well_method``; without, each input row is taken as a microplate sample position, as in the microplate sample position tables :func:`embed_store` writes. The microplate sample positions are then optionally normalised to the control microplate sample positions and combined per treatment (the distinct values of ``by``) by ``method``. This is the microplate sample position-then-treatment profile used for mechanism-of-action benchmarks such as BBBC021: the mean of the cells in a microplate sample position, normalised to the laboratory microplate's DMSO microplate sample positions, and the median of the replicate microplate sample positions.",
+      "label": "spacr.embeddings.aggregate_profiles#1",
+      "source": "With ``well_columns``, rows (normally cells) are first averaged per well by ``well_method``; without, each input row is taken as a well, as in the well tables :func:`embed_store` writes. The wells are then optionally normalised to the control wells and combined per treatment (the distinct values of ``by``) by ``method``. This is the well-then-treatment profile used for mechanism-of-action benchmarks such as BBBC021: the mean of the cells in a well, normalised to the plate's DMSO wells, and the median of the replicate wells.",
+      "source_sha256": "4f2ed717042625b2f3d12fae1e40b8e4a6c3c5b2b534781732fcd67db354381f",
+      "translation": "给出 ``well_columns`` 时，先按 ``well_method`` 将各行（通常是细胞）按孔取平均；未给出时，每个输入行都视为一个孔，就像 :func:`embed_store` 写出的孔表那样。随后可选地将各孔相对于对照孔进行归一化，再合并到每个处理（即 ``by`` 的各个不同取值），合并方式由 ``method`` 指定。这就是 BBBC021 等作用机制基准所用的先孔后处理的特征谱：一个孔内细胞的均值，相对于该板的 DMSO 孔进行归一化，再取重复孔的中位数。"
+    },
+    {
+      "context": "Normalisation subtracts the control centre and, for the two z-scores, divides by the control spread, on each laboratory microplate when ``plate_column`` is given and over the whole table otherwise. ``\"robust_zscore\"`` uses the median and the scaled median absolute deviation. Features that do not vary in the controls are dropped by the z-scores. ``\"tvn\"`` (typical variation normalisation) centres on the controls in the same way and then spheres every microplate sample position with a whitening fitted on all control microplate sample positions (:func:`spacr.batch_correction.spherize_features`, keeping only the directions the controls span).",
+      "label": "spacr.embeddings.aggregate_profiles#2",
+      "source": "Normalisation subtracts the control centre and, for the two z-scores, divides by the control spread, on each plate when ``plate_column`` is given and over the whole table otherwise. ``\"robust_zscore\"`` uses the median and the scaled median absolute deviation. Features that do not vary in the controls are dropped by the z-scores. ``\"tvn\"`` (typical variation normalisation) centres on the controls in the same way and then spheres every well with a whitening fitted on all control wells (:func:`spacr.batch_correction.spherize_features`, keeping only the directions the controls span).",
+      "source_sha256": "f2d13bc2859e01c5c7fcfac80c4d5d689ca9b2b4f77ee69ef3fef009f6ac3756",
+      "translation": "归一化会减去对照中心，对于两种 z 分数还会再除以对照离散度；给出 ``plate_column`` 时在每个板上分别进行，否则在整个表上进行。``\"robust_zscore\"`` 使用中位数和经缩放的中位数绝对偏差。在对照中不变化的特征会被 z 分数剔除。``\"tvn\"``（典型变异归一化）以同样方式相对于对照居中，然后用在全部对照孔上拟合的白化变换对每个孔进行球化（:func:`spacr.batch_correction.spherize_features`，只保留对照所张成的方向）。"
+    },
+    {
+      "context": "a frame or a table path (read through :func:`spacr.tabular.read_table`), such as ``cell_embeddings`` or ``well_embeddings_mean`` from :func:`embed_store` joined to a plate map.",
+      "label": "spacr.embeddings.aggregate_profiles#3",
+      "source": "a frame or a table path (read through :func:`spacr.tabular.read_table`), such as ``cell_embeddings`` or ``well_embeddings_mean`` from :func:`embed_store` joined to a plate map.",
+      "source_sha256": "f0040c705c1d68c2250f698c22caecd98085cb011ec93346fab85ea65fefdf6e",
+      "translation": "一个数据框或表路径（通过 :func:`spacr.tabular.read_table` 读取），例如 ``cell_embeddings`` 或 ``well_embeddings_mean``（来自 :func:`embed_store`）与板图合并后的结果。"
+    },
+    {
+      "context": "columns that name a treatment, for example compound and concentration; any laboratory microplate-map columns can be used.",
+      "label": "spacr.embeddings.aggregate_profiles#4",
+      "source": "columns that name a treatment, for example compound and concentration; any plate-map columns can be used.",
+      "source_sha256": "bfc2db0afd931e81f96f49df5c75f06626c37a1c3e4449f0c389494145833fa6",
+      "translation": "标识一个处理的列，例如化合物和浓度；可以使用任何板图列。"
+    },
+    {
+      "context": "profile columns; ``None`` takes every embedding column, or every numeric column outside the identifier columns when there are none.",
+      "label": "spacr.embeddings.aggregate_profiles#5",
+      "source": "profile columns; ``None`` takes every embedding column, or every numeric column outside the key columns when there are none.",
+      "source_sha256": "616dc14747ecb1066d282dc2a145bbf605ce587953bec80ca4549382a56f20dd",
+      "translation": "特征谱列；``None`` 取所有嵌入列，若没有嵌入列，则取键列之外的所有数值列。"
+    },
+    {
+      "context": "``\"mean\"`` or ``\"median\"``, how microplate sample positions combine into a treatment.",
+      "label": "spacr.embeddings.aggregate_profiles#6",
+      "source": "``\"mean\"`` or ``\"median\"``, how wells combine into a treatment.",
+      "source_sha256": "cdb10f2560379407f6fd319f2b16d710d16559d909a8bdf3dc1883fb0a10ebc8",
+      "translation": "``\"mean\"`` 或 ``\"median\"``，各孔合并为一个处理的方式。"
+    },
+    {
+      "context": "columns that name one microplate sample position, for per-cell input; ``None`` treats each row as a microplate sample position.",
+      "label": "spacr.embeddings.aggregate_profiles#7",
+      "source": "columns that name one well, for per-cell input; ``None`` treats each row as a well.",
+      "source_sha256": "e9ada0c9e4ca8562e5e78dfe8d19419540c462ba3a4595177647f121dd5fdeb9",
+      "translation": "标识一个孔的列，用于逐细胞输入；``None`` 将每一行视为一个孔。"
+    },
+    {
+      "context": "``\"mean\"`` or ``\"median\"``, how cells combine into a microplate sample position.",
+      "label": "spacr.embeddings.aggregate_profiles#8",
+      "source": "``\"mean\"`` or ``\"median\"``, how cells combine into a well.",
+      "source_sha256": "75a18d4626c962aee34151dfff2fc86e0237037947d51e59b0977a9b7140cc06",
+      "translation": "``\"mean\"`` 或 ``\"median\"``，各细胞合并为一个孔的方式。"
+    },
+    {
+      "context": "``None``, ``\"center\"``, ``\"zscore\"``, ``\"robust_zscore\"`` or ``\"tvn\"``.",
+      "label": "spacr.embeddings.aggregate_profiles#9",
+      "source": "``None``, ``\"center\"``, ``\"zscore\"``, ``\"robust_zscore\"`` or ``\"tvn\"``.",
+      "source_sha256": "01b20d602a71b6b25ebaaf81c796caee85ee594d4a21ec5ca11574df4ccb1775",
+      "translation": "``None``、``\"center\"``、``\"zscore\"``、``\"robust_zscore\"`` 或 ``\"tvn\"``。"
+    },
+    {
+      "context": "the column that marks control microplate sample positions; ``None`` uses the first ``by`` column.",
+      "label": "spacr.embeddings.aggregate_profiles#10",
+      "source": "the column that marks control wells; ``None`` uses the first ``by`` column.",
+      "source_sha256": "3e8f493661e73c163c22d65738958974b9233771e7c7d6222dcb076cad97589b",
+      "translation": "标记对照孔的列；``None`` 使用第一个 ``by`` 列。"
+    },
+    {
+      "context": "the control value in ``control_column``, or a list of values.",
+      "label": "spacr.embeddings.aggregate_profiles#11",
+      "source": "the control value in ``control_column``, or a list of values.",
+      "source_sha256": "05f15282283cef4d300ca4a64de4ed1390acec3c7ee379a1f48c639c9b843ae6",
+      "translation": "``control_column`` 中的对照值，或一个值列表。"
+    },
+    {
+      "context": "column that names a laboratory microplate, to normalise each laboratory microplate to its own controls.",
+      "label": "spacr.embeddings.aggregate_profiles#12",
+      "source": "column that names a plate, to normalise each plate to its own controls.",
+      "source_sha256": "dcb11698a67d79144ec70bd80901b9141a89d3eb73a34d53426b3510eccd2468",
+      "translation": "标识板的列，用于将每个板相对于其自身的对照进行归一化。"
+    },
+    {
+      "context": "column that names a batch. Each treatment keeps the batches its microplate sample positions came from, joined by ``|``, for :func:`evaluate_moa`.",
+      "label": "spacr.embeddings.aggregate_profiles#13",
+      "source": "column that names a batch. Each treatment keeps the batches its wells came from, joined by ``|``, for :func:`evaluate_moa`.",
+      "source_sha256": "32b0f71ce1c0726fad5c971a3c203916d406b7cffc8f2f2a94e44e001e859c4f",
+      "translation": "标识批次的列。每个处理会保留其各孔所来自的批次，以 ``|`` 连接，供 :func:`evaluate_moa` 使用。"
+    },
+    {
+      "context": "the whitening used by ``\"tvn\"``, one of :data:`spacr.batch_correction.TVN_WHITENINGS`.",
+      "label": "spacr.embeddings.aggregate_profiles#14",
+      "source": "the whitening used by ``\"tvn\"``, one of :data:`spacr.batch_correction.TVN_WHITENINGS`.",
+      "source_sha256": "20624be09c22eaf389bb4d8e417ea786fc3eee41853c7661ca0b3af9ebc25c8c",
+      "translation": "``\"tvn\"`` 所用的白化方式，为 :data:`spacr.batch_correction.TVN_WHITENINGS` 之一。"
+    },
+    {
+      "context": "leave the control treatments out of the result.",
+      "label": "spacr.embeddings.aggregate_profiles#15",
+      "source": "leave the control treatments out of the result.",
+      "source_sha256": "2f06ba338a6678cbac48559ec0632c2c741f771455fc94cba206b93c25f86fa8",
+      "translation": "在结果中排除对照处理。"
+    },
+    {
+      "context": "one row per treatment: the ``by`` columns, the batch column when given, ``n_wells``, ``n_cells`` when known, then the profile columns. ``attrs[\"dropped_features\"]`` lists features removed because they did not vary in the controls.",
+      "label": "spacr.embeddings.aggregate_profiles#16",
+      "source": "one row per treatment: the ``by`` columns, the batch column when given, ``n_wells``, ``n_cells`` when known, then the profile columns. ``attrs[\"dropped_features\"]`` lists features removed because they did not vary in the controls.",
+      "source_sha256": "50ff101efe8deb94408948b31bfacdd03262187dae7163b2da26b1be3077f9bd",
+      "translation": "每个处理一行：``by`` 列、给出时的批次列、``n_wells``、已知时的 ``n_cells``，然后是特征谱列。``attrs[\"dropped_features\"]`` 列出因在对照中不变化而被剔除的特征。"
+    },
+    {
+      "context": "for a missing column, an unknown method or normalisation, or normalisation without control rows.",
+      "label": "spacr.embeddings.aggregate_profiles#17",
+      "source": "for a missing column, an unknown method or normalisation, or normalisation without control rows.",
+      "source_sha256": "fa42ce933275ebc86b4018669869c95f61fb4e2a86ed69f9bbd8e32908d1d57d",
+      "translation": "当缺少某列、方法或归一化方式未知，或在没有对照行的情况下进行归一化时。"
+    },
+    {
+      "context": "Score treatment profiles by nearest-neighbour mechanism-of-action accuracy.",
+      "label": "spacr.embeddings.evaluate_moa#0",
+      "source": "Score treatment profiles by nearest-neighbour mechanism-of-action accuracy.",
+      "source_sha256": "288a9675e513fc94f168ea503edf1b9b52d6799e5cca074e1a42f031af7b0370",
+      "translation": "按最近邻作用机制准确率为处理特征谱打分。"
+    },
+    {
+      "context": "Each labelled treatment is matched to its nearest other treatment by cosine similarity (one nearest neighbour, 1-NN) and counts as correct when the two share a mechanism of action (MoA). Under NSC (not same compound) the neighbour may not be the same compound at another concentration; under NSCB (not same compound or batch) it may also not share a batch, which removes the batch effects that NSC rewards. Treatments left with no candidate are not scored. Accuracy is reported with a Wilson score confidence interval (CI), together with the share of treatments that are solvable (a candidate with the same MoA exists).",
+      "label": "spacr.embeddings.evaluate_moa#1",
+      "source": "Each labelled treatment is matched to its nearest other treatment by cosine similarity (one nearest neighbour, 1-NN) and counts as correct when the two share a mechanism of action (MoA). Under NSC (not same compound) the neighbour may not be the same compound at another concentration; under NSCB (not same compound or batch) it may also not share a batch, which removes the batch effects that NSC rewards. Treatments left with no candidate are not scored. Accuracy is reported with a Wilson score confidence interval (CI), together with the share of treatments that are solvable (a candidate with the same MoA exists).",
+      "source_sha256": "7815728f59cdf4cf1b505f3f7d8aed82c58c6d6b137af65ac0fa782fc94d5158",
+      "translation": "每个带标签的处理按余弦相似度与其最近的另一个处理匹配（一个最近邻，1-NN），若两者具有相同的作用机制（MoA），则计为正确。在 NSC（非同一化合物）规则下，近邻不能是同一化合物的其他浓度；在 NSCB（非同一化合物或批次）规则下，近邻还不能与其共享批次，从而消除 NSC 会奖励的批次效应。没有候选近邻的处理不参与打分。准确率附带 Wilson 得分置信区间（CI）报告，同时给出可解处理所占的比例（存在具有相同 MoA 的候选）。"
+    },
+    {
+      "context": "Every table carries control rows: the same rule with MoA labels shuffled between compounds (mean and standard deviation over ``n_permutations``, interval from the permutation percentiles), and the majority class, the accuracy of always guessing the commonest MoA. Profiles from another feature set, for example CellProfiler features, can be scored beside them as reference rows.",
+      "label": "spacr.embeddings.evaluate_moa#2",
+      "source": "Every table carries control rows: the same rule with MoA labels shuffled between compounds (mean and standard deviation over ``n_permutations``, interval from the permutation percentiles), and the majority class, the accuracy of always guessing the commonest MoA. Profiles from another feature set, for example CellProfiler features, can be scored beside them as reference rows.",
+      "source_sha256": "cf098f0220fc8615a4e1743e86691b95207e1166e47bd4d0c6873d9d03a1b560",
+      "translation": "每张表都带有对照行：在化合物之间打乱 MoA 标签后应用相同规则（取 ``n_permutations`` 次的均值和标准差，区间取自置换百分位数），以及多数类，即始终猜测最常见 MoA 的准确率。来自其他特征集的特征谱（例如 CellProfiler 特征）可以作为参考行与之并列打分。"
+    },
+    {
+      "context": "treatment profiles, a frame or a table path, such as :func:`aggregate_profiles` returns.",
+      "label": "spacr.embeddings.evaluate_moa#3",
+      "source": "treatment profiles, a frame or a table path, such as :func:`aggregate_profiles` returns.",
+      "source_sha256": "97904a25e0426962ad2cd8bf5704b88a1186bc788c1bb456b8fbc3e779f6c941",
+      "translation": "处理特征谱，一个数据框或表路径，例如 :func:`aggregate_profiles` 的返回值。"
+    },
+    {
+      "context": "column with the MoA label; rows without one are not scored.",
+      "label": "spacr.embeddings.evaluate_moa#4",
+      "source": "column with the MoA label; rows without one are not scored.",
+      "source_sha256": "5d31a4c2859777baf23c1f0d6267bc0b6b4904113d94f7409c0f4d902522a78a",
+      "translation": "包含 MoA 标签的列；没有标签的行不参与打分。"
+    },
+    {
+      "context": "column that names the compound.",
+      "label": "spacr.embeddings.evaluate_moa#5",
+      "source": "column that names the compound.",
+      "source_sha256": "570a1f6b4adf786fdf090e3aeaec0fe53f2628fdf936fa0085549fb0df03765a",
+      "translation": "标识化合物的列。"
+    },
+    {
+      "context": "column that names each treatment's batches, joined by ``|`` when there are several; ``None`` reports NSC only.",
+      "label": "spacr.embeddings.evaluate_moa#6",
+      "source": "column that names each treatment's batches, joined by ``|`` when there are several; ``None`` reports NSC only.",
+      "source_sha256": "0967919bc1f7028e3a17f36faf23f27c27b71494070dfc17e4c3558beb445b33",
+      "translation": "标识每个处理所属批次的列，有多个批次时以 ``|`` 连接；``None`` 只报告 NSC。"
+    },
+    {
+      "context": "profile columns; ``None`` takes every embedding column, or every numeric column outside the structured-data name and treatment columns.",
+      "label": "spacr.embeddings.evaluate_moa#7",
+      "source": "profile columns; ``None`` takes every embedding column, or every numeric column outside the key and treatment columns.",
+      "source_sha256": "c069bddbb285a4664be9c802824678468d3b1cee3dc0a39519fc892439a845ee",
+      "translation": "特征谱列；``None`` 取所有嵌入列，若没有嵌入列，则取键列和处理列之外的所有数值列。"
+    },
+    {
+      "context": "columns that name a treatment and are never profile values, such as a numeric concentration.",
+      "label": "spacr.embeddings.evaluate_moa#8",
+      "source": "columns that name a treatment and are never profile values, such as a numeric concentration.",
+      "source_sha256": "2375f6540684c2965648ea3f2f23a4e789467e5c10de0141cc5d1d058e75c474",
+      "translation": "标识处理且绝不作为特征谱值的列，例如数值型浓度。"
+    },
+    {
+      "context": "a frame or table path with MoA labels, joined to the profiles on the columns they share, when the profiles carry none.",
+      "label": "spacr.embeddings.evaluate_moa#9",
+      "source": "a frame or table path with MoA labels, joined to the profiles on the columns they share, when the profiles carry none.",
+      "source_sha256": "d628905ebfff97f3c4a7047b2b8319236eaea7ea6f4f124cb6425f091bbd0543",
+      "translation": "当特征谱不带 MoA 标签时，提供 MoA 标签的数据框或表路径，按两者共有的列与特征谱合并。"
+    },
+    {
+      "context": "name to profiles of another feature set, scored with the same rules and labels.",
+      "label": "spacr.embeddings.evaluate_moa#10",
+      "source": "name to profiles of another feature set, scored with the same rules and labels.",
+      "source_sha256": "46dd16146adeb1eff71462da818abc54fe9e26e23c9b0eceede994d9f7c9d24f",
+      "translation": "名称到另一特征集特征谱的映射，使用相同的规则和标签打分。"
+    },
+    {
+      "context": "label shuffles for the shuffled-label control; ``0`` leaves that row out.",
+      "label": "spacr.embeddings.evaluate_moa#11",
+      "source": "label shuffles for the shuffled-label control; ``0`` leaves that row out.",
+      "source_sha256": "2f21aeed0bb5ff85785bb8fbb7d0a58b5ab7ca9a720a45b9c47e80b4920fbc76",
+      "translation": "打乱标签对照所用的标签打乱次数；``0`` 不生成该行。"
+    },
+    {
+      "context": "seed of the shuffles.",
+      "label": "spacr.embeddings.evaluate_moa#12",
+      "source": "seed of the shuffles.",
+      "source_sha256": "4922619af685a76a85430c0c6cd21ef713ae2d4cb3615af50ec673685cb43669",
+      "translation": "打乱的随机种子。"
+    },
+    {
+      "context": "the CI level.",
+      "label": "spacr.embeddings.evaluate_moa#13",
+      "source": "the CI level.",
+      "source_sha256": "c58d45f45560fbf6d59913a598a5492162fe84aa031b9dfb2aaf8d1d73f060a0",
+      "translation": "CI 水平。"
+    },
+    {
+      "context": "``{\"table\", \"predictions\", \"glossary\"}``: the accuracy table (one row per profile set and rule, then the control rows; columns ``profiles``, ``evaluation``, ``n_treatments``, ``correct``, ``accuracy``, ``ci_low``, ``ci_high``, ``sd``, ``n_solvable``, ``accuracy_solvable``), the per-treatment neighbours and predictions of the first profile set, and the abbreviations spelled out.",
+      "label": "spacr.embeddings.evaluate_moa#14",
+      "source": "``{\"table\", \"predictions\", \"glossary\"}``: the accuracy table (one row per profile set and rule, then the control rows; columns ``profiles``, ``evaluation``, ``n_treatments``, ``correct``, ``accuracy``, ``ci_low``, ``ci_high``, ``sd``, ``n_solvable``, ``accuracy_solvable``), the per-treatment neighbours and predictions of the first profile set, and the abbreviations spelled out.",
+      "source_sha256": "9a41049aa28f0996bce1c252e3c4b3f15009aee367f2000a2235c40ada29ed71",
+      "translation": "``{\"table\", \"predictions\", \"glossary\"}``：准确率表（每个特征谱集和规则一行，然后是对照行；列为 ``profiles``、``evaluation``、``n_treatments``、``correct``、``accuracy``、``ci_low``、``ci_high``、``sd``、``n_solvable``、``accuracy_solvable``）、第一个特征谱集的逐处理近邻与预测结果，以及缩写的完整释义。"
+    },
+    {
+      "context": "for missing columns, missing or infinite profile values, or fewer than two labelled treatments.",
+      "label": "spacr.embeddings.evaluate_moa#15",
+      "source": "for missing columns, missing or infinite profile values, or fewer than two labelled treatments.",
+      "source_sha256": "f6fb58e55f9af0d39060bdd4e32ec09e75fc2bd1738478477510c817001ce2c9",
+      "translation": "当缺少列、特征谱值缺失或为无穷大，或带标签的处理少于两个时。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-06 against the exact English source. No human or native-speaker signoff.",
+  "schema": 1
+}

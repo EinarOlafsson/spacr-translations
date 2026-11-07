@@ -55,7 +55,10 @@
       "label": "spacr.illumination.IlluminationCorrector#4",
       "source": "**clip, and count.** A gain above 1 at the edge of the field can push a near-full-scale pixel past the top of a uint16. Clipping is the only option that keeps the dtype the hook contract requires, and it removes real signal, so every pixel that was *below* full scale before the correction and lands *at* full scale after it is counted and reported. Pixels that were already saturated are not counted: they were saturated at acquisition, not by the correction.",
       "source_sha256": "51e68c5a7e201dfc54f5278d60fba64afa81af859add37f2c4a1233162a39505",
-      "translation": "**limitar e contar.** Um ganho acima de 1 na borda do campo pode levar um pixel próximo ao valor máximo além do limite de uint16. A limitação é a única opção que preserva o dtype exigido pelo contrato do hook e remove sinal real; por isso, cada pixel que estava *abaixo* do máximo antes da correção e chega *ao* máximo depois dela é contado e informado. Pixels já saturados não são contados: foram saturados na aquisição, não pela correção."
+      "translation": "**limitar e contar.** Um ganho acima de 1 na borda do campo pode levar um pixel próximo ao valor máximo além do limite de uint16. A limitação é a única opção que preserva o dtype exigido pelo contrato do hook e remove sinal real; por isso, cada pixel que estava *abaixo* do máximo antes da correção e chega *ao* máximo depois dela é contado e informado. Pixels já saturados não são contados: foram saturados na aquisição, não pela correção.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the IlluminationCorrector docstring was rewritten for item 793 (Measure divides in float32 and rescales instead of clipping at the top), which changed or moved this block. Replacement exact-source records are in 2026-11-07-bugs-1107-ai-review.json."
     },
     {
       "context": "It does nothing and returns None unless ``settings['illumination_correction']`` is True. The shipped default is False: the correction is opt-in, so a processing session that does not set it is measured uncorrected. When verbose, a call with the setting off prints that ``illumination_correction`` is False, because from a settings form the no-op otherwise looks like a processing session button that does nothing.",

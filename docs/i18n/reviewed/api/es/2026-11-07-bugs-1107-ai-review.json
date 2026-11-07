@@ -1,0 +1,112 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "context": "Arm a corrector over a fitted illumination model.",
+      "label": "spacr.illumination.IlluminationCorrector#10",
+      "source": "Arm a corrector over a fitted illumination model.",
+      "source_sha256": "69ca14194ff57de01216ef46c76819a27f1f6e112f43e79ad407085c0974d2ec",
+      "translation": "Prepara un corrector a partir de un modelo de iluminación ajustado."
+    },
+    {
+      "context": "the fitted model to divide fields by.",
+      "label": "spacr.illumination.IlluminationCorrector#11",
+      "source": "the fitted model to divide fields by.",
+      "source_sha256": "292712753d29a7a01d126b98048e419a32d1b385dc9eb21f80cc626c963454bf",
+      "translation": "el modelo ajustado por el que se dividen los campos."
+    },
+    {
+      "context": "what to do with a field the model has no profile for -- ``'error'`` fails the field, ``'skip'`` measures it uncorrected and counts it.",
+      "label": "spacr.illumination.IlluminationCorrector#12",
+      "source": "what to do with a field the model has no profile for -- ``'error'`` fails the field, ``'skip'`` measures it uncorrected and counts it.",
+      "source_sha256": "656cb841b9a4db9885ebd2252019b85b13ad04c232c35b0048a9703c7cb0dc84",
+      "translation": "qué hacer con un campo para el que el modelo no tiene perfil -- ``'error'`` hace fallar el campo, ``'skip'`` lo mide sin corregir y lo cuenta."
+    },
+    {
+      "context": "report the first few clipping events.",
+      "label": "spacr.illumination.IlluminationCorrector#13",
+      "source": "report the first few clipping events.",
+      "source_sha256": "ca2c83066a703e48f34475dccf972486f14f722bd0cd3863dd63eade43a47591",
+      "translation": "notificar los primeros eventos de recorte."
+    },
+    {
+      "context": "if ``on_missing`` is neither of the two.",
+      "label": "spacr.illumination.IlluminationCorrector#14",
+      "source": "if ``on_missing`` is neither of the two.",
+      "source_sha256": "04f15545a28bf9f02896d2081f73b081ba9d30764b286ccb33265958435dc2e5",
+      "translation": "si ``on_missing`` no es ninguno de los dos."
+    },
+    {
+      "context": "Measure hands this hook a float32 copy of the image data channels (it reads :attr:`measures_in_float`), so the division happens in float and the measured image is the float result: nothing is rounded and nothing is clipped at the top of the acquisition dtype. Float input is returned in its own float dtype with no rounding and no clipping at all.",
+      "label": "spacr.illumination.IlluminationCorrector#2",
+      "source": "Measure hands this hook a float32 copy of the channels (it reads :attr:`measures_in_float`), so the division happens in float and the measured image is the float result: nothing is rounded and nothing is clipped at the top of the acquisition dtype. Float input is returned in its own float dtype with no rounding and no clipping at all.",
+      "source_sha256": "1a45b7ea08d590602275d2b9e5b0cf4fdddaef096aa808504fc8169d20463e4e",
+      "translation": "Measure entrega a este hook una copia float32 de los canales (lee :attr:`measures_in_float`), de modo que la división se hace en coma flotante y la imagen medida es el resultado flotante: no se redondea nada ni se recorta nada en el máximo del dtype de adquisición. Una entrada flotante se devuelve en su propio dtype flotante, sin ningún redondeo ni recorte."
+    },
+    {
+      "context": "Integer input -- a direct caller, or a segmentation input that has to keep its dtype -- is corrected in float32 and cast back by *rounding to nearest*:",
+      "label": "spacr.illumination.IlluminationCorrector#3",
+      "source": "Integer input -- a direct caller, or a segmentation input that has to keep its dtype -- is corrected in float32 and cast back by *rounding to nearest*:",
+      "source_sha256": "c64467e9c63ff387af7b52bdda84b0c4db31e5a3e5f10f1e55ac3de93c463fbd",
+      "translation": "Una entrada entera -- una llamada directa, o una entrada de segmentación que debe conservar su dtype -- se corrige en float32 y se vuelve a convertir *redondeando al más cercano*:"
+    },
+    {
+      "context": "**round, not truncate.** Truncation would shave a mean of 0.5 counts off every corrected pixel. Averaged over a 500-pixel object that does not wash out -- it is a systematic, one-directional shift of exactly the kind this feature exists to remove. Rounding is unbiased.",
+      "label": "spacr.illumination.IlluminationCorrector#4",
+      "source": "**round, not truncate.** Truncation would shave a mean of 0.5 counts off every corrected pixel. Averaged over a 500-pixel object that does not wash out -- it is a systematic, one-directional shift of exactly the kind this feature exists to remove. Rounding is unbiased.",
+      "source_sha256": "e3313c10d93e64a23a4b52ea2f8c4e70109f70036fb809a30156f18e0958d5c2",
+      "translation": "**redondear, no truncar.** Truncar restaría una media de 0.5 cuentas a cada píxel corregido. Promediado sobre un objeto de 500 píxeles, eso no se diluye -- es un desplazamiento sistemático y en un solo sentido, exactamente del tipo que esta función existe para eliminar. El redondeo no tiene sesgo."
+    },
+    {
+      "context": "**rescale, not clip, at the top.** A gain above 1 at the edge of the microscope field of view can push a near-full-scale pixel past the top of a uint16. Clipping would remove real signal from exactly the brightest objects, so the whole microscope field of view is instead multiplied by ``dtype max / field max``. That factor is printed and kept per microscope field of view in ``.stats['scales']``.",
+      "label": "spacr.illumination.IlluminationCorrector#5",
+      "source": "**rescale, not clip, at the top.** A gain above 1 at the edge of the field can push a near-full-scale pixel past the top of a uint16. Clipping would remove real signal from exactly the brightest objects, so the whole field is instead multiplied by ``dtype max / field max``. That factor is printed and kept per field in ``.stats['scales']``.",
+      "source_sha256": "e8a478542edc84d2c1370117c402c32617232e5194faf1c1cf2e944c6d9452a9",
+      "translation": "**reescalar, no recortar, en el máximo.** Una ganancia superior a 1 en el borde del campo puede llevar un píxel casi a fondo de escala más allá del máximo de un uint16. Recortar eliminaría señal real precisamente de los objetos más brillantes, así que en su lugar todo el campo se multiplica por ``dtype max / field max``. Ese factor se imprime y se guarda por campo en ``.stats['scales']``."
+    },
+    {
+      "context": "**clip, and count, at the bottom.** A dark offset larger than a pixel gives a negative value, which an unsigned dtype cannot hold; those pixels are clipped to zero, counted and reported.",
+      "label": "spacr.illumination.IlluminationCorrector#6",
+      "source": "**clip, and count, at the bottom.** A dark offset larger than a pixel gives a negative value, which an unsigned dtype cannot hold; those pixels are clipped to zero, counted and reported.",
+      "source_sha256": "5054faa6ea7e6e03014fe2244dc1e7cdba808b02a66d85c7e127f4a14425e83e",
+      "translation": "**recortar, y contar, en el mínimo.** Un desplazamiento de oscuridad mayor que el valor de un píxel da un valor negativo, que un dtype sin signo no puede almacenar; esos píxeles se recortan a cero, se cuentan y se notifican."
+    },
+    {
+      "context": "the estimated :class:`IlluminationModel`.",
+      "label": "spacr.illumination.IlluminationCorrector#7",
+      "source": "the estimated :class:`IlluminationModel`.",
+      "source_sha256": "5d20ee509c923d1a83e34da28fc2e83254be93277654bc568712747ce133c9e1",
+      "translation": "el :class:`IlluminationModel` estimado."
+    },
+    {
+      "context": "``'error'`` (default) or ``'skip'`` for a microscope field of view whose laboratory microplate the model does not cover. The default fails the microscope field of view, so a results table never mixes corrected and uncorrected microscope fields of view.",
+      "label": "spacr.illumination.IlluminationCorrector#8",
+      "source": "``'error'`` (default) or ``'skip'`` for a field whose plate the model does not cover. The default fails the field, so a results table never mixes corrected and uncorrected fields.",
+      "source_sha256": "d881b08c4f75438d1755c7061832394f063c49442eaf981b5ed115e64a4b6f2b",
+      "translation": "``'error'`` (predeterminado) o ``'skip'`` para un campo cuya placa no cubre el modelo. El valor predeterminado hace fallar el campo, de modo que una tabla de resultados nunca mezcla campos corregidos y sin corregir."
+    },
+    {
+      "context": "print the clipping and rescaling reports.",
+      "label": "spacr.illumination.IlluminationCorrector#9",
+      "source": "print the clipping and rescaling reports.",
+      "source_sha256": "ec4ae88fc7b4f2656e177d514be741353bfa96e032257cb4a396f9039c36e7ff",
+      "translation": "imprimir los informes de recorte y de reescalado."
+    },
+    {
+      "context": "A role whose mask dim is set to None stands in as an all-zero array; it is left out, so no partner column of +inf is written for it.",
+      "label": "spacr.measure._morphological_measurements._all_masks#1",
+      "source": "A role whose mask dim is set to None stands in as an all-zero array; it is left out, so no partner column of +inf is written for it.",
+      "source_sha256": "b98f31bd11c27c6eae1ca17815f884ab135fbbabdf9443d6436a929f4c0423be",
+      "translation": "Un rol cuya dimensión de máscara es None se sustituye por una matriz de ceros; se omite, de modo que no se escribe para él ninguna columna asociada con +inf."
+    },
+    {
+      "context": "Homogeneity of every object at horizontal offset ``d``.",
+      "label": "spacr.measure._torch_homogeneity.at#0",
+      "source": "Homogeneity of every object at horizontal offset ``d``.",
+      "source_sha256": "b603efe36378151f92f4eb3beb618d7a8cba30348b89f33ddbd3ad5930520a80",
+      "translation": "Homogeneidad de cada objeto con el desplazamiento horizontal ``d``."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-07 against the exact English source of the IlluminationCorrector, _all_masks and _torch_homogeneity.at docstrings changed for items 793, 799 and 792. No human or native-speaker signoff.",
+  "schema": 1
+}

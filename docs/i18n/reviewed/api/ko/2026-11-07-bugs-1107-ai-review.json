@@ -1,0 +1,112 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Arm a corrector over a fitted illumination model.",
+      "label": "spacr.illumination.IlluminationCorrector#10",
+      "source": "Arm a corrector over a fitted illumination model.",
+      "source_sha256": "69ca14194ff57de01216ef46c76819a27f1f6e112f43e79ad407085c0974d2ec",
+      "translation": "피팅된 조명 모델에 대한 보정기를 준비합니다."
+    },
+    {
+      "context": "the fitted model to divide fields by.",
+      "label": "spacr.illumination.IlluminationCorrector#11",
+      "source": "the fitted model to divide fields by.",
+      "source_sha256": "292712753d29a7a01d126b98048e419a32d1b385dc9eb21f80cc626c963454bf",
+      "translation": "시야를 나눌 피팅된 모델."
+    },
+    {
+      "context": "what to do with a field the model has no profile for -- ``'error'`` fails the field, ``'skip'`` measures it uncorrected and counts it.",
+      "label": "spacr.illumination.IlluminationCorrector#12",
+      "source": "what to do with a field the model has no profile for -- ``'error'`` fails the field, ``'skip'`` measures it uncorrected and counts it.",
+      "source_sha256": "656cb841b9a4db9885ebd2252019b85b13ad04c232c35b0048a9703c7cb0dc84",
+      "translation": "모델에 프로필이 없는 시야를 처리하는 방법 -- ``'error'`` 는 시야를 실패시키고, ``'skip'`` 은 보정 없이 측정하고 개수에 포함합니다."
+    },
+    {
+      "context": "report the first few clipping events.",
+      "label": "spacr.illumination.IlluminationCorrector#13",
+      "source": "report the first few clipping events.",
+      "source_sha256": "ca2c83066a703e48f34475dccf972486f14f722bd0cd3863dd63eade43a47591",
+      "translation": "처음 몇 개의 자르기 이벤트를 보고합니다."
+    },
+    {
+      "context": "if ``on_missing`` is neither of the two.",
+      "label": "spacr.illumination.IlluminationCorrector#14",
+      "source": "if ``on_missing`` is neither of the two.",
+      "source_sha256": "04f15545a28bf9f02896d2081f73b081ba9d30764b286ccb33265958435dc2e5",
+      "translation": "``on_missing`` 이 두 값 중 어느 것도 아닌 경우."
+    },
+    {
+      "context": "Measure hands this hook a float32 copy of the image data channels (it reads :attr:`measures_in_float`), so the division happens in float and the measured image is the float result: nothing is rounded and nothing is clipped at the top of the acquisition dtype. Float input is returned in its own float dtype with no rounding and no clipping at all.",
+      "label": "spacr.illumination.IlluminationCorrector#2",
+      "source": "Measure hands this hook a float32 copy of the channels (it reads :attr:`measures_in_float`), so the division happens in float and the measured image is the float result: nothing is rounded and nothing is clipped at the top of the acquisition dtype. Float input is returned in its own float dtype with no rounding and no clipping at all.",
+      "source_sha256": "1a45b7ea08d590602275d2b9e5b0cf4fdddaef096aa808504fc8169d20463e4e",
+      "translation": "Measure는 이 훅에 채널의 float32 사본을 넘기므로(:attr:`measures_in_float` 를 읽습니다) 나눗셈은 부동소수점으로 이루어지고 측정되는 이미지는 부동소수점 결과 그대로입니다. 아무것도 반올림되지 않고 획득 dtype의 상한에서 잘리지도 않습니다. 부동소수점 입력은 반올림이나 자르기 없이 자체 부동소수점 dtype으로 반환됩니다."
+    },
+    {
+      "context": "Integer input -- a direct caller, or a segmentation input that has to keep its dtype -- is corrected in float32 and cast back by *rounding to nearest*:",
+      "label": "spacr.illumination.IlluminationCorrector#3",
+      "source": "Integer input -- a direct caller, or a segmentation input that has to keep its dtype -- is corrected in float32 and cast back by *rounding to nearest*:",
+      "source_sha256": "c64467e9c63ff387af7b52bdda84b0c4db31e5a3e5f10f1e55ac3de93c463fbd",
+      "translation": "정수 입력 -- 직접 호출하는 경우나 dtype을 유지해야 하는 분할 입력 -- 은 float32로 보정한 뒤 *가장 가까운 값으로 반올림*하여 다시 변환합니다:"
+    },
+    {
+      "context": "**round, not truncate.** Truncation would shave a mean of 0.5 counts off every corrected pixel. Averaged over a 500-pixel object that does not wash out -- it is a systematic, one-directional shift of exactly the kind this feature exists to remove. Rounding is unbiased.",
+      "label": "spacr.illumination.IlluminationCorrector#4",
+      "source": "**round, not truncate.** Truncation would shave a mean of 0.5 counts off every corrected pixel. Averaged over a 500-pixel object that does not wash out -- it is a systematic, one-directional shift of exactly the kind this feature exists to remove. Rounding is unbiased.",
+      "source_sha256": "e3313c10d93e64a23a4b52ea2f8c4e70109f70036fb809a30156f18e0958d5c2",
+      "translation": "**버림이 아니라 반올림.** 버림을 하면 보정된 모든 픽셀에서 평균 0.5 카운트가 깎입니다. 500픽셀 객체에서 평균해도 이는 사라지지 않으며 -- 이 기능이 제거하려는 바로 그 종류의 체계적이고 한 방향으로 치우친 이동입니다. 반올림은 편향이 없습니다."
+    },
+    {
+      "context": "**rescale, not clip, at the top.** A gain above 1 at the edge of the microscope field of view can push a near-full-scale pixel past the top of a uint16. Clipping would remove real signal from exactly the brightest objects, so the whole microscope field of view is instead multiplied by ``dtype max / field max``. That factor is printed and kept per microscope field of view in ``.stats['scales']``.",
+      "label": "spacr.illumination.IlluminationCorrector#5",
+      "source": "**rescale, not clip, at the top.** A gain above 1 at the edge of the field can push a near-full-scale pixel past the top of a uint16. Clipping would remove real signal from exactly the brightest objects, so the whole field is instead multiplied by ``dtype max / field max``. That factor is printed and kept per field in ``.stats['scales']``.",
+      "source_sha256": "e8a478542edc84d2c1370117c402c32617232e5194faf1c1cf2e944c6d9452a9",
+      "translation": "**상단에서는 자르지 않고 재조정합니다.** 시야 가장자리에서 1보다 큰 이득은 최대 눈금에 가까운 픽셀을 uint16의 상한 너머로 밀어낼 수 있습니다. 자르기는 바로 가장 밝은 객체에서 실제 신호를 제거하므로, 대신 시야 전체에 ``dtype max / field max`` 를 곱합니다. 이 배율은 출력되며 시야마다 ``.stats['scales']`` 에 보관됩니다."
+    },
+    {
+      "context": "**clip, and count, at the bottom.** A dark offset larger than a pixel gives a negative value, which an unsigned dtype cannot hold; those pixels are clipped to zero, counted and reported.",
+      "label": "spacr.illumination.IlluminationCorrector#6",
+      "source": "**clip, and count, at the bottom.** A dark offset larger than a pixel gives a negative value, which an unsigned dtype cannot hold; those pixels are clipped to zero, counted and reported.",
+      "source_sha256": "5054faa6ea7e6e03014fe2244dc1e7cdba808b02a66d85c7e127f4a14425e83e",
+      "translation": "**하단에서는 자르고 개수를 셉니다.** 픽셀 값보다 큰 암전류 오프셋은 음수 값을 만들며, 부호 없는 dtype은 이를 담을 수 없습니다. 이런 픽셀은 0으로 잘리고, 개수를 세어 보고합니다."
+    },
+    {
+      "context": "the estimated :class:`IlluminationModel`.",
+      "label": "spacr.illumination.IlluminationCorrector#7",
+      "source": "the estimated :class:`IlluminationModel`.",
+      "source_sha256": "5d20ee509c923d1a83e34da28fc2e83254be93277654bc568712747ce133c9e1",
+      "translation": "추정된 :class:`IlluminationModel`."
+    },
+    {
+      "context": "``'error'`` (default) or ``'skip'`` for a microscope field of view whose laboratory microplate the model does not cover. The default fails the microscope field of view, so a results table never mixes corrected and uncorrected microscope fields of view.",
+      "label": "spacr.illumination.IlluminationCorrector#8",
+      "source": "``'error'`` (default) or ``'skip'`` for a field whose plate the model does not cover. The default fails the field, so a results table never mixes corrected and uncorrected fields.",
+      "source_sha256": "d881b08c4f75438d1755c7061832394f063c49442eaf981b5ed115e64a4b6f2b",
+      "translation": "모델이 플레이트를 다루지 않는 시야에 대해 ``'error'`` (기본값) 또는 ``'skip'``. 기본값은 해당 시야를 실패시키므로 결과 표에 보정된 시야와 보정되지 않은 시야가 섞이지 않습니다."
+    },
+    {
+      "context": "print the clipping and rescaling reports.",
+      "label": "spacr.illumination.IlluminationCorrector#9",
+      "source": "print the clipping and rescaling reports.",
+      "source_sha256": "ec4ae88fc7b4f2656e177d514be741353bfa96e032257cb4a396f9039c36e7ff",
+      "translation": "자르기 및 재조정 보고서를 출력합니다."
+    },
+    {
+      "context": "A role whose mask dim is set to None stands in as an all-zero array; it is left out, so no partner column of +inf is written for it.",
+      "label": "spacr.measure._morphological_measurements._all_masks#1",
+      "source": "A role whose mask dim is set to None stands in as an all-zero array; it is left out, so no partner column of +inf is written for it.",
+      "source_sha256": "b98f31bd11c27c6eae1ca17815f884ab135fbbabdf9443d6436a929f4c0423be",
+      "translation": "마스크 dim이 None으로 설정된 역할은 모두 0인 배열로 대체되며, 제외되므로 그에 대한 +inf 짝 열이 기록되지 않습니다."
+    },
+    {
+      "context": "Homogeneity of every object at horizontal offset ``d``.",
+      "label": "spacr.measure._torch_homogeneity.at#0",
+      "source": "Homogeneity of every object at horizontal offset ``d``.",
+      "source_sha256": "b603efe36378151f92f4eb3beb618d7a8cba30348b89f33ddbd3ad5930520a80",
+      "translation": "수평 오프셋 ``d`` 에서 각 객체의 균질성."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-07 against the exact English source of the IlluminationCorrector, _all_masks and _torch_homogeneity.at docstrings changed for items 793, 799 and 792. No human or native-speaker signoff.",
+  "schema": 1
+}

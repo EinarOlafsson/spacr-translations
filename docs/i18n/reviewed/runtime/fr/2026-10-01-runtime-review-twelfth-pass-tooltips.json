@@ -138,6 +138,22 @@
       "source_sha256": "181c9e9f4aff40d8c90b7ab99a3cb0ad8ba3b6ad53be80d131fd0f38d33fbe5d",
       "translation": "Classificateur exécuté par le module Classify fusionné : 'cv' entraîne un modèle Torch sur les vignettes d’objets, 'ml' ajuste un modèle à gradient boosting sur les caractéristiques mesurées. Les paramètres utilisés par l’autre famille sont grisés, pas masqués - ils conservent leurs valeurs. C’est le seul écran Classify ; les deux qu’il a remplacés ont été supprimés le 2026-08-23, et leurs points d’entrée (spacr.deep_spacr.deep_spacr et spacr.ml.generate_ml_scores) sont ceux vers lesquels il délègue sans modification. Valeur par défaut : 'cv'.",
       "retired": "2026-10-11: English source changed in the N678 factual-language review (a625a7dac..7a27b4d2b); superseded by 2026-10-11-n678-captions.json"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "model_type",
+      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
+      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
+      "translation": "Architecture de base du classificateur d’images à objet unique : n’importe quel nom de modèle de classification TorchVision (resnet50, maxvit_t, densenet121, ...). Un nom non reconnu n’échoue pas lors de la validation initiale : choose_model signale 'Invalid model_type' et renvoie None, après quoi l’entraînement échoue. Le nom spécial 'custom' passe la validation puis lève NotImplementedError. Les architectures plus grandes demandent plus de mémoire et, en général, davantage de vignettes annotées que les plus petites. Valeur par défaut : 'maxvit_t'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "input_statistics",
+      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
+      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
+      "translation": "Moyenne et écart type utilisés par le chargeur lorsque normalize_input est activé. 'symmetric' utilise la convention historique 0.5/0.5 de spaCR (Inception et TF-Slim), qui transforme [0,1] en [-1,1]. 'imagenet' et 'clip' utilisent les statistiques propres à ces architectures pré-entraînées. 'dataset' estime des statistiques par canal à partir des données actuelles et peut convenir aux images de fluorescence dont la distribution d’intensité diffère de celle des photographies. 'custom' utilise input_mean et input_std. Valeur par défaut : 'symmetric'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -407,13 +423,6 @@
       "source": "Axis of the incoming array that holds z, specified as 0, 1 or 2. None infers it from shape only when one axis is clearly shorter than the other two, such as a 21x512x512 or 512x512x21 stack. An ambiguous shape such as 64x64x64 raises an error because an incorrect axis segments a transposed volume and produces invalid masks. Set this explicitly whenever the acquisition shape is ambiguous. Default None.",
       "source_sha256": "21ca8716152992d1b70bf7c0ae2de87232d84193dffe6080ed236e9d24b32faa",
       "translation": "Axe du tableau entrant qui contient z, indiqué par 0, 1 ou 2. None le déduit de la forme uniquement lorsqu’un axe est nettement plus court que les deux autres, comme pour une pile 21x512x512 ou 512x512x21. Une forme ambiguë comme 64x64x64 lève une erreur, car un axe incorrect segmente un volume transposé et produit des masques invalides. Définissez-le explicitement chaque fois que la forme d’acquisition est ambiguë. Valeur par défaut : None."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "model_type",
-      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
-      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
-      "translation": "Architecture de base du classificateur d’images à objet unique : n’importe quel nom de modèle de classification TorchVision (resnet50, maxvit_t, densenet121, ...). Un nom non reconnu n’échoue pas lors de la validation initiale : choose_model signale 'Invalid model_type' et renvoie None, après quoi l’entraînement échoue. Le nom spécial 'custom' passe la validation puis lève NotImplementedError. Les architectures plus grandes demandent plus de mémoire et, en général, davantage de vignettes annotées que les plus petites. Valeur par défaut : 'maxvit_t'."
     },
     {
       "table": "setting_tooltips",
@@ -2696,13 +2705,6 @@
       "source": "Maximum t-SNE optimization iterations. Increase it when optimization has not stabilized; every increase costs runtime. Used only by t-SNE. Default 1000.",
       "source_sha256": "d8a0d2645d97651f3559809f34836c08f05ee3119060fc54d649ad34f0dbd20b",
       "translation": "Nombre maximal d’itérations d’optimisation de t-SNE. Augmentez-le lorsque l’optimisation ne s’est pas stabilisée ; chaque augmentation coûte du temps d’exécution. Utilisé uniquement par t-SNE. Valeur par défaut : 1000."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "input_statistics",
-      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
-      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
-      "translation": "Moyenne et écart type utilisés par le chargeur lorsque normalize_input est activé. 'symmetric' utilise la convention historique 0.5/0.5 de spaCR (Inception et TF-Slim), qui transforme [0,1] en [-1,1]. 'imagenet' et 'clip' utilisent les statistiques propres à ces architectures pré-entraînées. 'dataset' estime des statistiques par canal à partir des données actuelles et peut convenir aux images de fluorescence dont la distribution d’intensité diffère de celle des photographies. 'custom' utilise input_mean et input_std. Valeur par défaut : 'symmetric'."
     },
     {
       "table": "setting_tooltips",

@@ -2823,7 +2823,10 @@
       "label": "spacr.crops.extract_crop#1",
       "source": "The returned array is the *pre-write* array: exactly what ``_measure_crop_core`` hands to the writer. Its dtype is the merged array's (``uint16`` for a normal spaCR run) and its channel order is ``spec.channels``. Use :func:`png_view` to get what a consumer reading the written PNG (via :func:`read_crop_png`) would see.",
       "source_sha256": "c02de16c6978478a99f7ea27e5041ea2404020f3974c1d69fdaa187c7828ae96",
-      "translation": "Þessar endurkomnir eru að *Skrifaður* Reiki: nákvæmlega hvað ``_measure_crop_core`` Hljósið er í höndum. (þ.e. hljóðið er í hljósum)``uint16`` fyrir venjulega spaCR (e) og rás aðgerð er ``spec.channels`` notkun :func:`png_view` að fá það sem viðskiptavinur lesa skrifað PNG ( í gegnum :func:`read_crop_png` Ég myndi sjá."
+      "translation": "Þessar endurkomnir eru að *Skrifaður* Reiki: nákvæmlega hvað ``_measure_crop_core`` Hljósið er í höndum. (þ.e. hljóðið er í hljósum)``uint16`` fyrir venjulega spaCR (e) og rás aðgerð er ``spec.channels`` notkun :func:`png_view` að fá það sem viðskiptavinur lesa skrifað PNG ( í gegnum :func:`read_crop_png` Ég myndi sjá.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "list of extracted image regions, one per spec, in order.",
@@ -6705,21 +6708,30 @@
       "label": "spacr.measure.measure_crop#11",
       "source": "``normalize_by`` — ``'png'`` (per-crop) or ``'fov'`` (per-field).",
       "source_sha256": "f8b3da5212c4ca703a46301293e46749996b61a879bff1cf971a17f15db56860",
-      "translation": "``normalize_by`` — ``'png'`` (eð myndskurðir myndar svæðis) eða ``'fov'`` (að mikroskópur sjónarfelli)."
+      "translation": "``normalize_by`` — ``'png'`` (eð myndskurðir myndar svæðis) eða ``'fov'`` (að mikroskópur sjónarfelli).",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "See Also: :func:`spacr.core.preprocess_generate_masks` — upstream mask generation. :func:`spacr.io.generate_dataset` — build a training set from the PNGs. :func:`spacr.deep_spacr.deep_spacr` — train a CNN on the extracted image regions.",
       "label": "spacr.measure.measure_crop#19",
       "source": "See Also: :func:`spacr.core.preprocess_generate_masks` — upstream mask generation. :func:`spacr.io.generate_dataset` — build a training set from the PNGs. :func:`spacr.deep_spacr.deep_spacr` — train a CNN on the crops.",
       "source_sha256": "e9fad3ffb2efec6a5b19f4127fb66633a0c096704de7bd7907e7fc3c03c7ad39",
-      "translation": "Sjá einnig: :func:`spacr.core.preprocess_generate_masks` — upstream maska kynslóð. :func:`spacr.io.generate_dataset` — byggja þjálfun set frá PNGs. :func:`spacr.deep_spacr.deep_spacr` — þjálfa CNN á myndskurðum myndum svæðum."
+      "translation": "Sjá einnig: :func:`spacr.core.preprocess_generate_masks` — upstream maska kynslóð. :func:`spacr.io.generate_dataset` — byggja þjálfun set frá PNGs. :func:`spacr.deep_spacr.deep_spacr` — þjálfa CNN á myndskurðum myndum svæðum.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "``channels`` — list of intensity image data channels to measure.",
       "label": "spacr.measure.measure_crop#7",
       "source": "``channels`` — list of intensity channels to measure.",
       "source_sha256": "121e02b4a5c9df355979bd9626f103c5ee546174d5b7c85fbedff923a9c08cf3",
-      "translation": "``channels`` — lista á stærð rás til að mæla."
+      "translation": "``channels`` — lista á stærð rás til að mæla.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "The second entry point into this module. :func:`measure_crop` starts from a ``merged/`` folder a workflow already built; this starts from a table a user filled in by dropping files onto it, writes that folder, and then calls :func:`measure_crop` itself -- unchanged, with no flag saying where the microscope fields of view came from. The database, the extracted image regions and the folder tree are therefore the Measure module's, because they are made by it.",
@@ -6763,7 +6775,10 @@
       "label": "spacr.measure.save_and_add_image_to_grid#1",
       "source": "Args: png_channels (ndarray): The crop in file order -- red plane first -- as :func:`spacr.crops.build_png_channels` assembles it. Written without narrowing, so a ``uint16`` crop becomes a 16-bit PNG; a float crop is silently written as 8-bit by cv2. Four or more channels raise rather than losing one to an alpha plane. img_path (str): Where the PNG goes. Its parent folder is stamped with the format sidecar and **must already exist** -- the caller in ``_measure_crop_core`` creates it. If it does not, the stamp fails with a printed warning, ``cv2.imwrite`` returns False, and the call returns normally having written nothing at all. A bare filename with no directory part stamps the current working directory. grid (list): Anything with ``append``; read only when ``plot`` is true, and appended to in place, so the return value is the object that was passed in. ``None`` passes through untouched while ``plot`` is false. plot (bool): Truthiness, not identity, decides. False (the default) leaves ``grid`` completely untouched -- the PNG is still written -- which is why an ordinary run ends with an empty grid. True appends the crop for :func:`img_list_to_grid`: a crop of exactly dtype ``uint16`` is appended as a high-byte narrowed ``uint8`` copy, every other dtype is appended unchanged, and a ``uint8`` crop is appended by reference, so a caller that reuses its buffer mutates what is already in the grid.",
       "source_sha256": "70912825318eafc893936c969b6171edcd73259231428d753a218b0d31220261",
-      "translation": "Argið: png_channels (þrýðandi): Mynd svæðið í skáldsáætluninni -- Róða myndum í fyrsta skipti -- eins og :func:`spacr.crops.build_png_channels` safnar það. skrifað án að smella, svo ``uint16`` myndskurður mynd svæðis verður 16-bit PNG; flóð útgreiður mynd svæðinu er hljóðlega skrifað sem 8-bit með cv2. Fjórir eða fleiri rásir hækka í stað þess að missa einn á alfa myndslagi. img_path (str): Hvar PNG fer. foreldrarmálur hennar er stjótur með formata sidekari og **must er þegar til** -- samtalinn í ``_measure_crop_core`` skapar það. ef það er ekki, stjóturinn missa með truflað varning, ``cv2.imwrite`` endurheimtir False, Og hringurinn kemur yfirleitt aftur með því að skrifa ekkert alls. A ljóst skránafn með engum skrifstofu hluta stýra núverandi vinnu skrifstofunni. Ríkis (list): Allt með ``append``; lesa aðeins þegar ``plot`` er satt, og tengist til staðnum, þannig að afturverði er hluturinn sem var sendur inn. ``None`` fer í gegnum óttað, en ``plot`` er fallegt. Sannleikur, ekki einkenni, ákvarðanir. False (þekkt) yfirgefur ``grid`` fullkomlega óttað - PNG er enn skrifað - það er ástæðan fyrir því að venjulega keyrslan endar með leyti net. True bætir út myndinni svæðið fyrir :func:`img_list_to_grid`: út myndu svæðið nákvæmlega dtype ``uint16`` bætir við sem hárbítum ``uint8`` kopi, hver annar dtyp bætir ekki breytist, og út ``uint8`` mynd svæðið bætir með referendum, þannig að kallaður sem endurnýsir bufferinu mun mutast það sem er nú þegar í netinu."
+      "translation": "Argið: png_channels (þrýðandi): Mynd svæðið í skáldsáætluninni -- Róða myndum í fyrsta skipti -- eins og :func:`spacr.crops.build_png_channels` safnar það. skrifað án að smella, svo ``uint16`` myndskurður mynd svæðis verður 16-bit PNG; flóð útgreiður mynd svæðinu er hljóðlega skrifað sem 8-bit með cv2. Fjórir eða fleiri rásir hækka í stað þess að missa einn á alfa myndslagi. img_path (str): Hvar PNG fer. foreldrarmálur hennar er stjótur með formata sidekari og **must er þegar til** -- samtalinn í ``_measure_crop_core`` skapar það. ef það er ekki, stjóturinn missa með truflað varning, ``cv2.imwrite`` endurheimtir False, Og hringurinn kemur yfirleitt aftur með því að skrifa ekkert alls. A ljóst skránafn með engum skrifstofu hluta stýra núverandi vinnu skrifstofunni. Ríkis (list): Allt með ``append``; lesa aðeins þegar ``plot`` er satt, og tengist til staðnum, þannig að afturverði er hluturinn sem var sendur inn. ``None`` fer í gegnum óttað, en ``plot`` er fallegt. Sannleikur, ekki einkenni, ákvarðanir. False (þekkt) yfirgefur ``grid`` fullkomlega óttað - PNG er enn skrifað - það er ástæðan fyrir því að venjulega keyrslan endar með leyti net. True bætir út myndinni svæðið fyrir :func:`img_list_to_grid`: út myndu svæðið nákvæmlega dtype ``uint16`` bætir við sem hárbítum ``uint8`` kopi, hver annar dtyp bætir ekki breytist, og út ``uint8`` mynd svæðið bætir með referendum, þannig að kallaður sem endurnýsir bufferinu mun mutast það sem er nú þegar í netinu.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "Returns: grid (list): The same object that was passed in, with the extracted image region appended only if ``plot`` was true.",
@@ -22217,7 +22232,10 @@
       "label": "spacr.utils.CustomCellClassifier.custom_forward#1",
       "source": "three-channel image batch to classify.",
       "source_sha256": "ae71cfd462ad3923bc5e5e8310aa816c81f213cd54dc2a61d9da2882ba15ba75",
-      "translation": "Þrjúmyndur rás gögn batch til að klassifa."
+      "translation": "Þrjúmyndur rás gögn batch til að klassifa.",
+      "retired": true,
+      "retired_date": "2026-11-07",
+      "retired_reason": "2026-11-07: the docstring was rewritten on the integrate-1107 branch (items 769, 772 and the replication report), which changed or moved this block. Replacement exact-source records are in 2026-11-07-integrate-1107-ai-review.json."
     },
     {
       "context": "1x1 convolution that fuses input channels down to 64 feature maps.",

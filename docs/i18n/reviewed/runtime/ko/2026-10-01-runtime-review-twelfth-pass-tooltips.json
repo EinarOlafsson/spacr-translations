@@ -122,6 +122,22 @@
       "source_sha256": "8371bf4058600b2f8fe55434d58549716f6ca45f556f6a3e6b53d48935cbdf8c",
       "translation": "저장되는 PNG의 각 색상에 들어갈 원본 채널로, 예를 들어 {'r': 2, 'g': 1, 'b': 0}이면 채널 2가 빨강, 1이 초록, 0이 파랑입니다. png_dims가 암시만 하던 것을 명시적으로 지정합니다. 지정하지 않은 채널은 크롭에 포함되지 않으며(측정값에는 영향 없음), 비워 둔 색상은 빈 평면이 됩니다. 세 색상 모두에 같은 채널을 지정하면 회색조 PNG가 기록됩니다. 기본값 {'r': 2, 'g': 1, 'b': 0}이며, 표준 405/488/555 스택에서는 핵 염색이 파랑에 놓입니다.",
       "retired": "2026-10-11: English source changed in the N678 factual-language review (a625a7dac..7a27b4d2b); superseded by 2026-10-11-n678-captions.json"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "model_type",
+      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
+      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
+      "translation": "단일 객체 이미지 분류기의 백본 아키텍처로, 모든 TorchVision 분류 모델 이름(resnet50, maxvit_t, densenet121, ...)을 사용할 수 있습니다. 인식되지 않는 이름은 초기 검증에서 실패하지 않습니다. choose_model이 'Invalid model_type'을 보고하고 None을 반환한 후 학습이 실패합니다. 특수 이름 'custom'은 검증을 통과한 후 NotImplementedError를 발생시킵니다. 더 큰 백본은 더 많은 메모리가 필요하며 일반적으로 더 작은 백본보다 많은 레이블된 크롭이 필요합니다. 기본값 'maxvit_t'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "input_statistics",
+      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
+      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
+      "translation": "normalize_input이 활성화될 때 로더가 사용하는 평균과 표준편차입니다. 'symmetric'은 spaCR의 기존 0.5/0.5 관례(Inception 및 TF-Slim)를 사용하여 [0,1]을 [-1,1]로 매핑합니다. 'imagenet'과 'clip'은 해당 사전 학습 백본에 연관된 고유한 통계를 사용합니다. 'dataset'은 현재 데이터에서 채널별 통계를 추정하며, 강도 분포가 사진과 다른 형광 이미지에 적합할 수 있습니다. 'custom'은 input_mean과 input_std를 사용합니다. 기본값 'symmetric'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -370,13 +386,6 @@
       "source": "Axis of the incoming array that holds z, specified as 0, 1 or 2. None infers it from shape only when one axis is clearly shorter than the other two, such as a 21x512x512 or 512x512x21 stack. An ambiguous shape such as 64x64x64 raises an error because an incorrect axis segments a transposed volume and produces invalid masks. Set this explicitly whenever the acquisition shape is ambiguous. Default None.",
       "source_sha256": "21ca8716152992d1b70bf7c0ae2de87232d84193dffe6080ed236e9d24b32faa",
       "translation": "입력 배열에서 z를 담은 축으로, 0, 1 또는 2로 지정합니다. None이면 21x512x512나 512x512x21 스택처럼 한 축이 다른 두 축보다 분명히 짧을 때에만 형태에서 추론합니다. 64x64x64처럼 모호한 형태는 오류를 발생시킵니다. 잘못된 축은 전치된 볼륨을 분할하여 무효한 마스크를 만들기 때문입니다. 획득 형태가 모호할 때는 항상 명시적으로 설정하십시오. 기본값 None."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "model_type",
-      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
-      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
-      "translation": "단일 객체 이미지 분류기의 백본 아키텍처로, 모든 TorchVision 분류 모델 이름(resnet50, maxvit_t, densenet121, ...)을 사용할 수 있습니다. 인식되지 않는 이름은 초기 검증에서 실패하지 않습니다. choose_model이 'Invalid model_type'을 보고하고 None을 반환한 후 학습이 실패합니다. 특수 이름 'custom'은 검증을 통과한 후 NotImplementedError를 발생시킵니다. 더 큰 백본은 더 많은 메모리가 필요하며 일반적으로 더 작은 백본보다 많은 레이블된 크롭이 필요합니다. 기본값 'maxvit_t'."
     },
     {
       "table": "setting_tooltips",
@@ -2456,13 +2465,6 @@
       "source": "Maximum t-SNE optimization iterations. Increase it when optimization has not stabilized; every increase costs runtime. Used only by t-SNE. Default 1000.",
       "source_sha256": "d8a0d2645d97651f3559809f34836c08f05ee3119060fc54d649ad34f0dbd20b",
       "translation": "t-SNE 최적화의 최대 반복 횟수입니다. 최적화가 안정되지 않았을 때 늘리십시오. 늘릴 때마다 실행 시간이 증가합니다. t-SNE에서만 사용됩니다. 기본값 1000."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "input_statistics",
-      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
-      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
-      "translation": "normalize_input이 활성화될 때 로더가 사용하는 평균과 표준편차입니다. 'symmetric'은 spaCR의 기존 0.5/0.5 관례(Inception 및 TF-Slim)를 사용하여 [0,1]을 [-1,1]로 매핑합니다. 'imagenet'과 'clip'은 해당 사전 학습 백본에 연관된 고유한 통계를 사용합니다. 'dataset'은 현재 데이터에서 채널별 통계를 추정하며, 강도 분포가 사진과 다른 형광 이미지에 적합할 수 있습니다. 'custom'은 input_mean과 input_std를 사용합니다. 기본값 'symmetric'."
     },
     {
       "table": "setting_tooltips",

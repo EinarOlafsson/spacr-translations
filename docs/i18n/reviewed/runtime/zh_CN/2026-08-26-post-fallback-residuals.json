@@ -156,13 +156,6 @@
       "translation": "质量控制分类与基于掩膜的标签不一致时采取的操作。'relabel' 会替换标签并保留细胞；'remove' 会排除掩膜证据与强度证据不一致的细胞。未知值会回退到 'relabel'。默认值为 'relabel'。"
     },
     {
-      "key": "input_statistics",
-      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
-      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
-      "table": "setting_tooltips",
-      "translation": "启用 normalize_input 时，加载器使用的均值和标准差。'symmetric' 使用 spaCR 以往的 0.5/0.5 约定（Inception 和 TF-Slim），将 [0,1] 映射到 [-1,1]。'imagenet' 和 'clip' 使用各自预训练骨干网络对应的统计量。'dataset' 从当前数据估计每个通道的统计量，可能适合强度分布不同于照片的荧光图像。'custom' 使用 input_mean 和 input_std。默认值为 'symmetric'。"
-    },
-    {
       "key": "intensity_statistic",
       "source": "Per-object statistic of the pre-permeabilisation channel used for thresholding. Because the stain is localized to the parasite surface, the object mean divides rim signal by the full area and can classify a larger parasite as dimmer than a smaller parasite with equivalent surface staining. A percentile of rim-pixel intensity reduces this size-dependent bias. Default 'mean'. Invasion starts at 'auto': it chooses periphery_95 when present, otherwise percentile_95, and uses mean only as a warned last resort.",
       "source_sha256": "7653e31f15d5aba3751d4e564d7911d664307fd8a9199ebaba09b1a260109823",
@@ -630,6 +623,14 @@
       "source_sha256": "fd03c70d046963fa83c6fd8dd5a66d0e2d3907a9b81cd4c9f288f48eb71db222",
       "table": "setting_tooltips",
       "translation": "合并逐对象表时应用的每个细胞的细胞核数量上限。None 禁用筛选，True 仅保留单核细胞，整数 N 保留细胞核数不超过 N 的细胞。超过上限的细胞会从合并表中完全删除。不要传入 False：它会被解释为 0 并删除所有细胞，产生空分析而不引发错误。默认值为 None。Merged Classifier 以 True 开始，Recruitment 以 1 开始，因此两者最初都只保留单核细胞。"
+    },
+    {
+      "key": "input_statistics",
+      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
+      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
+      "table": "setting_tooltips",
+      "translation": "启用 normalize_input 时，加载器使用的均值和标准差。'symmetric' 使用 spaCR 以往的 0.5/0.5 约定（Inception 和 TF-Slim），将 [0,1] 映射到 [-1,1]。'imagenet' 和 'clip' 使用各自预训练骨干网络对应的统计量。'dataset' 从当前数据估计每个通道的统计量，可能适合强度分布不同于照片的荧光图像。'custom' 使用 input_mean 和 input_std。默认值为 'symmetric'。",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
     }
   ],
   "review_notes": {

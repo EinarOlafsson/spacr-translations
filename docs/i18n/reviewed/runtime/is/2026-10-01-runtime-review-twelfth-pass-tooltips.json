@@ -146,6 +146,22 @@
       "source_sha256": "8371bf4058600b2f8fe55434d58549716f6ca45f556f6a3e6b53d48935cbdf8c",
       "translation": "Hvaða upprunarás fer í hvern lit vistuðu PNG-myndarinnar, t.d. {'r': 2, 'g': 1, 'b': 0}: rás 2 er rauð, 1 er græn, 0 er blá. Segir beint það sem png_dims gaf aðeins í skyn. Rásir sem ekki eru nefndar vantar í myndskurðina (mælingar verða ekki fyrir áhrifum); litur sem er látinn vera auður er tómt plan. Ef sama rás er nefnd fyrir alla þrjá er skrifuð grátóna PNG-mynd. Sjálfgefið {'r': 2, 'g': 1, 'b': 0}, sem fyrir staðlaðan 405/488/555-stafla setur kjarnalitunina í blátt.",
       "retired": "2026-10-11: English source changed in the N678 factual-language review (a625a7dac..7a27b4d2b); superseded by 2026-10-11-n678-captions.json"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "model_type",
+      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
+      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
+      "translation": "Grunnarkitektúr flokkarans fyrir myndir af stökum hlutum: hvaða flokkunarlíkansheiti TorchVision sem er (resnet50, maxvit_t, densenet121, ...). Óþekkt heiti bregst ekki í upphafsstaðfestingu: choose_model tilkynnir 'Invalid model_type' og skilar None, og eftir það bregst þjálfunin. Sérstaka heitið 'custom' stenst staðfestingu en kastar síðan NotImplementedError. Stærri grunnnet þurfa meira minni og yfirleitt fleiri merkta myndskurði en minni grunnnet. Sjálfgefið 'maxvit_t'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "input_statistics",
+      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
+      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
+      "translation": "Meðaltal og staðalfrávik sem hleðslan notar þegar normalize_input er virkt. 'symmetric' notar sögulegu 0.5/0.5-venju spaCR (Inception og TF-Slim), sem varpar [0,1] á [-1,1]. 'imagenet' og 'clip' nota sérstaka tölfræði sem tengist þeim forþjálfuðu grunnnetum. 'dataset' metur tölfræði fyrir hverja rás út frá núverandi gögnum og getur hentað flúrljómunarmyndum þar sem styrkdreifingin er ólík ljósmyndum. 'custom' notar input_mean og input_std. Sjálfgefið 'symmetric'.",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -408,13 +424,6 @@
       "source": "Axis of the incoming array that holds z, specified as 0, 1 or 2. None infers it from shape only when one axis is clearly shorter than the other two, such as a 21x512x512 or 512x512x21 stack. An ambiguous shape such as 64x64x64 raises an error because an incorrect axis segments a transposed volume and produces invalid masks. Set this explicitly whenever the acquisition shape is ambiguous. Default None.",
       "source_sha256": "21ca8716152992d1b70bf7c0ae2de87232d84193dffe6080ed236e9d24b32faa",
       "translation": "Ás inntaksfylkisins sem geymir z, tilgreindur sem 0, 1 eða 2. None ályktar hann út frá lögun aðeins þegar einn ás er greinilega styttri en hinir tveir, svo sem í 21x512x512 eða 512x512x21 stafla. Tvíræð lögun á borð við 64x64x64 veldur villu, því rangur ás bútar umsnúið rúmmál og gefur ógildar grímur. Stilltu þetta beint hvenær sem lögun myndatökunnar er tvíræð. Sjálfgefið None."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "model_type",
-      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
-      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
-      "translation": "Grunnarkitektúr flokkarans fyrir myndir af stökum hlutum: hvaða flokkunarlíkansheiti TorchVision sem er (resnet50, maxvit_t, densenet121, ...). Óþekkt heiti bregst ekki í upphafsstaðfestingu: choose_model tilkynnir 'Invalid model_type' og skilar None, og eftir það bregst þjálfunin. Sérstaka heitið 'custom' stenst staðfestingu en kastar síðan NotImplementedError. Stærri grunnnet þurfa meira minni og yfirleitt fleiri merkta myndskurði en minni grunnnet. Sjálfgefið 'maxvit_t'."
     },
     {
       "table": "setting_tooltips",
@@ -2690,13 +2699,6 @@
       "source": "Maximum t-SNE optimization iterations. Increase it when optimization has not stabilized; every increase costs runtime. Used only by t-SNE. Default 1000.",
       "source_sha256": "d8a0d2645d97651f3559809f34836c08f05ee3119060fc54d649ad34f0dbd20b",
       "translation": "Hámarksfjöldi ítrana í t-SNE-bestun. Hækkaðu þegar bestunin hefur ekki náð stöðugleika; hver hækkun kostar keyrslutíma. Aðeins notað af t-SNE. Sjálfgefið 1000."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "input_statistics",
-      "source": "Mean and standard deviation used by the loader when normalize_input is enabled. 'symmetric' uses spaCR's historical 0.5/0.5 convention (Inception and TF-Slim), mapping [0,1] to [-1,1]. 'imagenet' and 'clip' use the distinct statistics associated with those pretrained backbones. 'dataset' estimates per-channel statistics from the current data and may be appropriate for fluorescence images whose intensity distribution differs from photographs. 'custom' uses input_mean and input_std. Default 'symmetric'.",
-      "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
-      "translation": "Meðaltal og staðalfrávik sem hleðslan notar þegar normalize_input er virkt. 'symmetric' notar sögulegu 0.5/0.5-venju spaCR (Inception og TF-Slim), sem varpar [0,1] á [-1,1]. 'imagenet' og 'clip' nota sérstaka tölfræði sem tengist þeim forþjálfuðu grunnnetum. 'dataset' metur tölfræði fyrir hverja rás út frá núverandi gögnum og getur hentað flúrljómunarmyndum þar sem styrkdreifingin er ólík ljósmyndum. 'custom' notar input_mean og input_std. Sjálfgefið 'symmetric'."
     },
     {
       "table": "setting_tooltips",

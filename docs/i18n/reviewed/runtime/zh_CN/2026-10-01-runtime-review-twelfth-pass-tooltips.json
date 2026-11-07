@@ -114,6 +114,14 @@
       "source_sha256": "181c9e9f4aff40d8c90b7ab99a3cb0ad8ba3b6ad53be80d131fd0f38d33fbe5d",
       "translation": "合并后的 Classify 模块运行哪种分类器：'cv' 在对象裁剪图上训练 Torch 模型，'ml' 在测量特征上拟合梯度提升模型。另一类所用的设置会显示为灰色而不是隐藏，并保留其值。这是唯一的 Classify 界面；它所取代的两个界面已于 2026-08-23 移除，其入口点（spacr.deep_spacr.deep_spacr 和 spacr.ml.generate_ml_scores）正是此处原样调用的对象。默认值 'cv'。",
       "retired": "2026-10-11: English source changed in the N678 factual-language review (a625a7dac..7a27b4d2b); superseded by 2026-10-11-n678-captions.json"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "model_type",
+      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
+      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
+      "translation": "单对象图像分类器的骨干架构：任何 TorchVision 分类模型名称（resnet50、maxvit_t、densenet121……）。无法识别的名称在初始验证时不会失败：choose_model 会报告 'Invalid model_type' 并返回 None，之后训练失败。特殊名称 'custom' 能通过验证，随后引发 NotImplementedError。较大的骨干网络需要更多内存，通常也比较小的骨干网络需要更多已标注的裁剪图。默认值 'maxvit_t'。",
+      "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -341,13 +349,6 @@
       "source": "Axis of the incoming array that holds z, specified as 0, 1 or 2. None infers it from shape only when one axis is clearly shorter than the other two, such as a 21x512x512 or 512x512x21 stack. An ambiguous shape such as 64x64x64 raises an error because an incorrect axis segments a transposed volume and produces invalid masks. Set this explicitly whenever the acquisition shape is ambiguous. Default None.",
       "source_sha256": "21ca8716152992d1b70bf7c0ae2de87232d84193dffe6080ed236e9d24b32faa",
       "translation": "输入数组中存放 z 的轴，指定为 0、1 或 2。None 仅在某一轴明显短于另外两轴时（例如 21x512x512 或 512x512x21 的堆栈）根据形状推断。像 64x64x64 这样的模糊形状会引发错误，因为错误的轴会分割转置后的体积并生成无效掩膜。只要采集形状不明确，就请显式设置此项。默认值 None。"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "model_type",
-      "source": "Backbone architecture for the single-object image classifier: any TorchVision classification model name (resnet50, maxvit_t, densenet121, ...). An unrecognized name does not fail during initial validation: choose_model reports 'Invalid model_type' and returns None, after which training fails. The special name 'custom' passes validation and then raises NotImplementedError. Larger backbones require more memory and generally need more labeled crops than smaller backbones. Default 'maxvit_t'.",
-      "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
-      "translation": "单对象图像分类器的骨干架构：任何 TorchVision 分类模型名称（resnet50、maxvit_t、densenet121……）。无法识别的名称在初始验证时不会失败：choose_model 会报告 'Invalid model_type' 并返回 None，之后训练失败。特殊名称 'custom' 能通过验证，随后引发 NotImplementedError。较大的骨干网络需要更多内存，通常也比较小的骨干网络需要更多已标注的裁剪图。默认值 'maxvit_t'。"
     },
     {
       "table": "setting_tooltips",

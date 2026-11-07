@@ -278,13 +278,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "gpu_adaptive_batch",
-      "source": "Size GPU batches to the memory that is free on a shared card. Segmentation, measurement, OPS and classifier training and inference shrink a batch that would not fit, halve it and retry the same item after an out-of-memory error, run the item on the CPU when even batch size 1 does not fit, and grow the batch again after a run of clean items; no item is dropped. Every spaCR process on the machine records its GPU use in a shared file in the user cache folder, so a new job counts what running jobs are about to take. The counts appear in the run log. Off runs every batch at the requested size. Default True.",
-      "source_sha256": "50927a6c1b8ce82aa9af149b54570ee0d8aa1fa31276d43f20de279899757220",
-      "translation": "साझा कार्ड पर खाली मेमोरी के अनुसार GPU बैच का आकार तय करें। विभाजन, मापन, OPS और क्लासिफ़ायर प्रशिक्षण और अनुमान ऐसे बैच को छोटा करते हैं जो फ़िट नहीं होगा, out-of-memory त्रुटि के बाद उसे आधा करके उसी आइटम को फिर से आज़माते हैं, जब बैच आकार 1 भी फ़िट न हो तो आइटम को CPU पर चलाते हैं, और साफ़ आइटमों की एक शृंखला के बाद बैच को फिर से बढ़ाते हैं; कोई आइटम छोड़ा नहीं जाता। मशीन पर हर spaCR प्रोसेस अपना GPU उपयोग उपयोगकर्ता कैश फ़ोल्डर की एक साझा फ़ाइल में दर्ज करता है, ताकि नया जॉब गिन सके कि चल रहे जॉब कितना लेने वाले हैं। गिनतियाँ रन लॉग में दिखती हैं। बंद होने पर हर बैच अनुरोधित आकार पर चलता है। डिफ़ॉल्ट True।"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "gpu_fallback_policy",
       "source": "What a GPU item does when it does not fit in GPU memory even at batch size 1. per_item runs that item on the CPU and records its compute path (gpu or cpu) per item: Measure writes a compute_path column on its object rows when measure_gpu is on, the run report says whether the run stayed on one path, and a warning appears when more than 3 % of items fell back. pause never falls back: the item waits for GPU memory to be freed, so every result comes from the GPU path, at the cost of waiting while the card is full. Default per_item.",
       "source_sha256": "4a055441d5b2cecfa95e3fcd3dbf5f8c4a8770c682908a417b3d74fd9b62e929",
@@ -527,6 +520,16 @@
       "source": "How much of a shared GPU this run may take: an optional hard ceiling, the memory kept free for other jobs, and batches that shrink, retry at half size or move to the CPU instead of stopping the run when the card is full, or wait for the GPU so the run stays on one compute path.",
       "source_sha256": "6b745b8a7f7c3ba93f784c758aa5786694a960b8ca59377acedb57921ae781ef",
       "translation": "यह रन साझा GPU का कितना हिस्सा ले सकता है: एक वैकल्पिक कठोर ऊपरी सीमा, अन्य जॉब के लिए खाली रखी गई मेमोरी, और ऐसे बैच जो कार्ड भरा होने पर रन रोकने के बजाय छोटे होते हैं, आधे आकार पर फिर से आज़माते हैं या CPU पर चले जाते हैं, या GPU की प्रतीक्षा करते हैं ताकि रन एक ही गणना पथ पर रहे।"
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "gpu_adaptive_batch",
+      "source": "Size GPU batches to the memory that is free on a shared card. Segmentation, measurement, OPS and classifier training and inference shrink a batch that would not fit, halve it and retry the same item after an out-of-memory error, run the item on the CPU when even batch size 1 does not fit, and grow the batch again after a run of clean items; no item is dropped. Every spaCR process on the machine records its GPU use in a shared file in the user cache folder, so a new job counts what running jobs are about to take. The counts appear in the run log. Off runs every batch at the requested size. Default True.",
+      "source_sha256": "50927a6c1b8ce82aa9af149b54570ee0d8aa1fa31276d43f20de279899757220",
+      "translation": "साझा कार्ड पर खाली मेमोरी के अनुसार GPU बैच का आकार तय करें। विभाजन, मापन, OPS और क्लासिफ़ायर प्रशिक्षण और अनुमान ऐसे बैच को छोटा करते हैं जो फ़िट नहीं होगा, out-of-memory त्रुटि के बाद उसे आधा करके उसी आइटम को फिर से आज़माते हैं, जब बैच आकार 1 भी फ़िट न हो तो आइटम को CPU पर चलाते हैं, और साफ़ आइटमों की एक शृंखला के बाद बैच को फिर से बढ़ाते हैं; कोई आइटम छोड़ा नहीं जाता। मशीन पर हर spaCR प्रोसेस अपना GPU उपयोग उपयोगकर्ता कैश फ़ोल्डर की एक साझा फ़ाइल में दर्ज करता है, ताकि नया जॉब गिन सके कि चल रहे जॉब कितना लेने वाले हैं। गिनतियाँ रन लॉग में दिखती हैं। बंद होने पर हर बैच अनुरोधित आकार पर चलता है। डिफ़ॉल्ट True।",
+      "retired": "2026-11-07: the English tooltip was shortened below the 600-character ceiling; its successor is reviewed in 2026-11-07-gpu-adaptive-batch-tooltip-ai-review.json."
     }
   ]
 }

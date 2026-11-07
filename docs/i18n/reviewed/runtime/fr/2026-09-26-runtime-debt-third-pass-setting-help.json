@@ -13,20 +13,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "cell_min_size",
-      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000.",
-      "source_sha256": "cdf0150ca36c53dbdf46818eb148c35d36d1377ba09e6c04d79b95fce47eeef7",
-      "translation": "(Obsolète) Aire minimale en pixels appliquée aux étiquettes de cellules pendant la mesure : toute cellule plus petite est effacée du masque avant l’extraction des caractéristiques. Remplacé par une ligne 'area' pour cell dans object_filters, qui filtre dès la segmentation, mais ce réglage s’applique toujours si vous le définissez. 0 ou None le désactive. Valeur par défaut : 8000."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "nucleus_min_size",
-      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 (default) disables it. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
-      "source_sha256": "a0dc3a5865dc45bba0cedfb7371f47941b3c670788eeefbebe58a5169b4c905d",
-      "translation": "(Obsolète) Taille minimale des noyaux en pixels^2 appliquée pendant measure_crop : les étiquettes couvrant moins de pixels sont effacées du masque des noyaux avant toute mesure de caractéristique, si bien que ces noyaux n’atteignent jamais la base de données. 0 (par défaut) le désactive. Préférez une ligne 'area' pour nucleus dans object_filters, qui filtre dès la segmentation."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "object_filters",
       "source": "Object filters on any scalar scikit-image regionprop, per object type, for example {'cell': [{'property': 'area', 'min': 200}, {'property': 'solidity', 'min': 0.9}]}. An object is kept when min <= value <= max; a missing side is off. Intensity properties read the object's own raw channel. An area minimum is also Cellpose's min_size. An old file's cell_min_area and the other retired per-object bounds become rows here when it loads. Default {}.",
       "source_sha256": "b8f9bbb826555ba601874ca1633cfb8a58466e88135cd957b39d39bc8ae85a65",
@@ -38,13 +24,6 @@
       "source": "Which detector finds the sequencing spots. 'native' is spaCR's own spot score, the one this pipeline was validated with. 'spotnet' is DeepCell's SpotNet, run in its own environment; its spots go through the same base calls and nucleus assignment, and ops_read_threshold no longer applies. SpotNet is licensed for NON-COMMERCIAL ACADEMIC USE ONLY, installs from the Model Zoo and needs a DeepCell token in ~/.spacr/deepcell_token. Default 'native'.",
       "source_sha256": "85b1f79a5061c2c21f9b914f16f97b5e47ec057e545a72eaa2ff90f02328f596",
       "translation": "Détecteur qui repère les spots de séquençage. 'native' est le score de spots propre à spaCR, celui avec lequel ce pipeline a été validé. 'spotnet' est SpotNet de DeepCell, exécuté dans son propre environnement ; ses spots passent par les mêmes appels de bases et la même affectation aux noyaux, et ops_read_threshold ne s’applique plus. SpotNet est sous licence pour un USAGE ACADÉMIQUE NON COMMERCIAL UNIQUEMENT, s’installe depuis la Bibliothèque de modèles et nécessite un jeton DeepCell dans ~/.spacr/deepcell_token. Valeur par défaut : 'native'."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "pathogen_min_size",
-      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0, the default, disables it. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
-      "source_sha256": "af4eb72511f64c614d1f1d06ec4bbe58dd30f8e22c5645814ef853e976efe3c0",
-      "translation": "(Obsolète) Aire minimale d’un objet pathogène en pixels carrés, appliquée pendant la mesure : toute étiquette comptant moins de pixels est effacée du masque des pathogènes avant l’extraction des caractéristiques. 0, la valeur par défaut, le désactive. Remplacé par une ligne 'area' pour pathogen dans object_filters, qui filtre plutôt dès la segmentation."
     },
     {
       "table": "setting_tooltips",
@@ -66,6 +45,32 @@
       "source": "Path to a trained Timeflows checkpoint, spaCR's experimental temporal Cellpose that predicts where each object's centre moves in the next frame and links masks from those predictions. Only consulted when timelapse_mode='timeflows', which is never the default: on held-out movies measured so far it does not beat overlap linking ('iou'). No checkpoint is downloaded; leave empty unless you trained one. Default None.",
       "source_sha256": "88edfe30ad6d529a1bc4f650979f9110137ca67279a8b4fe9a29d29d5507af94",
       "translation": "Chemin vers un point de contrôle Timeflows entraîné, le Cellpose temporel expérimental de spaCR qui prédit où le centre de chaque objet se déplace dans l’image suivante et relie les masques à partir de ces prédictions. N’est consulté que lorsque timelapse_mode='timeflows', ce qui n’est jamais la valeur par défaut : sur les films réservés mesurés jusqu’ici, il ne fait pas mieux que la liaison par chevauchement ('iou'). Aucun point de contrôle n’est téléchargé ; laissez vide sauf si vous en avez entraîné un. Valeur par défaut : None."
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "cell_min_size",
+      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000.",
+      "source_sha256": "cdf0150ca36c53dbdf46818eb148c35d36d1377ba09e6c04d79b95fce47eeef7",
+      "translation": "(Obsolète) Aire minimale en pixels appliquée aux étiquettes de cellules pendant la mesure : toute cellule plus petite est effacée du masque avant l’extraction des caractéristiques. Remplacé par une ligne 'area' pour cell dans object_filters, qui filtre dès la segmentation, mais ce réglage s’applique toujours si vous le définissez. 0 ou None le désactive. Valeur par défaut : 8000.",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "nucleus_min_size",
+      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 (default) disables it. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
+      "source_sha256": "a0dc3a5865dc45bba0cedfb7371f47941b3c670788eeefbebe58a5169b4c905d",
+      "translation": "(Obsolète) Taille minimale des noyaux en pixels^2 appliquée pendant measure_crop : les étiquettes couvrant moins de pixels sont effacées du masque des noyaux avant toute mesure de caractéristique, si bien que ces noyaux n’atteignent jamais la base de données. 0 (par défaut) le désactive. Préférez une ligne 'area' pour nucleus dans object_filters, qui filtre dès la segmentation.",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pathogen_min_size",
+      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0, the default, disables it. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
+      "source_sha256": "af4eb72511f64c614d1f1d06ec4bbe58dd30f8e22c5645814ef853e976efe3c0",
+      "translation": "(Obsolète) Aire minimale d’un objet pathogène en pixels carrés, appliquée pendant la mesure : toute étiquette comptant moins de pixels est effacée du masque des pathogènes avant l’extraction des caractéristiques. 0, la valeur par défaut, le désactive. Remplacé par une ligne 'area' pour pathogen dans object_filters, qui filtre plutôt dès la segmentation.",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
     }
   ]
 }

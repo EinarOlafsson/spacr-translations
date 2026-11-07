@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "language": "pt",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-07 of the Measure size-floor tooltips (cell_min_size, nucleus_min_size, pathogen_min_size) and the pixel_size_um tooltip rewritten for item 800, against the exact English source. No native-speaker sign-off.",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "cell_min_size",
+      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000, which suits 40-60x; when pixel_size_um or magnification is set, the 8000 default becomes the area of a disc one fifth of Mask's expected cell diameter (452 px at 20x, 95 px at 0.325 um/px). A field that loses more than half its cells to the filter prints a warning.",
+      "source_sha256": "40f4218e83bf9f2cf486207496ceaa0c3a770f9afdd238a0ae715cce1f61caa9",
+      "translation": "(Obsoleto) Área mínima em pixels aplicada aos rótulos de células durante a medição: qualquer célula menor que isso é apagada da máscara antes da extração das características. Substituído por uma linha 'area' para cell em object_filters, que filtra já na segmentação, mas este ainda é aplicado se for definido. 0 ou None o desativa. Padrão 8000, adequado para 40-60x; quando pixel_size_um ou magnification está definido, o padrão 8000 passa a ser a área de um disco cujo diâmetro é um quinto do diâmetro celular esperado pelo Mask (452 px em 20x, 95 px em 0.325 um/px). Um campo que perde mais da metade das células para o filtro emite um aviso."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "nucleus_min_size",
+      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 or None disables it. Default 2000, which suits 40-60x; when pixel_size_um or magnification is set, the 2000 default becomes the area of a disc one fifth of Mask's expected nucleus diameter (113 px at 20x, 30 px at 0.325 um/px). A field that loses more than half its nuclei prints a warning. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
+      "source_sha256": "52948b478e1636731b9d345d8dced1bd40cc3f4bf072579bfbcc450e79dc6b52",
+      "translation": "(Obsoleto) Tamanho mínimo do núcleo em pixels^2 aplicado durante measure_crop: rótulos que cobrem menos pixels que isso são apagados da máscara de núcleos antes de qualquer característica ser medida, de modo que esses núcleos nunca chegam ao banco de dados. 0 ou None o desativa. Padrão 2000, adequado para 40-60x; quando pixel_size_um ou magnification está definido, o padrão 2000 passa a ser a área de um disco cujo diâmetro é um quinto do diâmetro nuclear esperado pelo Mask (113 px em 20x, 30 px em 0.325 um/px). Um campo que perde mais da metade dos núcleos emite um aviso. Prefira uma linha 'area' para nucleus em object_filters, que filtra já na segmentação."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pathogen_min_size",
+      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0 or None disables it. Default 500, which suits 40-60x; when pixel_size_um or magnification is set, the 500 default becomes the area of a disc one fifth of Mask's expected pathogen diameter (13 px at 20x or at 0.325 um/px). A field that loses more than half its pathogens prints a warning. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
+      "source_sha256": "ecf000dfa2c60555fcf9941fcc80e0733302fde3ba5705c5ca5af0c855dc3a81",
+      "translation": "(Obsoleto) Área mínima de um objeto patógeno em pixels quadrados, aplicada durante a medição: qualquer rótulo com menos pixels que isso é apagado da máscara de patógenos antes da extração das características. 0 ou None o desativa. Padrão 500, adequado para 40-60x; quando pixel_size_um ou magnification está definido, o padrão 500 passa a ser a área de um disco cujo diâmetro é um quinto do diâmetro de patógeno esperado pelo Mask (13 px tanto em 20x quanto em 0.325 um/px). Um campo que perde mais da metade dos patógenos emite um aviso. Substituído por uma linha 'area' para pathogen em object_filters, que filtra já na segmentação."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pixel_size_um",
+      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. In Measure it also scales the default cell_min_size, nucleus_min_size and pathogen_min_size. Default None.",
+      "source_sha256": "19415d797867446dc1c7e00b98516e3a6ccc2fa8978803ec2d53ab4458e90433",
+      "translation": "Tamanho do pixel da imagem em micrômetros por pixel, por exemplo 0.325 para um pixel de câmera de 6.5 um atrás de uma objetiva de 20x. Quando definido, cell_diameter, nucleus_diameter ou pathogen_diameter em branco é o tamanho típico do objeto dividido pelo tamanho do pixel: células de 18 um, núcleos de 10 um e patógenos de 6.5 um, ou seja, 55, 31 e 20 px em 0.325 um/px, com limites de área mínimo/máximo de diameter^2/4 e diameter^2*10. Substitui o padrão da ampliação, que pressupõe células maiores (120 e 60 px em 20x). Um diâmetro digitado por você é sempre usado como está. None usa o padrão da ampliação. No Measure, também ajusta à escala os valores padrão de cell_min_size, nucleus_min_size e pathogen_min_size. Padrão None."
+    }
+  ]
+}

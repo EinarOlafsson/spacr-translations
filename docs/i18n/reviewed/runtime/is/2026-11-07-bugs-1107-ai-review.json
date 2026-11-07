@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "language": "is",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-07 of the Measure size-floor tooltips (cell_min_size, nucleus_min_size, pathogen_min_size) and the pixel_size_um tooltip rewritten for item 800, against the exact English source. No native-speaker sign-off.",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "cell_min_size",
+      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000, which suits 40-60x; when pixel_size_um or magnification is set, the 8000 default becomes the area of a disc one fifth of Mask's expected cell diameter (452 px at 20x, 95 px at 0.325 um/px). A field that loses more than half its cells to the filter prints a warning.",
+      "source_sha256": "40f4218e83bf9f2cf486207496ceaa0c3a770f9afdd238a0ae715cce1f61caa9",
+      "translation": "(Úrelt) Lágmarksflatarmál í dílum sem er beitt á frumumerki við mælingu: sérhver fruma sem er minni er þurrkuð úr grímunni áður en eiginleikar eru dregnir út. Leyst af hólmi af 'area'-línu fyrir cell í object_filters, sem síar strax við bútun, en þessi stilling keyrir samt ef þú stillir hana. 0 eða None gerir hana óvirka. Sjálfgefið 8000, sem hentar 40-60x; þegar pixel_size_um eða magnification er stillt verður sjálfgefna gildið 8000 að flatarmáli skífu sem hefur fimmtung af væntu frumuþvermáli Mask að þvermáli (452 px við 20x, 95 px við 0.325 um/px). Sjónsvið sem missir meira en helming frumna sinna í síunni prentar viðvörun."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "nucleus_min_size",
+      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 or None disables it. Default 2000, which suits 40-60x; when pixel_size_um or magnification is set, the 2000 default becomes the area of a disc one fifth of Mask's expected nucleus diameter (113 px at 20x, 30 px at 0.325 um/px). A field that loses more than half its nuclei prints a warning. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
+      "source_sha256": "52948b478e1636731b9d345d8dced1bd40cc3f4bf072579bfbcc450e79dc6b52",
+      "translation": "(Úrelt) Lágmarksstærð kjarna í dílum^2 sem er beitt í measure_crop: merki sem ná yfir færri díla eru þurrkuð úr kjarnagrímunni áður en nokkur eiginleiki er mældur, svo þeir kjarnar ná aldrei inn í gagnagrunninn. 0 eða None gerir hana óvirka. Sjálfgefið 2000, sem hentar 40-60x; þegar pixel_size_um eða magnification er stillt verður sjálfgefna gildið 2000 að flatarmáli skífu sem hefur fimmtung af væntu kjarnaþvermáli Mask að þvermáli (113 px við 20x, 30 px við 0.325 um/px). Sjónsvið sem missir meira en helming kjarna sinna prentar viðvörun. Notaðu frekar 'area'-línu fyrir nucleus í object_filters, sem síar við bútun."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pathogen_min_size",
+      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0 or None disables it. Default 500, which suits 40-60x; when pixel_size_um or magnification is set, the 500 default becomes the area of a disc one fifth of Mask's expected pathogen diameter (13 px at 20x or at 0.325 um/px). A field that loses more than half its pathogens prints a warning. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
+      "source_sha256": "ecf000dfa2c60555fcf9941fcc80e0733302fde3ba5705c5ca5af0c855dc3a81",
+      "translation": "(Úrelt) Lágmarksflatarmál sýkilshlutar í fermetradílum, beitt við mælingu: sérhvert merki með færri dílum er þurrkað úr sýkilsgrímunni áður en eiginleikar eru dregnir út. 0 eða None gerir hana óvirka. Sjálfgefið 500, sem hentar 40-60x; þegar pixel_size_um eða magnification er stillt verður sjálfgefna gildið 500 að flatarmáli skífu sem hefur fimmtung af væntu sýkilsþvermáli Mask að þvermáli (13 px bæði við 20x og við 0.325 um/px). Sjónsvið sem missir meira en helming sýkla sinna prentar viðvörun. Leyst af hólmi af 'area'-línu fyrir pathogen í object_filters, sem síar í staðinn strax við bútun."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pixel_size_um",
+      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. In Measure it also scales the default cell_min_size, nucleus_min_size and pathogen_min_size. Default None.",
+      "source_sha256": "19415d797867446dc1c7e00b98516e3a6ccc2fa8978803ec2d53ab4458e90433",
+      "translation": "Pixlastærð myndar í míkrómetrum á pixil, til dæmis 0.325 fyrir 6.5 um myndavélarpixil á bak við 20x hlutlinsu. Þegar hún er stillt er autt cell_diameter, nucleus_diameter eða pathogen_diameter dæmigerð stærð hlutar deilt með pixlastærðinni: 18 um frumur, 10 um kjarnar og 6.5 um sýklar, svo 55, 31 og 20 px við 0.325 um/px, með lágmarks-/hámarksflatarmál diameter^2/4 og diameter^2*10. Hún kemur í stað sjálfgefins gildis samkvæmt stækkun, sem gerir ráð fyrir stærri frumum (120 og 60 px við 20x). Þvermál sem þú slærð inn er alltaf notað óbreytt. None notar sjálfgefið gildi samkvæmt stækkun. Í Measure kvarðar hún líka sjálfgefin gildi cell_min_size, nucleus_min_size og pathogen_min_size. Sjálfgefið None."
+    }
+  ]
+}

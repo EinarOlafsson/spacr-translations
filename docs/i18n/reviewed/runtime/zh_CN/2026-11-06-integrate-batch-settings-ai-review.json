@@ -376,13 +376,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "pixel_size_um",
-      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. Default None.",
-      "source_sha256": "da3807a05712fb9442c552f6a641b71d77f204ce4d7a094c84963c4e7fdba060",
-      "translation": "图像像素尺寸，以每像素微米计，例如 20x 物镜后 6.5 um 相机像素对应 0.325。设置后，留空的 cell_diameter、nucleus_diameter 或 pathogen_diameter 为典型对象大小除以像素尺寸：细胞 18 um、细胞核 10 um、病原体 6.5 um，因此在 0.325 um/px 时分别为 55、31 和 20 px；最小/最大面积限制为 diameter^2/4 和 diameter^2*10。它取代按放大倍数计算的默认值，后者假定细胞更大（20x 时为 120 和 60 px）。您输入的直径总是按原样使用。None 使用放大倍数默认值。默认值为 None。"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "qc_group",
       "source": "Recruitment and replication well_qc and object_qc: column whose groups are compared separately, so wells and objects are judged against those of the same condition and real differences between conditions are kept. 'condition' uses the condition without the replicate when the replicate is part of the condition name. A group with fewer than 8 wells (well_qc) or 30 objects (object_qc) on a plate is compared with the whole plate. None compares every well and object with its whole plate. Default 'condition'.",
       "source_sha256": "878d89c3a5b3fa74d87391c5b7e7032708245e513f4b3324cde8b06567eaceee",
@@ -530,6 +523,14 @@
       "source_sha256": "50927a6c1b8ce82aa9af149b54570ee0d8aa1fa31276d43f20de279899757220",
       "translation": "根据共享显卡上的空闲内存确定 GPU 批大小。分割、测量、OPS 以及分类器训练和推理会缩小放不下的批；遇到内存不足错误后将批减半并重试同一项；即使批大小为 1 也放不下时在 CPU 上运行该项；连续多项顺利完成后再次增大批。不会丢弃任何项。机器上的每个 spaCR 进程都会在用户缓存文件夹中的一个共享文件里记录其 GPU 使用量，因此新作业会把正在运行的作业即将占用的内存计算在内。这些计数会显示在运行日志中。关闭时，每个批都按请求的大小运行。默认值为 True。",
       "retired": "2026-11-07: the English tooltip was shortened below the 600-character ceiling; its successor is reviewed in 2026-11-07-gpu-adaptive-batch-tooltip-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pixel_size_um",
+      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. Default None.",
+      "source_sha256": "da3807a05712fb9442c552f6a641b71d77f204ce4d7a094c84963c4e7fdba060",
+      "translation": "图像像素尺寸，以每像素微米计，例如 20x 物镜后 6.5 um 相机像素对应 0.325。设置后，留空的 cell_diameter、nucleus_diameter 或 pathogen_diameter 为典型对象大小除以像素尺寸：细胞 18 um、细胞核 10 um、病原体 6.5 um，因此在 0.325 um/px 时分别为 55、31 和 20 px；最小/最大面积限制为 diameter^2/4 和 diameter^2*10。它取代按放大倍数计算的默认值，后者假定细胞更大（20x 时为 120 和 60 px）。您输入的直径总是按原样使用。None 使用放大倍数默认值。默认值为 None。",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
     }
   ]
 }

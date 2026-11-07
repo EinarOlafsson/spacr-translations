@@ -376,13 +376,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "pixel_size_um",
-      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. Default None.",
-      "source_sha256": "da3807a05712fb9442c552f6a641b71d77f204ce4d7a094c84963c4e7fdba060",
-      "translation": "Taille de pixel de l’image en micromètres par pixel, par exemple 0.325 pour un pixel de caméra de 6.5 um derrière un objectif 20x. Lorsqu’elle est définie, un cell_diameter, nucleus_diameter ou pathogen_diameter vide correspond à la taille typique de l’objet divisée par la taille de pixel : cellules de 18 um, noyaux de 10 um et pathogènes de 6.5 um, soit 55, 31 et 20 px à 0.325 um/px, avec des limites de surface minimale/maximale de diameter^2/4 et diameter^2*10. Elle remplace la valeur par défaut selon le grossissement, qui suppose des cellules plus grandes (120 et 60 px à 20x). Un diamètre saisi est toujours utilisé tel quel. None utilise la valeur par défaut selon le grossissement. Valeur par défaut : None."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "qc_group",
       "source": "Recruitment and replication well_qc and object_qc: column whose groups are compared separately, so wells and objects are judged against those of the same condition and real differences between conditions are kept. 'condition' uses the condition without the replicate when the replicate is part of the condition name. A group with fewer than 8 wells (well_qc) or 30 objects (object_qc) on a plate is compared with the whole plate. None compares every well and object with its whole plate. Default 'condition'.",
       "source_sha256": "878d89c3a5b3fa74d87391c5b7e7032708245e513f4b3324cde8b06567eaceee",
@@ -530,6 +523,14 @@
       "source_sha256": "50927a6c1b8ce82aa9af149b54570ee0d8aa1fa31276d43f20de279899757220",
       "translation": "Dimensionne les batchs GPU selon la mémoire libre d’une carte partagée. La segmentation, la mesure, l’OPS ainsi que l’entraînement et l’inférence des classifieurs réduisent un batch qui ne tiendrait pas, le divisent par deux et réessaient le même élément après une erreur de mémoire insuffisante, exécutent l’élément sur le CPU lorsque même un batch de taille 1 ne tient pas, et agrandissent de nouveau le batch après une série d’éléments sans erreur ; aucun élément n’est abandonné. Chaque processus spaCR de la machine enregistre son utilisation du GPU dans un fichier partagé du dossier de cache de l’utilisateur, de sorte qu’une nouvelle tâche tient compte de ce que les tâches en cours s’apprêtent à prendre. Les compteurs apparaissent dans le journal d’exécution. Désactivé, chaque batch s’exécute à la taille demandée. Valeur par défaut : True.",
       "retired": "2026-11-07: the English tooltip was shortened below the 600-character ceiling; its successor is reviewed in 2026-11-07-gpu-adaptive-batch-tooltip-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pixel_size_um",
+      "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. Default None.",
+      "source_sha256": "da3807a05712fb9442c552f6a641b71d77f204ce4d7a094c84963c4e7fdba060",
+      "translation": "Taille de pixel de l’image en micromètres par pixel, par exemple 0.325 pour un pixel de caméra de 6.5 um derrière un objectif 20x. Lorsqu’elle est définie, un cell_diameter, nucleus_diameter ou pathogen_diameter vide correspond à la taille typique de l’objet divisée par la taille de pixel : cellules de 18 um, noyaux de 10 um et pathogènes de 6.5 um, soit 55, 31 et 20 px à 0.325 um/px, avec des limites de surface minimale/maximale de diameter^2/4 et diameter^2*10. Elle remplace la valeur par défaut selon le grossissement, qui suppose des cellules plus grandes (120 et 60 px à 20x). Un diamètre saisi est toujours utilisé tel quel. None utilise la valeur par défaut selon le grossissement. Valeur par défaut : None.",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
     }
   ]
 }

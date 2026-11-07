@@ -13,20 +13,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "cell_min_size",
-      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000.",
-      "source_sha256": "cdf0150ca36c53dbdf46818eb148c35d36d1377ba09e6c04d79b95fce47eeef7",
-      "translation": "(अप्रचलित) मापन के दौरान कोशिका लेबलों पर लागू पिक्सेल-क्षेत्रफल की निचली सीमा: इससे छोटी कोई भी कोशिका फ़ीचर निकाले जाने से पहले मास्क से मिटा दी जाती है। इसकी जगह object_filters में cell के लिए 'area' पंक्ति ने ले ली है, जो सेगमेंटेशन के समय ही फ़िल्टर करती है, पर यदि आप इसे सेट करें तो यह अब भी चलती है। 0 या None इसे बंद करता है। डिफ़ॉल्ट 8000।"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "nucleus_min_size",
-      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 (default) disables it. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
-      "source_sha256": "a0dc3a5865dc45bba0cedfb7371f47941b3c670788eeefbebe58a5169b4c905d",
-      "translation": "(अप्रचलित) measure_crop के दौरान लागू न्यूनतम नाभिक आकार, पिक्सेल^2 में: इससे कम पिक्सेल घेरने वाले लेबल किसी भी फ़ीचर के मापे जाने से पहले नाभिक मास्क से मिटा दिए जाते हैं, इसलिए वे नाभिक कभी डेटाबेस तक नहीं पहुँचते। 0 (डिफ़ॉल्ट) इसे बंद करता है। object_filters में nucleus के लिए 'area' पंक्ति को प्राथमिकता दें, जो सेगमेंटेशन के समय फ़िल्टर करती है।"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "object_filters",
       "source": "Object filters on any scalar scikit-image regionprop, per object type, for example {'cell': [{'property': 'area', 'min': 200}, {'property': 'solidity', 'min': 0.9}]}. An object is kept when min <= value <= max; a missing side is off. Intensity properties read the object's own raw channel. An area minimum is also Cellpose's min_size. An old file's cell_min_area and the other retired per-object bounds become rows here when it loads. Default {}.",
       "source_sha256": "b8f9bbb826555ba601874ca1633cfb8a58466e88135cd957b39d39bc8ae85a65",
@@ -38,13 +24,6 @@
       "source": "Which detector finds the sequencing spots. 'native' is spaCR's own spot score, the one this pipeline was validated with. 'spotnet' is DeepCell's SpotNet, run in its own environment; its spots go through the same base calls and nucleus assignment, and ops_read_threshold no longer applies. SpotNet is licensed for NON-COMMERCIAL ACADEMIC USE ONLY, installs from the Model Zoo and needs a DeepCell token in ~/.spacr/deepcell_token. Default 'native'.",
       "source_sha256": "85b1f79a5061c2c21f9b914f16f97b5e47ec057e545a72eaa2ff90f02328f596",
       "translation": "कौन-सा डिटेक्टर सीक्वेंसिंग स्पॉट खोजता है। 'native' spaCR का अपना स्पॉट स्कोर है, जिससे यह पाइपलाइन सत्यापित हुई थी। 'spotnet' DeepCell का SpotNet है, जो अपने अलग वातावरण में चलता है; इसके स्पॉट उन्हीं बेस कॉल और नाभिकों को आवंटन से गुज़रते हैं, और ops_read_threshold अब लागू नहीं होता। SpotNet केवल गैर-व्यावसायिक शैक्षणिक उपयोग (NON-COMMERCIAL ACADEMIC USE ONLY) के लिए लाइसेंस प्राप्त है, मॉडल संग्रह से स्थापित होता है और ~/.spacr/deepcell_token में DeepCell टोकन चाहिए। डिफ़ॉल्ट 'native'।"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "pathogen_min_size",
-      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0, the default, disables it. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
-      "source_sha256": "af4eb72511f64c614d1f1d06ec4bbe58dd30f8e22c5645814ef853e976efe3c0",
-      "translation": "(अप्रचलित) मापन के दौरान लागू रोगजनक ऑब्जेक्ट का न्यूनतम क्षेत्रफल, वर्ग पिक्सेल में: इससे कम पिक्सेल वाला कोई भी लेबल फ़ीचर निकाले जाने से पहले रोगजनक मास्क से मिटा दिया जाता है। 0, जो डिफ़ॉल्ट है, इसे बंद करता है। इसकी जगह object_filters में pathogen के लिए 'area' पंक्ति ने ले ली है, जो इसके बजाय सेगमेंटेशन के समय फ़िल्टर करती है।"
     },
     {
       "table": "setting_tooltips",
@@ -66,6 +45,32 @@
       "source": "Path to a trained Timeflows checkpoint, spaCR's experimental temporal Cellpose that predicts where each object's centre moves in the next frame and links masks from those predictions. Only consulted when timelapse_mode='timeflows', which is never the default: on held-out movies measured so far it does not beat overlap linking ('iou'). No checkpoint is downloaded; leave empty unless you trained one. Default None.",
       "source_sha256": "88edfe30ad6d529a1bc4f650979f9110137ca67279a8b4fe9a29d29d5507af94",
       "translation": "प्रशिक्षित Timeflows चेकपॉइंट का पथ। Timeflows spaCR का प्रायोगिक कालिक Cellpose है, जो अनुमान लगाता है कि अगले फ़्रेम में हर ऑब्जेक्ट का केंद्र कहाँ जाएगा, और उन अनुमानों से मास्क जोड़ता है। इसका उपयोग केवल timelapse_mode='timeflows' होने पर होता है, जो कभी डिफ़ॉल्ट नहीं होता: अब तक मापी गई अलग रखी गई फ़िल्मों पर यह ओवरलैप से जोड़ने ('iou') से बेहतर नहीं है। कोई चेकपॉइंट डाउनलोड नहीं होता; जब तक आपने स्वयं एक प्रशिक्षित न किया हो, इसे खाली छोड़ें। डिफ़ॉल्ट None।"
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "cell_min_size",
+      "source": "(Deprecated) Pixel-area floor applied to cell labels during measurement: any cell smaller than this is erased from the mask before features are extracted. Superseded by an 'area' row for cell in object_filters, which filters at segmentation time, but this one still runs if you set it. 0 or None disables it. Default 8000.",
+      "source_sha256": "cdf0150ca36c53dbdf46818eb148c35d36d1377ba09e6c04d79b95fce47eeef7",
+      "translation": "(अप्रचलित) मापन के दौरान कोशिका लेबलों पर लागू पिक्सेल-क्षेत्रफल की निचली सीमा: इससे छोटी कोई भी कोशिका फ़ीचर निकाले जाने से पहले मास्क से मिटा दी जाती है। इसकी जगह object_filters में cell के लिए 'area' पंक्ति ने ले ली है, जो सेगमेंटेशन के समय ही फ़िल्टर करती है, पर यदि आप इसे सेट करें तो यह अब भी चलती है। 0 या None इसे बंद करता है। डिफ़ॉल्ट 8000।",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "nucleus_min_size",
+      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 (default) disables it. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
+      "source_sha256": "a0dc3a5865dc45bba0cedfb7371f47941b3c670788eeefbebe58a5169b4c905d",
+      "translation": "(अप्रचलित) measure_crop के दौरान लागू न्यूनतम नाभिक आकार, पिक्सेल^2 में: इससे कम पिक्सेल घेरने वाले लेबल किसी भी फ़ीचर के मापे जाने से पहले नाभिक मास्क से मिटा दिए जाते हैं, इसलिए वे नाभिक कभी डेटाबेस तक नहीं पहुँचते। 0 (डिफ़ॉल्ट) इसे बंद करता है। object_filters में nucleus के लिए 'area' पंक्ति को प्राथमिकता दें, जो सेगमेंटेशन के समय फ़िल्टर करती है।",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "pathogen_min_size",
+      "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0, the default, disables it. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
+      "source_sha256": "af4eb72511f64c614d1f1d06ec4bbe58dd30f8e22c5645814ef853e976efe3c0",
+      "translation": "(अप्रचलित) मापन के दौरान लागू रोगजनक ऑब्जेक्ट का न्यूनतम क्षेत्रफल, वर्ग पिक्सेल में: इससे कम पिक्सेल वाला कोई भी लेबल फ़ीचर निकाले जाने से पहले रोगजनक मास्क से मिटा दिया जाता है। 0, जो डिफ़ॉल्ट है, इसे बंद करता है। इसकी जगह object_filters में pathogen के लिए 'area' पंक्ति ने ले ली है, जो इसके बजाय सेगमेंटेशन के समय फ़िल्टर करती है।",
+      "retired": "2026-11-07: the English tooltip now states Measure's pixel-size-derived size floors (item 800); its successor is reviewed in 2026-11-07-bugs-1107-ai-review.json."
     }
   ]
 }

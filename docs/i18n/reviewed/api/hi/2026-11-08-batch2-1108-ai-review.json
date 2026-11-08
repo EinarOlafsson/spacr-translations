@@ -1,0 +1,1001 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Align one movie's divisions and compare them with matched controls.",
+      "label": "spacr.division_analysis.analyse_divisions#0",
+      "source": "Align one movie's divisions and compare them with matched controls.",
+      "source_sha256": "696fc15eafb435bd1b0700343c5647865743a171eebf1030c823fbea4eaf3f06",
+      "translation": "एक मूवी के विभाजनों को संरेखित करें और उनकी तुलना मिलान किए गए नियंत्रणों से करें।"
+    },
+    {
+      "context": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "label": "spacr.division_analysis.analyse_divisions#1",
+      "source": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "source_sha256": "2b5c4da739eaa535c69813b327abed36201f7431746b9435672568126df4142d",
+      "translation": "इस मॉड्यूल के चरणों को क्रम से चलाता है। विभाजन :func:`division_events` से पढ़े जाते हैं; ``mode='auto'`` वह प्रकार रखता है, विखंडन या मुकुलन, जो मूवी में अधिक है। हर विभाजन की जाँच होती है (जनक ``t_div`` पर और विंडो के 80% पर दिखा हो, संततियाँ अगले फ़्रेम पर दिखी हों, विखंडन के लिए दो संततियाँ)। रखे गए विभाजनों को आकार-मिलान वाले नियंत्रण (:func:`match_controls`) और अपने आकार-मिलान वाले नियंत्रणों सहित एक शफ़ल संरेखण (:func:`shuffled_alignment`) मिलते हैं, ताकि शून्य-परिकल्पना वाली तुलना वही मिलान किसी यादृच्छिक समय पर करे। हर इकाई के आधार-रेखा से अंतिम विंडो तक के परिवर्तन (:func:`unit_changes`) की तुलना Hedges' g (:func:`effect_size`) के रूप में की जाती है: विभाजित होने वाली बनाम नियंत्रण, और शफ़ल बनाम उसका नियंत्रण। पूर्ण विखंडन चक्र आकार-नियंत्रण फ़िट देते हैं।"
+    },
+    {
+      "context": "the measurements compared; absent ones are skipped.",
+      "label": "spacr.division_analysis.analyse_divisions#10",
+      "source": "the measurements compared; absent ones are skipped.",
+      "source_sha256": "8a6e839d54d6907d56acd6cf5ed92170f6e23d1108d57ab6e78913f1b64068c7",
+      "translation": "तुलना किए जाने वाले मापन; अनुपस्थित मापन छोड़ दिए जाते हैं।"
+    },
+    {
+      "context": "key-value mapping with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "label": "spacr.division_analysis.analyse_divisions#11",
+      "source": "dict with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "source_sha256": "a70535c638a3097113f475022113b155421b3d453bb8937cba674e914b630bca",
+      "translation": "तालिकाओं वाला dict: ``events`` (हर विभाजन अपने ``status`` के साथ), ``effects`` (प्रति तुलना और मापन एक पंक्ति), ``trajectories`` (प्रति श्रृंखला, भूमिका, ``rel_t`` और मापन, आधार-रेखा से सामान्यीकृत माध्य और 95% पट्टी), ``cycles`` और ``size_control``, और ``summary`` (विंडो, गणनाएँ और हटाने के कारण)।"
+    },
+    {
+      "context": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#12",
+      "source": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "source_sha256": "f974a6d35681c5fdf62ba2d4f59bc070d3596356537f45b3dcfd2cf4e5c8ee6e",
+      "translation": "अज्ञात ``mode`` होने पर, ``window`` 2 से कम होने पर, या ``measures`` में ``track_id``, ``t`` या ``area`` न होने पर।"
+    },
+    {
+      "context": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#2",
+      "source": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "source_sha256": "e0c1b94f4b02894a2e36e41395228335d0dc498986badc6f8f169344604ad56d",
+      "translation": ":func:`measure_label_stack` से मिली प्रति-फ़्रेम तालिका, आमतौर पर :func:`add_motion_features` के साथ; इसमें ``area`` चाहिए।"
+    },
+    {
+      "context": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "label": "spacr.division_analysis.analyse_divisions#3",
+      "source": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "source_sha256": "369241ad56de06f35fd00d33dab1cdcd5e6f70256914a29d723c07d6991788bc",
+      "translation": ":data:`LINEAGE_COLUMNS` वाली वंशावली तालिका।"
+    },
+    {
+      "context": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "label": "spacr.division_analysis.analyse_divisions#5",
+      "source": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "source_sha256": "76c7e163ad48f5287ac79c503b47897499d6eed3323e668ce86cc08d52325e30",
+      "translation": "संरेखण विंडो में विभाजन से पहले के फ़्रेम; None माध्यिका चक्र (:func:`median_cycle_frames`) का 0.3 गुना लेता है, 4..30 फ़्रेमों तक सीमित, या कोई चक्र न दिखने पर 6 फ़्रेम।"
+    },
+    {
+      "context": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "label": "spacr.division_analysis.analyse_divisions#6",
+      "source": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "source_sha256": "8270491dcac3867e1e9a70ea69080461114e3086b5223e1fe3d6fbc7c1559a9f",
+      "translation": "आधार-रेखा और अंतिम विंडो में से हर एक में फ़्रेम, और वह क्षितिज जिसमें नियंत्रण को अपने छद्म-विभाजन समय के बाद अविभाजित रहना चाहिए; None ``window`` का एक-चौथाई लेता है (कम से कम 2)। ``window`` के लिए बहुत बड़ा मान घटा दिया जाता है ताकि दोनों विंडो अतिव्यापित न हों।"
+    },
+    {
+      "context": "the relative size difference a control may have at the start of the window.",
+      "label": "spacr.division_analysis.analyse_divisions#7",
+      "source": "the relative size difference a control may have at the start of the window.",
+      "source_sha256": "3be814bebf044ba77a4c71c99b1013e06f537c263ec697786cc299a6c20c911c",
+      "translation": "विंडो की शुरुआत में किसी नियंत्रण में स्वीकार्य सापेक्ष आकार अंतर।"
+    },
+    {
+      "context": "bootstrap resamples for every confidence interval.",
+      "label": "spacr.division_analysis.analyse_divisions#8",
+      "source": "bootstrap resamples for every confidence interval.",
+      "source_sha256": "2e4158a701863f4e2a48a2a9096298ea2f932e97474a33eebec759fa26f85228",
+      "translation": "हर विश्वास्यता अंतराल के लिए बूटस्ट्रैप पुनःप्रतिचयन।"
+    },
+    {
+      "context": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "label": "spacr.division_analysis.analyse_divisions#9",
+      "source": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "source_sha256": "2e270db1bab40fa29644658b362c8c534f3681d73d739e3cbc894abf3b5ab9d1",
+      "translation": "नियंत्रणों, शफ़ल और बूटस्ट्रैप के लिए सीड या जनरेटर।"
+    },
+    {
+      "context": "Draw the three figures of one division analysis.",
+      "label": "spacr.division_analysis.division_figures#0",
+      "source": "Draw the three figures of one division analysis.",
+      "source_sha256": "bb32540129d7502c1617875b63f447f25873fee06e9d13d00577d1f17b042cbf",
+      "translation": "एक विभाजन विश्लेषण के तीन चित्र बनाएँ।"
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "label": "spacr.division_analysis.division_figures#1",
+      "source": "the dict from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "source_sha256": "ccce94b9f049db5fb0570b2f25c44a87a922120e5e416ce27081db3d7f406b23",
+      "translation": ":func:`analyse_divisions` या :func:`read_division_results` से मिला dict।"
+    },
+    {
+      "context": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "label": "spacr.division_analysis.division_figures#2",
+      "source": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "source_sha256": "f077bbabf6775cdb7296e320aa285c1efb3157dcf2c3d5238392df3f8cd30d04",
+      "translation": "बनाए जाने वाले मापन, क्रम से; None हर उस मापन को बनाता है जिसके प्रभाव आकार हैं।"
+    },
+    {
+      "context": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "label": "spacr.division_analysis.division_figures#3",
+      "source": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "source_sha256": "d038453a3c173785375938689f42e4176bf4791ef51bc95d4fc05618e5a03bb4",
+      "translation": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` ऑब्जेक्ट: विभाजित होने वाली कोशिकाओं (विभाजन के बाद उनकी संततियों सहित), मिलान किए गए नियंत्रणों और शफ़ल संरेखण के संरेखित, आधार-रेखा से सामान्यीकृत प्रक्षेप-पथ 95% पट्टियों के साथ; हर मापन का Hedges' g उसके बूटस्ट्रैप अंतराल के साथ; और जन्म के समय क्षेत्रफल के विरुद्ध विभाजन के समय क्षेत्रफल, sizer, adder और timer ढलानों के साथ।"
+    },
+    {
+      "context": "Lineage table of one field's spaCR tracks table.",
+      "label": "spacr.division_analysis.lineage_from_tracks#0",
+      "source": "Lineage table of one field's spaCR tracks table.",
+      "source_sha256": "daa673cf5c3a0a372c9c8ced662d7988047a3ae4815c01596ce0929259250918",
+      "translation": "एक फ़ील्ड की spaCR ट्रैक तालिका की वंशावली तालिका।"
+    },
+    {
+      "context": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "label": "spacr.division_analysis.lineage_from_tracks#1",
+      "source": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "source_sha256": "97b76b26804382747826c6bc95316e81bb4a9da5c482f4a4d6701972120167af",
+      "translation": "हर ट्रैक एक पंक्ति देता है: उसका पहला और अंतिम फ़्रेम और वह ट्रैक जिससे वह जन्मा। ट्रैकर द्वारा लिखा गया ``parent_track_id`` कॉलम जैसा है वैसा ही उपयोग होता है; उसके बिना, विभाजनों का अनुमान आस-पास शुरू होने वाले ट्रैकों से उसी तरह लगाया जाता है जैसे वंशावली वृक्ष लगाते हैं। जिस संतति को ट्रैकर ने उसकी मातृ कोशिका की id के अंतर्गत रखा, वह नया ट्रैक नहीं है, इसलिए वह मातृ कोशिका जारी रहती है और उसका विभाजन मुकुल के रूप में पढ़ा जाता है।"
+    },
+    {
+      "context": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "label": "spacr.division_analysis.lineage_from_tracks#2",
+      "source": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "source_sha256": "98a18096f2bc8422b7a394089c91dfa4827072bf33887b2aac85b24610ff40d9",
+      "translation": "एक फ़ील्ड के लिए ``frame``, ``track_id``, ``x`` और ``y`` वाली spaCR ट्रैक तालिका, जैसी ``<tracker>_tracks_<object>_<field>.csv`` में लिखी जाती है।"
+    },
+    {
+      "context": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "label": "spacr.division_analysis.lineage_from_tracks#3",
+      "source": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "source_sha256": "50cfe7475bcd3eef7e445a96dc0681645c28327dd44faf4a762dcba96e0d53e4",
+      "translation": "किसी अनुमानित विभाजन के लिए मातृ कोशिका से संतति तक की अधिकतम दूरी, पिक्सेल में।"
+    },
+    {
+      "context": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "label": "spacr.division_analysis.lineage_from_tracks#4",
+      "source": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "source_sha256": "70b249bfb7a31c27e00f5e08101f87972bc872df8ea03d14a0ec6bfafbeb54d4",
+      "translation": "पूर्णांकों के रूप में :data:`LINEAGE_COLUMNS`, किसी ज्ञात मातृ कोशिका के बिना ट्रैक के लिए ``parent`` 0।"
+    },
+    {
+      "context": "Read back a folder written by :func:`write_division_results`.",
+      "label": "spacr.division_analysis.read_division_results#0",
+      "source": "Read back a folder written by :func:`write_division_results`.",
+      "source_sha256": "3ad921b4247d21d6389f24a8ccb2e6152195f8bb13da4c0ca847ecad857187ba",
+      "translation": ":func:`write_division_results` द्वारा लिखा गया फ़ोल्डर वापस पढ़ें।"
+    },
+    {
+      "context": "the results folder.",
+      "label": "spacr.division_analysis.read_division_results#1",
+      "source": "the results folder.",
+      "source_sha256": "8d859f9f0d84885dfa8576d3f8ccbe3d07aca7a7464d3105ad5871022462e452",
+      "translation": "परिणाम फ़ोल्डर।"
+    },
+    {
+      "context": "the same key-value mapping :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty key-value mapping.",
+      "label": "spacr.division_analysis.read_division_results#2",
+      "source": "the same dict :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty dict.",
+      "source_sha256": "88bbfa0e342f169f028cccddf6452567acf227d03d0c4b536a0b210dd897138a",
+      "translation": "वही dict जो :func:`analyse_divisions` लौटाता है, जिसमें ``events`` की संततियाँ फिर से tuple हैं; अनुपस्थित या खाली तालिका एक खाली डेटा फ़्रेम होती है और अनुपस्थित सारांश एक खाली dict।"
+    },
+    {
+      "context": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "label": "spacr.division_analysis.read_division_results#3",
+      "source": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "source_sha256": "ef8277e4e87483d71f309dd29aefdb373ba46a3cbcb69a2b4d7ede3a2e39732c",
+      "translation": "जब ``folder`` में न ``summary.json`` हो न ``effects.csv``।"
+    },
+    {
+      "context": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "label": "spacr.division_analysis.write_division_results#0",
+      "source": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "source_sha256": "f5442bdc2a7f8956285ccdff94d0b501a6e04f0ba24f778c1b5bc89598f14485",
+      "translation": "एक विभाजन विश्लेषण को CSV तालिकाओं, एक JSON सारांश और चित्रों के रूप में लिखें।"
+    },
+    {
+      "context": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "label": "spacr.division_analysis.write_division_results#1",
+      "source": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "source_sha256": "29bc38dedff3061b96c577e15de37794b4d2a4b8c508150347402eeab998fd8e",
+      "translation": "तालिकाएँ ``events.csv`` (संततियाँ ``;`` से अलग किए गए ट्रैक id के रूप में), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` और ``size_control.csv`` हैं, जो :func:`spacr.tabular.write_table` के माध्यम से लिखी जाती हैं; सारांश ``summary.json`` है। ``plot`` के साथ, :func:`division_figures` के चित्र :func:`spacr.plot.save_figure` के माध्यम से वरीयता में चुने गए चित्र प्रारूप में ``division_trajectories``, ``division_forest`` और ``division_size_control`` के रूप में सहेजे जाते हैं।"
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions`.",
+      "label": "spacr.division_analysis.write_division_results#2",
+      "source": "the dict from :func:`analyse_divisions`.",
+      "source_sha256": "ec18e5ac2d192847feec125b2a4dc3a0d61bc8256729081c4f8b3343c4f046cc",
+      "translation": ":func:`analyse_divisions` से मिला dict।"
+    },
+    {
+      "context": "the folder to write into; created when missing.",
+      "label": "spacr.division_analysis.write_division_results#3",
+      "source": "the folder to write into; created when missing.",
+      "source_sha256": "8fa06fb16be9c73196c42d73d02e0039d0415709a5058753edfe90f1d970c935",
+      "translation": "वह फ़ोल्डर जिसमें लिखना है; अनुपस्थित होने पर बनाया जाता है।"
+    },
+    {
+      "context": "save the figures too.",
+      "label": "spacr.division_analysis.write_division_results#4",
+      "source": "save the figures too.",
+      "source_sha256": "a23a2dc590eb5acca8ce6c3acf0868880b1beea39b8bf337f4ca2f68f8eb468f",
+      "translation": "चित्र भी सहेजें।"
+    },
+    {
+      "context": "``{name: path}`` of everything written.",
+      "label": "spacr.division_analysis.write_division_results#5",
+      "source": "``{name: path}`` of everything written.",
+      "source_sha256": "51555e6f9b92df30fae4f6dd1471e1c3d49301b56e7fe3355c56f0834dcd4c1a",
+      "translation": "लिखी गई हर चीज़ का ``{name: path}``।"
+    },
+    {
+      "context": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a microplate sample position can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the laboratory microplate's maps once, before the microplate sample positions, and ``ph_masks`` writes each cell's microscope field of view-edge flags and flat-microscope field of view gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its microplate sample positions from ``ops_phenotype``, and adds to each microplate sample position's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the microplate sample positions run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "label": "spacr.ops_engine.run_ops#4",
+      "source": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a well can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the plate's maps once, before the wells, and ``ph_masks`` writes each cell's field-edge flags and flat-field gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its wells from ``ops_phenotype``, and adds to each well's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the wells run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "source_sha256": "87e83af40318bf9bf177d9e773b05be3a025d02ee390ad67e6fb8ff75075cf26",
+      "translation": "``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` और ``\"decode\"`` में से कोई भी, इसी क्रम में चलाए जाते हैं। छोड़ा गया चरण अपनी ज़रूरत की चीज़ें डेटाबेस से पढ़ता है, इसलिए किसी वेल को एक बार स्टिच करके दोबारा डिकोड किया जा सकता है। alpha फ़ीनोटाइप पथ ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` और ``\"aggregate\"`` जोड़ता है, जो केवल यहाँ नाम दिए जाने पर और उन चार के बाद चलते हैं; ``ph_flatfield`` वेलों से पहले, एक बार, प्लेट के मानचित्र बनाता है, और ``ph_masks`` सहेजे गए मास्क से हर कोशिका के फ़ील्ड-किनारा फ़्लैग और फ़्लैट-फ़ील्ड गेन लिखता है। केवल इन्हीं चरणों वाले रन को ``dst_root`` और ``plate`` चाहिए पर ``genotype_source`` नहीं, यह अपने वेल ``ops_phenotype`` से लेता है, और हर वेल की ``ops_report.json`` को बदलने के बजाय उसमें जोड़ता है। ``aggregate`` चलाए गए वेलों को एकत्र करता है और ``ops_guides_<plate>`` तथा ``ops_genes_<plate>`` लिखता है।"
+    },
+    {
+      "context": "Flat-field maps for optical pooled screening experiment phenotype fields, and two ways to apply them.",
+      "label": "spacr.ops_flatfield#0",
+      "source": "Flat-field maps for optical pooled screen phenotype fields, and two ways to apply them.",
+      "source_sha256": "3f90156498109c0e3fc58f20faf9ca4ed50e940f78cac157c5b7a598133820c3",
+      "translation": "ऑप्टिकल पूल्ड स्क्रीनिंग के फ़ीनोटाइप फ़ील्ड के लिए फ़्लैट-फ़ील्ड मानचित्र, और उन्हें लागू करने के दो तरीके।"
+    },
+    {
+      "context": "A 20X phenotype microscope field of view is not evenly lit: on laboratory microplate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screening experiment, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "label": "spacr.ops_flatfield#1",
+      "source": "A 20X phenotype field is not evenly lit: on plate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screen, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "source_sha256": "3159ec1c6f0a9a7460fb04c43ecc1ca16487c6ceeff9c6a6a5c7d60bbf5b889f",
+      "translation": "20X फ़ीनोटाइप फ़ील्ड समान रूप से प्रकाशित नहीं होता: Funk et al. 2022 की प्लेट A पर कोनों को केंद्र की तुलना में लगभग आधा प्रकाश मिलता है। इसलिए कोने में मापी गई कोशिका बीच में स्थित उसी कोशिका से धुंधली पढ़ी जाती है, और पूल्ड स्क्रीनिंग में, जहाँ हर गाइड की कोशिकाएँ यादृच्छिक स्थितियों पर होती हैं, यह हर तीव्रता फ़ीचर में शोर जोड़ता है और किनारे के पास की कोशिकाओं में पूर्वाग्रह लाता है।"
+    },
+    {
+      "context": "THE MAP. Per laboratory microplate and channel, a few hundred microscope fields of view are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the microscope fields of view is taken. Cells move from microscope field of view to microscope field of view while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 microscope field of view pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "label": "spacr.ops_flatfield#2",
+      "source": "THE MAP. Per plate and channel, a few hundred fields are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the fields is taken. Cells move from field to field while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 field pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "source_sha256": "7943b52c80583c2ce1f42f6373d2beb248116e96cd7a23264b1da2459b3e48d3",
+      "translation": "मानचित्र। प्रति प्लेट और चैनल, कुछ सौ फ़ील्ड पढ़े जाते हैं, 16 x 16 पिक्सेल ब्लॉकों में ब्लॉक-औसत किए जाते हैं, और फ़ील्डों पर प्रति-ब्लॉक मीडियन लिया जाता है। कोशिकाएँ एक फ़ील्ड से दूसरे फ़ील्ड में बदलती हैं जबकि प्रदीप्ति नहीं बदलती, इसलिए मीडियन प्रदीप्ति को रखता है और कोशिकाओं को खो देता है। इसे गॉसियन से समतल किया जाता है (sigma 6 ब्लॉक, लगभग 96 फ़ील्ड पिक्सेल); केंद्रकीय चैनल, जिसके विरल चमकीले केंद्रक अधिक शोर वाला मीडियन छोड़ते हैं, फिर 4-घात वाले 2-D बहुपद से फ़िट किया जाता है। कैमरा और पृष्ठभूमि ऑफ़सेट ``b`` हर ब्लॉक माध्य का 0.1 पर्सेंटाइल है, और मानचित्र ``flat = (smooth - b) / (centre - b)`` है: केंद्र पर 1। इसकी निचली सीमा 0.25 है, इसलिए किसी पिक्सेल को 4 से अधिक से गुणा नहीं किया जाता।"
+    },
+    {
+      "context": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "label": "spacr.ops_flatfield#3",
+      "source": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "source_sha256": "89e130d8bfaa108105a629b814b380677140d246b4d15565a25c8c9537e96df6",
+      "translation": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b"
+    },
+    {
+      "context": "The exact correction divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "label": "spacr.ops_flatfield#4",
+      "source": "THE EXACT CORRECTION divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "source_sha256": "927ddc14c15f1c947071cab81525cdba9ca907b3aafd20f2a99c58914cd25a88",
+      "translation": "सटीक सुधार मापने से पहले हर पिक्सेल को विभाजित करता है (:func:`correct_field`)। इसे फिर से कच्ची छवियाँ चाहिए, जो प्लेट A पर 2.1 TB पढ़ना और छह वर्कर के साथ लगभग 58 घंटे का मापन था।"
+    },
+    {
+      "context": "The analytic correction moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and image data channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "label": "spacr.ops_flatfield#5",
+      "source": "THE ANALYTIC CORRECTION moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "source_sha256": "275347ac622844491362828c02475ff032e90357f3438edd74e14f7b0428d018",
+      "translation": "विश्लेषणात्मक सुधार पहले से मापे गए फ़ीचर को स्थानांतरित करता है (:func:`correct_features`)। एक मास्क पास (:func:`mask_pass`) प्रति कोशिका, कम्पार्टमेंट और चैनल, माध्य गेन ``g``, यानी कम्पार्टमेंट के पिक्सेलों पर ``1 / flat`` का माध्य, और पिक्सेल संख्या ``n`` देता है। फिर:"
+    },
+    {
+      "context": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "label": "spacr.ops_flatfield#6",
+      "source": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "source_sha256": "ec9d1ac2fcf4b90ba08c91e98795cf75def87223815a5a5b9687e5ddcb8feac5",
+      "translation": "स्थान (mean, median, mode, min, max, percentiles)   (v - b) g + b समाकलित                                            (v - b n) g + b n फैलाव (std, range, iqr)                              v g cv, gini                                              पुनर्गणित बाकी सब                                       अपरिवर्तित"
+    },
+    {
+      "context": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 laboratory microplate A microscope fields of view (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "label": "spacr.ops_flatfield#7",
+      "source": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 plate A fields (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "source_sha256": "eced5238a43e65642b3c5a1a299bcaa0017053e4a0389f35e59c827ffbf19836",
+      "translation": "यह तब सटीक है जब फ़्लैट मानचित्र कोशिका पर स्थिर हो, और यह लगभग ऐसा ही है: दूर के कोनों को छोड़कर 70 पिक्सेल की कोशिका पर यह 2 प्रतिशत से कम बदलता है। सटीक सुधार के विरुद्ध जाँचे गए प्लेट A के 24 फ़ील्डों (31,078 कोशिकाएँ) पर, स्थान फ़ीचर की मीडियन सापेक्ष त्रुटि 6.9 से 0.10 प्रतिशत हो गई, समाकलित की 6.9 से 0.01 और फैलाव की 9.0 से 0.42। फ़्लोट छवि के बहुलक के लिए ऐसा कोई नियम नहीं है, इसलिए 12 ``*_mode_intensity`` फ़ीचर स्थान की तरह सुधारे जाते हैं और फ़्लैग किए जाते हैं (:func:`flagged_features`)।"
+    },
+    {
+      "context": "Per-channel flat-microscope field of view maps from many microscope fields of view' block means.",
+      "label": "spacr.ops_flatfield.build_flat_maps#0",
+      "source": "Per-channel flat-field maps from many fields' block means.",
+      "source_sha256": "faf5e135ac39f47af568717af5aa25ec827eda10b0092b6e47979d9b998be65e",
+      "translation": "कई फ़ील्डों के ब्लॉक माध्यों से प्रति-चैनल फ़्लैट-फ़ील्ड मानचित्र।"
+    },
+    {
+      "context": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "label": "spacr.ops_flatfield.build_flat_maps#1",
+      "source": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "source_sha256": "0f95741babeeb7955fad34622492f2c5d9d0d36169f774ee12b92fb5fa67b946",
+      "translation": "``(N, h, w, C)``: ``N`` फ़ील्डों के ब्लॉक माध्य (:func:`field_blocks`), वर्गाकार ब्लॉकों के ग्रिड।"
+    },
+    {
+      "context": "This is the method of the laboratory microplate A pilot (seg-QC ``flat.py``) and of the laboratory microplate B to D maps (``build_flat.py``); rebuilt from the same microscope fields of view it gives the same arrays.",
+      "label": "spacr.ops_flatfield.build_flat_maps#10",
+      "source": "This is the method of the plate A pilot (seg-QC ``flat.py``) and of the plate B to D maps (``build_flat.py``); rebuilt from the same fields it gives the same arrays.",
+      "source_sha256": "9afdd3f3f1f816f6a091405801a0abc8fe81a74851254e01c7c94ca20b88abe0",
+      "translation": "यह प्लेट A पायलट (seg-QC ``flat.py``) और प्लेट B से D के मानचित्रों (``build_flat.py``) की विधि है; उन्हीं फ़ील्डों से दोबारा बनाने पर यह वही ऐरे देती है।"
+    },
+    {
+      "context": "the name of each of the ``C`` channels.",
+      "label": "spacr.ops_flatfield.build_flat_maps#2",
+      "source": "the name of each of the ``C`` channels.",
+      "source_sha256": "0f47668c2c3cd43ac1444554219b2ffadd4a449d904ef65ace788ecd078cfac0",
+      "translation": "``C`` चैनलों में से हर एक का नाम।"
+    },
+    {
+      "context": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "label": "spacr.ops_flatfield.build_flat_maps#3",
+      "source": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "source_sha256": "64080c1207675b5924f8992ae2fc732cb18eb1a3c85a0ed9e342c8ed69a45711",
+      "translation": "वे चैनल जिनके समतल किए गए मीडियन को 2-D बहुपद से भी फ़िट किया जाता है; डिफ़ॉल्ट रूप से केंद्रकीय चैनल।"
+    },
+    {
+      "context": "Gaussian sigma in blocks.",
+      "label": "spacr.ops_flatfield.build_flat_maps#4",
+      "source": "Gaussian sigma in blocks.",
+      "source_sha256": "7717f3b343ef10b045cfebae91334eea523ab2e1242ceb4a46bbf6bd1ea87641",
+      "translation": "ब्लॉकों में गॉसियन sigma।"
+    },
+    {
+      "context": "the polynomial's degree.",
+      "label": "spacr.ops_flatfield.build_flat_maps#5",
+      "source": "the polynomial's degree.",
+      "source_sha256": "4e5f7375b5dbf8f2944f389d38adde639463ebcc20acb5343e3e098b79e61b4f",
+      "translation": "बहुपद की घात।"
+    },
+    {
+      "context": "the percentile of all block means taken as the offset ``b``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#6",
+      "source": "the percentile of all block means taken as the offset ``b``.",
+      "source_sha256": "51761a8228ab578f9b69bdbc6d3ff88320d8abdb1c4862bce4020317909c596b",
+      "translation": "सभी ब्लॉक माध्यों का वह पर्सेंटाइल जिसे ऑफ़सेट ``b`` के रूप में लिया जाता है।"
+    },
+    {
+      "context": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#7",
+      "source": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "source_sha256": "bf2ed86d32a723ce6215ece026ef556cad7a6ecabb1a623f3bb588f7ce6fc3b9",
+      "translation": "फ़्लैट मानचित्र का सबसे छोटा मान, ताकि गेन अधिकतम ``1 / floor`` हो।"
+    },
+    {
+      "context": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "label": "spacr.ops_flatfield.build_flat_maps#8",
+      "source": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "source_sha256": "872b65adbe01df639329f7a9a5c7d811760d343e19ebb26f2f486b40918c92bb",
+      "translation": "केंद्र विंडो के किनारे का आधा, ब्लॉकों में, जिस पर मानचित्र सामान्यीकृत किया जाता है।"
+    },
+    {
+      "context": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#9",
+      "source": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "source_sha256": "8a6feeb8008184901b02b5a1fc95cd6cb261d89159ae7d862f114f9e6df619be",
+      "translation": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, केंद्र पर 1, और ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``।"
+    },
+    {
+      "context": "The microscope fields of view a laboratory microplate's maps are built from: a seeded random sample.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#0",
+      "source": "The fields a plate's maps are built from: a seeded random sample.",
+      "source_sha256": "22888338c75adb2ab0b7cfe024aca34d9a4f0b6cd6af8ee9364f1dc8975b5232",
+      "translation": "वे फ़ील्ड जिनसे प्लेट के मानचित्र बनाए जाते हैं: सीड किया गया यादृच्छिक नमूना।"
+    },
+    {
+      "context": "every ``(well, site)`` that may be used, in a fixed order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#1",
+      "source": "every ``(well, site)`` that may be used, in a fixed order.",
+      "source_sha256": "0d7859350dfdf6d990831af8d3d7de9baeb58fca62b025223b0bdef5e60702a0",
+      "translation": "हर ``(well, site)`` जिसका उपयोग किया जा सकता है, एक निश्चित क्रम में।"
+    },
+    {
+      "context": "how many to take; all of them when fewer exist.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#2",
+      "source": "how many to take; all of them when fewer exist.",
+      "source_sha256": "e1401c78e98167b815a2aea81041d60404abd7f24ecf9804d1de1bc1d3cf929f",
+      "translation": "कितने लेने हैं; कम उपलब्ध होने पर सभी।"
+    },
+    {
+      "context": "the seed of :func:`numpy.random.default_rng`.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#3",
+      "source": "the seed of :func:`numpy.random.default_rng`.",
+      "source_sha256": "5693e1040babf43adef896c23204de290ded94d310944ec7aa38a9b7f78b6a8a",
+      "translation": ":func:`numpy.random.default_rng` का सीड।"
+    },
+    {
+      "context": "the chosen ``(well, site)``, in ``pool`` order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#4",
+      "source": "the chosen ``(well, site)``, in ``pool`` order.",
+      "source_sha256": "b4b209393e7b75a95ee3ec6a462c85c4ec2cba6277325a101e66794dec69b077",
+      "translation": "चुने गए ``(well, site)``, ``pool`` क्रम में।"
+    },
+    {
+      "context": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#5",
+      "source": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "source_sha256": "271daada2090e2016c216e03f6829ffa87e1a4655fb739065c6d0fbce89628be",
+      "translation": "प्लेट भर में यादृच्छिक स्थितियाँ, ताकि हर मानचित्र पिक्सेल कोशिकाओं और रिक्त स्थानों को समान रूप से देखे; प्लेट B से D के मानचित्रों का ``build_flat.py`` भी इसी तरह चुनता है।"
+    },
+    {
+      "context": "The analytic flat-field correction of measured features.",
+      "label": "spacr.ops_flatfield.correct_features#0",
+      "source": "The analytic flat-field correction of measured features.",
+      "source_sha256": "a7e188213ae364084c5ce96fc6e95d79bbfccfdbbe3a4e69604256d0cb7c4a4f",
+      "translation": "मापे गए फ़ीचर का विश्लेषणात्मक फ़्लैट-फ़ील्ड सुधार।"
+    },
+    {
+      "context": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "label": "spacr.ops_flatfield.correct_features#1",
+      "source": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "source_sha256": "06aae2c68764de182b836c96232d9a07f5e23e4429ef4097c0c5a3513d8c7d91",
+      "translation": "प्रति कोशिका एक पंक्ति, जिसमें ``features`` और :func:`correction_inputs` द्वारा बताए गए कॉलम हों।"
+    },
+    {
+      "context": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "label": "spacr.ops_flatfield.correct_features#2",
+      "source": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "source_sha256": "7ff8627941c6fbae46b65b18e886d76c9c885ead0de3c972eb6f19dd501eb4bb",
+      "translation": "``frame`` के साथ संरेखित एक फ़्रेम, जिसमें :func:`mask_pass` के कॉलम ``<compartment>_<CH>_g`` और ``<compartment>_px`` हों।"
+    },
+    {
+      "context": "the columns to return.",
+      "label": "spacr.ops_flatfield.correct_features#3",
+      "source": "the columns to return.",
+      "source_sha256": "e5d3524d0ec144394a281a5e5e5f1c2173eda4f93bc8e22deee7b0b38d3aa399",
+      "translation": "लौटाए जाने वाले कॉलम।"
+    },
+    {
+      "context": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "label": "spacr.ops_flatfield.correct_features#4",
+      "source": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "source_sha256": "99822520ea2004b20a6699448bf4570034b6cb9f3281a2733990182970239705",
+      "translation": "``{channel: b}``, उन चैनल नामों से कुंजीबद्ध जिनका उपयोग गेन कॉलम करते हैं।"
+    },
+    {
+      "context": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "label": "spacr.ops_flatfield.correct_features#5",
+      "source": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "source_sha256": "08b319b73071a428dc1649ca9bb82c189b4c6467f9ae2f709d0f9466e7f977e0",
+      "translation": "``features`` का float32 फ़्रेम; जिस कॉलम को सुधार नहीं बदलता, वह मापे गए रूप में लौटाया जाता है।"
+    },
+    {
+      "context": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "label": "spacr.ops_flatfield.correct_features#6",
+      "source": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "source_sha256": "c9cbc5eff5353ce9ab8c977910cfd1da5e80a3d5de6d79a49f36aa812492adbe",
+      "translation": "हर प्रकार उसी तरह बदलता है जैसा मॉड्यूल डॉकस्ट्रिंग बताती है। मान float64 में गणना किए जाते हैं और परिणाम का प्रकार बदलने से पहले cv और gini सुधारे गए माध्य और std से निकाले जाते हैं, जो प्लेट A पायलट के ``flat_correct.py`` ने किया था।"
+    },
+    {
+      "context": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "label": "spacr.ops_flatfield.correct_field#0",
+      "source": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "source_sha256": "f6e29c6373e832725006b3895add26658172c12b410db6d90c4b0fdbfbb1833b",
+      "translation": "पिक्सेल-दर-पिक्सेल सुधारा गया एक फ़ील्ड: ``(I - b) / flat + b``।"
+    },
+    {
+      "context": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "label": "spacr.ops_flatfield.correct_field#2",
+      "source": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "source_sha256": "435ea5e9a8a9888a483866a4b3b58119946a3b53c5f203c55b888000dcc52def",
+      "translation": "``{channel: (H, W) flat}``, :func:`flat_planes` से।"
+    },
+    {
+      "context": "the stack's channel names, in order.",
+      "label": "spacr.ops_flatfield.correct_field#4",
+      "source": "the stack's channel names, in order.",
+      "source_sha256": "7ac4c098ed0de0dde3f73ed1b3793a250612bcaef55afd4b8891efa7400ea2b5",
+      "translation": "स्टैक के चैनल नाम, क्रम से।"
+    },
+    {
+      "context": "a float32 copy; the input is not changed.",
+      "label": "spacr.ops_flatfield.correct_field#5",
+      "source": "a float32 copy; the input is not changed.",
+      "source_sha256": "88534da2aedac23210f0a9eff565414ce9666d5e1ec3664b13f342967f639117",
+      "translation": "एक float32 प्रति; इनपुट नहीं बदला जाता।"
+    },
+    {
+      "context": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "label": "spacr.ops_flatfield.correct_field#6",
+      "source": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "source_sha256": "d3b3fd880b3d6470269b1a58b6b6d7c2d00024c15417484d4e3588b1148bfc21",
+      "translation": "ऑफ़सेट वापस जोड़ा जाता है ताकि सुधारा गया पिक्सेल कैमरे के पैमाने पर रहे और पृष्ठभूमि अपना स्तर बनाए रखे; केवल प्रदीप्ति की गिरावट को विभाजित करके हटाया जाता है।"
+    },
+    {
+      "context": "The columns :func:`correct_features` reads to correct ``features``.",
+      "label": "spacr.ops_flatfield.correction_inputs#0",
+      "source": "The columns :func:`correct_features` reads to correct ``features``.",
+      "source_sha256": "e57c609642e85a9baf8e5fe0801a707abc1a414616686fdfd2bee0dc7377bb1a",
+      "translation": "वे कॉलम जिन्हें :func:`correct_features` ``features`` को सुधारने के लिए पढ़ता है।"
+    },
+    {
+      "context": "the columns to correct.",
+      "label": "spacr.ops_flatfield.correction_inputs#1",
+      "source": "the columns to correct.",
+      "source_sha256": "906b8355e70c7ee8c9a4cb6de9a8f5d60df09f13d88b22fc5a8c3f6546ca0b36",
+      "translation": "सुधारे जाने वाले कॉलम।"
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.correction_inputs#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "चैनल नाम।"
+    },
+    {
+      "context": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "label": "spacr.ops_flatfield.correction_inputs#3",
+      "source": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "source_sha256": "d11a0f253c158ceedf8169e8898479702e0be14a2f359adee15f0f51018048af",
+      "translation": "``features`` तथा वे माध्य और std कॉलम जिनसे उनके cv और gini पुनर्गणित होते हैं, एक स्थिर क्रम में।"
+    },
+    {
+      "context": "How the analytic correction moves one feature column.",
+      "label": "spacr.ops_flatfield.correction_kind#0",
+      "source": "How the analytic correction moves one feature column.",
+      "source_sha256": "cd83b55d8b8039dd1f0b4cbf61a74340f52190dbf7329d87eb6a3dd4bd5bc404",
+      "translation": "विश्लेषणात्मक सुधार किसी एक फ़ीचर कॉलम को कैसे बदलता है।"
+    },
+    {
+      "context": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "label": "spacr.ops_flatfield.correction_kind#1",
+      "source": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "source_sha256": "169ab86025c64c0a1ff0fdd05e66a3880886e471665c99c79182bf9faedb686b",
+      "translation": "कोशिका तालिका का एक कॉलम, ``<compartment>_<channel>_<stat>``।"
+    },
+    {
+      "context": "the channel names; matched without regard to case.",
+      "label": "spacr.ops_flatfield.correction_kind#2",
+      "source": "the channel names; matched without regard to case.",
+      "source_sha256": "efaa4212e72f1fedf2ea919fe53f7ec3bfe76719191447e5226ba8aa91fdd906",
+      "translation": "चैनल नाम; बड़े-छोटे अक्षरों की परवाह किए बिना मिलाए जाते हैं।"
+    },
+    {
+      "context": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "label": "spacr.ops_flatfield.correction_kind#3",
+      "source": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "source_sha256": "8c34383c9d6773e3f1b2e63ae272d5fbd5924e9ed3699ef101873d862ce06227",
+      "translation": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, या उस कॉलम के लिए None जिसे सुधार अपरिवर्तित छोड़ता है।"
+    },
+    {
+      "context": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "label": "spacr.ops_flatfield.field_blocks#0",
+      "source": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "source_sha256": "a5089737f6d07976d73bbd08e8b15522c77dd28fa28b7aaf30ec0db5e1c1002f",
+      "translation": "ब्लॉक माध्यों के रूप में एक फ़ील्ड, वह इनपुट जो :func:`build_flat_maps` लेता है।"
+    },
+    {
+      "context": "``(H, W, C)`` intensities of one field.",
+      "label": "spacr.ops_flatfield.field_blocks#1",
+      "source": "``(H, W, C)`` intensities of one field.",
+      "source_sha256": "a50e4d98c57e8426b54c9ff03e2d29ecfc1c9399e3925ade82820c16f653529a",
+      "translation": "एक फ़ील्ड की ``(H, W, C)`` तीव्रताएँ।"
+    },
+    {
+      "context": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "label": "spacr.ops_flatfield.field_blocks#2",
+      "source": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "source_sha256": "6b99f53b0470df09d34feba35b36da415a0895a385dfcbcec35fb598566f6429",
+      "translation": "पिक्सेल में ब्लॉक का किनारा; अंतिम पूर्ण ब्लॉक के बाद की पंक्तियाँ और कॉलम हटा दिए जाते हैं।"
+    },
+    {
+      "context": "``(H // block, W // block, C)`` float32 block means.",
+      "label": "spacr.ops_flatfield.field_blocks#3",
+      "source": "``(H // block, W // block, C)`` float32 block means.",
+      "source_sha256": "a8554ffe06a663d796f0546ed2b7cc4b9f43a9f6f1177531f18a5467d8bc6f35",
+      "translation": "``(H // block, W // block, C)`` float32 ब्लॉक माध्य।"
+    },
+    {
+      "context": "The intensity features the analytic correction cannot get right.",
+      "label": "spacr.ops_flatfield.flagged_features#0",
+      "source": "The intensity features the analytic correction cannot get right.",
+      "source_sha256": "03ad7807a6e4a660e4e7d8ca2a9ec0f22a03b04a432c94ca57f251a76877419c",
+      "translation": "वे तीव्रता फ़ीचर जिन्हें विश्लेषणात्मक सुधार सही नहीं कर सकता।"
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.flagged_features#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "चैनल नाम।"
+    },
+    {
+      "context": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "label": "spacr.ops_flatfield.flagged_features#3",
+      "source": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "source_sha256": "8d613ee38d494232b7cd0ce3ec646ca8873435c5c62f12a02f10f28b09d6b2c9",
+      "translation": "``*_mode_intensity`` कॉलम। फ़्लोट छवि का बहुलक ऐसा स्थान माप नहीं है जिसे गेन अनुमानित रूप से बदले, इसलिए उसे स्थान माप की तरह सुधारा जाता है और उस पर भरोसा करने के बजाय फ़्लैग किया जाता है।"
+    },
+    {
+      "context": "Each map brought to the field's pixels, bilinearly.",
+      "label": "spacr.ops_flatfield.flat_planes#0",
+      "source": "Each map brought to the field's pixels, bilinearly.",
+      "source_sha256": "5de0ab2afae7f7513c22ebe7a09dfb15d6a152eaf7a1a41cf6f9ac9e0b1afba6",
+      "translation": "हर मानचित्र को बाइलिनियर रूप से फ़ील्ड के पिक्सेलों तक लाया जाता है।"
+    },
+    {
+      "context": "``(H, W)`` of a field.",
+      "label": "spacr.ops_flatfield.flat_planes#2",
+      "source": "``(H, W)`` of a field.",
+      "source_sha256": "b3ca9dbf1c294984f1cb32be1f7406920f40c0acf52a340c240da105a3c71b20",
+      "translation": "एक फ़ील्ड का ``(H, W)``।"
+    },
+    {
+      "context": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "label": "spacr.ops_flatfield.load_flat_maps#0",
+      "source": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "source_sha256": "47bce7c8b4f6e9c7ce2065881f9c93d8d66303c742e48e8ef3c559795b5ff854",
+      "translation": "उस फ़ोल्डर से प्लेट के मानचित्र और ऑफ़सेट जिसे :func:`write_flat_maps` ने लिखा।"
+    },
+    {
+      "context": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the laboratory microplate A pilot's ``seg_qc`` folder has the same layout.",
+      "label": "spacr.ops_flatfield.load_flat_maps#1",
+      "source": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the plate A pilot's ``seg_qc`` folder has the same layout.",
+      "source_sha256": "11668fc71496c954dd867bae297bc2f288580fb620a0000d243125e6919386e2",
+      "translation": "इसमें ``flat_info.json`` और प्रति चैनल एक ``flat_*_<CH>.npy`` होते हैं; प्लेट A पायलट के ``seg_qc`` फ़ोल्डर की संरचना भी यही है।"
+    },
+    {
+      "context": "the channels wanted, matched without regard to case.",
+      "label": "spacr.ops_flatfield.load_flat_maps#2",
+      "source": "the channels wanted, matched without regard to case.",
+      "source_sha256": "b008f4d9eb0e8eab919726b5c1b332dc9273e5d6b19ad1d73e47cbd779101c12",
+      "translation": "वांछित चैनल, बड़े-छोटे अक्षरों की परवाह किए बिना मिलाए गए।"
+    },
+    {
+      "context": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "label": "spacr.ops_flatfield.load_flat_maps#3",
+      "source": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "source_sha256": "f12b438a91b83001c0dfeedfc7365c1e534214b373093bd11e9d712dd389140a",
+      "translation": "``(maps, offsets, info)``: संग्रहीत रूप में ``{channel: flat}``, ``{channel: b}``, और हर मानचित्र के md5 वाला जानकारी रिकॉर्ड (रिकॉर्ड में न होने पर यहीं गणना किया गया)।"
+    },
+    {
+      "context": "when the folder lacks the record or a map.",
+      "label": "spacr.ops_flatfield.load_flat_maps#4",
+      "source": "when the folder lacks the record or a map.",
+      "source_sha256": "fb0e310c010aff62a5c71fe998de0a39b5c68ea6b839dc57da96dade3c2b9654",
+      "translation": "जब फ़ोल्डर में रिकॉर्ड या कोई मानचित्र न हो।"
+    },
+    {
+      "context": "Per-cell geometry of one microscope field of view's masks, and the mean gain under each.",
+      "label": "spacr.ops_flatfield.mask_pass#0",
+      "source": "Per-cell geometry of one field's masks, and the mean gain under each.",
+      "source_sha256": "3d5111cf8b20f3e9fbafb48e170e7b82c50d8c28c4d3e0ca046ffdd98682e94f",
+      "translation": "एक फ़ील्ड के मास्क की प्रति-कोशिका ज्यामिति, और हर एक के नीचे माध्य गेन।"
+    },
+    {
+      "context": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "label": "spacr.ops_flatfield.mask_pass#1",
+      "source": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "source_sha256": "9db049086959409d4afb5fd10d885a118b20753abcbd7ea4ff5104b8c10f00e3",
+      "translation": "फ़ील्ड के केंद्रक लेबल, केंद्रक ``k`` कोशिका ``k`` में।"
+    },
+    {
+      "context": "its cell labels.",
+      "label": "spacr.ops_flatfield.mask_pass#2",
+      "source": "its cell labels.",
+      "source_sha256": "4df5c24d34bd354dfa83cc841230b9cd59dc6bcca684785d3a5fc08308876b50",
+      "translation": "उसके कोशिका लेबल।"
+    },
+    {
+      "context": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "label": "spacr.ops_flatfield.mask_pass#3",
+      "source": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "source_sha256": "34f830301330248f513a598878e2f415b1226f8c7a964b1638c23b39cf7082ba",
+      "translation": "float64 में ``{channel: (H, W) 1 / flat}``, या केवल ज्यामिति के लिए None।"
+    },
+    {
+      "context": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With image layers, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "label": "spacr.ops_flatfield.mask_pass#4",
+      "source": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With planes, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "source_sha256": "70055bee3caeea8392461ab2fef96981a742e668f5072bdf14d540bed971f3a2",
+      "translation": "प्रति कोशिका लेबल एक पंक्ति: ``label``; प्रति कम्पार्टमेंट (कोशिका, केंद्रक, साइटोप्लाज़्म) ``<c>_px``; ``cell_cy``/``cell_cx`` और ``nucleus_cy``/``nucleus_cx``, पिक्सेल सेंट्रॉइड; ``top``, ``bottom``, ``left``, ``right``, कोशिका का बॉक्स; और ``touches_field_edge`` तथा ``nucleus_touches_field_edge``। प्लेन के साथ ``<c>_<CH>_g`` भी, कम्पार्टमेंट के पिक्सेलों पर ``1 / flat`` का माध्य।"
+    },
+    {
+      "context": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "label": "spacr.ops_flatfield.mask_pass#5",
+      "source": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "source_sha256": "627fc267ebc687914f567d08b0c16d343ee93220969c97a7a801f8fafcde6d2f",
+      "translation": "फ़ील्ड के किनारे को छूने वाली कोशिका कटी हुई होती है: उसका कुछ भाग फ़ील्ड के बाहर होता है, इसलिए उसका क्षेत्रफल और समाकलित तीव्रताएँ बहुत छोटी होती हैं। जहाँ कोई पड़ोसी फ़ील्ड पूरी कोशिका रखता है, वही प्रति रखी जानी चाहिए।"
+    },
+    {
+      "context": "Write a laboratory microplate's maps once, with their md5 and the microscope fields of view used.",
+      "label": "spacr.ops_flatfield.write_flat_maps#0",
+      "source": "Write a plate's maps once, with their md5 and the fields used.",
+      "source_sha256": "bc7e44a15339793f5a669c5caebbe0ab1eedca88021ca2b7d41260b270eaa3c7",
+      "translation": "प्लेट के मानचित्र एक बार लिखें, उनके md5 और उपयोग किए गए फ़ील्डों के साथ।"
+    },
+    {
+      "context": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "label": "spacr.ops_flatfield.write_flat_maps#1",
+      "source": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "source_sha256": "422a500918b678ee7669e0247b93e9013bcf4d8b465deeca130cf5ad3ca57e64",
+      "translation": "जहाँ ``flat_<plate>_<CH>.npy`` और ``flat_info.json`` जाते हैं।"
+    },
+    {
+      "context": "the plate name used in the file names.",
+      "label": "spacr.ops_flatfield.write_flat_maps#2",
+      "source": "the plate name used in the file names.",
+      "source_sha256": "49992e26f0f6d07103b30655c50b94a304a257436a89ed49e0d2080653d4d693",
+      "translation": "फ़ाइल नामों में उपयोग किया गया प्लेट नाम।"
+    },
+    {
+      "context": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "label": "spacr.ops_flatfield.write_flat_maps#3",
+      "source": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "source_sha256": "10cc5d3197920cd0be028e387b1b79101fe5129eaba9064edbc9f63e5e302426",
+      "translation": "``{channel: flat}``, :func:`build_flat_maps` से।"
+    },
+    {
+      "context": "its ``method`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#4",
+      "source": "its ``method`` record.",
+      "source_sha256": "d5322cadff7db9056bcca30536a763fa16a74d1c13f20be3449d539664903181",
+      "translation": "उसका ``method`` रिकॉर्ड।"
+    },
+    {
+      "context": "the ``(well, site)`` the maps were built from.",
+      "label": "spacr.ops_flatfield.write_flat_maps#5",
+      "source": "the ``(well, site)`` the maps were built from.",
+      "source_sha256": "c320c4bc85715f355d58d6a73a589eb72576d19706ca1286ddb974ce6dd05f85",
+      "translation": "वे ``(well, site)`` जिनसे मानचित्र बनाए गए।"
+    },
+    {
+      "context": "more keys for ``flat_info.json``, such as when and from which microplate sample positions the maps were built.",
+      "label": "spacr.ops_flatfield.write_flat_maps#6",
+      "source": "more keys for ``flat_info.json``, such as when and from which wells the maps were built.",
+      "source_sha256": "b10167b3f90823f997252ab783f678d45de401c8d3bc3b43607752fb13f5eb93",
+      "translation": "``flat_info.json`` के लिए अतिरिक्त कुंजियाँ, जैसे मानचित्र कब और किन वेलों से बनाए गए।"
+    },
+    {
+      "context": "the ``flat_info.json`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#7",
+      "source": "the ``flat_info.json`` record.",
+      "source_sha256": "1f6fad2070ad6fc32c3438a222104bece692e189bbd0db469323bf6f67699a8b",
+      "translation": "``flat_info.json`` रिकॉर्ड।"
+    },
+    {
+      "context": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "label": "spacr.ops_flatfield.write_flat_maps#8",
+      "source": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "source_sha256": "b050a1583968e085ff5e448c9c0e419c0c55c663ecb2da1db2391c12f189d204",
+      "translation": "जब फ़ोल्डर में पहले से मानचित्र हों। मानचित्र का md5 उसका उपयोग करने वाले हर विश्लेषण में दर्ज होता है, इसलिए उसे कभी अधिलेखित नहीं किया जाता; इसके बजाय नए फ़ोल्डर में बनाएँ।"
+    },
+    {
+      "context": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "label": "spacr.ops_merge.deepest_field_matches#0",
+      "source": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "source_sha256": "02fb82d07b1e30ca5a306409097a12b06ae9d3f6dae8f19a9c457829ec3dd76a",
+      "translation": "प्रति सीक्वेंसिंग केंद्रक एक प्रेक्षण: अपने फ़ील्ड में सबसे गहराई वाली प्रति।"
+    },
+    {
+      "context": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "label": "spacr.ops_merge.deepest_field_matches#1",
+      "source": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "source_sha256": "38cc88ddcf15bfda79ea7ed8b81dc7b2723a0c8c276ee5938b72e7c52eaaaf52",
+      "translation": "``key``, ``depth`` और ``by`` कॉलम वाली मर्ज पंक्तियाँ।"
+    },
+    {
+      "context": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#3",
+      "source": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "source_sha256": "94fa2b03abfd7859a18baa34d7860cb898f2bc9043bf47381313b3d23527743c",
+      "translation": "सीक्वेंसिंग केंद्रक पंक्ति के फ़ील्ड में कितनी गहराई पर है, :func:`footprint_depth` से; सबसे बड़ा मान जीतता है।"
+    },
+    {
+      "context": "breaks ties in ``depth``; the smallest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#4",
+      "source": "breaks ties in ``depth``; the smallest wins.",
+      "source_sha256": "deb2cbbca720aafeaff0ffadcd4ca20cb57e432233e8d4d3484531ff299428e8",
+      "translation": "``depth`` में बराबरी तोड़ता है; सबसे छोटा मान जीतता है।"
+    },
+    {
+      "context": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "label": "spacr.ops_merge.deepest_field_matches#5",
+      "source": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "source_sha256": "bf304e2b69cb7325be9abb6550a74d8d4cc041357c1b288fb4280f8b93cca3a5",
+      "translation": "``(kept, dropped)`` -- प्रति ``key`` एक पंक्ति वाला फ़्रेम, उसी क्रम में जिसमें जीतने वाली पंक्तियाँ थीं, और कितनी पंक्तियाँ हटाई गईं।"
+    },
+    {
+      "context": "Core ownership by the sequencing centroid (A1b). A nucleus imaged in two overlapping phenotype microscope fields of view is kept from the microscope field of view in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the microscope field of view's edge: on laboratory microplate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "label": "spacr.ops_merge.deepest_field_matches#6",
+      "source": "CORE OWNERSHIP BY THE SEQUENCING CENTROID (A1b). A nucleus imaged in two overlapping phenotype fields is kept from the field in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the field's edge: on plate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "source_sha256": "6ad1ab96fc395acbf6464dca8d4f2fc8c0d801edbc90174472df9d51e43761f0",
+      "translation": "सीक्वेंसिंग सेंट्रॉइड द्वारा मध्य-भाग स्वामित्व (A1b)। दो परस्पर ढकते फ़ीनोटाइप फ़ील्ड में इमेज किया गया केंद्रक उस फ़ील्ड से रखा जाता है जिसमें उसका सीक्वेंसिंग सेंट्रॉइड सबसे गहराई में है, अधिक निकट मिलान (:func:`deduplicate_matches`) से नहीं। अधिक निकट मिलान अक्सर किनारे वाली प्रति होता है, और किनारे वाली प्रति फ़ील्ड के किनारे से अधिक बार कटी होती है: Funk et al. 2022 की प्लेट A पर अधिक निकट मिलान ने जुड़ी हुई 14.4 प्रतिशत कोशिकाओं के लिए अलग प्रति रखी। बराबर गहराई होने पर अधिक निकट मिलान चुना जाता है, फिर पहली पंक्ति।"
+    },
+    {
+      "context": "The microplate sample position-frame box a phenotype microscope field of view covers.",
+      "label": "spacr.ops_merge.field_footprint#0",
+      "source": "The well-frame box a phenotype field covers.",
+      "source_sha256": "4821ad5c965ba7b1cf873366b7f6d29bc9a7610f93c99ea3265b24ab82f9fb6a",
+      "translation": "वेल-फ़्रेम का वह बॉक्स जिसे एक फ़ीनोटाइप फ़ील्ड ढकता है।"
+    },
+    {
+      "context": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the microscope field of view's four corners.",
+      "label": "spacr.ops_merge.field_footprint#3",
+      "source": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the field's four corners.",
+      "source_sha256": "3bb1c0630dad17fc8888b3c15a5bc04c739efde1c12cf3cc5129127296c77f14",
+      "translation": "``(low, high)``, प्रत्येक वेल पिक्सेल में ``(y, x)``: फ़ील्ड के चार कोनों के सबसे छोटे और सबसे बड़े निर्देशांक।"
+    },
+    {
+      "context": "How far each microplate sample position-frame point lies inside a microscope field of view's footprint.",
+      "label": "spacr.ops_merge.footprint_depth#0",
+      "source": "How far each well-frame point lies inside a field's footprint.",
+      "source_sha256": "ed3523bae1570e932d752ec2428b76d60771f15866cb70277fe27ed549d78b34",
+      "translation": "हर वेल-फ़्रेम बिंदु किसी फ़ील्ड के फ़ुटप्रिंट के भीतर कितनी दूर है।"
+    },
+    {
+      "context": "the footprint's smallest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#2",
+      "source": "the footprint's smallest ``(y, x)``.",
+      "source_sha256": "0f9cd636fbe334feabc52bedb9230a5de8da49fe9f16e9163690a378b959f0c8",
+      "translation": "फ़ुटप्रिंट का सबसे छोटा ``(y, x)``।"
+    },
+    {
+      "context": "its largest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#3",
+      "source": "its largest ``(y, x)``.",
+      "source_sha256": "a741315e63335849ba37df09509902acd15d839693ee9ba74306b07199aea79b",
+      "translation": "उसका सबसे बड़ा ``(y, x)``।"
+    },
+    {
+      "context": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "label": "spacr.ops_merge.footprint_depth#4",
+      "source": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "source_sha256": "78c014403b6fc4ee8d93a149299c4b468ea1cc8d288bfd4ed4e1d33e249c964e",
+      "translation": "``(N,)`` निकटतम फ़ुटप्रिंट किनारे तक वेल पिक्सेल में दूरियाँ, बाहर ऋणात्मक।"
+    },
+    {
+      "context": "The depth decides which microscope field of view owns a cell. Where microscope fields of view overlap, the microscope field of view in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the microscope field of view's border.",
+      "label": "spacr.ops_merge.footprint_depth#5",
+      "source": "THE DEPTH DECIDES WHICH FIELD OWNS A CELL. Where fields overlap, the field in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the field's border.",
+      "source_sha256": "931cec094a3c58e0b1c431732f24cc9e8fdea5cd88d71048247132cff016dffe",
+      "translation": "गहराई तय करती है कि कौन-सा फ़ील्ड कोशिका का स्वामी है। जहाँ फ़ील्ड परस्पर ढकते हैं, जिस फ़ील्ड में कोशिका सबसे गहराई में है वह उसे किसी भी किनारे से सबसे दूर इमेज करता है, इसलिए उसी प्रति के फ़ील्ड की सीमा से कटने की संभावना सबसे कम है।"
+    },
+    {
+      "context": "The fields whose footprints overlap each field's.",
+      "label": "spacr.ops_merge.overlapping_fields#0",
+      "source": "The fields whose footprints overlap each field's.",
+      "source_sha256": "d6f8b1cadad4050afea5c8476067eaf17ecec67c34fc8109137608e55ccc337d",
+      "translation": "वे फ़ील्ड जिनके फ़ुटप्रिंट हर फ़ील्ड के फ़ुटप्रिंट से परस्पर ढकते हैं।"
+    },
+    {
+      "context": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "label": "spacr.ops_merge.overlapping_fields#1",
+      "source": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "source_sha256": "6edc149d6b726d8ed17848083cf1b3329d80d2d57a180cbd7029339ea506df18",
+      "translation": "``{site: (low, high)}``, :func:`field_footprint` से।"
+    },
+    {
+      "context": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "label": "spacr.ops_merge.overlapping_fields#2",
+      "source": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "source_sha256": "8fe729fe35c4347a4df968247e52634ccf1d97ebddb27286edd775f5f41e7ce7",
+      "translation": "``{site: [other sites]}``, ``footprints`` के क्रम में।"
+    },
+    {
+      "context": "Funk et al. 2022's mass displacement and channel correlations.",
+      "label": "spacr.ops_sample.funk_object_features#0",
+      "source": "Funk et al. 2022's mass displacement and channel correlations.",
+      "source_sha256": "5fbb3db424ae381951f6c3901b9c5470a97d90188746d93ce26c26dc0117e741",
+      "translation": "Funk et al. 2022 का मास डिस्प्लेसमेंट और चैनल सहसंबंध।"
+    },
+    {
+      "context": "one compartment's label mask.",
+      "label": "spacr.ops_sample.funk_object_features#1",
+      "source": "one compartment's label mask.",
+      "source_sha256": "a5f00f91e2bc92b1004130188b2d7f559aa369c41f4701d5e94a8a17f5cb78ef",
+      "translation": "एक कम्पार्टमेंट का लेबल मास्क।"
+    },
+    {
+      "context": "``(H, W, C)`` intensities over it.",
+      "label": "spacr.ops_sample.funk_object_features#2",
+      "source": "``(H, W, C)`` intensities over it.",
+      "source_sha256": "011c9847a093c67fd731d462955e34e4da12be8af97791cd17fd9491246386ee",
+      "translation": "उस पर ``(H, W, C)`` तीव्रताएँ।"
+    },
+    {
+      "context": "one short name per channel.",
+      "label": "spacr.ops_sample.funk_object_features#3",
+      "source": "one short name per channel.",
+      "source_sha256": "64151adb0eaa1b966dc83598bfb1646e4fc24ad3ef05744aa2a12ac9a3c5a9a7",
+      "translation": "प्रति चैनल एक छोटा नाम।"
+    },
+    {
+      "context": "the compartment, ``nucleus`` or ``cell``.",
+      "label": "spacr.ops_sample.funk_object_features#4",
+      "source": "the compartment, ``nucleus`` or ``cell``.",
+      "source_sha256": "c5215cf40e2a0db802c1af85e774f6bf714d17e4b734424a916dee84cfe4d3b0",
+      "translation": "कम्पार्टमेंट, ``nucleus`` या ``cell``।"
+    },
+    {
+      "context": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "label": "spacr.ops_sample.funk_object_features#5",
+      "source": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "source_sha256": "614416043cd183bfeb83a14bf80fa754bc6fc2c1bdfda3e9a5288ce8165d7e4a",
+      "translation": "प्रति लेबल एक पंक्ति: ``label``, प्रति चैनल ``<prefix>_<ch>_mass_displacement`` और प्रति चैनल जोड़ी ``<prefix>_correlation_<a>_<b>``, :func:`itertools.combinations` के क्रम में।"
+    },
+    {
+      "context": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "label": "spacr.ops_sample.funk_object_features#6",
+      "source": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "source_sha256": "b82c0bfb2d356f055c7550ee6c8d40a906465dff6efb9cf9977dca1585436a8d",
+      "translation": "ये Funk et al. के OpticalPooledScreens ``ops/cp_emulator.py`` की परिभाषाएँ हैं, जिन्हें उनके फ़ीनोटाइप चरण (``Snake._extract_phenotype_cp_multichannel``) ने हर केंद्रक और कोशिका पर लागू किया:"
+    },
+    {
+      "context": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "label": "spacr.ops_sample.funk_object_features#7",
+      "source": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "source_sha256": "41cef48f64e02eb911dd5fab45b8ba39f6bc3098aeefae1ce0c2f1ed561af3cc",
+      "translation": "``mass_displacement`` (``intensity_features_multichannel``): ऑब्जेक्ट के सेंट्रॉइड से उसके तीव्रता-भारित सेंट्रॉइड तक पिक्सेल में दूरी, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``। विस्थापित DNA या ट्यूबुलिन द्रव्यमान असममित कोशिका का संकेत है।"
+    },
+    {
+      "context": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "label": "spacr.ops_sample.funk_object_features#8",
+      "source": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "source_sha256": "6f7ec20be15ab47871bb1202a965763b7487f8e49a0beac523d0c4acd4eb9e69",
+      "translation": "``correlation`` (``correlation_features_multichannel``, ``ops.features.correlate_channels_all_multichannel`` के माध्यम से): ऑब्जेक्ट के पिक्सेलों पर दो चैनलों का Pearson r, ``np.corrcoef``।"
+    },
+    {
+      "context": "Both are computed from per-label sums, centred on each label's mean, so a microscope field of view is one pass rather than one regionprops object per cell.",
+      "label": "spacr.ops_sample.funk_object_features#9",
+      "source": "Both are computed from per-label sums, centred on each label's mean, so a field is one pass rather than one regionprops object per cell.",
+      "source_sha256": "8557bc9c6ddd2f46df7d1d1a25db4051599c47b69ec8f346b92dc8b21196a5e7",
+      "translation": "दोनों प्रति-लेबल योगों से गणना किए जाते हैं, हर लेबल के माध्य पर केंद्रित, इसलिए एक फ़ील्ड प्रति कोशिका एक regionprops ऑब्जेक्ट के बजाय एक ही पास में पूरा होता है।"
+    },
+    {
+      "context": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "label": "spacr.ops_sample.measure_phenotype_field#6",
+      "source": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "source_sha256": "41ceac9ec628c2b5ea626e3506e4783f43cbe953a5b369440d6b919923883d50",
+      "translation": "Funk et al. 2022 के फ़ीचर जोड़ें: केंद्रक और कोशिका में हर चैनल का मास डिस्प्लेसमेंट और हर चैनल जोड़ी का सहसंबंध (:func:`funk_object_features`), तथा spaCR के अपने क्षेत्रफल और परिधि से ``nucleus_form_factor`` और ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']``, उनके ``ops/cp_emulator.py`` से)।"
+    },
+    {
+      "context": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "label": "spacr.ops_sample.measure_phenotype_field#7",
+      "source": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "source_sha256": "ab2fb1269405def9b4c64ed5536264ebb71d656dc75d1dad590e13508397280f",
+      "translation": "प्रति कोशिका एक पंक्ति, ``label`` द्वारा कुंजीबद्ध, ``nucleus_``, ``cell_`` और ``cytoplasm_`` कॉलम के साथ तथा केंद्रक सेंट्रॉइड फ़ील्ड पिक्सेल में ``centroid_row``/``centroid_col`` के रूप में।"
+    },
+    {
+      "context": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "label": "spacr.ops_sample.measure_phenotype_field#8",
+      "source": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "source_sha256": "43f1d0ebcf597fa7e424fa6e3b92960876c7493c7db364f7c6018c71bbfb1915",
+      "translation": "फ़ीचर वही हैं जो spaCR का measure लिखता है -- आकारिकी :func:`spacr.measure._morphological_measurements` से, तीव्रता और टेक्सचर :func:`spacr.measure._intensity_measurements` से -- इसलिए OPS कोशिका और मापे गए वेल की कोशिका में वही कॉलम होते हैं और कुछ दोबारा व्युत्पन्न नहीं किया जाता। साइटोप्लाज़्म कोशिका में से उसका केंद्रक घटाने पर बनता है, कोशिका के लेबल के अंतर्गत।"
+    },
+    {
+      "context": "Division analysis results: what tracked cells do before they divide.",
+      "label": "spacr.qt.widgets.division_panel#0",
+      "source": "Division analysis results: what tracked cells do before they divide.",
+      "source_sha256": "b274a5a3cfdbdd6175515304c29d4ac243e5c7c076dfe985019ef675501655c2",
+      "translation": "विभाजन विश्लेषण परिणाम: ट्रैक की गई कोशिकाएँ विभाजन से पहले क्या करती हैं।"
+    },
+    {
+      "context": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "label": "spacr.qt.widgets.division_panel#1",
+      "source": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "source_sha256": "6a8ed0733697b85cb20367c6022b618c86f801752553bac558ddce37a755fcfd",
+      "translation": "Make Masks टाइमलैप्स रन हर ट्रैक किए गए फ़ील्ड के लिए ``tracks/division/`` के अंतर्गत एक परिणाम फ़ोल्डर लिखता है, जब ``timelapse_division_analysis`` चालू हो (देखें :func:`spacr.division_analysis.write_division_results`)। यह पैनल ऐसा फ़ोल्डर पढ़ता है, या उनसे ऊपर के किसी भी फ़ोल्डर के अंतर्गत परिणाम फ़ोल्डर ढूँढता है, और उसकी तालिकाओं से तीन चित्र बनाता है: मिलान किए गए नियंत्रणों और शफ़ल संरेखण के विरुद्ध विभाजित होने वाली कोशिकाओं के संरेखित प्रक्षेप-पथ, प्रभाव आकारों का फ़ॉरेस्ट प्लॉट, और आकार-नियंत्रण प्लॉट। कुछ भी दोबारा गणना नहीं किया जाता; डिस्क पर मौजूद तालिकाएँ ही दिखाई जाती हैं।"
+    },
+    {
+      "context": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel#0",
+      "source": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "source_sha256": "0aafaef8df5d32ab60e2583cc8f24e1d51fcc42a19529aec432afe2742395c70",
+      "translation": "एक ट्रैक किए गए फ़ील्ड के विभाजन विश्लेषण चित्र, डिस्क से पढ़े गए। पैनल को उसके फ़ोल्डर बटन, फ़ील्ड सूची और चित्र टैब के साथ बनाएँ।"
+    },
+    {
+      "context": "whether a folder with results was chosen and loaded.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.browse#1",
+      "source": "whether a folder with results was chosen and loaded.",
+      "source_sha256": "cd7e1eaebab11536bd8312ca312bd1f1c8ec3d16df6cf95d6115d27e22892d46",
+      "translation": "क्या परिणामों वाला फ़ोल्डर चुना और लोड किया गया।"
+    },
+    {
+      "context": "Show the results in ``folder``, or list those found below it.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#0",
+      "source": "Show the results in ``folder``, or list those found below it.",
+      "source_sha256": "d5c288893c03369b4675b4ec713c44f6bdb48dc273c388342436bc49e5cc9538",
+      "translation": "``folder`` में परिणाम दिखाएँ, या उसके नीचे मिले परिणामों की सूची दें।"
+    },
+    {
+      "context": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#1",
+      "source": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "source_sha256": "32e6c82e47ef6dc0f094ccab14a916d1bbebe8a0ac7510b97c85c437f902639f",
+      "translation": ":func:`spacr.division_analysis.write_division_results` द्वारा लिखा गया फ़ोल्डर, या ऐसे फ़ोल्डरों से ऊपर का कोई भी फ़ोल्डर; कई होने पर पहला दिखाया जाता है और बाकी सूची से चुने जा सकते हैं।"
+    },
+    {
+      "context": "whether results were found and drawn.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#2",
+      "source": "whether results were found and drawn.",
+      "source_sha256": "afe8e29f455621aed0265f5e5073b075e772946f71decc2a74b1f362712bc099",
+      "translation": "क्या परिणाम मिले और बनाए गए।"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch2-1108 branch: spacr.division_analysis.lineage_from_tracks, analyse_divisions, division_figures, write_division_results and read_division_results and the spacr.qt.widgets.division_panel module and DivisionAnalysisPanel (item 771); the spacr.ops_flatfield module, spacr.ops_merge.field_footprint, footprint_depth, overlapping_fields and deepest_field_matches, spacr.ops_sample.funk_object_features and the edited measure_phenotype_field and spacr.ops_engine.run_ops docstrings (items 852, 853 and 857). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

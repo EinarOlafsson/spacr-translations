@@ -1,0 +1,1001 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "Align one movie's divisions and compare them with matched controls.",
+      "label": "spacr.division_analysis.analyse_divisions#0",
+      "source": "Align one movie's divisions and compare them with matched controls.",
+      "source_sha256": "696fc15eafb435bd1b0700343c5647865743a171eebf1030c823fbea4eaf3f06",
+      "translation": "Aligner les divisions d’un film et les comparer à des témoins appariés."
+    },
+    {
+      "context": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "label": "spacr.division_analysis.analyse_divisions#1",
+      "source": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "source_sha256": "2b5c4da739eaa535c69813b327abed36201f7431746b9435672568126df4142d",
+      "translation": "Exécute dans l’ordre les étapes de ce module. Les divisions sont lues avec :func:`division_events` ; ``mode='auto'`` conserve le type, fission ou bourgeonnement, le plus fréquent dans le film. Chaque division est vérifiée (parent visible à ``t_div`` et sur 80% de la fenêtre, filles visibles à l’image suivante, deux filles pour une fission). Les divisions conservées reçoivent des témoins appariés en taille (:func:`match_controls`) et un alignement aléatoire (:func:`shuffled_alignment`) avec ses propres témoins appariés en taille, de sorte que le témoin nul effectue le même appariement à un instant aléatoire. La variation de chaque unité entre la fenêtre de référence et la fenêtre tardive (:func:`unit_changes`) est comparée sous forme de Hedges' g (:func:`effect_size`), les divisions contre leurs témoins et l’alignement aléatoire contre les siens. Les cycles de fission complets fournissent les ajustements du contrôle de la taille."
+    },
+    {
+      "context": "the measurements compared; absent ones are skipped.",
+      "label": "spacr.division_analysis.analyse_divisions#10",
+      "source": "the measurements compared; absent ones are skipped.",
+      "source_sha256": "8a6e839d54d6907d56acd6cf5ed92170f6e23d1108d57ab6e78913f1b64068c7",
+      "translation": "les mesures comparées ; celles qui sont absentes sont ignorées."
+    },
+    {
+      "context": "key-value mapping with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "label": "spacr.division_analysis.analyse_divisions#11",
+      "source": "dict with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "source_sha256": "a70535c638a3097113f475022113b155421b3d453bb8937cba674e914b630bca",
+      "translation": "dictionnaire contenant les tables ``events`` (chaque division avec son ``status``), ``effects`` (une ligne par contraste et par mesure), ``trajectories`` (moyenne normalisée par la référence et bande à 95% par série, rôle, ``rel_t`` et mesure), ``cycles`` et ``size_control``, ainsi que ``summary`` (la fenêtre, les effectifs et les motifs d’exclusion)."
+    },
+    {
+      "context": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#12",
+      "source": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "source_sha256": "f974a6d35681c5fdf62ba2d4f59bc070d3596356537f45b3dcfd2cf4e5c8ee6e",
+      "translation": "pour un ``mode`` inconnu, une ``window`` inférieure à 2, ou des ``measures`` sans ``track_id``, ``t`` ou ``area``."
+    },
+    {
+      "context": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#2",
+      "source": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "source_sha256": "e0c1b94f4b02894a2e36e41395228335d0dc498986badc6f8f169344604ad56d",
+      "translation": "table par image issue de :func:`measure_label_stack`, généralement avec :func:`add_motion_features` ; elle nécessite ``area``."
+    },
+    {
+      "context": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "label": "spacr.division_analysis.analyse_divisions#3",
+      "source": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "source_sha256": "369241ad56de06f35fd00d33dab1cdcd5e6f70256914a29d723c07d6991788bc",
+      "translation": "table de lignée avec les :data:`LINEAGE_COLUMNS`."
+    },
+    {
+      "context": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "label": "spacr.division_analysis.analyse_divisions#5",
+      "source": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "source_sha256": "76c7e163ad48f5287ac79c503b47897499d6eed3323e668ce86cc08d52325e30",
+      "translation": "images avant la division dans la fenêtre d’alignement ; None prend 0.3 fois le cycle médian (:func:`median_cycle_frames`), borné à 4..30 images, ou 6 images lorsqu’aucun cycle n’est observé."
+    },
+    {
+      "context": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "label": "spacr.division_analysis.analyse_divisions#6",
+      "source": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "source_sha256": "8270491dcac3867e1e9a70ea69080461114e3086b5223e1fe3d6fbc7c1559a9f",
+      "translation": "images dans chacune des fenêtres de référence et tardive, et l’horizon pendant lequel un témoin doit rester non divisé après son instant de pseudo-division ; None prend un quart de ``window`` (au moins 2). Une valeur trop grande pour ``window`` est réduite afin que les deux fenêtres ne se chevauchent pas."
+    },
+    {
+      "context": "the relative size difference a control may have at the start of the window.",
+      "label": "spacr.division_analysis.analyse_divisions#7",
+      "source": "the relative size difference a control may have at the start of the window.",
+      "source_sha256": "3be814bebf044ba77a4c71c99b1013e06f537c263ec697786cc299a6c20c911c",
+      "translation": "la différence relative de taille qu’un témoin peut présenter au début de la fenêtre."
+    },
+    {
+      "context": "bootstrap resamples for every confidence interval.",
+      "label": "spacr.division_analysis.analyse_divisions#8",
+      "source": "bootstrap resamples for every confidence interval.",
+      "source_sha256": "2e4158a701863f4e2a48a2a9096298ea2f932e97474a33eebec759fa26f85228",
+      "translation": "rééchantillonnages bootstrap pour chaque intervalle de confiance."
+    },
+    {
+      "context": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "label": "spacr.division_analysis.analyse_divisions#9",
+      "source": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "source_sha256": "2e270db1bab40fa29644658b362c8c534f3681d73d739e3cbc894abf3b5ab9d1",
+      "translation": "graine ou générateur pour les témoins, le mélange et les bootstraps."
+    },
+    {
+      "context": "Draw the three figures of one division analysis.",
+      "label": "spacr.division_analysis.division_figures#0",
+      "source": "Draw the three figures of one division analysis.",
+      "source_sha256": "bb32540129d7502c1617875b63f447f25873fee06e9d13d00577d1f17b042cbf",
+      "translation": "Dessiner les trois figures d’une analyse des divisions."
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "label": "spacr.division_analysis.division_figures#1",
+      "source": "the dict from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "source_sha256": "ccce94b9f049db5fb0570b2f25c44a87a922120e5e416ce27081db3d7f406b23",
+      "translation": "le dictionnaire issu de :func:`analyse_divisions` ou de :func:`read_division_results`."
+    },
+    {
+      "context": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "label": "spacr.division_analysis.division_figures#2",
+      "source": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "source_sha256": "f077bbabf6775cdb7296e320aa285c1efb3157dcf2c3d5238392df3f8cd30d04",
+      "translation": "les mesures à dessiner, dans l’ordre ; None dessine toutes les mesures qui ont des tailles d’effet."
+    },
+    {
+      "context": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "label": "spacr.division_analysis.division_figures#3",
+      "source": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "source_sha256": "d038453a3c173785375938689f42e4176bf4791ef51bc95d4fc05618e5a03bb4",
+      "translation": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, des objets :class:`matplotlib.figure.Figure` : les trajectoires alignées et normalisées par la référence des cellules qui se divisent (avec leurs filles après la division), des témoins appariés et de l’alignement aléatoire, avec des bandes à 95% ; Hedges' g par mesure avec son intervalle bootstrap ; et l’aire à la division en fonction de l’aire à la naissance, avec les pentes sizer, adder et timer."
+    },
+    {
+      "context": "Lineage table of one field's spaCR tracks table.",
+      "label": "spacr.division_analysis.lineage_from_tracks#0",
+      "source": "Lineage table of one field's spaCR tracks table.",
+      "source_sha256": "daa673cf5c3a0a372c9c8ced662d7988047a3ae4815c01596ce0929259250918",
+      "translation": "Table de lignée de la table de trajectoires spaCR d’un champ."
+    },
+    {
+      "context": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "label": "spacr.division_analysis.lineage_from_tracks#1",
+      "source": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "source_sha256": "97b76b26804382747826c6bc95316e81bb4a9da5c482f4a4d6701972120167af",
+      "translation": "Chaque trajectoire donne une ligne : sa première et sa dernière image, et la trajectoire dont elle est née. Une colonne ``parent_track_id`` écrite par le suivi est utilisée telle quelle ; sans elle, les divisions sont inférées à partir de débuts de trajectoire proches, comme le font les arbres de lignée. Une fille que le suivi a conservée sous l’identifiant de sa mère n’est pas une nouvelle trajectoire ; cette mère continue donc et sa division est lue comme un bourgeon."
+    },
+    {
+      "context": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "label": "spacr.division_analysis.lineage_from_tracks#2",
+      "source": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "source_sha256": "98a18096f2bc8422b7a394089c91dfa4827072bf33887b2aac85b24610ff40d9",
+      "translation": "une table de trajectoires spaCR avec ``frame``, ``track_id``, ``x`` et ``y`` pour un champ, telle qu’écrite dans ``<tracker>_tracks_<object>_<field>.csv``."
+    },
+    {
+      "context": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "label": "spacr.division_analysis.lineage_from_tracks#3",
+      "source": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "source_sha256": "50cfe7475bcd3eef7e445a96dc0681645c28327dd44faf4a762dcba96e0d53e4",
+      "translation": "la plus grande distance mère-fille en pixels pour une division inférée."
+    },
+    {
+      "context": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "label": "spacr.division_analysis.lineage_from_tracks#4",
+      "source": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "source_sha256": "70b249bfb7a31c27e00f5e08101f87972bc872df8ea03d14a0ec6bfafbeb54d4",
+      "translation": "les :data:`LINEAGE_COLUMNS` sous forme d’entiers, ``parent`` valant 0 pour une trajectoire sans mère connue."
+    },
+    {
+      "context": "Read back a folder written by :func:`write_division_results`.",
+      "label": "spacr.division_analysis.read_division_results#0",
+      "source": "Read back a folder written by :func:`write_division_results`.",
+      "source_sha256": "3ad921b4247d21d6389f24a8ccb2e6152195f8bb13da4c0ca847ecad857187ba",
+      "translation": "Relire un dossier écrit par :func:`write_division_results`."
+    },
+    {
+      "context": "the results folder.",
+      "label": "spacr.division_analysis.read_division_results#1",
+      "source": "the results folder.",
+      "source_sha256": "8d859f9f0d84885dfa8576d3f8ccbe3d07aca7a7464d3105ad5871022462e452",
+      "translation": "le dossier de résultats."
+    },
+    {
+      "context": "the same key-value mapping :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty key-value mapping.",
+      "label": "spacr.division_analysis.read_division_results#2",
+      "source": "the same dict :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty dict.",
+      "source_sha256": "88bbfa0e342f169f028cccddf6452567acf227d03d0c4b536a0b210dd897138a",
+      "translation": "le même dictionnaire que celui renvoyé par :func:`analyse_divisions`, avec les filles de ``events`` de nouveau sous forme de tuples ; une table manquante ou vide donne une table vide et un résumé manquant un dictionnaire vide."
+    },
+    {
+      "context": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "label": "spacr.division_analysis.read_division_results#3",
+      "source": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "source_sha256": "ef8277e4e87483d71f309dd29aefdb373ba46a3cbcb69a2b4d7ede3a2e39732c",
+      "translation": "lorsque ``folder`` ne contient ni ``summary.json`` ni ``effects.csv``."
+    },
+    {
+      "context": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "label": "spacr.division_analysis.write_division_results#0",
+      "source": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "source_sha256": "f5442bdc2a7f8956285ccdff94d0b501a6e04f0ba24f778c1b5bc89598f14485",
+      "translation": "Écrire une analyse des divisions sous forme de tables CSV, d’un résumé JSON et de figures."
+    },
+    {
+      "context": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "label": "spacr.division_analysis.write_division_results#1",
+      "source": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "source_sha256": "29bc38dedff3061b96c577e15de37794b4d2a4b8c508150347402eeab998fd8e",
+      "translation": "Les tables sont ``events.csv`` (filles sous forme d’identifiants de trajectoire séparés par ``;``), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` et ``size_control.csv``, écrites via :func:`spacr.tabular.write_table` ; le résumé est ``summary.json``. Avec ``plot``, les figures de :func:`division_figures` sont enregistrées via :func:`spacr.plot.save_figure` sous les noms ``division_trajectories``, ``division_forest`` et ``division_size_control`` dans le format de figure préféré."
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions`.",
+      "label": "spacr.division_analysis.write_division_results#2",
+      "source": "the dict from :func:`analyse_divisions`.",
+      "source_sha256": "ec18e5ac2d192847feec125b2a4dc3a0d61bc8256729081c4f8b3343c4f046cc",
+      "translation": "le dictionnaire issu de :func:`analyse_divisions`."
+    },
+    {
+      "context": "the folder to write into; created when missing.",
+      "label": "spacr.division_analysis.write_division_results#3",
+      "source": "the folder to write into; created when missing.",
+      "source_sha256": "8fa06fb16be9c73196c42d73d02e0039d0415709a5058753edfe90f1d970c935",
+      "translation": "le dossier dans lequel écrire ; créé s’il n’existe pas."
+    },
+    {
+      "context": "save the figures too.",
+      "label": "spacr.division_analysis.write_division_results#4",
+      "source": "save the figures too.",
+      "source_sha256": "a23a2dc590eb5acca8ce6c3acf0868880b1beea39b8bf337f4ca2f68f8eb468f",
+      "translation": "enregistrer aussi les figures."
+    },
+    {
+      "context": "``{name: path}`` of everything written.",
+      "label": "spacr.division_analysis.write_division_results#5",
+      "source": "``{name: path}`` of everything written.",
+      "source_sha256": "51555e6f9b92df30fae4f6dd1471e1c3d49301b56e7fe3355c56f0834dcd4c1a",
+      "translation": "``{name: path}`` de tout ce qui a été écrit."
+    },
+    {
+      "context": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a microplate sample position can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the laboratory microplate's maps once, before the microplate sample positions, and ``ph_masks`` writes each cell's microscope field of view-edge flags and flat-microscope field of view gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its microplate sample positions from ``ops_phenotype``, and adds to each microplate sample position's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the microplate sample positions run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "label": "spacr.ops_engine.run_ops#4",
+      "source": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a well can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the plate's maps once, before the wells, and ``ph_masks`` writes each cell's field-edge flags and flat-field gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its wells from ``ops_phenotype``, and adds to each well's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the wells run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "source_sha256": "87e83af40318bf9bf177d9e773b05be3a025d02ee390ad67e6fb8ff75075cf26",
+      "translation": "n’importe lesquelles de ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` et ``\"decode\"``, exécutées dans cet ordre. Une phase omise lit dans la base de données ce dont elle a besoin, de sorte qu’un puits peut être assemblé une fois et décodé de nouveau. Le chemin de phénotype alpha ajoute ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` et ``\"aggregate\"``, exécutées uniquement lorsqu’elles sont nommées ici et après ces quatre-là ; ``ph_flatfield`` construit une seule fois les cartes de la plaque, avant les puits, et ``ph_masks`` écrit, à partir des masques enregistrés, les indicateurs de bord de champ et les gains de champ plat de chaque cellule. Une exécution limitée à ces phases nécessite ``dst_root`` et ``plate`` mais pas ``genotype_source``, prend ses puits dans ``ops_phenotype`` et complète le ``ops_report.json`` de chaque puits au lieu de le remplacer. ``aggregate`` regroupe les puits traités et écrit ``ops_guides_<plate>`` et ``ops_genes_<plate>``."
+    },
+    {
+      "context": "Flat-field maps for optical pooled screening experiment phenotype fields, and two ways to apply them.",
+      "label": "spacr.ops_flatfield#0",
+      "source": "Flat-field maps for optical pooled screen phenotype fields, and two ways to apply them.",
+      "source_sha256": "3f90156498109c0e3fc58f20faf9ca4ed50e940f78cac157c5b7a598133820c3",
+      "translation": "Cartes de champ plat pour les champs de phénotype des criblages optiques groupés, et deux façons de les appliquer."
+    },
+    {
+      "context": "A 20X phenotype microscope field of view is not evenly lit: on laboratory microplate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screening experiment, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "label": "spacr.ops_flatfield#1",
+      "source": "A 20X phenotype field is not evenly lit: on plate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screen, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "source_sha256": "3159ec1c6f0a9a7460fb04c43ecc1ca16487c6ceeff9c6a6a5c7d60bbf5b889f",
+      "translation": "Un champ de phénotype 20X n’est pas éclairé uniformément : sur la plaque A de Funk et al. 2022, les coins reçoivent environ la moitié de la lumière du centre. Une cellule mesurée dans un coin paraît alors plus sombre que la même cellule au milieu et, dans un criblage groupé, où les cellules de chaque guide se trouvent à des positions aléatoires, cela ajoute du bruit à toutes les caractéristiques d’intensité et biaise les cellules proches du bord."
+    },
+    {
+      "context": "THE MAP. Per laboratory microplate and channel, a few hundred microscope fields of view are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the microscope fields of view is taken. Cells move from microscope field of view to microscope field of view while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 microscope field of view pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "label": "spacr.ops_flatfield#2",
+      "source": "THE MAP. Per plate and channel, a few hundred fields are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the fields is taken. Cells move from field to field while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 field pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "source_sha256": "7943b52c80583c2ce1f42f6373d2beb248116e96cd7a23264b1da2459b3e48d3",
+      "translation": "LA CARTE. Pour chaque plaque et chaque canal, quelques centaines de champs sont lus, moyennés par blocs de 16 x 16 pixels, et la médiane par bloc sur l’ensemble des champs est calculée. Les cellules changent d’un champ à l’autre alors que l’éclairage ne change pas ; la médiane conserve donc l’éclairage et perd les cellules. Elle est lissée par un filtre gaussien (sigma 6 blocs, environ 96 pixels du champ) ; le canal nucléaire, dont les noyaux brillants et épars laissent une médiane plus bruitée, est ensuite ajusté par un polynôme d’ordre 4 en 2-D. Le décalage de la caméra et du fond ``b`` est le percentile 0.1 de toutes les moyennes de bloc, et la carte vaut ``flat = (smooth - b) / (centre - b)`` : 1 au centre. Elle est bornée inférieurement à 0.25, de sorte qu’aucun pixel n’est multiplié par plus de 4."
+    },
+    {
+      "context": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "label": "spacr.ops_flatfield#3",
+      "source": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "source_sha256": "89e130d8bfaa108105a629b814b380677140d246b4d15565a25c8c9537e96df6",
+      "translation": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b"
+    },
+    {
+      "context": "The exact correction divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "label": "spacr.ops_flatfield#4",
+      "source": "THE EXACT CORRECTION divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "source_sha256": "927ddc14c15f1c947071cab81525cdba9ca907b3aafd20f2a99c58914cd25a88",
+      "translation": "LA CORRECTION EXACTE divise chaque pixel avant la mesure (:func:`correct_field`). Elle nécessite de nouveau les images brutes, ce qui, sur la plaque A, a représenté 2.1 TB lus et environ 58 heures de mesure avec six processus de travail."
+    },
+    {
+      "context": "The analytic correction moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and image data channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "label": "spacr.ops_flatfield#5",
+      "source": "THE ANALYTIC CORRECTION moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "source_sha256": "275347ac622844491362828c02475ff032e90357f3438edd74e14f7b0428d018",
+      "translation": "LA CORRECTION ANALYTIQUE déplace les caractéristiques déjà mesurées (:func:`correct_features`). Un passage sur les masques (:func:`mask_pass`) donne, par cellule, compartiment et canal, le gain moyen ``g`` de ``1 / flat`` sur les pixels du compartiment et le nombre de pixels ``n``. Ensuite :"
+    },
+    {
+      "context": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "label": "spacr.ops_flatfield#6",
+      "source": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "source_sha256": "ec9d1ac2fcf4b90ba08c91e98795cf75def87223815a5a5b9687e5ddcb8feac5",
+      "translation": "position (moyenne, médiane, mode, minimum, maximum, percentiles)   (v - b) g + b intégrées                                            (v - b n) g + b n dispersion (std, étendue, iqr)                              v g cv, gini                                              recalculés tout le reste                                       inchangé"
+    },
+    {
+      "context": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 laboratory microplate A microscope fields of view (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "label": "spacr.ops_flatfield#7",
+      "source": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 plate A fields (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "source_sha256": "eced5238a43e65642b3c5a1a299bcaa0017053e4a0389f35e59c827ffbf19836",
+      "translation": "Elle est exacte lorsque le champ plat est constant sur la cellule, ce qui est presque le cas : il varie de moins de 2 pour cent sur une cellule de 70 pixels, sauf dans les coins extrêmes. Sur 24 champs de la plaque A (31,078 cellules) comparés à la correction exacte, l’erreur relative médiane des caractéristiques de position est passée de 6.9 à 0.10 pour cent, celle des intégrées de 6.9 à 0.01 et celle de la dispersion de 9.0 à 0.42. Le mode d’une image en virgule flottante ne suit aucune règle de ce type ; les 12 caractéristiques ``*_mode_intensity`` sont donc corrigées comme des positions et signalées (:func:`flagged_features`)."
+    },
+    {
+      "context": "Per-channel flat-microscope field of view maps from many microscope fields of view' block means.",
+      "label": "spacr.ops_flatfield.build_flat_maps#0",
+      "source": "Per-channel flat-field maps from many fields' block means.",
+      "source_sha256": "faf5e135ac39f47af568717af5aa25ec827eda10b0092b6e47979d9b998be65e",
+      "translation": "Cartes de champ plat par canal à partir des moyennes de bloc de nombreux champs."
+    },
+    {
+      "context": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "label": "spacr.ops_flatfield.build_flat_maps#1",
+      "source": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "source_sha256": "0f95741babeeb7955fad34622492f2c5d9d0d36169f774ee12b92fb5fa67b946",
+      "translation": "``(N, h, w, C)`` moyennes de bloc de ``N`` champs (:func:`field_blocks`), grilles de blocs carrés."
+    },
+    {
+      "context": "This is the method of the laboratory microplate A pilot (seg-QC ``flat.py``) and of the laboratory microplate B to D maps (``build_flat.py``); rebuilt from the same microscope fields of view it gives the same arrays.",
+      "label": "spacr.ops_flatfield.build_flat_maps#10",
+      "source": "This is the method of the plate A pilot (seg-QC ``flat.py``) and of the plate B to D maps (``build_flat.py``); rebuilt from the same fields it gives the same arrays.",
+      "source_sha256": "9afdd3f3f1f816f6a091405801a0abc8fe81a74851254e01c7c94ca20b88abe0",
+      "translation": "C’est la méthode du pilote de la plaque A (seg-QC ``flat.py``) et des cartes des plaques B à D (``build_flat.py``) ; reconstruite à partir des mêmes champs, elle donne les mêmes tableaux."
+    },
+    {
+      "context": "the name of each of the ``C`` channels.",
+      "label": "spacr.ops_flatfield.build_flat_maps#2",
+      "source": "the name of each of the ``C`` channels.",
+      "source_sha256": "0f47668c2c3cd43ac1444554219b2ffadd4a449d904ef65ace788ecd078cfac0",
+      "translation": "le nom de chacun des ``C`` canaux."
+    },
+    {
+      "context": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "label": "spacr.ops_flatfield.build_flat_maps#3",
+      "source": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "source_sha256": "64080c1207675b5924f8992ae2fc732cb18eb1a3c85a0ed9e342c8ed69a45711",
+      "translation": "canaux dont la médiane lissée est aussi ajustée par un polynôme en 2-D ; par défaut, le canal nucléaire."
+    },
+    {
+      "context": "Gaussian sigma in blocks.",
+      "label": "spacr.ops_flatfield.build_flat_maps#4",
+      "source": "Gaussian sigma in blocks.",
+      "source_sha256": "7717f3b343ef10b045cfebae91334eea523ab2e1242ceb4a46bbf6bd1ea87641",
+      "translation": "sigma gaussien en blocs."
+    },
+    {
+      "context": "the polynomial's degree.",
+      "label": "spacr.ops_flatfield.build_flat_maps#5",
+      "source": "the polynomial's degree.",
+      "source_sha256": "4e5f7375b5dbf8f2944f389d38adde639463ebcc20acb5343e3e098b79e61b4f",
+      "translation": "le degré du polynôme."
+    },
+    {
+      "context": "the percentile of all block means taken as the offset ``b``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#6",
+      "source": "the percentile of all block means taken as the offset ``b``.",
+      "source_sha256": "51761a8228ab578f9b69bdbc6d3ff88320d8abdb1c4862bce4020317909c596b",
+      "translation": "le percentile de toutes les moyennes de bloc pris comme décalage ``b``."
+    },
+    {
+      "context": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#7",
+      "source": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "source_sha256": "bf2ed86d32a723ce6215ece026ef556cad7a6ecabb1a623f3bb588f7ce6fc3b9",
+      "translation": "la plus petite valeur du champ plat, de sorte que le gain vaut au plus ``1 / floor``."
+    },
+    {
+      "context": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "label": "spacr.ops_flatfield.build_flat_maps#8",
+      "source": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "source_sha256": "872b65adbe01df639329f7a9a5c7d811760d343e19ebb26f2f486b40918c92bb",
+      "translation": "la moitié du côté, en blocs, de la fenêtre centrale sur laquelle la carte est normalisée."
+    },
+    {
+      "context": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#9",
+      "source": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "source_sha256": "8a6feeb8008184901b02b5a1fc95cd6cb261d89159ae7d862f114f9e6df619be",
+      "translation": "``(maps, method)`` : ``{channel: (h, w) float32 flat}``, 1 au centre, et ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``."
+    },
+    {
+      "context": "The microscope fields of view a laboratory microplate's maps are built from: a seeded random sample.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#0",
+      "source": "The fields a plate's maps are built from: a seeded random sample.",
+      "source_sha256": "22888338c75adb2ab0b7cfe024aca34d9a4f0b6cd6af8ee9364f1dc8975b5232",
+      "translation": "Les champs à partir desquels les cartes d’une plaque sont construites : un échantillon aléatoire à graine fixe."
+    },
+    {
+      "context": "every ``(well, site)`` that may be used, in a fixed order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#1",
+      "source": "every ``(well, site)`` that may be used, in a fixed order.",
+      "source_sha256": "0d7859350dfdf6d990831af8d3d7de9baeb58fca62b025223b0bdef5e60702a0",
+      "translation": "chaque ``(well, site)`` utilisable, dans un ordre fixe."
+    },
+    {
+      "context": "how many to take; all of them when fewer exist.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#2",
+      "source": "how many to take; all of them when fewer exist.",
+      "source_sha256": "e1401c78e98167b815a2aea81041d60404abd7f24ecf9804d1de1bc1d3cf929f",
+      "translation": "le nombre à prendre ; tous lorsqu’il y en a moins."
+    },
+    {
+      "context": "the seed of :func:`numpy.random.default_rng`.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#3",
+      "source": "the seed of :func:`numpy.random.default_rng`.",
+      "source_sha256": "5693e1040babf43adef896c23204de290ded94d310944ec7aa38a9b7f78b6a8a",
+      "translation": "la graine de :func:`numpy.random.default_rng`."
+    },
+    {
+      "context": "the chosen ``(well, site)``, in ``pool`` order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#4",
+      "source": "the chosen ``(well, site)``, in ``pool`` order.",
+      "source_sha256": "b4b209393e7b75a95ee3ec6a462c85c4ec2cba6277325a101e66794dec69b077",
+      "translation": "les ``(well, site)`` choisis, dans l’ordre de ``pool``."
+    },
+    {
+      "context": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#5",
+      "source": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "source_sha256": "271daada2090e2016c216e03f6829ffa87e1a4655fb739065c6d0fbce89628be",
+      "translation": "Des positions aléatoires sur la plaque, afin que chaque pixel de la carte voie autant de cellules que d’espaces vides ; ``build_flat.py`` des cartes des plaques B à D tire de la même façon."
+    },
+    {
+      "context": "The analytic flat-field correction of measured features.",
+      "label": "spacr.ops_flatfield.correct_features#0",
+      "source": "The analytic flat-field correction of measured features.",
+      "source_sha256": "a7e188213ae364084c5ce96fc6e95d79bbfccfdbbe3a4e69604256d0cb7c4a4f",
+      "translation": "La correction analytique de champ plat des caractéristiques mesurées."
+    },
+    {
+      "context": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "label": "spacr.ops_flatfield.correct_features#1",
+      "source": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "source_sha256": "06aae2c68764de182b836c96232d9a07f5e23e4429ef4097c0c5a3513d8c7d91",
+      "translation": "une ligne par cellule, contenant ``features`` et les colonnes que nomme :func:`correction_inputs`."
+    },
+    {
+      "context": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "label": "spacr.ops_flatfield.correct_features#2",
+      "source": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "source_sha256": "7ff8627941c6fbae46b65b18e886d76c9c885ead0de3c972eb6f19dd501eb4bb",
+      "translation": "un tableau aligné sur ``frame`` contenant les colonnes de :func:`mask_pass` ``<compartment>_<CH>_g`` et ``<compartment>_px``."
+    },
+    {
+      "context": "the columns to return.",
+      "label": "spacr.ops_flatfield.correct_features#3",
+      "source": "the columns to return.",
+      "source_sha256": "e5d3524d0ec144394a281a5e5e5f1c2173eda4f93bc8e22deee7b0b38d3aa399",
+      "translation": "les colonnes à renvoyer."
+    },
+    {
+      "context": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "label": "spacr.ops_flatfield.correct_features#4",
+      "source": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "source_sha256": "99822520ea2004b20a6699448bf4570034b6cb9f3281a2733990182970239705",
+      "translation": "``{channel: b}``, indexé par les noms de canaux qu’utilisent les colonnes de gain."
+    },
+    {
+      "context": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "label": "spacr.ops_flatfield.correct_features#5",
+      "source": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "source_sha256": "08b319b73071a428dc1649ca9bb82c189b4c6467f9ae2f709d0f9466e7f977e0",
+      "translation": "un tableau float32 de ``features`` ; une colonne que la correction ne déplace pas est renvoyée telle que mesurée."
+    },
+    {
+      "context": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "label": "spacr.ops_flatfield.correct_features#6",
+      "source": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "source_sha256": "c9cbc5eff5353ce9ab8c977910cfd1da5e80a3d5de6d79a49f36aa812492adbe",
+      "translation": "Chaque type se déplace comme l’indique la docstring du module. Les valeurs sont calculées en float64, et cv et gini à partir de la moyenne et de l’écart-type corrigés avant la conversion du résultat, ce que faisait ``flat_correct.py`` du pilote de la plaque A."
+    },
+    {
+      "context": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "label": "spacr.ops_flatfield.correct_field#0",
+      "source": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "source_sha256": "f6e29c6373e832725006b3895add26658172c12b410db6d90c4b0fdbfbb1833b",
+      "translation": "Un champ corrigé pixel par pixel : ``(I - b) / flat + b``."
+    },
+    {
+      "context": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "label": "spacr.ops_flatfield.correct_field#2",
+      "source": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "source_sha256": "435ea5e9a8a9888a483866a4b3b58119946a3b53c5f203c55b888000dcc52def",
+      "translation": "``{channel: (H, W) flat}`` issu de :func:`flat_planes`."
+    },
+    {
+      "context": "the stack's channel names, in order.",
+      "label": "spacr.ops_flatfield.correct_field#4",
+      "source": "the stack's channel names, in order.",
+      "source_sha256": "7ac4c098ed0de0dde3f73ed1b3793a250612bcaef55afd4b8891efa7400ea2b5",
+      "translation": "les noms des canaux de la pile, dans l’ordre."
+    },
+    {
+      "context": "a float32 copy; the input is not changed.",
+      "label": "spacr.ops_flatfield.correct_field#5",
+      "source": "a float32 copy; the input is not changed.",
+      "source_sha256": "88534da2aedac23210f0a9eff565414ce9666d5e1ec3664b13f342967f639117",
+      "translation": "une copie float32 ; l’entrée n’est pas modifiée."
+    },
+    {
+      "context": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "label": "spacr.ops_flatfield.correct_field#6",
+      "source": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "source_sha256": "d3b3fd880b3d6470269b1a58b6b6d7c2d00024c15417484d4e3588b1148bfc21",
+      "translation": "Le décalage est rajouté afin qu’un pixel corrigé reste à l’échelle de la caméra et que le fond garde son niveau ; seule la baisse d’éclairage est éliminée par division."
+    },
+    {
+      "context": "The columns :func:`correct_features` reads to correct ``features``.",
+      "label": "spacr.ops_flatfield.correction_inputs#0",
+      "source": "The columns :func:`correct_features` reads to correct ``features``.",
+      "source_sha256": "e57c609642e85a9baf8e5fe0801a707abc1a414616686fdfd2bee0dc7377bb1a",
+      "translation": "Les colonnes que lit :func:`correct_features` pour corriger ``features``."
+    },
+    {
+      "context": "the columns to correct.",
+      "label": "spacr.ops_flatfield.correction_inputs#1",
+      "source": "the columns to correct.",
+      "source_sha256": "906b8355e70c7ee8c9a4cb6de9a8f5d60df09f13d88b22fc5a8c3f6546ca0b36",
+      "translation": "les colonnes à corriger."
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.correction_inputs#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "les noms des canaux."
+    },
+    {
+      "context": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "label": "spacr.ops_flatfield.correction_inputs#3",
+      "source": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "source_sha256": "d11a0f253c158ceedf8169e8898479702e0be14a2f359adee15f0f51018048af",
+      "translation": "``features`` plus les colonnes de moyenne et d’écart-type à partir desquelles leurs cv et gini sont recalculés, dans un ordre stable."
+    },
+    {
+      "context": "How the analytic correction moves one feature column.",
+      "label": "spacr.ops_flatfield.correction_kind#0",
+      "source": "How the analytic correction moves one feature column.",
+      "source_sha256": "cd83b55d8b8039dd1f0b4cbf61a74340f52190dbf7329d87eb6a3dd4bd5bc404",
+      "translation": "Comment la correction analytique déplace une colonne de caractéristique."
+    },
+    {
+      "context": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "label": "spacr.ops_flatfield.correction_kind#1",
+      "source": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "source_sha256": "169ab86025c64c0a1ff0fdd05e66a3880886e471665c99c79182bf9faedb686b",
+      "translation": "une colonne de la table des cellules, ``<compartment>_<channel>_<stat>``."
+    },
+    {
+      "context": "the channel names; matched without regard to case.",
+      "label": "spacr.ops_flatfield.correction_kind#2",
+      "source": "the channel names; matched without regard to case.",
+      "source_sha256": "efaa4212e72f1fedf2ea919fe53f7ec3bfe76719191447e5226ba8aa91fdd906",
+      "translation": "les noms des canaux ; comparés sans tenir compte de la casse."
+    },
+    {
+      "context": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "label": "spacr.ops_flatfield.correction_kind#3",
+      "source": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "source_sha256": "8c34383c9d6773e3f1b2e63ae272d5fbd5924e9ed3699ef101873d862ce06227",
+      "translation": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, ou None pour une colonne que la correction laisse inchangée."
+    },
+    {
+      "context": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "label": "spacr.ops_flatfield.field_blocks#0",
+      "source": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "source_sha256": "a5089737f6d07976d73bbd08e8b15522c77dd28fa28b7aaf30ec0db5e1c1002f",
+      "translation": "Un champ sous forme de moyennes de bloc, l’entrée que prend :func:`build_flat_maps`."
+    },
+    {
+      "context": "``(H, W, C)`` intensities of one field.",
+      "label": "spacr.ops_flatfield.field_blocks#1",
+      "source": "``(H, W, C)`` intensities of one field.",
+      "source_sha256": "a50e4d98c57e8426b54c9ff03e2d29ecfc1c9399e3925ade82820c16f653529a",
+      "translation": "``(H, W, C)`` intensités d’un champ."
+    },
+    {
+      "context": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "label": "spacr.ops_flatfield.field_blocks#2",
+      "source": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "source_sha256": "6b99f53b0470df09d34feba35b36da415a0895a385dfcbcec35fb598566f6429",
+      "translation": "le côté du bloc en pixels ; les lignes et colonnes situées après le dernier bloc entier sont écartées."
+    },
+    {
+      "context": "``(H // block, W // block, C)`` float32 block means.",
+      "label": "spacr.ops_flatfield.field_blocks#3",
+      "source": "``(H // block, W // block, C)`` float32 block means.",
+      "source_sha256": "a8554ffe06a663d796f0546ed2b7cc4b9f43a9f6f1177531f18a5467d8bc6f35",
+      "translation": "``(H // block, W // block, C)`` moyennes de bloc en float32."
+    },
+    {
+      "context": "The intensity features the analytic correction cannot get right.",
+      "label": "spacr.ops_flatfield.flagged_features#0",
+      "source": "The intensity features the analytic correction cannot get right.",
+      "source_sha256": "03ad7807a6e4a660e4e7d8ca2a9ec0f22a03b04a432c94ca57f251a76877419c",
+      "translation": "Les caractéristiques d’intensité que la correction analytique ne peut pas corriger correctement."
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.flagged_features#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "les noms des canaux."
+    },
+    {
+      "context": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "label": "spacr.ops_flatfield.flagged_features#3",
+      "source": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "source_sha256": "8d613ee38d494232b7cd0ce3ec646ca8873435c5c62f12a02f10f28b09d6b2c9",
+      "translation": "les colonnes ``*_mode_intensity``. Le mode d’une image en virgule flottante n’est pas une position que le gain déplace de façon prévisible ; il est donc corrigé comme tel et signalé plutôt que considéré comme fiable."
+    },
+    {
+      "context": "Each map brought to the field's pixels, bilinearly.",
+      "label": "spacr.ops_flatfield.flat_planes#0",
+      "source": "Each map brought to the field's pixels, bilinearly.",
+      "source_sha256": "5de0ab2afae7f7513c22ebe7a09dfb15d6a152eaf7a1a41cf6f9ac9e0b1afba6",
+      "translation": "Chaque carte ramenée aux pixels du champ par interpolation bilinéaire."
+    },
+    {
+      "context": "``(H, W)`` of a field.",
+      "label": "spacr.ops_flatfield.flat_planes#2",
+      "source": "``(H, W)`` of a field.",
+      "source_sha256": "b3ca9dbf1c294984f1cb32be1f7406920f40c0acf52a340c240da105a3c71b20",
+      "translation": "``(H, W)`` d’un champ."
+    },
+    {
+      "context": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "label": "spacr.ops_flatfield.load_flat_maps#0",
+      "source": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "source_sha256": "47bce7c8b4f6e9c7ce2065881f9c93d8d66303c742e48e8ef3c559795b5ff854",
+      "translation": "Les cartes et décalages d’une plaque à partir d’un dossier écrit par :func:`write_flat_maps`."
+    },
+    {
+      "context": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the laboratory microplate A pilot's ``seg_qc`` folder has the same layout.",
+      "label": "spacr.ops_flatfield.load_flat_maps#1",
+      "source": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the plate A pilot's ``seg_qc`` folder has the same layout.",
+      "source_sha256": "11668fc71496c954dd867bae297bc2f288580fb620a0000d243125e6919386e2",
+      "translation": "contient ``flat_info.json`` et un ``flat_*_<CH>.npy`` par canal ; le dossier ``seg_qc`` du pilote de la plaque A a la même organisation."
+    },
+    {
+      "context": "the channels wanted, matched without regard to case.",
+      "label": "spacr.ops_flatfield.load_flat_maps#2",
+      "source": "the channels wanted, matched without regard to case.",
+      "source_sha256": "b008f4d9eb0e8eab919726b5c1b332dc9273e5d6b19ad1d73e47cbd779101c12",
+      "translation": "les canaux voulus, comparés sans tenir compte de la casse."
+    },
+    {
+      "context": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "label": "spacr.ops_flatfield.load_flat_maps#3",
+      "source": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "source_sha256": "f12b438a91b83001c0dfeedfc7365c1e534214b373093bd11e9d712dd389140a",
+      "translation": "``(maps, offsets, info)`` : ``{channel: flat}`` tel que stocké, ``{channel: b}`` et l’enregistrement d’informations avec le md5 de chaque carte (calculé ici lorsque l’enregistrement ne le contient pas)."
+    },
+    {
+      "context": "when the folder lacks the record or a map.",
+      "label": "spacr.ops_flatfield.load_flat_maps#4",
+      "source": "when the folder lacks the record or a map.",
+      "source_sha256": "fb0e310c010aff62a5c71fe998de0a39b5c68ea6b839dc57da96dade3c2b9654",
+      "translation": "lorsqu’il manque au dossier l’enregistrement ou une carte."
+    },
+    {
+      "context": "Per-cell geometry of one microscope field of view's masks, and the mean gain under each.",
+      "label": "spacr.ops_flatfield.mask_pass#0",
+      "source": "Per-cell geometry of one field's masks, and the mean gain under each.",
+      "source_sha256": "3d5111cf8b20f3e9fbafb48e170e7b82c50d8c28c4d3e0ca046ffdd98682e94f",
+      "translation": "Géométrie par cellule des masques d’un champ, et le gain moyen sous chacune."
+    },
+    {
+      "context": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "label": "spacr.ops_flatfield.mask_pass#1",
+      "source": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "source_sha256": "9db049086959409d4afb5fd10d885a118b20753abcbd7ea4ff5104b8c10f00e3",
+      "translation": "les étiquettes de noyaux du champ, le noyau ``k`` dans la cellule ``k``."
+    },
+    {
+      "context": "its cell labels.",
+      "label": "spacr.ops_flatfield.mask_pass#2",
+      "source": "its cell labels.",
+      "source_sha256": "4df5c24d34bd354dfa83cc841230b9cd59dc6bcca684785d3a5fc08308876b50",
+      "translation": "ses étiquettes de cellules."
+    },
+    {
+      "context": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "label": "spacr.ops_flatfield.mask_pass#3",
+      "source": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "source_sha256": "34f830301330248f513a598878e2f415b1226f8c7a964b1638c23b39cf7082ba",
+      "translation": "``{channel: (H, W) 1 / flat}`` en float64, ou None pour la géométrie seule."
+    },
+    {
+      "context": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With image layers, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "label": "spacr.ops_flatfield.mask_pass#4",
+      "source": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With planes, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "source_sha256": "70055bee3caeea8392461ab2fef96981a742e668f5072bdf14d540bed971f3a2",
+      "translation": "une ligne par étiquette de cellule : ``label`` ; ``<c>_px`` par compartiment (cellule, noyau, cytoplasme) ; ``cell_cy``/``cell_cx`` et ``nucleus_cy``/``nucleus_cx``, les centroïdes en pixels ; ``top``, ``bottom``, ``left``, ``right``, le cadre de la cellule ; et ``touches_field_edge`` et ``nucleus_touches_field_edge``. Avec des plans, aussi ``<c>_<CH>_g``, la moyenne de ``1 / flat`` sur les pixels du compartiment."
+    },
+    {
+      "context": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "label": "spacr.ops_flatfield.mask_pass#5",
+      "source": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "source_sha256": "627fc267ebc687914f567d08b0c16d343ee93220969c97a7a801f8fafcde6d2f",
+      "translation": "Une cellule qui touche le bord du champ est coupée : une partie se trouve hors du champ, de sorte que son aire et ses intensités intégrées sont trop petites. Lorsqu’un champ voisin contient la cellule entière, c’est cette copie qu’il faut conserver."
+    },
+    {
+      "context": "Write a laboratory microplate's maps once, with their md5 and the microscope fields of view used.",
+      "label": "spacr.ops_flatfield.write_flat_maps#0",
+      "source": "Write a plate's maps once, with their md5 and the fields used.",
+      "source_sha256": "bc7e44a15339793f5a669c5caebbe0ab1eedca88021ca2b7d41260b270eaa3c7",
+      "translation": "Écrire une seule fois les cartes d’une plaque, avec leur md5 et les champs utilisés."
+    },
+    {
+      "context": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "label": "spacr.ops_flatfield.write_flat_maps#1",
+      "source": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "source_sha256": "422a500918b678ee7669e0247b93e9013bcf4d8b465deeca130cf5ad3ca57e64",
+      "translation": "l’endroit où vont ``flat_<plate>_<CH>.npy`` et ``flat_info.json``."
+    },
+    {
+      "context": "the plate name used in the file names.",
+      "label": "spacr.ops_flatfield.write_flat_maps#2",
+      "source": "the plate name used in the file names.",
+      "source_sha256": "49992e26f0f6d07103b30655c50b94a304a257436a89ed49e0d2080653d4d693",
+      "translation": "le nom de la plaque utilisé dans les noms de fichiers."
+    },
+    {
+      "context": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "label": "spacr.ops_flatfield.write_flat_maps#3",
+      "source": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "source_sha256": "10cc5d3197920cd0be028e387b1b79101fe5129eaba9064edbc9f63e5e302426",
+      "translation": "``{channel: flat}`` issu de :func:`build_flat_maps`."
+    },
+    {
+      "context": "its ``method`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#4",
+      "source": "its ``method`` record.",
+      "source_sha256": "d5322cadff7db9056bcca30536a763fa16a74d1c13f20be3449d539664903181",
+      "translation": "son enregistrement ``method``."
+    },
+    {
+      "context": "the ``(well, site)`` the maps were built from.",
+      "label": "spacr.ops_flatfield.write_flat_maps#5",
+      "source": "the ``(well, site)`` the maps were built from.",
+      "source_sha256": "c320c4bc85715f355d58d6a73a589eb72576d19706ca1286ddb974ce6dd05f85",
+      "translation": "les ``(well, site)`` à partir desquels les cartes ont été construites."
+    },
+    {
+      "context": "more keys for ``flat_info.json``, such as when and from which microplate sample positions the maps were built.",
+      "label": "spacr.ops_flatfield.write_flat_maps#6",
+      "source": "more keys for ``flat_info.json``, such as when and from which wells the maps were built.",
+      "source_sha256": "b10167b3f90823f997252ab783f678d45de401c8d3bc3b43607752fb13f5eb93",
+      "translation": "des clés supplémentaires pour ``flat_info.json``, par exemple quand et à partir de quels puits les cartes ont été construites."
+    },
+    {
+      "context": "the ``flat_info.json`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#7",
+      "source": "the ``flat_info.json`` record.",
+      "source_sha256": "1f6fad2070ad6fc32c3438a222104bece692e189bbd0db469323bf6f67699a8b",
+      "translation": "l’enregistrement ``flat_info.json``."
+    },
+    {
+      "context": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "label": "spacr.ops_flatfield.write_flat_maps#8",
+      "source": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "source_sha256": "b050a1583968e085ff5e448c9c0e419c0c55c663ecb2da1db2391c12f189d204",
+      "translation": "lorsque le dossier contient déjà des cartes. Une carte est enregistrée par son md5 dans chaque analyse qui l’a utilisée ; elle n’est donc jamais écrasée : construisez-la plutôt dans un nouveau dossier."
+    },
+    {
+      "context": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "label": "spacr.ops_merge.deepest_field_matches#0",
+      "source": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "source_sha256": "02fb82d07b1e30ca5a306409097a12b06ae9d3f6dae8f19a9c457829ec3dd76a",
+      "translation": "Une observation par noyau de séquençage : la copie située le plus à l’intérieur de son champ."
+    },
+    {
+      "context": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "label": "spacr.ops_merge.deepest_field_matches#1",
+      "source": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "source_sha256": "38cc88ddcf15bfda79ea7ed8b81dc7b2723a0c8c276ee5938b72e7c52eaaaf52",
+      "translation": "lignes de fusion avec les colonnes ``key``, ``depth`` et ``by``."
+    },
+    {
+      "context": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#3",
+      "source": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "source_sha256": "94fa2b03abfd7859a18baa34d7860cb898f2bc9043bf47381313b3d23527743c",
+      "translation": "la profondeur à laquelle le noyau de séquençage se trouve dans le champ de la ligne, issue de :func:`footprint_depth` ; la plus grande l’emporte."
+    },
+    {
+      "context": "breaks ties in ``depth``; the smallest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#4",
+      "source": "breaks ties in ``depth``; the smallest wins.",
+      "source_sha256": "deb2cbbca720aafeaff0ffadcd4ca20cb57e432233e8d4d3484531ff299428e8",
+      "translation": "départage les égalités de ``depth`` ; la plus petite valeur l’emporte."
+    },
+    {
+      "context": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "label": "spacr.ops_merge.deepest_field_matches#5",
+      "source": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "source_sha256": "bf304e2b69cb7325be9abb6550a74d8d4cc041357c1b288fb4280f8b93cca3a5",
+      "translation": "``(kept, dropped)`` -- le tableau avec une ligne par ``key``, dans l’ordre des lignes retenues, et le nombre de lignes écartées."
+    },
+    {
+      "context": "Core ownership by the sequencing centroid (A1b). A nucleus imaged in two overlapping phenotype microscope fields of view is kept from the microscope field of view in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the microscope field of view's edge: on laboratory microplate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "label": "spacr.ops_merge.deepest_field_matches#6",
+      "source": "CORE OWNERSHIP BY THE SEQUENCING CENTROID (A1b). A nucleus imaged in two overlapping phenotype fields is kept from the field in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the field's edge: on plate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "source_sha256": "6ad1ab96fc395acbf6464dca8d4f2fc8c0d801edbc90174472df9d51e43761f0",
+      "translation": "APPARTENANCE AU CŒUR DU CHAMP SELON LE CENTROÏDE DE SÉQUENÇAGE (A1b). Un noyau imagé dans deux champs de phénotype qui se chevauchent est conservé depuis le champ dans lequel son centroïde de séquençage se trouve le plus à l’intérieur, et non depuis la correspondance la plus proche (:func:`deduplicate_matches`). La correspondance la plus proche est souvent la copie de marge, et une copie de marge est plus souvent coupée par le bord du champ : sur la plaque A de Funk et al. 2022, la correspondance la plus proche a conservé une autre copie pour 14.4 pour cent des cellules liées. À profondeur égale, la correspondance la plus proche l’emporte, puis la première ligne."
+    },
+    {
+      "context": "The microplate sample position-frame box a phenotype microscope field of view covers.",
+      "label": "spacr.ops_merge.field_footprint#0",
+      "source": "The well-frame box a phenotype field covers.",
+      "source_sha256": "4821ad5c965ba7b1cf873366b7f6d29bc9a7610f93c99ea3265b24ab82f9fb6a",
+      "translation": "Le cadre, dans le repère du puits, que couvre un champ de phénotype."
+    },
+    {
+      "context": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the microscope field of view's four corners.",
+      "label": "spacr.ops_merge.field_footprint#3",
+      "source": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the field's four corners.",
+      "source_sha256": "3bb1c0630dad17fc8888b3c15a5bc04c739efde1c12cf3cc5129127296c77f14",
+      "translation": "``(low, high)``, chacun ``(y, x)`` en pixels du puits : les coordonnées minimales et maximales des quatre coins du champ."
+    },
+    {
+      "context": "How far each microplate sample position-frame point lies inside a microscope field of view's footprint.",
+      "label": "spacr.ops_merge.footprint_depth#0",
+      "source": "How far each well-frame point lies inside a field's footprint.",
+      "source_sha256": "ed3523bae1570e932d752ec2428b76d60771f15866cb70277fe27ed549d78b34",
+      "translation": "La profondeur à laquelle chaque point du repère du puits se trouve à l’intérieur de l’emprise d’un champ."
+    },
+    {
+      "context": "the footprint's smallest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#2",
+      "source": "the footprint's smallest ``(y, x)``.",
+      "source_sha256": "0f9cd636fbe334feabc52bedb9230a5de8da49fe9f16e9163690a378b959f0c8",
+      "translation": "le plus petit ``(y, x)`` de l’emprise."
+    },
+    {
+      "context": "its largest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#3",
+      "source": "its largest ``(y, x)``.",
+      "source_sha256": "a741315e63335849ba37df09509902acd15d839693ee9ba74306b07199aea79b",
+      "translation": "son plus grand ``(y, x)``."
+    },
+    {
+      "context": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "label": "spacr.ops_merge.footprint_depth#4",
+      "source": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "source_sha256": "78c014403b6fc4ee8d93a149299c4b468ea1cc8d288bfd4ed4e1d33e249c964e",
+      "translation": "``(N,)`` distances en pixels du puits jusqu’au bord le plus proche de l’emprise, négatives à l’extérieur."
+    },
+    {
+      "context": "The depth decides which microscope field of view owns a cell. Where microscope fields of view overlap, the microscope field of view in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the microscope field of view's border.",
+      "label": "spacr.ops_merge.footprint_depth#5",
+      "source": "THE DEPTH DECIDES WHICH FIELD OWNS A CELL. Where fields overlap, the field in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the field's border.",
+      "source_sha256": "931cec094a3c58e0b1c431732f24cc9e8fdea5cd88d71048247132cff016dffe",
+      "translation": "LA PROFONDEUR DÉCIDE À QUEL CHAMP APPARTIENT UNE CELLULE. Là où les champs se chevauchent, le champ dans lequel une cellule se trouve le plus à l’intérieur l’image le plus loin de tout bord ; cette copie est donc la moins susceptible d’être coupée par la bordure du champ."
+    },
+    {
+      "context": "The fields whose footprints overlap each field's.",
+      "label": "spacr.ops_merge.overlapping_fields#0",
+      "source": "The fields whose footprints overlap each field's.",
+      "source_sha256": "d6f8b1cadad4050afea5c8476067eaf17ecec67c34fc8109137608e55ccc337d",
+      "translation": "Les champs dont l’emprise chevauche celle de chaque champ."
+    },
+    {
+      "context": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "label": "spacr.ops_merge.overlapping_fields#1",
+      "source": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "source_sha256": "6edc149d6b726d8ed17848083cf1b3329d80d2d57a180cbd7029339ea506df18",
+      "translation": "``{site: (low, high)}`` issu de :func:`field_footprint`."
+    },
+    {
+      "context": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "label": "spacr.ops_merge.overlapping_fields#2",
+      "source": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "source_sha256": "8fe729fe35c4347a4df968247e52634ccf1d97ebddb27286edd775f5f41e7ce7",
+      "translation": "``{site: [other sites]}``, dans l’ordre de ``footprints``."
+    },
+    {
+      "context": "Funk et al. 2022's mass displacement and channel correlations.",
+      "label": "spacr.ops_sample.funk_object_features#0",
+      "source": "Funk et al. 2022's mass displacement and channel correlations.",
+      "source_sha256": "5fbb3db424ae381951f6c3901b9c5470a97d90188746d93ce26c26dc0117e741",
+      "translation": "Le déplacement de masse et les corrélations entre canaux de Funk et al. 2022."
+    },
+    {
+      "context": "one compartment's label mask.",
+      "label": "spacr.ops_sample.funk_object_features#1",
+      "source": "one compartment's label mask.",
+      "source_sha256": "a5f00f91e2bc92b1004130188b2d7f559aa369c41f4701d5e94a8a17f5cb78ef",
+      "translation": "le masque d’étiquettes d’un compartiment."
+    },
+    {
+      "context": "``(H, W, C)`` intensities over it.",
+      "label": "spacr.ops_sample.funk_object_features#2",
+      "source": "``(H, W, C)`` intensities over it.",
+      "source_sha256": "011c9847a093c67fd731d462955e34e4da12be8af97791cd17fd9491246386ee",
+      "translation": "``(H, W, C)`` intensités sur celui-ci."
+    },
+    {
+      "context": "one short name per channel.",
+      "label": "spacr.ops_sample.funk_object_features#3",
+      "source": "one short name per channel.",
+      "source_sha256": "64151adb0eaa1b966dc83598bfb1646e4fc24ad3ef05744aa2a12ac9a3c5a9a7",
+      "translation": "un nom court par canal."
+    },
+    {
+      "context": "the compartment, ``nucleus`` or ``cell``.",
+      "label": "spacr.ops_sample.funk_object_features#4",
+      "source": "the compartment, ``nucleus`` or ``cell``.",
+      "source_sha256": "c5215cf40e2a0db802c1af85e774f6bf714d17e4b734424a916dee84cfe4d3b0",
+      "translation": "le compartiment, ``nucleus`` ou ``cell``."
+    },
+    {
+      "context": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "label": "spacr.ops_sample.funk_object_features#5",
+      "source": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "source_sha256": "614416043cd183bfeb83a14bf80fa754bc6fc2c1bdfda3e9a5288ce8165d7e4a",
+      "translation": "une ligne par étiquette : ``label``, ``<prefix>_<ch>_mass_displacement`` par canal et ``<prefix>_correlation_<a>_<b>`` par paire de canaux, dans l’ordre de :func:`itertools.combinations`."
+    },
+    {
+      "context": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "label": "spacr.ops_sample.funk_object_features#6",
+      "source": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "source_sha256": "b82c0bfb2d356f055c7550ee6c8d40a906465dff6efb9cf9977dca1585436a8d",
+      "translation": "Ce sont les définitions de Funk et al. dans OpticalPooledScreens, ``ops/cp_emulator.py``, que leur étape de phénotype (``Snake._extract_phenotype_cp_multichannel``) appliquait à chaque noyau et à chaque cellule :"
+    },
+    {
+      "context": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "label": "spacr.ops_sample.funk_object_features#7",
+      "source": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "source_sha256": "41cef48f64e02eb911dd5fab45b8ba39f6bc3098aeefae1ce0c2f1ed561af3cc",
+      "translation": "``mass_displacement`` (``intensity_features_multichannel``) : la distance en pixels entre le centroïde de l’objet et son centroïde pondéré par l’intensité, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. Une masse de DNA ou de tubuline déplacée signale une cellule asymétrique."
+    },
+    {
+      "context": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "label": "spacr.ops_sample.funk_object_features#8",
+      "source": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "source_sha256": "6f7ec20be15ab47871bb1202a965763b7487f8e49a0beac523d0c4acd4eb9e69",
+      "translation": "``correlation`` (``correlation_features_multichannel``, via ``ops.features.correlate_channels_all_multichannel``) : le r de Pearson de deux canaux sur les pixels de l’objet, ``np.corrcoef``."
+    },
+    {
+      "context": "Both are computed from per-label sums, centred on each label's mean, so a microscope field of view is one pass rather than one regionprops object per cell.",
+      "label": "spacr.ops_sample.funk_object_features#9",
+      "source": "Both are computed from per-label sums, centred on each label's mean, so a field is one pass rather than one regionprops object per cell.",
+      "source_sha256": "8557bc9c6ddd2f46df7d1d1a25db4051599c47b69ec8f346b92dc8b21196a5e7",
+      "translation": "Les deux sont calculés à partir de sommes par étiquette, centrées sur la moyenne de chaque étiquette, de sorte qu’un champ se traite en un seul passage plutôt qu’avec un objet regionprops par cellule."
+    },
+    {
+      "context": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "label": "spacr.ops_sample.measure_phenotype_field#6",
+      "source": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "source_sha256": "41ceac9ec628c2b5ea626e3506e4783f43cbe953a5b369440d6b919923883d50",
+      "translation": "ajoute les caractéristiques de Funk et al. 2022 : le déplacement de masse de chaque canal et la corrélation de chaque paire de canaux dans le noyau et dans la cellule (:func:`funk_object_features`), ainsi que ``nucleus_form_factor`` et ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` de leur ``ops/cp_emulator.py``), à partir de l’aire et du périmètre propres à spaCR."
+    },
+    {
+      "context": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "label": "spacr.ops_sample.measure_phenotype_field#7",
+      "source": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "source_sha256": "ab2fb1269405def9b4c64ed5536264ebb71d656dc75d1dad590e13508397280f",
+      "translation": "une ligne par cellule, indexée par ``label``, avec des colonnes ``nucleus_``, ``cell_`` et ``cytoplasm_`` et le centroïde du noyau sous la forme ``centroid_row``/``centroid_col`` en pixels du champ."
+    },
+    {
+      "context": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "label": "spacr.ops_sample.measure_phenotype_field#8",
+      "source": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "source_sha256": "43f1d0ebcf597fa7e424fa6e3b92960876c7493c7db364f7c6018c71bbfb1915",
+      "translation": "Les caractéristiques sont celles qu’écrit la mesure de spaCR -- la morphologie issue de :func:`spacr.measure._morphological_measurements`, l’intensité et la texture issues de :func:`spacr.measure._intensity_measurements` --, de sorte qu’une cellule OPS et la cellule d’un puits mesuré portent les mêmes colonnes et que rien n’est recalculé autrement. Le cytoplasme est la cellule moins son noyau, sous l’étiquette de la cellule."
+    },
+    {
+      "context": "Division analysis results: what tracked cells do before they divide.",
+      "label": "spacr.qt.widgets.division_panel#0",
+      "source": "Division analysis results: what tracked cells do before they divide.",
+      "source_sha256": "b274a5a3cfdbdd6175515304c29d4ac243e5c7c076dfe985019ef675501655c2",
+      "translation": "Résultats de l’analyse des divisions : ce que font les cellules suivies avant de se diviser."
+    },
+    {
+      "context": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "label": "spacr.qt.widgets.division_panel#1",
+      "source": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "source_sha256": "6a8ed0733697b85cb20367c6022b618c86f801752553bac558ddce37a755fcfd",
+      "translation": "L’exécution en série temporelle de Make Masks écrit un dossier de résultats par champ suivi sous ``tracks/division/`` lorsque ``timelapse_division_analysis`` est activé (voir :func:`spacr.division_analysis.write_division_results`). Ce panneau lit un tel dossier, ou trouve les dossiers de résultats sous n’importe quel dossier parent, et dessine les trois figures à partir de ses tables : les trajectoires alignées des cellules qui se divisent par rapport aux témoins appariés et à l’alignement aléatoire, le graphique en forêt des tailles d’effet et le graphique du contrôle de la taille. Rien n’est recalculé ; ce sont les tables sur le disque qui sont dessinées."
+    },
+    {
+      "context": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel#0",
+      "source": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "source_sha256": "0aafaef8df5d32ab60e2583cc8f24e1d51fcc42a19529aec432afe2742395c70",
+      "translation": "Les figures d’analyse des divisions d’un champ suivi, lues depuis le disque. Construit le panneau avec son bouton de dossier, sa liste de champs et ses onglets de figures."
+    },
+    {
+      "context": "whether a folder with results was chosen and loaded.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.browse#1",
+      "source": "whether a folder with results was chosen and loaded.",
+      "source_sha256": "cd7e1eaebab11536bd8312ca312bd1f1c8ec3d16df6cf95d6115d27e22892d46",
+      "translation": "si un dossier contenant des résultats a été choisi et chargé."
+    },
+    {
+      "context": "Show the results in ``folder``, or list those found below it.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#0",
+      "source": "Show the results in ``folder``, or list those found below it.",
+      "source_sha256": "d5c288893c03369b4675b4ec713c44f6bdb48dc273c388342436bc49e5cc9538",
+      "translation": "Afficher les résultats de ``folder``, ou lister ceux trouvés en dessous."
+    },
+    {
+      "context": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#1",
+      "source": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "source_sha256": "32e6c82e47ef6dc0f094ccab14a916d1bbebe8a0ac7510b97c85c437f902639f",
+      "translation": "un dossier écrit par :func:`spacr.division_analysis.write_division_results`, ou n’importe quel dossier au-dessus de tels dossiers ; s’il y en a plusieurs, le premier est affiché et les autres peuvent être choisis dans la liste."
+    },
+    {
+      "context": "whether results were found and drawn.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#2",
+      "source": "whether results were found and drawn.",
+      "source_sha256": "afe8e29f455621aed0265f5e5073b075e772946f71decc2a74b1f362712bc099",
+      "translation": "si des résultats ont été trouvés et dessinés."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch2-1108 branch: spacr.division_analysis.lineage_from_tracks, analyse_divisions, division_figures, write_division_results and read_division_results and the spacr.qt.widgets.division_panel module and DivisionAnalysisPanel (item 771); the spacr.ops_flatfield module, spacr.ops_merge.field_footprint, footprint_depth, overlapping_fields and deepest_field_matches, spacr.ops_sample.funk_object_features and the edited measure_phenotype_field and spacr.ops_engine.run_ops docstrings (items 852, 853 and 857). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

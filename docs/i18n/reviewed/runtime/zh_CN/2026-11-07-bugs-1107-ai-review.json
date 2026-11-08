@@ -12,24 +12,28 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "nucleus_min_size",
-      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 or None disables it. Default 2000, which suits 40-60x; when pixel_size_um or magnification is set, the 2000 default becomes the area of a disc one fifth of Mask's expected nucleus diameter (113 px at 20x, 30 px at 0.325 um/px). A field that loses more than half its nuclei prints a warning. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
-      "source_sha256": "52948b478e1636731b9d345d8dced1bd40cc3f4bf072579bfbcc450e79dc6b52",
-      "translation": "（已弃用）measure_crop 期间应用的最小细胞核大小（像素^2）：覆盖像素少于该值的标签会在测量任何特征之前从细胞核掩膜中删除，因此这些细胞核永远不会进入数据库。0 或 None 表示禁用。默认值 2000，适用于 40-60x；设置 pixel_size_um 或 magnification 后，默认值 2000 改为一个圆盘的面积，其直径为 Mask 预期细胞核直径的五分之一（20x 时为 113 px，0.325 um/px 时为 30 px）。某个视野失去超过一半的细胞核时，会打印一条警告。建议改用 object_filters 中针对 nucleus 的 'area' 行，它在分割时进行过滤。"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "pathogen_min_size",
       "source": "(Deprecated) Minimum pathogen object area in pixels squared, applied during measurement: any label with fewer pixels than this is erased from the pathogen mask before features are extracted. 0 or None disables it. Default 500, which suits 40-60x; when pixel_size_um or magnification is set, the 500 default becomes the area of a disc one fifth of Mask's expected pathogen diameter (13 px at 20x or at 0.325 um/px). A field that loses more than half its pathogens prints a warning. Superseded by an 'area' row for pathogen in object_filters, which filters at segmentation time instead.",
       "source_sha256": "ecf000dfa2c60555fcf9941fcc80e0733302fde3ba5705c5ca5af0c855dc3a81",
       "translation": "（已弃用）测量期间应用的病原体对象最小面积（以平方像素计）：像素数少于该值的任何标签会在提取特征之前从病原体掩膜中删除。0 或 None 表示禁用。默认值 500，适用于 40-60x；设置 pixel_size_um 或 magnification 后，默认值 500 改为一个圆盘的面积，其直径为 Mask 预期病原体直径的五分之一（20x 和 0.325 um/px 时均为 13 px）。某个视野失去超过一半的病原体时，会打印一条警告。已由 object_filters 中针对 pathogen 的 'area' 行取代，后者改为在分割时进行过滤。"
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "nucleus_min_size",
+      "source": "(Deprecated) Minimum nucleus size in pixels^2 applied during measure_crop: labels covering fewer pixels than this are erased from the nucleus mask before any feature is measured, so those nuclei never reach the database. 0 or None disables it. Default 2000, which suits 40-60x; when pixel_size_um or magnification is set, the 2000 default becomes the area of a disc one fifth of Mask's expected nucleus diameter (113 px at 20x, 30 px at 0.325 um/px). A field that loses more than half its nuclei prints a warning. Prefer an 'area' row for nucleus in object_filters, which filters at segmentation time.",
+      "source_sha256": "52948b478e1636731b9d345d8dced1bd40cc3f4bf072579bfbcc450e79dc6b52",
+      "translation": "（已弃用）measure_crop 期间应用的最小细胞核大小（像素^2）：覆盖像素少于该值的标签会在测量任何特征之前从细胞核掩膜中删除，因此这些细胞核永远不会进入数据库。0 或 None 表示禁用。默认值 2000，适用于 40-60x；设置 pixel_size_um 或 magnification 后，默认值 2000 改为一个圆盘的面积，其直径为 Mask 预期细胞核直径的五分之一（20x 时为 113 px，0.325 um/px 时为 30 px）。某个视野失去超过一半的细胞核时，会打印一条警告。建议改用 object_filters 中针对 nucleus 的 'area' 行，它在分割时进行过滤。",
+      "retired": "2026-11-08: the English tooltip was shortened to stay under 600 characters on the batch2-1108 branch; its successor is reviewed in 2026-11-08-batch2-1108-ai-review.json."
     },
     {
       "table": "setting_tooltips",
       "key": "pixel_size_um",
       "source": "Image pixel size in micrometres per pixel, for example 0.325 for a 6.5 um camera pixel behind a 20x objective. When set, a blank cell_diameter, nucleus_diameter or pathogen_diameter is the typical object size over the pixel size: 18 um cells, 10 um nuclei and 6.5 um pathogens, so 55, 31 and 20 px at 0.325 um/px, with min/max area limits of diameter^2/4 and diameter^2*10. It replaces the magnification default, which assumes larger cells (120 and 60 px at 20x). A diameter you type is always used as it is. None uses the magnification default. In Measure it also scales the default cell_min_size, nucleus_min_size and pathogen_min_size. Default None.",
       "source_sha256": "19415d797867446dc1c7e00b98516e3a6ccc2fa8978803ec2d53ab4458e90433",
-      "translation": "图像像素尺寸，以每像素微米计，例如 20x 物镜后 6.5 um 相机像素对应 0.325。设置后，留空的 cell_diameter、nucleus_diameter 或 pathogen_diameter 为典型对象大小除以像素尺寸：细胞 18 um、细胞核 10 um、病原体 6.5 um，因此在 0.325 um/px 时分别为 55、31 和 20 px；最小/最大面积限制为 diameter^2/4 和 diameter^2*10。它取代按放大倍数计算的默认值，后者假定细胞更大（20x 时为 120 和 60 px）。您输入的直径总是按原样使用。None 使用放大倍数默认值。在 Measure 中，它还会按比例调整 cell_min_size、nucleus_min_size 和 pathogen_min_size 的默认值。默认值为 None。"
+      "translation": "图像像素尺寸，以每像素微米计，例如 20x 物镜后 6.5 um 相机像素对应 0.325。设置后，留空的 cell_diameter、nucleus_diameter 或 pathogen_diameter 为典型对象大小除以像素尺寸：细胞 18 um、细胞核 10 um、病原体 6.5 um，因此在 0.325 um/px 时分别为 55、31 和 20 px；最小/最大面积限制为 diameter^2/4 和 diameter^2*10。它取代按放大倍数计算的默认值，后者假定细胞更大（20x 时为 120 和 60 px）。您输入的直径总是按原样使用。None 使用放大倍数默认值。在 Measure 中，它还会按比例调整 cell_min_size、nucleus_min_size 和 pathogen_min_size 的默认值。默认值为 None。",
+      "retired": "2026-11-08: the English tooltip was shortened to stay under 600 characters on the batch2-1108 branch; its successor is reviewed in 2026-11-08-batch2-1108-ai-review.json."
     }
   ]
 }

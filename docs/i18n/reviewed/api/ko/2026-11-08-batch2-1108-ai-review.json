@@ -1,0 +1,1001 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Align one movie's divisions and compare them with matched controls.",
+      "label": "spacr.division_analysis.analyse_divisions#0",
+      "source": "Align one movie's divisions and compare them with matched controls.",
+      "source_sha256": "696fc15eafb435bd1b0700343c5647865743a171eebf1030c823fbea4eaf3f06",
+      "translation": "한 영상의 분열을 정렬하고 일치하는 대조군과 비교합니다."
+    },
+    {
+      "context": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "label": "spacr.division_analysis.analyse_divisions#1",
+      "source": "Runs the steps of this module in order. Divisions are read with :func:`division_events`; ``mode='auto'`` keeps whichever kind, fission or budding, the movie has more of. Each division is checked (parent seen at ``t_div`` and on 80% of the window, daughters seen on the next frame, two daughters for a fission). The kept divisions get size-matched controls (:func:`match_controls`) and a shuffled alignment (:func:`shuffled_alignment`) with its own size-matched controls, so the null runs the same matching at a random time. The late-vs-baseline change of every unit (:func:`unit_changes`) is compared as Hedges' g (:func:`effect_size`), dividing against control and shuffled against its control. Complete fission cycles give the size-control fits.",
+      "source_sha256": "2b5c4da739eaa535c69813b327abed36201f7431746b9435672568126df4142d",
+      "translation": "이 모듈의 단계를 순서대로 실행합니다. 분열은 :func:`division_events` 로 읽으며, ``mode='auto'`` 는 분열(fission)과 출아(budding) 중 영상에 더 많은 종류를 유지합니다. 각 분열을 확인합니다(부모가 ``t_div`` 와 창의 80% 에서 관찰되고, 딸세포가 다음 프레임에서 관찰되며, 분열(fission)이면 딸세포가 둘). 유지된 분열에는 크기를 맞춘 대조군(:func:`match_controls`)과, 자체적으로 크기를 맞춘 대조군을 가진 섞은 정렬(:func:`shuffled_alignment`)이 주어지므로, 귀무 비교도 같은 짝짓기를 무작위 시점에서 실행합니다. 각 단위의 기준 대비 후기 변화(:func:`unit_changes`)를 Hedges' g(:func:`effect_size`)로 비교하며, 분열 대 대조군, 섞은 정렬 대 그 대조군으로 비교합니다. 완전한 분열(fission) 주기로 크기 조절 적합을 얻습니다."
+    },
+    {
+      "context": "the measurements compared; absent ones are skipped.",
+      "label": "spacr.division_analysis.analyse_divisions#10",
+      "source": "the measurements compared; absent ones are skipped.",
+      "source_sha256": "8a6e839d54d6907d56acd6cf5ed92170f6e23d1108d57ab6e78913f1b64068c7",
+      "translation": "비교할 측정값. 없는 측정값은 건너뜁니다."
+    },
+    {
+      "context": "key-value mapping with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "label": "spacr.division_analysis.analyse_divisions#11",
+      "source": "dict with the tables ``events`` (every division with its ``status``), ``effects`` (one row per contrast and measure), ``trajectories`` (baseline-normalised mean and 95% band per series, role, ``rel_t`` and measure), ``cycles`` and ``size_control``, and ``summary`` (the window, counts and drop reasons).",
+      "source_sha256": "a70535c638a3097113f475022113b155421b3d453bb8937cba674e914b630bca",
+      "translation": "테이블을 담은 dict: ``events``(각 분열과 그 ``status``), ``effects``(대비와 측정값마다 한 행), ``trajectories``(계열, 역할, ``rel_t``, 측정값마다 기준으로 정규화한 평균과 95% 띠), ``cycles`` 와 ``size_control``, 그리고 ``summary``(창, 개수, 제외 이유)."
+    },
+    {
+      "context": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#12",
+      "source": "for an unknown ``mode``, a ``window`` below 2, or ``measures`` without ``track_id``, ``t`` or ``area``.",
+      "source_sha256": "f974a6d35681c5fdf62ba2d4f59bc070d3596356537f45b3dcfd2cf4e5c8ee6e",
+      "translation": "``mode`` 를 알 수 없거나, ``window`` 가 2 미만이거나, ``measures`` 에 ``track_id``, ``t`` 또는 ``area`` 가 없을 때."
+    },
+    {
+      "context": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "label": "spacr.division_analysis.analyse_divisions#2",
+      "source": "per-frame table from :func:`measure_label_stack`, usually with :func:`add_motion_features`; it needs ``area``.",
+      "source_sha256": "e0c1b94f4b02894a2e36e41395228335d0dc498986badc6f8f169344604ad56d",
+      "translation": ":func:`measure_label_stack` 의 프레임별 테이블로, 보통 :func:`add_motion_features` 를 함께 적용합니다. ``area`` 가 필요합니다."
+    },
+    {
+      "context": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "label": "spacr.division_analysis.analyse_divisions#3",
+      "source": "lineage table with the :data:`LINEAGE_COLUMNS`.",
+      "source_sha256": "369241ad56de06f35fd00d33dab1cdcd5e6f70256914a29d723c07d6991788bc",
+      "translation": ":data:`LINEAGE_COLUMNS` 를 가진 계보 테이블."
+    },
+    {
+      "context": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "label": "spacr.division_analysis.analyse_divisions#5",
+      "source": "frames before division in the alignment window; None takes 0.3 times the median cycle (:func:`median_cycle_frames`), clipped to 4..30 frames, or 6 frames when no cycle is observed.",
+      "source_sha256": "76c7e163ad48f5287ac79c503b47897499d6eed3323e668ce86cc08d52325e30",
+      "translation": "정렬 창에서 분열 이전의 프레임 수. None 이면 주기 중앙값(:func:`median_cycle_frames`)의 0.3배를 4..30 프레임으로 잘라 사용하고, 주기가 관찰되지 않으면 6 프레임을 사용합니다."
+    },
+    {
+      "context": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "label": "spacr.division_analysis.analyse_divisions#6",
+      "source": "frames in each of the baseline and late windows, and the horizon a control must stay undivided after its pseudo-division time; None takes a quarter of ``window`` (at least 2). A value too large for ``window`` is lowered so the two windows do not overlap.",
+      "source_sha256": "8270491dcac3867e1e9a70ea69080461114e3086b5223e1fe3d6fbc7c1559a9f",
+      "translation": "기준 창과 후기 창 각각의 프레임 수이자, 대조군이 의사 분열 시점 이후 분열하지 않은 채 남아 있어야 하는 지평. None 이면 ``window`` 의 4분의 1(최소 2)을 사용합니다. ``window`` 에 비해 너무 큰 값은 두 창이 겹치지 않도록 줄입니다."
+    },
+    {
+      "context": "the relative size difference a control may have at the start of the window.",
+      "label": "spacr.division_analysis.analyse_divisions#7",
+      "source": "the relative size difference a control may have at the start of the window.",
+      "source_sha256": "3be814bebf044ba77a4c71c99b1013e06f537c263ec697786cc299a6c20c911c",
+      "translation": "창 시작 시 대조군이 가질 수 있는 상대 크기 차이."
+    },
+    {
+      "context": "bootstrap resamples for every confidence interval.",
+      "label": "spacr.division_analysis.analyse_divisions#8",
+      "source": "bootstrap resamples for every confidence interval.",
+      "source_sha256": "2e4158a701863f4e2a48a2a9096298ea2f932e97474a33eebec759fa26f85228",
+      "translation": "각 신뢰 구간의 부트스트랩 재표본 수."
+    },
+    {
+      "context": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "label": "spacr.division_analysis.analyse_divisions#9",
+      "source": "seed or generator for the controls, the shuffle and the bootstraps.",
+      "source_sha256": "2e270db1bab40fa29644658b362c8c534f3681d73d739e3cbc894abf3b5ab9d1",
+      "translation": "대조군, 섞기, 부트스트랩에 쓰는 시드 또는 생성기."
+    },
+    {
+      "context": "Draw the three figures of one division analysis.",
+      "label": "spacr.division_analysis.division_figures#0",
+      "source": "Draw the three figures of one division analysis.",
+      "source_sha256": "bb32540129d7502c1617875b63f447f25873fee06e9d13d00577d1f17b042cbf",
+      "translation": "한 분열 분석의 세 그림을 그립니다."
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "label": "spacr.division_analysis.division_figures#1",
+      "source": "the dict from :func:`analyse_divisions` or :func:`read_division_results`.",
+      "source_sha256": "ccce94b9f049db5fb0570b2f25c44a87a922120e5e416ce27081db3d7f406b23",
+      "translation": ":func:`analyse_divisions` 또는 :func:`read_division_results` 가 반환한 dict."
+    },
+    {
+      "context": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "label": "spacr.division_analysis.division_figures#2",
+      "source": "the measurements to draw, in order; None draws every measurement that has effect sizes.",
+      "source_sha256": "f077bbabf6775cdb7296e320aa285c1efb3157dcf2c3d5238392df3f8cd30d04",
+      "translation": "그릴 측정값(순서대로). None 이면 효과 크기가 있는 모든 측정값을 그립니다."
+    },
+    {
+      "context": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "label": "spacr.division_analysis.division_figures#3",
+      "source": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, :class:`matplotlib.figure.Figure` objects: the aligned baseline-normalised trajectories of dividing cells (with their daughters after division), matched controls and the shuffled alignment with 95% bands; Hedges' g per measurement with its bootstrap interval; and area at division against area at birth with the sizer, adder and timer slopes.",
+      "source_sha256": "d038453a3c173785375938689f42e4176bf4791ef51bc95d4fc05618e5a03bb4",
+      "translation": "``{'trajectories': figure, 'forest': figure, 'size_control': figure}``, 즉 :class:`matplotlib.figure.Figure` 객체: 분열 세포(분열 후에는 그 딸세포 포함), 일치하는 대조군, 섞은 정렬의 기준으로 정규화한 정렬 궤적과 95% 띠; 측정값별 Hedges' g 와 그 부트스트랩 구간; 그리고 sizer, adder, timer 기울기를 함께 표시한 출생 시 면적 대비 분열 시 면적."
+    },
+    {
+      "context": "Lineage table of one field's spaCR tracks table.",
+      "label": "spacr.division_analysis.lineage_from_tracks#0",
+      "source": "Lineage table of one field's spaCR tracks table.",
+      "source_sha256": "daa673cf5c3a0a372c9c8ced662d7988047a3ae4815c01596ce0929259250918",
+      "translation": "한 필드의 spaCR 트랙 테이블에서 만든 계보 테이블."
+    },
+    {
+      "context": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "label": "spacr.division_analysis.lineage_from_tracks#1",
+      "source": "Each track gives one row: its first and last frame and the track it was born from. A ``parent_track_id`` column written by the tracker is used as it is; without one, divisions are inferred from nearby track starts as the lineage trees infer them. A daughter the tracker kept under its mother's id is not a new track, so that mother continues and its division reads as a bud.",
+      "source_sha256": "97b76b26804382747826c6bc95316e81bb4a9da5c482f4a4d6701972120167af",
+      "translation": "각 트랙은 한 행이 됩니다. 첫 프레임과 마지막 프레임, 그리고 그 트랙이 태어난 트랙입니다. 추적기가 기록한 ``parent_track_id`` 열이 있으면 그대로 사용하고, 없으면 계보 트리가 추론하는 방식대로 가까운 트랙 시작점에서 분열을 추론합니다. 추적기가 모세포의 id 로 유지한 딸세포는 새 트랙이 아니므로, 그 모세포는 계속 이어지고 그 분열은 출아로 읽힙니다."
+    },
+    {
+      "context": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "label": "spacr.division_analysis.lineage_from_tracks#2",
+      "source": "a spaCR tracks table with ``frame``, ``track_id``, ``x`` and ``y`` for one field, as written to ``<tracker>_tracks_<object>_<field>.csv``.",
+      "source_sha256": "98a18096f2bc8422b7a394089c91dfa4827072bf33887b2aac85b24610ff40d9",
+      "translation": "한 필드에 대해 ``frame``, ``track_id``, ``x``, ``y`` 를 가진 spaCR 트랙 테이블로, ``<tracker>_tracks_<object>_<field>.csv`` 에 기록된 형식입니다."
+    },
+    {
+      "context": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "label": "spacr.division_analysis.lineage_from_tracks#3",
+      "source": "largest mother-to-daughter distance in pixels for an inferred division.",
+      "source_sha256": "50cfe7475bcd3eef7e445a96dc0681645c28327dd44faf4a762dcba96e0d53e4",
+      "translation": "추론된 분열에서 모세포와 딸세포 사이의 최대 거리(픽셀)."
+    },
+    {
+      "context": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "label": "spacr.division_analysis.lineage_from_tracks#4",
+      "source": "the :data:`LINEAGE_COLUMNS` as integers, ``parent`` 0 for a track with no known mother.",
+      "source_sha256": "70b249bfb7a31c27e00f5e08101f87972bc872df8ea03d14a0ec6bfafbeb54d4",
+      "translation": "정수로 된 :data:`LINEAGE_COLUMNS`. 알려진 모세포가 없는 트랙은 ``parent`` 가 0 입니다."
+    },
+    {
+      "context": "Read back a folder written by :func:`write_division_results`.",
+      "label": "spacr.division_analysis.read_division_results#0",
+      "source": "Read back a folder written by :func:`write_division_results`.",
+      "source_sha256": "3ad921b4247d21d6389f24a8ccb2e6152195f8bb13da4c0ca847ecad857187ba",
+      "translation": ":func:`write_division_results` 가 기록한 폴더를 다시 읽습니다."
+    },
+    {
+      "context": "the results folder.",
+      "label": "spacr.division_analysis.read_division_results#1",
+      "source": "the results folder.",
+      "source_sha256": "8d859f9f0d84885dfa8576d3f8ccbe3d07aca7a7464d3105ad5871022462e452",
+      "translation": "결과 폴더."
+    },
+    {
+      "context": "the same key-value mapping :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty key-value mapping.",
+      "label": "spacr.division_analysis.read_division_results#2",
+      "source": "the same dict :func:`analyse_divisions` returns, with ``events`` daughters as tuples again; a missing or empty table is an empty frame and a missing summary an empty dict.",
+      "source_sha256": "88bbfa0e342f169f028cccddf6452567acf227d03d0c4b536a0b210dd897138a",
+      "translation": ":func:`analyse_divisions` 가 반환하는 것과 같은 dict 이며, ``events`` 의 딸세포는 다시 튜플이 됩니다. 없거나 비어 있는 테이블은 빈 데이터 프레임이 되고, 요약이 없으면 빈 dict 가 됩니다."
+    },
+    {
+      "context": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "label": "spacr.division_analysis.read_division_results#3",
+      "source": "when ``folder`` holds neither ``summary.json`` nor ``effects.csv``.",
+      "source_sha256": "ef8277e4e87483d71f309dd29aefdb373ba46a3cbcb69a2b4d7ede3a2e39732c",
+      "translation": "``folder`` 에 ``summary.json`` 도 ``effects.csv`` 도 없을 때."
+    },
+    {
+      "context": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "label": "spacr.division_analysis.write_division_results#0",
+      "source": "Write one division analysis as CSV tables, a JSON summary and figures.",
+      "source_sha256": "f5442bdc2a7f8956285ccdff94d0b501a6e04f0ba24f778c1b5bc89598f14485",
+      "translation": "한 분열 분석을 CSV 테이블, JSON 요약, 그림으로 기록합니다."
+    },
+    {
+      "context": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "label": "spacr.division_analysis.write_division_results#1",
+      "source": "The tables are ``events.csv`` (daughters as ``;``-separated track ids), ``effects.csv``, ``trajectories.csv``, ``cycles.csv`` and ``size_control.csv``, written through :func:`spacr.tabular.write_table`; the summary is ``summary.json``. With ``plot``, the figures of :func:`division_figures` are saved through :func:`spacr.plot.save_figure` as ``division_trajectories``, ``division_forest`` and ``division_size_control`` in the figure format preference.",
+      "source_sha256": "29bc38dedff3061b96c577e15de37794b4d2a4b8c508150347402eeab998fd8e",
+      "translation": "테이블은 ``events.csv``(딸세포는 ``;`` 로 구분한 트랙 id), ``effects.csv``, ``trajectories.csv``, ``cycles.csv``, ``size_control.csv`` 이며 :func:`spacr.tabular.write_table` 로 기록합니다. 요약은 ``summary.json`` 입니다. ``plot`` 을 지정하면 :func:`division_figures` 의 그림을 :func:`spacr.plot.save_figure` 로 환경설정의 그림 형식에 맞춰 ``division_trajectories``, ``division_forest``, ``division_size_control`` 로 저장합니다."
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions`.",
+      "label": "spacr.division_analysis.write_division_results#2",
+      "source": "the dict from :func:`analyse_divisions`.",
+      "source_sha256": "ec18e5ac2d192847feec125b2a4dc3a0d61bc8256729081c4f8b3343c4f046cc",
+      "translation": ":func:`analyse_divisions` 가 반환한 dict."
+    },
+    {
+      "context": "the folder to write into; created when missing.",
+      "label": "spacr.division_analysis.write_division_results#3",
+      "source": "the folder to write into; created when missing.",
+      "source_sha256": "8fa06fb16be9c73196c42d73d02e0039d0415709a5058753edfe90f1d970c935",
+      "translation": "기록할 폴더. 없으면 만듭니다."
+    },
+    {
+      "context": "save the figures too.",
+      "label": "spacr.division_analysis.write_division_results#4",
+      "source": "save the figures too.",
+      "source_sha256": "a23a2dc590eb5acca8ce6c3acf0868880b1beea39b8bf337f4ca2f68f8eb468f",
+      "translation": "그림도 저장합니다."
+    },
+    {
+      "context": "``{name: path}`` of everything written.",
+      "label": "spacr.division_analysis.write_division_results#5",
+      "source": "``{name: path}`` of everything written.",
+      "source_sha256": "51555e6f9b92df30fae4f6dd1471e1c3d49301b56e7fe3355c56f0834dcd4c1a",
+      "translation": "기록한 모든 항목의 ``{name: path}``."
+    },
+    {
+      "context": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a microplate sample position can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the laboratory microplate's maps once, before the microplate sample positions, and ``ph_masks`` writes each cell's microscope field of view-edge flags and flat-microscope field of view gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its microplate sample positions from ``ops_phenotype``, and adds to each microplate sample position's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the microplate sample positions run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "label": "spacr.ops_engine.run_ops#4",
+      "source": "any of ``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"`` and ``\"decode\"``, run in that order. A phase left out reads what it needs from the database, so a well can be stitched once and decoded again. The alpha phenotype path adds ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"`` and ``\"aggregate\"``, run only when named here and after those four; ``ph_flatfield`` builds the plate's maps once, before the wells, and ``ph_masks`` writes each cell's field-edge flags and flat-field gains from the saved masks. A run of only these needs ``dst_root`` and ``plate`` but no ``genotype_source``, takes its wells from ``ops_phenotype``, and adds to each well's ``ops_report.json`` rather than replacing it. ``aggregate`` pools the wells run and writes ``ops_guides_<plate>`` and ``ops_genes_<plate>``.",
+      "source_sha256": "87e83af40318bf9bf177d9e773b05be3a025d02ee390ad67e6fb8ff75075cf26",
+      "translation": "``\"stitch\"``, ``\"phenotype\"``, ``\"objects\"``, ``\"decode\"`` 중 어느 것이든 지정하며, 이 순서로 실행된다. 빠진 단계는 필요한 것을 데이터베이스에서 읽으므로, 웰을 한 번 스티칭한 뒤 다시 디코딩할 수 있다. 알파 표현형 경로는 ``\"ph_flatfield\"``, ``\"ph_segment\"``, ``\"ph_measure\"``, ``\"ph_masks\"``, ``\"merge\"``, ``\"aggregate\"``를 추가하며, 이들은 여기에 이름이 지정된 경우에만 앞의 네 단계 뒤에 실행된다. ``ph_flatfield``는 웰보다 먼저 플레이트의 맵을 한 번 만들고, ``ph_masks``는 저장된 마스크에서 각 세포의 시야 가장자리 플래그와 평탄 필드 이득을 기록한다. 이 단계들만 실행하면 ``dst_root``와 ``plate``가 필요하지만 ``genotype_source``는 필요 없고, 웰은 ``ops_phenotype``에서 가져오며, 각 웰의 ``ops_report.json``을 대체하지 않고 내용을 추가한다. ``aggregate``는 실행한 웰을 합쳐 ``ops_guides_<plate>``와 ``ops_genes_<plate>``를 기록한다."
+    },
+    {
+      "context": "Flat-field maps for optical pooled screening experiment phenotype fields, and two ways to apply them.",
+      "label": "spacr.ops_flatfield#0",
+      "source": "Flat-field maps for optical pooled screen phenotype fields, and two ways to apply them.",
+      "source_sha256": "3f90156498109c0e3fc58f20faf9ca4ed50e940f78cac157c5b7a598133820c3",
+      "translation": "광학 풀드 스크린 표현형 시야를 위한 평탄 필드 맵과 이를 적용하는 두 가지 방법."
+    },
+    {
+      "context": "A 20X phenotype microscope field of view is not evenly lit: on laboratory microplate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screening experiment, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "label": "spacr.ops_flatfield#1",
+      "source": "A 20X phenotype field is not evenly lit: on plate A of Funk et al. 2022 the corners receive about half the light of the centre. A cell measured in a corner then reads dimmer than the same cell in the middle, and in a pooled screen, where each guide's cells sit at random positions, that adds noise to every intensity feature and biases the cells near the edge.",
+      "source_sha256": "3159ec1c6f0a9a7460fb04c43ecc1ca16487c6ceeff9c6a6a5c7d60bbf5b889f",
+      "translation": "20X 표현형 시야는 고르게 조명되지 않는다. Funk et al. 2022의 플레이트 A에서는 모서리가 중심의 약 절반 빛만 받는다. 그러면 모서리에서 측정한 세포는 가운데에 있는 같은 세포보다 어둡게 읽히며, 각 가이드의 세포가 무작위 위치에 놓이는 풀드 스크린에서는 이것이 모든 강도 특징에 잡음을 더하고 가장자리 근처 세포에 편향을 준다."
+    },
+    {
+      "context": "THE MAP. Per laboratory microplate and channel, a few hundred microscope fields of view are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the microscope fields of view is taken. Cells move from microscope field of view to microscope field of view while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 microscope field of view pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "label": "spacr.ops_flatfield#2",
+      "source": "THE MAP. Per plate and channel, a few hundred fields are read, block-averaged in 16 x 16 pixel blocks, and the per-block median over the fields is taken. Cells move from field to field while the illumination does not, so the median keeps the illumination and loses the cells. It is smoothed with a Gaussian (sigma 6 blocks, about 96 field pixels); the nuclear channel, whose sparse bright nuclei leave a noisier median, is then fitted with a 4th-order 2-D polynomial. The camera and background offset ``b`` is the 0.1th percentile of every block mean, and the map is ``flat = (smooth - b) / (centre - b)``: 1 at the centre. It is floored at 0.25, so no pixel is multiplied by more than 4.",
+      "source_sha256": "7943b52c80583c2ce1f42f6373d2beb248116e96cd7a23264b1da2459b3e48d3",
+      "translation": "맵. 플레이트와 채널마다 수백 개의 시야를 읽어 16 x 16 픽셀 블록으로 블록 평균하고, 시야들에 걸친 블록별 중앙값을 구한다. 세포는 시야마다 위치가 바뀌지만 조명은 바뀌지 않으므로, 중앙값은 조명은 남기고 세포는 잃는다. 이를 가우시안으로 평활화하고(sigma 6 블록, 약 96 시야 픽셀), 희소하고 밝은 핵 때문에 중앙값에 잡음이 더 많은 핵 채널은 이어서 4차 2차원 다항식으로 적합한다. 카메라 및 배경 오프셋 ``b``는 모든 블록 평균의 0.1 백분위수이며, 맵은 ``flat = (smooth - b) / (centre - b)``로 중심에서 1이다. 하한을 0.25로 두므로 어떤 픽셀도 4보다 큰 값으로 곱해지지 않는다."
+    },
+    {
+      "context": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "label": "spacr.ops_flatfield#3",
+      "source": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b",
+      "source_sha256": "89e130d8bfaa108105a629b814b380677140d246b4d15565a25c8c9537e96df6",
+      "translation": "observed = b + flat * (true - b)        corrected = (observed - b) / flat + b"
+    },
+    {
+      "context": "The exact correction divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "label": "spacr.ops_flatfield#4",
+      "source": "THE EXACT CORRECTION divides every pixel before measuring (:func:`correct_field`). It needs the raw images again, which on plate A was 2.1 TB read and about 58 hours of measurement at six workers.",
+      "source_sha256": "927ddc14c15f1c947071cab81525cdba9ca907b3aafd20f2a99c58914cd25a88",
+      "translation": "정확한 보정은 측정 전에 모든 픽셀을 나눈다(:func:`correct_field`). 원본 이미지가 다시 필요하며, 플레이트 A에서는 2.1 TB를 읽고 작업자 여섯 개로 약 58시간 측정해야 했다."
+    },
+    {
+      "context": "The analytic correction moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and image data channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "label": "spacr.ops_flatfield#5",
+      "source": "THE ANALYTIC CORRECTION moves the features already measured (:func:`correct_features`). A mask pass (:func:`mask_pass`) gives, per cell, compartment and channel, the mean gain ``g`` of ``1 / flat`` over the compartment's pixels and the pixel count ``n``. Then:",
+      "source_sha256": "275347ac622844491362828c02475ff032e90357f3438edd74e14f7b0428d018",
+      "translation": "해석적 보정은 이미 측정한 특징을 옮긴다(:func:`correct_features`). 마스크 패스(:func:`mask_pass`)는 세포, 구획, 채널마다 평균 이득 ``g``(구획 픽셀에 대한 ``1 / flat``의 평균)와 픽셀 수 ``n``을 제공한다. 그다음:"
+    },
+    {
+      "context": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "label": "spacr.ops_flatfield#6",
+      "source": "location (mean, median, mode, min, max, percentiles)   (v - b) g + b integrated                                            (v - b n) g + b n spread (std, range, iqr)                              v g cv, gini                                              recomputed everything else                                       unchanged",
+      "source_sha256": "ec9d1ac2fcf4b90ba08c91e98795cf75def87223815a5a5b9687e5ddcb8feac5",
+      "translation": "위치 (mean, median, mode, min, max, percentiles)   (v - b) g + b 적분                                            (v - b n) g + b n 산포 (std, range, iqr)                              v g cv, gini                                              재계산 그 밖의 모든 것                                       변경 없음"
+    },
+    {
+      "context": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 laboratory microplate A microscope fields of view (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "label": "spacr.ops_flatfield#7",
+      "source": "It is exact when the flat is constant over the cell, which it nearly is: it varies by under 2 percent across a 70 pixel cell except in the far corners. On 24 plate A fields (31,078 cells) checked against the exact correction, location features moved from a median relative error of 6.9 to 0.10 percent, integrated from 6.9 to 0.01 and spread from 9.0 to 0.42. The mode of a float image has no such rule, so the 12 ``*_mode_intensity`` features are corrected as locations and flagged (:func:`flagged_features`).",
+      "source_sha256": "eced5238a43e65642b3c5a1a299bcaa0017053e4a0389f35e59c827ffbf19836",
+      "translation": "평탄 맵이 세포 위에서 일정하면 정확하며, 실제로 거의 일정하다. 먼 모서리를 제외하면 70 픽셀 세포에 걸쳐 2 퍼센트 미만으로 변한다. 정확한 보정과 비교한 플레이트 A의 시야 24개(세포 31,078개)에서 위치 특징의 상대 오차 중앙값은 6.9에서 0.10 퍼센트로, 적분 특징은 6.9에서 0.01로, 산포 특징은 9.0에서 0.42로 줄었다. 부동소수점 이미지의 최빈값에는 그런 규칙이 없으므로, 12개의 ``*_mode_intensity`` 특징은 위치로 보정하고 플래그를 붙인다(:func:`flagged_features`)."
+    },
+    {
+      "context": "Per-channel flat-microscope field of view maps from many microscope fields of view' block means.",
+      "label": "spacr.ops_flatfield.build_flat_maps#0",
+      "source": "Per-channel flat-field maps from many fields' block means.",
+      "source_sha256": "faf5e135ac39f47af568717af5aa25ec827eda10b0092b6e47979d9b998be65e",
+      "translation": "여러 시야의 블록 평균으로 만든 채널별 평탄 필드 맵."
+    },
+    {
+      "context": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "label": "spacr.ops_flatfield.build_flat_maps#1",
+      "source": "``(N, h, w, C)`` block means of ``N`` fields (:func:`field_blocks`), square blocks grids.",
+      "source_sha256": "0f95741babeeb7955fad34622492f2c5d9d0d36169f774ee12b92fb5fa67b946",
+      "translation": "``(N, h, w, C)``: ``N``개 시야의 블록 평균(:func:`field_blocks`), 정사각형 블록 격자."
+    },
+    {
+      "context": "This is the method of the laboratory microplate A pilot (seg-QC ``flat.py``) and of the laboratory microplate B to D maps (``build_flat.py``); rebuilt from the same microscope fields of view it gives the same arrays.",
+      "label": "spacr.ops_flatfield.build_flat_maps#10",
+      "source": "This is the method of the plate A pilot (seg-QC ``flat.py``) and of the plate B to D maps (``build_flat.py``); rebuilt from the same fields it gives the same arrays.",
+      "source_sha256": "9afdd3f3f1f816f6a091405801a0abc8fe81a74851254e01c7c94ca20b88abe0",
+      "translation": "이는 플레이트 A 파일럿(seg-QC ``flat.py``)과 플레이트 B에서 D까지의 맵(``build_flat.py``)의 방법이며, 같은 시야로 다시 만들면 같은 배열을 얻는다."
+    },
+    {
+      "context": "the name of each of the ``C`` channels.",
+      "label": "spacr.ops_flatfield.build_flat_maps#2",
+      "source": "the name of each of the ``C`` channels.",
+      "source_sha256": "0f47668c2c3cd43ac1444554219b2ffadd4a449d904ef65ace788ecd078cfac0",
+      "translation": "``C``개 채널 각각의 이름."
+    },
+    {
+      "context": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "label": "spacr.ops_flatfield.build_flat_maps#3",
+      "source": "channels whose smoothed median is also fitted with a 2-D polynomial; the nuclear channel by default.",
+      "source_sha256": "64080c1207675b5924f8992ae2fc732cb18eb1a3c85a0ed9e342c8ed69a45711",
+      "translation": "평활화한 중앙값을 2차원 다항식으로도 적합하는 채널. 기본값은 핵 채널이다."
+    },
+    {
+      "context": "Gaussian sigma in blocks.",
+      "label": "spacr.ops_flatfield.build_flat_maps#4",
+      "source": "Gaussian sigma in blocks.",
+      "source_sha256": "7717f3b343ef10b045cfebae91334eea523ab2e1242ceb4a46bbf6bd1ea87641",
+      "translation": "블록 단위의 가우시안 sigma."
+    },
+    {
+      "context": "the polynomial's degree.",
+      "label": "spacr.ops_flatfield.build_flat_maps#5",
+      "source": "the polynomial's degree.",
+      "source_sha256": "4e5f7375b5dbf8f2944f389d38adde639463ebcc20acb5343e3e098b79e61b4f",
+      "translation": "다항식의 차수."
+    },
+    {
+      "context": "the percentile of all block means taken as the offset ``b``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#6",
+      "source": "the percentile of all block means taken as the offset ``b``.",
+      "source_sha256": "51761a8228ab578f9b69bdbc6d3ff88320d8abdb1c4862bce4020317909c596b",
+      "translation": "오프셋 ``b``로 사용하는 모든 블록 평균의 백분위수."
+    },
+    {
+      "context": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#7",
+      "source": "the smallest flat value, so the gain is at most ``1 / floor``.",
+      "source_sha256": "bf2ed86d32a723ce6215ece026ef556cad7a6ecabb1a623f3bb588f7ce6fc3b9",
+      "translation": "평탄 맵의 최솟값. 따라서 이득은 최대 ``1 / floor``이다."
+    },
+    {
+      "context": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "label": "spacr.ops_flatfield.build_flat_maps#8",
+      "source": "half the edge, in blocks, of the centre window the map is normalised to.",
+      "source_sha256": "872b65adbe01df639329f7a9a5c7d811760d343e19ebb26f2f486b40918c92bb",
+      "translation": "맵을 정규화하는 기준인 중심 창의 한 변의 절반(블록 단위)."
+    },
+    {
+      "context": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "label": "spacr.ops_flatfield.build_flat_maps#9",
+      "source": "``(maps, method)``: ``{channel: (h, w) float32 flat}``, 1 at the centre, and ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``.",
+      "source_sha256": "8a6feeb8008184901b02b5a1fc95cd6cb261d89159ae7d862f114f9e6df619be",
+      "translation": "``(maps, method)``: ``{channel: (h, w) float32 flat}``(중심에서 1)과 ``{channel: {\"how\", \"offset\", \"centre\", \"flat_min\", \"flat_max\"}}``."
+    },
+    {
+      "context": "The microscope fields of view a laboratory microplate's maps are built from: a seeded random sample.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#0",
+      "source": "The fields a plate's maps are built from: a seeded random sample.",
+      "source_sha256": "22888338c75adb2ab0b7cfe024aca34d9a4f0b6cd6af8ee9364f1dc8975b5232",
+      "translation": "플레이트의 맵을 만드는 시야: 시드를 고정한 무작위 표본."
+    },
+    {
+      "context": "every ``(well, site)`` that may be used, in a fixed order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#1",
+      "source": "every ``(well, site)`` that may be used, in a fixed order.",
+      "source_sha256": "0d7859350dfdf6d990831af8d3d7de9baeb58fca62b025223b0bdef5e60702a0",
+      "translation": "사용할 수 있는 모든 ``(well, site)``, 고정된 순서."
+    },
+    {
+      "context": "how many to take; all of them when fewer exist.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#2",
+      "source": "how many to take; all of them when fewer exist.",
+      "source_sha256": "e1401c78e98167b815a2aea81041d60404abd7f24ecf9804d1de1bc1d3cf929f",
+      "translation": "선택할 개수. 그보다 적으면 모두 선택한다."
+    },
+    {
+      "context": "the seed of :func:`numpy.random.default_rng`.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#3",
+      "source": "the seed of :func:`numpy.random.default_rng`.",
+      "source_sha256": "5693e1040babf43adef896c23204de290ded94d310944ec7aa38a9b7f78b6a8a",
+      "translation": ":func:`numpy.random.default_rng`의 시드."
+    },
+    {
+      "context": "the chosen ``(well, site)``, in ``pool`` order.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#4",
+      "source": "the chosen ``(well, site)``, in ``pool`` order.",
+      "source_sha256": "b4b209393e7b75a95ee3ec6a462c85c4ec2cba6277325a101e66794dec69b077",
+      "translation": "선택된 ``(well, site)``, ``pool`` 순서."
+    },
+    {
+      "context": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "label": "spacr.ops_flatfield.choose_flat_fields#5",
+      "source": "Random positions over the plate, so each map pixel sees cells and gaps alike; ``build_flat.py`` of the plate B to D maps draws the same way.",
+      "source_sha256": "271daada2090e2016c216e03f6829ffa87e1a4655fb739065c6d0fbce89628be",
+      "translation": "플레이트 전체의 무작위 위치를 사용하므로 맵의 각 픽셀은 세포와 빈 공간을 고르게 본다. 플레이트 B에서 D까지의 맵을 만든 ``build_flat.py``도 같은 방식으로 추출한다."
+    },
+    {
+      "context": "The analytic flat-field correction of measured features.",
+      "label": "spacr.ops_flatfield.correct_features#0",
+      "source": "The analytic flat-field correction of measured features.",
+      "source_sha256": "a7e188213ae364084c5ce96fc6e95d79bbfccfdbbe3a4e69604256d0cb7c4a4f",
+      "translation": "측정된 특징의 해석적 평탄 필드 보정."
+    },
+    {
+      "context": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "label": "spacr.ops_flatfield.correct_features#1",
+      "source": "one row per cell, holding ``features`` and the columns :func:`correction_inputs` names.",
+      "source_sha256": "06aae2c68764de182b836c96232d9a07f5e23e4429ef4097c0c5a3513d8c7d91",
+      "translation": "세포당 한 행이며, ``features``와 :func:`correction_inputs`가 지정하는 열을 가진다."
+    },
+    {
+      "context": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "label": "spacr.ops_flatfield.correct_features#2",
+      "source": "a frame aligned with ``frame`` holding the :func:`mask_pass` columns ``<compartment>_<CH>_g`` and ``<compartment>_px``.",
+      "source_sha256": "7ff8627941c6fbae46b65b18e886d76c9c885ead0de3c972eb6f19dd501eb4bb",
+      "translation": "``frame``과 정렬된 프레임으로, :func:`mask_pass` 열 ``<compartment>_<CH>_g``와 ``<compartment>_px``를 가진다."
+    },
+    {
+      "context": "the columns to return.",
+      "label": "spacr.ops_flatfield.correct_features#3",
+      "source": "the columns to return.",
+      "source_sha256": "e5d3524d0ec144394a281a5e5e5f1c2173eda4f93bc8e22deee7b0b38d3aa399",
+      "translation": "반환할 열."
+    },
+    {
+      "context": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "label": "spacr.ops_flatfield.correct_features#4",
+      "source": "``{channel: b}``, keyed by the channel names the gain columns use.",
+      "source_sha256": "99822520ea2004b20a6699448bf4570034b6cb9f3281a2733990182970239705",
+      "translation": "``{channel: b}``. 이득 열이 사용하는 채널 이름을 키로 한다."
+    },
+    {
+      "context": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "label": "spacr.ops_flatfield.correct_features#5",
+      "source": "a float32 frame of ``features``; a column the correction does not move is returned as measured.",
+      "source_sha256": "08b319b73071a428dc1649ca9bb82c189b4c6467f9ae2f709d0f9466e7f977e0",
+      "translation": "``features``의 float32 프레임. 보정이 옮기지 않는 열은 측정값 그대로 반환한다."
+    },
+    {
+      "context": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "label": "spacr.ops_flatfield.correct_features#6",
+      "source": "Each kind moves as the module docstring states. Values are computed in float64 and the cv and gini from the corrected mean and std before the result is cast, which is what the plate A pilot's ``flat_correct.py`` did.",
+      "source_sha256": "c9cbc5eff5353ce9ab8c977910cfd1da5e80a3d5de6d79a49f36aa812492adbe",
+      "translation": "각 종류는 모듈 독스트링에 적힌 대로 옮겨진다. 값은 float64로 계산하며, cv와 gini는 결과를 형 변환하기 전에 보정된 평균과 std로 계산한다. 이는 플레이트 A 파일럿의 ``flat_correct.py``가 한 방식이다."
+    },
+    {
+      "context": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "label": "spacr.ops_flatfield.correct_field#0",
+      "source": "One field corrected pixel by pixel: ``(I - b) / flat + b``.",
+      "source_sha256": "f6e29c6373e832725006b3895add26658172c12b410db6d90c4b0fdbfbb1833b",
+      "translation": "픽셀 단위로 보정한 한 시야: ``(I - b) / flat + b``."
+    },
+    {
+      "context": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "label": "spacr.ops_flatfield.correct_field#2",
+      "source": "``{channel: (H, W) flat}`` from :func:`flat_planes`.",
+      "source_sha256": "435ea5e9a8a9888a483866a4b3b58119946a3b53c5f203c55b888000dcc52def",
+      "translation": "``{channel: (H, W) flat}``(:func:`flat_planes`에서 얻음)."
+    },
+    {
+      "context": "the stack's channel names, in order.",
+      "label": "spacr.ops_flatfield.correct_field#4",
+      "source": "the stack's channel names, in order.",
+      "source_sha256": "7ac4c098ed0de0dde3f73ed1b3793a250612bcaef55afd4b8891efa7400ea2b5",
+      "translation": "스택의 채널 이름, 순서대로."
+    },
+    {
+      "context": "a float32 copy; the input is not changed.",
+      "label": "spacr.ops_flatfield.correct_field#5",
+      "source": "a float32 copy; the input is not changed.",
+      "source_sha256": "88534da2aedac23210f0a9eff565414ce9666d5e1ec3664b13f342967f639117",
+      "translation": "float32 사본. 입력은 바뀌지 않는다."
+    },
+    {
+      "context": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "label": "spacr.ops_flatfield.correct_field#6",
+      "source": "The offset is added back so a corrected pixel stays on the camera's scale and the background keeps its level; only the illumination falloff is divided out.",
+      "source_sha256": "d3b3fd880b3d6470269b1a58b6b6d7c2d00024c15417484d4e3588b1148bfc21",
+      "translation": "오프셋을 다시 더하므로 보정된 픽셀은 카메라 척도에 머물고 배경은 원래 수준을 유지한다. 조명 감쇠만 나누어 제거한다."
+    },
+    {
+      "context": "The columns :func:`correct_features` reads to correct ``features``.",
+      "label": "spacr.ops_flatfield.correction_inputs#0",
+      "source": "The columns :func:`correct_features` reads to correct ``features``.",
+      "source_sha256": "e57c609642e85a9baf8e5fe0801a707abc1a414616686fdfd2bee0dc7377bb1a",
+      "translation": ":func:`correct_features`가 ``features``를 보정하기 위해 읽는 열."
+    },
+    {
+      "context": "the columns to correct.",
+      "label": "spacr.ops_flatfield.correction_inputs#1",
+      "source": "the columns to correct.",
+      "source_sha256": "906b8355e70c7ee8c9a4cb6de9a8f5d60df09f13d88b22fc5a8c3f6546ca0b36",
+      "translation": "보정할 열."
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.correction_inputs#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "채널 이름."
+    },
+    {
+      "context": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "label": "spacr.ops_flatfield.correction_inputs#3",
+      "source": "``features`` plus the mean and std columns their cv and gini are recomputed from, in a stable order.",
+      "source_sha256": "d11a0f253c158ceedf8169e8898479702e0be14a2f359adee15f0f51018048af",
+      "translation": "``features``와, 그 cv와 gini를 다시 계산하는 데 쓰는 평균 및 std 열, 안정된 순서."
+    },
+    {
+      "context": "How the analytic correction moves one feature column.",
+      "label": "spacr.ops_flatfield.correction_kind#0",
+      "source": "How the analytic correction moves one feature column.",
+      "source_sha256": "cd83b55d8b8039dd1f0b4cbf61a74340f52190dbf7329d87eb6a3dd4bd5bc404",
+      "translation": "해석적 보정이 특징 열 하나를 옮기는 방식."
+    },
+    {
+      "context": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "label": "spacr.ops_flatfield.correction_kind#1",
+      "source": "a cell table column, ``<compartment>_<channel>_<stat>``.",
+      "source_sha256": "169ab86025c64c0a1ff0fdd05e66a3880886e471665c99c79182bf9faedb686b",
+      "translation": "세포 테이블 열, ``<compartment>_<channel>_<stat>``."
+    },
+    {
+      "context": "the channel names; matched without regard to case.",
+      "label": "spacr.ops_flatfield.correction_kind#2",
+      "source": "the channel names; matched without regard to case.",
+      "source_sha256": "efaa4212e72f1fedf2ea919fe53f7ec3bfe76719191447e5226ba8aa91fdd906",
+      "translation": "채널 이름. 대소문자를 구분하지 않고 대조한다."
+    },
+    {
+      "context": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "label": "spacr.ops_flatfield.correction_kind#3",
+      "source": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, or None for a column the correction leaves unchanged.",
+      "source_sha256": "8c34383c9d6773e3f1b2e63ae272d5fbd5924e9ed3699ef101873d862ce06227",
+      "translation": "``\"loc\"``, ``\"spread\"``, ``\"int\"``, ``\"cv\"``, ``\"gini\"``, 또는 보정이 바꾸지 않는 열이면 None."
+    },
+    {
+      "context": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "label": "spacr.ops_flatfield.field_blocks#0",
+      "source": "One field as block means, the input :func:`build_flat_maps` takes.",
+      "source_sha256": "a5089737f6d07976d73bbd08e8b15522c77dd28fa28b7aaf30ec0db5e1c1002f",
+      "translation": "블록 평균으로 나타낸 한 시야. :func:`build_flat_maps`가 받는 입력이다."
+    },
+    {
+      "context": "``(H, W, C)`` intensities of one field.",
+      "label": "spacr.ops_flatfield.field_blocks#1",
+      "source": "``(H, W, C)`` intensities of one field.",
+      "source_sha256": "a50e4d98c57e8426b54c9ff03e2d29ecfc1c9399e3925ade82820c16f653529a",
+      "translation": "한 시야의 ``(H, W, C)`` 강도."
+    },
+    {
+      "context": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "label": "spacr.ops_flatfield.field_blocks#2",
+      "source": "the block edge in pixels; rows and columns past the last whole block are dropped.",
+      "source_sha256": "6b99f53b0470df09d34feba35b36da415a0895a385dfcbcec35fb598566f6429",
+      "translation": "픽셀 단위의 블록 한 변. 마지막 완전한 블록을 넘는 행과 열은 버린다."
+    },
+    {
+      "context": "``(H // block, W // block, C)`` float32 block means.",
+      "label": "spacr.ops_flatfield.field_blocks#3",
+      "source": "``(H // block, W // block, C)`` float32 block means.",
+      "source_sha256": "a8554ffe06a663d796f0546ed2b7cc4b9f43a9f6f1177531f18a5467d8bc6f35",
+      "translation": "``(H // block, W // block, C)`` float32 블록 평균."
+    },
+    {
+      "context": "The intensity features the analytic correction cannot get right.",
+      "label": "spacr.ops_flatfield.flagged_features#0",
+      "source": "The intensity features the analytic correction cannot get right.",
+      "source_sha256": "03ad7807a6e4a660e4e7d8ca2a9ec0f22a03b04a432c94ca57f251a76877419c",
+      "translation": "해석적 보정이 정확히 맞출 수 없는 강도 특징."
+    },
+    {
+      "context": "the channel names.",
+      "label": "spacr.ops_flatfield.flagged_features#2",
+      "source": "the channel names.",
+      "source_sha256": "f1a002ec2e2a822ff7c10b55bddcf4435d9c3a325e98113e8d35d27d3f87221b",
+      "translation": "채널 이름."
+    },
+    {
+      "context": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "label": "spacr.ops_flatfield.flagged_features#3",
+      "source": "the ``*_mode_intensity`` columns. The mode of a float image is not a location the gain moves predictably, so it is corrected as one and flagged rather than trusted.",
+      "source_sha256": "8d613ee38d494232b7cd0ce3ec646ca8873435c5c62f12a02f10f28b09d6b2c9",
+      "translation": "``*_mode_intensity`` 열. 부동소수점 이미지의 최빈값은 이득이 예측 가능하게 옮기는 위치 통계가 아니므로, 위치로 보정하되 신뢰하지 않고 플래그를 붙인다."
+    },
+    {
+      "context": "Each map brought to the field's pixels, bilinearly.",
+      "label": "spacr.ops_flatfield.flat_planes#0",
+      "source": "Each map brought to the field's pixels, bilinearly.",
+      "source_sha256": "5de0ab2afae7f7513c22ebe7a09dfb15d6a152eaf7a1a41cf6f9ac9e0b1afba6",
+      "translation": "각 맵을 쌍선형 보간으로 시야의 픽셀에 맞춘다."
+    },
+    {
+      "context": "``(H, W)`` of a field.",
+      "label": "spacr.ops_flatfield.flat_planes#2",
+      "source": "``(H, W)`` of a field.",
+      "source_sha256": "b3ca9dbf1c294984f1cb32be1f7406920f40c0acf52a340c240da105a3c71b20",
+      "translation": "시야의 ``(H, W)``."
+    },
+    {
+      "context": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "label": "spacr.ops_flatfield.load_flat_maps#0",
+      "source": "A plate's maps and offsets from a folder :func:`write_flat_maps` wrote.",
+      "source_sha256": "47bce7c8b4f6e9c7ce2065881f9c93d8d66303c742e48e8ef3c559795b5ff854",
+      "translation": ":func:`write_flat_maps`가 기록한 폴더에서 읽은 플레이트의 맵과 오프셋."
+    },
+    {
+      "context": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the laboratory microplate A pilot's ``seg_qc`` folder has the same layout.",
+      "label": "spacr.ops_flatfield.load_flat_maps#1",
+      "source": "holds ``flat_info.json`` and one ``flat_*_<CH>.npy`` per channel; the plate A pilot's ``seg_qc`` folder has the same layout.",
+      "source_sha256": "11668fc71496c954dd867bae297bc2f288580fb620a0000d243125e6919386e2",
+      "translation": "``flat_info.json``과 채널마다 ``flat_*_<CH>.npy`` 하나를 담는다. 플레이트 A 파일럿의 ``seg_qc`` 폴더도 같은 구조이다."
+    },
+    {
+      "context": "the channels wanted, matched without regard to case.",
+      "label": "spacr.ops_flatfield.load_flat_maps#2",
+      "source": "the channels wanted, matched without regard to case.",
+      "source_sha256": "b008f4d9eb0e8eab919726b5c1b332dc9273e5d6b19ad1d73e47cbd779101c12",
+      "translation": "원하는 채널. 대소문자를 구분하지 않고 대조한다."
+    },
+    {
+      "context": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "label": "spacr.ops_flatfield.load_flat_maps#3",
+      "source": "``(maps, offsets, info)``: ``{channel: flat}`` as stored, ``{channel: b}``, and the info record with each map's md5 (computed here when the record lacks it).",
+      "source_sha256": "f12b438a91b83001c0dfeedfc7365c1e534214b373093bd11e9d712dd389140a",
+      "translation": "``(maps, offsets, info)``: 저장된 그대로의 ``{channel: flat}``, ``{channel: b}``, 그리고 각 맵의 md5를 담은 정보 레코드(레코드에 없으면 여기서 계산)."
+    },
+    {
+      "context": "when the folder lacks the record or a map.",
+      "label": "spacr.ops_flatfield.load_flat_maps#4",
+      "source": "when the folder lacks the record or a map.",
+      "source_sha256": "fb0e310c010aff62a5c71fe998de0a39b5c68ea6b839dc57da96dade3c2b9654",
+      "translation": "폴더에 레코드나 맵이 없을 때."
+    },
+    {
+      "context": "Per-cell geometry of one microscope field of view's masks, and the mean gain under each.",
+      "label": "spacr.ops_flatfield.mask_pass#0",
+      "source": "Per-cell geometry of one field's masks, and the mean gain under each.",
+      "source_sha256": "3d5111cf8b20f3e9fbafb48e170e7b82c50d8c28c4d3e0ca046ffdd98682e94f",
+      "translation": "한 시야 마스크의 세포별 기하 정보와 각 세포 아래의 평균 이득."
+    },
+    {
+      "context": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "label": "spacr.ops_flatfield.mask_pass#1",
+      "source": "the field's nucleus labels, nucleus ``k`` in cell ``k``.",
+      "source_sha256": "9db049086959409d4afb5fd10d885a118b20753abcbd7ea4ff5104b8c10f00e3",
+      "translation": "시야의 핵 레이블. 핵 ``k``는 세포 ``k`` 안에 있다."
+    },
+    {
+      "context": "its cell labels.",
+      "label": "spacr.ops_flatfield.mask_pass#2",
+      "source": "its cell labels.",
+      "source_sha256": "4df5c24d34bd354dfa83cc841230b9cd59dc6bcca684785d3a5fc08308876b50",
+      "translation": "그 세포 레이블."
+    },
+    {
+      "context": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "label": "spacr.ops_flatfield.mask_pass#3",
+      "source": "``{channel: (H, W) 1 / flat}`` in float64, or None for the geometry only.",
+      "source_sha256": "34f830301330248f513a598878e2f415b1226f8c7a964b1638c23b39cf7082ba",
+      "translation": "float64의 ``{channel: (H, W) 1 / flat}``, 또는 기하 정보만 구하려면 None."
+    },
+    {
+      "context": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With image layers, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "label": "spacr.ops_flatfield.mask_pass#4",
+      "source": "one row per cell label: ``label``; ``<c>_px`` per compartment (cell, nucleus, cytoplasm); ``cell_cy``/``cell_cx`` and ``nucleus_cy``/``nucleus_cx``, the pixel centroids; ``top``, ``bottom``, ``left``, ``right``, the cell's box; and ``touches_field_edge`` and ``nucleus_touches_field_edge``. With planes, also ``<c>_<CH>_g``, the mean of ``1 / flat`` over the compartment's pixels.",
+      "source_sha256": "70055bee3caeea8392461ab2fef96981a742e668f5072bdf14d540bed971f3a2",
+      "translation": "세포 레이블당 한 행: ``label``; 구획(세포, 핵, 세포질)마다 ``<c>_px``; 픽셀 중심점인 ``cell_cy``/``cell_cx``와 ``nucleus_cy``/``nucleus_cx``; 세포의 상자인 ``top``, ``bottom``, ``left``, ``right``; 그리고 ``touches_field_edge``와 ``nucleus_touches_field_edge``. 이미지 층을 주면 구획 픽셀에 대한 평균인 ``<c>_<CH>_g``(``1 / flat``의 평균)도 있다."
+    },
+    {
+      "context": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "label": "spacr.ops_flatfield.mask_pass#5",
+      "source": "A cell touching the field's edge is cut: part of it lies outside the field, so its area and integrated intensities are too small. Where a neighbouring field holds the whole cell, that copy is the one to keep.",
+      "source_sha256": "627fc267ebc687914f567d08b0c16d343ee93220969c97a7a801f8fafcde6d2f",
+      "translation": "시야의 가장자리에 닿은 세포는 잘려 있다. 일부가 시야 밖에 있으므로 면적과 적분 강도가 너무 작다. 이웃 시야가 세포 전체를 담고 있으면 그 사본을 남겨야 한다."
+    },
+    {
+      "context": "Write a laboratory microplate's maps once, with their md5 and the microscope fields of view used.",
+      "label": "spacr.ops_flatfield.write_flat_maps#0",
+      "source": "Write a plate's maps once, with their md5 and the fields used.",
+      "source_sha256": "bc7e44a15339793f5a669c5caebbe0ab1eedca88021ca2b7d41260b270eaa3c7",
+      "translation": "플레이트의 맵을 md5 및 사용한 시야와 함께 한 번 기록한다."
+    },
+    {
+      "context": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "label": "spacr.ops_flatfield.write_flat_maps#1",
+      "source": "where ``flat_<plate>_<CH>.npy`` and ``flat_info.json`` go.",
+      "source_sha256": "422a500918b678ee7669e0247b93e9013bcf4d8b465deeca130cf5ad3ca57e64",
+      "translation": "``flat_<plate>_<CH>.npy``와 ``flat_info.json``이 저장되는 위치."
+    },
+    {
+      "context": "the plate name used in the file names.",
+      "label": "spacr.ops_flatfield.write_flat_maps#2",
+      "source": "the plate name used in the file names.",
+      "source_sha256": "49992e26f0f6d07103b30655c50b94a304a257436a89ed49e0d2080653d4d693",
+      "translation": "파일 이름에 쓰는 플레이트 이름."
+    },
+    {
+      "context": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "label": "spacr.ops_flatfield.write_flat_maps#3",
+      "source": "``{channel: flat}`` from :func:`build_flat_maps`.",
+      "source_sha256": "10cc5d3197920cd0be028e387b1b79101fe5129eaba9064edbc9f63e5e302426",
+      "translation": "``{channel: flat}``(:func:`build_flat_maps`에서 얻음)."
+    },
+    {
+      "context": "its ``method`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#4",
+      "source": "its ``method`` record.",
+      "source_sha256": "d5322cadff7db9056bcca30536a763fa16a74d1c13f20be3449d539664903181",
+      "translation": "그 ``method`` 레코드."
+    },
+    {
+      "context": "the ``(well, site)`` the maps were built from.",
+      "label": "spacr.ops_flatfield.write_flat_maps#5",
+      "source": "the ``(well, site)`` the maps were built from.",
+      "source_sha256": "c320c4bc85715f355d58d6a73a589eb72576d19706ca1286ddb974ce6dd05f85",
+      "translation": "맵을 만든 ``(well, site)``."
+    },
+    {
+      "context": "more keys for ``flat_info.json``, such as when and from which microplate sample positions the maps were built.",
+      "label": "spacr.ops_flatfield.write_flat_maps#6",
+      "source": "more keys for ``flat_info.json``, such as when and from which wells the maps were built.",
+      "source_sha256": "b10167b3f90823f997252ab783f678d45de401c8d3bc3b43607752fb13f5eb93",
+      "translation": "``flat_info.json``에 넣을 추가 키. 예를 들어 맵을 언제, 어느 웰에서 만들었는지."
+    },
+    {
+      "context": "the ``flat_info.json`` record.",
+      "label": "spacr.ops_flatfield.write_flat_maps#7",
+      "source": "the ``flat_info.json`` record.",
+      "source_sha256": "1f6fad2070ad6fc32c3438a222104bece692e189bbd0db469323bf6f67699a8b",
+      "translation": "``flat_info.json`` 레코드."
+    },
+    {
+      "context": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "label": "spacr.ops_flatfield.write_flat_maps#8",
+      "source": "when the folder already holds maps. A map is recorded by md5 in every analysis that used it, so it is never overwritten; build into a new folder instead.",
+      "source_sha256": "b050a1583968e085ff5e448c9c0e419c0c55c663ecb2da1db2391c12f189d204",
+      "translation": "폴더에 이미 맵이 있을 때. 맵은 그것을 사용한 모든 분석에 md5로 기록되므로 절대 덮어쓰지 않는다. 대신 새 폴더에 만든다."
+    },
+    {
+      "context": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "label": "spacr.ops_merge.deepest_field_matches#0",
+      "source": "One observation per sequencing nucleus: the copy deepest in its field.",
+      "source_sha256": "02fb82d07b1e30ca5a306409097a12b06ae9d3f6dae8f19a9c457829ec3dd76a",
+      "translation": "시퀀싱 핵당 하나의 관측: 자기 시야에서 가장 깊이 있는 사본."
+    },
+    {
+      "context": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "label": "spacr.ops_merge.deepest_field_matches#1",
+      "source": "merge rows with ``key``, ``depth`` and ``by`` columns.",
+      "source_sha256": "38cc88ddcf15bfda79ea7ed8b81dc7b2723a0c8c276ee5938b72e7c52eaaaf52",
+      "translation": "``key``, ``depth``, ``by`` 열을 가진 병합 행."
+    },
+    {
+      "context": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#3",
+      "source": "how deep the sequencing nucleus lies in the row's field, from :func:`footprint_depth`; the largest wins.",
+      "source_sha256": "94fa2b03abfd7859a18baa34d7860cb898f2bc9043bf47381313b3d23527743c",
+      "translation": "시퀀싱 핵이 그 행의 시야 안에 얼마나 깊이 있는지(:func:`footprint_depth`에서 얻음). 가장 큰 값이 우선한다."
+    },
+    {
+      "context": "breaks ties in ``depth``; the smallest wins.",
+      "label": "spacr.ops_merge.deepest_field_matches#4",
+      "source": "breaks ties in ``depth``; the smallest wins.",
+      "source_sha256": "deb2cbbca720aafeaff0ffadcd4ca20cb57e432233e8d4d3484531ff299428e8",
+      "translation": "``depth``가 같을 때 우열을 가린다. 가장 작은 값이 우선한다."
+    },
+    {
+      "context": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "label": "spacr.ops_merge.deepest_field_matches#5",
+      "source": "``(kept, dropped)`` -- the frame with one row per ``key``, in the order the winning rows had, and how many rows were dropped.",
+      "source_sha256": "bf304e2b69cb7325be9abb6550a74d8d4cc041357c1b288fb4280f8b93cca3a5",
+      "translation": "``(kept, dropped)`` -- ``key``당 한 행이며 우선한 행들의 원래 순서를 따르는 프레임과 제거된 행 수."
+    },
+    {
+      "context": "Core ownership by the sequencing centroid (A1b). A nucleus imaged in two overlapping phenotype microscope fields of view is kept from the microscope field of view in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the microscope field of view's edge: on laboratory microplate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "label": "spacr.ops_merge.deepest_field_matches#6",
+      "source": "CORE OWNERSHIP BY THE SEQUENCING CENTROID (A1b). A nucleus imaged in two overlapping phenotype fields is kept from the field in which its sequencing centroid lies deepest, not from the closer match (:func:`deduplicate_matches`). The closer match is often the margin copy, and a margin copy is more often cut by the field's edge: on plate A of Funk et al. 2022 the closer match kept a different copy for 14.4 percent of linked cells. Equal depths go to the closer match, then to the first row.",
+      "source_sha256": "6ad1ab96fc395acbf6464dca8d4f2fc8c0d801edbc90174472df9d51e43761f0",
+      "translation": "시퀀싱 중심점에 따른 중심부 소유(A1b). 겹치는 두 표현형 시야에서 촬영된 핵은 더 가까운 일치(:func:`deduplicate_matches`)가 아니라 시퀀싱 중심점이 가장 깊이 놓인 시야에서 가져온다. 더 가까운 일치는 흔히 가장자리 사본이며, 가장자리 사본은 시야의 가장자리에 잘려 있는 경우가 더 많다. Funk et al. 2022의 플레이트 A에서 더 가까운 일치는 연결된 세포의 14.4 퍼센트에서 다른 사본을 남겼다. 깊이가 같으면 더 가까운 일치를, 그다음에는 첫 번째 행을 택한다."
+    },
+    {
+      "context": "The microplate sample position-frame box a phenotype microscope field of view covers.",
+      "label": "spacr.ops_merge.field_footprint#0",
+      "source": "The well-frame box a phenotype field covers.",
+      "source_sha256": "4821ad5c965ba7b1cf873366b7f6d29bc9a7610f93c99ea3265b24ab82f9fb6a",
+      "translation": "표현형 시야가 덮는 웰 좌표계의 상자."
+    },
+    {
+      "context": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the microscope field of view's four corners.",
+      "label": "spacr.ops_merge.field_footprint#3",
+      "source": "``(low, high)``, each ``(y, x)`` in well pixels: the smallest and largest coordinates of the field's four corners.",
+      "source_sha256": "3bb1c0630dad17fc8888b3c15a5bc04c739efde1c12cf3cc5129127296c77f14",
+      "translation": "``(low, high)``, 각각 웰 픽셀 단위의 ``(y, x)``: 시야 네 모서리 좌표의 최솟값과 최댓값."
+    },
+    {
+      "context": "How far each microplate sample position-frame point lies inside a microscope field of view's footprint.",
+      "label": "spacr.ops_merge.footprint_depth#0",
+      "source": "How far each well-frame point lies inside a field's footprint.",
+      "source_sha256": "ed3523bae1570e932d752ec2428b76d60771f15866cb70277fe27ed549d78b34",
+      "translation": "웰 좌표계의 각 점이 시야 풋프린트 안쪽으로 얼마나 들어가 있는지."
+    },
+    {
+      "context": "the footprint's smallest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#2",
+      "source": "the footprint's smallest ``(y, x)``.",
+      "source_sha256": "0f9cd636fbe334feabc52bedb9230a5de8da49fe9f16e9163690a378b959f0c8",
+      "translation": "풋프린트의 가장 작은 ``(y, x)``."
+    },
+    {
+      "context": "its largest ``(y, x)``.",
+      "label": "spacr.ops_merge.footprint_depth#3",
+      "source": "its largest ``(y, x)``.",
+      "source_sha256": "a741315e63335849ba37df09509902acd15d839693ee9ba74306b07199aea79b",
+      "translation": "가장 큰 ``(y, x)``."
+    },
+    {
+      "context": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "label": "spacr.ops_merge.footprint_depth#4",
+      "source": "``(N,)`` distances in well pixels to the nearest footprint edge, negative outside.",
+      "source_sha256": "78c014403b6fc4ee8d93a149299c4b468ea1cc8d288bfd4ed4e1d33e249c964e",
+      "translation": "``(N,)`` 가장 가까운 풋프린트 가장자리까지의 웰 픽셀 단위 거리. 바깥쪽이면 음수."
+    },
+    {
+      "context": "The depth decides which microscope field of view owns a cell. Where microscope fields of view overlap, the microscope field of view in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the microscope field of view's border.",
+      "label": "spacr.ops_merge.footprint_depth#5",
+      "source": "THE DEPTH DECIDES WHICH FIELD OWNS A CELL. Where fields overlap, the field in which a cell lies deepest images it furthest from any edge, so that copy is the one least likely to be cut by the field's border.",
+      "source_sha256": "931cec094a3c58e0b1c431732f24cc9e8fdea5cd88d71048247132cff016dffe",
+      "translation": "깊이가 세포를 소유하는 시야를 정한다. 시야가 겹치는 곳에서 세포가 가장 깊이 놓인 시야는 그 세포를 어떤 가장자리에서도 가장 멀리 촬영하므로, 그 사본이 시야 경계에 잘릴 가능성이 가장 낮다."
+    },
+    {
+      "context": "The fields whose footprints overlap each field's.",
+      "label": "spacr.ops_merge.overlapping_fields#0",
+      "source": "The fields whose footprints overlap each field's.",
+      "source_sha256": "d6f8b1cadad4050afea5c8476067eaf17ecec67c34fc8109137608e55ccc337d",
+      "translation": "각 시야의 풋프린트와 겹치는 풋프린트를 가진 시야."
+    },
+    {
+      "context": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "label": "spacr.ops_merge.overlapping_fields#1",
+      "source": "``{site: (low, high)}`` from :func:`field_footprint`.",
+      "source_sha256": "6edc149d6b726d8ed17848083cf1b3329d80d2d57a180cbd7029339ea506df18",
+      "translation": "``{site: (low, high)}``(:func:`field_footprint`에서 얻음)."
+    },
+    {
+      "context": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "label": "spacr.ops_merge.overlapping_fields#2",
+      "source": "``{site: [other sites]}``, in the order of ``footprints``.",
+      "source_sha256": "8fe729fe35c4347a4df968247e52634ccf1d97ebddb27286edd775f5f41e7ce7",
+      "translation": "``{site: [other sites]}``, ``footprints`` 순서."
+    },
+    {
+      "context": "Funk et al. 2022's mass displacement and channel correlations.",
+      "label": "spacr.ops_sample.funk_object_features#0",
+      "source": "Funk et al. 2022's mass displacement and channel correlations.",
+      "source_sha256": "5fbb3db424ae381951f6c3901b9c5470a97d90188746d93ce26c26dc0117e741",
+      "translation": "Funk et al. 2022의 질량 변위와 채널 상관."
+    },
+    {
+      "context": "one compartment's label mask.",
+      "label": "spacr.ops_sample.funk_object_features#1",
+      "source": "one compartment's label mask.",
+      "source_sha256": "a5f00f91e2bc92b1004130188b2d7f559aa369c41f4701d5e94a8a17f5cb78ef",
+      "translation": "한 구획의 레이블 마스크."
+    },
+    {
+      "context": "``(H, W, C)`` intensities over it.",
+      "label": "spacr.ops_sample.funk_object_features#2",
+      "source": "``(H, W, C)`` intensities over it.",
+      "source_sha256": "011c9847a093c67fd731d462955e34e4da12be8af97791cd17fd9491246386ee",
+      "translation": "그 위의 ``(H, W, C)`` 강도."
+    },
+    {
+      "context": "one short name per channel.",
+      "label": "spacr.ops_sample.funk_object_features#3",
+      "source": "one short name per channel.",
+      "source_sha256": "64151adb0eaa1b966dc83598bfb1646e4fc24ad3ef05744aa2a12ac9a3c5a9a7",
+      "translation": "채널당 짧은 이름 하나."
+    },
+    {
+      "context": "the compartment, ``nucleus`` or ``cell``.",
+      "label": "spacr.ops_sample.funk_object_features#4",
+      "source": "the compartment, ``nucleus`` or ``cell``.",
+      "source_sha256": "c5215cf40e2a0db802c1af85e774f6bf714d17e4b734424a916dee84cfe4d3b0",
+      "translation": "구획, ``nucleus`` 또는 ``cell``."
+    },
+    {
+      "context": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "label": "spacr.ops_sample.funk_object_features#5",
+      "source": "one row per label: ``label``, ``<prefix>_<ch>_mass_displacement`` per channel and ``<prefix>_correlation_<a>_<b>`` per channel pair, in the order of :func:`itertools.combinations`.",
+      "source_sha256": "614416043cd183bfeb83a14bf80fa754bc6fc2c1bdfda3e9a5288ce8165d7e4a",
+      "translation": "레이블당 한 행: ``label``, 채널마다 ``<prefix>_<ch>_mass_displacement``, 채널 쌍마다 ``<prefix>_correlation_<a>_<b>``, :func:`itertools.combinations`의 순서."
+    },
+    {
+      "context": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "label": "spacr.ops_sample.funk_object_features#6",
+      "source": "These are the definitions of Funk et al.'s OpticalPooledScreens ``ops/cp_emulator.py``, which their phenotype step (``Snake._extract_phenotype_cp_multichannel``) applied to every nucleus and cell:",
+      "source_sha256": "b82c0bfb2d356f055c7550ee6c8d40a906465dff6efb9cf9977dca1585436a8d",
+      "translation": "이는 Funk et al.의 OpticalPooledScreens ``ops/cp_emulator.py``에 있는 정의이며, 그들의 표현형 단계(``Snake._extract_phenotype_cp_multichannel``)가 모든 핵과 세포에 적용했다:"
+    },
+    {
+      "context": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "label": "spacr.ops_sample.funk_object_features#7",
+      "source": "``mass_displacement`` (``intensity_features_multichannel``): the distance in pixels from the object's centroid to its intensity-weighted centroid, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. A displaced DNA or tubulin mass marks an asymmetric cell.",
+      "source_sha256": "41cef48f64e02eb911dd5fab45b8ba39f6bc3098aeefae1ce0c2f1ed561af3cc",
+      "translation": "``mass_displacement``(``intensity_features_multichannel``): 객체의 중심점에서 강도 가중 중심점까지의 픽셀 단위 거리, ``sqrt(sum((local_centroid - weighted_local_centroid) ** 2))``. DNA 또는 튜불린 질량이 치우쳐 있으면 비대칭 세포임을 나타낸다."
+    },
+    {
+      "context": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "label": "spacr.ops_sample.funk_object_features#8",
+      "source": "``correlation`` (``correlation_features_multichannel``, through ``ops.features.correlate_channels_all_multichannel``): Pearson's r of two channels over the object's pixels, ``np.corrcoef``.",
+      "source_sha256": "6f7ec20be15ab47871bb1202a965763b7487f8e49a0beac523d0c4acd4eb9e69",
+      "translation": "``correlation``(``correlation_features_multichannel``, ``ops.features.correlate_channels_all_multichannel``을 통해): 객체 픽셀에 대한 두 채널의 Pearson r, ``np.corrcoef``."
+    },
+    {
+      "context": "Both are computed from per-label sums, centred on each label's mean, so a microscope field of view is one pass rather than one regionprops object per cell.",
+      "label": "spacr.ops_sample.funk_object_features#9",
+      "source": "Both are computed from per-label sums, centred on each label's mean, so a field is one pass rather than one regionprops object per cell.",
+      "source_sha256": "8557bc9c6ddd2f46df7d1d1a25db4051599c47b69ec8f346b92dc8b21196a5e7",
+      "translation": "둘 다 레이블별 합에서 각 레이블의 평균을 중심으로 계산하므로, 한 시야를 세포마다 regionprops 객체 하나씩이 아니라 한 번의 패스로 처리한다."
+    },
+    {
+      "context": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "label": "spacr.ops_sample.measure_phenotype_field#6",
+      "source": "add Funk et al. 2022's features: the mass displacement of every channel and the correlation of every channel pair in the nucleus and the cell (:func:`funk_object_features`), and ``nucleus_form_factor`` and ``cell_form_factor``, ``4 * pi * area / perimeter ** 2`` (``shape_features['form_factor']`` of their ``ops/cp_emulator.py``) from spaCR's own area and perimeter.",
+      "source_sha256": "41ceac9ec628c2b5ea626e3506e4783f43cbe953a5b369440d6b919923883d50",
+      "translation": "Funk et al. 2022의 특징을 추가한다: 핵과 세포에서 각 채널의 질량 변위와 각 채널 쌍의 상관(:func:`funk_object_features`), 그리고 spaCR 자체의 면적과 둘레로 계산한 ``nucleus_form_factor``와 ``cell_form_factor``, ``4 * pi * area / perimeter ** 2``(``shape_features['form_factor']``, 그들의 ``ops/cp_emulator.py`` 기준)."
+    },
+    {
+      "context": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "label": "spacr.ops_sample.measure_phenotype_field#7",
+      "source": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "source_sha256": "ab2fb1269405def9b4c64ed5536264ebb71d656dc75d1dad590e13508397280f",
+      "translation": "``label``을 키로 하는 세포당 한 행. ``nucleus_``, ``cell_``, ``cytoplasm_`` 열과 시야 픽셀 단위의 ``centroid_row``/``centroid_col``로 표시된 핵 중심점을 가진다."
+    },
+    {
+      "context": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "label": "spacr.ops_sample.measure_phenotype_field#8",
+      "source": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label.",
+      "source_sha256": "43f1d0ebcf597fa7e424fa6e3b92960876c7493c7db364f7c6018c71bbfb1915",
+      "translation": "특징은 spaCR의 measure가 기록하는 것과 같다. 형태는 :func:`spacr.measure._morphological_measurements`에서, 강도와 질감은 :func:`spacr.measure._intensity_measurements`에서 가져오므로, OPS 세포와 측정된 웰의 세포는 같은 열을 가지며 다시 유도되는 것은 없다. 세포질은 세포에서 그 핵을 뺀 것이며, 세포의 레이블을 따른다."
+    },
+    {
+      "context": "Division analysis results: what tracked cells do before they divide.",
+      "label": "spacr.qt.widgets.division_panel#0",
+      "source": "Division analysis results: what tracked cells do before they divide.",
+      "source_sha256": "b274a5a3cfdbdd6175515304c29d4ac243e5c7c076dfe985019ef675501655c2",
+      "translation": "분열 분석 결과: 추적된 세포가 분열하기 전에 무엇을 하는가."
+    },
+    {
+      "context": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "label": "spacr.qt.widgets.division_panel#1",
+      "source": "The Make Masks timelapse run writes one results folder per tracked field under ``tracks/division/`` when ``timelapse_division_analysis`` is on (see :func:`spacr.division_analysis.write_division_results`). This panel reads such a folder, or finds the result folders under any folder above them, and draws the three figures from its tables: the aligned trajectories of dividing cells against matched controls and the shuffled alignment, the forest plot of effect sizes, and the size-control plot. Nothing is recomputed; the tables on disk are what is drawn.",
+      "source_sha256": "6a8ed0733697b85cb20367c6022b618c86f801752553bac558ddce37a755fcfd",
+      "translation": "Make Masks 타임랩스 실행은 추적 필드마다 ``tracks/division/`` 아래에 결과 폴더 하나를 기록합니다. 단, ``timelapse_division_analysis`` 가 켜져 있을 때만 해당합니다(:func:`spacr.division_analysis.write_division_results` 참조). 이 패널은 그런 폴더를 읽거나, 그 위의 어떤 폴더에서든 아래에 있는 결과 폴더를 찾아, 그 테이블에서 세 그림을 그립니다. 일치하는 대조군과 섞은 정렬에 대비한 분열 세포의 정렬 궤적, 효과 크기의 포리스트 플롯, 크기 조절 플롯입니다. 아무것도 다시 계산하지 않으며, 디스크에 있는 테이블을 그대로 그립니다."
+    },
+    {
+      "context": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel#0",
+      "source": "The division analysis figures of one tracked field, read from disk. Build the panel with its folder button, field list and figure tabs.",
+      "source_sha256": "0aafaef8df5d32ab60e2583cc8f24e1d51fcc42a19529aec432afe2742395c70",
+      "translation": "디스크에서 읽은 한 추적 필드의 분열 분석 그림. 폴더 버튼, 필드 목록, 그림 탭으로 패널을 구성합니다."
+    },
+    {
+      "context": "whether a folder with results was chosen and loaded.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.browse#1",
+      "source": "whether a folder with results was chosen and loaded.",
+      "source_sha256": "cd7e1eaebab11536bd8312ca312bd1f1c8ec3d16df6cf95d6115d27e22892d46",
+      "translation": "결과가 있는 폴더를 선택하고 불러왔는지 여부."
+    },
+    {
+      "context": "Show the results in ``folder``, or list those found below it.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#0",
+      "source": "Show the results in ``folder``, or list those found below it.",
+      "source_sha256": "d5c288893c03369b4675b4ec713c44f6bdb48dc273c388342436bc49e5cc9538",
+      "translation": "``folder`` 의 결과를 표시하거나, 그 아래에서 찾은 결과를 나열합니다."
+    },
+    {
+      "context": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#1",
+      "source": "a folder written by :func:`spacr.division_analysis.write_division_results`, or any folder above such folders; with several, the first is shown and the others can be picked from the list.",
+      "source_sha256": "32e6c82e47ef6dc0f094ccab14a916d1bbebe8a0ac7510b97c85c437f902639f",
+      "translation": ":func:`spacr.division_analysis.write_division_results` 가 기록한 폴더 또는 그런 폴더들 위의 어떤 폴더. 여러 개이면 첫 번째를 표시하고 나머지는 목록에서 고를 수 있습니다."
+    },
+    {
+      "context": "whether results were found and drawn.",
+      "label": "spacr.qt.widgets.division_panel.DivisionAnalysisPanel.load_folder#2",
+      "source": "whether results were found and drawn.",
+      "source_sha256": "afe8e29f455621aed0265f5e5073b075e772946f71decc2a74b1f362712bc099",
+      "translation": "결과를 찾아 그렸는지 여부."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch2-1108 branch: spacr.division_analysis.lineage_from_tracks, analyse_divisions, division_figures, write_division_results and read_division_results and the spacr.qt.widgets.division_panel module and DivisionAnalysisPanel (item 771); the spacr.ops_flatfield module, spacr.ops_merge.field_footprint, footprint_depth, overlapping_fields and deepest_field_matches, spacr.ops_sample.funk_object_features and the edited measure_phenotype_field and spacr.ops_engine.run_ops docstrings (items 852, 853 and 857). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

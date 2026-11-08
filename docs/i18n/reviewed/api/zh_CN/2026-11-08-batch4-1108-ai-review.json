@@ -1,0 +1,1918 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "label": "spacr.batch_correction.correct_batch_effects#18",
+      "source": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "source_sha256": "3a3831fe5615fc38df0effe52dec3ddda84809781c4aa616fe3203d2fc09562d",
+      "translation": "``tvn`` 特征值正则化，默认 1e-6（pycytominer 的取值）；参见 :func:`spherize_features`。它与 OPS TVN 的 ``ops_tvn_whiten_epsilon``（默认 3）不是同一个参数。"
+    },
+    {
+      "context": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "label": "spacr.batch_correction.spherize_features#7",
+      "source": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "source_sha256": "88c2d745b1a04b93d93e1b4dfb13ad04780d5a92e06c56974981023390b84f29",
+      "translation": "加到参考协方差（对于 ``-cor`` 变体为相关矩阵）每个特征值上的正则化量。默认 1e-6，即 pycytominer 的取值。它与 OPS TVN 的 ``ops_tvn_whiten_epsilon``（默认 3，在 :func:`spacr.ops_tvn.tvn_on_controls` 的两个步骤中加到每个轴的对照方差上）是不同的参数，尺度也不同；两者的取值不可互换。"
+    },
+    {
+      "context": "Gene clusters of an optical pooled screening experiment and their benchmarks.",
+      "label": "spacr.ops_clusters#0",
+      "source": "Gene clusters of an optical pooled screen and their benchmarks.",
+      "source_sha256": "87dde1bf4d773803395986f1a7abd8acfa17f94a165d431a3aaa82a430771e23",
+      "translation": "光学混池筛选的基因聚类及其基准评估。"
+    },
+    {
+      "context": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "label": "spacr.ops_clusters#1",
+      "source": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "source_sha256": "22a6fa51c21782655453b7e6232bb24bea76e6de8d0199ad91bdf11e94721f0f",
+      "translation": "基因谱先被嵌入（标准化，PCA 保留 99 % 的方差），转化为 PHATE 扩散图（k = 10 个最近邻，余弦距离），再用 Leiden 社区检测划分为聚类。对 Leiden 分辨率的扫描会找出聚类数最接近目标值的分辨率。这就是 Funk et al. 2022 和 Brieflow（Cheeseman 实验室，``workflow/lib/cluster``，MIT 许可证）所报告的聚类方法；此处的代码是对该已发表方法的全新重新实现，而非复制。"
+    },
+    {
+      "context": "Every clustering is scored the way Brieflow scores it:",
+      "label": "spacr.ops_clusters#2",
+      "source": "Every clustering is scored the way Brieflow scores it:",
+      "source_sha256": "785c192468faafa3bbd297aefca20749bccb0e3007a213fa4450d02f6baa654c",
+      "translation": "每次聚类都按 Brieflow 的方式评分："
+    },
+    {
+      "context": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "label": "spacr.ops_clusters#3",
+      "source": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "source_sha256": "abbec50f6332e4eb7768fc4b7e221643f7f9a9301feb4b028ab5da9bfa1114b7",
+      "translation": "**CORUM % 和 KEGG %**，即至少含一个富集组的聚类所占比例：对每个聚类中的每个组做双侧 Fisher 精确检验，在聚类内做 Benjamini-Hochberg 校正，FDR < 0.05 时判定为富集。背景为所有参与聚类的行，包括非靶向行。报告两种变体：``may2025`` 计入组的所有成员（Brieflow 2025 年 5 月的版本，可复现 Funk et al. 的 24.3 % 和 13.5 %），``head`` 只计入背景中的成员（Brieflow 当前的代码）。"
+    },
+    {
+      "context": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "label": "spacr.ops_clusters#4",
+      "source": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "source_sha256": "bcaea5c85fab61125f190d8da351a09ad7f59da5e70dc97a988c094ade127f25",
+      "translation": "共享同一聚类的基因对的 **STRING 精确率和召回率**。"
+    },
+    {
+      "context": "**String auprc**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "label": "spacr.ops_clusters#5",
+      "source": "**STRING AUPRC**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "source_sha256": "f82d85c92678f8f56ae425e6d53f9d999e52d5706674a8b09da95b7c4369a758",
+      "translation": "**STRING AUPRC**：按两条谱的余弦值对每个基因对排序，完全不需要聚类。"
+    },
+    {
+      "context": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "label": "spacr.ops_clusters#6",
+      "source": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "source_sha256": "0d479b1d0b8df8d7d145261a674f0173783621b929d2f8b297f647d14b8da419",
+      "translation": "相对于参考聚类（例如 Funk et al. 的聚类）的 **ARI**。"
+    },
+    {
+      "context": "Controls: the same workflow on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "label": "spacr.ops_clusters#7",
+      "source": "Controls: the same pipeline on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "source_sha256": "6875c185a81e02591e37f8e2819b1601b4a921600ec3c6d6835493613c861b29",
+      "translation": "对照：在各列独立置换后的 PCA 列上运行同一流程（打乱主成分对照），在相同成分上以相同聚类数运行 k-means（一个基线，显示富集比例在多大程度上仅取决于聚类大小），以及用于 AUPRC 的基因标签打乱。"
+    },
+    {
+      "context": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "label": "spacr.ops_clusters#8",
+      "source": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "source_sha256": "8672b2460b187abaf66f9138bb954f5c6921242c42f4e42df2a46fe7ddecfe62",
+      "translation": ":func:`consensus_clustering` 在基因及每个基因内引导 RNA 的 bootstrap 样本上重复聚类，每次使用各自的随机种子和分辨率；而 :func:`co_membership` 将这些运行转化为两个基因共享同一聚类的概率。"
+    },
+    {
+      "context": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "label": "spacr.ops_clusters#9",
+      "source": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "source_sha256": "f0a49e0a01afac43875f61507a448a74bf69350c6506f2f02e7e25e53bdae690",
+      "translation": "PHATE（``phate``）、Leiden（``leidenalg``）和 ``igraph`` 是可选依赖：它们构成 ``clustering`` 扩展，``pip install \"spacr[clustering]\"``。只有 PHATE + Leiden 步骤需要它们。基准文件（Brieflow 格式的 CORUM、KEGG 和 STRING 表）需由用户自行提供：spaCR 不附带这些文件。"
+    },
+    {
+      "context": "Adjusted Rand index of a clustering against a reference clustering.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#0",
+      "source": "Adjusted Rand index of a clustering against a reference clustering.",
+      "source_sha256": "a64698ab649645acb04d776c7796e76f6c8b3671b506afc67ca7cd24f9125744",
+      "translation": "一个聚类相对于参考聚类的调整兰德指数。"
+    },
+    {
+      "context": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#1",
+      "source": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "source_sha256": "53c3b99ff87976be1a2b188c4c9d7421c39e44c24d59bb79dae1724abfa47df7",
+      "translation": "``gene, cluster`` 行，例如 Funk et al. 已发表的间期聚类。"
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "参与聚类的行名。"
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "每行一个标签。"
+    },
+    {
+      "context": "label shuffles for the control.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#4",
+      "source": "label shuffles for the control.",
+      "source_sha256": "e409757fd06315752a45f499845886b9dbaba4fd11e80873b61bb985c235fbaa",
+      "translation": "用于对照的标签打乱次数。"
+    },
+    {
+      "context": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#5",
+      "source": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "source_sha256": "e345491f58a7b0d07ed9a95edf28d3cdf39aa0f04e6fd374d6a50df75c2176b7",
+      "translation": "打乱的随机种子，或一个 ``numpy.random.Generator``。"
+    },
+    {
+      "context": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#6",
+      "source": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "source_sha256": "35eb5320aaf340d0c56e736eeae52500f5b0d0970d4a52f36623bd4d551658c5",
+      "translation": "``ari``、``ari_shuffled_p95`` 和 ``genes``（两者共有的基因）。"
+    },
+    {
+      "context": "The plate A pilot's cluster benchmark, from one profile table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#0",
+      "source": "The plate A pilot's cluster benchmark, from one profile table.",
+      "source_sha256": "a3f9ed29e5bc604edaa6c89fb53dc8a5efc3f142c747b6ffc0fa94bb1f27b27d",
+      "translation": "A 板试点分析的聚类基准评估，基于一张谱表。"
+    },
+    {
+      "context": ":func:`benchmark_rows` output.",
+      "label": "spacr.ops_clusters.benchmark_clusters#1",
+      "source": ":func:`benchmark_rows` output.",
+      "source_sha256": "1678b66c98fc7054426874af8a357ff4c24e02947577f3c487541aa678a1430b",
+      "translation": ":func:`benchmark_rows` 的输出。"
+    },
+    {
+      "context": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "label": "spacr.ops_clusters.benchmark_clusters#10",
+      "source": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "source_sha256": "aaccbc4e6d608f41c4e5bef2e9d97947e84e1c5667600f0992d050ffcbbc80f9",
+      "translation": "除主要聚类数之外额外的 k-means 聚类数；不小于行数的聚类数会被跳过。"
+    },
+    {
+      "context": "the profile name in the table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#11",
+      "source": "the profile name in the table.",
+      "source_sha256": "d5ceee21886c7af1dd316f5249b8b97904d8d44008ebcd315bc8f739d4c40485",
+      "translation": "表中的谱名称。"
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.benchmark_clusters#12",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "对照前缀。"
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.benchmark_clusters#13",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "PHATE 的工作进程数。"
+    },
+    {
+      "context": "gene-label shuffles for the AUPRC control.",
+      "label": "spacr.ops_clusters.benchmark_clusters#14",
+      "source": "gene-label shuffles for the AUPRC control.",
+      "source_sha256": "2db491b9dd7c21174ae4720d068029290fedec0770f9e6d00d66d088b4e97252",
+      "translation": "用于 AUPRC 对照的基因标签打乱次数。"
+    },
+    {
+      "context": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "label": "spacr.ops_clusters.benchmark_clusters#15",
+      "source": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "source_sha256": "3e6b5fb0c9887733eeb3ef4c174fdd0fa2a7b7091e7a6a40ac217309955dc06e",
+      "translation": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``：基准评估行（每个分辨率、其打乱主成分对照、k-means 基线及其对照、参考聚类）、汇总、每个分辨率的聚类标签、STRING 精确率-召回率曲线以及嵌入后的成分。"
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#16",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "当未安装 ``clustering`` 扩展时。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_clusters#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "CORUM groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#3",
+      "source": "CORUM groups.",
+      "source_sha256": "9a5706a0023110ffa676fb942da96ba2fa9cdcb4dd43638d128ec2aaf784bb64",
+      "translation": "CORUM 组。"
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#4",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "KEGG 组。"
+    },
+    {
+      "context": "the STRING pair table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#5",
+      "source": "the STRING pair table.",
+      "source_sha256": "087a1291238cd04cf48c6583b6288458b56132afeb81b8c40d889d1eca0cade1",
+      "translation": "STRING 基因对表。"
+    },
+    {
+      "context": "the Leiden resolution sweep.",
+      "label": "spacr.ops_clusters.benchmark_clusters#6",
+      "source": "the Leiden resolution sweep.",
+      "source_sha256": "9907ef6914f6867fd92b6630f80b407646b903abe0e03a61063799b5cc5aa713",
+      "translation": "Leiden 分辨率扫描。"
+    },
+    {
+      "context": "the cluster count the headline resolution is chosen for.",
+      "label": "spacr.ops_clusters.benchmark_clusters#7",
+      "source": "the cluster count the headline resolution is chosen for.",
+      "source_sha256": "ff1bf1f381d6c3836378ea42d1ac0cc195762100faedc0ca55cba1146301eabf",
+      "translation": "用于选择主要分辨率的目标聚类数。"
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#8",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "PHATE 和 Leiden 的随机种子。"
+    },
+    {
+      "context": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "label": "spacr.ops_clusters.benchmark_clusters#9",
+      "source": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "source_sha256": "6283840344c7feee798db3872221668822f544bf3ad87b4ea6a76c5b7f073543",
+      "translation": "可选的 ``gene, cluster`` 参考聚类，在相同基因上评分，并用于计算 ARI。"
+    },
+    {
+      "context": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "label": "spacr.ops_clusters.benchmark_rows#0",
+      "source": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "source_sha256": "c9272f5cc7ece1acce503a3b69b59443e54d9d9495636a24c1d12125e83856e4",
+      "translation": "Brieflow 参与聚类的行：靶向基因加上每条对照引导 RNA。"
+    },
+    {
+      "context": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "label": "spacr.ops_clusters.benchmark_rows#1",
+      "source": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "source_sha256": "7c2bc79ababf4fa17101355990a1d13c8a63ffa239984787a78fe92ae87d078c",
+      "translation": "基因表（``gene``、``n_cells`` 和 ``features``）。"
+    },
+    {
+      "context": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "label": "spacr.ops_clusters.benchmark_rows#2",
+      "source": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "source_sha256": "2f9394bf176960c6cc630018848806a4dc976178fec81fe94cf28f59c2e423c0",
+      "translation": "引导 RNA 表（``guide``、``gene``、``n_cells``、...）。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "rows with this many cells or fewer are left out.",
+      "label": "spacr.ops_clusters.benchmark_rows#4",
+      "source": "rows with this many cells or fewer are left out.",
+      "source_sha256": "e7e186889b4ad0f47ba1fc3190311181d14162bc716424a3d059957eee8f449f",
+      "translation": "细胞数等于或少于此值的行被排除。"
+    },
+    {
+      "context": "the control gene prefix.",
+      "label": "spacr.ops_clusters.benchmark_rows#5",
+      "source": "the control gene prefix.",
+      "source_sha256": "4a03711a3905d4a3271c6b4fa645dd040a3d6f57ad4a0489a8d06627a1a1e495",
+      "translation": "对照基因前缀。"
+    },
+    {
+      "context": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "label": "spacr.ops_clusters.benchmark_rows#6",
+      "source": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "source_sha256": "433f84d264900be12560d134c1ad630b2e432ce73634b6a1f39ea028f3493e39",
+      "translation": "``gene, n_cells, <features>``；每条对照引导 RNA 单独成一行，命名为 ``<prefix>_<guide>``。"
+    },
+    {
+      "context": "The resolution whose cluster count is closest to ``target``.",
+      "label": "spacr.ops_clusters.closest_resolution#0",
+      "source": "The resolution whose cluster count is closest to ``target``.",
+      "source_sha256": "fd965e53b55af543367fc7e46476d34069742e8890c47711b3eb1364736922ef",
+      "translation": "聚类数最接近 ``target`` 的分辨率。"
+    },
+    {
+      "context": "the wanted cluster count.",
+      "label": "spacr.ops_clusters.closest_resolution#2",
+      "source": "the wanted cluster count.",
+      "source_sha256": "e6d1eaf55f6d88558b60ae154c88a96b53477cabe1051954aedadf0e9cf7d4fd",
+      "translation": "期望的聚类数。"
+    },
+    {
+      "context": "the resolution; ties go to the one listed first.",
+      "label": "spacr.ops_clusters.closest_resolution#3",
+      "source": "the resolution; ties go to the one listed first.",
+      "source_sha256": "b998334977ff750a28f192fa65daf3a8a5a5620d3dee7b61f362182e677442be",
+      "translation": "该分辨率；若并列，取列在最前面的那个。"
+    },
+    {
+      "context": "How often two rows share a cluster when both were clustered.",
+      "label": "spacr.ops_clusters.co_membership#0",
+      "source": "How often two rows share a cluster when both were clustered.",
+      "source_sha256": "a6ad5cfc267eb11e9f4f0c83b1cd8d952495fd2a17110f76ff63f40c7e327725",
+      "translation": "两行都参与聚类时，它们共享同一聚类的频率。"
+    },
+    {
+      "context": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "label": "spacr.ops_clusters.co_membership#1",
+      "source": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "source_sha256": "06d6f3ea558b3a4ab6915752842cedddc9895111b853aba903ac769240fe1f1a",
+      "translation": "一个 ``runs x rows`` 矩阵，来自 :func:`consensus_clustering`；-1 表示该行未参与某次运行。"
+    },
+    {
+      "context": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "label": "spacr.ops_clusters.co_membership#2",
+      "source": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "source_sha256": "75dad152016a3d61a839c1ec7a45ec6f1e3a8911d9e994a16adf73b7202b652e",
+      "translation": "一个对称的 ``rows x rows`` 概率矩阵，从未一起参与聚类的行对为 NaN，至少参与过一次聚类的每一行在对角线上为 1。"
+    },
+    {
+      "context": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "label": "spacr.ops_clusters.consensus_clustering#0",
+      "source": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "source_sha256": "5de11db853d78c0ac3d514eae75d4874326b2a11690ece4a83dfced4d8adea30",
+      "translation": "共识聚类：在基因和引导 RNA 的 bootstrap 样本上进行多次运行。"
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_clustering#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "基因表。"
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_clustering#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "当未安装 ``clustering`` 扩展时。"
+    },
+    {
+      "context": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "label": "spacr.ops_clusters.consensus_clustering#11",
+      "source": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "source_sha256": "335ce52d1755dd5acb82ee8e727223bade386992ab7ab420f1db56d21d02d73f",
+      "translation": "每次运行在三个方面与其他运行不同，因此共同成员关系反映了基因抽样、引导 RNA 抽样和算法本身的变异：行中 ``subsample`` 比例的子集、每个基因的引导 RNA 有放回地抽取，以及各自的 PHATE 和 Leiden 随机种子与分辨率。"
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_clustering#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "引导 RNA 表。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_clustering#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "the number of runs.",
+      "label": "spacr.ops_clusters.consensus_clustering#4",
+      "source": "the number of runs.",
+      "source_sha256": "b40f1a398e457ee9e4a8f80fd448c03a79119687030f8c4edbe6d8729e7d1d31",
+      "translation": "运行次数。"
+    },
+    {
+      "context": "the resolution sweep the runs cycle through.",
+      "label": "spacr.ops_clusters.consensus_clustering#5",
+      "source": "the resolution sweep the runs cycle through.",
+      "source_sha256": "01bf9e0b6a8328c9464802587704445f62c57ed9e792e86f5f384f7ff61670e0",
+      "translation": "各次运行循环使用的分辨率扫描。"
+    },
+    {
+      "context": "run ``k`` is seeded ``base_seed + k``.",
+      "label": "spacr.ops_clusters.consensus_clustering#6",
+      "source": "run ``k`` is seeded ``base_seed + k``.",
+      "source_sha256": "50361c63cc5a6d23e2ab8b08a9ea8f9dbcd946cd76afaf1ca802930e7baf89b6",
+      "translation": "第 ``k`` 次运行的随机种子为 ``base_seed + k``。"
+    },
+    {
+      "context": "the share of rows in each run.",
+      "label": "spacr.ops_clusters.consensus_clustering#7",
+      "source": "the share of rows in each run.",
+      "source_sha256": "9cb14c5cac4b6e2252056f61b1332e8b23844f6f9273661399cc0c60f9177182",
+      "translation": "每次运行所用行的比例。"
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_clustering#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "传递给 :func:`consensus_rows`。"
+    },
+    {
+      "context": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "label": "spacr.ops_clusters.consensus_clustering#9",
+      "source": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "source_sha256": "ee3f50179f5fdc58999d681c46304d3cdf46594954de0beac7f78188aae2cb52",
+      "translation": "``{\"genes\", \"labels\", \"runs\"}``：行名、一个 ``runs x rows`` 标签矩阵（-1 = 未参与该次运行），以及每次运行的分辨率和聚类数。将 ``labels`` 传给 :func:`co_membership`。"
+    },
+    {
+      "context": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "label": "spacr.ops_clusters.consensus_rows#0",
+      "source": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "source_sha256": "64585eea8b797caa4420883adb43cac12a49097f6de713a35f83f16ff2c1d4dd",
+      "translation": "用于共识聚类的基因谱，可选择对引导 RNA 重新抽样。"
+    },
+    {
+      "context": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "label": "spacr.ops_clusters.consensus_rows#1",
+      "source": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "source_sha256": "fe0fa30f8c33b5a342e84d201d7a052c2936cd4a5a52a3987e00c68d390a6e0d",
+      "translation": "基因表；细胞数等于或少于 ``min_cells`` 的基因被排除。"
+    },
+    {
+      "context": "the guide table with ``columns``.",
+      "label": "spacr.ops_clusters.consensus_rows#2",
+      "source": "the guide table with ``columns``.",
+      "source_sha256": "ab1c67f53319fc46f3ae12d1466d92163764373921e4501676985b24199ab6cd",
+      "translation": "含 ``columns`` 的引导 RNA 表。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "label": "spacr.ops_clusters.consensus_rows#4",
+      "source": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "source_sha256": "565b0ce1ab677a9ef65249d43be7b2c8744b37825b527c6dfda23990b9b04c10",
+      "translation": "若给定，则在取中位数之前对每个基因的引导 RNA 有放回地抽取（引导 RNA bootstrap）。"
+    },
+    {
+      "context": "the gene cell-count floor.",
+      "label": "spacr.ops_clusters.consensus_rows#5",
+      "source": "the gene cell-count floor.",
+      "source_sha256": "8e3abcd3246a0761f4aaa4005eec08266ac45319f1c606f1a377f830c7c5d7d2",
+      "translation": "基因细胞数下限。"
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.consensus_rows#6",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "对照前缀。"
+    },
+    {
+      "context": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "label": "spacr.ops_clusters.consensus_rows#7",
+      "source": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "source_sha256": "a17208255eacd7f2fb1fb00da397d33b282816e93ee279ac3bb52b491c73aa63",
+      "translation": "对照引导 RNA 被随机分组为每组含此数目引导 RNA 的伪基因，命名为 ``NTpseudo_<k>``，从而使对照与基因在相同分辨率下聚类。"
+    },
+    {
+      "context": "the seed of that grouping.",
+      "label": "spacr.ops_clusters.consensus_rows#8",
+      "source": "the seed of that grouping.",
+      "source_sha256": "0a6a866395aa2dc8d81813a2d1a265207604f2f01bf3e03a83d38a07585a7111",
+      "translation": "该分组的随机种子。"
+    },
+    {
+      "context": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "label": "spacr.ops_clusters.consensus_rows#9",
+      "source": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "source_sha256": "df3fa7a42b3863bf8a8d1a844a8eae5cae5e7697599e3433568a86c4b65af8ba",
+      "translation": "``gene, n_cells, <columns>``，每个基因和伪基因一行，按名称排序。"
+    },
+    {
+      "context": "One consensus clustering run.",
+      "label": "spacr.ops_clusters.consensus_run#0",
+      "source": "One consensus clustering run.",
+      "source_sha256": "b365768ad563967981c88ac6a102a2f239524b41964ec2c5aa701bfa40af3f39",
+      "translation": "一次共识聚类运行。"
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_run#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "基因表。"
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_run#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "当未安装 ``clustering`` 扩展时。"
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_run#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "引导 RNA 表。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_run#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "the run number; its generator is seeded ``base_seed + run``.",
+      "label": "spacr.ops_clusters.consensus_run#4",
+      "source": "the run number; its generator is seeded ``base_seed + run``.",
+      "source_sha256": "ec5701e1df7f763cd5ecf91759ff0f8908142d6259e51221b7da2dff2f24b601",
+      "translation": "运行编号；其生成器的随机种子为 ``base_seed + run``。"
+    },
+    {
+      "context": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "label": "spacr.ops_clusters.consensus_run#5",
+      "source": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "source_sha256": "7647ef786e3eaf18bf75ad54238552bc0930797e900fcc348da9b2f71bc3ec7a",
+      "translation": "分辨率扫描；第 ``k`` 次运行使用 ``resolutions[k % len]``。"
+    },
+    {
+      "context": "see ``run``.",
+      "label": "spacr.ops_clusters.consensus_run#6",
+      "source": "see ``run``.",
+      "source_sha256": "1ca400ed083d1ee64b577487a73bee3b864a2e92e597f85ab8ef509c8d6d59c3",
+      "translation": "参见 ``run``。"
+    },
+    {
+      "context": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "label": "spacr.ops_clusters.consensus_run#7",
+      "source": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "source_sha256": "b56ff07447b90e32676c5375ef4620e96b237f6fc9dd05e273f0bde4e90085be",
+      "translation": "参与聚类的行的比例，无放回抽取（PHATE 不能接受重复的行）。"
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_run#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "传递给 :func:`consensus_rows`。"
+    },
+    {
+      "context": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "label": "spacr.ops_clusters.consensus_run#9",
+      "source": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "source_sha256": "ca7b64b860aa7ec2bf65b2f3f3f8adcc29010d7bce478e816ac61564055de0e9",
+      "translation": "``(resolution, clusters, labels)``；``labels`` 对未经重新抽样的 :func:`consensus_rows` 的每一行有一个条目，未参与本次运行的行为 -1。"
+    },
+    {
+      "context": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "label": "spacr.ops_clusters.embed_profiles#0",
+      "source": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "source_sha256": "931635ebb1afc7432bacd39e9db0db169940a0e11d720fe3684e01cbb8bf1b2c",
+      "translation": "标准化谱，并保留承载 ``variance`` 方差的主成分。"
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.embed_profiles#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "每个基因一行。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.embed_profiles#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "the share of variance kept.",
+      "label": "spacr.ops_clusters.embed_profiles#3",
+      "source": "the share of variance kept.",
+      "source_sha256": "2a9e7ec25e43a47f472c22ab9878d4f1dc33b12e44b65c908a7d02ccac8ed8f4",
+      "translation": "保留的方差比例。"
+    },
+    {
+      "context": "the PCA seed.",
+      "label": "spacr.ops_clusters.embed_profiles#4",
+      "source": "the PCA seed.",
+      "source_sha256": "fd77912e5e53b70899d068d16d97346429ad8a2e86b5dca65e547d988e28bfd3",
+      "translation": "PCA 的随机种子。"
+    },
+    {
+      "context": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "label": "spacr.ops_clusters.embed_profiles#5",
+      "source": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "source_sha256": "704166f6adb40b659a07addf79daf72ad3cc151b1f083ee2d2f312f894e4ffee",
+      "translation": "``(components, n_components, n_features_used)``。缺失值达到或超过 5 % 的列被丢弃，其余缺口以该列中位数填充，常数列也被丢弃。"
+    },
+    {
+      "context": "The share of clusters enriched for at least one group.",
+      "label": "spacr.ops_clusters.group_enrichment#0",
+      "source": "The share of clusters enriched for at least one group.",
+      "source_sha256": "9049ebf99cab875c6c4529c44a29892621de295a9d7dbc9f40c06bf11da37f07",
+      "translation": "至少富集一个组的聚类所占比例。"
+    },
+    {
+      "context": "``gene_name, group`` rows (CORUM or KEGG).",
+      "label": "spacr.ops_clusters.group_enrichment#1",
+      "source": "``gene_name, group`` rows (CORUM or KEGG).",
+      "source_sha256": "7aa8f70e407037cc1cd591fa4ef29bcd9f9b3c23a1b3701844d50b41554bd874",
+      "translation": "``gene_name, group`` 行（CORUM 或 KEGG）。"
+    },
+    {
+      "context": "the clustered row names, controls included.",
+      "label": "spacr.ops_clusters.group_enrichment#2",
+      "source": "the clustered row names, controls included.",
+      "source_sha256": "bcbab28bbf9d1ec5970f02d7b2aab670c1f3a29066da1a25305eb6fecc42acd9",
+      "translation": "参与聚类的行名，包括对照。"
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.group_enrichment#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "每行一个标签。"
+    },
+    {
+      "context": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "label": "spacr.ops_clusters.group_enrichment#4",
+      "source": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "source_sha256": "9ad65e859500b90c6838e244b5c6d10fbae1ed478baaaaff88a676c182b55ac0",
+      "translation": "True 只计入组成员中位于背景内的成员（Brieflow 当前的 ``head`` 代码）；False 计入所有成员（Brieflow 2025 年 5 月版本，即 ``may2025`` 变体）。"
+    },
+    {
+      "context": "control rows are background, never cluster members.",
+      "label": "spacr.ops_clusters.group_enrichment#5",
+      "source": "control rows are background, never cluster members.",
+      "source_sha256": "ad40f82e36778ee7df1fa0277631b3f981d227dcf285edbf0e5b26739882072d",
+      "translation": "对照行属于背景，但从不作为聚类成员。"
+    },
+    {
+      "context": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "label": "spacr.ops_clusters.group_enrichment#6",
+      "source": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "source_sha256": "b6e09615003faea20c5808726d498aa77c73b721f396a4caba096abbe381cbdc",
+      "translation": "``(share, table)``；该表每个聚类一行，包含其大小、富集组数以及最多十个富集组。"
+    },
+    {
+      "context": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "label": "spacr.ops_clusters.phate_leiden#0",
+      "source": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "source_sha256": "e30c83de9e5a12b1ad3244d05dde8e3239cee95cc5dca39b4bd259b33ee07b23",
+      "translation": "PHATE 扩散图的 Leiden 聚类，每个分辨率一组。"
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.phate_leiden#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "每个基因一行。"
+    },
+    {
+      "context": "Leiden resolution parameters.",
+      "label": "spacr.ops_clusters.phate_leiden#2",
+      "source": "Leiden resolution parameters.",
+      "source_sha256": "93ba7bff5ecb0f20c6ac71bb4ef3413f9e1bc95f15614c18016556c9f5890b85",
+      "translation": "Leiden 分辨率参数。"
+    },
+    {
+      "context": "PHATE's nearest neighbours.",
+      "label": "spacr.ops_clusters.phate_leiden#3",
+      "source": "PHATE's nearest neighbours.",
+      "source_sha256": "7eb0af37c7b62e12eac649d854c856c92ec6fa62622194d9af1b35beac96a083",
+      "translation": "PHATE 的最近邻数。"
+    },
+    {
+      "context": "PHATE's distance.",
+      "label": "spacr.ops_clusters.phate_leiden#4",
+      "source": "PHATE's distance.",
+      "source_sha256": "4c44209f1084f7e2430c4ff1e079b36cdf756ff142485f8904ce2955ca037d15",
+      "translation": "PHATE 的距离度量。"
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.phate_leiden#5",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "PHATE 和 Leiden 的随机种子。"
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.phate_leiden#6",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "PHATE 的工作进程数。"
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.phate_leiden#8",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "当未安装 ``clustering`` 扩展时。"
+    },
+    {
+      "context": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "label": "spacr.ops_clusters.phate_leiden#9",
+      "source": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "source_sha256": "30e820aef5f6212438e8f738f97de5ff9c9dfb22a927baa2e680fced30378dbf",
+      "translation": "该图是对称化后的 PHATE 扩散算子 ``(P + P.T) / 2``；Leiden 在其上以 ``n_iterations=-1``（直到不再改进）优化 RB 配置模型。"
+    },
+    {
+      "context": "Read a benchmark table in Brieflow's format.",
+      "label": "spacr.ops_clusters.read_benchmark#0",
+      "source": "Read a benchmark table in Brieflow's format.",
+      "source_sha256": "d5c9c2d76ddc92aca488f182e946573eac60be388f80c8af563d174b0c815863",
+      "translation": "读取 Brieflow 格式的基准表。"
+    },
+    {
+      "context": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "label": "spacr.ops_clusters.read_benchmark#1",
+      "source": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "source_sha256": "b299b58411920eff53776e718acada9b3615edbd720130210bb25357c2aa880e",
+      "translation": "一个制表符分隔的文件。组表（CORUM、KEGG）含 ``gene_name`` 和 ``group`` 列；STRING 基因对表含 ``gene_name`` 和 ``pair`` 列。"
+    },
+    {
+      "context": "when neither ``group`` nor ``pair`` is present.",
+      "label": "spacr.ops_clusters.read_benchmark#3",
+      "source": "when neither ``group`` nor ``pair`` is present.",
+      "source_sha256": "69a49c5dc86ab080f936f072b57f9c873bfce3ee722cad461a5ef652529bb369",
+      "translation": "当既没有 ``group`` 也没有 ``pair`` 时。"
+    },
+    {
+      "context": "Read a reference clustering, such as Funk et al.'s published table.",
+      "label": "spacr.ops_clusters.reference_clusters#0",
+      "source": "Read a reference clustering, such as Funk et al.'s published table.",
+      "source_sha256": "d683b2215f9383dc5e7f493bb5b6dce1789f9bbbe650101c732b434f08104717",
+      "translation": "读取参考聚类，例如 Funk et al. 已发表的表。"
+    },
+    {
+      "context": "a CSV, TSV or Excel file.",
+      "label": "spacr.ops_clusters.reference_clusters#1",
+      "source": "a CSV, TSV or Excel file.",
+      "source_sha256": "b112631f2c8596eb624129a604493346fd2bdc2dbbdda9ade34a9df0bbdf2007",
+      "translation": "一个 CSV、TSV 或 Excel 文件。"
+    },
+    {
+      "context": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#2",
+      "source": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "source_sha256": "d0a8d096cb2ebb86504bbfc221aa3b7ec05f29e94f10b9d2cfa8deb847f6d83a",
+      "translation": "基因列；为 None 时在 ``gene``、``gene_symbol`` 和 ``gene_name`` 中查找。"
+    },
+    {
+      "context": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#3",
+      "source": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "source_sha256": "88d54c2e4e25091c9cf1cfaa89d9ce3edde4675b62ea8ea008a291b351cc164f",
+      "translation": "聚类列；为 None 时在 ``cluster`` 和 ``interphase_cluster`` 中查找。"
+    },
+    {
+      "context": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "label": "spacr.ops_clusters.reference_clusters#4",
+      "source": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "source_sha256": "2f426622c4fb086f23da4bc3f9c0e6375f2562d5b65a9071a39afca19ed25f3a",
+      "translation": "带有聚类的 ``gene, cluster`` 行，聚类为 int。"
+    },
+    {
+      "context": "when a column cannot be found.",
+      "label": "spacr.ops_clusters.reference_clusters#5",
+      "source": "when a column cannot be found.",
+      "source_sha256": "2dcfd3c8782b137dfbf403462492691cbbeb6c2565e75f4143432576997b319e",
+      "translation": "当找不到某一列时。"
+    },
+    {
+      "context": "One benchmark row: cluster count, CORUM %, KEGG % and string p/R.",
+      "label": "spacr.ops_clusters.score_clusters#0",
+      "source": "One benchmark row: cluster count, CORUM %, KEGG % and STRING P/R.",
+      "source_sha256": "3877f69d822e348642b28a7c2b50aac2abea2f90db25448894a9e96184b92bfc",
+      "translation": "一行基准评估结果：聚类数、CORUM %、KEGG % 和 STRING P/R。"
+    },
+    {
+      "context": "the row's label.",
+      "label": "spacr.ops_clusters.score_clusters#1",
+      "source": "the row's label.",
+      "source_sha256": "be73f646e1143862b2b6dc9924d1d3e0d4c4a06917feca288ce8614fd39102bf",
+      "translation": "该行的标签。"
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.score_clusters#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "参与聚类的行名。"
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.score_clusters#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "每行一个标签。"
+    },
+    {
+      "context": "CORUM groups (:func:`read_benchmark`).",
+      "label": "spacr.ops_clusters.score_clusters#4",
+      "source": "CORUM groups (:func:`read_benchmark`).",
+      "source_sha256": "ef61be740ac5b428e129d10155265dd56ba5173b91f97383303eafed23712c79",
+      "translation": "CORUM 组（:func:`read_benchmark`）。"
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.score_clusters#5",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "KEGG 组。"
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.score_clusters#7",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "对照前缀。"
+    },
+    {
+      "context": "Permute every column independently: the shuffled-PC control.",
+      "label": "spacr.ops_clusters.shuffle_columns#0",
+      "source": "Permute every column independently: the shuffled-PC control.",
+      "source_sha256": "ec12e2420eef9c5cfd3eb1100cfad443ffa1c60d46108335f4de55404c12b220",
+      "translation": "独立置换每一列：打乱主成分对照。"
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.shuffle_columns#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "每个基因一行。"
+    },
+    {
+      "context": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "label": "spacr.ops_clusters.shuffle_columns#2",
+      "source": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "source_sha256": "3860f4c88ea40e63b37b016e6f7e7e37826a88d1e05ebb74269feecc1d0b4866",
+      "translation": "置换的随机种子，或用于抽取的 ``numpy.random.Generator``（其状态会被推进）。"
+    },
+    {
+      "context": "a copy whose columns keep their values but lose their rows.",
+      "label": "spacr.ops_clusters.shuffle_columns#3",
+      "source": "a copy whose columns keep their values but lose their rows.",
+      "source_sha256": "dde0cb7a1dd475df324913c8ea8a85e20710f85710323cd23194e677424069d0",
+      "translation": "一个副本，其各列保留原有的值，但与原来的行不再对应。"
+    },
+    {
+      "context": "Area under the STRING precision-recall curve of profile cosines.",
+      "label": "spacr.ops_clusters.string_auprc#0",
+      "source": "Area under the STRING precision-recall curve of profile cosines.",
+      "source_sha256": "e8f1faac8d09a0ab66cc8780a77691ece7fe7af886d3909f87993bf1df4647ab",
+      "translation": "谱余弦值的 STRING 精确率-召回率曲线下面积。"
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.string_auprc#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "每个基因一行。"
+    },
+    {
+      "context": "the row names; control rows are left out.",
+      "label": "spacr.ops_clusters.string_auprc#2",
+      "source": "the row names; control rows are left out.",
+      "source_sha256": "d36e58c705fa017c0b708a18b98368d1ef5bb19cb071a0bb8dcfbd1576f7d8b7",
+      "translation": "行名；对照行被排除。"
+    },
+    {
+      "context": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "label": "spacr.ops_clusters.string_auprc#4",
+      "source": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "source_sha256": "cb461ce39985bcbbe7f1b6a0cf979a2e809f5bcd79f7c39b78105615ceb4d7f8",
+      "translation": "先用此随机种子打乱基因标签（对照）；None 则对真实标签评分。"
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.string_auprc#5",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "对照前缀。"
+    },
+    {
+      "context": "points kept on the returned curve.",
+      "label": "spacr.ops_clusters.string_auprc#6",
+      "source": "points kept on the returned curve.",
+      "source_sha256": "a6dbd6b971f79cb0e141627c4ffd0c199dec293ee5a966cf60c0769dc4f8e44e",
+      "translation": "返回曲线上保留的点数。"
+    },
+    {
+      "context": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "label": "spacr.ops_clusters.string_auprc#7",
+      "source": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "source_sha256": "e5d6da14b7b4a6bb9c2d43f06d9b1dc182b2390301c8e736b7099ccf2ff0fb56",
+      "translation": "``(auprc, base_rate, curve)``。每个基因对按其两条谱的余弦值排序；基础比率是属于 STRING 基因对的比例，即随机排序所得的分数。"
+    },
+    {
+      "context": "STRING precision and recall of the pairs that share a cluster.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#0",
+      "source": "STRING precision and recall of the pairs that share a cluster.",
+      "source_sha256": "2fbb526a8815f306918f2f3a1c1de8f891cd0794bd351d5245223b98cc9f5f29",
+      "translation": "共享同一聚类的基因对的 STRING 精确率和召回率。"
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "参与聚类的行名。"
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "每行一个标签。"
+    },
+    {
+      "context": "control rows are left out.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#4",
+      "source": "control rows are left out.",
+      "source_sha256": "e3cc8e4d37d826d76458b22eafa7aedece9ead85aac84755892a586665601cc8",
+      "translation": "对照行被排除。"
+    },
+    {
+      "context": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#5",
+      "source": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "source_sha256": "028aa863709ab100905110831647806cef61e4be5abac386469088b03421851a",
+      "translation": "``precision, recall, f1, tp, fp, fn``。召回率只计入两个基因都参与了聚类的 STRING 基因对。"
+    },
+    {
+      "context": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "label": "spacr.ops_clusters.string_positives#0",
+      "source": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "source_sha256": "8076b1ed1f4fc2ff7404b305e8fe71d2ec9f204e77579617e4b5d25a38956a68",
+      "translation": "STRING 基因对，每对为有序的 ``(a, b)``，且 ``a < b``。"
+    },
+    {
+      "context": "``gene_name, pair`` rows of the STRING benchmark.",
+      "label": "spacr.ops_clusters.string_positives#1",
+      "source": "``gene_name, pair`` rows of the STRING benchmark.",
+      "source_sha256": "5b943519845e3b1516273feb2fb02ab32ce11ec957c2f6fcdd895c839de05b03",
+      "translation": "STRING 基准的 ``gene_name, pair`` 行。"
+    },
+    {
+      "context": "the set of pairs.",
+      "label": "spacr.ops_clusters.string_positives#2",
+      "source": "the set of pairs.",
+      "source_sha256": "1566a32d96825637dc97065c8e6dabb64bfb12409ce1478710dad9a1200624aa",
+      "translation": "基因对的集合。"
+    },
+    {
+      "context": "A trained mitotic-cell machine-learning classification model for optical pooled screening experiments.",
+      "label": "spacr.ops_mitotic#0",
+      "source": "A trained mitotic-cell classifier for optical pooled screens.",
+      "source_sha256": "404d652eb547421bd5ced4e8df943a2578476f5391244fbe86c940a972f37a95",
+      "translation": "用于光学混池筛选的已训练有丝分裂细胞分类器。"
+    },
+    {
+      "context": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a machine-learning classification model on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "label": "spacr.ops_mitotic#1",
+      "source": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a classifier on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "source_sha256": "631f6514c7d2b48a665cf53f8cc7e502ab6136c3333eed380844fad0f5087224",
+      "translation": ":func:`spacr.gene_measurement_compare.mitotic_calls` 依据细胞核 DNA 强度和面积的固定规则判定细胞是否处于有丝分裂。在 Funk et al. 2022 的 A 板上，由该规则得到的每基因有丝分裂指数与 Funk et al. 的结果之间的 Spearman rho 仅为 0.32。Funk et al. 改为在 DNA 和微管蛋白特征上训练分类器；本模块用已标注细胞做同样的事。"
+    },
+    {
+      "context": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate extracted image region-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "label": "spacr.ops_mitotic#2",
+      "source": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate crop-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "source_sha256": "32c54dcfb4f622d4bf33668865af5b2822aa4f9feb4fffc75961b8d2829cd76b",
+      "translation": ":func:`read_mitotic_labels` 读取已标注细胞表（可选地通过单独的裁剪图到细胞的映射，使标注者对孔和基因保持盲态），并将其中的阶段转换为有丝分裂判定。"
+    },
+    {
+      "context": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "label": "spacr.ops_mitotic#3",
+      "source": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "source_sha256": "65471bacdf9d9196a62d53055023650a1798a97a1b6bc260091271378b5a693c",
+      "translation": ":func:`mitotic_features` 从细胞表中选取 DNA（细胞核）和微管蛋白（细胞和细胞质）特征。"
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` fits a gradient-boosting machine-learning classification model on labelled cells and reports grouped cross-validation, with folds split by well or microscope field of view so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "label": "spacr.ops_mitotic#4",
+      "source": ":func:`train_mitotic_classifier` fits a gradient-boosting classifier on labelled cells and reports grouped cross-validation, with folds split by well or field so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "source_sha256": "db85dc3c03888651b2f41f3a710e23b1eee077e123281042e5dba0460e0188e0",
+      "translation": ":func:`train_mitotic_classifier` 在已标注细胞上拟合梯度提升分类器，并报告分组交叉验证结果（按孔或视野划分折，使同一图像的细胞绝不会同时出现在两侧），以及一个显示随机水平得分的打乱标签对照。"
+    },
+    {
+      "context": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "label": "spacr.ops_mitotic#5",
+      "source": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "source_sha256": "ec7470b414c13387f387dac633e20a31862b1611aaee83b4ff952a1bdc91a651",
+      "translation": ":func:`sampling_weights` 对过度抽样某些细胞（例如规则判定的有丝分裂细胞）的标签集重新加权，使训练和指标能代表整个筛选。"
+    },
+    {
+      "context": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "label": "spacr.ops_mitotic#6",
+      "source": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "source_sha256": "8b7a17e5488f10710e019cff06c0306cca27d029e4ab4048848a54af568543a5",
+      "translation": ":func:`predict_mitotic` 对新细胞进行判定；而 :func:`save_mitotic_classifier` 和 :func:`load_mitotic_classifier` 将训练好的模型保存在磁盘上，OPS 聚合阶段通过 ``ops_mitotic_model`` 使用它。"
+    },
+    {
+      "context": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "label": "spacr.ops_mitotic#7",
+      "source": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "source_sha256": "c6b012473e8541a5e480ad467ad4344dfe5ecdf7533dff6ba5f16d45d7e09b7f",
+      "translation": ":func:`mitotic_index_agreement` 将每基因有丝分裂指数与参考（例如 Funk et al. 已发表的表）进行比较，并附带打乱对照。"
+    },
+    {
+      "context": "Everything executes on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a machine-learning classification model trained on the rule's calls can only learn the rule.",
+      "label": "spacr.ops_mitotic#8",
+      "source": "Everything runs on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a classifier trained on the rule's calls can only learn the rule.",
+      "source_sha256": "5111c70b1c6365499d2f4d865fe9b3cf50d242d17c05f5329b687ec47a938ed7",
+      "translation": "所有计算都在 CPU 上运行。标签必须由用户提供：一组被标注为有丝分裂或非有丝分裂的细胞。spaCR 不附带标签或训练好的模型，也不会根据规则生成标签，因为在规则判定结果上训练的分类器只能学会该规则。"
+    },
+    {
+      "context": "Read a machine-learning classification model written by :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#0",
+      "source": "Read a classifier written by :func:`save_mitotic_classifier`.",
+      "source_sha256": "22dd95b8a56e427c8c20dfbe9d93060bfd59da80ce244337319ba2c7125d6281",
+      "translation": "读取由 :func:`save_mitotic_classifier` 写出的分类器。"
+    },
+    {
+      "context": "the bundle :func:`predict_mitotic` takes.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#2",
+      "source": "the bundle :func:`predict_mitotic` takes.",
+      "source_sha256": "e44defc0dd2181a6eb745dc1b52a7a3f3c78e08af0a42b311773889096be4b5b",
+      "translation": ":func:`predict_mitotic` 所接受的模型包。"
+    },
+    {
+      "context": "when the file is not a spaCR mitotic machine-learning classification model.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#3",
+      "source": "when the file is not a spaCR mitotic classifier.",
+      "source_sha256": "aaa0e3f082d78ddfc76dde9b9f46f27da20884735f9d5eb4539ac010d163d864",
+      "translation": "当该文件不是 spaCR 有丝分裂分类器时。"
+    },
+    {
+      "context": "A joblib file can run code when it is loaded, like any pickle; load only machine-learning classification models you trained or trust.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#4",
+      "source": "A joblib file can run code when it is loaded, like any pickle; load only classifiers you trained or trust.",
+      "source_sha256": "34aaeddcdbed6ce833bf1abab5180097e709ffaab9cf6f5529320ce9893ae8e8",
+      "translation": "与任何 pickle 一样，joblib 文件在加载时可能执行代码；只加载您自己训练或信任的分类器。"
+    },
+    {
+      "context": "The DNA and tubulin features a mitotic machine-learning classification model is trained on.",
+      "label": "spacr.ops_mitotic.mitotic_features#0",
+      "source": "The DNA and tubulin features a mitotic classifier is trained on.",
+      "source_sha256": "d2287968799bbfaa3b06f6d3ea7ddd7321d04755cd0cb233b30beb0d5a9a5f01",
+      "translation": "训练有丝分裂分类器所用的 DNA 和微管蛋白特征。"
+    },
+    {
+      "context": "the cell table's columns.",
+      "label": "spacr.ops_mitotic.mitotic_features#1",
+      "source": "the cell table's columns.",
+      "source_sha256": "86ff70a931e0ea84053f95f820fc730dd7ab084d0d7aae7810f253f6fe9a9374",
+      "translation": "细胞表的列。"
+    },
+    {
+      "context": "the DNA channel name in the column names.",
+      "label": "spacr.ops_mitotic.mitotic_features#2",
+      "source": "the DNA channel name in the column names.",
+      "source_sha256": "1058bcf055c97e87a3f560d927aae56ed420584b839438172cb7288c36da0c4d",
+      "translation": "列名中的 DNA 通道名称。"
+    },
+    {
+      "context": "the tubulin channel name, or None to use DNA only.",
+      "label": "spacr.ops_mitotic.mitotic_features#3",
+      "source": "the tubulin channel name, or None to use DNA only.",
+      "source_sha256": "02105cbffae2103ee36d951ef408b8c30ca1ad7701ce4f7987ad045cebe5cecb",
+      "translation": "微管蛋白通道名称，或 None 表示只使用 DNA。"
+    },
+    {
+      "context": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "label": "spacr.ops_mitotic.mitotic_features#4",
+      "source": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "source_sha256": "9747198a83a34a44431d9b3e6e1ef2f06228b085dea05220619b012f18d4f604",
+      "translation": "按表中顺序，包括每个细胞核形状特征、每个 ``nucleus_<dna>_*`` 和 ``cell_<dna>_*`` 特征，以及在有微管蛋白通道时每个 ``cell_<tubulin>_*`` 和 ``cytoplasm_<tubulin>_*`` 特征。"
+    },
+    {
+      "context": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#0",
+      "source": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "source_sha256": "366d0a81844c9a61b713be27bb1bfc1fe330b6b26fef2c4ba91fb3b427f095db",
+      "translation": "每基因有丝分裂指数与参考之间的 Spearman 相关性。"
+    },
+    {
+      "context": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#1",
+      "source": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "source_sha256": "f5ee2d069f84d7c751821aa4a9b098954d821ed2d92981ff885fdcd6fe79922b",
+      "translation": "``gene, n_cells, mitotic_index``（全部细胞的基因表）。"
+    },
+    {
+      "context": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#2",
+      "source": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "source_sha256": "15bd1b79b108d192ce4c54c83672cb7706a831a8449491f77dcd99b1401247ed",
+      "translation": "``gene, mitotic_index`` 行，例如 Funk et al. 的结果；大于 1 的指数被视为损坏的行而丢弃。"
+    },
+    {
+      "context": "the cell-count floors to report.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#3",
+      "source": "the cell-count floors to report.",
+      "source_sha256": "be902a79335727d0900bd5875efe9da4078e9b44d08ca2d7ce0ca1a1e841799a",
+      "translation": "要报告的细胞数下限。"
+    },
+    {
+      "context": "the shuffled-index draws of the control.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#4",
+      "source": "the shuffled-index draws of the control.",
+      "source_sha256": "46c5acd3dd0cabb9edf694436f95af9232522c5f242357ce5357cd09ba196bb2",
+      "translation": "对照中打乱指数的抽取次数。"
+    },
+    {
+      "context": "the shuffle seed.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#5",
+      "source": "the shuffle seed.",
+      "source_sha256": "49cc4a6918f94840f1ae1344fa9d430a0d51a97f16072e73e1fe8333dbb84d9c",
+      "translation": "打乱的随机种子。"
+    },
+    {
+      "context": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#6",
+      "source": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "source_sha256": "66f454f648e86bf04a7c4c0ada13214d723302ed9a1c30fb8517b24063985f5a",
+      "translation": "每个下限一行：``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``。"
+    },
+    {
+      "context": "Call cells mitotic with a trained machine-learning classification model.",
+      "label": "spacr.ops_mitotic.predict_mitotic#0",
+      "source": "Call cells mitotic with a trained classifier.",
+      "source_sha256": "7229c3a8e5b57126545bb9858ec87ee1b6388e02c03f39f4b346952ac2ec178c",
+      "translation": "用训练好的分类器判定细胞是否处于有丝分裂。"
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.predict_mitotic#1",
+      "source": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "source_sha256": "e2ff2c06b7cb5e89ee725403118d8936b7e0b8783872bf958e7247630882c987",
+      "translation": ":func:`train_mitotic_classifier` 或 :func:`load_mitotic_classifier` 的输出。"
+    },
+    {
+      "context": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.predict_mitotic#2",
+      "source": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "source_sha256": "1e2ca8d1b55e6c9510f04d422788fa45553722e26f9f92397f8808f605082139",
+      "translation": "每个细胞一行，含模型所需的特征及其 ``normalise_by`` 列。"
+    },
+    {
+      "context": "return the probability instead of the call.",
+      "label": "spacr.ops_mitotic.predict_mitotic#3",
+      "source": "return the probability instead of the call.",
+      "source_sha256": "039431a279c20a830e719bdd1067439e1bfc276c6b557db50e5efcd2e7586575",
+      "translation": "返回概率而不是判定结果。"
+    },
+    {
+      "context": "a Series over ``cells``: booleans, or probabilities.",
+      "label": "spacr.ops_mitotic.predict_mitotic#4",
+      "source": "a Series over ``cells``: booleans, or probabilities.",
+      "source_sha256": "d31058e2cdfad5822007b11966db811a74ddb6da7921a1f23c6f2f41753e5684",
+      "translation": "一个以 ``cells`` 为索引的 Series：布尔值或概率。"
+    },
+    {
+      "context": "when the table lacks a feature the model needs.",
+      "label": "spacr.ops_mitotic.predict_mitotic#5",
+      "source": "when the table lacks a feature the model needs.",
+      "source_sha256": "c20c23a05e2e5f29d5306bb27ef6285711c5cabc1d0c70243d5f6f9c94fac5a9",
+      "translation": "当表中缺少模型所需的特征时。"
+    },
+    {
+      "context": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#0",
+      "source": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "source_sha256": "b9924bb1aeb64aa5f511dad492c0eafada54a02c7c8d3e56a89170407286424b",
+      "translation": "读取已标注细胞表，并将类别转换为有丝分裂判定。"
+    },
+    {
+      "context": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#1",
+      "source": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "source_sha256": "1961f063fc2acdeac0183e0daeac5a9ec27053158032b79d348d4eb530a5284f",
+      "translation": "一个 CSV 路径或数据框，每个已标注细胞一行，并有一个类别列：``interphase``、``prophase-prometaphase``、``metaphase``、``anaphase-telophase``、``telophase-daughter``（分割时被拆开的末期细胞对中的一半，计为有丝分裂）、``mitotic-stage-disputed`` 或 ``artefact``（大小写、``_`` 和 ``/`` 均不影响）。"
+    },
+    {
+      "context": "when ``labels`` names extracted image regions rather than cells, a CSV path or frame that maps each extracted image region to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#2",
+      "source": "when ``labels`` names crops rather than cells, a CSV path or frame that maps each crop to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "source_sha256": "f8f738768b3aa43432a69bce4403a3972d4d76c95349fd1f314669fbad6245d3",
+      "translation": "当 ``labels`` 指向的是裁剪图而非细胞时，用于将每个裁剪图映射到其细胞的 CSV 路径或数据框：共享的 id 列加上 ``plate, well, site, label``。将其单独保存可使标注者在不知道孔和基因的情况下工作。"
+    },
+    {
+      "context": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell structured-data name.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#3",
+      "source": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell key.",
+      "source_sha256": "569458c8c3e7c2856fc6603fa4841e1855c2cfbf3224172007b4e1713424e2d1",
+      "translation": "类别列；为 None 时在 ``class_fine``、``class``、``stage``、``phase``、``annotation``、``call``、``label_class`` 和 ``class3`` 中查找，若表中没有细胞键则使用 ``label``。"
+    },
+    {
+      "context": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#4",
+      "source": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "source_sha256": "c6dfde46ea9deda0a8b0881af7e47f4b8ea310da8f887fbb68607d532dd63563",
+      "translation": "``labels`` 和 ``mapping`` 共有的列；为 None 时取除类别列之外两者唯一共有的那一列。"
+    },
+    {
+      "context": "``'drop'`` leaves artefact extracted image regions out; ``'negative'`` keeps them as not mitotic, so a machine-learning classification model learns not to call them and its precision counts them as false calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#5",
+      "source": "``'drop'`` leaves artefact crops out; ``'negative'`` keeps them as not mitotic, so a classifier learns not to call them and its precision counts them as false calls.",
+      "source_sha256": "630f2d55d432c21c0d82ddc268e0ff9a97a896d420b62fcf2ee222bc434c856f",
+      "translation": "``'drop'`` 排除伪影裁剪图；``'negative'`` 将其保留为非有丝分裂，使分类器学会不把它们判为有丝分裂，并在其精确率中将它们计为错误判定。"
+    },
+    {
+      "context": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#6",
+      "source": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "source_sha256": "ca883bb60ee0645ba018c9bff886f73267ca8199f5b373fc6308be7515a3f9df",
+      "translation": "``plate, well, site, label, stage, mitotic``：每个已标注细胞一行，``stage`` 为规范化后的类别，``mitotic`` 对每个有丝分裂阶段均为 True。"
+    },
+    {
+      "context": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#7",
+      "source": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "source_sha256": "61df3c079e5a77216412fb6ce652e849e4cfdb9ed53409544d4fa164205241d9",
+      "translation": "当某个类别不属于任何已知类别、某个细胞被以不同类别标注了两次，或缺少某一列时。"
+    },
+    {
+      "context": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "label": "spacr.ops_mitotic.sampling_weights#0",
+      "source": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "source_sha256": "851cee39420ab49cfa13fb1c28af413a9a60ade459c23cd92b8881756a0cef70",
+      "translation": "事后分层权重，使分层抽样的标签集能够代表整个筛选。"
+    },
+    {
+      "context": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#1",
+      "source": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "source_sha256": "e0f0195048787f949b523d1f2c1bd7f0371c19024111a9f52c4316defe54e360",
+      "translation": "每个已标注细胞的抽样层，例如当标签集过度抽样规则判定的有丝分裂细胞时，DNA 规则的判定结果（``True``/``False``）。"
+    },
+    {
+      "context": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "label": "spacr.ops_mitotic.sampling_weights#2",
+      "source": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "source_sha256": "e9319526517f9d0cc864f07167caa5b6dcee76535641140192e736c48557f96c",
+      "translation": "每个层在全部细胞中所占的比例，形式为 ``{stratum: share}``，或 ``{(group, stratum): share}``（使用 ``groups`` 时）。"
+    },
+    {
+      "context": "an optional group (the microplate sample position) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#3",
+      "source": "an optional group (the well) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "source_sha256": "aa710bcf97b49bb0841abbf03fc0b04f3877bcfd7d2922442e0fdd3223ad01b2",
+      "translation": "每个已标注细胞可选的组（孔），用于各组比例不同的情况。此时每个组的权重与其已标注细胞数相当。"
+    },
+    {
+      "context": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "label": "spacr.ops_mitotic.sampling_weights#4",
+      "source": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "source_sha256": "86913844759e1fab31c3f33debc28487a2d961e09392e8d84f666d7f48b5be73",
+      "translation": "每个已标注细胞一个权重，平均为 1：一个细胞代表 ``share / labelled cells of its stratum``。"
+    },
+    {
+      "context": "when a stratum has no share.",
+      "label": "spacr.ops_mitotic.sampling_weights#5",
+      "source": "when a stratum has no share.",
+      "source_sha256": "c0b8e6ecd3639d490422dd9913ac7b62a28032a571689daa6b1d28d2da54404f",
+      "translation": "当某个层没有比例时。"
+    },
+    {
+      "context": "Write a trained machine-learning classification model to ``path`` (joblib).",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#0",
+      "source": "Write a trained classifier to ``path`` (joblib).",
+      "source_sha256": "214aad5ea33827dfc0e2d74098470e3a73893d973b27a7b2c3f51e67ab367899",
+      "translation": "将训练好的分类器写入 ``path``（joblib）。"
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#1",
+      "source": ":func:`train_mitotic_classifier` output.",
+      "source_sha256": "0361e99c3772b780a3305e5e3e0a192938243cb6f44561f8778130c8cd96b9a9",
+      "translation": ":func:`train_mitotic_classifier` 的输出。"
+    },
+    {
+      "context": "Train a mitotic machine-learning classification model and validate it with grouped cross-validation.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#0",
+      "source": "Train a mitotic classifier and validate it with grouped cross-validation.",
+      "source_sha256": "f3600d742acf845f9cba4a2d622f932914d3706685c0fdd6e4ec497880732861",
+      "translation": "训练有丝分裂分类器，并用分组交叉验证进行验证。"
+    },
+    {
+      "context": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#1",
+      "source": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "source_sha256": "3a71aafe10b3f8fd924d908f9e91f97ca89426978b28432083d676c8f79b3b2b",
+      "translation": "每个已标注细胞一行，含特征列和 ``normalise_by`` 列。"
+    },
+    {
+      "context": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#10",
+      "source": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "source_sha256": "06ae7a39cd81324de4bd5e9cff49219e73a4f6f3384c9c235441a881be77f283",
+      "translation": "还在每个组内打乱的标签上进行交叉验证，这样可保持每个组的有丝分裂比例。其得分就是一个什么都没学到的模型所能达到的水平。"
+    },
+    {
+      "context": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#11",
+      "source": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "source_sha256": "63f550ea37f080347b90b04ff99736341aebea5a924a1d69fcaaa8468164961d",
+      "translation": "每个细胞一个权重，用于训练和每个指标。当已标注细胞并非随机抽取时（例如其中一半来自规则判定的有丝分裂细胞），传入 :func:`sampling_weights`；这样指标就能代表整个筛选，模型学到的是筛选的有丝分裂比例，而不是标签集的比例。"
+    },
+    {
+      "context": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#12",
+      "source": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "source_sha256": "499b01dd5a624c1d04a9c2af961039058e6415a5c333078fee56a48d5fb3f8ef",
+      "translation": "在训练中对两个类别给予相同权重。None（默认）在没有 ``sample_weight`` 时这样做，有该参数时则不这样做，因为这些权重已经承载了筛选的类别平衡。"
+    },
+    {
+      "context": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#13",
+      "source": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "source_sha256": "1b30cdf3e1d9123513447ab73d961e54c7a6acfe0ab9f15d8406f4505963ce8c",
+      "translation": "训练好的模型包：``model``（在所有已标注细胞上拟合）、``features``（不含在每个已标注细胞中都为空的特征，例如孔内离散程度为零的特征；它们列在 ``summary[\"features_dropped\"]`` 中）、``normalise_by``、``threshold``、``folds``（每折一行）、``summary``（每个指标的均值和离散程度、对照及标签计数）以及 ``out_of_fold``（每个细胞的留出概率）。用 :func:`save_mitotic_classifier` 保存它。"
+    },
+    {
+      "context": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#14",
+      "source": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "source_sha256": "34cd43a3fabad373bb0d50ed3b16f62fa3b08e9951210c7e0907e63acc10c57f",
+      "translation": "当长度不匹配、缺少分组、只有一个类别或组数少于折数时。"
+    },
+    {
+      "context": "True for a mitotic cell, one per row of ``cells``.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#2",
+      "source": "True for a mitotic cell, one per row of ``cells``.",
+      "source_sha256": "bfe2fee9d5e87813680f071efd4d85be09922166791f65adb02b4d7332c1faf0",
+      "translation": "有丝分裂细胞为 True，``cells`` 的每一行对应一个值。"
+    },
+    {
+      "context": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#3",
+      "source": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "source_sha256": "af5dc88fd5d868bba6ba7c147461c34d6ab37efaff9adf5e9c7473e5879a852f",
+      "translation": "用于学习的列；为 None 时取表中各列的 :func:`mitotic_features`。"
+    },
+    {
+      "context": "the cross-validation groups, one per cell: the well, or the microscope field of view (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#4",
+      "source": "the cross-validation groups, one per cell: the well, or the field (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "source_sha256": "f6ab9ee3fedb78d2daea7f17d9daa56910b7cc8da723a732d310168c09c0015a",
+      "translation": "交叉验证分组，每个细胞一个：孔，或视野（孔和位点）。同一组的细胞总是在同一折中。必需：随机划分会把同一图像中的相邻细胞放到两侧，从而高估准确率。"
+    },
+    {
+      "context": "every feature is first made a robust z against all cells of this column's groups (the microplate sample position), so the model travels between microplate sample positions and laboratory microplates; None uses the raw values.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#5",
+      "source": "every feature is first made a robust z against all cells of this column's groups (the well), so the model travels between wells and plates; None uses the raw values.",
+      "source_sha256": "0ae87350dcaa0316e7e8902f74b99c65c664562ed98313f882bf01cd548aed67",
+      "translation": "每个特征先相对于该列各组（孔）的所有细胞转换为稳健 z，使模型可在不同孔和板之间通用；None 则使用原始值。"
+    },
+    {
+      "context": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#6",
+      "source": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "source_sha256": "c207ad21ad92825be062b0de962646083a9299626357463f9c333149d3f50a07",
+      "translation": "``'hist_gradient_boosting'``（默认）或 ``'logistic'``，一个更简单的基线。"
+    },
+    {
+      "context": "the number of folds; at most the number of groups.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#7",
+      "source": "the number of folds; at most the number of groups.",
+      "source_sha256": "efe5bfb8651f6a9fa966447c7e1059e908920cec4fc8e0f77a3ba66ca77f9310",
+      "translation": "折数；最多等于组数。"
+    },
+    {
+      "context": "the model seed and the label-shuffle seed.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#8",
+      "source": "the model seed and the label-shuffle seed.",
+      "source_sha256": "fabc856010ef94a7e3f3df4689b0823a6f8e03cc8752bbf010dcbf8faf70e243",
+      "translation": "模型随机种子和标签打乱随机种子。"
+    },
+    {
+      "context": "the probability above which a cell is called mitotic.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#9",
+      "source": "the probability above which a cell is called mitotic.",
+      "source_sha256": "f093f7a166f05c83530f76f51f0c2c34f14cc8f3ccdfd5f83ce5c3220b8bae7f",
+      "translation": "高于此概率的细胞被判定为有丝分裂。"
+    },
+    {
+      "context": "Typical variation normalisation (TVN) of optical pooled screening experiment profiles.",
+      "label": "spacr.ops_tvn#0",
+      "source": "Typical variation normalisation (TVN) of optical pooled screen profiles.",
+      "source_sha256": "c5d6ded81f98998e646459753d1b7772135463bc861db240c773bb1a17389cc8",
+      "translation": "光学混池筛选谱的典型变异归一化（TVN）。"
+    },
+    {
+      "context": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "label": "spacr.ops_tvn#1",
+      "source": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "source_sha256": "4b1866f4627923bf30d1ab588cb68cd6edae544bae097010f4013094e3fb7584",
+      "translation": "TVN 将每细胞特征转换为一组成分，在这些成分中，每个批次的非靶向（对照）细胞在每个方向上都具有相同的离散程度。它是 Brieflow 的谱归一化方法（``workflow/lib/aggregate/align.py``，Cheeseman 实验室，版权所有 2025 Massachusetts Institute of Technology，MIT 许可证）。此处的函数是对其 ``centerscale_by_batch``、``embed_by_pca`` 和 ``tvn_on_controls`` 步骤的全新重新实现，编写时确保结果可以与之逐值核对。"
+    },
+    {
+      "context": "The steps, with the batch being the microplate sample position:",
+      "label": "spacr.ops_tvn#2",
+      "source": "The steps, with the batch being the well:",
+      "source_sha256": "6ee49f2ba0e83e9cac0f285a76e43de7ac4ef23ef911433942f02897ac57318d",
+      "translation": "各步骤如下，其中批次即孔："
+    },
+    {
+      "context": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "label": "spacr.ops_tvn#3",
+      "source": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "source_sha256": "05fe0088cee80c64a93b52d4111fc935aa3d3cb8af24e95c2287752e5fe1294f",
+      "translation": "1. 非有限值多于 ``max_nonfinite`` 的列被丢弃，其余缺口以该列中位数填充；2. 每个批次在其全部细胞上进行居中和缩放；3. 拟合一个保留 ``pca_variance`` 方差的 PCA，所用细胞为随机抽取的 ``pca_sample`` 个细胞（随机种子 ``seed``），并投影每个细胞；4. 投影结果在对照细胞上居中和缩放，旋转到对照细胞的主轴上，然后在每个批次的对照细胞上将每个轴缩放到单位方差（即白化）；5. CORAL 将每个批次的对照协方差对齐到合并后的协方差（两者都用 ``coral_ridge`` 乘以单位矩阵进行正则化）。"
+    },
+    {
+      "context": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a laboratory microplate or a pool of laboratory microplates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "label": "spacr.ops_tvn#4",
+      "source": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a plate or a pool of plates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "source_sha256": "ee0d5dc90521fb90af68c8ee91ea693ca01412cbdb5da62b1bf685ea8b2a74d9",
+      "translation": "提供了两种实现。:func:`tvn_in_memory` 与 Brieflow 一样一次保存所有细胞。:func:`fit_tvn_streamed` 一次读取一个批次，只保留对照细胞和一个 PCA 样本，因此一块板或多块板的合并数据永远不会整体驻留内存；随后 :meth:`TVNModel.transform` 逐批次应用拟合好的模型。"
+    },
+    {
+      "context": "The whitening makes the low-variance tail sensitive to the PCA fit sample. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On laboratory microplate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their string auprc is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the string auprc is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the laboratory microplate A pilot. ``components`` keeps only the leading control axes; it did not help on laboratory microplate A and is off by default.",
+      "label": "spacr.ops_tvn#5",
+      "source": "THE WHITENING MAKES THE LOW-VARIANCE TAIL SENSITIVE TO THE PCA FIT SAMPLE. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On plate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their STRING AUPRC is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the STRING AUPRC is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the plate A pilot. ``components`` keeps only the leading control axes; it did not help on plate A and is off by default.",
+      "source_sha256": "5f25cda97f4a2a2db3f88c309ead6a36df750830df0c4af04890f9a38d548bfc",
+      "translation": "白化使低方差尾部对 PCA 拟合样本十分敏感。第 4 步将每个轴除以其对照离散程度，因此几乎不承载对照方差的轴会被放大到与第一个轴相同的权重。哪些弱方向能在第 3 步中保留下来取决于 PCA 样本中的细胞，因此仅在该样本（或批次读取顺序）上不同的两次拟合，在强轴上一致，在尾部却不一致。在 Funk et al. 2022 的 A 板上，内存拟合与流式拟合给出的基因对余弦值之间的相关性仅为 r = 0.82，而两者的 STRING AUPRC 相同。``whiten_epsilon`` 在两个缩放步骤中都被加到每个轴的对照方差上（用 ``x / sqrt(var + epsilon)`` 代替 ``x / sqrt(var)``），从而收缩弱轴：取默认值 3 时，两次拟合的相关性为 r = 0.93，STRING AUPRC 达到或超过 Brieflow 的水平。``whiten_epsilon=0`` 完全等同于 Brieflow 的 TVN，也是复现 A 板试点分析的设置。``components`` 只保留靠前的对照轴；它在 A 板上没有帮助，默认关闭。"
+    },
+    {
+      "context": "This is the cell-level TVN of an optical pooled screening experiment. :func:`spacr.batch_correction.spherize_features` is the sphering of microplate sample position-level profiles that pycytominer calls TVN; it is a different step.",
+      "label": "spacr.ops_tvn#6",
+      "source": "This is the cell-level TVN of an optical pooled screen. :func:`spacr.batch_correction.spherize_features` is the sphering of well-level profiles that pycytominer calls TVN; it is a different step.",
+      "source_sha256": "33a57854fd8a528c6746a30fcba2a7d737ba814ed7023b367d61690a1346f2b2",
+      "translation": "这是光学混池筛选中细胞水平的 TVN。:func:`spacr.batch_correction.spherize_features` 是 pycytominer 称为 TVN 的孔水平谱球化；那是另一个步骤。"
+    },
+    {
+      "context": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "label": "spacr.ops_tvn.TVNModel#0",
+      "source": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "source_sha256": "200e54ab7cbe982f6afe27003415b8ee520e7818a83de65dece40c1b26f8a976",
+      "translation": "由 :func:`fit_tvn_streamed` 逐批次拟合的 TVN。"
+    },
+    {
+      "context": "the input columns kept, as indices.",
+      "label": "spacr.ops_tvn.TVNModel#1",
+      "source": "the input columns kept, as indices.",
+      "source_sha256": "7c5bb41ab96d25c227c5f60de607f47c9e4d5228f74d0002ca6813dfc18d7ce9",
+      "translation": "保留的输入列，以索引表示。"
+    },
+    {
+      "context": "the fill value of every kept column.",
+      "label": "spacr.ops_tvn.TVNModel#2",
+      "source": "the fill value of every kept column.",
+      "source_sha256": "ad9d4d6043816f8a5b4d4d0fca8343deeae6e99a5e2b7c2ffaec17a7ca04128d",
+      "translation": "每个保留列的填充值。"
+    },
+    {
+      "context": "the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#3",
+      "source": "the first PCA.",
+      "source_sha256": "bfb61e9832195e1abb041289465261898912d8fb12027b7cb8b130036453c1c3",
+      "translation": "第一次 PCA。"
+    },
+    {
+      "context": "the control centre after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#4",
+      "source": "the control centre after the first PCA.",
+      "source_sha256": "6e2349c866f6f02655a40528ede65a00f0e96832a4067da911729341e9faeef8",
+      "translation": "第一次 PCA 之后的对照中心。"
+    },
+    {
+      "context": "the control spread after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#5",
+      "source": "the control spread after the first PCA.",
+      "source_sha256": "3c405ddb773e9508037312fa4444f6ea82af393821cfb89bc0d2f855df1de2dd",
+      "translation": "第一次 PCA 之后的对照离散程度。"
+    },
+    {
+      "context": "the PCA on the control cells.",
+      "label": "spacr.ops_tvn.TVNModel#6",
+      "source": "the PCA on the control cells.",
+      "source_sha256": "9e0f436b9a95691b8ce2b3d3737252d4eca9385740f0c5d688a2260adcc03abd",
+      "translation": "在对照细胞上进行的 PCA。"
+    },
+    {
+      "context": "every batch's control centre and whitening scale.",
+      "label": "spacr.ops_tvn.TVNModel#7",
+      "source": "every batch's control centre and whitening scale.",
+      "source_sha256": "24c4a8415ff1df7cd91c204c5c66c7992c3e6f207bc98fefa728d39947336df9",
+      "translation": "每个批次的对照中心和白化尺度。"
+    },
+    {
+      "context": "every batch's CORAL matrix, or None where it was skipped.",
+      "label": "spacr.ops_tvn.TVNModel#8",
+      "source": "every batch's CORAL matrix, or None where it was skipped.",
+      "source_sha256": "3d2e056f4cf9a2f40988d4859462415663a8a6a410a71b343f64780938d24a7b",
+      "translation": "每个批次的 CORAL 矩阵，被跳过的批次为 None。"
+    },
+    {
+      "context": "what the fit kept and skipped.",
+      "label": "spacr.ops_tvn.TVNModel#9",
+      "source": "what the fit kept and skipped.",
+      "source_sha256": "2c66e183b23ad433b8cbe763d11b119a21c1d7c48dfa5a426f54da7479b98317",
+      "translation": "拟合保留和跳过的内容。"
+    },
+    {
+      "context": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#0",
+      "source": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "source_sha256": "6b86c6f7d8cd8f41927939d81ef73de2c0ce4251773292303c469c290f2a01a7",
+      "translation": "保留的列，缺口已填充，并在该批次上居中和缩放。"
+    },
+    {
+      "context": "one batch's cells, every input column.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#1",
+      "source": "one batch's cells, every input column.",
+      "source_sha256": "a5339b1fe142bb5a23f9bf2f8e164ebea7bea2f7dd79e1ea5554d8b2cf219545",
+      "translation": "一个批次的细胞，包含所有输入列。"
+    },
+    {
+      "context": "float32 values ready for the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#2",
+      "source": "float32 values ready for the first PCA.",
+      "source_sha256": "9478f4035633309ed8e2c8a493ec962aea5aaf42834f6c64d0b134dd2235614f",
+      "translation": "可直接用于第一次 PCA 的 float32 值。"
+    },
+    {
+      "context": "TVN components of one batch's cells.",
+      "label": "spacr.ops_tvn.TVNModel.transform#0",
+      "source": "TVN components of one batch's cells.",
+      "source_sha256": "144fee14055b686cb8b96b5b8741e51cf0c4d625191bc27c3bfef241a64745d7",
+      "translation": "一个批次细胞的 TVN 成分。"
+    },
+    {
+      "context": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "label": "spacr.ops_tvn.TVNModel.transform#1",
+      "source": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "source_sha256": "86b81a073b2c62ca53e8ad5a4071e5d4e242db5790ef15e017c2b0b2246433cb",
+      "translation": "该批次的细胞，包含所有输入列，且必须是拟合时该批次所用的同一批细胞。"
+    },
+    {
+      "context": "the batch name the fit used.",
+      "label": "spacr.ops_tvn.TVNModel.transform#2",
+      "source": "the batch name the fit used.",
+      "source_sha256": "3e1aa7332a4c4d86423c0129c613c117f94f8a708afe7afee517652780e9352a",
+      "translation": "拟合时使用的批次名称。"
+    },
+    {
+      "context": "float32 TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.TVNModel.transform#3",
+      "source": "float32 TVN components, one row per cell.",
+      "source_sha256": "3c7b89c895e4d48472a8888308618ae2a18d722d3dd44af9db5a3effb6185e8b",
+      "translation": "float32 TVN 成分，每个细胞一行。"
+    },
+    {
+      "context": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#0",
+      "source": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "source_sha256": "80eaf604f917e0b7270606a59d3d0f6413c97367f0bafbb37cbeb444252127ba",
+      "translation": "一次拟合一个批次的 TVN，使细胞永远不会同时驻留内存。"
+    },
+    {
+      "context": "the batch names (microplate sample positions), in reading order.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#1",
+      "source": "the batch names (wells), in reading order.",
+      "source_sha256": "7e25fdf1ffaf298fe58206dee9e34983031bc7253fd93b41831550f0707a6162",
+      "translation": "批次名称（孔），按读取顺序排列。"
+    },
+    {
+      "context": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#10",
+      "source": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "source_sha256": "133104e47102aa3d49b74c2af3da8184e2106c63827c613ae9e613695c8ebde5",
+      "translation": "拟合好的 :class:`TVNModel`；用 :meth:`TVNModel.transform` 逐批次应用它。"
+    },
+    {
+      "context": "for an option out of range or no control cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#11",
+      "source": "for an option out of range or no control cells.",
+      "source_sha256": "7e47398620b3b1c3e2fec41f57023d911eca4f1becdd4d85a99a4697c3a9b1fb",
+      "translation": "当某个选项超出范围或没有对照细胞时。"
+    },
+    {
+      "context": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#12",
+      "source": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "source_sha256": "b93351812cc3222810024288edb4aa4e55f1b2e88a2b9f5d2032911ef4950ee4",
+      "translation": "批次会被读取三次：一次用于列筛选，一次用于 PCA 样本，一次用于投影对照细胞。在抽取样本之前，每个批次都在其自身的全部细胞上居中和缩放，因此流式拟合与 :func:`tvn_in_memory` 仅在 PCA 样本上不同。没有对照细胞的批次不做白化。"
+    },
+    {
+      "context": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#2",
+      "source": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "source_sha256": "c5a6464580f3acc74357c146a40f11022894a0d06e97aa74814cd6aedd6487c8",
+      "translation": "``read(batch) -> (values, control, use)``。``values`` 包含该批次的每个细胞和每个输入列；``control`` 标记其对照细胞，``use`` 标记要归一化的细胞（例如间期细胞）。列筛选和填充中位数考察所有细胞；其余步骤只考察 ``use`` 细胞。"
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#3",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "第一次 PCA 保留的方差。"
+    },
+    {
+      "context": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#4",
+      "source": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "source_sha256": "3f9ccacbb0312ed12a77e2f419c9c2ab1d165af67250ea256e7921a2b45ab86d",
+      "translation": "第一次 PCA 拟合样本的大小。每个批次按其 ``use`` 细胞数成比例地贡献样本。"
+    },
+    {
+      "context": "the seed of the sample.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#5",
+      "source": "the seed of the sample.",
+      "source_sha256": "8d767a48a740e51ce5ab69d11aae0eaf7282f1db3685e7ab30219ef960d95f91",
+      "translation": "样本的随机种子。"
+    },
+    {
+      "context": "passed on as in :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#6",
+      "source": "passed on as in :func:`tvn_on_controls`.",
+      "source_sha256": "57e61bb1b58ba872d51140fb53a304668f222a2b55e0868a6a748587892ce1a1",
+      "translation": "按 :func:`tvn_on_controls` 中的方式传递。"
+    },
+    {
+      "context": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#0",
+      "source": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "source_sha256": "cec1c502cf619796bcafa2b88f78c1ad8e2918c06555998164f64697bbb58899",
+      "translation": "每对行之间的余弦相似度，以两者的名称为键。"
+    },
+    {
+      "context": "one row per gene (or guide).",
+      "label": "spacr.ops_tvn.gene_pair_cosines#1",
+      "source": "one row per gene (or guide).",
+      "source_sha256": "243a5edccc18e96292faabfc027f99772656e26af7f83a7c9ff95da36f2a7a47",
+      "translation": "每个基因（或引导 RNA）一行。"
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "谱所在的列。"
+    },
+    {
+      "context": "the name column.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#3",
+      "source": "the name column.",
+      "source_sha256": "b7d214c852ae8295ca242e7c12e3765709bcb1419cd65509e3a489ba319694c5",
+      "translation": "名称列。"
+    },
+    {
+      "context": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#4",
+      "source": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "source_sha256": "aacea8c4340880cbb2480be69d95ad5ed612cf7a0c791eb6f70055ca721e688b",
+      "translation": "上三角余弦值，以 ``(name_a, name_b)`` 为索引，按表中行的顺序排列。比较两次 TVN 拟合时，可计算它们对相同行对给出的余弦值之间的相关性。"
+    },
+    {
+      "context": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "label": "spacr.ops_tvn.tvn_in_memory#0",
+      "source": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "source_sha256": "6ac7654533afaf9c2efc1d3125d5bbc33cb11b4e3d64a5ea140ddc8afce7dad8",
+      "translation": "所有细胞都驻留内存的 TVN，与 Brieflow 的 ``align.py`` 计算方式相同。"
+    },
+    {
+      "context": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "label": "spacr.ops_tvn.tvn_in_memory#1",
+      "source": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "source_sha256": "fcc50fb29f2ded182cfd4323385bb2862ff6b6698e47efb82c79a10e1a7b481c",
+      "translation": "每个细胞一行，每个特征一列，以 float32 处理，这也是 Brieflow 所用的精度。"
+    },
+    {
+      "context": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "label": "spacr.ops_tvn.tvn_in_memory#10",
+      "source": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "source_sha256": "3f3fa26cbbbff09c6d2aa6655e5c574423c061f3a262834c04e8dc6ce59587db",
+      "translation": "非有限值比例更高的列被丢弃；其余列中剩下的缺口以该列中位数填充。"
+    },
+    {
+      "context": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "label": "spacr.ops_tvn.tvn_in_memory#11",
+      "source": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "source_sha256": "c9891a322a74e63f092b67b79e778cea796a45809e8915d3299c2f5b1c2d453f",
+      "translation": "False 允许直接覆盖 float32 的 ``values`` 而不复制，这会使整块板所需的内存减半。"
+    },
+    {
+      "context": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "label": "spacr.ops_tvn.tvn_in_memory#12",
+      "source": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "source_sha256": "21c8ebecb43789b257c2a3e894f778acb9a579a3611827f22972ee5c1ceca90a",
+      "translation": "``(embedding, info)``：float32 TVN 成分，每个细胞一行；以及 ``info``，其中包含保留列、PCA 大小和 :func:`tvn_on_controls` 的说明。"
+    },
+    {
+      "context": "for an option out of range, mismatched lengths or no control cells.",
+      "label": "spacr.ops_tvn.tvn_in_memory#13",
+      "source": "for an option out of range, mismatched lengths or no control cells.",
+      "source_sha256": "73e59d3d0dde790b7e4d55fd879be7af31089871f1299c6f05818ea929c8a0bd",
+      "translation": "当某个选项超出范围、长度不匹配或没有对照细胞时。"
+    },
+    {
+      "context": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the laboratory microplate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "label": "spacr.ops_tvn.tvn_in_memory#14",
+      "source": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the plate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "source_sha256": "ccfb0689f851212e59b64ec7806dfcecd0304ee299c083e898cda6bd091a2163",
+      "translation": "PCA 样本在拟合前以自身为基准逐批次居中和缩放，这与 A 板试点分析的做法相同。此后的所有步骤都考察全部细胞。因此结果通过 PCA 轴依赖于 ``pca_sample`` 和 ``seed``；参见模块说明中关于低方差尾部的部分。"
+    },
+    {
+      "context": "the batch of every cell (the microplate sample position).",
+      "label": "spacr.ops_tvn.tvn_in_memory#2",
+      "source": "the batch of every cell (the well).",
+      "source_sha256": "cee4e475fe301c841969c329c48f4477b944aaa89824cd82d3c93ab22f317bf9",
+      "translation": "每个细胞所属的批次（孔）。"
+    },
+    {
+      "context": "True for every control (non-targeting) cell.",
+      "label": "spacr.ops_tvn.tvn_in_memory#3",
+      "source": "True for every control (non-targeting) cell.",
+      "source_sha256": "0b100afd57cc425c765030338ae52a06e02770ffffb78e6c8332017e948490dd",
+      "translation": "每个对照（非靶向）细胞为 True。"
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.tvn_in_memory#4",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "第一次 PCA 保留的方差。"
+    },
+    {
+      "context": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "label": "spacr.ops_tvn.tvn_in_memory#5",
+      "source": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "source_sha256": "d488fa44dfefa794bbd900b09c95f7048242d8c71d751a07cddf655063ba7251",
+      "translation": "用于拟合第一次 PCA 的细胞，随机无放回抽取。细胞数较少时使用全部细胞。"
+    },
+    {
+      "context": "the seed of that draw.",
+      "label": "spacr.ops_tvn.tvn_in_memory#6",
+      "source": "the seed of that draw.",
+      "source_sha256": "ba447cfe72129dd6982330acc46c797e605f1ec2333752f2b1bdb04ffb160e2c",
+      "translation": "该次抽取的随机种子。"
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#7",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "传递给 :func:`tvn_on_controls`。"
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#8",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "传递给 :func:`tvn_on_controls`。"
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#9",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "传递给 :func:`tvn_on_controls`。"
+    },
+    {
+      "context": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#0",
+      "source": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "source_sha256": "a032e4473182ae6ef3001815f0566161bfe17c216d8bbb63050089c3bff66958",
+      "translation": "在对照细胞上对嵌入进行白化，并用 CORAL 对齐批次。"
+    },
+    {
+      "context": "one row per cell, for example PCA components.",
+      "label": "spacr.ops_tvn.tvn_on_controls#1",
+      "source": "one row per cell, for example PCA components.",
+      "source_sha256": "fd1e2dbd58b88fcb0ead36a8e913562faffb946d8c1bffee3d195550e86e9bf8",
+      "translation": "每个细胞一行，例如 PCA 成分。"
+    },
+    {
+      "context": "a boolean array over the rows; True marks a control cell.",
+      "label": "spacr.ops_tvn.tvn_on_controls#2",
+      "source": "a boolean array over the rows; True marks a control cell.",
+      "source_sha256": "f89fadb29e556878bc675c2ba74ddbe24ae835079e4f41403364976aa93405e4",
+      "translation": "覆盖各行的布尔数组；True 表示对照细胞。"
+    },
+    {
+      "context": "the batch of every row (the microplate sample position), or None for one batch.",
+      "label": "spacr.ops_tvn.tvn_on_controls#3",
+      "source": "the batch of every row (the well), or None for one batch.",
+      "source_sha256": "c08305bbcbe7976dc9abf33f64d2d90257b093cfc8b0732415e6f1ef081d752d",
+      "translation": "每一行所属的批次（孔），或 None 表示只有一个批次。"
+    },
+    {
+      "context": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "label": "spacr.ops_tvn.tvn_on_controls#4",
+      "source": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "source_sha256": "6e67024c99a04c5b288b6ed473b5f6a1272995f505ad9c1ba87c81bf7dd6cfdf",
+      "translation": "保留相应数目的靠前对照轴（int），或保留承载该比例对照方差的轴（小于 1 的 float）。None 保留全部，与 Brieflow 相同。"
+    },
+    {
+      "context": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "label": "spacr.ops_tvn.tvn_on_controls#5",
+      "source": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "source_sha256": "3b53f9abe26edb04794ae3e938e539ec4d45ef0d62e4a25fcb33f48208cd3eb8",
+      "translation": "在除以对照方差之前加到每个轴的对照方差上的值，既用于嵌入首次在对照细胞上缩放时，也用于每个批次白化时，使弱轴被收缩而不是被放大。0 即 Brieflow 的白化；默认值 3 是使 Funk et al. 2022 的 A 板结果趋于稳定的取值。它不是 ``tvn_epsilon``（:func:`spacr.batch_correction.correct_batch_effects` 的参数，默认 1e-6，加到相关矩阵的特征值上）：那是另一个参数，尺度也不同。"
+    },
+    {
+      "context": "the multiple of the identity added to every covariance before CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#6",
+      "source": "the multiple of the identity added to every covariance before CORAL.",
+      "source_sha256": "f17a846991108b9e5479c067916c5e163bc6d84661d6879255bda7f381587f7c",
+      "translation": "在 CORAL 之前加到每个协方差上的单位矩阵倍数。"
+    },
+    {
+      "context": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "label": "spacr.ops_tvn.tvn_on_controls#7",
+      "source": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "source_sha256": "e6d0ab8079d9ae1df4cac42c5cf75a5c4410a3e9fa1e8b476e630fab9456616c",
+      "translation": "``(embedding, info)``。``info`` 列出保留的轴，以及因对照细胞数少于轴数或协方差奇异而被 CORAL 跳过的批次。"
+    },
+    {
+      "context": "when there are no control cells.",
+      "label": "spacr.ops_tvn.tvn_on_controls#8",
+      "source": "when there are no control cells.",
+      "source_sha256": "a0fbca341591cefbf28209143e4c944816b3dc0f33076f24fa177db91a1a91c7",
+      "translation": "当没有对照细胞时。"
+    },
+    {
+      "context": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#9",
+      "source": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "source_sha256": "073ac81334395e1424f821c20b06b26312185143e5143a383498deaa7248d38d",
+      "translation": "各步骤遵循 Brieflow 的 ``tvn_on_controls``：在全部对照细胞上居中和缩放，旋转到对照细胞的主轴上，在每个批次的对照细胞上对每个轴居中和缩放，然后进行 CORAL。"
+    },
+    {
+      "context": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "label": "spacr.ops_tvn.tvn_options#0",
+      "source": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "source_sha256": "b0818eb696b45bea984757cfcec6ad32b0abf298513a9ff24439a27d37359c2a",
+      "translation": "来自 ``ops_tvn_*`` 设置的 TVN 关键字参数。"
+    },
+    {
+      "context": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "label": "spacr.ops_tvn.tvn_options#1",
+      "source": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "source_sha256": "eb45826c9f0d109f5acf60b963fc195bc09108071175c5483e1bbb1c6c3b608c",
+      "translation": "读取 ``ops_tvn_pca_sample``、``ops_tvn_seed``、``ops_tvn_components`` 和 ``ops_tvn_whiten_epsilon``。"
+    },
+    {
+      "context": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "label": "spacr.ops_tvn.tvn_options#2",
+      "source": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "source_sha256": "2230241802baf6a46c6987cf75beb55a3f814c19c82277b39184ac99b6282e13",
+      "translation": ":func:`tvn_in_memory` 和 :func:`fit_tvn_streamed` 的关键字参数；缺失或为空的设置从 :data:`TVN_DEFAULTS` 取默认值。"
+    },
+    {
+      "context": "Guide and gene profiles from per-cell TVN components.",
+      "label": "spacr.ops_tvn.tvn_profiles#0",
+      "source": "Guide and gene profiles from per-cell TVN components.",
+      "source_sha256": "50b3e25702dd8cb346eb07bfb80c2ccf108c2e19a3d1041b3e6eced2c88e1fc8",
+      "translation": "由每细胞 TVN 成分得到的引导 RNA 谱和基因谱。"
+    },
+    {
+      "context": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "label": "spacr.ops_tvn.tvn_profiles#1",
+      "source": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "source_sha256": "17a0354d52875e3d5cdefa78898d2a63e3e048a97be9e852d0d2fc262aca8f90",
+      "translation": "每个细胞一行，含 ``guide`` 和 ``gene`` 列，行顺序与 ``embedding`` 相同。"
+    },
+    {
+      "context": "the TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.tvn_profiles#2",
+      "source": "the TVN components, one row per cell.",
+      "source_sha256": "88fe0daf1e7406fdd5e4e884c5a261675c62c37d4374950fc0362de249fad88f",
+      "translation": "TVN 成分，每个细胞一行。"
+    },
+    {
+      "context": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "label": "spacr.ops_tvn.tvn_profiles#5",
+      "source": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "source_sha256": "c0d534517e158315c8ec03987cc77cbdb8cfa36098724858c9200e944b7c3e56",
+      "translation": "成分列前缀（``PC_0``、``PC_1``、...）。"
+    },
+    {
+      "context": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "label": "spacr.ops_tvn.tvn_profiles#6",
+      "source": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "source_sha256": "d595254b7646d18443e06c29abba90a03e5be31c2a5d86dac078c39fd920eaac",
+      "translation": "``(guides, genes)``：引导 RNA 为其细胞的中位数，基因为其引导 RNA 的中位数，与稳健 z 谱相同。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch4-1108 branch: the spacr.ops_tvn, spacr.ops_clusters and spacr.ops_mitotic modules and their 35 callables (items 854, 855 and 856), and the changed spacr.batch_correction.spherize_features and correct_batch_effects blocks (items 863 and 770). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,1918 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "context": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "label": "spacr.batch_correction.correct_batch_effects#18",
+      "source": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "source_sha256": "3a3831fe5615fc38df0effe52dec3ddda84809781c4aa616fe3203d2fc09562d",
+      "translation": "reglun eigingilda fyrir ``tvn``, sjálfgefið 1e-6 (gildi pycytominer); sjá :func:`spherize_features`. Ekki sami stillir og ``ops_tvn_whiten_epsilon`` í OPS-TVN (sjálfgefið 3)."
+    },
+    {
+      "context": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "label": "spacr.batch_correction.spherize_features#7",
+      "source": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "source_sha256": "88c2d745b1a04b93d93e1b4dfb13ad04780d5a92e06c56974981023390b84f29",
+      "translation": "reglun sem er bætt við hvert eigingildi samdreifnifylkis viðmiðsins (fylgnifylkis, fyrir ``-cor``-afbrigðin). Sjálfgefið 1e-6, gildi pycytominer. Þetta er annar stillir, á öðrum kvarða, en ``ops_tvn_whiten_epsilon`` í OPS-TVN (sjálfgefið 3, bætt við dreifni viðmiðanna á hverjum ás í tveimur skrefum :func:`spacr.ops_tvn.tvn_on_controls`); gildin tvö koma ekki hvort í annars stað."
+    },
+    {
+      "context": "Gene clusters of an optical pooled screening experiment and their benchmarks.",
+      "label": "spacr.ops_clusters#0",
+      "source": "Gene clusters of an optical pooled screen and their benchmarks.",
+      "source_sha256": "87dde1bf4d773803395986f1a7abd8acfa17f94a165d431a3aaa82a430771e23",
+      "translation": "Genaklasar í ljósfræðilegri safnskimun (optical pooled screen) og samanburður þeirra."
+    },
+    {
+      "context": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "label": "spacr.ops_clusters#1",
+      "source": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "source_sha256": "22a6fa51c21782655453b7e6232bb24bea76e6de8d0199ad91bdf11e94721f0f",
+      "translation": "Genaprófílar eru felldir inn (staðlaðir, PCA upp að 99 % af dreifninni), gerðir að PHATE-sveimnet (k = 10 næstu nágrannar, kósínusfjarlægð) og skipt í klasa með Leiden-samfélagsgreiningu. Sóp yfir Leiden-upplausnir finnur þá sem gefur fjölda klasa næstan markgildi. Þetta er klösunin sem Funk et al. 2022 og Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT-leyfi) birta; kóðinn hér er hrein endurútfærsla á þeirri útgefnu aðferð, ekki afrit."
+    },
+    {
+      "context": "Every clustering is scored the way Brieflow scores it:",
+      "label": "spacr.ops_clusters#2",
+      "source": "Every clustering is scored the way Brieflow scores it:",
+      "source_sha256": "785c192468faafa3bbd297aefca20749bccb0e3007a213fa4450d02f6baa654c",
+      "translation": "Hver klösun er metin á sama hátt og Brieflow metur hana:"
+    },
+    {
+      "context": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "label": "spacr.ops_clusters#3",
+      "source": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "source_sha256": "abbec50f6332e4eb7768fc4b7e221643f7f9a9301feb4b028ab5da9bfa1114b7",
+      "translation": "**CORUM % og KEGG %**, hlutfall klasa með að minnsta kosti einn auðgaðan hóp: tvíhliða nákvæmt Fisher-próf fyrir hvern hóp í hverjum klasa, Benjamini-Hochberg innan klasans, auðgað við FDR < 0,05. Bakgrunnurinn er allar klasaðar raðir, ómiðaðar raðir meðtaldar. Tvö afbrigði eru birt: ``may2025`` telur alla meðlimi hóps (útgáfa Brieflow frá maí 2025, sem endurgerir 24,3 % og 13,5 % Funk et al.) og ``head`` aðeins meðlimina í bakgrunninum (núverandi kóði Brieflow)."
+    },
+    {
+      "context": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "label": "spacr.ops_clusters#4",
+      "source": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "source_sha256": "bcaea5c85fab61125f190d8da351a09ad7f59da5e70dc97a988c094ade127f25",
+      "translation": "**Nákvæmni og heimt STRING** fyrir genapörin sem deila klasa."
+    },
+    {
+      "context": "**String auprc**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "label": "spacr.ops_clusters#5",
+      "source": "**STRING AUPRC**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "source_sha256": "f82d85c92678f8f56ae425e6d53f9d999e52d5706674a8b09da95b7c4369a758",
+      "translation": "**STRING AUPRC**: öllum genapörum raðað eftir kósínus prófílanna tveggja, sem krefst engrar klösunar."
+    },
+    {
+      "context": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "label": "spacr.ops_clusters#6",
+      "source": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "source_sha256": "0d479b1d0b8df8d7d145261a674f0173783621b929d2f8b297f647d14b8da419",
+      "translation": "**ARI** miðað við viðmiðunarklösun, svo sem klösun Funk et al."
+    },
+    {
+      "context": "Controls: the same workflow on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "label": "spacr.ops_clusters#7",
+      "source": "Controls: the same pipeline on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "source_sha256": "6875c185a81e02591e37f8e2819b1601b4a921600ec3c6d6835493613c861b29",
+      "translation": "Viðmið: sama ferli á PCA-dálkum sem er umraðað óháð hver öðrum (viðmiðið með stokkuðum PC), k-means á sömu þáttum við sama fjölda klasa (grunnlína sem sýnir hversu mikið hlutfall auðgunar veltur á stærð klasanna einni saman) og stokkun genamerkja fyrir AUPRC."
+    },
+    {
+      "context": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "label": "spacr.ops_clusters#8",
+      "source": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "source_sha256": "8672b2460b187abaf66f9138bb954f5c6921242c42f4e42df2a46fe7ddecfe62",
+      "translation": ":func:`consensus_clustering` endurtekur klösunina á bootstrap-úrtökum gena og leiðara innan hvers gens, með eigið fræ og upplausn í hvert sinn; :func:`co_membership` breytir keyrslunum í líkurnar á að tvö gen deili klasa."
+    },
+    {
+      "context": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "label": "spacr.ops_clusters#9",
+      "source": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "source_sha256": "f0a49e0a01afac43875f61507a448a74bf69350c6506f2f02e7e25e53bdae690",
+      "translation": "PHATE (``phate``), Leiden (``leidenalg``) og ``igraph`` eru valfrjáls: þau mynda viðbótina ``clustering``, ``pip install \"spacr[clustering]\"``. Aðeins PHATE- og Leiden-skrefin þurfa á þeim að halda. Samanburðarskrárnar (CORUM-, KEGG- og STRING-töflur á sniði Brieflow) leggur notandinn sjálfur til: spaCR dreifir þeim ekki."
+    },
+    {
+      "context": "Adjusted Rand index of a clustering against a reference clustering.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#0",
+      "source": "Adjusted Rand index of a clustering against a reference clustering.",
+      "source_sha256": "a64698ab649645acb04d776c7796e76f6c8b3671b506afc67ca7cd24f9125744",
+      "translation": "Leiðréttur Rand-stuðull klösunar miðað við viðmiðunarklösun."
+    },
+    {
+      "context": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#1",
+      "source": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "source_sha256": "53c3b99ff87976be1a2b188c4c9d7421c39e44c24d59bb79dae1724abfa47df7",
+      "translation": "raðir ``gene, cluster``, svo sem útgefnir interfasaklasar Funk et al."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "heiti klösuðu raðanna."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "eitt merki á hverja röð."
+    },
+    {
+      "context": "label shuffles for the control.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#4",
+      "source": "label shuffles for the control.",
+      "source_sha256": "e409757fd06315752a45f499845886b9dbaba4fd11e80873b61bb985c235fbaa",
+      "translation": "stokkanir merkja fyrir viðmiðið."
+    },
+    {
+      "context": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#5",
+      "source": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "source_sha256": "e345491f58a7b0d07ed9a95edf28d3cdf39aa0f04e6fd374d6a50df75c2176b7",
+      "translation": "fræ stokkunarinnar, eða ``numpy.random.Generator``."
+    },
+    {
+      "context": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#6",
+      "source": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "source_sha256": "35eb5320aaf340d0c56e736eeae52500f5b0d0970d4a52f36623bd4d551658c5",
+      "translation": "``ari``, ``ari_shuffled_p95`` og ``genes`` (genin sem eru í báðum)."
+    },
+    {
+      "context": "The plate A pilot's cluster benchmark, from one profile table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#0",
+      "source": "The plate A pilot's cluster benchmark, from one profile table.",
+      "source_sha256": "a3f9ed29e5bc604edaa6c89fb53dc8a5efc3f142c747b6ffc0fa94bb1f27b27d",
+      "translation": "Samanburður klasa í forkönnun plötu A, út frá einni prófílatöflu."
+    },
+    {
+      "context": ":func:`benchmark_rows` output.",
+      "label": "spacr.ops_clusters.benchmark_clusters#1",
+      "source": ":func:`benchmark_rows` output.",
+      "source_sha256": "1678b66c98fc7054426874af8a357ff4c24e02947577f3c487541aa678a1430b",
+      "translation": "úttak :func:`benchmark_rows`."
+    },
+    {
+      "context": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "label": "spacr.ops_clusters.benchmark_clusters#10",
+      "source": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "source_sha256": "aaccbc4e6d608f41c4e5bef2e9d97947e84e1c5667600f0992d050ffcbbc80f9",
+      "translation": "viðbótarfjöldi k-means-klasa auk aðalfjöldans; fjölda sem er ekki minni en fjöldi raða er sleppt."
+    },
+    {
+      "context": "the profile name in the table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#11",
+      "source": "the profile name in the table.",
+      "source_sha256": "d5ceee21886c7af1dd316f5249b8b97904d8d44008ebcd315bc8f739d4c40485",
+      "translation": "heiti prófílsins í töflunni."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.benchmark_clusters#12",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "forskeyti viðmiða."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.benchmark_clusters#13",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "fjöldi vinnsluþráða PHATE."
+    },
+    {
+      "context": "gene-label shuffles for the AUPRC control.",
+      "label": "spacr.ops_clusters.benchmark_clusters#14",
+      "source": "gene-label shuffles for the AUPRC control.",
+      "source_sha256": "2db491b9dd7c21174ae4720d068029290fedec0770f9e6d00d66d088b4e97252",
+      "translation": "stokkanir genamerkja fyrir AUPRC-viðmiðið."
+    },
+    {
+      "context": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "label": "spacr.ops_clusters.benchmark_clusters#15",
+      "source": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "source_sha256": "3e6b5fb0c9887733eeb3ef4c174fdd0fa2a7b7091e7a6a40ac217309955dc06e",
+      "translation": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: samanburðarraðirnar (hver upplausn, viðmið hennar með stokkuðum PC, k-means-grunnlínan og viðmið hennar, viðmiðunin), samantekt, klasamerkin fyrir hverja upplausn, nákvæmni-heimtar-ferill STRING og innfelldu þættirnir."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#16",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "þegar viðbótin ``clustering`` er ekki uppsett."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_clusters#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "CORUM groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#3",
+      "source": "CORUM groups.",
+      "source_sha256": "9a5706a0023110ffa676fb942da96ba2fa9cdcb4dd43638d128ec2aaf784bb64",
+      "translation": "CORUM-hópar."
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#4",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "KEGG-hópar."
+    },
+    {
+      "context": "the STRING pair table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#5",
+      "source": "the STRING pair table.",
+      "source_sha256": "087a1291238cd04cf48c6583b6288458b56132afeb81b8c40d889d1eca0cade1",
+      "translation": "STRING-tafla paranna."
+    },
+    {
+      "context": "the Leiden resolution sweep.",
+      "label": "spacr.ops_clusters.benchmark_clusters#6",
+      "source": "the Leiden resolution sweep.",
+      "source_sha256": "9907ef6914f6867fd92b6630f80b407646b903abe0e03a61063799b5cc5aa713",
+      "translation": "sópið yfir Leiden-upplausnir."
+    },
+    {
+      "context": "the cluster count the headline resolution is chosen for.",
+      "label": "spacr.ops_clusters.benchmark_clusters#7",
+      "source": "the cluster count the headline resolution is chosen for.",
+      "source_sha256": "ff1bf1f381d6c3836378ea42d1ac0cc195762100faedc0ca55cba1146301eabf",
+      "translation": "fjöldi klasa sem aðalupplausnin er valin fyrir."
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#8",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "fræ PHATE og Leiden."
+    },
+    {
+      "context": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "label": "spacr.ops_clusters.benchmark_clusters#9",
+      "source": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "source_sha256": "6283840344c7feee798db3872221668822f544bf3ad87b4ea6a76c5b7f073543",
+      "translation": "valfrjáls viðmiðunarklösun ``gene, cluster``, metin á sömu genum og notuð fyrir ARI."
+    },
+    {
+      "context": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "label": "spacr.ops_clusters.benchmark_rows#0",
+      "source": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "source_sha256": "c9272f5cc7ece1acce503a3b69b59443e54d9d9495636a24c1d12125e83856e4",
+      "translation": "Raðirnar sem Brieflow klasar: markgen ásamt öllum viðmiðsleiðurum."
+    },
+    {
+      "context": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "label": "spacr.ops_clusters.benchmark_rows#1",
+      "source": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "source_sha256": "7c2bc79ababf4fa17101355990a1d13c8a63ffa239984787a78fe92ae87d078c",
+      "translation": "genataflan (``gene``, ``n_cells`` og ``features``)."
+    },
+    {
+      "context": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "label": "spacr.ops_clusters.benchmark_rows#2",
+      "source": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "source_sha256": "2f9394bf176960c6cc630018848806a4dc976178fec81fe94cf28f59c2e423c0",
+      "translation": "leiðarataflan (``guide``, ``gene``, ``n_cells``, ...)."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "rows with this many cells or fewer are left out.",
+      "label": "spacr.ops_clusters.benchmark_rows#4",
+      "source": "rows with this many cells or fewer are left out.",
+      "source_sha256": "e7e186889b4ad0f47ba1fc3190311181d14162bc716424a3d059957eee8f449f",
+      "translation": "röðum með þennan fjölda frumna eða færri er sleppt."
+    },
+    {
+      "context": "the control gene prefix.",
+      "label": "spacr.ops_clusters.benchmark_rows#5",
+      "source": "the control gene prefix.",
+      "source_sha256": "4a03711a3905d4a3271c6b4fa645dd040a3d6f57ad4a0489a8d06627a1a1e495",
+      "translation": "forskeyti viðmiðsgena."
+    },
+    {
+      "context": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "label": "spacr.ops_clusters.benchmark_rows#6",
+      "source": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "source_sha256": "433f84d264900be12560d134c1ad630b2e432ce73634b6a1f39ea028f3493e39",
+      "translation": "``gene, n_cells, <features>``; hver viðmiðsleiðari er sér röð, nefnd ``<prefix>_<guide>``."
+    },
+    {
+      "context": "The resolution whose cluster count is closest to ``target``.",
+      "label": "spacr.ops_clusters.closest_resolution#0",
+      "source": "The resolution whose cluster count is closest to ``target``.",
+      "source_sha256": "fd965e53b55af543367fc7e46476d34069742e8890c47711b3eb1364736922ef",
+      "translation": "Upplausnin sem gefur fjölda klasa næstan ``target``."
+    },
+    {
+      "context": "the wanted cluster count.",
+      "label": "spacr.ops_clusters.closest_resolution#2",
+      "source": "the wanted cluster count.",
+      "source_sha256": "e6d1eaf55f6d88558b60ae154c88a96b53477cabe1051954aedadf0e9cf7d4fd",
+      "translation": "æskilegur fjöldi klasa."
+    },
+    {
+      "context": "the resolution; ties go to the one listed first.",
+      "label": "spacr.ops_clusters.closest_resolution#3",
+      "source": "the resolution; ties go to the one listed first.",
+      "source_sha256": "b998334977ff750a28f192fa65daf3a8a5a5620d3dee7b61f362182e677442be",
+      "translation": "upplausnin; við jafntefli ræður sú sem er fyrst á listanum."
+    },
+    {
+      "context": "How often two rows share a cluster when both were clustered.",
+      "label": "spacr.ops_clusters.co_membership#0",
+      "source": "How often two rows share a cluster when both were clustered.",
+      "source_sha256": "a6ad5cfc267eb11e9f4f0c83b1cd8d952495fd2a17110f76ff63f40c7e327725",
+      "translation": "Hversu oft tvær raðir deila klasa þegar báðar voru klasaðar."
+    },
+    {
+      "context": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "label": "spacr.ops_clusters.co_membership#1",
+      "source": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "source_sha256": "06d6f3ea558b3a4ab6915752842cedddc9895111b853aba903ac769240fe1f1a",
+      "translation": "fylki ``runs x rows`` úr :func:`consensus_clustering`; -1 merkir röð sem var sleppt í keyrslu."
+    },
+    {
+      "context": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "label": "spacr.ops_clusters.co_membership#2",
+      "source": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "source_sha256": "75dad152016a3d61a839c1ec7a45ec6f1e3a8911d9e994a16adf73b7202b652e",
+      "translation": "samhverft fylki ``rows x rows`` með líkum, NaN fyrir par sem aldrei var klasað saman, 1 á hornalínunni fyrir hverja röð sem var klösuð að minnsta kosti einu sinni."
+    },
+    {
+      "context": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "label": "spacr.ops_clusters.consensus_clustering#0",
+      "source": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "source_sha256": "5de11db853d78c0ac3d514eae75d4874326b2a11690ece4a83dfced4d8adea30",
+      "translation": "Samstöðuklösun: margar keyrslur á bootstrap-úrtökum gena og leiðara."
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_clustering#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "genataflan."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_clustering#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "þegar viðbótin ``clustering`` er ekki uppsett."
+    },
+    {
+      "context": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "label": "spacr.ops_clusters.consensus_clustering#11",
+      "source": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "source_sha256": "335ce52d1755dd5acb82ee8e727223bade386992ab7ab420f1db56d21d02d73f",
+      "translation": "Hver keyrsla er frábrugðin hinum á þrjá vegu, svo sameiginleg klasaaðild endurspeglar úrtöku gena, leiðara og reikniritsins: hlutfallið ``subsample`` af röðunum, leiðarar hvers gens dregnir með endurvali, og eigið fræ og upplausn PHATE og Leiden."
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_clustering#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "leiðarataflan."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_clustering#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "the number of runs.",
+      "label": "spacr.ops_clusters.consensus_clustering#4",
+      "source": "the number of runs.",
+      "source_sha256": "b40f1a398e457ee9e4a8f80fd448c03a79119687030f8c4edbe6d8729e7d1d31",
+      "translation": "fjöldi keyrslna."
+    },
+    {
+      "context": "the resolution sweep the runs cycle through.",
+      "label": "spacr.ops_clusters.consensus_clustering#5",
+      "source": "the resolution sweep the runs cycle through.",
+      "source_sha256": "01bf9e0b6a8328c9464802587704445f62c57ed9e792e86f5f384f7ff61670e0",
+      "translation": "sópið yfir upplausnir sem keyrslurnar fara í hring í gegnum."
+    },
+    {
+      "context": "run ``k`` is seeded ``base_seed + k``.",
+      "label": "spacr.ops_clusters.consensus_clustering#6",
+      "source": "run ``k`` is seeded ``base_seed + k``.",
+      "source_sha256": "50361c63cc5a6d23e2ab8b08a9ea8f9dbcd946cd76afaf1ca802930e7baf89b6",
+      "translation": "keyrsla ``k`` fær fræið ``base_seed + k``."
+    },
+    {
+      "context": "the share of rows in each run.",
+      "label": "spacr.ops_clusters.consensus_clustering#7",
+      "source": "the share of rows in each run.",
+      "source_sha256": "9cb14c5cac4b6e2252056f61b1332e8b23844f6f9273661399cc0c60f9177182",
+      "translation": "hlutfall raða í hverri keyrslu."
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_clustering#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "sent til :func:`consensus_rows`."
+    },
+    {
+      "context": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "label": "spacr.ops_clusters.consensus_clustering#9",
+      "source": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "source_sha256": "ee3f50179f5fdc58999d681c46304d3cdf46594954de0beac7f78188aae2cb52",
+      "translation": "``{\"genes\", \"labels\", \"runs\"}``: heiti raðanna, merkjafylki ``runs x rows`` (-1 = sleppt í þeirri keyrslu) og upplausn og fjöldi klasa í hverri keyrslu. Sendið ``labels`` til :func:`co_membership`."
+    },
+    {
+      "context": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "label": "spacr.ops_clusters.consensus_rows#0",
+      "source": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "source_sha256": "64585eea8b797caa4420883adb43cac12a49097f6de713a35f83f16ff2c1d4dd",
+      "translation": "Genaprófílar fyrir samstöðuklösun, valfrjálst með endurúrtöku leiðara."
+    },
+    {
+      "context": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "label": "spacr.ops_clusters.consensus_rows#1",
+      "source": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "source_sha256": "fe0fa30f8c33b5a342e84d201d7a052c2936cd4a5a52a3987e00c68d390a6e0d",
+      "translation": "genataflan; genum með ``min_cells`` frumur eða færri er sleppt."
+    },
+    {
+      "context": "the guide table with ``columns``.",
+      "label": "spacr.ops_clusters.consensus_rows#2",
+      "source": "the guide table with ``columns``.",
+      "source_sha256": "ab1c67f53319fc46f3ae12d1466d92163764373921e4501676985b24199ab6cd",
+      "translation": "leiðarataflan með ``columns``."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "label": "spacr.ops_clusters.consensus_rows#4",
+      "source": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "source_sha256": "565b0ce1ab677a9ef65249d43be7b2c8744b37825b527c6dfda23990b9b04c10",
+      "translation": "þegar þetta er gefið eru leiðarar hvers gens dregnir með endurvali áður en miðgildið er tekið (bootstrap leiðara)."
+    },
+    {
+      "context": "the gene cell-count floor.",
+      "label": "spacr.ops_clusters.consensus_rows#5",
+      "source": "the gene cell-count floor.",
+      "source_sha256": "8e3abcd3246a0761f4aaa4005eec08266ac45319f1c606f1a377f830c7c5d7d2",
+      "translation": "lágmarksfjöldi frumna á gen."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.consensus_rows#6",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "forskeyti viðmiða."
+    },
+    {
+      "context": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "label": "spacr.ops_clusters.consensus_rows#7",
+      "source": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "source_sha256": "a17208255eacd7f2fb1fb00da397d33b282816e93ee279ac3bb52b491c73aa63",
+      "translation": "viðmiðsleiðurum er raðað af handahófi í gervigen með þessum fjölda leiðara, nefnd ``NTpseudo_<k>``, svo viðmiðin eru klösuð við sömu upplausn og genin."
+    },
+    {
+      "context": "the seed of that grouping.",
+      "label": "spacr.ops_clusters.consensus_rows#8",
+      "source": "the seed of that grouping.",
+      "source_sha256": "0a6a866395aa2dc8d81813a2d1a265207604f2f01bf3e03a83d38a07585a7111",
+      "translation": "fræ þeirrar flokkunar."
+    },
+    {
+      "context": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "label": "spacr.ops_clusters.consensus_rows#9",
+      "source": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "source_sha256": "df3fa7a42b3863bf8a8d1a844a8eae5cae5e7697599e3433568a86c4b65af8ba",
+      "translation": "``gene, n_cells, <columns>``, ein röð fyrir hvert gen og gervigen, raðað eftir heiti."
+    },
+    {
+      "context": "One consensus clustering run.",
+      "label": "spacr.ops_clusters.consensus_run#0",
+      "source": "One consensus clustering run.",
+      "source_sha256": "b365768ad563967981c88ac6a102a2f239524b41964ec2c5aa701bfa40af3f39",
+      "translation": "Ein keyrsla samstöðuklösunar."
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_run#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "genataflan."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_run#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "þegar viðbótin ``clustering`` er ekki uppsett."
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_run#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "leiðarataflan."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_run#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "the run number; its generator is seeded ``base_seed + run``.",
+      "label": "spacr.ops_clusters.consensus_run#4",
+      "source": "the run number; its generator is seeded ``base_seed + run``.",
+      "source_sha256": "ec5701e1df7f763cd5ecf91759ff0f8908142d6259e51221b7da2dff2f24b601",
+      "translation": "númer keyrslunnar; slembigjafi hennar fær fræið ``base_seed + run``."
+    },
+    {
+      "context": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "label": "spacr.ops_clusters.consensus_run#5",
+      "source": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "source_sha256": "7647ef786e3eaf18bf75ad54238552bc0930797e900fcc348da9b2f71bc3ec7a",
+      "translation": "sópið; keyrsla ``k`` notar ``resolutions[k % len]``."
+    },
+    {
+      "context": "see ``run``.",
+      "label": "spacr.ops_clusters.consensus_run#6",
+      "source": "see ``run``.",
+      "source_sha256": "1ca400ed083d1ee64b577487a73bee3b864a2e92e597f85ab8ef509c8d6d59c3",
+      "translation": "sjá ``run``."
+    },
+    {
+      "context": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "label": "spacr.ops_clusters.consensus_run#7",
+      "source": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "source_sha256": "b56ff07447b90e32676c5375ef4620e96b237f6fc9dd05e273f0bde4e90085be",
+      "translation": "hlutfall klasaðra raða, dregnar án endurvals (PHATE ræður ekki við tvíteknar raðir)."
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_run#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "sent til :func:`consensus_rows`."
+    },
+    {
+      "context": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "label": "spacr.ops_clusters.consensus_run#9",
+      "source": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "source_sha256": "ca7b64b860aa7ec2bf65b2f3f3f8adcc29010d7bce478e816ac61564055de0e9",
+      "translation": "``(resolution, clusters, labels)``; ``labels`` hefur eina færslu fyrir hverja röð :func:`consensus_rows` án endurúrtöku, -1 fyrir raðir sem var sleppt í þessari keyrslu."
+    },
+    {
+      "context": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "label": "spacr.ops_clusters.embed_profiles#0",
+      "source": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "source_sha256": "931635ebb1afc7432bacd39e9db0db169940a0e11d720fe3684e01cbb8bf1b2c",
+      "translation": "Staðla prófílana og halda þeim PC sem bera ``variance``."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.embed_profiles#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "ein röð fyrir hvert gen."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.embed_profiles#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "the share of variance kept.",
+      "label": "spacr.ops_clusters.embed_profiles#3",
+      "source": "the share of variance kept.",
+      "source_sha256": "2a9e7ec25e43a47f472c22ab9878d4f1dc33b12e44b65c908a7d02ccac8ed8f4",
+      "translation": "hlutfall dreifninnar sem haldið er."
+    },
+    {
+      "context": "the PCA seed.",
+      "label": "spacr.ops_clusters.embed_profiles#4",
+      "source": "the PCA seed.",
+      "source_sha256": "fd77912e5e53b70899d068d16d97346429ad8a2e86b5dca65e547d988e28bfd3",
+      "translation": "fræ PCA."
+    },
+    {
+      "context": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "label": "spacr.ops_clusters.embed_profiles#5",
+      "source": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "source_sha256": "704166f6adb40b659a07addf79daf72ad3cc151b1f083ee2d2f312f894e4ffee",
+      "translation": "``(components, n_components, n_features_used)``. Dálkum með 5 % eða meira af gildum sem vantar er sleppt, önnur göt fá miðgildi dálksins og föstum dálkum er sleppt."
+    },
+    {
+      "context": "The share of clusters enriched for at least one group.",
+      "label": "spacr.ops_clusters.group_enrichment#0",
+      "source": "The share of clusters enriched for at least one group.",
+      "source_sha256": "9049ebf99cab875c6c4529c44a29892621de295a9d7dbc9f40c06bf11da37f07",
+      "translation": "Hlutfall klasa sem eru auðgaðir fyrir að minnsta kosti einn hóp."
+    },
+    {
+      "context": "``gene_name, group`` rows (CORUM or KEGG).",
+      "label": "spacr.ops_clusters.group_enrichment#1",
+      "source": "``gene_name, group`` rows (CORUM or KEGG).",
+      "source_sha256": "7aa8f70e407037cc1cd591fa4ef29bcd9f9b3c23a1b3701844d50b41554bd874",
+      "translation": "raðir ``gene_name, group`` (CORUM eða KEGG)."
+    },
+    {
+      "context": "the clustered row names, controls included.",
+      "label": "spacr.ops_clusters.group_enrichment#2",
+      "source": "the clustered row names, controls included.",
+      "source_sha256": "bcbab28bbf9d1ec5970f02d7b2aab670c1f3a29066da1a25305eb6fecc42acd9",
+      "translation": "heiti klösuðu raðanna, viðmið meðtalin."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.group_enrichment#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "eitt merki á hverja röð."
+    },
+    {
+      "context": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "label": "spacr.ops_clusters.group_enrichment#4",
+      "source": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "source_sha256": "9ad65e859500b90c6838e244b5c6d10fbae1ed478baaaaff88a676c182b55ac0",
+      "translation": "True heldur aðeins hópmeðlimunum í bakgrunninum (núverandi ``head``-kóði Brieflow); False telur alla meðlimi (útgáfa Brieflow frá maí 2025, afbrigðið ``may2025``)."
+    },
+    {
+      "context": "control rows are background, never cluster members.",
+      "label": "spacr.ops_clusters.group_enrichment#5",
+      "source": "control rows are background, never cluster members.",
+      "source_sha256": "ad40f82e36778ee7df1fa0277631b3f981d227dcf285edbf0e5b26739882072d",
+      "translation": "viðmiðsraðir eru bakgrunnur, aldrei klasameðlimir."
+    },
+    {
+      "context": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "label": "spacr.ops_clusters.group_enrichment#6",
+      "source": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "source_sha256": "b6e09615003faea20c5808726d498aa77c73b721f396a4caba096abbe381cbdc",
+      "translation": "``(share, table)``; taflan hefur eina röð fyrir hvern klasa með stærð hans, fjölda auðgaðra hópa og allt að tíu þeirra."
+    },
+    {
+      "context": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "label": "spacr.ops_clusters.phate_leiden#0",
+      "source": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "source_sha256": "e30c83de9e5a12b1ad3244d05dde8e3239cee95cc5dca39b4bd259b33ee07b23",
+      "translation": "Leiden-klasar PHATE-sveimnetsins, einn fyrir hverja upplausn."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.phate_leiden#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "ein röð fyrir hvert gen."
+    },
+    {
+      "context": "Leiden resolution parameters.",
+      "label": "spacr.ops_clusters.phate_leiden#2",
+      "source": "Leiden resolution parameters.",
+      "source_sha256": "93ba7bff5ecb0f20c6ac71bb4ef3413f9e1bc95f15614c18016556c9f5890b85",
+      "translation": "upplausnarstikar Leiden."
+    },
+    {
+      "context": "PHATE's nearest neighbours.",
+      "label": "spacr.ops_clusters.phate_leiden#3",
+      "source": "PHATE's nearest neighbours.",
+      "source_sha256": "7eb0af37c7b62e12eac649d854c856c92ec6fa62622194d9af1b35beac96a083",
+      "translation": "næstu nágrannar PHATE."
+    },
+    {
+      "context": "PHATE's distance.",
+      "label": "spacr.ops_clusters.phate_leiden#4",
+      "source": "PHATE's distance.",
+      "source_sha256": "4c44209f1084f7e2430c4ff1e079b36cdf756ff142485f8904ce2955ca037d15",
+      "translation": "fjarlægð PHATE."
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.phate_leiden#5",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "fræ PHATE og Leiden."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.phate_leiden#6",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "fjöldi vinnsluþráða PHATE."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.phate_leiden#8",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "þegar viðbótin ``clustering`` er ekki uppsett."
+    },
+    {
+      "context": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "label": "spacr.ops_clusters.phate_leiden#9",
+      "source": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "source_sha256": "30e820aef5f6212438e8f738f97de5ff9c9dfb22a927baa2e680fced30378dbf",
+      "translation": "Netið er sveimvirki PHATE gerður samhverfur, ``(P + P.T) / 2``; Leiden hámarkar RB-skipanalíkanið á því með ``n_iterations=-1`` (þar til það hættir að batna)."
+    },
+    {
+      "context": "Read a benchmark table in Brieflow's format.",
+      "label": "spacr.ops_clusters.read_benchmark#0",
+      "source": "Read a benchmark table in Brieflow's format.",
+      "source_sha256": "d5c9c2d76ddc92aca488f182e946573eac60be388f80c8af563d174b0c815863",
+      "translation": "Lesa samanburðartöflu á sniði Brieflow."
+    },
+    {
+      "context": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "label": "spacr.ops_clusters.read_benchmark#1",
+      "source": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "source_sha256": "b299b58411920eff53776e718acada9b3615edbd720130210bb25357c2aa880e",
+      "translation": "skrá aðgreind með dálkstoppum. Hópatöflur (CORUM, KEGG) hafa dálkana ``gene_name`` og ``group``; STRING-tafla paranna hefur ``gene_name`` og ``pair``."
+    },
+    {
+      "context": "when neither ``group`` nor ``pair`` is present.",
+      "label": "spacr.ops_clusters.read_benchmark#3",
+      "source": "when neither ``group`` nor ``pair`` is present.",
+      "source_sha256": "69a49c5dc86ab080f936f072b57f9c873bfce3ee722cad461a5ef652529bb369",
+      "translation": "þegar hvorki ``group`` né ``pair`` er til staðar."
+    },
+    {
+      "context": "Read a reference clustering, such as Funk et al.'s published table.",
+      "label": "spacr.ops_clusters.reference_clusters#0",
+      "source": "Read a reference clustering, such as Funk et al.'s published table.",
+      "source_sha256": "d683b2215f9383dc5e7f493bb5b6dce1789f9bbbe650101c732b434f08104717",
+      "translation": "Lesa viðmiðunarklösun, svo sem útgefna töflu Funk et al."
+    },
+    {
+      "context": "a CSV, TSV or Excel file.",
+      "label": "spacr.ops_clusters.reference_clusters#1",
+      "source": "a CSV, TSV or Excel file.",
+      "source_sha256": "b112631f2c8596eb624129a604493346fd2bdc2dbbdda9ade34a9df0bbdf2007",
+      "translation": "CSV-, TSV- eða Excel-skrá."
+    },
+    {
+      "context": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#2",
+      "source": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "source_sha256": "d0a8d096cb2ebb86504bbfc221aa3b7ec05f29e94f10b9d2cfa8deb847f6d83a",
+      "translation": "genadálkurinn; leitað er meðal ``gene``, ``gene_symbol`` og ``gene_name`` þegar None."
+    },
+    {
+      "context": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#3",
+      "source": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "source_sha256": "88d54c2e4e25091c9cf1cfaa89d9ce3edde4675b62ea8ea008a291b351cc164f",
+      "translation": "klasadálkurinn; leitað er meðal ``cluster`` og ``interphase_cluster`` þegar None."
+    },
+    {
+      "context": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "label": "spacr.ops_clusters.reference_clusters#4",
+      "source": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "source_sha256": "2f426622c4fb086f23da4bc3f9c0e6375f2562d5b65a9071a39afca19ed25f3a",
+      "translation": "raðir ``gene, cluster`` sem hafa klasa, klasinn sem int."
+    },
+    {
+      "context": "when a column cannot be found.",
+      "label": "spacr.ops_clusters.reference_clusters#5",
+      "source": "when a column cannot be found.",
+      "source_sha256": "2dcfd3c8782b137dfbf403462492691cbbeb6c2565e75f4143432576997b319e",
+      "translation": "þegar dálkur finnst ekki."
+    },
+    {
+      "context": "One benchmark row: cluster count, CORUM %, KEGG % and string p/R.",
+      "label": "spacr.ops_clusters.score_clusters#0",
+      "source": "One benchmark row: cluster count, CORUM %, KEGG % and STRING P/R.",
+      "source_sha256": "3877f69d822e348642b28a7c2b50aac2abea2f90db25448894a9e96184b92bfc",
+      "translation": "Ein samanburðarröð: fjöldi klasa, CORUM %, KEGG % og STRING P/R."
+    },
+    {
+      "context": "the row's label.",
+      "label": "spacr.ops_clusters.score_clusters#1",
+      "source": "the row's label.",
+      "source_sha256": "be73f646e1143862b2b6dc9924d1d3e0d4c4a06917feca288ce8614fd39102bf",
+      "translation": "merki raðarinnar."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.score_clusters#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "heiti klösuðu raðanna."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.score_clusters#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "eitt merki á hverja röð."
+    },
+    {
+      "context": "CORUM groups (:func:`read_benchmark`).",
+      "label": "spacr.ops_clusters.score_clusters#4",
+      "source": "CORUM groups (:func:`read_benchmark`).",
+      "source_sha256": "ef61be740ac5b428e129d10155265dd56ba5173b91f97383303eafed23712c79",
+      "translation": "CORUM-hópar (:func:`read_benchmark`)."
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.score_clusters#5",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "KEGG-hópar."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.score_clusters#7",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "forskeyti viðmiða."
+    },
+    {
+      "context": "Permute every column independently: the shuffled-PC control.",
+      "label": "spacr.ops_clusters.shuffle_columns#0",
+      "source": "Permute every column independently: the shuffled-PC control.",
+      "source_sha256": "ec12e2420eef9c5cfd3eb1100cfad443ffa1c60d46108335f4de55404c12b220",
+      "translation": "Umraða hverjum dálki óháð hinum: viðmiðið með stokkuðum PC."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.shuffle_columns#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "ein röð fyrir hvert gen."
+    },
+    {
+      "context": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "label": "spacr.ops_clusters.shuffle_columns#2",
+      "source": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "source_sha256": "3860f4c88ea40e63b37b016e6f7e7e37826a88d1e05ebb74269feecc1d0b4866",
+      "translation": "fræ umröðunarinnar, eða ``numpy.random.Generator`` til að draga úr (hann færist áfram)."
+    },
+    {
+      "context": "a copy whose columns keep their values but lose their rows.",
+      "label": "spacr.ops_clusters.shuffle_columns#3",
+      "source": "a copy whose columns keep their values but lose their rows.",
+      "source_sha256": "dde0cb7a1dd475df324913c8ea8a85e20710f85710323cd23194e677424069d0",
+      "translation": "afrit þar sem dálkarnir halda gildum sínum en missa raðir sínar."
+    },
+    {
+      "context": "Area under the STRING precision-recall curve of profile cosines.",
+      "label": "spacr.ops_clusters.string_auprc#0",
+      "source": "Area under the STRING precision-recall curve of profile cosines.",
+      "source_sha256": "e8f1faac8d09a0ab66cc8780a77691ece7fe7af886d3909f87993bf1df4647ab",
+      "translation": "Flatarmál undir nákvæmni-heimtar-ferli STRING fyrir kósínusa prófíla."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.string_auprc#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "ein röð fyrir hvert gen."
+    },
+    {
+      "context": "the row names; control rows are left out.",
+      "label": "spacr.ops_clusters.string_auprc#2",
+      "source": "the row names; control rows are left out.",
+      "source_sha256": "d36e58c705fa017c0b708a18b98368d1ef5bb19cb071a0bb8dcfbd1576f7d8b7",
+      "translation": "heiti raðanna; viðmiðsröðum er sleppt."
+    },
+    {
+      "context": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "label": "spacr.ops_clusters.string_auprc#4",
+      "source": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "source_sha256": "cb461ce39985bcbbe7f1b6a0cf979a2e809f5bcd79f7c39b78105615ceb4d7f8",
+      "translation": "stokka genamerkin fyrst með þessu fræi (viðmiðið); None metur raunverulegu merkin."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.string_auprc#5",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "forskeyti viðmiða."
+    },
+    {
+      "context": "points kept on the returned curve.",
+      "label": "spacr.ops_clusters.string_auprc#6",
+      "source": "points kept on the returned curve.",
+      "source_sha256": "a6dbd6b971f79cb0e141627c4ffd0c199dec293ee5a966cf60c0769dc4f8e44e",
+      "translation": "punktar sem haldið er á ferlinum sem er skilað."
+    },
+    {
+      "context": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "label": "spacr.ops_clusters.string_auprc#7",
+      "source": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "source_sha256": "e5d6da14b7b4a6bb9c2d43f06d9b1dc182b2390301c8e736b7099ccf2ff0fb56",
+      "translation": "``(auprc, base_rate, curve)``. Hverju genapari er raðað eftir kósínus prófílanna tveggja; grunntíðnin er hlutfall para sem eru STRING-pör, sem er skorið sem slembiröðun nær."
+    },
+    {
+      "context": "STRING precision and recall of the pairs that share a cluster.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#0",
+      "source": "STRING precision and recall of the pairs that share a cluster.",
+      "source_sha256": "2fbb526a8815f306918f2f3a1c1de8f891cd0794bd351d5245223b98cc9f5f29",
+      "translation": "Nákvæmni og heimt STRING fyrir pörin sem deila klasa."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "heiti klösuðu raðanna."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "eitt merki á hverja röð."
+    },
+    {
+      "context": "control rows are left out.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#4",
+      "source": "control rows are left out.",
+      "source_sha256": "e3cc8e4d37d826d76458b22eafa7aedece9ead85aac84755892a586665601cc8",
+      "translation": "viðmiðsröðum er sleppt."
+    },
+    {
+      "context": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#5",
+      "source": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "source_sha256": "028aa863709ab100905110831647806cef61e4be5abac386469088b03421851a",
+      "translation": "``precision, recall, f1, tp, fp, fn``. Heimtin telur aðeins STRING-pör þar sem bæði genin eru klösuð."
+    },
+    {
+      "context": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "label": "spacr.ops_clusters.string_positives#0",
+      "source": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "source_sha256": "8076b1ed1f4fc2ff7404b305e8fe71d2ec9f204e77579617e4b5d25a38956a68",
+      "translation": "STRING-genapörin, hvert sem raðað par ``(a, b)`` með ``a < b``."
+    },
+    {
+      "context": "``gene_name, pair`` rows of the STRING benchmark.",
+      "label": "spacr.ops_clusters.string_positives#1",
+      "source": "``gene_name, pair`` rows of the STRING benchmark.",
+      "source_sha256": "5b943519845e3b1516273feb2fb02ab32ce11ec957c2f6fcdd895c839de05b03",
+      "translation": "raðir ``gene_name, pair`` í STRING-samanburðinum."
+    },
+    {
+      "context": "the set of pairs.",
+      "label": "spacr.ops_clusters.string_positives#2",
+      "source": "the set of pairs.",
+      "source_sha256": "1566a32d96825637dc97065c8e6dabb64bfb12409ce1478710dad9a1200624aa",
+      "translation": "mengi paranna."
+    },
+    {
+      "context": "A trained mitotic-cell machine-learning classification model for optical pooled screening experiments.",
+      "label": "spacr.ops_mitotic#0",
+      "source": "A trained mitotic-cell classifier for optical pooled screens.",
+      "source_sha256": "404d652eb547421bd5ced4e8df943a2578476f5391244fbe86c940a972f37a95",
+      "translation": "Þjálfaður flokkari fyrir frumur í mítósu í ljósfræðilegum safnskimunum."
+    },
+    {
+      "context": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a machine-learning classification model on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "label": "spacr.ops_mitotic#1",
+      "source": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a classifier on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "source_sha256": "631f6514c7d2b48a665cf53f8cc7e502ab6136c3333eed380844fad0f5087224",
+      "translation": ":func:`spacr.gene_measurement_compare.mitotic_calls` greinir frumu í mítósu með fastri reglu á DNA-styrk og flatarmáli kjarna. Á plötu A hjá Funk et al. 2022 fylgir mítósustuðull hvers gens samkvæmt þeirri reglu stuðli Funk et al. aðeins með Spearman rho = 0,32. Funk et al. þjálfuðu í staðinn flokkara á DNA- og túbúlíneiginleikum; þessi eining gerir það sama með merktum frumum."
+    },
+    {
+      "context": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate extracted image region-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "label": "spacr.ops_mitotic#2",
+      "source": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate crop-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "source_sha256": "32c54dcfb4f622d4bf33668865af5b2822aa4f9feb4fffc75961b8d2829cd76b",
+      "translation": ":func:`read_mitotic_labels` les töflu merktra frumna (valfrjálst í gegnum aðskilda vörpun úrklippa á frumur, svo merkjendur vita hvorki brunn né gen) og breytir stigum hennar í mítósugreiningar."
+    },
+    {
+      "context": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "label": "spacr.ops_mitotic#3",
+      "source": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "source_sha256": "65471bacdf9d9196a62d53055023650a1798a97a1b6bc260091271378b5a693c",
+      "translation": ":func:`mitotic_features` velur DNA-eiginleikana (kjarna) og túbúlíneiginleikana (frumu og umfrymis) úr frumutöflu."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` fits a gradient-boosting machine-learning classification model on labelled cells and reports grouped cross-validation, with folds split by well or microscope field of view so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "label": "spacr.ops_mitotic#4",
+      "source": ":func:`train_mitotic_classifier` fits a gradient-boosting classifier on labelled cells and reports grouped cross-validation, with folds split by well or field so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "source_sha256": "db85dc3c03888651b2f41f3a710e23b1eee077e123281042e5dba0460e0188e0",
+      "translation": ":func:`train_mitotic_classifier` mátar flokkara með stigulsefldingu (gradient boosting) á merktum frumum og birtir hópaða krossprófun, þar sem brotum er skipt eftir brunni eða sjónsviði svo frumur úr sömu mynd lendi aldrei báðum megin, ásamt viðmiði með stokkuðum merkjum sem sýnir hvaða skor tilviljun gefur."
+    },
+    {
+      "context": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "label": "spacr.ops_mitotic#5",
+      "source": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "source_sha256": "ec7470b414c13387f387dac633e20a31862b1611aaee83b4ff952a1bdc91a651",
+      "translation": ":func:`sampling_weights` endurvegur merkjasafn sem ofúrtekur sumar frumur (svo sem mítósugreiningar reglunnar) svo þjálfun og mælikvarðar lýsi allri skimuninni."
+    },
+    {
+      "context": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "label": "spacr.ops_mitotic#6",
+      "source": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "source_sha256": "8b7a17e5488f10710e019cff06c0306cca27d029e4ab4048848a54af568543a5",
+      "translation": ":func:`predict_mitotic` greinir nýjar frumur; :func:`save_mitotic_classifier` og :func:`load_mitotic_classifier` geyma þjálfað líkan á diski, og samantektarfasi OPS notar það í gegnum ``ops_mitotic_model``."
+    },
+    {
+      "context": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "label": "spacr.ops_mitotic#7",
+      "source": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "source_sha256": "c6b012473e8541a5e480ad467ad4344dfe5ecdf7533dff6ba5f16d45d7e09b7f",
+      "translation": ":func:`mitotic_index_agreement` ber saman mítósustuðla hvers gens við viðmiðun, svo sem útgefna töflu Funk et al., með stokkuðu viðmiði."
+    },
+    {
+      "context": "Everything executes on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a machine-learning classification model trained on the rule's calls can only learn the rule.",
+      "label": "spacr.ops_mitotic#8",
+      "source": "Everything runs on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a classifier trained on the rule's calls can only learn the rule.",
+      "source_sha256": "5111c70b1c6365499d2f4d865fe9b3cf50d242d17c05f5329b687ec47a938ed7",
+      "translation": "Allt keyrir á örgjörvanum (CPU). Merkin verða að koma frá notandanum: safn frumna sem eru merktar sem í mítósu eða ekki. spaCR dreifir hvorki merkjum né þjálfuðu líkani, og býr ekki til merki úr reglunni, því flokkari sem er þjálfaður á greiningum reglunnar getur aðeins lært regluna."
+    },
+    {
+      "context": "Read a machine-learning classification model written by :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#0",
+      "source": "Read a classifier written by :func:`save_mitotic_classifier`.",
+      "source_sha256": "22dd95b8a56e427c8c20dfbe9d93060bfd59da80ce244337319ba2c7125d6281",
+      "translation": "Lesa flokkara sem :func:`save_mitotic_classifier` skrifaði."
+    },
+    {
+      "context": "the bundle :func:`predict_mitotic` takes.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#2",
+      "source": "the bundle :func:`predict_mitotic` takes.",
+      "source_sha256": "e44defc0dd2181a6eb745dc1b52a7a3f3c78e08af0a42b311773889096be4b5b",
+      "translation": "pakkinn sem :func:`predict_mitotic` tekur við."
+    },
+    {
+      "context": "when the file is not a spaCR mitotic machine-learning classification model.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#3",
+      "source": "when the file is not a spaCR mitotic classifier.",
+      "source_sha256": "aaa0e3f082d78ddfc76dde9b9f46f27da20884735f9d5eb4539ac010d163d864",
+      "translation": "þegar skráin er ekki mítósuflokkari frá spaCR."
+    },
+    {
+      "context": "A joblib file can run code when it is loaded, like any pickle; load only machine-learning classification models you trained or trust.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#4",
+      "source": "A joblib file can run code when it is loaded, like any pickle; load only classifiers you trained or trust.",
+      "source_sha256": "34aaeddcdbed6ce833bf1abab5180097e709ffaab9cf6f5529320ce9893ae8e8",
+      "translation": "joblib-skrá getur keyrt kóða þegar hún er hlaðin, eins og hvaða pickle sem er; hlaðið aðeins flokkurum sem þið þjálfuðuð sjálf eða treystið."
+    },
+    {
+      "context": "The DNA and tubulin features a mitotic machine-learning classification model is trained on.",
+      "label": "spacr.ops_mitotic.mitotic_features#0",
+      "source": "The DNA and tubulin features a mitotic classifier is trained on.",
+      "source_sha256": "d2287968799bbfaa3b06f6d3ea7ddd7321d04755cd0cb233b30beb0d5a9a5f01",
+      "translation": "DNA- og túbúlíneiginleikarnir sem mítósuflokkari er þjálfaður á."
+    },
+    {
+      "context": "the cell table's columns.",
+      "label": "spacr.ops_mitotic.mitotic_features#1",
+      "source": "the cell table's columns.",
+      "source_sha256": "86ff70a931e0ea84053f95f820fc730dd7ab084d0d7aae7810f253f6fe9a9374",
+      "translation": "dálkar frumutöflunnar."
+    },
+    {
+      "context": "the DNA channel name in the column names.",
+      "label": "spacr.ops_mitotic.mitotic_features#2",
+      "source": "the DNA channel name in the column names.",
+      "source_sha256": "1058bcf055c97e87a3f560d927aae56ed420584b839438172cb7288c36da0c4d",
+      "translation": "heiti DNA-rásarinnar í dálkaheitunum."
+    },
+    {
+      "context": "the tubulin channel name, or None to use DNA only.",
+      "label": "spacr.ops_mitotic.mitotic_features#3",
+      "source": "the tubulin channel name, or None to use DNA only.",
+      "source_sha256": "02105cbffae2103ee36d951ef408b8c30ca1ad7701ce4f7987ad045cebe5cecb",
+      "translation": "heiti túbúlínrásarinnar, eða None til að nota aðeins DNA."
+    },
+    {
+      "context": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "label": "spacr.ops_mitotic.mitotic_features#4",
+      "source": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "source_sha256": "9747198a83a34a44431d9b3e6e1ef2f06228b085dea05220619b012f18d4f604",
+      "translation": "í röð töflunnar, allir lögunareiginleikar kjarna, allir eiginleikar ``nucleus_<dna>_*`` og ``cell_<dna>_*`` og, með túbúlínrás, allir eiginleikar ``cell_<tubulin>_*`` og ``cytoplasm_<tubulin>_*``."
+    },
+    {
+      "context": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#0",
+      "source": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "source_sha256": "366d0a81844c9a61b713be27bb1bfc1fe330b6b26fef2c4ba91fb3b427f095db",
+      "translation": "Spearman-fylgni mítósustuðla hvers gens við viðmiðun."
+    },
+    {
+      "context": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#1",
+      "source": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "source_sha256": "f5ee2d069f84d7c751821aa4a9b098954d821ed2d92981ff885fdcd6fe79922b",
+      "translation": "``gene, n_cells, mitotic_index`` (genataflan yfir allar frumur)."
+    },
+    {
+      "context": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#2",
+      "source": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "source_sha256": "15bd1b79b108d192ce4c54c83672cb7706a831a8449491f77dcd99b1401247ed",
+      "translation": "raðir ``gene, mitotic_index``, svo sem raðir Funk et al.; stuðlum yfir 1 er sleppt sem skemmdum röðum."
+    },
+    {
+      "context": "the cell-count floors to report.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#3",
+      "source": "the cell-count floors to report.",
+      "source_sha256": "be902a79335727d0900bd5875efe9da4078e9b44d08ca2d7ce0ca1a1e841799a",
+      "translation": "lágmarksfjöldi frumna sem á að birta niðurstöður fyrir."
+    },
+    {
+      "context": "the shuffled-index draws of the control.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#4",
+      "source": "the shuffled-index draws of the control.",
+      "source_sha256": "46c5acd3dd0cabb9edf694436f95af9232522c5f242357ce5357cd09ba196bb2",
+      "translation": "dráttur stokkaðra stuðla fyrir viðmiðið."
+    },
+    {
+      "context": "the shuffle seed.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#5",
+      "source": "the shuffle seed.",
+      "source_sha256": "49cc4a6918f94840f1ae1344fa9d430a0d51a97f16072e73e1fe8333dbb84d9c",
+      "translation": "fræ stokkunarinnar."
+    },
+    {
+      "context": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#6",
+      "source": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "source_sha256": "66f454f648e86bf04a7c4c0ada13214d723302ed9a1c30fb8517b24063985f5a",
+      "translation": "ein röð fyrir hvert lágmark: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``."
+    },
+    {
+      "context": "Call cells mitotic with a trained machine-learning classification model.",
+      "label": "spacr.ops_mitotic.predict_mitotic#0",
+      "source": "Call cells mitotic with a trained classifier.",
+      "source_sha256": "7229c3a8e5b57126545bb9858ec87ee1b6388e02c03f39f4b346952ac2ec178c",
+      "translation": "Greina frumur í mítósu með þjálfuðum flokkara."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.predict_mitotic#1",
+      "source": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "source_sha256": "e2ff2c06b7cb5e89ee725403118d8936b7e0b8783872bf958e7247630882c987",
+      "translation": "úttak :func:`train_mitotic_classifier` eða :func:`load_mitotic_classifier`."
+    },
+    {
+      "context": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.predict_mitotic#2",
+      "source": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "source_sha256": "1e2ca8d1b55e6c9510f04d422788fa45553722e26f9f92397f8808f605082139",
+      "translation": "ein röð fyrir hverja frumu með eiginleikum líkansins og dálki þess ``normalise_by``."
+    },
+    {
+      "context": "return the probability instead of the call.",
+      "label": "spacr.ops_mitotic.predict_mitotic#3",
+      "source": "return the probability instead of the call.",
+      "source_sha256": "039431a279c20a830e719bdd1067439e1bfc276c6b557db50e5efcd2e7586575",
+      "translation": "skila líkunum í stað greiningarinnar."
+    },
+    {
+      "context": "a Series over ``cells``: booleans, or probabilities.",
+      "label": "spacr.ops_mitotic.predict_mitotic#4",
+      "source": "a Series over ``cells``: booleans, or probabilities.",
+      "source_sha256": "d31058e2cdfad5822007b11966db811a74ddb6da7921a1f23c6f2f41753e5684",
+      "translation": "Series yfir ``cells``: boolsk gildi, eða líkur."
+    },
+    {
+      "context": "when the table lacks a feature the model needs.",
+      "label": "spacr.ops_mitotic.predict_mitotic#5",
+      "source": "when the table lacks a feature the model needs.",
+      "source_sha256": "c20c23a05e2e5f29d5306bb27ef6285711c5cabc1d0c70243d5f6f9c94fac5a9",
+      "translation": "þegar töfluna vantar eiginleika sem líkanið þarf."
+    },
+    {
+      "context": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#0",
+      "source": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "source_sha256": "b9924bb1aeb64aa5f511dad492c0eafada54a02c7c8d3e56a89170407286424b",
+      "translation": "Lesa töflu merktra frumna og breyta flokkunum í mítósugreiningar."
+    },
+    {
+      "context": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#1",
+      "source": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "source_sha256": "1961f063fc2acdeac0183e0daeac5a9ec27053158032b79d348d4eb530a5284f",
+      "translation": "CSV-slóð eða gagnatafla með einni röð fyrir hverja merkta frumu og flokkadálki: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (annar helmingur telófasapars sem skiptingin klauf, talinn í mítósu), ``mitotic-stage-disputed`` eða ``artefact`` (há- og lágstafir, ``_`` og ``/`` skipta ekki máli)."
+    },
+    {
+      "context": "when ``labels`` names extracted image regions rather than cells, a CSV path or frame that maps each extracted image region to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#2",
+      "source": "when ``labels`` names crops rather than cells, a CSV path or frame that maps each crop to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "source_sha256": "f8f738768b3aa43432a69bce4403a3972d4d76c95349fd1f314669fbad6245d3",
+      "translation": "þegar ``labels`` nefnir úrklippur frekar en frumur, CSV-slóð eða gagnatafla sem varpar hverri úrklippu á frumu sína: sameiginlegi auðkennisdálkurinn ásamt ``plate, well, site, label``. Með því að halda henni aðskilinni geta merkjendur unnið án þess að vita brunn og gen."
+    },
+    {
+      "context": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell structured-data name.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#3",
+      "source": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell key.",
+      "source_sha256": "569458c8c3e7c2856fc6603fa4841e1855c2cfbf3224172007b4e1713424e2d1",
+      "translation": "flokkadálkurinn; leitað er meðal ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` og ``class3`` þegar None, eða ``label`` þegar taflan hefur engan frumulykil."
+    },
+    {
+      "context": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#4",
+      "source": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "source_sha256": "c6dfde46ea9deda0a8b0881af7e47f4b8ea310da8f887fbb68607d532dd63563",
+      "translation": "dálkurinn sem ``labels`` og ``mapping`` deila; eini dálkurinn sem báðar hafa, annar en flokkurinn, þegar None."
+    },
+    {
+      "context": "``'drop'`` leaves artefact extracted image regions out; ``'negative'`` keeps them as not mitotic, so a machine-learning classification model learns not to call them and its precision counts them as false calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#5",
+      "source": "``'drop'`` leaves artefact crops out; ``'negative'`` keeps them as not mitotic, so a classifier learns not to call them and its precision counts them as false calls.",
+      "source_sha256": "630f2d55d432c21c0d82ddc268e0ff9a97a896d420b62fcf2ee222bc434c856f",
+      "translation": "``'drop'`` sleppir úrklippum með gripum; ``'negative'`` heldur þeim sem ekki í mítósu, svo flokkari lærir að greina þær ekki og nákvæmni hans telur þær sem rangar greiningar."
+    },
+    {
+      "context": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#6",
+      "source": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "source_sha256": "ca883bb60ee0645ba018c9bff886f73267ca8199f5b373fc6308be7515a3f9df",
+      "translation": "``plate, well, site, label, stage, mitotic``: ein röð fyrir hverja merkta frumu, ``stage`` staðlaði flokkurinn og ``mitotic`` True fyrir hvert mítósustig."
+    },
+    {
+      "context": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#7",
+      "source": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "source_sha256": "61df3c079e5a77216412fb6ce652e849e4cfdb9ed53409544d4fa164205241d9",
+      "translation": "fyrir flokk sem er enginn þeirra þekktu, frumu sem er merkt tvisvar með ólíkum flokkum, eða dálk sem vantar."
+    },
+    {
+      "context": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "label": "spacr.ops_mitotic.sampling_weights#0",
+      "source": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "source_sha256": "851cee39420ab49cfa13fb1c28af413a9a60ade459c23cd92b8881756a0cef70",
+      "translation": "Eftirlagskiptingarvogir sem láta lagskipt merkjasafn standa fyrir skimunina."
+    },
+    {
+      "context": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#1",
+      "source": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "source_sha256": "e0f0195048787f949b523d1f2c1bd7f0371c19024111a9f52c4316defe54e360",
+      "translation": "úrtakslag hverrar merktrar frumu, til dæmis greining DNA-reglunnar (``True``/``False``), þegar merkjasafnið ofúrtekur frumur sem reglan telur í mítósu."
+    },
+    {
+      "context": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "label": "spacr.ops_mitotic.sampling_weights#2",
+      "source": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "source_sha256": "e9319526517f9d0cc864f07167caa5b6dcee76535641140192e736c48557f96c",
+      "translation": "hlutdeild hvers lags í öllum frumum, sem ``{stratum: share}``, eða ``{(group, stratum): share}`` með ``groups``."
+    },
+    {
+      "context": "an optional group (the microplate sample position) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#3",
+      "source": "an optional group (the well) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "source_sha256": "aa710bcf97b49bb0841abbf03fc0b04f3877bcfd7d2922442e0fdd3223ad01b2",
+      "translation": "valfrjáls hópur (brunnurinn) fyrir hverja merkta frumu, þegar hlutdeildirnar eru ólíkar milli hópa. Hver hópur vegur þá jafnmikið og merktar frumur hans."
+    },
+    {
+      "context": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "label": "spacr.ops_mitotic.sampling_weights#4",
+      "source": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "source_sha256": "86913844759e1fab31c3f33debc28487a2d961e09392e8d84f666d7f48b5be73",
+      "translation": "ein vog fyrir hverja merkta frumu, með meðaltal 1: fruma stendur fyrir ``share / labelled cells of its stratum``."
+    },
+    {
+      "context": "when a stratum has no share.",
+      "label": "spacr.ops_mitotic.sampling_weights#5",
+      "source": "when a stratum has no share.",
+      "source_sha256": "c0b8e6ecd3639d490422dd9913ac7b62a28032a571689daa6b1d28d2da54404f",
+      "translation": "þegar lag hefur enga hlutdeild."
+    },
+    {
+      "context": "Write a trained machine-learning classification model to ``path`` (joblib).",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#0",
+      "source": "Write a trained classifier to ``path`` (joblib).",
+      "source_sha256": "214aad5ea33827dfc0e2d74098470e3a73893d973b27a7b2c3f51e67ab367899",
+      "translation": "Skrifa þjálfaðan flokkara í ``path`` (joblib)."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#1",
+      "source": ":func:`train_mitotic_classifier` output.",
+      "source_sha256": "0361e99c3772b780a3305e5e3e0a192938243cb6f44561f8778130c8cd96b9a9",
+      "translation": "úttak :func:`train_mitotic_classifier`."
+    },
+    {
+      "context": "Train a mitotic machine-learning classification model and validate it with grouped cross-validation.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#0",
+      "source": "Train a mitotic classifier and validate it with grouped cross-validation.",
+      "source_sha256": "f3600d742acf845f9cba4a2d622f932914d3706685c0fdd6e4ec497880732861",
+      "translation": "Þjálfa mítósuflokkara og sannprófa hann með hópaðri krossprófun."
+    },
+    {
+      "context": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#1",
+      "source": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "source_sha256": "3a71aafe10b3f8fd924d908f9e91f97ca89426978b28432083d676c8f79b3b2b",
+      "translation": "ein röð fyrir hverja merkta frumu, með eiginleikadálkunum og dálkinum ``normalise_by``."
+    },
+    {
+      "context": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#10",
+      "source": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "source_sha256": "06ae7a39cd81324de4bd5e9cff49219e73a4f6f3384c9c235441a881be77f283",
+      "translation": "krossprófa einnig á merkjum sem eru stokkuð innan hvers hóps, sem heldur mítósuhlutfalli hvers hóps. Skor þess eru það sem líkan sem lærði ekkert nær."
+    },
+    {
+      "context": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#11",
+      "source": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "source_sha256": "63f550ea37f080347b90b04ff99736341aebea5a924a1d69fcaaa8468164961d",
+      "translation": "ein vog fyrir hverja frumu, notuð í þjálfun og í öllum mælikvörðum. Sendið :func:`sampling_weights` þegar merktu frumurnar voru ekki dregnar af handahófi (til dæmis helmingur þeirra úr mítósugreiningum reglunnar); mælikvarðarnir lýsa þá allri skimuninni og líkanið lærir mítósuhlutfall skimunarinnar, ekki merkjasafnsins."
+    },
+    {
+      "context": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#12",
+      "source": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "source_sha256": "499b01dd5a624c1d04a9c2af961039058e6415a5c333078fee56a48d5fb3f8ef",
+      "translation": "vega flokkana tvo jafnt í þjálfun. None (sjálfgefið) gerir það án ``sample_weight`` en ekki með því, þar sem vogirnar bera þegar flokkajafnvægi skimunarinnar."
+    },
+    {
+      "context": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#13",
+      "source": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "source_sha256": "1b30cdf3e1d9123513447ab73d961e54c7a6acfe0ab9f15d8406f4505963ce8c",
+      "translation": "þjálfaði pakkinn: ``model`` (mátað á allar merktar frumur), ``features`` (án þeirra sem eru auðir í öllum merktum frumum, svo sem eiginleiki með núlldreifingu innan brunns; þeir eru taldir upp í ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (ein röð fyrir hvert brot), ``summary`` (meðaltal og dreifing hvers mælikvarða, viðmiðið og fjöldi merkja) og ``out_of_fold`` (líkur hverrar frumu þegar henni var haldið utan þjálfunar). Vistið hann með :func:`save_mitotic_classifier`."
+    },
+    {
+      "context": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#14",
+      "source": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "source_sha256": "34cd43a3fabad373bb0d50ed3b16f62fa3b08e9951210c7e0907e63acc10c57f",
+      "translation": "fyrir lengdir sem stemma ekki, hópa sem vantar, aðeins einn flokk, eða færri hópa en brot."
+    },
+    {
+      "context": "True for a mitotic cell, one per row of ``cells``.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#2",
+      "source": "True for a mitotic cell, one per row of ``cells``.",
+      "source_sha256": "bfe2fee9d5e87813680f071efd4d85be09922166791f65adb02b4d7332c1faf0",
+      "translation": "True fyrir frumu í mítósu, eitt fyrir hverja röð ``cells``."
+    },
+    {
+      "context": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#3",
+      "source": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "source_sha256": "af5dc88fd5d868bba6ba7c147461c34d6ab37efaff9adf5e9c7473e5879a852f",
+      "translation": "dálkarnir sem lært er af; :func:`mitotic_features` dálka töflunnar þegar None."
+    },
+    {
+      "context": "the cross-validation groups, one per cell: the well, or the microscope field of view (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#4",
+      "source": "the cross-validation groups, one per cell: the well, or the field (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "source_sha256": "f6ab9ee3fedb78d2daea7f17d9daa56910b7cc8da723a732d310168c09c0015a",
+      "translation": "krossprófunarhóparnir, einn fyrir hverja frumu: brunnurinn, eða sjónsviðið (brunnur og staður). Frumur sama hóps eru alltaf í sama broti. Áskilið: slembiskipting setur nágranna úr sömu mynd báðum megin og ofmetur nákvæmnina."
+    },
+    {
+      "context": "every feature is first made a robust z against all cells of this column's groups (the microplate sample position), so the model travels between microplate sample positions and laboratory microplates; None uses the raw values.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#5",
+      "source": "every feature is first made a robust z against all cells of this column's groups (the well), so the model travels between wells and plates; None uses the raw values.",
+      "source_sha256": "0ae87350dcaa0316e7e8902f74b99c65c664562ed98313f882bf01cd548aed67",
+      "translation": "hver eiginleiki er fyrst gerður að robust z miðað við allar frumur í hópum þessa dálks (brunninum), svo líkanið flyst milli brunna og platna; None notar hrágildin."
+    },
+    {
+      "context": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#6",
+      "source": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "source_sha256": "c207ad21ad92825be062b0de962646083a9299626357463f9c333149d3f50a07",
+      "translation": "``'hist_gradient_boosting'`` (sjálfgefið) eða ``'logistic'``, einfaldari grunnlína."
+    },
+    {
+      "context": "the number of folds; at most the number of groups.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#7",
+      "source": "the number of folds; at most the number of groups.",
+      "source_sha256": "efe5bfb8651f6a9fa966447c7e1059e908920cec4fc8e0f77a3ba66ca77f9310",
+      "translation": "fjöldi brota; í mesta lagi fjöldi hópa."
+    },
+    {
+      "context": "the model seed and the label-shuffle seed.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#8",
+      "source": "the model seed and the label-shuffle seed.",
+      "source_sha256": "fabc856010ef94a7e3f3df4689b0823a6f8e03cc8752bbf010dcbf8faf70e243",
+      "translation": "fræ líkansins og fræ merkjastokkunarinnar."
+    },
+    {
+      "context": "the probability above which a cell is called mitotic.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#9",
+      "source": "the probability above which a cell is called mitotic.",
+      "source_sha256": "f093f7a166f05c83530f76f51f0c2c34f14cc8f3ccdfd5f83ce5c3220b8bae7f",
+      "translation": "líkurnar sem fruma þarf að fara yfir til að teljast í mítósu."
+    },
+    {
+      "context": "Typical variation normalisation (TVN) of optical pooled screening experiment profiles.",
+      "label": "spacr.ops_tvn#0",
+      "source": "Typical variation normalisation (TVN) of optical pooled screen profiles.",
+      "source_sha256": "c5d6ded81f98998e646459753d1b7772135463bc861db240c773bb1a17389cc8",
+      "translation": "Stöðlun dæmigerðs breytileika (TVN) á prófílum ljósfræðilegra safnskimana."
+    },
+    {
+      "context": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "label": "spacr.ops_tvn#1",
+      "source": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "source_sha256": "4b1866f4627923bf30d1ab588cb68cd6edae544bae097010f4013094e3fb7584",
+      "translation": "TVN breytir eiginleikum hverrar frumu í þætti þar sem ómiðuðu frumurnar (viðmiðin) í hverri lotu hafa sömu dreifingu í allar stefnur. Þetta er prófílstöðlun Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, höfundarréttur 2025 Massachusetts Institute of Technology, MIT-leyfi). Föllin hér eru hrein endurútfærsla á skrefum þess ``centerscale_by_batch``, ``embed_by_pca`` og ``tvn_on_controls``, skrifuð svo hægt sé að bera niðurstöðuna saman við það gildi fyrir gildi."
+    },
+    {
+      "context": "The steps, with the batch being the microplate sample position:",
+      "label": "spacr.ops_tvn#2",
+      "source": "The steps, with the batch being the well:",
+      "source_sha256": "6ee49f2ba0e83e9cac0f285a76e43de7ac4ef23ef911433942f02897ac57318d",
+      "translation": "Skrefin, þar sem lotan er brunnurinn:"
+    },
+    {
+      "context": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "label": "spacr.ops_tvn#3",
+      "source": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "source_sha256": "05fe0088cee80c64a93b52d4111fc935aa3d3cb8af24e95c2287752e5fe1294f",
+      "translation": "1. dálkum með fleiri en ``max_nonfinite`` óendanleg gildi er sleppt og götin sem eftir eru fyllt með miðgildi dálksins; 2. hver lota er miðjuð og kvörðuð á öllum frumum sínum; 3. PCA sem heldur ``pca_variance`` af dreifninni er mátuð á slembiúrtaki ``pca_sample`` frumna (fræ ``seed``) og öllum frumum er varpað; 4. vörpunin er miðjuð og kvörðuð á viðmiðsfrumunum, snúið á höfuðása viðmiðsfrumnanna, og hver ás er kvarðaður í einingardreifni á viðmiðsfrumum hverrar lotu (hvítunin); 5. CORAL lagar samdreifni viðmiðanna í hverri lotu að sameinaðri samdreifni (báðar reglaðar með ``coral_ridge`` sinnum einingarfylkið)."
+    },
+    {
+      "context": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a laboratory microplate or a pool of laboratory microplates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "label": "spacr.ops_tvn#4",
+      "source": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a plate or a pool of plates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "source_sha256": "ee0d5dc90521fb90af68c8ee91ea693ca01412cbdb5da62b1bf685ea8b2a74d9",
+      "translation": "Tvær útfærslur fylgja. :func:`tvn_in_memory` geymir allar frumur í einu, eins og Brieflow gerir. :func:`fit_tvn_streamed` les eina lotu í einu og heldur aðeins viðmiðsfrumunum og PCA-úrtaki, svo plata eða safn platna situr aldrei í minni; :meth:`TVNModel.transform` beitir síðan mátaða líkaninu lotu fyrir lotu."
+    },
+    {
+      "context": "The whitening makes the low-variance tail sensitive to the PCA fit sample. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On laboratory microplate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their string auprc is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the string auprc is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the laboratory microplate A pilot. ``components`` keeps only the leading control axes; it did not help on laboratory microplate A and is off by default.",
+      "label": "spacr.ops_tvn#5",
+      "source": "THE WHITENING MAKES THE LOW-VARIANCE TAIL SENSITIVE TO THE PCA FIT SAMPLE. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On plate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their STRING AUPRC is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the STRING AUPRC is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the plate A pilot. ``components`` keeps only the leading control axes; it did not help on plate A and is off by default.",
+      "source_sha256": "5f25cda97f4a2a2db3f88c309ead6a36df750830df0c4af04890f9a38d548bfc",
+      "translation": "HVÍTUNIN GERIR LÁGDREIFNIHALANN NÆMAN FYRIR MÁTUNARÚRTAKI PCA. Skref 4 deilir hverjum ás með dreifingu viðmiðanna, svo ás sem ber nánast enga dreifni viðmiða er blásinn upp í sama vægi og sá fyrsti. Hvaða veiku stefnur lifa af skref 3 veltur á frumunum í PCA-úrtakinu, svo tvær mátanir sem eru aðeins ólíkar í því úrtaki (eða í röðinni sem loturnar eru lesnar í) eru sammála um sterku ásana en ekki um halann. Á plötu A hjá Funk et al. 2022 gefa mátunin í minni og streymda mátunin kósínusa genapara sem fylgjast aðeins að með r = 0,82, þótt STRING AUPRC þeirra sé hið sama. ``whiten_epsilon`` er bætt við dreifni viðmiðanna á hverjum ás í báðum kvörðunarskrefum (``x / sqrt(var + epsilon)`` í stað ``x / sqrt(var)``), sem dregur veiku ásana saman: við 3, sjálfgefna gildið, fylgjast mátanirnar tvær að með r = 0,93 og STRING AUPRC er jafnt eða hærra en hjá Brieflow. ``whiten_epsilon=0`` er nákvæmlega TVN Brieflow, stillingin sem endurgerir forkönnun plötu A. ``components`` heldur aðeins fremstu viðmiðsásunum; það hjálpaði ekki á plötu A og er sjálfgefið óvirkt."
+    },
+    {
+      "context": "This is the cell-level TVN of an optical pooled screening experiment. :func:`spacr.batch_correction.spherize_features` is the sphering of microplate sample position-level profiles that pycytominer calls TVN; it is a different step.",
+      "label": "spacr.ops_tvn#6",
+      "source": "This is the cell-level TVN of an optical pooled screen. :func:`spacr.batch_correction.spherize_features` is the sphering of well-level profiles that pycytominer calls TVN; it is a different step.",
+      "source_sha256": "33a57854fd8a528c6746a30fcba2a7d737ba814ed7023b367d61690a1346f2b2",
+      "translation": "Þetta er TVN á frumustigi í ljósfræðilegri safnskimun. :func:`spacr.batch_correction.spherize_features` er kúlun prófíla á brunnastigi sem pycytominer kallar TVN; það er annað skref."
+    },
+    {
+      "context": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "label": "spacr.ops_tvn.TVNModel#0",
+      "source": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "source_sha256": "200e54ab7cbe982f6afe27003415b8ee520e7818a83de65dece40c1b26f8a976",
+      "translation": "TVN mátuð lotu fyrir lotu með :func:`fit_tvn_streamed`."
+    },
+    {
+      "context": "the input columns kept, as indices.",
+      "label": "spacr.ops_tvn.TVNModel#1",
+      "source": "the input columns kept, as indices.",
+      "source_sha256": "7c5bb41ab96d25c227c5f60de607f47c9e4d5228f74d0002ca6813dfc18d7ce9",
+      "translation": "inntaksdálkarnir sem haldið er, sem vísar."
+    },
+    {
+      "context": "the fill value of every kept column.",
+      "label": "spacr.ops_tvn.TVNModel#2",
+      "source": "the fill value of every kept column.",
+      "source_sha256": "ad9d4d6043816f8a5b4d4d0fca8343deeae6e99a5e2b7c2ffaec17a7ca04128d",
+      "translation": "fyllingargildi hvers dálks sem haldið er."
+    },
+    {
+      "context": "the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#3",
+      "source": "the first PCA.",
+      "source_sha256": "bfb61e9832195e1abb041289465261898912d8fb12027b7cb8b130036453c1c3",
+      "translation": "fyrsta PCA."
+    },
+    {
+      "context": "the control centre after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#4",
+      "source": "the control centre after the first PCA.",
+      "source_sha256": "6e2349c866f6f02655a40528ede65a00f0e96832a4067da911729341e9faeef8",
+      "translation": "miðja viðmiðanna eftir fyrstu PCA."
+    },
+    {
+      "context": "the control spread after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#5",
+      "source": "the control spread after the first PCA.",
+      "source_sha256": "3c405ddb773e9508037312fa4444f6ea82af393821cfb89bc0d2f855df1de2dd",
+      "translation": "dreifing viðmiðanna eftir fyrstu PCA."
+    },
+    {
+      "context": "the PCA on the control cells.",
+      "label": "spacr.ops_tvn.TVNModel#6",
+      "source": "the PCA on the control cells.",
+      "source_sha256": "9e0f436b9a95691b8ce2b3d3737252d4eca9385740f0c5d688a2260adcc03abd",
+      "translation": "PCA á viðmiðsfrumunum."
+    },
+    {
+      "context": "every batch's control centre and whitening scale.",
+      "label": "spacr.ops_tvn.TVNModel#7",
+      "source": "every batch's control centre and whitening scale.",
+      "source_sha256": "24c4a8415ff1df7cd91c204c5c66c7992c3e6f207bc98fefa728d39947336df9",
+      "translation": "miðja viðmiðanna og hvítunarkvarði hverrar lotu."
+    },
+    {
+      "context": "every batch's CORAL matrix, or None where it was skipped.",
+      "label": "spacr.ops_tvn.TVNModel#8",
+      "source": "every batch's CORAL matrix, or None where it was skipped.",
+      "source_sha256": "3d2e056f4cf9a2f40988d4859462415663a8a6a410a71b343f64780938d24a7b",
+      "translation": "CORAL-fylki hverrar lotu, eða None þar sem því var sleppt."
+    },
+    {
+      "context": "what the fit kept and skipped.",
+      "label": "spacr.ops_tvn.TVNModel#9",
+      "source": "what the fit kept and skipped.",
+      "source_sha256": "2c66e183b23ad433b8cbe763d11b119a21c1d7c48dfa5a426f54da7479b98317",
+      "translation": "það sem mátunin hélt og sleppti."
+    },
+    {
+      "context": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#0",
+      "source": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "source_sha256": "6b86c6f7d8cd8f41927939d81ef73de2c0ce4251773292303c469c290f2a01a7",
+      "translation": "Dálkar sem haldið er, göt fyllt, miðjað og kvarðað á þessari lotu."
+    },
+    {
+      "context": "one batch's cells, every input column.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#1",
+      "source": "one batch's cells, every input column.",
+      "source_sha256": "a5339b1fe142bb5a23f9bf2f8e164ebea7bea2f7dd79e1ea5554d8b2cf219545",
+      "translation": "frumur einnar lotu, allir inntaksdálkar."
+    },
+    {
+      "context": "float32 values ready for the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#2",
+      "source": "float32 values ready for the first PCA.",
+      "source_sha256": "9478f4035633309ed8e2c8a493ec962aea5aaf42834f6c64d0b134dd2235614f",
+      "translation": "float32-gildi tilbúin fyrir fyrstu PCA."
+    },
+    {
+      "context": "TVN components of one batch's cells.",
+      "label": "spacr.ops_tvn.TVNModel.transform#0",
+      "source": "TVN components of one batch's cells.",
+      "source_sha256": "144fee14055b686cb8b96b5b8741e51cf0c4d625191bc27c3bfef241a64745d7",
+      "translation": "TVN-þættir frumna einnar lotu."
+    },
+    {
+      "context": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "label": "spacr.ops_tvn.TVNModel.transform#1",
+      "source": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "source_sha256": "86b81a073b2c62ca53e8ad5a4071e5d4e242db5790ef15e017c2b0b2246433cb",
+      "translation": "frumur lotunnar, allir inntaksdálkar, sömu frumur og mátunin sá fyrir þessa lotu."
+    },
+    {
+      "context": "the batch name the fit used.",
+      "label": "spacr.ops_tvn.TVNModel.transform#2",
+      "source": "the batch name the fit used.",
+      "source_sha256": "3e1aa7332a4c4d86423c0129c613c117f94f8a708afe7afee517652780e9352a",
+      "translation": "heiti lotunnar sem mátunin notaði."
+    },
+    {
+      "context": "float32 TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.TVNModel.transform#3",
+      "source": "float32 TVN components, one row per cell.",
+      "source_sha256": "3c7b89c895e4d48472a8888308618ae2a18d722d3dd44af9db5a3effb6185e8b",
+      "translation": "TVN-þættir sem float32, ein röð fyrir hverja frumu."
+    },
+    {
+      "context": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#0",
+      "source": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "source_sha256": "80eaf604f917e0b7270606a59d3d0f6413c97367f0bafbb37cbeb444252127ba",
+      "translation": "Máta TVN eina lotu í einu, svo frumurnar sitja aldrei saman í minni."
+    },
+    {
+      "context": "the batch names (microplate sample positions), in reading order.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#1",
+      "source": "the batch names (wells), in reading order.",
+      "source_sha256": "7e25fdf1ffaf298fe58206dee9e34983031bc7253fd93b41831550f0707a6162",
+      "translation": "heiti lotanna (brunnanna), í lestrarröð."
+    },
+    {
+      "context": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#10",
+      "source": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "source_sha256": "133104e47102aa3d49b74c2af3da8184e2106c63827c613ae9e613695c8ebde5",
+      "translation": "mátaða :class:`TVNModel`; beitið því með :meth:`TVNModel.transform`, lotu fyrir lotu."
+    },
+    {
+      "context": "for an option out of range or no control cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#11",
+      "source": "for an option out of range or no control cells.",
+      "source_sha256": "7e47398620b3b1c3e2fec41f57023d911eca4f1becdd4d85a99a4697c3a9b1fb",
+      "translation": "fyrir valkost utan leyfilegs bils eða engar viðmiðsfrumur."
+    },
+    {
+      "context": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#12",
+      "source": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "source_sha256": "b93351812cc3222810024288edb4aa4e55f1b2e88a2b9f5d2032911ef4950ee4",
+      "translation": "Loturnar eru lesnar þrisvar: einu sinni fyrir skimun dálka, einu sinni fyrir PCA-úrtakið og einu sinni til að varpa viðmiðsfrumunum. Hver lota er miðjuð og kvörðuð á öllum eigin frumum áður en úrtakið er dregið, svo streymda mátunin er aðeins frábrugðin :func:`tvn_in_memory` í PCA-úrtakinu. Lotur án viðmiðsfrumna eru látnar óhvítaðar."
+    },
+    {
+      "context": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#2",
+      "source": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "source_sha256": "c5a6464580f3acc74357c146a40f11022894a0d06e97aa74814cd6aedd6487c8",
+      "translation": "``read(batch) -> (values, control, use)``. ``values`` geymir allar frumur lotunnar og alla inntaksdálka; ``control`` merkir viðmiðsfrumur hennar og ``use`` frumurnar sem á að staðla (til dæmis frumur í interfasa). Skimun dálka og fyllingarmiðgildi líta á allar frumur; allt annað aðeins á ``use``-frumurnar."
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#3",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "dreifnin sem fyrsta PCA heldur."
+    },
+    {
+      "context": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#4",
+      "source": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "source_sha256": "3f9ccacbb0312ed12a77e2f419c9c2ab1d165af67250ea256e7921a2b45ab86d",
+      "translation": "stærð mátunarúrtaks fyrstu PCA. Hver lota leggur til í hlutfalli við ``use``-frumur sínar."
+    },
+    {
+      "context": "the seed of the sample.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#5",
+      "source": "the seed of the sample.",
+      "source_sha256": "8d767a48a740e51ce5ab69d11aae0eaf7282f1db3685e7ab30219ef960d95f91",
+      "translation": "fræ úrtaksins."
+    },
+    {
+      "context": "passed on as in :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#6",
+      "source": "passed on as in :func:`tvn_on_controls`.",
+      "source_sha256": "57e61bb1b58ba872d51140fb53a304668f222a2b55e0868a6a748587892ce1a1",
+      "translation": "sent áfram eins og í :func:`tvn_on_controls`."
+    },
+    {
+      "context": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#0",
+      "source": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "source_sha256": "cec1c502cf619796bcafa2b88f78c1ad8e2918c06555998164f64697bbb58899",
+      "translation": "Kósínuslíkindi hvers raðapars, lykluð með heitunum tveimur."
+    },
+    {
+      "context": "one row per gene (or guide).",
+      "label": "spacr.ops_tvn.gene_pair_cosines#1",
+      "source": "one row per gene (or guide).",
+      "source_sha256": "243a5edccc18e96292faabfc027f99772656e26af7f83a7c9ff95da36f2a7a47",
+      "translation": "ein röð fyrir hvert gen (eða leiðara)."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "prófíldálkarnir."
+    },
+    {
+      "context": "the name column.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#3",
+      "source": "the name column.",
+      "source_sha256": "b7d214c852ae8295ca242e7c12e3765709bcb1419cd65509e3a489ba319694c5",
+      "translation": "heitadálkurinn."
+    },
+    {
+      "context": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#4",
+      "source": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "source_sha256": "aacea8c4340880cbb2480be69d95ad5ed612cf7a0c791eb6f70055ca721e688b",
+      "translation": "kósínusarnir í efri þríhyrningnum, með vísinn ``(name_a, name_b)`` í raðaröð töflunnar. Bera má saman tvær TVN-mátanir með því að reikna fylgni kósínusanna sem þær gefa fyrir sömu pör."
+    },
+    {
+      "context": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "label": "spacr.ops_tvn.tvn_in_memory#0",
+      "source": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "source_sha256": "6ac7654533afaf9c2efc1d3125d5bbc33cb11b4e3d64a5ea140ddc8afce7dad8",
+      "translation": "TVN með allar frumur í minni, eins og ``align.py`` í Brieflow reiknar hana."
+    },
+    {
+      "context": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "label": "spacr.ops_tvn.tvn_in_memory#1",
+      "source": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "source_sha256": "fcc50fb29f2ded182cfd4323385bb2862ff6b6698e47efb82c79a10e1a7b481c",
+      "translation": "ein röð fyrir hverja frumu, einn dálkur fyrir hvern eiginleika, unnið í float32, sem er nákvæmnin sem Brieflow vinnur með."
+    },
+    {
+      "context": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "label": "spacr.ops_tvn.tvn_in_memory#10",
+      "source": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "source_sha256": "3f3fa26cbbbff09c6d2aa6655e5c574423c061f3a262834c04e8dc6ce59587db",
+      "translation": "dálkum með hærra hlutfall óendanlegra gilda er sleppt; götin sem eftir eru í hinum eru fyllt með miðgildi dálksins."
+    },
+    {
+      "context": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "label": "spacr.ops_tvn.tvn_in_memory#11",
+      "source": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "source_sha256": "c9891a322a74e63f092b67b79e778cea796a45809e8915d3299c2f5b1c2d453f",
+      "translation": "False leyfir að skrifað sé yfir float32 ``values`` í stað þess að afrita, sem helmingar minnið sem heil plata þarf."
+    },
+    {
+      "context": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "label": "spacr.ops_tvn.tvn_in_memory#12",
+      "source": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "source_sha256": "21c8ebecb43789b257c2a3e894f778acb9a579a3611827f22972ee5c1ceca90a",
+      "translation": "``(embedding, info)``: TVN-þættir sem float32, ein röð fyrir hverja frumu, og ``info`` með dálkunum sem haldið er, stærð PCA og athugasemdum :func:`tvn_on_controls`."
+    },
+    {
+      "context": "for an option out of range, mismatched lengths or no control cells.",
+      "label": "spacr.ops_tvn.tvn_in_memory#13",
+      "source": "for an option out of range, mismatched lengths or no control cells.",
+      "source_sha256": "73e59d3d0dde790b7e4d55fd879be7af31089871f1299c6f05818ea929c8a0bd",
+      "translation": "fyrir valkost utan leyfilegs bils, lengdir sem stemma ekki eða engar viðmiðsfrumur."
+    },
+    {
+      "context": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the laboratory microplate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "label": "spacr.ops_tvn.tvn_in_memory#14",
+      "source": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the plate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "source_sha256": "ccfb0689f851212e59b64ec7806dfcecd0304ee299c083e898cda6bd091a2163",
+      "translation": "PCA-úrtakið er miðjað og kvarðað á sjálfu sér, lotu fyrir lotu, fyrir mátunina, sem er það sem forkönnun plötu A gerði. Allt þar á eftir sér allar frumur. Niðurstaðan veltur því á ``pca_sample`` og ``seed`` í gegnum PCA-ásana; sjá athugasemdir einingarinnar um lágdreifnihalann."
+    },
+    {
+      "context": "the batch of every cell (the microplate sample position).",
+      "label": "spacr.ops_tvn.tvn_in_memory#2",
+      "source": "the batch of every cell (the well).",
+      "source_sha256": "cee4e475fe301c841969c329c48f4477b944aaa89824cd82d3c93ab22f317bf9",
+      "translation": "lota hverrar frumu (brunnurinn)."
+    },
+    {
+      "context": "True for every control (non-targeting) cell.",
+      "label": "spacr.ops_tvn.tvn_in_memory#3",
+      "source": "True for every control (non-targeting) cell.",
+      "source_sha256": "0b100afd57cc425c765030338ae52a06e02770ffffb78e6c8332017e948490dd",
+      "translation": "True fyrir hverja viðmiðsfrumu (ómiðaða, non-targeting)."
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.tvn_in_memory#4",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "dreifnin sem fyrsta PCA heldur."
+    },
+    {
+      "context": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "label": "spacr.ops_tvn.tvn_in_memory#5",
+      "source": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "source_sha256": "d488fa44dfefa794bbd900b09c95f7048242d8c71d751a07cddf655063ba7251",
+      "translation": "frumurnar sem fyrsta PCA er mátuð á, dregnar af handahófi án endurvals. Allar frumur þegar þær eru færri."
+    },
+    {
+      "context": "the seed of that draw.",
+      "label": "spacr.ops_tvn.tvn_in_memory#6",
+      "source": "the seed of that draw.",
+      "source_sha256": "ba447cfe72129dd6982330acc46c797e605f1ec2333752f2b1bdb04ffb160e2c",
+      "translation": "fræ þess dráttar."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#7",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "sent til :func:`tvn_on_controls`."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#8",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "sent til :func:`tvn_on_controls`."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#9",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "sent til :func:`tvn_on_controls`."
+    },
+    {
+      "context": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#0",
+      "source": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "source_sha256": "a032e4473182ae6ef3001815f0566161bfe17c216d8bbb63050089c3bff66958",
+      "translation": "Hvíta innfellingu á viðmiðsfrumum hennar og samræma lotur með CORAL."
+    },
+    {
+      "context": "one row per cell, for example PCA components.",
+      "label": "spacr.ops_tvn.tvn_on_controls#1",
+      "source": "one row per cell, for example PCA components.",
+      "source_sha256": "fd1e2dbd58b88fcb0ead36a8e913562faffb946d8c1bffee3d195550e86e9bf8",
+      "translation": "ein röð fyrir hverja frumu, til dæmis PCA-þættir."
+    },
+    {
+      "context": "a boolean array over the rows; True marks a control cell.",
+      "label": "spacr.ops_tvn.tvn_on_controls#2",
+      "source": "a boolean array over the rows; True marks a control cell.",
+      "source_sha256": "f89fadb29e556878bc675c2ba74ddbe24ae835079e4f41403364976aa93405e4",
+      "translation": "boolskt fylki yfir raðirnar; True merkir viðmiðsfrumu."
+    },
+    {
+      "context": "the batch of every row (the microplate sample position), or None for one batch.",
+      "label": "spacr.ops_tvn.tvn_on_controls#3",
+      "source": "the batch of every row (the well), or None for one batch.",
+      "source_sha256": "c08305bbcbe7976dc9abf33f64d2d90257b093cfc8b0732415e6f1ef081d752d",
+      "translation": "lota hverrar raðar (brunnurinn), eða None fyrir eina lotu."
+    },
+    {
+      "context": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "label": "spacr.ops_tvn.tvn_on_controls#4",
+      "source": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "source_sha256": "6e67024c99a04c5b288b6ed473b5f6a1272995f505ad9c1ba87c81bf7dd6cfdf",
+      "translation": "halda þessum fjölda fremstu viðmiðsása (int), eða ásunum sem bera þetta brot af dreifni viðmiðanna (float undir 1). None heldur þeim öllum, eins og Brieflow gerir."
+    },
+    {
+      "context": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "label": "spacr.ops_tvn.tvn_on_controls#5",
+      "source": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "source_sha256": "3b53f9abe26edb04794ae3e938e539ec4d45ef0d62e4a25fcb33f48208cd3eb8",
+      "translation": "bætt við dreifni viðmiðanna á hverjum ás áður en deilt er með henni, bæði þegar innfellingin er fyrst kvörðuð á viðmiðsfrumunum og þegar hver lota er hvítuð, svo veikir ásar eru dregnir saman frekar en blásnir upp. 0 er hvítun Brieflow; sjálfgefna gildið, 3, er gildið sem gerði plötu A hjá Funk et al. 2022 stöðuga. Þetta er ekki ``tvn_epsilon`` í :func:`spacr.batch_correction.correct_batch_effects` (sjálfgefið 1e-6, bætt við eigingildi fylgnifylkis): annar stillir á öðrum kvarða."
+    },
+    {
+      "context": "the multiple of the identity added to every covariance before CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#6",
+      "source": "the multiple of the identity added to every covariance before CORAL.",
+      "source_sha256": "f17a846991108b9e5479c067916c5e163bc6d84661d6879255bda7f381587f7c",
+      "translation": "margfeldi einingarfylkisins sem er bætt við hvert samdreifnifylki fyrir CORAL."
+    },
+    {
+      "context": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "label": "spacr.ops_tvn.tvn_on_controls#7",
+      "source": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "source_sha256": "e6d0ab8079d9ae1df4cac42c5cf75a5c4410a3e9fa1e8b476e630fab9456616c",
+      "translation": "``(embedding, info)``. ``info`` telur upp ásana sem haldið er og loturnar sem CORAL sleppti vegna þess að þær höfðu færri viðmiðsfrumur en ása eða sérstætt samdreifnifylki."
+    },
+    {
+      "context": "when there are no control cells.",
+      "label": "spacr.ops_tvn.tvn_on_controls#8",
+      "source": "when there are no control cells.",
+      "source_sha256": "a0fbca341591cefbf28209143e4c944816b3dc0f33076f24fa177db91a1a91c7",
+      "translation": "þegar engar viðmiðsfrumur eru til."
+    },
+    {
+      "context": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#9",
+      "source": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "source_sha256": "073ac81334395e1424f821c20b06b26312185143e5143a383498deaa7248d38d",
+      "translation": "Skrefin fylgja ``tvn_on_controls`` í Brieflow: miðja og kvarða á öllum viðmiðsfrumum, snúa á höfuðása viðmiðsfrumnanna, miðja og kvarða hvern ás á viðmiðsfrumum hverrar lotu, síðan CORAL."
+    },
+    {
+      "context": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "label": "spacr.ops_tvn.tvn_options#0",
+      "source": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "source_sha256": "b0818eb696b45bea984757cfcec6ad32b0abf298513a9ff24439a27d37359c2a",
+      "translation": "TVN-lykilorðsviðföng úr ``ops_tvn_*``-stillingum."
+    },
+    {
+      "context": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "label": "spacr.ops_tvn.tvn_options#1",
+      "source": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "source_sha256": "eb45826c9f0d109f5acf60b963fc195bc09108071175c5483e1bbb1c6c3b608c",
+      "translation": "lesið fyrir ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` og ``ops_tvn_whiten_epsilon``."
+    },
+    {
+      "context": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "label": "spacr.ops_tvn.tvn_options#2",
+      "source": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "source_sha256": "2230241802baf6a46c6987cf75beb55a3f814c19c82277b39184ac99b6282e13",
+      "translation": "lykilorðsviðföng fyrir :func:`tvn_in_memory` og :func:`fit_tvn_streamed`; stilling sem vantar eða er auð fær sjálfgefið gildi sitt úr :data:`TVN_DEFAULTS`."
+    },
+    {
+      "context": "Guide and gene profiles from per-cell TVN components.",
+      "label": "spacr.ops_tvn.tvn_profiles#0",
+      "source": "Guide and gene profiles from per-cell TVN components.",
+      "source_sha256": "50b3e25702dd8cb346eb07bfb80c2ccf108c2e19a3d1041b3e6eced2c88e1fc8",
+      "translation": "Leiðara- og genaprófílar úr TVN-þáttum hverrar frumu."
+    },
+    {
+      "context": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "label": "spacr.ops_tvn.tvn_profiles#1",
+      "source": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "source_sha256": "17a0354d52875e3d5cdefa78898d2a63e3e048a97be9e852d0d2fc262aca8f90",
+      "translation": "ein röð fyrir hverja frumu með dálkunum ``guide`` og ``gene``, í raðaröð ``embedding``."
+    },
+    {
+      "context": "the TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.tvn_profiles#2",
+      "source": "the TVN components, one row per cell.",
+      "source_sha256": "88fe0daf1e7406fdd5e4e884c5a261675c62c37d4374950fc0362de249fad88f",
+      "translation": "TVN-þættirnir, ein röð fyrir hverja frumu."
+    },
+    {
+      "context": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "label": "spacr.ops_tvn.tvn_profiles#5",
+      "source": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "source_sha256": "c0d534517e158315c8ec03987cc77cbdb8cfa36098724858c9200e944b7c3e56",
+      "translation": "forskeyti þáttadálkanna (``PC_0``, ``PC_1``, ...)."
+    },
+    {
+      "context": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "label": "spacr.ops_tvn.tvn_profiles#6",
+      "source": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "source_sha256": "d595254b7646d18443e06c29abba90a03e5be31c2a5d86dac078c39fd920eaac",
+      "translation": "``(guides, genes)``: leiðari er miðgildi frumna sinna og gen miðgildi leiðara sinna, eins og fyrir robust z-prófíla."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch4-1108 branch: the spacr.ops_tvn, spacr.ops_clusters and spacr.ops_mitotic modules and their 35 callables (items 854, 855 and 856), and the changed spacr.batch_correction.spherize_features and correct_batch_effects blocks (items 863 and 770). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,1918 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "label": "spacr.batch_correction.correct_batch_effects#18",
+      "source": "``tvn`` eigenvalue regularisation, default 1e-6 (pycytominer's value); see :func:`spherize_features`. Not the same knob as the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3).",
+      "source_sha256": "3a3831fe5615fc38df0effe52dec3ddda84809781c4aa616fe3203d2fc09562d",
+      "translation": "régularisation des valeurs propres de ``tvn``, par défaut 1e-6 (la valeur de pycytominer) ; voir :func:`spherize_features`. Ce n’est pas le même réglage que ``ops_tvn_whiten_epsilon`` de la TVN OPS (par défaut 3)."
+    },
+    {
+      "context": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "label": "spacr.batch_correction.spherize_features#7",
+      "source": "regularisation added to every eigenvalue of the reference covariance (correlation, for the ``-cor`` variants). Default 1e-6, pycytominer's value. It is a different knob, on a different scale, from the OPS TVN's ``ops_tvn_whiten_epsilon`` (default 3, added to each axis's control variance at two steps of :func:`spacr.ops_tvn.tvn_on_controls`); the two values are not interchangeable.",
+      "source_sha256": "88c2d745b1a04b93d93e1b4dfb13ad04780d5a92e06c56974981023390b84f29",
+      "translation": "régularisation ajoutée à chaque valeur propre de la covariance de référence (de la corrélation, pour les variantes ``-cor``). Par défaut 1e-6, la valeur de pycytominer. C’est un réglage différent, sur une autre échelle, de ``ops_tvn_whiten_epsilon`` de la TVN OPS (par défaut 3, ajouté à la variance des contrôles de chaque axe à deux étapes de :func:`spacr.ops_tvn.tvn_on_controls`) ; les deux valeurs ne sont pas interchangeables."
+    },
+    {
+      "context": "Gene clusters of an optical pooled screening experiment and their benchmarks.",
+      "label": "spacr.ops_clusters#0",
+      "source": "Gene clusters of an optical pooled screen and their benchmarks.",
+      "source_sha256": "87dde1bf4d773803395986f1a7abd8acfa17f94a165d431a3aaa82a430771e23",
+      "translation": "Clusters de gènes d’un crible optique groupé et leurs benchmarks."
+    },
+    {
+      "context": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "label": "spacr.ops_clusters#1",
+      "source": "Gene profiles are embedded (standardised, PCA to 99 % of the variance), turned into a PHATE diffusion graph (k = 10 nearest neighbours, cosine distance) and split into clusters with Leiden community detection. A sweep of Leiden resolutions finds the one whose cluster count is closest to a target. This is the clustering Funk et al. 2022 and Brieflow (Cheeseman lab, ``workflow/lib/cluster``, MIT licence) report; the code here is a clean reimplementation of that published method, not a copy.",
+      "source_sha256": "22a6fa51c21782655453b7e6232bb24bea76e6de8d0199ad91bdf11e94721f0f",
+      "translation": "Les profils de gènes sont plongés (standardisés, PCA jusqu’à 99 % de la variance), transformés en graphe de diffusion PHATE (k = 10 plus proches voisins, distance cosinus) puis divisés en clusters par la détection de communautés de Leiden. Un balayage de résolutions de Leiden trouve celle dont le nombre de clusters est le plus proche d’une cible. C’est le partitionnement que rapportent Funk et al. 2022 et Brieflow (laboratoire Cheeseman, ``workflow/lib/cluster``, licence MIT) ; le code ici est une réimplémentation propre de cette méthode publiée, et non une copie."
+    },
+    {
+      "context": "Every clustering is scored the way Brieflow scores it:",
+      "label": "spacr.ops_clusters#2",
+      "source": "Every clustering is scored the way Brieflow scores it:",
+      "source_sha256": "785c192468faafa3bbd297aefca20749bccb0e3007a213fa4450d02f6baa654c",
+      "translation": "Chaque partitionnement est évalué de la même façon que Brieflow l’évalue :"
+    },
+    {
+      "context": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "label": "spacr.ops_clusters#3",
+      "source": "**CORUM % and KEGG %**, the share of clusters with at least one enriched group: a two-sided Fisher exact test for every group in every cluster, Benjamini-Hochberg within the cluster, enriched at FDR < 0.05. The background is every clustered row, non-targeting rows included. Two variants are reported: ``may2025`` counts every member of a group (Brieflow's release of May 2025, which reproduces Funk et al.'s 24.3 % and 13.5 %) and ``head`` only the members in the background (Brieflow's current code).",
+      "source_sha256": "abbec50f6332e4eb7768fc4b7e221643f7f9a9301feb4b028ab5da9bfa1114b7",
+      "translation": "**CORUM % et KEGG %**, la part des clusters comportant au moins un groupe enrichi : un test exact de Fisher bilatéral pour chaque groupe dans chaque cluster, Benjamini-Hochberg au sein du cluster, enrichi à FDR < 0.05. Le fond est constitué de toutes les lignes regroupées, y compris les lignes non ciblantes. Deux variantes sont rapportées : ``may2025`` compte tous les membres d’un groupe (la version de Brieflow de mai 2025, qui reproduit les 24.3 % et 13.5 % de Funk et al.) et ``head`` uniquement les membres présents dans le fond (le code actuel de Brieflow)."
+    },
+    {
+      "context": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "label": "spacr.ops_clusters#4",
+      "source": "**STRING precision and recall** of the gene pairs that share a cluster.",
+      "source_sha256": "bcaea5c85fab61125f190d8da351a09ad7f59da5e70dc97a988c094ade127f25",
+      "translation": "**Précision et rappel STRING** des paires de gènes qui partagent un cluster."
+    },
+    {
+      "context": "**String auprc**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "label": "spacr.ops_clusters#5",
+      "source": "**STRING AUPRC**: every gene pair ranked by the cosine of the two profiles, which needs no clustering at all.",
+      "source_sha256": "f82d85c92678f8f56ae425e6d53f9d999e52d5706674a8b09da95b7c4369a758",
+      "translation": "**AUPRC STRING** : toutes les paires de gènes classées selon le cosinus de leurs deux profils, ce qui ne nécessite aucun partitionnement."
+    },
+    {
+      "context": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "label": "spacr.ops_clusters#6",
+      "source": "**ARI** against a reference clustering, such as Funk et al.'s.",
+      "source_sha256": "0d479b1d0b8df8d7d145261a674f0173783621b929d2f8b297f647d14b8da419",
+      "translation": "**ARI** par rapport à un partitionnement de référence, comme celui de Funk et al."
+    },
+    {
+      "context": "Controls: the same workflow on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "label": "spacr.ops_clusters#7",
+      "source": "Controls: the same pipeline on PCA columns permuted independently (the shuffled-PC control), k-means on the same components at the same cluster count (a baseline that shows how much the enrichment share depends on cluster sizes alone), and a gene-label shuffle for the AUPRC.",
+      "source_sha256": "6875c185a81e02591e37f8e2819b1601b4a921600ec3c6d6835493613c861b29",
+      "translation": "Contrôles : le même pipeline sur des colonnes de PCA permutées indépendamment (le contrôle à PC mélangées), k-means sur les mêmes composantes au même nombre de clusters (une référence de base qui montre à quel point la part d’enrichissement dépend des seules tailles de clusters) et un mélange des étiquettes de gènes pour l’AUPRC."
+    },
+    {
+      "context": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "label": "spacr.ops_clusters#8",
+      "source": ":func:`consensus_clustering` repeats the clustering on bootstrap samples of genes and of the guides within each gene, with its own seed and resolution each time; :func:`co_membership` turns the runs into the probability that two genes share a cluster.",
+      "source_sha256": "8672b2460b187abaf66f9138bb954f5c6921242c42f4e42df2a46fe7ddecfe62",
+      "translation": ":func:`consensus_clustering` répète le partitionnement sur des échantillons bootstrap des gènes et des guides au sein de chaque gène, avec à chaque fois sa propre graine et sa propre résolution ; :func:`co_membership` transforme les exécutions en probabilité que deux gènes partagent un cluster."
+    },
+    {
+      "context": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "label": "spacr.ops_clusters#9",
+      "source": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "source_sha256": "f0a49e0a01afac43875f61507a448a74bf69350c6506f2f02e7e25e53bdae690",
+      "translation": "PHATE (``phate``), Leiden (``leidenalg``) et ``igraph`` sont optionnels : ils constituent l’extra ``clustering``, ``pip install \"spacr[clustering]\"``. Seules les étapes PHATE + Leiden en ont besoin. Les fichiers de benchmark (tables CORUM, KEGG et STRING au format de Brieflow) sont fournis par l’utilisateur : spaCR ne les distribue pas."
+    },
+    {
+      "context": "Adjusted Rand index of a clustering against a reference clustering.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#0",
+      "source": "Adjusted Rand index of a clustering against a reference clustering.",
+      "source_sha256": "a64698ab649645acb04d776c7796e76f6c8b3671b506afc67ca7cd24f9125744",
+      "translation": "Indice de Rand ajusté d’un partitionnement par rapport à un partitionnement de référence."
+    },
+    {
+      "context": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#1",
+      "source": "``gene, cluster`` rows, such as Funk et al.'s published interphase clusters.",
+      "source_sha256": "53c3b99ff87976be1a2b188c4c9d7421c39e44c24d59bb79dae1724abfa47df7",
+      "translation": "lignes ``gene, cluster``, comme les clusters d’interphase publiés par Funk et al."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "les noms des lignes regroupées."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "une étiquette par ligne."
+    },
+    {
+      "context": "label shuffles for the control.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#4",
+      "source": "label shuffles for the control.",
+      "source_sha256": "e409757fd06315752a45f499845886b9dbaba4fd11e80873b61bb985c235fbaa",
+      "translation": "mélanges d’étiquettes pour le contrôle."
+    },
+    {
+      "context": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#5",
+      "source": "the shuffle seed, or a ``numpy.random.Generator``.",
+      "source_sha256": "e345491f58a7b0d07ed9a95edf28d3cdf39aa0f04e6fd374d6a50df75c2176b7",
+      "translation": "la graine du mélange, ou un ``numpy.random.Generator``."
+    },
+    {
+      "context": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "label": "spacr.ops_clusters.adjusted_rand_vs#6",
+      "source": "``ari``, ``ari_shuffled_p95`` and ``genes`` (the genes in both).",
+      "source_sha256": "35eb5320aaf340d0c56e736eeae52500f5b0d0970d4a52f36623bd4d551658c5",
+      "translation": "``ari``, ``ari_shuffled_p95`` et ``genes`` (les gènes présents dans les deux)."
+    },
+    {
+      "context": "The plate A pilot's cluster benchmark, from one profile table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#0",
+      "source": "The plate A pilot's cluster benchmark, from one profile table.",
+      "source_sha256": "a3f9ed29e5bc604edaa6c89fb53dc8a5efc3f142c747b6ffc0fa94bb1f27b27d",
+      "translation": "Le benchmark des clusters du pilote de la plaque A, à partir d’une table de profils."
+    },
+    {
+      "context": ":func:`benchmark_rows` output.",
+      "label": "spacr.ops_clusters.benchmark_clusters#1",
+      "source": ":func:`benchmark_rows` output.",
+      "source_sha256": "1678b66c98fc7054426874af8a357ff4c24e02947577f3c487541aa678a1430b",
+      "translation": "sortie de :func:`benchmark_rows`."
+    },
+    {
+      "context": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "label": "spacr.ops_clusters.benchmark_clusters#10",
+      "source": "extra k-means cluster counts besides the headline count; counts that are not below the number of rows are skipped.",
+      "source_sha256": "aaccbc4e6d608f41c4e5bef2e9d97947e84e1c5667600f0992d050ffcbbc80f9",
+      "translation": "nombres de clusters k-means supplémentaires en plus du nombre principal ; les nombres qui ne sont pas inférieurs au nombre de lignes sont ignorés."
+    },
+    {
+      "context": "the profile name in the table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#11",
+      "source": "the profile name in the table.",
+      "source_sha256": "d5ceee21886c7af1dd316f5249b8b97904d8d44008ebcd315bc8f739d4c40485",
+      "translation": "le nom du profil dans la table."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.benchmark_clusters#12",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "le préfixe des contrôles."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.benchmark_clusters#13",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "le nombre de processus de PHATE."
+    },
+    {
+      "context": "gene-label shuffles for the AUPRC control.",
+      "label": "spacr.ops_clusters.benchmark_clusters#14",
+      "source": "gene-label shuffles for the AUPRC control.",
+      "source_sha256": "2db491b9dd7c21174ae4720d068029290fedec0770f9e6d00d66d088b4e97252",
+      "translation": "mélanges des étiquettes de gènes pour le contrôle de l’AUPRC."
+    },
+    {
+      "context": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "label": "spacr.ops_clusters.benchmark_clusters#15",
+      "source": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}``: the benchmark rows (every resolution, its shuffled-PC control, the k-means baseline and its control, the reference), a summary, the cluster labels per resolution, the STRING precision-recall curve and the embedded components.",
+      "source_sha256": "3e6b5fb0c9887733eeb3ef4c174fdd0fa2a7b7091e7a6a40ac217309955dc06e",
+      "translation": "``{\"table\", \"summary\", \"assignments\", \"curve\", \"components\"}`` : les lignes du benchmark (chaque résolution, son contrôle à PC mélangées, la référence de base k-means et son contrôle, la référence), un résumé, les étiquettes de cluster par résolution, la courbe précision-rappel STRING et les composantes plongées."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#16",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "lorsque l’extra ``clustering`` n’est pas installé."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_clusters#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "CORUM groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#3",
+      "source": "CORUM groups.",
+      "source_sha256": "9a5706a0023110ffa676fb942da96ba2fa9cdcb4dd43638d128ec2aaf784bb64",
+      "translation": "groupes CORUM."
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.benchmark_clusters#4",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "groupes KEGG."
+    },
+    {
+      "context": "the STRING pair table.",
+      "label": "spacr.ops_clusters.benchmark_clusters#5",
+      "source": "the STRING pair table.",
+      "source_sha256": "087a1291238cd04cf48c6583b6288458b56132afeb81b8c40d889d1eca0cade1",
+      "translation": "la table des paires STRING."
+    },
+    {
+      "context": "the Leiden resolution sweep.",
+      "label": "spacr.ops_clusters.benchmark_clusters#6",
+      "source": "the Leiden resolution sweep.",
+      "source_sha256": "9907ef6914f6867fd92b6630f80b407646b903abe0e03a61063799b5cc5aa713",
+      "translation": "le balayage des résolutions de Leiden."
+    },
+    {
+      "context": "the cluster count the headline resolution is chosen for.",
+      "label": "spacr.ops_clusters.benchmark_clusters#7",
+      "source": "the cluster count the headline resolution is chosen for.",
+      "source_sha256": "ff1bf1f381d6c3836378ea42d1ac0cc195762100faedc0ca55cba1146301eabf",
+      "translation": "le nombre de clusters pour lequel la résolution principale est choisie."
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.benchmark_clusters#8",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "la graine de PHATE et de Leiden."
+    },
+    {
+      "context": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "label": "spacr.ops_clusters.benchmark_clusters#9",
+      "source": "an optional ``gene, cluster`` reference clustering, scored on the same genes and used for the ARI.",
+      "source_sha256": "6283840344c7feee798db3872221668822f544bf3ad87b4ea6a76c5b7f073543",
+      "translation": "un partitionnement de référence ``gene, cluster`` optionnel, évalué sur les mêmes gènes et utilisé pour l’ARI."
+    },
+    {
+      "context": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "label": "spacr.ops_clusters.benchmark_rows#0",
+      "source": "The rows Brieflow clusters: targeting genes plus every control guide.",
+      "source_sha256": "c9272f5cc7ece1acce503a3b69b59443e54d9d9495636a24c1d12125e83856e4",
+      "translation": "Les lignes que Brieflow regroupe : les gènes ciblés plus chaque guide de contrôle."
+    },
+    {
+      "context": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "label": "spacr.ops_clusters.benchmark_rows#1",
+      "source": "the gene table (``gene``, ``n_cells`` and ``features``).",
+      "source_sha256": "7c2bc79ababf4fa17101355990a1d13c8a63ffa239984787a78fe92ae87d078c",
+      "translation": "la table des gènes (``gene``, ``n_cells`` et ``features``)."
+    },
+    {
+      "context": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "label": "spacr.ops_clusters.benchmark_rows#2",
+      "source": "the guide table (``guide``, ``gene``, ``n_cells``, ...).",
+      "source_sha256": "2f9394bf176960c6cc630018848806a4dc976178fec81fe94cf28f59c2e423c0",
+      "translation": "la table des guides (``guide``, ``gene``, ``n_cells``, ...)."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.benchmark_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "rows with this many cells or fewer are left out.",
+      "label": "spacr.ops_clusters.benchmark_rows#4",
+      "source": "rows with this many cells or fewer are left out.",
+      "source_sha256": "e7e186889b4ad0f47ba1fc3190311181d14162bc716424a3d059957eee8f449f",
+      "translation": "les lignes comptant ce nombre de cellules ou moins sont exclues."
+    },
+    {
+      "context": "the control gene prefix.",
+      "label": "spacr.ops_clusters.benchmark_rows#5",
+      "source": "the control gene prefix.",
+      "source_sha256": "4a03711a3905d4a3271c6b4fa645dd040a3d6f57ad4a0489a8d06627a1a1e495",
+      "translation": "le préfixe des gènes de contrôle."
+    },
+    {
+      "context": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "label": "spacr.ops_clusters.benchmark_rows#6",
+      "source": "``gene, n_cells, <features>``; each control guide is its own row, named ``<prefix>_<guide>``.",
+      "source_sha256": "433f84d264900be12560d134c1ad630b2e432ce73634b6a1f39ea028f3493e39",
+      "translation": "``gene, n_cells, <features>`` ; chaque guide de contrôle forme sa propre ligne, nommée ``<prefix>_<guide>``."
+    },
+    {
+      "context": "The resolution whose cluster count is closest to ``target``.",
+      "label": "spacr.ops_clusters.closest_resolution#0",
+      "source": "The resolution whose cluster count is closest to ``target``.",
+      "source_sha256": "fd965e53b55af543367fc7e46476d34069742e8890c47711b3eb1364736922ef",
+      "translation": "La résolution dont le nombre de clusters est le plus proche de ``target``."
+    },
+    {
+      "context": "the wanted cluster count.",
+      "label": "spacr.ops_clusters.closest_resolution#2",
+      "source": "the wanted cluster count.",
+      "source_sha256": "e6d1eaf55f6d88558b60ae154c88a96b53477cabe1051954aedadf0e9cf7d4fd",
+      "translation": "le nombre de clusters souhaité."
+    },
+    {
+      "context": "the resolution; ties go to the one listed first.",
+      "label": "spacr.ops_clusters.closest_resolution#3",
+      "source": "the resolution; ties go to the one listed first.",
+      "source_sha256": "b998334977ff750a28f192fa65daf3a8a5a5620d3dee7b61f362182e677442be",
+      "translation": "la résolution ; en cas d’égalité, la première listée l’emporte."
+    },
+    {
+      "context": "How often two rows share a cluster when both were clustered.",
+      "label": "spacr.ops_clusters.co_membership#0",
+      "source": "How often two rows share a cluster when both were clustered.",
+      "source_sha256": "a6ad5cfc267eb11e9f4f0c83b1cd8d952495fd2a17110f76ff63f40c7e327725",
+      "translation": "À quelle fréquence deux lignes partagent un cluster lorsque les deux ont été regroupées."
+    },
+    {
+      "context": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "label": "spacr.ops_clusters.co_membership#1",
+      "source": "a ``runs x rows`` matrix from :func:`consensus_clustering`; -1 marks a row left out of a run.",
+      "source_sha256": "06d6f3ea558b3a4ab6915752842cedddc9895111b853aba903ac769240fe1f1a",
+      "translation": "une matrice ``runs x rows`` issue de :func:`consensus_clustering` ; -1 marque une ligne exclue d’une exécution."
+    },
+    {
+      "context": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "label": "spacr.ops_clusters.co_membership#2",
+      "source": "a symmetric ``rows x rows`` matrix of probabilities, NaN for a pair never clustered together, 1 on the diagonal of every row that was clustered at least once.",
+      "source_sha256": "75dad152016a3d61a839c1ec7a45ec6f1e3a8911d9e994a16adf73b7202b652e",
+      "translation": "une matrice symétrique ``rows x rows`` de probabilités, NaN pour une paire jamais regroupée ensemble, 1 sur la diagonale de chaque ligne regroupée au moins une fois."
+    },
+    {
+      "context": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "label": "spacr.ops_clusters.consensus_clustering#0",
+      "source": "Consensus clustering: many runs on bootstrap samples of genes and guides.",
+      "source_sha256": "5de11db853d78c0ac3d514eae75d4874326b2a11690ece4a83dfced4d8adea30",
+      "translation": "Partitionnement de consensus : de nombreuses exécutions sur des échantillons bootstrap de gènes et de guides."
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_clustering#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "la table des gènes."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_clustering#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "lorsque l’extra ``clustering`` n’est pas installé."
+    },
+    {
+      "context": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "label": "spacr.ops_clusters.consensus_clustering#11",
+      "source": "Every run differs from the others in three ways, so the co-membership reflects the sampling of genes, of guides and of the algorithm: a ``subsample`` share of the rows, each gene's guides drawn with replacement, and its own PHATE and Leiden seed and resolution.",
+      "source_sha256": "335ce52d1755dd5acb82ee8e727223bade386992ab7ab420f1db56d21d02d73f",
+      "translation": "Chaque exécution diffère des autres de trois façons, de sorte que la co-appartenance reflète l’échantillonnage des gènes, des guides et de l’algorithme : une part ``subsample`` des lignes, les guides de chaque gène tirés avec remise, et sa propre graine et sa propre résolution pour PHATE et Leiden."
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_clustering#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "la table des guides."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_clustering#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "the number of runs.",
+      "label": "spacr.ops_clusters.consensus_clustering#4",
+      "source": "the number of runs.",
+      "source_sha256": "b40f1a398e457ee9e4a8f80fd448c03a79119687030f8c4edbe6d8729e7d1d31",
+      "translation": "le nombre d’exécutions."
+    },
+    {
+      "context": "the resolution sweep the runs cycle through.",
+      "label": "spacr.ops_clusters.consensus_clustering#5",
+      "source": "the resolution sweep the runs cycle through.",
+      "source_sha256": "01bf9e0b6a8328c9464802587704445f62c57ed9e792e86f5f384f7ff61670e0",
+      "translation": "le balayage des résolutions que les exécutions parcourent tour à tour."
+    },
+    {
+      "context": "run ``k`` is seeded ``base_seed + k``.",
+      "label": "spacr.ops_clusters.consensus_clustering#6",
+      "source": "run ``k`` is seeded ``base_seed + k``.",
+      "source_sha256": "50361c63cc5a6d23e2ab8b08a9ea8f9dbcd946cd76afaf1ca802930e7baf89b6",
+      "translation": "l’exécution ``k`` reçoit la graine ``base_seed + k``."
+    },
+    {
+      "context": "the share of rows in each run.",
+      "label": "spacr.ops_clusters.consensus_clustering#7",
+      "source": "the share of rows in each run.",
+      "source_sha256": "9cb14c5cac4b6e2252056f61b1332e8b23844f6f9273661399cc0c60f9177182",
+      "translation": "la part des lignes dans chaque exécution."
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_clustering#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "transmis à :func:`consensus_rows`."
+    },
+    {
+      "context": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "label": "spacr.ops_clusters.consensus_clustering#9",
+      "source": "``{\"genes\", \"labels\", \"runs\"}``: the row names, a ``runs x rows`` label matrix (-1 = left out of that run) and every run's resolution and cluster count. Pass ``labels`` to :func:`co_membership`.",
+      "source_sha256": "ee3f50179f5fdc58999d681c46304d3cdf46594954de0beac7f78188aae2cb52",
+      "translation": "``{\"genes\", \"labels\", \"runs\"}`` : les noms des lignes, une matrice d’étiquettes ``runs x rows`` (-1 = exclue de cette exécution) ainsi que la résolution et le nombre de clusters de chaque exécution. Passez ``labels`` à :func:`co_membership`."
+    },
+    {
+      "context": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "label": "spacr.ops_clusters.consensus_rows#0",
+      "source": "Gene profiles for consensus clustering, optionally with guides resampled.",
+      "source_sha256": "64585eea8b797caa4420883adb43cac12a49097f6de713a35f83f16ff2c1d4dd",
+      "translation": "Profils de gènes pour le partitionnement de consensus, avec éventuellement des guides rééchantillonnés."
+    },
+    {
+      "context": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "label": "spacr.ops_clusters.consensus_rows#1",
+      "source": "the gene table; genes with ``min_cells`` cells or fewer are left out.",
+      "source_sha256": "fe0fa30f8c33b5a342e84d201d7a052c2936cd4a5a52a3987e00c68d390a6e0d",
+      "translation": "la table des gènes ; les gènes comptant ``min_cells`` cellules ou moins sont exclus."
+    },
+    {
+      "context": "the guide table with ``columns``.",
+      "label": "spacr.ops_clusters.consensus_rows#2",
+      "source": "the guide table with ``columns``.",
+      "source_sha256": "ab1c67f53319fc46f3ae12d1466d92163764373921e4501676985b24199ab6cd",
+      "translation": "la table des guides avec ``columns``."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_rows#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "label": "spacr.ops_clusters.consensus_rows#4",
+      "source": "when given, each gene's guides are drawn with replacement before the median is taken (the guide bootstrap).",
+      "source_sha256": "565b0ce1ab677a9ef65249d43be7b2c8744b37825b527c6dfda23990b9b04c10",
+      "translation": "si elle est fournie, les guides de chaque gène sont tirés avec remise avant le calcul de la médiane (le bootstrap des guides)."
+    },
+    {
+      "context": "the gene cell-count floor.",
+      "label": "spacr.ops_clusters.consensus_rows#5",
+      "source": "the gene cell-count floor.",
+      "source_sha256": "8e3abcd3246a0761f4aaa4005eec08266ac45319f1c606f1a377f830c7c5d7d2",
+      "translation": "le seuil minimal de cellules par gène."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.consensus_rows#6",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "le préfixe des contrôles."
+    },
+    {
+      "context": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "label": "spacr.ops_clusters.consensus_rows#7",
+      "source": "control guides are grouped at random into pseudo-genes of this many guides, named ``NTpseudo_<k>``, so the controls are clustered at the same resolution as the genes.",
+      "source_sha256": "a17208255eacd7f2fb1fb00da397d33b282816e93ee279ac3bb52b491c73aa63",
+      "translation": "les guides de contrôle sont regroupés au hasard en pseudo-gènes de ce nombre de guides, nommés ``NTpseudo_<k>``, afin que les contrôles soient regroupés à la même résolution que les gènes."
+    },
+    {
+      "context": "the seed of that grouping.",
+      "label": "spacr.ops_clusters.consensus_rows#8",
+      "source": "the seed of that grouping.",
+      "source_sha256": "0a6a866395aa2dc8d81813a2d1a265207604f2f01bf3e03a83d38a07585a7111",
+      "translation": "la graine de ce regroupement."
+    },
+    {
+      "context": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "label": "spacr.ops_clusters.consensus_rows#9",
+      "source": "``gene, n_cells, <columns>``, one row per gene and pseudo-gene, sorted by name.",
+      "source_sha256": "df3fa7a42b3863bf8a8d1a844a8eae5cae5e7697599e3433568a86c4b65af8ba",
+      "translation": "``gene, n_cells, <columns>``, une ligne par gène et par pseudo-gène, triées par nom."
+    },
+    {
+      "context": "One consensus clustering run.",
+      "label": "spacr.ops_clusters.consensus_run#0",
+      "source": "One consensus clustering run.",
+      "source_sha256": "b365768ad563967981c88ac6a102a2f239524b41964ec2c5aa701bfa40af3f39",
+      "translation": "Une exécution du partitionnement de consensus."
+    },
+    {
+      "context": "the gene table.",
+      "label": "spacr.ops_clusters.consensus_run#1",
+      "source": "the gene table.",
+      "source_sha256": "15a072ecf1cd44ea24fb71748e43777a2c6c5960e4c6bfcd3aeeb23cc6c2e281",
+      "translation": "la table des gènes."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.consensus_run#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "lorsque l’extra ``clustering`` n’est pas installé."
+    },
+    {
+      "context": "the guide table.",
+      "label": "spacr.ops_clusters.consensus_run#2",
+      "source": "the guide table.",
+      "source_sha256": "bb437a8b4a6de664eeeb6efa720588bca250c098693cb0645dca26cf0b0d18c1",
+      "translation": "la table des guides."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.consensus_run#3",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "the run number; its generator is seeded ``base_seed + run``.",
+      "label": "spacr.ops_clusters.consensus_run#4",
+      "source": "the run number; its generator is seeded ``base_seed + run``.",
+      "source_sha256": "ec5701e1df7f763cd5ecf91759ff0f8908142d6259e51221b7da2dff2f24b601",
+      "translation": "le numéro de l’exécution ; son générateur reçoit la graine ``base_seed + run``."
+    },
+    {
+      "context": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "label": "spacr.ops_clusters.consensus_run#5",
+      "source": "the sweep; run ``k`` uses ``resolutions[k % len]``.",
+      "source_sha256": "7647ef786e3eaf18bf75ad54238552bc0930797e900fcc348da9b2f71bc3ec7a",
+      "translation": "le balayage ; l’exécution ``k`` utilise ``resolutions[k % len]``."
+    },
+    {
+      "context": "see ``run``.",
+      "label": "spacr.ops_clusters.consensus_run#6",
+      "source": "see ``run``.",
+      "source_sha256": "1ca400ed083d1ee64b577487a73bee3b864a2e92e597f85ab8ef509c8d6d59c3",
+      "translation": "voir ``run``."
+    },
+    {
+      "context": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "label": "spacr.ops_clusters.consensus_run#7",
+      "source": "the share of rows clustered, drawn without replacement (PHATE cannot take duplicated rows).",
+      "source_sha256": "b56ff07447b90e32676c5375ef4620e96b237f6fc9dd05e273f0bde4e90085be",
+      "translation": "la part des lignes regroupées, tirées sans remise (PHATE n’accepte pas les lignes dupliquées)."
+    },
+    {
+      "context": "passed to :func:`consensus_rows`.",
+      "label": "spacr.ops_clusters.consensus_run#8",
+      "source": "passed to :func:`consensus_rows`.",
+      "source_sha256": "f536d0040a0ceed69b2341e68c66d2665db66115ff16f154b9ce13980f3cc455",
+      "translation": "transmis à :func:`consensus_rows`."
+    },
+    {
+      "context": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "label": "spacr.ops_clusters.consensus_run#9",
+      "source": "``(resolution, clusters, labels)``; ``labels`` has one entry per row of :func:`consensus_rows` without resampling, -1 for rows left out of this run.",
+      "source_sha256": "ca7b64b860aa7ec2bf65b2f3f3f8adcc29010d7bce478e816ac61564055de0e9",
+      "translation": "``(resolution, clusters, labels)`` ; ``labels`` a une entrée par ligne de :func:`consensus_rows` sans rééchantillonnage, -1 pour les lignes exclues de cette exécution."
+    },
+    {
+      "context": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "label": "spacr.ops_clusters.embed_profiles#0",
+      "source": "Standardise the profiles and keep the PCs holding ``variance``.",
+      "source_sha256": "931635ebb1afc7432bacd39e9db0db169940a0e11d720fe3684e01cbb8bf1b2c",
+      "translation": "Standardise les profils et conserve les PC qui portent ``variance``."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.embed_profiles#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "une ligne par gène."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_clusters.embed_profiles#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "the share of variance kept.",
+      "label": "spacr.ops_clusters.embed_profiles#3",
+      "source": "the share of variance kept.",
+      "source_sha256": "2a9e7ec25e43a47f472c22ab9878d4f1dc33b12e44b65c908a7d02ccac8ed8f4",
+      "translation": "la part de variance conservée."
+    },
+    {
+      "context": "the PCA seed.",
+      "label": "spacr.ops_clusters.embed_profiles#4",
+      "source": "the PCA seed.",
+      "source_sha256": "fd77912e5e53b70899d068d16d97346429ad8a2e86b5dca65e547d988e28bfd3",
+      "translation": "la graine de la PCA."
+    },
+    {
+      "context": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "label": "spacr.ops_clusters.embed_profiles#5",
+      "source": "``(components, n_components, n_features_used)``. Columns with 5 % or more missing values are dropped, other gaps take the column median, and constant columns are dropped.",
+      "source_sha256": "704166f6adb40b659a07addf79daf72ad3cc151b1f083ee2d2f312f894e4ffee",
+      "translation": "``(components, n_components, n_features_used)``. Les colonnes comportant 5 % ou plus de valeurs manquantes sont écartées, les autres lacunes prennent la médiane de la colonne, et les colonnes constantes sont écartées."
+    },
+    {
+      "context": "The share of clusters enriched for at least one group.",
+      "label": "spacr.ops_clusters.group_enrichment#0",
+      "source": "The share of clusters enriched for at least one group.",
+      "source_sha256": "9049ebf99cab875c6c4529c44a29892621de295a9d7dbc9f40c06bf11da37f07",
+      "translation": "La part des clusters enrichis en au moins un groupe."
+    },
+    {
+      "context": "``gene_name, group`` rows (CORUM or KEGG).",
+      "label": "spacr.ops_clusters.group_enrichment#1",
+      "source": "``gene_name, group`` rows (CORUM or KEGG).",
+      "source_sha256": "7aa8f70e407037cc1cd591fa4ef29bcd9f9b3c23a1b3701844d50b41554bd874",
+      "translation": "lignes ``gene_name, group`` (CORUM ou KEGG)."
+    },
+    {
+      "context": "the clustered row names, controls included.",
+      "label": "spacr.ops_clusters.group_enrichment#2",
+      "source": "the clustered row names, controls included.",
+      "source_sha256": "bcbab28bbf9d1ec5970f02d7b2aab670c1f3a29066da1a25305eb6fecc42acd9",
+      "translation": "les noms des lignes regroupées, contrôles compris."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.group_enrichment#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "une étiquette par ligne."
+    },
+    {
+      "context": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "label": "spacr.ops_clusters.group_enrichment#4",
+      "source": "True keeps only the group members in the background (Brieflow's current ``head`` code); False counts every member (Brieflow's May 2025 release, the ``may2025`` variant).",
+      "source_sha256": "9ad65e859500b90c6838e244b5c6d10fbae1ed478baaaaff88a676c182b55ac0",
+      "translation": "True ne conserve dans le fond que les membres des groupes (le code ``head`` actuel de Brieflow) ; False compte tous les membres (la version de Brieflow de mai 2025, la variante ``may2025``)."
+    },
+    {
+      "context": "control rows are background, never cluster members.",
+      "label": "spacr.ops_clusters.group_enrichment#5",
+      "source": "control rows are background, never cluster members.",
+      "source_sha256": "ad40f82e36778ee7df1fa0277631b3f981d227dcf285edbf0e5b26739882072d",
+      "translation": "les lignes de contrôle font partie du fond et ne sont jamais membres d’un cluster."
+    },
+    {
+      "context": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "label": "spacr.ops_clusters.group_enrichment#6",
+      "source": "``(share, table)``; the table has one row per cluster with its size, the number of enriched groups and up to ten of them.",
+      "source_sha256": "b6e09615003faea20c5808726d498aa77c73b721f396a4caba096abbe381cbdc",
+      "translation": "``(share, table)`` ; la table comporte une ligne par cluster avec sa taille, le nombre de groupes enrichis et jusqu’à dix d’entre eux."
+    },
+    {
+      "context": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "label": "spacr.ops_clusters.phate_leiden#0",
+      "source": "Leiden clusters of the PHATE diffusion graph, one per resolution.",
+      "source_sha256": "e30c83de9e5a12b1ad3244d05dde8e3239cee95cc5dca39b4bd259b33ee07b23",
+      "translation": "Clusters de Leiden du graphe de diffusion PHATE, un par résolution."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.phate_leiden#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "une ligne par gène."
+    },
+    {
+      "context": "Leiden resolution parameters.",
+      "label": "spacr.ops_clusters.phate_leiden#2",
+      "source": "Leiden resolution parameters.",
+      "source_sha256": "93ba7bff5ecb0f20c6ac71bb4ef3413f9e1bc95f15614c18016556c9f5890b85",
+      "translation": "paramètres de résolution de Leiden."
+    },
+    {
+      "context": "PHATE's nearest neighbours.",
+      "label": "spacr.ops_clusters.phate_leiden#3",
+      "source": "PHATE's nearest neighbours.",
+      "source_sha256": "7eb0af37c7b62e12eac649d854c856c92ec6fa62622194d9af1b35beac96a083",
+      "translation": "les plus proches voisins de PHATE."
+    },
+    {
+      "context": "PHATE's distance.",
+      "label": "spacr.ops_clusters.phate_leiden#4",
+      "source": "PHATE's distance.",
+      "source_sha256": "4c44209f1084f7e2430c4ff1e079b36cdf756ff142485f8904ce2955ca037d15",
+      "translation": "la distance de PHATE."
+    },
+    {
+      "context": "the PHATE and Leiden seed.",
+      "label": "spacr.ops_clusters.phate_leiden#5",
+      "source": "the PHATE and Leiden seed.",
+      "source_sha256": "5ba9b921cb4e697906c4e8a9d62034fe9b97c1d08e6f8741fc784bf4f0acfaa3",
+      "translation": "la graine de PHATE et de Leiden."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.phate_leiden#6",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "le nombre de processus de PHATE."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.phate_leiden#8",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "lorsque l’extra ``clustering`` n’est pas installé."
+    },
+    {
+      "context": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "label": "spacr.ops_clusters.phate_leiden#9",
+      "source": "The graph is PHATE's diffusion operator made symmetric, ``(P + P.T) / 2``; Leiden optimises the RB configuration model on it with ``n_iterations=-1`` (until it stops improving).",
+      "source_sha256": "30e820aef5f6212438e8f738f97de5ff9c9dfb22a927baa2e680fced30378dbf",
+      "translation": "Le graphe est l’opérateur de diffusion de PHATE rendu symétrique, ``(P + P.T) / 2`` ; Leiden y optimise le modèle de configuration RB avec ``n_iterations=-1`` (jusqu’à ce qu’il cesse de s’améliorer)."
+    },
+    {
+      "context": "Read a benchmark table in Brieflow's format.",
+      "label": "spacr.ops_clusters.read_benchmark#0",
+      "source": "Read a benchmark table in Brieflow's format.",
+      "source_sha256": "d5c9c2d76ddc92aca488f182e946573eac60be388f80c8af563d174b0c815863",
+      "translation": "Lit une table de benchmark au format de Brieflow."
+    },
+    {
+      "context": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "label": "spacr.ops_clusters.read_benchmark#1",
+      "source": "a tab-separated file. Group tables (CORUM, KEGG) have ``gene_name`` and ``group`` columns; the STRING pair table has ``gene_name`` and ``pair``.",
+      "source_sha256": "b299b58411920eff53776e718acada9b3615edbd720130210bb25357c2aa880e",
+      "translation": "un fichier séparé par des tabulations. Les tables de groupes (CORUM, KEGG) ont les colonnes ``gene_name`` et ``group`` ; la table des paires STRING a ``gene_name`` et ``pair``."
+    },
+    {
+      "context": "when neither ``group`` nor ``pair`` is present.",
+      "label": "spacr.ops_clusters.read_benchmark#3",
+      "source": "when neither ``group`` nor ``pair`` is present.",
+      "source_sha256": "69a49c5dc86ab080f936f072b57f9c873bfce3ee722cad461a5ef652529bb369",
+      "translation": "lorsque ni ``group`` ni ``pair`` n’est présent."
+    },
+    {
+      "context": "Read a reference clustering, such as Funk et al.'s published table.",
+      "label": "spacr.ops_clusters.reference_clusters#0",
+      "source": "Read a reference clustering, such as Funk et al.'s published table.",
+      "source_sha256": "d683b2215f9383dc5e7f493bb5b6dce1789f9bbbe650101c732b434f08104717",
+      "translation": "Lit un partitionnement de référence, comme la table publiée par Funk et al."
+    },
+    {
+      "context": "a CSV, TSV or Excel file.",
+      "label": "spacr.ops_clusters.reference_clusters#1",
+      "source": "a CSV, TSV or Excel file.",
+      "source_sha256": "b112631f2c8596eb624129a604493346fd2bdc2dbbdda9ade34a9df0bbdf2007",
+      "translation": "un fichier CSV, TSV ou Excel."
+    },
+    {
+      "context": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#2",
+      "source": "the gene column; found among ``gene``, ``gene_symbol`` and ``gene_name`` when None.",
+      "source_sha256": "d0a8d096cb2ebb86504bbfc221aa3b7ec05f29e94f10b9d2cfa8deb847f6d83a",
+      "translation": "la colonne des gènes ; recherchée parmi ``gene``, ``gene_symbol`` et ``gene_name`` si None."
+    },
+    {
+      "context": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "label": "spacr.ops_clusters.reference_clusters#3",
+      "source": "the cluster column; found among ``cluster`` and ``interphase_cluster`` when None.",
+      "source_sha256": "88d54c2e4e25091c9cf1cfaa89d9ce3edde4675b62ea8ea008a291b351cc164f",
+      "translation": "la colonne des clusters ; recherchée parmi ``cluster`` et ``interphase_cluster`` si None."
+    },
+    {
+      "context": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "label": "spacr.ops_clusters.reference_clusters#4",
+      "source": "``gene, cluster`` rows with a cluster, the cluster as int.",
+      "source_sha256": "2f426622c4fb086f23da4bc3f9c0e6375f2562d5b65a9071a39afca19ed25f3a",
+      "translation": "lignes ``gene, cluster`` ayant un cluster, le cluster en int."
+    },
+    {
+      "context": "when a column cannot be found.",
+      "label": "spacr.ops_clusters.reference_clusters#5",
+      "source": "when a column cannot be found.",
+      "source_sha256": "2dcfd3c8782b137dfbf403462492691cbbeb6c2565e75f4143432576997b319e",
+      "translation": "lorsqu’une colonne est introuvable."
+    },
+    {
+      "context": "One benchmark row: cluster count, CORUM %, KEGG % and string p/R.",
+      "label": "spacr.ops_clusters.score_clusters#0",
+      "source": "One benchmark row: cluster count, CORUM %, KEGG % and STRING P/R.",
+      "source_sha256": "3877f69d822e348642b28a7c2b50aac2abea2f90db25448894a9e96184b92bfc",
+      "translation": "Une ligne de benchmark : nombre de clusters, CORUM %, KEGG % et P/R STRING."
+    },
+    {
+      "context": "the row's label.",
+      "label": "spacr.ops_clusters.score_clusters#1",
+      "source": "the row's label.",
+      "source_sha256": "be73f646e1143862b2b6dc9924d1d3e0d4c4a06917feca288ce8614fd39102bf",
+      "translation": "l’étiquette de la ligne."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.score_clusters#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "les noms des lignes regroupées."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.score_clusters#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "une étiquette par ligne."
+    },
+    {
+      "context": "CORUM groups (:func:`read_benchmark`).",
+      "label": "spacr.ops_clusters.score_clusters#4",
+      "source": "CORUM groups (:func:`read_benchmark`).",
+      "source_sha256": "ef61be740ac5b428e129d10155265dd56ba5173b91f97383303eafed23712c79",
+      "translation": "groupes CORUM (:func:`read_benchmark`)."
+    },
+    {
+      "context": "KEGG groups.",
+      "label": "spacr.ops_clusters.score_clusters#5",
+      "source": "KEGG groups.",
+      "source_sha256": "e4a52f55d2183d0b41e81c1d693dbb659c8580ffc094ee2470e9960558aac3ef",
+      "translation": "groupes KEGG."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.score_clusters#7",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "le préfixe des contrôles."
+    },
+    {
+      "context": "Permute every column independently: the shuffled-PC control.",
+      "label": "spacr.ops_clusters.shuffle_columns#0",
+      "source": "Permute every column independently: the shuffled-PC control.",
+      "source_sha256": "ec12e2420eef9c5cfd3eb1100cfad443ffa1c60d46108335f4de55404c12b220",
+      "translation": "Permute chaque colonne indépendamment : le contrôle à PC mélangées."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.shuffle_columns#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "une ligne par gène."
+    },
+    {
+      "context": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "label": "spacr.ops_clusters.shuffle_columns#2",
+      "source": "the permutation seed, or a ``numpy.random.Generator`` to draw from (it is advanced).",
+      "source_sha256": "3860f4c88ea40e63b37b016e6f7e7e37826a88d1e05ebb74269feecc1d0b4866",
+      "translation": "la graine de la permutation, ou un ``numpy.random.Generator`` dans lequel tirer (il est avancé)."
+    },
+    {
+      "context": "a copy whose columns keep their values but lose their rows.",
+      "label": "spacr.ops_clusters.shuffle_columns#3",
+      "source": "a copy whose columns keep their values but lose their rows.",
+      "source_sha256": "dde0cb7a1dd475df324913c8ea8a85e20710f85710323cd23194e677424069d0",
+      "translation": "une copie dont les colonnes gardent leurs valeurs mais perdent leurs lignes."
+    },
+    {
+      "context": "Area under the STRING precision-recall curve of profile cosines.",
+      "label": "spacr.ops_clusters.string_auprc#0",
+      "source": "Area under the STRING precision-recall curve of profile cosines.",
+      "source_sha256": "e8f1faac8d09a0ab66cc8780a77691ece7fe7af886d3909f87993bf1df4647ab",
+      "translation": "Aire sous la courbe précision-rappel STRING des cosinus entre profils."
+    },
+    {
+      "context": "one row per gene.",
+      "label": "spacr.ops_clusters.string_auprc#1",
+      "source": "one row per gene.",
+      "source_sha256": "6e82ee60025a4e428eb200b805b12fb56781cf37791f6496f6ed929e032f0513",
+      "translation": "une ligne par gène."
+    },
+    {
+      "context": "the row names; control rows are left out.",
+      "label": "spacr.ops_clusters.string_auprc#2",
+      "source": "the row names; control rows are left out.",
+      "source_sha256": "d36e58c705fa017c0b708a18b98368d1ef5bb19cb071a0bb8dcfbd1576f7d8b7",
+      "translation": "les noms des lignes ; les lignes de contrôle sont exclues."
+    },
+    {
+      "context": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "label": "spacr.ops_clusters.string_auprc#4",
+      "source": "shuffle the gene labels with this seed first (the control); None scores the real labels.",
+      "source_sha256": "cb461ce39985bcbbe7f1b6a0cf979a2e809f5bcd79f7c39b78105615ceb4d7f8",
+      "translation": "mélange d’abord les étiquettes de gènes avec cette graine (le contrôle) ; None évalue les vraies étiquettes."
+    },
+    {
+      "context": "the control prefix.",
+      "label": "spacr.ops_clusters.string_auprc#5",
+      "source": "the control prefix.",
+      "source_sha256": "1749f73cc6f9e78b8decc7fd18c5bfafa3bf1431862dba25152bee72c567fb15",
+      "translation": "le préfixe des contrôles."
+    },
+    {
+      "context": "points kept on the returned curve.",
+      "label": "spacr.ops_clusters.string_auprc#6",
+      "source": "points kept on the returned curve.",
+      "source_sha256": "a6dbd6b971f79cb0e141627c4ffd0c199dec293ee5a966cf60c0769dc4f8e44e",
+      "translation": "points conservés sur la courbe renvoyée."
+    },
+    {
+      "context": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "label": "spacr.ops_clusters.string_auprc#7",
+      "source": "``(auprc, base_rate, curve)``. Every gene pair is ranked by the cosine of its two profiles; the base rate is the share of pairs that are STRING pairs, which a random ranking scores.",
+      "source_sha256": "e5d6da14b7b4a6bb9c2d43f06d9b1dc182b2390301c8e736b7099ccf2ff0fb56",
+      "translation": "``(auprc, base_rate, curve)``. Chaque paire de gènes est classée selon le cosinus de ses deux profils ; le taux de base est la part des paires qui sont des paires STRING, soit le score d’un classement aléatoire."
+    },
+    {
+      "context": "STRING precision and recall of the pairs that share a cluster.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#0",
+      "source": "STRING precision and recall of the pairs that share a cluster.",
+      "source_sha256": "2fbb526a8815f306918f2f3a1c1de8f891cd0794bd351d5245223b98cc9f5f29",
+      "translation": "Précision et rappel STRING des paires qui partagent un cluster."
+    },
+    {
+      "context": "the clustered row names.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#2",
+      "source": "the clustered row names.",
+      "source_sha256": "5aa840b98716125d0e2018913458e2a7232ab67ab746af5104a7dbef6ccee121",
+      "translation": "les noms des lignes regroupées."
+    },
+    {
+      "context": "one label per row.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#3",
+      "source": "one label per row.",
+      "source_sha256": "abafba176bcbdcb528db3cbab4dcb1d486e5488ff8f6ab1b67b323dc16eb983d",
+      "translation": "une étiquette par ligne."
+    },
+    {
+      "context": "control rows are left out.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#4",
+      "source": "control rows are left out.",
+      "source_sha256": "e3cc8e4d37d826d76458b22eafa7aedece9ead85aac84755892a586665601cc8",
+      "translation": "les lignes de contrôle sont exclues."
+    },
+    {
+      "context": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "label": "spacr.ops_clusters.string_cluster_pairs#5",
+      "source": "``precision, recall, f1, tp, fp, fn``. Recall counts only the STRING pairs with both genes clustered.",
+      "source_sha256": "028aa863709ab100905110831647806cef61e4be5abac386469088b03421851a",
+      "translation": "``precision, recall, f1, tp, fp, fn``. Le rappel ne compte que les paires STRING dont les deux gènes ont été regroupés."
+    },
+    {
+      "context": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "label": "spacr.ops_clusters.string_positives#0",
+      "source": "The STRING gene pairs, each as an ordered ``(a, b)`` with ``a < b``.",
+      "source_sha256": "8076b1ed1f4fc2ff7404b305e8fe71d2ec9f204e77579617e4b5d25a38956a68",
+      "translation": "Les paires de gènes STRING, chacune sous forme d’un ``(a, b)`` ordonné avec ``a < b``."
+    },
+    {
+      "context": "``gene_name, pair`` rows of the STRING benchmark.",
+      "label": "spacr.ops_clusters.string_positives#1",
+      "source": "``gene_name, pair`` rows of the STRING benchmark.",
+      "source_sha256": "5b943519845e3b1516273feb2fb02ab32ce11ec957c2f6fcdd895c839de05b03",
+      "translation": "lignes ``gene_name, pair`` du benchmark STRING."
+    },
+    {
+      "context": "the set of pairs.",
+      "label": "spacr.ops_clusters.string_positives#2",
+      "source": "the set of pairs.",
+      "source_sha256": "1566a32d96825637dc97065c8e6dabb64bfb12409ce1478710dad9a1200624aa",
+      "translation": "l’ensemble des paires."
+    },
+    {
+      "context": "A trained mitotic-cell machine-learning classification model for optical pooled screening experiments.",
+      "label": "spacr.ops_mitotic#0",
+      "source": "A trained mitotic-cell classifier for optical pooled screens.",
+      "source_sha256": "404d652eb547421bd5ced4e8df943a2578476f5391244fbe86c940a972f37a95",
+      "translation": "Un classifieur entraîné de cellules mitotiques pour les cribles optiques groupés."
+    },
+    {
+      "context": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a machine-learning classification model on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "label": "spacr.ops_mitotic#1",
+      "source": ":func:`spacr.gene_measurement_compare.mitotic_calls` calls a cell mitotic with a fixed rule on nuclear DNA intensity and area. On plate A of Funk et al. 2022 the per-gene mitotic index from that rule correlates with Funk et al.'s at Spearman rho = 0.32 only. Funk et al. trained a classifier on DNA and tubulin features instead; this module does the same with labelled cells.",
+      "source_sha256": "631f6514c7d2b48a665cf53f8cc7e502ab6136c3333eed380844fad0f5087224",
+      "translation": ":func:`spacr.gene_measurement_compare.mitotic_calls` déclare une cellule mitotique selon une règle fixe portant sur l’intensité et l’aire du DNA nucléaire. Sur la plaque A de Funk et al. 2022, l’index mitotique par gène issu de cette règle n’est corrélé à celui de Funk et al. qu’avec un rho de Spearman = 0.32. Funk et al. ont plutôt entraîné un classifieur sur des variables de DNA et de tubuline ; ce module fait de même avec des cellules annotées."
+    },
+    {
+      "context": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate extracted image region-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "label": "spacr.ops_mitotic#2",
+      "source": ":func:`read_mitotic_labels` reads a labelled-cell table (optionally through a separate crop-to-cell mapping, so labellers stay blind to well and gene) and turns its stages into mitotic calls.",
+      "source_sha256": "32c54dcfb4f622d4bf33668865af5b2822aa4f9feb4fffc75961b8d2829cd76b",
+      "translation": ":func:`read_mitotic_labels` lit une table de cellules annotées (éventuellement via une correspondance distincte entre vignettes et cellules, afin que les annotateurs ignorent le puits et le gène) et transforme ses stades en décisions mitotiques."
+    },
+    {
+      "context": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "label": "spacr.ops_mitotic#3",
+      "source": ":func:`mitotic_features` picks the DNA (nuclear) and tubulin (cell and cytoplasm) features from a cell table.",
+      "source_sha256": "65471bacdf9d9196a62d53055023650a1798a97a1b6bc260091271378b5a693c",
+      "translation": ":func:`mitotic_features` sélectionne les variables de DNA (noyau) et de tubuline (cellule et cytoplasme) dans une table de cellules."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` fits a gradient-boosting machine-learning classification model on labelled cells and reports grouped cross-validation, with folds split by well or microscope field of view so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "label": "spacr.ops_mitotic#4",
+      "source": ":func:`train_mitotic_classifier` fits a gradient-boosting classifier on labelled cells and reports grouped cross-validation, with folds split by well or field so that cells of one image never sit on both sides, and a shuffled-label control that shows what chance scores.",
+      "source_sha256": "db85dc3c03888651b2f41f3a710e23b1eee077e123281042e5dba0460e0188e0",
+      "translation": ":func:`train_mitotic_classifier` ajuste un classifieur par gradient boosting sur des cellules annotées et rapporte une validation croisée groupée, avec des plis séparés par puits ou par champ afin que les cellules d’une même image ne se trouvent jamais des deux côtés, ainsi qu’un contrôle à étiquettes mélangées qui montre le score obtenu par hasard."
+    },
+    {
+      "context": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "label": "spacr.ops_mitotic#5",
+      "source": ":func:`sampling_weights` re-weights a label set that over-samples some cells (such as the rule's mitotic calls) so that training and metrics describe the whole screen.",
+      "source_sha256": "ec7470b414c13387f387dac633e20a31862b1611aaee83b4ff952a1bdc91a651",
+      "translation": ":func:`sampling_weights` repondère un jeu d’étiquettes qui suréchantillonne certaines cellules (comme les décisions mitotiques de la règle) afin que l’entraînement et les métriques décrivent l’ensemble du crible."
+    },
+    {
+      "context": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "label": "spacr.ops_mitotic#6",
+      "source": ":func:`predict_mitotic` calls new cells; :func:`save_mitotic_classifier` and :func:`load_mitotic_classifier` keep a trained model on disk, and the OPS aggregate phase uses it through ``ops_mitotic_model``.",
+      "source_sha256": "8b7a17e5488f10710e019cff06c0306cca27d029e4ab4048848a54af568543a5",
+      "translation": ":func:`predict_mitotic` classe de nouvelles cellules ; :func:`save_mitotic_classifier` et :func:`load_mitotic_classifier` conservent un modèle entraîné sur disque, et la phase d’agrégation OPS l’utilise via ``ops_mitotic_model``."
+    },
+    {
+      "context": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "label": "spacr.ops_mitotic#7",
+      "source": ":func:`mitotic_index_agreement` compares per-gene mitotic indices with a reference, such as Funk et al.'s published table, with a shuffled control.",
+      "source_sha256": "c6b012473e8541a5e480ad467ad4344dfe5ecdf7533dff6ba5f16d45d7e09b7f",
+      "translation": ":func:`mitotic_index_agreement` compare les index mitotiques par gène à une référence, comme la table publiée par Funk et al., avec un contrôle mélangé."
+    },
+    {
+      "context": "Everything executes on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a machine-learning classification model trained on the rule's calls can only learn the rule.",
+      "label": "spacr.ops_mitotic#8",
+      "source": "Everything runs on the CPU. The labels must come from the user: a set of cells annotated mitotic or not. spaCR does not ship labels or a trained model, and it does not make labels from the rule, because a classifier trained on the rule's calls can only learn the rule.",
+      "source_sha256": "5111c70b1c6365499d2f4d865fe9b3cf50d242d17c05f5329b687ec47a938ed7",
+      "translation": "Tout s’exécute sur le CPU. Les étiquettes doivent venir de l’utilisateur : un ensemble de cellules annotées comme mitotiques ou non. spaCR ne fournit ni étiquettes ni modèle entraîné, et ne crée pas d’étiquettes à partir de la règle, car un classifieur entraîné sur les décisions de la règle ne peut apprendre que la règle."
+    },
+    {
+      "context": "Read a machine-learning classification model written by :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#0",
+      "source": "Read a classifier written by :func:`save_mitotic_classifier`.",
+      "source_sha256": "22dd95b8a56e427c8c20dfbe9d93060bfd59da80ce244337319ba2c7125d6281",
+      "translation": "Lit un classifieur écrit par :func:`save_mitotic_classifier`."
+    },
+    {
+      "context": "the bundle :func:`predict_mitotic` takes.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#2",
+      "source": "the bundle :func:`predict_mitotic` takes.",
+      "source_sha256": "e44defc0dd2181a6eb745dc1b52a7a3f3c78e08af0a42b311773889096be4b5b",
+      "translation": "le paquet que prend :func:`predict_mitotic`."
+    },
+    {
+      "context": "when the file is not a spaCR mitotic machine-learning classification model.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#3",
+      "source": "when the file is not a spaCR mitotic classifier.",
+      "source_sha256": "aaa0e3f082d78ddfc76dde9b9f46f27da20884735f9d5eb4539ac010d163d864",
+      "translation": "lorsque le fichier n’est pas un classifieur mitotique spaCR."
+    },
+    {
+      "context": "A joblib file can run code when it is loaded, like any pickle; load only machine-learning classification models you trained or trust.",
+      "label": "spacr.ops_mitotic.load_mitotic_classifier#4",
+      "source": "A joblib file can run code when it is loaded, like any pickle; load only classifiers you trained or trust.",
+      "source_sha256": "34aaeddcdbed6ce833bf1abab5180097e709ffaab9cf6f5529320ce9893ae8e8",
+      "translation": "Un fichier joblib peut exécuter du code à son chargement, comme tout pickle ; ne chargez que des classifieurs que vous avez entraînés ou auxquels vous faites confiance."
+    },
+    {
+      "context": "The DNA and tubulin features a mitotic machine-learning classification model is trained on.",
+      "label": "spacr.ops_mitotic.mitotic_features#0",
+      "source": "The DNA and tubulin features a mitotic classifier is trained on.",
+      "source_sha256": "d2287968799bbfaa3b06f6d3ea7ddd7321d04755cd0cb233b30beb0d5a9a5f01",
+      "translation": "Les variables de DNA et de tubuline sur lesquelles un classifieur mitotique est entraîné."
+    },
+    {
+      "context": "the cell table's columns.",
+      "label": "spacr.ops_mitotic.mitotic_features#1",
+      "source": "the cell table's columns.",
+      "source_sha256": "86ff70a931e0ea84053f95f820fc730dd7ab084d0d7aae7810f253f6fe9a9374",
+      "translation": "les colonnes de la table des cellules."
+    },
+    {
+      "context": "the DNA channel name in the column names.",
+      "label": "spacr.ops_mitotic.mitotic_features#2",
+      "source": "the DNA channel name in the column names.",
+      "source_sha256": "1058bcf055c97e87a3f560d927aae56ed420584b839438172cb7288c36da0c4d",
+      "translation": "le nom du canal DNA dans les noms de colonnes."
+    },
+    {
+      "context": "the tubulin channel name, or None to use DNA only.",
+      "label": "spacr.ops_mitotic.mitotic_features#3",
+      "source": "the tubulin channel name, or None to use DNA only.",
+      "source_sha256": "02105cbffae2103ee36d951ef408b8c30ca1ad7701ce4f7987ad045cebe5cecb",
+      "translation": "le nom du canal tubuline, ou None pour n’utiliser que le DNA."
+    },
+    {
+      "context": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "label": "spacr.ops_mitotic.mitotic_features#4",
+      "source": "in table order, every nuclear shape feature, every ``nucleus_<dna>_*`` and ``cell_<dna>_*`` feature and, with a tubulin channel, every ``cell_<tubulin>_*`` and ``cytoplasm_<tubulin>_*`` feature.",
+      "source_sha256": "9747198a83a34a44431d9b3e6e1ef2f06228b085dea05220619b012f18d4f604",
+      "translation": "dans l’ordre de la table, chaque variable de forme du noyau, chaque variable ``nucleus_<dna>_*`` et ``cell_<dna>_*`` et, avec un canal tubuline, chaque variable ``cell_<tubulin>_*`` et ``cytoplasm_<tubulin>_*``."
+    },
+    {
+      "context": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#0",
+      "source": "Spearman correlation of per-gene mitotic indices with a reference.",
+      "source_sha256": "366d0a81844c9a61b713be27bb1bfc1fe330b6b26fef2c4ba91fb3b427f095db",
+      "translation": "Corrélation de Spearman des index mitotiques par gène avec une référence."
+    },
+    {
+      "context": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#1",
+      "source": "``gene, n_cells, mitotic_index`` (the all-cell gene table).",
+      "source_sha256": "f5ee2d069f84d7c751821aa4a9b098954d821ed2d92981ff885fdcd6fe79922b",
+      "translation": "``gene, n_cells, mitotic_index`` (la table des gènes sur toutes les cellules)."
+    },
+    {
+      "context": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#2",
+      "source": "``gene, mitotic_index`` rows, such as Funk et al.'s; indices above 1 are dropped as damaged rows.",
+      "source_sha256": "15bd1b79b108d192ce4c54c83672cb7706a831a8449491f77dcd99b1401247ed",
+      "translation": "lignes ``gene, mitotic_index``, comme celles de Funk et al. ; les index supérieurs à 1 sont écartés comme lignes endommagées."
+    },
+    {
+      "context": "the cell-count floors to report.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#3",
+      "source": "the cell-count floors to report.",
+      "source_sha256": "be902a79335727d0900bd5875efe9da4078e9b44d08ca2d7ce0ca1a1e841799a",
+      "translation": "les seuils de nombre de cellules à rapporter."
+    },
+    {
+      "context": "the shuffled-index draws of the control.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#4",
+      "source": "the shuffled-index draws of the control.",
+      "source_sha256": "46c5acd3dd0cabb9edf694436f95af9232522c5f242357ce5357cd09ba196bb2",
+      "translation": "les tirages à index mélangé du contrôle."
+    },
+    {
+      "context": "the shuffle seed.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#5",
+      "source": "the shuffle seed.",
+      "source_sha256": "49cc4a6918f94840f1ae1344fa9d430a0d51a97f16072e73e1fe8333dbb84d9c",
+      "translation": "la graine du mélange."
+    },
+    {
+      "context": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "label": "spacr.ops_mitotic.mitotic_index_agreement#6",
+      "source": "one row per floor: ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``.",
+      "source_sha256": "66f454f648e86bf04a7c4c0ada13214d723302ed9a1c30fb8517b24063985f5a",
+      "translation": "une ligne par seuil : ``min_cells, genes, spearman, shuffled_mean, shuffled_p95_abs``."
+    },
+    {
+      "context": "Call cells mitotic with a trained machine-learning classification model.",
+      "label": "spacr.ops_mitotic.predict_mitotic#0",
+      "source": "Call cells mitotic with a trained classifier.",
+      "source_sha256": "7229c3a8e5b57126545bb9858ec87ee1b6388e02c03f39f4b346952ac2ec178c",
+      "translation": "Déclare des cellules mitotiques à l’aide d’un classifieur entraîné."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.predict_mitotic#1",
+      "source": ":func:`train_mitotic_classifier` or :func:`load_mitotic_classifier` output.",
+      "source_sha256": "e2ff2c06b7cb5e89ee725403118d8936b7e0b8783872bf958e7247630882c987",
+      "translation": "sortie de :func:`train_mitotic_classifier` ou de :func:`load_mitotic_classifier`."
+    },
+    {
+      "context": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.predict_mitotic#2",
+      "source": "one row per cell with the model's features and its ``normalise_by`` column.",
+      "source_sha256": "1e2ca8d1b55e6c9510f04d422788fa45553722e26f9f92397f8808f605082139",
+      "translation": "une ligne par cellule avec les variables du modèle et sa colonne ``normalise_by``."
+    },
+    {
+      "context": "return the probability instead of the call.",
+      "label": "spacr.ops_mitotic.predict_mitotic#3",
+      "source": "return the probability instead of the call.",
+      "source_sha256": "039431a279c20a830e719bdd1067439e1bfc276c6b557db50e5efcd2e7586575",
+      "translation": "renvoie la probabilité au lieu de la décision."
+    },
+    {
+      "context": "a Series over ``cells``: booleans, or probabilities.",
+      "label": "spacr.ops_mitotic.predict_mitotic#4",
+      "source": "a Series over ``cells``: booleans, or probabilities.",
+      "source_sha256": "d31058e2cdfad5822007b11966db811a74ddb6da7921a1f23c6f2f41753e5684",
+      "translation": "une Series sur ``cells`` : des booléens ou des probabilités."
+    },
+    {
+      "context": "when the table lacks a feature the model needs.",
+      "label": "spacr.ops_mitotic.predict_mitotic#5",
+      "source": "when the table lacks a feature the model needs.",
+      "source_sha256": "c20c23a05e2e5f29d5306bb27ef6285711c5cabc1d0c70243d5f6f9c94fac5a9",
+      "translation": "lorsque la table ne contient pas une variable dont le modèle a besoin."
+    },
+    {
+      "context": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#0",
+      "source": "Read a table of labelled cells and turn the classes into mitotic calls.",
+      "source_sha256": "b9924bb1aeb64aa5f511dad492c0eafada54a02c7c8d3e56a89170407286424b",
+      "translation": "Lit une table de cellules annotées et transforme les classes en décisions mitotiques."
+    },
+    {
+      "context": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#1",
+      "source": "a CSV path or a frame with one row per labelled cell and a class column: ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (one half of a telophase pair that segmentation split, counted as mitotic), ``mitotic-stage-disputed`` or ``artefact`` (case, ``_`` and ``/`` do not matter).",
+      "source_sha256": "1961f063fc2acdeac0183e0daeac5a9ec27053158032b79d348d4eb530a5284f",
+      "translation": "un chemin CSV ou un frame avec une ligne par cellule annotée et une colonne de classe : ``interphase``, ``prophase-prometaphase``, ``metaphase``, ``anaphase-telophase``, ``telophase-daughter`` (une moitié d’une paire en télophase que la segmentation a séparée, comptée comme mitotique), ``mitotic-stage-disputed`` ou ``artefact`` (la casse, ``_`` et ``/`` n’ont pas d’importance)."
+    },
+    {
+      "context": "when ``labels`` names extracted image regions rather than cells, a CSV path or frame that maps each extracted image region to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#2",
+      "source": "when ``labels`` names crops rather than cells, a CSV path or frame that maps each crop to its cell: the shared id column plus ``plate, well, site, label``. Keeping it separate lets the labellers work blind to well and gene.",
+      "source_sha256": "f8f738768b3aa43432a69bce4403a3972d4d76c95349fd1f314669fbad6245d3",
+      "translation": "lorsque ``labels`` nomme des vignettes plutôt que des cellules, un chemin CSV ou un frame qui associe chaque vignette à sa cellule : la colonne d’identifiant partagée plus ``plate, well, site, label``. Le garder séparé permet aux annotateurs de travailler sans connaître le puits ni le gène."
+    },
+    {
+      "context": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell structured-data name.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#3",
+      "source": "the class column; found among ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` and ``class3`` when None, or ``label`` when the table has no cell key.",
+      "source_sha256": "569458c8c3e7c2856fc6603fa4841e1855c2cfbf3224172007b4e1713424e2d1",
+      "translation": "la colonne de classe ; recherchée parmi ``class_fine``, ``class``, ``stage``, ``phase``, ``annotation``, ``call``, ``label_class`` et ``class3`` si None, ou ``label`` lorsque la table n’a pas de clé de cellule."
+    },
+    {
+      "context": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#4",
+      "source": "the column shared by ``labels`` and ``mapping``; the one column both have, other than the class, when None.",
+      "source_sha256": "c6dfde46ea9deda0a8b0881af7e47f4b8ea310da8f887fbb68607d532dd63563",
+      "translation": "la colonne partagée par ``labels`` et ``mapping`` ; si None, la seule colonne que les deux ont en commun, hors la classe."
+    },
+    {
+      "context": "``'drop'`` leaves artefact extracted image regions out; ``'negative'`` keeps them as not mitotic, so a machine-learning classification model learns not to call them and its precision counts them as false calls.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#5",
+      "source": "``'drop'`` leaves artefact crops out; ``'negative'`` keeps them as not mitotic, so a classifier learns not to call them and its precision counts them as false calls.",
+      "source_sha256": "630f2d55d432c21c0d82ddc268e0ff9a97a896d420b62fcf2ee222bc434c856f",
+      "translation": "``'drop'`` exclut les vignettes d’artefacts ; ``'negative'`` les conserve comme non mitotiques, de sorte qu’un classifieur apprend à ne pas les déclarer mitotiques et que sa précision les compte comme fausses détections."
+    },
+    {
+      "context": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#6",
+      "source": "``plate, well, site, label, stage, mitotic``: one row per labelled cell, ``stage`` the normalised class and ``mitotic`` True for every mitotic stage.",
+      "source_sha256": "ca883bb60ee0645ba018c9bff886f73267ca8199f5b373fc6308be7515a3f9df",
+      "translation": "``plate, well, site, label, stage, mitotic`` : une ligne par cellule annotée, ``stage`` la classe normalisée et ``mitotic`` True pour chaque stade mitotique."
+    },
+    {
+      "context": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "label": "spacr.ops_mitotic.read_mitotic_labels#7",
+      "source": "for a class that is none of the known ones, a cell labelled twice with different classes, or a missing column.",
+      "source_sha256": "61df3c079e5a77216412fb6ce652e849e4cfdb9ed53409544d4fa164205241d9",
+      "translation": "pour une classe qui ne fait pas partie des classes connues, une cellule annotée deux fois avec des classes différentes ou une colonne manquante."
+    },
+    {
+      "context": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "label": "spacr.ops_mitotic.sampling_weights#0",
+      "source": "Post-stratification weights that make a stratified label set stand for the screen.",
+      "source_sha256": "851cee39420ab49cfa13fb1c28af413a9a60ade459c23cd92b8881756a0cef70",
+      "translation": "Poids de post-stratification qui rendent un jeu d’étiquettes stratifié représentatif du crible."
+    },
+    {
+      "context": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#1",
+      "source": "the sampling stratum of every labelled cell, for example the DNA rule's call (``True``/``False``), when the label set over-samples rule-mitotic cells.",
+      "source_sha256": "e0f0195048787f949b523d1f2c1bd7f0371c19024111a9f52c4316defe54e360",
+      "translation": "la strate d’échantillonnage de chaque cellule annotée, par exemple la décision de la règle DNA (``True``/``False``), lorsque le jeu d’étiquettes suréchantillonne les cellules mitotiques selon la règle."
+    },
+    {
+      "context": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "label": "spacr.ops_mitotic.sampling_weights#2",
+      "source": "each stratum's share of all cells, as ``{stratum: share}``, or ``{(group, stratum): share}`` with ``groups``.",
+      "source_sha256": "e9319526517f9d0cc864f07167caa5b6dcee76535641140192e736c48557f96c",
+      "translation": "la part de chaque strate parmi toutes les cellules, sous la forme ``{stratum: share}``, ou ``{(group, stratum): share}`` avec ``groups``."
+    },
+    {
+      "context": "an optional group (the microplate sample position) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "label": "spacr.ops_mitotic.sampling_weights#3",
+      "source": "an optional group (the well) per labelled cell, when the shares differ between groups. Every group then weighs as much as its labelled cells.",
+      "source_sha256": "aa710bcf97b49bb0841abbf03fc0b04f3877bcfd7d2922442e0fdd3223ad01b2",
+      "translation": "un groupe optionnel (le puits) par cellule annotée, lorsque les parts diffèrent entre groupes. Chaque groupe pèse alors autant que ses cellules annotées."
+    },
+    {
+      "context": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "label": "spacr.ops_mitotic.sampling_weights#4",
+      "source": "one weight per labelled cell, averaging 1: a cell stands for ``share / labelled cells of its stratum``.",
+      "source_sha256": "86913844759e1fab31c3f33debc28487a2d961e09392e8d84f666d7f48b5be73",
+      "translation": "un poids par cellule annotée, de moyenne 1 : une cellule représente ``share / labelled cells of its stratum``."
+    },
+    {
+      "context": "when a stratum has no share.",
+      "label": "spacr.ops_mitotic.sampling_weights#5",
+      "source": "when a stratum has no share.",
+      "source_sha256": "c0b8e6ecd3639d490422dd9913ac7b62a28032a571689daa6b1d28d2da54404f",
+      "translation": "lorsqu’une strate n’a pas de part."
+    },
+    {
+      "context": "Write a trained machine-learning classification model to ``path`` (joblib).",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#0",
+      "source": "Write a trained classifier to ``path`` (joblib).",
+      "source_sha256": "214aad5ea33827dfc0e2d74098470e3a73893d973b27a7b2c3f51e67ab367899",
+      "translation": "Écrit un classifieur entraîné dans ``path`` (joblib)."
+    },
+    {
+      "context": ":func:`train_mitotic_classifier` output.",
+      "label": "spacr.ops_mitotic.save_mitotic_classifier#1",
+      "source": ":func:`train_mitotic_classifier` output.",
+      "source_sha256": "0361e99c3772b780a3305e5e3e0a192938243cb6f44561f8778130c8cd96b9a9",
+      "translation": "sortie de :func:`train_mitotic_classifier`."
+    },
+    {
+      "context": "Train a mitotic machine-learning classification model and validate it with grouped cross-validation.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#0",
+      "source": "Train a mitotic classifier and validate it with grouped cross-validation.",
+      "source_sha256": "f3600d742acf845f9cba4a2d622f932914d3706685c0fdd6e4ec497880732861",
+      "translation": "Entraîne un classifieur mitotique et le valide par validation croisée groupée."
+    },
+    {
+      "context": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#1",
+      "source": "one row per labelled cell, with the feature columns and the ``normalise_by`` column.",
+      "source_sha256": "3a71aafe10b3f8fd924d908f9e91f97ca89426978b28432083d676c8f79b3b2b",
+      "translation": "une ligne par cellule annotée, avec les colonnes de variables et la colonne ``normalise_by``."
+    },
+    {
+      "context": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#10",
+      "source": "also cross-validate on labels shuffled within each group, which keeps every group's mitotic share. Its scores are what a model that learnt nothing achieves.",
+      "source_sha256": "06ae7a39cd81324de4bd5e9cff49219e73a4f6f3384c9c235441a881be77f283",
+      "translation": "effectue aussi une validation croisée sur des étiquettes mélangées au sein de chaque groupe, ce qui conserve la part mitotique de chaque groupe. Ses scores sont ceux d’un modèle qui n’a rien appris."
+    },
+    {
+      "context": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#11",
+      "source": "one weight per cell, used in training and in every metric. Pass :func:`sampling_weights` when the labelled cells were not drawn at random (for example half of them from the rule's mitotic calls); the metrics then describe the whole screen and the model learns the screen's mitotic share, not the label set's.",
+      "source_sha256": "63f550ea37f080347b90b04ff99736341aebea5a924a1d69fcaaa8468164961d",
+      "translation": "un poids par cellule, utilisé à l’entraînement et dans chaque métrique. Passez :func:`sampling_weights` lorsque les cellules annotées n’ont pas été tirées au hasard (par exemple la moitié issue des décisions mitotiques de la règle) ; les métriques décrivent alors l’ensemble du crible et le modèle apprend la part mitotique du crible, et non celle du jeu d’étiquettes."
+    },
+    {
+      "context": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#12",
+      "source": "weigh the two classes equally in training. None (the default) does so without ``sample_weight`` and not with it, since the weights already carry the screen's class balance.",
+      "source_sha256": "499b01dd5a624c1d04a9c2af961039058e6415a5c333078fee56a48d5fb3f8ef",
+      "translation": "pondère également les deux classes à l’entraînement. None (la valeur par défaut) le fait sans ``sample_weight`` et pas avec, puisque les poids portent déjà l’équilibre des classes du crible."
+    },
+    {
+      "context": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#13",
+      "source": "the trained bundle: ``model`` (fitted on every labelled cell), ``features`` (without those that are empty in every labelled cell, such as a feature whose well spread is zero; they are listed in ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (one row per fold), ``summary`` (mean and spread of every metric, the control and the label counts) and ``out_of_fold`` (each cell's held-out probability). Save it with :func:`save_mitotic_classifier`.",
+      "source_sha256": "1b30cdf3e1d9123513447ab73d961e54c7a6acfe0ab9f15d8406f4505963ce8c",
+      "translation": "le paquet entraîné : ``model`` (ajusté sur toutes les cellules annotées), ``features`` (sans celles qui sont vides dans toutes les cellules annotées, comme une variable dont la dispersion dans le puits est nulle ; elles sont listées dans ``summary[\"features_dropped\"]``), ``normalise_by``, ``threshold``, ``folds`` (une ligne par pli), ``summary`` (moyenne et dispersion de chaque métrique, le contrôle et les effectifs d’étiquettes) et ``out_of_fold`` (la probabilité hors échantillon de chaque cellule). Enregistrez-le avec :func:`save_mitotic_classifier`."
+    },
+    {
+      "context": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#14",
+      "source": "for mismatched lengths, missing groups, one class only, or fewer groups than folds.",
+      "source_sha256": "34cd43a3fabad373bb0d50ed3b16f62fa3b08e9951210c7e0907e63acc10c57f",
+      "translation": "pour des longueurs incompatibles, des groupes manquants, une seule classe ou moins de groupes que de plis."
+    },
+    {
+      "context": "True for a mitotic cell, one per row of ``cells``.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#2",
+      "source": "True for a mitotic cell, one per row of ``cells``.",
+      "source_sha256": "bfe2fee9d5e87813680f071efd4d85be09922166791f65adb02b4d7332c1faf0",
+      "translation": "True pour une cellule mitotique, une valeur par ligne de ``cells``."
+    },
+    {
+      "context": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#3",
+      "source": "the columns to learn from; :func:`mitotic_features` of the table's columns when None.",
+      "source_sha256": "af5dc88fd5d868bba6ba7c147461c34d6ab37efaff9adf5e9c7473e5879a852f",
+      "translation": "les colonnes à partir desquelles apprendre ; :func:`mitotic_features` des colonnes de la table si None."
+    },
+    {
+      "context": "the cross-validation groups, one per cell: the well, or the microscope field of view (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#4",
+      "source": "the cross-validation groups, one per cell: the well, or the field (well and site). Cells of one group are always in the same fold. Required: a random split puts neighbours from the same image on both sides and overstates the accuracy.",
+      "source_sha256": "f6ab9ee3fedb78d2daea7f17d9daa56910b7cc8da723a732d310168c09c0015a",
+      "translation": "les groupes de validation croisée, un par cellule : le puits, ou le champ (puits et site). Les cellules d’un même groupe sont toujours dans le même pli. Obligatoire : une séparation aléatoire place des voisines de la même image des deux côtés et surestime l’exactitude."
+    },
+    {
+      "context": "every feature is first made a robust z against all cells of this column's groups (the microplate sample position), so the model travels between microplate sample positions and laboratory microplates; None uses the raw values.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#5",
+      "source": "every feature is first made a robust z against all cells of this column's groups (the well), so the model travels between wells and plates; None uses the raw values.",
+      "source_sha256": "0ae87350dcaa0316e7e8902f74b99c65c664562ed98313f882bf01cd548aed67",
+      "translation": "chaque variable est d’abord convertie en z robuste par rapport à toutes les cellules des groupes de cette colonne (le puits), afin que le modèle soit transposable entre puits et plaques ; None utilise les valeurs brutes."
+    },
+    {
+      "context": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#6",
+      "source": "``'hist_gradient_boosting'`` (the default) or ``'logistic'``, a simpler baseline.",
+      "source_sha256": "c207ad21ad92825be062b0de962646083a9299626357463f9c333149d3f50a07",
+      "translation": "``'hist_gradient_boosting'`` (la valeur par défaut) ou ``'logistic'``, une référence de base plus simple."
+    },
+    {
+      "context": "the number of folds; at most the number of groups.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#7",
+      "source": "the number of folds; at most the number of groups.",
+      "source_sha256": "efe5bfb8651f6a9fa966447c7e1059e908920cec4fc8e0f77a3ba66ca77f9310",
+      "translation": "le nombre de plis ; au plus le nombre de groupes."
+    },
+    {
+      "context": "the model seed and the label-shuffle seed.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#8",
+      "source": "the model seed and the label-shuffle seed.",
+      "source_sha256": "fabc856010ef94a7e3f3df4689b0823a6f8e03cc8752bbf010dcbf8faf70e243",
+      "translation": "la graine du modèle et la graine du mélange des étiquettes."
+    },
+    {
+      "context": "the probability above which a cell is called mitotic.",
+      "label": "spacr.ops_mitotic.train_mitotic_classifier#9",
+      "source": "the probability above which a cell is called mitotic.",
+      "source_sha256": "f093f7a166f05c83530f76f51f0c2c34f14cc8f3ccdfd5f83ce5c3220b8bae7f",
+      "translation": "la probabilité au-delà de laquelle une cellule est déclarée mitotique."
+    },
+    {
+      "context": "Typical variation normalisation (TVN) of optical pooled screening experiment profiles.",
+      "label": "spacr.ops_tvn#0",
+      "source": "Typical variation normalisation (TVN) of optical pooled screen profiles.",
+      "source_sha256": "c5d6ded81f98998e646459753d1b7772135463bc861db240c773bb1a17389cc8",
+      "translation": "Normalisation de la variation typique (TVN) des profils de cribles optiques groupés."
+    },
+    {
+      "context": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "label": "spacr.ops_tvn#1",
+      "source": "TVN turns per-cell features into components in which the non-targeting (control) cells of every batch have the same spread in every direction. It is the profile normalisation of Brieflow (``workflow/lib/aggregate/align.py``, Cheeseman lab, copyright 2025 Massachusetts Institute of Technology, MIT licence). The functions here are a clean reimplementation of its ``centerscale_by_batch``, ``embed_by_pca`` and ``tvn_on_controls`` steps, written so that the result can be checked value for value against it.",
+      "source_sha256": "4b1866f4627923bf30d1ab588cb68cd6edae544bae097010f4013094e3fb7584",
+      "translation": "La TVN transforme les variables par cellule en composantes dans lesquelles les cellules non ciblantes (contrôles) de chaque lot ont la même dispersion dans toutes les directions. C’est la normalisation des profils de Brieflow (``workflow/lib/aggregate/align.py``, laboratoire Cheeseman, copyright 2025 Massachusetts Institute of Technology, licence MIT). Les fonctions ici sont une réimplémentation propre de ses étapes ``centerscale_by_batch``, ``embed_by_pca`` et ``tvn_on_controls``, écrite pour que le résultat puisse lui être comparé valeur par valeur."
+    },
+    {
+      "context": "The steps, with the batch being the microplate sample position:",
+      "label": "spacr.ops_tvn#2",
+      "source": "The steps, with the batch being the well:",
+      "source_sha256": "6ee49f2ba0e83e9cac0f285a76e43de7ac4ef23ef911433942f02897ac57318d",
+      "translation": "Les étapes, le lot étant le puits :"
+    },
+    {
+      "context": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "label": "spacr.ops_tvn#3",
+      "source": "1. columns with more than ``max_nonfinite`` non-finite values are dropped and the remaining gaps are filled with the column median; 2. every batch is centred and scaled on all of its cells; 3. a PCA keeping ``pca_variance`` of the variance is fitted on a random sample of ``pca_sample`` cells (seed ``seed``) and every cell is projected; 4. the projection is centred and scaled on the control cells, rotated onto the principal axes of the control cells, and every axis is scaled to unit variance on the control cells of each batch (the whitening); 5. CORAL aligns the control covariance of every batch to the pooled one (both regularised by ``coral_ridge`` times the identity).",
+      "source_sha256": "05fe0088cee80c64a93b52d4111fc935aa3d3cb8af24e95c2287752e5fe1294f",
+      "translation": "1. les colonnes comportant plus de ``max_nonfinite`` valeurs non finies sont écartées et les lacunes restantes sont remplies avec la médiane de la colonne ; 2. chaque lot est centré et réduit sur l’ensemble de ses cellules ; 3. une PCA conservant ``pca_variance`` de la variance est ajustée sur un échantillon aléatoire de ``pca_sample`` cellules (graine ``seed``) et chaque cellule est projetée ; 4. la projection est centrée et réduite sur les cellules contrôles, tournée sur les axes principaux des cellules contrôles, et chaque axe est mis à variance unitaire sur les cellules contrôles de chaque lot (le blanchiment) ; 5. CORAL aligne la covariance des contrôles de chaque lot sur la covariance commune (toutes deux régularisées par ``coral_ridge`` fois l’identité)."
+    },
+    {
+      "context": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a laboratory microplate or a pool of laboratory microplates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "label": "spacr.ops_tvn#4",
+      "source": "Two implementations are given. :func:`tvn_in_memory` holds every cell at once, as Brieflow does. :func:`fit_tvn_streamed` reads one batch at a time and keeps only the control cells and a PCA sample, so a plate or a pool of plates never sits in memory; :meth:`TVNModel.transform` then applies the fitted model batch by batch.",
+      "source_sha256": "ee0d5dc90521fb90af68c8ee91ea693ca01412cbdb5da62b1bf685ea8b2a74d9",
+      "translation": "Deux implémentations sont fournies. :func:`tvn_in_memory` garde toutes les cellules à la fois, comme Brieflow. :func:`fit_tvn_streamed` lit un lot à la fois et ne conserve que les cellules contrôles et un échantillon pour la PCA, de sorte qu’une plaque ou un ensemble de plaques n’est jamais en mémoire ; :meth:`TVNModel.transform` applique ensuite le modèle ajusté lot par lot."
+    },
+    {
+      "context": "The whitening makes the low-variance tail sensitive to the PCA fit sample. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On laboratory microplate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their string auprc is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the string auprc is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the laboratory microplate A pilot. ``components`` keeps only the leading control axes; it did not help on laboratory microplate A and is off by default.",
+      "label": "spacr.ops_tvn#5",
+      "source": "THE WHITENING MAKES THE LOW-VARIANCE TAIL SENSITIVE TO THE PCA FIT SAMPLE. Step 4 divides every axis by its control spread, so an axis that holds almost no control variance is blown up to the same weight as the first one. Which weak directions survive step 3 depends on the cells in the PCA sample, so two fits that differ only in that sample (or in the order the batches are read) agree on the strong axes but not on the tail. On plate A of Funk et al. 2022 the in-memory and the streamed fits give gene-pair cosines that correlate at only r = 0.82, while their STRING AUPRC is the same. ``whiten_epsilon`` is added to every axis's control variance at both scaling steps (``x / sqrt(var + epsilon)`` instead of ``x / sqrt(var)``), which shrinks the weak axes: at 3, the default, the two fits correlate at r = 0.93 and the STRING AUPRC is at or above Brieflow's. ``whiten_epsilon=0`` is Brieflow's TVN exactly, the setting that reproduces the plate A pilot. ``components`` keeps only the leading control axes; it did not help on plate A and is off by default.",
+      "source_sha256": "5f25cda97f4a2a2db3f88c309ead6a36df750830df0c4af04890f9a38d548bfc",
+      "translation": "LE BLANCHIMENT REND LA QUEUE DE FAIBLE VARIANCE SENSIBLE À L’ÉCHANTILLON D’AJUSTEMENT DE LA PCA. L’étape 4 divise chaque axe par la dispersion de ses contrôles, de sorte qu’un axe qui ne porte presque aucune variance des contrôles est amplifié jusqu’au même poids que le premier. Les directions faibles qui survivent à l’étape 3 dépendent des cellules de l’échantillon de la PCA ; deux ajustements qui ne diffèrent que par cet échantillon (ou par l’ordre de lecture des lots) concordent donc sur les axes forts mais pas sur la queue. Sur la plaque A de Funk et al. 2022, les ajustements en mémoire et en flux donnent des cosinus entre paires de gènes qui ne sont corrélés qu’à r = 0.82, alors que leur AUPRC STRING est identique. ``whiten_epsilon`` est ajouté à la variance des contrôles de chaque axe aux deux étapes de mise à l’échelle (``x / sqrt(var + epsilon)`` au lieu de ``x / sqrt(var)``), ce qui atténue les axes faibles : à 3, la valeur par défaut, les deux ajustements sont corrélés à r = 0.93 et l’AUPRC STRING est égale ou supérieure à celle de Brieflow. ``whiten_epsilon=0`` correspond exactement à la TVN de Brieflow, le réglage qui reproduit le pilote de la plaque A. ``components`` ne conserve que les axes de contrôle principaux ; cela n’a pas aidé sur la plaque A et c’est désactivé par défaut."
+    },
+    {
+      "context": "This is the cell-level TVN of an optical pooled screening experiment. :func:`spacr.batch_correction.spherize_features` is the sphering of microplate sample position-level profiles that pycytominer calls TVN; it is a different step.",
+      "label": "spacr.ops_tvn#6",
+      "source": "This is the cell-level TVN of an optical pooled screen. :func:`spacr.batch_correction.spherize_features` is the sphering of well-level profiles that pycytominer calls TVN; it is a different step.",
+      "source_sha256": "33a57854fd8a528c6746a30fcba2a7d737ba814ed7023b367d61690a1346f2b2",
+      "translation": "Il s’agit de la TVN au niveau cellulaire d’un crible optique groupé. :func:`spacr.batch_correction.spherize_features` est la sphérisation de profils au niveau du puits que pycytominer appelle TVN ; c’est une étape différente."
+    },
+    {
+      "context": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "label": "spacr.ops_tvn.TVNModel#0",
+      "source": "A TVN fitted batch by batch by :func:`fit_tvn_streamed`.",
+      "source_sha256": "200e54ab7cbe982f6afe27003415b8ee520e7818a83de65dece40c1b26f8a976",
+      "translation": "Une TVN ajustée lot par lot par :func:`fit_tvn_streamed`."
+    },
+    {
+      "context": "the input columns kept, as indices.",
+      "label": "spacr.ops_tvn.TVNModel#1",
+      "source": "the input columns kept, as indices.",
+      "source_sha256": "7c5bb41ab96d25c227c5f60de607f47c9e4d5228f74d0002ca6813dfc18d7ce9",
+      "translation": "les colonnes d’entrée conservées, sous forme d’indices."
+    },
+    {
+      "context": "the fill value of every kept column.",
+      "label": "spacr.ops_tvn.TVNModel#2",
+      "source": "the fill value of every kept column.",
+      "source_sha256": "ad9d4d6043816f8a5b4d4d0fca8343deeae6e99a5e2b7c2ffaec17a7ca04128d",
+      "translation": "la valeur de remplissage de chaque colonne conservée."
+    },
+    {
+      "context": "the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#3",
+      "source": "the first PCA.",
+      "source_sha256": "bfb61e9832195e1abb041289465261898912d8fb12027b7cb8b130036453c1c3",
+      "translation": "la première PCA."
+    },
+    {
+      "context": "the control centre after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#4",
+      "source": "the control centre after the first PCA.",
+      "source_sha256": "6e2349c866f6f02655a40528ede65a00f0e96832a4067da911729341e9faeef8",
+      "translation": "le centre des contrôles après la première PCA."
+    },
+    {
+      "context": "the control spread after the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel#5",
+      "source": "the control spread after the first PCA.",
+      "source_sha256": "3c405ddb773e9508037312fa4444f6ea82af393821cfb89bc0d2f855df1de2dd",
+      "translation": "la dispersion des contrôles après la première PCA."
+    },
+    {
+      "context": "the PCA on the control cells.",
+      "label": "spacr.ops_tvn.TVNModel#6",
+      "source": "the PCA on the control cells.",
+      "source_sha256": "9e0f436b9a95691b8ce2b3d3737252d4eca9385740f0c5d688a2260adcc03abd",
+      "translation": "la PCA sur les cellules contrôles."
+    },
+    {
+      "context": "every batch's control centre and whitening scale.",
+      "label": "spacr.ops_tvn.TVNModel#7",
+      "source": "every batch's control centre and whitening scale.",
+      "source_sha256": "24c4a8415ff1df7cd91c204c5c66c7992c3e6f207bc98fefa728d39947336df9",
+      "translation": "le centre des contrôles et l’échelle de blanchiment de chaque lot."
+    },
+    {
+      "context": "every batch's CORAL matrix, or None where it was skipped.",
+      "label": "spacr.ops_tvn.TVNModel#8",
+      "source": "every batch's CORAL matrix, or None where it was skipped.",
+      "source_sha256": "3d2e056f4cf9a2f40988d4859462415663a8a6a410a71b343f64780938d24a7b",
+      "translation": "la matrice CORAL de chaque lot, ou None lorsqu’elle a été ignorée."
+    },
+    {
+      "context": "what the fit kept and skipped.",
+      "label": "spacr.ops_tvn.TVNModel#9",
+      "source": "what the fit kept and skipped.",
+      "source_sha256": "2c66e183b23ad433b8cbe763d11b119a21c1d7c48dfa5a426f54da7479b98317",
+      "translation": "ce que l’ajustement a conservé et ignoré."
+    },
+    {
+      "context": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#0",
+      "source": "Kept columns, gaps filled, centred and scaled on this batch.",
+      "source_sha256": "6b86c6f7d8cd8f41927939d81ef73de2c0ce4251773292303c469c290f2a01a7",
+      "translation": "Colonnes conservées, lacunes remplies, centrées et réduites sur ce lot."
+    },
+    {
+      "context": "one batch's cells, every input column.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#1",
+      "source": "one batch's cells, every input column.",
+      "source_sha256": "a5339b1fe142bb5a23f9bf2f8e164ebea7bea2f7dd79e1ea5554d8b2cf219545",
+      "translation": "les cellules d’un lot, toutes les colonnes d’entrée."
+    },
+    {
+      "context": "float32 values ready for the first PCA.",
+      "label": "spacr.ops_tvn.TVNModel.standardise#2",
+      "source": "float32 values ready for the first PCA.",
+      "source_sha256": "9478f4035633309ed8e2c8a493ec962aea5aaf42834f6c64d0b134dd2235614f",
+      "translation": "valeurs float32 prêtes pour la première PCA."
+    },
+    {
+      "context": "TVN components of one batch's cells.",
+      "label": "spacr.ops_tvn.TVNModel.transform#0",
+      "source": "TVN components of one batch's cells.",
+      "source_sha256": "144fee14055b686cb8b96b5b8741e51cf0c4d625191bc27c3bfef241a64745d7",
+      "translation": "Composantes TVN des cellules d’un lot."
+    },
+    {
+      "context": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "label": "spacr.ops_tvn.TVNModel.transform#1",
+      "source": "the batch's cells, every input column, the same cells the fit saw for this batch.",
+      "source_sha256": "86b81a073b2c62ca53e8ad5a4071e5d4e242db5790ef15e017c2b0b2246433cb",
+      "translation": "les cellules du lot, toutes les colonnes d’entrée, les mêmes cellules que celles vues par l’ajustement pour ce lot."
+    },
+    {
+      "context": "the batch name the fit used.",
+      "label": "spacr.ops_tvn.TVNModel.transform#2",
+      "source": "the batch name the fit used.",
+      "source_sha256": "3e1aa7332a4c4d86423c0129c613c117f94f8a708afe7afee517652780e9352a",
+      "translation": "le nom de lot utilisé par l’ajustement."
+    },
+    {
+      "context": "float32 TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.TVNModel.transform#3",
+      "source": "float32 TVN components, one row per cell.",
+      "source_sha256": "3c7b89c895e4d48472a8888308618ae2a18d722d3dd44af9db5a3effb6185e8b",
+      "translation": "composantes TVN en float32, une ligne par cellule."
+    },
+    {
+      "context": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#0",
+      "source": "Fit TVN one batch at a time, so the cells never sit in memory together.",
+      "source_sha256": "80eaf604f917e0b7270606a59d3d0f6413c97367f0bafbb37cbeb444252127ba",
+      "translation": "Ajuste la TVN un lot à la fois, de sorte que les cellules ne sont jamais ensemble en mémoire."
+    },
+    {
+      "context": "the batch names (microplate sample positions), in reading order.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#1",
+      "source": "the batch names (wells), in reading order.",
+      "source_sha256": "7e25fdf1ffaf298fe58206dee9e34983031bc7253fd93b41831550f0707a6162",
+      "translation": "les noms des lots (puits), dans l’ordre de lecture."
+    },
+    {
+      "context": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#10",
+      "source": "the fitted :class:`TVNModel`; apply it with :meth:`TVNModel.transform`, batch by batch.",
+      "source_sha256": "133104e47102aa3d49b74c2af3da8184e2106c63827c613ae9e613695c8ebde5",
+      "translation": "le :class:`TVNModel` ajusté ; appliquez-le avec :meth:`TVNModel.transform`, lot par lot."
+    },
+    {
+      "context": "for an option out of range or no control cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#11",
+      "source": "for an option out of range or no control cells.",
+      "source_sha256": "7e47398620b3b1c3e2fec41f57023d911eca4f1becdd4d85a99a4697c3a9b1fb",
+      "translation": "pour une option hors limites ou l’absence de cellules contrôles."
+    },
+    {
+      "context": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#12",
+      "source": "The batches are read three times: once for the column screen, once for the PCA sample, and once to project the control cells. Each batch is centred and scaled on all of its own cells before the sample is drawn, so the streamed fit differs from :func:`tvn_in_memory` in the PCA sample only. Batches with no control cells are left unwhitened.",
+      "source_sha256": "b93351812cc3222810024288edb4aa4e55f1b2e88a2b9f5d2032911ef4950ee4",
+      "translation": "Les lots sont lus trois fois : une fois pour le filtrage des colonnes, une fois pour l’échantillon de la PCA et une fois pour projeter les cellules contrôles. Chaque lot est centré et réduit sur l’ensemble de ses propres cellules avant le tirage de l’échantillon, de sorte que l’ajustement en flux ne diffère de :func:`tvn_in_memory` que par l’échantillon de la PCA. Les lots sans cellules contrôles ne sont pas blanchis."
+    },
+    {
+      "context": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#2",
+      "source": "``read(batch) -> (values, control, use)``. ``values`` holds every cell of the batch and every input column; ``control`` marks its control cells and ``use`` the cells to normalise (for example interphase cells). Column screening and fill medians look at every cell; everything else at the ``use`` cells only.",
+      "source_sha256": "c5a6464580f3acc74357c146a40f11022894a0d06e97aa74814cd6aedd6487c8",
+      "translation": "``read(batch) -> (values, control, use)``. ``values`` contient toutes les cellules du lot et toutes les colonnes d’entrée ; ``control`` marque ses cellules contrôles et ``use`` les cellules à normaliser (par exemple les cellules en interphase). Le filtrage des colonnes et les médianes de remplissage portent sur toutes les cellules ; tout le reste uniquement sur les cellules de ``use``."
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#3",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "la variance que conserve la première PCA."
+    },
+    {
+      "context": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#4",
+      "source": "the size of the first PCA's fit sample. Each batch contributes in proportion to its ``use`` cells.",
+      "source_sha256": "3f9ccacbb0312ed12a77e2f419c9c2ab1d165af67250ea256e7921a2b45ab86d",
+      "translation": "la taille de l’échantillon d’ajustement de la première PCA. Chaque lot contribue en proportion de ses cellules de ``use``."
+    },
+    {
+      "context": "the seed of the sample.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#5",
+      "source": "the seed of the sample.",
+      "source_sha256": "8d767a48a740e51ce5ab69d11aae0eaf7282f1db3685e7ab30219ef960d95f91",
+      "translation": "la graine de l’échantillon."
+    },
+    {
+      "context": "passed on as in :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.fit_tvn_streamed#6",
+      "source": "passed on as in :func:`tvn_on_controls`.",
+      "source_sha256": "57e61bb1b58ba872d51140fb53a304668f222a2b55e0868a6a748587892ce1a1",
+      "translation": "transmis comme dans :func:`tvn_on_controls`."
+    },
+    {
+      "context": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#0",
+      "source": "Cosine similarity of every pair of rows, keyed by the two names.",
+      "source_sha256": "cec1c502cf619796bcafa2b88f78c1ad8e2918c06555998164f64697bbb58899",
+      "translation": "Similarité cosinus de chaque paire de lignes, indexée par les deux noms."
+    },
+    {
+      "context": "one row per gene (or guide).",
+      "label": "spacr.ops_tvn.gene_pair_cosines#1",
+      "source": "one row per gene (or guide).",
+      "source_sha256": "243a5edccc18e96292faabfc027f99772656e26af7f83a7c9ff95da36f2a7a47",
+      "translation": "une ligne par gène (ou par guide)."
+    },
+    {
+      "context": "the profile columns.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#2",
+      "source": "the profile columns.",
+      "source_sha256": "589845801dd88893f58d863171fc8cfca63ab3e8288eacb6e8e8a70236425b18",
+      "translation": "les colonnes de profil."
+    },
+    {
+      "context": "the name column.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#3",
+      "source": "the name column.",
+      "source_sha256": "b7d214c852ae8295ca242e7c12e3765709bcb1419cd65509e3a489ba319694c5",
+      "translation": "la colonne des noms."
+    },
+    {
+      "context": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "label": "spacr.ops_tvn.gene_pair_cosines#4",
+      "source": "the upper-triangle cosines, indexed by ``(name_a, name_b)`` in the table's row order. Two TVN fits can be compared by correlating the cosines they give for the same pairs.",
+      "source_sha256": "aacea8c4340880cbb2480be69d95ad5ed612cf7a0c791eb6f70055ca721e688b",
+      "translation": "les cosinus du triangle supérieur, indexés par ``(name_a, name_b)`` dans l’ordre des lignes de la table. Deux ajustements TVN peuvent être comparés en corrélant les cosinus qu’ils donnent pour les mêmes paires."
+    },
+    {
+      "context": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "label": "spacr.ops_tvn.tvn_in_memory#0",
+      "source": "TVN with every cell in memory, as Brieflow's ``align.py`` computes it.",
+      "source_sha256": "6ac7654533afaf9c2efc1d3125d5bbc33cb11b4e3d64a5ea140ddc8afce7dad8",
+      "translation": "TVN avec toutes les cellules en mémoire, telle que la calcule ``align.py`` de Brieflow."
+    },
+    {
+      "context": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "label": "spacr.ops_tvn.tvn_in_memory#1",
+      "source": "one row per cell, one column per feature, worked on in float32, which is the precision Brieflow works in.",
+      "source_sha256": "fcc50fb29f2ded182cfd4323385bb2862ff6b6698e47efb82c79a10e1a7b481c",
+      "translation": "une ligne par cellule, une colonne par variable, traitée en float32, la précision avec laquelle travaille Brieflow."
+    },
+    {
+      "context": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "label": "spacr.ops_tvn.tvn_in_memory#10",
+      "source": "columns with a larger share of non-finite values are dropped; the gaps left in the others are filled with the column median.",
+      "source_sha256": "3f3fa26cbbbff09c6d2aa6655e5c574423c061f3a262834c04e8dc6ce59587db",
+      "translation": "les colonnes présentant une part plus élevée de valeurs non finies sont écartées ; les lacunes restantes dans les autres sont remplies avec la médiane de la colonne."
+    },
+    {
+      "context": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "label": "spacr.ops_tvn.tvn_in_memory#11",
+      "source": "False lets a float32 ``values`` be overwritten instead of copied, which halves the memory a whole plate needs.",
+      "source_sha256": "c9891a322a74e63f092b67b79e778cea796a45809e8915d3299c2f5b1c2d453f",
+      "translation": "False permet qu’un ``values`` en float32 soit écrasé au lieu d’être copié, ce qui divise par deux la mémoire nécessaire pour une plaque entière."
+    },
+    {
+      "context": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "label": "spacr.ops_tvn.tvn_in_memory#12",
+      "source": "``(embedding, info)``: float32 TVN components, one row per cell, and ``info`` with the columns kept, the PCA size and the :func:`tvn_on_controls` notes.",
+      "source_sha256": "21c8ebecb43789b257c2a3e894f778acb9a579a3611827f22972ee5c1ceca90a",
+      "translation": "``(embedding, info)`` : composantes TVN en float32, une ligne par cellule, et ``info`` avec les colonnes conservées, la taille de la PCA et les notes de :func:`tvn_on_controls`."
+    },
+    {
+      "context": "for an option out of range, mismatched lengths or no control cells.",
+      "label": "spacr.ops_tvn.tvn_in_memory#13",
+      "source": "for an option out of range, mismatched lengths or no control cells.",
+      "source_sha256": "73e59d3d0dde790b7e4d55fd879be7af31089871f1299c6f05818ea929c8a0bd",
+      "translation": "pour une option hors limites, des longueurs incompatibles ou l’absence de cellules contrôles."
+    },
+    {
+      "context": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the laboratory microplate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "label": "spacr.ops_tvn.tvn_in_memory#14",
+      "source": "The PCA sample is centred and scaled on itself, batch by batch, before the fit, which is what the plate A pilot did. Everything after that sees every cell. The result therefore depends on ``pca_sample`` and ``seed`` through the PCA axes; see the module notes on the low-variance tail.",
+      "source_sha256": "ccfb0689f851212e59b64ec7806dfcecd0304ee299c083e898cda6bd091a2163",
+      "translation": "L’échantillon de la PCA est centré et réduit sur lui-même, lot par lot, avant l’ajustement, comme l’a fait le pilote de la plaque A. Tout ce qui suit voit toutes les cellules. Le résultat dépend donc de ``pca_sample`` et de ``seed`` par l’intermédiaire des axes de la PCA ; voir les notes du module sur la queue de faible variance."
+    },
+    {
+      "context": "the batch of every cell (the microplate sample position).",
+      "label": "spacr.ops_tvn.tvn_in_memory#2",
+      "source": "the batch of every cell (the well).",
+      "source_sha256": "cee4e475fe301c841969c329c48f4477b944aaa89824cd82d3c93ab22f317bf9",
+      "translation": "le lot de chaque cellule (le puits)."
+    },
+    {
+      "context": "True for every control (non-targeting) cell.",
+      "label": "spacr.ops_tvn.tvn_in_memory#3",
+      "source": "True for every control (non-targeting) cell.",
+      "source_sha256": "0b100afd57cc425c765030338ae52a06e02770ffffb78e6c8332017e948490dd",
+      "translation": "True pour chaque cellule contrôle (non ciblante)."
+    },
+    {
+      "context": "the variance the first PCA keeps.",
+      "label": "spacr.ops_tvn.tvn_in_memory#4",
+      "source": "the variance the first PCA keeps.",
+      "source_sha256": "f16894f4c6ce0c7e93117f349c7100323739008107500fc8d32248f17725330b",
+      "translation": "la variance que conserve la première PCA."
+    },
+    {
+      "context": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "label": "spacr.ops_tvn.tvn_in_memory#5",
+      "source": "the cells the first PCA is fitted on, drawn at random without replacement. All cells when there are fewer.",
+      "source_sha256": "d488fa44dfefa794bbd900b09c95f7048242d8c71d751a07cddf655063ba7251",
+      "translation": "les cellules sur lesquelles la première PCA est ajustée, tirées au hasard sans remise. Toutes les cellules lorsqu’il y en a moins."
+    },
+    {
+      "context": "the seed of that draw.",
+      "label": "spacr.ops_tvn.tvn_in_memory#6",
+      "source": "the seed of that draw.",
+      "source_sha256": "ba447cfe72129dd6982330acc46c797e605f1ec2333752f2b1bdb04ffb160e2c",
+      "translation": "la graine de ce tirage."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#7",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "transmis à :func:`tvn_on_controls`."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#8",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "transmis à :func:`tvn_on_controls`."
+    },
+    {
+      "context": "passed to :func:`tvn_on_controls`.",
+      "label": "spacr.ops_tvn.tvn_in_memory#9",
+      "source": "passed to :func:`tvn_on_controls`.",
+      "source_sha256": "8af42fb9adc22f7813aaf244cb62558f327906b73483317b248bcc39ffc3641f",
+      "translation": "transmis à :func:`tvn_on_controls`."
+    },
+    {
+      "context": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#0",
+      "source": "Whiten an embedding on its control cells and align batches with CORAL.",
+      "source_sha256": "a032e4473182ae6ef3001815f0566161bfe17c216d8bbb63050089c3bff66958",
+      "translation": "Blanchit un plongement sur ses cellules contrôles et aligne les lots avec CORAL."
+    },
+    {
+      "context": "one row per cell, for example PCA components.",
+      "label": "spacr.ops_tvn.tvn_on_controls#1",
+      "source": "one row per cell, for example PCA components.",
+      "source_sha256": "fd1e2dbd58b88fcb0ead36a8e913562faffb946d8c1bffee3d195550e86e9bf8",
+      "translation": "une ligne par cellule, par exemple des composantes de PCA."
+    },
+    {
+      "context": "a boolean array over the rows; True marks a control cell.",
+      "label": "spacr.ops_tvn.tvn_on_controls#2",
+      "source": "a boolean array over the rows; True marks a control cell.",
+      "source_sha256": "f89fadb29e556878bc675c2ba74ddbe24ae835079e4f41403364976aa93405e4",
+      "translation": "un tableau booléen sur les lignes ; True marque une cellule contrôle."
+    },
+    {
+      "context": "the batch of every row (the microplate sample position), or None for one batch.",
+      "label": "spacr.ops_tvn.tvn_on_controls#3",
+      "source": "the batch of every row (the well), or None for one batch.",
+      "source_sha256": "c08305bbcbe7976dc9abf33f64d2d90257b093cfc8b0732415e6f1ef081d752d",
+      "translation": "le lot de chaque ligne (le puits), ou None pour un seul lot."
+    },
+    {
+      "context": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "label": "spacr.ops_tvn.tvn_on_controls#4",
+      "source": "keep this many leading control axes (an int), or the axes holding this fraction of the control variance (a float below 1). None keeps them all, as Brieflow does.",
+      "source_sha256": "6e67024c99a04c5b288b6ed473b5f6a1272995f505ad9c1ba87c81bf7dd6cfdf",
+      "translation": "conserve ce nombre d’axes de contrôle principaux (un int), ou les axes qui portent cette fraction de la variance des contrôles (un float inférieur à 1). None les conserve tous, comme Brieflow."
+    },
+    {
+      "context": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "label": "spacr.ops_tvn.tvn_on_controls#5",
+      "source": "added to every axis's control variance before it is divided out, both when the embedding is first scaled on the control cells and when each batch is whitened, so weak axes are shrunk rather than blown up. 0 is Brieflow's whitening; the default, 3, is the value that stabilised plate A of Funk et al. 2022. It is not the ``tvn_epsilon`` of :func:`spacr.batch_correction.correct_batch_effects` (default 1e-6, added to eigenvalues of a correlation matrix): a different knob on a different scale.",
+      "source_sha256": "3b53f9abe26edb04794ae3e938e539ec4d45ef0d62e4a25fcb33f48208cd3eb8",
+      "translation": "ajouté à la variance des contrôles de chaque axe avant la division par celle-ci, à la fois lors de la première mise à l’échelle du plongement sur les cellules contrôles et lors du blanchiment de chaque lot, de sorte que les axes faibles sont atténués plutôt qu’amplifiés. 0 correspond au blanchiment de Brieflow ; la valeur par défaut, 3, est celle qui a stabilisé la plaque A de Funk et al. 2022. Ce n’est pas le ``tvn_epsilon`` de :func:`spacr.batch_correction.correct_batch_effects` (par défaut 1e-6, ajouté aux valeurs propres d’une matrice de corrélation) : c’est un réglage différent, sur une autre échelle."
+    },
+    {
+      "context": "the multiple of the identity added to every covariance before CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#6",
+      "source": "the multiple of the identity added to every covariance before CORAL.",
+      "source_sha256": "f17a846991108b9e5479c067916c5e163bc6d84661d6879255bda7f381587f7c",
+      "translation": "le multiple de l’identité ajouté à chaque covariance avant CORAL."
+    },
+    {
+      "context": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "label": "spacr.ops_tvn.tvn_on_controls#7",
+      "source": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",
+      "source_sha256": "e6d0ab8079d9ae1df4cac42c5cf75a5c4410a3e9fa1e8b476e630fab9456616c",
+      "translation": "``(embedding, info)``. ``info`` liste les axes conservés et les lots que CORAL a ignorés parce qu’ils avaient moins de cellules contrôles que d’axes ou une covariance singulière."
+    },
+    {
+      "context": "when there are no control cells.",
+      "label": "spacr.ops_tvn.tvn_on_controls#8",
+      "source": "when there are no control cells.",
+      "source_sha256": "a0fbca341591cefbf28209143e4c944816b3dc0f33076f24fa177db91a1a91c7",
+      "translation": "lorsqu’il n’y a aucune cellule contrôle."
+    },
+    {
+      "context": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "label": "spacr.ops_tvn.tvn_on_controls#9",
+      "source": "The steps follow Brieflow's ``tvn_on_controls``: centre and scale on all control cells, rotate onto the principal axes of the control cells, centre and scale every axis on each batch's control cells, then CORAL.",
+      "source_sha256": "073ac81334395e1424f821c20b06b26312185143e5143a383498deaa7248d38d",
+      "translation": "Les étapes suivent ``tvn_on_controls`` de Brieflow : centrer et réduire sur toutes les cellules contrôles, tourner sur les axes principaux des cellules contrôles, centrer et réduire chaque axe sur les cellules contrôles de chaque lot, puis CORAL."
+    },
+    {
+      "context": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "label": "spacr.ops_tvn.tvn_options#0",
+      "source": "TVN keyword arguments from ``ops_tvn_*`` settings.",
+      "source_sha256": "b0818eb696b45bea984757cfcec6ad32b0abf298513a9ff24439a27d37359c2a",
+      "translation": "Arguments nommés TVN issus des paramètres ``ops_tvn_*``."
+    },
+    {
+      "context": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "label": "spacr.ops_tvn.tvn_options#1",
+      "source": "read for ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` and ``ops_tvn_whiten_epsilon``.",
+      "source_sha256": "eb45826c9f0d109f5acf60b963fc195bc09108071175c5483e1bbb1c6c3b608c",
+      "translation": "lu pour ``ops_tvn_pca_sample``, ``ops_tvn_seed``, ``ops_tvn_components`` et ``ops_tvn_whiten_epsilon``."
+    },
+    {
+      "context": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "label": "spacr.ops_tvn.tvn_options#2",
+      "source": "keyword arguments for :func:`tvn_in_memory` and :func:`fit_tvn_streamed`; a missing or empty setting takes its default from :data:`TVN_DEFAULTS`.",
+      "source_sha256": "2230241802baf6a46c6987cf75beb55a3f814c19c82277b39184ac99b6282e13",
+      "translation": "arguments nommés pour :func:`tvn_in_memory` et :func:`fit_tvn_streamed` ; un paramètre absent ou vide prend sa valeur par défaut dans :data:`TVN_DEFAULTS`."
+    },
+    {
+      "context": "Guide and gene profiles from per-cell TVN components.",
+      "label": "spacr.ops_tvn.tvn_profiles#0",
+      "source": "Guide and gene profiles from per-cell TVN components.",
+      "source_sha256": "50b3e25702dd8cb346eb07bfb80c2ccf108c2e19a3d1041b3e6eced2c88e1fc8",
+      "translation": "Profils de guides et de gènes à partir des composantes TVN par cellule."
+    },
+    {
+      "context": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "label": "spacr.ops_tvn.tvn_profiles#1",
+      "source": "one row per cell with the ``guide`` and ``gene`` columns, in the row order of ``embedding``.",
+      "source_sha256": "17a0354d52875e3d5cdefa78898d2a63e3e048a97be9e852d0d2fc262aca8f90",
+      "translation": "une ligne par cellule avec les colonnes ``guide`` et ``gene``, dans l’ordre des lignes de ``embedding``."
+    },
+    {
+      "context": "the TVN components, one row per cell.",
+      "label": "spacr.ops_tvn.tvn_profiles#2",
+      "source": "the TVN components, one row per cell.",
+      "source_sha256": "88fe0daf1e7406fdd5e4e884c5a261675c62c37d4374950fc0362de249fad88f",
+      "translation": "les composantes TVN, une ligne par cellule."
+    },
+    {
+      "context": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "label": "spacr.ops_tvn.tvn_profiles#5",
+      "source": "the component column prefix (``PC_0``, ``PC_1``, ...).",
+      "source_sha256": "c0d534517e158315c8ec03987cc77cbdb8cfa36098724858c9200e944b7c3e56",
+      "translation": "le préfixe des colonnes de composantes (``PC_0``, ``PC_1``, ...)."
+    },
+    {
+      "context": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "label": "spacr.ops_tvn.tvn_profiles#6",
+      "source": "``(guides, genes)``: a guide is the median of its cells and a gene the median of its guides, as for robust z profiles.",
+      "source_sha256": "d595254b7646d18443e06c29abba90a03e5be31c2a5d86dac078c39fd920eaac",
+      "translation": "``(guides, genes)`` : un guide est la médiane de ses cellules et un gène la médiane de ses guides, comme pour les profils en z robuste."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-08 against the exact English source of the public docstring blocks added or changed on the batch4-1108 branch: the spacr.ops_tvn, spacr.ops_clusters and spacr.ops_mitotic modules and their 35 callables (items 854, 855 and 856), and the changed spacr.batch_correction.spherize_features and correct_batch_effects blocks (items 863 and 770). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

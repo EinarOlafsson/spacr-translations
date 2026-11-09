@@ -1,0 +1,644 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Give one movie's division results minutes and micrometres.",
+      "label": "spacr.division_analysis.calibrate_divisions#0",
+      "source": "Give one movie's division results minutes and micrometres.",
+      "source_sha256": "feec929c7f8f8ec2a3dbb3fd6eeb54b8eebb92be5c42efe9812afafda636f7e4",
+      "translation": "한 영상의 분열 결과를 분과 마이크로미터 단위로 나타냅니다."
+    },
+    {
+      "context": ":func:`analyse_divisions` works in frames and pixels. With the movie's frame interval, times gain ``_min`` columns (``t_div_min``, ``t_birth_min``, ``t_division_min``, ``duration_min``, ``rel_t_min``); with its pixel size, areas gain ``_um2`` and lengths ``_um`` columns; with both, speed gains ``_um_per_min`` columns. The frame and pixel columns stay. Every effect and trajectory row gets the unit of its change, and the summary the calibration, the units, ``window_min``, ``median_cycle_min`` and ``units_note``. A missing value is never guessed: those results stay in frames or pixels and ``units_note`` says which. Calling it again replaces the earlier calibration.",
+      "label": "spacr.division_analysis.calibrate_divisions#1",
+      "source": ":func:`analyse_divisions` works in frames and pixels. With the movie's frame interval, times gain ``_min`` columns (``t_div_min``, ``t_birth_min``, ``t_division_min``, ``duration_min``, ``rel_t_min``); with its pixel size, areas gain ``_um2`` and lengths ``_um`` columns; with both, speed gains ``_um_per_min`` columns. The frame and pixel columns stay. Every effect and trajectory row gets the unit of its change, and the summary the calibration, the units, ``window_min``, ``median_cycle_min`` and ``units_note``. A missing value is never guessed: those results stay in frames or pixels and ``units_note`` says which. Calling it again replaces the earlier calibration.",
+      "source_sha256": "867dc69a7cac47f748b6238ee56fe5ed2795f113c8b73783f2b5a7b5f514629d",
+      "translation": ":func:`analyse_divisions` 는 프레임과 픽셀 단위로 작동합니다. 영상의 프레임 간격이 있으면 시간에 ``_min`` 열(``t_div_min``, ``t_birth_min``, ``t_division_min``, ``duration_min``, ``rel_t_min``)이 추가되고, 픽셀 크기가 있으면 면적에 ``_um2`` 열, 길이에 ``_um`` 열이 추가되며, 둘 다 있으면 속도에 ``_um_per_min`` 열이 추가됩니다. 프레임 열과 픽셀 열은 그대로 남습니다. 각 효과 행과 궤적 행에는 그 변화의 단위가 기록되고, 요약에는 보정값, 단위, ``window_min``, ``median_cycle_min``, ``units_note`` 가 기록됩니다. 없는 값은 결코 추정하지 않습니다. 해당 결과는 프레임 또는 픽셀 단위로 남고 ``units_note`` 가 어떤 결과인지 알려 줍니다. 다시 호출하면 이전 보정을 대체합니다."
+    },
+    {
+      "context": "the key-value mapping from :func:`analyse_divisions` or :func:`read_division_results`; changed in place.",
+      "label": "spacr.division_analysis.calibrate_divisions#2",
+      "source": "the dict from :func:`analyse_divisions` or :func:`read_division_results`; changed in place.",
+      "source_sha256": "1afedb2781e7b760cc46325352b5f04db5d61d81a359a20cea7cb1f7f9b1d509",
+      "translation": ":func:`analyse_divisions` 또는 :func:`read_division_results` 에서 얻은 dict이며, 제자리에서 변경됩니다."
+    },
+    {
+      "context": "minutes between frames, or None when unknown.",
+      "label": "spacr.division_analysis.calibrate_divisions#3",
+      "source": "minutes between frames, or None when unknown.",
+      "source_sha256": "fc9e11eb5cc0d81ee0526ea048d7bba0a7077a8641d06628bf64a02618846065",
+      "translation": "프레임 사이의 분, 알 수 없으면 None."
+    },
+    {
+      "context": "micrometres per pixel, or None when unknown.",
+      "label": "spacr.division_analysis.calibrate_divisions#4",
+      "source": "micrometres per pixel, or None when unknown.",
+      "source_sha256": "3fdb9bc04388056e7d7bf3f6c8815616aac76848e7190e747e3a9ffb461ceea2",
+      "translation": "픽셀당 마이크로미터, 알 수 없으면 None."
+    },
+    {
+      "context": "for a value that is not a positive number.",
+      "label": "spacr.division_analysis.calibrate_divisions#6",
+      "source": "for a value that is not a positive number.",
+      "source_sha256": "a3e36f9503b669ffa8e5b45e4f8e186b74d152be4dd4265728b781f3cb2fd76f",
+      "translation": "양수가 아닌 값인 경우."
+    },
+    {
+      "context": "Hedges' g with a cell and a movie bootstrap interval.",
+      "label": "spacr.division_analysis.movie_effect_size#0",
+      "source": "Hedges' g with a cell and a movie bootstrap interval.",
+      "source_sha256": "e0fc2066dbadcb2c0665fe0a5e405aa65288ed8515e372434433d669d69b96cf",
+      "translation": "세포 부트스트랩 구간과 영상 부트스트랩 구간을 함께 제공하는 Hedges' g."
+    },
+    {
+      "context": ":func:`effect_size` gives g and the cell interval, drawn first from the same generator, so with one movie the result is the cell result. Cells of one movie share its imaging and are not independent, so a second interval resamples movies with replacement, keeps all of a drawn movie's treated and control values and recomputes g. From ``min_movies`` movies on it is the reported interval; with fewer it is shown beside the cell one, and one movie has no movie interval.",
+      "label": "spacr.division_analysis.movie_effect_size#1",
+      "source": ":func:`effect_size` gives g and the cell interval, drawn first from the same generator, so with one movie the result is the cell result. Cells of one movie share its imaging and are not independent, so a second interval resamples movies with replacement, keeps all of a drawn movie's treated and control values and recomputes g. From ``min_movies`` movies on it is the reported interval; with fewer it is shown beside the cell one, and one movie has no movie interval.",
+      "source_sha256": "ab08cf291e27ff61a78b1611f636a12e130586e585c8544376f9e1347e26dee6",
+      "translation": ":func:`effect_size` 가 g와 세포 구간을 제공하며, 이들은 같은 생성기에서 먼저 추출되므로 영상이 하나일 때 결과는 세포 결과와 같습니다. 한 영상의 세포들은 그 영상의 촬영 조건을 공유하므로 독립적이지 않습니다. 따라서 두 번째 구간은 영상을 복원추출로 재표본추출하고, 추출된 영상의 처리군 값과 대조군 값을 모두 유지한 채 g를 다시 계산합니다. 영상이 ``min_movies`` 개 이상이면 이 구간이 보고되는 구간이고, 그보다 적으면 세포 구간 옆에 표시되며, 영상이 하나이면 영상 구간이 없습니다."
+    },
+    {
+      "context": "when only one group's movies are given, or a movie list does not match its values in length.",
+      "label": "spacr.division_analysis.movie_effect_size#10",
+      "source": "when only one group's movies are given, or a movie list does not match its values in length.",
+      "source_sha256": "efbb2753ca89b51242e4fef9c4cad6df40bd85b2ee4bdf1137e34d92f81c8e42",
+      "translation": "한 군의 영상만 주어졌거나, 영상 목록의 길이가 해당 값들과 일치하지 않는 경우."
+    },
+    {
+      "context": "the movie of each ``treated`` value, or None when every value comes from one movie.",
+      "label": "spacr.division_analysis.movie_effect_size#4",
+      "source": "the movie of each ``treated`` value, or None when every value comes from one movie.",
+      "source_sha256": "0e6cef3ad7913bfe0bffa60d7907a1cbc1e3c203c4024e6f45baa9df0dc5a2eb",
+      "translation": "각 ``treated`` 값의 영상, 또는 모든 값이 한 영상에서 나온 경우 None."
+    },
+    {
+      "context": "the movie of each ``control`` value, or None.",
+      "label": "spacr.division_analysis.movie_effect_size#5",
+      "source": "the movie of each ``control`` value, or None.",
+      "source_sha256": "05f7a65bf3f8368a6f14b6a509286cb80512891c42d4677fe87154d37e4fc057",
+      "translation": "각 ``control`` 값의 영상, 또는 None."
+    },
+    {
+      "context": "the fewest movies for which the movie interval is the reported one.",
+      "label": "spacr.division_analysis.movie_effect_size#8",
+      "source": "the fewest movies for which the movie interval is the reported one.",
+      "source_sha256": "fe0c65cc3314d3ff6c940e012150e8081916643eb4c59044891999019dc10acb",
+      "translation": "영상 구간이 보고되는 구간이 되는 최소 영상 수."
+    },
+    {
+      "context": "the keys of :func:`effect_size`, with ``ci_low``, ``ci_high`` and ``var_g`` the reported ones (``var_g`` is the movie bootstrap variance when the movie interval is reported, the one to give :func:`random_effects_meta`), and ``ci_method`` (``'cell'``, ``'movie'`` or ``'none'``), ``cell_ci_low``, ``cell_ci_high``, ``movie_ci_low``, ``movie_ci_high``, ``movie_ci_note``, ``n_movies`` and ``var_g_large_sample``.",
+      "label": "spacr.division_analysis.movie_effect_size#9",
+      "source": "the keys of :func:`effect_size`, with ``ci_low``, ``ci_high`` and ``var_g`` the reported ones (``var_g`` is the movie bootstrap variance when the movie interval is reported, the one to give :func:`random_effects_meta`), and ``ci_method`` (``'cell'``, ``'movie'`` or ``'none'``), ``cell_ci_low``, ``cell_ci_high``, ``movie_ci_low``, ``movie_ci_high``, ``movie_ci_note``, ``n_movies`` and ``var_g_large_sample``.",
+      "source_sha256": "38c37f739be962a4a1a7da161eb7bfe694037d8cdad98576c42e59ec0880dda2",
+      "translation": ":func:`effect_size` 의 키로, ``ci_low``, ``ci_high``, ``var_g`` 는 보고되는 값입니다(영상 구간이 보고될 때 ``var_g`` 는 영상 부트스트랩 분산이며, :func:`random_effects_meta` 에 전달할 값입니다). 그 밖에 ``ci_method``(``'cell'``, ``'movie'`` 또는 ``'none'``), ``cell_ci_low``, ``cell_ci_high``, ``movie_ci_low``, ``movie_ci_high``, ``movie_ci_note``, ``n_movies``, ``var_g_large_sample`` 이 포함됩니다."
+    },
+    {
+      "context": "Pool several movies' division analyses, with intervals that resample movies.",
+      "label": "spacr.division_analysis.pool_division_movies#0",
+      "source": "Pool several movies' division analyses, with intervals that resample movies.",
+      "source_sha256": "13f91627bbc2ae3ada3df1657aed15fb747b3554cd62ef517b5360c4a9c2887b",
+      "translation": "여러 영상의 분열 분석을 통합하며, 구간은 영상을 재표본추출합니다."
+    },
+    {
+      "context": "Every movie's unit changes (the ``changes`` table of :func:`analyse_divisions`) are put together and compared again as Hedges' g (:func:`movie_effect_size` with the movie of every unit), so from ``min_movies`` movies on the interval resamples movies rather than cells; with fewer the cell interval is reported and the movie one shown beside it, and one movie has no movie interval. Log-ratio changes have no unit. Speed changes are pooled in um/min when every movie has its frame interval and pixel size, else in px/frame, and ``units_note`` says so. Trajectories are pooled frame by frame when the movies share a frame interval (or none has one); cycles are pooled with their movie and the size control is refitted, in um^2 when every movie has its pixel size.",
+      "label": "spacr.division_analysis.pool_division_movies#1",
+      "source": "Every movie's unit changes (the ``changes`` table of :func:`analyse_divisions`) are put together and compared again as Hedges' g (:func:`movie_effect_size` with the movie of every unit), so from ``min_movies`` movies on the interval resamples movies rather than cells; with fewer the cell interval is reported and the movie one shown beside it, and one movie has no movie interval. Log-ratio changes have no unit. Speed changes are pooled in um/min when every movie has its frame interval and pixel size, else in px/frame, and ``units_note`` says so. Trajectories are pooled frame by frame when the movies share a frame interval (or none has one); cycles are pooled with their movie and the size control is refitted, in um^2 when every movie has its pixel size.",
+      "source_sha256": "a1681525990c306f3c8bb35dadfd1735580ed90e0585abecd3b7f663a07034dd",
+      "translation": "모든 영상의 단위 변화(``changes`` 테이블로, :func:`analyse_divisions` 가 생성)를 한데 모아 Hedges' g로 다시 비교합니다(각 단위의 영상을 지정한 :func:`movie_effect_size`). 따라서 영상이 ``min_movies`` 개 이상이면 구간은 세포가 아니라 영상을 재표본추출합니다. 그보다 적으면 세포 구간이 보고되고 영상 구간은 그 옆에 표시되며, 영상이 하나이면 영상 구간이 없습니다. 로그 비율 변화에는 단위가 없습니다. 속도 변화는 모든 영상에 프레임 간격과 픽셀 크기가 있으면 um/min 단위로, 그렇지 않으면 px/frame 단위로 통합되며, ``units_note`` 가 이를 알려 줍니다. 궤적은 영상들의 프레임 간격이 같을 때(또는 어느 영상에도 없을 때) 프레임 단위로 통합됩니다. 주기는 해당 영상과 함께 통합되고 크기 조절 적합을 다시 수행하며, 모든 영상에 픽셀 크기가 있으면 um^2 단위로 수행합니다."
+    },
+    {
+      "context": "mapping of movie name to the results key-value mapping of :func:`analyse_divisions` or :func:`read_division_results`.",
+      "label": "spacr.division_analysis.pool_division_movies#2",
+      "source": "mapping of movie name to the results dict of :func:`analyse_divisions` or :func:`read_division_results`.",
+      "source_sha256": "a95948993666d1d23ae1f1b3c871626f68ddb2238d4525c33ab08a1bb31049a0",
+      "translation": "영상 이름에서 :func:`analyse_divisions` 또는 :func:`read_division_results` 의 결과 dict로의 매핑."
+    },
+    {
+      "context": "bootstrap resamples for every interval.",
+      "label": "spacr.division_analysis.pool_division_movies#3",
+      "source": "bootstrap resamples for every interval.",
+      "source_sha256": "c34266a826da5bf0e3de768a5d17108cbb514395cde53b7db273b399ca2165fc",
+      "translation": "각 구간의 부트스트랩 재표본 수."
+    },
+    {
+      "context": "seed or generator; the default seed makes the intervals repeatable.",
+      "label": "spacr.division_analysis.pool_division_movies#4",
+      "source": "seed or generator; the default seed makes the intervals repeatable.",
+      "source_sha256": "989ba281630b4ee9939d56050c8a63d751e9752344dfecc3244475edc4794d41",
+      "translation": "시드 또는 생성기. 기본 시드를 쓰면 구간이 재현됩니다."
+    },
+    {
+      "context": "the fewest movies for which the movie interval is the reported one.",
+      "label": "spacr.division_analysis.pool_division_movies#5",
+      "source": "the fewest movies for which the movie interval is the reported one.",
+      "source_sha256": "fe0c65cc3314d3ff6c940e012150e8081916643eb4c59044891999019dc10acb",
+      "translation": "영상 구간이 보고되는 구간이 되는 최소 영상 수."
+    },
+    {
+      "context": "the same tables as :func:`analyse_divisions`, every row of ``events``, ``cycles`` and ``changes`` with its ``movie``, and a ``summary`` with ``n_movies``, ``movies``, ``ci_method``, ``min_movies``, ``per_movie`` calibration and counts, and the units.",
+      "label": "spacr.division_analysis.pool_division_movies#6",
+      "source": "the same tables as :func:`analyse_divisions`, every row of ``events``, ``cycles`` and ``changes`` with its ``movie``, and a ``summary`` with ``n_movies``, ``movies``, ``ci_method``, ``min_movies``, ``per_movie`` calibration and counts, and the units.",
+      "source_sha256": "ccc0404f9a7ff5a5c38d5936e91ad4659bae78ad9b7cf2c97023591a04afb1ec",
+      "translation": ":func:`analyse_divisions` 와 같은 테이블로, ``events``, ``cycles``, ``changes`` 의 모든 행에 ``movie`` 가 붙고, ``summary`` 에는 ``n_movies``, ``movies``, ``ci_method``, ``min_movies``, ``per_movie`` 보정값과 개수, 그리고 단위가 들어 있습니다."
+    },
+    {
+      "context": "when no movie has a ``changes`` table.",
+      "label": "spacr.division_analysis.pool_division_movies#7",
+      "source": "when no movie has a ``changes`` table.",
+      "source_sha256": "014abbc117310d05ee1e0f61e120e092ee09eecc80085ac0f3fec9abbb2a73c5",
+      "translation": "어떤 영상에도 ``changes`` 테이블이 없는 경우."
+    },
+    {
+      "context": "Fetch a public imaging dataset and check it against the archive's file list.",
+      "label": "spacr.public_datasets#0",
+      "source": "Fetch a public imaging dataset and check it against the archive's file list.",
+      "source_sha256": "8cdd9a3469c8504bcd98dbb89be09863a1af7193624fb0d911fbe6cd3f11faa8",
+      "translation": "공개 이미징 데이터셋을 가져와 아카이브의 파일 목록과 대조합니다."
+    },
+    {
+      "context": "A reanalysis of a public application view starts with a transfer of hundreds of gigabytes to several terabytes. Interrupted transfers leave files that look present: a zero-byte TIFF, a truncated ZIP, or a full-size file that lftp was still filling in when it stopped (it keeps a ``.lftp-pget-status`` file beside it). A processing session started on such a mirror fails hours later, or loses a microplate sample position without failing. This module finds those files before the processing session starts, and fetches only them.",
+      "label": "spacr.public_datasets#1",
+      "source": "A reanalysis of a public screen starts with a transfer of hundreds of gigabytes to several terabytes. Interrupted transfers leave files that look present: a zero-byte TIFF, a truncated ZIP, or a full-size file that lftp was still filling in when it stopped (it keeps a ``.lftp-pget-status`` file beside it). A run started on such a mirror fails hours later, or loses a well without failing. This module finds those files before the run starts, and fetches only them.",
+      "source_sha256": "83aa9f8c2671ea095d1918ad5872af08d8de0d0825624c94c0c5dce057804305",
+      "translation": "공개 스크린의 재분석은 수백 기가바이트에서 수 테라바이트에 이르는 전송으로 시작합니다. 중단된 전송은 있는 것처럼 보이는 파일을 남깁니다. 0바이트 TIFF, 잘린 ZIP, 또는 lftp가 멈출 때까지 채우던 원래 크기의 파일(그 옆에 ``.lftp-pget-status`` 파일을 남김)이 그런 예입니다. 이런 미러에서 시작한 실행은 몇 시간 뒤에 실패하거나, 실패하지 않은 채 웰 하나를 잃습니다. 이 모듈은 실행을 시작하기 전에 그런 파일을 찾아 그 파일만 가져옵니다."
+    },
+    {
+      "context": "Parallelism is across files, not within one file: an archive of many TIFFs keeps every worker busy, and a single large ZIP is resumed rather than split. The worker count is clamped by :func:`spacr.resource_log._guard_workers`.",
+      "label": "spacr.public_datasets#10",
+      "source": "Parallelism is across files, not within one file: an archive of many TIFFs keeps every worker busy, and a single large ZIP is resumed rather than split. The worker count is clamped by :func:`spacr.resource_log._guard_workers`.",
+      "source_sha256": "6ef21dc5320bf7db38f2661a8120c31489476219cb46dccb02ae2d55d11998f6",
+      "translation": "병렬 처리는 한 파일 내부가 아니라 파일 사이에서 이루어집니다. TIFF가 많은 아카이브는 모든 워커를 바쁘게 유지하고, 큰 ZIP 하나는 분할하지 않고 이어 받습니다. 워커 수는 :func:`spacr.resource_log._guard_workers` 가 제한합니다."
+    },
+    {
+      "context": "Three archives are named, and any other one works from a file list:",
+      "label": "spacr.public_datasets#2",
+      "source": "Three archives are named, and any other one works from a file list:",
+      "source_sha256": "17a9d0ff800b48e4aede215807c89a3d6e57a12166909f5bde707165d6d28f2e",
+      "translation": "세 아카이브가 이름으로 지정되어 있으며, 그 밖의 아카이브는 파일 목록으로 사용할 수 있습니다."
+    },
+    {
+      "context": "the BioImage Archive (``'bia'``, an accession such as ``S-BIAD394``), whose files are under ``https://ftp.ebi.ac.uk/biostudies/fire/``;",
+      "label": "spacr.public_datasets#3",
+      "source": "the BioImage Archive (``'bia'``, an accession such as ``S-BIAD394``), whose files are under ``https://ftp.ebi.ac.uk/biostudies/fire/``;",
+      "source_sha256": "26181d901fa5a45e01509e5b549e0a5c910c41b8f5ab307becb6f7260dbe1b1c",
+      "translation": "BioImage Archive(``'bia'``, ``S-BIAD394`` 같은 접근 번호). 파일 위치: ``https://ftp.ebi.ac.uk/biostudies/fire/``;"
+    },
+    {
+      "context": "the Image Data Resource (``'idr'``, a study such as ``idr0094-ellinger-sarscov2``), under ``https://ftp.ebi.ac.uk/pub/databases/IDR/``;",
+      "label": "spacr.public_datasets#4",
+      "source": "the Image Data Resource (``'idr'``, a study such as ``idr0094-ellinger-sarscov2``), under ``https://ftp.ebi.ac.uk/pub/databases/IDR/``;",
+      "source_sha256": "6ce752c03f4c66015bcbec08022c97b7884956f5df16b89328400beb0ed7da2b",
+      "translation": "Image Data Resource(``'idr'``, ``idr0094-ellinger-sarscov2`` 같은 연구). 위치: ``https://ftp.ebi.ac.uk/pub/databases/IDR/``;"
+    },
+    {
+      "context": "the Broad Bioimage Benchmark Collection (``'bbbc'``, a set such as ``BBBC021``), whose ZIP archives are under ``https://data.broadinstitute.org/bbbc/``;",
+      "label": "spacr.public_datasets#5",
+      "source": "the Broad Bioimage Benchmark Collection (``'bbbc'``, a set such as ``BBBC021``), whose ZIP archives are under ``https://data.broadinstitute.org/bbbc/``;",
+      "source_sha256": "2fd7e2132b6e226d705e43b0fd21890876f77e3210e50aab4647ed067110dac0",
+      "translation": "Broad Bioimage Benchmark Collection(``'bbbc'``, ``BBBC021`` 같은 세트). ZIP 아카이브 위치: ``https://data.broadinstitute.org/bbbc/``;"
+    },
+    {
+      "context": "``'url'``: a file list whose rows are full addresses.",
+      "label": "spacr.public_datasets#6",
+      "source": "``'url'``: a file list whose rows are full addresses.",
+      "source_sha256": "5cf8fbc12921ccbaf0f8a15941d866d5c64db17c031eeda3530e3904b46e3448",
+      "translation": "``'url'``: 각 행이 전체 주소인 파일 목록."
+    },
+    {
+      "context": "The file list (the manifest) is a TSV, CSV or JSON table with a path column and, where the archive publishes them, a size and an MD5 or SHA-256 column, or a text file with one address per line (the form of the 2026-10-31 ``bbbc021_urls.txt``). Without a file list, a BioImage Archive or IDR folder is listed over FTP, which gives every file's size, and a BBBC folder from its web index.",
+      "label": "spacr.public_datasets#7",
+      "source": "The file list (the manifest) is a TSV, CSV or JSON table with a path column and, where the archive publishes them, a size and an MD5 or SHA-256 column, or a text file with one address per line (the form of the 2026-10-31 ``bbbc021_urls.txt``). Without a file list, a BioImage Archive or IDR folder is listed over FTP, which gives every file's size, and a BBBC folder from its web index.",
+      "source_sha256": "d8e9e77f26229346d305a38f7defaa490d391a7a66c6a0eaddf94bdb8a1936bb",
+      "translation": "파일 목록(매니페스트)은 경로 열과, 아카이브가 공개하는 경우 크기 열 및 MD5 또는 SHA-256 열을 가진 TSV, CSV 또는 JSON 테이블이거나, 한 줄에 주소 하나가 있는 텍스트 파일(2026-10-31 ``bbbc021_urls.txt`` 의 형식)입니다. 파일 목록이 없으면 BioImage Archive 또는 IDR 폴더는 FTP로 나열하여 각 파일의 크기를 얻고, BBBC 폴더는 웹 인덱스에서 나열합니다."
+    },
+    {
+      "context": ":func:`check_completeness` compares the local folder with the manifest and gives every file one status: ``ok``, ``missing``, ``empty`` (zero bytes), ``short`` or ``long`` (size differs from the archive's), ``checksum`` (published checksum differs), ``partial`` (a leftover ``.part``, ``.partial``, ``.aspx`` or ``.lftp-pget-status`` file beside it), ``corrupt_zip`` (a ZIP whose directory cannot be read) or ``extra`` (on disk, not in the manifest). :func:`fetch_dataset` runs that check, fetches every file that is not ``ok`` with ranged, resumed transfers and retries, checks again and writes the manifest, the table and a summary under ``_spacr_dataset_check`` in the destination. Executing it again fetches only what is still missing or bad.",
+      "label": "spacr.public_datasets#8",
+      "source": ":func:`check_completeness` compares the local folder with the manifest and gives every file one status: ``ok``, ``missing``, ``empty`` (zero bytes), ``short`` or ``long`` (size differs from the archive's), ``checksum`` (published checksum differs), ``partial`` (a leftover ``.part``, ``.partial``, ``.aspx`` or ``.lftp-pget-status`` file beside it), ``corrupt_zip`` (a ZIP whose directory cannot be read) or ``extra`` (on disk, not in the manifest). :func:`fetch_dataset` runs that check, fetches every file that is not ``ok`` with ranged, resumed transfers and retries, checks again and writes the manifest, the table and a summary under ``_spacr_dataset_check`` in the destination. Running it again fetches only what is still missing or bad.",
+      "source_sha256": "858811025859cc9b5265b2b8ede82b6df94e0aefc7e53c3b2daad06576735a82",
+      "translation": ":func:`check_completeness` 는 로컬 폴더를 매니페스트와 비교하여 각 파일에 상태 하나를 부여합니다: ``ok``, ``missing``, ``empty``(0바이트), ``short`` 또는 ``long``(크기가 아카이브와 다름), ``checksum``(공개된 체크섬과 다름), ``partial``(그 옆에 남은 ``.part``, ``.partial``, ``.aspx`` 또는 ``.lftp-pget-status`` 파일), ``corrupt_zip``(디렉터리를 읽을 수 없는 ZIP) 또는 ``extra``(디스크에는 있으나 매니페스트에는 없음). :func:`fetch_dataset` 는 이 확인을 실행하고, ``ok`` 가 아닌 모든 파일을 범위 지정 및 이어 받기 전송과 재시도로 가져온 다음, 다시 확인하고 대상 폴더의 ``_spacr_dataset_check`` 아래에 매니페스트, 테이블, 요약을 기록합니다. 다시 실행하면 아직 없거나 손상된 파일만 가져옵니다."
+    },
+    {
+      "context": "Each transfer writes to ``<name>.<process id>.part`` and renames it into place only when it is complete, so two processes fetching into one folder never rename each other's file away. A ``.part`` left by a process that has stopped is taken over and resumed from its last byte.",
+      "label": "spacr.public_datasets#9",
+      "source": "Each transfer writes to ``<name>.<process id>.part`` and renames it into place only when it is complete, so two processes fetching into one folder never rename each other's file away. A ``.part`` left by a process that has stopped is taken over and resumed from its last byte.",
+      "source_sha256": "d16cf1f7e0dd8861d949c1e38b0587aa5a20f9e299170b3e0d4d485ced9b0a70",
+      "translation": "각 전송은 ``<name>.<process id>.part`` 에 기록하고 완료된 경우에만 이름을 바꿔 제자리에 놓으므로, 한 폴더로 파일을 가져오는 두 프로세스가 서로의 파일을 이름 변경으로 밀어내는 일이 없습니다. 중지된 프로세스가 남긴 ``.part`` 는 넘겨받아 마지막 바이트부터 이어 받습니다."
+    },
+    {
+      "context": "A file could not be fetched after every retry.",
+      "label": "spacr.public_datasets.DownloadError#0",
+      "source": "A file could not be fetched after every retry.",
+      "source_sha256": "dfa88984851f949084b323274a6bba25ec45e5668f2dd9c0e7505ccf1893f0dc",
+      "translation": "모든 재시도 후에도 파일을 가져오지 못했습니다."
+    },
+    {
+      "context": "The HTTPS folder an archive serves one dataset's files from.",
+      "label": "spacr.public_datasets.archive_base_url#0",
+      "source": "The HTTPS folder an archive serves one dataset's files from.",
+      "source_sha256": "0f6d2eb1711825b5a45c0ce2a308abe3f5f3aa3df5eb41504e0094f417ad8c92",
+      "translation": "아카이브가 한 데이터셋의 파일을 제공하는 HTTPS 폴더."
+    },
+    {
+      "context": "The BioImage Archive files accession ``S-BIAD394`` under ``fire/S-BIAD/394/S-BIAD394/Files/``: the letters, then the last three digits of the number, then the accession.",
+      "label": "spacr.public_datasets.archive_base_url#1",
+      "source": "The BioImage Archive files accession ``S-BIAD394`` under ``fire/S-BIAD/394/S-BIAD394/Files/``: the letters, then the last three digits of the number, then the accession.",
+      "source_sha256": "351f9c4a754f5fa87d8d77e5285c3123386e0fe4b90ad1156eaf5743ed4094fd",
+      "translation": "BioImage Archive는 접근 번호 ``S-BIAD394`` 의 파일을 ``fire/S-BIAD/394/S-BIAD394/Files/`` 아래에 둡니다. 즉 문자, 번호의 마지막 세 자리, 접근 번호 순입니다."
+    },
+    {
+      "context": "one of ``'bia'``, ``'idr'`` or ``'bbbc'``.",
+      "label": "spacr.public_datasets.archive_base_url#2",
+      "source": "one of ``'bia'``, ``'idr'`` or ``'bbbc'``.",
+      "source_sha256": "798cf2001c066130cc6807b642ad43251b7834e905ebe2136ed97b8ef33a6931",
+      "translation": "``'bia'``, ``'idr'``, ``'bbbc'`` 중 하나."
+    },
+    {
+      "context": "the dataset's accession, such as ``S-BIAD394``, ``idr0094-ellinger-sarscov2`` or ``BBBC021``.",
+      "label": "spacr.public_datasets.archive_base_url#3",
+      "source": "the dataset's accession, such as ``S-BIAD394``, ``idr0094-ellinger-sarscov2`` or ``BBBC021``.",
+      "source_sha256": "d2b48f70bf9544cc0b5fa260640ce660594cafcc8e807af220b52677f8167e06",
+      "translation": "데이터셋의 접근 번호. 예: ``S-BIAD394``, ``idr0094-ellinger-sarscov2`` 또는 ``BBBC021``."
+    },
+    {
+      "context": "the address, ending in ``/``.",
+      "label": "spacr.public_datasets.archive_base_url#4",
+      "source": "the address, ending in ``/``.",
+      "source_sha256": "d26e9141e82a7fb43a813ebbafcc0bde5640435f983bbe8747e6c31be4cb25fd",
+      "translation": "``/`` 로 끝나는 주소."
+    },
+    {
+      "context": "for another archive, a blank accession or a BioImage Archive accession without a number.",
+      "label": "spacr.public_datasets.archive_base_url#5",
+      "source": "for another archive, a blank accession or a BioImage Archive accession without a number.",
+      "source_sha256": "748dfa8000299ebef5b8ef092043a8f9cbdf99c4bb1a640a0e236ce54c8731be",
+      "translation": "다른 아카이브, 빈 접근 번호, 또는 번호가 없는 BioImage Archive 접근 번호인 경우."
+    },
+    {
+      "context": "Compare a local folder with the archive's file list.",
+      "label": "spacr.public_datasets.check_completeness#0",
+      "source": "Compare a local folder with the archive's file list.",
+      "source_sha256": "27c21351591d7a3d09a48a99afdd4240bbe9264a33ad6cccae0deebc9c75d690",
+      "translation": "로컬 폴더를 아카이브의 파일 목록과 비교합니다."
+    },
+    {
+      "context": "Every manifest file gets one status (see :data:`STATUSES`); every other file under ``dst`` is ``extra``, except the leftovers of manifest files, which make their file ``partial``, and the state folder.",
+      "label": "spacr.public_datasets.check_completeness#1",
+      "source": "Every manifest file gets one status (see :data:`STATUSES`); every other file under ``dst`` is ``extra``, except the leftovers of manifest files, which make their file ``partial``, and the state folder.",
+      "source_sha256": "99e7e6d4cee0e91e569d93113a27f3dcd7447844732c26ad7dbf3e75665b3d02",
+      "translation": "매니페스트의 각 파일은 상태 하나를 받습니다(:data:`STATUSES` 참조). ``dst`` 아래의 그 밖의 모든 파일은 ``extra`` 이며, 예외는 매니페스트 파일의 잔여 파일(해당 파일을 ``partial`` 로 만듦)과 상태 폴더입니다."
+    },
+    {
+      "context": "frame from :func:`read_manifest` or :func:`list_ftp`.",
+      "label": "spacr.public_datasets.check_completeness#2",
+      "source": "frame from :func:`read_manifest` or :func:`list_ftp`.",
+      "source_sha256": "0a549b343e6e97cfb7d963bee4749a4aa98d28a4771153363dc36205529ca0f3",
+      "translation": ":func:`read_manifest` 또는 :func:`list_ftp` 에서 얻은 데이터프레임."
+    },
+    {
+      "context": "the local folder.",
+      "label": "spacr.public_datasets.check_completeness#3",
+      "source": "the local folder.",
+      "source_sha256": "913997a2fb272e44a80e6df87cc2791101c95896b1387dd6931044f8a2c72601",
+      "translation": "로컬 폴더."
+    },
+    {
+      "context": "compare published MD5 or SHA-256 digests; results are cached in the state folder by size and modification time.",
+      "label": "spacr.public_datasets.check_completeness#4",
+      "source": "compare published MD5 or SHA-256 digests; results are cached in the state folder by size and modification time.",
+      "source_sha256": "548ea958d055056bc9759a9060067c4046d8e73257b049cf27b8661de8bc53cc",
+      "translation": "공개된 MD5 또는 SHA-256 다이제스트를 비교합니다. 결과는 크기와 수정 시각을 기준으로 상태 폴더에 캐시됩니다."
+    },
+    {
+      "context": "files hashed at the same time.",
+      "label": "spacr.public_datasets.check_completeness#5",
+      "source": "files hashed at the same time.",
+      "source_sha256": "9c706e0cbee089fe49ce3d5ec132bbca2164e6bf18a9c751255a32274ac12b29",
+      "translation": "동시에 해시를 계산하는 파일 수."
+    },
+    {
+      "context": "a frame with ``path``, ``status``, ``expected_size``, ``local_size`` and ``detail``, manifest files first.",
+      "label": "spacr.public_datasets.check_completeness#6",
+      "source": "a frame with ``path``, ``status``, ``expected_size``, ``local_size`` and ``detail``, manifest files first.",
+      "source_sha256": "29d8690252131febba856e15716fd3e4ac0714dff897df3b43b86ead4f022252",
+      "translation": "``path``, ``status``, ``expected_size``, ``local_size``, ``detail`` 열을 가진 데이터프레임이며, 매니페스트 파일이 먼저 옵니다."
+    },
+    {
+      "context": "Fetch one file, resuming from a partial copy and retrying.",
+      "label": "spacr.public_datasets.download_file#0",
+      "source": "Fetch one file, resuming from a partial copy and retrying.",
+      "source_sha256": "2daa9a9e9747184ddbfae934a6eae904e8205fb61ff1272937952f2ff5fe1c4b",
+      "translation": "부분 사본에서 이어 받고 재시도하면서 파일 하나를 가져옵니다."
+    },
+    {
+      "context": "The bytes go to ``<target>.<process id>.part``; a ``.part`` left by a stopped process is resumed with an HTTP ``Range`` request. A server that ignores the range is restarted from the first byte. The partial file is renamed onto ``target`` only once it has the announced size and, when given, the expected digest.",
+      "label": "spacr.public_datasets.download_file#1",
+      "source": "The bytes go to ``<target>.<process id>.part``; a ``.part`` left by a stopped process is resumed with an HTTP ``Range`` request. A server that ignores the range is restarted from the first byte. The partial file is renamed onto ``target`` only once it has the announced size and, when given, the expected digest.",
+      "source_sha256": "64d65f335045d131872bad692f7136afac51458c6bd4c9d0b5b85e127d39e44f",
+      "translation": "바이트는 ``<target>.<process id>.part`` 에 기록됩니다. 중지된 프로세스가 남긴 ``.part`` 는 HTTP ``Range`` 요청으로 이어 받습니다. 범위를 무시하는 서버에서는 첫 바이트부터 다시 시작합니다. 부분 파일은 공지된 크기에 도달하고, 지정된 경우 예상 다이제스트와 일치할 때에만 ``target`` 으로 이름이 바뀝니다."
+    },
+    {
+      "context": "the size of the finished file.",
+      "label": "spacr.public_datasets.download_file#10",
+      "source": "the size of the finished file.",
+      "source_sha256": "2d27b9be513917b63a35c5abaab537e562f074c651c4e9d9bac390f396fa9bb8",
+      "translation": "완성된 파일의 크기."
+    },
+    {
+      "context": "when every attempt failed, or another executing process is fetching the same file.",
+      "label": "spacr.public_datasets.download_file#11",
+      "source": "when every attempt failed, or another running process is fetching the same file.",
+      "source_sha256": "c36b0e941a81d4a9f07aeddd8d25c897703495eb431e723157e16108eab51754",
+      "translation": "모든 시도가 실패했거나, 실행 중인 다른 프로세스가 같은 파일을 가져오고 있는 경우."
+    },
+    {
+      "context": "the address (``https://``, ``http://``, ``ftp://`` or ``file://``).",
+      "label": "spacr.public_datasets.download_file#2",
+      "source": "the address (``https://``, ``http://``, ``ftp://`` or ``file://``).",
+      "source_sha256": "7881c7dabf8cc4073078f6f18527ad187380d9ba6353d54e2d926f16ed3eef21",
+      "translation": "주소(``https://``, ``http://``, ``ftp://`` 또는 ``file://``)."
+    },
+    {
+      "context": "the final path.",
+      "label": "spacr.public_datasets.download_file#3",
+      "source": "the final path.",
+      "source_sha256": "8efe0730ed4056bc044bd4e0b5f21422bfbddf4c0260d406f2c7f8222f3ba0c6",
+      "translation": "최종 경로."
+    },
+    {
+      "context": "the size the archive publishes; None trusts the server's.",
+      "label": "spacr.public_datasets.download_file#4",
+      "source": "the size the archive publishes; None trusts the server's.",
+      "source_sha256": "babef507ad634b2ff9a6c4c68a11756be7871a90d30434dab8578d0c70031fb4",
+      "translation": "아카이브가 공개한 크기. None이면 서버가 알려 주는 크기를 신뢰합니다."
+    },
+    {
+      "context": "``(kind, hex)`` the finished file must have, or None.",
+      "label": "spacr.public_datasets.download_file#5",
+      "source": "``(kind, hex)`` the finished file must have, or None.",
+      "source_sha256": "2c2c53906a00805d8404ad3903ecc4643f2ca27f46edad698fcf2c83890f3d8d",
+      "translation": "완성된 파일이 가져야 할 ``(kind, hex)``, 또는 None."
+    },
+    {
+      "context": "further attempts after the first.",
+      "label": "spacr.public_datasets.download_file#6",
+      "source": "further attempts after the first.",
+      "source_sha256": "d1bd9832c1b13d26df8887a362678741ad21a7a8c6a36b3abab852d514d316c4",
+      "translation": "첫 시도 이후의 추가 시도 횟수."
+    },
+    {
+      "context": "seconds to wait on the server.",
+      "label": "spacr.public_datasets.download_file#7",
+      "source": "seconds to wait on the server.",
+      "source_sha256": "7bcc18d9c0312d8631f6352fdcd804c8506090eb0fa7c2806b4eef4841e5fe1b",
+      "translation": "서버를 기다리는 초."
+    },
+    {
+      "context": "called as ``open_url(request, timeout=timeout)``.",
+      "label": "spacr.public_datasets.download_file#8",
+      "source": "called as ``open_url(request, timeout=timeout)``.",
+      "source_sha256": "e06ce30e493bca3f1ebc272f51f659c99ca46f1b6f2ad4f97a773f0f8656918c",
+      "translation": "``open_url(request, timeout=timeout)`` 형태로 호출됩니다."
+    },
+    {
+      "context": "called with the seconds to wait between attempts.",
+      "label": "spacr.public_datasets.download_file#9",
+      "source": "called with the seconds to wait between attempts.",
+      "source_sha256": "d1026a72fd9052b221ad8966d03fee2d07fc86ceac99d3ddc23a586e06b0454e",
+      "translation": "시도 사이에 기다릴 초를 인수로 호출됩니다."
+    },
+    {
+      "context": "Fetch a public dataset's missing and bad files, then check it.",
+      "label": "spacr.public_datasets.fetch_dataset#0",
+      "source": "Fetch a public dataset's missing and bad files, then check it.",
+      "source_sha256": "ff9bb479b6c4a66c846a2fa7f60c3ebb02809f282b63ac2933f0cdb0b65b941e",
+      "translation": "공개 데이터셋의 없거나 손상된 파일을 가져온 다음 데이터셋을 확인합니다."
+    },
+    {
+      "context": "Reads or lists the archive's file list, checks the destination against it (:func:`check_completeness`), fetches every file whose status is in :data:`REFETCH` (unless ``dataset_check_only``), and checks again. A second processing session fetches only what the first left missing or bad.",
+      "label": "spacr.public_datasets.fetch_dataset#1",
+      "source": "Reads or lists the archive's file list, checks the destination against it (:func:`check_completeness`), fetches every file whose status is in :data:`REFETCH` (unless ``dataset_check_only``), and checks again. A second run fetches only what the first left missing or bad.",
+      "source_sha256": "ef3c432d206d63b7e57c9efb360cf9069b4a1257de0c58a5cb26669c0ec54c56",
+      "translation": "아카이브의 파일 목록을 읽거나 나열하고, 대상 폴더를 그 목록과 대조하며(:func:`check_completeness`), 상태가 :data:`REFETCH` 에 속하는 모든 파일을 가져온 다음(``dataset_check_only`` 가 아닌 경우), 다시 확인합니다. 두 번째 실행은 첫 번째 실행이 없거나 손상된 채로 남긴 파일만 가져옵니다."
+    },
+    {
+      "context": "Written to ``<dataset_dst>/_spacr_dataset_check/``, through :func:`spacr.tabular.write_table`: ``manifest.csv`` (the file list with the sizes learned from transfers), ``completeness.csv`` (one row per file with its status), and ``summary.json`` (the counts before and after, and the files that failed).",
+      "label": "spacr.public_datasets.fetch_dataset#2",
+      "source": "Written to ``<dataset_dst>/_spacr_dataset_check/``, through :func:`spacr.tabular.write_table`: ``manifest.csv`` (the file list with the sizes learned from transfers), ``completeness.csv`` (one row per file with its status), and ``summary.json`` (the counts before and after, and the files that failed).",
+      "source_sha256": "495411a6aaeba7556d1a2567fe229862aa09748005389918231e8a0574bf20f6",
+      "translation": "``<dataset_dst>/_spacr_dataset_check/`` 에 :func:`spacr.tabular.write_table` 을 통해 기록됩니다: ``manifest.csv``(전송에서 알게 된 크기를 포함한 파일 목록), ``completeness.csv``(파일당 한 행과 그 상태), ``summary.json``(전후의 개수와 실패한 파일)."
+    },
+    {
+      "context": "the keys of :func:`public_dataset_defaults`; missing keys take their defaults.",
+      "label": "spacr.public_datasets.fetch_dataset#3",
+      "source": "the keys of :func:`public_dataset_defaults`; missing keys take their defaults.",
+      "source_sha256": "a3d3a2184782073bb7700f162ea128b3e08737e2ebcf7486c9e6ef2d4a8c94c0",
+      "translation": ":func:`public_dataset_defaults` 의 키. 없는 키는 기본값을 사용합니다."
+    },
+    {
+      "context": "opener for every transfer, ``urllib.request.urlopen`` by default.",
+      "label": "spacr.public_datasets.fetch_dataset#4",
+      "source": "opener for every transfer, ``urllib.request.urlopen`` by default.",
+      "source_sha256": "342e3986f63d61a2a0dd5cd92f2a64bf740ed509700466c617359749694d5432",
+      "translation": "모든 전송에 쓰는 오프너. 기본값은 ``urllib.request.urlopen``."
+    },
+    {
+      "context": "wait between retries, ``time.sleep`` by default.",
+      "label": "spacr.public_datasets.fetch_dataset#5",
+      "source": "wait between retries, ``time.sleep`` by default.",
+      "source_sha256": "c3587b9feedc8801ac220ec7f5ac6f727eb82d84f100600ddacea60e29191156",
+      "translation": "재시도 사이의 대기 함수. 기본값은 ``time.sleep``."
+    },
+    {
+      "context": "key-value mapping with ``manifest`` and ``completeness`` (the frames), ``before`` and ``after`` (counts per status), ``fetched`` (paths fetched), ``failed`` (``{path: reason}``), ``complete`` (no file missing, empty, short, long, partial or bad) and ``paths`` (the three files written).",
+      "label": "spacr.public_datasets.fetch_dataset#6",
+      "source": "dict with ``manifest`` and ``completeness`` (the frames), ``before`` and ``after`` (counts per status), ``fetched`` (paths fetched), ``failed`` (``{path: reason}``), ``complete`` (no file missing, empty, short, long, partial or bad) and ``paths`` (the three files written).",
+      "source_sha256": "ab2e3218a00c32305756130d00a296215b9c68bc0ea7efe23da1e7569165ae10",
+      "translation": "``manifest`` 와 ``completeness``(데이터프레임), ``before`` 와 ``after``(상태별 개수), ``fetched``(가져온 경로), ``failed``(``{path: reason}``), ``complete``(없거나, 비었거나, 짧거나, 길거나, 부분적이거나, 손상된 파일이 없음), ``paths``(기록된 세 파일)를 담은 dict."
+    },
+    {
+      "context": "without ``dataset_dst``, or for settings :func:`archive_base_url` or :func:`read_manifest` reject.",
+      "label": "spacr.public_datasets.fetch_dataset#7",
+      "source": "without ``dataset_dst``, or for settings :func:`archive_base_url` or :func:`read_manifest` reject.",
+      "source_sha256": "04b6f841dd3f09614235c3dece5423e65bd46cf70908c0f818a5085dab24b913",
+      "translation": "``dataset_dst`` 가 없거나, :func:`archive_base_url` 또는 :func:`read_manifest` 가 거부하는 설정인 경우."
+    },
+    {
+      "context": "List every file below an FTP folder, with its size.",
+      "label": "spacr.public_datasets.list_ftp#0",
+      "source": "List every file below an FTP folder, with its size.",
+      "source_sha256": "e0ac1f60994792b914b83171c8a4a9c806db1fdfd1178bdaf8f4911bd818be7a",
+      "translation": "FTP 폴더 아래의 모든 파일을 크기와 함께 나열합니다."
+    },
+    {
+      "context": "called as ``ftp_factory(host, timeout=timeout)`` to open the connection; :class:`ftplib.FTP` by default.",
+      "label": "spacr.public_datasets.list_ftp#2",
+      "source": "called as ``ftp_factory(host, timeout=timeout)`` to open the connection; :class:`ftplib.FTP` by default.",
+      "source_sha256": "81f45734587a9f3239ca4d7a20a43981097323ebde2c421fe61879f2286df2fb",
+      "translation": "연결을 열기 위해 ``ftp_factory(host, timeout=timeout)`` 형태로 호출됩니다. 기본값은 :class:`ftplib.FTP`."
+    },
+    {
+      "context": "seconds to wait on the server.",
+      "label": "spacr.public_datasets.list_ftp#3",
+      "source": "seconds to wait on the server.",
+      "source_sha256": "7bcc18d9c0312d8631f6352fdcd804c8506090eb0fa7c2806b4eef4841e5fe1b",
+      "translation": "서버를 기다리는 초."
+    },
+    {
+      "context": "a manifest frame (see :func:`read_manifest`) with paths relative to ``url`` and no addresses.",
+      "label": "spacr.public_datasets.list_ftp#4",
+      "source": "a manifest frame (see :func:`read_manifest`) with paths relative to ``url`` and no addresses.",
+      "source_sha256": "7075fb7a0b943458aa14c5cbd4858c2c66aee326075759a60cffd432be2c598e",
+      "translation": "매니페스트 데이터프레임(:func:`read_manifest` 참조)으로, 경로는 ``url`` 에 대한 상대 경로이고 주소는 없습니다."
+    },
+    {
+      "context": "when the server cannot list folders with MLSD.",
+      "label": "spacr.public_datasets.list_ftp#5",
+      "source": "when the server cannot list folders with MLSD.",
+      "source_sha256": "2ba4456348ac711922f87a1529194a11f3b82a15a5c57c86f8c196540c48cbd2",
+      "translation": "서버가 MLSD로 폴더를 나열할 수 없는 경우."
+    },
+    {
+      "context": "List the files a web folder index links to, following sub-folders.",
+      "label": "spacr.public_datasets.list_http_index#0",
+      "source": "List the files a web folder index links to, following sub-folders.",
+      "source_sha256": "b6b06d05a32f1f799aca24d25a96036d4f7aa37625870fbaec8af81340140853",
+      "translation": "웹 폴더 인덱스가 링크하는 파일을 하위 폴더까지 따라가며 나열합니다."
+    },
+    {
+      "context": "Links that leave the folder (to a parent, another host, a query or a fragment) are ignored. Sizes are not known from an index; they are learned from each transfer.",
+      "label": "spacr.public_datasets.list_http_index#1",
+      "source": "Links that leave the folder (to a parent, another host, a query or a fragment) are ignored. Sizes are not known from an index; they are learned from each transfer.",
+      "source_sha256": "ed367873ef3375115fb69442ee2eb2e9d6d617497fe8fc68df797e72f107855d",
+      "translation": "폴더 밖으로 나가는 링크(상위 폴더, 다른 호스트, 쿼리 또는 프래그먼트로 가는 링크)는 무시합니다. 인덱스에서는 크기를 알 수 없으며, 크기는 각 전송에서 알게 됩니다."
+    },
+    {
+      "context": "the folder address, such as ``https://data.broadinstitute.org/bbbc/BBBC021/``.",
+      "label": "spacr.public_datasets.list_http_index#2",
+      "source": "the folder address, such as ``https://data.broadinstitute.org/bbbc/BBBC021/``.",
+      "source_sha256": "0d64db67d41c9434ab3c44ccb982493b717bbdc2ac4d8be9f3a81501962ed2e9",
+      "translation": "폴더 주소. 예: ``https://data.broadinstitute.org/bbbc/BBBC021/``."
+    },
+    {
+      "context": "called as ``open_url(url, timeout=timeout)``.",
+      "label": "spacr.public_datasets.list_http_index#3",
+      "source": "called as ``open_url(url, timeout=timeout)``.",
+      "source_sha256": "eb218e7137476b6b3f1e85b72d05e18867d7807f776d72da6ed7a5fde9ee489a",
+      "translation": "``open_url(url, timeout=timeout)`` 형태로 호출됩니다."
+    },
+    {
+      "context": "seconds to wait on the server.",
+      "label": "spacr.public_datasets.list_http_index#4",
+      "source": "seconds to wait on the server.",
+      "source_sha256": "7bcc18d9c0312d8631f6352fdcd804c8506090eb0fa7c2806b4eef4841e5fe1b",
+      "translation": "서버를 기다리는 초."
+    },
+    {
+      "context": "how many levels of sub-folders to follow.",
+      "label": "spacr.public_datasets.list_http_index#5",
+      "source": "how many levels of sub-folders to follow.",
+      "source_sha256": "b869c32ef4a1e7692072eaf4277c18c70f498e98d7d24714e20be09ff1462681",
+      "translation": "따라갈 하위 폴더의 단계 수."
+    },
+    {
+      "context": "a manifest frame (see :func:`read_manifest`) with addresses.",
+      "label": "spacr.public_datasets.list_http_index#6",
+      "source": "a manifest frame (see :func:`read_manifest`) with addresses.",
+      "source_sha256": "be5d5101ce1b9b5c4157175a261632c9df43138be8671d8b4e75b113f5304ed6",
+      "translation": "주소가 포함된 매니페스트 데이터프레임(:func:`read_manifest` 참조)."
+    },
+    {
+      "context": "Run :func:`fetch_dataset` from the command line.",
+      "label": "spacr.public_datasets.main#0",
+      "source": "Run :func:`fetch_dataset` from the command line.",
+      "source_sha256": "de92214f47e4beed3ba9e0bf90fa4806f56c8bda9f064651e1da2e5ad15c23a7",
+      "translation": "명령줄에서 :func:`fetch_dataset` 를 실행합니다."
+    },
+    {
+      "context": "``python -m spacr.public_datasets --archive bbbc --accession BBBC021 --manifest bbbc021_urls.txt --dst /data/BBBC021`` fetches what is missing; ``--check-only`` only writes the completeness table.",
+      "label": "spacr.public_datasets.main#1",
+      "source": "``python -m spacr.public_datasets --archive bbbc --accession BBBC021 --manifest bbbc021_urls.txt --dst /data/BBBC021`` fetches what is missing; ``--check-only`` only writes the completeness table.",
+      "source_sha256": "e28aa1a8a0634bdf9ce3495830e2fe9071593c5e6eb98762d13d834327f5edc8",
+      "translation": "``python -m spacr.public_datasets --archive bbbc --accession BBBC021 --manifest bbbc021_urls.txt --dst /data/BBBC021`` 는 없는 파일을 가져오고, ``--check-only`` 는 완전성 테이블만 기록합니다."
+    },
+    {
+      "context": "the arguments; None reads :data:`sys.argv`.",
+      "label": "spacr.public_datasets.main#2",
+      "source": "the arguments; None reads :data:`sys.argv`.",
+      "source_sha256": "c07c9cca23a05dbbe29ae33a401b810cd04479a287b5b7067b252281bc619a9e",
+      "translation": "인수. None이면 :data:`sys.argv` 를 읽습니다."
+    },
+    {
+      "context": "0 when every file is complete, 1 otherwise.",
+      "label": "spacr.public_datasets.main#3",
+      "source": "0 when every file is complete, 1 otherwise.",
+      "source_sha256": "027b350f796df74c19d1220e8b5725a5bb72a59e2f84f1a117ced9d8e8615894",
+      "translation": "모든 파일이 완전하면 0, 그렇지 않으면 1."
+    },
+    {
+      "context": "The settings of :func:`fetch_dataset`, filled in with their defaults.",
+      "label": "spacr.public_datasets.public_dataset_defaults#0",
+      "source": "The settings of :func:`fetch_dataset`, filled in with their defaults.",
+      "source_sha256": "b95a4f0448e659c7c3121a810e86293c66f61467183748fb65b16718a4f4109a",
+      "translation": "기본값으로 채운 :func:`fetch_dataset` 의 설정."
+    },
+    {
+      "context": "settings given so far; a structured-data name already present is kept.",
+      "label": "spacr.public_datasets.public_dataset_defaults#1",
+      "source": "settings given so far; a key already present is kept.",
+      "source_sha256": "1e7ffaadcad13b8d6477890265a5f839761e06baf3c22c84e800a19cc5c117a0",
+      "translation": "지금까지 지정한 설정. 이미 있는 키는 유지됩니다."
+    },
+    {
+      "context": "a new key-value mapping with every field name in this module.",
+      "label": "spacr.public_datasets.public_dataset_defaults#2",
+      "source": "a new dict with every key of this module.",
+      "source_sha256": "73b576619824f7bdca5e3438b9fcb6de76a257a263e8b86d2c4b77be8ce11bb3",
+      "translation": "이 모듈의 모든 키를 담은 새 dict."
+    },
+    {
+      "context": "Read an archive's file list into spaCR's manifest table.",
+      "label": "spacr.public_datasets.read_manifest#0",
+      "source": "Read an archive's file list into spaCR's manifest table.",
+      "source_sha256": "72ef30137ad7ffb3eaf639529d1174fe6efbfe8f71a12919ab86fea6b47816fd",
+      "translation": "아카이브의 파일 목록을 spaCR의 매니페스트 테이블로 읽습니다."
+    },
+    {
+      "context": "A ``.json`` file holds a list of records, or a key-value mapping with the list under ``files``; a ``.txt`` or ``.urls`` file holds one address per line (blank lines and lines starting with ``#`` are skipped); anything else is read with :func:`spacr.tabular.read_table`, so TSV, CSV, Parquet and Excel all work. Column names are matched without regard to case: ``path`` (or ``Files``, ``file``, ``name``), ``url``, ``size`` (or ``bytes``), ``md5`` and ``sha256``. Directory rows of a BioImage Archive JSON list are skipped.",
+      "label": "spacr.public_datasets.read_manifest#1",
+      "source": "A ``.json`` file holds a list of records, or a dict with the list under ``files``; a ``.txt`` or ``.urls`` file holds one address per line (blank lines and lines starting with ``#`` are skipped); anything else is read with :func:`spacr.tabular.read_table`, so TSV, CSV, Parquet and Excel all work. Column names are matched without regard to case: ``path`` (or ``Files``, ``file``, ``name``), ``url``, ``size`` (or ``bytes``), ``md5`` and ``sha256``. Directory rows of a BioImage Archive JSON list are skipped.",
+      "source_sha256": "b465653552718f88545cf2d21c625766856e65cf784e0b01c470517b7e9574fa",
+      "translation": "``.json`` 파일은 레코드 목록이나 ``files`` 아래에 목록이 있는 dict를 담고, ``.txt`` 또는 ``.urls`` 파일은 한 줄에 주소 하나를 담습니다(빈 줄과 ``#`` 로 시작하는 줄은 건너뜁니다). 그 밖의 파일은 :func:`spacr.tabular.read_table` 로 읽으므로 TSV, CSV, Parquet, Excel을 모두 사용할 수 있습니다. 열 이름은 대소문자를 구분하지 않고 대응시킵니다: ``path``(또는 ``Files``, ``file``, ``name``), ``url``, ``size``(또는 ``bytes``), ``md5``, ``sha256``. BioImage Archive JSON 목록의 디렉터리 행은 건너뜁니다."
+    },
+    {
+      "context": "path of the file list.",
+      "label": "spacr.public_datasets.read_manifest#2",
+      "source": "path of the file list.",
+      "source_sha256": "743cd8f7220fd7039c6288f752fe593d9fb03eb89afa2c966e3354774c894beb",
+      "translation": "파일 목록의 경로."
+    },
+    {
+      "context": "address relative paths are joined to; for a list of addresses, the prefix stripped to make each local path.",
+      "label": "spacr.public_datasets.read_manifest#3",
+      "source": "address relative paths are joined to; for a list of addresses, the prefix stripped to make each local path.",
+      "source_sha256": "5fc8ec3fdf2eef103e8028bb46f0a483796748c4c25e0e25aefeb275e7e23078",
+      "translation": "상대 경로를 결합할 기준 주소. 주소 목록의 경우 각 로컬 경로를 만들기 위해 제거하는 접두사."
+    },
+    {
+      "context": "a frame with ``path``, ``url``, ``size`` (nullable integer), ``md5`` and ``sha256``, one row per path.",
+      "label": "spacr.public_datasets.read_manifest#4",
+      "source": "a frame with ``path``, ``url``, ``size`` (nullable integer), ``md5`` and ``sha256``, one row per path.",
+      "source_sha256": "8217c662cd574cd0dd024fe4e892cebe40340361412798746edc60d8372f15fe",
+      "translation": "``path``, ``url``, ``size``(nullable 정수), ``md5``, ``sha256`` 열을 가진 데이터프레임이며, 경로당 한 행입니다."
+    },
+    {
+      "context": "for a path that is absolute or leaves the folder, or a table with no path or address column.",
+      "label": "spacr.public_datasets.read_manifest#5",
+      "source": "for a path that is absolute or leaves the folder, or a table with no path or address column.",
+      "source_sha256": "859902dbadf317e1c4ee46eb2b645ebd7e3fd64326a68c247419e98de67e2fc8",
+      "translation": "절대 경로이거나 폴더 밖으로 나가는 경로, 또는 경로 열이나 주소 열이 없는 테이블인 경우."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-09 against the exact English source of the public docstring blocks added on the batch6-1109 branch: the spacr.public_datasets module and its 10 callables (item 750), and spacr.division_analysis.calibrate_divisions, movie_effect_size and pool_division_movies (items 864 and 867). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

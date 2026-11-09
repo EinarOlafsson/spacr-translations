@@ -1,0 +1,686 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Score profiles by mechanism of action, leaving one compound out.",
+      "label": "spacr.moa_benchmark#0",
+      "source": "Score profiles by mechanism of action, leaving one compound out.",
+      "source_sha256": "be37292f030cc9dd6fca34293678f58bba9eb2308a6c19cf2cdd29ddc9b963d9",
+      "translation": "एक यौगिक को बाहर छोड़ते हुए, क्रिया-तंत्र के आधार पर प्रोफ़ाइल को स्कोर करता है।"
+    },
+    {
+      "context": "A profiling result is comparable with the published BBBC021 numbers (Ljosa et al. 2013) only when it is scored the same way. This module is spaCR's one scorer for that: every arm holds out a whole compound, so a treatment is never matched to, or trained on, the same compound at another concentration.",
+      "label": "spacr.moa_benchmark#1",
+      "source": "A profiling result is comparable with the published BBBC021 numbers (Ljosa et al. 2013) only when it is scored the same way. This module is spaCR's one scorer for that: every arm holds out a whole compound, so a treatment is never matched to, or trained on, the same compound at another concentration.",
+      "source_sha256": "1e3f0b712d8147e4265538d1a0ba7665e1cf829bd49aba54a185533e61c347d2",
+      "translation": "कोई प्रोफ़ाइलिंग परिणाम प्रकाशित BBBC021 संख्याओं (Ljosa et al. 2013) से तभी तुलनीय है जब उसे उसी तरीके से स्कोर किया जाए। यह मॉड्यूल इसके लिए spaCR का एकमात्र स्कोरर है: हर मूल्यांकन शाखा पूरे यौगिक को बाहर रखती है, ताकि किसी उपचार का मिलान कभी किसी अन्य सांद्रता पर उसी यौगिक से न हो, और न ही उस पर प्रशिक्षण हो।"
+    },
+    {
+      "context": "Everything executes on the CPU; ``workers`` fits that many folds at a time in independent execution paths of one process.",
+      "label": "spacr.moa_benchmark#10",
+      "source": "Everything runs on the CPU; ``workers`` fits that many folds at a time in threads of one process.",
+      "source_sha256": "d375f33cc7154eceaa8b2200b55c0d3823d4c235ff3fcdec03b0d6bb41de3a4d",
+      "translation": "सब कुछ CPU पर चलता है; ``workers`` एक प्रक्रिया के थ्रेड में एक साथ उतने ही फ़ोल्ड फ़िट करता है।"
+    },
+    {
+      "context": ":func:`loco_nearest_neighbour` is the unsupervised arm: one nearest neighbour (1-NN) by cosine similarity between treatment profiles, under NSC (not same compound) and NSCB (not same compound or batch). It is :func:`spacr.embeddings.evaluate_moa`, so both give the same numbers.",
+      "label": "spacr.moa_benchmark#2",
+      "source": ":func:`loco_nearest_neighbour` is the unsupervised arm: one nearest neighbour (1-NN) by cosine similarity between treatment profiles, under NSC (not same compound) and NSCB (not same compound or batch). It is :func:`spacr.embeddings.evaluate_moa`, so both give the same numbers.",
+      "source_sha256": "0cd535f88fe67cd6b7839644666fe7dfe47c5caa622b873ef2c0a448fb0ad375",
+      "translation": ":func:`loco_nearest_neighbour` अपर्यवेक्षित मूल्यांकन शाखा है: उपचार प्रोफ़ाइलों के बीच कोसाइन समानता द्वारा एक निकटतम पड़ोसी (1-NN), NSC (not same compound, समान यौगिक नहीं) और NSCB (not same compound or batch, समान यौगिक या बैच नहीं) के अंतर्गत। यह :func:`spacr.embeddings.evaluate_moa` ही है, इसलिए दोनों समान संख्याएँ देते हैं।"
+    },
+    {
+      "context": ":func:`loco_supervised` trains a machine-learning classification model on the microplate sample positions of the other compounds and predicts the held-out compound's microplate sample positions: a standardised logistic regression or XGBoost, on the CPU. Under NSC there is one fold per compound; under NSCB one per treatment, and the training microplate sample positions also leave out every batch that treatment was imaged in.",
+      "label": "spacr.moa_benchmark#3",
+      "source": ":func:`loco_supervised` trains a classifier on the wells of the other compounds and predicts the held-out compound's wells: a standardised logistic regression or XGBoost, on the CPU. Under NSC there is one fold per compound; under NSCB one per treatment, and the training wells also leave out every batch that treatment was imaged in.",
+      "source_sha256": "b0baa70d0ea2ee182066dced8c0fc5995c568f25ef16750f16e3bbd328dc4ef3",
+      "translation": ":func:`loco_supervised` अन्य यौगिकों के वेल पर एक क्लासिफ़ायर प्रशिक्षित करता है और बाहर रखे गए यौगिक के वेल का पूर्वानुमान करता है: CPU पर एक मानकीकृत लॉजिस्टिक रिग्रेशन या XGBoost। NSC के अंतर्गत प्रति यौगिक एक फ़ोल्ड होता है; NSCB के अंतर्गत प्रति उपचार एक, और प्रशिक्षण वेल उन सभी बैचों को भी बाहर रखते हैं जिनमें वह उपचार इमेज किया गया था।"
+    },
+    {
+      "context": ":func:`shuffled_label_control` repeats any arm with the compound-to-MoA mapping shuffled, which gives the accuracy of chance; :func:`majority_class_control` gives the accuracy of always guessing the commonest MoA.",
+      "label": "spacr.moa_benchmark#4",
+      "source": ":func:`shuffled_label_control` repeats any arm with the compound-to-MoA mapping shuffled, which gives the accuracy of chance; :func:`majority_class_control` gives the accuracy of always guessing the commonest MoA.",
+      "source_sha256": "5d39f258f5bc9a52113806f7047fd6833965aa4566b92427fa9e8a1a5d005999",
+      "translation": ":func:`shuffled_label_control` किसी भी मूल्यांकन शाखा को यौगिक-से-MoA मैपिंग फेंटकर दोहराता है, जिससे संयोग-स्तर की सटीकता मिलती है; :func:`majority_class_control` हमेशा सबसे सामान्य MoA का अनुमान लगाने की सटीकता देता है।"
+    },
+    {
+      "context": ":func:`moa_benchmark` runs the arms and the controls on one table and returns one accuracy table with a glossary; :func:`write_moa_benchmark` writes them through :func:`spacr.tabular.write_table`.",
+      "label": "spacr.moa_benchmark#5",
+      "source": ":func:`moa_benchmark` runs the arms and the controls on one table and returns one accuracy table with a glossary; :func:`write_moa_benchmark` writes them through :func:`spacr.tabular.write_table`.",
+      "source_sha256": "1e98284684c22290e9ef2a502ecca8e357f3ccf37e89525540c3330808b6a737",
+      "translation": ":func:`moa_benchmark` एक तालिका पर मूल्यांकन शाखाओं और नियंत्रणों को चलाता है और शब्दावली सहित एक सटीकता तालिका लौटाता है; :func:`write_moa_benchmark` उन्हें :func:`spacr.tabular.write_table` के माध्यम से लिखता है।"
+    },
+    {
+      "context": ":func:`run_moa_benchmark` does all of it from settings, and ``python -m spacr.moa_benchmark`` from the command line.",
+      "label": "spacr.moa_benchmark#6",
+      "source": ":func:`run_moa_benchmark` does all of it from settings, and ``python -m spacr.moa_benchmark`` from the command line.",
+      "source_sha256": "8dc29be29472dec9a41adb4c3c0dd983ce32608df19fb82d81861a35b12fa3dc",
+      "translation": ":func:`run_moa_benchmark` यह सब सेटिंग्स से करता है, और ``python -m spacr.moa_benchmark`` कमांड लाइन से।"
+    },
+    {
+      "context": "Input is a table of per-microplate sample position profiles (normalised to the laboratory microplate's control microplate sample positions, one row per microplate sample position) or of per-treatment profiles (one row per treatment), with a MoA column, a compound column, the columns that name a treatment and, for NSCB, a batch column. Per-microplate sample position input is combined per treatment by ``replicates`` (the median, as Ljosa et al. 2013) for the 1-NN arm, and used as it is by the supervised arms.",
+      "label": "spacr.moa_benchmark#7",
+      "source": "Input is a table of per-well profiles (normalised to the plate's control wells, one row per well) or of per-treatment profiles (one row per treatment), with a MoA column, a compound column, the columns that name a treatment and, for NSCB, a batch column. Per-well input is combined per treatment by ``replicates`` (the median, as Ljosa et al. 2013) for the 1-NN arm, and used as it is by the supervised arms.",
+      "source_sha256": "d94e9ec11763364fc0fd4b1c40834af2aa368f623a45215b3dd63feb4a4a0a28",
+      "translation": "इनपुट प्रति-वेल प्रोफ़ाइल (प्लेट के नियंत्रण वेल के सापेक्ष सामान्यीकृत, प्रति वेल एक पंक्ति) या प्रति-उपचार प्रोफ़ाइल (प्रति उपचार एक पंक्ति) की तालिका होता है, जिसमें एक MoA कॉलम, एक यौगिक कॉलम, उपचार बताने वाले कॉलम और, NSCB के लिए, एक बैच कॉलम होता है। 1-NN मूल्यांकन शाखा के लिए प्रति-वेल इनपुट को ``replicates`` (माध्यिका, जैसा Ljosa et al. 2013 में) द्वारा प्रति उपचार संयोजित किया जाता है, और पर्यवेक्षित शाखाएँ इसे जैसा है वैसा ही उपयोग करती हैं।"
+    },
+    {
+      "context": "A profiling run passes its feature-selected well profiles",
+      "label": "spacr.moa_benchmark#8",
+      "source": "A profiling run passes its feature-selected well profiles",
+      "source_sha256": "b2fa3da7f9623e796df6e11dede4362d73aeb02076fa68657a6de068b06d60ed",
+      "translation": "एक प्रोफ़ाइलिंग रन अपनी फ़ीचर-चयनित वेल प्रोफ़ाइल पास करता है"
+    },
+    {
+      "context": "The CellProfiler head-to-head (item 753) scores each feature set with the same call, one set at a time, and puts the tables side by side; with ``arms=(\"1-NN\",)`` it gives the rows :func:`spacr.embeddings.evaluate_moa` gives, with the shuffled-label and majority-class controls added.",
+      "label": "spacr.moa_benchmark#9",
+      "source": "The CellProfiler head-to-head (item 753) scores each feature set with the same call, one set at a time, and puts the tables side by side; with ``arms=(\"1-NN\",)`` it gives the rows :func:`spacr.embeddings.evaluate_moa` gives, with the shuffled-label and majority-class controls added.",
+      "source_sha256": "87bc32d90dd0785bf43185be9176ea3a85b831d0c5c104fe761f9655adc7582a",
+      "translation": "CellProfiler आमने-सामने तुलना (item 753) हर फ़ीचर सेट को उसी कॉल से, एक बार में एक सेट, स्कोर करती है और तालिकाओं को साथ-साथ रखती है; ``arms=(\"1-NN\",)`` के साथ यह वही पंक्तियाँ देती है जो :func:`spacr.embeddings.evaluate_moa` देता है, फेंटे-लेबल और बहुसंख्यक-वर्ग नियंत्रण जोड़कर।"
+    },
+    {
+      "context": "Leave-one-compound-out 1-NN MoA accuracy on treatment profiles.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#0",
+      "source": "Leave-one-compound-out 1-NN MoA accuracy on treatment profiles.",
+      "source_sha256": "f8e8c002bae73dd8b36849d0b3f767e457120ff1bfaba8cca9c0a3b6c7596857",
+      "translation": "उपचार प्रोफ़ाइल पर एक-यौगिक-छोड़कर (leave-one-compound-out) 1-NN MoA सटीकता।"
+    },
+    {
+      "context": "Each treatment takes the MoA of its most similar other treatment by cosine similarity, never the same compound (NSC) and, with a batch column, never a treatment that shares a batch (NSCB). The scoring is :func:`spacr.embeddings.evaluate_moa`; this arm returns its rows in the table format of :func:`moa_benchmark`, without controls (see :func:`shuffled_label_control` and :func:`majority_class_control`).",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#1",
+      "source": "Each treatment takes the MoA of its most similar other treatment by cosine similarity, never the same compound (NSC) and, with a batch column, never a treatment that shares a batch (NSCB). The scoring is :func:`spacr.embeddings.evaluate_moa`; this arm returns its rows in the table format of :func:`moa_benchmark`, without controls (see :func:`shuffled_label_control` and :func:`majority_class_control`).",
+      "source_sha256": "b919c4057b04bd2808236db2dcacb52305a63b1054f58337b541ab33466d6bc7",
+      "translation": "हर उपचार कोसाइन समानता द्वारा अपने सबसे समान अन्य उपचार का MoA लेता है, जो कभी वही यौगिक नहीं होता (NSC) और, बैच कॉलम होने पर, कभी ऐसा उपचार नहीं होता जो बैच साझा करता हो (NSCB)। स्कोरिंग :func:`spacr.embeddings.evaluate_moa` करता है; यह शाखा अपनी पंक्तियाँ :func:`moa_benchmark` के तालिका प्रारूप में लौटाती है, नियंत्रणों के बिना (देखें :func:`shuffled_label_control` और :func:`majority_class_control`)।"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#10",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "बाहर रखे गए यौगिक या MoA मान, जैसे ``'DMSO'``।"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#11",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson स्कोर अंतराल का स्तर।"
+    },
+    {
+      "context": "``{\"table\", \"predictions\"}``: one row per evaluation, and one row per treatment and evaluation with ``predicted_moa``, ``neighbour_compound``, ``similarity``, ``scored`` and ``correct``.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#12",
+      "source": "``{\"table\", \"predictions\"}``: one row per evaluation, and one row per treatment and evaluation with ``predicted_moa``, ``neighbour_compound``, ``similarity``, ``scored`` and ``correct``.",
+      "source_sha256": "933a3210203e98cecd4357644b88f4e74a028d23eab9df0c151e39ba518e2ccc",
+      "translation": "``{\"table\", \"predictions\"}``: प्रति मूल्यांकन एक पंक्ति, और प्रति उपचार और मूल्यांकन एक पंक्ति, जिसमें ``predicted_moa``, ``neighbour_compound``, ``similarity``, ``scored`` और ``correct`` हैं।"
+    },
+    {
+      "context": "for missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#13",
+      "source": "for missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "source_sha256": "0a28edaa8f017b2a4325be3907a9a854afb117a54804d35d9cf779135ada8e77",
+      "translation": "अनुपस्थित कॉलम, अनुपस्थित या अनंत मानों, या दो से कम लेबल वाले यौगिकों के लिए।"
+    },
+    {
+      "context": "The CellProfiler head-to-head (item 753) and a profiling run call it on one profile per treatment",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#2",
+      "source": "The CellProfiler head-to-head (item 753) and a profiling run call it on one profile per treatment",
+      "source_sha256": "e586066c6568866e4f97ebcfc5cfdb4afcb177a981eb8283202529a501cf31d8",
+      "translation": "CellProfiler आमने-सामने तुलना (item 753) और एक प्रोफ़ाइलिंग रन इसे प्रति उपचार एक प्रोफ़ाइल पर कॉल करते हैं"
+    },
+    {
+      "context": "one profile per treatment, a frame or a table path.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#3",
+      "source": "one profile per treatment, a frame or a table path.",
+      "source_sha256": "975c8d55a6f9e825dec589f7abd3d96edea0cb577c9ac50381132b9eeda14d5b",
+      "translation": "प्रति उपचार एक प्रोफ़ाइल, एक फ़्रेम या तालिका पथ।"
+    },
+    {
+      "context": "column with the MoA; rows without one are not scored.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#4",
+      "source": "column with the MoA; rows without one are not scored.",
+      "source_sha256": "28b9bb2de89ea4b29dfaca6df0a2c56bb6288e30af27ca29062b1922e87c7e33",
+      "translation": "MoA वाला कॉलम; जिन पंक्तियों में यह नहीं है उन्हें स्कोर नहीं किया जाता।"
+    },
+    {
+      "context": "columns that name a treatment; never profile values.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#6",
+      "source": "columns that name a treatment; never profile values.",
+      "source_sha256": "31c6802fb42ec939edfdc2d34d71ec524c8df9ce75a80b4fee9dbc630212507e",
+      "translation": "कॉलम जो उपचार बताते हैं; कभी भी प्रोफ़ाइल मान नहीं।"
+    },
+    {
+      "context": "column with each treatment's batches, joined by ``|`` when there are several; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#7",
+      "source": "column with each treatment's batches, joined by ``|`` when there are several; ``None`` scores NSC only.",
+      "source_sha256": "5fff95d165b876b8b2c55b67239a6b6f0f30550c62ef252cd7ae010b71302c07",
+      "translation": "हर उपचार के बैच वाला कॉलम, कई होने पर ``|`` से जोड़कर; ``None`` केवल NSC स्कोर करता है।"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#8",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "प्रोफ़ाइल कॉलम; ``None`` कुंजी कॉलम, ``Metadata_`` कॉलम और गणनाओं के बाहर हर संख्यात्मक कॉलम लेता है।"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the profiles carry none.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#9",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the profiles carry none.",
+      "source_sha256": "53e23cbf17ee69dfc80f7135acdf5d364f9efc4b61c536af7d49bde6b72da3fb",
+      "translation": "MoA वाला एक फ़्रेम या तालिका पथ, जिसे साझा कॉलम पर जोड़ा जाता है जब प्रोफ़ाइल में MoA न हो।"
+    },
+    {
+      "context": "Leave-one-compound-out supervised MoA accuracy on well profiles.",
+      "label": "spacr.moa_benchmark.loco_supervised#0",
+      "source": "Leave-one-compound-out supervised MoA accuracy on well profiles.",
+      "source_sha256": "23c10da5c0f049c3334d00b2015b2acccacd99e5381412b9694d9a8eef156806",
+      "translation": "वेल प्रोफ़ाइल पर एक-यौगिक-छोड़कर (leave-one-compound-out) पर्यवेक्षित MoA सटीकता।"
+    },
+    {
+      "context": "Under NSC each compound is held out in turn (all its concentrations and replicate microplate sample positions) and a machine-learning classification model is trained on the microplate sample positions of every other compound. Under NSCB each treatment is held out in turn, and the training microplate sample positions also leave out every microplate sample position imaged in a batch of that treatment (a compound imaged in every batch would otherwise leave nothing to train on). A treatment's prediction is the class with the highest mean probability over its microplate sample positions. A fold whose training microplate sample positions hold fewer than two classes is not scored.",
+      "label": "spacr.moa_benchmark.loco_supervised#1",
+      "source": "Under NSC each compound is held out in turn (all its concentrations and replicate wells) and a classifier is trained on the wells of every other compound. Under NSCB each treatment is held out in turn, and the training wells also leave out every well imaged in a batch of that treatment (a compound imaged in every batch would otherwise leave nothing to train on). A treatment's prediction is the class with the highest mean probability over its wells. A fold whose training wells hold fewer than two classes is not scored.",
+      "source_sha256": "082fc55a6ed8c99e4fac91265337c8350de3ec159eba1fd21c6c9afa2538c215",
+      "translation": "NSC के अंतर्गत हर यौगिक को बारी-बारी से बाहर रखा जाता है (उसकी सभी सांद्रताएँ और प्रतिकृति वेल) और हर अन्य यौगिक के वेल पर एक क्लासिफ़ायर प्रशिक्षित किया जाता है। NSCB के अंतर्गत हर उपचार को बारी-बारी से बाहर रखा जाता है, और प्रशिक्षण वेल उस उपचार के किसी बैच में इमेज किए गए हर वेल को भी बाहर रखते हैं (अन्यथा हर बैच में इमेज किया गया यौगिक प्रशिक्षण के लिए कुछ भी नहीं छोड़ता)। किसी उपचार का पूर्वानुमान वह वर्ग है जिसकी उसके वेल पर माध्य प्रायिकता सबसे अधिक हो। जिस फ़ोल्ड के प्रशिक्षण वेल में दो से कम वर्ग हों उसे स्कोर नहीं किया जाता।"
+    },
+    {
+      "context": "column with each microplate sample position's batch; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.loco_supervised#10",
+      "source": "column with each well's batch; ``None`` scores NSC only.",
+      "source_sha256": "da665cbb37caf13a3e8202f69a533f6c7e5a59a5ac247b374b1a766e0432b988",
+      "translation": "हर वेल के बैच वाला कॉलम; ``None`` केवल NSC स्कोर करता है।"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.loco_supervised#11",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "प्रोफ़ाइल कॉलम; ``None`` कुंजी कॉलम, ``Metadata_`` कॉलम और गणनाओं के बाहर हर संख्यात्मक कॉलम लेता है।"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the microplate sample positions carry none.",
+      "label": "spacr.moa_benchmark.loco_supervised#12",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the wells carry none.",
+      "source_sha256": "a60a4e586e7651a8b13f0fba967e9fff2b2d378c8ab08d6069766cfc2e964591",
+      "translation": "MoA वाला एक फ़्रेम या तालिका पथ, जिसे साझा कॉलम पर जोड़ा जाता है जब वेल में MoA न हो।"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.loco_supervised#13",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "बाहर रखे गए यौगिक या MoA मान, जैसे ``'DMSO'``।"
+    },
+    {
+      "context": "seed of the XGBoost fits.",
+      "label": "spacr.moa_benchmark.loco_supervised#14",
+      "source": "seed of the XGBoost fits.",
+      "source_sha256": "d2dd9f40bb03444c4c0e78efe345794ab69123f7da162fe243d4a21beaf1a1ba",
+      "translation": "XGBoost फ़िट का सीड।"
+    },
+    {
+      "context": "folds fitted at a time, in threads.",
+      "label": "spacr.moa_benchmark.loco_supervised#15",
+      "source": "folds fitted at a time, in threads.",
+      "source_sha256": "a624f1885382bd87fe0e494a0b5e31679090cd7550e4d0da0f6d2bdb1af5fee5",
+      "translation": "एक साथ फ़िट किए जाने वाले फ़ोल्ड, थ्रेड में।"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.loco_supervised#16",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson स्कोर अंतराल का स्तर।"
+    },
+    {
+      "context": "``{\"table\", \"predictions\"}``: one row per evaluation (with the per-microplate sample position accuracy), and one row per treatment and evaluation with ``predicted_moa``, ``probability``, ``n_wells``, ``scored``, ``solvable`` and ``correct``.",
+      "label": "spacr.moa_benchmark.loco_supervised#17",
+      "source": "``{\"table\", \"predictions\"}``: one row per evaluation (with the per-well accuracy), and one row per treatment and evaluation with ``predicted_moa``, ``probability``, ``n_wells``, ``scored``, ``solvable`` and ``correct``.",
+      "source_sha256": "863c3d8861ec6e1eb9128fbd49990147099aa3564926ea0f216110d049533922",
+      "translation": "``{\"table\", \"predictions\"}``: प्रति मूल्यांकन एक पंक्ति (प्रति-वेल सटीकता के साथ), और प्रति उपचार और मूल्यांकन एक पंक्ति, जिसमें ``predicted_moa``, ``probability``, ``n_wells``, ``scored``, ``solvable`` और ``correct`` हैं।"
+    },
+    {
+      "context": "for an unknown model, missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "label": "spacr.moa_benchmark.loco_supervised#18",
+      "source": "for an unknown model, missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "source_sha256": "88dcd8dc0fb4071a5e9f84f32c42a55cfb49f53a90b7b2896ab222fce44c5ad0",
+      "translation": "अज्ञात मॉडल, अनुपस्थित कॉलम, अनुपस्थित या अनंत मानों, या दो से कम लेबल वाले यौगिकों के लिए।"
+    },
+    {
+      "context": "``'logistic'`` standardises the features on the training fold and fits a multinomial L2 logistic regression (C = 1). ``'xgboost'`` fits XGBoost with :data:`XGBOOST_PARAMS` on the CPU (:func:`spacr.ml._xgboost_cpu_safe`). Neither is tuned on test folds.",
+      "label": "spacr.moa_benchmark.loco_supervised#2",
+      "source": "``'logistic'`` standardises the features on the training fold and fits a multinomial L2 logistic regression (C = 1). ``'xgboost'`` fits XGBoost with :data:`XGBOOST_PARAMS` on the CPU (:func:`spacr.ml._xgboost_cpu_safe`). Neither is tuned on test folds.",
+      "source_sha256": "228234eba0a1450124ca7d7a392ff795088d724b3040ac0408bfeba6b14650ab",
+      "translation": "``'logistic'`` प्रशिक्षण फ़ोल्ड पर फ़ीचरों का मानकीकरण करता है और एक बहुपदी (multinomial) L2 लॉजिस्टिक रिग्रेशन (C = 1) फ़िट करता है। ``'xgboost'`` CPU पर :data:`XGBOOST_PARAMS` के साथ XGBoost फ़िट करता है (:func:`spacr.ml._xgboost_cpu_safe`)। किसी को भी परीक्षण फ़ोल्ड पर ट्यून नहीं किया जाता।"
+    },
+    {
+      "context": "A profiling run calls it on its normalised well profiles",
+      "label": "spacr.moa_benchmark.loco_supervised#3",
+      "source": "A profiling run calls it on its normalised well profiles",
+      "source_sha256": "e5b8446fcf725d9bfcb029e900ce4874e58a28039a811846456b3269ad8c898d",
+      "translation": "एक प्रोफ़ाइलिंग रन इसे अपनी सामान्यीकृत वेल प्रोफ़ाइल पर कॉल करता है"
+    },
+    {
+      "context": "The supervised arms are close to, not identical with, the BBBC021 reanalysis (``supervised_moa.py``, CellProfiler microplate sample positions, Ljosa scaling, microplate sample position means): logistic regression gives 96/103 under NSC (96 in the reference) and 68/102 under NSCB (67); XGBoost 91/103 under NSC (88) and 63/102 under NSCB (64). The folds and parameters are the same; the differences are numerical, most likely library versions (scikit-learn, XGBoost, BLAS) and execution concurrency (the reference fitted 6 processes of 2 independent execution paths). The 1-NN arm reproduces ``run_and_score.py`` exactly.",
+      "label": "spacr.moa_benchmark.loco_supervised#4",
+      "source": "The supervised arms are close to, not identical with, the BBBC021 reanalysis (``supervised_moa.py``, CellProfiler wells, Ljosa scaling, well means): logistic regression gives 96/103 under NSC (96 in the reference) and 68/102 under NSCB (67); XGBoost 91/103 under NSC (88) and 63/102 under NSCB (64). The folds and parameters are the same; the differences are numerical, most likely library versions (scikit-learn, XGBoost, BLAS) and threading (the reference fitted 6 processes of 2 threads). The 1-NN arm reproduces ``run_and_score.py`` exactly.",
+      "source_sha256": "8fcbbe53ab4b7683d92b9e30f9ee225a9edf630074a6aa6ce298ce0cc51f37cb",
+      "translation": "पर्यवेक्षित शाखाएँ BBBC021 पुनर्विश्लेषण (``supervised_moa.py``, CellProfiler वेल, Ljosa स्केलिंग, वेल माध्य) के निकट हैं, पर समान नहीं: लॉजिस्टिक रिग्रेशन NSC के अंतर्गत 96/103 (संदर्भ में 96) और NSCB के अंतर्गत 68/102 (67) देता है; XGBoost NSC के अंतर्गत 91/103 (88) और NSCB के अंतर्गत 63/102 (64)। फ़ोल्ड और पैरामीटर समान हैं; अंतर संख्यात्मक हैं, सबसे संभवतः लाइब्रेरी संस्करण (scikit-learn, XGBoost, BLAS) और थ्रेडिंग (संदर्भ ने 2 थ्रेड वाली 6 प्रक्रियाओं में फ़िट किया)। 1-NN शाखा ``run_and_score.py`` को ठीक-ठीक पुनरुत्पादित करती है।"
+    },
+    {
+      "context": "one row per microplate sample position (or per treatment), a frame or a table path. All-``float32`` features are fitted in ``float32``.",
+      "label": "spacr.moa_benchmark.loco_supervised#5",
+      "source": "one row per well (or per treatment), a frame or a table path. All-``float32`` features are fitted in ``float32``.",
+      "source_sha256": "c2c8b570b49732b57f9d4fda5f3cb4b4f667788e5706b0517032c661fe90ac20",
+      "translation": "प्रति वेल (या प्रति उपचार) एक पंक्ति, एक फ़्रेम या तालिका पथ। पूरी तरह ``float32`` फ़ीचर ``float32`` में फ़िट किए जाते हैं।"
+    },
+    {
+      "context": "``'logistic'`` or ``'xgboost'``.",
+      "label": "spacr.moa_benchmark.loco_supervised#6",
+      "source": "``'logistic'`` or ``'xgboost'``.",
+      "source_sha256": "e9a9741add35c47bf2fd8202c1ce166d2db6e8112fdd062f4c3cc45774e3d8bb",
+      "translation": "``'logistic'`` या ``'xgboost'``।"
+    },
+    {
+      "context": "column with the MoA; rows without one are not scored.",
+      "label": "spacr.moa_benchmark.loco_supervised#7",
+      "source": "column with the MoA; rows without one are not scored.",
+      "source_sha256": "28b9bb2de89ea4b29dfaca6df0a2c56bb6288e30af27ca29062b1922e87c7e33",
+      "translation": "MoA वाला कॉलम; जिन पंक्तियों में यह नहीं है उन्हें स्कोर नहीं किया जाता।"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.loco_supervised#9",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "कॉलम जो उपचार बताते हैं।"
+    },
+    {
+      "context": "Run :func:`run_moa_benchmark` from the command line.",
+      "label": "spacr.moa_benchmark.main#0",
+      "source": "Run :func:`run_moa_benchmark` from the command line.",
+      "source_sha256": "e283c63c6126a109ecd56f4491f7794e6781725203f9ceabe95fc5b1ca49f689",
+      "translation": "कमांड लाइन से :func:`run_moa_benchmark` चलाता है।"
+    },
+    {
+      "context": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` scores every arm under NSC and NSCB.",
+      "label": "spacr.moa_benchmark.main#1",
+      "source": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` scores every arm under NSC and NSCB.",
+      "source_sha256": "997d030b5dc4fa30265c486c42274afd27cd7a7bdcebce35a6bc65233265ec78",
+      "translation": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` NSC और NSCB के अंतर्गत हर मूल्यांकन शाखा को स्कोर करता है।"
+    },
+    {
+      "context": "0 when a table was written, 1 otherwise.",
+      "label": "spacr.moa_benchmark.main#3",
+      "source": "0 when a table was written, 1 otherwise.",
+      "source_sha256": "8ade31cc68f886de02dd59870a0cc071434b04fd7cac316424a783ded7203e86",
+      "translation": "तालिका लिखी जाने पर 0, अन्यथा 1।"
+    },
+    {
+      "context": "The accuracy of always guessing the commonest MoA.",
+      "label": "spacr.moa_benchmark.majority_class_control#0",
+      "source": "The accuracy of always guessing the commonest MoA.",
+      "source_sha256": "9d8125fb765e0a10980e5da2bbe25d1b810725077b85ad61f43c5beb241ac925",
+      "translation": "हमेशा सबसे सामान्य MoA का अनुमान लगाने की सटीकता।"
+    },
+    {
+      "context": "Counted over the treatments an arm scored, per evaluation, so it is the floor that arm has to beat (under NSCB a treatment without a candidate is not scored and not counted).",
+      "label": "spacr.moa_benchmark.majority_class_control#1",
+      "source": "Counted over the treatments an arm scored, per evaluation, so it is the floor that arm has to beat (under NSCB a treatment without a candidate is not scored and not counted).",
+      "source_sha256": "b693f7c92bc4b6bf94190ee2aae557f3430bebd7c26b0cdc4d51969b02a2c7af",
+      "translation": "प्रति मूल्यांकन, उन उपचारों पर गिना जाता है जिन्हें किसी शाखा ने स्कोर किया, इसलिए यह वह न्यूनतम स्तर है जिसे उस शाखा को पार करना होता है (NSCB के अंतर्गत बिना उम्मीदवार वाले उपचार को न स्कोर किया जाता है न गिना जाता है)।"
+    },
+    {
+      "context": "the ``predictions`` of an arm, with ``evaluation``, ``scored`` and the MoA column.",
+      "label": "spacr.moa_benchmark.majority_class_control#2",
+      "source": "the ``predictions`` of an arm, with ``evaluation``, ``scored`` and the MoA column.",
+      "source_sha256": "105fb3eba4b7131c0f398d5cddecea1c1791c47ad137b2802fa6fc29f6e685ec",
+      "translation": "किसी शाखा के ``predictions``, जिनमें ``evaluation``, ``scored`` और MoA कॉलम हों।"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.majority_class_control#3",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "MoA वाला कॉलम।"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.majority_class_control#4",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson स्कोर अंतराल का स्तर।"
+    },
+    {
+      "context": "one control row per evaluation, naming the majority class.",
+      "label": "spacr.moa_benchmark.majority_class_control#5",
+      "source": "one control row per evaluation, naming the majority class.",
+      "source_sha256": "f29b6103818f79602f90477b1d8c5ac28bb19f7df549cd4c4080aafbbaadae33",
+      "translation": "प्रति मूल्यांकन एक नियंत्रण पंक्ति, जो बहुसंख्यक वर्ग का नाम बताती है।"
+    },
+    {
+      "context": "when the predictions lack a needed column.",
+      "label": "spacr.moa_benchmark.majority_class_control#6",
+      "source": "when the predictions lack a needed column.",
+      "source_sha256": "dd0f70fc5734a2ad5b08ce453b11ff69f3b52ab0769d5298964b8ce8245e08bb",
+      "translation": "जब पूर्वानुमानों में कोई आवश्यक कॉलम न हो।"
+    },
+    {
+      "context": "Run the leave-one-compound-out arms and their controls on one table.",
+      "label": "spacr.moa_benchmark.moa_benchmark#0",
+      "source": "Run the leave-one-compound-out arms and their controls on one table.",
+      "source_sha256": "3a191c6f3e9f5570f8e80ad5c3ac7e27f959e8742fa15ea0870642581eac5822",
+      "translation": "एक तालिका पर एक-यौगिक-छोड़कर मूल्यांकन शाखाओं और उनके नियंत्रणों को चलाता है।"
+    },
+    {
+      "context": "With per-microplate sample position input (a treatment on several rows) the 1-NN arm scores treatment profiles made by :func:`spacr.embeddings.aggregate_profiles` (``replicates`` of the microplate sample positions), and the supervised arms train on the microplate sample positions. With one row per treatment every arm uses the rows as they are. Each arm gets a shuffled-label control row per evaluation, and the first arm a majority-class row.",
+      "label": "spacr.moa_benchmark.moa_benchmark#1",
+      "source": "With per-well input (a treatment on several rows) the 1-NN arm scores treatment profiles made by :func:`spacr.embeddings.aggregate_profiles` (``replicates`` of the wells), and the supervised arms train on the wells. With one row per treatment every arm uses the rows as they are. Each arm gets a shuffled-label control row per evaluation, and the first arm a majority-class row.",
+      "source_sha256": "f63e5d724f242147f9ed7437fad487686eb7458824b6ade4910392fa907f9918",
+      "translation": "प्रति-वेल इनपुट (एक उपचार कई पंक्तियों पर) के साथ 1-NN शाखा :func:`spacr.embeddings.aggregate_profiles` द्वारा बनाई गई उपचार प्रोफ़ाइल (वेल के ``replicates``) स्कोर करती है, और पर्यवेक्षित शाखाएँ वेल पर प्रशिक्षित होती हैं। प्रति उपचार एक पंक्ति होने पर हर शाखा पंक्तियों को जैसा है वैसा ही उपयोग करती है। हर शाखा को प्रति मूल्यांकन एक फेंटे-लेबल नियंत्रण पंक्ति मिलती है, और पहली शाखा को एक बहुसंख्यक-वर्ग पंक्ति।"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the data carry none.",
+      "label": "spacr.moa_benchmark.moa_benchmark#10",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the data carry none.",
+      "source_sha256": "e18ff07fb9fd99b3d101cb6e9d173ea8116decd311a8ea4968f2afe8550ed6f2",
+      "translation": "MoA वाला एक फ़्रेम या तालिका पथ, जिसे साझा कॉलम पर जोड़ा जाता है जब डेटा में MoA न हो।"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.moa_benchmark#11",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "बाहर रखे गए यौगिक या MoA मान, जैसे ``'DMSO'``।"
+    },
+    {
+      "context": "``'median'`` or ``'mean'``, how microplate sample positions combine into a treatment profile for the 1-NN arm.",
+      "label": "spacr.moa_benchmark.moa_benchmark#12",
+      "source": "``'median'`` or ``'mean'``, how wells combine into a treatment profile for the 1-NN arm.",
+      "source_sha256": "3256c32abbc0c14770b9d52eceaebc5d5cdfb034e7d075801b43d5a93c1eb99d",
+      "translation": "``'median'`` या ``'mean'``, 1-NN शाखा के लिए वेल किस प्रकार एक उपचार प्रोफ़ाइल में संयोजित होते हैं।"
+    },
+    {
+      "context": "shuffles for the 1-NN control.",
+      "label": "spacr.moa_benchmark.moa_benchmark#13",
+      "source": "shuffles for the 1-NN control.",
+      "source_sha256": "14fd6866a11ca320456efff3aab5b9a28a144096b6aa54ff3f6eb670d07a8c73",
+      "translation": "1-NN नियंत्रण के लिए फेंटने की संख्या।"
+    },
+    {
+      "context": "shuffles for each supervised control.",
+      "label": "spacr.moa_benchmark.moa_benchmark#14",
+      "source": "shuffles for each supervised control.",
+      "source_sha256": "a6609df26455dce11cecdbfcd6ecaa267f9ba7e6af3b06e3beda075488f7d9cb",
+      "translation": "हर पर्यवेक्षित नियंत्रण के लिए फेंटने की संख्या।"
+    },
+    {
+      "context": "seed of the shuffles and the XGBoost fits.",
+      "label": "spacr.moa_benchmark.moa_benchmark#15",
+      "source": "seed of the shuffles and the XGBoost fits.",
+      "source_sha256": "27e8856555b49b136c884e3e93b39671334186fe7a7865d00a73f6ecd9a59286",
+      "translation": "फेंटने और XGBoost फ़िट का सीड।"
+    },
+    {
+      "context": "folds fitted at a time by the supervised arms.",
+      "label": "spacr.moa_benchmark.moa_benchmark#16",
+      "source": "folds fitted at a time by the supervised arms.",
+      "source_sha256": "f045f460aba2f5e4aca89a35278bebd13210aab1b97018b6a3a06202fcf4cf94",
+      "translation": "पर्यवेक्षित शाखाओं द्वारा एक साथ फ़िट किए जाने वाले फ़ोल्ड।"
+    },
+    {
+      "context": "level of the intervals.",
+      "label": "spacr.moa_benchmark.moa_benchmark#17",
+      "source": "level of the intervals.",
+      "source_sha256": "24ee5729d77f824ca9816b14da5ff21a1501cafabe61dcae746a44cdea397af2",
+      "translation": "अंतरालों का स्तर।"
+    },
+    {
+      "context": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``: the accuracy table (arm rows, then control rows; ``attrs[\"glossary\"]`` too), the per-treatment predictions of every arm, :data:`GLOSSARY`, the treatment profiles the 1-NN arm scored and the feature columns.",
+      "label": "spacr.moa_benchmark.moa_benchmark#18",
+      "source": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``: the accuracy table (arm rows, then control rows; ``attrs[\"glossary\"]`` too), the per-treatment predictions of every arm, :data:`GLOSSARY`, the treatment profiles the 1-NN arm scored and the feature columns.",
+      "source_sha256": "163af5b7157e01616f684d901a678874f3ed779b12f028d832772ab0737adf12",
+      "translation": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``: सटीकता तालिका (पहले शाखा पंक्तियाँ, फिर नियंत्रण पंक्तियाँ; ``attrs[\"glossary\"]`` भी), हर शाखा के प्रति-उपचार पूर्वानुमान, :data:`GLOSSARY`, 1-NN शाखा द्वारा स्कोर की गई उपचार प्रोफ़ाइल और फ़ीचर कॉलम।"
+    },
+    {
+      "context": "for an unknown arm or replicate method, or for the reasons of the arms.",
+      "label": "spacr.moa_benchmark.moa_benchmark#19",
+      "source": "for an unknown arm or replicate method, or for the reasons of the arms.",
+      "source_sha256": "309f2fb3b707920f93b68aa038b4a49eb6a3c9ba7358343a5d31a21aadfe7ad7",
+      "translation": "अज्ञात शाखा या प्रतिकृति विधि के लिए, या शाखाओं के कारणों से।"
+    },
+    {
+      "context": "A profiling run, and the CellProfiler head-to-head (item 753) for each feature set, call",
+      "label": "spacr.moa_benchmark.moa_benchmark#2",
+      "source": "A profiling run, and the CellProfiler head-to-head (item 753) for each feature set, call",
+      "source_sha256": "c00c6c5be4c176258ec1e5d6cb1a99150411e742a52acd165c02282da11361e9",
+      "translation": "एक प्रोफ़ाइलिंग रन, और हर फ़ीचर सेट के लिए CellProfiler आमने-सामने तुलना (item 753), कॉल करते हैं"
+    },
+    {
+      "context": "profiles, a frame or a table path.",
+      "label": "spacr.moa_benchmark.moa_benchmark#3",
+      "source": "profiles, a frame or a table path.",
+      "source_sha256": "db11bf5efc50f34891d0b06ef2e44ae414887a8df90b220e8982f20e718776d9",
+      "translation": "प्रोफ़ाइल, एक फ़्रेम या तालिका पथ।"
+    },
+    {
+      "context": "arms to run, from :data:`ARMS`.",
+      "label": "spacr.moa_benchmark.moa_benchmark#4",
+      "source": "arms to run, from :data:`ARMS`.",
+      "source_sha256": "0f3cf176190386733af07cab2d12685cba732990f4a5383bb6a91702cedcb58b",
+      "translation": "चलाई जाने वाली शाखाएँ, :data:`ARMS` में से।"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.moa_benchmark#5",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "MoA वाला कॉलम।"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.moa_benchmark#7",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "कॉलम जो उपचार बताते हैं।"
+    },
+    {
+      "context": "column with each microplate sample position's batch; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.moa_benchmark#8",
+      "source": "column with each well's batch; ``None`` scores NSC only.",
+      "source_sha256": "da665cbb37caf13a3e8202f69a533f6c7e5a59a5ac247b374b1a766e0432b988",
+      "translation": "हर वेल के बैच वाला कॉलम; ``None`` केवल NSC स्कोर करता है।"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.moa_benchmark#9",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "प्रोफ़ाइल कॉलम; ``None`` कुंजी कॉलम, ``Metadata_`` कॉलम और गणनाओं के बाहर हर संख्यात्मक कॉलम लेता है।"
+    },
+    {
+      "context": "The settings of :func:`run_moa_benchmark`, filled in with their defaults.",
+      "label": "spacr.moa_benchmark.moa_benchmark_defaults#0",
+      "source": "The settings of :func:`run_moa_benchmark`, filled in with their defaults.",
+      "source_sha256": "6e6abab97c79ee22ca04169dd62d298ba5a832a8607d498fed78927fcaa0e037",
+      "translation": ":func:`run_moa_benchmark` की सेटिंग्स, उनके डिफ़ॉल्ट से भरी हुई।"
+    },
+    {
+      "context": "Score a profiles table from settings and write the results.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#0",
+      "source": "Score a profiles table from settings and write the results.",
+      "source_sha256": "9f6641d7887fd88a800978972362ff1bcb6f6a644214e6299eb22bc49cf985e7",
+      "translation": "सेटिंग्स से एक प्रोफ़ाइल तालिका को स्कोर करता है और परिणाम लिखता है।"
+    },
+    {
+      "context": "Runs :func:`moa_benchmark` with the keys of :func:`moa_benchmark_defaults` and writes the result with :func:`write_moa_benchmark` to ``moa_dst``.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#1",
+      "source": "Runs :func:`moa_benchmark` with the keys of :func:`moa_benchmark_defaults` and writes the result with :func:`write_moa_benchmark` to ``moa_dst``.",
+      "source_sha256": "e57e5c4992a177253bc69e68fb60ecdd598a1dac027a2c1ec0705d44571f4be0",
+      "translation": ":func:`moa_benchmark` को :func:`moa_benchmark_defaults` की कुंजियों के साथ चलाता है और परिणाम को :func:`write_moa_benchmark` से ``moa_dst`` में लिखता है।"
+    },
+    {
+      "context": "the keys of :func:`moa_benchmark_defaults`; missing keys take their defaults. ``moa_profiles`` may also be a frame.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#2",
+      "source": "the keys of :func:`moa_benchmark_defaults`; missing keys take their defaults. ``moa_profiles`` may also be a frame.",
+      "source_sha256": "d96c2991892687caf8c28c7005190c6f61971c25a14fe69262cc1083803901b1",
+      "translation": ":func:`moa_benchmark_defaults` की कुंजियाँ; अनुपस्थित कुंजियाँ अपने डिफ़ॉल्ट लेती हैं। ``moa_profiles`` एक फ़्रेम भी हो सकता है।"
+    },
+    {
+      "context": "the :func:`moa_benchmark` result with ``paths`` added.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#3",
+      "source": "the :func:`moa_benchmark` result with ``paths`` added.",
+      "source_sha256": "a67a3312aae3b89c3fe229469d5aa661328b78629158149ceaea04e69a6623b8",
+      "translation": ":func:`moa_benchmark` का परिणाम, ``paths`` जोड़कर।"
+    },
+    {
+      "context": "without a profiles table, or for settings :func:`moa_benchmark` rejects.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#4",
+      "source": "without a profiles table, or for settings :func:`moa_benchmark` rejects.",
+      "source_sha256": "65b755d3cfed4e5a7f9f625e15640bbf9313708436618d14dbaab151af928775",
+      "translation": "प्रोफ़ाइल तालिका के बिना, या ऐसी सेटिंग्स के लिए जिन्हें :func:`moa_benchmark` अस्वीकार करता है।"
+    },
+    {
+      "context": "The accuracy one arm reaches with the MoA labels shuffled between compounds.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#0",
+      "source": "The accuracy one arm reaches with the MoA labels shuffled between compounds.",
+      "source_sha256": "03c04166afb85870a0127146fe6988715c278d796ed47609cb9a1b4770536e99",
+      "translation": "वह सटीकता जो कोई शाखा यौगिकों के बीच MoA लेबल फेंटे जाने पर प्राप्त करती है।"
+    },
+    {
+      "context": "The compound-to-MoA mapping is permuted (each compound keeps one MoA, so the class sizes stay as they are) and the arm is scored again, once per permutation; NSC and NSCB are scored on the same permutation. The mean is what chance alone gives: an arm that does not clear it has learned nothing about MoA. A compound with two MoA labels makes the shuffle permute the rows instead.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#1",
+      "source": "The compound-to-MoA mapping is permuted (each compound keeps one MoA, so the class sizes stay as they are) and the arm is scored again, once per permutation; NSC and NSCB are scored on the same permutation. The mean is what chance alone gives: an arm that does not clear it has learned nothing about MoA. A compound with two MoA labels makes the shuffle permute the rows instead.",
+      "source_sha256": "8675e72bbfab7eee74949da4596845861d959f6253d6607bb1961104f42b235b",
+      "translation": "यौगिक-से-MoA मैपिंग का क्रमचय किया जाता है (हर यौगिक एक MoA रखता है, इसलिए वर्गों के आकार वैसे ही रहते हैं) और शाखा को फिर से स्कोर किया जाता है, प्रति क्रमचय एक बार; NSC और NSCB को उसी क्रमचय पर स्कोर किया जाता है। इसका माध्य वह है जो केवल संयोग से मिलता है: जो शाखा इसे पार नहीं करती उसने MoA के बारे में कुछ नहीं सीखा। दो MoA लेबल वाले यौगिक के होने पर फेंटना इसके बजाय पंक्तियों का क्रमचय करता है।"
+    },
+    {
+      "context": "profile columns, as for the arm.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#10",
+      "source": "profile columns, as for the arm.",
+      "source_sha256": "66ccdc95b4f772d6b27d3dacaecb5e4a7c719ac082dea98d87fe69028c4ead06",
+      "translation": "प्रोफ़ाइल कॉलम, जैसे शाखा के लिए।"
+    },
+    {
+      "context": "compound or MoA values left out before shuffling.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#11",
+      "source": "compound or MoA values left out before shuffling.",
+      "source_sha256": "d48cfe73a752f84a0d3787542f6e984f7da035e0f8dbbaad2fa16d58ecc40b15",
+      "translation": "फेंटने से पहले बाहर रखे गए यौगिक या MoA मान।"
+    },
+    {
+      "context": "folds fitted at a time by a supervised arm.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#12",
+      "source": "folds fitted at a time by a supervised arm.",
+      "source_sha256": "74163349dad412e32260f1b0e37d14eef6b67453856ac696fb01f14b9d259b8e",
+      "translation": "किसी पर्यवेक्षित शाखा द्वारा एक साथ फ़िट किए जाने वाले फ़ोल्ड।"
+    },
+    {
+      "context": "share of the shuffles inside ``ci_low`` to ``ci_high``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#13",
+      "source": "share of the shuffles inside ``ci_low`` to ``ci_high``.",
+      "source_sha256": "50dce85dc9a88eac12a04cb27a65d0e204ace493d67e4e7207ec2b5fdb8ed2bb",
+      "translation": "``ci_low`` से ``ci_high`` के भीतर आने वाले फेंटनों का अनुपात।"
+    },
+    {
+      "context": "one control row per evaluation: the mean accuracy, its standard deviation and percentile interval over the shuffles, and ``n_permutations``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#14",
+      "source": "one control row per evaluation: the mean accuracy, its standard deviation and percentile interval over the shuffles, and ``n_permutations``.",
+      "source_sha256": "4f0de0c1e2193f4c96c38f13b419071a8e6d50e08807135bf79fb7c2d15aaee9",
+      "translation": "प्रति मूल्यांकन एक नियंत्रण पंक्ति: फेंटनों पर माध्य सटीकता, उसका मानक विचलन और पर्सेंटाइल अंतराल, और ``n_permutations``।"
+    },
+    {
+      "context": "for an unknown arm or data without a MoA column.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#15",
+      "source": "for an unknown arm or data without a MoA column.",
+      "source_sha256": "d14b49c20e2be9bac5467a6f01affa2fd01400a085217580c4cc984bb4a81aa8",
+      "translation": "अज्ञात शाखा या बिना MoA कॉलम वाले डेटा के लिए।"
+    },
+    {
+      "context": "``'1-NN'``, ``'logistic'``, ``'xgboost'``, or a function with the signature of :func:`loco_nearest_neighbour`.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#2",
+      "source": "``'1-NN'``, ``'logistic'``, ``'xgboost'``, or a function with the signature of :func:`loco_nearest_neighbour`.",
+      "source_sha256": "f3cb1dd974c5c81e6fe4e327ee0f943d85a0f6b7fc268c0194cf184adf10c565",
+      "translation": "``'1-NN'``, ``'logistic'``, ``'xgboost'``, या :func:`loco_nearest_neighbour` के सिग्नेचर वाला एक फ़ंक्शन।"
+    },
+    {
+      "context": "what the arm scores: treatment profiles for 1-NN, microplate sample positions for the supervised arms. Must carry the MoA column.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#3",
+      "source": "what the arm scores: treatment profiles for 1-NN, wells for the supervised arms. Must carry the MoA column.",
+      "source_sha256": "1a497502994102fc02e6baf2fa951f76ce95761f73eacd204a8f7dc6fbd34554",
+      "translation": "शाखा क्या स्कोर करती है: 1-NN के लिए उपचार प्रोफ़ाइल, पर्यवेक्षित शाखाओं के लिए वेल। इसमें MoA कॉलम होना चाहिए।"
+    },
+    {
+      "context": "shuffles; ``0`` returns an empty table.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#4",
+      "source": "shuffles; ``0`` returns an empty table.",
+      "source_sha256": "1e8c75dd3255409c13da9eddba50dc949ffa4cd9ab9b93b8b450fb2a927bea16",
+      "translation": "फेंटने की संख्या; ``0`` एक खाली तालिका लौटाता है।"
+    },
+    {
+      "context": "seed of the shuffles; permutation ``i`` fits supervised models with seed ``seed + i + 1``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#5",
+      "source": "seed of the shuffles; permutation ``i`` fits supervised models with seed ``seed + i + 1``.",
+      "source_sha256": "1fa0058e4ab11e32871a8a812f85e3658920734f07bc07a0279e026eb7216049",
+      "translation": "फेंटने का सीड; क्रमचय ``i`` पर्यवेक्षित मॉडल को सीड ``seed + i + 1`` के साथ फ़िट करता है।"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#6",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "MoA वाला कॉलम।"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#8",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "कॉलम जो उपचार बताते हैं।"
+    },
+    {
+      "context": "batch column; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#9",
+      "source": "batch column; ``None`` scores NSC only.",
+      "source_sha256": "2c1bda11b7d82ee462ae629b0e3894b5d6fb2786a0a45df2a1b86849a3b33993",
+      "translation": "बैच कॉलम; ``None`` केवल NSC स्कोर करता है।"
+    },
+    {
+      "context": "Write a :func:`moa_benchmark` result through :func:`spacr.tabular.write_table`.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#0",
+      "source": "Write a :func:`moa_benchmark` result through :func:`spacr.tabular.write_table`.",
+      "source_sha256": "3c21362bfee2acc6dd280b7293650bdb64722323d28ccc3e6abedaacda563a74",
+      "translation": ":func:`moa_benchmark` का परिणाम :func:`spacr.tabular.write_table` के माध्यम से लिखता है।"
+    },
+    {
+      "context": "Writes ``moa_accuracy.csv`` (the table), ``moa_predictions.csv``, ``moa_glossary.csv`` (term and meaning, so a reader of the table needs nothing else) and ``moa_summary.json`` (the table as records, the number of features and :data:`SUPERVISED_REPRODUCTION`).",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#1",
+      "source": "Writes ``moa_accuracy.csv`` (the table), ``moa_predictions.csv``, ``moa_glossary.csv`` (term and meaning, so a reader of the table needs nothing else) and ``moa_summary.json`` (the table as records, the number of features and :data:`SUPERVISED_REPRODUCTION`).",
+      "source_sha256": "67e727658c6f94e19cac410a75f3401ffbeecaf42f6cbe9658a43f0d20c0430e",
+      "translation": "``moa_accuracy.csv`` (तालिका), ``moa_predictions.csv``, ``moa_glossary.csv`` (पद और उसका अर्थ, ताकि तालिका के पाठक को और कुछ न चाहिए) और ``moa_summary.json`` (रिकॉर्ड के रूप में तालिका, फ़ीचरों की संख्या और :data:`SUPERVISED_REPRODUCTION`) लिखता है।"
+    },
+    {
+      "context": "what :func:`moa_benchmark` returns.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#2",
+      "source": "what :func:`moa_benchmark` returns.",
+      "source_sha256": "efb3db0974d77a2f14dbbedfd0a71aae5aab8ff9638768f02c5fc1146e866075",
+      "translation": "जो :func:`moa_benchmark` लौटाता है।"
+    },
+    {
+      "context": "the folder; created if absent.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#3",
+      "source": "the folder; created if absent.",
+      "source_sha256": "0c78c8e6766ddbd019c3c28990f0808d537411a9accfe0b330fccf2ada2af78b",
+      "translation": "फ़ोल्डर; न होने पर बनाया जाता है।"
+    },
+    {
+      "context": "the paths written.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#4",
+      "source": "the paths written.",
+      "source_sha256": "8a16c0b4ddf6684fddfbf074060d19e8b9e82aacecc9b20544b115326e790ab0",
+      "translation": "लिखे गए पथ।"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-09 against the exact English source of the public docstring blocks added on the batch8-1109 branch: the spacr.moa_benchmark module and its 9 public callables (item 795). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,686 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Score profiles by mechanism of action, leaving one compound out.",
+      "label": "spacr.moa_benchmark#0",
+      "source": "Score profiles by mechanism of action, leaving one compound out.",
+      "source_sha256": "be37292f030cc9dd6fca34293678f58bba9eb2308a6c19cf2cdd29ddc9b963d9",
+      "translation": "按作用机制为特征谱打分，每次留出一个化合物。"
+    },
+    {
+      "context": "A profiling result is comparable with the published BBBC021 numbers (Ljosa et al. 2013) only when it is scored the same way. This module is spaCR's one scorer for that: every arm holds out a whole compound, so a treatment is never matched to, or trained on, the same compound at another concentration.",
+      "label": "spacr.moa_benchmark#1",
+      "source": "A profiling result is comparable with the published BBBC021 numbers (Ljosa et al. 2013) only when it is scored the same way. This module is spaCR's one scorer for that: every arm holds out a whole compound, so a treatment is never matched to, or trained on, the same compound at another concentration.",
+      "source_sha256": "1e3f0b712d8147e4265538d1a0ba7665e1cf829bd49aba54a185533e61c347d2",
+      "translation": "只有采用相同的打分方式，特征谱分析结果才能与已发表的 BBBC021 数值（Ljosa et al. 2013）相比较。本模块就是 spaCR 为此提供的唯一打分器：每个评估分支都留出整个化合物，因此一个处理永远不会与同一化合物的其他浓度相匹配，也不会在其上训练。"
+    },
+    {
+      "context": "Everything executes on the CPU; ``workers`` fits that many folds at a time in independent execution paths of one process.",
+      "label": "spacr.moa_benchmark#10",
+      "source": "Everything runs on the CPU; ``workers`` fits that many folds at a time in threads of one process.",
+      "source_sha256": "d375f33cc7154eceaa8b2200b55c0d3823d4c235ff3fcdec03b0d6bb41de3a4d",
+      "translation": "所有计算都在 CPU 上运行；``workers`` 在单个进程的多个线程中同时拟合相应数量的折。"
+    },
+    {
+      "context": ":func:`loco_nearest_neighbour` is the unsupervised arm: one nearest neighbour (1-NN) by cosine similarity between treatment profiles, under NSC (not same compound) and NSCB (not same compound or batch). It is :func:`spacr.embeddings.evaluate_moa`, so both give the same numbers.",
+      "label": "spacr.moa_benchmark#2",
+      "source": ":func:`loco_nearest_neighbour` is the unsupervised arm: one nearest neighbour (1-NN) by cosine similarity between treatment profiles, under NSC (not same compound) and NSCB (not same compound or batch). It is :func:`spacr.embeddings.evaluate_moa`, so both give the same numbers.",
+      "source_sha256": "0cd535f88fe67cd6b7839644666fe7dfe47c5caa622b873ef2c0a448fb0ad375",
+      "translation": ":func:`loco_nearest_neighbour` 是无监督评估分支：在处理特征谱之间按余弦相似度取一个最近邻（1-NN），分别在 NSC（非同一化合物）和 NSCB（非同一化合物或批次）规则下进行。它就是 :func:`spacr.embeddings.evaluate_moa`，因此两者给出相同的数值。"
+    },
+    {
+      "context": ":func:`loco_supervised` trains a machine-learning classification model on the microplate sample positions of the other compounds and predicts the held-out compound's microplate sample positions: a standardised logistic regression or XGBoost, on the CPU. Under NSC there is one fold per compound; under NSCB one per treatment, and the training microplate sample positions also leave out every batch that treatment was imaged in.",
+      "label": "spacr.moa_benchmark#3",
+      "source": ":func:`loco_supervised` trains a classifier on the wells of the other compounds and predicts the held-out compound's wells: a standardised logistic regression or XGBoost, on the CPU. Under NSC there is one fold per compound; under NSCB one per treatment, and the training wells also leave out every batch that treatment was imaged in.",
+      "source_sha256": "b0baa70d0ea2ee182066dced8c0fc5995c568f25ef16750f16e3bbd328dc4ef3",
+      "translation": ":func:`loco_supervised` 在其他化合物的孔上训练分类器，并预测被留出化合物的孔：在 CPU 上运行经标准化的逻辑回归或 XGBoost。在 NSC 下每个化合物一折；在 NSCB 下每个处理一折，且训练孔还会排除该处理成像所在的每个批次。"
+    },
+    {
+      "context": ":func:`shuffled_label_control` repeats any arm with the compound-to-MoA mapping shuffled, which gives the accuracy of chance; :func:`majority_class_control` gives the accuracy of always guessing the commonest MoA.",
+      "label": "spacr.moa_benchmark#4",
+      "source": ":func:`shuffled_label_control` repeats any arm with the compound-to-MoA mapping shuffled, which gives the accuracy of chance; :func:`majority_class_control` gives the accuracy of always guessing the commonest MoA.",
+      "source_sha256": "5d39f258f5bc9a52113806f7047fd6833965aa4566b92427fa9e8a1a5d005999",
+      "translation": ":func:`shuffled_label_control` 在打乱化合物到 MoA 的映射后重复任一评估分支，从而给出随机水平的准确率；:func:`majority_class_control` 给出始终猜测最常见 MoA 的准确率。"
+    },
+    {
+      "context": ":func:`moa_benchmark` runs the arms and the controls on one table and returns one accuracy table with a glossary; :func:`write_moa_benchmark` writes them through :func:`spacr.tabular.write_table`.",
+      "label": "spacr.moa_benchmark#5",
+      "source": ":func:`moa_benchmark` runs the arms and the controls on one table and returns one accuracy table with a glossary; :func:`write_moa_benchmark` writes them through :func:`spacr.tabular.write_table`.",
+      "source_sha256": "1e98284684c22290e9ef2a502ecca8e357f3ccf37e89525540c3330808b6a737",
+      "translation": ":func:`moa_benchmark` 在一张表上运行各评估分支和对照，并返回一张附带术语表的准确率表；:func:`write_moa_benchmark` 通过 :func:`spacr.tabular.write_table` 将它们写出。"
+    },
+    {
+      "context": ":func:`run_moa_benchmark` does all of it from settings, and ``python -m spacr.moa_benchmark`` from the command line.",
+      "label": "spacr.moa_benchmark#6",
+      "source": ":func:`run_moa_benchmark` does all of it from settings, and ``python -m spacr.moa_benchmark`` from the command line.",
+      "source_sha256": "8dc29be29472dec9a41adb4c3c0dd983ce32608df19fb82d81861a35b12fa3dc",
+      "translation": ":func:`run_moa_benchmark` 根据设置完成全部工作，``python -m spacr.moa_benchmark`` 则从命令行完成。"
+    },
+    {
+      "context": "Input is a table of per-microplate sample position profiles (normalised to the laboratory microplate's control microplate sample positions, one row per microplate sample position) or of per-treatment profiles (one row per treatment), with a MoA column, a compound column, the columns that name a treatment and, for NSCB, a batch column. Per-microplate sample position input is combined per treatment by ``replicates`` (the median, as Ljosa et al. 2013) for the 1-NN arm, and used as it is by the supervised arms.",
+      "label": "spacr.moa_benchmark#7",
+      "source": "Input is a table of per-well profiles (normalised to the plate's control wells, one row per well) or of per-treatment profiles (one row per treatment), with a MoA column, a compound column, the columns that name a treatment and, for NSCB, a batch column. Per-well input is combined per treatment by ``replicates`` (the median, as Ljosa et al. 2013) for the 1-NN arm, and used as it is by the supervised arms.",
+      "source_sha256": "d94e9ec11763364fc0fd4b1c40834af2aa368f623a45215b3dd63feb4a4a0a28",
+      "translation": "输入是逐孔特征谱表（相对于该板的对照孔归一化，每孔一行）或逐处理特征谱表（每个处理一行），包含一个 MoA 列、一个化合物列、标识处理的列，以及用于 NSCB 的批次列。对于 1-NN 评估分支，逐孔输入按 ``replicates`` 合并到每个处理（取中位数，同 Ljosa et al. 2013），而监督评估分支直接使用逐孔输入。"
+    },
+    {
+      "context": "A profiling run passes its feature-selected well profiles",
+      "label": "spacr.moa_benchmark#8",
+      "source": "A profiling run passes its feature-selected well profiles",
+      "source_sha256": "b2fa3da7f9623e796df6e11dede4362d73aeb02076fa68657a6de068b06d60ed",
+      "translation": "一次特征谱分析运行会传入其经特征选择的孔特征谱"
+    },
+    {
+      "context": "The CellProfiler head-to-head (item 753) scores each feature set with the same call, one set at a time, and puts the tables side by side; with ``arms=(\"1-NN\",)`` it gives the rows :func:`spacr.embeddings.evaluate_moa` gives, with the shuffled-label and majority-class controls added.",
+      "label": "spacr.moa_benchmark#9",
+      "source": "The CellProfiler head-to-head (item 753) scores each feature set with the same call, one set at a time, and puts the tables side by side; with ``arms=(\"1-NN\",)`` it gives the rows :func:`spacr.embeddings.evaluate_moa` gives, with the shuffled-label and majority-class controls added.",
+      "source_sha256": "87bc32d90dd0785bf43185be9176ea3a85b831d0c5c104fe761f9655adc7582a",
+      "translation": "CellProfiler 正面对比（item 753）用同一调用为每个特征集打分，每次一个特征集，并将各表并列；使用 ``arms=(\"1-NN\",)`` 时，它给出与 :func:`spacr.embeddings.evaluate_moa` 相同的行，并附加标签打乱对照和多数类对照。"
+    },
+    {
+      "context": "Leave-one-compound-out 1-NN MoA accuracy on treatment profiles.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#0",
+      "source": "Leave-one-compound-out 1-NN MoA accuracy on treatment profiles.",
+      "source_sha256": "f8e8c002bae73dd8b36849d0b3f767e457120ff1bfaba8cca9c0a3b6c7596857",
+      "translation": "基于处理特征谱的留一化合物 1-NN MoA 准确率。"
+    },
+    {
+      "context": "Each treatment takes the MoA of its most similar other treatment by cosine similarity, never the same compound (NSC) and, with a batch column, never a treatment that shares a batch (NSCB). The scoring is :func:`spacr.embeddings.evaluate_moa`; this arm returns its rows in the table format of :func:`moa_benchmark`, without controls (see :func:`shuffled_label_control` and :func:`majority_class_control`).",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#1",
+      "source": "Each treatment takes the MoA of its most similar other treatment by cosine similarity, never the same compound (NSC) and, with a batch column, never a treatment that shares a batch (NSCB). The scoring is :func:`spacr.embeddings.evaluate_moa`; this arm returns its rows in the table format of :func:`moa_benchmark`, without controls (see :func:`shuffled_label_control` and :func:`majority_class_control`).",
+      "source_sha256": "b919c4057b04bd2808236db2dcacb52305a63b1054f58337b541ab33466d6bc7",
+      "translation": "每个处理按余弦相似度取其最相似的另一个处理的 MoA，该处理永远不是同一化合物（NSC），且在有批次列时，永远不是共享批次的处理（NSCB）。打分由 :func:`spacr.embeddings.evaluate_moa` 完成；本评估分支以 :func:`moa_benchmark` 的表格式返回其行，不含对照（参见 :func:`shuffled_label_control` 和 :func:`majority_class_control`）。"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#10",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "排除的化合物或 MoA 值，例如 ``'DMSO'``。"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#11",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson 得分区间的置信水平。"
+    },
+    {
+      "context": "``{\"table\", \"predictions\"}``: one row per evaluation, and one row per treatment and evaluation with ``predicted_moa``, ``neighbour_compound``, ``similarity``, ``scored`` and ``correct``.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#12",
+      "source": "``{\"table\", \"predictions\"}``: one row per evaluation, and one row per treatment and evaluation with ``predicted_moa``, ``neighbour_compound``, ``similarity``, ``scored`` and ``correct``.",
+      "source_sha256": "933a3210203e98cecd4357644b88f4e74a028d23eab9df0c151e39ba518e2ccc",
+      "translation": "``{\"table\", \"predictions\"}``：每次评估一行，以及每个处理和每次评估一行，包含 ``predicted_moa``、``neighbour_compound``、``similarity``、``scored`` 和 ``correct``。"
+    },
+    {
+      "context": "for missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#13",
+      "source": "for missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "source_sha256": "0a28edaa8f017b2a4325be3907a9a854afb117a54804d35d9cf779135ada8e77",
+      "translation": "当缺少列、存在缺失值或无穷值，或带标签的化合物少于两个时。"
+    },
+    {
+      "context": "The CellProfiler head-to-head (item 753) and a profiling run call it on one profile per treatment",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#2",
+      "source": "The CellProfiler head-to-head (item 753) and a profiling run call it on one profile per treatment",
+      "source_sha256": "e586066c6568866e4f97ebcfc5cfdb4afcb177a981eb8283202529a501cf31d8",
+      "translation": "CellProfiler 正面对比（item 753）和特征谱分析运行会在每个处理一个特征谱的数据上调用它"
+    },
+    {
+      "context": "one profile per treatment, a frame or a table path.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#3",
+      "source": "one profile per treatment, a frame or a table path.",
+      "source_sha256": "975c8d55a6f9e825dec589f7abd3d96edea0cb577c9ac50381132b9eeda14d5b",
+      "translation": "每个处理一个特征谱，一个数据框或表路径。"
+    },
+    {
+      "context": "column with the MoA; rows without one are not scored.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#4",
+      "source": "column with the MoA; rows without one are not scored.",
+      "source_sha256": "28b9bb2de89ea4b29dfaca6df0a2c56bb6288e30af27ca29062b1922e87c7e33",
+      "translation": "包含 MoA 的列；没有 MoA 的行不参与打分。"
+    },
+    {
+      "context": "columns that name a treatment; never profile values.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#6",
+      "source": "columns that name a treatment; never profile values.",
+      "source_sha256": "31c6802fb42ec939edfdc2d34d71ec524c8df9ce75a80b4fee9dbc630212507e",
+      "translation": "标识处理的列；绝不是特征谱数值。"
+    },
+    {
+      "context": "column with each treatment's batches, joined by ``|`` when there are several; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#7",
+      "source": "column with each treatment's batches, joined by ``|`` when there are several; ``None`` scores NSC only.",
+      "source_sha256": "5fff95d165b876b8b2c55b67239a6b6f0f30550c62ef252cd7ae010b71302c07",
+      "translation": "包含每个处理所属批次的列，有多个批次时以 ``|`` 连接；``None`` 只对 NSC 打分。"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#8",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "特征谱列；``None`` 取键列、``Metadata_`` 列和计数之外的所有数值列。"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the profiles carry none.",
+      "label": "spacr.moa_benchmark.loco_nearest_neighbour#9",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the profiles carry none.",
+      "source_sha256": "53e23cbf17ee69dfc80f7135acdf5d364f9efc4b61c536af7d49bde6b72da3fb",
+      "translation": "包含 MoA 的数据框或表路径，当特征谱不带 MoA 时按共有列合并。"
+    },
+    {
+      "context": "Leave-one-compound-out supervised MoA accuracy on well profiles.",
+      "label": "spacr.moa_benchmark.loco_supervised#0",
+      "source": "Leave-one-compound-out supervised MoA accuracy on well profiles.",
+      "source_sha256": "23c10da5c0f049c3334d00b2015b2acccacd99e5381412b9694d9a8eef156806",
+      "translation": "基于孔特征谱的留一化合物监督 MoA 准确率。"
+    },
+    {
+      "context": "Under NSC each compound is held out in turn (all its concentrations and replicate microplate sample positions) and a machine-learning classification model is trained on the microplate sample positions of every other compound. Under NSCB each treatment is held out in turn, and the training microplate sample positions also leave out every microplate sample position imaged in a batch of that treatment (a compound imaged in every batch would otherwise leave nothing to train on). A treatment's prediction is the class with the highest mean probability over its microplate sample positions. A fold whose training microplate sample positions hold fewer than two classes is not scored.",
+      "label": "spacr.moa_benchmark.loco_supervised#1",
+      "source": "Under NSC each compound is held out in turn (all its concentrations and replicate wells) and a classifier is trained on the wells of every other compound. Under NSCB each treatment is held out in turn, and the training wells also leave out every well imaged in a batch of that treatment (a compound imaged in every batch would otherwise leave nothing to train on). A treatment's prediction is the class with the highest mean probability over its wells. A fold whose training wells hold fewer than two classes is not scored.",
+      "source_sha256": "082fc55a6ed8c99e4fac91265337c8350de3ec159eba1fd21c6c9afa2538c215",
+      "translation": "在 NSC 下，依次留出每个化合物（包括其所有浓度和重复孔），并在其他所有化合物的孔上训练分类器。在 NSCB 下，依次留出每个处理，且训练孔还会排除在该处理任一批次中成像的所有孔（否则，在每个批次中都成像的化合物将不留下任何可供训练的数据）。一个处理的预测是其各孔平均概率最高的类别。训练孔中少于两个类别的折不参与打分。"
+    },
+    {
+      "context": "column with each microplate sample position's batch; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.loco_supervised#10",
+      "source": "column with each well's batch; ``None`` scores NSC only.",
+      "source_sha256": "da665cbb37caf13a3e8202f69a533f6c7e5a59a5ac247b374b1a766e0432b988",
+      "translation": "包含每个孔所属批次的列；``None`` 只对 NSC 打分。"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.loco_supervised#11",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "特征谱列；``None`` 取键列、``Metadata_`` 列和计数之外的所有数值列。"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the microplate sample positions carry none.",
+      "label": "spacr.moa_benchmark.loco_supervised#12",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the wells carry none.",
+      "source_sha256": "a60a4e586e7651a8b13f0fba967e9fff2b2d378c8ab08d6069766cfc2e964591",
+      "translation": "包含 MoA 的数据框或表路径，当孔数据不带 MoA 时按共有列合并。"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.loco_supervised#13",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "排除的化合物或 MoA 值，例如 ``'DMSO'``。"
+    },
+    {
+      "context": "seed of the XGBoost fits.",
+      "label": "spacr.moa_benchmark.loco_supervised#14",
+      "source": "seed of the XGBoost fits.",
+      "source_sha256": "d2dd9f40bb03444c4c0e78efe345794ab69123f7da162fe243d4a21beaf1a1ba",
+      "translation": "XGBoost 拟合的随机种子。"
+    },
+    {
+      "context": "folds fitted at a time, in threads.",
+      "label": "spacr.moa_benchmark.loco_supervised#15",
+      "source": "folds fitted at a time, in threads.",
+      "source_sha256": "a624f1885382bd87fe0e494a0b5e31679090cd7550e4d0da0f6d2bdb1af5fee5",
+      "translation": "同时拟合的折数，在多个线程中进行。"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.loco_supervised#16",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson 得分区间的置信水平。"
+    },
+    {
+      "context": "``{\"table\", \"predictions\"}``: one row per evaluation (with the per-microplate sample position accuracy), and one row per treatment and evaluation with ``predicted_moa``, ``probability``, ``n_wells``, ``scored``, ``solvable`` and ``correct``.",
+      "label": "spacr.moa_benchmark.loco_supervised#17",
+      "source": "``{\"table\", \"predictions\"}``: one row per evaluation (with the per-well accuracy), and one row per treatment and evaluation with ``predicted_moa``, ``probability``, ``n_wells``, ``scored``, ``solvable`` and ``correct``.",
+      "source_sha256": "863c3d8861ec6e1eb9128fbd49990147099aa3564926ea0f216110d049533922",
+      "translation": "``{\"table\", \"predictions\"}``：每次评估一行（附逐孔准确率），以及每个处理和每次评估一行，包含 ``predicted_moa``、``probability``、``n_wells``、``scored``、``solvable`` 和 ``correct``。"
+    },
+    {
+      "context": "for an unknown model, missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "label": "spacr.moa_benchmark.loco_supervised#18",
+      "source": "for an unknown model, missing columns, missing or infinite values, or fewer than two labelled compounds.",
+      "source_sha256": "88dcd8dc0fb4071a5e9f84f32c42a55cfb49f53a90b7b2896ab222fce44c5ad0",
+      "translation": "当模型未知、缺少列、存在缺失值或无穷值，或带标签的化合物少于两个时。"
+    },
+    {
+      "context": "``'logistic'`` standardises the features on the training fold and fits a multinomial L2 logistic regression (C = 1). ``'xgboost'`` fits XGBoost with :data:`XGBOOST_PARAMS` on the CPU (:func:`spacr.ml._xgboost_cpu_safe`). Neither is tuned on test folds.",
+      "label": "spacr.moa_benchmark.loco_supervised#2",
+      "source": "``'logistic'`` standardises the features on the training fold and fits a multinomial L2 logistic regression (C = 1). ``'xgboost'`` fits XGBoost with :data:`XGBOOST_PARAMS` on the CPU (:func:`spacr.ml._xgboost_cpu_safe`). Neither is tuned on test folds.",
+      "source_sha256": "228234eba0a1450124ca7d7a392ff795088d724b3040ac0408bfeba6b14650ab",
+      "translation": "``'logistic'`` 在训练折上对特征进行标准化，并拟合多项式 L2 逻辑回归（C = 1）。``'xgboost'`` 在 CPU 上以 :data:`XGBOOST_PARAMS` 拟合 XGBoost（:func:`spacr.ml._xgboost_cpu_safe`）。两者都不在测试折上调参。"
+    },
+    {
+      "context": "A profiling run calls it on its normalised well profiles",
+      "label": "spacr.moa_benchmark.loco_supervised#3",
+      "source": "A profiling run calls it on its normalised well profiles",
+      "source_sha256": "e5b8446fcf725d9bfcb029e900ce4874e58a28039a811846456b3269ad8c898d",
+      "translation": "特征谱分析运行会在其归一化后的孔特征谱上调用它"
+    },
+    {
+      "context": "The supervised arms are close to, not identical with, the BBBC021 reanalysis (``supervised_moa.py``, CellProfiler microplate sample positions, Ljosa scaling, microplate sample position means): logistic regression gives 96/103 under NSC (96 in the reference) and 68/102 under NSCB (67); XGBoost 91/103 under NSC (88) and 63/102 under NSCB (64). The folds and parameters are the same; the differences are numerical, most likely library versions (scikit-learn, XGBoost, BLAS) and execution concurrency (the reference fitted 6 processes of 2 independent execution paths). The 1-NN arm reproduces ``run_and_score.py`` exactly.",
+      "label": "spacr.moa_benchmark.loco_supervised#4",
+      "source": "The supervised arms are close to, not identical with, the BBBC021 reanalysis (``supervised_moa.py``, CellProfiler wells, Ljosa scaling, well means): logistic regression gives 96/103 under NSC (96 in the reference) and 68/102 under NSCB (67); XGBoost 91/103 under NSC (88) and 63/102 under NSCB (64). The folds and parameters are the same; the differences are numerical, most likely library versions (scikit-learn, XGBoost, BLAS) and threading (the reference fitted 6 processes of 2 threads). The 1-NN arm reproduces ``run_and_score.py`` exactly.",
+      "source_sha256": "8fcbbe53ab4b7683d92b9e30f9ee225a9edf630074a6aa6ce298ce0cc51f37cb",
+      "translation": "监督评估分支与 BBBC021 重分析（``supervised_moa.py``，CellProfiler 孔，Ljosa 缩放，孔均值）接近，但并不完全相同：逻辑回归在 NSC 下为 96/103（参考为 96），在 NSCB 下为 68/102（67）；XGBoost 在 NSC 下为 91/103（88），在 NSCB 下为 63/102（64）。折和参数相同；差异属于数值层面，最可能源于库版本（scikit-learn、XGBoost、BLAS）和线程设置（参考使用 6 个进程、每个 2 个线程进行拟合）。1-NN 评估分支完全复现 ``run_and_score.py``。"
+    },
+    {
+      "context": "one row per microplate sample position (or per treatment), a frame or a table path. All-``float32`` features are fitted in ``float32``.",
+      "label": "spacr.moa_benchmark.loco_supervised#5",
+      "source": "one row per well (or per treatment), a frame or a table path. All-``float32`` features are fitted in ``float32``.",
+      "source_sha256": "c2c8b570b49732b57f9d4fda5f3cb4b4f667788e5706b0517032c661fe90ac20",
+      "translation": "每孔（或每个处理）一行，一个数据框或表路径。全部为 ``float32`` 的特征以 ``float32`` 拟合。"
+    },
+    {
+      "context": "``'logistic'`` or ``'xgboost'``.",
+      "label": "spacr.moa_benchmark.loco_supervised#6",
+      "source": "``'logistic'`` or ``'xgboost'``.",
+      "source_sha256": "e9a9741add35c47bf2fd8202c1ce166d2db6e8112fdd062f4c3cc45774e3d8bb",
+      "translation": "``'logistic'`` 或 ``'xgboost'``。"
+    },
+    {
+      "context": "column with the MoA; rows without one are not scored.",
+      "label": "spacr.moa_benchmark.loco_supervised#7",
+      "source": "column with the MoA; rows without one are not scored.",
+      "source_sha256": "28b9bb2de89ea4b29dfaca6df0a2c56bb6288e30af27ca29062b1922e87c7e33",
+      "translation": "包含 MoA 的列；没有 MoA 的行不参与打分。"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.loco_supervised#9",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "标识处理的列。"
+    },
+    {
+      "context": "Run :func:`run_moa_benchmark` from the command line.",
+      "label": "spacr.moa_benchmark.main#0",
+      "source": "Run :func:`run_moa_benchmark` from the command line.",
+      "source_sha256": "e283c63c6126a109ecd56f4491f7794e6781725203f9ceabe95fc5b1ca49f689",
+      "translation": "从命令行运行 :func:`run_moa_benchmark`。"
+    },
+    {
+      "context": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` scores every arm under NSC and NSCB.",
+      "label": "spacr.moa_benchmark.main#1",
+      "source": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` scores every arm under NSC and NSCB.",
+      "source_sha256": "997d030b5dc4fa30265c486c42274afd27cd7a7bdcebce35a6bc65233265ec78",
+      "translation": "``python -m spacr.moa_benchmark --profiles wells.csv --labels moa.csv --batch-column batch --dst out`` 在 NSC 和 NSCB 下为每个评估分支打分。"
+    },
+    {
+      "context": "0 when a table was written, 1 otherwise.",
+      "label": "spacr.moa_benchmark.main#3",
+      "source": "0 when a table was written, 1 otherwise.",
+      "source_sha256": "8ade31cc68f886de02dd59870a0cc071434b04fd7cac316424a783ded7203e86",
+      "translation": "写出表时为 0，否则为 1。"
+    },
+    {
+      "context": "The accuracy of always guessing the commonest MoA.",
+      "label": "spacr.moa_benchmark.majority_class_control#0",
+      "source": "The accuracy of always guessing the commonest MoA.",
+      "source_sha256": "9d8125fb765e0a10980e5da2bbe25d1b810725077b85ad61f43c5beb241ac925",
+      "translation": "始终猜测最常见 MoA 的准确率。"
+    },
+    {
+      "context": "Counted over the treatments an arm scored, per evaluation, so it is the floor that arm has to beat (under NSCB a treatment without a candidate is not scored and not counted).",
+      "label": "spacr.moa_benchmark.majority_class_control#1",
+      "source": "Counted over the treatments an arm scored, per evaluation, so it is the floor that arm has to beat (under NSCB a treatment without a candidate is not scored and not counted).",
+      "source_sha256": "b693f7c92bc4b6bf94190ee2aae557f3430bebd7c26b0cdc4d51969b02a2c7af",
+      "translation": "按每次评估，在某个评估分支已打分的处理上计数，因此它是该评估分支必须超越的下限（在 NSCB 下，没有候选的处理既不打分也不计数）。"
+    },
+    {
+      "context": "the ``predictions`` of an arm, with ``evaluation``, ``scored`` and the MoA column.",
+      "label": "spacr.moa_benchmark.majority_class_control#2",
+      "source": "the ``predictions`` of an arm, with ``evaluation``, ``scored`` and the MoA column.",
+      "source_sha256": "105fb3eba4b7131c0f398d5cddecea1c1791c47ad137b2802fa6fc29f6e685ec",
+      "translation": "某个评估分支的 ``predictions``，包含 ``evaluation``、``scored`` 和 MoA 列。"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.majority_class_control#3",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "包含 MoA 的列。"
+    },
+    {
+      "context": "level of the Wilson score interval.",
+      "label": "spacr.moa_benchmark.majority_class_control#4",
+      "source": "level of the Wilson score interval.",
+      "source_sha256": "38c86b730b614d7f8e956c6da60d5070a4ddaee97e16dac063f2578cc604019b",
+      "translation": "Wilson 得分区间的置信水平。"
+    },
+    {
+      "context": "one control row per evaluation, naming the majority class.",
+      "label": "spacr.moa_benchmark.majority_class_control#5",
+      "source": "one control row per evaluation, naming the majority class.",
+      "source_sha256": "f29b6103818f79602f90477b1d8c5ac28bb19f7df549cd4c4080aafbbaadae33",
+      "translation": "每次评估一个对照行，注明多数类。"
+    },
+    {
+      "context": "when the predictions lack a needed column.",
+      "label": "spacr.moa_benchmark.majority_class_control#6",
+      "source": "when the predictions lack a needed column.",
+      "source_sha256": "dd0f70fc5734a2ad5b08ce453b11ff69f3b52ab0769d5298964b8ce8245e08bb",
+      "translation": "当预测结果缺少所需的列时。"
+    },
+    {
+      "context": "Run the leave-one-compound-out arms and their controls on one table.",
+      "label": "spacr.moa_benchmark.moa_benchmark#0",
+      "source": "Run the leave-one-compound-out arms and their controls on one table.",
+      "source_sha256": "3a191c6f3e9f5570f8e80ad5c3ac7e27f959e8742fa15ea0870642581eac5822",
+      "translation": "在一张表上运行留一化合物评估分支及其对照。"
+    },
+    {
+      "context": "With per-microplate sample position input (a treatment on several rows) the 1-NN arm scores treatment profiles made by :func:`spacr.embeddings.aggregate_profiles` (``replicates`` of the microplate sample positions), and the supervised arms train on the microplate sample positions. With one row per treatment every arm uses the rows as they are. Each arm gets a shuffled-label control row per evaluation, and the first arm a majority-class row.",
+      "label": "spacr.moa_benchmark.moa_benchmark#1",
+      "source": "With per-well input (a treatment on several rows) the 1-NN arm scores treatment profiles made by :func:`spacr.embeddings.aggregate_profiles` (``replicates`` of the wells), and the supervised arms train on the wells. With one row per treatment every arm uses the rows as they are. Each arm gets a shuffled-label control row per evaluation, and the first arm a majority-class row.",
+      "source_sha256": "f63e5d724f242147f9ed7437fad487686eb7458824b6ade4910392fa907f9918",
+      "translation": "对于逐孔输入（一个处理占多行），1-NN 评估分支对由 :func:`spacr.embeddings.aggregate_profiles` 生成的处理特征谱（各孔的 ``replicates``）打分，而监督评估分支在孔上训练。每个处理一行时，所有评估分支都直接使用这些行。每个评估分支在每次评估中得到一个标签打乱对照行，第一个评估分支还得到一个多数类行。"
+    },
+    {
+      "context": "a frame or table path with the MoA, joined on the shared columns when the data carry none.",
+      "label": "spacr.moa_benchmark.moa_benchmark#10",
+      "source": "a frame or table path with the MoA, joined on the shared columns when the data carry none.",
+      "source_sha256": "e18ff07fb9fd99b3d101cb6e9d173ea8116decd311a8ea4968f2afe8550ed6f2",
+      "translation": "包含 MoA 的数据框或表路径，当数据不带 MoA 时按共有列合并。"
+    },
+    {
+      "context": "compound or MoA values left out, such as ``'DMSO'``.",
+      "label": "spacr.moa_benchmark.moa_benchmark#11",
+      "source": "compound or MoA values left out, such as ``'DMSO'``.",
+      "source_sha256": "d7bf67f49fbaeb1d4a463c5e936d745311d8dc5c6cc5180541f5046176d43ea7",
+      "translation": "排除的化合物或 MoA 值，例如 ``'DMSO'``。"
+    },
+    {
+      "context": "``'median'`` or ``'mean'``, how microplate sample positions combine into a treatment profile for the 1-NN arm.",
+      "label": "spacr.moa_benchmark.moa_benchmark#12",
+      "source": "``'median'`` or ``'mean'``, how wells combine into a treatment profile for the 1-NN arm.",
+      "source_sha256": "3256c32abbc0c14770b9d52eceaebc5d5cdfb034e7d075801b43d5a93c1eb99d",
+      "translation": "``'median'`` 或 ``'mean'``，即 1-NN 评估分支中各孔合并为处理特征谱的方式。"
+    },
+    {
+      "context": "shuffles for the 1-NN control.",
+      "label": "spacr.moa_benchmark.moa_benchmark#13",
+      "source": "shuffles for the 1-NN control.",
+      "source_sha256": "14fd6866a11ca320456efff3aab5b9a28a144096b6aa54ff3f6eb670d07a8c73",
+      "translation": "1-NN 对照的打乱次数。"
+    },
+    {
+      "context": "shuffles for each supervised control.",
+      "label": "spacr.moa_benchmark.moa_benchmark#14",
+      "source": "shuffles for each supervised control.",
+      "source_sha256": "a6609df26455dce11cecdbfcd6ecaa267f9ba7e6af3b06e3beda075488f7d9cb",
+      "translation": "每个监督对照的打乱次数。"
+    },
+    {
+      "context": "seed of the shuffles and the XGBoost fits.",
+      "label": "spacr.moa_benchmark.moa_benchmark#15",
+      "source": "seed of the shuffles and the XGBoost fits.",
+      "source_sha256": "27e8856555b49b136c884e3e93b39671334186fe7a7865d00a73f6ecd9a59286",
+      "translation": "打乱和 XGBoost 拟合的随机种子。"
+    },
+    {
+      "context": "folds fitted at a time by the supervised arms.",
+      "label": "spacr.moa_benchmark.moa_benchmark#16",
+      "source": "folds fitted at a time by the supervised arms.",
+      "source_sha256": "f045f460aba2f5e4aca89a35278bebd13210aab1b97018b6a3a06202fcf4cf94",
+      "translation": "监督评估分支同时拟合的折数。"
+    },
+    {
+      "context": "level of the intervals.",
+      "label": "spacr.moa_benchmark.moa_benchmark#17",
+      "source": "level of the intervals.",
+      "source_sha256": "24ee5729d77f824ca9816b14da5ff21a1501cafabe61dcae746a44cdea397af2",
+      "translation": "区间的置信水平。"
+    },
+    {
+      "context": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``: the accuracy table (arm rows, then control rows; ``attrs[\"glossary\"]`` too), the per-treatment predictions of every arm, :data:`GLOSSARY`, the treatment profiles the 1-NN arm scored and the feature columns.",
+      "label": "spacr.moa_benchmark.moa_benchmark#18",
+      "source": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``: the accuracy table (arm rows, then control rows; ``attrs[\"glossary\"]`` too), the per-treatment predictions of every arm, :data:`GLOSSARY`, the treatment profiles the 1-NN arm scored and the feature columns.",
+      "source_sha256": "163af5b7157e01616f684d901a678874f3ed779b12f028d832772ab0737adf12",
+      "translation": "``{\"table\", \"predictions\", \"glossary\", \"profiles\", \"features\"}``：准确率表（先是评估分支行，再是对照行；另有 ``attrs[\"glossary\"]``）、每个评估分支的逐处理预测、:data:`GLOSSARY`、1-NN 评估分支所打分的处理特征谱，以及特征列。"
+    },
+    {
+      "context": "for an unknown arm or replicate method, or for the reasons of the arms.",
+      "label": "spacr.moa_benchmark.moa_benchmark#19",
+      "source": "for an unknown arm or replicate method, or for the reasons of the arms.",
+      "source_sha256": "309f2fb3b707920f93b68aa038b4a49eb6a3c9ba7358343a5d31a21aadfe7ad7",
+      "translation": "当评估分支或重复合并方法未知时，或出于各评估分支的原因时。"
+    },
+    {
+      "context": "A profiling run, and the CellProfiler head-to-head (item 753) for each feature set, call",
+      "label": "spacr.moa_benchmark.moa_benchmark#2",
+      "source": "A profiling run, and the CellProfiler head-to-head (item 753) for each feature set, call",
+      "source_sha256": "c00c6c5be4c176258ec1e5d6cb1a99150411e742a52acd165c02282da11361e9",
+      "translation": "特征谱分析运行，以及针对每个特征集的 CellProfiler 正面对比（item 753），会调用"
+    },
+    {
+      "context": "profiles, a frame or a table path.",
+      "label": "spacr.moa_benchmark.moa_benchmark#3",
+      "source": "profiles, a frame or a table path.",
+      "source_sha256": "db11bf5efc50f34891d0b06ef2e44ae414887a8df90b220e8982f20e718776d9",
+      "translation": "特征谱，一个数据框或表路径。"
+    },
+    {
+      "context": "arms to run, from :data:`ARMS`.",
+      "label": "spacr.moa_benchmark.moa_benchmark#4",
+      "source": "arms to run, from :data:`ARMS`.",
+      "source_sha256": "0f3cf176190386733af07cab2d12685cba732990f4a5383bb6a91702cedcb58b",
+      "translation": "要运行的评估分支，取自 :data:`ARMS`。"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.moa_benchmark#5",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "包含 MoA 的列。"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.moa_benchmark#7",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "标识处理的列。"
+    },
+    {
+      "context": "column with each microplate sample position's batch; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.moa_benchmark#8",
+      "source": "column with each well's batch; ``None`` scores NSC only.",
+      "source_sha256": "da665cbb37caf13a3e8202f69a533f6c7e5a59a5ac247b374b1a766e0432b988",
+      "translation": "包含每个孔所属批次的列；``None`` 只对 NSC 打分。"
+    },
+    {
+      "context": "profile columns; ``None`` takes every numeric column outside the identifier columns, ``Metadata_`` columns and counts.",
+      "label": "spacr.moa_benchmark.moa_benchmark#9",
+      "source": "profile columns; ``None`` takes every numeric column outside the key columns, ``Metadata_`` columns and counts.",
+      "source_sha256": "57070e63e104acbf989a00c29b3b6ff39a3170fc8ceb1b606c7740969b761ac1",
+      "translation": "特征谱列；``None`` 取键列、``Metadata_`` 列和计数之外的所有数值列。"
+    },
+    {
+      "context": "The settings of :func:`run_moa_benchmark`, filled in with their defaults.",
+      "label": "spacr.moa_benchmark.moa_benchmark_defaults#0",
+      "source": "The settings of :func:`run_moa_benchmark`, filled in with their defaults.",
+      "source_sha256": "6e6abab97c79ee22ca04169dd62d298ba5a832a8607d498fed78927fcaa0e037",
+      "translation": ":func:`run_moa_benchmark` 的设置，以其默认值填充。"
+    },
+    {
+      "context": "Score a profiles table from settings and write the results.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#0",
+      "source": "Score a profiles table from settings and write the results.",
+      "source_sha256": "9f6641d7887fd88a800978972362ff1bcb6f6a644214e6299eb22bc49cf985e7",
+      "translation": "根据设置为特征谱表打分并写出结果。"
+    },
+    {
+      "context": "Runs :func:`moa_benchmark` with the keys of :func:`moa_benchmark_defaults` and writes the result with :func:`write_moa_benchmark` to ``moa_dst``.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#1",
+      "source": "Runs :func:`moa_benchmark` with the keys of :func:`moa_benchmark_defaults` and writes the result with :func:`write_moa_benchmark` to ``moa_dst``.",
+      "source_sha256": "e57e5c4992a177253bc69e68fb60ecdd598a1dac027a2c1ec0705d44571f4be0",
+      "translation": "运行 :func:`moa_benchmark`，使用 :func:`moa_benchmark_defaults` 的键，并用 :func:`write_moa_benchmark` 将结果写入 ``moa_dst``。"
+    },
+    {
+      "context": "the keys of :func:`moa_benchmark_defaults`; missing keys take their defaults. ``moa_profiles`` may also be a frame.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#2",
+      "source": "the keys of :func:`moa_benchmark_defaults`; missing keys take their defaults. ``moa_profiles`` may also be a frame.",
+      "source_sha256": "d96c2991892687caf8c28c7005190c6f61971c25a14fe69262cc1083803901b1",
+      "translation": ":func:`moa_benchmark_defaults` 的键；缺失的键取其默认值。``moa_profiles`` 也可以是一个数据框。"
+    },
+    {
+      "context": "the :func:`moa_benchmark` result with ``paths`` added.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#3",
+      "source": "the :func:`moa_benchmark` result with ``paths`` added.",
+      "source_sha256": "a67a3312aae3b89c3fe229469d5aa661328b78629158149ceaea04e69a6623b8",
+      "translation": ":func:`moa_benchmark` 的结果，并添加了 ``paths``。"
+    },
+    {
+      "context": "without a profiles table, or for settings :func:`moa_benchmark` rejects.",
+      "label": "spacr.moa_benchmark.run_moa_benchmark#4",
+      "source": "without a profiles table, or for settings :func:`moa_benchmark` rejects.",
+      "source_sha256": "65b755d3cfed4e5a7f9f625e15640bbf9313708436618d14dbaab151af928775",
+      "translation": "当没有特征谱表时，或设置被 :func:`moa_benchmark` 拒绝时。"
+    },
+    {
+      "context": "The accuracy one arm reaches with the MoA labels shuffled between compounds.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#0",
+      "source": "The accuracy one arm reaches with the MoA labels shuffled between compounds.",
+      "source_sha256": "03c04166afb85870a0127146fe6988715c278d796ed47609cb9a1b4770536e99",
+      "translation": "在化合物之间打乱 MoA 标签后，某个评估分支达到的准确率。"
+    },
+    {
+      "context": "The compound-to-MoA mapping is permuted (each compound keeps one MoA, so the class sizes stay as they are) and the arm is scored again, once per permutation; NSC and NSCB are scored on the same permutation. The mean is what chance alone gives: an arm that does not clear it has learned nothing about MoA. A compound with two MoA labels makes the shuffle permute the rows instead.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#1",
+      "source": "The compound-to-MoA mapping is permuted (each compound keeps one MoA, so the class sizes stay as they are) and the arm is scored again, once per permutation; NSC and NSCB are scored on the same permutation. The mean is what chance alone gives: an arm that does not clear it has learned nothing about MoA. A compound with two MoA labels makes the shuffle permute the rows instead.",
+      "source_sha256": "8675e72bbfab7eee74949da4596845861d959f6253d6607bb1961104f42b235b",
+      "translation": "对化合物到 MoA 的映射进行置换（每个化合物保留一个 MoA，因此各类别大小保持不变），并对评估分支重新打分，每次置换一次；NSC 和 NSCB 在同一置换上打分。其均值就是单凭随机所能达到的水平：未能超过该水平的评估分支没有学到任何关于 MoA 的信息。若某个化合物带有两个 MoA 标签，则改为对行进行置换打乱。"
+    },
+    {
+      "context": "profile columns, as for the arm.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#10",
+      "source": "profile columns, as for the arm.",
+      "source_sha256": "66ccdc95b4f772d6b27d3dacaecb5e4a7c719ac082dea98d87fe69028c4ead06",
+      "translation": "特征谱列，与评估分支相同。"
+    },
+    {
+      "context": "compound or MoA values left out before shuffling.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#11",
+      "source": "compound or MoA values left out before shuffling.",
+      "source_sha256": "d48cfe73a752f84a0d3787542f6e984f7da035e0f8dbbaad2fa16d58ecc40b15",
+      "translation": "打乱前排除的化合物或 MoA 值。"
+    },
+    {
+      "context": "folds fitted at a time by a supervised arm.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#12",
+      "source": "folds fitted at a time by a supervised arm.",
+      "source_sha256": "74163349dad412e32260f1b0e37d14eef6b67453856ac696fb01f14b9d259b8e",
+      "translation": "监督评估分支同时拟合的折数。"
+    },
+    {
+      "context": "share of the shuffles inside ``ci_low`` to ``ci_high``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#13",
+      "source": "share of the shuffles inside ``ci_low`` to ``ci_high``.",
+      "source_sha256": "50dce85dc9a88eac12a04cb27a65d0e204ace493d67e4e7207ec2b5fdb8ed2bb",
+      "translation": "落在 ``ci_low`` 到 ``ci_high`` 之间的打乱结果所占比例。"
+    },
+    {
+      "context": "one control row per evaluation: the mean accuracy, its standard deviation and percentile interval over the shuffles, and ``n_permutations``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#14",
+      "source": "one control row per evaluation: the mean accuracy, its standard deviation and percentile interval over the shuffles, and ``n_permutations``.",
+      "source_sha256": "4f0de0c1e2193f4c96c38f13b419071a8e6d50e08807135bf79fb7c2d15aaee9",
+      "translation": "每次评估一个对照行：各次打乱的平均准确率、其标准差和百分位区间，以及 ``n_permutations``。"
+    },
+    {
+      "context": "for an unknown arm or data without a MoA column.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#15",
+      "source": "for an unknown arm or data without a MoA column.",
+      "source_sha256": "d14b49c20e2be9bac5467a6f01affa2fd01400a085217580c4cc984bb4a81aa8",
+      "translation": "当评估分支未知或数据不含 MoA 列时。"
+    },
+    {
+      "context": "``'1-NN'``, ``'logistic'``, ``'xgboost'``, or a function with the signature of :func:`loco_nearest_neighbour`.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#2",
+      "source": "``'1-NN'``, ``'logistic'``, ``'xgboost'``, or a function with the signature of :func:`loco_nearest_neighbour`.",
+      "source_sha256": "f3cb1dd974c5c81e6fe4e327ee0f943d85a0f6b7fc268c0194cf184adf10c565",
+      "translation": "``'1-NN'``、``'logistic'``、``'xgboost'``，或一个与 :func:`loco_nearest_neighbour` 签名相同的函数。"
+    },
+    {
+      "context": "what the arm scores: treatment profiles for 1-NN, microplate sample positions for the supervised arms. Must carry the MoA column.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#3",
+      "source": "what the arm scores: treatment profiles for 1-NN, wells for the supervised arms. Must carry the MoA column.",
+      "source_sha256": "1a497502994102fc02e6baf2fa951f76ce95761f73eacd204a8f7dc6fbd34554",
+      "translation": "评估分支打分的对象：1-NN 为处理特征谱，监督评估分支为孔。必须包含 MoA 列。"
+    },
+    {
+      "context": "shuffles; ``0`` returns an empty table.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#4",
+      "source": "shuffles; ``0`` returns an empty table.",
+      "source_sha256": "1e8c75dd3255409c13da9eddba50dc949ffa4cd9ab9b93b8b450fb2a927bea16",
+      "translation": "打乱次数；``0`` 返回空表。"
+    },
+    {
+      "context": "seed of the shuffles; permutation ``i`` fits supervised models with seed ``seed + i + 1``.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#5",
+      "source": "seed of the shuffles; permutation ``i`` fits supervised models with seed ``seed + i + 1``.",
+      "source_sha256": "1fa0058e4ab11e32871a8a812f85e3658920734f07bc07a0279e026eb7216049",
+      "translation": "打乱的随机种子；第 ``i`` 次置换以种子 ``seed + i + 1`` 拟合监督模型。"
+    },
+    {
+      "context": "column with the MoA.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#6",
+      "source": "column with the MoA.",
+      "source_sha256": "eddc988ea8b6deabe041a369c53941f23b1c10e4d175d596b42de7af5186aca0",
+      "translation": "包含 MoA 的列。"
+    },
+    {
+      "context": "columns that name a treatment.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#8",
+      "source": "columns that name a treatment.",
+      "source_sha256": "2364c95a111f25ac49f713d73f000006850a3167d51ef38adda255bc0dfa4015",
+      "translation": "标识处理的列。"
+    },
+    {
+      "context": "batch column; ``None`` scores NSC only.",
+      "label": "spacr.moa_benchmark.shuffled_label_control#9",
+      "source": "batch column; ``None`` scores NSC only.",
+      "source_sha256": "2c1bda11b7d82ee462ae629b0e3894b5d6fb2786a0a45df2a1b86849a3b33993",
+      "translation": "批次列；``None`` 只对 NSC 打分。"
+    },
+    {
+      "context": "Write a :func:`moa_benchmark` result through :func:`spacr.tabular.write_table`.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#0",
+      "source": "Write a :func:`moa_benchmark` result through :func:`spacr.tabular.write_table`.",
+      "source_sha256": "3c21362bfee2acc6dd280b7293650bdb64722323d28ccc3e6abedaacda563a74",
+      "translation": "写出 :func:`moa_benchmark` 的结果，经由 :func:`spacr.tabular.write_table`。"
+    },
+    {
+      "context": "Writes ``moa_accuracy.csv`` (the table), ``moa_predictions.csv``, ``moa_glossary.csv`` (term and meaning, so a reader of the table needs nothing else) and ``moa_summary.json`` (the table as records, the number of features and :data:`SUPERVISED_REPRODUCTION`).",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#1",
+      "source": "Writes ``moa_accuracy.csv`` (the table), ``moa_predictions.csv``, ``moa_glossary.csv`` (term and meaning, so a reader of the table needs nothing else) and ``moa_summary.json`` (the table as records, the number of features and :data:`SUPERVISED_REPRODUCTION`).",
+      "source_sha256": "67e727658c6f94e19cac410a75f3401ffbeecaf42f6cbe9658a43f0d20c0430e",
+      "translation": "写出 ``moa_accuracy.csv``（该表）、``moa_predictions.csv``、``moa_glossary.csv``（术语及其含义，使表的读者无需其他资料）和 ``moa_summary.json``（以记录形式保存的该表、特征数量以及 :data:`SUPERVISED_REPRODUCTION`）。"
+    },
+    {
+      "context": "what :func:`moa_benchmark` returns.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#2",
+      "source": "what :func:`moa_benchmark` returns.",
+      "source_sha256": "efb3db0974d77a2f14dbbedfd0a71aae5aab8ff9638768f02c5fc1146e866075",
+      "translation": ":func:`moa_benchmark` 返回的内容。"
+    },
+    {
+      "context": "the folder; created if absent.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#3",
+      "source": "the folder; created if absent.",
+      "source_sha256": "0c78c8e6766ddbd019c3c28990f0808d537411a9accfe0b330fccf2ada2af78b",
+      "translation": "文件夹；不存在时创建。"
+    },
+    {
+      "context": "the paths written.",
+      "label": "spacr.moa_benchmark.write_moa_benchmark#4",
+      "source": "the paths written.",
+      "source_sha256": "8a16c0b4ddf6684fddfbf074060d19e8b9e82aacecc9b20544b115326e790ab0",
+      "translation": "已写出的路径。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-09 against the exact English source of the public docstring blocks added on the batch8-1109 branch: the spacr.moa_benchmark module and its 9 public callables (item 795). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

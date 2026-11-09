@@ -226,13 +226,6 @@
       "source": "Added to the control variance of every TVN direction before it is scaled to 1, so weak directions are shrunk instead of blown up and the profiles depend less on which cells the PCA saw. On one Funk et al. plate, 3 made the streamed and in-memory fits agree much better (gene similarity correlation 0.93 instead of 0.81) with an unchanged STRING score. 0 is Brieflow's TVN exactly; use it to reproduce Brieflow or the plate A pilot. Default 3. Alpha.",
       "source_sha256": "0a52342689bc67d3a8bfe7405c73f879d62137bac6eb2b2a9c1a36831b26538c",
       "translation": "在每个 TVN 方向缩放到 1 之前加到其对照方差上的值，使弱方向被收缩而不是被放大，谱也更少依赖于 PCA 所见的细胞。在一块 Funk et al. 板上，取 3 时流式拟合与内存拟合的一致性明显更好（基因相似性相关系数为 0.93，而非 0.81），且 STRING 评分不变。0 完全等同于 Brieflow 的 TVN；用它可复现 Brieflow 或 A 板试点分析。默认值为 3。Alpha。"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "profiling_normalization",
-      "source": "How each feature is put on a common scale, plate by plate. mad_robustize subtracts the reference median and divides by 1.4826 times the reference MAD, which tolerates outlier wells; standardize uses the mean and standard deviation; robustize uses the median and interquartile range; none keeps the aggregated values. tvn applies mad_robustize, then whitens the kept features on the negative-control wells of all plates, as JUMP profiles are made; it needs a negative control. The reference is the negative control, or every well when none is named. Default mad_robustize.",
-      "source_sha256": "56d640e341af047f4ac273b05665f6036304f7a656551dd8a0bab771e5a16fb4",
-      "translation": "如何逐板将每个特征置于统一尺度上。mad_robustize 减去参考中位数，再除以 1.4826 倍的参考 MAD，可容忍离群孔；standardize 使用均值和标准差；robustize 使用中位数和四分位距；none 保留聚合后的值。tvn 先应用 mad_robustize，然后按 JUMP 谱的生成方式，以所有板的阴性对照孔对保留的特征进行白化；它需要一个阴性对照。参考为阴性对照，若未指定则为所有孔。默认值为 mad_robustize。"
     }
   ],
   "retired_records": [
@@ -243,6 +236,14 @@
       "source_sha256": "452a73efc85be020185d634e3b7ffba8bcc436b652eb2b2fa12cee087300df28",
       "translation": "如何逐板将每个特征置于统一尺度上。mad_robustize 减去参考中位数，再除以 1.4826 倍的参考 MAD，可容忍离群孔；standardize 使用均值和标准差；robustize 使用中位数和四分位距；tvn 先应用 mad_robustize，然后在特征选择之后，以所有板的阴性对照孔对保留的特征进行白化（典型变异归一化，与 JUMP 谱的生成方式相同），使对照共有的变异不再主导相似性，它需要一个阴性对照；none 保留聚合后的值。参考为阴性对照，若未指定则为所有孔。默认值为 mad_robustize。",
       "retired": "2026-11-08: the English tooltip was shortened under the 600-character ceiling on the batch4-1108 branch; its successor is reviewed in the same file."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "profiling_normalization",
+      "source": "How each feature is put on a common scale, plate by plate. mad_robustize subtracts the reference median and divides by 1.4826 times the reference MAD, which tolerates outlier wells; standardize uses the mean and standard deviation; robustize uses the median and interquartile range; none keeps the aggregated values. tvn applies mad_robustize, then whitens the kept features on the negative-control wells of all plates, as JUMP profiles are made; it needs a negative control. The reference is the negative control, or every well when none is named. Default mad_robustize.",
+      "source_sha256": "56d640e341af047f4ac273b05665f6036304f7a656551dd8a0bab771e5a16fb4",
+      "translation": "如何逐板将每个特征置于统一尺度上。mad_robustize 减去参考中位数，再除以 1.4826 倍的参考 MAD，可容忍离群孔；standardize 使用均值和标准差；robustize 使用中位数和四分位距；none 保留聚合后的值。tvn 先应用 mad_robustize，然后按 JUMP 谱的生成方式，以所有板的阴性对照孔对保留的特征进行白化；它需要一个阴性对照。参考为阴性对照，若未指定则为所有孔。默认值为 mad_robustize。",
+      "retired": "2026-11-09: the English source changed on the batch8-1109 branch; its successor is reviewed in 2026-11-09-batch8-1109-ai-review.json."
     }
   ]
 }

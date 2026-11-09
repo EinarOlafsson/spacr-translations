@@ -226,13 +226,6 @@
       "source": "Added to the control variance of every TVN direction before it is scaled to 1, so weak directions are shrunk instead of blown up and the profiles depend less on which cells the PCA saw. On one Funk et al. plate, 3 made the streamed and in-memory fits agree much better (gene similarity correlation 0.93 instead of 0.81) with an unchanged STRING score. 0 is Brieflow's TVN exactly; use it to reproduce Brieflow or the plate A pilot. Default 3. Alpha.",
       "source_sha256": "0a52342689bc67d3a8bfe7405c73f879d62137bac6eb2b2a9c1a36831b26538c",
       "translation": "Somado à variância dos controles de cada direção da TVN antes de ela ser escalada para 1, de modo que as direções fracas são encolhidas em vez de ampliadas demais e os perfis dependem menos de quais células a PCA viu. Em uma placa de Funk et al., 3 fez os ajustes em fluxo e em memória concordarem muito melhor (correlação da similaridade entre genes de 0,93 em vez de 0,81) com uma pontuação STRING inalterada. 0 é exatamente a TVN do Brieflow; use-o para reproduzir o Brieflow ou o piloto da placa A. Padrão 3. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "profiling_normalization",
-      "source": "How each feature is put on a common scale, plate by plate. mad_robustize subtracts the reference median and divides by 1.4826 times the reference MAD, which tolerates outlier wells; standardize uses the mean and standard deviation; robustize uses the median and interquartile range; none keeps the aggregated values. tvn applies mad_robustize, then whitens the kept features on the negative-control wells of all plates, as JUMP profiles are made; it needs a negative control. The reference is the negative control, or every well when none is named. Default mad_robustize.",
-      "source_sha256": "56d640e341af047f4ac273b05665f6036304f7a656551dd8a0bab771e5a16fb4",
-      "translation": "Como cada variável é levada a uma escala comum, placa a placa. mad_robustize subtrai a mediana de referência e divide por 1,4826 vezes a MAD de referência, o que tolera poços atípicos; standardize usa a média e o desvio-padrão; robustize usa a mediana e o intervalo interquartil; none mantém os valores agregados. tvn aplica mad_robustize e então branqueia as características mantidas nos poços de controle negativo de todas as placas, como são feitos os perfis do JUMP; requer um controle negativo. A referência é o controle negativo, ou todos os poços quando nenhum é indicado. Padrão mad_robustize."
     }
   ],
   "retired_records": [
@@ -243,6 +236,14 @@
       "source_sha256": "452a73efc85be020185d634e3b7ffba8bcc436b652eb2b2fa12cee087300df28",
       "translation": "Como cada variável é levada a uma escala comum, placa a placa. mad_robustize subtrai a mediana de referência e divide por 1,4826 vezes a MAD de referência, o que tolera poços atípicos; standardize usa a média e o desvio-padrão; robustize usa a mediana e o intervalo interquartil; tvn aplica mad_robustize e então, após a seleção de características, branqueia as características mantidas nos poços de controle negativo de todas as placas (normalização da variação típica, como são feitos os perfis do JUMP), de modo que a variação que os controles compartilham deixa de dominar as similaridades, e requer um controle negativo; none mantém os valores agregados. A referência é o controle negativo, ou todos os poços quando nenhum é indicado. Padrão mad_robustize.",
       "retired": "2026-11-08: the English tooltip was shortened under the 600-character ceiling on the batch4-1108 branch; its successor is reviewed in the same file."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "profiling_normalization",
+      "source": "How each feature is put on a common scale, plate by plate. mad_robustize subtracts the reference median and divides by 1.4826 times the reference MAD, which tolerates outlier wells; standardize uses the mean and standard deviation; robustize uses the median and interquartile range; none keeps the aggregated values. tvn applies mad_robustize, then whitens the kept features on the negative-control wells of all plates, as JUMP profiles are made; it needs a negative control. The reference is the negative control, or every well when none is named. Default mad_robustize.",
+      "source_sha256": "56d640e341af047f4ac273b05665f6036304f7a656551dd8a0bab771e5a16fb4",
+      "translation": "Como cada variável é levada a uma escala comum, placa a placa. mad_robustize subtrai a mediana de referência e divide por 1,4826 vezes a MAD de referência, o que tolera poços atípicos; standardize usa a média e o desvio-padrão; robustize usa a mediana e o intervalo interquartil; none mantém os valores agregados. tvn aplica mad_robustize e então branqueia as características mantidas nos poços de controle negativo de todas as placas, como são feitos os perfis do JUMP; requer um controle negativo. A referência é o controle negativo, ou todos os poços quando nenhum é indicado. Padrão mad_robustize.",
+      "retired": "2026-11-09: the English source changed on the batch8-1109 branch; its successor is reviewed in 2026-11-09-batch8-1109-ai-review.json."
     }
   ]
 }

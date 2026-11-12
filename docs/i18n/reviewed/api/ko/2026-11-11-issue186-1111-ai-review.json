@@ -20,14 +20,14 @@
       "label": "spacr.condition_annotations.save_annotations_to_png_list#1",
       "source": "Classify's annotation mode reads its labels from ``png_list`` only, joined by ``prcfo``, so a label that stays on the annotated table never reaches it. Each output column is added to ``png_list`` the way Annotate adds its own and filled for the objects of ``frame``; a row whose label was cleared is set to NULL, and objects outside ``frame`` are left as they are. A receipt with the recipe is stored beside the labels, so the source reopens with its annotation columns.",
       "source_sha256": "19fc0a94b288911c84e1467b4e30d90b6eb4ae8dcbd3d496a4090a02aba528f5",
-      "translation": "Classify의 어노테이션 모드는 ``prcfo``로 결합한 ``png_list``에서만 레이블을 읽으므로, 어노테이션된 테이블에만 남아 있는 레이블은 Classify에 전달되지 않습니다. 각 출력 열은 Annotate가 자체 열을 추가하는 방식대로 ``png_list``에 추가되고 ``frame``의 객체에 대해 값이 채워집니다. 레이블이 지워진 행은 NULL로 설정되며, ``frame``에 없는 객체는 그대로 둡니다. 레시피가 담긴 기록이 레이블과 함께 저장되므로, 원본을 다시 열면 어노테이션 열도 함께 열립니다."
+      "translation": "Classify의 어노테이션 모드는 ``png_list``에서만 레이블을 읽고 ``prcfo``로 결합하므로, 어노테이션된 테이블에만 남아 있는 레이블은 그곳에 전달되지 않습니다. 각 출력 열은 Annotate가 자체 열을 추가하는 방식대로 ``png_list``에 추가되고 ``frame``의 객체에 대해 값이 채워집니다. 레이블이 지워진 행은 NULL로 설정되며, ``frame``에 없는 객체는 그대로 둡니다. 레시피가 담긴 기록이 레이블과 함께 저장되므로, 원본을 다시 열면 어노테이션 열도 함께 열립니다."
     },
     {
       "context": "Rows of one laboratory microplate go to that laboratory microplate's database: the source database when it has a ``png_list``, otherwise ``<plate>/measurements/measurements.db`` in ``roots`` or in the folders above the source file, matched by ``plateID`` or by the ``source_database`` label of a merged frame.",
       "label": "spacr.condition_annotations.save_annotations_to_png_list#2",
       "source": "Rows of one plate go to that plate's database: the source database when it has a ``png_list``, otherwise ``<plate>/measurements/measurements.db`` in ``roots`` or in the folders above the source file, matched by ``plateID`` or by the ``source_database`` label of a merged frame.",
       "source_sha256": "31131a41f1ad5e93ce1928a75cbd2abc7460adcef096bdef4679bc2d596cac47",
-      "translation": "한 플레이트의 행은 그 플레이트의 데이터베이스로 갑니다. 원본 데이터베이스에 ``png_list``가 있으면 원본 데이터베이스로, 없으면 ``roots`` 또는 원본 파일의 상위 폴더에 있는 ``<plate>/measurements/measurements.db``로 가며, ``plateID`` 또는 병합된 프레임의 ``source_database`` 레이블로 일치시킵니다."
+      "translation": "한 플레이트의 행은 그 플레이트의 데이터베이스로 갑니다. 원본 데이터베이스에 ``png_list``가 있으면 원본 데이터베이스로 가고, 없으면 ``<plate>/measurements/measurements.db``로 갑니다. 이 파일은 ``roots`` 또는 원본 파일의 상위 폴더에서 찾으며, ``plateID`` 또는 병합된 프레임의 ``source_database`` 레이블로 일치시킵니다."
     },
     {
       "context": "working frame including every annotation output column.",
@@ -125,7 +125,7 @@
       "label": "spacr.qt.screens.graph_builder#11",
       "source": "**Where annotations go.** Each annotation column is saved as it is made, to ``png_list`` in each plate's ``measurements/measurements.db``, matched by ``prcfo``; that is the only place Classify's annotation mode reads labels from. Reopening the table brings the columns back. A column that could not be saved is named beside the chart, **Save annotations** tries again, and closing the screen asks first.",
       "source_sha256": "5aa0d04cdb6dd65d32e30813a2d77c5dbc22edcde5ea3a1d4932ef70c2473ef9",
-      "translation": "**어노테이션 저장 위치.** 각 어노테이션 열은 만들어지는 즉시 각 플레이트의 ``measurements/measurements.db``에 있는 ``png_list``에 ``prcfo``로 일치시켜 저장됩니다. Classify의 어노테이션 모드가 레이블을 읽는 곳은 이곳뿐입니다. 테이블을 다시 열면 열이 돌아옵니다. 저장하지 못한 열은 차트 옆에 이름이 표시되고, **주석 저장** 버튼으로 다시 시도하며, 화면을 닫을 때는 먼저 확인을 요청합니다."
+      "translation": "**어노테이션 저장 위치.** 각 어노테이션 열은 만들어지는 즉시 ``png_list``에 저장됩니다. 이 테이블은 각 플레이트의 ``measurements/measurements.db``에 있으며, 행은 ``prcfo``로 일치시킵니다. Classify의 어노테이션 모드가 레이블을 읽는 곳은 이곳뿐입니다. 테이블을 다시 열면 열이 돌아옵니다. 저장하지 못한 열은 차트 옆에 이름이 표시되고, **주석 저장** 버튼으로 다시 시도하며, 화면을 닫을 때는 먼저 확인을 요청합니다."
     },
     {
       "context": "While annotation columns are unsaved and the window is on application view, the user is asked first to save them, close without them, or stay.",

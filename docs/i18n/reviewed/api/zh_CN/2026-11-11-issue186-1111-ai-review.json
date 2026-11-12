@@ -20,14 +20,14 @@
       "label": "spacr.condition_annotations.save_annotations_to_png_list#1",
       "source": "Classify's annotation mode reads its labels from ``png_list`` only, joined by ``prcfo``, so a label that stays on the annotated table never reaches it. Each output column is added to ``png_list`` the way Annotate adds its own and filled for the objects of ``frame``; a row whose label was cleared is set to NULL, and objects outside ``frame`` are left as they are. A receipt with the recipe is stored beside the labels, so the source reopens with its annotation columns.",
       "source_sha256": "19fc0a94b288911c84e1467b4e30d90b6eb4ae8dcbd3d496a4090a02aba528f5",
-      "translation": "Classify 的标注模式只从按 ``prcfo`` 连接的 ``png_list`` 读取标签，因此只保留在已标注表格中的标签不会到达它。每个输出列都按 Annotate 添加其自身列的方式加入 ``png_list``，并为 ``frame`` 中的对象填值；标签已被清除的行设为 NULL，``frame`` 之外的对象保持不变。包含配方的回执与标签存放在一起，因此重新打开源时会带回其注释列。"
+      "translation": "Classify 的标注模式只从 ``png_list`` 读取标签，并按 ``prcfo`` 连接，因此只保留在已标注表格中的标签不会到达它。每个输出列都按 Annotate 添加其自身列的方式加入 ``png_list``，并为 ``frame`` 中的对象填值；标签已被清除的行设为 NULL，``frame`` 之外的对象保持不变。包含配方的回执与标签存放在一起，因此重新打开源时会带回其注释列。"
     },
     {
       "context": "Rows of one laboratory microplate go to that laboratory microplate's database: the source database when it has a ``png_list``, otherwise ``<plate>/measurements/measurements.db`` in ``roots`` or in the folders above the source file, matched by ``plateID`` or by the ``source_database`` label of a merged frame.",
       "label": "spacr.condition_annotations.save_annotations_to_png_list#2",
       "source": "Rows of one plate go to that plate's database: the source database when it has a ``png_list``, otherwise ``<plate>/measurements/measurements.db`` in ``roots`` or in the folders above the source file, matched by ``plateID`` or by the ``source_database`` label of a merged frame.",
       "source_sha256": "31131a41f1ad5e93ce1928a75cbd2abc7460adcef096bdef4679bc2d596cac47",
-      "translation": "一块板的行写入该板的数据库：若源数据库含有 ``png_list``，则写入源数据库；否则写入 ``roots`` 中或源文件上级文件夹中的 ``<plate>/measurements/measurements.db``，按 ``plateID`` 或合并表的 ``source_database`` 标签匹配。"
+      "translation": "一块板的行写入该板的数据库：若源数据库含有 ``png_list``，则写入源数据库；否则写入 ``<plate>/measurements/measurements.db``，该文件在 ``roots`` 或源文件的上级文件夹中查找，并按 ``plateID`` 或合并数据框的 ``source_database`` 标签匹配。"
     },
     {
       "context": "working frame including every annotation output column.",
@@ -125,7 +125,7 @@
       "label": "spacr.qt.screens.graph_builder#11",
       "source": "**Where annotations go.** Each annotation column is saved as it is made, to ``png_list`` in each plate's ``measurements/measurements.db``, matched by ``prcfo``; that is the only place Classify's annotation mode reads labels from. Reopening the table brings the columns back. A column that could not be saved is named beside the chart, **Save annotations** tries again, and closing the screen asks first.",
       "source_sha256": "5aa0d04cdb6dd65d32e30813a2d77c5dbc22edcde5ea3a1d4932ef70c2473ef9",
-      "translation": "**标注保存位置。** 每个注释列在创建时即保存到每块板 ``measurements/measurements.db`` 中的 ``png_list``，按 ``prcfo`` 匹配；Classify 的标注模式只从这里读取标签。重新打开表格时这些列会恢复。未能保存的列会在图表旁列出名称，**保存标注** 会重试，关闭界面前会先询问。"
+      "translation": "**标注保存位置。** 每个注释列在创建时即保存到 ``png_list``（位于每块板的 ``measurements/measurements.db`` 中），按 ``prcfo`` 匹配；Classify 的标注模式只从这里读取标签。重新打开表格时这些列会恢复。未能保存的列会在图表旁列出名称，**保存标注** 会重试，关闭界面前会先询问。"
     },
     {
       "context": "While annotation columns are unsaved and the window is on application view, the user is asked first to save them, close without them, or stay.",

@@ -1,0 +1,735 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Colocalisation of every channel pair in each object, beyond Pearson and Manders.",
+      "label": "spacr.measure.measure_colocalisation#0",
+      "source": "Colocalisation of every channel pair in each object, beyond Pearson and Manders.",
+      "source_sha256": "df6f66818aa4622c08a680502b3a1dea6e25f7e6ad0dbe942b2bd9039143e4cf",
+      "translation": "每个对象中每对通道的共定位，超出 Pearson 和 Manders 的范围。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_colocalisation#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` intensities, at least two image data channels.",
+      "label": "spacr.measure.measure_colocalisation#2",
+      "source": "``(H, W, C)`` intensities, at least two channels.",
+      "source_sha256": "fb0e9288ab21e3d3b8321f2335f249cbed57a255ae8853de772e0be9f3857b9e",
+      "translation": "``(H, W, C)`` 强度，至少两个通道。"
+    },
+    {
+      "context": "``label`` and, per pair ``i < j``, ``channel_<i>_channel_<j>_<stat>`` for",
+      "label": "spacr.measure.measure_colocalisation#3",
+      "source": "``label`` and, per pair ``i < j``, ``channel_<i>_channel_<j>_<stat>`` for",
+      "source_sha256": "6d041721fdbe68d273b52c7869419bb8eb5c8f3fa48a2114f385732d0dc1761a",
+      "translation": "``label``，以及每对 ``i < j`` 的 ``channel_<i>_channel_<j>_<stat>``，统计量如下："
+    },
+    {
+      "context": "``spearman``: Spearman's rank correlation (average ranks of ties);",
+      "label": "spacr.measure.measure_colocalisation#4",
+      "source": "``spearman``: Spearman's rank correlation (average ranks of ties);",
+      "source_sha256": "69f2bf153b2dec5e1ce22bfcf62e00a116d5815c8bcc9deeb1303328ef434719",
+      "translation": "``spearman``：Spearman 秩相关（并列值取平均秩）；"
+    },
+    {
+      "context": "``icq``: Li et al.'s (2004) intensity correlation quotient, the share of pixels where both image data channels sit on the same side of their object means, minus 0.5 (-0.5 to 0.5);",
+      "label": "spacr.measure.measure_colocalisation#5",
+      "source": "``icq``: Li et al.'s (2004) intensity correlation quotient, the share of pixels where both channels sit on the same side of their object means, minus 0.5 (-0.5 to 0.5);",
+      "source_sha256": "a41dcf70e57cc5742a90e9abd3cf3fa5e6938ad9030363906261b1a9dbe64112",
+      "translation": "``icq``：Li et al. (2004) 的强度相关商，即两个通道都位于各自对象均值同一侧的像素比例减去 0.5（-0.5 至 0.5）；"
+    },
+    {
+      "context": "``k1``, ``k2``: Manders et al.'s (1993) split overlap coefficients ``sum(a b) / sum(a^2)`` and ``sum(a b) / sum(b^2)``;",
+      "label": "spacr.measure.measure_colocalisation#6",
+      "source": "``k1``, ``k2``: Manders et al.'s (1993) split overlap coefficients ``sum(a b) / sum(a^2)`` and ``sum(a b) / sum(b^2)``;",
+      "source_sha256": "58b662f37b489996509e019c12dfe9ef134ef29f67567ab3752cc62aa5732d63",
+      "translation": "``k1``、``k2``：Manders et al. (1993) 的拆分重叠系数 ``sum(a b) / sum(a^2)`` 和 ``sum(a b) / sum(b^2)``；"
+    },
+    {
+      "context": "``rwc1``, ``rwc2``: Singan et al.'s (2011) rank-weighted colocalisation, ``sum(a w) / sum(a)`` over the pixels where both channels are above background, ``w = (R - |rank_i - rank_j|) / R`` with dense ranks within the object and ``R`` their maximum.",
+      "label": "spacr.measure.measure_colocalisation#7",
+      "source": "``rwc1``, ``rwc2``: Singan et al.'s (2011) rank-weighted colocalisation, ``sum(a w) / sum(a)`` over the pixels where both channels are above background, ``w = (R - |rank_i - rank_j|) / R`` with dense ranks within the object and ``R`` their maximum.",
+      "source_sha256": "cc0ff97dd654e1fe29e472b162180f173ef38676b0bf0a44356a1613d69b985b",
+      "translation": "``rwc1``、``rwc2``：Singan et al. (2011) 的秩加权共定位，即在两个通道都高于背景的像素上计算 ``sum(a w) / sum(a)``，其中 ``w = (R - |rank_i - rank_j|) / R``，秩为对象内的密集秩，``R`` 为其最大值。"
+    },
+    {
+      "context": "``a`` and ``b`` are the channels minus their background, with the background each channel's ``median + 3 * 1.4826 * MAD`` in the object -- the background, and so the pixels, of spaCR's ``manders_m1``, ``manders_m2`` and ``manders_overlap_coefficient`` (``calculate_correlation``), which these complete. ``k1``, ``k2``, ``rwc1`` and ``rwc2`` are 0 when a channel has nothing above background, as the Manders columns are.",
+      "label": "spacr.measure.measure_colocalisation#8",
+      "source": "``a`` and ``b`` are the channels minus their background, with the background each channel's ``median + 3 * 1.4826 * MAD`` in the object -- the background, and so the pixels, of spaCR's ``manders_m1``, ``manders_m2`` and ``manders_overlap_coefficient`` (``calculate_correlation``), which these complete. ``k1``, ``k2``, ``rwc1`` and ``rwc2`` are 0 when a channel has nothing above background, as the Manders columns are.",
+      "source_sha256": "d79203ef940cccbe81f2e5e5206a8fc05ecda6b70af35dbfd7fd1cf179d4b072",
+      "translation": "``a`` 和 ``b`` 是减去背景后的通道，每个通道的背景为其在对象内的 ``median + 3 * 1.4826 * MAD`` —— 与 spaCR 的 ``manders_m1``、``manders_m2`` 和 ``manders_overlap_coefficient``（``calculate_correlation``）使用相同的背景，因而使用相同的像素，这些指标是对它们的补充。当某个通道没有高于背景的像素时，``k1``、``k2``、``rwc1`` 和 ``rwc2`` 为 0，与 Manders 列一致。"
+    },
+    {
+      "context": "Colocalisation beyond :func:`measure_colocalisation`: nonlinear, automatic-threshold and object-based.",
+      "label": "spacr.measure.measure_colocalisation_extra#0",
+      "source": "Colocalisation beyond :func:`measure_colocalisation`: nonlinear, automatic-threshold and object-based.",
+      "source_sha256": "3ab7be601d06315336a817946056e632fa55cb334558830186231720906e94fc",
+      "translation": ":func:`measure_colocalisation` 之外的共定位：非线性、自动阈值和基于对象的度量。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_colocalisation_extra#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "Above background is spaCR's Manders background, ``median + 3 * 1.4826 * MAD`` of the channel in the object, as in :func:`measure_colocalisation`.",
+      "label": "spacr.measure.measure_colocalisation_extra#10",
+      "source": "Above background is spaCR's Manders background, ``median + 3 * 1.4826 * MAD`` of the channel in the object, as in :func:`measure_colocalisation`.",
+      "source_sha256": "baed5c2b495f1249923348fd99ada15dab34c957c53d8962b4ad1bc9aa229354",
+      "translation": "高于背景的标准是 spaCR 的 Manders 背景，即通道在对象内的 ``median + 3 * 1.4826 * MAD``，与 :func:`measure_colocalisation` 相同。"
+    },
+    {
+      "context": "``(H, W, C)`` intensities, at least two image data channels.",
+      "label": "spacr.measure.measure_colocalisation_extra#2",
+      "source": "``(H, W, C)`` intensities, at least two channels.",
+      "source_sha256": "fb0e9288ab21e3d3b8321f2335f249cbed57a255ae8853de772e0be9f3857b9e",
+      "translation": "``(H, W, C)`` 强度，至少两个通道。"
+    },
+    {
+      "context": "quantile bins per channel for the mutual information.",
+      "label": "spacr.measure.measure_colocalisation_extra#3",
+      "source": "quantile bins per channel for the mutual information.",
+      "source_sha256": "228e7d2b180d47ed6110497a86ecd234c563bb96579cca5e8f5bdaae26825e32",
+      "translation": "互信息计算中每个通道的分位数分箱数。"
+    },
+    {
+      "context": "bisection steps of the Costes threshold search.",
+      "label": "spacr.measure.measure_colocalisation_extra#4",
+      "source": "bisection steps of the Costes threshold search.",
+      "source_sha256": "dd53c9ea6e3166fc434279586ba372aefdd6365eead3a501d229e2dd05c6c47a",
+      "translation": "Costes 阈值搜索的二分步数。"
+    },
+    {
+      "context": "write ``costes_m1`` and ``costes_m2``. They cost about three times the rest together, so the ``colocalisation_extra`` family leaves them out and ``colocalisation_costes`` (:func:`measure_costes`) adds them.",
+      "label": "spacr.measure.measure_colocalisation_extra#5",
+      "source": "write ``costes_m1`` and ``costes_m2``. They cost about three times the rest together, so the ``colocalisation_extra`` family leaves them out and ``colocalisation_costes`` (:func:`measure_costes`) adds them.",
+      "source_sha256": "1481734cc3cd2814e452f1f9f28c3ac9701ea687ecdc315ff3c243abc5dff003",
+      "translation": "写出 ``costes_m1`` 和 ``costes_m2``。它们的开销约为其余全部之和的三倍，因此 ``colocalisation_extra`` 特征族不包含它们，而由 ``colocalisation_costes``（:func:`measure_costes`）添加。"
+    },
+    {
+      "context": "``label``; per channel ``channel_<i>_puncta_count`` (the 8-connected above-background spots in the object) and ``channel_<i>_puncta_area_fraction`` (the share of the object's pixels above background); and per pair ``i < j``, ``channel_<i>_channel_<j>_<stat>`` for",
+      "label": "spacr.measure.measure_colocalisation_extra#6",
+      "source": "``label``; per channel ``channel_<i>_puncta_count`` (the 8-connected above-background spots in the object) and ``channel_<i>_puncta_area_fraction`` (the share of the object's pixels above background); and per pair ``i < j``, ``channel_<i>_channel_<j>_<stat>`` for",
+      "source_sha256": "9d8615f0d2d7923bc051dd1bfa8ceb89087bcaa698f7d981d312cbd447259e56",
+      "translation": "``label``；每个通道的 ``channel_<i>_puncta_count``（对象内高于背景的 8 连通斑点数）和 ``channel_<i>_puncta_area_fraction``（对象中高于背景的像素比例）；以及每对 ``i < j`` 的 ``channel_<i>_channel_<j>_<stat>``，统计量如下："
+    },
+    {
+      "context": "``nmi``: mutual information of the two channels' within-object quantile ranks (``bins`` x ``bins``) over ``log(bins)``, which sees dependence Pearson and Spearman miss;",
+      "label": "spacr.measure.measure_colocalisation_extra#7",
+      "source": "``nmi``: mutual information of the two channels' within-object quantile ranks (``bins`` x ``bins``) over ``log(bins)``, which sees dependence Pearson and Spearman miss;",
+      "source_sha256": "40bb3a1a22fe7d1d2a6d60880902eed7a9da04f8621441aa443500a11c0bfd1a",
+      "translation": "``nmi``：两个通道在对象内分位数秩（``bins`` x ``bins``）的互信息除以 ``log(bins)``，可捕捉 Pearson 和 Spearman 遗漏的依赖关系；"
+    },
+    {
+      "context": "``costes_m1``, ``costes_m2``: Manders' M1 and M2 at Costes et al.'s (2004) automatic thresholds, found by bisection as CellProfiler 4's faster mode does;",
+      "label": "spacr.measure.measure_colocalisation_extra#8",
+      "source": "``costes_m1``, ``costes_m2``: Manders' M1 and M2 at Costes et al.'s (2004) automatic thresholds, found by bisection as CellProfiler 4's faster mode does;",
+      "source_sha256": "3319e5f77507e8b9019b0cea19c3b64d5898ac2f00656573b26fff72c05d5b51",
+      "translation": "``costes_m1``、``costes_m2``：在 Costes et al. (2004) 自动阈值下的 Manders M1 和 M2，阈值按 CellProfiler 4 快速模式的做法用二分法求得；"
+    },
+    {
+      "context": "``puncta_overlap_ij``, ``puncta_overlap_ji``: Lachmanovich et al.'s (2003) object-based colocalisation, the share of channel ``i``'s spots whose centroid falls on above-background pixels of channel ``j``, and the reverse; 0 without spots.",
+      "label": "spacr.measure.measure_colocalisation_extra#9",
+      "source": "``puncta_overlap_ij``, ``puncta_overlap_ji``: Lachmanovich et al.'s (2003) object-based colocalisation, the share of channel ``i``'s spots whose centroid falls on above-background pixels of channel ``j``, and the reverse; 0 without spots.",
+      "source_sha256": "9da931d870e14279b13721824cd17533e929b28d2cb186dd151b86e280eb458d",
+      "translation": "``puncta_overlap_ij``、``puncta_overlap_ji``：Lachmanovich et al. (2003) 的基于对象的共定位，即通道 ``i`` 的斑点中质心落在通道 ``j`` 高于背景像素上的比例，以及反向比例；没有斑点时为 0。"
+    },
+    {
+      "context": "Manders' M1 and M2 at Costes et al.'s (2004) automatic thresholds for every channel pair.",
+      "label": "spacr.measure.measure_costes#0",
+      "source": "Manders' M1 and M2 at Costes et al.'s (2004) automatic thresholds for every channel pair.",
+      "source_sha256": "26f0c20fd17c9b0264705d13b8cd701eac240e941ede9c3a12ce336cb6832916",
+      "translation": "每对通道在 Costes et al. (2004) 自动阈值下的 Manders M1 和 M2。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_costes#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` intensities, at least two image data channels.",
+      "label": "spacr.measure.measure_costes#2",
+      "source": "``(H, W, C)`` intensities, at least two channels.",
+      "source_sha256": "fb0e9288ab21e3d3b8321f2335f249cbed57a255ae8853de772e0be9f3857b9e",
+      "translation": "``(H, W, C)`` 强度，至少两个通道。"
+    },
+    {
+      "context": "bisection steps of the threshold search.",
+      "label": "spacr.measure.measure_costes#3",
+      "source": "bisection steps of the threshold search.",
+      "source_sha256": "c024b07ce1d1566dad5e47c7963e5d43a5eee6478450bdba2bcc1fbc64ef07fb",
+      "translation": "阈值搜索的二分步数。"
+    },
+    {
+      "context": "``label`` and ``channel_<i>_channel_<j>_costes_m1`` and ``_costes_m2`` per pair ``i < j``, the values :func:`measure_colocalisation_extra` writes with ``costes=True``: the orthogonal-regression line per object, its thresholds lowered by bisection (CellProfiler 4's faster mode) until the pixels below either threshold stop correlating, and M1 and M2 over the pixels above both; 0 where the line has no positive slope.",
+      "label": "spacr.measure.measure_costes#4",
+      "source": "``label`` and ``channel_<i>_channel_<j>_costes_m1`` and ``_costes_m2`` per pair ``i < j``, the values :func:`measure_colocalisation_extra` writes with ``costes=True``: the orthogonal-regression line per object, its thresholds lowered by bisection (CellProfiler 4's faster mode) until the pixels below either threshold stop correlating, and M1 and M2 over the pixels above both; 0 where the line has no positive slope.",
+      "source_sha256": "db97458a95591e10269008c6a91d1bd4584db65a935ced4bd802bd9efcb58d91",
+      "translation": "``label`` 以及 ``channel_<i>_channel_<j>_costes_m1`` 和 ``_costes_m2``（每对 ``i < j``），即 :func:`measure_colocalisation_extra` 在 ``costes=True`` 时写出的值：每个对象拟合正交回归线，以二分法（CellProfiler 4 的快速模式）降低其阈值，直到低于任一阈值的像素不再相关，再在高于两个阈值的像素上计算 M1 和 M2；回归线斜率不为正时为 0。"
+    },
+    {
+      "context": "Intensity on each object's edge pixels, per image data channel.",
+      "label": "spacr.measure.measure_edge_intensity#0",
+      "source": "Intensity on each object's edge pixels, per channel.",
+      "source_sha256": "9efa4d144fc4148fb04f636aa5b2965e171e6939c812dc1d47df78496d1c7bdb",
+      "translation": "每个对象边缘像素上的强度，按通道计算。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_edge_intensity#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities over it.",
+      "label": "spacr.measure.measure_edge_intensity#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities over it.",
+      "source_sha256": "0c4cb4328186d774a88f8b71c322428ba7452c9ba2847ea07ab449360a487dc1",
+      "translation": "与之对应的 ``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "``label`` and ``channel_<i>_{integrated,mean,std,max,min}_edge`` per channel, one row per label in ascending order.",
+      "label": "spacr.measure.measure_edge_intensity#3",
+      "source": "``label`` and ``channel_<i>_{integrated,mean,std,max,min}_edge`` per channel, one row per label in ascending order.",
+      "source_sha256": "442081a13a3dd27ef37e0d33c0dad93826b7de38b424150511cda1df7acce011",
+      "translation": "``label`` 和每个通道的 ``channel_<i>_{integrated,mean,std,max,min}_edge``，每个标签一行，按升序排列。"
+    },
+    {
+      "context": "The edge is CellProfiler's (MeasureObjectIntensity, ``*IntensityEdge``): the object pixels with a 4-connected neighbour outside the object, including the microscope field of view border, so a cell touching another cell has its edge there too, and a ring's inner boundary is edge. ``std`` is the population standard deviation.",
+      "label": "spacr.measure.measure_edge_intensity#4",
+      "source": "The edge is CellProfiler's (MeasureObjectIntensity, ``*IntensityEdge``): the object pixels with a 4-connected neighbour outside the object, including the field border, so a cell touching another cell has its edge there too, and a ring's inner boundary is edge. ``std`` is the population standard deviation.",
+      "source_sha256": "8b38fbbd34bb45a35859abd5b179d714d98700c1ffa32ee28079936823c36f87",
+      "translation": "边缘采用 CellProfiler 的定义（MeasureObjectIntensity，``*IntensityEdge``）：在对象外有 4 连通邻居的对象像素，包括视野边界，因此与另一个细胞接触的细胞在接触处也有边缘，环形对象的内边界也是边缘。``std`` 为总体标准差。"
+    },
+    {
+      "context": "Gabor filter-bank energy of each channel in each object.",
+      "label": "spacr.measure.measure_gabor#0",
+      "source": "Gabor filter-bank energy of each channel in each object.",
+      "source_sha256": "bb82e66ae3d651ded24c36968ff3794c9430a6963007861236b3f8d6a4096f62",
+      "translation": "每个对象中每个通道的 Gabor 滤波器组能量。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_gabor#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_gabor#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "filter frequencies in cycles per pixel.",
+      "label": "spacr.measure.measure_gabor#3",
+      "source": "filter frequencies in cycles per pixel.",
+      "source_sha256": "8754a4030960915a326807ed49d5dd1dc51c3b5dd43f36fdd532b35cb2f3e170",
+      "translation": "滤波器频率，单位为每像素周期数。"
+    },
+    {
+      "context": "how many orientations, evenly over 180 degrees.",
+      "label": "spacr.measure.measure_gabor#4",
+      "source": "how many orientations, evenly over 180 degrees.",
+      "source_sha256": "756c1363b8016c279ae8f74a5ed6c97e62d7cabeb28b67d1daac88db5992c3ac",
+      "translation": "方向数，均匀分布在 180 度范围内。"
+    },
+    {
+      "context": "``label`` and, per image data channel, frequency index ``f`` and orientation index ``o``, ``channel_<i>_gabor_f<f>_o<o>_mean`` and ``_std``: the mean and standard deviation over the object of the response magnitude, each divided by the object's mean intensity so the block holds texture rather than brightness (NaN when that mean is not positive).",
+      "label": "spacr.measure.measure_gabor#5",
+      "source": "``label`` and, per channel, frequency index ``f`` and orientation index ``o``, ``channel_<i>_gabor_f<f>_o<o>_mean`` and ``_std``: the mean and standard deviation over the object of the response magnitude, each divided by the object's mean intensity so the block holds texture rather than brightness (NaN when that mean is not positive).",
+      "source_sha256": "769fc263d02a71a7656826f0d45f1a69f7a45430b4bb3b8d39e12264efe5dd89",
+      "translation": "``label`` 以及每个通道、频率索引 ``f`` 和方向索引 ``o`` 的 ``channel_<i>_gabor_f<f>_o<o>_mean`` 和 ``_std``：响应幅值在对象上的均值和标准差，各自除以对象的平均强度，使该特征块反映纹理而非亮度（该均值不为正时为 NaN）。"
+    },
+    {
+      "context": "The kernels are :func:`skimage.filters.gabor_kernel` (bandwidth 1), convolved with the whole microscope field of view by overlap-add (:func:`scipy.signal.oaconvolve`), so each object's response sees its surroundings within about one wavelength of its edge.",
+      "label": "spacr.measure.measure_gabor#6",
+      "source": "The kernels are :func:`skimage.filters.gabor_kernel` (bandwidth 1), convolved with the whole field by overlap-add (:func:`scipy.signal.oaconvolve`), so each object's response sees its surroundings within about one wavelength of its edge.",
+      "source_sha256": "2344e5d53f3fc9a709abdc2c8c1f2e57e44d9da560054e4fe817f64375a6c5ed",
+      "translation": "卷积核为 :func:`skimage.filters.gabor_kernel`（带宽 1），通过重叠相加（:func:`scipy.signal.oaconvolve`）与整个视野卷积，因此每个对象的响应会包含其边缘外约一个波长范围内的周围区域。"
+    },
+    {
+      "context": "CellProfiler's granularity spectrum of each channel in each object.",
+      "label": "spacr.measure.measure_granularity#0",
+      "source": "CellProfiler's granularity spectrum of each channel in each object.",
+      "source_sha256": "e014e6e1efc3e2db11b0a49861e7e0e893f3b898095da4c23cf50c0b79b523b4",
+      "translation": "每个对象中每个通道的 CellProfiler 颗粒度谱。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_granularity#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_granularity#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "how many sieve steps; step ``k`` removes bright structures about ``k`` pixels in radius.",
+      "label": "spacr.measure.measure_granularity#3",
+      "source": "how many sieve steps; step ``k`` removes bright structures about ``k`` pixels in radius.",
+      "source_sha256": "f751a597d45ead738b5cd09bae23dccbe4e71cb6ef9f2751bd588222683a9b3d",
+      "translation": "筛分步数；第 ``k`` 步去除半径约 ``k`` 像素的明亮结构。"
+    },
+    {
+      "context": "the disc radius of the grey opening subtracted first, larger than the granules of interest.",
+      "label": "spacr.measure.measure_granularity#4",
+      "source": "the disc radius of the grey opening subtracted first, larger than the granules of interest.",
+      "source_sha256": "1ec18a3b3e06252ac56c141e963b4a0ec2bc586040a3cfc2ca48c2487f5e2b11",
+      "translation": "首先减去的灰度开运算所用圆盘半径，应大于目标颗粒。"
+    },
+    {
+      "context": "sieve the microscope field of view scaled by this factor (bilinear), as CellProfiler's image sample size; 0.25 is CellProfiler's default and about 16 times faster. ``background_radius`` and each step are then in subsampled pixels, so a step removes structures about ``k / subsample`` full pixels in radius. The background subtraction and every reconstruction are scaled back to the full microscope field of view before each object is averaged, so small objects keep their values. 1.0, the default, sieves at full resolution.",
+      "label": "spacr.measure.measure_granularity#5",
+      "source": "sieve the field scaled by this factor (bilinear), as CellProfiler's image sample size; 0.25 is CellProfiler's default and about 16 times faster. ``background_radius`` and each step are then in subsampled pixels, so a step removes structures about ``k / subsample`` full pixels in radius. The background subtraction and every reconstruction are scaled back to the full field before each object is averaged, so small objects keep their values. 1.0, the default, sieves at full resolution.",
+      "source_sha256": "245619e0939a910902e23891e07062c294281f12eaec04bfbf96d4de4b01f091",
+      "translation": "按此因子（双线性）缩放视野后进行筛分，相当于 CellProfiler 的图像采样尺寸；0.25 是 CellProfiler 的默认值，速度约快 16 倍。此时 ``background_radius`` 和每一步都以子采样像素为单位，因此一步去除半径约为 ``k / subsample`` 个原始像素的结构。背景扣除和每次重建都会在对每个对象求平均之前缩放回完整视野，因此小对象也能保留其数值。默认值 1.0 表示以全分辨率筛分。"
+    },
+    {
+      "context": "``label`` and ``channel_<i>_granularity_<k>`` for ``k`` 1 .. ``spectrum_length``: the percentage of the object's background-subtracted intensity removed at step ``k``.",
+      "label": "spacr.measure.measure_granularity#6",
+      "source": "``label`` and ``channel_<i>_granularity_<k>`` for ``k`` 1 .. ``spectrum_length``: the percentage of the object's background-subtracted intensity removed at step ``k``.",
+      "source_sha256": "fec96785c9b2575e0f0d44a5cb67c6360b593f99b1d0e7d177d937c6b9bed304",
+      "translation": "``label`` 以及 ``channel_<i>_granularity_<k>``（``k`` 为 1 .. ``spectrum_length``）：第 ``k`` 步去除的对象背景扣除后强度的百分比。"
+    },
+    {
+      "context": "As CellProfiler's MeasureGranularity (Maragos 1989 pattern spectrum): the microscope field of view less its opening by a disc of ``background_radius``, then repeated erosion by a 3 x 3 cross, each followed by grey reconstruction under the microscope field of view; the per-object mean of each reconstruction gives the spectrum. Objects with no intensity left after the background get NaN.",
+      "label": "spacr.measure.measure_granularity#7",
+      "source": "As CellProfiler's MeasureGranularity (Maragos 1989 pattern spectrum): the field less its opening by a disc of ``background_radius``, then repeated erosion by a 3 x 3 cross, each followed by grey reconstruction under the field; the per-object mean of each reconstruction gives the spectrum. Objects with no intensity left after the background get NaN.",
+      "source_sha256": "3f46c4e67107d8b05777655159c7ee3560970c7a8fe8bbd597737a6aa6c9ea68",
+      "translation": "与 CellProfiler 的 MeasureGranularity（Maragos 1989 模式谱）相同：视野减去以半径 ``background_radius`` 圆盘进行的开运算结果，然后用 3 x 3 十字反复腐蚀，每次腐蚀后在视野之下进行灰度重建；每次重建的逐对象均值构成谱。扣除背景后不再有强度的对象得到 NaN。"
+    },
+    {
+      "context": "Where each image data channel's intensity sits in each object.",
+      "label": "spacr.measure.measure_intensity_moments#0",
+      "source": "Where each channel's intensity sits in each object.",
+      "source_sha256": "adf2b1ce7a474ab642e96fc8c6aba17c5f187626f74ed6355a88d0482794f0f0",
+      "translation": "每个通道的强度在每个对象中的分布位置。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_intensity_moments#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities, which should be non-negative.",
+      "label": "spacr.measure.measure_intensity_moments#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities, which should be non-negative.",
+      "source_sha256": "8bc2eb7e2027d8c87493271ffa23dea14974720ea9c0c57df69c077b00b99585",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度，应为非负值。"
+    },
+    {
+      "context": "``label``, and per image data channel ``channel_<i>_mass_displacement`` (pixels from the object's centroid to its intensity-weighted centroid, CellProfiler's ``MassDisplacement``) and ``channel_<i>_weighted_hu_<k>`` for ``k`` 0..6 (Hu's invariants of the intensity-weighted central moments, as :func:`skimage.measure.moments_hu` of the masked object).",
+      "label": "spacr.measure.measure_intensity_moments#3",
+      "source": "``label``, and per channel ``channel_<i>_mass_displacement`` (pixels from the object's centroid to its intensity-weighted centroid, CellProfiler's ``MassDisplacement``) and ``channel_<i>_weighted_hu_<k>`` for ``k`` 0..6 (Hu's invariants of the intensity-weighted central moments, as :func:`skimage.measure.moments_hu` of the masked object).",
+      "source_sha256": "bd68fe9be8ff0f6789dbbc7af9e09f2237de4fd3c046be688a8bbbc0831a9d53",
+      "translation": "``label``，以及每个通道的 ``channel_<i>_mass_displacement``（从对象质心到其强度加权质心的像素距离，即 CellProfiler 的 ``MassDisplacement``）和 ``channel_<i>_weighted_hu_<k>``（``k`` 为 0..6；强度加权中心矩的 Hu 不变量，等同于对掩膜后对象计算 :func:`skimage.measure.moments_hu`）。"
+    },
+    {
+      "context": "Positions in the microscope field of view or the bounding box (CellProfiler's ``Location_CenterMassIntensity`` and ``MaxIntensity``) are left out: they say where the object is and which way it faces, not its phenotype.",
+      "label": "spacr.measure.measure_intensity_moments#4",
+      "source": "Positions in the field or the bounding box (CellProfiler's ``Location_CenterMassIntensity`` and ``MaxIntensity``) are left out: they say where the object is and which way it faces, not its phenotype.",
+      "source_sha256": "0d78f9ac025e96f6ff269ecd2771e050fce6e73ef21fbbe0732692e9aa5caa48",
+      "translation": "视野或边界框中的位置（CellProfiler 的 ``Location_CenterMassIntensity`` 和 ``MaxIntensity``）不包含在内：它们说明对象在哪里以及朝向如何，而不是其表型。"
+    },
+    {
+      "context": "Rotation-invariant uniform local binary pattern histogram of each channel in each object.",
+      "label": "spacr.measure.measure_lbp#0",
+      "source": "Rotation-invariant uniform local binary pattern histogram of each channel in each object.",
+      "source_sha256": "74e02b60f39b72997b97b52da461eb3ba38840b17b3141409c1579b951825867",
+      "translation": "每个对象中每个通道的旋转不变均匀局部二值模式直方图。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_lbp#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_lbp#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "the LBP radii; radius ``r`` samples ``8 r`` points (Ojala et al. 2002, ``method='uniform'``).",
+      "label": "spacr.measure.measure_lbp#3",
+      "source": "the LBP radii; radius ``r`` samples ``8 r`` points (Ojala et al. 2002, ``method='uniform'``).",
+      "source_sha256": "ab96b1888059bf8a41b47a676c74dc71b2414271c05736c56ffc9c950289242c",
+      "translation": "LBP 半径；半径 ``r`` 采样 ``8 r`` 个点（Ojala et al. 2002，``method='uniform'``）。"
+    },
+    {
+      "context": "``label`` and ``channel_<i>_lbp_r<r>_<k>`` for ``k`` 0 .. ``8 r + 1``: the share of the object's pixels with uniform pattern ``k`` (``k`` set bits; ``8 r + 1`` collects the non-uniform patterns). Each object's shares sum to 1.",
+      "label": "spacr.measure.measure_lbp#4",
+      "source": "``label`` and ``channel_<i>_lbp_r<r>_<k>`` for ``k`` 0 .. ``8 r + 1``: the share of the object's pixels with uniform pattern ``k`` (``k`` set bits; ``8 r + 1`` collects the non-uniform patterns). Each object's shares sum to 1.",
+      "source_sha256": "be03fd865031474118c73102f97900b627cc49780582cb90c21d3306ef0f0c80",
+      "translation": "``label`` 以及 ``channel_<i>_lbp_r<r>_<k>``（``k`` 为 0 .. ``8 r + 1``）：具有均匀模式 ``k``（``k`` 个置位比特；``8 r + 1`` 汇总非均匀模式）的对象像素比例。每个对象的比例之和为 1。"
+    },
+    {
+      "context": "The codes come from :func:`skimage.feature.local_binary_pattern` on the whole microscope field of view, so a pixel at the object's edge compares with its neighbours outside. The histogram is invariant to monotonic changes of brightness and to rotation.",
+      "label": "spacr.measure.measure_lbp#5",
+      "source": "The codes come from :func:`skimage.feature.local_binary_pattern` on the whole field, so a pixel at the object's edge compares with its neighbours outside. The histogram is invariant to monotonic changes of brightness and to rotation.",
+      "source_sha256": "2826001ef9d2b198f5e440ebe2a54311ab4d7191b04c1d6b05bbf77d16d0948a",
+      "translation": "编码来自对整个视野计算的 :func:`skimage.feature.local_binary_pattern`，因此对象边缘的像素会与其外部邻居比较。该直方图对亮度的单调变化和旋转保持不变。"
+    },
+    {
+      "context": "Each object's neighbourhood: spaCR's spatial block.",
+      "label": "spacr.measure.measure_neighbours#0",
+      "source": "Each object's neighbourhood: spaCR's spatial block.",
+      "source_sha256": "63f2c511495e5f00d360a1e97cdedae6fdfde616988dbd299b3695d0636b999f",
+      "translation": "每个对象的邻域：spaCR 的空间特征块。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_neighbours#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "neighbourhood radius in pixels for ``neighbors_within_<radius>``.",
+      "label": "spacr.measure.measure_neighbours#2",
+      "source": "neighbourhood radius in pixels for ``neighbors_within_<radius>``.",
+      "source_sha256": "932a490d223433baee16d673f945c9d7ef35090e59a985ee10d0cf4670315e47",
+      "translation": "``neighbors_within_<radius>`` 使用的邻域半径（像素）。"
+    },
+    {
+      "context": "``label`` and :func:`spatial_column_names` of ``radius``: the count of objects within ``radius``, the nearest and second nearest centroid distance, the share of the edge touching another object and the count of touching objects -- CellProfiler's MeasureObjectNeighbors set less its angle -- as ``spatial_measurements`` writes them, with no NaN.",
+      "label": "spacr.measure.measure_neighbours#3",
+      "source": "``label`` and :func:`spatial_column_names` of ``radius``: the count of objects within ``radius``, the nearest and second nearest centroid distance, the share of the edge touching another object and the count of touching objects -- CellProfiler's MeasureObjectNeighbors set less its angle -- as ``spatial_measurements`` writes them, with no NaN.",
+      "source_sha256": "5c5d3e741e013698f98833959f8691e5852bd684deb8301b0d5989b037861bd5",
+      "translation": "``label`` 以及 :func:`spatial_column_names`（对应 ``radius``）：``radius`` 内的对象数、最近和次近的质心距离、与其他对象接触的边缘比例以及接触对象数 —— 即去掉角度的 CellProfiler MeasureObjectNeighbors 指标集 —— 按 ``spatial_measurements`` 的写法输出，不含 NaN。"
+    },
+    {
+      "context": "Intensity in a ring just outside each object, per image data channel, as spaCR's Measure writes it.",
+      "label": "spacr.measure.measure_outside#0",
+      "source": "Intensity in a ring just outside each object, per channel, as spaCR's Measure writes it.",
+      "source_sha256": "0ad3ae311a430b8bb330a45f188f8b276da59e83de476aab26da482740d05caa",
+      "translation": "每个对象外侧紧邻环带中的强度，按通道计算，与 spaCR 的 Measure 写出的一致。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_outside#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_outside#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "the ring width in pixels.",
+      "label": "spacr.measure.measure_outside#3",
+      "source": "the ring width in pixels.",
+      "source_sha256": "22863de3c52e67171ce3eec84c962d46f87444c1a0d35906cf7f0a3f52727746",
+      "translation": "环带宽度（像素）。"
+    },
+    {
+      "context": "keep only ring pixels outside every object of ``labels`` (Measure's cell background); False keeps the neighbours' pixels too (Measure's nucleus, pathogen and organelle rings).",
+      "label": "spacr.measure.measure_outside#4",
+      "source": "keep only ring pixels outside every object of ``labels`` (Measure's cell background); False keeps the neighbours' pixels too (Measure's nucleus, pathogen and organelle rings).",
+      "source_sha256": "2f764d64924dd5022e4fc40c455e89fdc1e9425752a1c380f281bda2b7473662",
+      "translation": "仅保留位于 ``labels`` 所有对象之外的环带像素（Measure 的细胞背景）；False 时也保留邻近对象的像素（Measure 的细胞核、病原体和细胞器环带）。"
+    },
+    {
+      "context": "``label``, ``channel_<i>_outside_<stat>`` for the mean and the 5th to 95th percentiles of :func:`_outside_intensity`, NaN when no ring pixel is left -- as for a cell surrounded by other cells with ``exclude_foreground`` -- and ``enclosed``, 1 for such an object and 0 otherwise.",
+      "label": "spacr.measure.measure_outside#5",
+      "source": "``label``, ``channel_<i>_outside_<stat>`` for the mean and the 5th to 95th percentiles of :func:`_outside_intensity`, NaN when no ring pixel is left -- as for a cell surrounded by other cells with ``exclude_foreground`` -- and ``enclosed``, 1 for such an object and 0 otherwise.",
+      "source_sha256": "7538ff5ba67c530a7672389f2129dbaa57978aaaec10a624f066f7ed84a423f6",
+      "translation": "``label``、``channel_<i>_outside_<stat>``（:func:`_outside_intensity` 的均值以及第 5 至第 95 百分位数；没有剩余环带像素时为 NaN —— 例如在 ``exclude_foreground`` 下被其他细胞包围的细胞），以及 ``enclosed``，此类对象为 1，否则为 0。"
+    },
+    {
+      "context": "Intensity on each object's boundary pixels, per image data channel, as spaCR's Measure writes it.",
+      "label": "spacr.measure.measure_periphery#0",
+      "source": "Intensity on each object's boundary pixels, per channel, as spaCR's Measure writes it.",
+      "source_sha256": "7543ddcd28860be6a9588d8cfbf733122131eb7fac1cfaf561bd9f8e750c270e",
+      "translation": "每个对象边界像素上的强度，按通道计算，与 spaCR 的 Measure 写出的一致。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_periphery#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_periphery#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "``label`` and ``channel_<i>_periphery_<stat>`` for the mean and the 5th, 10th, 25th, 50th, 75th, 85th and 95th percentiles: :func:`_periphery_intensity`, which Measure writes for nuclei, pathogens and organelles. The boundary is skimage's thick boundary inside the object, the pixels :func:`measure_edge_intensity` reads, so its mean repeats ``mean_edge`` except at the microscope field of view border; the percentiles are what it adds.",
+      "label": "spacr.measure.measure_periphery#3",
+      "source": "``label`` and ``channel_<i>_periphery_<stat>`` for the mean and the 5th, 10th, 25th, 50th, 75th, 85th and 95th percentiles: :func:`_periphery_intensity`, which Measure writes for nuclei, pathogens and organelles. The boundary is skimage's thick boundary inside the object, the pixels :func:`measure_edge_intensity` reads, so its mean repeats ``mean_edge`` except at the field border; the percentiles are what it adds.",
+      "source_sha256": "39d17ae3aa8b9fce932ecec1c8773ca9172b1a2e890e0045f0eecb6228c39843",
+      "translation": "``label`` 以及均值和第 5、10、25、50、75、85、95 百分位数对应的 ``channel_<i>_periphery_<stat>``：即 Measure 为细胞核、病原体和细胞器写出的 :func:`_periphery_intensity`。边界是 skimage 在对象内部的粗边界，即 :func:`measure_edge_intensity` 读取的像素，因此除视野边界外其均值与 ``mean_edge`` 相同；新增的是百分位数。"
+    },
+    {
+      "context": "Every asked profiling family of one compartment, one row per object.",
+      "label": "spacr.measure.measure_profile_features#0",
+      "source": "Every asked profiling family of one compartment, one row per object.",
+      "source_sha256": "49a728f22f5d9479a7694a870f3ca2505da3ab9448f8c751d8995c879bf01f13",
+      "translation": "一个区室所请求的全部特征谱分析特征族，每个对象一行。"
+    },
+    {
+      "context": "2-D label mask of one compartment.",
+      "label": "spacr.measure.measure_profile_features#1",
+      "source": "2-D label mask of one compartment.",
+      "source_sha256": "4f67cb92c33d07f5f537a2ded9bf41c0a4f0cc0fee5cdde67e30e2dd74a3bff4",
+      "translation": "一个区室的 2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` intensities over it.",
+      "label": "spacr.measure.measure_profile_features#2",
+      "source": "``(H, W, C)`` intensities over it.",
+      "source_sha256": "011c9847a093c67fd731d462955e34e4da12be8af97791cd17fd9491246386ee",
+      "translation": "其上的 ``(H, W, C)`` 强度。"
+    },
+    {
+      "context": "as :func:`profile_feature_families` reads ``profile_features``.",
+      "label": "spacr.measure.measure_profile_features#3",
+      "source": "as :func:`profile_feature_families` reads ``profile_features``.",
+      "source_sha256": "d61b495f13925c0f01d715008a71237e06b19000d75c30f54174e5150b178b9b",
+      "translation": "与 :func:`profile_feature_families` 解析 ``profile_features`` 的方式相同。"
+    },
+    {
+      "context": "the radius of ``neighbours``.",
+      "label": "spacr.measure.measure_profile_features#4",
+      "source": "the radius of ``neighbours``.",
+      "source_sha256": "b36237dd05ec4c2f0c3083527744c2a478091dbfe387fab93b49b206089e97e2",
+      "translation": "``neighbours`` 的半径。"
+    },
+    {
+      "context": "``subsample`` of ``granularity`` (:func:`measure_granularity`).",
+      "label": "spacr.measure.measure_profile_features#5",
+      "source": "``subsample`` of ``granularity`` (:func:`measure_granularity`).",
+      "source_sha256": "4b44ccb92259ce32cb107b3f612b06c7528325c42963b658c21ba24c4c125d7c",
+      "translation": "``subsample`` of ``granularity`` (:func:`measure_granularity`)."
+    },
+    {
+      "context": "``label`` and the families' columns, in :data:`PROFILE_FEATURE_FAMILIES` order, one row per label in ascending order.",
+      "label": "spacr.measure.measure_profile_features#6",
+      "source": "``label`` and the families' columns, in :data:`PROFILE_FEATURE_FAMILIES` order, one row per label in ascending order.",
+      "source_sha256": "1b078f9e8d25ef6e9b230ce2b45a0e7f1a0950e57dd2bd53b8d948d5de209eef",
+      "translation": "``label`` 和各特征族的列，按 :data:`PROFILE_FEATURE_FAMILIES` 的顺序排列，每个标签一行，按升序排列。"
+    },
+    {
+      "context": "How each image data channel's intensity is spread from each object's centre to its edge.",
+      "label": "spacr.measure.measure_radial_distribution#0",
+      "source": "How each channel's intensity is spread from each object's centre to its edge.",
+      "source_sha256": "396df64479315499f4e7c6946f852df1a63426bf06eb8cfe8bc16ab0eb72096f",
+      "translation": "每个通道的强度如何从每个对象的中心分布到其边缘。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_radial_distribution#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_radial_distribution#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "rings from centre to edge; 4 is CellProfiler's default.",
+      "label": "spacr.measure.measure_radial_distribution#3",
+      "source": "rings from centre to edge; 4 is CellProfiler's default.",
+      "source_sha256": "ce666da4b54969f8c876c0a31f634f702834982a95a64158a2e47d9270212c92",
+      "translation": "从中心到边缘的环数；4 是 CellProfiler 的默认值。"
+    },
+    {
+      "context": "``label`` and, per image data channel and ring ``k`` (0 innermost), ``channel_<i>_frac_at_d_<k>`` (the share of the object's intensity in the ring), ``channel_<i>_mean_frac_<k>`` (that share over the ring's share of pixels; 1 is even) and ``channel_<i>_radial_cv_<k>`` (the coefficient of variation of the ring's mean intensity over eight 45-degree wedges).",
+      "label": "spacr.measure.measure_radial_distribution#4",
+      "source": "``label`` and, per channel and ring ``k`` (0 innermost), ``channel_<i>_frac_at_d_<k>`` (the share of the object's intensity in the ring), ``channel_<i>_mean_frac_<k>`` (that share over the ring's share of pixels; 1 is even) and ``channel_<i>_radial_cv_<k>`` (the coefficient of variation of the ring's mean intensity over eight 45-degree wedges).",
+      "source_sha256": "dbfec5f3e239a17a1b287e68403865c35e5e35e8103f1d79fe46d86ed8d88cc0",
+      "translation": "``label`` 以及每个通道和环 ``k``（0 为最内环）的 ``channel_<i>_frac_at_d_<k>``（环内强度占对象强度的比例）、``channel_<i>_mean_frac_<k>``（该比例除以环的像素占比；1 表示均匀）和 ``channel_<i>_radial_cv_<k>``（环平均强度在八个 45 度扇区上的变异系数）。"
+    },
+    {
+      "context": "CellProfiler's MeasureObjectIntensityDistribution with no centre objects: the centre is the point farthest from the edge (the median of ties), and a pixel's ring comes from its distance to the centre over that plus its distance to the edge, so every ring follows the outline. Holes belong to no ring but shape the edge distance of the filled object. A ring with no pixels -- the innermost ring of a cytoplasm, whose centre lies in the nucleus -- has ``frac_at_d`` 0 and ``mean_frac`` and ``radial_cv`` 0 rather than NaN, so the column is not dropped as incomplete. An object with no intensity has NaN fractions.",
+      "label": "spacr.measure.measure_radial_distribution#5",
+      "source": "CellProfiler's MeasureObjectIntensityDistribution with no centre objects: the centre is the point farthest from the edge (the median of ties), and a pixel's ring comes from its distance to the centre over that plus its distance to the edge, so every ring follows the outline. Holes belong to no ring but shape the edge distance of the filled object. A ring with no pixels -- the innermost ring of a cytoplasm, whose centre lies in the nucleus -- has ``frac_at_d`` 0 and ``mean_frac`` and ``radial_cv`` 0 rather than NaN, so the column is not dropped as incomplete. An object with no intensity has NaN fractions.",
+      "source_sha256": "6d1bf18eb14d70ebf2700eb4963aa3eeadcf4161b80702c577871405bbe5c14d",
+      "translation": "无中心对象时的 CellProfiler MeasureObjectIntensityDistribution：中心是离边缘最远的点（并列时取中位），像素所属的环由其到中心的距离除以该距离与其到边缘距离之和确定，因此每个环都沿着轮廓。孔洞不属于任何环，但会影响填充后对象的边缘距离。没有像素的环 —— 例如中心位于细胞核内的细胞质最内环 —— 其 ``frac_at_d`` 为 0，``mean_frac`` 和 ``radial_cv`` 也为 0 而不是 NaN，因此该列不会因不完整而被丢弃。没有强度的对象其比例为 NaN。"
+    },
+    {
+      "context": "Shape descriptors spaCR's regionprops block does not have.",
+      "label": "spacr.measure.measure_shape_extended#0",
+      "source": "Shape descriptors spaCR's regionprops block does not have.",
+      "source_sha256": "3f0fe1bdb6adf8b5a27233687913a0afa22bccfd11b1b8667f8e7ebff234c80b",
+      "translation": "spaCR 的 regionprops 特征块中没有的形状描述符。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_shape_extended#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``label``, ``form_factor`` (``4 pi area / perimeter^2``), ``compactness`` (``2 pi (mu20 + mu02) / area^2``, 1 for a disc), ``hu_0`` .. ``hu_6`` (Hu's invariants of the mask), and ``max_radius``, ``median_radius``, ``mean_radius`` (the distance of each pixel to the nearest pixel outside the object, CellProfiler's MeasureObjectSizeShape radii).",
+      "label": "spacr.measure.measure_shape_extended#2",
+      "source": "``label``, ``form_factor`` (``4 pi area / perimeter^2``), ``compactness`` (``2 pi (mu20 + mu02) / area^2``, 1 for a disc), ``hu_0`` .. ``hu_6`` (Hu's invariants of the mask), and ``max_radius``, ``median_radius``, ``mean_radius`` (the distance of each pixel to the nearest pixel outside the object, CellProfiler's MeasureObjectSizeShape radii).",
+      "source_sha256": "8d65f6c27223d59fe79d1e9e434f14ea5802f52d348a754259c4d5790a3902ca",
+      "translation": "``label``、``form_factor``（``4 pi area / perimeter^2``）、``compactness``（``2 pi (mu20 + mu02) / area^2``，圆盘为 1）、``hu_0`` .. ``hu_6``（掩膜的 Hu 不变量），以及 ``max_radius``、``median_radius``、``mean_radius``（每个像素到对象外最近像素的距离，即 CellProfiler MeasureObjectSizeShape 的半径）。"
+    },
+    {
+      "context": "Area and perimeter are skimage's regionprops values, as spaCR's ``area`` and ``perimeter`` columns.",
+      "label": "spacr.measure.measure_shape_extended#3",
+      "source": "Area and perimeter are skimage's regionprops values, as spaCR's ``area`` and ``perimeter`` columns.",
+      "source_sha256": "e5a539a37f5936fda2cacc20028e423db52357e66521287dab5f907a04614cfe",
+      "translation": "面积和周长取 skimage 的 regionprops 值，与 spaCR 的 ``area`` 和 ``perimeter`` 列一致。"
+    },
+    {
+      "context": "Haralick and threshold-adjacency texture of each channel in each object.",
+      "label": "spacr.measure.measure_texture#0",
+      "source": "Haralick and threshold-adjacency texture of each channel in each object.",
+      "source_sha256": "2dad8045b2261fa070a0f5ecc38c90b737317d38fbaedb59c616ba0a94ebf2e5",
+      "translation": "每个对象中每个通道的 Haralick 纹理和阈值邻接纹理。"
+    },
+    {
+      "context": "2-D label mask.",
+      "label": "spacr.measure.measure_texture#1",
+      "source": "2-D label mask.",
+      "source_sha256": "172b0c090ec7aba6610e85b57a054210645ecbbe044febe193e38bab80b07b24",
+      "translation": "2-D 标签掩膜。"
+    },
+    {
+      "context": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "label": "spacr.measure.measure_texture#2",
+      "source": "``(H, W, C)`` (or ``(H, W)``) intensities.",
+      "source_sha256": "a10dc3dd15e33a813184aca848ddb368a99f54fa31a8babc2699e20321327ff7",
+      "translation": "``(H, W, C)``（或 ``(H, W)``）强度。"
+    },
+    {
+      "context": "write ``channel_<i>_haralick_<name>`` for the 13 statistics of Haralick et al. (1973), from a grey-level co-occurrence matrix at ``distance`` pixels averaged over four directions (mahotas, ``ignore_zeros``).",
+      "label": "spacr.measure.measure_texture#3",
+      "source": "write ``channel_<i>_haralick_<name>`` for the 13 statistics of Haralick et al. (1973), from a grey-level co-occurrence matrix at ``distance`` pixels averaged over four directions (mahotas, ``ignore_zeros``).",
+      "source_sha256": "095ee06f18c1fffb027f2d3eee7ac776cb2babea1be489f2472576fff3c87157",
+      "translation": "写出 Haralick et al. (1973) 的 13 个统计量 ``channel_<i>_haralick_<name>``，由间距 ``distance`` 像素、在四个方向上取平均的灰度共生矩阵计算（mahotas，``ignore_zeros``）。"
+    },
+    {
+      "context": "write ``channel_<i>_pftas_<k>`` for the 54 parameter-free threshold adjacency statistics of Hamilton et al. (2007) (mahotas), thresholded at the object's Otsu level.",
+      "label": "spacr.measure.measure_texture#4",
+      "source": "write ``channel_<i>_pftas_<k>`` for the 54 parameter-free threshold adjacency statistics of Hamilton et al. (2007) (mahotas), thresholded at the object's Otsu level.",
+      "source_sha256": "83c6993e2eacbeff4e12dd1782ee24add4dc924e6952430eb6d0d57515bf1411",
+      "translation": "写出 Hamilton et al. (2007) 的 54 个无参数阈值邻接统计量 ``channel_<i>_pftas_<k>``（mahotas），以对象的 Otsu 水平作为阈值。"
+    },
+    {
+      "context": "grey levels for the co-occurrence matrix. Each object is scaled from its own minimum to maximum, so texture does not repeat brightness, which the intensity block already holds.",
+      "label": "spacr.measure.measure_texture#5",
+      "source": "grey levels for the co-occurrence matrix. Each object is scaled from its own minimum to maximum, so texture does not repeat brightness, which the intensity block already holds.",
+      "source_sha256": "60b6dfee2a6634781d9b4a040200f17985d5eaa8d6ecc4945f14590c5ca9ee3d",
+      "translation": "共生矩阵的灰度级数。每个对象按其自身最小值到最大值缩放，因此纹理不会重复强度特征块已包含的亮度信息。"
+    },
+    {
+      "context": "co-occurrence offset in pixels.",
+      "label": "spacr.measure.measure_texture#6",
+      "source": "co-occurrence offset in pixels.",
+      "source_sha256": "dbda2d958cf553f0f35ccaceb8a39eb45123b508bc0dc939b30c2ee3dba14bae",
+      "translation": "共生偏移量（像素）。"
+    },
+    {
+      "context": "``label`` and the asked columns; NaN where the statistic is undefined (an object too small for the offset, or a flat object for PFTAS).",
+      "label": "spacr.measure.measure_texture#7",
+      "source": "``label`` and the asked columns; NaN where the statistic is undefined (an object too small for the offset, or a flat object for PFTAS).",
+      "source_sha256": "429b3377b427b3c4ce218f6f8b314f2c44c6496236fb1aabd6fc1e4d943bb64b",
+      "translation": "``label`` 和所请求的列；统计量无定义时为 NaN（对象相对偏移量过小，或 PFTAS 遇到强度均一的对象）。"
+    },
+    {
+      "context": "PFTAS reads the same object scaled to 255 levels, so its Otsu threshold is not coarsened by ``levels``. Needs mahotas (``spacr[zernike]``).",
+      "label": "spacr.measure.measure_texture#8",
+      "source": "PFTAS reads the same object scaled to 255 levels, so its Otsu threshold is not coarsened by ``levels``. Needs mahotas (``spacr[zernike]``).",
+      "source_sha256": "13550cea30326310ac641c91a1cbdd3b6709e6ad68027c0b201b8d5fbb289fb5",
+      "translation": "PFTAS 读取缩放到 255 级的同一对象，因此其 Otsu 阈值不会因 ``levels`` 而变粗。需要 mahotas（``spacr[zernike]``）。"
+    },
+    {
+      "context": "The profiling families a ``profile_features`` setting asks for.",
+      "label": "spacr.measure.profile_feature_families#0",
+      "source": "The profiling families a ``profile_features`` setting asks for.",
+      "source_sha256": "e84855d6e7db12773d820c70a7bbe49b021f3328beaa0ce3924199b274f7d587",
+      "translation": "``profile_features`` 设置所请求的特征谱分析特征族。"
+    },
+    {
+      "context": "``None``, ``False``, ``''`` or an empty list for none; ``'profiling'`` for :data:`PROFILE_FEATURE_DEFAULT`; ``'all'`` for every family in :data:`PROFILE_FEATURE_FAMILIES`; otherwise family names, as a list or a comma-separated string, which may include ``'profiling'``.",
+      "label": "spacr.measure.profile_feature_families#1",
+      "source": "``None``, ``False``, ``''`` or an empty list for none; ``'profiling'`` for :data:`PROFILE_FEATURE_DEFAULT`; ``'all'`` for every family in :data:`PROFILE_FEATURE_FAMILIES`; otherwise family names, as a list or a comma-separated string, which may include ``'profiling'``.",
+      "source_sha256": "a8416b875db5dd18f2ad48d67f9b2a7168ff0b87080059080d3b6ee61901128a",
+      "translation": "``None``、``False``、``''`` 或空列表表示不选；``'profiling'`` 表示 :data:`PROFILE_FEATURE_DEFAULT`；``'all'`` 表示 :data:`PROFILE_FEATURE_FAMILIES` 中的每个特征族；否则为特征族名称，可为列表或逗号分隔的字符串，其中可包含 ``'profiling'``。"
+    },
+    {
+      "context": "the families in :data:`PROFILE_FEATURE_FAMILIES` order.",
+      "label": "spacr.measure.profile_feature_families#2",
+      "source": "the families in :data:`PROFILE_FEATURE_FAMILIES` order.",
+      "source_sha256": "3d2b92b55839fa71e0e2d334a383d13db19e5380b945f97fdffd7c0418947d7f",
+      "translation": "按 :data:`PROFILE_FEATURE_FAMILIES` 顺序排列的特征族。"
+    },
+    {
+      "context": "for a name that is not a family.",
+      "label": "spacr.measure.profile_feature_families#3",
+      "source": "for a name that is not a family.",
+      "source_sha256": "90d2a86e4c937cdf7342f9d935f787715ebd7784c96f476e83bdcd48756edb99",
+      "translation": "名称不是特征族时引发。"
+    },
+    {
+      "context": "the ``subsample`` of the granularity family (:func:`spacr.measure.measure_granularity`); 1.0 sieves at full resolution, 0.25 is CellProfiler's default.",
+      "label": "spacr.ops_sample.measure_phenotype_field#10",
+      "source": "the ``subsample`` of the granularity family (:func:`spacr.measure.measure_granularity`); 1.0 sieves at full resolution, 0.25 is CellProfiler's default.",
+      "source_sha256": "b9b8a47b20c53594f7227da5073b7ab0074fda9781d5d643b9705d60c049f4a0",
+      "translation": "颗粒度特征族的 ``subsample``（:func:`spacr.measure.measure_granularity`）；1.0 表示以全分辨率筛分，0.25 是 CellProfiler 的默认值。"
+    },
+    {
+      "context": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "label": "spacr.ops_sample.measure_phenotype_field#11",
+      "source": "one row per cell, keyed by ``label``, with ``nucleus_``, ``cell_`` and ``cytoplasm_`` columns and the nucleus centroid as ``centroid_row``/``centroid_col`` in field pixels.",
+      "source_sha256": "ab2fb1269405def9b4c64ed5536264ebb71d656dc75d1dad590e13508397280f",
+      "translation": "每个细胞一行，以 ``label`` 为键，带 ``nucleus_``、``cell_`` 和 ``cytoplasm_`` 列，以及以视野像素表示的细胞核质心 ``centroid_row``/``centroid_col``。"
+    },
+    {
+      "context": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label. The object labels the colocalisation block carries (``*_label_correlation``) are left out, as spaCR's database write leaves them out, so no column repeats the label.",
+      "label": "spacr.ops_sample.measure_phenotype_field#12",
+      "source": "The features are the ones spaCR's measure writes -- morphology from :func:`spacr.measure._morphological_measurements`, intensity and texture from :func:`spacr.measure._intensity_measurements` -- so an OPS cell and a measured well's cell carry the same columns and nothing is re-derived. The cytoplasm is the cell minus its nucleus, under the cell's label. The object labels the colocalisation block carries (``*_label_correlation``) are left out, as spaCR's database write leaves them out, so no column repeats the label.",
+      "source_sha256": "6db25ce944b655bbeb4af71273d857721e60f757fef1475f1f5a13b0202ea510",
+      "translation": "这些特征与 spaCR 的 measure 写出的相同 —— 形态来自 :func:`spacr.measure._morphological_measurements`，强度和纹理来自 :func:`spacr.measure._intensity_measurements` —— 因此 OPS 细胞与已测量孔中的细胞具有相同的列，且不重新推导任何内容。细胞质为细胞减去其细胞核，使用细胞的标签。共定位特征块携带的对象标签（``*_label_correlation``）被排除在外，与 spaCR 写入数据库时的做法一致，因此没有列重复标签。"
+    },
+    {
+      "context": "the profiling families spaCR's measure adds (:func:`spacr.measure.measure_profile_features`): ``'profiling'`` for the default set, ``'all'``, or family names. ``None``, the default, measures exactly as before.",
+      "label": "spacr.ops_sample.measure_phenotype_field#9",
+      "source": "the profiling families spaCR's measure adds (:func:`spacr.measure.measure_profile_features`): ``'profiling'`` for the default set, ``'all'``, or family names. ``None``, the default, measures exactly as before.",
+      "source_sha256": "33943118d22d91e93fe9c8055f733948315968115766e48b068c1c2d9864198f",
+      "translation": "spaCR 的 measure 添加的特征谱分析特征族（:func:`spacr.measure.measure_profile_features`）：``'profiling'`` 表示默认集合，也可为 ``'all'`` 或特征族名称。默认值 ``None`` 的测量与以前完全相同。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-measure-1112 branch: the 16 new spacr.measure profiling functions (measure_colocalisation, measure_colocalisation_extra, measure_costes, measure_edge_intensity, measure_gabor, measure_granularity, measure_intensity_moments, measure_lbp, measure_neighbours, measure_outside, measure_periphery, measure_profile_features, measure_radial_distribution, measure_shape_extended, measure_texture, profile_feature_families) and the changed blocks of spacr.ops_sample.measure_phenotype_field. Blocks whose exact English already had a reviewed record reuse that wording. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,315 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "tiled segmentation (:func:`segment_tiled`): microscope image fields of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two microscope image fields are merged by IoU, keeping the copy whose centroid is farther from an inner microscope image field edge (:func:`stitch_tile_labels`); a site no larger than one microscope image field goes through the segmenter unchanged; each image data channel is normalised once on the whole site (:func:`normalize_site`) and the microscope image fields are segmented with ``normalize=False``, so a microscope image field sees the same values as the untiled site, and microscope image fields are placed on Cellpose's own network-microscope image field grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "label": "spacr.ops_large_sites#2",
+      "source": "tiled segmentation (:func:`segment_tiled`): tiles of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two tiles are merged by IoU, keeping the copy whose centroid is farther from an inner tile edge (:func:`stitch_tile_labels`); a site no larger than one tile goes through the segmenter unchanged; each channel is normalised once on the whole site (:func:`normalize_site`) and the tiles are segmented with ``normalize=False``, so a tile sees the same values as the untiled site, and tiles are placed on Cellpose's own network-tile grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "source_sha256": "83046d0b47ef9235704fb686d2830e236e45f177662f6e52fa71cb8a5fb57946",
+      "translation": "타일 분할 (:func:`segment_tiled`): ``seg_tile_px`` 크기의 타일을 ``seg_tile_overlap_px``만큼 겹쳐 행 순서로 분할합니다. 두 타일에 있는 한 객체의 사본은 IoU로 합치며, 중심이 안쪽 타일 가장자리에서 더 먼 사본을 남깁니다 (:func:`stitch_tile_labels`). 타일 하나보다 크지 않은 사이트는 분할기를 그대로 통과합니다. 각 채널은 사이트 전체에서 한 번 정규화되고 (:func:`normalize_site`) 타일은 ``normalize=False``로 분할되므로 타일은 타일이 없는 사이트와 같은 값을 보며, 타일은 Cellpose 자체의 네트워크 타일 격자 위에 놓이므로 (:func:`tiling_layout`) 네트워크는 타일이 있든 없든 같은 픽셀을 봅니다;"
+    },
+    {
+      "context": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the laboratory microplate's nucleus diameter and the tiling-control site taken from populated sites spread over the microplate sample position (:func:`survey_sites`);",
+      "label": "spacr.ops_large_sites#6",
+      "source": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the plate's nucleus diameter and the tiling-control site taken from populated sites spread over the well (:func:`survey_sites`);",
+      "source_sha256": "f54240a0ca64b6e431f4e53b8c3896a5c5b6b1d85f29255b62ba60e954e94362",
+      "translation": "``cell_painting_phalloidin`` 프리셋 (:func:`segment_cell_painting_site`): DNA에서 핵, ``[Phalloidin, DNA]``에서 세포, 세포당 핵 하나이며, 플레이트의 핵 지름과 타일링 대조 사이트는 웰 전체에 퍼진, 세포가 있는 사이트에서 가져옵니다 (:func:`survey_sites`);"
+    },
+    {
+      "context": "A tile side and step that put every tile's network tiles on one grid.",
+      "label": "spacr.ops_large_sites.aligned_tiling#0",
+      "source": "A tile side and step that put every tile's network tiles on one grid.",
+      "source_sha256": "b96b8f762788c32f9f75040f4f5cb23d35c917177915d28311274cab9be3fb9b",
+      "translation": "모든 타일의 네트워크 타일을 하나의 격자 위에 놓는 타일 한 변과 간격입니다."
+    },
+    {
+      "context": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "label": "spacr.ops_large_sites.aligned_tiling#1",
+      "source": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "source_sha256": "e1697417a0d7430f5c44fe58d51143dc99827e041ee3894593a8d623b0c0ebfa",
+      "translation": "변의 네트워크 타일이 고르게 배치되고 (간격 ``s``) 시작점이 ``s``의 배수인 타일은 모두 타일이 없는 이미지와 같은 네트워크 타일에서 Cellpose 네트워크를 실행합니다. 잘린 타일 가장자리에서 ``NET_TILE_PX`` 이상 떨어진 픽셀은 타일이 있든 없든 비트 단위로 같은 flow를 얻습니다. Cellpose 기본값 (``bsize=256``, ``tile_overlap=0.1``)이고 크기 조정이 없을 때, 즉 ``diameter``가 없을 때 성립합니다."
+    },
+    {
+      "context": "the largest tile side wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#2",
+      "source": "the largest tile side wanted.",
+      "source_sha256": "8e61a16d464c5e63b79d73a1025a2d045dea3a8c4b035507d871391e473eb7c2",
+      "translation": "원하는 가장 큰 타일 한 변입니다."
+    },
+    {
+      "context": "the smallest overlap wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#3",
+      "source": "the smallest overlap wanted.",
+      "source_sha256": "fba07314ccbc7ef73dbb78e02af13a45221ffdf4b49a36508c1f5f79baebe4a2",
+      "translation": "원하는 가장 작은 겹침입니다."
+    },
+    {
+      "context": "``(tile, step, stride)``: the largest microscope image field side no larger than ``tile_px``, a step between microscope image field starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such microscope image field exists.",
+      "label": "spacr.ops_large_sites.aligned_tiling#4",
+      "source": "``(tile, step, stride)``: the largest tile side no larger than ``tile_px``, a step between tile starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such tile exists.",
+      "source_sha256": "91b3f35342d3eef88b5faf755260fd8e921caf00c7c3251aca5e35810bf3caf2",
+      "translation": "``(tile, step, stride)``: ``tile_px``보다 크지 않은 가장 큰 타일 한 변, 격자 간격의 배수이면서 ``overlap_px`` 이상의 겹침을 남기는 타일 시작점 사이 간격, 그리고 격자 간격입니다. 그런 타일이 없으면 None입니다."
+    },
+    {
+      "context": "The region and tile sides of the tiling control.",
+      "label": "spacr.ops_large_sites.control_layout#0",
+      "source": "The region and tile sides of the tiling control.",
+      "source_sha256": "f732129b8687722a264db29af401bd9deb05f727f89153ceb56b4bedd901d6c4",
+      "translation": "타일링 대조의 영역과 타일의 한 변입니다."
+    },
+    {
+      "context": "The region is the largest side no larger than ``side`` whose network microscope image fields fall on one grid, and the microscope image field the smallest side on the same grid that covers the region in two microscope image fields per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network microscope image field away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the microscope image field ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "label": "spacr.ops_large_sites.control_layout#1",
+      "source": "The region is the largest side no larger than ``side`` whose network tiles fall on one grid, and the tile the smallest side on the same grid that covers the region in two tiles per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network tile away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the tile ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "source_sha256": "394300d4928f348bb359690b7e02aacf6b4c9f8b63de89f2115bd80ac2d9947e",
+      "translation": "영역은 ``side``보다 크지 않으면서 네트워크 타일이 하나의 격자에 놓이는 가장 큰 변이고, 타일은 같은 격자 위에서 축마다 타일 두 개로 ``overlap_px`` 이상 겹치며 영역을 덮는 가장 작은 변입니다. 그래서 타일 실행과 비타일 실행은 이음매에서 떨어진 모든 네트워크 타일을 공유합니다 (:func:`aligned_tiling`). 그런 쌍이 없으면 영역은 ``side``, 타일은 ``(side + overlap_px) // 2 + 1``이며 정렬되지 않습니다."
+    },
+    {
+      "context": "the region side asked for (``seg_tiling_control_px``).",
+      "label": "spacr.ops_large_sites.control_layout#2",
+      "source": "the region side asked for (``seg_tiling_control_px``).",
+      "source_sha256": "f332371bede3bceb0b64efadd6622dff62efe7839fc651f70783b292ddd8c0b9",
+      "translation": "요청한 영역 한 변 (``seg_tiling_control_px``)입니다."
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.control_layout#3",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "요청한 겹침입니다."
+    },
+    {
+      "context": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "label": "spacr.ops_large_sites.network_tile_starts#0",
+      "source": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "source_sha256": "4af7f3716163c6518ee7a3e7ca60461b968a5863390077db84f43733becbe05a",
+      "translation": "Cellpose가 이미지 한 축을 따라 네트워크를 실행하는 위치이며, 이미지 좌표로 나타냅니다."
+    },
+    {
+      "context": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "label": "spacr.ops_large_sites.network_tile_starts#1",
+      "source": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "source_sha256": "8b4837293802ae73e4ff41548ccb8556c3c55309654261d8995e2311f98c7906",
+      "translation": "Cellpose는 이미지를 16의 배수로 채운 뒤 양쪽에 8 px를 더하고, ``ceil((1 + 2 * overlap) * padded / bsize)``개의 네트워크 타일을 채운 변 위에 고르게 배치합니다 (크기 조정 없는 ``cellpose.core.run_net``). 한 픽셀의 flow는 그 픽셀을 덮는 네트워크 타일의 가중 감쇠 평균이므로, 두 실행은 같은 네트워크 타일이 같은 픽셀과 함께 그 픽셀을 덮을 때만 같은 flow를 줍니다."
+    },
+    {
+      "context": "the image side in pixels.",
+      "label": "spacr.ops_large_sites.network_tile_starts#2",
+      "source": "the image side in pixels.",
+      "source_sha256": "31255f0e7411683553e2a6593f8c8ac5963a93b8ce462bf6e59e712a2ce69fb7",
+      "translation": "픽셀 단위의 이미지 한 변입니다."
+    },
+    {
+      "context": "the network tile side.",
+      "label": "spacr.ops_large_sites.network_tile_starts#3",
+      "source": "the network tile side.",
+      "source_sha256": "6ff6d718fff060b905175997efeacccb4a62cea9ca32f87822812ae3741984a1",
+      "translation": "네트워크 타일의 한 변입니다."
+    },
+    {
+      "context": "the start of each network tile; negative starts lie in the padding.",
+      "label": "spacr.ops_large_sites.network_tile_starts#5",
+      "source": "the start of each network tile; negative starts lie in the padding.",
+      "source_sha256": "6dac4fdb4f8d04517e4deac61ac85e7c2dfefcdefafd5db267490d9c61c8bea8",
+      "translation": "각 네트워크 타일의 시작점이며, 음수 시작점은 채움 영역에 있습니다."
+    },
+    {
+      "context": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "label": "spacr.ops_large_sites.normalize_site#0",
+      "source": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "source_sha256": "6edc33213d010009cbb6056be0c8781b08491becbfa3529ef72117ec3ea6eb22",
+      "translation": "사이트 전체에서 한 번 계산한 Cellpose의 백분위수 정규화입니다."
+    },
+    {
+      "context": "Cellpose normalises every image it is given, so a microscope image field is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two microscope image fields and in the untiled site. Here the percentiles of each image data channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat image data channel becomes zeros), and every microscope image field is then segmented with ``normalize=False``. A site that fits in one microscope image field gets exactly the values Cellpose would have computed itself.",
+      "label": "spacr.ops_large_sites.normalize_site#1",
+      "source": "Cellpose normalises every image it is given, so a tile is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two tiles and in the untiled site. Here the percentiles of each channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat channel becomes zeros), and every tile is then segmented with ``normalize=False``. A site that fits in one tile gets exactly the values Cellpose would have computed itself.",
+      "source_sha256": "f05a126c96b5e5ac365f8b894e6ba7fe5651fb4f7a1c9fc1d0f3f56428f2d55b",
+      "translation": "Cellpose는 받은 모든 이미지를 정규화하므로 타일은 자신의 1번째와 99번째 백분위수로 스케일되고, 같은 픽셀도 두 타일과 타일이 없는 사이트에서 서로 다른 값을 받습니다. 여기서는 각 채널의 백분위수를 사이트 전체에서 Cellpose ``normalize_img``의 계산 방식 (부분 샘플링을 포함한 ``normalize99``; 평탄한 채널은 0이 됨)으로 구한 뒤, 모든 타일을 ``normalize=False``로 분할합니다. 타일 하나에 들어가는 사이트는 Cellpose가 스스로 계산했을 값과 정확히 같은 값을 받습니다."
+    },
+    {
+      "context": "a float32 copy of ``image``, normalised per channel.",
+      "label": "spacr.ops_large_sites.normalize_site#4",
+      "source": "a float32 copy of ``image``, normalised per channel.",
+      "source_sha256": "b1a923ede864a6b29bcb5f91d2a4869d8f09f4d761637517ae5a9ed9734f4b8d",
+      "translation": "채널마다 정규화한 ``image``의 float32 사본입니다."
+    },
+    {
+      "context": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the microplate sample position, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#1",
+      "source": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the well, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "source_sha256": "faa3175cb67a1c2537400cdfe30281259f27e878f4d564b0ab15b306cba2aa75",
+      "translation": "``seg_dst`` 아래에 다음을 씁니다: ``labels/<site>_nuclei.npy``와 ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (세포당 한 행, :func:`measure_chunked`로 측정), ``sites.csv`` (사이트별 객체, 가장자리 개수, 지정된 경우 ``seg_report_reference``와의 일치도, 최대 메모리와 초), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (지름, 고정값인지 추정값인지, 그리고 그것을 얻은 조사) 그리고 ``seg_tiling_control_px``가 있으면 ``tiling_control.json`` (대조 사이트 세포 채널의 가운데 영역에 대한 :func:`tiling_control`, 크기는 :func:`control_layout`이 정함). 핵 지름이 고정되지 않은 경우의 지름과 타일링 대조 사이트는 웰 전체에 퍼진 ``seg_diameter_sites``개 사이트에서 오며, 그중 핵이 ``seg_diameter_min_objects``개 이상인 사이트만 셉니다 (:func:`survey_sites`). 비어 있을 수 있는 사이트 하나에서 가져오는 일은 없습니다."
+    },
+    {
+      "context": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#5",
+      "source": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "source_sha256": "ba1abbc0ee5a9f490c51c9d12353733942a8d6d4125058c304c91ce7e58d9c22",
+      "translation": "``plan``, ``sites`` (레코드로 된 사이트 표), ``dst``, ``nucleus_diameter`` (``nucleus_diameter.json``의 내용)입니다."
+    },
+    {
+      "context": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#6",
+      "source": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "source_sha256": "01af69a743d838b60c6e2a05b7ac61786455dc9016486189226b697323c347c9",
+      "translation": "``seg_sites_src`` 또는 ``seg_dst``가 없거나, 표본 사이트 중 지름을 추정할 만큼 핵이 있는 사이트가 없을 때."
+    },
+    {
+      "context": "``n`` sites spread evenly over a microplate sample position's site list, first and last included.",
+      "label": "spacr.ops_large_sites.sample_sites#0",
+      "source": "``n`` sites spread evenly over a well's site list, first and last included.",
+      "source_sha256": "38302ca49ab9e371870aefa9f8ac84648bbcbcb22879ccbab1e2ab53f1ee43c2",
+      "translation": "웰의 사이트 목록 전체에 고르게 퍼진 ``n``개 사이트이며, 첫 번째와 마지막을 포함합니다."
+    },
+    {
+      "context": "the microplate sample position's sites in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#1",
+      "source": "the well's sites in run order.",
+      "source_sha256": "728161298f91511ef861a63779b196accb4d92b240f85b0bcc0d65e890c68ebc",
+      "translation": "실행 순서대로 정렬한 웰의 사이트입니다."
+    },
+    {
+      "context": "how many to take; at least one.",
+      "label": "spacr.ops_large_sites.sample_sites#2",
+      "source": "how many to take; at least one.",
+      "source_sha256": "3a44c6a904d205b9a7dbf8d528c3b5133b5df0c6ecd5d7c10043cf6b348fba72",
+      "translation": "가져올 개수이며, 최소 하나입니다."
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#3",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "실행 순서대로 정렬한 표본 사이트입니다."
+    },
+    {
+      "context": "Nuclei are segmented on the DNA image data channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each microscope image field); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "label": "spacr.ops_large_sites.segment_cell_painting_site#1",
+      "source": "Nuclei are segmented on the DNA channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each tile); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "source_sha256": "6e3218fcad442277d1ad6a37f7207a5d7f4a0f239df5a57c117915131f272f6e",
+      "translation": "핵은 DNA 채널에서, 세포는 ``cell_channels`` (Phalloidin, 그다음 DNA)에서 분할하며, 각각 사이트 전체에서 한 번 정규화하고 (:func:`normalize_site`) :func:`segment_tiled`로 Cellpose 네트워크 격자 위에서 타일로 나눕니다 (지름은 각 타일의 크기를 바꾸므로 핵은 지름이 없을 때만). 그다음 :func:`spacr.ops_sample.pair_nuclei_with_cells`로 각 핵을 세포 하나와 짝짓습니다 (OPS 표현형 경로처럼 핵이 없는 세포는 버립니다)."
+    },
+    {
+      "context": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "label": "spacr.ops_large_sites.segment_tiled#6",
+      "source": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "source_sha256": "2b0883a463bab80afdb05974af3059d03b96438f1b609cf6901687a32c03eb8d",
+      "translation": "타일을 Cellpose 네트워크 격자 위에 놓습니다 (:func:`tiling_layout`). 그러면 이음매에서 떨어진 객체는 픽셀 단위로 비타일 실행의 객체와 같습니다. 이미지 크기를 바꾸지 않는 분할기에만 해당합니다."
+    },
+    {
+      "context": "The laboratory microplate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "label": "spacr.ops_large_sites.survey_sites#0",
+      "source": "The plate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "source_sha256": "dbe1facd074176c7e43e32ff1e1b94b618f0d8c9d8175d7f71061ae1e4de5696",
+      "translation": "사이트 표본에서 구한 플레이트의 핵 지름과 타일링 대조 사이트입니다."
+    },
+    {
+      "context": "A microplate sample position's first site is often an empty corner of the microplate sample position, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "label": "spacr.ops_large_sites.survey_sites#1",
+      "source": "A well's first site is often an empty corner of the well, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "source_sha256": "e3a650bd34102bf95874f98314692a4f5a7217dd0231351272d541902e388fd7",
+      "translation": "웰의 첫 사이트는 흔히 웰의 빈 모서리이므로 지름도 타일링 대조도 그 사이트에서 가져오면 안 됩니다. 표본 사이트는 핵이 ``min_objects``개 이상일 때만 셉니다. 지름은 그 사이트들의 모든 핵에 대한 등가 지름의 중앙값을 ``bounds``로 제한한 값이며 (:func:`estimate_nucleus_diameter`), 대조 사이트는 그중 핵 개수가 중앙값인 사이트입니다 (개수가 짝수이면 가운데 두 사이트 중 작은 쪽)."
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.survey_sites#2",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "실행 순서대로 정렬한 표본 사이트입니다."
+    },
+    {
+      "context": "per site, its nuclei as a label image.",
+      "label": "spacr.ops_large_sites.survey_sites#3",
+      "source": "per site, its nuclei as a label image.",
+      "source_sha256": "799290d5516d1405a51d8e8c8a34e8327299c67c67ac331c938848e821be5012",
+      "translation": "사이트별 핵을 레이블 이미지로 나타낸 것입니다."
+    },
+    {
+      "context": "the fewest nuclei a site needs to be used.",
+      "label": "spacr.ops_large_sites.survey_sites#5",
+      "source": "the fewest nuclei a site needs to be used.",
+      "source_sha256": "cf589007c6c5dcff693571dc11a00e7865cf5fbdd44a6a86a6cbe29f59129edd",
+      "translation": "사이트를 사용하는 데 필요한 최소 핵 개수입니다."
+    },
+    {
+      "context": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "label": "spacr.ops_large_sites.survey_sites#6",
+      "source": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "source_sha256": "1d4260a2f9f94be9a49d59b06ad4490f6c1d03fb8c35c9661484ae84495db24b",
+      "translation": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (핵이 없는 사이트는 ``None``), ``sites_used``, ``min_objects``, ``control_site``입니다."
+    },
+    {
+      "context": "when no sampled site holds ``min_objects`` nuclei.",
+      "label": "spacr.ops_large_sites.survey_sites#7",
+      "source": "when no sampled site holds ``min_objects`` nuclei.",
+      "source_sha256": "4d25d12f8a6ad99372c5cac4c166078e0121ea37e5f826475c88413be0413387",
+      "translation": "표본 사이트 중 핵이 ``min_objects``개인 사이트가 없을 때."
+    },
+    {
+      "context": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "label": "spacr.ops_large_sites.tiling_control#1",
+      "source": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "source_sha256": "8e1bf9925afe243055d87335cfce6525928058cf2e3a95df1b7aa52be73c3298",
+      "translation": "모든 이음매 구역 (타일 두 개 이상이 공유하는 띠)에서 떨어진 비타일 실행의 객체는 같은 픽셀로 돌아와야 하며, 이음매 구역의 객체는 타일 객체와의 가장 좋은 IoU로 점수를 매깁니다. ``segment``는 호출할 때마다 강도를 다시 스케일하면 안 됩니다 (Cellpose 기본 동작). 그러면 각 타일이 영역과 다르게 스케일됩니다. 한 번 정규화한 영역 (:func:`normalize_site`)과 ``normalize=False``로 실행하는 분할기를 넘기십시오."
+    },
+    {
+      "context": "passed to :func:`segment_tiled`.",
+      "label": "spacr.ops_large_sites.tiling_control#7",
+      "source": "passed to :func:`segment_tiled`.",
+      "source_sha256": "4e19c62d45c9ddb677474faa9f20bb24238708f240940758bfbac57ed0bc22e9",
+      "translation": ":func:`segment_tiled`에 전달됩니다."
+    },
+    {
+      "context": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "label": "spacr.ops_large_sites.tiling_control#8",
+      "source": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "source_sha256": "708762be913a4875739bf682f2ab7b777013de73675f36ba9c56b3e60089e794",
+      "translation": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (이음매 객체가 없으면 ``nan``), 그리고 사용한 타일의 ``tile_px``, ``overlap_px``, ``aligned``입니다."
+    },
+    {
+      "context": "The tiles :func:`segment_tiled` uses for one image.",
+      "label": "spacr.ops_large_sites.tiling_layout#0",
+      "source": "The tiles :func:`segment_tiled` uses for one image.",
+      "source_sha256": "9ed63eb1acc70d62b69e3ddc04442cd948191456771dfddb2ac23e55222651e5",
+      "translation": ":func:`segment_tiled`가 한 이미지에 사용하는 타일입니다."
+    },
+    {
+      "context": "Without ``align`` these are :func:`tile_grid`'s microscope image fields. With ``align``, and when the image needs more than one microscope image field, the microscope image field side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last microscope image field also starts on the network grid; the stitched labels are then cut back to the image.",
+      "label": "spacr.ops_large_sites.tiling_layout#1",
+      "source": "Without ``align`` these are :func:`tile_grid`'s tiles. With ``align``, and when the image needs more than one tile, the tile side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last tile also starts on the network grid; the stitched labels are then cut back to the image.",
+      "source_sha256": "6df815c28f55343359d3dd9a424d814a053bbaa60e5f7fadd2060ae338afe1d3",
+      "translation": "``align``이 없으면 :func:`tile_grid`의 타일입니다. ``align``이 있고 이미지에 타일이 둘 이상 필요하면 타일 한 변과 간격은 :func:`aligned_tiling`에서 오며, 타일로 나누는 각 변은 끝에서 채워져 마지막 타일도 네트워크 격자 위에서 시작합니다. 이어 붙인 레이블은 그다음 이미지 크기로 다시 잘라냅니다."
+    },
+    {
+      "context": "the tile side asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#3",
+      "source": "the tile side asked for.",
+      "source_sha256": "33330358b715d8a440e43563a7008aa1c9a9a8056114c9e08d5b8a52ebbc76ae",
+      "translation": "요청한 타일 한 변입니다."
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#4",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "요청한 겹침입니다."
+    },
+    {
+      "context": "put the tiles on Cellpose's network grid.",
+      "label": "spacr.ops_large_sites.tiling_layout#5",
+      "source": "put the tiles on Cellpose's network grid.",
+      "source_sha256": "7e04b35cf09d4e5959c9d449c948787be7688654e4c0e98cf6a3f02b84a838e9",
+      "translation": "타일을 Cellpose 네트워크 격자 위에 놓습니다."
+    },
+    {
+      "context": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "label": "spacr.ops_large_sites.tiling_layout#6",
+      "source": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "source_sha256": "885c6c5461abdbe8521fca0b98e19bd25bdbdcc62160d6833c06e18c78f82380",
+      "translation": "``boxes`` (채운 좌표 기준), ``padded`` (채운 모양), ``tile_px``와 ``overlap_px`` (사용한 값), ``aligned``입니다."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-921-largesite-fix-1112 branch (item 921 large-site OPS segmentation fixes): the new spacr.ops_large_sites.normalize_site, survey_sites, sample_sites, network_tile_starts, aligned_tiling, tiling_layout and control_layout, and the changed blocks of the spacr.ops_large_sites module, segment_tiled, tiling_control, segment_cell_painting_site and run_large_site_segmentation. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

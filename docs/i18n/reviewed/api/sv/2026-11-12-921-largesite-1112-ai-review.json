@@ -1,0 +1,315 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "context": "tiled segmentation (:func:`segment_tiled`): microscope image fields of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two microscope image fields are merged by IoU, keeping the copy whose centroid is farther from an inner microscope image field edge (:func:`stitch_tile_labels`); a site no larger than one microscope image field goes through the segmenter unchanged; each image data channel is normalised once on the whole site (:func:`normalize_site`) and the microscope image fields are segmented with ``normalize=False``, so a microscope image field sees the same values as the untiled site, and microscope image fields are placed on Cellpose's own network-microscope image field grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "label": "spacr.ops_large_sites#2",
+      "source": "tiled segmentation (:func:`segment_tiled`): tiles of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two tiles are merged by IoU, keeping the copy whose centroid is farther from an inner tile edge (:func:`stitch_tile_labels`); a site no larger than one tile goes through the segmenter unchanged; each channel is normalised once on the whole site (:func:`normalize_site`) and the tiles are segmented with ``normalize=False``, so a tile sees the same values as the untiled site, and tiles are placed on Cellpose's own network-tile grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "source_sha256": "83046d0b47ef9235704fb686d2830e236e45f177662f6e52fa71cb8a5fb57946",
+      "translation": "segmentering i rutor (:func:`segment_tiled`): rutor på ``seg_tile_px`` med ``seg_tile_overlap_px`` överlapp, segmenterade rad för rad; kopior av ett objekt i två rutor slås ihop efter IoU, och den kopia behålls vars tyngdpunkt ligger längst från en inre rutkant (:func:`stitch_tile_labels`); en plats som inte är större än en ruta går oförändrad genom segmenteraren; varje kanal normaliseras en gång över hela platsen (:func:`normalize_site`) och rutorna segmenteras med ``normalize=False``, så att en ruta ser samma värden som platsen utan rutor, och rutorna läggs på Cellpose:s eget rutnät av nätverksrutor (:func:`tiling_layout`), så att nätverket ser samma pixlar med och utan rutor;"
+    },
+    {
+      "context": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the laboratory microplate's nucleus diameter and the tiling-control site taken from populated sites spread over the microplate sample position (:func:`survey_sites`);",
+      "label": "spacr.ops_large_sites#6",
+      "source": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the plate's nucleus diameter and the tiling-control site taken from populated sites spread over the well (:func:`survey_sites`);",
+      "source_sha256": "f54240a0ca64b6e431f4e53b8c3896a5c5b6b1d85f29255b62ba60e954e94362",
+      "translation": "förinställningen ``cell_painting_phalloidin`` (:func:`segment_cell_painting_site`): kärnor på DNA, celler på ``[Phalloidin, DNA]``, en kärna per cell, där plattans kärndiameter och platsen för rutkontrollen tas från befolkade platser spridda över brunnen (:func:`survey_sites`);"
+    },
+    {
+      "context": "A tile side and step that put every tile's network tiles on one grid.",
+      "label": "spacr.ops_large_sites.aligned_tiling#0",
+      "source": "A tile side and step that put every tile's network tiles on one grid.",
+      "source_sha256": "b96b8f762788c32f9f75040f4f5cb23d35c917177915d28311274cab9be3fb9b",
+      "translation": "En rutsida och ett steg som lägger varje rutas nätverksrutor på ett gemensamt rutnät."
+    },
+    {
+      "context": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "label": "spacr.ops_large_sites.aligned_tiling#1",
+      "source": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "source_sha256": "e1697417a0d7430f5c44fe58d51143dc99827e041ee3894593a8d623b0c0ebfa",
+      "translation": "Rutor vars sidor har jämnt fördelade nätverksrutor (steg ``s``) och vars början är multipler av ``s`` kör alla Cellpose:s nätverk på samma nätverksrutor som bilden utan rutor: en pixel minst ``NET_TILE_PX`` från en kapad rutkant får då bitidentiska flöden med och utan rutor. Gäller Cellpose:s standardvärden (``bsize=256``, ``tile_overlap=0.1``) och ingen storleksändring, alltså ingen ``diameter``."
+    },
+    {
+      "context": "the largest tile side wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#2",
+      "source": "the largest tile side wanted.",
+      "source_sha256": "8e61a16d464c5e63b79d73a1025a2d045dea3a8c4b035507d871391e473eb7c2",
+      "translation": "den största önskade rutsidan."
+    },
+    {
+      "context": "the smallest overlap wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#3",
+      "source": "the smallest overlap wanted.",
+      "source_sha256": "fba07314ccbc7ef73dbb78e02af13a45221ffdf4b49a36508c1f5f79baebe4a2",
+      "translation": "det minsta önskade överlappet."
+    },
+    {
+      "context": "``(tile, step, stride)``: the largest microscope image field side no larger than ``tile_px``, a step between microscope image field starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such microscope image field exists.",
+      "label": "spacr.ops_large_sites.aligned_tiling#4",
+      "source": "``(tile, step, stride)``: the largest tile side no larger than ``tile_px``, a step between tile starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such tile exists.",
+      "source_sha256": "91b3f35342d3eef88b5faf755260fd8e921caf00c7c3251aca5e35810bf3caf2",
+      "translation": "``(tile, step, stride)``: den största rutsidan som inte är större än ``tile_px``, ett steg mellan rutornas början som är en multipel av rutnätssteget och lämnar minst ``overlap_px`` överlapp, och rutnätssteget; None när ingen sådan ruta finns."
+    },
+    {
+      "context": "The region and tile sides of the tiling control.",
+      "label": "spacr.ops_large_sites.control_layout#0",
+      "source": "The region and tile sides of the tiling control.",
+      "source_sha256": "f732129b8687722a264db29af401bd9deb05f727f89153ceb56b4bedd901d6c4",
+      "translation": "Område- och rutsidorna för rutkontrollen."
+    },
+    {
+      "context": "The region is the largest side no larger than ``side`` whose network microscope image fields fall on one grid, and the microscope image field the smallest side on the same grid that covers the region in two microscope image fields per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network microscope image field away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the microscope image field ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "label": "spacr.ops_large_sites.control_layout#1",
+      "source": "The region is the largest side no larger than ``side`` whose network tiles fall on one grid, and the tile the smallest side on the same grid that covers the region in two tiles per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network tile away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the tile ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "source_sha256": "394300d4928f348bb359690b7e02aacf6b4c9f8b63de89f2115bd80ac2d9947e",
+      "translation": "Området är den största sidan, inte större än ``side``, vars nätverksrutor faller på ett rutnät, och rutan den minsta sidan på samma rutnät som täcker området med två rutor per axel och minst ``overlap_px`` överlapp, så att körningar med och utan rutor delar varje nätverksruta bortom skarvarna (:func:`aligned_tiling`). Utan ett sådant par är området ``side`` och rutan ``(side + overlap_px) // 2 + 1``, ojusterad."
+    },
+    {
+      "context": "the region side asked for (``seg_tiling_control_px``).",
+      "label": "spacr.ops_large_sites.control_layout#2",
+      "source": "the region side asked for (``seg_tiling_control_px``).",
+      "source_sha256": "f332371bede3bceb0b64efadd6622dff62efe7839fc651f70783b292ddd8c0b9",
+      "translation": "den begärda områdessidan (``seg_tiling_control_px``)."
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.control_layout#3",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "det begärda överlappet."
+    },
+    {
+      "context": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "label": "spacr.ops_large_sites.network_tile_starts#0",
+      "source": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "source_sha256": "4af7f3716163c6518ee7a3e7ca60461b968a5863390077db84f43733becbe05a",
+      "translation": "Var Cellpose kör sitt nätverk längs en bildaxel, i bildkoordinater."
+    },
+    {
+      "context": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "label": "spacr.ops_large_sites.network_tile_starts#1",
+      "source": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "source_sha256": "8b4837293802ae73e4ff41548ccb8556c3c55309654261d8995e2311f98c7906",
+      "translation": "Cellpose fyller ut en bild till en multipel av 16 plus 8 px på varje sida och sprider ``ceil((1 + 2 * overlap) * padded / bsize)`` nätverksrutor jämnt över den utfyllda sidan (``cellpose.core.run_net`` utan storleksändring). En pixels flöden är det avtonade medelvärdet av de nätverksrutor som täcker den, så två körningar ger en pixel samma flöden bara när samma nätverksrutor, med samma pixlar, täcker den."
+    },
+    {
+      "context": "the image side in pixels.",
+      "label": "spacr.ops_large_sites.network_tile_starts#2",
+      "source": "the image side in pixels.",
+      "source_sha256": "31255f0e7411683553e2a6593f8c8ac5963a93b8ce462bf6e59e712a2ce69fb7",
+      "translation": "bildsidan i pixlar."
+    },
+    {
+      "context": "the network tile side.",
+      "label": "spacr.ops_large_sites.network_tile_starts#3",
+      "source": "the network tile side.",
+      "source_sha256": "6ff6d718fff060b905175997efeacccb4a62cea9ca32f87822812ae3741984a1",
+      "translation": "nätverksrutans sida."
+    },
+    {
+      "context": "the start of each network tile; negative starts lie in the padding.",
+      "label": "spacr.ops_large_sites.network_tile_starts#5",
+      "source": "the start of each network tile; negative starts lie in the padding.",
+      "source_sha256": "6dac4fdb4f8d04517e4deac61ac85e7c2dfefcdefafd5db267490d9c61c8bea8",
+      "translation": "början av varje nätverksruta; negativa början ligger i utfyllnaden."
+    },
+    {
+      "context": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "label": "spacr.ops_large_sites.normalize_site#0",
+      "source": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "source_sha256": "6edc33213d010009cbb6056be0c8781b08491becbfa3529ef72117ec3ea6eb22",
+      "translation": "Cellpose:s percentilnormalisering, beräknad en gång över en hel plats."
+    },
+    {
+      "context": "Cellpose normalises every image it is given, so a microscope image field is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two microscope image fields and in the untiled site. Here the percentiles of each image data channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat image data channel becomes zeros), and every microscope image field is then segmented with ``normalize=False``. A site that fits in one microscope image field gets exactly the values Cellpose would have computed itself.",
+      "label": "spacr.ops_large_sites.normalize_site#1",
+      "source": "Cellpose normalises every image it is given, so a tile is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two tiles and in the untiled site. Here the percentiles of each channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat channel becomes zeros), and every tile is then segmented with ``normalize=False``. A site that fits in one tile gets exactly the values Cellpose would have computed itself.",
+      "source_sha256": "f05a126c96b5e5ac365f8b894e6ba7fe5651fb4f7a1c9fc1d0f3f56428f2d55b",
+      "translation": "Cellpose normaliserar varje bild den får, så en ruta skalas med sina egna 1:a och 99:e percentiler och samma pixel får olika värden i två rutor och på platsen utan rutor. Här kommer varje kanals percentiler från hela platsen, med aritmetiken i Cellpose:s ``normalize_img`` (``normalize99`` med dess delsampling; en platt kanal blir nollor), och varje ruta segmenteras sedan med ``normalize=False``. En plats som får plats i en ruta får exakt de värden som Cellpose själv skulle ha beräknat."
+    },
+    {
+      "context": "a float32 copy of ``image``, normalised per channel.",
+      "label": "spacr.ops_large_sites.normalize_site#4",
+      "source": "a float32 copy of ``image``, normalised per channel.",
+      "source_sha256": "b1a923ede864a6b29bcb5f91d2a4869d8f09f4d761637517ae5a9ed9734f4b8d",
+      "translation": "en float32-kopia av ``image``, normaliserad per kanal."
+    },
+    {
+      "context": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the microplate sample position, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#1",
+      "source": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the well, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "source_sha256": "faa3175cb67a1c2537400cdfe30281259f27e878f4d564b0ab15b306cba2aa75",
+      "translation": "Skriver under ``seg_dst``: ``labels/<site>_nuclei.npy`` och ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (en rad per cell, mätt med :func:`measure_chunked`), ``sites.csv`` (per plats: objekt, kantantal, överensstämmelsen med ``seg_report_reference`` när den anges, toppminne och sekunder), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (diametern, om den var fast eller skattad, och urvalet den kom från) och, med ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` på ett centrerat område av kontrollplatsens cellkanaler, dimensionerat av :func:`control_layout`). Kärndiametern, när den inte är fast, och platsen för rutkontrollen kommer från ``seg_diameter_sites`` platser spridda över brunnen, av vilka bara de med minst ``seg_diameter_min_objects`` kärnor räknas (:func:`survey_sites`), aldrig från en enda plats som kan vara tom."
+    },
+    {
+      "context": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#5",
+      "source": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "source_sha256": "ba1abbc0ee5a9f490c51c9d12353733942a8d6d4125058c304c91ce7e58d9c22",
+      "translation": "``plan``, ``sites`` (platstabellen som poster), ``dst`` och ``nucleus_diameter`` (det som ``nucleus_diameter.json`` innehåller)."
+    },
+    {
+      "context": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#6",
+      "source": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "source_sha256": "01af69a743d838b60c6e2a05b7ac61786455dc9016486189226b697323c347c9",
+      "translation": "när ``seg_sites_src`` eller ``seg_dst`` saknas, eller när ingen urvalsplats har tillräckligt många kärnor för att skatta diametern."
+    },
+    {
+      "context": "``n`` sites spread evenly over a microplate sample position's site list, first and last included.",
+      "label": "spacr.ops_large_sites.sample_sites#0",
+      "source": "``n`` sites spread evenly over a well's site list, first and last included.",
+      "source_sha256": "38302ca49ab9e371870aefa9f8ac84648bbcbcb22879ccbab1e2ab53f1ee43c2",
+      "translation": "``n`` platser jämnt spridda över en brunns platslista, första och sista medräknade."
+    },
+    {
+      "context": "the microplate sample position's sites in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#1",
+      "source": "the well's sites in run order.",
+      "source_sha256": "728161298f91511ef861a63779b196accb4d92b240f85b0bcc0d65e890c68ebc",
+      "translation": "brunnens platser i körordning."
+    },
+    {
+      "context": "how many to take; at least one.",
+      "label": "spacr.ops_large_sites.sample_sites#2",
+      "source": "how many to take; at least one.",
+      "source_sha256": "3a44c6a904d205b9a7dbf8d528c3b5133b5df0c6ecd5d7c10043cf6b348fba72",
+      "translation": "hur många som tas; minst en."
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#3",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "urvalsplatserna, i körordning."
+    },
+    {
+      "context": "Nuclei are segmented on the DNA image data channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each microscope image field); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "label": "spacr.ops_large_sites.segment_cell_painting_site#1",
+      "source": "Nuclei are segmented on the DNA channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each tile); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "source_sha256": "6e3218fcad442277d1ad6a37f7207a5d7f4a0f239df5a57c117915131f272f6e",
+      "translation": "Kärnor segmenteras på DNA-kanalen och celler på ``cell_channels`` (Phalloidin, sedan DNA), var och en normaliserad en gång över hela platsen (:func:`normalize_site`) och delad i rutor av :func:`segment_tiled` på Cellpose:s nätverksrutnät (kärnor bara utan diameter, eftersom en diameter ändrar storleken på varje ruta); sedan paras varje kärna med en cell av :func:`spacr.ops_sample.pair_nuclei_with_cells` (celler utan kärna tas bort, som i OPS-fenotypvägen)."
+    },
+    {
+      "context": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "label": "spacr.ops_large_sites.segment_tiled#6",
+      "source": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "source_sha256": "2b0883a463bab80afdb05974af3059d03b96438f1b609cf6901687a32c03eb8d",
+      "translation": "lägg rutorna på Cellpose:s nätverksrutnät (:func:`tiling_layout`), så att objekt bortom skarvarna är körningen utan rutors objekt pixel för pixel; bara för en segmenterare som inte ändrar bildens storlek."
+    },
+    {
+      "context": "The laboratory microplate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "label": "spacr.ops_large_sites.survey_sites#0",
+      "source": "The plate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "source_sha256": "dbe1facd074176c7e43e32ff1e1b94b618f0d8c9d8175d7f71061ae1e4de5696",
+      "translation": "Plattans kärndiameter och platsen för rutkontrollen från ett urval av platser."
+    },
+    {
+      "context": "A microplate sample position's first site is often an empty corner of the microplate sample position, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "label": "spacr.ops_large_sites.survey_sites#1",
+      "source": "A well's first site is often an empty corner of the well, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "source_sha256": "e3a650bd34102bf95874f98314692a4f5a7217dd0231351272d541902e388fd7",
+      "translation": "En brunns första plats är ofta ett tomt hörn av brunnen, så varken diametern eller rutkontrollen får komma därifrån. En urvalsplats räknas bara när den har minst ``min_objects`` kärnor; diametern är medianen av den ekvivalenta diametern över alla kärnor på dessa platser, begränsad till ``bounds`` (:func:`estimate_nucleus_diameter`), och kontrollplatsen är den med mediant antal kärnor bland dem (den mindre av de två mittersta platserna när antalet är jämnt)."
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.survey_sites#2",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "urvalsplatserna, i körordning."
+    },
+    {
+      "context": "per site, its nuclei as a label image.",
+      "label": "spacr.ops_large_sites.survey_sites#3",
+      "source": "per site, its nuclei as a label image.",
+      "source_sha256": "799290d5516d1405a51d8e8c8a34e8327299c67c67ac331c938848e821be5012",
+      "translation": "per plats dess kärnor som etikettbild."
+    },
+    {
+      "context": "the fewest nuclei a site needs to be used.",
+      "label": "spacr.ops_large_sites.survey_sites#5",
+      "source": "the fewest nuclei a site needs to be used.",
+      "source_sha256": "cf589007c6c5dcff693571dc11a00e7865cf5fbdd44a6a86a6cbe29f59129edd",
+      "translation": "det minsta antal kärnor en plats behöver för att användas."
+    },
+    {
+      "context": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "label": "spacr.ops_large_sites.survey_sites#6",
+      "source": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "source_sha256": "1d4260a2f9f94be9a49d59b06ad4490f6c1d03fb8c35c9661484ae84495db24b",
+      "translation": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` för en plats utan kärnor), ``sites_used``, ``min_objects`` och ``control_site``."
+    },
+    {
+      "context": "when no sampled site holds ``min_objects`` nuclei.",
+      "label": "spacr.ops_large_sites.survey_sites#7",
+      "source": "when no sampled site holds ``min_objects`` nuclei.",
+      "source_sha256": "4d25d12f8a6ad99372c5cac4c166078e0121ea37e5f826475c88413be0413387",
+      "translation": "när ingen urvalsplats har ``min_objects`` kärnor."
+    },
+    {
+      "context": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "label": "spacr.ops_large_sites.tiling_control#1",
+      "source": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "source_sha256": "8e1bf9925afe243055d87335cfce6525928058cf2e3a95df1b7aa52be73c3298",
+      "translation": "Objekt från körningen utan rutor som håller sig borta från varje skarvzon (de remsor som två eller fler rutor delar) måste komma tillbaka med identiska pixlar; objekt i en skarvzon poängsätts efter sin bästa IoU med ett objekt från rutorna. ``segment`` får inte skala om intensiteterna vid varje anrop (Cellpose:s standard), annars skalas varje ruta annorlunda än området; skicka ett område som normaliserats en gång (:func:`normalize_site`) och en segmenterare som körs med ``normalize=False``."
+    },
+    {
+      "context": "passed to :func:`segment_tiled`.",
+      "label": "spacr.ops_large_sites.tiling_control#7",
+      "source": "passed to :func:`segment_tiled`.",
+      "source_sha256": "4e19c62d45c9ddb677474faa9f20bb24238708f240940758bfbac57ed0bc22e9",
+      "translation": "skickas vidare till :func:`segment_tiled`."
+    },
+    {
+      "context": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "label": "spacr.ops_large_sites.tiling_control#8",
+      "source": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "source_sha256": "708762be913a4875739bf682f2ab7b777013de73675f36ba9c56b3e60089e794",
+      "translation": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` utan skarvobjekt), samt ``tile_px``, ``overlap_px`` och ``aligned`` för de rutor som användes."
+    },
+    {
+      "context": "The tiles :func:`segment_tiled` uses for one image.",
+      "label": "spacr.ops_large_sites.tiling_layout#0",
+      "source": "The tiles :func:`segment_tiled` uses for one image.",
+      "source_sha256": "9ed63eb1acc70d62b69e3ddc04442cd948191456771dfddb2ac23e55222651e5",
+      "translation": "De rutor som :func:`segment_tiled` använder för en bild."
+    },
+    {
+      "context": "Without ``align`` these are :func:`tile_grid`'s microscope image fields. With ``align``, and when the image needs more than one microscope image field, the microscope image field side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last microscope image field also starts on the network grid; the stitched labels are then cut back to the image.",
+      "label": "spacr.ops_large_sites.tiling_layout#1",
+      "source": "Without ``align`` these are :func:`tile_grid`'s tiles. With ``align``, and when the image needs more than one tile, the tile side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last tile also starts on the network grid; the stitched labels are then cut back to the image.",
+      "source_sha256": "6df815c28f55343359d3dd9a424d814a053bbaa60e5f7fadd2060ae338afe1d3",
+      "translation": "Utan ``align`` är detta rutorna från :func:`tile_grid`. Med ``align``, och när bilden behöver mer än en ruta, kommer rutsida och steg från :func:`aligned_tiling`, och varje sida som delas i rutor fylls ut i slutet så att även den sista rutan börjar på nätverksrutnätet; de sammanfogade etiketterna beskärs sedan tillbaka till bilden."
+    },
+    {
+      "context": "the tile side asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#3",
+      "source": "the tile side asked for.",
+      "source_sha256": "33330358b715d8a440e43563a7008aa1c9a9a8056114c9e08d5b8a52ebbc76ae",
+      "translation": "den begärda rutsidan."
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#4",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "det begärda överlappet."
+    },
+    {
+      "context": "put the tiles on Cellpose's network grid.",
+      "label": "spacr.ops_large_sites.tiling_layout#5",
+      "source": "put the tiles on Cellpose's network grid.",
+      "source_sha256": "7e04b35cf09d4e5959c9d449c948787be7688654e4c0e98cf6a3f02b84a838e9",
+      "translation": "lägg rutorna på Cellpose:s nätverksrutnät."
+    },
+    {
+      "context": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "label": "spacr.ops_large_sites.tiling_layout#6",
+      "source": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "source_sha256": "885c6c5461abdbe8521fca0b98e19bd25bdbdcc62160d6833c06e18c78f82380",
+      "translation": "``boxes`` (i utfyllda koordinater), ``padded`` (den utfyllda formen), ``tile_px`` och ``overlap_px`` (de som användes) och ``aligned``."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-921-largesite-fix-1112 branch (item 921 large-site OPS segmentation fixes): the new spacr.ops_large_sites.normalize_site, survey_sites, sample_sites, network_tile_starts, aligned_tiling, tiling_layout and control_layout, and the changed blocks of the spacr.ops_large_sites module, segment_tiled, tiling_control, segment_cell_painting_site and run_large_site_segmentation. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

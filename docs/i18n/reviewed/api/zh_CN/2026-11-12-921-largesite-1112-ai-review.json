@@ -1,0 +1,315 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "tiled segmentation (:func:`segment_tiled`): microscope image fields of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two microscope image fields are merged by IoU, keeping the copy whose centroid is farther from an inner microscope image field edge (:func:`stitch_tile_labels`); a site no larger than one microscope image field goes through the segmenter unchanged; each image data channel is normalised once on the whole site (:func:`normalize_site`) and the microscope image fields are segmented with ``normalize=False``, so a microscope image field sees the same values as the untiled site, and microscope image fields are placed on Cellpose's own network-microscope image field grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "label": "spacr.ops_large_sites#2",
+      "source": "tiled segmentation (:func:`segment_tiled`): tiles of ``seg_tile_px`` with ``seg_tile_overlap_px`` of overlap, segmented in row-major order; copies of one object in two tiles are merged by IoU, keeping the copy whose centroid is farther from an inner tile edge (:func:`stitch_tile_labels`); a site no larger than one tile goes through the segmenter unchanged; each channel is normalised once on the whole site (:func:`normalize_site`) and the tiles are segmented with ``normalize=False``, so a tile sees the same values as the untiled site, and tiles are placed on Cellpose's own network-tile grid (:func:`tiling_layout`), so the network sees the same pixels tiled and untiled;",
+      "source_sha256": "83046d0b47ef9235704fb686d2830e236e45f177662f6e52fa71cb8a5fb57946",
+      "translation": "分块分割（:func:`segment_tiled`）：大小为 ``seg_tile_px`` 的块，重叠 ``seg_tile_overlap_px``，按行优先顺序分割；同一对象在两个块中的副本按 IoU 合并，保留质心离块内侧边缘更远的副本（:func:`stitch_tile_labels`）；不大于一个块的站点原样通过分割器；每个通道在整个站点上只归一化一次（:func:`normalize_site`），各块用 ``normalize=False`` 分割，因此块看到的值与不分块的站点相同，并且块放在 Cellpose 自身的网络块网格上（:func:`tiling_layout`），因此无论是否分块，网络看到的像素都相同；"
+    },
+    {
+      "context": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the laboratory microplate's nucleus diameter and the tiling-control site taken from populated sites spread over the microplate sample position (:func:`survey_sites`);",
+      "label": "spacr.ops_large_sites#6",
+      "source": "the ``cell_painting_phalloidin`` preset (:func:`segment_cell_painting_site`): nuclei on DNA, cells on ``[Phalloidin, DNA]``, one nucleus per cell, with the plate's nucleus diameter and the tiling-control site taken from populated sites spread over the well (:func:`survey_sites`);",
+      "source_sha256": "f54240a0ca64b6e431f4e53b8c3896a5c5b6b1d85f29255b62ba60e954e94362",
+      "translation": "``cell_painting_phalloidin`` 预设（:func:`segment_cell_painting_site`）：在 DNA 上分割细胞核，在 ``[Phalloidin, DNA]`` 上分割细胞，每个细胞一个细胞核；板的细胞核直径和分块对照站点取自分布在整个孔中、有细胞的站点（:func:`survey_sites`）；"
+    },
+    {
+      "context": "A tile side and step that put every tile's network tiles on one grid.",
+      "label": "spacr.ops_large_sites.aligned_tiling#0",
+      "source": "A tile side and step that put every tile's network tiles on one grid.",
+      "source_sha256": "b96b8f762788c32f9f75040f4f5cb23d35c917177915d28311274cab9be3fb9b",
+      "translation": "让每个块的网络块都落在同一网格上的块边长和步长。"
+    },
+    {
+      "context": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "label": "spacr.ops_large_sites.aligned_tiling#1",
+      "source": "Tiles whose sides have evenly spaced network tiles (stride ``s``) and whose starts are multiples of ``s`` all run Cellpose's network on the same network tiles as the untiled image would: a pixel at least ``NET_TILE_PX`` from a cut tile edge then gets bit-identical flows tiled and untiled. Holds for Cellpose's defaults (``bsize=256``, ``tile_overlap=0.1``) and no resizing, that is no ``diameter``.",
+      "source_sha256": "e1697417a0d7430f5c44fe58d51143dc99827e041ee3894593a8d623b0c0ebfa",
+      "translation": "边上的网络块均匀分布（间距 ``s``）且起点为 ``s`` 倍数的块，都会在与不分块图像相同的网络块上运行 Cellpose 的网络：距被切开的块边缘至少 ``NET_TILE_PX`` 的像素，在分块与不分块时得到逐位相同的 flow。适用于 Cellpose 的默认值（``bsize=256``、``tile_overlap=0.1``）且不缩放，即没有 ``diameter`` 的情况。"
+    },
+    {
+      "context": "the largest tile side wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#2",
+      "source": "the largest tile side wanted.",
+      "source_sha256": "8e61a16d464c5e63b79d73a1025a2d045dea3a8c4b035507d871391e473eb7c2",
+      "translation": "希望的最大块边长。"
+    },
+    {
+      "context": "the smallest overlap wanted.",
+      "label": "spacr.ops_large_sites.aligned_tiling#3",
+      "source": "the smallest overlap wanted.",
+      "source_sha256": "fba07314ccbc7ef73dbb78e02af13a45221ffdf4b49a36508c1f5f79baebe4a2",
+      "translation": "希望的最小重叠。"
+    },
+    {
+      "context": "``(tile, step, stride)``: the largest microscope image field side no larger than ``tile_px``, a step between microscope image field starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such microscope image field exists.",
+      "label": "spacr.ops_large_sites.aligned_tiling#4",
+      "source": "``(tile, step, stride)``: the largest tile side no larger than ``tile_px``, a step between tile starts that is a multiple of the stride and leaves at least ``overlap_px`` of overlap, and the stride; None when no such tile exists.",
+      "source_sha256": "91b3f35342d3eef88b5faf755260fd8e921caf00c7c3251aca5e35810bf3caf2",
+      "translation": "``(tile, step, stride)``：不大于 ``tile_px`` 的最大块边长、块起点之间的步长（为网格间距的倍数，且留出至少 ``overlap_px`` 的重叠），以及网格间距；不存在这样的块时为 None。"
+    },
+    {
+      "context": "The region and tile sides of the tiling control.",
+      "label": "spacr.ops_large_sites.control_layout#0",
+      "source": "The region and tile sides of the tiling control.",
+      "source_sha256": "f732129b8687722a264db29af401bd9deb05f727f89153ceb56b4bedd901d6c4",
+      "translation": "分块对照的区域边长和块边长。"
+    },
+    {
+      "context": "The region is the largest side no larger than ``side`` whose network microscope image fields fall on one grid, and the microscope image field the smallest side on the same grid that covers the region in two microscope image fields per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network microscope image field away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the microscope image field ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "label": "spacr.ops_large_sites.control_layout#1",
+      "source": "The region is the largest side no larger than ``side`` whose network tiles fall on one grid, and the tile the smallest side on the same grid that covers the region in two tiles per axis with at least ``overlap_px`` of overlap, so tiled and untiled runs share every network tile away from the seams (:func:`aligned_tiling`). Without such a pair the region is ``side`` and the tile ``(side + overlap_px) // 2 + 1``, unaligned.",
+      "source_sha256": "394300d4928f348bb359690b7e02aacf6b4c9f8b63de89f2115bd80ac2d9947e",
+      "translation": "区域是不大于 ``side``、其网络块落在同一网格上的最大边长；块是同一网格上、每个轴用两个块并以至少 ``overlap_px`` 的重叠覆盖区域的最小边长，因此分块与不分块运行在接缝以外共享每个网络块（:func:`aligned_tiling`）。若不存在这样的组合，区域为 ``side``，块为 ``(side + overlap_px) // 2 + 1``，不对齐。"
+    },
+    {
+      "context": "the region side asked for (``seg_tiling_control_px``).",
+      "label": "spacr.ops_large_sites.control_layout#2",
+      "source": "the region side asked for (``seg_tiling_control_px``).",
+      "source_sha256": "f332371bede3bceb0b64efadd6622dff62efe7839fc651f70783b292ddd8c0b9",
+      "translation": "请求的区域边长（``seg_tiling_control_px``）。"
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.control_layout#3",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "请求的重叠。"
+    },
+    {
+      "context": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "label": "spacr.ops_large_sites.network_tile_starts#0",
+      "source": "Where Cellpose runs its network along one image axis, in image coordinates.",
+      "source_sha256": "4af7f3716163c6518ee7a3e7ca60461b968a5863390077db84f43733becbe05a",
+      "translation": "Cellpose 沿图像一个轴运行其网络的位置，以图像坐标表示。"
+    },
+    {
+      "context": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "label": "spacr.ops_large_sites.network_tile_starts#1",
+      "source": "Cellpose pads an image to a multiple of 16 plus 8 px on each side and spreads ``ceil((1 + 2 * overlap) * padded / bsize)`` network tiles evenly over the padded side (``cellpose.core.run_net`` without resizing). A pixel's flows are the tapered mean of the network tiles that cover it, so two runs give a pixel the same flows only when the same network tiles, with the same pixels, cover it.",
+      "source_sha256": "8b4837293802ae73e4ff41548ccb8556c3c55309654261d8995e2311f98c7906",
+      "translation": "Cellpose 将图像填充到 16 的倍数，再在每侧加 8 px，并把 ``ceil((1 + 2 * overlap) * padded / bsize)`` 个网络块均匀分布在填充后的边上（不缩放的 ``cellpose.core.run_net``）。一个像素的 flow 是覆盖它的网络块的渐变加权平均，因此只有当相同的网络块以相同的像素覆盖某个像素时，两次运行才会给它相同的 flow。"
+    },
+    {
+      "context": "the image side in pixels.",
+      "label": "spacr.ops_large_sites.network_tile_starts#2",
+      "source": "the image side in pixels.",
+      "source_sha256": "31255f0e7411683553e2a6593f8c8ac5963a93b8ce462bf6e59e712a2ce69fb7",
+      "translation": "图像边长（像素）。"
+    },
+    {
+      "context": "the network tile side.",
+      "label": "spacr.ops_large_sites.network_tile_starts#3",
+      "source": "the network tile side.",
+      "source_sha256": "6ff6d718fff060b905175997efeacccb4a62cea9ca32f87822812ae3741984a1",
+      "translation": "网络块的边长。"
+    },
+    {
+      "context": "the start of each network tile; negative starts lie in the padding.",
+      "label": "spacr.ops_large_sites.network_tile_starts#5",
+      "source": "the start of each network tile; negative starts lie in the padding.",
+      "source_sha256": "6dac4fdb4f8d04517e4deac61ac85e7c2dfefcdefafd5db267490d9c61c8bea8",
+      "translation": "每个网络块的起点；负的起点位于填充区内。"
+    },
+    {
+      "context": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "label": "spacr.ops_large_sites.normalize_site#0",
+      "source": "Cellpose's percentile normalisation, computed once on a whole site.",
+      "source_sha256": "6edc33213d010009cbb6056be0c8781b08491becbfa3529ef72117ec3ea6eb22",
+      "translation": "Cellpose 的百分位归一化，在整个站点上只计算一次。"
+    },
+    {
+      "context": "Cellpose normalises every image it is given, so a microscope image field is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two microscope image fields and in the untiled site. Here the percentiles of each image data channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat image data channel becomes zeros), and every microscope image field is then segmented with ``normalize=False``. A site that fits in one microscope image field gets exactly the values Cellpose would have computed itself.",
+      "label": "spacr.ops_large_sites.normalize_site#1",
+      "source": "Cellpose normalises every image it is given, so a tile is scaled by its own 1st and 99th percentiles and the same pixel gets different values in two tiles and in the untiled site. Here the percentiles of each channel come from the whole site, with the arithmetic of Cellpose's ``normalize_img`` (``normalize99`` with its subsampling; a flat channel becomes zeros), and every tile is then segmented with ``normalize=False``. A site that fits in one tile gets exactly the values Cellpose would have computed itself.",
+      "source_sha256": "f05a126c96b5e5ac365f8b894e6ba7fe5651fb4f7a1c9fc1d0f3f56428f2d55b",
+      "translation": "Cellpose 会归一化它收到的每幅图像，因此一个块按它自己的第 1 和第 99 百分位缩放，同一像素在两个块中和在不分块的站点中得到不同的值。这里每个通道的百分位来自整个站点，采用 Cellpose ``normalize_img`` 的算法（带子采样的 ``normalize99``；平坦通道变为零），然后每个块用 ``normalize=False`` 分割。能放入一个块的站点得到的值与 Cellpose 自己计算的完全相同。"
+    },
+    {
+      "context": "a float32 copy of ``image``, normalised per channel.",
+      "label": "spacr.ops_large_sites.normalize_site#4",
+      "source": "a float32 copy of ``image``, normalised per channel.",
+      "source_sha256": "b1a923ede864a6b29bcb5f91d2a4869d8f09f4d761637517ae5a9ed9734f4b8d",
+      "translation": "``image`` 的 float32 副本，按通道归一化。"
+    },
+    {
+      "context": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the microplate sample position, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#1",
+      "source": "Writes, under ``seg_dst``: ``labels/<site>_nuclei.npy`` and ``labels/<site>_cells.npy``, ``tables/<site>_cells.parquet`` (one row per cell, measured by :func:`measure_chunked`), ``sites.csv`` (per site: objects, edge counts, the agreement with ``seg_report_reference`` when given, peak memory and seconds), ``agreement_well.csv``, ``settings.json``, ``nucleus_diameter.json`` (the diameter, whether it was fixed or estimated, and the survey it came from) and, with ``seg_tiling_control_px``, ``tiling_control.json`` (:func:`tiling_control` on a centred region of the control site's cell channels, sized by :func:`control_layout`). The nucleus diameter, when not fixed, and the tiling-control site come from ``seg_diameter_sites`` sites spread over the well, of which only those with at least ``seg_diameter_min_objects`` nuclei count (:func:`survey_sites`), never from one site that may be empty.",
+      "source_sha256": "faa3175cb67a1c2537400cdfe30281259f27e878f4d564b0ab15b306cba2aa75",
+      "translation": "在 ``seg_dst`` 下写入：``labels/<site>_nuclei.npy`` 和 ``labels/<site>_cells.npy``、``tables/<site>_cells.parquet``（每个细胞一行，由 :func:`measure_chunked` 测量）、``sites.csv``（每个站点：对象数、边缘计数、给出时与 ``seg_report_reference`` 的一致性、峰值内存和秒数）、``agreement_well.csv``、``settings.json``、``nucleus_diameter.json``（直径、它是固定的还是估计的，以及它来自的抽样），并在设置 ``seg_tiling_control_px`` 时写入 ``tiling_control.json``（在对照站点细胞通道的居中区域上运行 :func:`tiling_control`，区域大小由 :func:`control_layout` 决定）。未固定时的细胞核直径以及分块对照站点来自分布在整个孔中的 ``seg_diameter_sites`` 个站点，其中只计入细胞核至少为 ``seg_diameter_min_objects`` 个的站点（:func:`survey_sites`），绝不取自可能为空的单个站点。"
+    },
+    {
+      "context": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#5",
+      "source": "``plan``, ``sites`` (the site table as records), ``dst`` and ``nucleus_diameter`` (what ``nucleus_diameter.json`` holds).",
+      "source_sha256": "ba1abbc0ee5a9f490c51c9d12353733942a8d6d4125058c304c91ce7e58d9c22",
+      "translation": "``plan``、``sites``（以记录形式给出的站点表）、``dst`` 和 ``nucleus_diameter``（``nucleus_diameter.json`` 的内容）。"
+    },
+    {
+      "context": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "label": "spacr.ops_large_sites.run_large_site_segmentation#6",
+      "source": "when ``seg_sites_src`` or ``seg_dst`` is missing, or when no sampled site holds enough nuclei to estimate the diameter.",
+      "source_sha256": "01af69a743d838b60c6e2a05b7ac61786455dc9016486189226b697323c347c9",
+      "translation": "当缺少 ``seg_sites_src`` 或 ``seg_dst``，或没有任何抽样站点含有足以估计直径的细胞核时。"
+    },
+    {
+      "context": "``n`` sites spread evenly over a microplate sample position's site list, first and last included.",
+      "label": "spacr.ops_large_sites.sample_sites#0",
+      "source": "``n`` sites spread evenly over a well's site list, first and last included.",
+      "source_sha256": "38302ca49ab9e371870aefa9f8ac84648bbcbcb22879ccbab1e2ab53f1ee43c2",
+      "translation": "在一个孔的站点列表上均匀分布的 ``n`` 个站点，包括第一个和最后一个。"
+    },
+    {
+      "context": "the microplate sample position's sites in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#1",
+      "source": "the well's sites in run order.",
+      "source_sha256": "728161298f91511ef861a63779b196accb4d92b240f85b0bcc0d65e890c68ebc",
+      "translation": "按运行顺序排列的孔的站点。"
+    },
+    {
+      "context": "how many to take; at least one.",
+      "label": "spacr.ops_large_sites.sample_sites#2",
+      "source": "how many to take; at least one.",
+      "source_sha256": "3a44c6a904d205b9a7dbf8d528c3b5133b5df0c6ecd5d7c10043cf6b348fba72",
+      "translation": "要取的数量；至少一个。"
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.sample_sites#3",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "按运行顺序排列的抽样站点。"
+    },
+    {
+      "context": "Nuclei are segmented on the DNA image data channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each microscope image field); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "label": "spacr.ops_large_sites.segment_cell_painting_site#1",
+      "source": "Nuclei are segmented on the DNA channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid (nuclei only without a diameter, since a diameter resizes each tile); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "source_sha256": "6e3218fcad442277d1ad6a37f7207a5d7f4a0f239df5a57c117915131f272f6e",
+      "translation": "细胞核在 DNA 通道上分割，细胞在 ``cell_channels``（先 Phalloidin，再 DNA）上分割，二者都在整个站点上只归一化一次（:func:`normalize_site`），并由 :func:`segment_tiled` 在 Cellpose 的网络网格上分块（细胞核仅在没有直径时如此，因为直径会缩放每个块）；然后由 :func:`spacr.ops_sample.pair_nuclei_with_cells` 将每个细胞核与一个细胞配对（没有细胞核的细胞会被丢弃，与 OPS 表型流程相同）。"
+    },
+    {
+      "context": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "label": "spacr.ops_large_sites.segment_tiled#6",
+      "source": "place the tiles on Cellpose's network grid (:func:`tiling_layout`), so that objects away from the seams are the untiled run's objects pixel for pixel; only for a segmenter that does not resize the image.",
+      "source_sha256": "2b0883a463bab80afdb05974af3059d03b96438f1b609cf6901687a32c03eb8d",
+      "translation": "将块放在 Cellpose 的网络网格上（:func:`tiling_layout`），使远离接缝的对象逐像素等于不分块运行的对象；仅适用于不缩放图像的分割器。"
+    },
+    {
+      "context": "The laboratory microplate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "label": "spacr.ops_large_sites.survey_sites#0",
+      "source": "The plate's nucleus diameter and the tiling-control site from a sample of sites.",
+      "source_sha256": "dbe1facd074176c7e43e32ff1e1b94b618f0d8c9d8175d7f71061ae1e4de5696",
+      "translation": "根据站点样本得到的板的细胞核直径和分块对照站点。"
+    },
+    {
+      "context": "A microplate sample position's first site is often an empty corner of the microplate sample position, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "label": "spacr.ops_large_sites.survey_sites#1",
+      "source": "A well's first site is often an empty corner of the well, so neither the diameter nor the tiling control may come from it. A sampled site counts only when it holds at least ``min_objects`` nuclei; the diameter is the median equivalent diameter over every nucleus of those sites, clipped to ``bounds`` (:func:`estimate_nucleus_diameter`), and the control site is the one with the median nucleus count among them (the lower of the two middle sites when their number is even).",
+      "source_sha256": "e3a650bd34102bf95874f98314692a4f5a7217dd0231351272d541902e388fd7",
+      "translation": "孔的第一个站点常常是孔中空的角落，因此直径和分块对照都不能取自它。抽样站点只有在含有至少 ``min_objects`` 个细胞核时才计入；直径是这些站点所有细胞核等效直径的中位数，限制在 ``bounds`` 内（:func:`estimate_nucleus_diameter`），对照站点是其中细胞核数为中位数的站点（数量为偶数时取中间两个站点中较小的一个）。"
+    },
+    {
+      "context": "the sampled sites, in run order.",
+      "label": "spacr.ops_large_sites.survey_sites#2",
+      "source": "the sampled sites, in run order.",
+      "source_sha256": "7a9f336fe9a7bd983a1ca3ea48197e44e0138746fe7b82ff9f80b20c2508e166",
+      "translation": "按运行顺序排列的抽样站点。"
+    },
+    {
+      "context": "per site, its nuclei as a label image.",
+      "label": "spacr.ops_large_sites.survey_sites#3",
+      "source": "per site, its nuclei as a label image.",
+      "source_sha256": "799290d5516d1405a51d8e8c8a34e8327299c67c67ac331c938848e821be5012",
+      "translation": "每个站点的细胞核，以标签图像表示。"
+    },
+    {
+      "context": "the fewest nuclei a site needs to be used.",
+      "label": "spacr.ops_large_sites.survey_sites#5",
+      "source": "the fewest nuclei a site needs to be used.",
+      "source_sha256": "cf589007c6c5dcff693571dc11a00e7865cf5fbdd44a6a86a6cbe29f59129edd",
+      "translation": "站点被使用所需的最少细胞核数。"
+    },
+    {
+      "context": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "label": "spacr.ops_large_sites.survey_sites#6",
+      "source": "``diameter_px``, ``sites_sampled``, ``objects_per_site``, ``diameter_per_site`` (``None`` for a site without nuclei), ``sites_used``, ``min_objects`` and ``control_site``.",
+      "source_sha256": "1d4260a2f9f94be9a49d59b06ad4490f6c1d03fb8c35c9661484ae84495db24b",
+      "translation": "``diameter_px``、``sites_sampled``、``objects_per_site``、``diameter_per_site``（没有细胞核的站点为 ``None``）、``sites_used``、``min_objects`` 和 ``control_site``。"
+    },
+    {
+      "context": "when no sampled site holds ``min_objects`` nuclei.",
+      "label": "spacr.ops_large_sites.survey_sites#7",
+      "source": "when no sampled site holds ``min_objects`` nuclei.",
+      "source_sha256": "4d25d12f8a6ad99372c5cac4c166078e0121ea37e5f826475c88413be0413387",
+      "translation": "当没有任何抽样站点含有 ``min_objects`` 个细胞核时。"
+    },
+    {
+      "context": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "label": "spacr.ops_large_sites.tiling_control#1",
+      "source": "Objects of the untiled run that stay clear of every seam zone (the strips that two or more tiles share) must come back with identical pixels; objects in a seam zone are scored by their best IoU with a tiled object. ``segment`` must not rescale intensities per call (Cellpose's default), or every tile is scaled differently from the region; pass a region normalised once (:func:`normalize_site`) and a segmenter run with ``normalize=False``.",
+      "source_sha256": "8e1bf9925afe243055d87335cfce6525928058cf2e3a95df1b7aa52be73c3298",
+      "translation": "不分块运行中远离所有接缝区（两个或更多块共享的条带）的对象，必须以相同的像素返回；接缝区内的对象按其与分块对象的最佳 IoU 评分。``segment`` 不得在每次调用时重新缩放强度（Cellpose 的默认行为），否则每个块的缩放都与区域不同；请传入只归一化一次的区域（:func:`normalize_site`）和以 ``normalize=False`` 运行的分割器。"
+    },
+    {
+      "context": "passed to :func:`segment_tiled`.",
+      "label": "spacr.ops_large_sites.tiling_control#7",
+      "source": "passed to :func:`segment_tiled`.",
+      "source_sha256": "4e19c62d45c9ddb677474faa9f20bb24238708f240940758bfbac57ed0bc22e9",
+      "translation": "传给 :func:`segment_tiled`。"
+    },
+    {
+      "context": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "label": "spacr.ops_large_sites.tiling_control#8",
+      "source": "``objects``, ``away_from_seams``, ``away_identical``, ``at_seams``, ``at_seams_iou_ge_0_9``, ``at_seams_share`` (``nan`` without seam objects), and ``tile_px``, ``overlap_px`` and ``aligned`` of the tiles used.",
+      "source_sha256": "708762be913a4875739bf682f2ab7b777013de73675f36ba9c56b3e60089e794",
+      "translation": "``objects``、``away_from_seams``、``away_identical``、``at_seams``、``at_seams_iou_ge_0_9``、``at_seams_share``（没有接缝对象时为 ``nan``），以及所用块的 ``tile_px``、``overlap_px`` 和 ``aligned``。"
+    },
+    {
+      "context": "The tiles :func:`segment_tiled` uses for one image.",
+      "label": "spacr.ops_large_sites.tiling_layout#0",
+      "source": "The tiles :func:`segment_tiled` uses for one image.",
+      "source_sha256": "9ed63eb1acc70d62b69e3ddc04442cd948191456771dfddb2ac23e55222651e5",
+      "translation": ":func:`segment_tiled` 对一幅图像使用的块。"
+    },
+    {
+      "context": "Without ``align`` these are :func:`tile_grid`'s microscope image fields. With ``align``, and when the image needs more than one microscope image field, the microscope image field side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last microscope image field also starts on the network grid; the stitched labels are then cut back to the image.",
+      "label": "spacr.ops_large_sites.tiling_layout#1",
+      "source": "Without ``align`` these are :func:`tile_grid`'s tiles. With ``align``, and when the image needs more than one tile, the tile side and step come from :func:`aligned_tiling`, and each tiled side is padded at its end so that the last tile also starts on the network grid; the stitched labels are then cut back to the image.",
+      "source_sha256": "6df815c28f55343359d3dd9a424d814a053bbaa60e5f7fadd2060ae338afe1d3",
+      "translation": "不带 ``align`` 时，这些就是 :func:`tile_grid` 的块。带 ``align`` 且图像需要多于一个块时，块边长和步长来自 :func:`aligned_tiling`，每条要分块的边在末端填充，使最后一个块也从网络网格上开始；拼接后的标签随后再裁回图像大小。"
+    },
+    {
+      "context": "the tile side asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#3",
+      "source": "the tile side asked for.",
+      "source_sha256": "33330358b715d8a440e43563a7008aa1c9a9a8056114c9e08d5b8a52ebbc76ae",
+      "translation": "请求的块边长。"
+    },
+    {
+      "context": "the overlap asked for.",
+      "label": "spacr.ops_large_sites.tiling_layout#4",
+      "source": "the overlap asked for.",
+      "source_sha256": "08c7a7822ab37ff893f3bbe7bd225e60195f78c495f23d7543f2d9048c264139",
+      "translation": "请求的重叠。"
+    },
+    {
+      "context": "put the tiles on Cellpose's network grid.",
+      "label": "spacr.ops_large_sites.tiling_layout#5",
+      "source": "put the tiles on Cellpose's network grid.",
+      "source_sha256": "7e04b35cf09d4e5959c9d449c948787be7688654e4c0e98cf6a3f02b84a838e9",
+      "translation": "将块放在 Cellpose 的网络网格上。"
+    },
+    {
+      "context": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "label": "spacr.ops_large_sites.tiling_layout#6",
+      "source": "``boxes`` (in padded coordinates), ``padded`` (the padded shape), ``tile_px`` and ``overlap_px`` (those used) and ``aligned``.",
+      "source_sha256": "885c6c5461abdbe8521fca0b98e19bd25bdbdcc62160d6833c06e18c78f82380",
+      "translation": "``boxes``（以填充后的坐标表示）、``padded``（填充后的形状）、``tile_px`` 和 ``overlap_px``（实际使用的值）以及 ``aligned``。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-921-largesite-fix-1112 branch (item 921 large-site OPS segmentation fixes): the new spacr.ops_large_sites.normalize_site, survey_sites, sample_sites, network_tile_starts, aligned_tiling, tiling_layout and control_layout, and the changed blocks of the spacr.ops_large_sites module, segment_tiled, tiling_control, segment_cell_painting_site and run_large_site_segmentation. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

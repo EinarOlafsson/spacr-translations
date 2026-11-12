@@ -1,0 +1,217 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "context": "``train_eval_split`` (alpha) -- ``leave_one_well_out``, ``leave_one_plate_out`` or ``random``: train with cross-validation on those held-out folds and write ``<dst>/ml_eval/metrics.csv``, the table of :func:`spacr.ml.evaluate_classifier` (accuracy, balanced accuracy, macro F1, AUROC and per-class precision and recall, pooled and per fold) with the controls of ``train_eval_controls``: ``majority`` (always the commonest class) and ``shuffled`` (the whole cross-validation again on training labels permuted within each fold, ``train_eval_shuffle_repeats`` times from seed ``train_eval_shuffle_seed``, averaged). ``none`` keeps the split above.",
+      "label": "spacr.deep_spacr.train_test_model#14",
+      "source": "``train_eval_split`` (alpha) -- ``leave_one_well_out``, ``leave_one_plate_out`` or ``random``: train with cross-validation on those held-out folds and write ``<dst>/ml_eval/metrics.csv``, the table of :func:`spacr.ml.evaluate_classifier` (accuracy, balanced accuracy, macro F1, AUROC and per-class precision and recall, pooled and per fold) with the controls of ``train_eval_controls``: ``majority`` (always the commonest class) and ``shuffled`` (the whole cross-validation again on training labels permuted within each fold, ``train_eval_shuffle_repeats`` times from seed ``train_eval_shuffle_seed``, averaged). ``none`` keeps the split above.",
+      "source_sha256": "323e8e6bc6fef7da60d30b0fac323634b42f6c91f00ef4caf3546e5b5fbb27a8",
+      "translation": "``train_eval_split`` (alpha) -- ``leave_one_well_out``, ``leave_one_plate_out`` eða ``random``: þjálfa með krossprófun á þessum fráteknu brotum og skrifa ``<dst>/ml_eval/metrics.csv``, töflu :func:`spacr.ml.evaluate_classifier` (nákvæmni, jafnvægða nákvæmni, makró-F1, AUROC og nákvæmni og heimt fyrir hvern flokk, sameinað og fyrir hvert brot) með viðmiðum ``train_eval_controls``: ``majority`` (alltaf algengasti flokkurinn) og ``shuffled`` (öll krossprófunin aftur á þjálfunarmerkjum sem umraðað er innan hvers brots, ``train_eval_shuffle_repeats`` sinnum frá fræinu ``train_eval_shuffle_seed``, meðaltal tekið). ``none`` heldur skiptingunni hér að ofan."
+    },
+    {
+      "context": "``augment``, ``dropout_rate``, ``optimizer_type``, ``early_stopping_patience``, ``n_jobs``, ``pin_memory``.",
+      "label": "spacr.deep_spacr.train_test_model#15",
+      "source": "``augment``, ``dropout_rate``, ``optimizer_type``, ``early_stopping_patience``, ``n_jobs``, ``pin_memory``.",
+      "source_sha256": "3e0406bf39a43d87051db778068df549c60a1d5d900fab5abb16585d2fe9192c",
+      "translation": "``augment``, ``dropout_rate``, ``optimizer_type``, ``early_stopping_patience``, ``n_jobs``, ``pin_memory``."
+    },
+    {
+      "context": "When ``train=True``, the path to the saved best model — or, in cross-validation mode, the path to the per-fold metrics CSV, since there is no single model; ``None`` if ``model_type`` could not be built. When ``train=False`` and ``test=True``, the path to the test-result CSV.",
+      "label": "spacr.deep_spacr.train_test_model#16",
+      "source": "When ``train=True``, the path to the saved best model — or, in cross-validation mode, the path to the per-fold metrics CSV, since there is no single model; ``None`` if ``model_type`` could not be built. When ``train=False`` and ``test=True``, the path to the test-result CSV.",
+      "source_sha256": "a4ede16d82e3808439954cdb06ef05944876f915694d4e367ceded830a420176",
+      "translation": "Þegar ``train=True``, slóðin að vistaða besta líkaninu — eða, í krossprófunarham, slóðin að CSV-skránni með mælikvörðum hvers brots, þar sem ekkert eitt líkan er til; ``None`` ef ekki var hægt að byggja ``model_type``. Þegar ``train=False`` og ``test=True``, slóðin að CSV-skránni með prófunarniðurstöðum."
+    },
+    {
+      "context": "if ``settings['classes']`` is missing or empty.",
+      "label": "spacr.deep_spacr.train_test_model#17",
+      "source": "if ``settings['classes']`` is missing or empty.",
+      "source_sha256": "88889122fbd6a7bf00ca9cc5f250155efb2433f77a4d8cef3fe1b2f5ac650dd0",
+      "translation": "ef ``settings['classes']`` vantar eða er tómt."
+    },
+    {
+      "context": "Example:",
+      "label": "spacr.deep_spacr.train_test_model#18",
+      "source": "Example:",
+      "source_sha256": "872887e563e75957ffc20b021332504f2ddd0a8f3964cb93070863bfaf13cdad",
+      "translation": "Dæmi:"
+    },
+    {
+      "context": "See Also: :func:`spacr.deep_spacr.deep_spacr` — full end-to-end training + activation-map workflow. :func:`spacr.io.generate_dataset` — build the ``train/``/``test/`` folder tree.",
+      "label": "spacr.deep_spacr.train_test_model#19",
+      "source": "See Also: :func:`spacr.deep_spacr.deep_spacr` — full end-to-end training + activation-map pipeline. :func:`spacr.io.generate_dataset` — build the ``train/``/``test/`` folder tree.",
+      "source_sha256": "3d20050de2db98c2206ab586f32006e858f82ebc04f656ff311edd6534448b4f",
+      "translation": "Sjá einnig: :func:`spacr.deep_spacr.deep_spacr` — full þjálfun frá upphafi til enda + virkni-korts vinnuflæði. :func:`spacr.io.generate_dataset` — byggja upp ``train/``/``test/`` möpputré."
+    },
+    {
+      "context": "Reads the merged arrays of ``translocation_merged_folder`` (or ``<src>/merged``). With ``cell_from_nucleus_expand_px`` above 0 a five-image layer array ``[c0, c1, c2, nucleus, parasite]`` gets its cell image layer from the nuclei first (:func:`nucleus_territories`) and becomes the six-image layer layout; a six-image layer array already has its cell image layer (Make Masks grows the territories itself with the same setting) and is read as it is. Cells are marked ``cell_source`` nucleus_territory when the territories were grown here or the merged folder's image layer layout says Make Masks grew them; the territories are not cell outlines. Then :func:`translocation_cells` per field and :func:`translocation_summary`, written to ``<src>/translocation/`` (cells_translocation.csv, the summary tables and the translocation_ratio_vs_vacuoles figure of :func:`translocation_figure`).",
+      "label": "spacr.host_pathogen.nuclear_translocation#1",
+      "source": "Reads the merged arrays of ``translocation_merged_folder`` (or ``<src>/merged``). With ``cell_from_nucleus_expand_px`` above 0 a five-plane array ``[c0, c1, c2, nucleus, parasite]`` gets its cell plane from the nuclei first (:func:`nucleus_territories`) and becomes the six-plane layout; a six-plane array already has its cell plane (Make Masks grows the territories itself with the same setting) and is read as it is. Cells are marked ``cell_source`` nucleus_territory when the territories were grown here or the merged folder's plane layout says Make Masks grew them; the territories are not cell outlines. Then :func:`translocation_cells` per field and :func:`translocation_summary`, written to ``<src>/translocation/`` (cells_translocation.csv, the summary tables and the translocation_ratio_vs_vacuoles figure of :func:`translocation_figure`).",
+      "source_sha256": "83439282f864808c50c852ec14636551dcc7e831899af94643184e1b53e31cbf",
+      "translation": "Les sameinuðu fylki ``translocation_merged_folder`` (eða ``<src>/merged``). Með ``cell_from_nucleus_expand_px`` yfir 0 fær fimm-plana fylki ``[c0, c1, c2, nucleus, parasite]`` fyrst frumuplan sitt út frá kjörnunum (:func:`nucleus_territories`) og verður sex-plana uppsetningin; sex-plana fylki hefur þegar frumuplan sitt (Make Masks stækkar svæðin sjálft með sömu stillingu) og er lesið eins og það er. Frumur eru merktar ``cell_source`` nucleus_territory þegar svæðin voru stækkuð hér eða uppsetning plananna í sameinuðu möppunni segir að Make Masks hafi stækkað þau; svæðin eru ekki útlínur frumna. Síðan :func:`translocation_cells` á hvert svið og :func:`translocation_summary`, skrifað í ``<src>/translocation/`` (cells_translocation.csv, samantektartöflurnar og myndina translocation_ratio_vs_vacuoles úr :func:`translocation_figure`)."
+    },
+    {
+      "context": "``translocation_reference`` names a reference curve: a table with effector, k, hrman_total and hrman_ratio, or a Prism ``.pzfx`` file read by :func:`pzfx_reference_curve` (HRMAn's Result.pzfx); it is written as hrman_reference.csv. When Measure's ``<src>/measurements/measurements.db`` is there, its nuclei add the curve of :func:`translocation_measured_cells`, and Measure's infection_report.csv beside it is written as spacr_infection_report_per_well.csv.",
+      "label": "spacr.host_pathogen.nuclear_translocation#2",
+      "source": "``translocation_reference`` names a reference curve: a table with effector, k, hrman_total and hrman_ratio, or a Prism ``.pzfx`` file read by :func:`pzfx_reference_curve` (HRMAn's Result.pzfx); it is written as hrman_reference.csv. When Measure's ``<src>/measurements/measurements.db`` is there, its nuclei add the curve of :func:`translocation_measured_cells`, and Measure's infection_report.csv beside it is written as spacr_infection_report_per_well.csv.",
+      "source_sha256": "f449cd20bba83857e6757476b99bcbc3e9d70d3195e315385bcd9a8650840f44",
+      "translation": "``translocation_reference`` nefnir viðmiðunarferil: töflu með effector, k, hrman_total og hrman_ratio, eða Prism ``.pzfx``-skrá sem :func:`pzfx_reference_curve` les (HRMAn-skráin Result.pzfx); hann er skrifaður sem hrman_reference.csv. Þegar gagnagrunnur Measure, ``<src>/measurements/measurements.db``, er til staðar bæta kjarnar hans við ferli :func:`translocation_measured_cells`, og skýrsla Measure við hlið hans, infection_report.csv, er skrifuð sem spacr_infection_report_per_well.csv."
+    },
+    {
+      "context": "``src`` and the translocation settings.",
+      "label": "spacr.host_pathogen.nuclear_translocation#3",
+      "source": "``src`` and the translocation settings.",
+      "source_sha256": "a3a61b9f9c3dc9cc9c881cc2ea2e5db17326ee1b3b478fee2787f54977a42cb1",
+      "translation": "``src`` og stillingar tilfærslunnar."
+    },
+    {
+      "context": "the :func:`translocation_summary` key-value mapping with ``folder`` and ``figure`` (the path written).",
+      "label": "spacr.host_pathogen.nuclear_translocation#4",
+      "source": "the :func:`translocation_summary` dict with ``folder`` and ``figure`` (the path written).",
+      "source_sha256": "797fa1b16f8827193bebf4a062baf9196ceaef5e0fb519179922869828542485",
+      "translation": "dict :func:`translocation_summary` með ``folder`` og ``figure`` (slóðin sem var skrifuð)."
+    },
+    {
+      "context": "A reference translocation curve from a Prism ``.pzfx`` file such as HRMAn's Result.pzfx.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#0",
+      "source": "A reference translocation curve from a Prism ``.pzfx`` file such as HRMAn's Result.pzfx.",
+      "source_sha256": "6e8a83a9b3b489a3136c3515e4e8fc2b01fa9cfd839be9d99f1c8657ab27042f",
+      "translation": "Viðmiðunarferill tilfærslu úr Prism ``.pzfx``-skrá, til dæmis HRMAn-skráin Result.pzfx."
+    },
+    {
+      "context": "Every table with a ``column`` Y column is one group, named by the table title up to `` (`` (\"TgIST (Group 1)\" is TgIST). Its first ``kmax + 1`` values are the signal at k = 0, 1, ... vacuoles per cell, in row order, and the ratio is each value over the k = 0 value. The values are the file's data; none is written into spaCR.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#1",
+      "source": "Every table with a ``column`` Y column is one group, named by the table title up to `` (`` (\"TgIST (Group 1)\" is TgIST). Its first ``kmax + 1`` values are the signal at k = 0, 1, ... vacuoles per cell, in row order, and the ratio is each value over the k = 0 value. The values are the file's data; none is written into spaCR.",
+      "source_sha256": "e9e731fcca2af5f40e9c1f54b68f0651d475fba07dc031a7903c44764b15a7c4",
+      "translation": "Hver tafla með Y-dálkinn ``column`` er einn hópur, nefndur eftir titli töflunnar fram að `` (`` (\"TgIST (Group 1)\" verður TgIST). Fyrstu ``kmax + 1`` gildi hennar eru merkið við k = 0, 1, ... safabólur á frumu, í röð raðanna, og hlutfallið er hvert gildi deilt með gildinu við k = 0. Gildin eru gögn skrárinnar; ekkert þeirra er skrifað inn í spaCR."
+    },
+    {
+      "context": "the ``.pzfx`` file (:func:`pzfx_tables`).",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#2",
+      "source": "the ``.pzfx`` file (:func:`pzfx_tables`).",
+      "source_sha256": "04dd0300cb5ab6ed853ce33d1e2cd57b580416dd8a81d1d24fa0fd04533b3361",
+      "translation": "``.pzfx``-skráin (:func:`pzfx_tables`)."
+    },
+    {
+      "context": "the title of the Y column holding the signal.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#3",
+      "source": "the title of the Y column holding the signal.",
+      "source_sha256": "82c3d754007a6be23dafa4672469ea9b4e0909c6f0fd707734d58e7e68dcda67",
+      "translation": "titill Y-dálksins sem geymir merkið."
+    },
+    {
+      "context": "the largest k kept.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#4",
+      "source": "the largest k kept.",
+      "source_sha256": "f5cb424085ae3274d85d59a83ed80943c6c90d7cf0e0e4d955a05b06ab439a87",
+      "translation": "stærsta k sem er haldið."
+    },
+    {
+      "context": "a DataFrame with ``effector``, ``k``, ``hrman_total`` and ``hrman_ratio``, the reference columns of :func:`translocation_summary`.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#5",
+      "source": "a DataFrame with ``effector``, ``k``, ``hrman_total`` and ``hrman_ratio``, the reference columns of :func:`translocation_summary`.",
+      "source_sha256": "f88203ef5d49c770614de92f5e795fb34230d28706708239517f52d88dde36c1",
+      "translation": "DataFrame með ``effector``, ``k``, ``hrman_total`` og ``hrman_ratio``, viðmiðunardálkum :func:`translocation_summary`."
+    },
+    {
+      "context": "when no table has ``column``, or a group's k = 0 value is missing or zero.",
+      "label": "spacr.host_pathogen.pzfx_reference_curve#6",
+      "source": "when no table has ``column``, or a group's k = 0 value is missing or zero.",
+      "source_sha256": "79fbb03c167d2834baa86e0f148dbad796b8db33cdc49f63d6920e6d8192e32e",
+      "translation": "þegar engin tafla hefur ``column``, eða gildi hóps við k = 0 vantar eða er núll."
+    },
+    {
+      "context": "The data tables of a GraphPad Prism ``.pzfx`` file.",
+      "label": "spacr.host_pathogen.pzfx_tables#0",
+      "source": "The data tables of a GraphPad Prism ``.pzfx`` file.",
+      "source_sha256": "92a830656a154ed9f91f15fda8c583188fe45f2bd65bdb250fb8176e2daf9913",
+      "translation": "Gagnatöflur GraphPad Prism ``.pzfx``-skráar."
+    },
+    {
+      "context": "Each ``Table`` element becomes a DataFrame named by its title, with one column per X or Y column (named by the column title; a repeated title gets ``_2``, ``_3``, ...) and one row per value of the first subcolumn. Empty cells are NaN; a value that is not a number is NaN too. The binary template after the tables is not read.",
+      "label": "spacr.host_pathogen.pzfx_tables#1",
+      "source": "Each ``Table`` element becomes a DataFrame named by its title, with one column per X or Y column (named by the column title; a repeated title gets ``_2``, ``_3``, ...) and one row per value of the first subcolumn. Empty cells are NaN; a value that is not a number is NaN too. The binary template after the tables is not read.",
+      "source_sha256": "799ea1e208d581faf3f2938dce93d1633f052e59705f50a01d7c3234bfff07ae",
+      "translation": "Hvert ``Table``-stak verður DataFrame sem nefnt er eftir titli sínum, með einn dálk fyrir hvern X- eða Y-dálk (nefndan eftir titli dálksins; endurtekinn titill fær ``_2``, ``_3``, ...) og eina röð fyrir hvert gildi fyrsta undirdálksins. Tómir reitir eru NaN; gildi sem er ekki tala er líka NaN. Tvíundarsniðmátið á eftir töflunum er ekki lesið."
+    },
+    {
+      "context": "the ``.pzfx`` file.",
+      "label": "spacr.host_pathogen.pzfx_tables#2",
+      "source": "the ``.pzfx`` file.",
+      "source_sha256": "74a6f8bda2153a55a41bf606c2cdfe38fffa2f813b9fae37947e482139adf922",
+      "translation": "``.pzfx``-skráin."
+    },
+    {
+      "context": "``{table title: DataFrame}``, in file order.",
+      "label": "spacr.host_pathogen.pzfx_tables#3",
+      "source": "``{table title: DataFrame}``, in file order.",
+      "source_sha256": "eef7342654bd1ae401df75dc79a2ed2e5f26407473ba9eee6b4b7cd5ab3b8c85",
+      "translation": "``{table title: DataFrame}``, í röð skrárinnar."
+    },
+    {
+      "context": "when the file is not XML, is not a Prism file or holds no data table.",
+      "label": "spacr.host_pathogen.pzfx_tables#4",
+      "source": "when the file is not XML, is not a Prism file or holds no data table.",
+      "source_sha256": "7fc8a767e3f98578ad817da26cfc32e09d7b1f144e04edd8baf48ad8a2f311dd",
+      "translation": "þegar skráin er ekki XML, er ekki Prism-skrá eða inniheldur enga gagnatöflu."
+    },
+    {
+      "context": "spaCR's own nuclear effector readout per host cell, from a Measure database.",
+      "label": "spacr.host_pathogen.translocation_measured_cells#0",
+      "source": "spaCR's own nuclear effector readout per host cell, from a Measure database.",
+      "source_sha256": "434b271f82af311c5e240df10082b30433d1fa6d538c7e48055a35d7e10b84b1",
+      "translation": "Eigin aflestur spaCR á virkniprótíni í kjarna fyrir hverja hýsilfrumu, úr Measure-gagnagrunni."
+    },
+    {
+      "context": "Each nucleus of the ``nucleus`` table gets the integrated and mean intensity of the ``translocation_channel`` and its area, and the number of ``pathogen`` objects Measure assigned to its cell (``n_par``; 0 for none). The group comes from ``translocation_groups`` by well (row letter and two-digit column) or by row letter.",
+      "label": "spacr.host_pathogen.translocation_measured_cells#1",
+      "source": "Each nucleus of the ``nucleus`` table gets the integrated and mean intensity of the ``translocation_channel`` and its area, and the number of ``pathogen`` objects Measure assigned to its cell (``n_par``; 0 for none). The group comes from ``translocation_groups`` by well (row letter and two-digit column) or by row letter.",
+      "source_sha256": "e77f3903f7bb42d260a3bada992fcfa1eba2b623e5927bbfab7e33d0becd8db2",
+      "translation": "Hver kjarni í töflunni ``nucleus`` fær heildaðan styrk og meðalstyrk ``translocation_channel`` og flatarmál sitt, og fjölda ``pathogen``-hluta sem Measure úthlutaði frumu hans (``n_par``; 0 ef enginn). Hópurinn kemur úr ``translocation_groups`` eftir brunni (raðarbókstaf og tveggja stafa dálki) eða eftir raðarbókstaf."
+    },
+    {
+      "context": "the ``measurements.db`` Measure wrote.",
+      "label": "spacr.host_pathogen.translocation_measured_cells#2",
+      "source": "the ``measurements.db`` Measure wrote.",
+      "source_sha256": "3dd8bda0c9f73e8a3dc8b0952b956c2609a188de7fc54d188db7669fc9dd7748",
+      "translation": "``measurements.db`` sem Measure skrifaði."
+    },
+    {
+      "context": "``translocation_channel`` and ``translocation_groups``.",
+      "label": "spacr.host_pathogen.translocation_measured_cells#3",
+      "source": "``translocation_channel`` and ``translocation_groups``.",
+      "source_sha256": "71cbf44ead36aead95a231e2c9caec0fc7d635608fabfde328c7e2f9a327d4eb",
+      "translation": "``translocation_channel`` og ``translocation_groups``."
+    },
+    {
+      "context": "one row per nucleus with ``prcf``, ``cell``, ``ha_int``, ``ha_mean``, ``nucleus_area``, ``n_par``, ``well`` and ``effector`` (NaN outside every group).",
+      "label": "spacr.host_pathogen.translocation_measured_cells#4",
+      "source": "one row per nucleus with ``prcf``, ``cell``, ``ha_int``, ``ha_mean``, ``nucleus_area``, ``n_par``, ``well`` and ``effector`` (NaN outside every group).",
+      "source_sha256": "0da48ee7a457430d4e1e8a6e96cb558117e733538c7033c885c983bcd0fbca2a",
+      "translation": "ein röð fyrir hvern kjarna með ``prcf``, ``cell``, ``ha_int``, ``ha_mean``, ``nucleus_area``, ``n_par``, ``well`` og ``effector`` (NaN utan allra hópa)."
+    },
+    {
+      "context": "when a table or column is missing.",
+      "label": "spacr.host_pathogen.translocation_measured_cells#5",
+      "source": "when a table or column is missing.",
+      "source_sha256": "e3cdee6f72abdf90f816b00c0ec9512cfd4f7f9ce31311c5e26b7c0a385ed7aa",
+      "translation": "þegar töflu eða dálk vantar."
+    },
+    {
+      "context": "optional :func:`translocation_measured_cells` rows; they add the curve ``spacr_db_integrated_by_parasites`` (Measure's integrated nuclear intensity binned by the pathogen objects of the cell), with the same nucleus size filter.",
+      "label": "spacr.host_pathogen.translocation_summary#5",
+      "source": "optional :func:`translocation_measured_cells` rows; they add the curve ``spacr_db_integrated_by_parasites`` (Measure's integrated nuclear intensity binned by the pathogen objects of the cell), with the same nucleus size filter.",
+      "source_sha256": "00945e8ae60f807153f19407970468731d847484c5b405604c46ebdfee840dd6",
+      "translation": "valfrjálsar raðir :func:`translocation_measured_cells`; þær bæta við ferlinum ``spacr_db_integrated_by_parasites`` (heildaður kjarnastyrkur Measure flokkaður í bil eftir sýklahlutum frumunnar), með sömu síu á kjarnastærð."
+    },
+    {
+      "context": "key-value mapping of DataFrames ``cells``, ``counts``, ``curves``, ``per_well``, ``per_well_summary``, ``null_thresholds``, ``pct_positive``, ``pct_positive_per_well``, ``shuffle_null`` and ``agreement`` (empty without a reference).",
+      "label": "spacr.host_pathogen.translocation_summary#6",
+      "source": "dict of DataFrames ``cells``, ``counts``, ``curves``, ``per_well``, ``per_well_summary``, ``null_thresholds``, ``pct_positive``, ``pct_positive_per_well``, ``shuffle_null`` and ``agreement`` (empty without a reference).",
+      "source_sha256": "ddd6688e015a21037471577d6bd67c3d5877ccccdc7876f49e9b67ef65499eb4",
+      "translation": "dict af DataFrames ``cells``, ``counts``, ``curves``, ``per_well``, ``per_well_summary``, ``null_thresholds``, ``pct_positive``, ``pct_positive_per_well``, ``shuffle_null`` og ``agreement`` (tómt án viðmiðunar)."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-paper-910-899-1112 branch: the new spacr.host_pathogen.pzfx_tables, pzfx_reference_curve and translocation_measured_cells (item 910), the changed blocks of translocation_summary and nuclear_translocation, and the train_eval_split entry of spacr.deep_spacr.train_test_model (item 899). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

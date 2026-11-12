@@ -1,0 +1,70 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "One worker holds the raw site (uint16, every image data channel), two label images (int32), the site's stitched flows and their mask post-processing (:data:`SITE_FLOW_BYTES_PER_PIXEL`), the network and one microscope image field in flight (:data:`TILE_BYTES_PER_PIXEL`). The microscope image field is halved from ``seg_tile_px`` down to :data:`MIN_TILE_PX` until it fits; workers are capped by ``seg_workers`` and by the machine's available memory divided by the cap.",
+      "label": "spacr.ops_large_sites.plan_site_memory#1",
+      "source": "One worker holds the raw site (uint16, every channel), two label images (int32), the site's stitched flows and their mask post-processing (:data:`SITE_FLOW_BYTES_PER_PIXEL`), the network and one tile in flight (:data:`TILE_BYTES_PER_PIXEL`). The tile is halved from ``seg_tile_px`` down to :data:`MIN_TILE_PX` until it fits; workers are capped by ``seg_workers`` and by the machine's available memory divided by the cap.",
+      "source_sha256": "ccb1dcd8e339de2460b8fde6d67b33c6eb176128c300aa1f0337e548ff2cdbeb",
+      "translation": "एक वर्कर साइट का कच्चा डेटा (uint16, हर चैनल), दो लेबल छवियाँ (int32), साइट के जोड़े गए flows और उनका मास्क पश्च-प्रसंस्करण (:data:`SITE_FLOW_BYTES_PER_PIXEL`), नेटवर्क और प्रक्रिया में एक टाइल (:data:`TILE_BYTES_PER_PIXEL`) रखता है। टाइल ``seg_tile_px`` से :data:`MIN_TILE_PX` तक तब तक आधी की जाती है जब तक वह समा न जाए; वर्करों की संख्या ``seg_workers`` और मशीन की उपलब्ध मेमोरी को सीमा से भाग देने पर सीमित होती है।"
+    },
+    {
+      "context": "Nuclei are segmented on the DNA image data channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid, with the microscope image fields' flows stitched and Cellpose's mask step run once on the whole site (nuclei only without a diameter, since a diameter resizes each microscope image field); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "label": "spacr.ops_large_sites.segment_cell_painting_site#1",
+      "source": "Nuclei are segmented on the DNA channel, cells on ``cell_channels`` (Phalloidin, then DNA), each normalised once on the whole site (:func:`normalize_site`) and tiled by :func:`segment_tiled` on Cellpose's network grid, with the tiles' flows stitched and Cellpose's mask step run once on the whole site (nuclei only without a diameter, since a diameter resizes each tile); then each nucleus is paired with one cell by :func:`spacr.ops_sample.pair_nuclei_with_cells` (cells without a nucleus are dropped, as in the OPS phenotype path).",
+      "source_sha256": "ec4ca0b535538983cfc7f364b35c79360e0817be43891b931eff0d67e43834a6",
+      "translation": "नाभिक DNA चैनल पर और कोशिकाएँ ``cell_channels`` (Phalloidin, फिर DNA) पर विभाजित होती हैं, दोनों पूरी साइट पर एक बार सामान्यीकृत (:func:`normalize_site`) और :func:`segment_tiled` द्वारा Cellpose के नेटवर्क ग्रिड पर टाइल की गईं, जहाँ टाइलों के flows जोड़े जाते हैं और Cellpose का मास्क चरण पूरी साइट पर एक बार चलता है (नाभिक केवल बिना व्यास के, क्योंकि व्यास हर टाइल का आकार बदल देता है); फिर हर नाभिक :func:`spacr.ops_sample.pair_nuclei_with_cells` द्वारा एक कोशिका से जोड़ा जाता है (बिना नाभिक वाली कोशिकाएँ हटा दी जाती हैं, जैसे OPS फ़ीनोटाइप पथ में)।"
+    },
+    {
+      "context": "with ``masks`` and ``align``, the network part of ``segment`` (an image to its ``(flows, cellprob)``): the microscope image fields' network outputs are stitched (:func:`stitch_tile_flows`) and ``masks`` turns the whole image's flows into labels once, so that Cellpose's mask steps, which look at the whole image, see what they see untiled. The overlap is raised to ``2 * FLOW_MARGIN_PX``.",
+      "label": "spacr.ops_large_sites.segment_tiled#7",
+      "source": "with ``masks`` and ``align``, the network part of ``segment`` (an image to its ``(flows, cellprob)``): the tiles' network outputs are stitched (:func:`stitch_tile_flows`) and ``masks`` turns the whole image's flows into labels once, so that Cellpose's mask steps, which look at the whole image, see what they see untiled. The overlap is raised to ``2 * FLOW_MARGIN_PX``.",
+      "source_sha256": "2f12ebf3a23b56ab0bbd2823bfa4e9ff179a75a09435d9ca0d238036056f40a7",
+      "translation": "``masks`` और ``align`` के साथ, ``segment`` का नेटवर्क भाग (एक छवि से उसके ``(flows, cellprob)`` तक): टाइलों के नेटवर्क आउटपुट जोड़े जाते हैं (:func:`stitch_tile_flows`) और ``masks`` पूरी छवि के flows को एक बार लेबल में बदलता है, ताकि Cellpose के मास्क चरण, जो पूरी छवि देखते हैं, वही देखें जो बिना टाइल के देखते। ओवरलैप ``2 * FLOW_MARGIN_PX`` तक बढ़ाया जाता है।"
+    },
+    {
+      "context": "``(flows, cellprob)`` to a label image.",
+      "label": "spacr.ops_large_sites.segment_tiled#8",
+      "source": "``(flows, cellprob)`` to a label image.",
+      "source_sha256": "efb4c12aecfb5caf6995d38732efc565c7bb2edfada72f0e0fa3b2bb740db423",
+      "translation": "``(flows, cellprob)`` से एक लेबल छवि।"
+    },
+    {
+      "context": "an int32 label image of the image's height and width.",
+      "label": "spacr.ops_large_sites.segment_tiled#9",
+      "source": "an int32 label image of the image's height and width.",
+      "source_sha256": "d53853481296ccfc606355ebe4bde89c2d9404a8899831409c92b67a57a34144",
+      "translation": "छवि की ऊँचाई और चौड़ाई वाली int32 लेबल छवि।"
+    },
+    {
+      "context": "One flow microscope field of view and cell probability map from per-tile network outputs.",
+      "label": "spacr.ops_large_sites.stitch_tile_flows#0",
+      "source": "One flow field and cell probability map from per-tile network outputs.",
+      "source_sha256": "7727c95a09bb715265cf40b0794ff939c976cb77e3d52ceb91726302ed417cde",
+      "translation": "हर टाइल के नेटवर्क आउटपुट से एक flow क्षेत्र और कोशिका संभावना मानचित्र।"
+    },
+    {
+      "context": "Each pixel is taken from one microscope image field: along each axis, two neighbouring microscope image fields split the strip they share at its middle, so a pixel comes from the microscope image field in which it lies deepest. With microscope image fields from :func:`tiling_layout` (``align=True``) that overlap by at least ``2 * FLOW_MARGIN_PX``, every pixel's value is the one Cellpose computes for the untiled image, bit for bit.",
+      "label": "spacr.ops_large_sites.stitch_tile_flows#1",
+      "source": "Each pixel is taken from one tile: along each axis, two neighbouring tiles split the strip they share at its middle, so a pixel comes from the tile in which it lies deepest. With tiles from :func:`tiling_layout` (``align=True``) that overlap by at least ``2 * FLOW_MARGIN_PX``, every pixel's value is the one Cellpose computes for the untiled image, bit for bit.",
+      "source_sha256": "bd6f01a5c8dceab56612b6ae0a10843da8cfcc4bbac1fdc8dead64e0998c8eb8",
+      "translation": "हर पिक्सेल एक ही टाइल से लिया जाता है: हर अक्ष पर दो पड़ोसी टाइलें अपनी साझा पट्टी को बीच से बाँटती हैं, ताकि पिक्सेल उस टाइल से आए जिसमें वह सबसे गहराई में है। :func:`tiling_layout` (``align=True``) की उन टाइलों के साथ जो कम से कम ``2 * FLOW_MARGIN_PX`` ओवरलैप करती हैं, हर पिक्सेल का मान बिट-दर-बिट वही होता है जो Cellpose बिना-टाइल छवि के लिए गणना करता है।"
+    },
+    {
+      "context": "``((y0, y1, x0, x1), flows, cellprob)`` per tile, in the row-major order of :func:`tile_grid`; ``flows`` is ``(2, h, w)``.",
+      "label": "spacr.ops_large_sites.stitch_tile_flows#2",
+      "source": "``((y0, y1, x0, x1), flows, cellprob)`` per tile, in the row-major order of :func:`tile_grid`; ``flows`` is ``(2, h, w)``.",
+      "source_sha256": "2cb08f289c6b59e657642dbe58c904eb30e20b3e8536b3b9f8bc7ddeb2e12c96",
+      "translation": "हर टाइल के लिए ``((y0, y1, x0, x1), flows, cellprob)``, :func:`tile_grid` के पंक्ति-क्रम में; ``flows`` ``(2, h, w)`` है।"
+    },
+    {
+      "context": "``(flows, cellprob)`` of shapes ``(2, H, W)`` and ``(H, W)``, float32.",
+      "label": "spacr.ops_large_sites.stitch_tile_flows#4",
+      "source": "``(flows, cellprob)`` of shapes ``(2, H, W)`` and ``(H, W)``, float32.",
+      "source_sha256": "fea53c8eec4d5e4153d83c972d29a090e19dc24ea4a1b5bc45d6401d47908a55",
+      "translation": "``(flows, cellprob)``, आकार ``(2, H, W)`` और ``(H, W)``, float32।"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-921-away-identical-1112 branch (item 921: stitched Cellpose flows with one whole-site mask step): the new spacr.ops_large_sites.stitch_tile_flows and the changed blocks of plan_site_memory, segment_tiled and segment_cell_painting_site. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

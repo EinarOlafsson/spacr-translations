@@ -1,0 +1,693 @@
+{
+  "schema": 1,
+  "language": "ko",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-12 of the curated category tooltips of Vacuoles α and Cells From Nuclei α, Titration Readout α, Translocation α (Measure and Host-Pathogen), Figure Scoring α and Plaque Size Readouts α (Plaque), Held-out Evaluation α (Classify) and OPS Gene Map Crops (UMAP), and of the 38 setting tooltips of the MoA benchmark and profiling evaluation (moa_*) with their labels, descriptions and category titles against the exact English source. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "categories",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "측정된 기생충을 액포로 묶어 measurements.db 파일에 vacuole 및 vacuole_host 테이블을 쓰고, 세포 테이블에 액포 수와 기생충 수를 추가합니다. 간격보다 가까운 기생충은 하나의 액포가 되며, 각 기생충은 가장 많이 겹치는 액포에 연결되고, 액포 신호 평균에 사용할 채널을 고를 수 있습니다. 액포와 숙주 세포의 최소 크기는 잔해를 걸러냅니다. 액포당 기생충 수를 셀 때 켜고, 그렇지 않으면 꺼 두세요."
+    },
+    {
+      "table": "categories",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "플라크 실행에 웰별 크기 판독값을 추가합니다. 플라크 면적의 평균, 중앙값, 최댓값, 평균 대비 최댓값, 웰 범위와 그에 대한 플라크 면적, 그리고 각 플라크를 같은 웰의 가장 큰 플라크와 비교한 값입니다. 이미지에 스케일이 있으면 밀리미터 면적이 나타납니다. 웰과 플레이트 사이에서 플라크 크기를 비교할 때 켜세요. 끄면 이미지별 및 플라크별 테이블은 그대로입니다."
+    },
+    {
+      "table": "categories",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "분류기를 한 번도 보지 못한 객체로 시험하고 점수를 results/ml_eval에 기록합니다. 객체를 어떻게 따로 둘지(웰 하나, 플레이트 하나, 무작위 분할), 어떤 레이블과 특징 열을 평가할지, 모델 옆에 어떤 대조군을 보고할지 고르세요. 대조군은 항상 가장 흔한 클래스를 예측하는 방식과 각 학습 폴드 안에서 레이블을 섞은 방식입니다. 모델이 새 웰이나 플레이트에 일반화되는지 알고 싶을 때 사용하고, 빠른 학습에는 꺼 두세요."
+    },
+    {
+      "table": "categories",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "세포 염색이 없을 때 각 핵을 겹치지 않게 바깥으로 키워 이웃과 만나거나 지정한 거리에 닿을 때까지 늘려서 세포 마스크를 만듭니다. 최소 크기보다 작은 핵은 먼저 제거하여 DNA 채널의 기생충 핵이 세포가 되지 않도록 합니다. 핵 채널만 있을 때 사용하고, 실제 세포 염색이 있으면 세포를 직접 분할하세요."
+    },
+    {
+      "table": "categories",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "기존 마스크에서 액포당 기생충 수를 세고 용량 계열에 걸쳐 조건을 비교합니다. 플레이트 맵, 선택적인 게재 값 테이블, 액포와 숙주 세포의 크기 한계를 입력으로 받습니다. 사용자 테이블로 학습한 분류기가 액포당 기생충 수를 판정할 수 있고, 크기를 그 테이블의 척도로 맞출 수 있으며, 신호 하한이 감염되지 않은 액포를 세기 전에 제외합니다. 플레이트 맵을 지정하면 실행되며, 일반 숙주-병원체 실행에는 필요하지 않습니다."
+    },
+    {
+      "table": "categories",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "분비된 이펙터가 숙주 세포의 핵에 얼마나 도달하는지 측정합니다. 숙주 세포마다 핵 안의 이펙터 신호를 취하고, 기생충 근처 픽셀은 제외하고, 시야 배경을 빼서, 액포가 없는 세포를 기준으로 세포당 액포 수에 대해 그립니다. 이펙터 채널과 대조 채널, 배경 방법, 묶어 보는 최대 액포 수, 일치 여부를 확인할 선택적 기준 곡선을 고르세요. 핵 이동 실험에서만 켜세요."
+    },
+    {
+      "table": "categories",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "OPS 유전자 지도의 각 클러스터에 대한 예시 세포를 보여 줍니다. Leiden 클러스터마다 또는 최상위 그룹마다 메도이드 유전자의 프로파일에 가장 가까운 세포를 골라, 선택한 채널과 색으로 크롭 패널을 기록합니다. 모든 크롭은 채널마다 하나의 표시 범위를 공유하며, 이는 모은 픽셀의 백분위수에서 얻어 밝기를 비교할 수 있습니다. 최소 크기보다 작은 세포는 건너뜁니다. 크롭 크기와 출력 폴더를 스크린에 맞게 정하세요."
+    },
+    {
+      "table": "ui",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "측정된 기생충을 액포로 묶어 measurements.db 파일에 vacuole 및 vacuole_host 테이블을 쓰고, 세포 테이블에 액포 수와 기생충 수를 추가합니다. 간격보다 가까운 기생충은 하나의 액포가 되며, 각 기생충은 가장 많이 겹치는 액포에 연결되고, 액포 신호 평균에 사용할 채널을 고를 수 있습니다. 액포와 숙주 세포의 최소 크기는 잔해를 걸러냅니다. 액포당 기생충 수를 셀 때 켜고, 그렇지 않으면 꺼 두세요."
+    },
+    {
+      "table": "ui",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "플라크 실행에 웰별 크기 판독값을 추가합니다. 플라크 면적의 평균, 중앙값, 최댓값, 평균 대비 최댓값, 웰 범위와 그에 대한 플라크 면적, 그리고 각 플라크를 같은 웰의 가장 큰 플라크와 비교한 값입니다. 이미지에 스케일이 있으면 밀리미터 면적이 나타납니다. 웰과 플레이트 사이에서 플라크 크기를 비교할 때 켜세요. 끄면 이미지별 및 플라크별 테이블은 그대로입니다."
+    },
+    {
+      "table": "ui",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "분류기를 한 번도 보지 못한 객체로 시험하고 점수를 results/ml_eval에 기록합니다. 객체를 어떻게 따로 둘지(웰 하나, 플레이트 하나, 무작위 분할), 어떤 레이블과 특징 열을 평가할지, 모델 옆에 어떤 대조군을 보고할지 고르세요. 대조군은 항상 가장 흔한 클래스를 예측하는 방식과 각 학습 폴드 안에서 레이블을 섞은 방식입니다. 모델이 새 웰이나 플레이트에 일반화되는지 알고 싶을 때 사용하고, 빠른 학습에는 꺼 두세요."
+    },
+    {
+      "table": "ui",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "세포 염색이 없을 때 각 핵을 겹치지 않게 바깥으로 키워 이웃과 만나거나 지정한 거리에 닿을 때까지 늘려서 세포 마스크를 만듭니다. 최소 크기보다 작은 핵은 먼저 제거하여 DNA 채널의 기생충 핵이 세포가 되지 않도록 합니다. 핵 채널만 있을 때 사용하고, 실제 세포 염색이 있으면 세포를 직접 분할하세요."
+    },
+    {
+      "table": "ui",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "기존 마스크에서 액포당 기생충 수를 세고 용량 계열에 걸쳐 조건을 비교합니다. 플레이트 맵, 선택적인 게재 값 테이블, 액포와 숙주 세포의 크기 한계를 입력으로 받습니다. 사용자 테이블로 학습한 분류기가 액포당 기생충 수를 판정할 수 있고, 크기를 그 테이블의 척도로 맞출 수 있으며, 신호 하한이 감염되지 않은 액포를 세기 전에 제외합니다. 플레이트 맵을 지정하면 실행되며, 일반 숙주-병원체 실행에는 필요하지 않습니다."
+    },
+    {
+      "table": "ui",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "분비된 이펙터가 숙주 세포의 핵에 얼마나 도달하는지 측정합니다. 숙주 세포마다 핵 안의 이펙터 신호를 취하고, 기생충 근처 픽셀은 제외하고, 시야 배경을 빼서, 액포가 없는 세포를 기준으로 세포당 액포 수에 대해 그립니다. 이펙터 채널과 대조 채널, 배경 방법, 묶어 보는 최대 액포 수, 일치 여부를 확인할 선택적 기준 곡선을 고르세요. 핵 이동 실험에서만 켜세요."
+    },
+    {
+      "table": "ui",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "OPS 유전자 지도의 각 클러스터에 대한 예시 세포를 보여 줍니다. Leiden 클러스터마다 또는 최상위 그룹마다 메도이드 유전자의 프로파일에 가장 가까운 세포를 골라, 선택한 채널과 색으로 크롭 패널을 기록합니다. 모든 크롭은 채널마다 하나의 표시 범위를 공유하며, 이는 모은 픽셀의 백분위수에서 얻어 밝기를 비교할 수 있습니다. 최소 크기보다 작은 세포는 건너뜁니다. 크롭 크기와 출력 폴더를 스크린에 맞게 정하세요."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_profiles",
+      "source": "Table of profiles to score: per-well profiles normalised to the plate's control wells, such as a profiling run's well_profiles_feature_select.csv, or one profile per treatment. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "6bf9b2509364f1894e833e048bcbec9842874f6ab478ff01473e34d139650848",
+      "translation": "점수를 매길 프로파일 테이블입니다. 플레이트의 대조군 웰로 정규화한 웰별 프로파일(예: 프로파일링 실행의 well_profiles_feature_select.csv 파일) 또는 처리별 프로파일 하나입니다. CSV, TSV, Excel 또는 Parquet. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_labels",
+      "source": "Table with the MoA of each compound or treatment, such as BBBC021_v1_moa.csv, joined to the profiles on the columns they share. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "8e5b47c105cf5c7498450e3c06b213b03ba88cb40d2b4a06dac54937aaf7670d",
+      "translation": "각 화합물 또는 처리의 MoA 값을 담은 테이블(예: BBBC021_v1_moa.csv 파일)로, 공유하는 열을 기준으로 프로파일과 결합됩니다. 프로파일에 MoA 열이 있으면 비워 둡니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_label_column",
+      "source": "Column with the mechanism of action (MoA). Rows without one are not scored. Default 'moa'.",
+      "source_sha256": "8569bfdf535530645d2827ef61fc850dedf86303ff51a83a72cc671b5222d138",
+      "translation": "작용 기전(MoA)이 담긴 열입니다. 작용 기전이 없는 행은 점수를 매기지 않습니다. 기본값 'moa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_compound_column",
+      "source": "Column that names the compound. Every arm leaves a whole compound out, so a treatment is never matched to, or trained on, the same compound at another concentration. Default 'compound'.",
+      "source_sha256": "c29facc8ec8acbe5fc249260227ec5a6cf04f45e6155b4a3687075f813bf5a72",
+      "translation": "화합물 이름이 담긴 열입니다. 각 방식은 화합물 하나를 통째로 제외하므로, 어떤 처리도 다른 농도의 같은 화합물과 매칭되거나 그것으로 학습되지 않습니다. 기본값 'compound'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_treatment_columns",
+      "source": "Comma-separated columns that name one treatment, such as compound,concentration. Replicate wells of a treatment are combined into one profile for the nearest-neighbour arm. Default 'compound,concentration'.",
+      "source_sha256": "2e6621c6ef1567a40f26ea7ab7679b693b2bd3652a3b0a40f4015b1cfac2dad4",
+      "translation": "하나의 처리를 나타내는 쉼표로 구분된 열(예: compound,concentration 열)입니다. 최근접 이웃 방식에서는 한 처리의 반복 웰을 하나의 프로파일로 합칩니다. 기본값 'compound,concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_batch_column",
+      "source": "Column that names each well's batch, such as the imaging week. Set it to score NSCB (not same compound or batch) beside NSC; blank scores NSC only. Default blank.",
+      "source_sha256": "dd9e842897bf2e547667099b0e2906a4eb62ea7badd6ad08a997b2e2290aa513",
+      "translation": "각 웰의 배치를 나타내는 열(예: 이미징 주차)입니다. 설정하면 NSC 외에 NSCB(같은 화합물도 같은 배치도 아님)도 점수를 매기고, 비워 두면 NSC만 점수를 매깁니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_controls",
+      "source": "Comma-separated compound or MoA values left out of the scoring, such as the DMSO control wells. Default 'DMSO'.",
+      "source_sha256": "ec02b82195df162a96ce6d25dbc58b284e8f3eb4a9acc69fd801bb289521dab7",
+      "translation": "점수에서 제외할 쉼표로 구분된 화합물 또는 MoA 값(예: DMSO 대조군 웰)입니다. 기본값 'DMSO'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_arms",
+      "source": "Comma-separated arms to run: 1-NN (cosine nearest neighbour between treatment profiles), logistic (standardised logistic regression) and xgboost (XGBoost on the CPU). The supervised arms fit one model per held-out compound and are much slower. Default '1-NN,logistic,xgboost'.",
+      "source_sha256": "31b46f69d1933db7d9818d7a7c105e1ee56896a7140c06456f1adb08527eddfb",
+      "translation": "실행할 방식을 쉼표로 구분합니다. 1-NN(처리 프로파일 간 코사인 최근접 이웃), logistic(표준화한 로지스틱 회귀), xgboost(CPU에서 실행하는 XGBoost)입니다. 지도 학습 방식은 제외한 화합물마다 모델 하나를 적합하므로 훨씬 느립니다. 기본값 '1-NN,logistic,xgboost'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_replicates",
+      "source": "How replicate wells combine into a treatment profile for the 1-NN arm: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "84994b92532298a522cf6033211196636b5a170316497442f3538f55fe248374",
+      "translation": "1-NN 방식에서 반복 웰을 처리 프로파일 하나로 합치는 방법입니다. 'median'(Ljosa et al. 2013) 또는 'mean'. 기본값 'median'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_shuffles",
+      "source": "Shuffles of the compound-to-MoA mapping for the 1-NN arm's control row, which shows the accuracy chance alone gives. 0 writes no control. Default 100.",
+      "source_sha256": "76342b21c736c7ad361a195c4e3fbc58e14c0330555be81f7b3c243627cb14c6",
+      "translation": "1-NN 방식의 대조군 행을 위해 화합물과 MoA 사이의 매핑을 섞는 횟수로, 이 행은 우연만으로 얻는 정확도를 보여 줍니다. 0이면 대조군을 쓰지 않습니다. 기본값 100."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_supervised_shuffles",
+      "source": "Shuffles for each supervised arm's control row. Each shuffle refits every fold, so keep it small. 0 writes no control. Default 10.",
+      "source_sha256": "62aeebffccf0fa475c851944d37d505c19068ec6b2e5b17484db7d9f387851bf",
+      "translation": "각 지도 학습 방식의 대조군 행을 위한 셔플 횟수입니다. 셔플할 때마다 모든 폴드를 다시 적합하므로 작게 유지하세요. 0이면 대조군을 쓰지 않습니다. 기본값 10."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_seed",
+      "source": "Random seed for the shuffles and the XGBoost fits, so a rerun gives the same table. Default 0.",
+      "source_sha256": "601c7ae517477d4bbf2728ae1c2054b3c6ad81c002d82ec3cde624c78083676a",
+      "translation": "셔플과 XGBoost 적합에 쓰는 랜덤 시드로, 다시 실행해도 같은 테이블이 나오게 합니다. 기본값 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_workers",
+      "source": "Folds fitted at a time by the supervised arms, in threads of one process. Default 1.",
+      "source_sha256": "5293010d4497ac017b7c60cbe686ee258533235d8108a509c21b0dada576d15d",
+      "translation": "지도 학습 방식이 한 번에 적합하는 폴드 수로, 한 프로세스의 스레드에서 실행됩니다. 기본값 1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_dst",
+      "source": "Folder the accuracy table, the predictions, the glossary and a summary are written to. Blank writes to a moa_benchmark folder beside the profiles table. Default blank.",
+      "source_sha256": "30a3d73b376caada50b9b414109c33b2a7fda4a44fcdfb02739bbab1dc00730f",
+      "translation": "정확도 테이블, 예측, 용어집과 요약을 쓰는 폴더입니다. 비워 두면 프로파일 테이블 옆의 moa_benchmark 폴더에 씁니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_profiles",
+      "source": "Table of well profiles to score, one row per well with plate and well columns, such as the screen run's wells_mean.parquet. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "164beebead12d961b5ccac4e65bdeb13727cfb192a72d653030a7b3069251d7c",
+      "translation": "점수를 매길 웰 프로파일 테이블로, 웰마다 한 행이며 플레이트와 웰 열이 있습니다(예: 스크린 실행의 wells_mean.parquet 파일). CSV, TSV, Excel 또는 Parquet. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata",
+      "source": "Table naming each well's compound and concentration, such as BBBC021_v1_image.csv, joined on plate and well. Blank when the profiles carry compound and concentration. Default blank.",
+      "source_sha256": "0e6847a2eb642a8c40ff663045e1b39c6b3e8d3bdf4d369819465cd474906fce",
+      "translation": "각 웰의 화합물과 농도를 나타내는 테이블(예: BBBC021_v1_image.csv 파일)로, 플레이트와 웰을 기준으로 결합됩니다. 프로파일에 화합물과 농도가 있으면 비워 둡니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata_columns",
+      "source": "The metadata table's plate, well, compound and concentration columns, comma-separated, such as Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration. Default 'plate,well,compound,concentration'.",
+      "source_sha256": "9ce03e281f1a5d283971d83ab59977f527082eab418b51cde3fa9c83844611ab",
+      "translation": "메타데이터 테이블의 플레이트, 웰, 화합물, 농도 열을 쉼표로 구분한 것입니다(예: Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration 열). 기본값 'plate,well,compound,concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_labels",
+      "source": "Table with the mechanism of action (MoA) of each compound and concentration, such as BBBC021_v1_moa.csv. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "156f79aa242195fb1f27b4163c609c28c7f5f8060ac55a4cc043a3074c376c70",
+      "translation": "각 화합물과 농도의 작용 기전(MoA)을 담은 테이블(예: BBBC021_v1_moa.csv 파일)입니다. 프로파일에 MoA 열이 있으면 비워 둡니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_label",
+      "source": "Column holding each treatment's mechanism of action (MoA), in the profiles or in moa_eval_labels. Wells whose MoA is blank or equal to the control are not scored. A name that neither table has stops the run with an error. Default 'moa'.",
+      "source_sha256": "786d8d9d217f99d34fe219a50eb32fd2d395a814503048910c32a7b12929f3e7",
+      "translation": "각 처리의 작용 기전(MoA)을 담은 열로, 프로파일 또는 moa_eval_labels 테이블에 있습니다. MoA 값이 비어 있거나 대조군과 같은 웰은 점수를 매기지 않습니다. 두 테이블 어디에도 없는 이름이면 오류와 함께 실행이 중단됩니다. 기본값 'moa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_compound",
+      "source": "Column that names each well's compound, in the profiles and the labels table; the control wells are found by it too. Every method holds out one whole compound at a time, so one compound under two names lets its replicates leak into training and inflates accuracy. Default 'compound'.",
+      "source_sha256": "6b8f4317b7acfba26dd33546edcf29ffb67a514def3785ac745f4f0403069095",
+      "translation": "각 웰의 화합물 이름이 담긴 열로, 프로파일과 레이블 테이블에 있으며 대조군 웰도 이 열로 찾습니다. 모든 방법은 한 번에 화합물 하나를 통째로 제외하므로, 한 화합물이 두 이름으로 있으면 그 반복이 학습에 새어 들어가 정확도가 부풀려집니다. 기본값 'compound'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_concentration",
+      "source": "Column holding each well's concentration. With the compound it names one treatment, the unit that 1-NN scores and that the MoA labels are joined on, so units must match in both tables or wells drop out. Default 'concentration'.",
+      "source_sha256": "b5dd40a581b3e65fe7c69b09ad398b526d992bead64f52f2113cc40760178ef6",
+      "translation": "각 웰의 농도가 담긴 열입니다. 화합물과 함께 하나의 처리를 나타내며, 이것은 1-NN 방법이 점수를 매기는 단위이자 MoA 레이블을 결합하는 기준이므로 두 테이블의 단위가 일치해야 하고 그렇지 않으면 웰이 빠집니다. 기본값 'concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch",
+      "source": "Column with each well's batch, such as the imaging week, for NSCB. When the table has no such column the batch is moa_eval_batch_pattern's match in the plate name. Default 'week'.",
+      "source_sha256": "e15217bb55865886cdc6e52c062c1c5f1872adc7b670a95a8bc71b928e6b4268",
+      "translation": "NSCB에 쓰는 각 웰의 배치 열(예: 이미징 주차)입니다. 테이블에 이런 열이 없으면 플레이트 이름에서 moa_eval_batch_pattern 패턴과 일치하는 부분이 배치가 됩니다. 기본값 'week'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch_pattern",
+      "source": "Regular expression whose match in the plate name is the batch when there is no batch column; '^[^_]+' takes Week10 from Week10_40111. Default '^[^_]+'.",
+      "source_sha256": "78a76477ef0eaf949d0e5e524dfbacdfaf3c587641a7d1852f8dc2d9a806263c",
+      "translation": "배치 열이 없을 때 플레이트 이름에서 일치하는 부분을 배치로 삼는 정규 표현식입니다. '^[^_]+' 패턴은 Week10_40111 이름에서 Week10 부분을 가져옵니다. 기본값 '^[^_]+'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_control",
+      "source": "Compound of the control wells, such as DMSO: they set each plate's normalisation and are not scored. Default 'DMSO'.",
+      "source_sha256": "d05ca2ca25c7dfa1499f550e935cf484665d92bbfe6220adc1cb94434c8179d2",
+      "translation": "대조군 웰의 화합물(예: DMSO)입니다. 이 웰은 각 플레이트의 정규화를 정하며 점수를 매기지 않습니다. 기본값 'DMSO'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_protocols",
+      "source": "Protocols to score: NSC (not same compound) and NSCB (not same compound or batch). Default 'NSC,NSCB'.",
+      "source_sha256": "3e2df2e6512a87fcb68261998359ca0e9468c191da8099503975a6b8d104a544",
+      "translation": "점수를 매길 프로토콜입니다. NSC(같은 화합물이 아님)와 NSCB(같은 화합물도 같은 배치도 아님). 기본값 'NSC,NSCB'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_methods",
+      "source": "Comma-separated methods: 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn, and the CellProfiler Analyst 3.0.5 classifiers cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork. Default '1nn_cosine,logistic'.",
+      "source_sha256": "a4e09acd934e794f69599cdcee12956532eed8fec59702f8855d97fea170167f",
+      "translation": "쉼표로 구분된 방법입니다. 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn, 그리고 CellProfiler Analyst 3.0.5 분류기인 cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork. 기본값 '1nn_cosine,logistic'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_feature_qc",
+      "source": "'standard' drops a feature non-finite in more than 5% of wells or above 500 after normalisation (pycytominer's defaults); 'none' keeps every feature. Default 'standard'.",
+      "source_sha256": "d83c1807d283d30aec4fdd85a847ec43483bc97fb17f38f6eff4be61d13f309c",
+      "translation": "'standard' 값은 5% 넘는 웰에서 유한하지 않거나 정규화 후 500을 넘는 특징을 제거하고(pycytominer 기본값), 'none' 값은 모든 특징을 유지합니다. 기본값 'standard'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_normalise",
+      "source": "How each plate is scaled to its control wells: 'ljosa' ((x - p1) / (p99 - p1), the control cells' 1st and 99th percentiles, Ljosa et al. 2013), 'zscore', 'robust' (median and 1.4826 MAD) or 'none'. Default 'ljosa'.",
+      "source_sha256": "0d987eb4283f1a0f8dcf61241baf6700b0442dccdeec93dadb1a02d2bd6b5593",
+      "translation": "각 플레이트를 대조군 웰에 맞춰 스케일링하는 방법입니다. 'ljosa'((x - p1) / (p99 - p1), 대조군 세포의 1번째와 99번째 백분위수, Ljosa et al. 2013), 'zscore', 'robust'(중앙값과 1.4826 MAD) 또는 'none'. 기본값 'ljosa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_percentiles",
+      "source": "The control cells' percentiles per plate for 'ljosa', such as the screen run's dmso_percentiles.parquet (plate, q, one column per feature). Default blank.",
+      "source_sha256": "af9ce0d045c5f734cd890f810736bca514ee715e85b3fd40b037e6cf9725ecb0",
+      "translation": "'ljosa' 방식에 쓰는 플레이트별 대조군 세포 백분위수입니다(예: 스크린 실행의 dmso_percentiles.parquet 파일, plate, q, 특징마다 열 하나). 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_exclude",
+      "source": "Regular expression of columns that are not features. Blank takes the BBBC021 reanalysis's list (ImageNumber, Location_, Metadata and the like). Default blank.",
+      "source_sha256": "254a93f74f03c344627db1dc0eb0050c76dba6ae0c20a995898bb7d5122fdcae",
+      "translation": "특징이 아닌 열을 나타내는 정규 표현식입니다. 비워 두면 BBBC021 재분석의 목록(ImageNumber, Location_, Metadata 등)을 사용합니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_controls",
+      "source": "Control rows to write: majority (always guessing the commonest MoA) and shuffled (the MoA labels shuffled between compounds). Default 'majority,shuffled'.",
+      "source_sha256": "7f07b21d577af05aae4d3bb14a9203f5ffe10b5517b8369fdf364e031228d377",
+      "translation": "쓸 대조군 행입니다. majority(항상 가장 흔한 MoA를 추측)와 shuffled(화합물 사이에서 MoA 레이블을 섞음). 기본값 'majority,shuffled'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_shuffles",
+      "source": "Label shuffles in the shuffled control of each supervised method; each shuffle refits every fold. More shuffles give a steadier chance baseline but multiply the run time; 0 skips the shuffled control for those methods. Default 10.",
+      "source_sha256": "4408140267df4ba146c76ac8ddd07c2f85b7bcb70360ddef0be865582727710d",
+      "translation": "각 지도 학습 방법의 shuffled 대조군에서 레이블을 섞는 횟수이며, 셔플할 때마다 모든 폴드를 다시 적합합니다. 셔플이 많을수록 우연 기준선이 안정되지만 실행 시간이 몇 배로 늘어납니다. 0이면 해당 방법의 shuffled 대조군을 건너뜁니다. 기본값 10."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Label shuffles in the shuffled control of the 1-NN method. 1-NN fits nothing, so shuffles are cheap and more of them give a steadier chance baseline; 0 skips the 1-NN shuffled control. Default 100.",
+      "source_sha256": "41662a582263d8444766ca3ad93be7059777eb5736d949d275b5d7da36d33de3",
+      "translation": "1-NN 방법의 shuffled 대조군에서 레이블을 섞는 횟수입니다. 1-NN 방법은 아무것도 적합하지 않으므로 셔플 비용이 적고, 횟수가 많을수록 우연 기준선이 안정됩니다. 0이면 1-NN 방법의 shuffled 대조군을 건너뜁니다. 기본값 100."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_replicates",
+      "source": "How replicate wells combine into a treatment profile for 1-NN: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "aa182fad9e02541694fa2052e62c78511e77434dae6af84788a7c14871f59ac1",
+      "translation": "1-NN 방법에서 반복 웰을 처리 프로파일 하나로 합치는 방법입니다. 'median'(Ljosa et al. 2013) 또는 'mean'. 기본값 'median'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_seeds",
+      "source": "Comma-separated random seeds; every method and control is scored once per seed, one row each in summary.csv. More seeds show how much the scores vary but take longer; blank runs seed 0 only. Default '0,1,2,3,4'.",
+      "source_sha256": "4df555d7a98cb36e9db7beca2e65f284a4f551c0bc1b88aaa21fbec4e164706f",
+      "translation": "쉼표로 구분된 랜덤 시드입니다. 모든 방법과 대조군은 시드마다 한 번씩 점수를 매기며, summary.csv 파일에 각각 한 행씩 기록됩니다. 시드가 많을수록 점수가 얼마나 달라지는지 알 수 있지만 시간이 더 걸립니다. 비워 두면 시드 0만 실행합니다. 기본값 '0,1,2,3,4'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_per_moa",
+      "source": "Writes per_moa.csv: the accuracy of each mechanism of action per method, protocol and seed, which shows which MoAs drive the overall score. Off skips that file; summary.csv and the confusion tables are still written. Default True.",
+      "source_sha256": "fec4af227239eccce6fc4cc28a32fcec3cc169c02beb7b153bc8308eac6e0d16",
+      "translation": "per_moa.csv 파일을 씁니다. 방법, 프로토콜, 시드별 각 작용 기전의 정확도로, 어떤 MoA 값이 전체 점수를 좌우하는지 보여 줍니다. 끄면 이 파일을 건너뛰지만 summary.csv 파일과 혼동 테이블은 그대로 씁니다. 기본값 True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_workers",
+      "source": "Folds the supervised methods fit at the same time, in threads, also inside their shuffled controls. Higher finishes sooner on a machine with spare cores but uses more memory; 1 fits one fold at a time. 1-NN ignores it. Default 1.",
+      "source_sha256": "ceb2dbee3c94a69e32c8b2c43e315a4672d0e263584cd8771830cf4de9495f74",
+      "translation": "지도 학습 방법이 동시에 적합하는 폴드 수로, 스레드에서 실행되며 shuffled 대조군 안에서도 적용됩니다. 값이 클수록 여유 코어가 있는 컴퓨터에서 더 빨리 끝나지만 메모리를 더 씁니다. 1이면 한 번에 폴드 하나를 적합합니다. 1-NN 방법은 이 설정을 무시합니다. 기본값 1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_dst",
+      "source": "Folder the results are written to. Blank writes to results/profiling_evaluation beside the profiles table. Default blank.",
+      "source_sha256": "483796392d739014638e6d604d55e9f831e186edc7cb51c638423117540279e9",
+      "translation": "결과를 쓰는 폴더입니다. 비워 두면 프로파일 테이블 옆의 results/profiling_evaluation 폴더에 씁니다. 기본값은 비어 있음."
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_profiles",
+      "source": "Moa profiles",
+      "source_sha256": "2e302451c154fc1966b1afd9df0d6e92dcaabcd592495c5df7dbed1b58d8de45",
+      "translation": "MoA 프로파일"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_labels",
+      "source": "Moa labels",
+      "source_sha256": "faba178ffe287ee8fc645e10fa5f27695af574ac683e0865ec86bd1729af0cef",
+      "translation": "MoA 레이블"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_label_column",
+      "source": "Moa label column",
+      "source_sha256": "40f8a6a85545a502c845cd6882236f40ef23286a051700dc18df551515546a25",
+      "translation": "MoA 레이블 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_compound_column",
+      "source": "Moa compound column",
+      "source_sha256": "7859e3261be5318f8c4cec7f5eba6c41c8a6246a018e5e3fd1541d070f02f757",
+      "translation": "MoA 화합물 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_treatment_columns",
+      "source": "Moa treatment columns",
+      "source_sha256": "9c5f976bbfe2448760efd4eadb78742590bc3df0851980c62279ca38489b70fd",
+      "translation": "MoA 처리 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_batch_column",
+      "source": "Moa batch column",
+      "source_sha256": "7e30d772f188fa27b7fa982cf64b687f3a00af4cc99d1b031d60ee9b86394690",
+      "translation": "MoA 배치 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_controls",
+      "source": "Moa controls",
+      "source_sha256": "4503ed6e79b54d8842ef780517f23baac3a1495535a04e03a63dc42bafb7fd58",
+      "translation": "MoA 대조군"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_arms",
+      "source": "Moa arms",
+      "source_sha256": "1f14170463d53a94a7bfc04eb41fe6c7ce6184f53f967b2f140c504c04b910f8",
+      "translation": "MoA 방식"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_replicates",
+      "source": "Moa replicates",
+      "source_sha256": "1d7ce12f87cb8ff79a77488a71fbeb5e70e1a5343bc767f20bc1d17b61820bf0",
+      "translation": "MoA 반복"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_shuffles",
+      "source": "Moa shuffles",
+      "source_sha256": "a3c806c3f15864013bb5cb8f5269159fc0e874fe08009917190382a65a399a21",
+      "translation": "MoA 셔플 횟수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_supervised_shuffles",
+      "source": "Moa supervised shuffles",
+      "source_sha256": "af1907f9b51acbf6a6c9549e005f8901e5b67f1b6ab1444599207daf76d398dc",
+      "translation": "MoA 지도 학습 셔플 횟수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_seed",
+      "source": "Moa seed",
+      "source_sha256": "fbdd5302dc72c39e678ed9ff63bdc001359768832fc4f6d14035dbfa89df99a6",
+      "translation": "MoA 시드"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_workers",
+      "source": "Moa workers",
+      "source_sha256": "9ac2302c6ca9ddd1ad40bd993dde3a9d4b018bc9ea3337139a4bfdc67b9b75a8",
+      "translation": "MoA 워커 수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_dst",
+      "source": "Moa dst",
+      "source_sha256": "1aa222ff6c9be0225a4b28e92ab6abdcd9ef4099a9a0af50842c30dc6eb30c99",
+      "translation": "MoA 출력 폴더"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_profiles",
+      "source": "Moa eval profiles",
+      "source_sha256": "d6b06b3f5effd9787616c4ca8d8e79516ea89f4065233f1110cb9afb9df67f21",
+      "translation": "MoA 평가 프로파일"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata",
+      "source": "Moa eval metadata",
+      "source_sha256": "a2365dd89597c961944fa779942d51ce2a5ad6601fbb9bc480d22af7c7fc2e1b",
+      "translation": "MoA 평가 메타데이터"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata_columns",
+      "source": "Moa eval metadata columns",
+      "source_sha256": "b8b4b130a44e505ff1506b59a85976cfcfdce78ccc2ace662fd79ce559abf2c8",
+      "translation": "MoA 평가 메타데이터 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_labels",
+      "source": "Moa eval labels",
+      "source_sha256": "d4dc17e0e15a61fd8a8931dc5cbf97280192d272626db8e2ffadd0c0d1e25913",
+      "translation": "MoA 평가 레이블"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_label",
+      "source": "Moa eval label",
+      "source_sha256": "31d0f99a76cb5195af55c8194ee08c8fee15ad57c3862e20dc70283a3bcd6739",
+      "translation": "MoA 평가 레이블 열"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_compound",
+      "source": "Moa eval compound",
+      "source_sha256": "18f4fc3f3a89bc1700c2069ec8f9eef94212bc858a06b7edf777adb205183607",
+      "translation": "MoA 평가 화합물"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_concentration",
+      "source": "Moa eval concentration",
+      "source_sha256": "67bcc1c25223d210e5df86426a3265f78283987aa0b955abd549f14f4a558c3f",
+      "translation": "MoA 평가 농도"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch",
+      "source": "Moa eval batch",
+      "source_sha256": "45a9264c951760eb9bf9c388b5045fb2aa9a9a9a850adbda067d7e13b68048aa",
+      "translation": "MoA 평가 배치"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch_pattern",
+      "source": "Moa eval batch pattern",
+      "source_sha256": "f9199c656430a2b89f6d35b616b6b13776f869611ae14f01aba575478ad70c17",
+      "translation": "MoA 평가 배치 패턴"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_control",
+      "source": "Moa eval control",
+      "source_sha256": "4bda9e56d1338c5f5a9c19ed089ea4145f9880ad6ba931fb7828a4c8e3748baf",
+      "translation": "MoA 평가 대조군 웰"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_protocols",
+      "source": "Moa eval protocols",
+      "source_sha256": "f6764348619c03a76c92a5fbcbeb6411bf8473fdc4923e6ddb559f3faced5db3",
+      "translation": "MoA 평가 프로토콜"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_methods",
+      "source": "Moa eval methods",
+      "source_sha256": "5025e5ae6eed58368db1104b91ffbeb2161fecc21e98b20e0daa6c9119cfe927",
+      "translation": "MoA 평가 방법"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_feature_qc",
+      "source": "Moa eval feature QC",
+      "source_sha256": "66d00cd09252a3af8dea5d3c2e8ca055cb3937654c24f2a07e5abdf8464a3574",
+      "translation": "MoA 평가 특징 QC"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_normalise",
+      "source": "Moa eval normalise",
+      "source_sha256": "0ad2b8e3e229bf779683fc11d2daebbbe66c8f260365513e9bfe4c181de3d37c",
+      "translation": "MoA 평가 정규화"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_percentiles",
+      "source": "Moa eval percentiles",
+      "source_sha256": "eacfc7cf4c38206b261e9a17826d0ddf4cfbdd3557c651e5267887cef8f51d1e",
+      "translation": "MoA 평가 백분위수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_exclude",
+      "source": "Moa eval exclude",
+      "source_sha256": "952ed99a17b40f01115b42def1a4b0e1a199eeb01df6e8f40f0f512d4e80ac02",
+      "translation": "MoA 평가 제외"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_controls",
+      "source": "Moa eval controls",
+      "source_sha256": "2052f4acbb227487d6f90e9817ddc1e0217ef02fecac716b6a59362b36fabee4",
+      "translation": "MoA 평가 대조군"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_shuffles",
+      "source": "Moa eval shuffles",
+      "source_sha256": "1ae8ea2053ab505fccb59fb5ce920aa0dd7697241f28f460f79c9edcdc9c6a4a",
+      "translation": "MoA 평가 셔플 횟수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Moa eval knn shuffles",
+      "source_sha256": "6db763af07461c109d1c03a1af05df0089434012c5378a6861d1457640ef43eb",
+      "translation": "MoA 평가 1-NN 셔플 횟수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_replicates",
+      "source": "Moa eval replicates",
+      "source_sha256": "26c616bb50d2fd732439c28d574ad447476d3125504941f7f8a361570c02ed46",
+      "translation": "MoA 평가 반복"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_seeds",
+      "source": "Moa eval seeds",
+      "source_sha256": "2ceb4661d91b62f862f2a2ac8d238e8aae0756fd8cef780053de3b4d68259329",
+      "translation": "MoA 평가 시드"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_per_moa",
+      "source": "Moa eval per moa",
+      "source_sha256": "63243a905239a3bfd56a97c4fcbfe390e572c4582461d3fe5eac3ec6a10f5384",
+      "translation": "MoA 평가 MoA별"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_workers",
+      "source": "Moa eval workers",
+      "source_sha256": "494f8eccfed7a4e9d4a2a42760c3795f6b321352be6dde6e025028d4341f6794",
+      "translation": "MoA 평가 워커 수"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_dst",
+      "source": "Moa eval dst",
+      "source_sha256": "6c2107d392928118c2099ad98e759c965646fb2e02124cadd47fd18f1a7efc41",
+      "translation": "MoA 평가 출력 폴더"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_benchmark",
+      "source": "Moa benchmark",
+      "source_sha256": "dc5289cb4693a8c1bf50541fdd9d22eef2af9863545c133ffb6593a4cffa8499",
+      "translation": "MoA 벤치마크"
+    },
+    {
+      "table": "setting_labels",
+      "key": "profiling_evaluation",
+      "source": "Profiling evaluation",
+      "source_sha256": "8efd9b0edbc11fce076148d7a6cf6c329d5f1ad01dac0ae2f4bc533303c661de",
+      "translation": "프로파일 평가"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_benchmark",
+      "source": "Score profiles by mechanism of action, leaving one compound out: cosine nearest neighbour, logistic regression and XGBoost under NSC and NSCB, with shuffled-label and majority-class controls.",
+      "source_sha256": "cd7163fa116291b86b552fac5153ee400aede87b6f6def8cd6286c505db91e70",
+      "translation": "작용 기전(MoA)에 따라 프로파일을 채점하며 한 번에 화합물 하나씩 제외합니다. NSC와 NSCB 아래에서 코사인 최근접 이웃, 로지스틱 회귀, XGBoost를 쓰고, 레이블을 섞은 대조군과 다수 클래스 대조군을 함께 둡니다."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "profiling_evaluation",
+      "source": "Evaluate well profiles by mechanism of action under NSC and NSCB over several seeds: 1-NN, logistic regression, LDA, k-nearest neighbours and the CellProfiler Analyst classifiers, with majority and shuffled controls.",
+      "source_sha256": "4f7db2284706d6986ce2795eb8ba94b23a1d1b225edc0ff1f86abb5ede2c6ef6",
+      "translation": "웰 프로파일을 작용 기전(MoA)에 따라 NSC와 NSCB 아래에서 여러 시드에 걸쳐 평가합니다. 1-NN, 로지스틱 회귀, LDA, k 최근접 이웃, CellProfiler Analyst의 분류기를 쓰며, 다수 클래스 대조군과 섞은 대조군을 함께 둡니다."
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark",
+      "source": "MoA benchmark",
+      "source_sha256": "dc48e5beb3e7420c2e1337d7f6df2ae8bf739269ff9d1e9a60fed0c8beba4aa5",
+      "translation": "MoA 벤치마크"
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark arms",
+      "source": "MoA benchmark arms",
+      "source_sha256": "c29945d6719ec5af7e829c8c46d12210689efdf7f9c67be845aab797f7e3600e",
+      "translation": "MoA 방식"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation",
+      "source": "MoA evaluation",
+      "source_sha256": "46174eab8392b089960901cd42e455623a64cabe714b5b29234d31d6790ae208",
+      "translation": "MoA 평가"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation methods",
+      "source": "MoA evaluation methods",
+      "source_sha256": "0a65b33fc070a27bf6ea6fe5f9f1df0f3e5ee350c9a8b08a766044d7e69a81e5",
+      "translation": "MoA 평가 방법"
+    }
+  ]
+}

@@ -1,0 +1,693 @@
+{
+  "schema": 1,
+  "language": "sv",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-12 of the curated category tooltips of Vacuoles α and Cells From Nuclei α, Titration Readout α, Translocation α (Measure and Host-Pathogen), Figure Scoring α and Plaque Size Readouts α (Plaque), Held-out Evaluation α (Classify) and OPS Gene Map Crops (UMAP), and of the 38 setting tooltips of the MoA benchmark and profiling evaluation (moa_*) with their labels, descriptions and category titles against the exact English source. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "categories",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "Grupperar de uppmätta parasiterna i vakuoler och skriver tabellerna vacuole och vacuole_host till measurements.db, och lägger till antal vakuoler och parasiter i celltabellen. Parasiter som ligger närmare varandra än avståndet bildar en vakuol, varje parasit kopplas till den vakuol den överlappar mest, och du kan välja en kanal för vakuolens signalmedelvärde. Minsta storlek för vakuoler och värdceller tar bort skräp. Slå på när du räknar parasiter per vakuol, annars lämnas den avstängd."
+    },
+    {
+      "table": "categories",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "Lägger till storleksmått per brunn i en plackkörning: genomsnittlig, median och största plackarea, den största i förhållande till genomsnittet, brunnens utsträckning och plackarean i förhållande till den, samt varje plack i förhållande till den största i sin brunn. Areor i millimeter visas när bilden har en skala. Slå på för att jämföra plackstorlekar mellan brunnar och plattor; avstängd lämnas tabellerna per bild och per plack oförändrade."
+    },
+    {
+      "table": "categories",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "Testar klassificeraren på objekt den aldrig har sett och skriver poängen till results/ml_eval. Välj hur objekt hålls undan (en brunn, en platta eller en slumpmässig delning), vilka etiketter och egenskapskolumner som bedöms och vilka kontroller som visas bredvid modellen: att alltid gissa den vanligaste klassen och etiketter som blandats inom varje träningsveck. Använd den för att se om en modell generaliserar till en ny brunn eller platta; lämna den avstängd för en snabb anpassning."
+    },
+    {
+      "table": "categories",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "Skapar cellmasker när det saknas cellfärgning genom att låta varje cellkärna växa utåt, utan överlapp, tills den möter sina grannar eller når det angivna avståndet. Kärnor under minimistorleken tas bort först, så att parasitkärnor i DNA-kanalen inte blir celler. Använd den när det bara finns en kärnkanal; med en riktig cellfärgning segmenteras cellerna direkt."
+    },
+    {
+      "table": "categories",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "Räknar parasiter per vakuol från befintliga masker och jämför villkor över en dosserie. Den tar plattkartan, en valfri tabell med publicerade värden och storleksgränserna för vakuoler och värdceller. En klassificerare tränad på din egen tabell kan bestämma parasiter per vakuol, storlekar kan läggas på den tabellens skala och ett signaltröskelvärde tar bort oinfekterade vakuoler före räkningen. Ange plattkartan för att köra den; vanliga värd-patogen-körningar behöver den inte."
+    },
+    {
+      "table": "categories",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "Mäter hur mycket av en utsöndrad effektor som når värdcellens kärna. För varje värdcell tas effektorsignalen i kärnan, pixlar nära parasiter utelämnas, fältets bakgrund dras av och resultatet ritas mot vakuoler per cell, relativt celler utan vakuoler. Välj effektor- och kontrollkanal, bakgrundsmetod, det största antalet vakuoler som grupperas och en valfri referenskurva för att kontrollera överensstämmelsen. Slå bara på den för experiment med kärntranslokation."
+    },
+    {
+      "table": "categories",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "Visar exempelceller för varje kluster i OPS-genkartan. För varje Leiden-kluster eller grupp på översta nivån väljs de celler som ligger närmast medoidgenens profil, och en panel med beskärningar skrivs i de kanaler och färger du väljer. Alla beskärningar delar ett visningsintervall per kanal, taget från percentiler av de samlade pixlarna, så att ljusstyrkan går att jämföra. Celler under minimistorleken hoppas över. Ställ in beskärningens storlek och utmatningsmappen efter screenen."
+    },
+    {
+      "table": "ui",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "Grupperar de uppmätta parasiterna i vakuoler och skriver tabellerna vacuole och vacuole_host till measurements.db, och lägger till antal vakuoler och parasiter i celltabellen. Parasiter som ligger närmare varandra än avståndet bildar en vakuol, varje parasit kopplas till den vakuol den överlappar mest, och du kan välja en kanal för vakuolens signalmedelvärde. Minsta storlek för vakuoler och värdceller tar bort skräp. Slå på när du räknar parasiter per vakuol, annars lämnas den avstängd."
+    },
+    {
+      "table": "ui",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "Lägger till storleksmått per brunn i en plackkörning: genomsnittlig, median och största plackarea, den största i förhållande till genomsnittet, brunnens utsträckning och plackarean i förhållande till den, samt varje plack i förhållande till den största i sin brunn. Areor i millimeter visas när bilden har en skala. Slå på för att jämföra plackstorlekar mellan brunnar och plattor; avstängd lämnas tabellerna per bild och per plack oförändrade."
+    },
+    {
+      "table": "ui",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "Testar klassificeraren på objekt den aldrig har sett och skriver poängen till results/ml_eval. Välj hur objekt hålls undan (en brunn, en platta eller en slumpmässig delning), vilka etiketter och egenskapskolumner som bedöms och vilka kontroller som visas bredvid modellen: att alltid gissa den vanligaste klassen och etiketter som blandats inom varje träningsveck. Använd den för att se om en modell generaliserar till en ny brunn eller platta; lämna den avstängd för en snabb anpassning."
+    },
+    {
+      "table": "ui",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "Skapar cellmasker när det saknas cellfärgning genom att låta varje cellkärna växa utåt, utan överlapp, tills den möter sina grannar eller når det angivna avståndet. Kärnor under minimistorleken tas bort först, så att parasitkärnor i DNA-kanalen inte blir celler. Använd den när det bara finns en kärnkanal; med en riktig cellfärgning segmenteras cellerna direkt."
+    },
+    {
+      "table": "ui",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "Räknar parasiter per vakuol från befintliga masker och jämför villkor över en dosserie. Den tar plattkartan, en valfri tabell med publicerade värden och storleksgränserna för vakuoler och värdceller. En klassificerare tränad på din egen tabell kan bestämma parasiter per vakuol, storlekar kan läggas på den tabellens skala och ett signaltröskelvärde tar bort oinfekterade vakuoler före räkningen. Ange plattkartan för att köra den; vanliga värd-patogen-körningar behöver den inte."
+    },
+    {
+      "table": "ui",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "Mäter hur mycket av en utsöndrad effektor som når värdcellens kärna. För varje värdcell tas effektorsignalen i kärnan, pixlar nära parasiter utelämnas, fältets bakgrund dras av och resultatet ritas mot vakuoler per cell, relativt celler utan vakuoler. Välj effektor- och kontrollkanal, bakgrundsmetod, det största antalet vakuoler som grupperas och en valfri referenskurva för att kontrollera överensstämmelsen. Slå bara på den för experiment med kärntranslokation."
+    },
+    {
+      "table": "ui",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "Visar exempelceller för varje kluster i OPS-genkartan. För varje Leiden-kluster eller grupp på översta nivån väljs de celler som ligger närmast medoidgenens profil, och en panel med beskärningar skrivs i de kanaler och färger du väljer. Alla beskärningar delar ett visningsintervall per kanal, taget från percentiler av de samlade pixlarna, så att ljusstyrkan går att jämföra. Celler under minimistorleken hoppas över. Ställ in beskärningens storlek och utmatningsmappen efter screenen."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_profiles",
+      "source": "Table of profiles to score: per-well profiles normalised to the plate's control wells, such as a profiling run's well_profiles_feature_select.csv, or one profile per treatment. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "6bf9b2509364f1894e833e048bcbec9842874f6ab478ff01473e34d139650848",
+      "translation": "Tabell med profiler att bedöma: profiler per brunn normaliserade mot plattans kontrollbrunnar, till exempel en profileringskörnings well_profiles_feature_select.csv, eller en profil per behandling. CSV, TSV, Excel eller Parquet. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_labels",
+      "source": "Table with the MoA of each compound or treatment, such as BBBC021_v1_moa.csv, joined to the profiles on the columns they share. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "8e5b47c105cf5c7498450e3c06b213b03ba88cb40d2b4a06dac54937aaf7670d",
+      "translation": "Tabell med verkningsmekanismen (MoA) för varje substans eller behandling, till exempel BBBC021_v1_moa.csv, kopplad till profilerna via de kolumner de har gemensamt. Tom när profilerna har en MoA-kolumn. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_label_column",
+      "source": "Column with the mechanism of action (MoA). Rows without one are not scored. Default 'moa'.",
+      "source_sha256": "8569bfdf535530645d2827ef61fc850dedf86303ff51a83a72cc671b5222d138",
+      "translation": "Kolumn med verkningsmekanismen (MoA). Rader utan en sådan bedöms inte. Standard 'moa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_compound_column",
+      "source": "Column that names the compound. Every arm leaves a whole compound out, so a treatment is never matched to, or trained on, the same compound at another concentration. Default 'compound'.",
+      "source_sha256": "c29facc8ec8acbe5fc249260227ec5a6cf04f45e6155b4a3687075f813bf5a72",
+      "translation": "Kolumn som anger substansen. Varje arm utesluter en hel substans, så att en behandling aldrig matchas mot, eller tränas på, samma substans i en annan koncentration. Standard 'compound'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_treatment_columns",
+      "source": "Comma-separated columns that name one treatment, such as compound,concentration. Replicate wells of a treatment are combined into one profile for the nearest-neighbour arm. Default 'compound,concentration'.",
+      "source_sha256": "2e6621c6ef1567a40f26ea7ab7679b693b2bd3652a3b0a40f4015b1cfac2dad4",
+      "translation": "Kommaseparerade kolumner som tillsammans anger en behandling, till exempel compound,concentration. Replikatbrunnar för en behandling slås samman till en profil för närmaste-granne-armen. Standard 'compound,concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_batch_column",
+      "source": "Column that names each well's batch, such as the imaging week. Set it to score NSCB (not same compound or batch) beside NSC; blank scores NSC only. Default blank.",
+      "source_sha256": "dd9e842897bf2e547667099b0e2906a4eb62ea7badd6ad08a997b2e2290aa513",
+      "translation": "Kolumn som anger varje brunns batch, till exempel avbildningsveckan. Ange den för att bedöma NSCB (inte samma substans eller batch) bredvid NSC; tom bedömer endast NSC. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_controls",
+      "source": "Comma-separated compound or MoA values left out of the scoring, such as the DMSO control wells. Default 'DMSO'.",
+      "source_sha256": "ec02b82195df162a96ce6d25dbc58b284e8f3eb4a9acc69fd801bb289521dab7",
+      "translation": "Kommaseparerade substans- eller MoA-värden som utesluts från bedömningen, till exempel DMSO-kontrollbrunnarna. Standard 'DMSO'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_arms",
+      "source": "Comma-separated arms to run: 1-NN (cosine nearest neighbour between treatment profiles), logistic (standardised logistic regression) and xgboost (XGBoost on the CPU). The supervised arms fit one model per held-out compound and are much slower. Default '1-NN,logistic,xgboost'.",
+      "source_sha256": "31b46f69d1933db7d9818d7a7c105e1ee56896a7140c06456f1adb08527eddfb",
+      "translation": "Kommaseparerade armar att köra: 1-NN (närmaste granne med cosinusavstånd mellan behandlingsprofiler), logistic (standardiserad logistisk regression) och xgboost (XGBoost på CPU:n). De övervakade armarna anpassar en modell per utelämnad substans och är mycket långsammare. Standard '1-NN,logistic,xgboost'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_replicates",
+      "source": "How replicate wells combine into a treatment profile for the 1-NN arm: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "84994b92532298a522cf6033211196636b5a170316497442f3538f55fe248374",
+      "translation": "Hur replikatbrunnar slås samman till en behandlingsprofil för 1-NN-armen: 'median' (Ljosa et al. 2013) eller 'mean'. Standard 'median'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_shuffles",
+      "source": "Shuffles of the compound-to-MoA mapping for the 1-NN arm's control row, which shows the accuracy chance alone gives. 0 writes no control. Default 100.",
+      "source_sha256": "76342b21c736c7ad361a195c4e3fbc58e14c0330555be81f7b3c243627cb14c6",
+      "translation": "Antal blandningar av kopplingen mellan substans och MoA för 1-NN-armens kontrollrad, som visar den träffsäkerhet som enbart slumpen ger. 0 skriver ingen kontroll. Standard 100."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_supervised_shuffles",
+      "source": "Shuffles for each supervised arm's control row. Each shuffle refits every fold, so keep it small. 0 writes no control. Default 10.",
+      "source_sha256": "62aeebffccf0fa475c851944d37d505c19068ec6b2e5b17484db7d9f387851bf",
+      "translation": "Antal blandningar för varje övervakad arms kontrollrad. Varje blandning anpassar om varje fold, så håll värdet litet. 0 skriver ingen kontroll. Standard 10."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_seed",
+      "source": "Random seed for the shuffles and the XGBoost fits, so a rerun gives the same table. Default 0.",
+      "source_sha256": "601c7ae517477d4bbf2728ae1c2054b3c6ad81c002d82ec3cde624c78083676a",
+      "translation": "Slumpfrö för blandningarna och XGBoost-anpassningarna, så att en ny körning ger samma tabell. Standard 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_workers",
+      "source": "Folds fitted at a time by the supervised arms, in threads of one process. Default 1.",
+      "source_sha256": "5293010d4497ac017b7c60cbe686ee258533235d8108a509c21b0dada576d15d",
+      "translation": "Antal folds som de övervakade armarna anpassar samtidigt, i trådar inom en process. Standard 1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_dst",
+      "source": "Folder the accuracy table, the predictions, the glossary and a summary are written to. Blank writes to a moa_benchmark folder beside the profiles table. Default blank.",
+      "source_sha256": "30a3d73b376caada50b9b414109c33b2a7fda4a44fcdfb02739bbab1dc00730f",
+      "translation": "Mapp som träffsäkerhetstabellen, förutsägelserna, ordlistan och en sammanfattning skrivs till. Tom skriver till en moa_benchmark-mapp bredvid profiltabellen. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_profiles",
+      "source": "Table of well profiles to score, one row per well with plate and well columns, such as the screen run's wells_mean.parquet. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "164beebead12d961b5ccac4e65bdeb13727cfb192a72d653030a7b3069251d7c",
+      "translation": "Tabell med brunnsprofiler att bedöma, en rad per brunn med kolumner för platta och brunn, till exempel screeningkörningens wells_mean.parquet. CSV, TSV, Excel eller Parquet. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata",
+      "source": "Table naming each well's compound and concentration, such as BBBC021_v1_image.csv, joined on plate and well. Blank when the profiles carry compound and concentration. Default blank.",
+      "source_sha256": "0e6847a2eb642a8c40ff663045e1b39c6b3e8d3bdf4d369819465cd474906fce",
+      "translation": "Tabell som anger varje brunns substans och koncentration, till exempel BBBC021_v1_image.csv, kopplad via platta och brunn. Tom när profilerna har substans och koncentration. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata_columns",
+      "source": "The metadata table's plate, well, compound and concentration columns, comma-separated, such as Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration. Default 'plate,well,compound,concentration'.",
+      "source_sha256": "9ce03e281f1a5d283971d83ab59977f527082eab418b51cde3fa9c83844611ab",
+      "translation": "Metadatatabellens kolumner för platta, brunn, substans och koncentration, kommaseparerade, till exempel Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration. Standard 'plate,well,compound,concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_labels",
+      "source": "Table with the mechanism of action (MoA) of each compound and concentration, such as BBBC021_v1_moa.csv. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "156f79aa242195fb1f27b4163c609c28c7f5f8060ac55a4cc043a3074c376c70",
+      "translation": "Tabell med verkningsmekanismen (MoA) för varje substans och koncentration, till exempel BBBC021_v1_moa.csv. Tom när profilerna har en MoA-kolumn. Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_label",
+      "source": "Column holding each treatment's mechanism of action (MoA), in the profiles or in moa_eval_labels. Wells whose MoA is blank or equal to the control are not scored. A name that neither table has stops the run with an error. Default 'moa'.",
+      "source_sha256": "786d8d9d217f99d34fe219a50eb32fd2d395a814503048910c32a7b12929f3e7",
+      "translation": "Kolumn med varje behandlings verkningsmekanism (MoA), i profilerna eller i moa_eval_labels. Brunnar vars MoA är tom eller lika med kontrollen bedöms inte. Ett namn som ingen av tabellerna har stoppar körningen med ett fel. Standard 'moa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_compound",
+      "source": "Column that names each well's compound, in the profiles and the labels table; the control wells are found by it too. Every method holds out one whole compound at a time, so one compound under two names lets its replicates leak into training and inflates accuracy. Default 'compound'.",
+      "source_sha256": "6b8f4317b7acfba26dd33546edcf29ffb67a514def3785ac745f4f0403069095",
+      "translation": "Kolumn som anger varje brunns substans, i profilerna och i etikettabellen; kontrollbrunnarna hittas också med den. Varje metod håller undan en hel substans åt gången, så en substans under två namn låter dess replikat läcka in i träningen och blåser upp träffsäkerheten. Standard 'compound'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_concentration",
+      "source": "Column holding each well's concentration. With the compound it names one treatment, the unit that 1-NN scores and that the MoA labels are joined on, so units must match in both tables or wells drop out. Default 'concentration'.",
+      "source_sha256": "b5dd40a581b3e65fe7c69b09ad398b526d992bead64f52f2113cc40760178ef6",
+      "translation": "Kolumn med varje brunns koncentration. Tillsammans med substansen anger den en behandling, den enhet som 1-NN bedömer och som MoA-etiketterna kopplas på, så enheterna måste stämma överens i båda tabellerna, annars faller brunnar bort. Standard 'concentration'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch",
+      "source": "Column with each well's batch, such as the imaging week, for NSCB. When the table has no such column the batch is moa_eval_batch_pattern's match in the plate name. Default 'week'.",
+      "source_sha256": "e15217bb55865886cdc6e52c062c1c5f1872adc7b670a95a8bc71b928e6b4268",
+      "translation": "Kolumn med varje brunns batch, till exempel avbildningsveckan, för NSCB. När tabellen saknar en sådan kolumn är batchen träffen för moa_eval_batch_pattern i plattans namn. Standard 'week'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch_pattern",
+      "source": "Regular expression whose match in the plate name is the batch when there is no batch column; '^[^_]+' takes Week10 from Week10_40111. Default '^[^_]+'.",
+      "source_sha256": "78a76477ef0eaf949d0e5e524dfbacdfaf3c587641a7d1852f8dc2d9a806263c",
+      "translation": "Reguljärt uttryck vars träff i plattans namn är batchen när det inte finns någon batchkolumn; '^[^_]+' tar Week10 från Week10_40111. Standard '^[^_]+'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_control",
+      "source": "Compound of the control wells, such as DMSO: they set each plate's normalisation and are not scored. Default 'DMSO'.",
+      "source_sha256": "d05ca2ca25c7dfa1499f550e935cf484665d92bbfe6220adc1cb94434c8179d2",
+      "translation": "Substansen i kontrollbrunnarna, till exempel DMSO: de bestämmer varje plattas normalisering och bedöms inte. Standard 'DMSO'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_protocols",
+      "source": "Protocols to score: NSC (not same compound) and NSCB (not same compound or batch). Default 'NSC,NSCB'.",
+      "source_sha256": "3e2df2e6512a87fcb68261998359ca0e9468c191da8099503975a6b8d104a544",
+      "translation": "Protokoll att bedöma: NSC (inte samma substans) och NSCB (inte samma substans eller batch). Standard 'NSC,NSCB'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_methods",
+      "source": "Comma-separated methods: 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn, and the CellProfiler Analyst 3.0.5 classifiers cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork. Default '1nn_cosine,logistic'.",
+      "source_sha256": "a4e09acd934e794f69599cdcee12956532eed8fec59702f8855d97fea170167f",
+      "translation": "Kommaseparerade metoder: 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn och klassificerarna i CellProfiler Analyst 3.0.5 cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork. Standard '1nn_cosine,logistic'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_feature_qc",
+      "source": "'standard' drops a feature non-finite in more than 5% of wells or above 500 after normalisation (pycytominer's defaults); 'none' keeps every feature. Default 'standard'.",
+      "source_sha256": "d83c1807d283d30aec4fdd85a847ec43483bc97fb17f38f6eff4be61d13f309c",
+      "translation": "'standard' tar bort en egenskap som är icke-ändlig i mer än 5% av brunnarna eller över 500 efter normalisering (pycytominers standardvärden); 'none' behåller varje egenskap. Standard 'standard'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_normalise",
+      "source": "How each plate is scaled to its control wells: 'ljosa' ((x - p1) / (p99 - p1), the control cells' 1st and 99th percentiles, Ljosa et al. 2013), 'zscore', 'robust' (median and 1.4826 MAD) or 'none'. Default 'ljosa'.",
+      "source_sha256": "0d987eb4283f1a0f8dcf61241baf6700b0442dccdeec93dadb1a02d2bd6b5593",
+      "translation": "Hur varje platta skalas mot sina kontrollbrunnar: 'ljosa' ((x - p1) / (p99 - p1), kontrollcellernas 1:a och 99:e percentil, Ljosa et al. 2013), 'zscore', 'robust' (median och 1.4826 MAD) eller 'none'. Standard 'ljosa'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_percentiles",
+      "source": "The control cells' percentiles per plate for 'ljosa', such as the screen run's dmso_percentiles.parquet (plate, q, one column per feature). Default blank.",
+      "source_sha256": "af9ce0d045c5f734cd890f810736bca514ee715e85b3fd40b037e6cf9725ecb0",
+      "translation": "Kontrollcellernas percentiler per platta för 'ljosa', till exempel screeningkörningens dmso_percentiles.parquet (plate, q, en kolumn per egenskap). Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_exclude",
+      "source": "Regular expression of columns that are not features. Blank takes the BBBC021 reanalysis's list (ImageNumber, Location_, Metadata and the like). Default blank.",
+      "source_sha256": "254a93f74f03c344627db1dc0eb0050c76dba6ae0c20a995898bb7d5122fdcae",
+      "translation": "Reguljärt uttryck för kolumner som inte är egenskaper. Tom använder listan från BBBC021-omanalysen (ImageNumber, Location_, Metadata och liknande). Standard tom."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_controls",
+      "source": "Control rows to write: majority (always guessing the commonest MoA) and shuffled (the MoA labels shuffled between compounds). Default 'majority,shuffled'.",
+      "source_sha256": "7f07b21d577af05aae4d3bb14a9203f5ffe10b5517b8369fdf364e031228d377",
+      "translation": "Kontrollrader att skriva: majority (gissar alltid den vanligaste MoA) och shuffled (MoA-etiketterna blandade mellan substanser). Standard 'majority,shuffled'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_shuffles",
+      "source": "Label shuffles in the shuffled control of each supervised method; each shuffle refits every fold. More shuffles give a steadier chance baseline but multiply the run time; 0 skips the shuffled control for those methods. Default 10.",
+      "source_sha256": "4408140267df4ba146c76ac8ddd07c2f85b7bcb70360ddef0be865582727710d",
+      "translation": "Antal etikettblandningar i den blandade kontrollen för varje övervakad metod; varje blandning anpassar om varje fold. Fler blandningar ger en stabilare slumpbaslinje men mångfaldigar körtiden; 0 hoppar över den blandade kontrollen för dessa metoder. Standard 10."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Label shuffles in the shuffled control of the 1-NN method. 1-NN fits nothing, so shuffles are cheap and more of them give a steadier chance baseline; 0 skips the 1-NN shuffled control. Default 100.",
+      "source_sha256": "41662a582263d8444766ca3ad93be7059777eb5736d949d275b5d7da36d33de3",
+      "translation": "Antal etikettblandningar i den blandade kontrollen för 1-NN-metoden. 1-NN anpassar ingenting, så blandningar är billiga och fler av dem ger en stabilare slumpbaslinje; 0 hoppar över 1-NN:s blandade kontroll. Standard 100."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_replicates",
+      "source": "How replicate wells combine into a treatment profile for 1-NN: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "aa182fad9e02541694fa2052e62c78511e77434dae6af84788a7c14871f59ac1",
+      "translation": "Hur replikatbrunnar slås samman till en behandlingsprofil för 1-NN: 'median' (Ljosa et al. 2013) eller 'mean'. Standard 'median'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_seeds",
+      "source": "Comma-separated random seeds; every method and control is scored once per seed, one row each in summary.csv. More seeds show how much the scores vary but take longer; blank runs seed 0 only. Default '0,1,2,3,4'.",
+      "source_sha256": "4df555d7a98cb36e9db7beca2e65f284a4f551c0bc1b88aaa21fbec4e164706f",
+      "translation": "Kommaseparerade slumpfrön; varje metod och kontroll bedöms en gång per frö, med en rad vardera i summary.csv. Fler frön visar hur mycket poängen varierar men tar längre tid; tom kör endast frö 0. Standard '0,1,2,3,4'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_per_moa",
+      "source": "Writes per_moa.csv: the accuracy of each mechanism of action per method, protocol and seed, which shows which MoAs drive the overall score. Off skips that file; summary.csv and the confusion tables are still written. Default True.",
+      "source_sha256": "fec4af227239eccce6fc4cc28a32fcec3cc169c02beb7b153bc8308eac6e0d16",
+      "translation": "Skriver per_moa.csv: träffsäkerheten för varje verkningsmekanism per metod, protokoll och frö, vilket visar vilka MoA som driver den totala poängen. Av hoppar över den filen; summary.csv och förväxlingstabellerna skrivs ändå. Standard True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_workers",
+      "source": "Folds the supervised methods fit at the same time, in threads, also inside their shuffled controls. Higher finishes sooner on a machine with spare cores but uses more memory; 1 fits one fold at a time. 1-NN ignores it. Default 1.",
+      "source_sha256": "ceb2dbee3c94a69e32c8b2c43e315a4672d0e263584cd8771830cf4de9495f74",
+      "translation": "Antal folds som de övervakade metoderna anpassar samtidigt, i trådar, även inom sina blandade kontroller. Ett högre värde blir klart tidigare på en maskin med lediga kärnor men använder mer minne; 1 anpassar en fold i taget. 1-NN ignorerar den. Standard 1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_dst",
+      "source": "Folder the results are written to. Blank writes to results/profiling_evaluation beside the profiles table. Default blank.",
+      "source_sha256": "483796392d739014638e6d604d55e9f831e186edc7cb51c638423117540279e9",
+      "translation": "Mapp som resultaten skrivs till. Tom skriver till results/profiling_evaluation bredvid profiltabellen. Standard tom."
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_profiles",
+      "source": "Moa profiles",
+      "source_sha256": "2e302451c154fc1966b1afd9df0d6e92dcaabcd592495c5df7dbed1b58d8de45",
+      "translation": "MoA-profiler"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_labels",
+      "source": "Moa labels",
+      "source_sha256": "faba178ffe287ee8fc645e10fa5f27695af574ac683e0865ec86bd1729af0cef",
+      "translation": "MoA-etiketter"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_label_column",
+      "source": "Moa label column",
+      "source_sha256": "40f8a6a85545a502c845cd6882236f40ef23286a051700dc18df551515546a25",
+      "translation": "MoA-etikettkolumn"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_compound_column",
+      "source": "Moa compound column",
+      "source_sha256": "7859e3261be5318f8c4cec7f5eba6c41c8a6246a018e5e3fd1541d070f02f757",
+      "translation": "MoA-substanskolumn"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_treatment_columns",
+      "source": "Moa treatment columns",
+      "source_sha256": "9c5f976bbfe2448760efd4eadb78742590bc3df0851980c62279ca38489b70fd",
+      "translation": "MoA-behandlingskolumner"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_batch_column",
+      "source": "Moa batch column",
+      "source_sha256": "7e30d772f188fa27b7fa982cf64b687f3a00af4cc99d1b031d60ee9b86394690",
+      "translation": "MoA-batchkolumn"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_controls",
+      "source": "Moa controls",
+      "source_sha256": "4503ed6e79b54d8842ef780517f23baac3a1495535a04e03a63dc42bafb7fd58",
+      "translation": "MoA-kontroller"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_arms",
+      "source": "Moa arms",
+      "source_sha256": "1f14170463d53a94a7bfc04eb41fe6c7ce6184f53f967b2f140c504c04b910f8",
+      "translation": "MoA-armar"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_replicates",
+      "source": "Moa replicates",
+      "source_sha256": "1d7ce12f87cb8ff79a77488a71fbeb5e70e1a5343bc767f20bc1d17b61820bf0",
+      "translation": "MoA-replikat"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_shuffles",
+      "source": "Moa shuffles",
+      "source_sha256": "a3c806c3f15864013bb5cb8f5269159fc0e874fe08009917190382a65a399a21",
+      "translation": "MoA-blandningar"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_supervised_shuffles",
+      "source": "Moa supervised shuffles",
+      "source_sha256": "af1907f9b51acbf6a6c9549e005f8901e5b67f1b6ab1444599207daf76d398dc",
+      "translation": "Övervakade MoA-blandningar"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_seed",
+      "source": "Moa seed",
+      "source_sha256": "fbdd5302dc72c39e678ed9ff63bdc001359768832fc4f6d14035dbfa89df99a6",
+      "translation": "MoA-frö"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_workers",
+      "source": "Moa workers",
+      "source_sha256": "9ac2302c6ca9ddd1ad40bd993dde3a9d4b018bc9ea3337139a4bfdc67b9b75a8",
+      "translation": "MoA-workers"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_dst",
+      "source": "Moa dst",
+      "source_sha256": "1aa222ff6c9be0225a4b28e92ab6abdcd9ef4099a9a0af50842c30dc6eb30c99",
+      "translation": "MoA-målmapp"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_profiles",
+      "source": "Moa eval profiles",
+      "source_sha256": "d6b06b3f5effd9787616c4ca8d8e79516ea89f4065233f1110cb9afb9df67f21",
+      "translation": "MoA-bedömningsprofiler"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata",
+      "source": "Moa eval metadata",
+      "source_sha256": "a2365dd89597c961944fa779942d51ce2a5ad6601fbb9bc480d22af7c7fc2e1b",
+      "translation": "MoA-bedömningsmetadata"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata_columns",
+      "source": "Moa eval metadata columns",
+      "source_sha256": "b8b4b130a44e505ff1506b59a85976cfcfdce78ccc2ace662fd79ce559abf2c8",
+      "translation": "MoA-bedömningens metadatakolumner"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_labels",
+      "source": "Moa eval labels",
+      "source_sha256": "d4dc17e0e15a61fd8a8931dc5cbf97280192d272626db8e2ffadd0c0d1e25913",
+      "translation": "MoA-bedömningsetiketter"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_label",
+      "source": "Moa eval label",
+      "source_sha256": "31d0f99a76cb5195af55c8194ee08c8fee15ad57c3862e20dc70283a3bcd6739",
+      "translation": "MoA-bedömningsetikett"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_compound",
+      "source": "Moa eval compound",
+      "source_sha256": "18f4fc3f3a89bc1700c2069ec8f9eef94212bc858a06b7edf777adb205183607",
+      "translation": "MoA-bedömningssubstans"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_concentration",
+      "source": "Moa eval concentration",
+      "source_sha256": "67bcc1c25223d210e5df86426a3265f78283987aa0b955abd549f14f4a558c3f",
+      "translation": "MoA-bedömningskoncentration"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch",
+      "source": "Moa eval batch",
+      "source_sha256": "45a9264c951760eb9bf9c388b5045fb2aa9a9a9a850adbda067d7e13b68048aa",
+      "translation": "MoA-bedömningsbatch"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch_pattern",
+      "source": "Moa eval batch pattern",
+      "source_sha256": "f9199c656430a2b89f6d35b616b6b13776f869611ae14f01aba575478ad70c17",
+      "translation": "MoA-bedömningens batchmönster"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_control",
+      "source": "Moa eval control",
+      "source_sha256": "4bda9e56d1338c5f5a9c19ed089ea4145f9880ad6ba931fb7828a4c8e3748baf",
+      "translation": "MoA-bedömningskontroll"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_protocols",
+      "source": "Moa eval protocols",
+      "source_sha256": "f6764348619c03a76c92a5fbcbeb6411bf8473fdc4923e6ddb559f3faced5db3",
+      "translation": "MoA-bedömningsprotokoll"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_methods",
+      "source": "Moa eval methods",
+      "source_sha256": "5025e5ae6eed58368db1104b91ffbeb2161fecc21e98b20e0daa6c9119cfe927",
+      "translation": "MoA-bedömningsmetoder"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_feature_qc",
+      "source": "Moa eval feature QC",
+      "source_sha256": "66d00cd09252a3af8dea5d3c2e8ca055cb3937654c24f2a07e5abdf8464a3574",
+      "translation": "MoA-bedömningens egenskaps-QC"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_normalise",
+      "source": "Moa eval normalise",
+      "source_sha256": "0ad2b8e3e229bf779683fc11d2daebbbe66c8f260365513e9bfe4c181de3d37c",
+      "translation": "MoA-bedömningens normalisering"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_percentiles",
+      "source": "Moa eval percentiles",
+      "source_sha256": "eacfc7cf4c38206b261e9a17826d0ddf4cfbdd3557c651e5267887cef8f51d1e",
+      "translation": "MoA-bedömningens percentiler"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_exclude",
+      "source": "Moa eval exclude",
+      "source_sha256": "952ed99a17b40f01115b42def1a4b0e1a199eeb01df6e8f40f0f512d4e80ac02",
+      "translation": "MoA-bedömningens uteslutning"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_controls",
+      "source": "Moa eval controls",
+      "source_sha256": "2052f4acbb227487d6f90e9817ddc1e0217ef02fecac716b6a59362b36fabee4",
+      "translation": "MoA-bedömningskontroller"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_shuffles",
+      "source": "Moa eval shuffles",
+      "source_sha256": "1ae8ea2053ab505fccb59fb5ce920aa0dd7697241f28f460f79c9edcdc9c6a4a",
+      "translation": "MoA-bedömningsblandningar"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Moa eval knn shuffles",
+      "source_sha256": "6db763af07461c109d1c03a1af05df0089434012c5378a6861d1457640ef43eb",
+      "translation": "MoA-bedömningsblandningar (kNN)"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_replicates",
+      "source": "Moa eval replicates",
+      "source_sha256": "26c616bb50d2fd732439c28d574ad447476d3125504941f7f8a361570c02ed46",
+      "translation": "MoA-bedömningsreplikat"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_seeds",
+      "source": "Moa eval seeds",
+      "source_sha256": "2ceb4661d91b62f862f2a2ac8d238e8aae0756fd8cef780053de3b4d68259329",
+      "translation": "MoA-bedömningsfrön"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_per_moa",
+      "source": "Moa eval per moa",
+      "source_sha256": "63243a905239a3bfd56a97c4fcbfe390e572c4582461d3fe5eac3ec6a10f5384",
+      "translation": "MoA-bedömning per MoA"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_workers",
+      "source": "Moa eval workers",
+      "source_sha256": "494f8eccfed7a4e9d4a2a42760c3795f6b321352be6dde6e025028d4341f6794",
+      "translation": "MoA-bedömningsworkers"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_dst",
+      "source": "Moa eval dst",
+      "source_sha256": "6c2107d392928118c2099ad98e759c965646fb2e02124cadd47fd18f1a7efc41",
+      "translation": "MoA-bedömningens målmapp"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_benchmark",
+      "source": "Moa benchmark",
+      "source_sha256": "dc5289cb4693a8c1bf50541fdd9d22eef2af9863545c133ffb6593a4cffa8499",
+      "translation": "MoA-benchmark"
+    },
+    {
+      "table": "setting_labels",
+      "key": "profiling_evaluation",
+      "source": "Profiling evaluation",
+      "source_sha256": "8efd9b0edbc11fce076148d7a6cf6c329d5f1ad01dac0ae2f4bc533303c661de",
+      "translation": "Profilutvärdering"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_benchmark",
+      "source": "Score profiles by mechanism of action, leaving one compound out: cosine nearest neighbour, logistic regression and XGBoost under NSC and NSCB, with shuffled-label and majority-class controls.",
+      "source_sha256": "cd7163fa116291b86b552fac5153ee400aede87b6f6def8cd6286c505db91e70",
+      "translation": "Poängsätter profiler efter verkningsmekanism (MoA) och lämnar ut en substans i taget: cosinus-närmaste-granne, logistisk regression och XGBoost under NSC och NSCB, med kontroller med blandade etiketter och majoritetsklass."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "profiling_evaluation",
+      "source": "Evaluate well profiles by mechanism of action under NSC and NSCB over several seeds: 1-NN, logistic regression, LDA, k-nearest neighbours and the CellProfiler Analyst classifiers, with majority and shuffled controls.",
+      "source_sha256": "4f7db2284706d6986ce2795eb8ba94b23a1d1b225edc0ff1f86abb5ede2c6ef6",
+      "translation": "Utvärderar brunnsprofiler efter verkningsmekanism (MoA) under NSC och NSCB över flera frön: 1-NN, logistisk regression, LDA, k närmaste grannar och klassificerarna i CellProfiler Analyst, med majoritets- och blandningskontroller."
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark",
+      "source": "MoA benchmark",
+      "source_sha256": "dc48e5beb3e7420c2e1337d7f6df2ae8bf739269ff9d1e9a60fed0c8beba4aa5",
+      "translation": "MoA-benchmark"
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark arms",
+      "source": "MoA benchmark arms",
+      "source_sha256": "c29945d6719ec5af7e829c8c46d12210689efdf7f9c67be845aab797f7e3600e",
+      "translation": "MoA-armar"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation",
+      "source": "MoA evaluation",
+      "source_sha256": "46174eab8392b089960901cd42e455623a64cabe714b5b29234d31d6790ae208",
+      "translation": "MoA-bedömning"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation methods",
+      "source": "MoA evaluation methods",
+      "source_sha256": "0a65b33fc070a27bf6ea6fe5f9f1df0f3e5ee350c9a8b08a766044d7e69a81e5",
+      "translation": "MoA-bedömningsmetoder"
+    }
+  ]
+}

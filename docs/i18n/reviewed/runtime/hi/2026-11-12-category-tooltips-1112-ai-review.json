@@ -1,0 +1,693 @@
+{
+  "schema": 1,
+  "language": "hi",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-12 of the curated category tooltips of Vacuoles α and Cells From Nuclei α, Titration Readout α, Translocation α (Measure and Host-Pathogen), Figure Scoring α and Plaque Size Readouts α (Plaque), Held-out Evaluation α (Classify) and OPS Gene Map Crops (UMAP), and of the 38 setting tooltips of the MoA benchmark and profiling evaluation (moa_*) with their labels, descriptions and category titles against the exact English source. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "categories",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "मापे गए परजीवियों को रिक्तिकाओं में समूहित करता है और measurements.db में vacuole और vacuole_host तालिकाएँ लिखता है; कोशिका तालिका में रिक्तिकाओं और परजीवियों की गिनती भी जुड़ जाती है। जो परजीवी अंतराल से अधिक पास हों वे एक रिक्तिका बनाते हैं, हर परजीवी उस रिक्तिका से जुड़ता है जिससे उसका सबसे अधिक अतिव्यापन हो, और रिक्तिका के संकेत के औसत के लिए एक चैनल चुना जा सकता है। रिक्तिका और मेज़बान कोशिका के न्यूनतम आकार मलबे को हटाते हैं। जब आप प्रति रिक्तिका परजीवी गिनते हों तब इसे चालू करें; अन्यथा बंद रखें।"
+    },
+    {
+      "table": "categories",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "प्लाक रन में प्रति वेल आकार रीडआउट जोड़ता है: प्लाक का औसत, माध्यिका और सबसे बड़ा क्षेत्रफल, सबसे बड़ा औसत की तुलना में, वेल का विस्तार और उस पर प्लाक क्षेत्रफल, तथा हर प्लाक अपने वेल के सबसे बड़े की तुलना में। छवि में स्केल होने पर क्षेत्रफल मिलीमीटर में दिखता है। वेल और प्लेटों में प्लाक आकार की तुलना के लिए इसे चालू करें; बंद रहने पर प्रति छवि और प्रति प्लाक तालिकाएँ अपरिवर्तित रहती हैं।"
+    },
+    {
+      "table": "categories",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "क्लासिफ़ायर को उन वस्तुओं पर परखता है जिन्हें उसने कभी नहीं देखा और स्कोर results/ml_eval में लिखता है। चुनें कि वस्तुएँ कैसे अलग रखी जाएँ (एक वेल, एक प्लेट या यादृच्छिक विभाजन), कौन-से लेबल और फ़ीचर कॉलम आँके जाएँ, और मॉडल के साथ कौन-से नियंत्रण दिखें: हमेशा सबसे आम वर्ग का अनुमान, और प्रत्येक प्रशिक्षण फ़ोल्ड में फेंटे गए लेबल। यह जानने के लिए उपयोग करें कि मॉडल नए वेल या प्लेट पर सामान्यीकृत होता है या नहीं; त्वरित फ़िट के लिए इसे बंद रखें।"
+    },
+    {
+      "table": "categories",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "जब कोशिका रंजन न हो तब हर नाभिक को बिना अतिव्यापन बाहर की ओर तब तक बढ़ाकर कोशिका मास्क बनाता है जब तक वह अपने पड़ोसियों से न मिल जाए या तय दूरी तक न पहुँच जाए। न्यूनतम आकार से छोटे नाभिक पहले हटा दिए जाते हैं ताकि DNA चैनल में परजीवी नाभिक कोशिका न बन जाएँ। जब केवल नाभिक चैनल हो तब इसका उपयोग करें; असली कोशिका रंजन होने पर कोशिकाओं को सीधे सेगमेंट करें।"
+    },
+    {
+      "table": "categories",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "मौजूदा मास्क से प्रति रिक्तिका परजीवियों की गिनती करता है और खुराक श्रृंखला में स्थितियों की तुलना करता है। यह प्लेट मानचित्र, प्रकाशित मानों की वैकल्पिक तालिका और रिक्तिका तथा मेज़बान कोशिका के आकार की सीमाएँ लेता है। आपकी अपनी तालिका पर प्रशिक्षित क्लासिफ़ायर प्रति रिक्तिका परजीवी तय कर सकता है, आकारों को उस तालिका के पैमाने पर लाया जा सकता है, और संकेत सीमा गिनती से पहले असंक्रमित रिक्तिकाओं को हटाती है। इसे चलाने के लिए प्लेट मानचित्र सेट करें; सामान्य मेज़बान-रोगाणु रन को इसकी ज़रूरत नहीं।"
+    },
+    {
+      "table": "categories",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "मापता है कि स्रावित प्रभावक का कितना भाग मेज़बान कोशिका के नाभिक तक पहुँचता है। हर मेज़बान कोशिका के लिए यह नाभिक में प्रभावक संकेत लेता है, परजीवियों के पास के पिक्सेल छोड़ देता है, क्षेत्र की पृष्ठभूमि घटाता है और उसे प्रति कोशिका रिक्तिकाओं के विरुद्ध आलेखित करता है, रिक्तिका-रहित कोशिकाओं के सापेक्ष। प्रभावक और नियंत्रण चैनल, पृष्ठभूमि विधि, समूहित रिक्तिकाओं की सबसे बड़ी संख्या और सहमति जाँचने के लिए वैकल्पिक संदर्भ वक्र चुनें। इसे केवल नाभिकीय स्थानांतरण प्रयोगों के लिए चालू करें।"
+    },
+    {
+      "table": "categories",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "OPS जीन मानचित्र के हर क्लस्टर के उदाहरण कोशिकाएँ दिखाता है। हर Leiden क्लस्टर या शीर्ष-स्तर समूह के लिए यह मेडॉइड जीन की प्रोफ़ाइल के सबसे निकट की कोशिकाएँ चुनता है और आपके चुने चैनलों और रंगों में क्रॉप का पैनल लिखता है। सभी क्रॉप प्रति चैनल एक ही प्रदर्शन सीमा साझा करते हैं, जो एकत्रित पिक्सेल के पर्सेंटाइल से ली जाती है, ताकि चमक की तुलना हो सके। न्यूनतम आकार से छोटी कोशिकाएँ छोड़ दी जाती हैं। क्रॉप का आकार और आउटपुट फ़ोल्डर स्क्रीनिंग के अनुसार तय करें।"
+    },
+    {
+      "table": "ui",
+      "key": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source": "Groups the measured parasites into vacuoles and writes the vacuole and vacuole_host tables to measurements.db, with vacuole and parasite counts added to the cell table. Parasites closer than the gap are one vacuole, each parasite is linked to the vacuole it overlaps most, and you can pick a channel for the vacuole signal mean. Set the minimum vacuole and host sizes to drop debris. Turn it on when you count parasites per vacuole; leave it off otherwise.",
+      "source_sha256": "55a36f480a543c7f0917b3bd4fe9552db0616cc20f01a90776f5910bdae2a964",
+      "translation": "मापे गए परजीवियों को रिक्तिकाओं में समूहित करता है और measurements.db में vacuole और vacuole_host तालिकाएँ लिखता है; कोशिका तालिका में रिक्तिकाओं और परजीवियों की गिनती भी जुड़ जाती है। जो परजीवी अंतराल से अधिक पास हों वे एक रिक्तिका बनाते हैं, हर परजीवी उस रिक्तिका से जुड़ता है जिससे उसका सबसे अधिक अतिव्यापन हो, और रिक्तिका के संकेत के औसत के लिए एक चैनल चुना जा सकता है। रिक्तिका और मेज़बान कोशिका के न्यूनतम आकार मलबे को हटाते हैं। जब आप प्रति रिक्तिका परजीवी गिनते हों तब इसे चालू करें; अन्यथा बंद रखें।"
+    },
+    {
+      "table": "ui",
+      "key": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source": "Adds per-well size readouts to a plaque run: mean, median and largest plaque area, the largest relative to the mean, the well extent and the plaque area over it, and each plaque relative to the largest in its well. Millimetre areas appear when the image has a scale. Turn it on to compare plaque sizes across wells and plates; off leaves the per-image and per-plaque tables unchanged.",
+      "source_sha256": "63dcf932b1cc4a9ed64d64a0b6e6037b1edd836972e9403a1dda7d766e85162f",
+      "translation": "प्लाक रन में प्रति वेल आकार रीडआउट जोड़ता है: प्लाक का औसत, माध्यिका और सबसे बड़ा क्षेत्रफल, सबसे बड़ा औसत की तुलना में, वेल का विस्तार और उस पर प्लाक क्षेत्रफल, तथा हर प्लाक अपने वेल के सबसे बड़े की तुलना में। छवि में स्केल होने पर क्षेत्रफल मिलीमीटर में दिखता है। वेल और प्लेटों में प्लाक आकार की तुलना के लिए इसे चालू करें; बंद रहने पर प्रति छवि और प्रति प्लाक तालिकाएँ अपरिवर्तित रहती हैं।"
+    },
+    {
+      "table": "ui",
+      "key": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source": "Tests the classifier on objects it never saw and writes the scores to results/ml_eval. Choose how objects are held out (one well, one plate or a random split), which labels and feature columns are scored, and the controls reported beside the model: always guessing the commonest class, and labels shuffled within each training fold. Use it to learn whether a model generalises to a new well or plate; leave it off for a quick fit.",
+      "source_sha256": "291cbac56017a69777048cd45ee954c1c22e0c0285ef80a0b47af084cbd753e8",
+      "translation": "क्लासिफ़ायर को उन वस्तुओं पर परखता है जिन्हें उसने कभी नहीं देखा और स्कोर results/ml_eval में लिखता है। चुनें कि वस्तुएँ कैसे अलग रखी जाएँ (एक वेल, एक प्लेट या यादृच्छिक विभाजन), कौन-से लेबल और फ़ीचर कॉलम आँके जाएँ, और मॉडल के साथ कौन-से नियंत्रण दिखें: हमेशा सबसे आम वर्ग का अनुमान, और प्रत्येक प्रशिक्षण फ़ोल्ड में फेंटे गए लेबल। यह जानने के लिए उपयोग करें कि मॉडल नए वेल या प्लेट पर सामान्यीकृत होता है या नहीं; त्वरित फ़िट के लिए इसे बंद रखें।"
+    },
+    {
+      "table": "ui",
+      "key": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source": "Makes cell masks when there is no cell stain by growing each nucleus outward, without overlap, until it meets its neighbours or reaches the set distance. Nuclei smaller than the minimum are removed first, which keeps parasite nuclei in the DNA channel from becoming cells. Use it when only a nuclear channel exists; with a real cell stain, segment the cells directly.",
+      "source_sha256": "dbe695bd216c6bf8f7822d2048b57a8dc26b2c8d7b3a9c4a0240c31830f463e0",
+      "translation": "जब कोशिका रंजन न हो तब हर नाभिक को बिना अतिव्यापन बाहर की ओर तब तक बढ़ाकर कोशिका मास्क बनाता है जब तक वह अपने पड़ोसियों से न मिल जाए या तय दूरी तक न पहुँच जाए। न्यूनतम आकार से छोटे नाभिक पहले हटा दिए जाते हैं ताकि DNA चैनल में परजीवी नाभिक कोशिका न बन जाएँ। जब केवल नाभिक चैनल हो तब इसका उपयोग करें; असली कोशिका रंजन होने पर कोशिकाओं को सीधे सेगमेंट करें।"
+    },
+    {
+      "table": "ui",
+      "key": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source": "Counts parasites per vacuole from existing masks and compares conditions across a dose series. It takes the plate map, an optional table of published values, and the vacuole and host size limits. A classifier trained on your own table can call parasites per vacuole, sizes can be put on that table's scale, and a signal floor drops uninfected vacuoles before counting. Set the plate map to run it; ordinary Host-Pathogen runs do not need it.",
+      "source_sha256": "42a14bbb36bc05b0157f6914712af38dc4ef8872d7f11f4035ad0d2d13afa206",
+      "translation": "मौजूदा मास्क से प्रति रिक्तिका परजीवियों की गिनती करता है और खुराक श्रृंखला में स्थितियों की तुलना करता है। यह प्लेट मानचित्र, प्रकाशित मानों की वैकल्पिक तालिका और रिक्तिका तथा मेज़बान कोशिका के आकार की सीमाएँ लेता है। आपकी अपनी तालिका पर प्रशिक्षित क्लासिफ़ायर प्रति रिक्तिका परजीवी तय कर सकता है, आकारों को उस तालिका के पैमाने पर लाया जा सकता है, और संकेत सीमा गिनती से पहले असंक्रमित रिक्तिकाओं को हटाती है। इसे चलाने के लिए प्लेट मानचित्र सेट करें; सामान्य मेज़बान-रोगाणु रन को इसकी ज़रूरत नहीं।"
+    },
+    {
+      "table": "ui",
+      "key": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source": "Measures how much of a secreted effector reaches the host nucleus. Per host cell it takes the effector signal in the nucleus, leaves out pixels near parasites, subtracts the field background and plots it against vacuoles per cell, relative to cells with none. Choose the effector and control channels, the background method, the largest vacuole count binned and an optional reference curve to check agreement. Turn it on only for nuclear translocation experiments.",
+      "source_sha256": "116c80631da3e3e7b253d8c1773770dd1203404adbb8bb6850efc3ea5c572ea1",
+      "translation": "मापता है कि स्रावित प्रभावक का कितना भाग मेज़बान कोशिका के नाभिक तक पहुँचता है। हर मेज़बान कोशिका के लिए यह नाभिक में प्रभावक संकेत लेता है, परजीवियों के पास के पिक्सेल छोड़ देता है, क्षेत्र की पृष्ठभूमि घटाता है और उसे प्रति कोशिका रिक्तिकाओं के विरुद्ध आलेखित करता है, रिक्तिका-रहित कोशिकाओं के सापेक्ष। प्रभावक और नियंत्रण चैनल, पृष्ठभूमि विधि, समूहित रिक्तिकाओं की सबसे बड़ी संख्या और सहमति जाँचने के लिए वैकल्पिक संदर्भ वक्र चुनें। इसे केवल नाभिकीय स्थानांतरण प्रयोगों के लिए चालू करें।"
+    },
+    {
+      "table": "ui",
+      "key": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source": "Shows example cells for each cluster of the OPS gene map. For every Leiden cluster or top-level group it picks the cells closest to the medoid gene's profile and writes a panel of crops in the channels and colours you choose. All crops share one display range per channel, taken from percentiles of the pooled pixels, so brightness is comparable. Cells below the minimum size are skipped. Set the crop size and the output folder to suit the screen.",
+      "source_sha256": "3494ad730c5c37ba4c85c95f6ae3d946ee0849f55929bfc9d88ab35ab4a4f3b9",
+      "translation": "OPS जीन मानचित्र के हर क्लस्टर के उदाहरण कोशिकाएँ दिखाता है। हर Leiden क्लस्टर या शीर्ष-स्तर समूह के लिए यह मेडॉइड जीन की प्रोफ़ाइल के सबसे निकट की कोशिकाएँ चुनता है और आपके चुने चैनलों और रंगों में क्रॉप का पैनल लिखता है। सभी क्रॉप प्रति चैनल एक ही प्रदर्शन सीमा साझा करते हैं, जो एकत्रित पिक्सेल के पर्सेंटाइल से ली जाती है, ताकि चमक की तुलना हो सके। न्यूनतम आकार से छोटी कोशिकाएँ छोड़ दी जाती हैं। क्रॉप का आकार और आउटपुट फ़ोल्डर स्क्रीनिंग के अनुसार तय करें।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_profiles",
+      "source": "Table of profiles to score: per-well profiles normalised to the plate's control wells, such as a profiling run's well_profiles_feature_select.csv, or one profile per treatment. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "6bf9b2509364f1894e833e048bcbec9842874f6ab478ff01473e34d139650848",
+      "translation": "स्कोर की जाने वाली प्रोफ़ाइलों की तालिका: प्लेट के नियंत्रण वेल पर सामान्यीकृत प्रति वेल प्रोफ़ाइल, जैसे किसी प्रोफ़ाइलिंग रन की well_profiles_feature_select.csv, या प्रति उपचार एक प्रोफ़ाइल। CSV, TSV, Excel या Parquet। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_labels",
+      "source": "Table with the MoA of each compound or treatment, such as BBBC021_v1_moa.csv, joined to the profiles on the columns they share. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "8e5b47c105cf5c7498450e3c06b213b03ba88cb40d2b4a06dac54937aaf7670d",
+      "translation": "हर यौगिक या उपचार के MoA वाली तालिका, जैसे BBBC021_v1_moa.csv, जो साझा कॉलमों पर प्रोफ़ाइलों से जोड़ी जाती है। प्रोफ़ाइलों में MoA कॉलम होने पर खाली। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_label_column",
+      "source": "Column with the mechanism of action (MoA). Rows without one are not scored. Default 'moa'.",
+      "source_sha256": "8569bfdf535530645d2827ef61fc850dedf86303ff51a83a72cc671b5222d138",
+      "translation": "क्रिया-तंत्र (MoA) वाला कॉलम। जिन पंक्तियों में यह नहीं है, उन्हें स्कोर नहीं किया जाता। डिफ़ॉल्ट 'moa'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_compound_column",
+      "source": "Column that names the compound. Every arm leaves a whole compound out, so a treatment is never matched to, or trained on, the same compound at another concentration. Default 'compound'.",
+      "source_sha256": "c29facc8ec8acbe5fc249260227ec5a6cf04f45e6155b4a3687075f813bf5a72",
+      "translation": "यौगिक का नाम बताने वाला कॉलम। हर आर्म एक पूरा यौगिक बाहर रखता है, ताकि किसी उपचार का मिलान कभी उसी यौगिक की किसी दूसरी सांद्रता से न हो और न ही उस पर प्रशिक्षण हो। डिफ़ॉल्ट 'compound'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_treatment_columns",
+      "source": "Comma-separated columns that name one treatment, such as compound,concentration. Replicate wells of a treatment are combined into one profile for the nearest-neighbour arm. Default 'compound,concentration'.",
+      "source_sha256": "2e6621c6ef1567a40f26ea7ab7679b693b2bd3652a3b0a40f4015b1cfac2dad4",
+      "translation": "अल्पविराम से अलग कॉलम जो एक उपचार को नाम देते हैं, जैसे compound,concentration। निकटतम-पड़ोसी आर्म के लिए किसी उपचार के प्रतिकृति वेल एक प्रोफ़ाइल में मिलाए जाते हैं। डिफ़ॉल्ट 'compound,concentration'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_batch_column",
+      "source": "Column that names each well's batch, such as the imaging week. Set it to score NSCB (not same compound or batch) beside NSC; blank scores NSC only. Default blank.",
+      "source_sha256": "dd9e842897bf2e547667099b0e2906a4eb62ea7badd6ad08a997b2e2290aa513",
+      "translation": "हर वेल का बैच बताने वाला कॉलम, जैसे इमेजिंग सप्ताह। NSC के साथ NSCB (न वही यौगिक, न वही बैच) स्कोर करने के लिए इसे सेट करें; खाली होने पर केवल NSC स्कोर होता है। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_controls",
+      "source": "Comma-separated compound or MoA values left out of the scoring, such as the DMSO control wells. Default 'DMSO'.",
+      "source_sha256": "ec02b82195df162a96ce6d25dbc58b284e8f3eb4a9acc69fd801bb289521dab7",
+      "translation": "अल्पविराम से अलग यौगिक या MoA मान जिन्हें स्कोरिंग से बाहर रखा जाता है, जैसे DMSO नियंत्रण वेल। डिफ़ॉल्ट 'DMSO'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_arms",
+      "source": "Comma-separated arms to run: 1-NN (cosine nearest neighbour between treatment profiles), logistic (standardised logistic regression) and xgboost (XGBoost on the CPU). The supervised arms fit one model per held-out compound and are much slower. Default '1-NN,logistic,xgboost'.",
+      "source_sha256": "31b46f69d1933db7d9818d7a7c105e1ee56896a7140c06456f1adb08527eddfb",
+      "translation": "चलाए जाने वाले आर्म, अल्पविराम से अलग: 1-NN (उपचार प्रोफ़ाइलों के बीच कोसाइन निकटतम पड़ोसी), logistic (मानकीकृत लॉजिस्टिक रिग्रेशन) और xgboost (CPU पर XGBoost)। पर्यवेक्षित आर्म हर बाहर रखे गए यौगिक के लिए एक मॉडल फ़िट करते हैं और बहुत धीमे होते हैं। डिफ़ॉल्ट '1-NN,logistic,xgboost'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_replicates",
+      "source": "How replicate wells combine into a treatment profile for the 1-NN arm: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "84994b92532298a522cf6033211196636b5a170316497442f3538f55fe248374",
+      "translation": "1-NN आर्म के लिए प्रतिकृति वेल किस तरह एक उपचार प्रोफ़ाइल में मिलते हैं: 'median' (Ljosa et al. 2013) या 'mean'। डिफ़ॉल्ट 'median'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_shuffles",
+      "source": "Shuffles of the compound-to-MoA mapping for the 1-NN arm's control row, which shows the accuracy chance alone gives. 0 writes no control. Default 100.",
+      "source_sha256": "76342b21c736c7ad361a195c4e3fbc58e14c0330555be81f7b3c243627cb14c6",
+      "translation": "1-NN आर्म की नियंत्रण पंक्ति के लिए यौगिक-से-MoA मैपिंग के शफ़ल, जो दिखाती है कि केवल संयोग से कितनी सटीकता मिलती है। 0 कोई नियंत्रण नहीं लिखता। डिफ़ॉल्ट 100।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_supervised_shuffles",
+      "source": "Shuffles for each supervised arm's control row. Each shuffle refits every fold, so keep it small. 0 writes no control. Default 10.",
+      "source_sha256": "62aeebffccf0fa475c851944d37d505c19068ec6b2e5b17484db7d9f387851bf",
+      "translation": "हर पर्यवेक्षित आर्म की नियंत्रण पंक्ति के लिए शफ़ल। हर शफ़ल हर फ़ोल्ड को फिर से फ़िट करता है, इसलिए इसे छोटा रखें। 0 कोई नियंत्रण नहीं लिखता। डिफ़ॉल्ट 10।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_seed",
+      "source": "Random seed for the shuffles and the XGBoost fits, so a rerun gives the same table. Default 0.",
+      "source_sha256": "601c7ae517477d4bbf2728ae1c2054b3c6ad81c002d82ec3cde624c78083676a",
+      "translation": "शफ़ल और XGBoost फ़िट के लिए रैंडम सीड, ताकि दोबारा चलाने पर वही तालिका मिले। डिफ़ॉल्ट 0।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_workers",
+      "source": "Folds fitted at a time by the supervised arms, in threads of one process. Default 1.",
+      "source_sha256": "5293010d4497ac017b7c60cbe686ee258533235d8108a509c21b0dada576d15d",
+      "translation": "पर्यवेक्षित आर्म एक साथ जितने फ़ोल्ड फ़िट करते हैं, एक प्रोसेस के थ्रेड में। डिफ़ॉल्ट 1।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_dst",
+      "source": "Folder the accuracy table, the predictions, the glossary and a summary are written to. Blank writes to a moa_benchmark folder beside the profiles table. Default blank.",
+      "source_sha256": "30a3d73b376caada50b9b414109c33b2a7fda4a44fcdfb02739bbab1dc00730f",
+      "translation": "वह फ़ोल्डर जिसमें सटीकता तालिका, पूर्वानुमान, शब्दावली और एक सारांश लिखे जाते हैं। खाली होने पर प्रोफ़ाइल तालिका के बगल में moa_benchmark फ़ोल्डर में लिखा जाता है। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_profiles",
+      "source": "Table of well profiles to score, one row per well with plate and well columns, such as the screen run's wells_mean.parquet. CSV, TSV, Excel or Parquet. Default blank.",
+      "source_sha256": "164beebead12d961b5ccac4e65bdeb13727cfb192a72d653030a7b3069251d7c",
+      "translation": "स्कोर की जाने वाली वेल प्रोफ़ाइलों की तालिका, प्रति वेल एक पंक्ति, प्लेट और वेल कॉलम के साथ, जैसे स्क्रीनिंग रन की wells_mean.parquet। CSV, TSV, Excel या Parquet। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata",
+      "source": "Table naming each well's compound and concentration, such as BBBC021_v1_image.csv, joined on plate and well. Blank when the profiles carry compound and concentration. Default blank.",
+      "source_sha256": "0e6847a2eb642a8c40ff663045e1b39c6b3e8d3bdf4d369819465cd474906fce",
+      "translation": "हर वेल का यौगिक और सांद्रता बताने वाली तालिका, जैसे BBBC021_v1_image.csv, जो प्लेट और वेल पर जोड़ी जाती है। प्रोफ़ाइलों में यौगिक और सांद्रता होने पर खाली। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_metadata_columns",
+      "source": "The metadata table's plate, well, compound and concentration columns, comma-separated, such as Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration. Default 'plate,well,compound,concentration'.",
+      "source_sha256": "9ce03e281f1a5d283971d83ab59977f527082eab418b51cde3fa9c83844611ab",
+      "translation": "मेटाडेटा तालिका के प्लेट, वेल, यौगिक और सांद्रता कॉलम, अल्पविराम से अलग, जैसे Image_Metadata_Plate_DAPI,Image_Metadata_Well_DAPI,Image_Metadata_Compound,Image_Metadata_Concentration। डिफ़ॉल्ट 'plate,well,compound,concentration'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_labels",
+      "source": "Table with the mechanism of action (MoA) of each compound and concentration, such as BBBC021_v1_moa.csv. Blank when the profiles carry a MoA column. Default blank.",
+      "source_sha256": "156f79aa242195fb1f27b4163c609c28c7f5f8060ac55a4cc043a3074c376c70",
+      "translation": "हर यौगिक और सांद्रता के क्रिया-तंत्र (MoA) वाली तालिका, जैसे BBBC021_v1_moa.csv। प्रोफ़ाइलों में MoA कॉलम होने पर खाली। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_label",
+      "source": "Column holding each treatment's mechanism of action (MoA), in the profiles or in moa_eval_labels. Wells whose MoA is blank or equal to the control are not scored. A name that neither table has stops the run with an error. Default 'moa'.",
+      "source_sha256": "786d8d9d217f99d34fe219a50eb32fd2d395a814503048910c32a7b12929f3e7",
+      "translation": "हर उपचार का क्रिया-तंत्र (MoA) रखने वाला कॉलम, प्रोफ़ाइलों में या moa_eval_labels में। जिन वेल का MoA खाली है या नियंत्रण के बराबर है, उन्हें स्कोर नहीं किया जाता। ऐसा नाम जो किसी भी तालिका में नहीं है, रन को त्रुटि के साथ रोक देता है। डिफ़ॉल्ट 'moa'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_compound",
+      "source": "Column that names each well's compound, in the profiles and the labels table; the control wells are found by it too. Every method holds out one whole compound at a time, so one compound under two names lets its replicates leak into training and inflates accuracy. Default 'compound'.",
+      "source_sha256": "6b8f4317b7acfba26dd33546edcf29ffb67a514def3785ac745f4f0403069095",
+      "translation": "हर वेल के यौगिक का नाम बताने वाला कॉलम, प्रोफ़ाइलों और लेबल तालिका में; नियंत्रण वेल भी इसी से पहचाने जाते हैं। हर विधि एक बार में एक पूरा यौगिक बाहर रखती है, इसलिए दो नामों वाले एक यौगिक की प्रतिकृतियाँ प्रशिक्षण में रिस जाती हैं और सटीकता बढ़ा-चढ़ाकर दिखती है। डिफ़ॉल्ट 'compound'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_concentration",
+      "source": "Column holding each well's concentration. With the compound it names one treatment, the unit that 1-NN scores and that the MoA labels are joined on, so units must match in both tables or wells drop out. Default 'concentration'.",
+      "source_sha256": "b5dd40a581b3e65fe7c69b09ad398b526d992bead64f52f2113cc40760178ef6",
+      "translation": "हर वेल की सांद्रता रखने वाला कॉलम। यौगिक के साथ यह एक उपचार को नाम देता है, वह इकाई जिसे 1-NN स्कोर करता है और जिस पर MoA लेबल जोड़े जाते हैं, इसलिए दोनों तालिकाओं में मात्रक मेल खाने चाहिए, नहीं तो वेल छूट जाते हैं। डिफ़ॉल्ट 'concentration'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch",
+      "source": "Column with each well's batch, such as the imaging week, for NSCB. When the table has no such column the batch is moa_eval_batch_pattern's match in the plate name. Default 'week'.",
+      "source_sha256": "e15217bb55865886cdc6e52c062c1c5f1872adc7b670a95a8bc71b928e6b4268",
+      "translation": "NSCB के लिए हर वेल का बैच रखने वाला कॉलम, जैसे इमेजिंग सप्ताह। तालिका में ऐसा कॉलम न होने पर बैच प्लेट के नाम में moa_eval_batch_pattern का मिलान होता है। डिफ़ॉल्ट 'week'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_batch_pattern",
+      "source": "Regular expression whose match in the plate name is the batch when there is no batch column; '^[^_]+' takes Week10 from Week10_40111. Default '^[^_]+'.",
+      "source_sha256": "78a76477ef0eaf949d0e5e524dfbacdfaf3c587641a7d1852f8dc2d9a806263c",
+      "translation": "रेगुलर एक्सप्रेशन जिसका प्लेट के नाम में मिलान बैच होता है, जब कोई बैच कॉलम न हो; '^[^_]+' Week10_40111 से Week10 लेता है। डिफ़ॉल्ट '^[^_]+'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_control",
+      "source": "Compound of the control wells, such as DMSO: they set each plate's normalisation and are not scored. Default 'DMSO'.",
+      "source_sha256": "d05ca2ca25c7dfa1499f550e935cf484665d92bbfe6220adc1cb94434c8179d2",
+      "translation": "नियंत्रण वेल का यौगिक, जैसे DMSO: ये हर प्लेट का सामान्यीकरण तय करते हैं और स्कोर नहीं किए जाते। डिफ़ॉल्ट 'DMSO'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_protocols",
+      "source": "Protocols to score: NSC (not same compound) and NSCB (not same compound or batch). Default 'NSC,NSCB'.",
+      "source_sha256": "3e2df2e6512a87fcb68261998359ca0e9468c191da8099503975a6b8d104a544",
+      "translation": "स्कोर किए जाने वाले प्रोटोकॉल: NSC (वही यौगिक नहीं) और NSCB (न वही यौगिक, न वही बैच)। डिफ़ॉल्ट 'NSC,NSCB'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_methods",
+      "source": "Comma-separated methods: 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn, and the CellProfiler Analyst 3.0.5 classifiers cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork. Default '1nn_cosine,logistic'.",
+      "source_sha256": "a4e09acd934e794f69599cdcee12956532eed8fec59702f8855d97fea170167f",
+      "translation": "अल्पविराम से अलग विधियाँ: 1nn_cosine, logistic, xgboost, lda, shrinkage_lda, knn, और CellProfiler Analyst 3.0.5 के क्लासिफ़ायर cpa_FastGentleBoosting, cpa_RandomForestClassifier, cpa_AdaBoostClassifier, cpa_SVC, cpa_GradientBoostingClassifier, cpa_LogisticRegression, cpa_LDA, cpa_KNeighborsClassifier, cpa_NeuralNetwork। डिफ़ॉल्ट '1nn_cosine,logistic'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_feature_qc",
+      "source": "'standard' drops a feature non-finite in more than 5% of wells or above 500 after normalisation (pycytominer's defaults); 'none' keeps every feature. Default 'standard'.",
+      "source_sha256": "d83c1807d283d30aec4fdd85a847ec43483bc97fb17f38f6eff4be61d13f309c",
+      "translation": "'standard' उस फ़ीचर को हटाता है जो 5% से अधिक वेल में परिमित नहीं है या सामान्यीकरण के बाद 500 से ऊपर है (pycytominer के डिफ़ॉल्ट); 'none' हर फ़ीचर रखता है। डिफ़ॉल्ट 'standard'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_normalise",
+      "source": "How each plate is scaled to its control wells: 'ljosa' ((x - p1) / (p99 - p1), the control cells' 1st and 99th percentiles, Ljosa et al. 2013), 'zscore', 'robust' (median and 1.4826 MAD) or 'none'. Default 'ljosa'.",
+      "source_sha256": "0d987eb4283f1a0f8dcf61241baf6700b0442dccdeec93dadb1a02d2bd6b5593",
+      "translation": "हर प्लेट को उसके नियंत्रण वेल के अनुसार कैसे स्केल किया जाता है: 'ljosa' ((x - p1) / (p99 - p1), नियंत्रण कोशिकाओं के पहले और 99वें पर्सेंटाइल, Ljosa et al. 2013), 'zscore', 'robust' (माध्यिका और 1.4826 MAD) या 'none'। डिफ़ॉल्ट 'ljosa'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_percentiles",
+      "source": "The control cells' percentiles per plate for 'ljosa', such as the screen run's dmso_percentiles.parquet (plate, q, one column per feature). Default blank.",
+      "source_sha256": "af9ce0d045c5f734cd890f810736bca514ee715e85b3fd40b037e6cf9725ecb0",
+      "translation": "'ljosa' के लिए प्रति प्लेट नियंत्रण कोशिकाओं के पर्सेंटाइल, जैसे स्क्रीनिंग रन की dmso_percentiles.parquet (plate, q, प्रति फ़ीचर एक कॉलम)। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_exclude",
+      "source": "Regular expression of columns that are not features. Blank takes the BBBC021 reanalysis's list (ImageNumber, Location_, Metadata and the like). Default blank.",
+      "source_sha256": "254a93f74f03c344627db1dc0eb0050c76dba6ae0c20a995898bb7d5122fdcae",
+      "translation": "उन कॉलमों का रेगुलर एक्सप्रेशन जो फ़ीचर नहीं हैं। खाली होने पर BBBC021 पुनर्विश्लेषण की सूची ली जाती है (ImageNumber, Location_, Metadata आदि)। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_controls",
+      "source": "Control rows to write: majority (always guessing the commonest MoA) and shuffled (the MoA labels shuffled between compounds). Default 'majority,shuffled'.",
+      "source_sha256": "7f07b21d577af05aae4d3bb14a9203f5ffe10b5517b8369fdf364e031228d377",
+      "translation": "लिखी जाने वाली नियंत्रण पंक्तियाँ: majority (हमेशा सबसे सामान्य MoA का अनुमान) और shuffled (यौगिकों के बीच शफ़ल किए गए MoA लेबल)। डिफ़ॉल्ट 'majority,shuffled'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_shuffles",
+      "source": "Label shuffles in the shuffled control of each supervised method; each shuffle refits every fold. More shuffles give a steadier chance baseline but multiply the run time; 0 skips the shuffled control for those methods. Default 10.",
+      "source_sha256": "4408140267df4ba146c76ac8ddd07c2f85b7bcb70360ddef0be865582727710d",
+      "translation": "हर पर्यवेक्षित विधि के shuffled नियंत्रण में लेबल शफ़ल; हर शफ़ल हर फ़ोल्ड को फिर से फ़िट करता है। अधिक शफ़ल संयोग की अधिक स्थिर आधार-रेखा देते हैं, पर रन का समय कई गुना कर देते हैं; 0 उन विधियों के लिए shuffled नियंत्रण छोड़ देता है। डिफ़ॉल्ट 10।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Label shuffles in the shuffled control of the 1-NN method. 1-NN fits nothing, so shuffles are cheap and more of them give a steadier chance baseline; 0 skips the 1-NN shuffled control. Default 100.",
+      "source_sha256": "41662a582263d8444766ca3ad93be7059777eb5736d949d275b5d7da36d33de3",
+      "translation": "1-NN विधि के shuffled नियंत्रण में लेबल शफ़ल। 1-NN कुछ भी फ़िट नहीं करता, इसलिए शफ़ल सस्ते हैं और अधिक शफ़ल संयोग की अधिक स्थिर आधार-रेखा देते हैं; 0 1-NN का shuffled नियंत्रण छोड़ देता है। डिफ़ॉल्ट 100।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_replicates",
+      "source": "How replicate wells combine into a treatment profile for 1-NN: 'median' (Ljosa et al. 2013) or 'mean'. Default 'median'.",
+      "source_sha256": "aa182fad9e02541694fa2052e62c78511e77434dae6af84788a7c14871f59ac1",
+      "translation": "1-NN के लिए प्रतिकृति वेल किस तरह एक उपचार प्रोफ़ाइल में मिलते हैं: 'median' (Ljosa et al. 2013) या 'mean'। डिफ़ॉल्ट 'median'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_seeds",
+      "source": "Comma-separated random seeds; every method and control is scored once per seed, one row each in summary.csv. More seeds show how much the scores vary but take longer; blank runs seed 0 only. Default '0,1,2,3,4'.",
+      "source_sha256": "4df555d7a98cb36e9db7beca2e65f284a4f551c0bc1b88aaa21fbec4e164706f",
+      "translation": "अल्पविराम से अलग रैंडम सीड; हर विधि और नियंत्रण प्रति सीड एक बार स्कोर होता है, summary.csv में हर एक की एक पंक्ति। अधिक सीड दिखाते हैं कि स्कोर कितने बदलते हैं, पर समय अधिक लेते हैं; खाली होने पर केवल सीड 0 चलता है। डिफ़ॉल्ट '0,1,2,3,4'।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_per_moa",
+      "source": "Writes per_moa.csv: the accuracy of each mechanism of action per method, protocol and seed, which shows which MoAs drive the overall score. Off skips that file; summary.csv and the confusion tables are still written. Default True.",
+      "source_sha256": "fec4af227239eccce6fc4cc28a32fcec3cc169c02beb7b153bc8308eac6e0d16",
+      "translation": "per_moa.csv लिखता है: प्रति विधि, प्रोटोकॉल और सीड हर क्रिया-तंत्र की सटीकता, जो दिखाती है कि कौन से MoA कुल स्कोर तय करते हैं। बंद होने पर वह फ़ाइल छोड़ दी जाती है; summary.csv और कन्फ़्यूज़न तालिकाएँ फिर भी लिखी जाती हैं। डिफ़ॉल्ट True।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_workers",
+      "source": "Folds the supervised methods fit at the same time, in threads, also inside their shuffled controls. Higher finishes sooner on a machine with spare cores but uses more memory; 1 fits one fold at a time. 1-NN ignores it. Default 1.",
+      "source_sha256": "ceb2dbee3c94a69e32c8b2c43e315a4672d0e263584cd8771830cf4de9495f74",
+      "translation": "पर्यवेक्षित विधियाँ एक साथ जितने फ़ोल्ड फ़िट करती हैं, थ्रेड में, उनके shuffled नियंत्रणों के भीतर भी। अधिक मान खाली कोर वाली मशीन पर जल्दी पूरा होता है पर अधिक मेमोरी लेता है; 1 एक बार में एक फ़ोल्ड फ़िट करता है। 1-NN इसे अनदेखा करता है। डिफ़ॉल्ट 1।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_eval_dst",
+      "source": "Folder the results are written to. Blank writes to results/profiling_evaluation beside the profiles table. Default blank.",
+      "source_sha256": "483796392d739014638e6d604d55e9f831e186edc7cb51c638423117540279e9",
+      "translation": "वह फ़ोल्डर जिसमें परिणाम लिखे जाते हैं। खाली होने पर प्रोफ़ाइल तालिका के बगल में results/profiling_evaluation में लिखा जाता है। डिफ़ॉल्ट खाली।"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_profiles",
+      "source": "Moa profiles",
+      "source_sha256": "2e302451c154fc1966b1afd9df0d6e92dcaabcd592495c5df7dbed1b58d8de45",
+      "translation": "MoA प्रोफ़ाइल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_labels",
+      "source": "Moa labels",
+      "source_sha256": "faba178ffe287ee8fc645e10fa5f27695af574ac683e0865ec86bd1729af0cef",
+      "translation": "MoA लेबल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_label_column",
+      "source": "Moa label column",
+      "source_sha256": "40f8a6a85545a502c845cd6882236f40ef23286a051700dc18df551515546a25",
+      "translation": "MoA लेबल कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_compound_column",
+      "source": "Moa compound column",
+      "source_sha256": "7859e3261be5318f8c4cec7f5eba6c41c8a6246a018e5e3fd1541d070f02f757",
+      "translation": "MoA यौगिक कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_treatment_columns",
+      "source": "Moa treatment columns",
+      "source_sha256": "9c5f976bbfe2448760efd4eadb78742590bc3df0851980c62279ca38489b70fd",
+      "translation": "MoA उपचार कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_batch_column",
+      "source": "Moa batch column",
+      "source_sha256": "7e30d772f188fa27b7fa982cf64b687f3a00af4cc99d1b031d60ee9b86394690",
+      "translation": "MoA बैच कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_controls",
+      "source": "Moa controls",
+      "source_sha256": "4503ed6e79b54d8842ef780517f23baac3a1495535a04e03a63dc42bafb7fd58",
+      "translation": "MoA नियंत्रण"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_arms",
+      "source": "Moa arms",
+      "source_sha256": "1f14170463d53a94a7bfc04eb41fe6c7ce6184f53f967b2f140c504c04b910f8",
+      "translation": "MoA आर्म"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_replicates",
+      "source": "Moa replicates",
+      "source_sha256": "1d7ce12f87cb8ff79a77488a71fbeb5e70e1a5343bc767f20bc1d17b61820bf0",
+      "translation": "MoA प्रतिकृतियाँ"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_shuffles",
+      "source": "Moa shuffles",
+      "source_sha256": "a3c806c3f15864013bb5cb8f5269159fc0e874fe08009917190382a65a399a21",
+      "translation": "MoA शफ़ल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_supervised_shuffles",
+      "source": "Moa supervised shuffles",
+      "source_sha256": "af1907f9b51acbf6a6c9549e005f8901e5b67f1b6ab1444599207daf76d398dc",
+      "translation": "MoA पर्यवेक्षित शफ़ल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_seed",
+      "source": "Moa seed",
+      "source_sha256": "fbdd5302dc72c39e678ed9ff63bdc001359768832fc4f6d14035dbfa89df99a6",
+      "translation": "MoA सीड"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_workers",
+      "source": "Moa workers",
+      "source_sha256": "9ac2302c6ca9ddd1ad40bd993dde3a9d4b018bc9ea3337139a4bfdc67b9b75a8",
+      "translation": "MoA वर्कर"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_dst",
+      "source": "Moa dst",
+      "source_sha256": "1aa222ff6c9be0225a4b28e92ab6abdcd9ef4099a9a0af50842c30dc6eb30c99",
+      "translation": "MoA गंतव्य फ़ोल्डर"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_profiles",
+      "source": "Moa eval profiles",
+      "source_sha256": "d6b06b3f5effd9787616c4ca8d8e79516ea89f4065233f1110cb9afb9df67f21",
+      "translation": "MoA मूल्यांकन प्रोफ़ाइल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata",
+      "source": "Moa eval metadata",
+      "source_sha256": "a2365dd89597c961944fa779942d51ce2a5ad6601fbb9bc480d22af7c7fc2e1b",
+      "translation": "MoA मूल्यांकन मेटाडेटा"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_metadata_columns",
+      "source": "Moa eval metadata columns",
+      "source_sha256": "b8b4b130a44e505ff1506b59a85976cfcfdce78ccc2ace662fd79ce559abf2c8",
+      "translation": "MoA मूल्यांकन मेटाडेटा कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_labels",
+      "source": "Moa eval labels",
+      "source_sha256": "d4dc17e0e15a61fd8a8931dc5cbf97280192d272626db8e2ffadd0c0d1e25913",
+      "translation": "MoA मूल्यांकन लेबल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_label",
+      "source": "Moa eval label",
+      "source_sha256": "31d0f99a76cb5195af55c8194ee08c8fee15ad57c3862e20dc70283a3bcd6739",
+      "translation": "MoA मूल्यांकन लेबल कॉलम"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_compound",
+      "source": "Moa eval compound",
+      "source_sha256": "18f4fc3f3a89bc1700c2069ec8f9eef94212bc858a06b7edf777adb205183607",
+      "translation": "MoA मूल्यांकन यौगिक"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_concentration",
+      "source": "Moa eval concentration",
+      "source_sha256": "67bcc1c25223d210e5df86426a3265f78283987aa0b955abd549f14f4a558c3f",
+      "translation": "MoA मूल्यांकन सांद्रता"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch",
+      "source": "Moa eval batch",
+      "source_sha256": "45a9264c951760eb9bf9c388b5045fb2aa9a9a9a850adbda067d7e13b68048aa",
+      "translation": "MoA मूल्यांकन बैच"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_batch_pattern",
+      "source": "Moa eval batch pattern",
+      "source_sha256": "f9199c656430a2b89f6d35b616b6b13776f869611ae14f01aba575478ad70c17",
+      "translation": "MoA मूल्यांकन बैच पैटर्न"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_control",
+      "source": "Moa eval control",
+      "source_sha256": "4bda9e56d1338c5f5a9c19ed089ea4145f9880ad6ba931fb7828a4c8e3748baf",
+      "translation": "MoA मूल्यांकन नियंत्रण वेल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_protocols",
+      "source": "Moa eval protocols",
+      "source_sha256": "f6764348619c03a76c92a5fbcbeb6411bf8473fdc4923e6ddb559f3faced5db3",
+      "translation": "MoA मूल्यांकन प्रोटोकॉल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_methods",
+      "source": "Moa eval methods",
+      "source_sha256": "5025e5ae6eed58368db1104b91ffbeb2161fecc21e98b20e0daa6c9119cfe927",
+      "translation": "MoA मूल्यांकन विधियाँ"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_feature_qc",
+      "source": "Moa eval feature QC",
+      "source_sha256": "66d00cd09252a3af8dea5d3c2e8ca055cb3937654c24f2a07e5abdf8464a3574",
+      "translation": "MoA मूल्यांकन फ़ीचर QC"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_normalise",
+      "source": "Moa eval normalise",
+      "source_sha256": "0ad2b8e3e229bf779683fc11d2daebbbe66c8f260365513e9bfe4c181de3d37c",
+      "translation": "MoA मूल्यांकन सामान्यीकरण"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_percentiles",
+      "source": "Moa eval percentiles",
+      "source_sha256": "eacfc7cf4c38206b261e9a17826d0ddf4cfbdd3557c651e5267887cef8f51d1e",
+      "translation": "MoA मूल्यांकन पर्सेंटाइल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_exclude",
+      "source": "Moa eval exclude",
+      "source_sha256": "952ed99a17b40f01115b42def1a4b0e1a199eeb01df6e8f40f0f512d4e80ac02",
+      "translation": "MoA मूल्यांकन बहिष्कार"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_controls",
+      "source": "Moa eval controls",
+      "source_sha256": "2052f4acbb227487d6f90e9817ddc1e0217ef02fecac716b6a59362b36fabee4",
+      "translation": "MoA मूल्यांकन नियंत्रण"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_shuffles",
+      "source": "Moa eval shuffles",
+      "source_sha256": "1ae8ea2053ab505fccb59fb5ce920aa0dd7697241f28f460f79c9edcdc9c6a4a",
+      "translation": "MoA मूल्यांकन शफ़ल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_knn_shuffles",
+      "source": "Moa eval knn shuffles",
+      "source_sha256": "6db763af07461c109d1c03a1af05df0089434012c5378a6861d1457640ef43eb",
+      "translation": "MoA मूल्यांकन 1-NN शफ़ल"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_replicates",
+      "source": "Moa eval replicates",
+      "source_sha256": "26c616bb50d2fd732439c28d574ad447476d3125504941f7f8a361570c02ed46",
+      "translation": "MoA मूल्यांकन प्रतिकृतियाँ"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_seeds",
+      "source": "Moa eval seeds",
+      "source_sha256": "2ceb4661d91b62f862f2a2ac8d238e8aae0756fd8cef780053de3b4d68259329",
+      "translation": "MoA मूल्यांकन सीड"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_per_moa",
+      "source": "Moa eval per moa",
+      "source_sha256": "63243a905239a3bfd56a97c4fcbfe390e572c4582461d3fe5eac3ec6a10f5384",
+      "translation": "MoA मूल्यांकन प्रति MoA"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_workers",
+      "source": "Moa eval workers",
+      "source_sha256": "494f8eccfed7a4e9d4a2a42760c3795f6b321352be6dde6e025028d4341f6794",
+      "translation": "MoA मूल्यांकन वर्कर"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_eval_dst",
+      "source": "Moa eval dst",
+      "source_sha256": "6c2107d392928118c2099ad98e759c965646fb2e02124cadd47fd18f1a7efc41",
+      "translation": "MoA मूल्यांकन गंतव्य फ़ोल्डर"
+    },
+    {
+      "table": "setting_labels",
+      "key": "moa_benchmark",
+      "source": "Moa benchmark",
+      "source_sha256": "dc5289cb4693a8c1bf50541fdd9d22eef2af9863545c133ffb6593a4cffa8499",
+      "translation": "MoA बेंचमार्क"
+    },
+    {
+      "table": "setting_labels",
+      "key": "profiling_evaluation",
+      "source": "Profiling evaluation",
+      "source_sha256": "8efd9b0edbc11fce076148d7a6cf6c329d5f1ad01dac0ae2f4bc533303c661de",
+      "translation": "प्रोफ़ाइल मूल्यांकन"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "moa_benchmark",
+      "source": "Score profiles by mechanism of action, leaving one compound out: cosine nearest neighbour, logistic regression and XGBoost under NSC and NSCB, with shuffled-label and majority-class controls.",
+      "source_sha256": "cd7163fa116291b86b552fac5153ee400aede87b6f6def8cd6286c505db91e70",
+      "translation": "प्रोफ़ाइलों को क्रिया-तंत्र (MoA) के आधार पर स्कोर करता है, हर बार एक यौगिक को बाहर रखकर: कोसाइन निकटतम पड़ोसी, लॉजिस्टिक रिग्रेशन और XGBoost, NSC और NSCB के अंतर्गत, फेंटे गए लेबल और बहुमत-वर्ग नियंत्रणों के साथ।"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "profiling_evaluation",
+      "source": "Evaluate well profiles by mechanism of action under NSC and NSCB over several seeds: 1-NN, logistic regression, LDA, k-nearest neighbours and the CellProfiler Analyst classifiers, with majority and shuffled controls.",
+      "source_sha256": "4f7db2284706d6986ce2795eb8ba94b23a1d1b225edc0ff1f86abb5ede2c6ef6",
+      "translation": "वेल प्रोफ़ाइलों का क्रिया-तंत्र (MoA) के आधार पर NSC और NSCB के अंतर्गत कई सीड पर मूल्यांकन करता है: 1-NN, लॉजिस्टिक रिग्रेशन, LDA, k निकटतम पड़ोसी और CellProfiler Analyst के क्लासिफ़ायर, बहुमत और फेंटे गए नियंत्रणों के साथ।"
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark",
+      "source": "MoA benchmark",
+      "source_sha256": "dc48e5beb3e7420c2e1337d7f6df2ae8bf739269ff9d1e9a60fed0c8beba4aa5",
+      "translation": "MoA बेंचमार्क"
+    },
+    {
+      "table": "ui",
+      "key": "MoA benchmark arms",
+      "source": "MoA benchmark arms",
+      "source_sha256": "c29945d6719ec5af7e829c8c46d12210689efdf7f9c67be845aab797f7e3600e",
+      "translation": "MoA आर्म"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation",
+      "source": "MoA evaluation",
+      "source_sha256": "46174eab8392b089960901cd42e455623a64cabe714b5b29234d31d6790ae208",
+      "translation": "MoA मूल्यांकन"
+    },
+    {
+      "table": "ui",
+      "key": "MoA evaluation methods",
+      "source": "MoA evaluation methods",
+      "source_sha256": "0a65b33fc070a27bf6ea6fe5f9f1df0f3e5ee350c9a8b08a766044d7e69a81e5",
+      "translation": "MoA मूल्यांकन विधियाँ"
+    }
+  ]
+}

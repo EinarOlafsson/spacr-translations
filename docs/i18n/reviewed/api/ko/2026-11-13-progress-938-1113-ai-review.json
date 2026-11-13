@@ -1,0 +1,357 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#0",
+      "source": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "source_sha256": "5f1a2a7e2715b617885d1efa2c5a158bd2f6878b306ae4f2ef27f5e3a880e7e2",
+      "translation": "``0..1`` 범위의 전체 완료 비율이며, 알 수 없으면 ``None``입니다."
+    },
+    {
+      "context": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch work list does, is read when no progress line has been seen.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#1",
+      "source": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch queue does, is read when no progress line has been seen.",
+      "source_sha256": "d177b4c22348e5e1c3cd74b4e9cbf5e04b8d3d2fafd7de8acd5ad7129b3bded2",
+      "translation": "모듈이 선언한 단계별로 가중되며 이전 응답보다 낮아지지 않습니다. :mod:`spacr.qt.run_progress`를 참조하십시오. 배치 대기열처럼 소유자가 직접 설정한 ``progress`` 튜플은 아직 진행률 줄이 하나도 보이지 않았을 때 읽힙니다."
+    },
+    {
+      "context": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#0",
+      "source": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "source_sha256": "46b39a075facc0f238cb96ebee1c695b171034a96383e02dfb157bf1a9566236",
+      "translation": "실행이 끝날 때까지 남은 예상 초이며, 알 수 없는 동안은 ``None``입니다."
+    },
+    {
+      "context": "Time spent paused at the run's data-selection boundary does not count toward the rate.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#1",
+      "source": "Time spent paused at the run's gate does not count toward the rate.",
+      "source_sha256": "0348bd24ad37fb633d9aad6ada12cdd957457c49f85d428677aac8f4188bafb7",
+      "translation": "실행이 게이트에서 일시 중지된 시간은 속도에 포함되지 않습니다."
+    },
+    {
+      "context": "How far a run is and how long it has left, read from its Progress lines.",
+      "label": "spacr.qt.run_progress#0",
+      "source": "How far a run is and how long it has left, read from its Progress lines.",
+      "source_sha256": "ad4ab9e2de2c6844352f9edaedd8f4de2ed62ac585ead34340f4d2d68ab91ec2",
+      "translation": "실행이 얼마나 진행되었고 얼마나 남았는지를 Progress 줄에서 읽습니다."
+    },
+    {
+      "context": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per processing session: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "label": "spacr.qt.run_progress#1",
+      "source": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per run: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "source_sha256": "a9cad8d29447ece18a87fa5230ec8c9861bc515f8da3795c69d8afd86c7c6eaa",
+      "translation": "워커는 ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) 또는 단순한 ``Progress: n/total``을 출력합니다. :class:`RunProgress`는 이 출력 흐름을 실행마다 하나의 기록으로 바꿉니다. 즉 전체 비율 ``0..1``과 남은 초이며, 둘 중 하나라도 알 수 없는 동안은 ``None``입니다."
+    },
+    {
+      "context": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the processing session time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the processing session skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "label": "spacr.qt.run_progress#2",
+      "source": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the run time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the run skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "source_sha256": "dde284b82ca657d0bd5c6a23e380ae31deb64f0a381574b4637fe04300e6929a",
+      "translation": "**단계.** 실행이 여러 개의 계수 단계를 거치는 모듈(Make Masks는 전처리한 다음 분할하고 이어서 배열을 병합함)은 이를 :data:`MODULE_STAGES`에 선언합니다. 각 단계는 자신에 속하는 ``operation_type`` 레이블과 가중치, 즉 실행 시간에서 차지하는 몫을 지정합니다. 전체 비율은 이미 지난 단계들의 가중치에 현재 단계의 가중치와 그 단계 자체 비율의 곱을 더한 값이며, 결코 뒤로 가지 않습니다. 실행이 건너뛴 단계는 지난 것으로 간주합니다. 선언된 모듈이 나열하지 않은 레이블(단계 안의 중첩 루프)은 선언된 단계가 시작된 뒤에는 막대를 움직이지 않습니다. 아무것도 선언하지 않은 모듈은 현재 출력 중인 단계의 비율을 그대로 쓰고 그 단계 이름을 표시합니다."
+    },
+    {
+      "context": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "label": "spacr.qt.run_progress#3",
+      "source": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "source_sha256": "05f4242e750396ebfe8002db7466f1430a3b5ee500357a39bf1c1abe22fd63c0",
+      "translation": "가중치는 코드(어느 단계가 이미지당 무거운 작업을 하는지)에서 읽은 것으로, 아직 참조 데이터 세트에서 측정되지 않았습니다. item 938에 이 측정이 아직 남아 있다고 기록되어 있습니다."
+    },
+    {
+      "context": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the processing session, that is when the module declares no stages or the processing session is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the processing session or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a processing session is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "label": "spacr.qt.run_progress#4",
+      "source": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the run, that is when the module declares no stages or the run is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the run or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a run is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "source_sha256": "efe7268f12da41fbf31c76f497924cbd4b7d7c48fc0b7e324171f2e6c7e31a5c",
+      "translation": "**남은 시간.** 워커가 자체 ``Time_left``를 출력하고 그것이 실행의 나머지 전체를 포괄할 때, 즉 모듈이 단계를 선언하지 않았거나 실행이 마지막 선언 단계에 있을 때 그 값을 사용합니다. 그렇지 않으면 추정치는 남은 비율을 평활화된 속도로 나눈 값입니다. 속도는 활성 1초당 얻은 비율의 지수 이동 평균이며, 최대 :data:`RATE_SAMPLE_S`초마다 한 번 표본을 얻습니다. 첫 숫자가 터무니없지 않도록, 실행의 :data:`WARMUP_FRACTION` 또는 활성 :data:`WARMUP_S`초 중 먼저 도달하는 시점 전에는 아무것도 표시하지 않습니다. 일시 중지 시간은 활성 시간이 아닙니다. 실행이 일시 중지된 동안 추정치는 멈춰 있고, 재개하면 마지막 속도에서 이어집니다."
+    },
+    {
+      "context": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "label": "spacr.qt.run_progress#5",
+      "source": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "source_sha256": "ebe5830c41fa31008284300dcefc633c9f4742b68dfdfea219accf7b86804776",
+      "translation": "이 클래스는 주입 가능한 시계를 가진 순수 Python이므로, Qt나 실제 시간 없이 추정기를 테스트할 수 있습니다."
+    },
+    {
+      "context": "One parsed ``Progress:`` line.",
+      "label": "spacr.qt.run_progress.ProgressSample#0",
+      "source": "One parsed ``Progress:`` line.",
+      "source_sha256": "19c0bb732ba050ac4a84e6ee3b0bb3223d64371afa454c46c16ee28accc4c1ec",
+      "translation": "파싱된 ``Progress:`` 줄 하나입니다."
+    },
+    {
+      "context": "units finished.",
+      "label": "spacr.qt.run_progress.ProgressSample#1",
+      "source": "units finished.",
+      "source_sha256": "d808056c5cd499e51e65e8413ecc029b7d1293ae140741024016725eac87ab85",
+      "translation": "완료된 단위 수입니다."
+    },
+    {
+      "context": "units in the stage.",
+      "label": "spacr.qt.run_progress.ProgressSample#2",
+      "source": "units in the stage.",
+      "source_sha256": "e420a27bef4f6bbcf780abf2048dd9c4e959d7c599f4cc0d2949a7aa6474bc87",
+      "translation": "단계의 전체 단위 수입니다."
+    },
+    {
+      "context": "the ``operation_type``, or ``None`` when the line has none.",
+      "label": "spacr.qt.run_progress.ProgressSample#3",
+      "source": "the ``operation_type``, or ``None`` when the line has none.",
+      "source_sha256": "d8ed52374b3df9306fc2f8ee32986900042f3337abe2973a37896fb9573e6d68",
+      "translation": "``operation_type``이며, 줄에 없으면 ``None``입니다."
+    },
+    {
+      "context": "the worker's own estimate in seconds, or ``None``.",
+      "label": "spacr.qt.run_progress.ProgressSample#4",
+      "source": "the worker's own estimate in seconds, or ``None``.",
+      "source_sha256": "69ff8dc5aef87035d6e7ce184fad6e39bdc34ebb8f857a0e8bfff73b4aea1186",
+      "translation": "워커 자체의 추정치(초)이거나 ``None``입니다."
+    },
+    {
+      "context": "Hold the four fields of one progress line.",
+      "label": "spacr.qt.run_progress.ProgressSample#5",
+      "source": "Hold the four fields of one progress line.",
+      "source_sha256": "a932d7ea4b872447ea2d6d1b9c48b6f3f117ce9e33efc8d0104df2adb589d007",
+      "translation": "진행률 줄 하나의 네 필드를 보관합니다."
+    },
+    {
+      "context": "Show the fields, for test failure messages.",
+      "label": "spacr.qt.run_progress.ProgressSample.__repr__#0",
+      "source": "Show the fields, for test failure messages.",
+      "source_sha256": "501cd71911da5409ae15a74bc4abe0b6b56875defbdda1b52daefee18dcd7991",
+      "translation": "테스트 실패 메시지용으로 필드를 표시합니다."
+    },
+    {
+      "context": "Overall fraction and time left for one run.",
+      "label": "spacr.qt.run_progress.RunProgress#0",
+      "source": "Overall fraction and time left for one run.",
+      "source_sha256": "987c3f0d6e5b6b8bf15959e18df7c1d0f8161e5694ec0f8828bd7ced9914d2eb",
+      "translation": "한 실행의 전체 비율과 남은 시간입니다."
+    },
+    {
+      "context": "the module executing; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "label": "spacr.qt.run_progress.RunProgress#1",
+      "source": "the module running; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "source_sha256": "b78fac6db0ab9916bdfefafcb177a25c9ac53761953fcd022859bcda4c863cdb",
+      "translation": "실행 중인 모듈입니다. :data:`MODULE_STAGES`에 항목이 있으면 그 항목으로 단계에 가중치를 줍니다."
+    },
+    {
+      "context": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "label": "spacr.qt.run_progress.RunProgress#2",
+      "source": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "source_sha256": "aa0d520ddfb2f1d0eec2a18d1d27eedc0e3cb2ea515d09d54841c0814d95183d",
+      "translation": "현재 시간을 초 단위로 반환합니다. 기본값은 :func:`time.monotonic`입니다."
+    },
+    {
+      "context": "stage declarations to use instead of the module's.",
+      "label": "spacr.qt.run_progress.RunProgress#3",
+      "source": "stage declarations to use instead of the module's.",
+      "source_sha256": "a8f56a1bec95fa16e08ab9bc56ae84593033cfa7264900b0c7536d32f5555f98",
+      "translation": "모듈의 단계 선언 대신 사용할 단계 선언입니다."
+    },
+    {
+      "context": "Start an empty record whose active clock starts now.",
+      "label": "spacr.qt.run_progress.RunProgress#4",
+      "source": "Start an empty record whose active clock starts now.",
+      "source_sha256": "c23cb60cdc86b68c16e309fa7449cfcc3bf08473f7554012ac28023f5b9926f3",
+      "translation": "활성 시계가 지금 시작되는 빈 기록을 만듭니다."
+    },
+    {
+      "context": "Seconds since the start, less the time spent paused.",
+      "label": "spacr.qt.run_progress.RunProgress.active_seconds#0",
+      "source": "Seconds since the start, less the time spent paused.",
+      "source_sha256": "b72e01604ac8b86d987e83531a8be477cd92dfb3f818148e78ba07f879eec11d",
+      "translation": "시작 이후의 초에서 일시 중지된 시간을 뺀 값입니다."
+    },
+    {
+      "context": "Whether the module declared weighted stages.",
+      "label": "spacr.qt.run_progress.RunProgress.declares_stages#0",
+      "source": "Whether the module declared weighted stages.",
+      "source_sha256": "49b571bad051a6e2cbb9be6c6019bebf4154515b87bdb5ccd01dfb87140cbdd6",
+      "translation": "모듈이 가중 단계를 선언했는지 여부입니다."
+    },
+    {
+      "context": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "label": "spacr.qt.run_progress.RunProgress.fraction#0",
+      "source": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "source_sha256": "fd16ab12689e62ea3049f573ed5dce44da439f0c756b6ee8d4d6fe3210efd500",
+      "translation": "``0..1`` 범위의 전체 비율이며, 첫 계수 전에는 ``None``입니다."
+    },
+    {
+      "context": "Whether :meth:`pause` was called and not yet resumed.",
+      "label": "spacr.qt.run_progress.RunProgress.is_paused#0",
+      "source": "Whether :meth:`pause` was called and not yet resumed.",
+      "source_sha256": "7ac704db4c3368d4cd24554b16795b7b3187b6f362bdfd5c45240ad710e7c226",
+      "translation": ":meth:`pause`가 호출되었고 아직 재개되지 않았는지 여부입니다."
+    },
+    {
+      "context": "Fold one progress line into the record.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#0",
+      "source": "Fold one progress line into the record.",
+      "source_sha256": "fe66aa03674b1a9f8aa2ce98b9697b9a05c258582d47b279c0e64bcff33b7413",
+      "translation": "진행률 줄 하나를 기록에 반영합니다."
+    },
+    {
+      "context": "a parsed line; a total of zero or less is ignored.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#1",
+      "source": "a parsed line; a total of zero or less is ignored.",
+      "source_sha256": "66fc9777f840039fa21dd00d10d0ba7a4f72a90a0fa732887f46aa17abd38443",
+      "translation": "파싱된 줄입니다. 합계가 0 이하이면 무시합니다."
+    },
+    {
+      "context": "Stop the active clock; repeated calls change nothing.",
+      "label": "spacr.qt.run_progress.RunProgress.pause#0",
+      "source": "Stop the active clock; repeated calls change nothing.",
+      "source_sha256": "b3e471bcf14032c4f19b259305e02cb5fff9c7ab9ab7efb3ae59472463e7e133",
+      "translation": "활성 시계를 멈춥니다. 반복 호출해도 아무것도 바뀌지 않습니다."
+    },
+    {
+      "context": "Restart the active clock; the last rate carries on.",
+      "label": "spacr.qt.run_progress.RunProgress.resume#0",
+      "source": "Restart the active clock; the last rate carries on.",
+      "source_sha256": "bf6c2244173523f7a05bd9a9ab741e719635e8b74368e681b27cb76bff003a7a",
+      "translation": "활성 시계를 다시 시작합니다. 마지막 속도가 계속 적용됩니다."
+    },
+    {
+      "context": "Seconds the run still needs, or ``None`` while unknown.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#0",
+      "source": "Seconds the run still needs, or ``None`` while unknown.",
+      "source_sha256": "6b23c2925c52008e17367453375b6a2c15fc1f87c753bbc8607e8c217500ee23",
+      "translation": "실행에 아직 필요한 초이며, 알 수 없는 동안은 ``None``입니다."
+    },
+    {
+      "context": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#1",
+      "source": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "source_sha256": "216d40916acb712217aace1730d4d8e3f6fac9862f783b9d611c121ab59be784",
+      "translation": "진행률 줄 사이에서는 활성 시간으로 카운트다운하므로, 일시 중지된 실행은 추정치를 유지합니다."
+    },
+    {
+      "context": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "label": "spacr.qt.run_progress.RunProgress.stage_label#0",
+      "source": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "source_sha256": "95a7d3f83cd01d34bd5a7e02786411c75380e075c7467954a7dd9617b92b9911",
+      "translation": "가장 최근에 계수된 줄의 ``operation_type`` 또는 ``None``입니다."
+    },
+    {
+      "context": "Follow a pause data-selection boundary's state: pause or resume to match ``paused``.",
+      "label": "spacr.qt.run_progress.RunProgress.sync_pause#0",
+      "source": "Follow a pause gate's state: pause or resume to match ``paused``.",
+      "source_sha256": "ae30dae10e46274fba1a25c9384106e16e939f36a03f7da18442d00528b0c78b",
+      "translation": "일시 중지 게이트의 상태를 따릅니다. ``paused``에 맞춰 일시 중지하거나 재개합니다."
+    },
+    {
+      "context": "Whether enough of the run has passed to show an estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.warmed_up#0",
+      "source": "Whether enough of the run has passed to show an estimate.",
+      "source_sha256": "9f1a4775d94455d039ea107136a446f2d0b3f5ef099fe93640c0cb855c72da98",
+      "translation": "추정치를 표시할 만큼 실행이 충분히 진행되었는지 여부입니다."
+    },
+    {
+      "context": "The percent and time-left text the module bar and Home banner show.",
+      "label": "spacr.qt.run_progress.describe_progress#0",
+      "source": "The percent and time-left text the module bar and Home banner show.",
+      "source_sha256": "52962375fceb8b1499e7219ee9a76a0b2e06cfe2c89fa0b72e904f8dd288407a",
+      "translation": "모듈 막대와 Home 배너에 표시되는 백분율과 남은 시간 텍스트입니다."
+    },
+    {
+      "context": "Both surfaces call this with the same run handle, so they always agree.",
+      "label": "spacr.qt.run_progress.describe_progress#1",
+      "source": "Both surfaces call this with the same run handle, so they always agree.",
+      "source_sha256": "760e6b2be40c42407c755c5a73d501528b14f2c8491c9dfdbdee17c25eec8160",
+      "translation": "두 화면 모두 같은 실행 핸들로 이 함수를 호출하므로 항상 일치합니다."
+    },
+    {
+      "context": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "label": "spacr.qt.run_progress.describe_progress#2",
+      "source": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "source_sha256": "1bea8cb4ffa52174afae6de6b8c8e73162695c33d7c19bc1a8ab86720939880a",
+      "translation": "``fraction()``과 선택적으로 ``seconds_left()``를 가진 실행 핸들입니다."
+    },
+    {
+      "context": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "label": "spacr.qt.run_progress.describe_progress#3",
+      "source": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "source_sha256": "69d995409e03b47f279bc5b9aab10953a103d1aed0a0192414a896e5ae3519c7",
+      "translation": "``(percent, text)``입니다. 실행에 셀 수 있는 단계가 없으면 ``percent``는 ``None``이고(작업 중 막대 유지), 이때 ``text``는 비어 있습니다."
+    },
+    {
+      "context": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "label": "spacr.qt.run_progress.format_time_left#0",
+      "source": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "source_sha256": "50a4d96c7c1c9a61f0e550ff0723365861380d596885f1c87fe01e47531dc308",
+      "translation": "표시용으로 ``seconds``를 반올림합니다: \"about 12 min left\", \"about 2 h 10 min left\"."
+    },
+    {
+      "context": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "label": "spacr.qt.run_progress.format_time_left#1",
+      "source": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "source_sha256": "281aae6e16ce938f8f24a0f7d881b6d039d6132799f6f10374dad0df207430b6",
+      "translation": "1시간 미만은 분 단위로, 1시간 이상은 5분 단위로 반올림합니다. ``None``은 \"estimating…\"으로 표시됩니다."
+    },
+    {
+      "context": "the estimate, or ``None``.",
+      "label": "spacr.qt.run_progress.format_time_left#2",
+      "source": "the estimate, or ``None``.",
+      "source_sha256": "41ea374d9534cb525083258f042954093608878b8de2d3516b72ddf379dbcd7c",
+      "translation": "추정치 또는 ``None``입니다."
+    },
+    {
+      "context": "the translated phrase.",
+      "label": "spacr.qt.run_progress.format_time_left#3",
+      "source": "the translated phrase.",
+      "source_sha256": "3fcff1b0e4bcb6eeac7cb7c22ea79846c8b6a7f022e639ef89641bb29c136ac2",
+      "translation": "번역된 문구입니다."
+    },
+    {
+      "context": "Every progress line in ``text``, in the order printed.",
+      "label": "spacr.qt.run_progress.parse_progress#0",
+      "source": "Every progress line in ``text``, in the order printed.",
+      "source_sha256": "2cd610f89b697637a754bb8eff9bda09d90e8de543167b6c6fab90b35c1dec57",
+      "translation": "``text``에 있는 모든 진행률 줄을 출력된 순서대로 반환합니다."
+    },
+    {
+      "context": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "label": "spacr.qt.run_progress.parse_progress#1",
+      "source": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "source_sha256": "209cf9a1769afa53971641df40a3dae5a04ff6f9723c2289fc8d31339a63ba00",
+      "translation": "``Time_left``는 완료된 단위를 하나 이상 세는 줄에서만 읽습니다. ``print_progress``는 첫 단위 전에 ``0.000 min``을 보고하는데, 이는 추정치가 아닙니다."
+    },
+    {
+      "context": "worker output, one or more lines.",
+      "label": "spacr.qt.run_progress.parse_progress#2",
+      "source": "worker output, one or more lines.",
+      "source_sha256": "147dc5428941cd87ef1a7501ab4728322f263277d4fdf1550c999f8a05796716",
+      "translation": "워커 출력이며, 한 줄 이상입니다."
+    },
+    {
+      "context": "the samples; empty when no line carries ``Progress: n/total``.",
+      "label": "spacr.qt.run_progress.parse_progress#3",
+      "source": "the samples; empty when no line carries ``Progress: n/total``.",
+      "source_sha256": "12a82f4d3d3e4259fc8f3d1eb9ed9309e74c662cdf41922647b6958c663b2d18",
+      "translation": "표본 목록입니다. ``Progress: n/total``을 포함한 줄이 없으면 비어 있습니다."
+    },
+    {
+      "context": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#0",
+      "source": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "source_sha256": "6ae89aa7fe512774b920ceccdbaa631231bdc5b45e3d581b7d1d47d326a185fe",
+      "translation": "``percent``를 ``QProgressBar``에 표시하거나 작업 중 막대로 바꿉니다."
+    },
+    {
+      "context": "the progress bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#1",
+      "source": "the progress bar.",
+      "source_sha256": "0bf305dcca52b6a80970333bb0f288abc4b220f33771012e2bc215a1032702ca",
+      "translation": "진행률 막대입니다."
+    },
+    {
+      "context": "``0..100``, or ``None`` for a run with no countable steps.",
+      "label": "spacr.qt.run_progress.show_on_bar#2",
+      "source": "``0..100``, or ``None`` for a run with no countable steps.",
+      "source_sha256": "5492de6dd1534c8d521f5d0be06326bd891d5abe102b586678b7a0b7b9763e9d",
+      "translation": "``0..100`` 또는 셀 수 있는 단계가 없는 실행의 경우 ``None``입니다."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks added or changed on the claude-938-progress-1113 branch (item 938, module and Home progress bars with percent done and time left): the new module spacr.qt.run_progress (its module docstring, ProgressSample, parse_progress, RunProgress and its public methods and properties, format_time_left, describe_progress and show_on_bar), the new spacr.qt.bridge.RunHandle.seconds_left and the rewritten spacr.qt.bridge.RunHandle.fraction. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

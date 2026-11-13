@@ -1,0 +1,357 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#0",
+      "source": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "source_sha256": "5f1a2a7e2715b617885d1efa2c5a158bd2f6878b306ae4f2ef27f5e3a880e7e2",
+      "translation": "Fraction globale terminée dans ``0..1``, ou ``None`` si elle est inconnue."
+    },
+    {
+      "context": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch work list does, is read when no progress line has been seen.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#1",
+      "source": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch queue does, is read when no progress line has been seen.",
+      "source_sha256": "d177b4c22348e5e1c3cd74b4e9cbf5e04b8d3d2fafd7de8acd5ad7129b3bded2",
+      "translation": "Pondérée sur les étapes déclarées du module et jamais inférieure à une réponse précédente ; voir :mod:`spacr.qt.run_progress`. Un tuple ``progress`` défini directement par son propriétaire, comme le fait la file de lots, est lu tant qu’aucune ligne de progression n’a été vue."
+    },
+    {
+      "context": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#0",
+      "source": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "source_sha256": "46b39a075facc0f238cb96ebee1c695b171034a96383e02dfb157bf1a9566236",
+      "translation": "Secondes estimées jusqu’à la fin de l’exécution, ou ``None`` tant qu’elles sont inconnues."
+    },
+    {
+      "context": "Time spent paused at the run's data-selection boundary does not count toward the rate.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#1",
+      "source": "Time spent paused at the run's gate does not count toward the rate.",
+      "source_sha256": "0348bd24ad37fb633d9aad6ada12cdd957457c49f85d428677aac8f4188bafb7",
+      "translation": "Le temps passé en pause à la barrière de l’exécution ne compte pas dans le débit."
+    },
+    {
+      "context": "How far a run is and how long it has left, read from its Progress lines.",
+      "label": "spacr.qt.run_progress#0",
+      "source": "How far a run is and how long it has left, read from its Progress lines.",
+      "source_sha256": "ad4ab9e2de2c6844352f9edaedd8f4de2ed62ac585ead34340f4d2d68ab91ec2",
+      "translation": "Où en est une exécution et combien de temps il lui reste, lu dans ses lignes Progress."
+    },
+    {
+      "context": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per processing session: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "label": "spacr.qt.run_progress#1",
+      "source": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per run: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "source_sha256": "a9cad8d29447ece18a87fa5230ec8c9861bc515f8da3795c69d8afd86c7c6eaa",
+      "translation": "Les processus de travail affichent ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) ou un simple ``Progress: n/total``. :class:`RunProgress` transforme ce flux en un enregistrement par exécution : la fraction globale ``0..1`` et les secondes restantes, ou ``None`` tant que l’une d’elles est inconnue."
+    },
+    {
+      "context": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the processing session time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the processing session skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "label": "spacr.qt.run_progress#2",
+      "source": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the run time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the run skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "source_sha256": "dde284b82ca657d0bd5c6a23e380ae31deb64f0a381574b4637fe04300e6929a",
+      "translation": "**Étapes.** Un module dont l’exécution passe par plusieurs étapes comptées (Make Masks prétraite, puis segmente, puis fusionne les tableaux) les déclare dans :data:`MODULE_STAGES`. Chaque étape indique les étiquettes ``operation_type`` qui lui appartiennent et un poids, sa part du temps d’exécution. La fraction globale est alors la somme des poids des étapes déjà franchies plus le poids de l’étape en cours multiplié par sa propre fraction, et elle ne recule jamais. Une étape que l’exécution saute compte comme franchie. Une étiquette qu’un module déclaré ne liste pas (une boucle imbriquée dans une étape) ne fait plus avancer la barre une fois qu’une étape déclarée a commencé. Un module qui ne déclare rien garde la fraction de l’étape en train d’afficher et la nomme."
+    },
+    {
+      "context": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "label": "spacr.qt.run_progress#3",
+      "source": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "source_sha256": "05f4242e750396ebfe8002db7466f1430a3b5ee500357a39bf1c1abe22fd63c0",
+      "translation": "Les poids sont déduits du code (quelle étape fait le gros du travail par image) et pas encore mesurés sur un jeu de données de référence ; l’item 938 consigne que cette mesure reste à faire."
+    },
+    {
+      "context": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the processing session, that is when the module declares no stages or the processing session is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the processing session or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a processing session is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "label": "spacr.qt.run_progress#4",
+      "source": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the run, that is when the module declares no stages or the run is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the run or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a run is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "source_sha256": "efe7268f12da41fbf31c76f497924cbd4b7d7c48fc0b7e324171f2e6c7e31a5c",
+      "translation": "**Temps restant.** Le ``Time_left`` propre au processus de travail est utilisé lorsqu’il en affiche un et qu’il couvre le reste de l’exécution, c’est-à-dire lorsque le module ne déclare aucune étape ou que l’exécution en est à sa dernière étape déclarée. Sinon, l’estimation est la fraction restante divisée par un débit lissé : une moyenne mobile exponentielle de la fraction gagnée par seconde active, échantillonnée au plus toutes les :data:`RATE_SAMPLE_S` secondes. Rien n’est affiché avant :data:`WARMUP_FRACTION` de l’exécution ou :data:`WARMUP_S` secondes actives, selon ce qui arrive en premier, afin que le premier chiffre ne soit pas farfelu. Le temps en pause n’est pas du temps actif : tant qu’une exécution est en pause, l’estimation reste figée, et à la reprise elle repart du dernier débit."
+    },
+    {
+      "context": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "label": "spacr.qt.run_progress#5",
+      "source": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "source_sha256": "ebe5830c41fa31008284300dcefc633c9f4742b68dfdfea219accf7b86804776",
+      "translation": "La classe est du Python pur avec une horloge injectable, afin que l’estimateur puisse être testé sans Qt ni temps réel."
+    },
+    {
+      "context": "One parsed ``Progress:`` line.",
+      "label": "spacr.qt.run_progress.ProgressSample#0",
+      "source": "One parsed ``Progress:`` line.",
+      "source_sha256": "19c0bb732ba050ac4a84e6ee3b0bb3223d64371afa454c46c16ee28accc4c1ec",
+      "translation": "Une ligne ``Progress:`` analysée."
+    },
+    {
+      "context": "units finished.",
+      "label": "spacr.qt.run_progress.ProgressSample#1",
+      "source": "units finished.",
+      "source_sha256": "d808056c5cd499e51e65e8413ecc029b7d1293ae140741024016725eac87ab85",
+      "translation": "unités terminées."
+    },
+    {
+      "context": "units in the stage.",
+      "label": "spacr.qt.run_progress.ProgressSample#2",
+      "source": "units in the stage.",
+      "source_sha256": "e420a27bef4f6bbcf780abf2048dd9c4e959d7c599f4cc0d2949a7aa6474bc87",
+      "translation": "unités de l’étape."
+    },
+    {
+      "context": "the ``operation_type``, or ``None`` when the line has none.",
+      "label": "spacr.qt.run_progress.ProgressSample#3",
+      "source": "the ``operation_type``, or ``None`` when the line has none.",
+      "source_sha256": "d8ed52374b3df9306fc2f8ee32986900042f3337abe2973a37896fb9573e6d68",
+      "translation": "le ``operation_type``, ou ``None`` si la ligne n’en a pas."
+    },
+    {
+      "context": "the worker's own estimate in seconds, or ``None``.",
+      "label": "spacr.qt.run_progress.ProgressSample#4",
+      "source": "the worker's own estimate in seconds, or ``None``.",
+      "source_sha256": "69ff8dc5aef87035d6e7ce184fad6e39bdc34ebb8f857a0e8bfff73b4aea1186",
+      "translation": "l’estimation propre au processus de travail, en secondes, ou ``None``."
+    },
+    {
+      "context": "Hold the four fields of one progress line.",
+      "label": "spacr.qt.run_progress.ProgressSample#5",
+      "source": "Hold the four fields of one progress line.",
+      "source_sha256": "a932d7ea4b872447ea2d6d1b9c48b6f3f117ce9e33efc8d0104df2adb589d007",
+      "translation": "Conserve les quatre champs d’une ligne de progression."
+    },
+    {
+      "context": "Show the fields, for test failure messages.",
+      "label": "spacr.qt.run_progress.ProgressSample.__repr__#0",
+      "source": "Show the fields, for test failure messages.",
+      "source_sha256": "501cd71911da5409ae15a74bc4abe0b6b56875defbdda1b52daefee18dcd7991",
+      "translation": "Affiche les champs, pour les messages d’échec des tests."
+    },
+    {
+      "context": "Overall fraction and time left for one run.",
+      "label": "spacr.qt.run_progress.RunProgress#0",
+      "source": "Overall fraction and time left for one run.",
+      "source_sha256": "987c3f0d6e5b6b8bf15959e18df7c1d0f8161e5694ec0f8828bd7ced9914d2eb",
+      "translation": "Fraction globale et temps restant d’une exécution."
+    },
+    {
+      "context": "the module executing; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "label": "spacr.qt.run_progress.RunProgress#1",
+      "source": "the module running; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "source_sha256": "b78fac6db0ab9916bdfefafcb177a25c9ac53761953fcd022859bcda4c863cdb",
+      "translation": "le module en cours ; son entrée dans :data:`MODULE_STAGES`, le cas échéant, pondère les étapes."
+    },
+    {
+      "context": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "label": "spacr.qt.run_progress.RunProgress#2",
+      "source": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "source_sha256": "aa0d520ddfb2f1d0eec2a18d1d27eedc0e3cb2ea515d09d54841c0814d95183d",
+      "translation": "renvoie l’heure actuelle en secondes ; :func:`time.monotonic` par défaut."
+    },
+    {
+      "context": "stage declarations to use instead of the module's.",
+      "label": "spacr.qt.run_progress.RunProgress#3",
+      "source": "stage declarations to use instead of the module's.",
+      "source_sha256": "a8f56a1bec95fa16e08ab9bc56ae84593033cfa7264900b0c7536d32f5555f98",
+      "translation": "déclarations d’étapes à utiliser à la place de celles du module."
+    },
+    {
+      "context": "Start an empty record whose active clock starts now.",
+      "label": "spacr.qt.run_progress.RunProgress#4",
+      "source": "Start an empty record whose active clock starts now.",
+      "source_sha256": "c23cb60cdc86b68c16e309fa7449cfcc3bf08473f7554012ac28023f5b9926f3",
+      "translation": "Démarre un enregistrement vide dont l’horloge active démarre maintenant."
+    },
+    {
+      "context": "Seconds since the start, less the time spent paused.",
+      "label": "spacr.qt.run_progress.RunProgress.active_seconds#0",
+      "source": "Seconds since the start, less the time spent paused.",
+      "source_sha256": "b72e01604ac8b86d987e83531a8be477cd92dfb3f818148e78ba07f879eec11d",
+      "translation": "Secondes depuis le début, moins le temps passé en pause."
+    },
+    {
+      "context": "Whether the module declared weighted stages.",
+      "label": "spacr.qt.run_progress.RunProgress.declares_stages#0",
+      "source": "Whether the module declared weighted stages.",
+      "source_sha256": "49b571bad051a6e2cbb9be6c6019bebf4154515b87bdb5ccd01dfb87140cbdd6",
+      "translation": "Indique si le module a déclaré des étapes pondérées."
+    },
+    {
+      "context": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "label": "spacr.qt.run_progress.RunProgress.fraction#0",
+      "source": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "source_sha256": "fd16ab12689e62ea3049f573ed5dce44da439f0c756b6ee8d4d6fe3210efd500",
+      "translation": "Fraction globale dans ``0..1``, ou ``None`` avant tout comptage."
+    },
+    {
+      "context": "Whether :meth:`pause` was called and not yet resumed.",
+      "label": "spacr.qt.run_progress.RunProgress.is_paused#0",
+      "source": "Whether :meth:`pause` was called and not yet resumed.",
+      "source_sha256": "7ac704db4c3368d4cd24554b16795b7b3187b6f362bdfd5c45240ad710e7c226",
+      "translation": "Indique si :meth:`pause` a été appelé sans reprise depuis."
+    },
+    {
+      "context": "Fold one progress line into the record.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#0",
+      "source": "Fold one progress line into the record.",
+      "source_sha256": "fe66aa03674b1a9f8aa2ce98b9697b9a05c258582d47b279c0e64bcff33b7413",
+      "translation": "Intègre une ligne de progression dans l’enregistrement."
+    },
+    {
+      "context": "a parsed line; a total of zero or less is ignored.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#1",
+      "source": "a parsed line; a total of zero or less is ignored.",
+      "source_sha256": "66fc9777f840039fa21dd00d10d0ba7a4f72a90a0fa732887f46aa17abd38443",
+      "translation": "une ligne analysée ; un total de zéro ou moins est ignoré."
+    },
+    {
+      "context": "Stop the active clock; repeated calls change nothing.",
+      "label": "spacr.qt.run_progress.RunProgress.pause#0",
+      "source": "Stop the active clock; repeated calls change nothing.",
+      "source_sha256": "b3e471bcf14032c4f19b259305e02cb5fff9c7ab9ab7efb3ae59472463e7e133",
+      "translation": "Arrête l’horloge active ; des appels répétés ne changent rien."
+    },
+    {
+      "context": "Restart the active clock; the last rate carries on.",
+      "label": "spacr.qt.run_progress.RunProgress.resume#0",
+      "source": "Restart the active clock; the last rate carries on.",
+      "source_sha256": "bf6c2244173523f7a05bd9a9ab741e719635e8b74368e681b27cb76bff003a7a",
+      "translation": "Relance l’horloge active ; le dernier débit reste en vigueur."
+    },
+    {
+      "context": "Seconds the run still needs, or ``None`` while unknown.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#0",
+      "source": "Seconds the run still needs, or ``None`` while unknown.",
+      "source_sha256": "6b23c2925c52008e17367453375b6a2c15fc1f87c753bbc8607e8c217500ee23",
+      "translation": "Secondes dont l’exécution a encore besoin, ou ``None`` tant qu’elles sont inconnues."
+    },
+    {
+      "context": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#1",
+      "source": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "source_sha256": "216d40916acb712217aace1730d4d8e3f6fac9862f783b9d611c121ab59be784",
+      "translation": "Décompte entre les lignes de progression avec le temps actif, de sorte qu’une exécution en pause conserve son estimation."
+    },
+    {
+      "context": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "label": "spacr.qt.run_progress.RunProgress.stage_label#0",
+      "source": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "source_sha256": "95a7d3f83cd01d34bd5a7e02786411c75380e075c7467954a7dd9617b92b9911",
+      "translation": "Le ``operation_type`` de la dernière ligne comptée, ou ``None``."
+    },
+    {
+      "context": "Follow a pause data-selection boundary's state: pause or resume to match ``paused``.",
+      "label": "spacr.qt.run_progress.RunProgress.sync_pause#0",
+      "source": "Follow a pause gate's state: pause or resume to match ``paused``.",
+      "source_sha256": "ae30dae10e46274fba1a25c9384106e16e939f36a03f7da18442d00528b0c78b",
+      "translation": "Suit l’état d’une barrière de pause : met en pause ou reprend pour correspondre à ``paused``."
+    },
+    {
+      "context": "Whether enough of the run has passed to show an estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.warmed_up#0",
+      "source": "Whether enough of the run has passed to show an estimate.",
+      "source_sha256": "9f1a4775d94455d039ea107136a446f2d0b3f5ef099fe93640c0cb855c72da98",
+      "translation": "Indique si une part suffisante de l’exécution est écoulée pour afficher une estimation."
+    },
+    {
+      "context": "The percent and time-left text the module bar and Home banner show.",
+      "label": "spacr.qt.run_progress.describe_progress#0",
+      "source": "The percent and time-left text the module bar and Home banner show.",
+      "source_sha256": "52962375fceb8b1499e7219ee9a76a0b2e06cfe2c89fa0b72e904f8dd288407a",
+      "translation": "Le pourcentage et le texte de temps restant qu’affichent la barre du module et la bannière de Home."
+    },
+    {
+      "context": "Both surfaces call this with the same run handle, so they always agree.",
+      "label": "spacr.qt.run_progress.describe_progress#1",
+      "source": "Both surfaces call this with the same run handle, so they always agree.",
+      "source_sha256": "760e6b2be40c42407c755c5a73d501528b14f2c8491c9dfdbdee17c25eec8160",
+      "translation": "Les deux surfaces appellent cette fonction avec le même descripteur d’exécution, elles concordent donc toujours."
+    },
+    {
+      "context": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "label": "spacr.qt.run_progress.describe_progress#2",
+      "source": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "source_sha256": "1bea8cb4ffa52174afae6de6b8c8e73162695c33d7c19bc1a8ab86720939880a",
+      "translation": "un descripteur d’exécution avec ``fraction()`` et, éventuellement, ``seconds_left()``."
+    },
+    {
+      "context": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "label": "spacr.qt.run_progress.describe_progress#3",
+      "source": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "source_sha256": "69d995409e03b47f279bc5b9aab10953a103d1aed0a0192414a896e5ae3519c7",
+      "translation": "``(percent, text)`` ; ``percent`` vaut ``None`` lorsque l’exécution n’a pas d’étapes dénombrables (la barre d’activité est conservée), et ``text`` est alors vide."
+    },
+    {
+      "context": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "label": "spacr.qt.run_progress.format_time_left#0",
+      "source": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "source_sha256": "50a4d96c7c1c9a61f0e550ff0723365861380d596885f1c87fe01e47531dc308",
+      "translation": "Arrondit ``seconds`` pour l’affichage : \"about 12 min left\", \"about 2 h 10 min left\"."
+    },
+    {
+      "context": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "label": "spacr.qt.run_progress.format_time_left#1",
+      "source": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "source_sha256": "281aae6e16ce938f8f24a0f7d881b6d039d6132799f6f10374dad0df207430b6",
+      "translation": "En dessous d’une heure, l’arrondi se fait à la minute ; à partir d’une heure, à cinq minutes. ``None`` s’affiche \"estimating…\"."
+    },
+    {
+      "context": "the estimate, or ``None``.",
+      "label": "spacr.qt.run_progress.format_time_left#2",
+      "source": "the estimate, or ``None``.",
+      "source_sha256": "41ea374d9534cb525083258f042954093608878b8de2d3516b72ddf379dbcd7c",
+      "translation": "l’estimation, ou ``None``."
+    },
+    {
+      "context": "the translated phrase.",
+      "label": "spacr.qt.run_progress.format_time_left#3",
+      "source": "the translated phrase.",
+      "source_sha256": "3fcff1b0e4bcb6eeac7cb7c22ea79846c8b6a7f022e639ef89641bb29c136ac2",
+      "translation": "la formulation traduite."
+    },
+    {
+      "context": "Every progress line in ``text``, in the order printed.",
+      "label": "spacr.qt.run_progress.parse_progress#0",
+      "source": "Every progress line in ``text``, in the order printed.",
+      "source_sha256": "2cd610f89b697637a754bb8eff9bda09d90e8de543167b6c6fab90b35c1dec57",
+      "translation": "Chaque ligne de progression de ``text``, dans l’ordre d’affichage."
+    },
+    {
+      "context": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "label": "spacr.qt.run_progress.parse_progress#1",
+      "source": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "source_sha256": "209cf9a1769afa53971641df40a3dae5a04ff6f9723c2289fc8d31339a63ba00",
+      "translation": "``Time_left`` n’est lu que sur une ligne qui compte aussi au moins une unité terminée : ``print_progress`` indique ``0.000 min`` avant la première unité, ce qui n’est pas une estimation."
+    },
+    {
+      "context": "worker output, one or more lines.",
+      "label": "spacr.qt.run_progress.parse_progress#2",
+      "source": "worker output, one or more lines.",
+      "source_sha256": "147dc5428941cd87ef1a7501ab4728322f263277d4fdf1550c999f8a05796716",
+      "translation": "la sortie du processus de travail, une ou plusieurs lignes."
+    },
+    {
+      "context": "the samples; empty when no line carries ``Progress: n/total``.",
+      "label": "spacr.qt.run_progress.parse_progress#3",
+      "source": "the samples; empty when no line carries ``Progress: n/total``.",
+      "source_sha256": "12a82f4d3d3e4259fc8f3d1eb9ed9309e74c662cdf41922647b6958c663b2d18",
+      "translation": "les échantillons ; vide si aucune ligne ne contient ``Progress: n/total``."
+    },
+    {
+      "context": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#0",
+      "source": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "source_sha256": "6ae89aa7fe512774b920ceccdbaa631231bdc5b45e3d581b7d1d47d326a185fe",
+      "translation": "Place ``percent`` dans une ``QProgressBar``, ou en fait une barre d’activité."
+    },
+    {
+      "context": "the progress bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#1",
+      "source": "the progress bar.",
+      "source_sha256": "0bf305dcca52b6a80970333bb0f288abc4b220f33771012e2bc215a1032702ca",
+      "translation": "la barre de progression."
+    },
+    {
+      "context": "``0..100``, or ``None`` for a run with no countable steps.",
+      "label": "spacr.qt.run_progress.show_on_bar#2",
+      "source": "``0..100``, or ``None`` for a run with no countable steps.",
+      "source_sha256": "5492de6dd1534c8d521f5d0be06326bd891d5abe102b586678b7a0b7b9763e9d",
+      "translation": "``0..100``, ou ``None`` pour une exécution sans étapes dénombrables."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks added or changed on the claude-938-progress-1113 branch (item 938, module and Home progress bars with percent done and time left): the new module spacr.qt.run_progress (its module docstring, ProgressSample, parse_progress, RunProgress and its public methods and properties, format_time_left, describe_progress and show_on_bar), the new spacr.qt.bridge.RunHandle.seconds_left and the rewritten spacr.qt.bridge.RunHandle.fraction. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

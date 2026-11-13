@@ -1,0 +1,357 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#0",
+      "source": "Overall completed fraction in ``0..1``, or ``None`` when unknown.",
+      "source_sha256": "5f1a2a7e2715b617885d1efa2c5a158bd2f6878b306ae4f2ef27f5e3a880e7e2",
+      "translation": "总体完成比例，取值 ``0..1``；未知时为 ``None``。"
+    },
+    {
+      "context": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch work list does, is read when no progress line has been seen.",
+      "label": "spacr.qt.bridge.RunHandle.fraction#1",
+      "source": "Weighted across the module's declared stages and never lower than an earlier answer; see :mod:`spacr.qt.run_progress`. A ``progress`` tuple set directly by its owner, as the batch queue does, is read when no progress line has been seen.",
+      "source_sha256": "d177b4c22348e5e1c3cd74b4e9cbf5e04b8d3d2fafd7de8acd5ad7129b3bded2",
+      "translation": "按模块声明的各阶段加权，且绝不低于先前的结果；参见 :mod:`spacr.qt.run_progress`。若尚未看到任何进度行，则读取由其所有者直接设置的 ``progress`` 元组（批处理队列即如此）。"
+    },
+    {
+      "context": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#0",
+      "source": "Estimated seconds until the run ends, or ``None`` while unknown.",
+      "source_sha256": "46b39a075facc0f238cb96ebee1c695b171034a96383e02dfb157bf1a9566236",
+      "translation": "距运行结束的估计秒数；未知时为 ``None``。"
+    },
+    {
+      "context": "Time spent paused at the run's data-selection boundary does not count toward the rate.",
+      "label": "spacr.qt.bridge.RunHandle.seconds_left#1",
+      "source": "Time spent paused at the run's gate does not count toward the rate.",
+      "source_sha256": "0348bd24ad37fb633d9aad6ada12cdd957457c49f85d428677aac8f4188bafb7",
+      "translation": "运行在其暂停门控处暂停的时间不计入速率。"
+    },
+    {
+      "context": "How far a run is and how long it has left, read from its Progress lines.",
+      "label": "spacr.qt.run_progress#0",
+      "source": "How far a run is and how long it has left, read from its Progress lines.",
+      "source_sha256": "ad4ab9e2de2c6844352f9edaedd8f4de2ed62ac585ead34340f4d2d68ab91ec2",
+      "translation": "运行进行到哪一步、还剩多长时间，从其 Progress 行读取。"
+    },
+    {
+      "context": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per processing session: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "label": "spacr.qt.run_progress#1",
+      "source": "Workers print ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.`` (:func:`spacr.utils.print_progress`) or a bare ``Progress: n/total``. :class:`RunProgress` turns that stream into one record per run: the overall fraction ``0..1`` and the seconds left, or ``None`` while either is unknown.",
+      "source_sha256": "a9cad8d29447ece18a87fa5230ec8c9861bc515f8da3795c69d8afd86c7c6eaa",
+      "translation": "工作进程打印 ``Progress: n/total, operation_type: <stage>, ..., Time_left: x min.``（:func:`spacr.utils.print_progress`）或单独的 ``Progress: n/total``。:class:`RunProgress` 将该输出流整理为每次运行一条记录：总体比例 ``0..1`` 和剩余秒数；其中任一未知时为 ``None``。"
+    },
+    {
+      "context": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the processing session time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the processing session skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "label": "spacr.qt.run_progress#2",
+      "source": "**Stages.** A module whose run passes through several counted stages (Make Masks preprocesses, then segments, then merges arrays) declares them in :data:`MODULE_STAGES`. Each stage names the ``operation_type`` labels that belong to it and a weight, its share of the run time. The overall fraction is then the weights of the stages already passed plus the current stage's weight times its own fraction, and it never goes backwards. A stage the run skips counts as passed. A label a declared module does not list (a nested loop inside a stage) does not move the bar once a declared stage has started. A module that declares nothing keeps the fraction of whichever stage is printing and names it.",
+      "source_sha256": "dde284b82ca657d0bd5c6a23e380ae31deb64f0a381574b4637fe04300e6929a",
+      "translation": "**阶段。** 若某模块的运行要经过多个计数阶段（Make Masks 先预处理，再分割，然后合并数组），则在 :data:`MODULE_STAGES` 中声明这些阶段。每个阶段列出属于它的 ``operation_type`` 标签以及一个权重，即它在运行时间中所占的份额。总体比例等于已完成阶段的权重之和，加上当前阶段的权重乘以该阶段自身的比例，并且永不回退。运行跳过的阶段视为已完成。已声明模块未列出的标签（阶段内部的嵌套循环）在某个已声明阶段开始后不会再移动进度条。未声明任何阶段的模块沿用当前正在打印的阶段的比例，并显示该阶段名称。"
+    },
+    {
+      "context": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "label": "spacr.qt.run_progress#3",
+      "source": "The weights are read from the code (which stage does the per-image heavy work), not yet measured on a reference dataset; item 938 records that the measurement is still owed.",
+      "source_sha256": "05f4242e750396ebfe8002db7466f1430a3b5ee500357a39bf1c1abe22fd63c0",
+      "translation": "这些权重是从代码中推断的（哪个阶段承担每张图像的主要计算），尚未在参考数据集上实测；item 938 记录了该测量仍待完成。"
+    },
+    {
+      "context": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the processing session, that is when the module declares no stages or the processing session is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the processing session or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a processing session is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "label": "spacr.qt.run_progress#4",
+      "source": "**Time left.** The worker's own ``Time_left`` is used when it prints one and it covers the rest of the run, that is when the module declares no stages or the run is on its last declared stage. Otherwise the estimate is the remaining fraction divided by a smoothed rate: an exponential moving average of the fraction gained per active second, sampled at most every :data:`RATE_SAMPLE_S` seconds. Nothing is shown before :data:`WARMUP_FRACTION` of the run or :data:`WARMUP_S` active seconds, whichever comes first, so the first number is not wild. Paused time is not active time: while a run is paused the estimate stands still, and on resume it carries on from the last rate.",
+      "source_sha256": "efe7268f12da41fbf31c76f497924cbd4b7d7c48fc0b7e324171f2e6c7e31a5c",
+      "translation": "**剩余时间。** 当工作进程自己打印 ``Time_left`` 且它涵盖运行的剩余部分时（即模块未声明阶段，或运行处于最后一个已声明阶段），使用该值。否则，估计值为剩余比例除以平滑后的速率：每个活动秒所增加比例的指数移动平均，最多每 :data:`RATE_SAMPLE_S` 秒采样一次。在运行达到 :data:`WARMUP_FRACTION` 或活动时间达到 :data:`WARMUP_S` 秒（以先到者为准）之前不显示任何内容，以免第一个数字偏差过大。暂停时间不算活动时间：运行暂停期间估计值保持不变，恢复后从上一个速率继续。"
+    },
+    {
+      "context": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "label": "spacr.qt.run_progress#5",
+      "source": "The class is plain Python with an injectable clock so the estimator can be tested without Qt or real time.",
+      "source_sha256": "ebe5830c41fa31008284300dcefc633c9f4742b68dfdfea219accf7b86804776",
+      "translation": "该类是纯 Python 实现，时钟可注入，因此无需 Qt 或真实时间即可测试估计器。"
+    },
+    {
+      "context": "One parsed ``Progress:`` line.",
+      "label": "spacr.qt.run_progress.ProgressSample#0",
+      "source": "One parsed ``Progress:`` line.",
+      "source_sha256": "19c0bb732ba050ac4a84e6ee3b0bb3223d64371afa454c46c16ee28accc4c1ec",
+      "translation": "一条已解析的 ``Progress:`` 行。"
+    },
+    {
+      "context": "units finished.",
+      "label": "spacr.qt.run_progress.ProgressSample#1",
+      "source": "units finished.",
+      "source_sha256": "d808056c5cd499e51e65e8413ecc029b7d1293ae140741024016725eac87ab85",
+      "translation": "已完成的单位数。"
+    },
+    {
+      "context": "units in the stage.",
+      "label": "spacr.qt.run_progress.ProgressSample#2",
+      "source": "units in the stage.",
+      "source_sha256": "e420a27bef4f6bbcf780abf2048dd9c4e959d7c599f4cc0d2949a7aa6474bc87",
+      "translation": "该阶段的单位总数。"
+    },
+    {
+      "context": "the ``operation_type``, or ``None`` when the line has none.",
+      "label": "spacr.qt.run_progress.ProgressSample#3",
+      "source": "the ``operation_type``, or ``None`` when the line has none.",
+      "source_sha256": "d8ed52374b3df9306fc2f8ee32986900042f3337abe2973a37896fb9573e6d68",
+      "translation": "``operation_type``；该行没有时为 ``None``。"
+    },
+    {
+      "context": "the worker's own estimate in seconds, or ``None``.",
+      "label": "spacr.qt.run_progress.ProgressSample#4",
+      "source": "the worker's own estimate in seconds, or ``None``.",
+      "source_sha256": "69ff8dc5aef87035d6e7ce184fad6e39bdc34ebb8f857a0e8bfff73b4aea1186",
+      "translation": "工作进程自身的估计秒数，或 ``None``。"
+    },
+    {
+      "context": "Hold the four fields of one progress line.",
+      "label": "spacr.qt.run_progress.ProgressSample#5",
+      "source": "Hold the four fields of one progress line.",
+      "source_sha256": "a932d7ea4b872447ea2d6d1b9c48b6f3f117ce9e33efc8d0104df2adb589d007",
+      "translation": "保存一条进度行的四个字段。"
+    },
+    {
+      "context": "Show the fields, for test failure messages.",
+      "label": "spacr.qt.run_progress.ProgressSample.__repr__#0",
+      "source": "Show the fields, for test failure messages.",
+      "source_sha256": "501cd71911da5409ae15a74bc4abe0b6b56875defbdda1b52daefee18dcd7991",
+      "translation": "显示各字段，用于测试失败信息。"
+    },
+    {
+      "context": "Overall fraction and time left for one run.",
+      "label": "spacr.qt.run_progress.RunProgress#0",
+      "source": "Overall fraction and time left for one run.",
+      "source_sha256": "987c3f0d6e5b6b8bf15959e18df7c1d0f8161e5694ec0f8828bd7ced9914d2eb",
+      "translation": "一次运行的总体比例和剩余时间。"
+    },
+    {
+      "context": "the module executing; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "label": "spacr.qt.run_progress.RunProgress#1",
+      "source": "the module running; its :data:`MODULE_STAGES` entry, if any, weights the stages.",
+      "source_sha256": "b78fac6db0ab9916bdfefafcb177a25c9ac53761953fcd022859bcda4c863cdb",
+      "translation": "正在运行的模块；若其在 :data:`MODULE_STAGES` 中有条目，则用它为各阶段加权。"
+    },
+    {
+      "context": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "label": "spacr.qt.run_progress.RunProgress#2",
+      "source": "returns the current time in seconds; :func:`time.monotonic` by default.",
+      "source_sha256": "aa0d520ddfb2f1d0eec2a18d1d27eedc0e3cb2ea515d09d54841c0814d95183d",
+      "translation": "返回当前时间（秒）；默认为 :func:`time.monotonic`。"
+    },
+    {
+      "context": "stage declarations to use instead of the module's.",
+      "label": "spacr.qt.run_progress.RunProgress#3",
+      "source": "stage declarations to use instead of the module's.",
+      "source_sha256": "a8f56a1bec95fa16e08ab9bc56ae84593033cfa7264900b0c7536d32f5555f98",
+      "translation": "用于替代模块自身声明的阶段声明。"
+    },
+    {
+      "context": "Start an empty record whose active clock starts now.",
+      "label": "spacr.qt.run_progress.RunProgress#4",
+      "source": "Start an empty record whose active clock starts now.",
+      "source_sha256": "c23cb60cdc86b68c16e309fa7449cfcc3bf08473f7554012ac28023f5b9926f3",
+      "translation": "创建一条空记录，其活动时钟从此刻开始计时。"
+    },
+    {
+      "context": "Seconds since the start, less the time spent paused.",
+      "label": "spacr.qt.run_progress.RunProgress.active_seconds#0",
+      "source": "Seconds since the start, less the time spent paused.",
+      "source_sha256": "b72e01604ac8b86d987e83531a8be477cd92dfb3f818148e78ba07f879eec11d",
+      "translation": "自开始以来的秒数，扣除暂停时间。"
+    },
+    {
+      "context": "Whether the module declared weighted stages.",
+      "label": "spacr.qt.run_progress.RunProgress.declares_stages#0",
+      "source": "Whether the module declared weighted stages.",
+      "source_sha256": "49b571bad051a6e2cbb9be6c6019bebf4154515b87bdb5ccd01dfb87140cbdd6",
+      "translation": "模块是否声明了加权阶段。"
+    },
+    {
+      "context": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "label": "spacr.qt.run_progress.RunProgress.fraction#0",
+      "source": "Overall fraction in ``0..1``, or ``None`` before any count.",
+      "source_sha256": "fd16ab12689e62ea3049f573ed5dce44da439f0c756b6ee8d4d6fe3210efd500",
+      "translation": "总体比例，取值 ``0..1``；尚未计数时为 ``None``。"
+    },
+    {
+      "context": "Whether :meth:`pause` was called and not yet resumed.",
+      "label": "spacr.qt.run_progress.RunProgress.is_paused#0",
+      "source": "Whether :meth:`pause` was called and not yet resumed.",
+      "source_sha256": "7ac704db4c3368d4cd24554b16795b7b3187b6f362bdfd5c45240ad710e7c226",
+      "translation": "是否已调用 :meth:`pause` 且尚未恢复。"
+    },
+    {
+      "context": "Fold one progress line into the record.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#0",
+      "source": "Fold one progress line into the record.",
+      "source_sha256": "fe66aa03674b1a9f8aa2ce98b9697b9a05c258582d47b279c0e64bcff33b7413",
+      "translation": "将一条进度行并入记录。"
+    },
+    {
+      "context": "a parsed line; a total of zero or less is ignored.",
+      "label": "spacr.qt.run_progress.RunProgress.observe#1",
+      "source": "a parsed line; a total of zero or less is ignored.",
+      "source_sha256": "66fc9777f840039fa21dd00d10d0ba7a4f72a90a0fa732887f46aa17abd38443",
+      "translation": "已解析的一行；总数为零或更小时忽略。"
+    },
+    {
+      "context": "Stop the active clock; repeated calls change nothing.",
+      "label": "spacr.qt.run_progress.RunProgress.pause#0",
+      "source": "Stop the active clock; repeated calls change nothing.",
+      "source_sha256": "b3e471bcf14032c4f19b259305e02cb5fff9c7ab9ab7efb3ae59472463e7e133",
+      "translation": "停止活动时钟；重复调用不会改变任何内容。"
+    },
+    {
+      "context": "Restart the active clock; the last rate carries on.",
+      "label": "spacr.qt.run_progress.RunProgress.resume#0",
+      "source": "Restart the active clock; the last rate carries on.",
+      "source_sha256": "bf6c2244173523f7a05bd9a9ab741e719635e8b74368e681b27cb76bff003a7a",
+      "translation": "重新启动活动时钟；沿用上一个速率。"
+    },
+    {
+      "context": "Seconds the run still needs, or ``None`` while unknown.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#0",
+      "source": "Seconds the run still needs, or ``None`` while unknown.",
+      "source_sha256": "6b23c2925c52008e17367453375b6a2c15fc1f87c753bbc8607e8c217500ee23",
+      "translation": "运行仍需的秒数；未知时为 ``None``。"
+    },
+    {
+      "context": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.seconds_left#1",
+      "source": "Counts down between progress lines with active time, so a paused run holds its estimate.",
+      "source_sha256": "216d40916acb712217aace1730d4d8e3f6fac9862f783b9d611c121ab59be784",
+      "translation": "在两条进度行之间按活动时间倒计时，因此暂停的运行会保持其估计值。"
+    },
+    {
+      "context": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "label": "spacr.qt.run_progress.RunProgress.stage_label#0",
+      "source": "The ``operation_type`` of the newest counted line, or ``None``.",
+      "source_sha256": "95a7d3f83cd01d34bd5a7e02786411c75380e075c7467954a7dd9617b92b9911",
+      "translation": "最近一条已计数行的 ``operation_type``，或 ``None``。"
+    },
+    {
+      "context": "Follow a pause data-selection boundary's state: pause or resume to match ``paused``.",
+      "label": "spacr.qt.run_progress.RunProgress.sync_pause#0",
+      "source": "Follow a pause gate's state: pause or resume to match ``paused``.",
+      "source_sha256": "ae30dae10e46274fba1a25c9384106e16e939f36a03f7da18442d00528b0c78b",
+      "translation": "跟随暂停门控的状态：根据 ``paused`` 暂停或恢复。"
+    },
+    {
+      "context": "Whether enough of the run has passed to show an estimate.",
+      "label": "spacr.qt.run_progress.RunProgress.warmed_up#0",
+      "source": "Whether enough of the run has passed to show an estimate.",
+      "source_sha256": "9f1a4775d94455d039ea107136a446f2d0b3f5ef099fe93640c0cb855c72da98",
+      "translation": "运行是否已进行到足以显示估计值的程度。"
+    },
+    {
+      "context": "The percent and time-left text the module bar and Home banner show.",
+      "label": "spacr.qt.run_progress.describe_progress#0",
+      "source": "The percent and time-left text the module bar and Home banner show.",
+      "source_sha256": "52962375fceb8b1499e7219ee9a76a0b2e06cfe2c89fa0b72e904f8dd288407a",
+      "translation": "模块进度条和 Home 横幅显示的百分比及剩余时间文本。"
+    },
+    {
+      "context": "Both surfaces call this with the same run handle, so they always agree.",
+      "label": "spacr.qt.run_progress.describe_progress#1",
+      "source": "Both surfaces call this with the same run handle, so they always agree.",
+      "source_sha256": "760e6b2be40c42407c755c5a73d501528b14f2c8491c9dfdbdee17c25eec8160",
+      "translation": "两处界面都用同一个运行句柄调用此函数，因此显示始终一致。"
+    },
+    {
+      "context": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "label": "spacr.qt.run_progress.describe_progress#2",
+      "source": "a run handle with ``fraction()`` and, optionally, ``seconds_left()``.",
+      "source_sha256": "1bea8cb4ffa52174afae6de6b8c8e73162695c33d7c19bc1a8ab86720939880a",
+      "translation": "具有 ``fraction()`` 以及可选 ``seconds_left()`` 的运行句柄。"
+    },
+    {
+      "context": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "label": "spacr.qt.run_progress.describe_progress#3",
+      "source": "``(percent, text)``; ``percent`` is ``None`` when the run has no countable steps (keep the busy bar), and ``text`` is then empty.",
+      "source_sha256": "69d995409e03b47f279bc5b9aab10953a103d1aed0a0192414a896e5ae3519c7",
+      "translation": "``(percent, text)``；运行没有可计数步骤时 ``percent`` 为 ``None``（保留忙碌进度条），此时 ``text`` 为空。"
+    },
+    {
+      "context": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "label": "spacr.qt.run_progress.format_time_left#0",
+      "source": "Round ``seconds`` for display: \"about 12 min left\", \"about 2 h 10 min left\".",
+      "source_sha256": "50a4d96c7c1c9a61f0e550ff0723365861380d596885f1c87fe01e47531dc308",
+      "translation": "将 ``seconds`` 取整用于显示：\"about 12 min left\", \"about 2 h 10 min left\"。"
+    },
+    {
+      "context": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "label": "spacr.qt.run_progress.format_time_left#1",
+      "source": "Under an hour rounds to the minute; an hour or more rounds to five minutes. ``None`` reads \"estimating…\".",
+      "source_sha256": "281aae6e16ce938f8f24a0f7d881b6d039d6132799f6f10374dad0df207430b6",
+      "translation": "不足一小时时取整到分钟；一小时及以上时取整到五分钟。``None`` 显示为 \"estimating…\"。"
+    },
+    {
+      "context": "the estimate, or ``None``.",
+      "label": "spacr.qt.run_progress.format_time_left#2",
+      "source": "the estimate, or ``None``.",
+      "source_sha256": "41ea374d9534cb525083258f042954093608878b8de2d3516b72ddf379dbcd7c",
+      "translation": "估计值，或 ``None``。"
+    },
+    {
+      "context": "the translated phrase.",
+      "label": "spacr.qt.run_progress.format_time_left#3",
+      "source": "the translated phrase.",
+      "source_sha256": "3fcff1b0e4bcb6eeac7cb7c22ea79846c8b6a7f022e639ef89641bb29c136ac2",
+      "translation": "翻译后的短语。"
+    },
+    {
+      "context": "Every progress line in ``text``, in the order printed.",
+      "label": "spacr.qt.run_progress.parse_progress#0",
+      "source": "Every progress line in ``text``, in the order printed.",
+      "source_sha256": "2cd610f89b697637a754bb8eff9bda09d90e8de543167b6c6fab90b35c1dec57",
+      "translation": "``text`` 中的每一条进度行，按打印顺序排列。"
+    },
+    {
+      "context": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "label": "spacr.qt.run_progress.parse_progress#1",
+      "source": "``Time_left`` is read only from a line that also counts at least one finished unit: ``print_progress`` reports ``0.000 min`` before the first unit, which is not an estimate.",
+      "source_sha256": "209cf9a1769afa53971641df40a3dae5a04ff6f9723c2289fc8d31339a63ba00",
+      "translation": "仅当某行同时计入至少一个已完成单位时才读取 ``Time_left``：``print_progress`` 在第一个单位完成前报告 ``0.000 min``，这并不是估计值。"
+    },
+    {
+      "context": "worker output, one or more lines.",
+      "label": "spacr.qt.run_progress.parse_progress#2",
+      "source": "worker output, one or more lines.",
+      "source_sha256": "147dc5428941cd87ef1a7501ab4728322f263277d4fdf1550c999f8a05796716",
+      "translation": "工作进程的输出，一行或多行。"
+    },
+    {
+      "context": "the samples; empty when no line carries ``Progress: n/total``.",
+      "label": "spacr.qt.run_progress.parse_progress#3",
+      "source": "the samples; empty when no line carries ``Progress: n/total``.",
+      "source_sha256": "12a82f4d3d3e4259fc8f3d1eb9ed9309e74c662cdf41922647b6958c663b2d18",
+      "translation": "样本列表；没有任何行包含 ``Progress: n/total`` 时为空。"
+    },
+    {
+      "context": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#0",
+      "source": "Put ``percent`` in a ``QProgressBar``, or make it a busy bar.",
+      "source_sha256": "6ae89aa7fe512774b920ceccdbaa631231bdc5b45e3d581b7d1d47d326a185fe",
+      "translation": "将 ``percent`` 放入 ``QProgressBar``，或将其设为忙碌进度条。"
+    },
+    {
+      "context": "the progress bar.",
+      "label": "spacr.qt.run_progress.show_on_bar#1",
+      "source": "the progress bar.",
+      "source_sha256": "0bf305dcca52b6a80970333bb0f288abc4b220f33771012e2bc215a1032702ca",
+      "translation": "进度条。"
+    },
+    {
+      "context": "``0..100``, or ``None`` for a run with no countable steps.",
+      "label": "spacr.qt.run_progress.show_on_bar#2",
+      "source": "``0..100``, or ``None`` for a run with no countable steps.",
+      "source_sha256": "5492de6dd1534c8d521f5d0be06326bd891d5abe102b586678b7a0b7b9763e9d",
+      "translation": "``0..100``；对于没有可计数步骤的运行为 ``None``。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks added or changed on the claude-938-progress-1113 branch (item 938, module and Home progress bars with percent done and time left): the new module spacr.qt.run_progress (its module docstring, ProgressSample, parse_progress, RunProgress and its public methods and properties, format_time_left, describe_progress and show_on_bar), the new spacr.qt.bridge.RunHandle.seconds_left and the rewritten spacr.qt.bridge.RunHandle.fraction. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

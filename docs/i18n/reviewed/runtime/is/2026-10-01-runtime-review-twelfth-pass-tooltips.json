@@ -162,6 +162,14 @@
       "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
       "translation": "Meðaltal og staðalfrávik sem hleðslan notar þegar normalize_input er virkt. 'symmetric' notar sögulegu 0.5/0.5-venju spaCR (Inception og TF-Slim), sem varpar [0,1] á [-1,1]. 'imagenet' og 'clip' nota sérstaka tölfræði sem tengist þeim forþjálfuðu grunnnetum. 'dataset' metur tölfræði fyrir hverja rás út frá núverandi gögnum og getur hentað flúrljómunarmyndum þar sem styrkdreifingin er ólík ljósmyndum. 'custom' notar input_mean og input_std. Sjálfgefið 'symmetric'.",
       "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "illumination_estimator",
+      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
+      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
+      "translation": "Hvernig slétta sviðið er mátað við miðgildið yfir sjónsvið: 'polynomial' mátar flöt af lágu stigi, sem getur ekki sveigst í kringum frumu og er rétta valið fyrir ljósferil peru auk jaðarskyggingar; 'smooth' beitir í staðinn Gauss-óskerpu á miðgildið og getur fylgt rykskugga sem margliðan myndi missa af. Sjálfgefið polynomial.",
+      "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -2118,13 +2126,6 @@
       "source": "How the ridge-filter response is binarised: 'otsu' takes one global cut-off from the response histogram, 'adaptive' uses a local threshold (organelled_adaptive_block_size / _offset) and keeps faint filaments in dim regions at the cost of extra background. Only read by organelled_method='ridge'; anything unrecognised falls back to otsu without warning. Default 'otsu'.",
       "source_sha256": "648a210390c0c2c037516f735f230484d9ea1544741deb8af6bae65b34e94b22",
       "translation": "Hvernig svörun hryggjasíunnar er gerð tvíundin: 'otsu' tekur ein víðtæk viðmiðunarmörk úr stuðlariti svörunarinnar, 'adaptive' notar staðbundinn þröskuld (organelled_adaptive_block_size / _offset) og heldur daufum þráðum á dimmum svæðum á kostnað aukins bakgrunns. Aðeins lesið af organelled_method='ridge'; hvað sem ekki þekkist fellur aftur á otsu án viðvörunar. Sjálfgefið 'otsu'."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "illumination_estimator",
-      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
-      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
-      "translation": "Hvernig slétta sviðið er mátað við miðgildið yfir sjónsvið: 'polynomial' mátar flöt af lágu stigi, sem getur ekki sveigst í kringum frumu og er rétta valið fyrir ljósferil peru auk jaðarskyggingar; 'smooth' beitir í staðinn Gauss-óskerpu á miðgildið og getur fylgt rykskugga sem margliðan myndi missa af. Sjálfgefið polynomial."
     },
     {
       "table": "setting_tooltips",

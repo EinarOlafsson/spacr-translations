@@ -162,6 +162,14 @@
       "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
       "translation": "Mittelwert und Standardabweichung, die der Loader verwendet, wenn normalize_input aktiviert ist. 'symmetric' verwendet die historische spaCR-Konvention 0.5/0.5 (Inception und TF-Slim) und bildet [0,1] auf [-1,1] ab. 'imagenet' und 'clip' verwenden die eigenen Statistiken dieser vortrainierten Backbones. 'dataset' schätzt Statistiken pro Kanal aus den aktuellen Daten und kann für Fluoreszenzbilder geeignet sein, deren Intensitätsverteilung sich von Fotos unterscheidet. 'custom' verwendet input_mean und input_std. Standard 'symmetric'.",
       "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "illumination_estimator",
+      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
+      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
+      "translation": "Wie das glatte Feld an den Median über die Bildfelder angepasst wird: 'polynomial' passt eine Fläche niedriger Ordnung an, die sich nicht um eine Zelle biegen kann und die richtige Wahl für ein Lampenprofil plus Vignettierung ist; 'smooth' glättet stattdessen den Median mit einem Gauß-Filter und kann einem Staubschatten folgen, den das Polynom übersehen würde. Standard polynomial.",
+      "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -2132,13 +2140,6 @@
       "source": "How the ridge-filter response is binarised: 'otsu' takes one global cut-off from the response histogram, 'adaptive' uses a local threshold (organelled_adaptive_block_size / _offset) and keeps faint filaments in dim regions at the cost of extra background. Only read by organelled_method='ridge'; anything unrecognised falls back to otsu without warning. Default 'otsu'.",
       "source_sha256": "648a210390c0c2c037516f735f230484d9ea1544741deb8af6bae65b34e94b22",
       "translation": "Wie die Antwort des Ridge-Filters binarisiert wird: 'otsu' nimmt einen globalen Grenzwert aus dem Histogramm der Antwort, 'adaptive' verwendet eine lokale Schwelle (organelled_adaptive_block_size / _offset) und behält schwache Filamente in dunklen Bereichen auf Kosten von zusätzlichem Hintergrund. Wird nur von organelled_method='ridge' gelesen; alles Unbekannte fällt ohne Warnung auf otsu zurück. Standard 'otsu'."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "illumination_estimator",
-      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
-      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
-      "translation": "Wie das glatte Feld an den Median über die Bildfelder angepasst wird: 'polynomial' passt eine Fläche niedriger Ordnung an, die sich nicht um eine Zelle biegen kann und die richtige Wahl für ein Lampenprofil plus Vignettierung ist; 'smooth' glättet stattdessen den Median mit einem Gauß-Filter und kann einem Staubschatten folgen, den das Polynom übersehen würde. Standard polynomial."
     },
     {
       "table": "setting_tooltips",

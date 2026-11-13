@@ -122,6 +122,14 @@
       "source_sha256": "ed6aebba8e3fa2192f9726d737c3d91537d79251935d1750d80882ecf1e9bea3",
       "translation": "单对象图像分类器的骨干架构：任何 TorchVision 分类模型名称（resnet50、maxvit_t、densenet121……）。无法识别的名称在初始验证时不会失败：choose_model 会报告 'Invalid model_type' 并返回 None，之后训练失败。特殊名称 'custom' 能通过验证，随后引发 NotImplementedError。较大的骨干网络需要更多内存，通常也比较小的骨干网络需要更多已标注的裁剪图。默认值 'maxvit_t'。",
       "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "illumination_estimator",
+      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
+      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
+      "translation": "如何将平滑场拟合到跨视野中位数：'polynomial' 拟合一个低阶曲面，它无法绕着细胞弯曲，适用于灯源轮廓加暗角的情况；'smooth' 则对中位数进行高斯模糊，能跟随多项式会遗漏的灰尘阴影。默认值 polynomial。",
+      "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -1910,13 +1918,6 @@
       "source": "How the ridge-filter response is binarised: 'otsu' takes one global cut-off from the response histogram, 'adaptive' uses a local threshold (organelled_adaptive_block_size / _offset) and keeps faint filaments in dim regions at the cost of extra background. Only read by organelled_method='ridge'; anything unrecognised falls back to otsu without warning. Default 'otsu'.",
       "source_sha256": "648a210390c0c2c037516f735f230484d9ea1544741deb8af6bae65b34e94b22",
       "translation": "脊线滤波响应的二值化方式：'otsu' 根据响应直方图取一个全局截断值，'adaptive' 使用局部阈值（organelled_adaptive_block_size / _offset），可在暗区保留微弱的丝状结构，但会带入更多背景。仅由 organelled_method='ridge' 读取；任何无法识别的值都会在不警告的情况下回退到 otsu。默认值 'otsu'。"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "illumination_estimator",
-      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
-      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
-      "translation": "如何将平滑场拟合到跨视野中位数：'polynomial' 拟合一个低阶曲面，它无法绕着细胞弯曲，适用于灯源轮廓加暗角的情况；'smooth' 则对中位数进行高斯模糊，能跟随多项式会遗漏的灰尘阴影。默认值 polynomial。"
     },
     {
       "table": "setting_tooltips",

@@ -154,6 +154,14 @@
       "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
       "translation": "Moyenne et écart type utilisés par le chargeur lorsque normalize_input est activé. 'symmetric' utilise la convention historique 0.5/0.5 de spaCR (Inception et TF-Slim), qui transforme [0,1] en [-1,1]. 'imagenet' et 'clip' utilisent les statistiques propres à ces architectures pré-entraînées. 'dataset' estime des statistiques par canal à partir des données actuelles et peut convenir aux images de fluorescence dont la distribution d’intensité diffère de celle des photographies. 'custom' utilise input_mean et input_std. Valeur par défaut : 'symmetric'.",
       "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "illumination_estimator",
+      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
+      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
+      "translation": "Façon dont le champ lisse est ajusté à la médiane entre champs : 'polynomial' ajuste une surface d’ordre faible, qui ne peut pas contourner une cellule et convient à un profil de lampe plus un vignettage ; 'smooth' applique plutôt un flou gaussien à la médiane et peut suivre une ombre de poussière que le polynôme manquerait. Valeur par défaut : polynomial.",
+      "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -2117,13 +2125,6 @@
       "source": "How the ridge-filter response is binarised: 'otsu' takes one global cut-off from the response histogram, 'adaptive' uses a local threshold (organelled_adaptive_block_size / _offset) and keeps faint filaments in dim regions at the cost of extra background. Only read by organelled_method='ridge'; anything unrecognised falls back to otsu without warning. Default 'otsu'.",
       "source_sha256": "648a210390c0c2c037516f735f230484d9ea1544741deb8af6bae65b34e94b22",
       "translation": "Façon de binariser la réponse du filtre de crête : 'otsu' prend un seuil global unique à partir de l’histogramme de la réponse, 'adaptive' utilise un seuil local (organelled_adaptive_block_size / _offset) et garde les filaments faibles dans les régions sombres au prix de davantage de fond. Lu uniquement par organelled_method='ridge' ; toute valeur non reconnue revient à otsu sans avertissement. Valeur par défaut : 'otsu'."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "illumination_estimator",
-      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
-      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
-      "translation": "Façon dont le champ lisse est ajusté à la médiane entre champs : 'polynomial' ajuste une surface d’ordre faible, qui ne peut pas contourner une cellule et convient à un profil de lampe plus un vignettage ; 'smooth' applique plutôt un flou gaussien à la médiane et peut suivre une ombre de poussière que le polynôme manquerait. Valeur par défaut : polynomial."
     },
     {
       "table": "setting_tooltips",

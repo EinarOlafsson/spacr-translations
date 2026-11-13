@@ -138,6 +138,14 @@
       "source_sha256": "6bbde57d553ec53d7f5b3fbc65a651522999e1066cedc60134fd9abbdb6f57d0",
       "translation": "normalize_input이 활성화될 때 로더가 사용하는 평균과 표준편차입니다. 'symmetric'은 spaCR의 기존 0.5/0.5 관례(Inception 및 TF-Slim)를 사용하여 [0,1]을 [-1,1]로 매핑합니다. 'imagenet'과 'clip'은 해당 사전 학습 백본에 연관된 고유한 통계를 사용합니다. 'dataset'은 현재 데이터에서 채널별 통계를 추정하며, 강도 분포가 사진과 다른 형광 이미지에 적합할 수 있습니다. 'custom'은 input_mean과 input_std를 사용합니다. 기본값 'symmetric'.",
       "retired": "2026-11-07: the English tooltip was rewritten on the integrate-1107 branch (items 772 and the replication report); its successor is reviewed in 2026-11-07-integrate-1107-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "illumination_estimator",
+      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
+      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
+      "translation": "시야 간 중앙값에 매끄러운 필드를 적합하는 방식입니다. 'polynomial'은 저차 곡면을 적합하며, 세포를 따라 휘어질 수 없으므로 램프 프로필과 비네팅에 적합한 선택입니다. 'smooth'는 대신 중앙값에 가우시안 블러를 적용하여 다항식이 놓칠 먼지 그림자를 따라갈 수 있습니다. 기본값 polynomial.",
+      "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -1954,13 +1962,6 @@
       "source": "How the ridge-filter response is binarised: 'otsu' takes one global cut-off from the response histogram, 'adaptive' uses a local threshold (organelled_adaptive_block_size / _offset) and keeps faint filaments in dim regions at the cost of extra background. Only read by organelled_method='ridge'; anything unrecognised falls back to otsu without warning. Default 'otsu'.",
       "source_sha256": "648a210390c0c2c037516f735f230484d9ea1544741deb8af6bae65b34e94b22",
       "translation": "능선 필터 응답을 이진화하는 방식입니다. 'otsu'는 응답 히스토그램에서 하나의 전역 기준값을 사용하고, 'adaptive'는 국소 임계값(organelled_adaptive_block_size / _offset)을 사용하여 추가 배경을 감수하고 어두운 영역의 희미한 필라멘트를 유지합니다. organelled_method='ridge'에서만 읽으며, 인식되지 않는 값은 경고 없이 otsu로 대체됩니다. 기본값 'otsu'."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "illumination_estimator",
-      "source": "How the smooth field is fitted to the across-field median: 'polynomial' fits a low-order surface, which cannot bend around a cell and is the right choice for a lamp profile plus a vignette; 'smooth' Gaussian-blurs the median instead and can follow a dust shadow the polynomial would miss. Default polynomial.",
-      "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
-      "translation": "시야 간 중앙값에 매끄러운 필드를 적합하는 방식입니다. 'polynomial'은 저차 곡면을 적합하며, 세포를 따라 휘어질 수 없으므로 램프 프로필과 비네팅에 적합한 선택입니다. 'smooth'는 대신 중앙값에 가우시안 블러를 적용하여 다항식이 놓칠 먼지 그림자를 따라갈 수 있습니다. 기본값 polynomial."
     },
     {
       "table": "setting_tooltips",

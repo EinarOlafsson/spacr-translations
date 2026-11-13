@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "language": "zh_CN",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings changed on the claude-tile-affine-default-1113 branch against the exact English source: the tooltips of ops_align_model, ops_align_tile_min_nuclei, ops_align_match_radius and ops_align_trim_passes after item 930's per-tile affine alignment became the default and left alpha ('tile_affine' now the default, 'Alpha.' dropped). The three parameter tooltips reuse the reviewed wording of 2026-11-13-tileaffine-int-1113-ai-review.json without the alpha mark; the records they replace are archived in archive/2026-11-13-tile-affine-default-930-retired. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_align_match_radius",
+      "source": "How close, in sequencing pixels, a moved phenotype nucleus and a sequencing nucleus must be to pair while the 'tile_affine' model is fitted. Default 3.",
+      "source_sha256": "320a10594f846ae7f535df2f6c77c7cc9a1318a9e4c5bcd6ac9cd5a5f1bad5a0",
+      "translation": "拟合 'tile_affine' 模型时，移动后的表型细胞核与测序细胞核需相距多近（以测序像素计）才能配对。默认值 3。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_align_model",
+      "source": "How the merge phase aligns each phenotype field to the sequencing nuclei. 'tile_affine' re-solves one scale, rotation and shift per field, then fits one affine per field and one per sequencing tile the field covers, and moves each nucleus with its tile's affine; it needs the tile positions of the 'stitch' phase. On Funk et al. 2022 plates A-D it put 97.0-97.5 % of nuclei within 2 px of their sequencing nucleus instead of 94.7-95.8 %, at about 0.017 s per field on one CPU core. 'similarity' stops after the first step, the default before spaCR 1.5.1.8; settings files saved before then keep it. Default 'tile_affine'.",
+      "source_sha256": "ddc61a86fa7ca439816f5e61f3afb6f891dc5f962ef4206bfab4e953ccd5e28c",
+      "translation": "合并阶段如何将每个表型视野与测序细胞核对齐。'tile_affine' 为每个视野重新求解一个缩放、旋转和平移，再为每个视野拟合一个仿射变换，并为该视野覆盖的每个测序图块各拟合一个，然后用各细胞核所在图块的仿射变换移动该细胞核；它需要 'stitch' 阶段得到的图块位置。在 Funk et al. 2022 的 A-D 板上，它使 97.0-97.5 % 的细胞核落在其测序细胞核 2 px 以内，而原先为 94.7-95.8 %，单个 CPU 核心上每个视野约需 0.017 s。'similarity' 在第一步后即停止，是 spaCR 1.5.1.8 之前的默认值；此前保存的设置文件仍保留它。默认值 'tile_affine'。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_align_tile_min_nuclei",
+      "source": "The fewest phenotype nuclei a field must have in one sequencing tile for that tile to get its own affine; fewer keep the field's affine. Used with ops_align_model 'tile_affine'. Default 200.",
+      "source_sha256": "0f502e2956b067251b615fa102128162b2e4f3e569284f2005eef4d39f0d8c9f",
+      "translation": "视野在一个测序图块内至少需要多少个表型细胞核，该图块才能获得自身的仿射变换；少于此数则保留视野的仿射变换。与 ops_align_model 'tile_affine' 配合使用。默认值 200。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_align_trim_passes",
+      "source": "How many times the 'tile_affine' model pairs the nuclei, drops pairs further apart than 3 x their median (at least 0.5 px) and re-fits. Default 3.",
+      "source_sha256": "ef56c8a0d9adbce5a1a595cd534e0f9f805afe26be6f4c6bda06f79f197ea2b9",
+      "translation": "'tile_affine' 模型对细胞核配对、丢弃间距超过其中位数 3 x（至少 0.5 px）的点对并重新拟合的次数。默认值 3。"
+    }
+  ]
+}

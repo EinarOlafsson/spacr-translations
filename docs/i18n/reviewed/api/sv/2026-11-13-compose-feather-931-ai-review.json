@@ -1,0 +1,98 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "context": "The overlaps are feathered by default: each microscope image field is weighted by how far a pixel lies from that microscope image field's nearest edge, so a microscope image field fades out where its neighbour fades in and no seam is left where two microscope image fields disagree in brightness. Plain averaging (``blend='average'``) gives a noise gain of about 1.15x in the raster's 14% overlap but keeps a brightness step at each microscope image field edge; on Funk et al. 2022 the feathered seams scored like a single unstitched microscope image field cut at the same place, and the averaged ones did not (:func:`compose_window`).",
+      "label": "spacr.ops_compose#3",
+      "source": "The overlaps are feathered by default: each tile is weighted by how far a pixel lies from that tile's nearest edge, so a tile fades out where its neighbour fades in and no seam is left where two tiles disagree in brightness. Plain averaging (``blend='average'``) gives a noise gain of about 1.15x in the raster's 14% overlap but keeps a brightness step at each tile edge; on Funk et al. 2022 the feathered seams scored like a single unstitched tile cut at the same place, and the averaged ones did not (:func:`compose_window`).",
+      "source_sha256": "b7cf1a1285cff825d76e4579058225e3c6aaab8ccbce40b590bd17c9d82bf9bd",
+      "translation": "Överlappen tonas som standard mjukt över: varje ruta viktas efter hur långt en pixel ligger från rutans närmaste kant, så att en ruta tonas ut där dess granne tonas in och ingen söm blir kvar där två rutor skiljer sig i ljusstyrka. Enkel medelvärdesbildning (``blend='average'``) ger en brusvinst på ungefär 1.15x i rastrets 14% överlapp men lämnar ett ljusstyrkesteg vid varje rutkant; på Funk et al. 2022 fick de mjukt övertonade sömmarna samma resultat som en enda osammanfogad ruta skuren på samma ställe, vilket de medelvärdesbildade inte fick (:func:`compose_window`)."
+    },
+    {
+      "context": "Blend every microscope image field that overlaps ``window`` into one image.",
+      "label": "spacr.ops_compose.compose_window#0",
+      "source": "Blend every tile that overlaps ``window`` into one image.",
+      "source_sha256": "82ceb501666592ea9a33275f3d113f7f35f41731953b062d77e23b2070443d38",
+      "translation": "Tona samman varje ruta som överlappar ``window`` till en bild."
+    },
+    {
+      "context": "Blended, not last-writer-wins: a tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge.",
+      "label": "spacr.ops_compose.compose_window#1",
+      "source": "Blended, not last-writer-wins: a tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge.",
+      "source_sha256": "0e723adca12bc6e8ed73bf361d19f57a5b4163bc6dcc2996449d4be775bb1e45",
+      "translation": "Övertonat, inte att den sista skrivaren vinner: en ruta som klistras över sin granne lämnar en söm där två rutor inte stämmer överens, och en segmenterare kan detektera den sömmen som en kant."
+    },
+    {
+      "context": "``(image, coverage)`` -- the blended window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart. It is the same count for either blend.",
+      "label": "spacr.ops_compose.compose_window#10",
+      "source": "``(image, coverage)`` -- the blended window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart. It is the same count for either blend.",
+      "source_sha256": "d7ffbbe6d3aa1df6ba558c3da00f7e067d06bcf3713b0a9809383022ac3687e7",
+      "translation": "``(image, coverage)`` -- det övertonade fönstret och hur många rutor som bidrog till varje pixel. Täckningen returneras eftersom en pixel som ingen ruta nådde inte är en svart pixel, och bara antalet skiljer dem åt. Det är samma antal för båda övertoningssätten."
+    },
+    {
+      "context": "for an empty window, a tile that is not one image layer, or an unknown ``blend``.",
+      "label": "spacr.ops_compose.compose_window#11",
+      "source": "for an empty window, a tile that is not one plane, or an unknown ``blend``.",
+      "source_sha256": "acb367185b9303326452100bbfcdf273f6b4e3de2ab3fb37296d0297c99548fb",
+      "translation": "för ett tomt fönster, en ruta som inte består av ett plan, eller ett okänt ``blend``."
+    },
+    {
+      "context": "Feathered by default. Each microscope image field's pixel is weighted by its distance, in pixels, to the nearest edge of that microscope image field, plus one, and the composite is ``sum(weight x tile) / sum(weight)``. A microscope image field's edge pixels weigh 1 and its pixels deep in the overlap weigh more, so each microscope image field fades out where its neighbour fades in. A plain average weighs both microscope image fields equally across the whole overlap and so keeps a step where one microscope image field ends: the edge of the overlap is where the composite switches from the mean of two microscope image fields to one microscope image field. On Funk et al. 2022 (DAPI, cycle 1; well A1 of laboratory microplates A and B, then well B2 of held-out laboratory microplates C and D) the share of feathered seams that step more than the microscope image field centres matched that of a single unstitched microscope image field cut at exactly the same place, within 1 point (95 % CI); the averaged seams' share was 11 to 12 points higher on C and D. No flat-microscope field of view or gain correction is applied: feathering alone passed and was the fastest arm that did. Where one microscope image field covers a pixel the weights cancel and the pixel is that microscope image field's value. The feathered sums are kept in float64, where products of 16-bit values and weights of several hundred are exact.",
+      "label": "spacr.ops_compose.compose_window#2",
+      "source": "FEATHERED BY DEFAULT. Each tile's pixel is weighted by its distance, in pixels, to the nearest edge of that tile, plus one, and the composite is ``sum(weight x tile) / sum(weight)``. A tile's edge pixels weigh 1 and its pixels deep in the overlap weigh more, so each tile fades out where its neighbour fades in. A plain average weighs both tiles equally across the whole overlap and so keeps a step where one tile ends: the edge of the overlap is where the composite switches from the mean of two tiles to one tile. On Funk et al. 2022 (DAPI, cycle 1; well A1 of plates A and B, then well B2 of held-out plates C and D) the share of feathered seams that step more than the tile centres matched that of a single unstitched tile cut at exactly the same place, within 1 point (95 % CI); the averaged seams' share was 11 to 12 points higher on C and D. No flat-field or gain correction is applied: feathering alone passed and was the fastest arm that did. Where one tile covers a pixel the weights cancel and the pixel is that tile's value. The feathered sums are kept in float64, where products of 16-bit values and weights of several hundred are exact.",
+      "source_sha256": "9601e0c2702bd4dd6b56da320f3d44cc8da46255051243315b2fbaf161fa71d2",
+      "translation": "MJUK ÖVERTONING SOM STANDARD. Varje pixel i en ruta viktas med sitt avstånd i pixlar till rutans närmaste kant, plus ett, och den sammansatta bilden är ``sum(weight x tile) / sum(weight)``. En rutas kantpixlar väger 1 och dess pixlar djupt inne i överlappet väger mer, så varje ruta tonas ut där dess granne tonas in. Ett enkelt medelvärde väger båda rutorna lika över hela överlappet och lämnar därför ett steg där en ruta slutar: vid överlappets kant växlar den sammansatta bilden från medelvärdet av två rutor till en enda ruta. På Funk et al. 2022 (DAPI, cykel 1; brunn A1 på plattorna A och B, sedan brunn B2 på de undanhållna plattorna C och D) motsvarade andelen mjukt övertonade sömmar som gör ett större steg än rutornas mitt andelen för en enda osammanfogad ruta skuren på exakt samma ställe, inom 1 procentenhet (95 % CI); de medelvärdesbildade sömmarnas andel var 11 till 12 procentenheter högre på C och D. Ingen plattfälts- eller förstärkningskorrigering tillämpas: mjuk övertoning ensam klarade testet och var den snabbaste variant som gjorde det. Där en enda ruta täcker en pixel tar vikterna ut varandra och pixeln får den rutans värde. De mjukt övertonade summorna hålls i float64, där produkter av 16-bitarsvärden och vikter på flera hundra är exakta."
+    },
+    {
+      "context": "``blend='average'`` gives the earlier plain mean, unchanged. It has the larger noise gain in the overlaps (about 1.15x, :func:`overlap_gain`); feathering gives up some of it near the microscope image field edges for the seam.",
+      "label": "spacr.ops_compose.compose_window#3",
+      "source": "``blend='average'`` gives the earlier plain mean, unchanged. It has the larger noise gain in the overlaps (about 1.15x, :func:`overlap_gain`); feathering gives up some of it near the tile edges for the seam.",
+      "source_sha256": "5cdff860d2cd7dc72fdc7ce212f5c8d6f519e9c5d62fe5d185b601364915ed84",
+      "translation": "``blend='average'`` ger det tidigare enkla medelvärdet, oförändrat. Det har den större brusvinsten i överlappen (ungefär 1.15x, :func:`overlap_gain`); mjuk övertoning offrar en del av den nära rutkanterna för sömmens skull."
+    },
+    {
+      "context": "the rectangle of the microplate sample position frame to build.",
+      "label": "spacr.ops_compose.compose_window#4",
+      "source": "the rectangle of the well frame to build.",
+      "source_sha256": "ac2abf6417d5790e55dd5746790c064aa3f1b887543dfcfee4df4f1ca224891c",
+      "translation": "den rektangel i brunnens koordinatsystem som ska byggas."
+    },
+    {
+      "context": "``site -> (y, x)`` from the solve, in well pixels.",
+      "label": "spacr.ops_compose.compose_window#5",
+      "source": "``site -> (y, x)`` from the solve, in well pixels.",
+      "source_sha256": "3e0cd1e32892e661af7193a5083d0c8bbbd94930c4968d51ef536f438d8c1915",
+      "translation": "``site -> (y, x)`` från lösningen, i brunnspixlar."
+    },
+    {
+      "context": "called with a site number, returns that microscope image field. Called only for microscope image fields that touch the window, so a microplate sample position of 333 microscope image fields costs a handful of reads per window rather than 333.",
+      "label": "spacr.ops_compose.compose_window#6",
+      "source": "called with a site number, returns that tile. Called only for tiles that touch the window, so a well of 333 tiles costs a handful of reads per window rather than 333.",
+      "source_sha256": "5611d4617e6baf5b1851e98b6e7caa517f25b031d1cec515c5f46fb164d4b161",
+      "translation": "anropas med ett positionsnummer och returnerar den rutan. Anropas bara för rutor som berör fönstret, så en brunn med 333 rutor kostar en handfull läsningar per fönster i stället för 333."
+    },
+    {
+      "context": "``(height, width)``; read from the first tile when omitted.",
+      "label": "spacr.ops_compose.compose_window#7",
+      "source": "``(height, width)``; read from the first tile when omitted.",
+      "source_sha256": "d7ce9174385c9756b107097d86928744ce14e7d1a4d0a98890db2064e8409d3a",
+      "translation": "``(height, width)``; läses från den första rutan när det utelämnas."
+    },
+    {
+      "context": "the dtype of the returned image.",
+      "label": "spacr.ops_compose.compose_window#8",
+      "source": "the dtype of the returned image.",
+      "source_sha256": "23ffaf780acaba71df5af911fd960f41244fd1c180d54c6357768e89cd72cc7e",
+      "translation": "dtype för den returnerade bilden."
+    },
+    {
+      "context": "``'feather'`` (default) or ``'average'``.",
+      "label": "spacr.ops_compose.compose_window#9",
+      "source": "``'feather'`` (default) or ``'average'``.",
+      "source_sha256": "4e8030e527bca1979f4327a14405a84f5e4a93c64c06950ee48c6027c08a2f23",
+      "translation": "``'feather'`` (standard) eller ``'average'``."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks changed on the claude-compose-feather-1113 branch (item 931, feathered tile blending in the OPS composer): the last paragraph of the spacr.ops_compose module docstring and every block of spacr.ops_compose.compose_window, reusing the reviewed wording of the earlier blocks where the English is unchanged. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

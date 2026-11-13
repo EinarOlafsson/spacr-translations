@@ -1,0 +1,98 @@
+{
+  "language": "de",
+  "records": [
+    {
+      "context": "The overlaps are feathered by default: each microscope image field is weighted by how far a pixel lies from that microscope image field's nearest edge, so a microscope image field fades out where its neighbour fades in and no seam is left where two microscope image fields disagree in brightness. Plain averaging (``blend='average'``) gives a noise gain of about 1.15x in the raster's 14% overlap but keeps a brightness step at each microscope image field edge; on Funk et al. 2022 the feathered seams scored like a single unstitched microscope image field cut at the same place, and the averaged ones did not (:func:`compose_window`).",
+      "label": "spacr.ops_compose#3",
+      "source": "The overlaps are feathered by default: each tile is weighted by how far a pixel lies from that tile's nearest edge, so a tile fades out where its neighbour fades in and no seam is left where two tiles disagree in brightness. Plain averaging (``blend='average'``) gives a noise gain of about 1.15x in the raster's 14% overlap but keeps a brightness step at each tile edge; on Funk et al. 2022 the feathered seams scored like a single unstitched tile cut at the same place, and the averaged ones did not (:func:`compose_window`).",
+      "source_sha256": "b7cf1a1285cff825d76e4579058225e3c6aaab8ccbce40b590bd17c9d82bf9bd",
+      "translation": "Die Überlappungen werden standardmäßig weich überblendet: Jede Kachel wird danach gewichtet, wie weit ein Pixel vom nächstgelegenen Rand dieser Kachel entfernt liegt, sodass eine Kachel dort ausblendet, wo ihre Nachbarin einblendet, und keine Naht bleibt, wo zwei Kacheln in der Helligkeit nicht übereinstimmen. Einfaches Mitteln (``blend='average'``) ergibt in der Überlappung des Rasters von 14% einen Rauschgewinn von etwa 1.15x, hinterlässt aber an jedem Kachelrand eine Helligkeitsstufe; auf Funk et al. 2022 schnitten die weich überblendeten Nähte so ab wie eine einzelne, nicht zusammengefügte Kachel, die an derselben Stelle geschnitten wurde, die gemittelten dagegen nicht (:func:`compose_window`)."
+    },
+    {
+      "context": "Blend every microscope image field that overlaps ``window`` into one image.",
+      "label": "spacr.ops_compose.compose_window#0",
+      "source": "Blend every tile that overlaps ``window`` into one image.",
+      "source_sha256": "82ceb501666592ea9a33275f3d113f7f35f41731953b062d77e23b2070443d38",
+      "translation": "Überblendet jede Kachel, die ``window`` überlappt, zu einem Bild."
+    },
+    {
+      "context": "Blended, not last-writer-wins: a tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge.",
+      "label": "spacr.ops_compose.compose_window#1",
+      "source": "Blended, not last-writer-wins: a tile pasted over its neighbour keeps a seam where two tiles disagree, and a segmenter can detect that seam as an edge.",
+      "source_sha256": "0e723adca12bc6e8ed73bf361d19f57a5b4163bc6dcc2996449d4be775bb1e45",
+      "translation": "Überblendet, nicht der zuletzt geschriebene Wert gewinnt: Eine über ihre Nachbarin geklebte Kachel hinterlässt dort eine Naht, wo zwei Kacheln nicht übereinstimmen, und ein Segmentierer kann diese Naht als Kante erkennen."
+    },
+    {
+      "context": "``(image, coverage)`` -- the blended window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart. It is the same count for either blend.",
+      "label": "spacr.ops_compose.compose_window#10",
+      "source": "``(image, coverage)`` -- the blended window and how many tiles contributed to each pixel. Coverage is returned because a pixel no tile reached is not a black pixel, and only the count tells them apart. It is the same count for either blend.",
+      "source_sha256": "d7ffbbe6d3aa1df6ba558c3da00f7e067d06bcf3713b0a9809383022ac3687e7",
+      "translation": "``(image, coverage)`` – das überblendete Fenster und wie viele Kacheln zu jedem Pixel beigetragen haben. Die Abdeckung wird zurückgegeben, weil ein Pixel, das keine Kachel erreicht hat, kein schwarzes Pixel ist, und nur die Anzahl die beiden unterscheidet. Sie ist für beide Überblendungsarten dieselbe Anzahl."
+    },
+    {
+      "context": "for an empty window, a tile that is not one image layer, or an unknown ``blend``.",
+      "label": "spacr.ops_compose.compose_window#11",
+      "source": "for an empty window, a tile that is not one plane, or an unknown ``blend``.",
+      "source_sha256": "acb367185b9303326452100bbfcdf273f6b4e3de2ab3fb37296d0297c99548fb",
+      "translation": "bei einem leeren Fenster, einer Kachel, die nicht aus einer Ebene besteht, oder einem unbekannten ``blend``."
+    },
+    {
+      "context": "Feathered by default. Each microscope image field's pixel is weighted by its distance, in pixels, to the nearest edge of that microscope image field, plus one, and the composite is ``sum(weight x tile) / sum(weight)``. A microscope image field's edge pixels weigh 1 and its pixels deep in the overlap weigh more, so each microscope image field fades out where its neighbour fades in. A plain average weighs both microscope image fields equally across the whole overlap and so keeps a step where one microscope image field ends: the edge of the overlap is where the composite switches from the mean of two microscope image fields to one microscope image field. On Funk et al. 2022 (DAPI, cycle 1; well A1 of laboratory microplates A and B, then well B2 of held-out laboratory microplates C and D) the share of feathered seams that step more than the microscope image field centres matched that of a single unstitched microscope image field cut at exactly the same place, within 1 point (95 % CI); the averaged seams' share was 11 to 12 points higher on C and D. No flat-microscope field of view or gain correction is applied: feathering alone passed and was the fastest arm that did. Where one microscope image field covers a pixel the weights cancel and the pixel is that microscope image field's value. The feathered sums are kept in float64, where products of 16-bit values and weights of several hundred are exact.",
+      "label": "spacr.ops_compose.compose_window#2",
+      "source": "FEATHERED BY DEFAULT. Each tile's pixel is weighted by its distance, in pixels, to the nearest edge of that tile, plus one, and the composite is ``sum(weight x tile) / sum(weight)``. A tile's edge pixels weigh 1 and its pixels deep in the overlap weigh more, so each tile fades out where its neighbour fades in. A plain average weighs both tiles equally across the whole overlap and so keeps a step where one tile ends: the edge of the overlap is where the composite switches from the mean of two tiles to one tile. On Funk et al. 2022 (DAPI, cycle 1; well A1 of plates A and B, then well B2 of held-out plates C and D) the share of feathered seams that step more than the tile centres matched that of a single unstitched tile cut at exactly the same place, within 1 point (95 % CI); the averaged seams' share was 11 to 12 points higher on C and D. No flat-field or gain correction is applied: feathering alone passed and was the fastest arm that did. Where one tile covers a pixel the weights cancel and the pixel is that tile's value. The feathered sums are kept in float64, where products of 16-bit values and weights of several hundred are exact.",
+      "source_sha256": "9601e0c2702bd4dd6b56da320f3d44cc8da46255051243315b2fbaf161fa71d2",
+      "translation": "STANDARDMÄSSIG WEICH ÜBERBLENDET. Jedes Pixel einer Kachel wird mit seinem Abstand in Pixeln zum nächstgelegenen Rand dieser Kachel plus eins gewichtet, und das zusammengesetzte Bild ist ``sum(weight x tile) / sum(weight)``. Die Randpixel einer Kachel haben das Gewicht 1 und ihre Pixel tief in der Überlappung ein höheres, sodass jede Kachel dort ausblendet, wo ihre Nachbarin einblendet. Ein einfacher Mittelwert gewichtet beide Kacheln über die gesamte Überlappung gleich und hinterlässt deshalb eine Stufe dort, wo eine Kachel endet: Am Rand der Überlappung wechselt das zusammengesetzte Bild vom Mittelwert zweier Kacheln zu einer einzigen Kachel. Auf Funk et al. 2022 (DAPI, Zyklus 1; Well A1 der Platten A und B, dann Well B2 der zurückgehaltenen Platten C und D) entsprach der Anteil weich überblendeter Nähte, die stärker springen als die Kachelmitten, dem einer einzelnen, nicht zusammengefügten Kachel, die an genau derselben Stelle geschnitten wurde, innerhalb von 1 Prozentpunkt (95 % CI); der Anteil der gemittelten Nähte lag auf C und D um 11 bis 12 Prozentpunkte höher. Es wird keine Flat-Field- oder Verstärkungskorrektur angewendet: Das weiche Überblenden allein bestand den Test und war der schnellste Ansatz, dem das gelang. Wo nur eine Kachel ein Pixel abdeckt, heben sich die Gewichte auf und das Pixel hat den Wert dieser Kachel. Die weich überblendeten Summen werden in float64 geführt, wo Produkte aus 16-Bit-Werten und Gewichten von mehreren Hundert exakt sind."
+    },
+    {
+      "context": "``blend='average'`` gives the earlier plain mean, unchanged. It has the larger noise gain in the overlaps (about 1.15x, :func:`overlap_gain`); feathering gives up some of it near the microscope image field edges for the seam.",
+      "label": "spacr.ops_compose.compose_window#3",
+      "source": "``blend='average'`` gives the earlier plain mean, unchanged. It has the larger noise gain in the overlaps (about 1.15x, :func:`overlap_gain`); feathering gives up some of it near the tile edges for the seam.",
+      "source_sha256": "5cdff860d2cd7dc72fdc7ce212f5c8d6f519e9c5d62fe5d185b601364915ed84",
+      "translation": "``blend='average'`` liefert unverändert den bisherigen einfachen Mittelwert. Er hat in den Überlappungen den größeren Rauschgewinn (etwa 1.15x, :func:`overlap_gain`); das weiche Überblenden gibt nahe den Kachelrändern einen Teil davon zugunsten der Naht auf."
+    },
+    {
+      "context": "the rectangle of the microplate sample position frame to build.",
+      "label": "spacr.ops_compose.compose_window#4",
+      "source": "the rectangle of the well frame to build.",
+      "source_sha256": "ac2abf6417d5790e55dd5746790c064aa3f1b887543dfcfee4df4f1ca224891c",
+      "translation": "das zu erstellende Rechteck des Well-Bezugsrahmens."
+    },
+    {
+      "context": "``site -> (y, x)`` from the solve, in well pixels.",
+      "label": "spacr.ops_compose.compose_window#5",
+      "source": "``site -> (y, x)`` from the solve, in well pixels.",
+      "source_sha256": "3e0cd1e32892e661af7193a5083d0c8bbbd94930c4968d51ef536f438d8c1915",
+      "translation": "``site -> (y, x)`` aus der Lösung, in Well-Pixeln."
+    },
+    {
+      "context": "called with a site number, returns that microscope image field. Called only for microscope image fields that touch the window, so a microplate sample position of 333 microscope image fields costs a handful of reads per window rather than 333.",
+      "label": "spacr.ops_compose.compose_window#6",
+      "source": "called with a site number, returns that tile. Called only for tiles that touch the window, so a well of 333 tiles costs a handful of reads per window rather than 333.",
+      "source_sha256": "5611d4617e6baf5b1851e98b6e7caa517f25b031d1cec515c5f46fb164d4b161",
+      "translation": "mit einer Site-Nummer aufgerufen, gibt diese Kachel zurück. Wird nur für Kacheln aufgerufen, die das Fenster berühren, sodass ein Well mit 333 Kacheln pro Fenster nur eine Handvoll Lesevorgänge kostet statt 333."
+    },
+    {
+      "context": "``(height, width)``; read from the first tile when omitted.",
+      "label": "spacr.ops_compose.compose_window#7",
+      "source": "``(height, width)``; read from the first tile when omitted.",
+      "source_sha256": "d7ce9174385c9756b107097d86928744ce14e7d1a4d0a98890db2064e8409d3a",
+      "translation": "``(height, width)``; wird aus der ersten Kachel gelesen, wenn es fehlt."
+    },
+    {
+      "context": "the dtype of the returned image.",
+      "label": "spacr.ops_compose.compose_window#8",
+      "source": "the dtype of the returned image.",
+      "source_sha256": "23ffaf780acaba71df5af911fd960f41244fd1c180d54c6357768e89cd72cc7e",
+      "translation": "der dtype des zurückgegebenen Bildes."
+    },
+    {
+      "context": "``'feather'`` (default) or ``'average'``.",
+      "label": "spacr.ops_compose.compose_window#9",
+      "source": "``'feather'`` (default) or ``'average'``.",
+      "source_sha256": "4e8030e527bca1979f4327a14405a84f5e4a93c64c06950ee48c6027c08a2f23",
+      "translation": "``'feather'`` (Standard) oder ``'average'``."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks changed on the claude-compose-feather-1113 branch (item 931, feathered tile blending in the OPS composer): the last paragraph of the spacr.ops_compose module docstring and every block of spacr.ops_compose.compose_window, reusing the reviewed wording of the earlier blocks where the English is unchanged. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

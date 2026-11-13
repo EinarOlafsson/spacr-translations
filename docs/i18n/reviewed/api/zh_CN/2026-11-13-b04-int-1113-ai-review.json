@@ -1,0 +1,63 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "context": "Grow one cell from every nucleus inside the cell network's foreground.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#0",
+      "source": "Grow one cell from every nucleus inside the cell network's foreground.",
+      "source_sha256": "4fac2f13d8f795c01ee19d35d9a062acf107d857677b14b7a4059a4da05a8563",
+      "translation": "在细胞网络的前景内，从每个细胞核生长出一个细胞。"
+    },
+    {
+      "context": "The cell model can merge two touching cells into one mask. Pairing then keeps one nucleus of the merged cell and drops the other, so both cells and nuclei are undercounted. Here every nucleus seeds its own cell instead. The foreground is every pixel whose cell probability is above ``cellprob_threshold``, together with the nuclei themselves. A seeded watershed divides it. The watershed floods the foreground outward from the nuclei, in order of the distance to the nearest nucleus. A pixel therefore goes to the nearest nucleus that it is connected to through the foreground. The boundary between two touching cells runs halfway between their nuclei, as with CellProfiler's distance method. It does not follow the cell model's own boundaries.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#1",
+      "source": "The cell model can merge two touching cells into one mask. Pairing then keeps one nucleus of the merged cell and drops the other, so both cells and nuclei are undercounted. Here every nucleus seeds its own cell instead. The foreground is every pixel whose cell probability is above ``cellprob_threshold``, together with the nuclei themselves. A seeded watershed divides it. The watershed floods the foreground outward from the nuclei, in order of the distance to the nearest nucleus. A pixel therefore goes to the nearest nucleus that it is connected to through the foreground. The boundary between two touching cells runs halfway between their nuclei, as with CellProfiler's distance method. It does not follow the cell model's own boundaries.",
+      "source_sha256": "a5275d032a844d65362171e315624fd17557037e9dd75b4462fd9016377097d3",
+      "translation": "细胞模型可能把两个相互接触的细胞合并为一个掩膜。配对随后只保留合并细胞中的一个细胞核而丢弃另一个，因此细胞和细胞核都会被少计。这里改为由每个细胞核作为其自身细胞的种子点。前景是细胞概率高于 ``cellprob_threshold`` 的所有像素，以及细胞核本身。由有种子点的分水岭对其进行划分。分水岭按到最近细胞核的距离顺序，从细胞核向外淹没前景。因此，一个像素归属于通过前景与其相连的最近细胞核。两个相互接触的细胞之间的边界位于它们细胞核的正中间，与 CellProfiler 的距离方法相同。它不沿用细胞模型自身的边界。"
+    },
+    {
+      "context": "The result does not depend on how the site was tiled, provided the nuclei and the cell probability cover the whole site. Foreground that no nucleus can reach stays 0.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#2",
+      "source": "The result does not depend on how the site was tiled, provided the nuclei and the cell probability cover the whole site. Foreground that no nucleus can reach stays 0.",
+      "source_sha256": "d4c5a88264c4c638d580623b02717a9008122255fc92f6a8eeba3e9305860eda",
+      "translation": "只要细胞核和细胞概率覆盖整个站点，结果就与站点如何分块无关。任何细胞核都无法到达的前景保持为 0。"
+    },
+    {
+      "context": "a 2-D nucleus label image of the whole site.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#3",
+      "source": "a 2-D nucleus label image of the whole site.",
+      "source_sha256": "6c97c0c4150aebd16bd2bf93f7f368a749b6474208124977735c61f2a0697d3b",
+      "translation": "整个站点的二维细胞核标签图像。"
+    },
+    {
+      "context": "the cell model's probability map (logits) of the same shape, as Cellpose returns it.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#4",
+      "source": "the cell model's probability map (logits) of the same shape, as Cellpose returns it.",
+      "source_sha256": "1f749e1ad77e9d197e47b72e2426a62e69feddd2550f20cbfc89b59e37541ec3",
+      "translation": "细胞模型的概率图（logits），形状相同，即 Cellpose 返回的形式。"
+    },
+    {
+      "context": "pixels above this value are foreground; 0 matches the threshold of Cellpose's own mask step.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#5",
+      "source": "pixels above this value are foreground; 0 matches the threshold of Cellpose's own mask step.",
+      "source_sha256": "56a989686e051f9d80ffb652bdbf63a8b27185c84fb5348dc297dfa380b6ecce",
+      "translation": "高于该值的像素为前景；0 与 Cellpose 自身掩膜步骤的阈值一致。"
+    },
+    {
+      "context": "an int32 cell label image in which cell ``k`` holds nucleus ``k`` whole.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#6",
+      "source": "an int32 cell label image in which cell ``k`` holds nucleus ``k`` whole.",
+      "source_sha256": "90c8133e4bc1164dfe6416a4dc372d2e2ae3b0c2f62306ec36aa87d75c085af4",
+      "translation": "int32 细胞标签图像，其中细胞 ``k`` 完整包含细胞核 ``k``。"
+    },
+    {
+      "context": "when the two images differ in shape or are not 2-D.",
+      "label": "spacr.ops_large_sites.cells_from_nucleus_seeds#7",
+      "source": "when the two images differ in shape or are not 2-D.",
+      "source_sha256": "e3e51cc7916bc032d71521878789c2d5f5859898a91ae363ad586686cc67d25e",
+      "translation": "当两幅图像形状不同或不是二维时。"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the public docstring blocks added on the claude-921-seeded-ws branch (item 921, B04 cell seeding in large-site OPS segmentation): the 8 blocks of the new spacr.ops_large_sites.cells_from_nucleus_seeds. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

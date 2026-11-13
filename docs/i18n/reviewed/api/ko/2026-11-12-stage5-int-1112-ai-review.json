@@ -1,0 +1,1218 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "label": "spacr.ops_clusters#10",
+      "source": "PHATE (``phate``), Leiden (``leidenalg``) and ``igraph`` are optional: they are the ``clustering`` extra, ``pip install \"spacr[clustering]\"``. Only the PHATE + Leiden steps need them. The benchmark files (CORUM, KEGG and STRING tables in Brieflow's format) are the user's own: spaCR does not ship them.",
+      "source_sha256": "f0a49e0a01afac43875f61507a448a74bf69350c6506f2f02e7e25e53bdae690",
+      "translation": "PHATE(``phate``), Leiden(``leidenalg``), ``igraph`` 는 선택 사항으로, ``clustering`` 추가 패키지입니다: ``pip install \"spacr[clustering]\"``. PHATE + Leiden 단계에서만 필요합니다. 벤치마크 파일(Brieflow 형식의 CORUM, KEGG, STRING 테이블)은 사용자가 직접 준비해야 하며, spaCR에는 포함되어 있지 않습니다."
+    },
+    {
+      "context": ":func:`guide_bootstrap_consensus` (item 928) clusters guide bootstraps of the gene profile with PHATE + Leiden at a matched cluster count and cuts their co-clustering matrix into one partition in which every gene has a cluster. :func:`paired_replicate_test` (item 929) compares two clusterings over paired guide-bootstrap replicates, with an exact sign-flip p-value and a two-level (replicates x genes) interval, after the jitter-null :func:`calibration_gate` has checked its false-positive rate.",
+      "label": "spacr.ops_clusters#9",
+      "source": ":func:`guide_bootstrap_consensus` (item 928) clusters guide bootstraps of the gene profile with PHATE + Leiden at a matched cluster count and cuts their co-clustering matrix into one partition in which every gene has a cluster. :func:`paired_replicate_test` (item 929) compares two clusterings over paired guide-bootstrap replicates, with an exact sign-flip p-value and a two-level (replicates x genes) interval, after the jitter-null :func:`calibration_gate` has checked its false-positive rate.",
+      "source_sha256": "21a96ea411a36ffa004abbbd719d43c891e0ce0d3950005a727fd74562bcacf5",
+      "translation": ":func:`guide_bootstrap_consensus`(항목 928)는 유전자 프로파일의 가이드 부트스트랩들을 맞춘 클러스터 수에서 PHATE + Leiden으로 클러스터링하고, 그 공동 클러스터링 행렬을 모든 유전자가 클러스터를 갖는 하나의 분할로 자릅니다. :func:`paired_replicate_test`(항목 929)는 짝지은 가이드 부트스트랩 반복에 걸쳐 두 클러스터링을 비교하며, 정확한 부호 뒤집기 p값과 2단계(반복 x 유전자) 구간을 제공합니다. 이는 지터 귀무 :func:`calibration_gate`가 위양성률을 확인한 뒤에 수행됩니다."
+    },
+    {
+      "context": "The units the calibrated test scores on one gene set and reference half.",
+      "label": "spacr.ops_clusters.calibrated_reference#0",
+      "source": "The units the calibrated test scores on one gene set and reference half.",
+      "source_sha256": "38ac7d9389cdfad15731cc42608c389c3131a6a976cc6bb9130babdfe286f8c7",
+      "translation": "보정된 검정이 하나의 유전자 집합과 참조 절반에서 채점하는 단위입니다."
+    },
+    {
+      "context": "the scored genes, in the order of the labels scored.",
+      "label": "spacr.ops_clusters.calibrated_reference#1",
+      "source": "the scored genes, in the order of the labels scored.",
+      "source_sha256": "493094da538ed39c62c5bfd28cfea4ae92d35c5a61e774220d4b47d43d9bb9db",
+      "translation": "채점된 유전자로, 채점된 레이블과 같은 순서입니다."
+    },
+    {
+      "context": "from :func:`sweep_references` (``groups``, ``halves`` and ``positives``).",
+      "label": "spacr.ops_clusters.calibrated_reference#2",
+      "source": "from :func:`sweep_references` (``groups``, ``halves`` and ``positives``).",
+      "source_sha256": "7cea50cce8b0aad6f9a678d6586ecf0cf4d057d2baa80fef9507f89e08556214",
+      "translation": ":func:`sweep_references`에서 얻습니다(``groups``, ``halves``, ``positives``)."
+    },
+    {
+      "context": "0 (SELECT) or 1 (REPORT): the complexes of that half and the STRING pairs of that half (:func:`spacr.ops_reference.pair_half`); None keeps every pair and the REPORT complexes.",
+      "label": "spacr.ops_clusters.calibrated_reference#3",
+      "source": "0 (SELECT) or 1 (REPORT): the complexes of that half and the STRING pairs of that half (:func:`spacr.ops_reference.pair_half`); None keeps every pair and the REPORT complexes.",
+      "source_sha256": "85849d89fbae50b8c2a9fe39aed0f8fd71c0c12409f56115353958af4ac081bc",
+      "translation": "0(SELECT) 또는 1(REPORT): 해당 절반의 복합체와 해당 절반의 STRING 쌍(:func:`spacr.ops_reference.pair_half`). None이면 모든 쌍과 REPORT 복합체를 유지합니다."
+    },
+    {
+      "context": "``{\"genes\", \"n\", \"complexes\", \"cx_members\", \"pi\", \"pj\", \"pgenes\", \"pair_index\"}``: CORUM complexes with at least three of their members among ``genes`` (name and member rows), the STRING pairs as sorted row indices, the genes with at least one pair and, for each, the indices of its pairs.",
+      "label": "spacr.ops_clusters.calibrated_reference#4",
+      "source": "``{\"genes\", \"n\", \"complexes\", \"cx_members\", \"pi\", \"pj\", \"pgenes\", \"pair_index\"}``: CORUM complexes with at least three of their members among ``genes`` (name and member rows), the STRING pairs as sorted row indices, the genes with at least one pair and, for each, the indices of its pairs.",
+      "source_sha256": "4a6f95d33232fb4f2b7164e9a3699b433655370a75b64997e5ea83a35bcd44ff",
+      "translation": "``{\"genes\", \"n\", \"complexes\", \"cx_members\", \"pi\", \"pj\", \"pgenes\", \"pair_index\"}``: 구성원 중 적어도 세 개가 ``genes``에 있는 CORUM 복합체(이름과 구성원 행), 정렬된 행 인덱스로 나타낸 STRING 쌍, 쌍이 하나 이상 있는 유전자와 각 유전자의 쌍 인덱스."
+    },
+    {
+      "context": "The jitter-null calibration data-selection boundary of the paired-replicate test.",
+      "label": "spacr.ops_clusters.calibration_gate#0",
+      "source": "The jitter-null calibration gate of the paired-replicate test.",
+      "source_sha256": "cbbcf4eacb804db869823b786fbaec6f60d462021e947c481bc77ef04348cf10",
+      "translation": "짝지은 반복 검정의 지터 귀무 보정 게이트입니다."
+    },
+    {
+      "context": "Each jitter copy's replicates are tested against the base profile's with :func:`paired_replicate_test` (seed = the copy number); a jitter copy differs from the base by noise only, so every rejection is a false positive.",
+      "label": "spacr.ops_clusters.calibration_gate#1",
+      "source": "Each jitter copy's replicates are tested against the base profile's with :func:`paired_replicate_test` (seed = the copy number); a jitter copy differs from the base by noise only, so every rejection is a false positive.",
+      "source_sha256": "1e5d14fdcc4d1bb6091fc956bd75882e6a83eece7fbb5dc840df6dd75c2f335f",
+      "translation": "각 지터 사본의 반복을 :func:`paired_replicate_test`로 기본 프로파일의 반복과 비교 검정합니다(시드 = 사본 번호). 지터 사본은 기본 프로파일과 노이즈만 다르므로 모든 기각은 위양성입니다."
+    },
+    {
+      "context": ":func:`stack_units` of the base profile.",
+      "label": "spacr.ops_clusters.calibration_gate#2",
+      "source": ":func:`stack_units` of the base profile.",
+      "source_sha256": "a2a5e5177e564ec078efc21ed5082bf6b8c13bd17f147d7eeba38527382ff8b4",
+      "translation": "기본 프로파일의 :func:`stack_units`."
+    },
+    {
+      "context": ":func:`stack_units` of each jitter copy, in copy order.",
+      "label": "spacr.ops_clusters.calibration_gate#3",
+      "source": ":func:`stack_units` of each jitter copy, in copy order.",
+      "source_sha256": "c248401054706238448c2e36ac77829dd2fb583bbed49c0389106434276b3105",
+      "translation": "각 지터 사본의 :func:`stack_units`로, 사본 순서입니다."
+    },
+    {
+      "context": "from :func:`calibrated_reference`.",
+      "label": "spacr.ops_clusters.calibration_gate#4",
+      "source": "from :func:`calibrated_reference`.",
+      "source_sha256": "70900b7eeb3cb4048e2dcbfc8fe72eb774ed625d7554346d4b6595bfb78c0ea8",
+      "translation": ":func:`calibrated_reference`에서 얻습니다."
+    },
+    {
+      "context": "the test level.",
+      "label": "spacr.ops_clusters.calibration_gate#5",
+      "source": "the test level.",
+      "source_sha256": "00a93fccdbceebab99b182ee470f61acb337210871cd0d769be30c28857be165",
+      "translation": "검정 수준."
+    },
+    {
+      "context": "the largest false-positive share that passes.",
+      "label": "spacr.ops_clusters.calibration_gate#6",
+      "source": "the largest false-positive share that passes.",
+      "source_sha256": "255e2f80b67ac18d49bae6bcf73a82ea9ac4c2621dbd64ce15c888194739115b",
+      "translation": "통과하는 최대 위양성 비율."
+    },
+    {
+      "context": "extra columns of every row.",
+      "label": "spacr.ops_clusters.calibration_gate#7",
+      "source": "extra columns of every row.",
+      "source_sha256": "a97f0f4cc95c759e7c3f3e4ae7453dd20486239f5fd5899690a05e1d155e8076",
+      "translation": "모든 행에 붙는 추가 열."
+    },
+    {
+      "context": "``(table, false_positive_share, passed)``: one row per copy and metric, the share of copies with ``p < alpha`` per metric, and whether complexes and STRING pairs are both at or under ``limit``.",
+      "label": "spacr.ops_clusters.calibration_gate#8",
+      "source": "``(table, false_positive_share, passed)``: one row per copy and metric, the share of copies with ``p < alpha`` per metric, and whether complexes and STRING pairs are both at or under ``limit``.",
+      "source_sha256": "51d23c62b58da15e630328a4b6f08ae4678a5a095721ed84fed16a9a707fd4eb",
+      "translation": "``(table, false_positive_share, passed)``: 사본과 지표마다 한 행, 지표별로 ``p < alpha``인 사본의 비율, 그리고 복합체와 STRING 쌍이 모두 ``limit`` 이하인지 여부."
+    },
+    {
+      "context": "Holm q values and the call of every metric of one comparison family.",
+      "label": "spacr.ops_clusters.call_effects#0",
+      "source": "Holm q values and the call of every metric of one comparison family.",
+      "source_sha256": "4a05a05d83678aa8020f71519038012c436323143ce417fe69ca48828b159732",
+      "translation": "하나의 비교군 집합(family)에 속한 모든 지표의 Holm q값과 판정입니다."
+    },
+    {
+      "context": ":func:`paired_replicate_test` rows of one family.",
+      "label": "spacr.ops_clusters.call_effects#1",
+      "source": ":func:`paired_replicate_test` rows of one family.",
+      "source_sha256": "0d94b04a21886cb3e7f9e96a837f51c6821342e00f14c6e02ff11edb3fbe7189",
+      "translation": "하나의 비교군 집합(family)의 :func:`paired_replicate_test` 행."
+    },
+    {
+      "context": "``{metric: delta_pts}``; a call then also needs ``|diff_pts| > delta`` (the noise-floor rule). None calls on q alone.",
+      "label": "spacr.ops_clusters.call_effects#2",
+      "source": "``{metric: delta_pts}``; a call then also needs ``|diff_pts| > delta`` (the noise-floor rule). None calls on q alone.",
+      "source_sha256": "a7c4525106e096b5b0d9132a5b2b6588a5d6ef7fddd8e0a1085c382c4e8cbe70",
+      "translation": "``{metric: delta_pts}``. 이 경우 판정에는 ``|diff_pts| > delta``(노이즈 하한 규칙)도 필요합니다. None이면 q만으로 판정합니다."
+    },
+    {
+      "context": "the level of q.",
+      "label": "spacr.ops_clusters.call_effects#3",
+      "source": "the level of q.",
+      "source_sha256": "d50516b8fe30604279a12a864dd265ce663a51cf84561595eef1c887b3525c0b",
+      "translation": "q의 수준."
+    },
+    {
+      "context": "True when the setup's data-selection boundary passed, False when it failed, None when it was not executed; written as ``gate``.",
+      "label": "spacr.ops_clusters.call_effects#4",
+      "source": "True when the setup's gate passed, False when it failed, None when it was not run; written as ``gate``.",
+      "source_sha256": "38723d3921d7286a1a4f2ec35341083beeff82b987f7d1bc43baffa2f5d1c5e6",
+      "translation": "설정의 게이트가 통과하면 True, 실패하면 False, 실행되지 않았으면 None이며, ``gate``로 기록됩니다."
+    },
+    {
+      "context": "the rows with ``q`` (Holm), ``margin_pts``, ``call`` (``'higher'``, ``'lower'`` or ``'no detectable effect'``) and ``gate`` (``'passed'``, ``'failed: margin rule'`` or ``'not gated'``).",
+      "label": "spacr.ops_clusters.call_effects#5",
+      "source": "the rows with ``q`` (Holm), ``margin_pts``, ``call`` (``'higher'``, ``'lower'`` or ``'no detectable effect'``) and ``gate`` (``'passed'``, ``'failed: margin rule'`` or ``'not gated'``).",
+      "source_sha256": "eece4012f8633971f7f1ed180ac11fa6d93279c52f6c1eddead5fcb81eacaf71",
+      "translation": "``q``(Holm), ``margin_pts``, ``call``(``'higher'``, ``'lower'`` 또는 ``'no detectable effect'``), ``gate``(``'passed'``, ``'failed: margin rule'`` 또는 ``'not gated'``)가 추가된 행."
+    },
+    {
+      "context": "The ``cluster_bench_test`` phase: consensus vs PHATE + Leiden under the calibrated test (item 929, alpha).",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#0",
+      "source": "The ``cluster_bench_test`` phase: consensus vs PHATE + Leiden under the calibrated test (item 929, alpha).",
+      "source_sha256": "19d3a961565b4340f455e80856b3e14019d4570a4b352d9ebcc103f28d72827b",
+      "translation": "``cluster_bench_test`` 단계: 보정된 검정으로 합의 클러스터링과 PHATE + Leiden을 비교합니다(항목 929, 알파)."
+    },
+    {
+      "context": "Replicate ``r`` of both arms clusters the guide bootstrap seeded ``ops_bench_replicate_seed + r`` with clustering seed ``ops_bench_cluster_seed + r``: the single PHATE + Leiden run (:func:`single_partition`) and the consensus (:func:`guide_bootstrap_consensus`, inner bootstrap ``b`` drawn with seed ``ops_consensus_draw_seed + 20 r + b``). Each partition of the scored genes is turned into per-unit excess over the size-matched null (:func:`partition_units`) on the ``ops_bench_half`` reference half, and the arms are compared by :func:`paired_replicate_test`. Before the test is used, the data-selection boundary (:func:`calibration_gate`) tests ``ops_bench_gate_copies`` jitter copies of the gated arm against it; when it fails, every call also needs ``|effect|`` above the noise-floor margin (:func:`noise_floor_margin`), and a metric whose margin rule still fails its cross-validated check is marked not calibrated.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#1",
+      "source": "Replicate ``r`` of both arms clusters the guide bootstrap seeded ``ops_bench_replicate_seed + r`` with clustering seed ``ops_bench_cluster_seed + r``: the single PHATE + Leiden run (:func:`single_partition`) and the consensus (:func:`guide_bootstrap_consensus`, inner bootstrap ``b`` drawn with seed ``ops_consensus_draw_seed + 20 r + b``). Each partition of the scored genes is turned into per-unit excess over the size-matched null (:func:`partition_units`) on the ``ops_bench_half`` reference half, and the arms are compared by :func:`paired_replicate_test`. Before the test is used, the gate (:func:`calibration_gate`) tests ``ops_bench_gate_copies`` jitter copies of the gated arm against it; when it fails, every call also needs ``|effect|`` above the noise-floor margin (:func:`noise_floor_margin`), and a metric whose margin rule still fails its cross-validated check is marked not calibrated.",
+      "source_sha256": "093c2f6c621bc43ccd6798bdb216a067c10fd5566d7186e487906c79f8ff664f",
+      "translation": "두 비교군의 반복 ``r``은 ``ops_bench_replicate_seed + r`` 시드로 만든 가이드 부트스트랩을 클러스터링 시드 ``ops_bench_cluster_seed + r``로 클러스터링합니다. 하나는 단일 PHATE + Leiden 실행(:func:`single_partition`)이고, 다른 하나는 합의 클러스터링(:func:`guide_bootstrap_consensus`, 내부 부트스트랩 ``b``는 시드 ``ops_consensus_draw_seed + 20 r + b``로 추출)입니다. 채점된 유전자의 각 분할은 크기 일치 귀무 분포 대비 단위별 초과량(:func:`partition_units`)으로 변환되며(``ops_bench_half`` 참조 절반 기준), 두 비교군은 :func:`paired_replicate_test`로 비교됩니다. 검정을 사용하기 전에 게이트(:func:`calibration_gate`)가 게이트 대상 비교군의 지터 사본 ``ops_bench_gate_copies``개를 그 비교군과 비교 검정합니다. 게이트가 실패하면 모든 판정에 ``|effect|``가 노이즈 하한 여유(:func:`noise_floor_margin`)를 넘어야 한다는 조건이 추가되며, 여유 규칙이 교차 검증 확인에서도 실패하는 지표는 보정되지 않음으로 표시됩니다."
+    },
+    {
+      "context": "read for the inputs of :func:`cluster_consensus_phase` and its ``ops_consensus_*`` settings, ``ops_cluster_reference_dir`` (falling back to ``ops_reference_dir``), ``ops_bench_replicates`` (R; a value other than 20 needs a data-selection boundary in this processing session or a matching ``ops_bench_gate_record``), ``ops_bench_replicate_seed``, ``ops_bench_cluster_seed``, ``ops_bench_gate_copies``, ``ops_bench_gate_noise``, ``ops_bench_gate_alpha``, ``ops_bench_gate_limit``, ``ops_bench_margin_quantile``, ``ops_bench_gate_record``, ``ops_bench_gate_arm``, ``ops_bench_half`` (None scores every STRING pair) and ``ops_bench_null_permutations``.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#2",
+      "source": "read for the inputs of :func:`cluster_consensus_phase` and its ``ops_consensus_*`` settings, ``ops_cluster_reference_dir`` (falling back to ``ops_reference_dir``), ``ops_bench_replicates`` (R; a value other than 20 needs a gate in this run or a matching ``ops_bench_gate_record``), ``ops_bench_replicate_seed``, ``ops_bench_cluster_seed``, ``ops_bench_gate_copies``, ``ops_bench_gate_noise``, ``ops_bench_gate_alpha``, ``ops_bench_gate_limit``, ``ops_bench_margin_quantile``, ``ops_bench_gate_record``, ``ops_bench_gate_arm``, ``ops_bench_half`` (None scores every STRING pair) and ``ops_bench_null_permutations``.",
+      "source_sha256": "ad0299ee9773831de06f02ae6c0a1b58246c53e05e768f0c4710ebe3859d4667",
+      "translation": ":func:`cluster_consensus_phase`의 입력과 그 ``ops_consensus_*`` 설정, ``ops_cluster_reference_dir``(없으면 ``ops_reference_dir``), ``ops_bench_replicates``(R. 20이 아닌 값에는 이번 실행에서의 게이트 또는 일치하는 ``ops_bench_gate_record``가 필요), ``ops_bench_replicate_seed``, ``ops_bench_cluster_seed``, ``ops_bench_gate_copies``, ``ops_bench_gate_noise``, ``ops_bench_gate_alpha``, ``ops_bench_gate_limit``, ``ops_bench_margin_quantile``, ``ops_bench_gate_record``, ``ops_bench_gate_arm``, ``ops_bench_half``(None이면 모든 STRING 쌍을 채점), ``ops_bench_null_permutations``를 읽습니다."
+    },
+    {
+      "context": "the profile phase's gene table, or None.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#3",
+      "source": "the profile phase's gene table, or None.",
+      "source_sha256": "b7ab10073a684eab7a19fd92e6a2ff84ad80b095b32f59ffa6a32cc07ddee733",
+      "translation": "프로파일 단계의 유전자 테이블 또는 None."
+    },
+    {
+      "context": "the profile phase's guide table, or None.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#4",
+      "source": "the profile phase's guide table, or None.",
+      "source_sha256": "deb1bb8af42b7ea975714b97c631536560be2f738305eeb9ba9d2827bb9787a7",
+      "translation": "프로파일 단계의 가이드 테이블 또는 None."
+    },
+    {
+      "context": "``dst_root``; outputs go to its ``results/ops_clusters``.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#5",
+      "source": "``dst_root``; outputs go to its ``results/ops_clusters``.",
+      "source_sha256": "1aabc63f7919c1fdb330c44d3a7797d176f73e99704a3be2b8e91d01605b3231",
+      "translation": "``dst_root``. 출력은 그 안의 ``results/ops_clusters``에 저장됩니다."
+    },
+    {
+      "context": "called with progress lines.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#6",
+      "source": "called with progress lines.",
+      "source_sha256": "af180464f5ebfea75d9e56d72c11bffddd7076d26203a4795a1c157ff419a14c",
+      "translation": "진행 줄과 함께 호출됩니다."
+    },
+    {
+      "context": "``{\"folder\", \"outputs\", \"gate_passed\", \"calls\"}``.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#7",
+      "source": "``{\"folder\", \"outputs\", \"gate_passed\", \"calls\"}``.",
+      "source_sha256": "6c3f66437b773e088bd4f0b275730ab221ea340e225ed71ccd75281ad513a9ad",
+      "translation": "``{\"folder\", \"outputs\", \"gate_passed\", \"calls\"}``."
+    },
+    {
+      "context": "for missing inputs, a changed R without a data-selection boundary record, or an unknown gated arm.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#8",
+      "source": "for missing inputs, a changed R without a gate record, or an unknown gated arm.",
+      "source_sha256": "6ca658de74c5960e0fea8f6d09526bc37b244507135344e185d64dad6580b83a",
+      "translation": "입력이 없거나, 게이트 기록 없이 R이 바뀌었거나, 게이트 대상 비교군을 알 수 없는 경우."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.cluster_bench_test_phase#9",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "``clustering`` 추가 패키지가 설치되지 않은 경우."
+    },
+    {
+      "context": "The ``cluster_consensus`` phase of the OPS profile path (item 928, alpha).",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#0",
+      "source": "The ``cluster_consensus`` phase of the OPS profile path (item 928, alpha).",
+      "source_sha256": "289cc8f2a7d9f1a8c53bb95e3f3e24b355a8b741d44da81c522d4da1c496d17c",
+      "translation": "OPS 프로파일 경로의 ``cluster_consensus`` 단계입니다(항목 928, 알파)."
+    },
+    {
+      "context": "Clusters ``ops_consensus_bootstraps`` guide bootstraps of the gene profile (bootstrap ``b`` draws its guides with seed ``ops_consensus_draw_seed + b`` and clusters with PHATE + Leiden at the target count, seed ``ops_consensus_seed * 100 + b``) and cuts their co-clustering matrix into the consensus partition (:func:`guide_bootstrap_consensus`); the count is then matched on the profile's own rows with seed ``ops_consensus_seed``.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#1",
+      "source": "Clusters ``ops_consensus_bootstraps`` guide bootstraps of the gene profile (bootstrap ``b`` draws its guides with seed ``ops_consensus_draw_seed + b`` and clusters with PHATE + Leiden at the target count, seed ``ops_consensus_seed * 100 + b``) and cuts their co-clustering matrix into the consensus partition (:func:`guide_bootstrap_consensus`); the count is then matched on the profile's own rows with seed ``ops_consensus_seed``.",
+      "source_sha256": "fa9503e192bc8c2b394625bd8f2a3c43f1982b0ae221bf186329aa62927a1bb0",
+      "translation": "유전자 프로파일의 가이드 부트스트랩 ``ops_consensus_bootstraps``개를 클러스터링하고(부트스트랩 ``b``는 시드 ``ops_consensus_draw_seed + b``로 가이드를 추출하고, 목표 클러스터 수에서 시드 ``ops_consensus_seed * 100 + b``로 PHATE + Leiden 클러스터링), 그 공동 클러스터링 행렬을 합의 분할로 자릅니다(:func:`guide_bootstrap_consensus`). 그런 다음 프로파일 자체의 행에서 시드 ``ops_consensus_seed``로 클러스터 수를 맞춥니다."
+    },
+    {
+      "context": "read for ``ops_cluster_rows`` and ``ops_consensus_guides`` (ready rows and their guide rows; the profile phase's gene and guide tables, embedded as the evaluate phase embeds them, when empty), ``ops_cluster_gene_list`` (the targeting genes clustered, in order; every targeting row when empty; control rows are always clustered and never counted), ``ops_consensus_bootstraps``, ``ops_consensus_seed``, ``ops_consensus_draw_seed``, ``ops_consensus_knn``, ``ops_consensus_k`` (the target count; ``round(genes * ops_consensus_k_ratio)`` when empty), ``ops_consensus_k_ratio``, ``ops_consensus_method``, ``ops_consensus_min_cooc``, ``ops_consensus_force_genes``, ``ops_consensus_min_stability``, ``ops_consensus_match_count``, ``ops_profile_min_cells`` and ``ops_control_prefix``.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#2",
+      "source": "read for ``ops_cluster_rows`` and ``ops_consensus_guides`` (ready rows and their guide rows; the profile phase's gene and guide tables, embedded as the evaluate phase embeds them, when empty), ``ops_cluster_gene_list`` (the targeting genes clustered, in order; every targeting row when empty; control rows are always clustered and never counted), ``ops_consensus_bootstraps``, ``ops_consensus_seed``, ``ops_consensus_draw_seed``, ``ops_consensus_knn``, ``ops_consensus_k`` (the target count; ``round(genes * ops_consensus_k_ratio)`` when empty), ``ops_consensus_k_ratio``, ``ops_consensus_method``, ``ops_consensus_min_cooc``, ``ops_consensus_force_genes``, ``ops_consensus_min_stability``, ``ops_consensus_match_count``, ``ops_profile_min_cells`` and ``ops_control_prefix``.",
+      "source_sha256": "5101831c1dc045e96ed707bb2d8e9f5f2d938e87dbaeb7fbf4e80f0994a1f879",
+      "translation": "``ops_cluster_rows``와 ``ops_consensus_guides``(준비된 행과 그 가이드 행. 비어 있으면 프로파일 단계의 유전자 및 가이드 테이블을 평가 단계와 같은 방식으로 임베딩해 사용), ``ops_cluster_gene_list``(클러스터링할 표적 유전자, 순서대로. 비어 있으면 모든 표적 행. 대조군 행은 항상 클러스터링되지만 집계되지 않음), ``ops_consensus_bootstraps``, ``ops_consensus_seed``, ``ops_consensus_draw_seed``, ``ops_consensus_knn``, ``ops_consensus_k``(목표 클러스터 수. 비어 있으면 ``round(genes * ops_consensus_k_ratio)``), ``ops_consensus_k_ratio``, ``ops_consensus_method``, ``ops_consensus_min_cooc``, ``ops_consensus_force_genes``, ``ops_consensus_min_stability``, ``ops_consensus_match_count``, ``ops_profile_min_cells``, ``ops_control_prefix``를 읽습니다."
+    },
+    {
+      "context": "the profile phase's gene table, or None.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#3",
+      "source": "the profile phase's gene table, or None.",
+      "source_sha256": "b7ab10073a684eab7a19fd92e6a2ff84ad80b095b32f59ffa6a32cc07ddee733",
+      "translation": "프로파일 단계의 유전자 테이블 또는 None."
+    },
+    {
+      "context": "the profile phase's guide table, or None.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#4",
+      "source": "the profile phase's guide table, or None.",
+      "source_sha256": "deb1bb8af42b7ea975714b97c631536560be2f738305eeb9ba9d2827bb9787a7",
+      "translation": "프로파일 단계의 가이드 테이블 또는 None."
+    },
+    {
+      "context": "``dst_root``; outputs go to its ``results/ops_clusters``.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#5",
+      "source": "``dst_root``; outputs go to its ``results/ops_clusters``.",
+      "source_sha256": "1aabc63f7919c1fdb330c44d3a7797d176f73e99704a3be2b8e91d01605b3231",
+      "translation": "``dst_root``. 출력은 그 안의 ``results/ops_clusters``에 저장됩니다."
+    },
+    {
+      "context": "called with progress lines.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#6",
+      "source": "called with progress lines.",
+      "source_sha256": "af180464f5ebfea75d9e56d72c11bffddd7076d26203a4795a1c157ff419a14c",
+      "translation": "진행 줄과 함께 호출됩니다."
+    },
+    {
+      "context": "``{\"folder\", \"outputs\", \"k\", \"clusters\", \"adjusted\"}``.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#7",
+      "source": "``{\"folder\", \"outputs\", \"k\", \"clusters\", \"adjusted\"}``.",
+      "source_sha256": "fd246f68a2fba9d0d4a4c4057a27e004f4b5fc56a55b2235890d52bd3320f4b5",
+      "translation": "``{\"folder\", \"outputs\", \"k\", \"clusters\", \"adjusted\"}``."
+    },
+    {
+      "context": "when no rows or guide rows are given, or a setting is out of range.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#8",
+      "source": "when no rows or guide rows are given, or a setting is out of range.",
+      "source_sha256": "d1123b4e46c3a5f4fa97c5ec7194653e3e426872cfb2efc9c73bab0373a89fe1",
+      "translation": "행이나 가이드 행이 주어지지 않았거나 설정이 범위를 벗어난 경우."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.cluster_consensus_phase#9",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "``clustering`` 추가 패키지가 설치되지 않은 경우."
+    },
+    {
+      "context": "The share of partitions in which two rows share a cluster.",
+      "label": "spacr.ops_clusters.coclustering_matrix#0",
+      "source": "The share of partitions in which two rows share a cluster.",
+      "source_sha256": "7a65a2562e0d4e146e7ce2cdfba187b572c8353c0cc80fea3c77e91282969f18",
+      "translation": "두 행이 같은 클러스터에 속하는 분할의 비율입니다."
+    },
+    {
+      "context": "label vectors over the same rows; -1 marks a row left out of that partition.",
+      "label": "spacr.ops_clusters.coclustering_matrix#1",
+      "source": "label vectors over the same rows; -1 marks a row left out of that partition.",
+      "source_sha256": "aeb0b05ff38d6ddb9434263e62d89262d577611f235cbb61e2cb8e40a018346e",
+      "translation": "같은 행들에 대한 레이블 벡터. -1은 해당 분할에서 제외된 행을 나타냅니다."
+    },
+    {
+      "context": "a symmetric single-precision ``rows x rows`` matrix in [0, 1] with ones on the diagonal (every row present at least once). With no row left out it is the co-occurrence count divided by the number of partitions; otherwise each pair is divided by the partitions holding both rows, and a pair never held together is 0.",
+      "label": "spacr.ops_clusters.coclustering_matrix#2",
+      "source": "a symmetric single-precision ``rows x rows`` matrix in [0, 1] with ones on the diagonal (every row present at least once). With no row left out it is the co-occurrence count divided by the number of partitions; otherwise each pair is divided by the partitions holding both rows, and a pair never held together is 0.",
+      "source_sha256": "90f5fe2833b5d58e3941d9815483d095c83e82a72b6a80021a9f79005256f759",
+      "translation": "대각선이 1인(모든 행이 적어도 한 번 존재) [0, 1] 범위의 대칭 단정밀도 ``rows x rows`` 행렬. 제외된 행이 없으면 공동 출현 횟수를 분할 수로 나눈 값이고, 그렇지 않으면 각 쌍을 두 행을 모두 포함하는 분할 수로 나누며, 한 번도 함께 포함되지 않은 쌍은 0입니다."
+    },
+    {
+      "context": "when no partition is given.",
+      "label": "spacr.ops_clusters.coclustering_matrix#3",
+      "source": "when no partition is given.",
+      "source_sha256": "fb0b2da258b3c2ca57d91c4cb2845423293929a789deba47adc8b30bf8ba8d57",
+      "translation": "분할이 하나도 주어지지 않은 경우."
+    },
+    {
+      "context": "The consensus partition of a co-clustering matrix, at a target count.",
+      "label": "spacr.ops_clusters.consensus_partition#0",
+      "source": "The consensus partition of a co-clustering matrix, at a target count.",
+      "source_sha256": "2cbd5951cd6d616e406d82f6c6df303f5e553f3012742e44da993063f46ba2ad",
+      "translation": "목표 클러스터 수에서 공동 클러스터링 행렬의 합의 분할입니다."
+    },
+    {
+      "context": "from :func:`coclustering_matrix`.",
+      "label": "spacr.ops_clusters.consensus_partition#1",
+      "source": "from :func:`coclustering_matrix`.",
+      "source_sha256": "1ef1d451d4c35284052048a4142127ed3f22936e9742062266438379d07fb274",
+      "translation": ":func:`coclustering_matrix`에서 얻습니다."
+    },
+    {
+      "context": "the target cluster count over the ``mask`` rows.",
+      "label": "spacr.ops_clusters.consensus_partition#2",
+      "source": "the target cluster count over the ``mask`` rows.",
+      "source_sha256": "58a26a64299b03dae34f8d950eb1fdb1220d39398c1a1be58a6e48918c78507d",
+      "translation": "``mask`` 행에 대한 목표 클러스터 수."
+    },
+    {
+      "context": "the rows counted (the targeting genes); every row when None.",
+      "label": "spacr.ops_clusters.consensus_partition#3",
+      "source": "the rows counted (the targeting genes); every row when None.",
+      "source_sha256": "e90fde7a2a7daf5c4e5a31aaabe50cd7d8e6dc76453ce082c585ce89f7e1203f",
+      "translation": "집계되는 행(표적 유전자). None이면 모든 행."
+    },
+    {
+      "context": "``'average'``, average linkage on ``1 - cooc`` cut into ``t`` clusters with ``t`` bisected over [2, 4k] to the count nearest ``k`` (Monti et al. 2003); or ``'leiden'``, Leiden on the graph of the pairs whose co-clustering exceeds ``min_cooc`` (weight = the co-clustering), its resolution matched to ``k`` by :func:`match_resolution`.",
+      "label": "spacr.ops_clusters.consensus_partition#4",
+      "source": "``'average'``, average linkage on ``1 - cooc`` cut into ``t`` clusters with ``t`` bisected over [2, 4k] to the count nearest ``k`` (Monti et al. 2003); or ``'leiden'``, Leiden on the graph of the pairs whose co-clustering exceeds ``min_cooc`` (weight = the co-clustering), its resolution matched to ``k`` by :func:`match_resolution`.",
+      "source_sha256": "7e993d331e8ee5c84c70f51266daa639ca7bacc918525138d58e1fbe73b20e34",
+      "translation": "``'average'``: ``1 - cooc``에 평균 연결법을 적용해 ``t``개 클러스터로 자르며, ``t``는 [2, 4k]에서 이분 탐색해 ``k``에 가장 가까운 수로 정합니다(Monti et al. 2003). 또는 ``'leiden'``: 공동 클러스터링 값이 ``min_cooc``를 넘는 쌍으로 이루어진 그래프에서 Leiden을 실행하며(가중치 = 공동 클러스터링 값), 해상도는 ``k``에 맞춥니다(:func:`match_resolution`)."
+    },
+    {
+      "context": "the Leiden seed (``'leiden'`` only).",
+      "label": "spacr.ops_clusters.consensus_partition#5",
+      "source": "the Leiden seed (``'leiden'`` only).",
+      "source_sha256": "70582533f8ce8087bf4e86aa96c2e1be798c20eab3c73575de0c32de2d170c8d",
+      "translation": "Leiden 시드(``'leiden'`` 전용)."
+    },
+    {
+      "context": "the edge floor (``'leiden'`` only).",
+      "label": "spacr.ops_clusters.consensus_partition#6",
+      "source": "the edge floor (``'leiden'`` only).",
+      "source_sha256": "71e7d0df385eeb75c0dd20698ccae229b058e6cf432a32690090754395770f4d",
+      "translation": "간선 하한(``'leiden'`` 전용)."
+    },
+    {
+      "context": "``(labels, info)``; every row has a cluster. ``info`` holds the ``cut`` (average) or ``resolution`` (leiden) and ``clusters``.",
+      "label": "spacr.ops_clusters.consensus_partition#7",
+      "source": "``(labels, info)``; every row has a cluster. ``info`` holds the ``cut`` (average) or ``resolution`` (leiden) and ``clusters``.",
+      "source_sha256": "ed8443c18cf40fe04893231c474d9ef2167d94954ba0bf962295fa76d4a8619e",
+      "translation": "``(labels, info)``. 모든 행에 클러스터가 있습니다. ``info``에는 ``cut``(average) 또는 ``resolution``(leiden)과 ``clusters``가 들어 있습니다."
+    },
+    {
+      "context": "for an unknown method.",
+      "label": "spacr.ops_clusters.consensus_partition#8",
+      "source": "for an unknown method.",
+      "source_sha256": "508d39c2537d1350fd4944914520223928078bb172bf64ab5b4025de9541d54a",
+      "translation": "알 수 없는 방법일 때 발생합니다."
+    },
+    {
+      "context": "Each row's mean co-clustering with the other rows of its own cluster.",
+      "label": "spacr.ops_clusters.consensus_stability#0",
+      "source": "Each row's mean co-clustering with the other rows of its own cluster.",
+      "source_sha256": "17e2fc5bb9789fe100e5171525ad83b474a96b12d31ec412efa40f02c863dea4",
+      "translation": "각 행이 자신의 클러스터에 속한 다른 행들과 갖는 평균 공동 클러스터링 값입니다."
+    },
+    {
+      "context": "from :func:`coclustering_matrix`.",
+      "label": "spacr.ops_clusters.consensus_stability#1",
+      "source": "from :func:`coclustering_matrix`.",
+      "source_sha256": "1ef1d451d4c35284052048a4142127ed3f22936e9742062266438379d07fb274",
+      "translation": ":func:`coclustering_matrix`에서 얻습니다."
+    },
+    {
+      "context": "the consensus partition.",
+      "label": "spacr.ops_clusters.consensus_stability#2",
+      "source": "the consensus partition.",
+      "source_sha256": "9a3c38dbf28047a458dbc1b380f7de22bee79d70c3961668a506aaa386fbf9bf",
+      "translation": "합의 분할."
+    },
+    {
+      "context": "one value per row in [0, 1]; 1 for a row alone in its cluster.",
+      "label": "spacr.ops_clusters.consensus_stability#3",
+      "source": "one value per row in [0, 1]; 1 for a row alone in its cluster.",
+      "source_sha256": "e62ad1a6371680abf13c8b5391abedffaadcf2cd42a9ae594f59d62c2c61abe5",
+      "translation": "행마다 [0, 1] 범위의 값 하나. 클러스터에 혼자 있는 행은 1."
+    },
+    {
+      "context": "Guide-bootstrap consensus clustering (item 928).",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#0",
+      "source": "Guide-bootstrap consensus clustering (item 928).",
+      "source_sha256": "4295ae13e0597494524d65a3ac5fc6a6bf1c517f211be24e9940794281519a0b",
+      "translation": "가이드 부트스트랩 합의 클러스터링입니다(항목 928)."
+    },
+    {
+      "context": "Bootstrap ``b`` clusters ``draw(b)`` (a guide bootstrap of the profile, :func:`guide_bootstrap_profiles`) with PHATE (``knn`` cosine neighbours, :func:`gene_graph`) and Leiden at the target count (:func:`match_resolution`), both seeded ``seed * 100 + b``. The co-clustering matrix of the ``n_boot`` partitions (:func:`coclustering_matrix`) is cut into the consensus partition (:func:`consensus_partition`), which :func:`match_count` then brings within 10 % of ``k`` on ``rows`` with ``seed``.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#1",
+      "source": "Bootstrap ``b`` clusters ``draw(b)`` (a guide bootstrap of the profile, :func:`guide_bootstrap_profiles`) with PHATE (``knn`` cosine neighbours, :func:`gene_graph`) and Leiden at the target count (:func:`match_resolution`), both seeded ``seed * 100 + b``. The co-clustering matrix of the ``n_boot`` partitions (:func:`coclustering_matrix`) is cut into the consensus partition (:func:`consensus_partition`), which :func:`match_count` then brings within 10 % of ``k`` on ``rows`` with ``seed``.",
+      "source_sha256": "193205eb60dfff8db95a130bd73a3c159c0d84406e531e85d7ff5b313ef9cddc",
+      "translation": "부트스트랩 ``b``는 ``draw(b)``(프로파일의 가이드 부트스트랩, :func:`guide_bootstrap_profiles`)를 PHATE(``knn``개의 코사인 이웃, :func:`gene_graph`)와 목표 클러스터 수에서의 Leiden(:func:`match_resolution`)으로 클러스터링하며, 둘 다 시드 ``seed * 100 + b``를 씁니다. ``n_boot``개 분할의 공동 클러스터링 행렬(:func:`coclustering_matrix`)을 합의 분할로 자르고(:func:`consensus_partition`), 이어서 :func:`match_count`가 이를 ``k``의 10 % 이내로 맞춥니다(``rows`` 기준, 시드 ``seed``)."
+    },
+    {
+      "context": "the rows :func:`match_count` splits and merges on; the first draw when None.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#10",
+      "source": "the rows :func:`match_count` splits and merges on; the first draw when None.",
+      "source_sha256": "84967e2ea68d9bf526c850e7be4ad98d526a093ea63daa9c9d449a0184411ebe",
+      "translation": ":func:`match_count`가 분할과 병합에 사용하는 행. None이면 첫 번째 추출."
+    },
+    {
+      "context": "False skips :func:`match_count`.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#11",
+      "source": "False skips :func:`match_count`.",
+      "source_sha256": "1e3f91aca3aaaf5676475daa388da839aa2088c4de347beb37db12eaa5246d4f",
+      "translation": "False이면 :func:`match_count`를 건너뜁니다."
+    },
+    {
+      "context": "True assigns every gene to a cluster. False makes each row whose :func:`consensus_stability` is below ``min_stability`` a singleton (counted as unassigned) and skips :func:`match_count`.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#12",
+      "source": "True assigns every gene to a cluster. False makes each row whose :func:`consensus_stability` is below ``min_stability`` a singleton (counted as unassigned) and skips :func:`match_count`.",
+      "source_sha256": "7a74dad31bb1e670e2ebea5f9cbb6ff9c81e0488680bb7645b1c1888bcdfbbb0",
+      "translation": "True이면 모든 유전자를 클러스터에 배정합니다. False이면 :func:`consensus_stability`가 ``min_stability`` 미만인 각 행을 단일 클러스터(미배정으로 집계)로 만들고 :func:`match_count`를 건너뜁니다."
+    },
+    {
+      "context": "see ``force_genes``.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#13",
+      "source": "see ``force_genes``.",
+      "source_sha256": "2a994d4c0518d988ba5735af34e968f07265132c278f757b11441a33dec0adc1",
+      "translation": "``force_genes``를 참조하십시오."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#14",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "PHATE의 작업자 수."
+    },
+    {
+      "context": "called with one progress line per bootstrap.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#15",
+      "source": "called with one progress line per bootstrap.",
+      "source_sha256": "f797619d0545e89d8e98839d20348cebae9c027fa1f29c0f35329c5a00eabee4",
+      "translation": "부트스트랩마다 진행 상황 한 줄로 호출됩니다."
+    },
+    {
+      "context": "``{\"labels\", \"cooc\", \"stability\", \"cut_labels\", \"runs\", \"adjusted\", \"unassigned\", \"cut\"}``: the final labels (from 0), the co-clustering matrix, each row's stability, the labels of the cut before any adjustment, one record per bootstrap (``bootstrap``, ``seed``, ``resolution``, ``clusters``, ``seconds``), whether the count was adjusted, the unassigned rows (a boolean array) and the consensus cut's own record.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#16",
+      "source": "``{\"labels\", \"cooc\", \"stability\", \"cut_labels\", \"runs\", \"adjusted\", \"unassigned\", \"cut\"}``: the final labels (from 0), the co-clustering matrix, each row's stability, the labels of the cut before any adjustment, one record per bootstrap (``bootstrap``, ``seed``, ``resolution``, ``clusters``, ``seconds``), whether the count was adjusted, the unassigned rows (a boolean array) and the consensus cut's own record.",
+      "source_sha256": "e9c24e7bfeb43ef5ec1ac5d6be97634960a382b87a5fc8f20cd6f943eb2f5bc7",
+      "translation": "``{\"labels\", \"cooc\", \"stability\", \"cut_labels\", \"runs\", \"adjusted\", \"unassigned\", \"cut\"}``: 최종 레이블(0부터), 공동 클러스터링 행렬, 각 행의 안정성, 조정 전 절단의 레이블, 부트스트랩마다 하나의 기록(``bootstrap``, ``seed``, ``resolution``, ``clusters``, ``seconds``), 클러스터 수 조정 여부, 미배정 행(불리언 배열), 합의 절단 자체의 기록."
+    },
+    {
+      "context": "for fewer than one bootstrap.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#17",
+      "source": "for fewer than one bootstrap.",
+      "source_sha256": "dbbd3aec07e6390f198d9c16587198d1012d9dd0bd7dd228a1f0764760256f31",
+      "translation": "부트스트랩이 1회 미만인 경우."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#18",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "``clustering`` 추가 패키지가 설치되지 않은 경우."
+    },
+    {
+      "context": "``draw(b) -> rows`` for ``b`` from 0 to ``n_boot - 1``, or a sequence of row arrays; every draw has the same rows in the same order.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#2",
+      "source": "``draw(b) -> rows`` for ``b`` from 0 to ``n_boot - 1``, or a sequence of row arrays; every draw has the same rows in the same order.",
+      "source_sha256": "4f33c0425d3bee3863d71028a2e7e9f807a5a1d919a81e3098afcfbbc0e7693e",
+      "translation": "``draw(b) -> rows``(``b``는 0부터 ``n_boot - 1``까지) 또는 행 배열의 시퀀스. 모든 추출은 같은 행을 같은 순서로 가집니다."
+    },
+    {
+      "context": "the number of bootstraps.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#3",
+      "source": "the number of bootstraps.",
+      "source_sha256": "6d0bcc236b1836426c249c1c9e00245e72f5bdb23ece7e06c38cc42363b86ed5",
+      "translation": "부트스트랩 횟수."
+    },
+    {
+      "context": "the target cluster count over the ``mask`` rows.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#4",
+      "source": "the target cluster count over the ``mask`` rows.",
+      "source_sha256": "58a26a64299b03dae34f8d950eb1fdb1220d39398c1a1be58a6e48918c78507d",
+      "translation": "``mask`` 행에 대한 목표 클러스터 수."
+    },
+    {
+      "context": "the rows counted (the targeting genes); every row when None.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#5",
+      "source": "the rows counted (the targeting genes); every row when None.",
+      "source_sha256": "e90fde7a2a7daf5c4e5a31aaabe50cd7d8e6dc76453ce082c585ce89f7e1203f",
+      "translation": "집계되는 행(표적 유전자). None이면 모든 행."
+    },
+    {
+      "context": "the clustering seed.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#6",
+      "source": "the clustering seed.",
+      "source_sha256": "09e476a6b188a2a966f8dc32f857a97f12be88f044ac2f06ddcf8d5e682b2fe1",
+      "translation": "클러스터링 시드."
+    },
+    {
+      "context": "PHATE's neighbours.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#7",
+      "source": "PHATE's neighbours.",
+      "source_sha256": "6d43e575c9e2333fd84fbef0f47799df7b2818ededb32a3705554f6f0a714802",
+      "translation": "PHATE의 이웃 수."
+    },
+    {
+      "context": "see :func:`consensus_partition`.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#8",
+      "source": "see :func:`consensus_partition`.",
+      "source_sha256": "ece6b20dc17ebd6872fe474c95017e16d940ee94b7270fb76677e1319247182f",
+      "translation": ":func:`consensus_partition`을 참조하십시오."
+    },
+    {
+      "context": "see :func:`consensus_partition`.",
+      "label": "spacr.ops_clusters.guide_bootstrap_consensus#9",
+      "source": "see :func:`consensus_partition`.",
+      "source_sha256": "ece6b20dc17ebd6872fe474c95017e16d940ee94b7270fb76677e1319247182f",
+      "translation": ":func:`consensus_partition`을 참조하십시오."
+    },
+    {
+      "context": "One guide bootstrap of a gene profile table.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#0",
+      "source": "One guide bootstrap of a gene profile table.",
+      "source_sha256": "97e02731fea9975d7103c57013793c455d3993532f76fd092dfc3b94881900d0",
+      "translation": "유전자 프로파일 테이블의 가이드 부트스트랩 하나입니다."
+    },
+    {
+      "context": "Every targeting gene's guides are drawn with replacement, and its row is shifted by the change of the cell-weighted guide mean: ``row + (mean of the drawn guides - mean of all its guides)``, each mean weighted by the guides' cell counts. This rebuilds the profile from the drawn guides without aggregating the cells again. Control rows (one barcode each) and genes without guide rows are not resampled.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#1",
+      "source": "Every targeting gene's guides are drawn with replacement, and its row is shifted by the change of the cell-weighted guide mean: ``row + (mean of the drawn guides - mean of all its guides)``, each mean weighted by the guides' cell counts. This rebuilds the profile from the drawn guides without aggregating the cells again. Control rows (one barcode each) and genes without guide rows are not resampled.",
+      "source_sha256": "5a42b840c030810ac208e8ca073f4627fc2b9311929aa42b82ea66c7bca07348",
+      "translation": "각 표적 유전자의 가이드를 복원 추출하고, 그 행을 세포 가중 가이드 평균의 변화만큼 이동합니다: ``row + (mean of the drawn guides - mean of all its guides)``, 각 평균은 가이드의 세포 수로 가중합니다. 이렇게 하면 세포를 다시 집계하지 않고도 추출된 가이드로 프로파일을 재구성합니다. 대조군 행(각각 바코드 하나)과 가이드 행이 없는 유전자는 재표본하지 않습니다."
+    },
+    {
+      "context": "the gene profile, one row per name.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#2",
+      "source": "the gene profile, one row per name.",
+      "source_sha256": "a64f96ac1bb8e9f938d74ee41f78805f6bde17fd0ad07d0df2c96038c1e2d8af",
+      "translation": "유전자 프로파일, 이름마다 한 행."
+    },
+    {
+      "context": "the row names; guides are matched on them.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#3",
+      "source": "the row names; guides are matched on them.",
+      "source_sha256": "a0c03ee604f0fe4ac34c29542009e69193288974fae1bab309e1f3c0c602172e",
+      "translation": "행 이름. 가이드는 이 이름으로 매칭됩니다."
+    },
+    {
+      "context": "one row per guide, in the profile's columns.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#4",
+      "source": "one row per guide, in the profile's columns.",
+      "source_sha256": "05d3164c0b14dda20b458d251d04b221089887300cbbd435776b936d0922a81d",
+      "translation": "가이드마다 한 행, 프로파일의 열 기준."
+    },
+    {
+      "context": "each guide's gene.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#5",
+      "source": "each guide's gene.",
+      "source_sha256": "4cb1b5a0bd9012b8709ec54a2e947baf5c89ecbe7259c876233c5e510d3b038d",
+      "translation": "각 가이드의 유전자."
+    },
+    {
+      "context": "each guide's cell count.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#6",
+      "source": "each guide's cell count.",
+      "source_sha256": "0b8e9fa18ccccfc6c710b75b74ca16e2f8a5ad014af561bf8c64dce238c0060a",
+      "translation": "각 가이드의 세포 수."
+    },
+    {
+      "context": "the generator seed; genes draw in row order.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#7",
+      "source": "the generator seed; genes draw in row order.",
+      "source_sha256": "8a7472ab68a1f49590f06df73c86ea6ab9444d640c7abd06aefad590bc541dd4",
+      "translation": "생성기 시드. 유전자는 행 순서대로 추출합니다."
+    },
+    {
+      "context": "rows named with it (or ``NTpseudo``) are controls.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#8",
+      "source": "rows named with it (or ``NTpseudo``) are controls.",
+      "source_sha256": "9615b958f8772fd8e6911d23bf592013f92f7caeef4fb99818155ac26cb76fab",
+      "translation": "이 이름(또는 ``NTpseudo``)이 붙은 행은 대조군입니다."
+    },
+    {
+      "context": "the bootstrap rows, a new array.",
+      "label": "spacr.ops_clusters.guide_bootstrap_profiles#9",
+      "source": "the bootstrap rows, a new array.",
+      "source_sha256": "396c7ae98f1b93f246adbbe10c1e77b8ba2f29bbeac36bcfacf5727a34913f56",
+      "translation": "부트스트랩 행으로, 새 배열입니다."
+    },
+    {
+      "context": "A jitter copy of profile rows: the calibration data-selection boundary's null.",
+      "label": "spacr.ops_clusters.jitter_rows#0",
+      "source": "A jitter copy of profile rows: the calibration gate's null.",
+      "source_sha256": "ae23a021444e423f41d3ef9526ce9191b13a48340040d352731180ba6e8703b3",
+      "translation": "프로파일 행의 지터 사본으로, 보정 게이트의 귀무 분포입니다."
+    },
+    {
+      "context": "the rows (one replicate draw).",
+      "label": "spacr.ops_clusters.jitter_rows#1",
+      "source": "the rows (one replicate draw).",
+      "source_sha256": "f72e632c1d1023f26ba839454e66cb2b7079a2bbd9abf3d822b25e973193b5bc",
+      "translation": "행(반복 추출 하나)."
+    },
+    {
+      "context": "the copy number; its noise is seeded ``seed_base + copy`` and so is the same in every replicate.",
+      "label": "spacr.ops_clusters.jitter_rows#2",
+      "source": "the copy number; its noise is seeded ``seed_base + copy`` and so is the same in every replicate.",
+      "source_sha256": "c7327168da308d598fc328acd221ae52fa27fb5663c4034431db50137c03b2e3",
+      "translation": "사본 번호. 노이즈의 시드는 ``seed_base + copy``이므로 모든 반복에서 같습니다."
+    },
+    {
+      "context": "the noise norm relative to each row's norm.",
+      "label": "spacr.ops_clusters.jitter_rows#3",
+      "source": "the noise norm relative to each row's norm.",
+      "source_sha256": "9e890feb11f11e5d4f412542bf0edd76b7fa725baff24bb9ea3383648fa2226c",
+      "translation": "각 행의 노름에 대한 노이즈 노름의 비율."
+    },
+    {
+      "context": "see ``copy``.",
+      "label": "spacr.ops_clusters.jitter_rows#4",
+      "source": "see ``copy``.",
+      "source_sha256": "f3593da2d022dceccee6b949c9b6a24502b92b6c879e3c76c36864fe60b154e3",
+      "translation": "``copy``를 참조하십시오."
+    },
+    {
+      "context": "``rows`` plus Gaussian noise whose norm is ``size`` times each row's norm.",
+      "label": "spacr.ops_clusters.jitter_rows#5",
+      "source": "``rows`` plus Gaussian noise whose norm is ``size`` times each row's norm.",
+      "source_sha256": "b52d4e3a65688b8cff63e936c7e280a5a8fd9ed2bf780ca93280fa68bc64f62d",
+      "translation": "``rows``에 가우스 노이즈를 더한 값으로, 노이즈의 노름은 각 행 노름의 ``size``배입니다."
+    },
+    {
+      "context": "Bring a partition to the target cluster count when it is too far off.",
+      "label": "spacr.ops_clusters.match_count#0",
+      "source": "Bring a partition to the target cluster count when it is too far off.",
+      "source_sha256": "4234c5132692b06e54f4281a6a42dd8891c72f5e8e66c6584e59f7f13285a396",
+      "translation": "분할이 목표 클러스터 수에서 너무 멀면 목표 클러스터 수로 맞춥니다."
+    },
+    {
+      "context": "the clustered rows, one per label.",
+      "label": "spacr.ops_clusters.match_count#1",
+      "source": "the clustered rows, one per label.",
+      "source_sha256": "21e853b3199450dcd054b46d2d4801c5d954faaf45781a00a3bfcbe66b6acbce",
+      "translation": "클러스터링된 행, 레이블마다 하나."
+    },
+    {
+      "context": "the partition.",
+      "label": "spacr.ops_clusters.match_count#2",
+      "source": "the partition.",
+      "source_sha256": "2092869c3bb1d1b3806575c53b111950139a21bee366055dcad3141b4268e6d6",
+      "translation": "분할."
+    },
+    {
+      "context": "the target count, over the ``mask`` rows.",
+      "label": "spacr.ops_clusters.match_count#3",
+      "source": "the target count, over the ``mask`` rows.",
+      "source_sha256": "b1f2ba95778850da65c321ae177f045173b54d1eddcfacf9039c2298a41c2d6b",
+      "translation": "``mask`` 행에 대한 목표 클러스터 수."
+    },
+    {
+      "context": "the rows counted (the targeting genes); every row when None.",
+      "label": "spacr.ops_clusters.match_count#4",
+      "source": "the rows counted (the targeting genes); every row when None.",
+      "source_sha256": "e90fde7a2a7daf5c4e5a31aaabe50cd7d8e6dc76453ce082c585ce89f7e1203f",
+      "translation": "집계되는 행(표적 유전자). None이면 모든 행."
+    },
+    {
+      "context": "the seed of the 2-means splits.",
+      "label": "spacr.ops_clusters.match_count#5",
+      "source": "the seed of the 2-means splits.",
+      "source_sha256": "790d14ae5057c3ee2c63a0c9671805c8b82655198d6140877cff550488bd4b98",
+      "translation": "2-means 분할의 시드."
+    },
+    {
+      "context": "a count within ``k * tolerance`` of ``k`` is kept.",
+      "label": "spacr.ops_clusters.match_count#6",
+      "source": "a count within ``k * tolerance`` of ``k`` is kept.",
+      "source_sha256": "83ebfc97234abb73ea64cd27804e42ba0664d6b64521bbd5f6ed36f5fefc779c",
+      "translation": "``k * tolerance`` 이내로 ``k``에 가까운 클러스터 수는 그대로 둡니다."
+    },
+    {
+      "context": "``(labels, adjusted)``: labels renumbered from 0 in order of first appearance. When adjusted, the ``mask`` rows are split (the largest cluster by cosine 2-means) or merged (the smallest into its nearest centroid) to exactly ``k``; a control row keeps its cluster when no targeting row shared it, else it follows the most common new label of that cluster's targeting rows.",
+      "label": "spacr.ops_clusters.match_count#7",
+      "source": "``(labels, adjusted)``: labels renumbered from 0 in order of first appearance. When adjusted, the ``mask`` rows are split (the largest cluster by cosine 2-means) or merged (the smallest into its nearest centroid) to exactly ``k``; a control row keeps its cluster when no targeting row shared it, else it follows the most common new label of that cluster's targeting rows.",
+      "source_sha256": "18ec93610378e6790803b15e2e04bfd6a9ad176c23a08e68b83e822244dbed0e",
+      "translation": "``(labels, adjusted)``: 처음 나타나는 순서대로 0부터 다시 번호를 매긴 레이블. 조정할 때는 ``mask`` 행을 분할하거나(가장 큰 클러스터를 코사인 2-means로) 병합하여(가장 작은 클러스터를 가장 가까운 중심으로) 정확히 ``k``개로 만듭니다. 대조군 행은 표적 행이 함께 속하지 않았던 클러스터라면 그 클러스터를 유지하고, 그렇지 않으면 그 클러스터 표적 행들의 가장 흔한 새 레이블을 따릅니다."
+    },
+    {
+      "context": "The Leiden partition whose cluster count is nearest a target.",
+      "label": "spacr.ops_clusters.match_resolution#0",
+      "source": "The Leiden partition whose cluster count is nearest a target.",
+      "source_sha256": "b1c384b5c024c38595dd18e21187978877fe6c18e1e101766acf0cb35b413ab7",
+      "translation": "클러스터 수가 목표에 가장 가까운 Leiden 분할입니다."
+    },
+    {
+      "context": "A bisection on the resolution, on a log scale: each step runs :func:`leiden_partitions` once at the geometric mean of the bounds.",
+      "label": "spacr.ops_clusters.match_resolution#1",
+      "source": "A bisection on the resolution, on a log scale: each step runs :func:`leiden_partitions` once at the geometric mean of the bounds.",
+      "source_sha256": "092cdba0009077a3a7435f3c079211c96a3cfe141c2e8e90e5b9c83f08f71af7",
+      "translation": "로그 척도에서 해상도를 이분 탐색합니다. 각 단계에서 경계의 기하 평균에서 :func:`leiden_partitions`를 한 번 실행합니다."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.match_resolution#10",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "``clustering`` 추가 패키지가 설치되지 않은 경우."
+    },
+    {
+      "context": "from :func:`gene_graph`.",
+      "label": "spacr.ops_clusters.match_resolution#2",
+      "source": "from :func:`gene_graph`.",
+      "source_sha256": "8e8c83022bfb6910d307f4592ade4ab19fe51aaa5c1a82044181b2a4dcb3464f",
+      "translation": ":func:`gene_graph`에서 얻습니다."
+    },
+    {
+      "context": "the target cluster count.",
+      "label": "spacr.ops_clusters.match_resolution#3",
+      "source": "the target cluster count.",
+      "source_sha256": "6e646b830993b455f71dad5df3fb9835889cbc4a865f189d8e1d81c5f2ee9324",
+      "translation": "목표 클러스터 수."
+    },
+    {
+      "context": "the Leiden seed of every step.",
+      "label": "spacr.ops_clusters.match_resolution#4",
+      "source": "the Leiden seed of every step.",
+      "source_sha256": "e5e9f9ed81dcad186eb2485ddf2962f0215df88f80ebeb0d8333df1bce1284c8",
+      "translation": "모든 단계의 Leiden 시드."
+    },
+    {
+      "context": "the rows counted (the targeting genes); every row when None.",
+      "label": "spacr.ops_clusters.match_resolution#5",
+      "source": "the rows counted (the targeting genes); every row when None.",
+      "source_sha256": "e90fde7a2a7daf5c4e5a31aaabe50cd7d8e6dc76453ce082c585ce89f7e1203f",
+      "translation": "집계되는 행(표적 유전자). None이면 모든 행."
+    },
+    {
+      "context": "the lowest resolution tried.",
+      "label": "spacr.ops_clusters.match_resolution#6",
+      "source": "the lowest resolution tried.",
+      "source_sha256": "0398038e70236de3232ef20357a0df24bdba82aa49b4e7134d9876c6ffc3c333",
+      "translation": "시도하는 가장 낮은 해상도."
+    },
+    {
+      "context": "the highest resolution tried.",
+      "label": "spacr.ops_clusters.match_resolution#7",
+      "source": "the highest resolution tried.",
+      "source_sha256": "2641ee798649b5796fb0f4849cff498117de4cd5c9ad6244659a058096bf0592",
+      "translation": "시도하는 가장 높은 해상도."
+    },
+    {
+      "context": "the most steps; the search stops early at exactly ``k``.",
+      "label": "spacr.ops_clusters.match_resolution#8",
+      "source": "the most steps; the search stops early at exactly ``k``.",
+      "source_sha256": "78ff57eddc19c919522ef323e9e50d2c25b73b142177e37584435ca787ea4911",
+      "translation": "최대 단계 수. 정확히 ``k``에 도달하면 탐색을 일찍 멈춥니다."
+    },
+    {
+      "context": "``(labels, resolution)`` of the step nearest ``k`` (the first on a tie).",
+      "label": "spacr.ops_clusters.match_resolution#9",
+      "source": "``(labels, resolution)`` of the step nearest ``k`` (the first on a tie).",
+      "source_sha256": "c3d0f8e2a4bf6edd8db629f1a7dc12695124f6709c71827e990131405163afd9",
+      "translation": "``(labels, resolution)``: ``k``에 가장 가까운 단계의 값(동률이면 첫 번째)."
+    },
+    {
+      "context": "The noise-floor margin of a data-selection boundary table, with its cross-validated check.",
+      "label": "spacr.ops_clusters.noise_floor_margin#0",
+      "source": "The noise-floor margin of a gate table, with its cross-validated check.",
+      "source_sha256": "c6f2de245aa1dcbc0e1a57f1929bb69cce6e1cdac51ceb24d294dd7fe1721970",
+      "translation": "게이트 테이블의 노이즈 하한 여유와 그 교차 검증 확인입니다."
+    },
+    {
+      "context": "delta = the ``quantile`` of ``|diff_pts|`` over the jitter copies. The check fits delta on the first half of the copies and counts the copies of the second half with ``p < alpha`` and ``|diff| > delta``, then the reverse; the two shares are averaged.",
+      "label": "spacr.ops_clusters.noise_floor_margin#1",
+      "source": "delta = the ``quantile`` of ``|diff_pts|`` over the jitter copies. The check fits delta on the first half of the copies and counts the copies of the second half with ``p < alpha`` and ``|diff| > delta``, then the reverse; the two shares are averaged.",
+      "source_sha256": "dad885af937bcc2707fcc14545cc1a4fd2671ff9aa8abdc05902ecaebf8db6a9",
+      "translation": "delta = ``quantile`` 분위수로, 지터 사본들의 ``|diff_pts|``에서 구합니다. 확인은 사본의 앞쪽 절반에서 delta를 적합하고, 뒤쪽 절반에서 ``p < alpha``이면서 ``|diff| > delta``인 사본을 센 다음, 반대로도 수행하여 두 비율을 평균합니다."
+    },
+    {
+      "context": ":func:`calibration_gate`'s table (``copy``, ``p``, ``diff_pts`` and the ``by`` columns).",
+      "label": "spacr.ops_clusters.noise_floor_margin#2",
+      "source": ":func:`calibration_gate`'s table (``copy``, ``p``, ``diff_pts`` and the ``by`` columns).",
+      "source_sha256": "68c3ee9e5637ce3019d6fb37df5cfe44c986c1e9f0bb3ef3f63ffaede0b25915",
+      "translation": ":func:`calibration_gate`의 테이블(``copy``, ``p``, ``diff_pts`` 및 ``by`` 열)."
+    },
+    {
+      "context": "the columns a margin is computed per (setup, cluster count, metric).",
+      "label": "spacr.ops_clusters.noise_floor_margin#3",
+      "source": "the columns a margin is computed per (setup, cluster count, metric).",
+      "source_sha256": "307ebdac0037545df2de79929c8feb683307a9dcbcbdf0b2ba9724da2448431b",
+      "translation": "여유를 따로 계산하는 기준 열(설정, 클러스터 수, 지표)."
+    },
+    {
+      "context": "see above.",
+      "label": "spacr.ops_clusters.noise_floor_margin#4",
+      "source": "see above.",
+      "source_sha256": "a97b1d85b1b762ab82fc4f2e74cdf1bc3019e30ed83abe76474af9475b9ab7a6",
+      "translation": "위를 참조하십시오."
+    },
+    {
+      "context": "the test level.",
+      "label": "spacr.ops_clusters.noise_floor_margin#5",
+      "source": "the test level.",
+      "source_sha256": "00a93fccdbceebab99b182ee470f61acb337210871cd0d769be30c28857be165",
+      "translation": "검정 수준."
+    },
+    {
+      "context": "the largest false-positive share that passes.",
+      "label": "spacr.ops_clusters.noise_floor_margin#6",
+      "source": "the largest false-positive share that passes.",
+      "source_sha256": "255e2f80b67ac18d49bae6bcf73a82ea9ac4c2621dbd64ce15c888194739115b",
+      "translation": "통과하는 최대 위양성 비율."
+    },
+    {
+      "context": "one row per group: ``delta_pts``, ``raw_false_positive_share``, ``margin_rule_false_positive_share_cv`` and ``passed``.",
+      "label": "spacr.ops_clusters.noise_floor_margin#7",
+      "source": "one row per group: ``delta_pts``, ``raw_false_positive_share``, ``margin_rule_false_positive_share_cv`` and ``passed``.",
+      "source_sha256": "cb1c6a1dfa308e2b6f82adab121f556b9279bd85540d22343d28e3f6a715a8c8",
+      "translation": "그룹마다 한 행: ``delta_pts``, ``raw_false_positive_share``, ``margin_rule_false_positive_share_cv``, ``passed``."
+    },
+    {
+      "context": "The calibrated paired-replicate test of two clusterings (item 929).",
+      "label": "spacr.ops_clusters.paired_replicate_test#0",
+      "source": "The calibrated paired-replicate test of two clusterings (item 929).",
+      "source_sha256": "f50dd99217fb76ad032e50b38d7771da0caca76162062147c0c9cc731c96d461",
+      "translation": "두 클러스터링에 대한 보정된 짝지은 반복 검정입니다(항목 929)."
+    },
+    {
+      "context": ":func:`stack_units` of the arm's replicates.",
+      "label": "spacr.ops_clusters.paired_replicate_test#1",
+      "source": ":func:`stack_units` of the arm's replicates.",
+      "source_sha256": "4feee207e43ef81125560839ac991704790e503798addbf16edcac77b8bae461",
+      "translation": "해당 비교군 반복들의 :func:`stack_units`."
+    },
+    {
+      "context": ":func:`stack_units` of the comparator's replicates, paired by replicate row.",
+      "label": "spacr.ops_clusters.paired_replicate_test#2",
+      "source": ":func:`stack_units` of the comparator's replicates, paired by replicate row.",
+      "source_sha256": "41b445a42e3a7fc37597fd74ade51ab873a4aed6fe57610aac7750f4eca24434",
+      "translation": "비교 대상 반복들의 :func:`stack_units`로, 반복 행끼리 짝지어집니다."
+    },
+    {
+      "context": "from :func:`calibrated_reference`.",
+      "label": "spacr.ops_clusters.paired_replicate_test#3",
+      "source": "from :func:`calibrated_reference`.",
+      "source_sha256": "70900b7eeb3cb4048e2dcbfc8fe72eb774ed625d7554346d4b6595bfb78c0ea8",
+      "translation": ":func:`calibrated_reference`에서 얻습니다."
+    },
+    {
+      "context": "True tests ``a > b``.",
+      "label": "spacr.ops_clusters.paired_replicate_test#4",
+      "source": "True tests ``a > b``.",
+      "source_sha256": "12967beadd49674f58cfc04fab859fb63e9590f187176ca5169faad9f37b9e87",
+      "translation": "True이면 ``a > b``를 검정합니다."
+    },
+    {
+      "context": "extra columns of every row.",
+      "label": "spacr.ops_clusters.paired_replicate_test#5",
+      "source": "extra columns of every row.",
+      "source_sha256": "a97f0f4cc95c759e7c3f3e4ae7453dd20486239f5fd5899690a05e1d155e8076",
+      "translation": "모든 행에 붙는 추가 열."
+    },
+    {
+      "context": "the interval's seed.",
+      "label": "spacr.ops_clusters.paired_replicate_test#6",
+      "source": "the interval's seed.",
+      "source_sha256": "07e523f50afe8484d87a849c378baa11210411e486f719261b753d0323c364b3",
+      "translation": "구간의 시드."
+    },
+    {
+      "context": "one row per metric (complexes, STRING pairs, per-gene-capped pairs): ``a_excess_pts`` and ``b_excess_pts`` (mean excess over the size-matched null, points), ``diff_pts`` (the mean over replicates of the difference), its 95 % two-level interval ``ci_low`` / ``ci_high`` (:func:`two_level_ci`), ``sd_rep_diff_pts`` and the exact sign-flip ``p`` over the replicate differences (:func:`signflip_exact`).",
+      "label": "spacr.ops_clusters.paired_replicate_test#7",
+      "source": "one row per metric (complexes, STRING pairs, per-gene-capped pairs): ``a_excess_pts`` and ``b_excess_pts`` (mean excess over the size-matched null, points), ``diff_pts`` (the mean over replicates of the difference), its 95 % two-level interval ``ci_low`` / ``ci_high`` (:func:`two_level_ci`), ``sd_rep_diff_pts`` and the exact sign-flip ``p`` over the replicate differences (:func:`signflip_exact`).",
+      "source_sha256": "6b3a2235716373fe95c7d15160e4c37b955a11c4a4e4050eb022655fabebc1da",
+      "translation": "지표(복합체, STRING 쌍, 유전자별 상한 적용 쌍)마다 한 행: ``a_excess_pts``와 ``b_excess_pts``(크기 일치 귀무 분포 대비 평균 초과량, 퍼센트 포인트), ``diff_pts``(반복에 걸친 차이의 평균), 그 95 % 2단계 구간 ``ci_low`` / ``ci_high``(:func:`two_level_ci`), ``sd_rep_diff_pts``, 반복 차이에 대한 정확한 부호 뒤집기 ``p``(:func:`signflip_exact`)."
+    },
+    {
+      "context": "Per-unit excess of one partition over the size-matched null.",
+      "label": "spacr.ops_clusters.partition_units#0",
+      "source": "Per-unit excess of one partition over the size-matched null.",
+      "source_sha256": "64cfc1bbcd9dde688b140d6233ced8ee615af11fa2586e817ef04894431ac5a3",
+      "translation": "크기 일치 귀무 분포 대비 한 분할의 단위별 초과량입니다."
+    },
+    {
+      "context": "one label per gene of ``reference``.",
+      "label": "spacr.ops_clusters.partition_units#1",
+      "source": "one label per gene of ``reference``.",
+      "source_sha256": "72084a1d7e02d01e6662b1845d2aad4b320aba15cf9e2a0ef3b419789b664893",
+      "translation": "``reference``의 유전자마다 레이블 하나."
+    },
+    {
+      "context": "from :func:`calibrated_reference`.",
+      "label": "spacr.ops_clusters.partition_units#2",
+      "source": "from :func:`calibrated_reference`.",
+      "source_sha256": "70900b7eeb3cb4048e2dcbfc8fe72eb774ed625d7554346d4b6595bfb78c0ea8",
+      "translation": ":func:`calibrated_reference`에서 얻습니다."
+    },
+    {
+      "context": "a cache ``{sizes: null}`` filled as needed.",
+      "label": "spacr.ops_clusters.partition_units#3",
+      "source": "a cache ``{sizes: null}`` filled as needed.",
+      "source_sha256": "7d098776f4b52e3e2e1d886a047ddee2984c9edde32b5b7775c2fda17c6bca4c",
+      "translation": "필요할 때 채워지는 캐시 ``{sizes: null}``."
+    },
+    {
+      "context": "the null's permutations.",
+      "label": "spacr.ops_clusters.partition_units#4",
+      "source": "the null's permutations.",
+      "source_sha256": "df6d24a958a4f3a0c81d0f57e09a642842c4d7b2345f28b16652b80b86ab36f4",
+      "translation": "귀무 분포의 순열 횟수."
+    },
+    {
+      "context": "``cx`` (each complex: recovered minus its null probability), ``pr`` (each STRING pair: in one cluster minus the null co-membership probability), ``gm`` (each gene with a pair: the mean of its pairs' ``pr``, the per-gene-capped metric) and the raw values ``cx_raw``, ``pr_raw``, ``gm_raw``.",
+      "label": "spacr.ops_clusters.partition_units#5",
+      "source": "``cx`` (each complex: recovered minus its null probability), ``pr`` (each STRING pair: in one cluster minus the null co-membership probability), ``gm`` (each gene with a pair: the mean of its pairs' ``pr``, the per-gene-capped metric) and the raw values ``cx_raw``, ``pr_raw``, ``gm_raw``.",
+      "source_sha256": "a44047ca941b19d6678e50074152e22760039cfaebf54e476ea335aaf081d0fc",
+      "translation": "``cx``(각 복합체: 복원 여부에서 귀무 확률을 뺀 값), ``pr``(각 STRING 쌍: 같은 클러스터 여부에서 귀무 공동 소속 확률을 뺀 값), ``gm``(쌍이 있는 각 유전자: 그 쌍들의 ``pr`` 평균, 즉 유전자별 상한 적용 지표)과 원시 값 ``cx_raw``, ``pr_raw``, ``gm_raw``."
+    },
+    {
+      "context": "Exact paired sign-flip p-value over replicate differences.",
+      "label": "spacr.ops_clusters.signflip_exact#0",
+      "source": "Exact paired sign-flip p-value over replicate differences.",
+      "source_sha256": "8260a185593d864f0e489af6fb986bc7c870ddbb5e00afb4a8f8865b9c961174",
+      "translation": "반복 차이에 대한 정확한 짝지은 부호 뒤집기 p값입니다."
+    },
+    {
+      "context": "one difference per replicate.",
+      "label": "spacr.ops_clusters.signflip_exact#1",
+      "source": "one difference per replicate.",
+      "source_sha256": "574dab97c782723e9807ad2ac71b738ace16aadc229b1c76faeb7ed94114f52e",
+      "translation": "반복마다 차이 하나."
+    },
+    {
+      "context": "True tests ``mean(d) > 0``; False is two-sided.",
+      "label": "spacr.ops_clusters.signflip_exact#2",
+      "source": "True tests ``mean(d) > 0``; False is two-sided.",
+      "source_sha256": "1c21725e0bd76bf09c49f63b77bd3c5128ceff7c46216a5638363fedcf422274",
+      "translation": "True이면 ``mean(d) > 0``을 검정하고, False이면 양측 검정입니다."
+    },
+    {
+      "context": "the share of the ``2^R`` sign patterns whose mean is at least as extreme as the observed mean (every pattern enumerated for ``R <= 20``; for more replicates 200,000 random patterns, seed 0); 1.0 when every difference is 0.",
+      "label": "spacr.ops_clusters.signflip_exact#3",
+      "source": "the share of the ``2^R`` sign patterns whose mean is at least as extreme as the observed mean (every pattern enumerated for ``R <= 20``; for more replicates 200,000 random patterns, seed 0); 1.0 when every difference is 0.",
+      "source_sha256": "a55b4441d40139bde0ff7b380177dad8d0218595543038346e960e32939292be",
+      "translation": "``2^R``개 부호 패턴 중 평균이 관측 평균 이상으로 극단적인 패턴의 비율(``R <= 20``이면 모든 패턴을 열거하고, 반복이 더 많으면 무작위 패턴 200,000개, 시드 0). 모든 차이가 0이면 1.0."
+    },
+    {
+      "context": "One PHATE + Leiden partition at a target count: the consensus comparator.",
+      "label": "spacr.ops_clusters.single_partition#0",
+      "source": "One PHATE + Leiden partition at a target count: the consensus comparator.",
+      "source_sha256": "b0abe7c8fbd1ca50d146b2836e6b1eef65149ba21fa52ac9aabe7c6e96eb5586",
+      "translation": "목표 클러스터 수에서의 단일 PHATE + Leiden 분할로, 합의 클러스터링의 비교 대상입니다."
+    },
+    {
+      "context": "the profile rows.",
+      "label": "spacr.ops_clusters.single_partition#1",
+      "source": "the profile rows.",
+      "source_sha256": "0a141bc9310aa129d45b502f428ed7ec3f765132d69f3fc2ab3900a9e970934b",
+      "translation": "프로파일 행."
+    },
+    {
+      "context": "the target cluster count over the ``mask`` rows.",
+      "label": "spacr.ops_clusters.single_partition#2",
+      "source": "the target cluster count over the ``mask`` rows.",
+      "source_sha256": "58a26a64299b03dae34f8d950eb1fdb1220d39398c1a1be58a6e48918c78507d",
+      "translation": "``mask`` 행에 대한 목표 클러스터 수."
+    },
+    {
+      "context": "the rows counted; every row when None.",
+      "label": "spacr.ops_clusters.single_partition#3",
+      "source": "the rows counted; every row when None.",
+      "source_sha256": "22e0ec1fb3ad7dfb8a561f6866968cc260b3a97c3840e3fb3a63a560d7a30c8b",
+      "translation": "집계되는 행. None이면 모든 행."
+    },
+    {
+      "context": "the PHATE and Leiden seed (and :func:`match_count`'s).",
+      "label": "spacr.ops_clusters.single_partition#4",
+      "source": "the PHATE and Leiden seed (and :func:`match_count`'s).",
+      "source_sha256": "fea393363ac15bc435a0272d538723cae932d436ab5e839095a56a2e896c2ff5",
+      "translation": "PHATE와 Leiden의 시드(:func:`match_count`의 시드이기도 함)."
+    },
+    {
+      "context": "PHATE's neighbours.",
+      "label": "spacr.ops_clusters.single_partition#5",
+      "source": "PHATE's neighbours.",
+      "source_sha256": "6d43e575c9e2333fd84fbef0f47799df7b2818ededb32a3705554f6f0a714802",
+      "translation": "PHATE의 이웃 수."
+    },
+    {
+      "context": "PHATE's worker count.",
+      "label": "spacr.ops_clusters.single_partition#6",
+      "source": "PHATE's worker count.",
+      "source_sha256": "f4686fe641d48a0a26a7ac49c255f6176b782db6864963a38809ef71c22ce916",
+      "translation": "PHATE의 작업자 수."
+    },
+    {
+      "context": "``(labels, info)``: :func:`match_resolution` on :func:`gene_graph`, then :func:`match_count`; ``info`` holds the ``resolution``, ``clusters`` and ``adjusted``.",
+      "label": "spacr.ops_clusters.single_partition#7",
+      "source": "``(labels, info)``: :func:`match_resolution` on :func:`gene_graph`, then :func:`match_count`; ``info`` holds the ``resolution``, ``clusters`` and ``adjusted``.",
+      "source_sha256": "c1e47b6f5cedb1dbfe54875a08526578f2c2380fae268f451f8fc288a8fe96ef",
+      "translation": "``(labels, info)``: :func:`match_resolution`을 :func:`gene_graph`에서 실행한 뒤 :func:`match_count`를 실행합니다. ``info``에는 ``resolution``, ``clusters``, ``adjusted``가 들어 있습니다."
+    },
+    {
+      "context": "when the ``clustering`` extra is not installed.",
+      "label": "spacr.ops_clusters.single_partition#8",
+      "source": "when the ``clustering`` extra is not installed.",
+      "source_sha256": "9ad69eb3f464fe6809016ee46e3c3a45576b1a80b4dde2327db07eaa3b637cb9",
+      "translation": "``clustering`` 추가 패키지가 설치되지 않은 경우."
+    },
+    {
+      "context": "The size-matched null of the calibrated test's units.",
+      "label": "spacr.ops_clusters.size_matched_null#0",
+      "source": "The size-matched null of the calibrated test's units.",
+      "source_sha256": "fcfcd6b1d967677025f38fac1b294de32164435cd5c2dea9795cacbe6d3595ad",
+      "translation": "보정된 검정 단위의 크기 일치 귀무 분포입니다."
+    },
+    {
+      "context": "Gene labels are permuted with the exact cluster sizes kept; the seed is taken from the size vector, so the same sizes give the same null.",
+      "label": "spacr.ops_clusters.size_matched_null#1",
+      "source": "Gene labels are permuted with the exact cluster sizes kept; the seed is taken from the size vector, so the same sizes give the same null.",
+      "source_sha256": "3af3dddfa208e9dbfea77a0bb8671a7610d56fdd4bdefadd72a1c56545ba2305",
+      "translation": "정확한 클러스터 크기를 유지한 채 유전자 레이블을 순열합니다. 시드는 크기 벡터에서 얻으므로 같은 크기는 같은 귀무 분포를 줍니다."
+    },
+    {
+      "context": "cluster sizes, largest first (as a partition's sizes).",
+      "label": "spacr.ops_clusters.size_matched_null#2",
+      "source": "cluster sizes, largest first (as a partition's sizes).",
+      "source_sha256": "8a3d20e71c7fc3647bb3c6bf57dc830c17efffcc34c1e606425502c6c97d1ecf",
+      "translation": "클러스터 크기, 큰 것부터(분할의 크기와 같은 형식)."
+    },
+    {
+      "context": "from :func:`calibrated_reference`.",
+      "label": "spacr.ops_clusters.size_matched_null#3",
+      "source": "from :func:`calibrated_reference`.",
+      "source_sha256": "70900b7eeb3cb4048e2dcbfc8fe72eb774ed625d7554346d4b6595bfb78c0ea8",
+      "translation": ":func:`calibrated_reference`에서 얻습니다."
+    },
+    {
+      "context": "the permutations.",
+      "label": "spacr.ops_clusters.size_matched_null#4",
+      "source": "the permutations.",
+      "source_sha256": "e9ae7fa1bc95d9148e20593545c60a963c2248b3223c7f1f60beb6e423cd6e63",
+      "translation": "순열 횟수."
+    },
+    {
+      "context": "``complex_prob`` (each complex's recovery probability) and ``pair_prob`` (the probability two genes share a cluster, exact).",
+      "label": "spacr.ops_clusters.size_matched_null#5",
+      "source": "``complex_prob`` (each complex's recovery probability) and ``pair_prob`` (the probability two genes share a cluster, exact).",
+      "source_sha256": "9a0917fefa4ded050b3a8fe463a01e55a58165d3b3bb1a9b428ee71c06a79ab0",
+      "translation": "``complex_prob``(각 복합체의 복원 확률)와 ``pair_prob``(두 유전자가 같은 클러스터에 속할 정확한 확률)."
+    },
+    {
+      "context": "Replicates by units arrays of :func:`partition_units` results.",
+      "label": "spacr.ops_clusters.stack_units#0",
+      "source": "Replicates by units arrays of :func:`partition_units` results.",
+      "source_sha256": "e68d0ddae0b52e2d6ccf57cc9a4ad8f9a8be92eee9411cc942198e34944682e0",
+      "translation": ":func:`partition_units` 결과로 만든 반복 x 단위 배열입니다."
+    },
+    {
+      "context": "one result per replicate, in replicate order.",
+      "label": "spacr.ops_clusters.stack_units#1",
+      "source": "one result per replicate, in replicate order.",
+      "source_sha256": "7358f5846cc579fdb26c970feb32e3e8c5139ef010caf81803cf72e271a93479",
+      "translation": "반복마다 결과 하나, 반복 순서대로."
+    },
+    {
+      "context": "True stacks the raw values under the same structured-data names.",
+      "label": "spacr.ops_clusters.stack_units#2",
+      "source": "True stacks the raw values under the same keys.",
+      "source_sha256": "d14e01ca57ac591826014abd606238ed2e46e220b8308e06b7e653f8178d6d0f",
+      "translation": "True이면 원시 값을 같은 키 아래에 쌓습니다."
+    },
+    {
+      "context": "``{\"cx\", \"pr\", \"gm\"}``, each ``replicates x units``.",
+      "label": "spacr.ops_clusters.stack_units#3",
+      "source": "``{\"cx\", \"pr\", \"gm\"}``, each ``replicates x units``.",
+      "source_sha256": "401381036fb28cd1871c4f9bfaafabd08ce32c0794cca77cd4289de510232831",
+      "translation": "``{\"cx\", \"pr\", \"gm\"}``, 각각 ``replicates x units``."
+    },
+    {
+      "context": "The cluster count matched to Brieflow's for a gene set.",
+      "label": "spacr.ops_clusters.target_cluster_count#0",
+      "source": "The cluster count matched to Brieflow's for a gene set.",
+      "source_sha256": "bfa4ddb9eb4899fff735a35cec6c4c49cdc033543c23f8865f8bef53b2915402",
+      "translation": "유전자 집합에 대해 Brieflow의 클러스터 수에 맞춘 클러스터 수입니다."
+    },
+    {
+      "context": "the targeting genes clustered.",
+      "label": "spacr.ops_clusters.target_cluster_count#1",
+      "source": "the targeting genes clustered.",
+      "source_sha256": "42209a5bb0a3f77b52c9cbf29ce95fb51ec11d3d2ed50a4cf34c995268df4379",
+      "translation": "클러스터링되는 표적 유전자."
+    },
+    {
+      "context": "``(clusters, genes)`` of the reference clustering.",
+      "label": "spacr.ops_clusters.target_cluster_count#2",
+      "source": "``(clusters, genes)`` of the reference clustering.",
+      "source_sha256": "33a0e700c723c7f4c0e9fa379d83c9832e0f15cd65330f37ad559120f6ea3ab4",
+      "translation": "참조 클러스터링의 ``(clusters, genes)``."
+    },
+    {
+      "context": "``round(n_genes * clusters / genes)``.",
+      "label": "spacr.ops_clusters.target_cluster_count#3",
+      "source": "``round(n_genes * clusters / genes)``.",
+      "source_sha256": "a98c9c75cb11b996bf912eb892824b4bf98334595786ef0f498e77d3c8bd4145",
+      "translation": "``round(n_genes * clusters / genes)``."
+    },
+    {
+      "context": "The two-level bootstrap interval of a paired effect.",
+      "label": "spacr.ops_clusters.two_level_ci#0",
+      "source": "The two-level bootstrap interval of a paired effect.",
+      "source_sha256": "df99e92a99129d43d91bb62be39680cb093217133616356432b83ca72e781132",
+      "translation": "짝지은 효과의 2단계 부트스트랩 구간입니다."
+    },
+    {
+      "context": "Each draw resamples the replicates with replacement and the genes with replacement (a block bootstrap over genes): a pair is weighted by the product of its genes' multiplicities, a complex by the mean multiplicity of its members, a gene (the capped metric) by its own.",
+      "label": "spacr.ops_clusters.two_level_ci#1",
+      "source": "Each draw resamples the replicates with replacement and the genes with replacement (a block bootstrap over genes): a pair is weighted by the product of its genes' multiplicities, a complex by the mean multiplicity of its members, a gene (the capped metric) by its own.",
+      "source_sha256": "d9f388c5a6380f35dcf3c25fed8910950d7983a9b213b6a72f06647f122eb316",
+      "translation": "각 추출은 반복을 복원 재표본하고 유전자도 복원 재표본합니다(유전자에 대한 블록 부트스트랩). 쌍은 두 유전자 중복도의 곱으로, 복합체는 구성원의 평균 중복도로, 유전자(상한 적용 지표)는 자신의 중복도로 가중합니다."
+    },
+    {
+      "context": "``replicates x units`` per-unit differences.",
+      "label": "spacr.ops_clusters.two_level_ci#2",
+      "source": "``replicates x units`` per-unit differences.",
+      "source_sha256": "6720d8baadb76c9172e6b15e518335e2f13e1f9b156b1e6885f532befaa8c503",
+      "translation": "``replicates x units`` 단위별 차이."
+    },
+    {
+      "context": "``'cx'``, ``'pr'`` or ``'gm'``.",
+      "label": "spacr.ops_clusters.two_level_ci#3",
+      "source": "``'cx'``, ``'pr'`` or ``'gm'``.",
+      "source_sha256": "7c99f88c7c12cca218cafc9c587b85e2b710f94410187cf4bd95056d95b0659e",
+      "translation": "``'cx'``, ``'pr'`` 또는 ``'gm'``."
+    },
+    {
+      "context": "from :func:`calibrated_reference`.",
+      "label": "spacr.ops_clusters.two_level_ci#4",
+      "source": "from :func:`calibrated_reference`.",
+      "source_sha256": "70900b7eeb3cb4048e2dcbfc8fe72eb774ed625d7554346d4b6595bfb78c0ea8",
+      "translation": ":func:`calibrated_reference`에서 얻습니다."
+    },
+    {
+      "context": "the bootstrap draws.",
+      "label": "spacr.ops_clusters.two_level_ci#5",
+      "source": "the bootstrap draws.",
+      "source_sha256": "761d0b65c6a831eacf2955029124b3d00c25e04733be826f0536386053ec5427",
+      "translation": "부트스트랩 추출 횟수."
+    },
+    {
+      "context": "the generator seed.",
+      "label": "spacr.ops_clusters.two_level_ci#6",
+      "source": "the generator seed.",
+      "source_sha256": "9a0ad828970c13439f50af8ebcd3bb893d551630f20b8e7783f794cdc85a5b8b",
+      "translation": "생성기 시드입니다."
+    },
+    {
+      "context": "the interval's coverage.",
+      "label": "spacr.ops_clusters.two_level_ci#7",
+      "source": "the interval's coverage.",
+      "source_sha256": "c2dd6929ec4064a2dee6d9444be10a5372b73181fcecf8700d5f4864a32ac538",
+      "translation": "구간의 포함 확률."
+    },
+    {
+      "context": "``(low, high)`` as fractions (not points).",
+      "label": "spacr.ops_clusters.two_level_ci#8",
+      "source": "``(low, high)`` as fractions (not points).",
+      "source_sha256": "fe4f03598b4fa145a8f2aa45dab17171d0aa5110d14b9755643513672c665962",
+      "translation": "비율로 나타낸 ``(low, high)``(퍼센트 포인트 아님)."
+    },
+    {
+      "context": "Laboratory microplate-scale runs (item 872, alpha): ``ops_ph_acquisitions`` names each phenotype acquisition's folder and channels (:func:`_ph_acquisition_index`); ``ops_ph_pipeline`` and ``ops_ph_stage_dir`` stream the microscope fields of view (:func:`_ph_fields`); ``ops_archive_root`` copies each finished well to archive storage, verifies it and resumes from its ``WELL_DONE`` marker (:func:`_ph_archive_resume`); ``ops_gpu_admission`` waits for a free card first (:func:`_ops_admitted_run`). The alpha ``\"flat_nuclear\"`` and ``\"flat_validate\"`` phases (item 912) run alone: they build each laboratory microplate's nuclear-median DNA flat-microscope field of view map and check it on held-out microscope fields of view (:func:`spacr.ops_flatfield.run_flat_phases`). The alpha ``\"score\"`` phase (item 913) runs alone: it scores gene profiles and clusterings with copairs and EFAAR (:func:`spacr.ops_scoring.score_ops_profiles`). The profile path's alpha ``\"cluster_sweep\"`` (item 916, the Leiden resolution sweep), ``\"etest\"`` (item 917, the per-gene E-test and its statistical detection sensitivity curve), ``\"cluster_consensus\"`` (item 928, guide-bootstrap consensus clustering) and ``\"cluster_bench_test\"`` (item 929, the calibrated consensus test) phases run inside :func:`spacr.ops_tvn.run_profile_phases`. Like the profile path, the flat-microscope field of view and score phases hold the BLAS and OpenMP pools to one thread while ``ops_deterministic_blas`` is on (the result's ``blas_threads``). With ``ops_layout`` set to ``'cpg_cropped'`` (alpha, items 919 and 920) only ``\"cpg_index\"``, ``\"cpg_merged\"`` and ``\"prefix_decode\"`` run (:func:`spacr.cpg_cropped.run_cpg_phases`, :func:`spacr.ops_prefix.run_prefix_decode`); the default phases mean the first two, and the decode too under ``ops_library_mode='spacer_prefix'``.",
+      "label": "spacr.ops_engine.run_ops#5",
+      "source": "Plate-scale runs (item 872, alpha): ``ops_ph_acquisitions`` names each phenotype acquisition's folder and channels (:func:`_ph_acquisition_index`); ``ops_ph_pipeline`` and ``ops_ph_stage_dir`` stream the fields (:func:`_ph_fields`); ``ops_archive_root`` copies each finished well to archive storage, verifies it and resumes from its ``WELL_DONE`` marker (:func:`_ph_archive_resume`); ``ops_gpu_admission`` waits for a free card first (:func:`_ops_admitted_run`). The alpha ``\"flat_nuclear\"`` and ``\"flat_validate\"`` phases (item 912) run alone: they build each plate's nuclear-median DNA flat-field map and check it on held-out fields (:func:`spacr.ops_flatfield.run_flat_phases`). The alpha ``\"score\"`` phase (item 913) runs alone: it scores gene profiles and clusterings with copairs and EFAAR (:func:`spacr.ops_scoring.score_ops_profiles`). The profile path's alpha ``\"cluster_sweep\"`` (item 916, the Leiden resolution sweep), ``\"etest\"`` (item 917, the per-gene E-test and its power curve), ``\"cluster_consensus\"`` (item 928, guide-bootstrap consensus clustering) and ``\"cluster_bench_test\"`` (item 929, the calibrated consensus test) phases run inside :func:`spacr.ops_tvn.run_profile_phases`. Like the profile path, the flat-field and score phases hold the BLAS and OpenMP pools to one thread while ``ops_deterministic_blas`` is on (the result's ``blas_threads``). With ``ops_layout`` set to ``'cpg_cropped'`` (alpha, items 919 and 920) only ``\"cpg_index\"``, ``\"cpg_merged\"`` and ``\"prefix_decode\"`` run (:func:`spacr.cpg_cropped.run_cpg_phases`, :func:`spacr.ops_prefix.run_prefix_decode`); the default phases mean the first two, and the decode too under ``ops_library_mode='spacer_prefix'``.",
+      "source_sha256": "e90a6472a4786099c8f0f53754bd1510deb8b40eeb02d0f3bccfb4e33ba06d4e",
+      "translation": "플레이트 규모 실행(항목 872, 알파): ``ops_ph_acquisitions``는 각 표현형 획득의 폴더와 채널을 지정하고(:func:`_ph_acquisition_index`), ``ops_ph_pipeline``과 ``ops_ph_stage_dir``는 시야를 스트리밍하며(:func:`_ph_fields`), ``ops_archive_root``는 완료된 각 웰을 아카이브 저장소로 복사하고 검증한 뒤 ``WELL_DONE`` 표시부터 재개하고(:func:`_ph_archive_resume`), ``ops_gpu_admission``은 먼저 빈 카드를 기다립니다(:func:`_ops_admitted_run`). 알파 ``\"flat_nuclear\"`` 및 ``\"flat_validate\"`` 단계(항목 912)는 단독으로 실행되며, 각 플레이트의 핵 중앙값 DNA 평탄 필드 맵을 만들고 홀드아웃 시야에서 검사합니다(:func:`spacr.ops_flatfield.run_flat_phases`). 알파 ``\"score\"`` 단계(항목 913)는 단독으로 실행되며, copairs와 EFAAR로 유전자 프로파일과 클러스터링을 채점합니다(:func:`spacr.ops_scoring.score_ops_profiles`). 프로파일 경로의 알파 ``\"cluster_sweep\"``(항목 916, Leiden 해상도 스윕), ``\"etest\"``(항목 917, 유전자별 E-검정과 그 검정력 곡선), ``\"cluster_consensus\"``(항목 928, 가이드 부트스트랩 합의 클러스터링), ``\"cluster_bench_test\"``(항목 929, 보정된 합의 검정) 단계는 :func:`spacr.ops_tvn.run_profile_phases` 안에서 실행됩니다. 프로파일 경로와 마찬가지로 평탄 필드 및 score 단계는 ``ops_deterministic_blas``가 켜져 있는 동안 BLAS와 OpenMP 풀을 스레드 하나로 유지합니다(결과의 ``blas_threads``). ``ops_layout``을 ``'cpg_cropped'``로 설정하면(알파, 항목 919 및 920) ``\"cpg_index\"``, ``\"cpg_merged\"``, ``\"prefix_decode\"``만 실행됩니다(:func:`spacr.cpg_cropped.run_cpg_phases`, :func:`spacr.ops_prefix.run_prefix_decode`). 기본 단계는 앞의 두 단계를 뜻하며, ``ops_library_mode='spacer_prefix'``에서는 디코딩도 포함합니다."
+    },
+    {
+      "context": "``\"profile\"``, ``\"evaluate\"`` or both, and the alpha ``\"etest\"`` (item 917, :func:`spacr.gene_measurement_compare.etest_phase`; with ``ops_etest`` on, the profile phase keeps the first cell state's per-cell embedding as ``cells_E.npy`` and ``cells_meta.parquet``) and ``\"cluster_sweep\"`` (item 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"`` (item 928, :func:`spacr.ops_clusters.cluster_consensus_phase`; also after ``\"cluster_sweep\"`` when ``ops_consensus_enabled`` is on) and ``\"cluster_bench_test\"`` (item 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`), which run after them under the same BLAS pin.",
+      "label": "spacr.ops_tvn.run_profile_phases#3",
+      "source": "``\"profile\"``, ``\"evaluate\"`` or both, and the alpha ``\"etest\"`` (item 917, :func:`spacr.gene_measurement_compare.etest_phase`; with ``ops_etest`` on, the profile phase keeps the first cell state's per-cell embedding as ``cells_E.npy`` and ``cells_meta.parquet``) and ``\"cluster_sweep\"`` (item 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"`` (item 928, :func:`spacr.ops_clusters.cluster_consensus_phase`; also after ``\"cluster_sweep\"`` when ``ops_consensus_enabled`` is on) and ``\"cluster_bench_test\"`` (item 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`), which run after them under the same BLAS pin.",
+      "source_sha256": "5460e41aedab6351aa46d77c048dc506a137d6b333f3c1886cafe62e6b0c994b",
+      "translation": "``\"profile\"``, ``\"evaluate\"`` 또는 둘 다, 그리고 알파 ``\"etest\"``(항목 917, :func:`spacr.gene_measurement_compare.etest_phase`. ``ops_etest``가 켜져 있으면 프로파일 단계가 첫 번째 세포 상태의 세포별 임베딩을 ``cells_E.npy``와 ``cells_meta.parquet``로 보존), ``\"cluster_sweep\"``(항목 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"``(항목 928, :func:`spacr.ops_clusters.cluster_consensus_phase`. ``\"cluster_sweep\"`` 뒤에도 실행되며, ``ops_consensus_enabled``가 켜져 있을 때), ``\"cluster_bench_test\"``(항목 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`)로, 이들은 같은 BLAS 고정 상태에서 그 뒤에 실행됩니다."
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-12 against the exact English source of the public docstring blocks added or changed on the claude-stage5-1112 branch (items 928 and 929): the 22 new spacr.ops_clusters callables of guide-bootstrap consensus clustering and the calibrated cluster test (calibrated_reference, calibration_gate, call_effects, cluster_bench_test_phase, cluster_consensus_phase, coclustering_matrix, consensus_partition, consensus_stability, guide_bootstrap_consensus, guide_bootstrap_profiles, jitter_rows, match_count, match_resolution, noise_floor_margin, paired_replicate_test, partition_units, signflip_exact, single_partition, size_matched_null, stack_units, target_cluster_count, two_level_ci), the new and moved blocks of the spacr.ops_clusters module docstring, and the changed blocks of spacr.ops_tvn.run_profile_phases and spacr.ops_engine.run_ops. Blocks whose exact English already had a reviewed record reuse that wording. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

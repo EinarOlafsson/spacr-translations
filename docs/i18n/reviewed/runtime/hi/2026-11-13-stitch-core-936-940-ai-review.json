@@ -1,0 +1,112 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "key": "ops_stitch_read_threads",
+      "source": "Ops stitch read threads",
+      "source_sha256": "fa6608baa95562b63f6357d0a2c75b5134d27457e85929be73704aa66be4c263",
+      "table": "setting_labels",
+      "translation": "OPS स्टिच रीड थ्रेड"
+    },
+    {
+      "key": "ops_stitch_edge_workers",
+      "source": "Ops stitch edge workers",
+      "source_sha256": "42bf78f702480b831cf5e470846f57a6b1f998bae23589a0e46b9dacaeb6d3ae",
+      "table": "setting_labels",
+      "translation": "OPS स्टिच एज वर्कर"
+    },
+    {
+      "key": "ops_placement_seed",
+      "source": "Ops placement seed",
+      "source_sha256": "7b8770cdefd68bb3ad00e391c8b26291b8c3e02c76d39e37d35bb7f1bbec6593",
+      "table": "setting_labels",
+      "translation": "OPS प्लेसमेंट सीड"
+    },
+    {
+      "key": "ops_placement_seed_mode",
+      "source": "Ops placement seed mode",
+      "source_sha256": "5ec109eb522128ea627f07f4a69b4084116ec16d98c0c48c5a51eeace384e89e",
+      "table": "setting_labels",
+      "translation": "OPS प्लेसमेंट सीड मोड"
+    },
+    {
+      "key": "ops_placement_seed_export",
+      "source": "Ops placement seed export",
+      "source_sha256": "4889f585fa686702a5ce8c24487d0d105d9cfc795a6090cddddeda948a3a572e",
+      "table": "setting_labels",
+      "translation": "OPS प्लेसमेंट सीड निर्यात"
+    },
+    {
+      "key": "ops_placement_seed_check_pixels",
+      "source": "Ops placement seed check pixels",
+      "source_sha256": "6d38f5663e510ea8e45a6a4fea14c89cf8197ed7c4b08e86f9f438de4d06c800",
+      "table": "setting_labels",
+      "translation": "OPS प्लेसमेंट सीड पिक्सेल जाँच"
+    },
+    {
+      "key": "ops_placement_seed_tolerance",
+      "source": "Ops placement seed tolerance",
+      "source_sha256": "f223b7faaf3cc8c18a39e38f0520b879d39d66ff591b1200b782dd4a56ecb2de",
+      "table": "setting_labels",
+      "translation": "OPS प्लेसमेंट सीड सहनशीलता"
+    },
+    {
+      "key": "ops_stitch_read_threads",
+      "source": "How many threads read the well's nuclear tiles while the stitch places them. The tiles are read ahead in the order the stitch uses them, so reading from network storage overlaps with the registration; the positions are the same for any number. On Funk et al. 2022 plates A and B, 4 threads halved the stitch step's time (about 235 s to about 120 s per well) for about 30 extra CPU seconds per well. 1 reads one tile at a time, as before spaCR 1.5.1.8. Default 4.",
+      "source_sha256": "8be893cbd28cbb96d1081174a04f7e362ee72cf4dac79c37670a465d2df37cf3",
+      "table": "setting_tooltips",
+      "translation": "स्टिच जब वेल की केंद्रक टाइलों को स्थापित करता है, उस दौरान उन्हें कितने थ्रेड पढ़ते हैं। टाइलें उसी क्रम में पहले से पढ़ ली जाती हैं जिसमें स्टिच उनका उपयोग करता है, इसलिए नेटवर्क स्टोरेज से पढ़ना रजिस्ट्रेशन के साथ-साथ चलता है; किसी भी संख्या के लिए स्थितियाँ समान रहती हैं। Funk et al. 2022 की प्लेट A और B पर 4 थ्रेड ने स्टिच चरण का समय आधा कर दिया (प्रति वेल लगभग 235 s से लगभग 120 s), प्रति वेल लगभग 30 अतिरिक्त CPU सेकंड की लागत पर। 1 एक बार में एक टाइल पढ़ता है, जैसा spaCR 1.5.1.8 से पहले होता था। डिफ़ॉल्ट 4।"
+    },
+    {
+      "key": "ops_stitch_edge_workers",
+      "source": "How many worker processes register the stitch's tile pairs. 1 registers them one after another. More registers them on the CPU in that many processes with the same positions; with 3 workers the placement of a Funk et al. 2022 well took about a third of the time at the same total CPU time. Workers start ten seconds apart, so this helps only wells whose placement takes longer than that. Default 1.",
+      "source_sha256": "7e48b0ceb51a77729760bf4cbcf256f2d0b06a5b1d72ea426e04a90e1edd4f91",
+      "table": "setting_tooltips",
+      "translation": "कितनी वर्कर प्रोसेस स्टिच की टाइल जोड़ियों को रजिस्टर करती हैं। 1 उन्हें एक के बाद एक रजिस्टर करता है। अधिक मान उन्हें CPU पर उतनी ही प्रोसेस में समान स्थितियों के साथ रजिस्टर करता है; 3 वर्करों के साथ Funk et al. 2022 के एक वेल के प्लेसमेंट में समान कुल CPU समय पर लगभग एक तिहाई समय लगा। वर्कर दस सेकंड के अंतराल पर शुरू होते हैं, इसलिए यह केवल उन वेल में मदद करता है जिनके प्लेसमेंट में इससे अधिक समय लगता है। डिफ़ॉल्ट 1।"
+    },
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "किसी पिछले पूर्ण रन की प्लेसमेंट फ़ाइल: <plate>_<well>.ops_placement.json, उसे रखने वाला फ़ोल्डर, या उस रन का measurements.db। इसके साथ स्टिच चरण न रजिस्टर करता है न हल करता है: इस रन की हर टाइल पूरे वेल के फ़्रेम में वहीं रखी जाती है जहाँ फ़ाइल बताती है, ताकि कुछ फ़ील्ड पर चलने वाला रन पूर्ण रन जैसी ही विंडो कंपोज़ करे। फ़ाइल को पहले प्लेट, वेल, टाइलों, टाइल आकार और चक्र से मिलाकर जाँचा जाता है। सीड वाला रन किसी शोधपत्र में पूर्ण रन का विकल्प नहीं है; उसकी रिपोर्ट में 'placement: seeded' लिखा होता है। खाली होने पर सामान्य रूप से हल करता है। अल्फ़ा।"
+    },
+    {
+      "key": "ops_placement_seed_mode",
+      "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
+      "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
+      "table": "setting_tooltips",
+      "translation": "'subset' रन को प्लेसमेंट फ़ाइल में सूचीबद्ध किसी भी टाइल का उपयोग करने देता है; 'strict' को ठीक फ़ाइल वाली टाइलें चाहिए और वह फ़ाइल लिखे जाने के बाद बदली गई स्रोत फ़ाइलों को भी अस्वीकार करता है। डिफ़ॉल्ट 'subset'। अल्फ़ा।"
+    },
+    {
+      "key": "ops_placement_seed_export",
+      "source": "Write <plate>_<well>.ops_placement.json into the well's folder after every solved stitch, so a later run on part of the well can use ops_placement_seed. A few kilobytes per well. Off for settings files saved before spaCR 1.5.1.8. Default True. Alpha.",
+      "source_sha256": "572a491bf8e0b01191fc7bd794703d744fda426304a9ea0cc625759242ee0f77",
+      "table": "setting_tooltips",
+      "translation": "हर हल किए गए स्टिच के बाद वेल के फ़ोल्डर में <plate>_<well>.ops_placement.json लिखें, ताकि वेल के किसी हिस्से पर बाद का रन ops_placement_seed का उपयोग कर सके। प्रति वेल कुछ किलोबाइट। spaCR 1.5.1.8 से पहले सहेजी गई सेटिंग्स फ़ाइलों के लिए बंद। डिफ़ॉल्ट True। अल्फ़ा।"
+    },
+    {
+      "key": "ops_placement_seed_check_pixels",
+      "source": "Also re-register up to six seams between this run's tiles and stop if any disagrees with the placement file by more than ops_placement_seed_tolerance. The positions are never changed. Default False. Alpha.",
+      "source_sha256": "656716648661035e1a5fa545df0cd9553715f3cb7aaf1e31daa42b38cdd00f53",
+      "table": "setting_tooltips",
+      "translation": "इस रन की टाइलों के बीच अधिकतम छह जोड़ों को फिर से रजिस्टर भी करें और यदि कोई भी प्लेसमेंट फ़ाइल से ops_placement_seed_tolerance से अधिक असहमत हो तो रुक जाएँ। स्थितियाँ कभी नहीं बदली जातीं। डिफ़ॉल्ट False। अल्फ़ा।"
+    },
+    {
+      "key": "ops_placement_seed_tolerance",
+      "source": "How many pixels a re-registered seam may differ from the placement file under ops_placement_seed_check_pixels. Default 2. Alpha.",
+      "source_sha256": "3aba1836a0ad5c9922793331e0e53f24b7afdb48dabf5b3a6333bda927f9bc35",
+      "table": "setting_tooltips",
+      "translation": "ops_placement_seed_check_pixels के अंतर्गत दोबारा रजिस्टर किया गया जोड़ प्लेसमेंट फ़ाइल से कितने पिक्सेल भिन्न हो सकता है। डिफ़ॉल्ट 2। अल्फ़ा।"
+    },
+    {
+      "key": "ops_registration_precision",
+      "source": "The precision of the Fourier transforms that register the sequencing channels and cycles and, on the CPU, the stitch's tile pairs. 'float32' takes about half the time of 'float64' and, on 443 fields of the Funk et al. 2022 plates, gave the same shifts, reads and calls, and on well A1 of plates A to D the same stitch positions; 'float64' is the arithmetic used before, kept for an exact rerun of older results. Default 'float32'.",
+      "source_sha256": "0d82cecfedc980c993982722ccb8cb2341a181a70e4d65731803a3a5c7c23f5f",
+      "table": "setting_tooltips",
+      "translation": "उन फ़ूरिये रूपांतरणों की परिशुद्धता जो सीक्वेंसिंग चैनलों और चक्रों को, और CPU पर स्टिच की टाइल जोड़ियों को, रजिस्टर करते हैं। 'float32' में 'float64' से लगभग आधा समय लगता है और Funk et al. 2022 की प्लेटों के 443 फ़ील्ड पर इससे वही विस्थापन, रीड और कॉल मिले, और प्लेट A से D के वेल A1 पर वही स्टिच स्थितियाँ; 'float64' पहले इस्तेमाल होने वाला अंकगणित है, जिसे पुराने परिणामों को हूबहू दोबारा चलाने के लिए रखा गया है। डिफ़ॉल्ट 'float32'।"
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

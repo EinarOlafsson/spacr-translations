@@ -1,0 +1,112 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "key": "ops_stitch_read_threads",
+      "source": "Ops stitch read threads",
+      "source_sha256": "fa6608baa95562b63f6357d0a2c75b5134d27457e85929be73704aa66be4c263",
+      "table": "setting_labels",
+      "translation": "OPS 拼接读取线程数"
+    },
+    {
+      "key": "ops_stitch_edge_workers",
+      "source": "Ops stitch edge workers",
+      "source_sha256": "42bf78f702480b831cf5e470846f57a6b1f998bae23589a0e46b9dacaeb6d3ae",
+      "table": "setting_labels",
+      "translation": "OPS 拼接边配准工作进程数"
+    },
+    {
+      "key": "ops_placement_seed",
+      "source": "Ops placement seed",
+      "source_sha256": "7b8770cdefd68bb3ad00e391c8b26291b8c3e02c76d39e37d35bb7f1bbec6593",
+      "table": "setting_labels",
+      "translation": "OPS 放置种子"
+    },
+    {
+      "key": "ops_placement_seed_mode",
+      "source": "Ops placement seed mode",
+      "source_sha256": "5ec109eb522128ea627f07f4a69b4084116ec16d98c0c48c5a51eeace384e89e",
+      "table": "setting_labels",
+      "translation": "OPS 放置种子模式"
+    },
+    {
+      "key": "ops_placement_seed_export",
+      "source": "Ops placement seed export",
+      "source_sha256": "4889f585fa686702a5ce8c24487d0d105d9cfc795a6090cddddeda948a3a572e",
+      "table": "setting_labels",
+      "translation": "OPS 放置种子导出"
+    },
+    {
+      "key": "ops_placement_seed_check_pixels",
+      "source": "Ops placement seed check pixels",
+      "source_sha256": "6d38f5663e510ea8e45a6a4fea14c89cf8197ed7c4b08e86f9f438de4d06c800",
+      "table": "setting_labels",
+      "translation": "OPS 放置种子像素检查"
+    },
+    {
+      "key": "ops_placement_seed_tolerance",
+      "source": "Ops placement seed tolerance",
+      "source_sha256": "f223b7faaf3cc8c18a39e38f0520b879d39d66ff591b1200b782dd4a56ecb2de",
+      "table": "setting_labels",
+      "translation": "OPS 放置种子容差"
+    },
+    {
+      "key": "ops_stitch_read_threads",
+      "source": "How many threads read the well's nuclear tiles while the stitch places them. The tiles are read ahead in the order the stitch uses them, so reading from network storage overlaps with the registration; the positions are the same for any number. On Funk et al. 2022 plates A and B, 4 threads halved the stitch step's time (about 235 s to about 120 s per well) for about 30 extra CPU seconds per well. 1 reads one tile at a time, as before spaCR 1.5.1.8. Default 4.",
+      "source_sha256": "8be893cbd28cbb96d1081174a04f7e362ee72cf4dac79c37670a465d2df37cf3",
+      "table": "setting_tooltips",
+      "translation": "拼接放置孔中细胞核图块时，用多少个线程读取这些图块。图块按拼接使用的顺序预先读取，因此从网络存储读取与配准同时进行；无论线程数多少，位置都相同。在 Funk et al. 2022 的板 A 和 B 上，4 个线程使拼接步骤的时间减半（每孔约 235 s 降至约 120 s），代价是每孔多用约 30 秒 CPU 时间。1 表示一次读取一个图块，与 spaCR 1.5.1.8 之前相同。默认值 4。"
+    },
+    {
+      "key": "ops_stitch_edge_workers",
+      "source": "How many worker processes register the stitch's tile pairs. 1 registers them one after another. More registers them on the CPU in that many processes with the same positions; with 3 workers the placement of a Funk et al. 2022 well took about a third of the time at the same total CPU time. Workers start ten seconds apart, so this helps only wells whose placement takes longer than that. Default 1.",
+      "source_sha256": "7e48b0ceb51a77729760bf4cbcf256f2d0b06a5b1d72ea426e04a90e1edd4f91",
+      "table": "setting_tooltips",
+      "translation": "用多少个工作进程配准拼接中的图块对。1 表示逐对配准。大于 1 时在 CPU 上以相应数量的进程配准，位置不变；使用 3 个工作进程时，Funk et al. 2022 一个孔的放置耗时约为原来的三分之一，总 CPU 时间相同。各工作进程相隔十秒启动，因此只对放置耗时超过十秒的孔有帮助。默认值 1。"
+    },
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "来自先前完整运行的放置文件：<plate>_<well>.ops_placement.json、包含该文件的文件夹，或该次运行的 measurements.db。使用它时，拼接阶段不进行配准或求解：本次运行的每个图块都按文件所示放在整孔坐标系中的位置，因此只在少数视野上的运行会合成与完整运行相同的窗口。文件会先与板、孔、图块、图块尺寸和循环进行核对。使用种子的运行不能在论文中替代完整运行；其报告会注明 'placement: seeded'。留空则照常求解。Alpha 功能。"
+    },
+    {
+      "key": "ops_placement_seed_mode",
+      "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
+      "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
+      "table": "setting_tooltips",
+      "translation": "'subset' 允许运行使用放置文件所列图块中的任意图块；'strict' 要求图块与文件完全一致，并且会拒绝自文件写入以来已更改的源文件。默认值 'subset'。Alpha 功能。"
+    },
+    {
+      "key": "ops_placement_seed_export",
+      "source": "Write <plate>_<well>.ops_placement.json into the well's folder after every solved stitch, so a later run on part of the well can use ops_placement_seed. A few kilobytes per well. Off for settings files saved before spaCR 1.5.1.8. Default True. Alpha.",
+      "source_sha256": "572a491bf8e0b01191fc7bd794703d744fda426304a9ea0cc625759242ee0f77",
+      "table": "setting_tooltips",
+      "translation": "每次拼接求解完成后，将 <plate>_<well>.ops_placement.json 写入该孔的文件夹，以便之后只在部分孔区域上的运行可以使用 ops_placement_seed。每孔几 KB。对 spaCR 1.5.1.8 之前保存的设置文件关闭。默认值 True。Alpha 功能。"
+    },
+    {
+      "key": "ops_placement_seed_check_pixels",
+      "source": "Also re-register up to six seams between this run's tiles and stop if any disagrees with the placement file by more than ops_placement_seed_tolerance. The positions are never changed. Default False. Alpha.",
+      "source_sha256": "656716648661035e1a5fa545df0cd9553715f3cb7aaf1e31daa42b38cdd00f53",
+      "table": "setting_tooltips",
+      "translation": "另外对本次运行图块之间最多六条接缝重新配准，若任一接缝与放置文件的差异超过 ops_placement_seed_tolerance 则停止。位置从不改变。默认值 False。Alpha 功能。"
+    },
+    {
+      "key": "ops_placement_seed_tolerance",
+      "source": "How many pixels a re-registered seam may differ from the placement file under ops_placement_seed_check_pixels. Default 2. Alpha.",
+      "source_sha256": "3aba1836a0ad5c9922793331e0e53f24b7afdb48dabf5b3a6333bda927f9bc35",
+      "table": "setting_tooltips",
+      "translation": "在 ops_placement_seed_check_pixels 下，重新配准的接缝与放置文件之间允许相差多少像素。默认值 2。Alpha 功能。"
+    },
+    {
+      "key": "ops_registration_precision",
+      "source": "The precision of the Fourier transforms that register the sequencing channels and cycles and, on the CPU, the stitch's tile pairs. 'float32' takes about half the time of 'float64' and, on 443 fields of the Funk et al. 2022 plates, gave the same shifts, reads and calls, and on well A1 of plates A to D the same stitch positions; 'float64' is the arithmetic used before, kept for an exact rerun of older results. Default 'float32'.",
+      "source_sha256": "0d82cecfedc980c993982722ccb8cb2341a181a70e4d65731803a3a5c7c23f5f",
+      "table": "setting_tooltips",
+      "translation": "用于配准测序通道和循环、以及在 CPU 上配准拼接图块对的傅里叶变换的精度。'float32' 所需时间约为 'float64' 的一半，在 Funk et al. 2022 板的 443 个视野上给出了相同的位移、读段和判读，在板 A 至 D 的 A1 孔上给出了相同的拼接位置；'float64' 是以前使用的算术，保留用于精确重跑旧结果。默认值 'float32'。"
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

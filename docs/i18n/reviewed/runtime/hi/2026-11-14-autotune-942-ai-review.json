@@ -159,17 +159,20 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_threshold_mode",
-      "source": "How the thresholds of the rule (a) decode are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls, spot detection and calling together: half of the well's fields try every combination of the read thresholds in ops_decode_auto_spot_grid (ops_read_threshold) and the call thresholds in ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv and each well's genotyped-vs-FDR curve to decode_tuning_curve_<well>.csv and .png. Default 'manual'. Alpha.",
-      "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
-      "translation": "नियम (a) डिकोड की सीमाएँ कैसे तय होती हैं। 'manual' आपके दर्ज किए मान उपयोग करता है। 'auto' उन्हें वेल के डिकॉय कॉल से, वेल-दर-वेल, स्पॉट पहचान और कॉलिंग को साथ लेकर चुनता है: वेल के आधे फ़ील्ड ops_decode_auto_spot_grid (ops_read_threshold) की रीड सीमाओं और ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality) की कॉल सीमाओं का हर संयोजन आज़माते हैं, ops_decode_auto_objective द्वारा चुना गया संयोजन पूरे वेल के लिए उपयोग होता है, और बाक़ी आधे उसका FDR रिपोर्ट करते हैं। Auto के लिए ops_decode_preset rule_a_s2 और डिकॉय (ops_decoy_library_k 0 से ऊपर) ज़रूरी हैं; चुनाव results/ops_decode/decode_thresholds_<plate>.csv में और हर वेल का जीनोटाइप बनाम FDR वक्र decode_tuning_curve_<well>.csv और .png में लिखा जाता है। डिफ़ॉल्ट 'manual'। Alpha।"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_fdr_max",
       "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
       "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
       "translation": "प्रति 100 वास्तविक कॉल में डिकॉय से अनुमानित झूठे कॉल की सबसे अधिक संख्या जिसे ऑटो सीमाएँ स्वीकार कर सकती हैं (0.1 का अर्थ 0.1 %)। ops_decode_threshold_mode 'auto' और उद्देश्य 'recall_at_fdr' के साथ उपयोग होती है। जिस वेल में कोई सेटिंग इसे पूरा न करे, उसे ops_decode_auto_unreachable द्वारा चुनी गई सेटिंग मिलती है और उसकी रिपोर्ट में auto_met False होता है। डिफ़ॉल्ट 0.1। Alpha।"
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the thresholds of the rule (a) decode are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls, spot detection and calling together: half of the well's fields try every combination of the read thresholds in ops_decode_auto_spot_grid (ops_read_threshold) and the call thresholds in ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv and each well's genotyped-vs-FDR curve to decode_tuning_curve_<well>.csv and .png. Default 'manual'. Alpha.",
+      "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
+      "translation": "नियम (a) डिकोड की सीमाएँ कैसे तय होती हैं। 'manual' आपके दर्ज किए मान उपयोग करता है। 'auto' उन्हें वेल के डिकॉय कॉल से, वेल-दर-वेल, स्पॉट पहचान और कॉलिंग को साथ लेकर चुनता है: वेल के आधे फ़ील्ड ops_decode_auto_spot_grid (ops_read_threshold) की रीड सीमाओं और ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality) की कॉल सीमाओं का हर संयोजन आज़माते हैं, ops_decode_auto_objective द्वारा चुना गया संयोजन पूरे वेल के लिए उपयोग होता है, और बाक़ी आधे उसका FDR रिपोर्ट करते हैं। Auto के लिए ops_decode_preset rule_a_s2 और डिकॉय (ops_decoy_library_k 0 से ऊपर) ज़रूरी हैं; चुनाव results/ops_decode/decode_thresholds_<plate>.csv में और हर वेल का जीनोटाइप बनाम FDR वक्र decode_tuning_curve_<well>.csv और .png में लिखा जाता है। डिफ़ॉल्ट 'manual'। Alpha।",
+      "retired": "2026-11-14: landing train 5 merged item 942's rewrite of this tooltip with item 947's shortening under the 600-character ceiling, which changed this English source; its successor is reviewed in 2026-11-14-train5-1114-ai-review.json."
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "key": "ops_deterministic_blas",
+      "source": "Run the profile, atlas, flat-field and score phases with the BLAS and OpenMP libraries held at ops_blas_threads threads, so a re-run of the same settings file writes bit-identical profiles and metrics. Off leaves the thread count to the environment: faster on many cores, but the last digits of the PCA and TVN can then change from run to run. Default True. Alpha.",
+      "source_sha256": "8cff35de1c74fed247c7431cc34bfe7659ff2d2fc5eac0c83819768489c5f385",
+      "table": "setting_tooltips",
+      "translation": "Exécute les phases de profils, d’atlas, de champ plat et de score avec les bibliothèques BLAS et OpenMP maintenues à ops_blas_threads threads, de sorte qu’une nouvelle exécution du même fichier de réglages écrive des profils et des métriques identiques au bit près. Désactivé laisse le nombre de threads à l’environnement : plus rapide sur de nombreux cœurs, mais les derniers chiffres de la PCA et de la TVN peuvent alors changer d’une exécution à l’autre. Valeur par défaut : True. Alpha."
+    },
+    {
+      "key": "ops_blas_threads",
+      "source": "How many threads the BLAS and OpenMP libraries get while ops_deterministic_blas holds them. The thread count changes the last digits of the single-precision PCA, which TVN with whitening epsilon 0 can enlarge, so a result is reproduced exactly only at the thread count it was made with: 2 reproduces the plate A Hybrid profile; files written before this setting ran with 1. Default 2. Alpha.",
+      "source_sha256": "48716d573d02bcc3aba5e388ae78b162050a19a251b418a90ee3753b4d7e561b",
+      "table": "setting_tooltips",
+      "translation": "Nombre de threads attribués aux bibliothèques BLAS et OpenMP tant que ops_deterministic_blas les fixe. Le nombre de threads modifie les derniers chiffres de la PCA en simple précision, que la TVN avec un epsilon de blanchiment de 0 peut amplifier, de sorte qu’un résultat n’est reproduit exactement qu’avec le nombre de threads avec lequel il a été produit : 2 reproduit le profil Hybrid de la plaque A ; les fichiers écrits avant ce réglage ont été exécutés avec 1. Valeur par défaut : 2. Alpha."
+    },
+    {
+      "key": "ops_consensus_space",
+      "source": "The space cluster_consensus and cluster_bench_test cluster the profile phase's own gene and guide tables in: 'hybrid' embeds them once at the gene level and moves every guide bootstrap within that space, as the published analysis does; 'refit' fits the embedding again on every bootstrap, as spaCR did before. Ready rows (ops_cluster_rows) are clustered as given either way. Default 'hybrid'. Alpha.",
+      "source_sha256": "690123af62bb4f2765cf7a60eefbfbfa19b339116630f296ca7e137833a650a4",
+      "table": "setting_tooltips",
+      "translation": "L’espace dans lequel cluster_consensus et cluster_bench_test regroupent les tables de gènes et de guides propres à la phase de profils : 'hybrid' les plonge une seule fois au niveau des gènes et déplace chaque bootstrap de guides dans cet espace, comme le fait l’analyse publiée ; 'refit' ajuste à nouveau l’embedding à chaque bootstrap, comme le faisait spaCR auparavant. Les lignes prêtes (ops_cluster_rows) sont regroupées telles quelles dans les deux cas. Valeur par défaut : 'hybrid'. Alpha."
+    },
+    {
+      "key": "ops_blas_threads",
+      "source": "Ops blas threads",
+      "source_sha256": "7f4beecd518224c9d3d4cc6c7ba779bdcb0f913f5aed6b89831d5096cb2c6de7",
+      "table": "setting_labels",
+      "translation": "Threads BLAS OPS"
+    },
+    {
+      "key": "ops_consensus_space",
+      "source": "Ops consensus space",
+      "source_sha256": "23f1ad1cbfa9176711d8ea8d536c57683e5a80f94f7c7ada98293cece7d49f1e",
+      "table": "setting_labels",
+      "translation": "Espace du consensus OPS"
+    }
+  ],
+  "review_method": "AI translation authoring and review by Claude Opus 5.5 on 2026-11-13 against the exact English source of the blocks changed by the new ops_blas_threads and ops_consensus_space settings on the claude-hybrid-profile-proof-1113 branch (spacr.ops_tvn.run_profile_phases, spacr.ops_engine.run_ops, spacr.ops_clusters.cluster_consensus_phase) and of the labels and tooltips of ops_blas_threads, ops_consensus_space and the rewritten ops_deterministic_blas tooltip, starting from the reviewed wording of the previous English. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

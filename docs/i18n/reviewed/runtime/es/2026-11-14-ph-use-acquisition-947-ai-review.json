@@ -14,8 +14,57 @@
       "source_sha256": "c1d63661f8927bdb6cf681f0623c997c68e25a53e21f1477e3d4fc2944461af5",
       "table": "setting_tooltips",
       "translation": "Para un phenotype_source que contiene más de una adquisición con el mismo canal, la única adquisición que se usa: su carpeta dentro de phenotype_source, o el conjunto de canales que llevan los nombres de sus archivos, por ejemplo DAPI-GFP-A594 para 20X_DAPI-GFP-A594_A1_A594_Site-0.tif. Solo se leen las teselas de esa adquisición. Vacío: una carpeta así se rechaza con un mensaje que nombra las adquisiciones; una carpeta con una sola adquisición se lee como antes. No junto con ops_ph_acquisitions. Valor predeterminado: None. Alfa."
+    },
+    {
+      "key": "profile_features",
+      "source": "Add image-based profiling measurement families to every 2-D object. 'profiling' adds the fast families: edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity, and neighbours. profile_optional_families adds the slow Gabor, colocalisation and granularity families to 'profiling'; 'all' adds every family. A list or comma-separated names picks families one by one. Empty adds nothing, so a settings file without it measures exactly as before. Default None.",
+      "source_sha256": "c4a32236db1c66fcdecd2bc9f0390879f62d3e58e15f0d5d878d5d0c2c906a69",
+      "table": "setting_tooltips",
+      "translation": "Añade familias de medidas de perfilado basado en imágenes a cada objeto 2-D. 'profiling' añade las familias rápidas: intensidad del borde, momentos de intensidad, distribución radial, forma adicional, textura de Haralick, PFTAS y LBP, intensidad del límite y del anillo exterior, y vecinos. profile_optional_families añade a 'profiling' las familias lentas de Gabor, colocalización y granularidad; 'all' añade todas las familias. Una lista o nombres separados por comas eligen las familias una a una. Vacío no añade nada, así que un archivo de ajustes sin este ajuste mide exactamente igual que antes. Valor predeterminado: None."
+    },
+    {
+      "key": "profile_optional_families",
+      "source": "The slow families that 'profiling' in profile_features also measures: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes and granularity. Together they cost several times the rest of 'profiling' (granularity alone about 58,900 CPU seconds per 100,000 cells). True or 'all' adds all five, which reproduces Brieflow's full set; names pick them one by one. Family names and 'all' in profile_features are not changed by it. Settings files saved before this setting keep texture_gabor, colocalisation and colocalisation_extra. Default None.",
+      "source_sha256": "159f2e07392579f3bdf26054a4360095e58ad06c33c62e623e54d3fb4c6c855b",
+      "table": "setting_tooltips",
+      "translation": "Las familias lentas que 'profiling' en profile_features también mide: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes y granularity. Juntas cuestan varias veces el resto de 'profiling' (solo granularity, unos 58900 segundos de CPU por cada 100000 células). True o 'all' añade las cinco, lo que reproduce el conjunto completo de Brieflow; los nombres las eligen una a una. Los nombres de familias y 'all' en profile_features no cambian por este ajuste. Los archivos de ajustes guardados antes de que existiera este ajuste conservan texture_gabor, colocalisation y colocalisation_extra. Valor predeterminado: None."
+    },
+    {
+      "key": "ops_ph_profile_features",
+      "source": "Also measure spaCR's image-based profiling families on the nucleus, cell and cytoplasm, as Measure's profile_features does: 'profiling' adds edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity and neighbours; ops_ph_profile_optional_families adds the slow Gabor, colocalisation and granularity families to it; 'all' adds every family; a list picks families. Turn ops_ph_zernike on with it for the full profiling set. Empty measures exactly as before. Default None. Alpha.",
+      "source_sha256": "8154fad0613fd381e82a1c12b0b7ab1ed97c958b6d9616ca6142d27c3e7c8ce0",
+      "table": "setting_tooltips",
+      "translation": "Mide también las familias de perfilado basado en imágenes de spaCR en el núcleo, la célula y el citoplasma, como hace profile_features de Measure: 'profiling' añade intensidad del borde, momentos de intensidad, distribución radial, forma adicional, textura de Haralick, PFTAS y LBP, intensidad del límite y del anillo exterior y vecinos; ops_ph_profile_optional_families le añade las familias lentas de Gabor, colocalización y granularidad; 'all' añade todas las familias; una lista elige familias. Active ops_ph_zernike junto con este ajuste para obtener el conjunto de perfilado completo. Vacío mide exactamente igual que antes. Valor predeterminado: None. Alfa."
+    },
+    {
+      "key": "ops_ph_profile_optional_families",
+      "source": "The slow families that 'profiling' in ops_ph_profile_features also measures, as Measure's profile_optional_families: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes and granularity. Together they cost several times the rest of 'profiling' (granularity alone about 58,900 CPU seconds per 100,000 cells). True or 'all' adds all five, which reproduces Brieflow's full set; names pick them one by one. Settings files saved before this setting keep texture_gabor, colocalisation and colocalisation_extra. Default None. Alpha.",
+      "source_sha256": "ed645c0b4ce8c185416449c9388b0f72865d1048a9fd7f7a3c4cbcdffc512726",
+      "table": "setting_tooltips",
+      "translation": "Las familias lentas que 'profiling' en ops_ph_profile_features también mide, como profile_optional_families de Measure: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes y granularity. Juntas cuestan varias veces el resto de 'profiling' (solo granularity, unos 58900 segundos de CPU por cada 100000 células). True o 'all' añade las cinco, lo que reproduce el conjunto completo de Brieflow; los nombres las eligen una a una. Los archivos de ajustes guardados antes de que existiera este ajuste conservan texture_gabor, colocalisation y colocalisation_extra. Valor predeterminado: None. Alfa."
+    },
+    {
+      "key": "ops_align_model",
+      "source": "How the merge phase aligns each phenotype field to the sequencing nuclei. 'tile_affine' re-solves one scale, rotation and shift per field, then fits one affine per field and one per sequencing tile the field covers, and moves each nucleus with its tile's affine; it needs the tile positions of the 'stitch' phase. On Funk et al. 2022 plates A-D it put 97.0-97.5 % of nuclei within 2 px of their sequencing nucleus instead of 94.7-95.8 %. 'similarity' stops after the first step, the default before spaCR 1.5.1.8; settings files saved before then keep it. Default 'tile_affine'.",
+      "source_sha256": "6ba9859bfac333bfbab4d448d0c4a827b01718a083bcf0fe43bd2859b00a5226",
+      "table": "setting_tooltips",
+      "translation": "Cómo la fase de fusión alinea cada campo de fenotipo con los núcleos de secuenciación. 'tile_affine' vuelve a resolver una escala, una rotación y un desplazamiento por campo, ajusta después una transformación afín por campo y una por cada tesela de secuenciación que cubre el campo, y desplaza cada núcleo con la transformación afín de su tesela; necesita las posiciones de las teselas de la fase 'stitch'. En las placas A-D de Funk et al. 2022 situó el 97.0-97.5 % de los núcleos a menos de 2 px de su núcleo de secuenciación, frente al 94.7-95.8 %. 'similarity' se detiene tras el primer paso y era el valor predeterminado antes de spaCR 1.5.1.8; los archivos de configuración guardados antes lo conservan. Valor predeterminado: 'tile_affine'."
+    },
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Default None. Alpha.",
+      "source_sha256": "bd954157fef93473728e77fe661837c6c04a9600f90292677784483a9f4f6bad",
+      "table": "setting_tooltips",
+      "translation": "Un archivo de colocación de una ejecución completa anterior: <plate>_<well>.ops_placement.json, una carpeta que lo contenga o el measurements.db de esa ejecución. Con él, la fase de unión no registra ni resuelve: cada tesela de esta ejecución se pone donde indica el archivo, en el marco de todo el pocillo, de modo que una ejecución sobre unos pocos campos compone las mismas ventanas que la ejecución completa. El archivo se comprueba primero frente a la placa, el pocillo, las teselas, el tamaño de tesela y el ciclo. Una ejecución con semilla no sustituye a una ejecución completa en un artículo; su informe indica 'placement: seeded'. Vacío resuelve como de costumbre. Valor predeterminado: None. Alfa."
+    },
+    {
+      "key": "ops_ph_placement_seed",
+      "source": "A phenotype placement seed: a JSON file with the well's phenotype raster, scale and rotation from an earlier full run (schema spacr.ops_ph_placement_seed). With it the phenotype phase aligns no anchor fields: every field is placed from the file, moved onto this run's stitch by the sequencing tiles the file lists, so a run on a few fields at the well's rim can be placed. Its report says 'placement: seeded'. Empty aligns anchors as usual. Default None. Alpha.",
+      "source_sha256": "d62b1762c4d74260a386342bcf19baba03d9f9b3404f41562aa82e81b30b1c37",
+      "table": "setting_tooltips",
+      "translation": "Una semilla de colocación del fenotipo: un archivo JSON con la rejilla del fenotipo, la escala y la rotación del pocillo de una ejecución completa anterior (esquema spacr.ops_ph_placement_seed). Con ella, la fase de fenotipo no alinea campos ancla: cada campo se coloca a partir del archivo y se desplaza a la unión de esta ejecución mediante las teselas de secuenciación que enumera el archivo, de modo que puede colocarse una ejecución sobre unos pocos campos en el borde del pocillo. Su informe indica 'placement: seeded'. Vacío alinea anclas como de costumbre. Valor predeterminado: None. Alfa."
     }
   ],
-  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 of the label and tooltip of ops_ph_use_acquisition (item 947, branch claude-947-multiacq-1114) against the exact English source. No human or native-speaker signoff.",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 of the label and tooltip of ops_ph_use_acquisition (item 947, branch claude-947-multiacq-1114) and of the eight tooltips that branch rewrites for tests/test_tooltip_length_and_shape.py (profile_features, profile_optional_families, ops_ph_profile_features, ops_ph_profile_optional_families, ops_align_model and ops_decode_threshold_mode shortened under 600 characters; ops_placement_seed and ops_ph_placement_seed state their default), against the exact English source. No human or native-speaker signoff. At landing train 5 (2026-11-14) the ops_decode_threshold_mode record was dropped from this file: item 942 rewrote that tooltip too, and the merged English is reviewed in 2026-11-14-autotune-942-ai-review.json.",
   "schema": 1
 }

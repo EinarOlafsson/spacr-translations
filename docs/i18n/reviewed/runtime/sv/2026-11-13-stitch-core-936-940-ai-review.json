@@ -65,13 +65,6 @@
       "translation": "Hur många arbetsprocesser som registrerar sammanfogningens rutpar. 1 registrerar dem ett efter ett. Fler registrerar dem på CPU:n i så många processer med samma positioner; med 3 arbetsprocesser tog placeringen av en brunn från Funk et al. 2022 ungefär en tredjedel av tiden vid samma totala CPU-tid. Arbetsprocesserna startar med tio sekunders mellanrum, så detta hjälper bara brunnar vars placering tar längre tid än så. Standard 1."
     },
     {
-      "key": "ops_placement_seed",
-      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
-      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
-      "table": "setting_tooltips",
-      "translation": "En placeringsfil från en tidigare fullständig körning: <plate>_<well>.ops_placement.json, en mapp som innehåller den, eller den körningens measurements.db. Med den registrerar och löser sammanfogningsfasen ingenting: varje ruta i den här körningen läggs där filen anger, i hela brunnens koordinatsystem, så att en körning på några få synfält sätter samman samma fönster som den fullständiga körningen. Filen kontrolleras först mot plattan, brunnen, rutorna, rutstorleken och cykeln. En körning med frö ersätter inte en fullständig körning i en artikel; dess rapport anger 'placement: seeded'. Tomt löser som vanligt. Alfa."
-    },
-    {
       "key": "ops_placement_seed_mode",
       "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
       "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
@@ -108,5 +101,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "En placeringsfil från en tidigare fullständig körning: <plate>_<well>.ops_placement.json, en mapp som innehåller den, eller den körningens measurements.db. Med den registrerar och löser sammanfogningsfasen ingenting: varje ruta i den här körningen läggs där filen anger, i hela brunnens koordinatsystem, så att en körning på några få synfält sätter samman samma fönster som den fullständiga körningen. Filen kontrolleras först mot plattan, brunnen, rutorna, rutstorleken och cykeln. En körning med frö ersätter inte en fullständig körning i en artikel; dess rapport anger 'placement: seeded'. Tomt löser som vanligt. Alfa.",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
+    }
+  ]
 }

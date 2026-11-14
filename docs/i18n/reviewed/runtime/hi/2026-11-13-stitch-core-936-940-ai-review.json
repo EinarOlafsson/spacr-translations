@@ -65,13 +65,6 @@
       "translation": "कितनी वर्कर प्रोसेस स्टिच की टाइल जोड़ियों को रजिस्टर करती हैं। 1 उन्हें एक के बाद एक रजिस्टर करता है। अधिक मान उन्हें CPU पर उतनी ही प्रोसेस में समान स्थितियों के साथ रजिस्टर करता है; 3 वर्करों के साथ Funk et al. 2022 के एक वेल के प्लेसमेंट में समान कुल CPU समय पर लगभग एक तिहाई समय लगा। वर्कर दस सेकंड के अंतराल पर शुरू होते हैं, इसलिए यह केवल उन वेल में मदद करता है जिनके प्लेसमेंट में इससे अधिक समय लगता है। डिफ़ॉल्ट 1।"
     },
     {
-      "key": "ops_placement_seed",
-      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
-      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
-      "table": "setting_tooltips",
-      "translation": "किसी पिछले पूर्ण रन की प्लेसमेंट फ़ाइल: <plate>_<well>.ops_placement.json, उसे रखने वाला फ़ोल्डर, या उस रन का measurements.db। इसके साथ स्टिच चरण न रजिस्टर करता है न हल करता है: इस रन की हर टाइल पूरे वेल के फ़्रेम में वहीं रखी जाती है जहाँ फ़ाइल बताती है, ताकि कुछ फ़ील्ड पर चलने वाला रन पूर्ण रन जैसी ही विंडो कंपोज़ करे। फ़ाइल को पहले प्लेट, वेल, टाइलों, टाइल आकार और चक्र से मिलाकर जाँचा जाता है। सीड वाला रन किसी शोधपत्र में पूर्ण रन का विकल्प नहीं है; उसकी रिपोर्ट में 'placement: seeded' लिखा होता है। खाली होने पर सामान्य रूप से हल करता है। अल्फ़ा।"
-    },
-    {
       "key": "ops_placement_seed_mode",
       "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
       "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
@@ -108,5 +101,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "किसी पिछले पूर्ण रन की प्लेसमेंट फ़ाइल: <plate>_<well>.ops_placement.json, उसे रखने वाला फ़ोल्डर, या उस रन का measurements.db। इसके साथ स्टिच चरण न रजिस्टर करता है न हल करता है: इस रन की हर टाइल पूरे वेल के फ़्रेम में वहीं रखी जाती है जहाँ फ़ाइल बताती है, ताकि कुछ फ़ील्ड पर चलने वाला रन पूर्ण रन जैसी ही विंडो कंपोज़ करे। फ़ाइल को पहले प्लेट, वेल, टाइलों, टाइल आकार और चक्र से मिलाकर जाँचा जाता है। सीड वाला रन किसी शोधपत्र में पूर्ण रन का विकल्प नहीं है; उसकी रिपोर्ट में 'placement: seeded' लिखा होता है। खाली होने पर सामान्य रूप से हल करता है। अल्फ़ा।",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
+    }
+  ]
 }

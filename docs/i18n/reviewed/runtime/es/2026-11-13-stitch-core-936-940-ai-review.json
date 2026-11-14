@@ -65,13 +65,6 @@
       "translation": "Cuántos procesos de trabajo registran los pares de teselas de la unión. 1 los registra uno tras otro. Un valor mayor los registra en la CPU en ese número de procesos, con las mismas posiciones; con 3 procesos, la colocación de un pocillo de Funk et al. 2022 tardó aproximadamente un tercio del tiempo con el mismo tiempo total de CPU. Los procesos arrancan con diez segundos de diferencia, así que esto solo ayuda en pocillos cuya colocación tarda más que eso. Valor predeterminado: 1."
     },
     {
-      "key": "ops_placement_seed",
-      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
-      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
-      "table": "setting_tooltips",
-      "translation": "Un archivo de colocación de una ejecución completa anterior: <plate>_<well>.ops_placement.json, una carpeta que lo contenga o el measurements.db de esa ejecución. Con él, la fase de unión no registra ni resuelve: cada tesela de esta ejecución se pone donde indica el archivo, en el marco de todo el pocillo, de modo que una ejecución sobre unos pocos campos compone las mismas ventanas que la ejecución completa. El archivo se comprueba primero frente a la placa, el pocillo, las teselas, el tamaño de tesela y el ciclo. Una ejecución con semilla no sustituye a una ejecución completa en un artículo; su informe indica 'placement: seeded'. Vacío resuelve como de costumbre. Alfa."
-    },
-    {
       "key": "ops_placement_seed_mode",
       "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
       "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
@@ -108,5 +101,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "Un archivo de colocación de una ejecución completa anterior: <plate>_<well>.ops_placement.json, una carpeta que lo contenga o el measurements.db de esa ejecución. Con él, la fase de unión no registra ni resuelve: cada tesela de esta ejecución se pone donde indica el archivo, en el marco de todo el pocillo, de modo que una ejecución sobre unos pocos campos compone las mismas ventanas que la ejecución completa. El archivo se comprueba primero frente a la placa, el pocillo, las teselas, el tamaño de tesela y el ciclo. Una ejecución con semilla no sustituye a una ejecución completa en un artículo; su informe indica 'placement: seeded'. Vacío resuelve como de costumbre. Alfa.",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
+    }
+  ]
 }

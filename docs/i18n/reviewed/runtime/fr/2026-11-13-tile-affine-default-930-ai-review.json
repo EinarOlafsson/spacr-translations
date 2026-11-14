@@ -12,13 +12,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_align_model",
-      "source": "How the merge phase aligns each phenotype field to the sequencing nuclei. 'tile_affine' re-solves one scale, rotation and shift per field, then fits one affine per field and one per sequencing tile the field covers, and moves each nucleus with its tile's affine; it needs the tile positions of the 'stitch' phase. On Funk et al. 2022 plates A-D it put 97.0-97.5 % of nuclei within 2 px of their sequencing nucleus instead of 94.7-95.8 %, at about 0.017 s per field on one CPU core. 'similarity' stops after the first step, the default before spaCR 1.5.1.8; settings files saved before then keep it. Default 'tile_affine'.",
-      "source_sha256": "ddc61a86fa7ca439816f5e61f3afb6f891dc5f962ef4206bfab4e953ccd5e28c",
-      "translation": "Manière dont la phase de fusion aligne chaque champ de phénotype sur les noyaux de séquençage. 'tile_affine' résout à nouveau une échelle, une rotation et un décalage par champ, ajuste ensuite une transformation affine par champ et une par tuile de séquençage couverte par le champ, et déplace chaque noyau avec la transformation affine de sa tuile ; il a besoin des positions des tuiles de la phase 'stitch'. Sur les plaques A-D de Funk et al. 2022, il a placé 97.0-97.5 % des noyaux à moins de 2 px de leur noyau de séquençage au lieu de 94.7-95.8 %, pour environ 0.017 s par champ sur un seul cœur de CPU. 'similarity' s'arrête après la première étape ; c'était la valeur par défaut avant spaCR 1.5.1.8, et les fichiers de paramètres enregistrés avant la conservent. Valeur par défaut : 'tile_affine'."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_align_tile_min_nuclei",
       "source": "The fewest phenotype nuclei a field must have in one sequencing tile for that tile to get its own affine; fewer keep the field's affine. Used with ops_align_model 'tile_affine'. Default 200.",
       "source_sha256": "0f502e2956b067251b615fa102128162b2e4f3e569284f2005eef4d39f0d8c9f",
@@ -30,6 +23,16 @@
       "source": "How many times the 'tile_affine' model pairs the nuclei, drops pairs further apart than 3 x their median (at least 0.5 px) and re-fits. Default 3.",
       "source_sha256": "ef56c8a0d9adbce5a1a595cd534e0f9f805afe26be6f4c6bda06f79f197ea2b9",
       "translation": "Nombre de fois où le modèle 'tile_affine' apparie les noyaux, écarte les paires distantes de plus de 3 x leur médiane (au moins 0.5 px) et réajuste. Valeur par défaut : 3."
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_align_model",
+      "source": "How the merge phase aligns each phenotype field to the sequencing nuclei. 'tile_affine' re-solves one scale, rotation and shift per field, then fits one affine per field and one per sequencing tile the field covers, and moves each nucleus with its tile's affine; it needs the tile positions of the 'stitch' phase. On Funk et al. 2022 plates A-D it put 97.0-97.5 % of nuclei within 2 px of their sequencing nucleus instead of 94.7-95.8 %, at about 0.017 s per field on one CPU core. 'similarity' stops after the first step, the default before spaCR 1.5.1.8; settings files saved before then keep it. Default 'tile_affine'.",
+      "source_sha256": "ddc61a86fa7ca439816f5e61f3afb6f891dc5f962ef4206bfab4e953ccd5e28c",
+      "translation": "Manière dont la phase de fusion aligne chaque champ de phénotype sur les noyaux de séquençage. 'tile_affine' résout à nouveau une échelle, une rotation et un décalage par champ, ajuste ensuite une transformation affine par champ et une par tuile de séquençage couverte par le champ, et déplace chaque noyau avec la transformation affine de sa tuile ; il a besoin des positions des tuiles de la phase 'stitch'. Sur les plaques A-D de Funk et al. 2022, il a placé 97.0-97.5 % des noyaux à moins de 2 px de leur noyau de séquençage au lieu de 94.7-95.8 %, pour environ 0.017 s par champ sur un seul cœur de CPU. 'similarity' s'arrête après la première étape ; c'était la valeur par défaut avant spaCR 1.5.1.8, et les fichiers de paramètres enregistrés avant la conservent. Valeur par défaut : 'tile_affine'.",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
     }
   ]
 }

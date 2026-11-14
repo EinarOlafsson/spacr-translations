@@ -65,13 +65,6 @@
       "translation": "스티칭의 타일 쌍을 정합하는 워커 프로세스 수입니다. 1은 쌍을 차례로 하나씩 정합합니다. 더 큰 값이면 그 수만큼의 프로세스에서 CPU로 정합하며 위치는 같습니다. 워커 3개를 쓰면 Funk et al. 2022 웰 하나의 배치가 같은 총 CPU 시간으로 약 3분의 1의 시간에 끝났습니다. 워커는 10초 간격으로 시작하므로 배치에 그보다 오래 걸리는 웰에서만 도움이 됩니다. 기본값 1."
     },
     {
-      "key": "ops_placement_seed",
-      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
-      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
-      "table": "setting_tooltips",
-      "translation": "이전 전체 실행의 배치 파일입니다. <plate>_<well>.ops_placement.json, 그 파일이 든 폴더, 또는 그 실행의 measurements.db 파일을 지정합니다. 지정하면 스티칭 단계는 정합이나 풀이를 하지 않고 이 실행의 각 타일을 웰 전체 좌표계에서 파일이 지정한 위치에 놓으므로, 몇 개 시야에 대한 실행도 전체 실행과 같은 창을 합성합니다. 파일은 먼저 플레이트, 웰, 타일, 타일 크기, 주기와 대조해 검사됩니다. 시드를 쓴 실행은 논문에서 전체 실행을 대신할 수 없으며, 보고서에 'placement: seeded'로 표시됩니다. 비워 두면 평소처럼 풀이합니다. 알파."
-    },
-    {
       "key": "ops_placement_seed_mode",
       "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
       "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
@@ -108,5 +101,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "이전 전체 실행의 배치 파일입니다. <plate>_<well>.ops_placement.json, 그 파일이 든 폴더, 또는 그 실행의 measurements.db 파일을 지정합니다. 지정하면 스티칭 단계는 정합이나 풀이를 하지 않고 이 실행의 각 타일을 웰 전체 좌표계에서 파일이 지정한 위치에 놓으므로, 몇 개 시야에 대한 실행도 전체 실행과 같은 창을 합성합니다. 파일은 먼저 플레이트, 웰, 타일, 타일 크기, 주기와 대조해 검사됩니다. 시드를 쓴 실행은 논문에서 전체 실행을 대신할 수 없으며, 보고서에 'placement: seeded'로 표시됩니다. 비워 두면 평소처럼 풀이합니다. 알파.",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
+    }
+  ]
 }

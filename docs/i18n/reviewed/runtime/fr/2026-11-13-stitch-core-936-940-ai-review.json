@@ -65,13 +65,6 @@
       "translation": "Nombre de processus de travail qui recalent les paires de tuiles de l’assemblage. 1 les recale l’une après l’autre. Une valeur plus grande les recale sur le CPU dans autant de processus, avec les mêmes positions ; avec 3 processus, le placement d’un puits de Funk et al. 2022 a pris environ un tiers du temps pour le même temps CPU total. Les processus démarrent à dix secondes d’intervalle, de sorte que cela n’aide que pour les puits dont le placement prend plus longtemps. Valeur par défaut : 1."
     },
     {
-      "key": "ops_placement_seed",
-      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
-      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
-      "table": "setting_tooltips",
-      "translation": "Un fichier de placement issu d’une exécution complète antérieure : <plate>_<well>.ops_placement.json, un dossier qui le contient, ou le measurements.db de cette exécution. Avec lui, la phase d’assemblage ne recale ni ne résout : chaque tuile de cette exécution est placée là où l’indique le fichier, dans le repère de tout le puits, de sorte qu’une exécution sur quelques champs compose les mêmes fenêtres que l’exécution complète. Le fichier est d’abord vérifié par rapport à la plaque, au puits, aux tuiles, à la taille des tuiles et au cycle. Une exécution amorcée ne remplace pas une exécution complète dans un article ; son rapport indique 'placement: seeded'. Vide résout comme d’habitude. Alpha."
-    },
-    {
       "key": "ops_placement_seed_mode",
       "source": "'subset' lets the run use any of the tiles the placement file lists; 'strict' needs exactly the file's tiles and also refuses source files that changed since the file was written. Default 'subset'. Alpha.",
       "source_sha256": "d0228e74a5b3e8f1af41540c8d579f9ce0e953155c760a77caf16f06a7d6cca0",
@@ -108,5 +101,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-13 of the strings added on the claude-936-940-1113 branch against the exact English source: the labels and tooltips of ops_stitch_read_threads, ops_stitch_edge_workers and the five ops_placement_seed* settings (items 936 and 940), and the rewritten tooltip of ops_registration_precision (it now covers the stitch). Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "ops_placement_seed",
+      "source": "A placement file from an earlier full run: <plate>_<well>.ops_placement.json, a folder holding it, or that run's measurements.db. With it the stitch phase does not register or solve: each tile of this run is put where the file says, in the whole well's frame, so a run on a few fields composes the same windows as the full run. The file is checked against the plate, well, tiles, tile size and cycle first. A seeded run is not a replacement for a full run in a paper; its report says 'placement: seeded'. Empty solves as usual. Alpha.",
+      "source_sha256": "1290155545c17b30711e1d73801ddb8a56ee7b3e64f1b1113375974756695b72",
+      "table": "setting_tooltips",
+      "translation": "Un fichier de placement issu d’une exécution complète antérieure : <plate>_<well>.ops_placement.json, un dossier qui le contient, ou le measurements.db de cette exécution. Avec lui, la phase d’assemblage ne recale ni ne résout : chaque tuile de cette exécution est placée là où l’indique le fichier, dans le repère de tout le puits, de sorte qu’une exécution sur quelques champs compose les mêmes fenêtres que l’exécution complète. Le fichier est d’abord vérifié par rapport à la plaque, au puits, aux tuiles, à la taille des tuiles et au cycle. Une exécution amorcée ne remplace pas une exécution complète dans un article ; son rapport indique 'placement: seeded'. Vide résout comme d’habitude. Alpha.",
+      "retired": "2026-11-14: item 947 follow-up (claude-947-multiacq-1114 branch: the tooltips shortened to the 600-character ceiling, and the placement seeds' stated default, that tests/test_tooltip_length_and_shape.py asks for) changed this English source; its successor is reviewed in 2026-11-14-ph-use-acquisition-947-ai-review.json."
+    }
+  ]
 }

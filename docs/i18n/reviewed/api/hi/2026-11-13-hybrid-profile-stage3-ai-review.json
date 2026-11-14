@@ -23,7 +23,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#1",
       "source": "The Hybrid profile of the OPS profile path is the Brieflow cell recipe's gene table (:func:`spacr.ops_tvn.profile_cell_tables` with the ``brieflow`` recipe) embedded at the gene level: columns with 5 % or more missing values are dropped, other gaps take the column median, constant columns are dropped, the rest are standardised and a PCA keeping ``variance`` of the variance is fitted on the gene rows (:func:`embed_gene_profiles`). The guide rows go through that same fitted transform, so a guide bootstrap (:func:`spacr.ops_clusters.guide_bootstrap_profiles`) moves a gene within the space it is clustered in, without refitting the embedding per draw.",
       "source_sha256": "f56158088b4827e8b72d51066e0ec8a58707e239c79a131ba4f97e9dc0fdb5fa",
-      "translation": "OPS प्रोफ़ाइल पथ की Hybrid प्रोफ़ाइल Brieflow कोशिका रेसिपी की जीन तालिका (``brieflow`` रेसिपी के साथ :func:`spacr.ops_tvn.profile_cell_tables`) है, जिसे जीन स्तर पर एम्बेड किया गया है: 5 % या अधिक लुप्त मानों वाले कॉलम हटा दिए जाते हैं, अन्य रिक्तियाँ कॉलम की माध्यिका लेती हैं, स्थिर कॉलम हटा दिए जाते हैं, शेष को मानकीकृत किया जाता है और जीन पंक्तियों पर ``variance`` प्रसरण रखने वाला PCA फ़िट किया जाता है (:func:`embed_gene_profiles`)। गाइड पंक्तियाँ उसी फ़िट किए गए रूपांतरण से गुज़रती हैं, इसलिए गाइड बूटस्ट्रैप (:func:`spacr.ops_clusters.guide_bootstrap_profiles`) किसी जीन को उसी स्पेस के भीतर खिसकाता है जिसमें वह क्लस्टर किया जाता है, हर ड्रॉ के लिए एम्बेडिंग को दोबारा फ़िट किए बिना।"
+      "translation": "OPS प्रोफ़ाइल पथ की Hybrid प्रोफ़ाइल Brieflow कोशिका रेसिपी की जीन तालिका (:func:`spacr.ops_tvn.profile_cell_tables`, ``brieflow`` रेसिपी के साथ) है, जिसे जीन स्तर पर एम्बेड किया गया है: 5 % या अधिक लुप्त मानों वाले कॉलम हटा दिए जाते हैं, अन्य रिक्तियाँ कॉलम की माध्यिका लेती हैं, स्थिर कॉलम हटा दिए जाते हैं, शेष को मानकीकृत किया जाता है और जीन पंक्तियों पर ``variance`` प्रसरण रखने वाला PCA फ़िट किया जाता है (:func:`embed_gene_profiles`)। गाइड पंक्तियाँ उसी फ़िट किए गए रूपांतरण से गुज़रती हैं, इसलिए गाइड बूटस्ट्रैप (:func:`spacr.ops_clusters.guide_bootstrap_profiles`) किसी जीन को उसी स्पेस के भीतर खिसकाता है जिसमें वह क्लस्टर किया जाता है, हर ड्रॉ के लिए एम्बेडिंग को दोबारा फ़िट किए बिना।"
     },
     {
       "context": "the gene table: ``gene``, ``n_cells`` and the profile columns; every row is embedded (filter on ``n_cells`` first).",
@@ -44,7 +44,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#4",
       "source": "the profile columns; the ``PC_*`` (or ``w_*``) columns of ``genes`` when None.",
       "source_sha256": "4f4e5afc65ef859a826461d74149b7b1b3293e04b02f4ad7873625fcc8cd6f99",
-      "translation": "प्रोफ़ाइल कॉलम; None होने पर ``genes`` के ``PC_*`` (या ``w_*``) कॉलम।"
+      "translation": "प्रोफ़ाइल कॉलम; None होने पर ``PC_*`` (या ``w_*``) कॉलम, जो ``genes`` में हैं।"
     },
     {
       "context": "the share of variance the PCA keeps.",
@@ -65,7 +65,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#7",
       "source": "``(rows, guide_rows)``: ``rows`` has ``gene``, ``n_cells`` and ``E_0``, ``E_1``, ... in the order of ``genes``; ``guide_rows`` has the guide table's other columns with the same ``E_*`` columns, or is None without ``guides``.",
       "source_sha256": "2e4280be78641dead04ab654294b5e9ccfd685f264587088c37034772e1fcec5",
-      "translation": "``(rows, guide_rows)``: ``rows`` में ``genes`` के क्रम में ``gene``, ``n_cells`` और ``E_0``, ``E_1``, ... हैं; ``guide_rows`` में गाइड तालिका के अन्य कॉलम उन्हीं ``E_*`` कॉलमों के साथ हैं, या ``guides`` के बिना यह None है।"
+      "translation": "``(rows, guide_rows)``: ``rows`` में ``gene``, ``n_cells`` और ``E_0``, ``E_1``, ... हैं, ``genes`` के क्रम में; ``guide_rows`` में गाइड तालिका के अन्य कॉलम उन्हीं ``E_*`` कॉलमों के साथ हैं, या ``guides`` के बिना यह None है।"
     },
     {
       "context": "when a profile column is missing from ``guides``.",
@@ -107,7 +107,7 @@
       "label": "spacr.ops_tvn.cells_to_profiles#2",
       "source": "a list of one float array per well, cells by features, the same columns in every well. A ``'c0'`` recipe scales them in place, and the list is emptied once the PCA has used them, to free the memory.",
       "source_sha256": "0da90c4fe59168f3f256d4753e2a590a4360999380d1791fbcf16d67d6b9a30e",
-      "translation": "प्रति वेल एक फ़्लोट ऐरे की सूची, कोशिकाएँ × विशेषताएँ, हर वेल में समान कॉलम। ``'c0'`` रेसिपी इन्हें इन-प्लेस स्केल करती है, और PCA द्वारा उपयोग कर लिए जाने के बाद मेमोरी मुक्त करने के लिए सूची खाली कर दी जाती है।"
+      "translation": "प्रति वेल एक फ़्लोट ऐरे की सूची, पंक्तियों में कोशिकाएँ और कॉलमों में विशेषताएँ, हर वेल में समान कॉलम। ``'c0'`` रेसिपी इन्हें इन-प्लेस स्केल करती है, और PCA द्वारा उपयोग कर लिए जाने के बाद मेमोरी मुक्त करने के लिए सूची खाली कर दी जाती है।"
     },
     {
       "context": "one table per microplate sample position, row for row: ``gene_symbol_0`` (control genes suffixed ``_<guide>``), ``cell_barcode_0`` and ``batch_values``.",
@@ -121,7 +121,7 @@
       "label": "spacr.ops_tvn.cells_to_profiles#4",
       "source": "a :func:`profile_recipe`.",
       "source_sha256": "dd741c3b83aae8e1e45878182a9df60e66b4b3be330d737010b0689f0b3a77da",
-      "translation": "एक :func:`profile_recipe`।"
+      "translation": "a :func:`profile_recipe`."
     },
     {
       "context": "the TVN whitening epsilon.",

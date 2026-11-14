@@ -23,7 +23,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#1",
       "source": "The Hybrid profile of the OPS profile path is the Brieflow cell recipe's gene table (:func:`spacr.ops_tvn.profile_cell_tables` with the ``brieflow`` recipe) embedded at the gene level: columns with 5 % or more missing values are dropped, other gaps take the column median, constant columns are dropped, the rest are standardised and a PCA keeping ``variance`` of the variance is fitted on the gene rows (:func:`embed_gene_profiles`). The guide rows go through that same fitted transform, so a guide bootstrap (:func:`spacr.ops_clusters.guide_bootstrap_profiles`) moves a gene within the space it is clustered in, without refitting the embedding per draw.",
       "source_sha256": "f56158088b4827e8b72d51066e0ec8a58707e239c79a131ba4f97e9dc0fdb5fa",
-      "translation": "OPS 프로파일 경로의 Hybrid 프로파일은 Brieflow 세포 레시피의 유전자 테이블(``brieflow`` 레시피를 사용한 :func:`spacr.ops_tvn.profile_cell_tables`)을 유전자 수준에서 임베딩한 것입니다: 결측값이 5 % 이상인 열은 제거하고, 나머지 빈 값은 열의 중앙값으로 채우며, 상수 열은 제거하고, 남은 열을 표준화한 뒤 분산의 ``variance``를 유지하는 PCA를 유전자 행에 적합합니다(:func:`embed_gene_profiles`). 가이드 행은 같은 적합된 변환을 거치므로, 가이드 부트스트랩(:func:`spacr.ops_clusters.guide_bootstrap_profiles`)은 추출마다 임베딩을 다시 적합하지 않고도 유전자가 클러스터링되는 공간 안에서 그 유전자를 이동시킵니다."
+      "translation": "OPS 프로파일 경로의 Hybrid 프로파일은 Brieflow 세포 레시피의 유전자 테이블(:func:`spacr.ops_tvn.profile_cell_tables`, ``brieflow`` 레시피 사용)을 유전자 수준에서 임베딩한 것입니다: 결측값이 5 % 이상인 열은 제거하고, 나머지 빈 값은 열의 중앙값으로 채우며, 상수 열은 제거하고, 남은 열을 표준화한 뒤 분산의 ``variance``를 유지하는 PCA를 유전자 행에 적합합니다(:func:`embed_gene_profiles`). 가이드 행은 같은 적합된 변환을 거치므로, 가이드 부트스트랩(:func:`spacr.ops_clusters.guide_bootstrap_profiles`)은 추출마다 임베딩을 다시 적합하지 않고도 유전자가 클러스터링되는 공간 안에서 그 유전자를 이동시킵니다."
     },
     {
       "context": "the gene table: ``gene``, ``n_cells`` and the profile columns; every row is embedded (filter on ``n_cells`` first).",
@@ -44,7 +44,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#4",
       "source": "the profile columns; the ``PC_*`` (or ``w_*``) columns of ``genes`` when None.",
       "source_sha256": "4f4e5afc65ef859a826461d74149b7b1b3293e04b02f4ad7873625fcc8cd6f99",
-      "translation": "프로파일 열; None이면 ``genes``의 ``PC_*``(또는 ``w_*``) 열."
+      "translation": "프로파일 열; None이면 ``PC_*``(또는 ``w_*``) 열을 ``genes``에서 가져옵니다."
     },
     {
       "context": "the share of variance the PCA keeps.",
@@ -65,7 +65,7 @@
       "label": "spacr.ops_reference.hybrid_profile_rows#7",
       "source": "``(rows, guide_rows)``: ``rows`` has ``gene``, ``n_cells`` and ``E_0``, ``E_1``, ... in the order of ``genes``; ``guide_rows`` has the guide table's other columns with the same ``E_*`` columns, or is None without ``guides``.",
       "source_sha256": "2e4280be78641dead04ab654294b5e9ccfd685f264587088c37034772e1fcec5",
-      "translation": "``(rows, guide_rows)``: ``rows``에는 ``genes``의 순서대로 ``gene``, ``n_cells``와 ``E_0``, ``E_1``, ...이 들어 있습니다. ``guide_rows``에는 가이드 테이블의 나머지 열과 같은 ``E_*`` 열이 들어 있으며, ``guides``가 없으면 None입니다."
+      "translation": "``(rows, guide_rows)``: ``rows``에는 ``gene``, ``n_cells``와 ``E_0``, ``E_1``, ...이 ``genes``의 순서대로 들어 있습니다. ``guide_rows``에는 가이드 테이블의 나머지 열과 같은 ``E_*`` 열이 들어 있으며, ``guides``가 없으면 None입니다."
     },
     {
       "context": "when a profile column is missing from ``guides``.",
@@ -107,7 +107,7 @@
       "label": "spacr.ops_tvn.cells_to_profiles#2",
       "source": "a list of one float array per well, cells by features, the same columns in every well. A ``'c0'`` recipe scales them in place, and the list is emptied once the PCA has used them, to free the memory.",
       "source_sha256": "0da90c4fe59168f3f256d4753e2a590a4360999380d1791fbcf16d67d6b9a30e",
-      "translation": "웰마다 하나씩인 float 배열의 리스트로, 세포 × 특징이며 모든 웰에서 열이 같습니다. ``'c0'`` 레시피는 이를 제자리에서 스케일링하며, 메모리를 해제하기 위해 PCA가 사용한 뒤에는 리스트를 비웁니다."
+      "translation": "웰마다 하나씩인 float 배열의 리스트로, 세포를 행으로, 특징을 열로 두며 모든 웰에서 열이 같습니다. ``'c0'`` 레시피는 이를 제자리에서 스케일링하며, 메모리를 해제하기 위해 PCA가 사용한 뒤에는 리스트를 비웁니다."
     },
     {
       "context": "one table per microplate sample position, row for row: ``gene_symbol_0`` (control genes suffixed ``_<guide>``), ``cell_barcode_0`` and ``batch_values``.",
@@ -121,7 +121,7 @@
       "label": "spacr.ops_tvn.cells_to_profiles#4",
       "source": "a :func:`profile_recipe`.",
       "source_sha256": "dd741c3b83aae8e1e45878182a9df60e66b4b3be330d737010b0689f0b3a77da",
-      "translation": ":func:`profile_recipe` 하나."
+      "translation": "a :func:`profile_recipe`."
     },
     {
       "context": "the TVN whitening epsilon.",
@@ -184,7 +184,7 @@
       "label": "spacr.ops_tvn.tvn_on_controls#7",
       "source": "how the control axes are found. ``'eigh'``, the default, takes them from a double-precision eigendecomposition of the control covariance (:func:`_control_basis`); ``'brieflow'`` fits scikit-learn's ``PCA`` on the control cells at the embedding's own precision, as Brieflow's ``tvn_on_controls`` does, which with ``whiten_epsilon`` 0 and a single-precision embedding reproduces Brieflow's TVN value for value.",
       "source_sha256": "2545f679e2ed9c52a5ea318f8ea762e9163282bd567aa14c89266e90571e9c1d",
-      "translation": "대조군 축을 찾는 방법. 기본값인 ``'eigh'``는 대조군 공분산의 배정밀도 고유분해(:func:`_control_basis`)에서 축을 얻습니다. ``'brieflow'``는 Brieflow의 ``tvn_on_controls``와 같이 임베딩 자체의 정밀도로 대조군 세포에 scikit-learn의 ``PCA``를 적합하며, ``whiten_epsilon`` 0과 단정밀도 임베딩을 사용하면 Brieflow의 TVN을 값 하나하나까지 재현합니다."
+      "translation": "대조군 축을 찾는 방법. 기본값인 ``'eigh'``는 대조군 공분산의 배정밀도 고유분해(:func:`_control_basis`)에서 축을 얻습니다. ``'brieflow'``는 scikit-learn의 ``PCA``를 임베딩 자체의 정밀도로 대조군 세포에 적합하며, 이는 Brieflow의 ``tvn_on_controls``와 같은 방식이고, ``whiten_epsilon`` 0과 단정밀도 임베딩을 사용하면 Brieflow의 TVN을 값 하나하나까지 재현합니다."
     },
     {
       "context": "``(embedding, info)``. ``info`` lists the axes kept and the batches CORAL skipped because they had fewer control cells than axes or a singular covariance.",

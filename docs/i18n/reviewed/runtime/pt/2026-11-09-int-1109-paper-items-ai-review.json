@@ -2035,16 +2035,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_deterministic_blas",
-      "source": "Run the profile phases with the BLAS and OpenMP libraries held to one thread, so a re-run of the same settings file writes bit-identical profiles and metrics. Off is faster on many cores, and the last digits of the PCA and TVN can then change from run to run. Default True. Alpha.",
-      "source_sha256": "8af5528d315881eba866e95d7c28dc49cc66890819228af8005073c809778a9a",
-      "translation": "Executa as fases de perfil com as bibliotecas BLAS e OpenMP limitadas a uma thread, para que uma nova execução do mesmo arquivo de configurações grave perfis e métricas idênticos bit a bit. Desligado é mais rápido em muitos núcleos, e os últimos dígitos da PCA e da TVN podem então mudar de uma execução para outra. Padrão True. Alfa.",
-      "retired": true,
-      "retired_date": "2026-11-13",
-      "retired_reason": "2026-11-13: the OPS stage 3 settings ops_blas_threads and ops_consensus_space (claude-hybrid-profile-proof-1113 branch, maintainer decision) changed this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-settings-ai-review.json; the original source and translation are kept here as evidence."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_escaper_dbic",
       "source": "The BIC margin by which the mixture must beat a unimodal shift for an escaper call. Default 10. Alpha.",
       "source_sha256": "69a2b0979f1495fb67e838caf3fc75c4cf4c10f1df99d16473c5131c9f43a6ea",
@@ -2371,16 +2361,6 @@
       "source": "Genes and pseudo-genes with this many cells or fewer are left out of the profile table and the metrics; raising it drops weakly sampled genes whose profiles are noisy. Default 10. Alpha.",
       "source_sha256": "78823a54baae318ea0593cb8a4c37205902e93b0a72bc44f38f5f8d15a332d19",
       "translation": "Genes e pseudogenes com este número de células ou menos são deixados de fora da tabela de perfis e das métricas; aumentá-lo remove genes pouco amostrados cujos perfis são ruidosos. Padrão 10. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_profile_recipe",
-      "source": "How cells become gene profiles: lof (1 drops the 1% intensity outliers), impute ('median' or 'knn'), pca ('c0' per-well standardised, or 'brieflow'), agg ('guide' = median of guide medians, or 'gene' = median of all cells) and nt ('pseudo' = four control guides per pseudo-gene, or 'barcode'). Empty is lof 0, median, c0, guide, pseudo. Default None. Alpha.",
-      "source_sha256": "7f42fa6f863cb52d0c151d82fbdf6ad3ac878140d6d1d556aea1447653898a56",
-      "translation": "Como as células se tornam perfis de genes: lof (1 remove os 1% de valores atípicos de intensidade), impute ('median' ou 'knn'), pca ('c0' padronizado por poço, ou 'brieflow'), agg ('guide' = mediana das medianas das guias, ou 'gene' = mediana de todas as células) e nt ('pseudo' = quatro guias de controle por pseudogene, ou 'barcode'). Vazio é lof 0, median, c0, guide, pseudo. Padrão None. Alfa.",
-      "retired": true,
-      "retired_date": "2026-11-13",
-      "retired_reason": "2026-11-13: the OPS stage 3 Hybrid profile work (claude-hybrid-profile-proof-1113 branch: the Brieflow TVN rotation, the gene_trim aggregation, cells_to_profiles, hybrid_profile_rows and the Hybrid space of the consensus phases) changed or moved this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-stage3-ai-review.json; the original source and translation are kept here as evidence."
     },
     {
       "table": "setting_tooltips",
@@ -3008,6 +2988,22 @@
       "source_sha256": "74ed4123f2066d3da15feceb10e8442d7e840ad048b10842f4705d885b5f3059",
       "translation": "Leitura da titulação: constrói vacúolos a partir das máscaras de parasitas de titration_merged_folder: parasitas mais próximos que vacuole_gap_px são agrupados num vacúolo e cada parasita é ligado ao seu vacúolo por sobreposição majoritária, o que dá a contagem de parasitas ligados. Padrão False.",
       "retired": "2026-11-10: the English source changed on the int2-1109 integration branch; its successor is reviewed in 2026-11-10-int2-1109-paper-items-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_deterministic_blas",
+      "source": "Run the profile phases with the BLAS and OpenMP libraries held to one thread, so a re-run of the same settings file writes bit-identical profiles and metrics. Off is faster on many cores, and the last digits of the PCA and TVN can then change from run to run. Default True. Alpha.",
+      "source_sha256": "8af5528d315881eba866e95d7c28dc49cc66890819228af8005073c809778a9a",
+      "translation": "Executa as fases de perfil com as bibliotecas BLAS e OpenMP limitadas a uma thread, para que uma nova execução do mesmo arquivo de configurações grave perfis e métricas idênticos bit a bit. Desligado é mais rápido em muitos núcleos, e os últimos dígitos da PCA e da TVN podem então mudar de uma execução para outra. Padrão True. Alfa.",
+      "retired": "2026-11-13: the OPS stage 3 settings ops_blas_threads and ops_consensus_space (claude-hybrid-profile-proof-1113 branch, maintainer decision) changed this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-settings-ai-review.json; the original source and translation are kept here as evidence."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_profile_recipe",
+      "source": "How cells become gene profiles: lof (1 drops the 1% intensity outliers), impute ('median' or 'knn'), pca ('c0' per-well standardised, or 'brieflow'), agg ('guide' = median of guide medians, or 'gene' = median of all cells) and nt ('pseudo' = four control guides per pseudo-gene, or 'barcode'). Empty is lof 0, median, c0, guide, pseudo. Default None. Alpha.",
+      "source_sha256": "7f42fa6f863cb52d0c151d82fbdf6ad3ac878140d6d1d556aea1447653898a56",
+      "translation": "Como as células se tornam perfis de genes: lof (1 remove os 1% de valores atípicos de intensidade), impute ('median' ou 'knn'), pca ('c0' padronizado por poço, ou 'brieflow'), agg ('guide' = mediana das medianas das guias, ou 'gene' = mediana de todas as células) e nt ('pseudo' = quatro guias de controle por pseudogene, ou 'barcode'). Vazio é lof 0, median, c0, guide, pseudo. Padrão None. Alfa.",
+      "retired": "2026-11-13: the OPS stage 3 Hybrid profile work (claude-hybrid-profile-proof-1113 branch: the Brieflow TVN rotation, the gene_trim aggregation, cells_to_profiles, hybrid_profile_rows and the Hybrid space of the consensus phases) changed or moved this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-stage3-ai-review.json; the original source and translation are kept here as evidence."
     }
   ]
 }

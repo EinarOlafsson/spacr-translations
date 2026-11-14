@@ -2035,16 +2035,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_deterministic_blas",
-      "source": "Run the profile phases with the BLAS and OpenMP libraries held to one thread, so a re-run of the same settings file writes bit-identical profiles and metrics. Off is faster on many cores, and the last digits of the PCA and TVN can then change from run to run. Default True. Alpha.",
-      "source_sha256": "8af5528d315881eba866e95d7c28dc49cc66890819228af8005073c809778a9a",
-      "translation": "在 BLAS 和 OpenMP 库限制为单线程的情况下运行谱阶段，使同一设置文件的重新运行写出逐位相同的谱和指标。关闭时在多核上更快，但 PCA 和 TVN 的最后几位数字可能每次运行都不同。默认值 True。Alpha。",
-      "retired": true,
-      "retired_date": "2026-11-13",
-      "retired_reason": "2026-11-13: the OPS stage 3 settings ops_blas_threads and ops_consensus_space (claude-hybrid-profile-proof-1113 branch, maintainer decision) changed this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-settings-ai-review.json; the original source and translation are kept here as evidence."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_escaper_dbic",
       "source": "The BIC margin by which the mixture must beat a unimodal shift for an escaper call. Default 10. Alpha.",
       "source_sha256": "69a2b0979f1495fb67e838caf3fc75c4cf4c10f1df99d16473c5131c9f43a6ea",
@@ -2371,16 +2361,6 @@
       "source": "Genes and pseudo-genes with this many cells or fewer are left out of the profile table and the metrics; raising it drops weakly sampled genes whose profiles are noisy. Default 10. Alpha.",
       "source_sha256": "78823a54baae318ea0593cb8a4c37205902e93b0a72bc44f38f5f8d15a332d19",
       "translation": "细胞数不超过此值的基因和伪基因不纳入谱表和指标；提高此值会去掉采样不足、谱噪声较大的基因。默认值 10。Alpha。"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_profile_recipe",
-      "source": "How cells become gene profiles: lof (1 drops the 1% intensity outliers), impute ('median' or 'knn'), pca ('c0' per-well standardised, or 'brieflow'), agg ('guide' = median of guide medians, or 'gene' = median of all cells) and nt ('pseudo' = four control guides per pseudo-gene, or 'barcode'). Empty is lof 0, median, c0, guide, pseudo. Default None. Alpha.",
-      "source_sha256": "7f42fa6f863cb52d0c151d82fbdf6ad3ac878140d6d1d556aea1447653898a56",
-      "translation": "细胞如何变成基因谱：lof（1 去除 1% 的强度离群值）、impute（'median' 或 'knn'）、pca（'c0' 逐孔标准化，或 'brieflow'）、agg（'guide' = 向导中位数的中位数，或 'gene' = 所有细胞的中位数）和 nt（'pseudo' = 每个伪基因四个对照向导，或 'barcode'）。留空即 lof 0、median、c0、guide、pseudo。默认值 None。Alpha。",
-      "retired": true,
-      "retired_date": "2026-11-13",
-      "retired_reason": "2026-11-13: the OPS stage 3 Hybrid profile work (claude-hybrid-profile-proof-1113 branch: the Brieflow TVN rotation, the gene_trim aggregation, cells_to_profiles, hybrid_profile_rows and the Hybrid space of the consensus phases) changed or moved this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-stage3-ai-review.json; the original source and translation are kept here as evidence."
     },
     {
       "table": "setting_tooltips",
@@ -3008,6 +2988,22 @@
       "source_sha256": "74ed4123f2066d3da15feceb10e8442d7e840ad048b10842f4705d885b5f3059",
       "translation": "滴定读数：由 titration_merged_folder 的寄生虫掩膜构建液泡：距离近于 vacuole_gap_px 的寄生虫归为一个液泡，每个寄生虫按多数重叠关联到其液泡，从而得到关联的寄生虫数。默认值 False。",
       "retired": "2026-11-10: the English source changed on the int2-1109 integration branch; its successor is reviewed in 2026-11-10-int2-1109-paper-items-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_deterministic_blas",
+      "source": "Run the profile phases with the BLAS and OpenMP libraries held to one thread, so a re-run of the same settings file writes bit-identical profiles and metrics. Off is faster on many cores, and the last digits of the PCA and TVN can then change from run to run. Default True. Alpha.",
+      "source_sha256": "8af5528d315881eba866e95d7c28dc49cc66890819228af8005073c809778a9a",
+      "translation": "在 BLAS 和 OpenMP 库限制为单线程的情况下运行谱阶段，使同一设置文件的重新运行写出逐位相同的谱和指标。关闭时在多核上更快，但 PCA 和 TVN 的最后几位数字可能每次运行都不同。默认值 True。Alpha。",
+      "retired": "2026-11-13: the OPS stage 3 settings ops_blas_threads and ops_consensus_space (claude-hybrid-profile-proof-1113 branch, maintainer decision) changed this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-settings-ai-review.json; the original source and translation are kept here as evidence."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_profile_recipe",
+      "source": "How cells become gene profiles: lof (1 drops the 1% intensity outliers), impute ('median' or 'knn'), pca ('c0' per-well standardised, or 'brieflow'), agg ('guide' = median of guide medians, or 'gene' = median of all cells) and nt ('pseudo' = four control guides per pseudo-gene, or 'barcode'). Empty is lof 0, median, c0, guide, pseudo. Default None. Alpha.",
+      "source_sha256": "7f42fa6f863cb52d0c151d82fbdf6ad3ac878140d6d1d556aea1447653898a56",
+      "translation": "细胞如何变成基因谱：lof（1 去除 1% 的强度离群值）、impute（'median' 或 'knn'）、pca（'c0' 逐孔标准化，或 'brieflow'）、agg（'guide' = 向导中位数的中位数，或 'gene' = 所有细胞的中位数）和 nt（'pseudo' = 每个伪基因四个对照向导，或 'barcode'）。留空即 lof 0、median、c0、guide、pseudo。默认值 None。Alpha。",
+      "retired": "2026-11-13: the OPS stage 3 Hybrid profile work (claude-hybrid-profile-proof-1113 branch: the Brieflow TVN rotation, the gene_trim aggregation, cells_to_profiles, hybrid_profile_rows and the Hybrid space of the consensus phases) changed or moved this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-stage3-ai-review.json; the original source and translation are kept here as evidence."
     }
   ]
 }

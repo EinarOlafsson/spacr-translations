@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "language": "ko",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 against the exact English source of item 942 on the claude-942-autotune-1114 branch: the labels and tooltips of the new alpha settings ops_decode_auto_spot_grid, ops_decode_auto_objective, ops_decode_auto_f_beta, ops_decode_auto_unreachable, ops_prefix_decoy_k, ops_prefix_decoy_seed, ops_prefix_fdr_scale, ops_prefix_min_read_quality, ops_prefix_threshold_tuning, ops_prefix_fdr_target_pct and ops_prefix_tuning_grid, and the rewritten tooltips of ops_decode_threshold_mode and ops_decode_fdr_max. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "Ops decode auto spot grid",
+      "source_sha256": "7511c421879c1daa2ac51c17b84e1143d6eee1d7fa8d64cad0631a5ae34a5774",
+      "translation": "OPS 디코딩 자동 스팟 그리드"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "자동 임계값이 호출 임계값과 함께 시도하는 리드 임계값(ops_read_threshold, 리드에 필요한 스팟 강도)으로, 스팟 검출이 호출과 함께 튜닝됩니다. 각 시야는 가장 낮은 값까지 한 번만 읽습니다. 비워 두면 ops_read_threshold를 입력한 그대로 유지하며, 항목 942 이전에 저장된 설정도 그렇습니다. 기본값 150, 200, 250, 315, 400. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_objective",
+      "source": "Ops decode auto objective",
+      "source_sha256": "370bcd56c3f5d25973191e711216b645a44868af2f26768913e85c645a4ac019",
+      "translation": "OPS 디코딩 자동 목표"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_objective",
+      "source": "What auto thresholds maximise, in the OPS decode and in the spacer-prefix decode. 'recall_at_fdr' genotypes the most cells with a decoy FDR at or below the target (ops_decode_fdr_max, or ops_prefix_fdr_target_pct). 'f_score' takes the highest F-score of precision (one minus the FDR) and recall (the share of cells genotyped), weighted by ops_decode_auto_f_beta. Default 'recall_at_fdr'. Alpha.",
+      "source_sha256": "36be25c2f75d584b7adcf47f0b30536c49318b7a66b9d7d1ba759337d3b91192",
+      "translation": "OPS 디코딩과 스페이서 접두사 디코딩에서 자동 임계값이 최대화하는 대상. 'recall_at_fdr'는 디코이 FDR이 목표 이하(ops_decode_fdr_max 또는 ops_prefix_fdr_target_pct)인 조건에서 유전자형을 가장 많은 세포에 부여합니다. 'f_score'는 정밀도(1에서 FDR을 뺀 값)와 재현율(유전자형이 확인된 세포의 비율)의 F-score가 가장 높은 설정을 택하며, ops_decode_auto_f_beta로 가중합니다. 기본값 'recall_at_fdr'. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_f_beta",
+      "source": "Ops decode auto f beta",
+      "source_sha256": "75e88d9c87e0ff1c8ce44c99b20aa08111164efab7aeb7c7c63630e360f955a0",
+      "translation": "OPS 디코딩 자동 f 베타"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_f_beta",
+      "source": "The weight of recall against precision in the 'f_score' objective: 1 weighs them equally, below 1 favours precision (fewer false calls), above 1 favours recall (more cells). Default 1. Alpha.",
+      "source_sha256": "2c1cc4ba8e877251ea69639e5c7e01dd8dbcb72dab4c2ac8288e151d77fcfd51",
+      "translation": "'f_score' 목표에서 재현율이 정밀도에 비해 갖는 가중치: 1이면 둘을 똑같이 보고, 1 미만이면 정밀도(거짓 호출 감소), 1 초과이면 재현율(더 많은 세포)을 우선합니다. 기본값 1. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_unreachable",
+      "source": "Ops decode auto unreachable",
+      "source_sha256": "995d21b2f9e6cf0e081386f992a68612a81e6609944699adc6a66feaeb5f0bd7",
+      "translation": "OPS 디코딩 자동 도달 불가"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_unreachable",
+      "source": "What auto thresholds use when no setting meets the FDR target. 'lowest_fdr' takes the setting with the lowest FDR reached and reports it; 'strictest' takes the strictest setting, as settings saved before item 942 do. Either way the report says auto_met False. Default 'lowest_fdr'. Alpha.",
+      "source_sha256": "a50d8d1910a877bbebd36163e731ed3383126f5d4eb8501a611056597e18c5b4",
+      "translation": "FDR 목표를 만족하는 설정이 없을 때 자동 임계값이 사용하는 방식. 'lowest_fdr'는 도달한 FDR이 가장 낮은 설정을 택하여 보고하고, 'strictest'는 항목 942 이전에 저장된 설정처럼 가장 엄격한 설정을 택합니다. 어느 쪽이든 보고서에는 auto_met False가 기록됩니다. 기본값 'lowest_fdr'. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_decoy_k",
+      "source": "Ops prefix decoy k",
+      "source_sha256": "2a9a55aebc1d2da7fd491dc7c1704b8449629604f096e590a8b4fdd3dc4a7e8a",
+      "translation": "OPS 접두사 디코이 k"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_decoy_k",
+      "source": "How many decoy prefixes per library prefix the spacer-prefix decode matches together with the library: base-shuffled 12-mers at least two edits from every prefix. A read as close to a decoy as to a guide matches neither, and a cell whose top barcode is a decoy is counted, never genotyped, which gives each site, well and plate a decoy FDR (site_summary.csv, fdr_<plate>_<well>.json). 4 is recommended; 0 matches no decoys. Default 0. Alpha.",
+      "source_sha256": "a081fbadf67cb056da0e7c35660931bb99deafdbf26c56655c0ae2571ba9f003",
+      "translation": "스페이서 접두사 디코딩이 라이브러리와 함께 대조하는, 라이브러리 접두사당 디코이 접두사의 수: 염기를 섞은 12-mer로, 모든 접두사에서 편집 거리가 최소 둘 이상 떨어져 있습니다. 디코이와 가이드에 똑같이 가까운 리드는 어느 쪽에도 대응하지 않으며, 최상위 바코드가 디코이인 세포는 집계되지만 유전자형은 부여되지 않아, 각 사이트, 샘플 위치, 플레이트에 디코이 FDR이 생깁니다(site_summary.csv, fdr_<plate>_<well>.json). 4를 권장하며, 0은 디코이를 대조하지 않습니다. 기본값 0. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_decoy_seed",
+      "source": "Ops prefix decoy seed",
+      "source_sha256": "4b9863b64a8c245397cbf4b8dfa8859260324a861df9de4b0f97ff498f186771",
+      "translation": "OPS 접두사 디코이 시드"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_decoy_seed",
+      "source": "Seed of the decoy prefixes (ops_prefix_decoy_k); the same seed draws the same decoys. Default 1. Alpha.",
+      "source_sha256": "42db7a06a22719162909d636f40c669adf1cb1f07a8b9f5ed07850abaac01b6d",
+      "translation": "디코이 접두사의 시드(ops_prefix_decoy_k); 같은 시드는 같은 디코이를 추출합니다. 기본값 1. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_fdr_scale",
+      "source": "Ops prefix fdr scale",
+      "source_sha256": "23df0ca510f160158d1fc3ad5c81a5ffb4ff9585ff3d430dc822ae9e8acb8e5e",
+      "translation": "OPS 접두사 FDR 배율"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_fdr_scale",
+      "source": "How much likelier a read is to land on a wrong guide than on a decoy prefix, which turns decoy calls into an FDR; values below 1 count as 1. No calibration exists for spacer-prefix libraries yet. Default 1. Alpha.",
+      "source_sha256": "89ec357610a25c7fe418db33e65a506be8aa9c988f40fe6d3a68fb8e773e24c0",
+      "translation": "리드가 디코이 접두사보다 잘못된 가이드에 대응할 가능성이 얼마나 더 높은지로, 디코이 호출을 FDR로 변환합니다. 1 미만의 값은 1로 간주합니다. 스페이서 접두사 라이브러리에 대한 보정은 아직 없습니다. 기본값 1. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_min_read_quality",
+      "source": "Ops prefix min read quality",
+      "source_sha256": "f31c83ce68ba3b78975a76ee8e2f6b4de843654d22aff9ddecb30122d5b0ed47",
+      "translation": "OPS 접두사 최소 리드 품질"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_min_read_quality",
+      "source": "The weakest read the spacer-prefix decode calls cells from, as its worst cycle's margin between the two brightest bases. Weaker reads are dropped before the cell calls. 0 keeps every read. Default 0. Alpha.",
+      "source_sha256": "cbb128b63f748f6903e4b89f8ca8394c1ba371c2821793dd9c0b3283da505b34",
+      "translation": "스페이서 접두사 디코딩이 세포를 호출하는 가장 약한 리드로, 가장 나쁜 사이클에서 가장 밝은 두 염기 사이의 간격으로 측정합니다. 더 약한 리드는 세포 호출 전에 버려집니다. 0은 모든 리드를 유지합니다. 기본값 0. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_threshold_tuning",
+      "source": "Ops prefix threshold tuning",
+      "source_sha256": "676bf72e4cbc901e565ebfff33e873edffe3030ed95e34c059431c3374866f44",
+      "translation": "OPS 접두사 임계값 튜닝"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_threshold_tuning",
+      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json. Default 'none'. Alpha.",
+      "source_sha256": "a57ed210f9d351d9545498655cd78403b5a703afb1360b8bc90e4721446c7639",
+      "translation": "스페이서 접두사 디코딩이 임계값을 정하는 방식. 'none'은 입력한 값을 사용합니다. 'per_well_decoy'는 디코이 호출만으로 샘플 위치별로 스팟 검출과 호출을 함께 선택합니다: 샘플 위치의 사이트 절반이 ops_prefix_tuning_grid(리드 임계값, 리드 품질, 불일치)의 모든 조합을 시도하고, ops_decode_auto_objective가 선택한 조합이 샘플 위치 전체에 사용되며, 나머지 절반이 그 FDR을 보고합니다. ops_prefix_decoy_k가 0보다 커야 합니다. 각 샘플 위치의 그리드, 곡선, 선택 결과는 threshold_tuning_<plate>_<well>.csv, .png, .json에 기록됩니다. 기본값 'none'. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_fdr_target_pct",
+      "source": "Ops prefix fdr target pct",
+      "source_sha256": "71d337229f2f109ee7bdfba91653d70bd9420bf07ed6deea2ecdd48e11f5c181",
+      "translation": "OPS 접두사 FDR 목표 %"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_fdr_target_pct",
+      "source": "The highest decoy FDR, in %, that 'per_well_decoy' tuning may accept (0.1 means 0.1 %). Default 0.1. Alpha.",
+      "source_sha256": "3b49d56184f3b3d7e2e6e8ff6ae211529c6febd4cd7bf0cb3326a73ddfd09352",
+      "translation": "'per_well_decoy' 튜닝이 받아들일 수 있는 가장 높은 디코이 FDR(%)(0.1은 0.1 %를 뜻함). 기본값 0.1. 알파."
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_tuning_grid",
+      "source": "Ops prefix tuning grid",
+      "source_sha256": "8941685802dec623473fbb5130260e11f4cd12b23fb2305e420eaf915ac88799",
+      "translation": "OPS 접두사 튜닝 그리드"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_tuning_grid",
+      "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
+      "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
+      "translation": "'per_well_decoy' 튜닝이 시도하는 값으로, {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]} 형태입니다. 생략한 임계값은 입력한 값을 유지합니다. 비워 두면 리드 임계값 40, 60, 80, 100, 130, 160, 리드 품질 0, 0.05, 0.1, 0.15, 0.25, 그리고 불일치 1개 또는 0개를 사용합니다. 기본값 비어 있음. 알파."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the thresholds of the rule (a) decode are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls, spot detection and calling together: half of the well's fields try every combination of the read thresholds in ops_decode_auto_spot_grid (ops_read_threshold) and the call thresholds in ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv and each well's genotyped-vs-FDR curve to decode_tuning_curve_<well>.csv and .png. Default 'manual'. Alpha.",
+      "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
+      "translation": "규칙 (a) 디코딩의 임계값을 정하는 방식. 'manual'은 입력한 값을 사용합니다. 'auto'는 샘플 위치의 디코이 호출로 샘플 위치별로 스팟 검출과 호출을 함께 선택합니다: 샘플 위치의 시야 절반이 ops_decode_auto_spot_grid(ops_read_threshold)의 리드 임계값과 ops_decode_auto_grid(ops_single_read_quality, ops_pixel_quality)의 호출 임계값의 모든 조합을 시도하고, ops_decode_auto_objective가 선택한 조합이 샘플 위치 전체에 사용되며, 나머지 절반이 그 FDR을 보고합니다. 자동 모드에는 ops_decode_preset rule_a_s2와 디코이(ops_decoy_library_k가 0보다 큼)가 필요하며, 선택 결과는 results/ops_decode/decode_thresholds_<plate>.csv에, 각 샘플 위치의 유전자형 확인 대비 FDR 곡선은 decode_tuning_curve_<well>.csv와 .png에 기록됩니다. 기본값 'manual'. 알파."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "자동 임계값이 받아들일 수 있는, 실제 호출 100개당 디코이로 추정한 거짓 호출의 최대 수(0.1은 0.1 %를 뜻함). ops_decode_threshold_mode 'auto' 및 목표 'recall_at_fdr'와 함께 사용합니다. 이를 만족하는 설정이 없는 샘플 위치는 ops_decode_auto_unreachable이 정한 설정을 받고, 보고서에는 auto_met False가 기록됩니다. 기본값 0.1. 알파."
+    }
+  ]
+}

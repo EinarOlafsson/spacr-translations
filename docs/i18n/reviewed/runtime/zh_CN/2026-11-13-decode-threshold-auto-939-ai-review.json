@@ -47,20 +47,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_threshold_mode",
-      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
-      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
-      "translation": "规则 (a) 解码的两个判定阈值 ops_single_read_quality 和 ops_pixel_quality 的设定方式。'manual' 使用您输入的值。'auto' 根据每个孔的诱饵判定逐孔选择：孔内一半视野尝试 ops_decode_auto_grid 的每个设置，对整个孔采用诱饵 FDR 不高于 ops_decode_fdr_max 且基因分型细胞核最多的设置，另一半视野报告其 FDR。斑点阈值（ops_read_threshold、ops_spot_min_peak）保持输入值。auto 需要 ops_decode_preset rule_a_s2 和诱饵（ops_decoy_library_k 大于 0）；所作选择写入 results/ops_decode/decode_thresholds_<plate>.csv。在 Funk et al. 2022 的 D 板上，它将 FDR 保持在每 100 个判定 0.093，已关联细胞核中 67.9 % 完成基因分型。默认值 'manual'。Alpha。"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
-      "translation": "自动阈值可接受的、由诱饵估计的每 100 个真实判定中最多的错误判定数（0.1 表示 0.1 %）。与 ops_decode_threshold_mode 'auto' 一起使用。若某孔中没有任何设置满足该值，则采用最严格的设置，并在其报告中记 auto_met False。默认值 0.1。Alpha。"
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_auto_grid",
       "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty. Alpha.",
       "source_sha256": "58db3df3c766bac668282f33b60cd88b26888df62f19a1e6b89e1d98a9eaca10",
@@ -86,6 +72,24 @@
       "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0. Alpha.",
       "source_sha256": "0eeceffa09797a28be298eb9a7b5f897e1afa232fa53e7e002846e390c294288",
       "translation": "自动阈值对每个孔的视野进行随机拆分所用的种子；相同的种子在重新运行时给出相同的拆分和相同的选择。默认值 0。Alpha。"
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
+      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
+      "translation": "规则 (a) 解码的两个判定阈值 ops_single_read_quality 和 ops_pixel_quality 的设定方式。'manual' 使用您输入的值。'auto' 根据每个孔的诱饵判定逐孔选择：孔内一半视野尝试 ops_decode_auto_grid 的每个设置，对整个孔采用诱饵 FDR 不高于 ops_decode_fdr_max 且基因分型细胞核最多的设置，另一半视野报告其 FDR。斑点阈值（ops_read_threshold、ops_spot_min_peak）保持输入值。auto 需要 ops_decode_preset rule_a_s2 和诱饵（ops_decoy_library_k 大于 0）；所作选择写入 results/ops_decode/decode_thresholds_<plate>.csv。在 Funk et al. 2022 的 D 板上，它将 FDR 保持在每 100 个判定 0.093，已关联细胞核中 67.9 % 完成基因分型。默认值 'manual'。Alpha。",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
+      "translation": "自动阈值可接受的、由诱饵估计的每 100 个真实判定中最多的错误判定数（0.1 表示 0.1 %）。与 ops_decode_threshold_mode 'auto' 一起使用。若某孔中没有任何设置满足该值，则采用最严格的设置，并在其报告中记 auto_met False。默认值 0.1。Alpha。",
+      "retired": true
     }
   ]
 }

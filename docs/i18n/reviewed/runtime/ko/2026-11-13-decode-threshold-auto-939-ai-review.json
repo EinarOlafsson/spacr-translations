@@ -47,20 +47,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_threshold_mode",
-      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
-      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
-      "translation": "규칙 (a) 디코딩의 두 호출 임계값 ops_single_read_quality와 ops_pixel_quality를 정하는 방식입니다. 'manual'은 입력한 값을 사용합니다. 'auto'는 웰별로 그 웰의 디코이 호출에서 값을 고릅니다. 웰 시야의 절반이 ops_decode_auto_grid의 모든 설정을 시험하고, 디코이 FDR이 ops_decode_fdr_max 이하이면서 가장 많은 핵을 유전자형으로 판정하는 설정을 웰 전체에 사용하며, 나머지 절반은 그 FDR을 보고합니다. 스폿 임계값(ops_read_threshold, ops_spot_min_peak)은 입력한 대로 유지됩니다. 자동 모드에는 ops_decode_preset rule_a_s2와 디코이(ops_decoy_library_k가 0보다 큼)가 필요하며, 선택 결과는 results/ops_decode/decode_thresholds_<plate>.csv에 기록됩니다. Funk et al. 2022의 플레이트 D에서 FDR을 호출 100개당 0.093으로 유지하면서 연결된 핵의 67.9 %를 유전자형으로 판정했습니다. 기본값 'manual'. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
-      "translation": "자동 임계값이 허용할 수 있는, 디코이로 추정한 실제 호출 100개당 거짓 호출의 최대 수입니다(0.1은 0.1 %를 뜻함). ops_decode_threshold_mode 'auto'와 함께 사용합니다. 어떤 설정도 이를 만족하지 못하는 웰은 가장 엄격한 설정을 사용하며, 그 보고서에 auto_met False가 기록됩니다. 기본값 0.1. 알파."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_auto_grid",
       "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty. Alpha.",
       "source_sha256": "58db3df3c766bac668282f33b60cd88b26888df62f19a1e6b89e1d98a9eaca10",
@@ -86,6 +72,24 @@
       "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0. Alpha.",
       "source_sha256": "0eeceffa09797a28be298eb9a7b5f897e1afa232fa53e7e002846e390c294288",
       "translation": "자동 임계값을 위해 각 웰의 시야를 무작위로 분할할 때의 시드입니다. 같은 시드는 다시 실행해도 같은 분할과 같은 선택을 줍니다. 기본값 0. 알파."
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
+      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
+      "translation": "규칙 (a) 디코딩의 두 호출 임계값 ops_single_read_quality와 ops_pixel_quality를 정하는 방식입니다. 'manual'은 입력한 값을 사용합니다. 'auto'는 웰별로 그 웰의 디코이 호출에서 값을 고릅니다. 웰 시야의 절반이 ops_decode_auto_grid의 모든 설정을 시험하고, 디코이 FDR이 ops_decode_fdr_max 이하이면서 가장 많은 핵을 유전자형으로 판정하는 설정을 웰 전체에 사용하며, 나머지 절반은 그 FDR을 보고합니다. 스폿 임계값(ops_read_threshold, ops_spot_min_peak)은 입력한 대로 유지됩니다. 자동 모드에는 ops_decode_preset rule_a_s2와 디코이(ops_decoy_library_k가 0보다 큼)가 필요하며, 선택 결과는 results/ops_decode/decode_thresholds_<plate>.csv에 기록됩니다. Funk et al. 2022의 플레이트 D에서 FDR을 호출 100개당 0.093으로 유지하면서 연결된 핵의 67.9 %를 유전자형으로 판정했습니다. 기본값 'manual'. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
+      "translation": "자동 임계값이 허용할 수 있는, 디코이로 추정한 실제 호출 100개당 거짓 호출의 최대 수입니다(0.1은 0.1 %를 뜻함). ops_decode_threshold_mode 'auto'와 함께 사용합니다. 어떤 설정도 이를 만족하지 못하는 웰은 가장 엄격한 설정을 사용하며, 그 보고서에 auto_met False가 기록됩니다. 기본값 0.1. 알파.",
+      "retired": true
     }
   ]
 }

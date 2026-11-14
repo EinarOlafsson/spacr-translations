@@ -47,20 +47,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_threshold_mode",
-      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
-      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
-      "translation": "Wie die beiden Call-Schwellen der Regel (a) der Dekodierung, ops_single_read_quality und ops_pixel_quality, festgelegt werden. 'manual' verwendet die eingegebenen Werte. 'auto' wählt sie Well für Well anhand der Decoy-Calls des Wells: Die Hälfte der Felder des Wells probiert jede Einstellung von ops_decode_auto_grid, die Einstellung, die die meisten Zellkerne bei einer Decoy-FDR von höchstens ops_decode_fdr_max genotypisiert, wird für das ganze Well verwendet, und die andere Hälfte berichtet ihre FDR. Die Spot-Schwellen (ops_read_threshold, ops_spot_min_peak) bleiben wie eingegeben. Auto benötigt ops_decode_preset rule_a_s2 und Decoys (ops_decoy_library_k über 0); die Auswahl wird in results/ops_decode/decode_thresholds_<plate>.csv geschrieben. Auf Platte D von Funk et al. 2022 hielt es die FDR bei 0.093 pro 100 Calls, wobei 67.9 % der verknüpften Zellkerne genotypisiert wurden. Standard 'manual'. Alpha."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
-      "translation": "Die höchste durch Decoys geschätzte Zahl falscher Calls pro 100 echter Calls, die die automatischen Schwellen akzeptieren dürfen (0.1 bedeutet 0.1 %). Wird mit ops_decode_threshold_mode 'auto' verwendet. Ein Well, in dem keine Einstellung dies erfüllt, erhält die strengste Einstellung und in seinem Bericht auto_met False. Standard 0.1. Alpha."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_auto_grid",
       "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty. Alpha.",
       "source_sha256": "58db3df3c766bac668282f33b60cd88b26888df62f19a1e6b89e1d98a9eaca10",
@@ -86,6 +72,24 @@
       "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0. Alpha.",
       "source_sha256": "0eeceffa09797a28be298eb9a7b5f897e1afa232fa53e7e002846e390c294288",
       "translation": "Der Seed der zufälligen Aufteilung der Felder jedes Wells für die automatischen Schwellen; derselbe Seed liefert bei einer Wiederholung dieselbe Aufteilung und dieselbe Auswahl. Standard 0. Alpha."
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
+      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
+      "translation": "Wie die beiden Call-Schwellen der Regel (a) der Dekodierung, ops_single_read_quality und ops_pixel_quality, festgelegt werden. 'manual' verwendet die eingegebenen Werte. 'auto' wählt sie Well für Well anhand der Decoy-Calls des Wells: Die Hälfte der Felder des Wells probiert jede Einstellung von ops_decode_auto_grid, die Einstellung, die die meisten Zellkerne bei einer Decoy-FDR von höchstens ops_decode_fdr_max genotypisiert, wird für das ganze Well verwendet, und die andere Hälfte berichtet ihre FDR. Die Spot-Schwellen (ops_read_threshold, ops_spot_min_peak) bleiben wie eingegeben. Auto benötigt ops_decode_preset rule_a_s2 und Decoys (ops_decoy_library_k über 0); die Auswahl wird in results/ops_decode/decode_thresholds_<plate>.csv geschrieben. Auf Platte D von Funk et al. 2022 hielt es die FDR bei 0.093 pro 100 Calls, wobei 67.9 % der verknüpften Zellkerne genotypisiert wurden. Standard 'manual'. Alpha.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
+      "translation": "Die höchste durch Decoys geschätzte Zahl falscher Calls pro 100 echter Calls, die die automatischen Schwellen akzeptieren dürfen (0.1 bedeutet 0.1 %). Wird mit ops_decode_threshold_mode 'auto' verwendet. Ein Well, in dem keine Einstellung dies erfüllt, erhält die strengste Einstellung und in seinem Bericht auto_met False. Standard 0.1. Alpha.",
+      "retired": true
     }
   ]
 }

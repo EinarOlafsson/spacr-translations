@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "language": "zh_CN",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 against the exact English source of item 942 on the claude-942-autotune-1114 branch: the labels and tooltips of the new alpha settings ops_decode_auto_spot_grid, ops_decode_auto_objective, ops_decode_auto_f_beta, ops_decode_auto_unreachable, ops_prefix_decoy_k, ops_prefix_decoy_seed, ops_prefix_fdr_scale, ops_prefix_min_read_quality, ops_prefix_threshold_tuning, ops_prefix_fdr_target_pct and ops_prefix_tuning_grid, and the rewritten tooltips of ops_decode_threshold_mode and ops_decode_fdr_max. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "Ops decode auto spot grid",
+      "source_sha256": "7511c421879c1daa2ac51c17b84e1143d6eee1d7fa8d64cad0631a5ae34a5774",
+      "translation": "OPS 解码自动斑点网格"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "自动阈值与判定阈值一起尝试的读取阈值（ops_read_threshold，读取所需的斑点强度），使斑点检测与判定一同调参。每个视野只读取一次，一直读取到最低值。留空则保持 ops_read_threshold 为输入值，与条目 942 之前保存的设置一致。默认值 150、200、250、315 和 400。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_objective",
+      "source": "Ops decode auto objective",
+      "source_sha256": "370bcd56c3f5d25973191e711216b645a44868af2f26768913e85c645a4ac019",
+      "translation": "OPS 解码自动目标"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_objective",
+      "source": "What auto thresholds maximise, in the OPS decode and in the spacer-prefix decode. 'recall_at_fdr' genotypes the most cells with a decoy FDR at or below the target (ops_decode_fdr_max, or ops_prefix_fdr_target_pct). 'f_score' takes the highest F-score of precision (one minus the FDR) and recall (the share of cells genotyped), weighted by ops_decode_auto_f_beta. Default 'recall_at_fdr'. Alpha.",
+      "source_sha256": "36be25c2f75d584b7adcf47f0b30536c49318b7a66b9d7d1ba759337d3b91192",
+      "translation": "在 OPS 解码和间隔序列前缀解码中，自动阈值所要最大化的目标。'recall_at_fdr' 在诱饵 FDR 不高于目标值（ops_decode_fdr_max 或 ops_prefix_fdr_target_pct）的前提下，对最多的细胞进行基因分型。'f_score' 取精确率（1 减去 FDR）与召回率（已基因分型的细胞比例）的最高 F-score，并按 ops_decode_auto_f_beta 加权。默认值 'recall_at_fdr'。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_f_beta",
+      "source": "Ops decode auto f beta",
+      "source_sha256": "75e88d9c87e0ff1c8ce44c99b20aa08111164efab7aeb7c7c63630e360f955a0",
+      "translation": "OPS 解码自动 f beta"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_f_beta",
+      "source": "The weight of recall against precision in the 'f_score' objective: 1 weighs them equally, below 1 favours precision (fewer false calls), above 1 favours recall (more cells). Default 1. Alpha.",
+      "source_sha256": "2c1cc4ba8e877251ea69639e5c7e01dd8dbcb72dab4c2ac8288e151d77fcfd51",
+      "translation": "在 'f_score' 目标中召回率相对精确率的权重：1 表示两者同等重要，小于 1 偏重精确率（错误判定更少），大于 1 偏重召回率（细胞更多）。默认值 1。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_decode_auto_unreachable",
+      "source": "Ops decode auto unreachable",
+      "source_sha256": "995d21b2f9e6cf0e081386f992a68612a81e6609944699adc6a66feaeb5f0bd7",
+      "translation": "OPS 解码自动不可达"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_unreachable",
+      "source": "What auto thresholds use when no setting meets the FDR target. 'lowest_fdr' takes the setting with the lowest FDR reached and reports it; 'strictest' takes the strictest setting, as settings saved before item 942 do. Either way the report says auto_met False. Default 'lowest_fdr'. Alpha.",
+      "source_sha256": "a50d8d1910a877bbebd36163e731ed3383126f5d4eb8501a611056597e18c5b4",
+      "translation": "当没有任何设置达到 FDR 目标时自动阈值的处理方式。'lowest_fdr' 取所达到 FDR 最低的设置并加以报告；'strictest' 取最严格的设置，与条目 942 之前保存的设置一致。无论哪种情况，报告中都记为 auto_met False。默认值 'lowest_fdr'。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_decoy_k",
+      "source": "Ops prefix decoy k",
+      "source_sha256": "2a9a55aebc1d2da7fd491dc7c1704b8449629604f096e590a8b4fdd3dc4a7e8a",
+      "translation": "OPS 前缀诱饵 k"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_decoy_k",
+      "source": "How many decoy prefixes per library prefix the spacer-prefix decode matches together with the library: base-shuffled 12-mers at least two edits from every prefix. A read as close to a decoy as to a guide matches neither, and a cell whose top barcode is a decoy is counted, never genotyped, which gives each site, well and plate a decoy FDR (site_summary.csv, fdr_<plate>_<well>.json). 4 is recommended; 0 matches no decoys. Default 0. Alpha.",
+      "source_sha256": "a081fbadf67cb056da0e7c35660931bb99deafdbf26c56655c0ae2571ba9f003",
+      "translation": "间隔序列前缀解码把每个文库前缀对应的多少个诱饵前缀与文库一起比对：碱基打乱的 12-mer，与每个前缀至少相差两次编辑。与诱饵和向导同样接近的读取与两者都不匹配，而最高条形码为诱饵的细胞会被计数但从不进行基因分型，这为每个位点、样本位置和板给出诱饵 FDR（site_summary.csv、fdr_<plate>_<well>.json）。推荐 4；0 表示不比对任何诱饵。默认值 0。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_decoy_seed",
+      "source": "Ops prefix decoy seed",
+      "source_sha256": "4b9863b64a8c245397cbf4b8dfa8859260324a861df9de4b0f97ff498f186771",
+      "translation": "OPS 前缀诱饵种子"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_decoy_seed",
+      "source": "Seed of the decoy prefixes (ops_prefix_decoy_k); the same seed draws the same decoys. Default 1. Alpha.",
+      "source_sha256": "42db7a06a22719162909d636f40c669adf1cb1f07a8b9f5ed07850abaac01b6d",
+      "translation": "诱饵前缀的种子（ops_prefix_decoy_k）；相同的种子抽取相同的诱饵。默认值 1。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_fdr_scale",
+      "source": "Ops prefix fdr scale",
+      "source_sha256": "23df0ca510f160158d1fc3ad5c81a5ffb4ff9585ff3d430dc822ae9e8acb8e5e",
+      "translation": "OPS 前缀 FDR 比例"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_fdr_scale",
+      "source": "How much likelier a read is to land on a wrong guide than on a decoy prefix, which turns decoy calls into an FDR; values below 1 count as 1. No calibration exists for spacer-prefix libraries yet. Default 1. Alpha.",
+      "source_sha256": "89ec357610a25c7fe418db33e65a506be8aa9c988f40fe6d3a68fb8e773e24c0",
+      "translation": "读取落在错误向导上比落在诱饵前缀上的可能性高多少，用来把诱饵判定换算成 FDR；小于 1 的值按 1 计。间隔序列前缀文库目前还没有校准。默认值 1。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_min_read_quality",
+      "source": "Ops prefix min read quality",
+      "source_sha256": "f31c83ce68ba3b78975a76ee8e2f6b4de843654d22aff9ddecb30122d5b0ed47",
+      "translation": "OPS 前缀最低读取质量"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_min_read_quality",
+      "source": "The weakest read the spacer-prefix decode calls cells from, as its worst cycle's margin between the two brightest bases. Weaker reads are dropped before the cell calls. 0 keeps every read. Default 0. Alpha.",
+      "source_sha256": "cbb128b63f748f6903e4b89f8ca8394c1ba371c2821793dd9c0b3283da505b34",
+      "translation": "间隔序列前缀解码据以判定细胞的最弱读取，以其最差循环中最亮两个碱基之间的差值衡量。更弱的读取在细胞判定之前被丢弃。0 保留所有读取。默认值 0。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_threshold_tuning",
+      "source": "Ops prefix threshold tuning",
+      "source_sha256": "676bf72e4cbc901e565ebfff33e873edffe3030ed95e34c059431c3374866f44",
+      "translation": "OPS 前缀阈值调参"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_threshold_tuning",
+      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json. Default 'none'. Alpha.",
+      "source_sha256": "a57ed210f9d351d9545498655cd78403b5a703afb1360b8bc90e4721446c7639",
+      "translation": "间隔序列前缀解码如何设定其阈值。'none' 使用您输入的值。'per_well_decoy' 仅根据诱饵判定、逐样本位置地同时为斑点检测和判定选择阈值：样本位置中一半的位点尝试 ops_prefix_tuning_grid 的每种组合（读取阈值、读取质量、错配），由 ops_decode_auto_objective 选出的组合用于整个样本位置，另一半报告其 FDR。需要 ops_prefix_decoy_k 大于 0。每个样本位置的网格、曲线和选择结果写入 threshold_tuning_<plate>_<well>.csv、.png 和 .json。默认值 'none'。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_fdr_target_pct",
+      "source": "Ops prefix fdr target pct",
+      "source_sha256": "71d337229f2f109ee7bdfba91653d70bd9420bf07ed6deea2ecdd48e11f5c181",
+      "translation": "OPS 前缀 FDR 目标 %"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_fdr_target_pct",
+      "source": "The highest decoy FDR, in %, that 'per_well_decoy' tuning may accept (0.1 means 0.1 %). Default 0.1. Alpha.",
+      "source_sha256": "3b49d56184f3b3d7e2e6e8ff6ae211529c6febd4cd7bf0cb3326a73ddfd09352",
+      "translation": "'per_well_decoy' 调参可接受的最高诱饵 FDR（%）（0.1 表示 0.1 %）。默认值 0.1。Alpha。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "ops_prefix_tuning_grid",
+      "source": "Ops prefix tuning grid",
+      "source_sha256": "8941685802dec623473fbb5130260e11f4cd12b23fb2305e420eaf915ac88799",
+      "translation": "OPS 前缀调参网格"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_tuning_grid",
+      "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
+      "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
+      "translation": "'per_well_decoy' 调参所尝试的值，形式为 {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}；省略的阈值保持其输入值。留空则使用读取阈值 40、60、80、100、130 和 160，读取质量 0、0.05、0.1、0.15 和 0.25，以及 1 个或 0 个错配。默认值为空。Alpha。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the thresholds of the rule (a) decode are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls, spot detection and calling together: half of the well's fields try every combination of the read thresholds in ops_decode_auto_spot_grid (ops_read_threshold) and the call thresholds in ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv and each well's genotyped-vs-FDR curve to decode_tuning_curve_<well>.csv and .png. Default 'manual'. Alpha.",
+      "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
+      "translation": "规则 (a) 解码的阈值如何设定。'manual' 使用您输入的值。'auto' 根据样本位置的诱饵判定、逐样本位置地同时为斑点检测和判定选择阈值：样本位置中一半的视野尝试 ops_decode_auto_spot_grid（ops_read_threshold）中的读取阈值与 ops_decode_auto_grid（ops_single_read_quality、ops_pixel_quality）中的判定阈值的每种组合，由 ops_decode_auto_objective 选出的组合用于整个样本位置，另一半报告其 FDR。自动模式需要 ops_decode_preset rule_a_s2 和诱饵（ops_decoy_library_k 大于 0）；选择结果写入 results/ops_decode/decode_thresholds_<plate>.csv，每个样本位置的基因分型对 FDR 曲线写入 decode_tuning_curve_<well>.csv 和 .png。默认值 'manual'。Alpha。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "自动阈值可接受的、每 100 个真实判定中由诱饵估计的最多错误判定数（0.1 表示 0.1 %）。与 ops_decode_threshold_mode 'auto' 和目标 'recall_at_fdr' 一起使用。没有任何设置能达到该值的样本位置，会得到由 ops_decode_auto_unreachable 选定的设置，其报告中记为 auto_met False。默认值 0.1。Alpha。"
+    }
+  ]
+}

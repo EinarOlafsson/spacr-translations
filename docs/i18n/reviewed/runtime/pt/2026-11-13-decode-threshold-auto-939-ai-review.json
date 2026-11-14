@@ -47,20 +47,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_threshold_mode",
-      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
-      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
-      "translation": "Como os dois limiares de chamada da regra (a) de decodificação, ops_single_read_quality e ops_pixel_quality, são definidos. 'manual' usa os valores que você informa. 'auto' escolhe-os poço a poço a partir das chamadas de chamarizes do poço: metade dos campos do poço testa todas as configurações de ops_decode_auto_grid, a configuração que genotipa o maior número de núcleos com um FDR de chamarizes igual ou inferior a ops_decode_fdr_max é usada para todo o poço, e a outra metade relata o seu FDR. Os limiares de pontos (ops_read_threshold, ops_spot_min_peak) permanecem como informados. O modo auto exige ops_decode_preset rule_a_s2 e chamarizes (ops_decoy_library_k acima de 0); as escolhas são gravadas em results/ops_decode/decode_thresholds_<plate>.csv. Na placa D de Funk et al. 2022, manteve o FDR em 0.093 por 100 chamadas, com 67.9 % dos núcleos associados genotipados. Padrão 'manual'. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
-      "translation": "O maior número de chamadas falsas estimado por chamarizes por 100 chamadas reais que os limiares automáticos podem aceitar (0.1 significa 0.1 %). Usado com ops_decode_threshold_mode 'auto'. Um poço em que nenhuma configuração o cumpra recebe a configuração mais estrita e auto_met False no seu relatório. Padrão 0.1. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_auto_grid",
       "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty. Alpha.",
       "source_sha256": "58db3df3c766bac668282f33b60cd88b26888df62f19a1e6b89e1d98a9eaca10",
@@ -86,6 +72,24 @@
       "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0. Alpha.",
       "source_sha256": "0eeceffa09797a28be298eb9a7b5f897e1afa232fa53e7e002846e390c294288",
       "translation": "A semente da divisão aleatória dos campos de cada poço para os limiares automáticos; a mesma semente dá a mesma divisão e a mesma escolha em uma nova execução. Padrão 0. Alfa."
+    }
+  ],
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the two call thresholds of the rule (a) decode, ops_single_read_quality and ops_pixel_quality, are set. 'manual' uses the values you enter. 'auto' chooses them well by well from the well's decoy calls: half of the well's fields try every setting of ops_decode_auto_grid, the setting that genotypes the most nuclei with a decoy FDR at or below ops_decode_fdr_max is used for the whole well, and the other half reports its FDR. The spot thresholds (ops_read_threshold, ops_spot_min_peak) stay as entered. Auto needs ops_decode_preset rule_a_s2 and decoys (ops_decoy_library_k above 0); the choices are written to results/ops_decode/decode_thresholds_<plate>.csv. On Funk et al. 2022 plate D it kept the FDR at 0.093 per 100 calls with 67.9 % of linked nuclei genotyped. Default 'manual'. Alpha.",
+      "source_sha256": "df3b9683505abf7a983a59cde2df75d8ff66604e0ca8048e3d1db132bf4cc741",
+      "translation": "Como os dois limiares de chamada da regra (a) de decodificação, ops_single_read_quality e ops_pixel_quality, são definidos. 'manual' usa os valores que você informa. 'auto' escolhe-os poço a poço a partir das chamadas de chamarizes do poço: metade dos campos do poço testa todas as configurações de ops_decode_auto_grid, a configuração que genotipa o maior número de núcleos com um FDR de chamarizes igual ou inferior a ops_decode_fdr_max é usada para todo o poço, e a outra metade relata o seu FDR. Os limiares de pontos (ops_read_threshold, ops_spot_min_peak) permanecem como informados. O modo auto exige ops_decode_preset rule_a_s2 e chamarizes (ops_decoy_library_k acima de 0); as escolhas são gravadas em results/ops_decode/decode_thresholds_<plate>.csv. Na placa D de Funk et al. 2022, manteve o FDR em 0.093 por 100 chamadas, com 67.9 % dos núcleos associados genotipados. Padrão 'manual'. Alfa.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto'. A well where no setting meets it gets the strictest setting and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "e8d38235b4d857f3cb7301f4052364a435ed7257595ca2724c73d61988cad654",
+      "translation": "O maior número de chamadas falsas estimado por chamarizes por 100 chamadas reais que os limiares automáticos podem aceitar (0.1 significa 0.1 %). Usado com ops_decode_threshold_mode 'auto'. Um poço em que nenhuma configuração o cumpra recebe a configuração mais estrita e auto_met False no seu relatório. Padrão 0.1. Alfa.",
+      "retired": true
     }
   ]
 }

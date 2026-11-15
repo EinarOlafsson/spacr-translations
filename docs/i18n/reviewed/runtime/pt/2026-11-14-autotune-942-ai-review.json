@@ -11,13 +11,6 @@
       "translation": "Grade automática de pontos da decodificação Ops"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_decode_auto_spot_grid",
-      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
-      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
-      "translation": "Os limiares de leitura (ops_read_threshold, a intensidade de ponto de que uma leitura precisa) que os limiares automáticos testam junto com os limiares de chamada, de modo que a detecção de pontos é ajustada com a chamada. Cada campo é lido uma vez até o menor valor. Vazio mantém ops_read_threshold como inserido, como as configurações salvas antes do item 942. Padrão 150, 200, 250, 315 e 400. Alfa."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_decode_auto_objective",
       "source": "Ops decode auto objective",
@@ -156,13 +149,6 @@
       "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
       "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
       "translation": "Os valores que o ajuste 'per_well_decoy' testa, como {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; um limiar omitido mantém o valor inserido. Vazio usa os limiares de leitura 40, 60, 80, 100, 130 e 160, as qualidades de leitura 0, 0.05, 0.1, 0.15 e 0.25, e 1 ou 0 incompatibilidades. Padrão vazio. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
-      "translation": "O maior número de chamadas falsas estimado por chamarizes por 100 chamadas reais que os limiares automáticos podem aceitar (0.1 significa 0.1 %). Usado com ops_decode_threshold_mode 'auto' e o objetivo 'recall_at_fdr'. Uma posição de amostra em que nenhuma configuração o atinge recebe a configuração escolhida por ops_decode_auto_unreachable e auto_met False no seu relatório. Padrão 0.1. Alfa."
     }
   ],
   "retired_records": [
@@ -173,6 +159,22 @@
       "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
       "translation": "Como os limiares da decodificação da regra (a) são definidos. 'manual' usa os valores que você insere. 'auto' os escolhe posição de amostra por posição de amostra a partir das chamadas de chamarizes da posição de amostra, com a detecção de pontos e a chamada juntas: metade dos campos da posição de amostra testa cada combinação dos limiares de leitura em ops_decode_auto_spot_grid (ops_read_threshold) e dos limiares de chamada em ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), a combinação escolhida por ops_decode_auto_objective é usada para toda a posição de amostra, e a outra metade informa o seu FDR. Auto requer ops_decode_preset rule_a_s2 e chamarizes (ops_decoy_library_k acima de 0); as escolhas são escritas em results/ops_decode/decode_thresholds_<plate>.csv e a curva de genotipagem contra FDR de cada posição de amostra em decode_tuning_curve_<well>.csv e .png. Padrão 'manual'. Alfa.",
       "retired": "2026-11-14: landing train 5 merged item 942's rewrite of this tooltip with item 947's shortening under the 600-character ceiling, which changed this English source; its successor is reviewed in 2026-11-14-train5-1114-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "Os limiares de leitura (ops_read_threshold, a intensidade de ponto de que uma leitura precisa) que os limiares automáticos testam junto com os limiares de chamada, de modo que a detecção de pontos é ajustada com a chamada. Cada campo é lido uma vez até o menor valor. Vazio mantém ops_read_threshold como inserido, como as configurações salvas antes do item 942. Padrão 150, 200, 250, 315 e 400. Alfa.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "O maior número de chamadas falsas estimado por chamarizes por 100 chamadas reais que os limiares automáticos podem aceitar (0.1 significa 0.1 %). Usado com ops_decode_threshold_mode 'auto' e o objetivo 'recall_at_fdr'. Uma posição de amostra em que nenhuma configuração o atinge recebe a configuração escolhida por ops_decode_auto_unreachable e auto_met False no seu relatório. Padrão 0.1. Alfa.",
+      "retired": true
     }
   ]
 }

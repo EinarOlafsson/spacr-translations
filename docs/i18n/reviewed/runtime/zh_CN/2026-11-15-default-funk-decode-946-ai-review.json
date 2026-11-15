@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "language": "zh_CN",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-15 against the exact English source of item 946 on the claude-946-default-decode branch: the tooltips of the 28 settings of items 873 and 939 that left alpha, the rewritten tooltips of ops_decode_preset, ops_decode_threshold_mode and ops_decode_auto_spot_grid, and ops_channel_registration without the alpha mark on 'spots_refine'. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_preset",
+      "source": "A named set of decode settings applied to every decode key this settings file leaves at its default. 'rule_a_s2' is the final rule of the decode-yield study: refined spot registration, library-calibrated base calls, territory attribution, quality-weighted votes, the runner-up one-mismatch rule, the pixel fallback and a decoy FDR report. On plate A of Funk et al. 2022 it assigned 74.4 % of nuclei at 0.065 false calls per 100. 'none' is the plain decode, the default before spaCR 1.5.1.8. Default 'rule_a_s2'.",
+      "source_sha256": "703cb07ed7166e05c25147fb916cfb3e471daaf2bab501a441c8e2860e55bb1d",
+      "translation": "一组命名的解码设置，应用于此设置文件保留为默认值的每个解码键。'rule_a_s2' 是解码产出研究的最终规则：细化的斑点配准、文库校准的碱基判定、按区域归属、质量加权投票、次优单错配规则、像素回退以及诱饵 FDR 报告。在 Funk et al. 2022 的板 A 上，它分配了 74.4 % 的细胞核，每 100 个中有 0.065 个错误判定。'none' 是普通解码，即 spaCR 1.5.1.8 之前的默认值。默认值 'rule_a_s2'。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_registration_refine_px",
+      "source": "Under ops_channel_registration 'spots_refine', a believed spot registration this many pixels or fewer from the background answer replaces it, so a small residual shift is corrected instead of kept. Larger lets the spots move more channels. Default 3.",
+      "source_sha256": "7639fc332d12b658f1df4d18489e0a59d292fc739f808ba8729650d0c7e83d0d",
+      "translation": "在 ops_channel_registration 'spots_refine' 下，与背景结果相差不超过这么多像素的可信斑点配准将取代背景结果，从而校正而非保留较小的残余位移。值越大，斑点可移动的通道越多。默认值 3。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_min_peak",
+      "source": "How far a spot registration's peak must stand above the mean of its correlation surface to be believed, under 'spots' and 'spots_refine'. Higher trusts the spots on fewer channels; a field with no reads peaks at a few. Default 20.",
+      "source_sha256": "b610b15afcf54ecc92a45a0bccd1dee5d123c02b63693316308ef2df64ec6e07",
+      "translation": "在 'spots' 和 'spots_refine' 下，斑点配准的峰值必须高出其相关曲面均值多少才被视为可信。越高，可信斑点所在的通道越少；没有读段的视野峰值只有几。默认值 20。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_overrule_share",
+      "source": "The spots overrule a background registration only where the spot surface at the background's shift is below this share of the spot peak. Lower overrules less often. Default 0.5.",
+      "source_sha256": "ba45da701164348adaa780cb80ccaf4213e1631d22827da628fa8bf825f2828a",
+      "translation": "只有当背景位移处的斑点曲面低于斑点峰值的这一比例时，斑点才否决背景配准。越低否决越少。默认值 0.5。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_library_calibration",
+      "source": "Learn each cycle's four base axes from the reads the guide library names on their other cycles, then unmix every read of that cycle with them. It corrects channel drift a single unmixing cannot. Decoys are never used to learn the axes, so the decoy FDR stays an independent check. Default False.",
+      "source_sha256": "1cc51d33bab417c44f87cc77db9e2822c1f6de638996e3a7f01985762f022bb3",
+      "translation": "根据向导文库在其他循环上识别出的读段学习每个循环的四个碱基轴，然后用它们对该循环的每个读段解混。这能校正单一解混无法校正的通道漂移。学习各轴时从不使用诱饵，因此诱饵 FDR 仍是一项独立的检查。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_passes",
+      "source": "How many times the library calibration re-labels the reads from its own last calls before the final call. More passes settle the axes further and cost time. Default 2.",
+      "source_sha256": "d2c16a90aa7f643503798490f716a9c86af2e972baf3be22a26d7a49ce63c19a",
+      "translation": "文库校准在最终判定前，根据自身上一次的判定重新标注读段的次数。轮数越多，各轴越稳定，但耗时越长。默认值 2。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_min_labels",
+      "source": "The fewest labelled reads each base needs in a cycle for the library calibration to fit that cycle; a cycle with fewer keeps the plain unmixing. Default 30.",
+      "source_sha256": "368e0de4ee4251f805bc0648a92bf0ad5ac2cf6720ab4e646cb5de7d18ad4df9",
+      "translation": "文库校准拟合某个循环时，该循环中每种碱基所需的最少已标注读段数；少于此数的循环保持普通解混。默认值 30。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_runner_up",
+      "source": "Let a read one base from a guide count for it when the mismatched cycle was an uncertain call whose second-brightest channel is the guide's base. It recovers reads lost to one weak cycle without accepting arbitrary one-mismatch matches. Default False.",
+      "source_sha256": "d302b9c85209b1d1fbbd3008918fd4f02ffbeede4308cfd00055e4063114fefd",
+      "translation": "当错配循环是一个不确定的判定且其第二亮通道正是向导的碱基时，允许与某向导相差一个碱基的读段计入该向导。这能找回因一个弱循环而丢失的读段，而不接受任意的单错配匹配。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_runner_up_margin",
+      "source": "The largest base-call margin, 0 to 1, a mismatched cycle may carry for the runner-up rule to accept it. Lower accepts fewer corrected reads. Default 0.1.",
+      "source_sha256": "74e961d613376916791f8996864b4c0f3e47c0daf87dc467fb2f965e348ef948",
+      "translation": "次优规则接受一个错配循环时，该循环可带有的最大碱基判定差值（0 到 1）。越低，接受的校正读段越少。默认值 0.1。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_impute_missing_cycles",
+      "source": "Let a base from a cycle that could not be measured, written N, match any base of a guide, under the new decode rules. Off leaves every read with an N unmatched, which costs the reads of fields that lost a cycle. Default True.",
+      "source_sha256": "47ce2146b2fb875e847a0dd7e0fe3ccbd1c514935bbaef4921d23d6d2af4bb36",
+      "translation": "在新的解码规则下，允许无法测量的循环中的碱基（记为 N）与向导的任意碱基匹配。关闭时，每个含 N 的读段都不匹配，这会损失丢失了一个循环的视野中的读段。默认值 True。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_assign_by_cell_territory",
+      "source": "Give a read that lies almost equally close to two nuclei to the nearer one instead of to neither. More nuclei get reads; a read between two touching nuclei can land on the wrong one. Default False.",
+      "source_sha256": "8b8e6ad096a0b908f6f6240f132e454cd0e81df514593b35db436867afbfd540",
+      "translation": "把与两个细胞核几乎等距的读段分配给较近的那个，而不是两者都不给。更多细胞核获得读段；位于两个相邻细胞核之间的读段可能落到错误的细胞核上。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_tie",
+      "source": "How close, in pixels, a read's two nearest nucleus boundaries may lie before the read is called ambiguous, under the new decode rules. Ambiguous reads are dropped unless ops_assign_by_cell_territory is on. Default 1.",
+      "source_sha256": "32d22624543a71cacee574f119efde7c4be3ea4a56fef946d041f458b58d101b",
+      "translation": "在新的解码规则下，读段最近的两个细胞核边界相距多少像素以内时，该读段被判定为模糊。除非开启 ops_assign_by_cell_territory，否则模糊读段会被丢弃。默认值 1。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_quality_weighted",
+      "source": "Weight each read's vote by its base-call quality, so a clean read outvotes a doubtful one, instead of counting every read once. Default False.",
+      "source_sha256": "b4974fa1c2d22fe7e3d5a8e75d5d986b8d73cecf66f11604c466a2e6e04f43f2",
+      "translation": "按碱基判定质量为每个读段的投票加权，使干净的读段胜过可疑的读段，而不是每个读段只计一次。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_vote_weight_floor",
+      "source": "Added to every quality weight, so a read of quality 0 still carries a small vote. Higher moves the weighting toward a plain count. Default 0.05.",
+      "source_sha256": "ab70ffd0a0af3e967d1cd9fde71ab9720dd6d8c6eda53ac3d662e8f56e9fe4b4",
+      "translation": "加到每个质量权重上的值，使质量为 0 的读段仍有少量投票权。越高，加权越接近普通计数。默认值 0.05。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_pixel_fallback",
+      "source": "For a nucleus no read assigned, call the brightest pixels near it like reads and assign the guide at least two of them name exactly. It recovers nuclei whose spots fell below the read threshold. Default False.",
+      "source_sha256": "ec955046cf3e2c037c970abe35b42378e777074d0efb9c17e67c0df8b0ad83f6",
+      "translation": "对于没有分配到读段的细胞核，像读段一样判定其附近最亮的像素，并分配其中至少两个像素恰好指向的向导。这能找回斑点低于读段阈值的细胞核。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_percentile",
+      "source": "Which pixels the pixel fallback calls: those above this percentile of the field's read score. Lower calls more pixels, slower and noisier. Default 97.",
+      "source_sha256": "3fbb4f8d37147f491b0bf8b803f20c595dea7a5ec214efa261dd6b3f1606c0af",
+      "translation": "像素回退判定哪些像素：高于该视野读段得分这一百分位数的像素。值越低，判定的像素越多，速度越慢、噪声越大。默认值 97。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_radius",
+      "source": "How far beyond a nucleus boundary, in pixels, a fallback pixel may lie and still vote for that nucleus. Default 10.",
+      "source_sha256": "3e11f0e8e8d0952c6cae6df395f8cdd113f8465ec4e0135c2e3bb992b4a598f0",
+      "translation": "回退像素最多可以位于细胞核边界外多少像素处，仍能为该细胞核投票。默认值 10。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_pixels",
+      "source": "How many exactly matching pixels must name a guide before the pixel fallback assigns it. Pixels of one spot repeat its call, so this counts pixels, not reads. Default 2.",
+      "source_sha256": "c03e8a2bf7c6ac8e23075cb3e77af5cc6fc3ae1cf9c0a83549c143a09c6c8776",
+      "translation": "像素回退分配某向导之前，必须有多少个完全匹配的像素指向该向导。同一斑点的像素会重复其判定，因此这里计的是像素而不是读段。默认值 2。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_fraction",
+      "source": "The share of a nucleus's matched pixels its guide must hold, with no tie, for the pixel fallback to assign it. Default 0.6.",
+      "source_sha256": "899b5815c602f8cd0ba8b6158057dab88044bb58cccec720ffbe14244fd15643",
+      "translation": "像素回退分配某细胞核时，其向导在无平局情况下必须占该细胞核匹配像素的比例。默认值 0.6。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_quality",
+      "source": "The weakest pixel call, as its worst cycle's margin from 0 to 1, that votes in the pixel fallback. Higher assigns fewer nuclei at a lower decoy rate. Default 0.1.",
+      "source_sha256": "5a0b586ac49464c7504367cc5d28b95a2f7152441bf79a73e4b42f42204dc876",
+      "translation": "在像素回退中参与投票的最弱像素判定，以其最差循环的差值（0 到 1）表示。值越高，分配的细胞核越少，诱饵率越低。默认值 0.1。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decoy_library_k",
+      "source": "How many base-shuffled decoy barcodes per guide are matched alongside the library. A nucleus assigned a decoy is dropped and counted, which estimates how many real calls are false; each decode then writes decode_fdr_<well>.json and per-field stats under results/ops_decode. 0 matches no decoys. Default 0.",
+      "source_sha256": "8b9e101370b6013930b06b51269e7c0cbbe246a5a0a8b01d0e2122fa260fa027",
+      "translation": "每个向导与文库一同匹配多少个碱基打乱的诱饵条形码。被分配到诱饵的细胞核会被删除并计数，以此估计有多少真实判定是错误的；随后每次解码都在 results/ops_decode 下写入 decode_fdr_<well>.json 和逐视野统计。0 不匹配任何诱饵。默认值 0。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_fdr_scale",
+      "source": "How much likelier a read is to land on a wrong real guide than on a decoy, which turns decoy calls into an FDR. 1.268 was measured for the Funk et al. 2022 library from its guides' neighbour distances; values below 1 count as 1. Default 1.268.",
+      "source_sha256": "13b75daab1fb21dbf0e7dbaff271199274bce24bd3b992532de7456229db44eb",
+      "translation": "读段落到错误的真实向导上比落到诱饵上的可能性大多少，它把诱饵判定换算为 FDR。根据 Funk et al. 2022 文库中各向导的近邻距离测得 1.268；小于 1 的值按 1 计。默认值 1.268。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_skip_unplaced_sites",
+      "source": "Decode only the sites the stitch placed and list the others in the decode and FDR reports. Off stops the well with an error when a site was not placed. Default True.",
+      "source_sha256": "4a33a9ad8779642a53cbc9bc9e18eacab1a711f9aa2e518f4b61cbf3855c2e87",
+      "translation": "只解码拼接已放置的位点，并在解码和 FDR 报告中列出其他位点。关闭时，若有位点未被放置，该孔会报错停止。默认值 True。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_store_field_cache",
+      "source": "Under the new decode rules, write each field's decode evidence -- every spot, its intensities, its two nearest nuclei and the fallback pixels -- to <dst_root>/<well>/decode_cache as one npz per site. The decode QC reads it. A field takes about 13 MB. Default False.",
+      "source_sha256": "6fee57d4255fc2ede690bad0ad9b6d31d7fa9fe66c2ca100aa86c085b734bdf4",
+      "translation": "在新的解码规则下，将每个视野的解码证据（每个斑点、其强度、其最近的两个细胞核以及回退像素）按每个位点一个 npz 写入 <dst_root>/<well>/decode_cache。解码 QC 会读取它。一个视野约占 13 MB。默认值 False。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the rule (a) decode's thresholds are set. 'manual' uses the values you enter. 'auto' tunes them well by well from decoys: half of the well's fields try every setting of ops_decode_auto_grid (and of ops_decode_auto_spot_grid, if set), the one ops_decode_auto_objective picks is used for the whole well, and the other half reports its FDR. Auto acts only on the rule (a) decode (ops_decode_preset rule_a_s2, a library, decoys); otherwise the thresholds stay as entered. It writes results/ops_decode/decode_thresholds_<plate>.csv. 'manual' was the default before 1.5.1.8. Default 'auto'.",
+      "source_sha256": "b2e4f8cdf626a9840766cb000d210f745e03035364eb18e9ce5f046e5ca01f57",
+      "translation": "规则 (a) 解码阈值的设定方式。'manual' 使用您输入的值。'auto' 根据诱饵逐个样本位置调整阈值：样本位置一半的视野尝试 ops_decode_auto_grid（以及已设置时的 ops_decode_auto_spot_grid）的每个设置，ops_decode_auto_objective 选中的设置用于整个样本位置，另一半报告其 FDR。Auto 只作用于规则 (a) 解码（ops_decode_preset rule_a_s2、文库、诱饵）；否则阈值保持为输入值。它写入 results/ops_decode/decode_thresholds_<plate>.csv。1.5.1.8 之前的默认值为 'manual'。默认值 'auto'。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1.",
+      "source_sha256": "36e53fc67a5ec888870ab793c4b804e09d7e8fb9bca1475a95eb09c973cad3ab",
+      "translation": "自动阈值可接受的、每 100 个真实判定中由诱饵估计的最多错误判定数（0.1 表示 0.1 %）。与 ops_decode_threshold_mode 'auto' 和目标 'recall_at_fdr' 一起使用。没有任何设置能达到该值的样本位置，会得到由 ops_decode_auto_unreachable 选定的设置，其报告中记为 auto_met False。默认值 0.1。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_grid",
+      "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty.",
+      "source_sha256": "4a1da9280cb216ba1396d72bc7f2509d1d4286431459f421c54a6f193a34fa38",
+      "translation": "自动阈值所尝试的值，形式为 {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}；省略的阈值保持其输入值。留空则使用 BMC 研究的网格：单次读取质量 0.06、0.08、0.10、0.12、0.15、0.20、0.25、0.30 和 0.40，乘以像素质量 0.10、0.15、0.20、0.30 和 0.40。默认留空。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_ci",
+      "source": "Judge each auto setting by the upper end of its FDR's 95 % interval (1,000 field resamples) rather than by the estimate, so a setting is accepted only when the FDR is very likely at or below ops_decode_fdr_max. Default True.",
+      "source_sha256": "cefd34f76f8249cef46779e32e6c81b0568f3632d637c9d91d6d1a39f4c25e64",
+      "translation": "以每个自动设置 FDR 的 95 % 区间（1,000 次视野重采样）的上限而非估计值来评判，因此仅当 FDR 很可能不高于 ops_decode_fdr_max 时才接受该设置。默认值 True。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_tune_fraction",
+      "source": "The share of a well's fields, drawn at random, that auto thresholds choose on; the other fields only report the chosen setting's FDR and genotyped share. Default 0.5.",
+      "source_sha256": "7301af4f9c8e116e9d8ad4e2b42f2e0254e06176832c45d448c3e79dbbb518bf",
+      "translation": "自动阈值据以选择的孔内视野比例，随机抽取；其余视野只报告所选设置的 FDR 和基因分型比例。默认值 0.5。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_seed",
+      "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0.",
+      "source_sha256": "20acb770bad9f2e259da0d80f5093b4e48c19f92a4f0b84e473b6011ac37f8ae",
+      "translation": "自动阈值对每个孔的视野进行随机拆分所用的种子；相同的种子在重新运行时给出相同的拆分和相同的选择。默认值 0。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_channel_registration",
+      "source": "How each base channel is placed onto the reference cycle. 'spots' registers the channel on its reads, with the cell background filtered away, wherever that disagrees with the background registration by more than 2 pixels; 'background' trusts the background alone, the earlier behaviour, which on the Funk et al. 2022 plates left one cycle of weak wells unshifted although it had drifted 10 to 25 pixels. 'spots_refine' also takes a believed spot answer within ops_registration_refine_px of the background answer, correcting small residual shifts. Default 'spots'.",
+      "source_sha256": "4e4f34440f8b80329a679d8d6ee4cd17c1a073a3182df284873a471d15ac53be",
+      "translation": "如何把每个碱基通道放到参考循环上。'spots' 在滤除细胞背景后，凡是与背景配准相差超过 2 个像素之处，都按通道的读段对其配准；'background' 只信任背景，即以前的行为，在 Funk et al. 2022 的板上，它让弱孔的一个循环保持未位移，而该循环实际已漂移 10 到 25 个像素。'spots_refine'还接受与背景结果相差在 ops_registration_refine_px 以内的可信斑点结果，用于校正较小的残余位移。默认值 'spots'。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered and tunes the calling only; a joint grid to try is 150, 200, 250, 315 and 400. Default empty. Alpha.",
+      "source_sha256": "47a29ab6a8e61e91ea2d1e3c2e63b13d6e0e1f04c5ce61aa289133475316e8ed",
+      "translation": "自动阈值与判定阈值一起尝试的读取阈值（ops_read_threshold，读取所需的斑点强度），使斑点检测与判定一同调参。每个视野只读取一次，一直读取到最低值。留空则保持 ops_read_threshold 为输入值，只调整判定；可尝试的联合网格为 150、200、250、315 和 400。默认留空。Alpha。"
+    }
+  ]
+}

@@ -1762,34 +1762,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_assign_by_cell_territory",
-      "source": "Give a read that lies almost equally close to two nuclei to the nearer one instead of to neither. More nuclei get reads; a read between two touching nuclei can land on the wrong one. Default False. Alpha.",
-      "source_sha256": "dd011e310a88250e6976f18e7dcf95298f76b19c4a7c2019e6cb45f13f864f99",
-      "translation": "두 핵에 거의 같은 거리로 놓인 리드를 어느 쪽에도 주지 않는 대신 더 가까운 핵에 줍니다. 더 많은 핵이 리드를 얻지만, 맞닿은 두 핵 사이의 리드는 잘못된 핵에 배정될 수 있습니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_calibration_min_labels",
-      "source": "The fewest labelled reads each base needs in a cycle for the library calibration to fit that cycle; a cycle with fewer keeps the plain unmixing. Default 30. Alpha.",
-      "source_sha256": "df79f6324ec1d7506249f1bf7ee1dc5101f8ddf8abe70a5d62d05343bde9251b",
-      "translation": "라이브러리 보정이 한 주기를 적합하려면 그 주기에서 각 염기에 필요한 최소 레이블 리드 수입니다. 이보다 적은 주기는 일반 언믹싱을 유지합니다. 기본값 30. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_calibration_passes",
-      "source": "How many times the library calibration re-labels the reads from its own last calls before the final call. More passes settle the axes further and cost time. Default 2. Alpha.",
-      "source_sha256": "a0bb06e171372de45a7358c5f387e09ebbe1b34e6a8b29ce5d57d039c6c97f48",
-      "translation": "라이브러리 보정이 최종 호출 전에 자신의 직전 호출로 리드에 레이블을 다시 붙이는 횟수입니다. 반복이 많을수록 축이 더 안정되지만 시간이 더 걸립니다. 기본값 2. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_channel_registration",
-      "source": "How each base channel is placed onto the reference cycle. 'spots' registers the channel on its reads, with the cell background filtered away, wherever that disagrees with the background registration by more than 2 pixels; 'background' trusts the background alone, the earlier behaviour, which on the Funk et al. 2022 plates left one cycle of weak wells unshifted although it had drifted 10 to 25 pixels. 'spots_refine' (alpha) also takes a believed spot answer within ops_registration_refine_px of the background answer, correcting small residual shifts. Default 'spots'.",
-      "source_sha256": "f9f9eed7e13cd798dec0e8dd707dc2ca357b306c15c3b950e4ec301fbabb794a",
-      "translation": "각 염기 채널을 기준 주기에 배치하는 방식입니다. 'spots'는 배경 정합과 2픽셀보다 크게 어긋나는 곳마다 세포 배경을 걸러 낸 뒤 채널을 그 리드에 정합합니다. 'background'는 이전 동작대로 배경만 신뢰하는데, Funk et al. 2022 플레이트에서는 약한 웰의 한 주기가 10에서 25픽셀 표류했는데도 이동 없이 남겼습니다. 'spots_refine'(alpha)은 배경 결과에서 ops_registration_refine_px 이내에 있는 신뢰할 만한 스폿 결과도 받아들여 작은 잔여 이동을 보정합니다. 기본값 'spots'."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_compare_fields",
       "source": "Which fields to compare, as well:site pairs separated by commas. Empty compares every site the external tables hold. Default None. Alpha.",
       "source_sha256": "6991f6ddc9dc085cf035b809316b0ee2a04f882defd79a1198d0110a01be89a4",
@@ -1937,34 +1909,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_decode_impute_missing_cycles",
-      "source": "Let a base from a cycle that could not be measured, written N, match any base of a guide, under the new decode rules. Off leaves every read with an N unmatched, which costs the reads of fields that lost a cycle. Default True. Alpha.",
-      "source_sha256": "fa87489ad4ca1edf999f12effcf52f4879b842dc31012bb1427e268069f34793",
-      "translation": "새 디코딩 규칙에서, 측정할 수 없어 N으로 기록된 주기의 염기가 가이드의 어떤 염기와도 일치하게 합니다. 끄면 N이 있는 리드는 모두 일치하지 않으므로, 한 주기를 잃은 시야의 리드를 잃게 됩니다. 기본값 True. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_library_calibration",
-      "source": "Learn each cycle's four base axes from the reads the guide library names on their other cycles, then unmix every read of that cycle with them. It corrects channel drift a single unmixing cannot. Decoys are never used to learn the axes, so the decoy FDR stays an independent check. Default False. Alpha.",
-      "source_sha256": "eaf92339ccb03f06b6fcb9a29211b1387c005b0a304d202647716bb5fb8421e8",
-      "translation": "가이드 라이브러리가 다른 주기에서 식별하는 리드로부터 각 주기의 네 염기 축을 학습한 다음, 그 축으로 해당 주기의 모든 리드를 언믹싱합니다. 단일 언믹싱으로는 바로잡을 수 없는 채널 표류를 보정합니다. 축 학습에는 디코이를 절대 쓰지 않으므로 디코이 FDR은 독립적인 검사로 남습니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_pixel_fallback",
-      "source": "For a nucleus no read assigned, call the brightest pixels near it like reads and assign the guide at least two of them name exactly. It recovers nuclei whose spots fell below the read threshold. Default False. Alpha.",
-      "source_sha256": "ae1ebe06b2b59791f45777d861e0f1896ac65d6431a41933d203249207b44d61",
-      "translation": "리드가 배정되지 않은 핵에 대해 근처의 가장 밝은 픽셀을 리드처럼 호출하고, 그중 적어도 두 개가 정확히 지목하는 가이드를 배정합니다. 스폿이 리드 임계값 아래로 떨어진 핵을 되찾습니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_preset",
-      "source": "A named set of decode settings applied to every decode key this settings file leaves at its default. 'rule_a_s2' is the final rule of the decode-yield study: refined spot registration, library-calibrated base calls, territory attribution, quality-weighted votes, the runner-up one-mismatch rule, the pixel fallback and a decoy FDR report. On plate A of Funk et al. 2022 it assigned 74.4 % of nuclei at 0.065 false calls per 100. 'none' changes nothing. Default 'none'. Alpha.",
-      "source_sha256": "fe352887bac202cb1fc19659adfee3eb6cce4cb7168b30beb69c887296d2b6ee",
-      "translation": "이 설정 파일이 기본값으로 남겨 둔 모든 디코딩 키에 적용되는 이름 붙은 디코딩 설정 묶음입니다. 'rule_a_s2'는 디코딩 수율 연구의 최종 규칙으로, 정밀화된 스폿 정합, 라이브러리 보정 염기 호출, 영역 기반 배정, 품질 가중 투표, 차순위 1-불일치 규칙, 픽셀 대체 방식, 디코이 FDR 보고를 포함합니다. Funk et al. 2022의 플레이트 A에서 100건당 0.065건의 거짓 호출로 핵의 74.4 %를 배정했습니다. 'none'은 아무것도 바꾸지 않습니다. 기본값 'none'. 알파."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_decode_qc",
       "source": "After the decode, train a model of what makes a genotype call a decoy: gradient boosting on a permissive decode of the stored field evidence, held-out fields and decoys, a sequence-only control and chance. Writes model_metrics.csv, shap_mean_abs.csv, permutation_importance.csv and model.json to results/ops_decode_qc. Turns on ops_store_field_cache with the spot features. Default False. Alpha.",
       "source_sha256": "f874c35c5a5e7ff3bb1f3c3250ceb7b446f9d8822b6e4e5220a55190f5abba6c",
@@ -2004,34 +1948,6 @@
       "source": "How calls are held out from the false-call model: 'field' holds out half the sequencing fields of each plate, so no field is both learnt and scored. Decoys are split in halves by sequence as well. Default 'field'. Alpha.",
       "source_sha256": "9736e60dbf99d7d0e5df1d4bbd11d08b633e30b744135844a28c86088fff17d8",
       "translation": "거짓 호출 모델에서 호출을 홀드아웃하는 방식입니다. 'field'는 각 플레이트의 시퀀싱 시야 절반을 홀드아웃하므로 어떤 시야도 학습과 채점에 함께 쓰이지 않습니다. 디코이도 서열에 따라 절반으로 나뉩니다. 기본값 'field'. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_quality_weighted",
-      "source": "Weight each read's vote by its base-call quality, so a clean read outvotes a doubtful one, instead of counting every read once. Default False. Alpha.",
-      "source_sha256": "6a9d2584d3f0b0703fc125471602301d809c7dd03115b56ffbfddbda6aa3912b",
-      "translation": "모든 리드를 한 번씩 세는 대신 각 리드의 투표에 염기 호출 품질로 가중치를 주어, 깨끗한 리드가 의심스러운 리드보다 우세하게 합니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_runner_up",
-      "source": "Let a read one base from a guide count for it when the mismatched cycle was an uncertain call whose second-brightest channel is the guide's base. It recovers reads lost to one weak cycle without accepting arbitrary one-mismatch matches. Default False. Alpha.",
-      "source_sha256": "77f5e71a2e8e1d5a2a2c2d2881409f5ec9bcd4955f567da883662105c4a6bc20",
-      "translation": "가이드와 염기 하나가 다른 리드라도, 불일치 주기가 두 번째로 밝은 채널이 가이드의 염기인 불확실한 호출이었다면 그 가이드로 셉니다. 임의의 1-불일치 일치를 받아들이지 않고도 약한 주기 하나 때문에 잃은 리드를 되찾습니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_skip_unplaced_sites",
-      "source": "Decode only the sites the stitch placed and list the others in the decode and FDR reports. Off stops the well with an error when a site was not placed. Default True. Alpha.",
-      "source_sha256": "215c97cb2123402c41838749aae9ded2266a96dc8d9fd2b2ba95955a3efbbaee",
-      "translation": "스티칭이 배치한 사이트만 디코딩하고 나머지는 디코딩 및 FDR 보고서에 나열합니다. 끄면 배치되지 않은 사이트가 있을 때 웰이 오류와 함께 중단됩니다. 기본값 True. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decoy_library_k",
-      "source": "How many base-shuffled decoy barcodes per guide are matched alongside the library. A nucleus assigned a decoy is dropped and counted, which estimates how many real calls are false; each decode then writes decode_fdr_<well>.json and per-field stats under results/ops_decode. 0 matches no decoys. Default 0. Alpha.",
-      "source_sha256": "142705e2821d1aaf6732e102700f79ebd17707a25690e8a5b1d80979d294a597",
-      "translation": "라이브러리와 함께 일치시키는 가이드당 염기 셔플 디코이 바코드 수입니다. 디코이가 배정된 핵은 제거되어 계수되며, 이로써 실제 호출 중 거짓이 몇 개인지 추정합니다. 그런 다음 각 디코딩은 results/ops_decode 아래에 decode_fdr_<well>.json 과 시야별 통계를 기록합니다. 0이면 디코이를 일치시키지 않습니다. 기본값 0. 알파."
     },
     {
       "table": "setting_tooltips",
@@ -2102,13 +2018,6 @@
       "source": "Also score the references known in 2022 and the gene pairs added since: do the screen's most similar unknown pairs turn up later? Needs the time-split tables in ops_reference_dir. Default False. Alpha.",
       "source_sha256": "85aae8d85ef27dec283bc6c849816a8beefa7550fa2a97f7ef9147745ff08ade",
       "translation": "2022년에 알려진 기준과 그 이후 추가된 유전자 쌍도 채점합니다. 스크린에서 가장 유사한 미지의 쌍이 나중에 밝혀지는지 확인합니다. ops_reference_dir에 시간 분할 테이블이 필요합니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_fdr_scale",
-      "source": "How much likelier a read is to land on a wrong real guide than on a decoy, which turns decoy calls into an FDR. 1.268 was measured for the Funk et al. 2022 library from its guides' neighbour distances; values below 1 count as 1. Default 1.268. Alpha.",
-      "source_sha256": "983c22702ddc267c3575ab53e364dc05c799ecff01762e2ffc339862fac12501",
-      "translation": "리드가 디코이보다 잘못된 실제 가이드에 놓일 가능성이 얼마나 더 큰지로, 디코이 호출을 FDR로 바꿉니다. Funk et al. 2022 라이브러리에 대해 가이드 간 이웃 거리로부터 1.268을 측정했습니다. 1보다 작은 값은 1로 셉니다. 기본값 1.268. 알파."
     },
     {
       "table": "setting_tooltips",
@@ -2280,41 +2189,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_pixel_min_fraction",
-      "source": "The share of a nucleus's matched pixels its guide must hold, with no tie, for the pixel fallback to assign it. Default 0.6. Alpha.",
-      "source_sha256": "a69418eb6afc3711039d1eadc3cb7556f581498ec3c77336c1ef4a722732ce7b",
-      "translation": "픽셀 대체 방식이 핵을 배정하려면, 동률 없이 그 가이드가 차지해야 하는 핵의 일치 픽셀 비율입니다. 기본값 0.6. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_pixel_min_pixels",
-      "source": "How many exactly matching pixels must name a guide before the pixel fallback assigns it. Pixels of one spot repeat its call, so this counts pixels, not reads. Default 2. Alpha.",
-      "source_sha256": "9deaceab2ac37c31c2f2802172b84db51129f679d95a3fcec32a95b8b674a426",
-      "translation": "픽셀 대체 방식이 가이드를 배정하기 전에 그 가이드를 지목해야 하는 정확히 일치하는 픽셀 수입니다. 한 스폿의 픽셀은 같은 호출을 반복하므로 이 값은 리드가 아니라 픽셀을 셉니다. 기본값 2. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_pixel_percentile",
-      "source": "Which pixels the pixel fallback calls: those above this percentile of the field's read score. Lower calls more pixels, slower and noisier. Default 97. Alpha.",
-      "source_sha256": "ae548ba13a971e12c925dbe0bd840e1a4f7d6ef1964ed7604ead1411fc4452c4",
-      "translation": "픽셀 대체 방식이 호출하는 픽셀로, 시야 리드 점수의 이 백분위수보다 높은 픽셀입니다. 낮을수록 더 많은 픽셀을 호출하며 더 느리고 잡음이 많습니다. 기본값 97. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_pixel_quality",
-      "source": "The weakest pixel call, as its worst cycle's margin from 0 to 1, that votes in the pixel fallback. Higher assigns fewer nuclei at a lower decoy rate. Default 0.1. Alpha.",
-      "source_sha256": "e62a244332f8c25c555800c6eab60e567c5bb844a247eb1d09f49e7ee8de7e02",
-      "translation": "픽셀 대체 방식에서 투표하는 가장 약한 픽셀 호출로, 가장 나쁜 주기의 0에서 1 사이 차이로 나타냅니다. 높을수록 더 낮은 디코이 비율로 더 적은 핵을 배정합니다. 기본값 0.1. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_pixel_radius",
-      "source": "How far beyond a nucleus boundary, in pixels, a fallback pixel may lie and still vote for that nucleus. Default 10. Alpha.",
-      "source_sha256": "cc90c0847b7ef8559ec1c280efc9379a6910e11470eb155d91abca021f4bb68c",
-      "translation": "대체 픽셀이 핵 경계 밖으로 몇 픽셀까지 떨어져 있어도 그 핵에 투표할 수 있는지입니다. 기본값 10. 알파."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_profile_active_filter",
       "source": "Keep only active genes: {'hits_table': path, 'fdr': 0.05} keeps the genes with any *_fdr column of the hits table below fdr, plus the controls. Retrieval then scores only genes with a phenotype. Default None. Alpha.",
       "source_sha256": "d0a2e3968b8c85302500a65f3956e8c5e7f32ad047db73c95a30d819b9218b5a",
@@ -2455,13 +2329,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_registration_refine_px",
-      "source": "Under ops_channel_registration 'spots_refine', a believed spot registration this many pixels or fewer from the background answer replaces it, so a small residual shift is corrected instead of kept. Larger lets the spots move more channels. Default 3. Alpha.",
-      "source_sha256": "f57b542b738164cecceece809ec16e19d2c3f47e0c5b7575b23ec808bbf0e2b8",
-      "translation": "ops_channel_registration 'spots_refine'에서, 배경 결과로부터 이 픽셀 수 이하로 떨어진 신뢰할 만한 스폿 정합이 배경 결과를 대체하므로, 작은 잔여 이동이 남지 않고 보정됩니다. 클수록 스폿이 더 많은 채널을 옮길 수 있습니다. 기본값 3. 알파."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_retry_missing",
       "source": "Try again the phenotype fields an earlier run found missing or unreadable in the source (recorded in ops_missing_fields_<well>.parquet). Off, a resumed run skips them, so a well with fields absent from a public download still finishes. Default False. Alpha.",
       "source_sha256": "965a99d26909677fbd99b5441f436030ed42c830fcbb000f28089090e2d074ce",
@@ -2469,52 +2336,10 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_runner_up_margin",
-      "source": "The largest base-call margin, 0 to 1, a mismatched cycle may carry for the runner-up rule to accept it. Lower accepts fewer corrected reads. Default 0.1. Alpha.",
-      "source_sha256": "283a4a3651dc1cee53c069d59974b4e0921582cbfe7ae560437febfa4781fc9c",
-      "translation": "차순위 규칙이 받아들이려면 불일치 주기가 가질 수 있는 최대 염기 호출 차이(0에서 1)입니다. 낮을수록 보정된 리드를 덜 받아들입니다. 기본값 0.1. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_spot_min_peak",
-      "source": "How far a spot registration's peak must stand above the mean of its correlation surface to be believed, under 'spots' and 'spots_refine'. Higher trusts the spots on fewer channels; a field with no reads peaks at a few. Default 20. Alpha.",
-      "source_sha256": "3034d48972c6563e78d0b64dde2c8e3220788fef61b9c3633cb830e5719d347e",
-      "translation": "'spots'와 'spots_refine'에서, 스폿 정합의 피크가 신뢰받으려면 상관 표면 평균보다 얼마나 높아야 하는지입니다. 높을수록 더 적은 채널에서 스폿을 신뢰합니다. 리드가 없는 시야는 몇 정도에서 피크가 납니다. 기본값 20. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_spot_overrule_share",
-      "source": "The spots overrule a background registration only where the spot surface at the background's shift is below this share of the spot peak. Lower overrules less often. Default 0.5. Alpha.",
-      "source_sha256": "4ec51fd35a6c75eb66c0b06ffa435273321c548f22d8925cc01796976723b6f1",
-      "translation": "배경 이동 위치의 스폿 표면이 스폿 피크의 이 비율보다 낮은 곳에서만 스폿이 배경 정합을 뒤집습니다. 낮을수록 덜 자주 뒤집습니다. 기본값 0.5. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_store_field_cache",
-      "source": "Under the new decode rules, write each field's decode evidence -- every spot, its intensities, its two nearest nuclei and the fallback pixels -- to <dst_root>/<well>/decode_cache as one npz per site. The decode QC reads it. A field takes about 13 MB. Default False. Alpha.",
-      "source_sha256": "b7507677dfa517043fb382b8ed0341bd4ac86faf105efb527f9215f0db606d29",
-      "translation": "새 디코딩 규칙에서 각 시야의 디코딩 증거(모든 스폿, 그 강도, 가장 가까운 두 핵, 대체 픽셀)를 사이트마다 npz 하나로 <dst_root>/<well>/decode_cache에 기록합니다. 디코딩 QC가 이를 읽습니다. 시야 하나는 약 13 MB를 차지합니다. 기본값 False. 알파."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_tables_parquet_threshold",
       "source": "Above this many owned cells in a plate, the ph_tables phase writes the wide feature columns to one Parquet file per table and well, and measurements.db keeps only the key columns; a SQLite table of tens of millions of wide rows is slow to write and to join. Default 5,000,000. Alpha.",
       "source_sha256": "b010ce5c65ec448b5ec499def8d577974bbf1d5a0a5d07b30a685fc67b2b503c",
       "translation": "한 플레이트에서 소유된 세포가 이 수를 넘으면 ph_tables 단계는 넓은 특징 열을 테이블과 웰마다 Parquet 파일 하나에 기록하고, measurements.db 에는 키 열만 남깁니다. 넓은 행이 수천만 개인 SQLite 테이블은 쓰기와 결합이 느립니다. 기본값 5,000,000. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_tie",
-      "source": "How close, in pixels, a read's two nearest nucleus boundaries may lie before the read is called ambiguous, under the new decode rules. Ambiguous reads are dropped unless ops_assign_by_cell_territory is on. Default 1. Alpha.",
-      "source_sha256": "1479e53ae801a631e1c59ca8a000b04c5927d6cd2d3d04ba4d0c6a81d2d851a8",
-      "translation": "새 디코딩 규칙에서, 리드의 가장 가까운 두 핵 경계가 몇 픽셀 이내로 가까우면 리드를 모호하다고 판정하는지입니다. 모호한 리드는 ops_assign_by_cell_territory가 켜져 있지 않으면 제거됩니다. 기본값 1. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_vote_weight_floor",
-      "source": "Added to every quality weight, so a read of quality 0 still carries a small vote. Higher moves the weighting toward a plain count. Default 0.05. Alpha.",
-      "source_sha256": "75d4bda083b57c74d1a982a4df6baa7b2bc6416dc049696d17289f83b0a1282d",
-      "translation": "모든 품질 가중치에 더해지는 값으로, 품질이 0인 리드도 작은 투표권을 갖게 합니다. 높을수록 가중치가 단순 계수에 가까워집니다. 기본값 0.05. 알파."
     },
     {
       "table": "setting_tooltips",
@@ -3004,6 +2829,206 @@
       "source_sha256": "7f42fa6f863cb52d0c151d82fbdf6ad3ac878140d6d1d556aea1447653898a56",
       "translation": "세포가 유전자 프로파일이 되는 방식입니다. lof(1이면 강도 이상치 1%를 제거), impute('median' 또는 'knn'), pca('c0'은 웰별 표준화, 또는 'brieflow'), agg('guide' = 가이드 중앙값의 중앙값, 또는 'gene' = 모든 세포의 중앙값), nt('pseudo' = 유사 유전자당 대조군 가이드 네 개, 또는 'barcode')입니다. 비워 두면 lof 0, median, c0, guide, pseudo입니다. 기본값 None. 알파.",
       "retired": "2026-11-13: the OPS stage 3 Hybrid profile work (claude-hybrid-profile-proof-1113 branch: the Brieflow TVN rotation, the gene_trim aggregation, cells_to_profiles, hybrid_profile_rows and the Hybrid space of the consensus phases) changed or moved this tooltip. The replacement exact-source record is in 2026-11-13-hybrid-profile-stage3-ai-review.json; the original source and translation are kept here as evidence."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_assign_by_cell_territory",
+      "source": "Give a read that lies almost equally close to two nuclei to the nearer one instead of to neither. More nuclei get reads; a read between two touching nuclei can land on the wrong one. Default False. Alpha.",
+      "source_sha256": "dd011e310a88250e6976f18e7dcf95298f76b19c4a7c2019e6cb45f13f864f99",
+      "translation": "두 핵에 거의 같은 거리로 놓인 리드를 어느 쪽에도 주지 않는 대신 더 가까운 핵에 줍니다. 더 많은 핵이 리드를 얻지만, 맞닿은 두 핵 사이의 리드는 잘못된 핵에 배정될 수 있습니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_min_labels",
+      "source": "The fewest labelled reads each base needs in a cycle for the library calibration to fit that cycle; a cycle with fewer keeps the plain unmixing. Default 30. Alpha.",
+      "source_sha256": "df79f6324ec1d7506249f1bf7ee1dc5101f8ddf8abe70a5d62d05343bde9251b",
+      "translation": "라이브러리 보정이 한 주기를 적합하려면 그 주기에서 각 염기에 필요한 최소 레이블 리드 수입니다. 이보다 적은 주기는 일반 언믹싱을 유지합니다. 기본값 30. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_passes",
+      "source": "How many times the library calibration re-labels the reads from its own last calls before the final call. More passes settle the axes further and cost time. Default 2. Alpha.",
+      "source_sha256": "a0bb06e171372de45a7358c5f387e09ebbe1b34e6a8b29ce5d57d039c6c97f48",
+      "translation": "라이브러리 보정이 최종 호출 전에 자신의 직전 호출로 리드에 레이블을 다시 붙이는 횟수입니다. 반복이 많을수록 축이 더 안정되지만 시간이 더 걸립니다. 기본값 2. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_channel_registration",
+      "source": "How each base channel is placed onto the reference cycle. 'spots' registers the channel on its reads, with the cell background filtered away, wherever that disagrees with the background registration by more than 2 pixels; 'background' trusts the background alone, the earlier behaviour, which on the Funk et al. 2022 plates left one cycle of weak wells unshifted although it had drifted 10 to 25 pixels. 'spots_refine' (alpha) also takes a believed spot answer within ops_registration_refine_px of the background answer, correcting small residual shifts. Default 'spots'.",
+      "source_sha256": "f9f9eed7e13cd798dec0e8dd707dc2ca357b306c15c3b950e4ec301fbabb794a",
+      "translation": "각 염기 채널을 기준 주기에 배치하는 방식입니다. 'spots'는 배경 정합과 2픽셀보다 크게 어긋나는 곳마다 세포 배경을 걸러 낸 뒤 채널을 그 리드에 정합합니다. 'background'는 이전 동작대로 배경만 신뢰하는데, Funk et al. 2022 플레이트에서는 약한 웰의 한 주기가 10에서 25픽셀 표류했는데도 이동 없이 남겼습니다. 'spots_refine'(alpha)은 배경 결과에서 ops_registration_refine_px 이내에 있는 신뢰할 만한 스폿 결과도 받아들여 작은 잔여 이동을 보정합니다. 기본값 'spots'.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_impute_missing_cycles",
+      "source": "Let a base from a cycle that could not be measured, written N, match any base of a guide, under the new decode rules. Off leaves every read with an N unmatched, which costs the reads of fields that lost a cycle. Default True. Alpha.",
+      "source_sha256": "fa87489ad4ca1edf999f12effcf52f4879b842dc31012bb1427e268069f34793",
+      "translation": "새 디코딩 규칙에서, 측정할 수 없어 N으로 기록된 주기의 염기가 가이드의 어떤 염기와도 일치하게 합니다. 끄면 N이 있는 리드는 모두 일치하지 않으므로, 한 주기를 잃은 시야의 리드를 잃게 됩니다. 기본값 True. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_library_calibration",
+      "source": "Learn each cycle's four base axes from the reads the guide library names on their other cycles, then unmix every read of that cycle with them. It corrects channel drift a single unmixing cannot. Decoys are never used to learn the axes, so the decoy FDR stays an independent check. Default False. Alpha.",
+      "source_sha256": "eaf92339ccb03f06b6fcb9a29211b1387c005b0a304d202647716bb5fb8421e8",
+      "translation": "가이드 라이브러리가 다른 주기에서 식별하는 리드로부터 각 주기의 네 염기 축을 학습한 다음, 그 축으로 해당 주기의 모든 리드를 언믹싱합니다. 단일 언믹싱으로는 바로잡을 수 없는 채널 표류를 보정합니다. 축 학습에는 디코이를 절대 쓰지 않으므로 디코이 FDR은 독립적인 검사로 남습니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_pixel_fallback",
+      "source": "For a nucleus no read assigned, call the brightest pixels near it like reads and assign the guide at least two of them name exactly. It recovers nuclei whose spots fell below the read threshold. Default False. Alpha.",
+      "source_sha256": "ae1ebe06b2b59791f45777d861e0f1896ac65d6431a41933d203249207b44d61",
+      "translation": "리드가 배정되지 않은 핵에 대해 근처의 가장 밝은 픽셀을 리드처럼 호출하고, 그중 적어도 두 개가 정확히 지목하는 가이드를 배정합니다. 스폿이 리드 임계값 아래로 떨어진 핵을 되찾습니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_preset",
+      "source": "A named set of decode settings applied to every decode key this settings file leaves at its default. 'rule_a_s2' is the final rule of the decode-yield study: refined spot registration, library-calibrated base calls, territory attribution, quality-weighted votes, the runner-up one-mismatch rule, the pixel fallback and a decoy FDR report. On plate A of Funk et al. 2022 it assigned 74.4 % of nuclei at 0.065 false calls per 100. 'none' changes nothing. Default 'none'. Alpha.",
+      "source_sha256": "fe352887bac202cb1fc19659adfee3eb6cce4cb7168b30beb69c887296d2b6ee",
+      "translation": "이 설정 파일이 기본값으로 남겨 둔 모든 디코딩 키에 적용되는 이름 붙은 디코딩 설정 묶음입니다. 'rule_a_s2'는 디코딩 수율 연구의 최종 규칙으로, 정밀화된 스폿 정합, 라이브러리 보정 염기 호출, 영역 기반 배정, 품질 가중 투표, 차순위 1-불일치 규칙, 픽셀 대체 방식, 디코이 FDR 보고를 포함합니다. Funk et al. 2022의 플레이트 A에서 100건당 0.065건의 거짓 호출로 핵의 74.4 %를 배정했습니다. 'none'은 아무것도 바꾸지 않습니다. 기본값 'none'. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_quality_weighted",
+      "source": "Weight each read's vote by its base-call quality, so a clean read outvotes a doubtful one, instead of counting every read once. Default False. Alpha.",
+      "source_sha256": "6a9d2584d3f0b0703fc125471602301d809c7dd03115b56ffbfddbda6aa3912b",
+      "translation": "모든 리드를 한 번씩 세는 대신 각 리드의 투표에 염기 호출 품질로 가중치를 주어, 깨끗한 리드가 의심스러운 리드보다 우세하게 합니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_runner_up",
+      "source": "Let a read one base from a guide count for it when the mismatched cycle was an uncertain call whose second-brightest channel is the guide's base. It recovers reads lost to one weak cycle without accepting arbitrary one-mismatch matches. Default False. Alpha.",
+      "source_sha256": "77f5e71a2e8e1d5a2a2c2d2881409f5ec9bcd4955f567da883662105c4a6bc20",
+      "translation": "가이드와 염기 하나가 다른 리드라도, 불일치 주기가 두 번째로 밝은 채널이 가이드의 염기인 불확실한 호출이었다면 그 가이드로 셉니다. 임의의 1-불일치 일치를 받아들이지 않고도 약한 주기 하나 때문에 잃은 리드를 되찾습니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_skip_unplaced_sites",
+      "source": "Decode only the sites the stitch placed and list the others in the decode and FDR reports. Off stops the well with an error when a site was not placed. Default True. Alpha.",
+      "source_sha256": "215c97cb2123402c41838749aae9ded2266a96dc8d9fd2b2ba95955a3efbbaee",
+      "translation": "스티칭이 배치한 사이트만 디코딩하고 나머지는 디코딩 및 FDR 보고서에 나열합니다. 끄면 배치되지 않은 사이트가 있을 때 웰이 오류와 함께 중단됩니다. 기본값 True. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decoy_library_k",
+      "source": "How many base-shuffled decoy barcodes per guide are matched alongside the library. A nucleus assigned a decoy is dropped and counted, which estimates how many real calls are false; each decode then writes decode_fdr_<well>.json and per-field stats under results/ops_decode. 0 matches no decoys. Default 0. Alpha.",
+      "source_sha256": "142705e2821d1aaf6732e102700f79ebd17707a25690e8a5b1d80979d294a597",
+      "translation": "라이브러리와 함께 일치시키는 가이드당 염기 셔플 디코이 바코드 수입니다. 디코이가 배정된 핵은 제거되어 계수되며, 이로써 실제 호출 중 거짓이 몇 개인지 추정합니다. 그런 다음 각 디코딩은 results/ops_decode 아래에 decode_fdr_<well>.json 과 시야별 통계를 기록합니다. 0이면 디코이를 일치시키지 않습니다. 기본값 0. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_fdr_scale",
+      "source": "How much likelier a read is to land on a wrong real guide than on a decoy, which turns decoy calls into an FDR. 1.268 was measured for the Funk et al. 2022 library from its guides' neighbour distances; values below 1 count as 1. Default 1.268. Alpha.",
+      "source_sha256": "983c22702ddc267c3575ab53e364dc05c799ecff01762e2ffc339862fac12501",
+      "translation": "리드가 디코이보다 잘못된 실제 가이드에 놓일 가능성이 얼마나 더 큰지로, 디코이 호출을 FDR로 바꿉니다. Funk et al. 2022 라이브러리에 대해 가이드 간 이웃 거리로부터 1.268을 측정했습니다. 1보다 작은 값은 1로 셉니다. 기본값 1.268. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_fraction",
+      "source": "The share of a nucleus's matched pixels its guide must hold, with no tie, for the pixel fallback to assign it. Default 0.6. Alpha.",
+      "source_sha256": "a69418eb6afc3711039d1eadc3cb7556f581498ec3c77336c1ef4a722732ce7b",
+      "translation": "픽셀 대체 방식이 핵을 배정하려면, 동률 없이 그 가이드가 차지해야 하는 핵의 일치 픽셀 비율입니다. 기본값 0.6. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_pixels",
+      "source": "How many exactly matching pixels must name a guide before the pixel fallback assigns it. Pixels of one spot repeat its call, so this counts pixels, not reads. Default 2. Alpha.",
+      "source_sha256": "9deaceab2ac37c31c2f2802172b84db51129f679d95a3fcec32a95b8b674a426",
+      "translation": "픽셀 대체 방식이 가이드를 배정하기 전에 그 가이드를 지목해야 하는 정확히 일치하는 픽셀 수입니다. 한 스폿의 픽셀은 같은 호출을 반복하므로 이 값은 리드가 아니라 픽셀을 셉니다. 기본값 2. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_percentile",
+      "source": "Which pixels the pixel fallback calls: those above this percentile of the field's read score. Lower calls more pixels, slower and noisier. Default 97. Alpha.",
+      "source_sha256": "ae548ba13a971e12c925dbe0bd840e1a4f7d6ef1964ed7604ead1411fc4452c4",
+      "translation": "픽셀 대체 방식이 호출하는 픽셀로, 시야 리드 점수의 이 백분위수보다 높은 픽셀입니다. 낮을수록 더 많은 픽셀을 호출하며 더 느리고 잡음이 많습니다. 기본값 97. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_quality",
+      "source": "The weakest pixel call, as its worst cycle's margin from 0 to 1, that votes in the pixel fallback. Higher assigns fewer nuclei at a lower decoy rate. Default 0.1. Alpha.",
+      "source_sha256": "e62a244332f8c25c555800c6eab60e567c5bb844a247eb1d09f49e7ee8de7e02",
+      "translation": "픽셀 대체 방식에서 투표하는 가장 약한 픽셀 호출로, 가장 나쁜 주기의 0에서 1 사이 차이로 나타냅니다. 높을수록 더 낮은 디코이 비율로 더 적은 핵을 배정합니다. 기본값 0.1. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_radius",
+      "source": "How far beyond a nucleus boundary, in pixels, a fallback pixel may lie and still vote for that nucleus. Default 10. Alpha.",
+      "source_sha256": "cc90c0847b7ef8559ec1c280efc9379a6910e11470eb155d91abca021f4bb68c",
+      "translation": "대체 픽셀이 핵 경계 밖으로 몇 픽셀까지 떨어져 있어도 그 핵에 투표할 수 있는지입니다. 기본값 10. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_registration_refine_px",
+      "source": "Under ops_channel_registration 'spots_refine', a believed spot registration this many pixels or fewer from the background answer replaces it, so a small residual shift is corrected instead of kept. Larger lets the spots move more channels. Default 3. Alpha.",
+      "source_sha256": "f57b542b738164cecceece809ec16e19d2c3f47e0c5b7575b23ec808bbf0e2b8",
+      "translation": "ops_channel_registration 'spots_refine'에서, 배경 결과로부터 이 픽셀 수 이하로 떨어진 신뢰할 만한 스폿 정합이 배경 결과를 대체하므로, 작은 잔여 이동이 남지 않고 보정됩니다. 클수록 스폿이 더 많은 채널을 옮길 수 있습니다. 기본값 3. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_runner_up_margin",
+      "source": "The largest base-call margin, 0 to 1, a mismatched cycle may carry for the runner-up rule to accept it. Lower accepts fewer corrected reads. Default 0.1. Alpha.",
+      "source_sha256": "283a4a3651dc1cee53c069d59974b4e0921582cbfe7ae560437febfa4781fc9c",
+      "translation": "차순위 규칙이 받아들이려면 불일치 주기가 가질 수 있는 최대 염기 호출 차이(0에서 1)입니다. 낮을수록 보정된 리드를 덜 받아들입니다. 기본값 0.1. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_min_peak",
+      "source": "How far a spot registration's peak must stand above the mean of its correlation surface to be believed, under 'spots' and 'spots_refine'. Higher trusts the spots on fewer channels; a field with no reads peaks at a few. Default 20. Alpha.",
+      "source_sha256": "3034d48972c6563e78d0b64dde2c8e3220788fef61b9c3633cb830e5719d347e",
+      "translation": "'spots'와 'spots_refine'에서, 스폿 정합의 피크가 신뢰받으려면 상관 표면 평균보다 얼마나 높아야 하는지입니다. 높을수록 더 적은 채널에서 스폿을 신뢰합니다. 리드가 없는 시야는 몇 정도에서 피크가 납니다. 기본값 20. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_overrule_share",
+      "source": "The spots overrule a background registration only where the spot surface at the background's shift is below this share of the spot peak. Lower overrules less often. Default 0.5. Alpha.",
+      "source_sha256": "4ec51fd35a6c75eb66c0b06ffa435273321c548f22d8925cc01796976723b6f1",
+      "translation": "배경 이동 위치의 스폿 표면이 스폿 피크의 이 비율보다 낮은 곳에서만 스폿이 배경 정합을 뒤집습니다. 낮을수록 덜 자주 뒤집습니다. 기본값 0.5. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_store_field_cache",
+      "source": "Under the new decode rules, write each field's decode evidence -- every spot, its intensities, its two nearest nuclei and the fallback pixels -- to <dst_root>/<well>/decode_cache as one npz per site. The decode QC reads it. A field takes about 13 MB. Default False. Alpha.",
+      "source_sha256": "b7507677dfa517043fb382b8ed0341bd4ac86faf105efb527f9215f0db606d29",
+      "translation": "새 디코딩 규칙에서 각 시야의 디코딩 증거(모든 스폿, 그 강도, 가장 가까운 두 핵, 대체 픽셀)를 사이트마다 npz 하나로 <dst_root>/<well>/decode_cache에 기록합니다. 디코딩 QC가 이를 읽습니다. 시야 하나는 약 13 MB를 차지합니다. 기본값 False. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_tie",
+      "source": "How close, in pixels, a read's two nearest nucleus boundaries may lie before the read is called ambiguous, under the new decode rules. Ambiguous reads are dropped unless ops_assign_by_cell_territory is on. Default 1. Alpha.",
+      "source_sha256": "1479e53ae801a631e1c59ca8a000b04c5927d6cd2d3d04ba4d0c6a81d2d851a8",
+      "translation": "새 디코딩 규칙에서, 리드의 가장 가까운 두 핵 경계가 몇 픽셀 이내로 가까우면 리드를 모호하다고 판정하는지입니다. 모호한 리드는 ops_assign_by_cell_territory가 켜져 있지 않으면 제거됩니다. 기본값 1. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_vote_weight_floor",
+      "source": "Added to every quality weight, so a read of quality 0 still carries a small vote. Higher moves the weighting toward a plain count. Default 0.05. Alpha.",
+      "source_sha256": "75d4bda083b57c74d1a982a4df6baa7b2bc6416dc049696d17289f83b0a1282d",
+      "translation": "모든 품질 가중치에 더해지는 값으로, 품질이 0인 리드도 작은 투표권을 갖게 합니다. 높을수록 가중치가 단순 계수에 가까워집니다. 기본값 0.05. 알파.",
+      "retired": true
     }
   ]
 }

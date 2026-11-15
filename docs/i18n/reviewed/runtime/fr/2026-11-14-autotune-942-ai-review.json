@@ -11,13 +11,6 @@
       "translation": "Décodage OPS : grille automatique des spots"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_decode_auto_spot_grid",
-      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
-      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
-      "translation": "Les seuils de lecture (ops_read_threshold, l’intensité de spot qu’exige une lecture) que les seuils automatiques essaient avec les seuils d’appel, de sorte que la détection des spots est réglée avec l’appel. Chaque champ est lu une seule fois jusqu’à la valeur la plus basse. Vide conserve ops_read_threshold tel que saisi, comme les réglages enregistrés avant l’item 942. Valeur par défaut : 150, 200, 250, 315 et 400. Alpha."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_decode_auto_objective",
       "source": "Ops decode auto objective",
@@ -156,13 +149,6 @@
       "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
       "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
       "translation": "Les valeurs qu’essaie le réglage 'per_well_decoy', sous la forme {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]} ; un seuil omis conserve sa valeur saisie. Vide utilise les seuils de lecture 40, 60, 80, 100, 130 et 160, les qualités de lecture 0, 0.05, 0.1, 0.15 et 0.25, et 1 ou 0 mésappariement. Valeur par défaut : vide. Alpha."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
-      "translation": "Le plus grand nombre d’appels faux estimé par les leurres pour 100 appels réels que les seuils automatiques peuvent accepter (0.1 signifie 0.1 %). Utilisé avec ops_decode_threshold_mode 'auto' et l’objectif 'recall_at_fdr'. Une position d’échantillon où aucun réglage ne l’atteint reçoit le réglage choisi par ops_decode_auto_unreachable et auto_met False dans son rapport. Valeur par défaut : 0.1. Alpha."
     }
   ],
   "retired_records": [
@@ -173,6 +159,22 @@
       "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
       "translation": "La façon dont les seuils du décodage de la règle (a) sont fixés. 'manual' utilise les valeurs que vous saisissez. 'auto' les choisit position d’échantillon par position d’échantillon à partir des appels de leurres de la position d’échantillon, détection des spots et appel ensemble : la moitié des champs de la position d’échantillon essaie chaque combinaison des seuils de lecture de ops_decode_auto_spot_grid (ops_read_threshold) et des seuils d’appel de ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), la combinaison choisie par ops_decode_auto_objective est utilisée pour toute la position d’échantillon, et l’autre moitié rapporte son FDR. Auto nécessite ops_decode_preset rule_a_s2 et des leurres (ops_decoy_library_k supérieur à 0) ; les choix sont écrits dans results/ops_decode/decode_thresholds_<plate>.csv et la courbe génotypé contre FDR de chaque position d’échantillon dans decode_tuning_curve_<well>.csv et .png. Valeur par défaut : 'manual'. Alpha.",
       "retired": "2026-11-14: landing train 5 merged item 942's rewrite of this tooltip with item 947's shortening under the 600-character ceiling, which changed this English source; its successor is reviewed in 2026-11-14-train5-1114-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "Les seuils de lecture (ops_read_threshold, l’intensité de spot qu’exige une lecture) que les seuils automatiques essaient avec les seuils d’appel, de sorte que la détection des spots est réglée avec l’appel. Chaque champ est lu une seule fois jusqu’à la valeur la plus basse. Vide conserve ops_read_threshold tel que saisi, comme les réglages enregistrés avant l’item 942. Valeur par défaut : 150, 200, 250, 315 et 400. Alpha.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "Le plus grand nombre d’appels faux estimé par les leurres pour 100 appels réels que les seuils automatiques peuvent accepter (0.1 signifie 0.1 %). Utilisé avec ops_decode_threshold_mode 'auto' et l’objectif 'recall_at_fdr'. Une position d’échantillon où aucun réglage ne l’atteint reçoit le réglage choisi par ops_decode_auto_unreachable et auto_met False dans son rapport. Valeur par défaut : 0.1. Alpha.",
+      "retired": true
     }
   ]
 }

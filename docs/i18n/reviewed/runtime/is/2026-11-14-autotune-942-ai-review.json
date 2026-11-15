@@ -11,13 +11,6 @@
       "translation": "OPS-afkóðun: sjálfvirk blettarás"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_decode_auto_spot_grid",
-      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
-      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
-      "translation": "Lestrarþröskuldarnir (ops_read_threshold, blettstyrkurinn sem lestur þarf) sem sjálfvirku þröskuldarnir reyna ásamt kallþröskuldunum, þannig að blettagreining er stillt saman með köllum. Hvert sjónsvið er lesið einu sinni niður að lægsta gildi. Tómt heldur ops_read_threshold eins og það var slegið inn, eins og stillingar vistaðar fyrir lið 942. Sjálfgefið 150, 200, 250, 315 og 400. Alfa."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_decode_auto_objective",
       "source": "Ops decode auto objective",
@@ -156,13 +149,6 @@
       "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
       "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
       "translation": "Gildin sem 'per_well_decoy'-stillingin reynir, sem {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; þröskuldur sem er sleppt heldur innslegnu gildi sínu. Tómt notar lestrarþröskulda 40, 60, 80, 100, 130 og 160, lestrargæði 0, 0.05, 0.1, 0.15 og 0.25, og 1 eða 0 misræmi. Sjálfgefið tómt. Alfa."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
-      "translation": "Hæsti fjöldi rangra kalla, metinn með tálbeitum, á hver 100 raunveruleg köll sem sjálfvirku þröskuldarnir mega samþykkja (0.1 þýðir 0.1 %). Notað með ops_decode_threshold_mode 'auto' og markmiðinu 'recall_at_fdr'. Sýnastöð þar sem engin stilling nær því fær stillinguna sem ops_decode_auto_unreachable velur og auto_met False í skýrslu sinni. Sjálfgefið 0.1. Alfa."
     }
   ],
   "retired_records": [
@@ -173,6 +159,22 @@
       "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
       "translation": "Hvernig þröskuldar afkóðunarinnar samkvæmt reglu (a) eru ákveðnir. 'manual' notar gildin sem þú slærð inn. 'auto' velur þau sýnastöð fyrir sýnastöð út frá tálbeitukölum sýnastöðvarinnar, blettagreining og köll saman: helmingur sjónsviða sýnastöðvarinnar reynir hverja samsetningu lestrarþröskulda í ops_decode_auto_spot_grid (ops_read_threshold) og kallþröskulda í ops_decode_auto_grid (ops_single_read_quality, ops_pixel_quality), samsetningin sem ops_decode_auto_objective velur er notuð fyrir alla sýnastöðina, og hinn helmingurinn skýrir frá FDR sínu. Auto krefst ops_decode_preset rule_a_s2 og tálbeita (ops_decoy_library_k yfir 0); valin eru skrifuð í results/ops_decode/decode_thresholds_<plate>.csv og ferill genagreint á móti FDR hverrar sýnastöðvar í decode_tuning_curve_<well>.csv og .png. Sjálfgefið 'manual'. Alfa.",
       "retired": "2026-11-14: landing train 5 merged item 942's rewrite of this tooltip with item 947's shortening under the 600-character ceiling, which changed this English source; its successor is reviewed in 2026-11-14-train5-1114-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "Lestrarþröskuldarnir (ops_read_threshold, blettstyrkurinn sem lestur þarf) sem sjálfvirku þröskuldarnir reyna ásamt kallþröskuldunum, þannig að blettagreining er stillt saman með köllum. Hvert sjónsvið er lesið einu sinni niður að lægsta gildi. Tómt heldur ops_read_threshold eins og það var slegið inn, eins og stillingar vistaðar fyrir lið 942. Sjálfgefið 150, 200, 250, 315 og 400. Alfa.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "Hæsti fjöldi rangra kalla, metinn með tálbeitum, á hver 100 raunveruleg köll sem sjálfvirku þröskuldarnir mega samþykkja (0.1 þýðir 0.1 %). Notað með ops_decode_threshold_mode 'auto' og markmiðinu 'recall_at_fdr'. Sýnastöð þar sem engin stilling nær því fær stillinguna sem ops_decode_auto_unreachable velur og auto_met False í skýrslu sinni. Sjálfgefið 0.1. Alfa.",
+      "retired": true
     }
   ]
 }

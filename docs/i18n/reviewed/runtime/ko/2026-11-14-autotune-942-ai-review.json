@@ -11,13 +11,6 @@
       "translation": "OPS 디코딩 자동 스팟 그리드"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_decode_auto_spot_grid",
-      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
-      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
-      "translation": "자동 임계값이 호출 임계값과 함께 시도하는 리드 임계값(ops_read_threshold, 리드에 필요한 스팟 강도)으로, 스팟 검출이 호출과 함께 튜닝됩니다. 각 시야는 가장 낮은 값까지 한 번만 읽습니다. 비워 두면 ops_read_threshold를 입력한 그대로 유지하며, 항목 942 이전에 저장된 설정도 그렇습니다. 기본값 150, 200, 250, 315, 400. 알파."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_decode_auto_objective",
       "source": "Ops decode auto objective",
@@ -156,13 +149,6 @@
       "source": "The values 'per_well_decoy' tuning tries, as {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]}; a threshold left out keeps its entered value. Empty uses read thresholds 40, 60, 80, 100, 130 and 160, read qualities 0, 0.05, 0.1, 0.15 and 0.25, and 1 or 0 mismatches. Default empty. Alpha.",
       "source_sha256": "9312e2a185c1e7b353621e61cbb311ded7226eaa0d851039d8500e5687677eb8",
       "translation": "'per_well_decoy' 튜닝이 시도하는 값으로, {'ops_read_threshold': [...], 'ops_prefix_min_read_quality': [...], 'ops_prefix_max_distance': [...]} 형태입니다. 생략한 임계값은 입력한 값을 유지합니다. 비워 두면 리드 임계값 40, 60, 80, 100, 130, 160, 리드 품질 0, 0.05, 0.1, 0.15, 0.25, 그리고 불일치 1개 또는 0개를 사용합니다. 기본값 비어 있음. 알파."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_decode_fdr_max",
-      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
-      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
-      "translation": "자동 임계값이 받아들일 수 있는, 실제 호출 100개당 디코이로 추정한 거짓 호출의 최대 수(0.1은 0.1 %를 뜻함). ops_decode_threshold_mode 'auto' 및 목표 'recall_at_fdr'와 함께 사용합니다. 이를 만족하는 설정이 없는 샘플 위치는 ops_decode_auto_unreachable이 정한 설정을 받고, 보고서에는 auto_met False가 기록됩니다. 기본값 0.1. 알파."
     }
   ],
   "retired_records": [
@@ -173,6 +159,22 @@
       "source_sha256": "82fe8baf1cb1add1f016227bc7629e08ed1d84ea863faec36445e4a6a5aa6aec",
       "translation": "규칙 (a) 디코딩의 임계값을 정하는 방식. 'manual'은 입력한 값을 사용합니다. 'auto'는 샘플 위치의 디코이 호출로 샘플 위치별로 스팟 검출과 호출을 함께 선택합니다: 샘플 위치의 시야 절반이 ops_decode_auto_spot_grid(ops_read_threshold)의 리드 임계값과 ops_decode_auto_grid(ops_single_read_quality, ops_pixel_quality)의 호출 임계값의 모든 조합을 시도하고, ops_decode_auto_objective가 선택한 조합이 샘플 위치 전체에 사용되며, 나머지 절반이 그 FDR을 보고합니다. 자동 모드에는 ops_decode_preset rule_a_s2와 디코이(ops_decoy_library_k가 0보다 큼)가 필요하며, 선택 결과는 results/ops_decode/decode_thresholds_<plate>.csv에, 각 샘플 위치의 유전자형 확인 대비 FDR 곡선은 decode_tuning_curve_<well>.csv와 .png에 기록됩니다. 기본값 'manual'. 알파.",
       "retired": "2026-11-14: landing train 5 merged item 942's rewrite of this tooltip with item 947's shortening under the 600-character ceiling, which changed this English source; its successor is reviewed in 2026-11-14-train5-1114-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered, as settings saved before item 942 do. Default 150, 200, 250, 315 and 400. Alpha.",
+      "source_sha256": "a4d3748ee805c4d91d6a5476a7b45f908337db79741b45cbd7f9b512d0671bf3",
+      "translation": "자동 임계값이 호출 임계값과 함께 시도하는 리드 임계값(ops_read_threshold, 리드에 필요한 스팟 강도)으로, 스팟 검출이 호출과 함께 튜닝됩니다. 각 시야는 가장 낮은 값까지 한 번만 읽습니다. 비워 두면 ops_read_threshold를 입력한 그대로 유지하며, 항목 942 이전에 저장된 설정도 그렇습니다. 기본값 150, 200, 250, 315, 400. 알파.",
+      "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1. Alpha.",
+      "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
+      "translation": "자동 임계값이 받아들일 수 있는, 실제 호출 100개당 디코이로 추정한 거짓 호출의 최대 수(0.1은 0.1 %를 뜻함). ops_decode_threshold_mode 'auto' 및 목표 'recall_at_fdr'와 함께 사용합니다. 이를 만족하는 설정이 없는 샘플 위치는 ops_decode_auto_unreachable이 정한 설정을 받고, 보고서에는 auto_met False가 기록됩니다. 기본값 0.1. 알파.",
+      "retired": true
     }
   ]
 }

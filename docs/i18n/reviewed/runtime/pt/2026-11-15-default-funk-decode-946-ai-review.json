@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "language": "pt",
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-15 against the exact English source of item 946 on the claude-946-default-decode branch: the tooltips of the 28 settings of items 873 and 939 that left alpha, the rewritten tooltips of ops_decode_preset, ops_decode_threshold_mode and ops_decode_auto_spot_grid, and ops_channel_registration without the alpha mark on 'spots_refine'. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_preset",
+      "source": "A named set of decode settings applied to every decode key this settings file leaves at its default. 'rule_a_s2' is the final rule of the decode-yield study: refined spot registration, library-calibrated base calls, territory attribution, quality-weighted votes, the runner-up one-mismatch rule, the pixel fallback and a decoy FDR report. On plate A of Funk et al. 2022 it assigned 74.4 % of nuclei at 0.065 false calls per 100. 'none' is the plain decode, the default before spaCR 1.5.1.8. Default 'rule_a_s2'.",
+      "source_sha256": "703cb07ed7166e05c25147fb916cfb3e471daaf2bab501a441c8e2860e55bb1d",
+      "translation": "Um conjunto nomeado de configurações de decodificação aplicado a toda chave de decodificação que este arquivo de configurações deixa no seu padrão. 'rule_a_s2' é a regra final do estudo de rendimento da decodificação: registro refinado dos pontos, chamadas de bases calibradas pela biblioteca, atribuição por território, votos ponderados por qualidade, a regra de um descasamento do segundo colocado, a alternativa por pixel e um relatório de FDR de chamarizes. Na placa A de Funk et al. 2022, atribuiu 74.4 % dos núcleos com 0.065 chamadas falsas por 100. 'none' é a decodificação simples, o padrão antes do spaCR 1.5.1.8. Padrão 'rule_a_s2'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_registration_refine_px",
+      "source": "Under ops_channel_registration 'spots_refine', a believed spot registration this many pixels or fewer from the background answer replaces it, so a small residual shift is corrected instead of kept. Larger lets the spots move more channels. Default 3.",
+      "source_sha256": "7639fc332d12b658f1df4d18489e0a59d292fc739f808ba8729650d0c7e83d0d",
+      "translation": "Com ops_channel_registration 'spots_refine', um registro de pontos confiável a este número de pixels ou menos da resposta de fundo a substitui, de modo que um pequeno deslocamento residual é corrigido em vez de mantido. Valores maiores permitem que os pontos movam mais canais. Padrão 3."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_min_peak",
+      "source": "How far a spot registration's peak must stand above the mean of its correlation surface to be believed, under 'spots' and 'spots_refine'. Higher trusts the spots on fewer channels; a field with no reads peaks at a few. Default 20.",
+      "source_sha256": "b610b15afcf54ecc92a45a0bccd1dee5d123c02b63693316308ef2df64ec6e07",
+      "translation": "Quanto o pico de um registro de pontos deve ficar acima da média da sua superfície de correlação para ser considerado confiável, com 'spots' e 'spots_refine'. Valores maiores confiam nos pontos em menos canais; um campo sem leituras chega a um pico de poucos. Padrão 20."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_spot_overrule_share",
+      "source": "The spots overrule a background registration only where the spot surface at the background's shift is below this share of the spot peak. Lower overrules less often. Default 0.5.",
+      "source_sha256": "ba45da701164348adaa780cb80ccaf4213e1631d22827da628fa8bf825f2828a",
+      "translation": "Os pontos anulam um registro de fundo apenas onde a superfície dos pontos no deslocamento do fundo está abaixo desta fração do pico dos pontos. Valores menores anulam com menos frequência. Padrão 0.5."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_library_calibration",
+      "source": "Learn each cycle's four base axes from the reads the guide library names on their other cycles, then unmix every read of that cycle with them. It corrects channel drift a single unmixing cannot. Decoys are never used to learn the axes, so the decoy FDR stays an independent check. Default False.",
+      "source_sha256": "1cc51d33bab417c44f87cc77db9e2822c1f6de638996e3a7f01985762f022bb3",
+      "translation": "Aprende os quatro eixos de base de cada ciclo a partir das leituras que a biblioteca de guias identifica nos seus outros ciclos e então desmistura com eles todas as leituras desse ciclo. Corrige a deriva de canal que uma única desmistura não consegue corrigir. Os chamarizes nunca são usados para aprender os eixos, de modo que o FDR dos chamarizes continua sendo uma verificação independente. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_passes",
+      "source": "How many times the library calibration re-labels the reads from its own last calls before the final call. More passes settle the axes further and cost time. Default 2.",
+      "source_sha256": "d2c16a90aa7f643503798490f716a9c86af2e972baf3be22a26d7a49ce63c19a",
+      "translation": "Quantas vezes a calibração da biblioteca re-rotula as leituras a partir das suas próprias últimas chamadas antes da chamada final. Mais passagens estabilizam mais os eixos e custam tempo. Padrão 2."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_calibration_min_labels",
+      "source": "The fewest labelled reads each base needs in a cycle for the library calibration to fit that cycle; a cycle with fewer keeps the plain unmixing. Default 30.",
+      "source_sha256": "368e0de4ee4251f805bc0648a92bf0ad5ac2cf6720ab4e646cb5de7d18ad4df9",
+      "translation": "O menor número de leituras rotuladas de que cada base precisa num ciclo para que a calibração da biblioteca ajuste esse ciclo; um ciclo com menos mantém a desmistura simples. Padrão 30."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_runner_up",
+      "source": "Let a read one base from a guide count for it when the mismatched cycle was an uncertain call whose second-brightest channel is the guide's base. It recovers reads lost to one weak cycle without accepting arbitrary one-mismatch matches. Default False.",
+      "source_sha256": "d302b9c85209b1d1fbbd3008918fd4f02ffbeede4308cfd00055e4063114fefd",
+      "translation": "Permite que uma leitura a uma base de uma guia conte para ela quando o ciclo descasado foi uma chamada incerta cujo segundo canal mais brilhante é a base da guia. Recupera leituras perdidas por um ciclo fraco sem aceitar correspondências arbitrárias com um descasamento. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_runner_up_margin",
+      "source": "The largest base-call margin, 0 to 1, a mismatched cycle may carry for the runner-up rule to accept it. Lower accepts fewer corrected reads. Default 0.1.",
+      "source_sha256": "74e961d613376916791f8996864b4c0f3e47c0daf87dc467fb2f965e348ef948",
+      "translation": "A maior margem de chamada de bases, de 0 a 1, que um ciclo descasado pode ter para que a regra do segundo colocado o aceite. Valores menores aceitam menos leituras corrigidas. Padrão 0.1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_impute_missing_cycles",
+      "source": "Let a base from a cycle that could not be measured, written N, match any base of a guide, under the new decode rules. Off leaves every read with an N unmatched, which costs the reads of fields that lost a cycle. Default True.",
+      "source_sha256": "47ce2146b2fb875e847a0dd7e0fe3ccbd1c514935bbaef4921d23d6d2af4bb36",
+      "translation": "Permite que uma base de um ciclo que não pôde ser medido, escrita N, corresponda a qualquer base de uma guia, sob as novas regras de decodificação. Desligado deixa sem correspondência toda leitura com um N, o que custa as leituras dos campos que perderam um ciclo. Padrão True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_assign_by_cell_territory",
+      "source": "Give a read that lies almost equally close to two nuclei to the nearer one instead of to neither. More nuclei get reads; a read between two touching nuclei can land on the wrong one. Default False.",
+      "source_sha256": "8b8e6ad096a0b908f6f6240f132e454cd0e81df514593b35db436867afbfd540",
+      "translation": "Atribui uma leitura que está quase igualmente próxima de dois núcleos ao mais próximo, em vez de a nenhum. Mais núcleos recebem leituras; uma leitura entre dois núcleos que se tocam pode cair no errado. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_tie",
+      "source": "How close, in pixels, a read's two nearest nucleus boundaries may lie before the read is called ambiguous, under the new decode rules. Ambiguous reads are dropped unless ops_assign_by_cell_territory is on. Default 1.",
+      "source_sha256": "32d22624543a71cacee574f119efde7c4be3ea4a56fef946d041f458b58d101b",
+      "translation": "A que distância, em pixels, as duas bordas de núcleos mais próximas de uma leitura podem estar antes de a leitura ser considerada ambígua, sob as novas regras de decodificação. Leituras ambíguas são descartadas a menos que ops_assign_by_cell_territory esteja ativado. Padrão 1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_quality_weighted",
+      "source": "Weight each read's vote by its base-call quality, so a clean read outvotes a doubtful one, instead of counting every read once. Default False.",
+      "source_sha256": "b4974fa1c2d22fe7e3d5a8e75d5d986b8d73cecf66f11604c466a2e6e04f43f2",
+      "translation": "Pondera o voto de cada leitura pela qualidade da sua chamada de bases, de modo que uma leitura limpa supera uma duvidosa, em vez de contar cada leitura uma vez. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_vote_weight_floor",
+      "source": "Added to every quality weight, so a read of quality 0 still carries a small vote. Higher moves the weighting toward a plain count. Default 0.05.",
+      "source_sha256": "ab70ffd0a0af3e967d1cd9fde71ab9720dd6d8c6eda53ac3d662e8f56e9fe4b4",
+      "translation": "Somado a cada peso de qualidade, para que uma leitura de qualidade 0 ainda tenha um pequeno voto. Valores maiores aproximam a ponderação de uma contagem simples. Padrão 0.05."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_pixel_fallback",
+      "source": "For a nucleus no read assigned, call the brightest pixels near it like reads and assign the guide at least two of them name exactly. It recovers nuclei whose spots fell below the read threshold. Default False.",
+      "source_sha256": "ec955046cf3e2c037c970abe35b42378e777074d0efb9c17e67c0df8b0ad83f6",
+      "translation": "Para um núcleo ao qual nenhuma leitura foi atribuída, chama os pixels mais brilhantes perto dele como leituras e atribui a guia que pelo menos dois deles identificam exatamente. Recupera núcleos cujos pontos ficaram abaixo do limiar de leitura. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_percentile",
+      "source": "Which pixels the pixel fallback calls: those above this percentile of the field's read score. Lower calls more pixels, slower and noisier. Default 97.",
+      "source_sha256": "3fbb4f8d37147f491b0bf8b803f20c595dea7a5ec214efa261dd6b3f1606c0af",
+      "translation": "Quais pixels a alternativa por pixel chama: os que estão acima deste percentil da pontuação de leitura do campo. Valores menores chamam mais pixels, de forma mais lenta e ruidosa. Padrão 97."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_radius",
+      "source": "How far beyond a nucleus boundary, in pixels, a fallback pixel may lie and still vote for that nucleus. Default 10.",
+      "source_sha256": "3e11f0e8e8d0952c6cae6df395f8cdd113f8465ec4e0135c2e3bb992b4a598f0",
+      "translation": "A que distância além da borda de um núcleo, em pixels, um pixel da alternativa pode estar e ainda votar nesse núcleo. Padrão 10."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_pixels",
+      "source": "How many exactly matching pixels must name a guide before the pixel fallback assigns it. Pixels of one spot repeat its call, so this counts pixels, not reads. Default 2.",
+      "source_sha256": "c03e8a2bf7c6ac8e23075cb3e77af5cc6fc3ae1cf9c0a83549c143a09c6c8776",
+      "translation": "Quantos pixels com correspondência exata devem identificar uma guia antes de a alternativa por pixel atribuí-la. Os pixels de um ponto repetem a sua chamada, então isto conta pixels, não leituras. Padrão 2."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_min_fraction",
+      "source": "The share of a nucleus's matched pixels its guide must hold, with no tie, for the pixel fallback to assign it. Default 0.6.",
+      "source_sha256": "899b5815c602f8cd0ba8b6158057dab88044bb58cccec720ffbe14244fd15643",
+      "translation": "A fração dos pixels correspondidos de um núcleo que sua guia deve deter, sem empate, para que a alternativa por pixel a atribua. Padrão 0.6."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_pixel_quality",
+      "source": "The weakest pixel call, as its worst cycle's margin from 0 to 1, that votes in the pixel fallback. Higher assigns fewer nuclei at a lower decoy rate. Default 0.1.",
+      "source_sha256": "5a0b586ac49464c7504367cc5d28b95a2f7152441bf79a73e4b42f42204dc876",
+      "translation": "A chamada de pixel mais fraca, como a margem do seu pior ciclo de 0 a 1, que vota na alternativa por pixel. Valores maiores atribuem menos núcleos com uma taxa de chamarizes menor. Padrão 0.1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decoy_library_k",
+      "source": "How many base-shuffled decoy barcodes per guide are matched alongside the library. A nucleus assigned a decoy is dropped and counted, which estimates how many real calls are false; each decode then writes decode_fdr_<well>.json and per-field stats under results/ops_decode. 0 matches no decoys. Default 0.",
+      "source_sha256": "8b9e101370b6013930b06b51269e7c0cbbe246a5a0a8b01d0e2122fa260fa027",
+      "translation": "Quantos códigos de barras chamariz com bases embaralhadas por guia são comparados junto com a biblioteca. Um núcleo atribuído a um chamariz é removido e contado, o que estima quantas chamadas reais são falsas; cada decodificação grava então decode_fdr_<well>.json e estatísticas por campo em results/ops_decode. 0 não compara chamarizes. Padrão 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_fdr_scale",
+      "source": "How much likelier a read is to land on a wrong real guide than on a decoy, which turns decoy calls into an FDR. 1.268 was measured for the Funk et al. 2022 library from its guides' neighbour distances; values below 1 count as 1. Default 1.268.",
+      "source_sha256": "13b75daab1fb21dbf0e7dbaff271199274bce24bd3b992532de7456229db44eb",
+      "translation": "Quanto é mais provável que uma leitura caia numa guia real errada do que num chamariz, o que transforma chamadas de chamarizes num FDR. 1.268 foi medido para a biblioteca de Funk et al. 2022 a partir das distâncias entre vizinhos das suas guias; valores abaixo de 1 contam como 1. Padrão 1.268."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_skip_unplaced_sites",
+      "source": "Decode only the sites the stitch placed and list the others in the decode and FDR reports. Off stops the well with an error when a site was not placed. Default True.",
+      "source_sha256": "4a33a9ad8779642a53cbc9bc9e18eacab1a711f9aa2e518f4b61cbf3855c2e87",
+      "translation": "Decodifica apenas os sítios que a costura posicionou e lista os outros nos relatórios de decodificação e de FDR. Desligado interrompe o poço com um erro quando um sítio não foi posicionado. Padrão True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_store_field_cache",
+      "source": "Under the new decode rules, write each field's decode evidence -- every spot, its intensities, its two nearest nuclei and the fallback pixels -- to <dst_root>/<well>/decode_cache as one npz per site. The decode QC reads it. A field takes about 13 MB. Default False.",
+      "source_sha256": "6fee57d4255fc2ede690bad0ad9b6d31d7fa9fe66c2ca100aa86c085b734bdf4",
+      "translation": "Sob as novas regras de decodificação, grava as evidências de decodificação de cada campo -- cada ponto, suas intensidades, seus dois núcleos mais próximos e os pixels da alternativa -- em <dst_root>/<well>/decode_cache como um npz por sítio. O QC da decodificação as lê. Um campo ocupa cerca de 13 MB. Padrão False."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_threshold_mode",
+      "source": "How the rule (a) decode's thresholds are set. 'manual' uses the values you enter. 'auto' tunes them well by well from decoys: half of the well's fields try every setting of ops_decode_auto_grid (and of ops_decode_auto_spot_grid, if set), the one ops_decode_auto_objective picks is used for the whole well, and the other half reports its FDR. Auto acts only on the rule (a) decode (ops_decode_preset rule_a_s2, a library, decoys); otherwise the thresholds stay as entered. It writes results/ops_decode/decode_thresholds_<plate>.csv. 'manual' was the default before 1.5.1.8. Default 'auto'.",
+      "source_sha256": "b2e4f8cdf626a9840766cb000d210f745e03035364eb18e9ce5f046e5ca01f57",
+      "translation": "Como os limiares da decodificação pela regra (a) são definidos. 'manual' usa os valores que você insere. 'auto' os ajusta posição de amostra por posição de amostra a partir das iscas: metade dos campos da posição de amostra experimenta cada ajuste de ops_decode_auto_grid (e de ops_decode_auto_spot_grid, se definido), o escolhido por ops_decode_auto_objective é usado para toda a posição de amostra, e a outra metade informa seu FDR. Auto atua apenas na decodificação pela regra (a) (ops_decode_preset rule_a_s2, uma biblioteca, iscas); caso contrário, os limiares ficam como inseridos. Escreve results/ops_decode/decode_thresholds_<plate>.csv. 'manual' era o padrão antes de 1.5.1.8. Padrão 'auto'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_fdr_max",
+      "source": "The highest decoy-estimated false calls per 100 real calls that auto thresholds may accept (0.1 means 0.1 %). Used with ops_decode_threshold_mode 'auto' and objective 'recall_at_fdr'. A well where no setting meets it gets the setting chosen by ops_decode_auto_unreachable and auto_met False in its report. Default 0.1.",
+      "source_sha256": "36e53fc67a5ec888870ab793c4b804e09d7e8fb9bca1475a95eb09c973cad3ab",
+      "translation": "O maior número de chamadas falsas estimado por chamarizes por 100 chamadas reais que os limiares automáticos podem aceitar (0.1 significa 0.1 %). Usado com ops_decode_threshold_mode 'auto' e o objetivo 'recall_at_fdr'. Uma posição de amostra em que nenhuma configuração o atinge recebe a configuração escolhida por ops_decode_auto_unreachable e auto_met False no seu relatório. Padrão 0.1."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_grid",
+      "source": "The values auto thresholds try, as {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; a threshold left out keeps its entered value. Empty uses the BMC study's grid: single-read quality 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 and 0.40 by pixel quality 0.10, 0.15, 0.20, 0.30 and 0.40. Default empty.",
+      "source_sha256": "4a1da9280cb216ba1396d72bc7f2509d1d4286431459f421c54a6f193a34fa38",
+      "translation": "Os valores que os limiares automáticos testam, como {'ops_single_read_quality': [...], 'ops_pixel_quality': [...]}; um limiar omitido mantém o valor informado. Vazio usa a grade do estudo BMC: qualidade de leitura única 0.06, 0.08, 0.10, 0.12, 0.15, 0.20, 0.25, 0.30 e 0.40 por qualidade de pixel 0.10, 0.15, 0.20, 0.30 e 0.40. Padrão vazio."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_ci",
+      "source": "Judge each auto setting by the upper end of its FDR's 95 % interval (1,000 field resamples) rather than by the estimate, so a setting is accepted only when the FDR is very likely at or below ops_decode_fdr_max. Default True.",
+      "source_sha256": "cefd34f76f8249cef46779e32e6c81b0568f3632d637c9d91d6d1a39f4c25e64",
+      "translation": "Julga cada configuração automática pelo limite superior do intervalo de 95 % do seu FDR (1,000 reamostragens de campos) em vez da estimativa, de modo que uma configuração só é aceita quando o FDR está muito provavelmente igual ou abaixo de ops_decode_fdr_max. Padrão True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_tune_fraction",
+      "source": "The share of a well's fields, drawn at random, that auto thresholds choose on; the other fields only report the chosen setting's FDR and genotyped share. Default 0.5.",
+      "source_sha256": "7301af4f9c8e116e9d8ad4e2b42f2e0254e06176832c45d448c3e79dbbb518bf",
+      "translation": "A fração dos campos de um poço, sorteados ao acaso, em que os limiares automáticos escolhem; os outros campos apenas relatam o FDR da configuração escolhida e a fração genotipada. Padrão 0.5."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_seed",
+      "source": "The seed of the random split of each well's fields for auto thresholds; the same seed gives the same split and the same choice on a rerun. Default 0.",
+      "source_sha256": "20acb770bad9f2e259da0d80f5093b4e48c19f92a4f0b84e473b6011ac37f8ae",
+      "translation": "A semente da divisão aleatória dos campos de cada poço para os limiares automáticos; a mesma semente dá a mesma divisão e a mesma escolha em uma nova execução. Padrão 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_channel_registration",
+      "source": "How each base channel is placed onto the reference cycle. 'spots' registers the channel on its reads, with the cell background filtered away, wherever that disagrees with the background registration by more than 2 pixels; 'background' trusts the background alone, the earlier behaviour, which on the Funk et al. 2022 plates left one cycle of weak wells unshifted although it had drifted 10 to 25 pixels. 'spots_refine' also takes a believed spot answer within ops_registration_refine_px of the background answer, correcting small residual shifts. Default 'spots'.",
+      "source_sha256": "4e4f34440f8b80329a679d8d6ee4cd17c1a073a3182df284873a471d15ac53be",
+      "translation": "Como cada canal de base é colocado sobre o ciclo de referência. 'spots' registra o canal pelas suas leituras, com o fundo celular filtrado, sempre que isso discorda do registro de fundo em mais de 2 pixels; 'background' confia apenas no fundo, o comportamento anterior, que nas placas de Funk et al. 2022 deixava sem deslocamento um ciclo dos poços fracos embora ele tivesse derivado 10 a 25 pixels. 'spots_refine' também aceita uma resposta confiável dos pontos dentro de ops_registration_refine_px da resposta de fundo, corrigindo pequenos deslocamentos residuais. Padrão 'spots'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_decode_auto_spot_grid",
+      "source": "The read thresholds (ops_read_threshold, the spot strength a read needs) that auto thresholds try together with the call thresholds, so spot detection is tuned with calling. Each field is read once down to the lowest value. Empty keeps ops_read_threshold as entered and tunes the calling only; a joint grid to try is 150, 200, 250, 315 and 400. Default empty. Alpha.",
+      "source_sha256": "47a29ab6a8e61e91ea2d1e3c2e63b13d6e0e1f04c5ce61aa289133475316e8ed",
+      "translation": "Os limiares de leitura (ops_read_threshold, a intensidade de ponto de que uma leitura precisa) que os limiares automáticos testam junto com os limiares de chamada, de modo que a detecção de pontos é ajustada com a chamada. Cada campo é lido uma vez até o menor valor. Vazio mantém ops_read_threshold como inserido e ajusta apenas as chamadas; uma grade conjunta para experimentar é 150, 200, 250, 315 e 400. Padrão vazio. Alfa."
+    }
+  ]
+}

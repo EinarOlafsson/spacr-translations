@@ -1,0 +1,49 @@
+{
+ "schema": 1,
+ "language": "hi",
+ "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-16 against the exact English source of item 949 on the claude-949-decoy-calibration branch: the labels and tooltips of the new alpha settings ops_prefix_nearmiss_decoy_k, ops_prefix_fdr_calibration and ops_decode_fdr_calibration. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+ "records": [
+  {
+   "table": "setting_labels",
+   "key": "ops_prefix_nearmiss_decoy_k",
+   "source": "Ops prefix nearmiss decoy k",
+   "source_sha256": "4ecec05b0582f6997ccca34c599708077e01c14711dfc4ffb49ad328649c6991",
+   "translation": "OPS प्रीफ़िक्स नियर-मिस डिकॉय k"
+  },
+  {
+   "table": "setting_tooltips",
+   "key": "ops_prefix_nearmiss_decoy_k",
+   "source": "How many near-miss decoy prefixes per library prefix the spacer-prefix decode adds: prefixes one base from a library prefix and from no other key. Far decoys miss read errors that land one base from a guide; near-miss decoys catch them, and their calls are reported apart (cells_decoy_nearmiss and fdr_nearmiss_pct in site_summary.csv). Needs ops_prefix_decoy_k above 0. 0 adds none. Default 0. Alpha.",
+   "source_sha256": "83d7ed950f927a97c2e33b1385a21a8eadcf406d22af1fbbe2ec4b85a9e87892",
+   "translation": "स्पेसर-प्रीफ़िक्स डिकोड लाइब्रेरी के हर प्रीफ़िक्स पर कितने नियर-मिस डिकॉय प्रीफ़िक्स जोड़ता है: ऐसे प्रीफ़िक्स जो किसी लाइब्रेरी प्रीफ़िक्स से एक बेस दूर हैं और किसी अन्य कुंजी से नहीं। दूर के डिकॉय उन रीड त्रुटियों को चूक जाते हैं जो किसी गाइड से एक बेस दूर पड़ती हैं; नियर-मिस डिकॉय उन्हें पकड़ते हैं, और उनकी कॉल अलग से रिपोर्ट की जाती हैं (site_summary.csv में cells_decoy_nearmiss और fdr_nearmiss_pct)। ops_prefix_decoy_k का 0 से ऊपर होना आवश्यक है। 0 कोई नहीं जोड़ता। डिफ़ॉल्ट 0। Alpha।"
+  },
+  {
+   "table": "setting_labels",
+   "key": "ops_prefix_fdr_calibration",
+   "source": "Ops prefix fdr calibration",
+   "source_sha256": "79ffbfd2aaffbbe7adf1d84d0d0fa6958ba85135745de0837c4863b55d069226",
+   "translation": "OPS प्रीफ़िक्स FDR कैलिब्रेशन"
+  },
+  {
+   "table": "setting_tooltips",
+   "key": "ops_prefix_fdr_calibration",
+   "source": "How the spacer-prefix decode sets its FDR scale. 'none' uses ops_prefix_fdr_scale as entered. 'shuffle' also matches every read against three shuffled whitelists and raises the scale until the shuffle call rate is at most 1.5 times the FDR on the tuning sites, then tunes again at that scale. The scale and the shuffle call rate go into site_summary.csv and the FDR report. Needs ops_prefix_decoy_k above 0. Default 'none'. Alpha.",
+   "source_sha256": "06773a2495726a628cf6f405cceab526f6231c4d99505da6eba425cc7e252da5",
+   "translation": "स्पेसर-प्रीफ़िक्स डिकोड अपना FDR स्केल कैसे तय करता है। 'none' ops_prefix_fdr_scale को जैसा दर्ज किया गया वैसा उपयोग करता है। 'shuffle' हर रीड का मिलान तीन शफ़ल की गई अनुमति-सूचियों से भी करता है और स्केल तब तक बढ़ाता है जब तक ट्यूनिंग साइटों पर शफ़ल कॉल दर FDR के अधिकतम 1.5 गुना न हो जाए, फिर उस स्केल पर दोबारा ट्यून करता है। स्केल और शफ़ल कॉल दर site_summary.csv और FDR रिपोर्ट में जाते हैं। ops_prefix_decoy_k का 0 से ऊपर होना आवश्यक है। डिफ़ॉल्ट 'none'। Alpha।"
+  },
+  {
+   "table": "setting_labels",
+   "key": "ops_decode_fdr_calibration",
+   "source": "Ops decode fdr calibration",
+   "source_sha256": "449b8fc8cbf7f0634b8c6d083ec35f4f74252cc37a03d4241d32501f2220ea9e",
+   "translation": "OPS डिकोड FDR कैलिब्रेशन"
+  },
+  {
+   "table": "setting_tooltips",
+   "key": "ops_decode_fdr_calibration",
+   "source": "How auto thresholds set the FDR scale. 'none' uses ops_fdr_scale as entered. 'shuffle' also votes every field against three shuffled copies of the library and raises the scale until the shuffled libraries' call rate is at most 1.5 times the FDR on the tuning fields, then tunes again at that scale. The scale used and the shuffle call rate go into the threshold and FDR reports. Costs about three more vote passes per field. Default 'none'. Alpha.",
+   "source_sha256": "86065303d84f7584ae474f98c73fe9b8a152d841ea22b9e29501c281970b86a7",
+   "translation": "ऑटो सीमाएँ FDR स्केल कैसे तय करती हैं। 'none' ops_fdr_scale को जैसा दर्ज किया गया वैसा उपयोग करता है। 'shuffle' हर फ़ील्ड पर लाइब्रेरी की तीन शफ़ल की गई प्रतियों के विरुद्ध भी वोट करता है और स्केल तब तक बढ़ाता है जब तक ट्यूनिंग फ़ील्ड पर शफ़ल की गई लाइब्रेरियों की कॉल दर FDR के अधिकतम 1.5 गुना न हो जाए, फिर उस स्केल पर दोबारा ट्यून करता है। उपयोग किया गया स्केल और शफ़ल कॉल दर सीमा और FDR रिपोर्ट में जाते हैं। इसकी लागत हर फ़ील्ड पर लगभग तीन अतिरिक्त वोट पास है। डिफ़ॉल्ट 'none'। Alpha।"
+  }
+ ]
+}

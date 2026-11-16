@@ -1,0 +1,721 @@
+{
+  "language": "hi",
+  "review_method": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1,
+  "records": [
+    {
+      "context": "Point-count annotation over a folder of images (item 957, alpha).",
+      "label": "spacr.point_annotation#0",
+      "source": "Point-count annotation over a folder of images (item 957, alpha).",
+      "source_sha256": "c07f6a1992c4c748eb6090d87583c327f8846008b7879b5cd2451ead2c1bb5e7",
+      "translation": "छवियों के एक फ़ोल्डर पर बिंदु-गणना एनोटेशन (आइटम 957, alpha)।"
+    },
+    {
+      "context": "Make Masks' point mode marks one point per object instead of painting a mask: a curator clicks the centre of every nucleus in an extracted image region, and a scorer later asks which segmented object each point falls in. This module is the session behind that mode. It holds the points of one image, the undo stack, and the file the points are saved to, in plain Python, so the round trip is tested without a display. :mod:`spacr.qt.point_annotator` is the window that drives it.",
+      "label": "spacr.point_annotation#1",
+      "source": "Make Masks' point mode marks one point per object instead of painting a mask: a curator clicks the centre of every nucleus in a crop, and a scorer later asks which segmented object each point falls in. This module is the session behind that mode. It holds the points of one image, the undo stack, and the file the points are saved to, in plain Python, so the round trip is tested without a display. :mod:`spacr.qt.point_annotator` is the window that drives it.",
+      "source_sha256": "29bd2ff230a042878113fe22ac2a7fbd0627d0ab9dabaccc934b7e7a396df8bd",
+      "translation": "Make Masks का बिंदु मोड मास्क पेंट करने के बजाय प्रति वस्तु एक बिंदु चिह्नित करता है: क्यूरेटर किसी निकाले गए छवि क्षेत्र में हर नाभिक के केंद्र पर क्लिक करता है, और बाद में एक स्कोरर पूछता है कि प्रत्येक बिंदु किस खंडित वस्तु के भीतर पड़ता है। यह मॉड्यूल उस मोड के पीछे का सत्र है। यह एक छवि के बिंदु, पूर्ववत स्टैक, और वह फ़ाइल जिसमें बिंदु सहेजे जाते हैं, साधारण Python में रखता है, ताकि पूरी आवाजाही का परीक्षण बिना डिस्प्ले के हो सके। :mod:`spacr.qt.point_annotator` वह विंडो है जो इसे चलाती है।"
+    },
+    {
+      "context": "The folder is opened as the resumable curation work list of :mod:`spacr.curation_queue`: its ``curate_status.csv`` records which images are done, so a session closed half way reopens where it stopped. A folder that holds only images, with no ``masks/`` folder beside them, is accepted as the ``images`` layout, because point mode reads no masks.",
+      "label": "spacr.point_annotation#2",
+      "source": "The folder is opened as the resumable curation queue of :mod:`spacr.curation_queue`: its ``curate_status.csv`` records which images are done, so a session closed half way reopens where it stopped. A folder that holds only images, with no ``masks/`` folder beside them, is accepted as the ``images`` layout, because point mode reads no masks.",
+      "source_sha256": "e17ddcf4189381152590da6d655d7402cd13d96718055bd3d2c10cc896a73518",
+      "translation": "फ़ोल्डर को :mod:`spacr.curation_queue` की पुनः आरंभ योग्य क्यूरेशन कार्य सूची के रूप में खोला जाता है: इसकी ``curate_status.csv`` दर्ज करती है कि कौन-सी छवियाँ पूरी हो चुकी हैं, इसलिए बीच में बंद किया गया सत्र वहीं से फिर खुलता है जहाँ वह रुका था। जिस फ़ोल्डर में केवल छवियाँ हों और उनके बगल में कोई ``masks/`` फ़ोल्डर न हो, उसे ``images`` लेआउट के रूप में स्वीकार किया जाता है, क्योंकि बिंदु मोड कोई मास्क नहीं पढ़ता।"
+    },
+    {
+      "context": "The points file",
+      "label": "spacr.point_annotation#3",
+      "source": "The points file",
+      "source_sha256": "04da68f103812aca54608a049fd7de7aed441dd550bc0acc5792abd1654240fb",
+      "translation": "बिंदु फ़ाइल"
+    },
+    {
+      "context": "Each image's points are saved to ``<folder>/../annotations/<stem>_points.csv``, where ``<stem>`` is the image's file name without its extension and without a trailing ``_clean``; ``crop01_site3_y1234_x567_clean.png`` saves as ``crop01_site3_y1234_x567_points.csv``. The columns are:",
+      "label": "spacr.point_annotation#4",
+      "source": "Each image's points are saved to ``<folder>/../annotations/<stem>_points.csv``, where ``<stem>`` is the image's file name without its extension and without a trailing ``_clean``; ``crop01_site3_y1234_x567_clean.png`` saves as ``crop01_site3_y1234_x567_points.csv``. The columns are:",
+      "source_sha256": "b4104352245e88b085e4dbcee5f238cf2594e022774efaaa1ae6f2c2c74aa338",
+      "translation": "प्रत्येक छवि के बिंदु ``<folder>/../annotations/<stem>_points.csv`` में सहेजे जाते हैं, जहाँ ``<stem>`` छवि का फ़ाइल नाम है, बिना एक्सटेंशन और बिना अंतिम ``_clean`` के; ``crop01_site3_y1234_x567_clean.png`` को ``crop01_site3_y1234_x567_points.csv`` के रूप में सहेजा जाता है। कॉलम ये हैं:"
+    },
+    {
+      "context": "``X`` and ``Y``: the clicked pixel's column and row in image pixels, origin at the top left, written as floats. This is the convention of Fiji's Analyze -> Measure on a multi-point selection, and a scorer that reads ``P[[\"Y\", \"X\"]]``, rounds and indexes a label image gets back exactly the pixel that was clicked;",
+      "label": "spacr.point_annotation#5",
+      "source": "``X`` and ``Y``: the clicked pixel's column and row in image pixels, origin at the top left, written as floats. This is the convention of Fiji's Analyze -> Measure on a multi-point selection, and a scorer that reads ``P[[\"Y\", \"X\"]]``, rounds and indexes a label image gets back exactly the pixel that was clicked;",
+      "source_sha256": "56f0a0a294a3631578d27b89358c83eeeff2d3ccd2d895b178880639f7379bec",
+      "translation": "``X`` और ``Y``: क्लिक किए गए पिक्सेल का कॉलम और पंक्ति, छवि पिक्सेल में, मूल बिंदु ऊपर बाईं ओर, फ़्लोट के रूप में लिखे जाते हैं। यह बहु-बिंदु चयन पर Fiji के Analyze -> Measure की परिपाटी है, और जो स्कोरर ``P[[\"Y\", \"X\"]]`` पढ़ता है, गोल करता है और किसी लेबल छवि को अनुक्रमित करता है, उसे ठीक वही पिक्सेल वापस मिलता है जिस पर क्लिक किया गया था;"
+    },
+    {
+      "context": "``unsure``: 1 for a point the curator marked unsure, else 0;",
+      "label": "spacr.point_annotation#6",
+      "source": "``unsure``: 1 for a point the curator marked unsure, else 0;",
+      "source_sha256": "7c160b8205eb22452cf025b9e33e30fe1d9248abe75a6e33cd4a1f03fc2b7d2c",
+      "translation": "``unsure``: जिस बिंदु को क्यूरेटर ने अनिश्चित चिह्नित किया उसके लिए 1, अन्यथा 0;"
+    },
+    {
+      "context": "``note``: free text, empty unless written.",
+      "label": "spacr.point_annotation#7",
+      "source": "``note``: free text, empty unless written.",
+      "source_sha256": "5d7a68399ca75a2ad388fb76075ca37ac6e5d4fde46ce93ed5b78ef49b65893e",
+      "translation": "``note``: मुक्त पाठ, लिखे जाने तक खाली।"
+    },
+    {
+      "context": "Every change is written at once, through a temporary file and a rename, so a crash never leaves a half-written file, and saving again overwrites.",
+      "label": "spacr.point_annotation#8",
+      "source": "Every change is written at once, through a temporary file and a rename, so a crash never leaves a half-written file, and saving again overwrites.",
+      "source_sha256": "3e5e4429d2c4d3ab75e5dc2d336a0e21966e2911d42cf4f560967baa3b9b76ba",
+      "translation": "हर परिवर्तन तुरंत एक अस्थायी फ़ाइल और नाम बदलने के माध्यम से लिखा जाता है, ताकि क्रैश कभी आधी लिखी फ़ाइल न छोड़े, और फिर से सहेजने पर फ़ाइल अधिलेखित हो जाती है।"
+    },
+    {
+      "context": "One clicked point.",
+      "label": "spacr.point_annotation.Point#0",
+      "source": "One clicked point.",
+      "source_sha256": "778a97b6221d02b864ab3a143217f64b4c689387e38ab9eb63f3018719c9551b",
+      "translation": "एक क्लिक किया गया बिंदु।"
+    },
+    {
+      "context": "the column of the clicked pixel.",
+      "label": "spacr.point_annotation.Point#1",
+      "source": "the column of the clicked pixel.",
+      "source_sha256": "f8568ce07cb5e44b83dcbe29948f4ba51e831f7ba274b0d23c45fc5a98413e9c",
+      "translation": "क्लिक किए गए पिक्सेल का कॉलम।"
+    },
+    {
+      "context": "the row of the clicked pixel.",
+      "label": "spacr.point_annotation.Point#2",
+      "source": "the row of the clicked pixel.",
+      "source_sha256": "82dfec40e09ad003d91e496fcda14a7d808e56db1929bbd72af4da48ef1544b9",
+      "translation": "क्लिक किए गए पिक्सेल की पंक्ति।"
+    },
+    {
+      "context": "whether the curator marked the point unsure.",
+      "label": "spacr.point_annotation.Point#3",
+      "source": "whether the curator marked the point unsure.",
+      "source_sha256": "94310a7f4ab0a7922052f31f32a20b0fb51aae9aae40022268c5acdffdb873f2",
+      "translation": "क्या क्यूरेटर ने बिंदु को अनिश्चित चिह्नित किया।"
+    },
+    {
+      "context": "free text about the point.",
+      "label": "spacr.point_annotation.Point#4",
+      "source": "free text about the point.",
+      "source_sha256": "198b635a0d50007ca8da1e9fdd48edeced6edc764310263e41af8e08b0dc5059",
+      "translation": "बिंदु के बारे में मुक्त पाठ।"
+    },
+    {
+      "context": "The points of one image, with undo, saved on every change.",
+      "label": "spacr.point_annotation.PointSession#0",
+      "source": "The points of one image, with undo, saved on every change.",
+      "source_sha256": "997a63c153c10b6699f709320b2e5b922d241320e4e38bb29f1d616576feb545",
+      "translation": "एक छवि के बिंदु, पूर्ववत सुविधा के साथ, हर परिवर्तन पर सहेजे जाते हैं।"
+    },
+    {
+      "context": "the image annotated.",
+      "label": "spacr.point_annotation.PointSession#1",
+      "source": "the image annotated.",
+      "source_sha256": "293a8239e366b402b22bf8c28937d6c0a5ed6483b94d57fac5dc1804d6069ad0",
+      "translation": "एनोटेट की गई छवि।"
+    },
+    {
+      "context": "the folder its points file is saved in.",
+      "label": "spacr.point_annotation.PointSession#2",
+      "source": "the folder its points file is saved in.",
+      "source_sha256": "52d2424061b286a2a2191207f04d754e7027c7b493fb1c889aeff944724702df",
+      "translation": "वह फ़ोल्डर जिसमें इसकी बिंदु फ़ाइल सहेजी जाती है।"
+    },
+    {
+      "context": "the image's ``(height, width)``; a click outside it is refused. None accepts any point.",
+      "label": "spacr.point_annotation.PointSession#3",
+      "source": "the image's ``(height, width)``; a click outside it is refused. None accepts any point.",
+      "source_sha256": "497d6c95ffb3c6c9c4ce05f66dce249d2f5cc591bebcf17b7511659aba1aff3e",
+      "translation": "छवि का ``(height, width)``; इसके बाहर किया गया क्लिक अस्वीकार किया जाता है। None किसी भी बिंदु को स्वीकार करता है।"
+    },
+    {
+      "context": "write the points file after every change.",
+      "label": "spacr.point_annotation.PointSession#4",
+      "source": "write the points file after every change.",
+      "source_sha256": "b4809a204ddaa3eb28819d338ecf41154a0183d4ea8b66d1c5e52d099eddb436",
+      "translation": "हर परिवर्तन के बाद बिंदु फ़ाइल लिखें।"
+    },
+    {
+      "context": "Load the image's saved points, if it has any.",
+      "label": "spacr.point_annotation.PointSession#5",
+      "source": "Load the image's saved points, if it has any.",
+      "source_sha256": "741ae3a565bbee0aecfd4c8220748f5a9afa8e3b41f94d20ea2e01d45866840f",
+      "translation": "छवि के सहेजे गए बिंदु लोड करें, यदि कोई हों।"
+    },
+    {
+      "context": "the image annotated.",
+      "label": "spacr.point_annotation.PointSession#6",
+      "source": "the image annotated.",
+      "source_sha256": "293a8239e366b402b22bf8c28937d6c0a5ed6483b94d57fac5dc1804d6069ad0",
+      "translation": "एनोटेट की गई छवि।"
+    },
+    {
+      "context": "the folder its points file is saved in.",
+      "label": "spacr.point_annotation.PointSession#7",
+      "source": "the folder its points file is saved in.",
+      "source_sha256": "52d2424061b286a2a2191207f04d754e7027c7b493fb1c889aeff944724702df",
+      "translation": "वह फ़ोल्डर जिसमें इसकी बिंदु फ़ाइल सहेजी जाती है।"
+    },
+    {
+      "context": "the image's ``(height, width)``, or None.",
+      "label": "spacr.point_annotation.PointSession#8",
+      "source": "the image's ``(height, width)``, or None.",
+      "source_sha256": "01bc9f44b13bb1aef32a75926d2a1ea396573b77bf95c851fdffc7ef13cdaa0a",
+      "translation": "छवि का ``(height, width)``, या None।"
+    },
+    {
+      "context": "write the points file after every change.",
+      "label": "spacr.point_annotation.PointSession#9",
+      "source": "write the points file after every change.",
+      "source_sha256": "b4809a204ddaa3eb28819d338ecf41154a0183d4ea8b66d1c5e52d099eddb436",
+      "translation": "हर परिवर्तन के बाद बिंदु फ़ाइल लिखें।"
+    },
+    {
+      "context": "Add a point at the pixel ``(x, y)``.",
+      "label": "spacr.point_annotation.PointSession.add#0",
+      "source": "Add a point at the pixel ``(x, y)``.",
+      "source_sha256": "23b8dc7ad0ec2be7a92426204f408b831ee74943413a2e59470662a094b09142",
+      "translation": "पिक्सेल ``(x, y)`` पर एक बिंदु जोड़ें।"
+    },
+    {
+      "context": "the clicked pixel's column.",
+      "label": "spacr.point_annotation.PointSession.add#1",
+      "source": "the clicked pixel's column.",
+      "source_sha256": "9524181a1e06110039c4e206b686474b0d819573ca2697c30f4e535544f3ffdb",
+      "translation": "क्लिक किए गए पिक्सेल का कॉलम।"
+    },
+    {
+      "context": "the clicked pixel's row.",
+      "label": "spacr.point_annotation.PointSession.add#2",
+      "source": "the clicked pixel's row.",
+      "source_sha256": "9038dd78a8011c01ca14d8fde2a856ccfa176739107331da5fab809b22975419",
+      "translation": "क्लिक किए गए पिक्सेल की पंक्ति।"
+    },
+    {
+      "context": "the point added, or None when it lies outside the image.",
+      "label": "spacr.point_annotation.PointSession.add#3",
+      "source": "the point added, or None when it lies outside the image.",
+      "source_sha256": "8bbe27fa058685a96ee9bd27962a4577b7cb2992e0f8f3452942f3fa3f802deb",
+      "translation": "जोड़ा गया बिंदु, या None जब वह छवि के बाहर हो।"
+    },
+    {
+      "context": "How many points there are.",
+      "label": "spacr.point_annotation.PointSession.count#0",
+      "source": "How many points there are.",
+      "source_sha256": "4fddb4c097f20e2e412612e7f99957e80a2618a509e85b21feeac1fef53fb8cc",
+      "translation": "कितने बिंदु हैं।"
+    },
+    {
+      "context": "The points, in the order they were added.",
+      "label": "spacr.point_annotation.PointSession.points#0",
+      "source": "The points, in the order they were added.",
+      "source_sha256": "58fbdc9d2076c56a2a22ee8ff7fe1196e529873c30ff6b5a2a15933d86784edd",
+      "translation": "बिंदु, उसी क्रम में जिसमें वे जोड़े गए थे।"
+    },
+    {
+      "context": "Remove the point nearest ``(x, y)``, if one is within ``radius``.",
+      "label": "spacr.point_annotation.PointSession.remove_nearest#0",
+      "source": "Remove the point nearest ``(x, y)``, if one is within ``radius``.",
+      "source_sha256": "52c5cd2061eb1ad590a9f17039fc19e7b9ce5a13fc9260036515de7698654198",
+      "translation": "``(x, y)`` के निकटतम बिंदु को हटाएँ, यदि कोई ``radius`` के भीतर हो।"
+    },
+    {
+      "context": "column.",
+      "label": "spacr.point_annotation.PointSession.remove_nearest#1",
+      "source": "column.",
+      "source_sha256": "a010dfba410d517b08bef3343c30bc02036231cf71532fb2772fe253d9e0e587",
+      "translation": "स्तंभ।"
+    },
+    {
+      "context": "row.",
+      "label": "spacr.point_annotation.PointSession.remove_nearest#2",
+      "source": "row.",
+      "source_sha256": "9ae24b37e3206f30be3f9290672cad651048f666c22c3acca772d36d5cdf68c1",
+      "translation": "पंक्ति।"
+    },
+    {
+      "context": "the largest distance, in image pixels.",
+      "label": "spacr.point_annotation.PointSession.remove_nearest#3",
+      "source": "the largest distance, in image pixels.",
+      "source_sha256": "5a776cdc22d690d7e4a9ff874ae7d6603fa6074964724ddb6d66c548682278a2",
+      "translation": "सबसे बड़ी दूरी, छवि पिक्सेल में।"
+    },
+    {
+      "context": "the point removed, or None.",
+      "label": "spacr.point_annotation.PointSession.remove_nearest#4",
+      "source": "the point removed, or None.",
+      "source_sha256": "cb931a072c1586745bbe3cc35532d8eff5b651d2325621dd98515d01b9f22071",
+      "translation": "हटाया गया बिंदु, या None।"
+    },
+    {
+      "context": "Write the points file now.",
+      "label": "spacr.point_annotation.PointSession.save#0",
+      "source": "Write the points file now.",
+      "source_sha256": "79895d71893115026636282d11eeb5c301609efcc23250acd5f4fad3ab056ade",
+      "translation": "बिंदु फ़ाइल अभी लिखें।"
+    },
+    {
+      "context": "the path written.",
+      "label": "spacr.point_annotation.PointSession.save#1",
+      "source": "the path written.",
+      "source_sha256": "8138d15977925d7bbd3244f9f1ee67e7e1720c96671be8079d459f85932c86a7",
+      "translation": "लिखा गया पथ।"
+    },
+    {
+      "context": "when it cannot be written.",
+      "label": "spacr.point_annotation.PointSession.save#2",
+      "source": "when it cannot be written.",
+      "source_sha256": "ed196f2bc1425dab16577de03f9b88ad5605693d8491aec0ee6ad98b0143ed0c",
+      "translation": "जब इसे लिखा नहीं जा सकता।"
+    },
+    {
+      "context": "Flip \"unsure\" on the point nearest ``(x, y)``, else on the last.",
+      "label": "spacr.point_annotation.PointSession.toggle_unsure#0",
+      "source": "Flip \"unsure\" on the point nearest ``(x, y)``, else on the last.",
+      "source_sha256": "e4602dfee6f69c7d08b827fa660fb444a370366281e90e1eb338ff2bc5f014fa",
+      "translation": "``(x, y)`` के निकटतम बिंदु पर \"unsure\" को पलटें, अन्यथा अंतिम बिंदु पर।"
+    },
+    {
+      "context": "column, or None to use the last point.",
+      "label": "spacr.point_annotation.PointSession.toggle_unsure#1",
+      "source": "column, or None to use the last point.",
+      "source_sha256": "faafc521789e3e5c64177dfdaffa45971e0d359eab5e66b8949fc45dc16f2781",
+      "translation": "कॉलम, या अंतिम बिंदु उपयोग करने के लिए None।"
+    },
+    {
+      "context": "row, or None to use the last point.",
+      "label": "spacr.point_annotation.PointSession.toggle_unsure#2",
+      "source": "row, or None to use the last point.",
+      "source_sha256": "528e759efd9b16b316feb287015da81515d9d9e3abeb67f34bf0ecb44b2fbd07",
+      "translation": "पंक्ति, या अंतिम बिंदु उपयोग करने के लिए None।"
+    },
+    {
+      "context": "the largest distance, in image pixels.",
+      "label": "spacr.point_annotation.PointSession.toggle_unsure#3",
+      "source": "the largest distance, in image pixels.",
+      "source_sha256": "5a776cdc22d690d7e4a9ff874ae7d6603fa6074964724ddb6d66c548682278a2",
+      "translation": "सबसे बड़ी दूरी, छवि पिक्सेल में।"
+    },
+    {
+      "context": "the point as it now is, or None when there is none.",
+      "label": "spacr.point_annotation.PointSession.toggle_unsure#4",
+      "source": "the point as it now is, or None when there is none.",
+      "source_sha256": "8a23fb9730a8a2d60f8981eb318a76ea31cf08c4393d7305b76c4be2e9293dc6",
+      "translation": "बिंदु अपनी वर्तमान स्थिति में, या None जब कोई बिंदु न हो।"
+    },
+    {
+      "context": "Take back the last add, removal or unsure change.",
+      "label": "spacr.point_annotation.PointSession.undo#0",
+      "source": "Take back the last add, removal or unsure change.",
+      "source_sha256": "094d2b1ff28cca69a5e8e1bbb9c0890e86f16f24b332bbe6e52be256b71f9fe5",
+      "translation": "अंतिम जोड़, हटाव या अनिश्चित परिवर्तन को वापस लें।"
+    },
+    {
+      "context": "whether there was a change to take back.",
+      "label": "spacr.point_annotation.PointSession.undo#1",
+      "source": "whether there was a change to take back.",
+      "source_sha256": "816f2f20183ab630e6273d5d349357ccbd69b68e08cae91172282c617bf5e782",
+      "translation": "क्या वापस लेने के लिए कोई परिवर्तन था।"
+    },
+    {
+      "context": "How many points are marked unsure.",
+      "label": "spacr.point_annotation.PointSession.unsure_count#0",
+      "source": "How many points are marked unsure.",
+      "source_sha256": "c69c2ab92b85e143317e31fc092010e821a4b4f67b0d2eac56ebf1c8ccfdf929",
+      "translation": "कितने बिंदु अनिश्चित चिह्नित हैं।"
+    },
+    {
+      "context": "Whether every image of a point work list is marked done, read from disk.",
+      "label": "spacr.point_annotation.all_done#0",
+      "source": "Whether every image of a point queue is marked done, read from disk.",
+      "source_sha256": "fbb7ebafe825be50b68a9b2c27ec29278b83a0d5688a18fbe818de81caa484ca",
+      "translation": "क्या किसी बिंदु कार्य सूची की हर छवि पूर्ण चिह्नित है, डिस्क से पढ़कर।"
+    },
+    {
+      "context": "the work list :func:`build_point_queue` built.",
+      "label": "spacr.point_annotation.all_done#1",
+      "source": "the queue :func:`build_point_queue` built.",
+      "source_sha256": "23064fbcb69101e274c3a1b6c71b1be910f29b7ae561b001c604f15bb6e51022",
+      "translation": ":func:`build_point_queue` द्वारा बनाई गई कार्य सूची।"
+    },
+    {
+      "context": "True when every image of the folder has the state ``done``.",
+      "label": "spacr.point_annotation.all_done#2",
+      "source": "True when every image of the folder has the state ``done``.",
+      "source_sha256": "51623b4b10b7d1a3fbee6a377537e4893a21b8454c1e2cda6b30498ce2d60ee8",
+      "translation": "True जब फ़ोल्डर की हर छवि की स्थिति ``done`` हो।"
+    },
+    {
+      "context": "Where point mode saves the points of a work list folder.",
+      "label": "spacr.point_annotation.annotations_folder#0",
+      "source": "Where point mode saves the points of a queue folder.",
+      "source_sha256": "4e76b68e48c5734372e22f85db5354e2fc3ed736e81ebebbefac299897a2ea8c",
+      "translation": "बिंदु मोड किसी कार्य सूची फ़ोल्डर के बिंदु कहाँ सहेजता है।"
+    },
+    {
+      "context": "the work list folder.",
+      "label": "spacr.point_annotation.annotations_folder#1",
+      "source": "the queue folder.",
+      "source_sha256": "fe42fed2ffc59de504c7516f810e4434c0e08be692a24b5a7504586872674927",
+      "translation": "कतार फ़ोल्डर।"
+    },
+    {
+      "context": "``<folder>/../annotations``.",
+      "label": "spacr.point_annotation.annotations_folder#2",
+      "source": "``<folder>/../annotations``.",
+      "source_sha256": "7b3120de626f37749aa552dc8c821ccde9c08c05f1f1e367f0150535c98b61e8",
+      "translation": "``<folder>/../annotations``."
+    },
+    {
+      "context": "Open a folder of images as a point-annotation session.",
+      "label": "spacr.point_annotation.build_point_queue#0",
+      "source": "Open a folder of images as a point-annotation session.",
+      "source_sha256": "eedc6e6589119e2d10f22d4c23cc064091d90841f8facf46a1383808e64811ce",
+      "translation": "छवियों के एक फ़ोल्डर को बिंदु-एनोटेशन सत्र के रूप में खोलें।"
+    },
+    {
+      "context": "Every image of the folder is offered, in name order, done ones included, so a curator can step back to an earlier image; the editor opens on the first one not done.",
+      "label": "spacr.point_annotation.build_point_queue#1",
+      "source": "Every image of the folder is offered, in name order, done ones included, so a curator can step back to an earlier image; the editor opens on the first one not done.",
+      "source_sha256": "2f2e6fa6b87bc818377d0c68be59805938375a9c1fc8e0f01394c833fc32e446",
+      "translation": "फ़ोल्डर की हर छवि नाम क्रम में प्रस्तुत की जाती है, पूर्ण छवियाँ भी शामिल हैं, ताकि क्यूरेटर किसी पिछली छवि पर लौट सके; संपादक पहली अपूर्ण छवि पर खुलता है।"
+    },
+    {
+      "context": "the work list folder: images with or without a ``masks/`` folder, or an ``images/`` folder beside ``masks/``.",
+      "label": "spacr.point_annotation.build_point_queue#2",
+      "source": "the queue folder: images with or without a ``masks/`` folder, or an ``images/`` folder beside ``masks/``.",
+      "source_sha256": "c01ff1588f093cdaf6d7b8a43b14c8531ccda61375bb8eea895093b881eaa132",
+      "translation": "कार्य सूची फ़ोल्डर: ``masks/`` फ़ोल्डर के साथ या उसके बिना छवियाँ, या एक ``images/`` फ़ोल्डर जो ``masks/`` के बगल में हो।"
+    },
+    {
+      "context": "the work list, ordered by name.",
+      "label": "spacr.point_annotation.build_point_queue#3",
+      "source": "the queue, ordered by name.",
+      "source_sha256": "98351851360f4724d932b2e0e576afc8591b35f692a85aa6d0eb3c25264bd12c",
+      "translation": "कार्य सूची, नाम के अनुसार क्रमबद्ध।"
+    },
+    {
+      "context": "when the folder is not a folder, holds no image, or holds more than one layout.",
+      "label": "spacr.point_annotation.build_point_queue#4",
+      "source": "when the folder is not a folder, holds no image, or holds more than one layout.",
+      "source_sha256": "c6fa3ac21141029410508d0c133fbba6ba30665e6f22e870142206bfff579e48",
+      "translation": "जब फ़ोल्डर फ़ोल्डर नहीं है, उसमें कोई छवि नहीं है, या उसमें एक से अधिक लेआउट हैं।"
+    },
+    {
+      "context": "when it holds ``_seg.npy`` bundles, or two images whose points files would share a name.",
+      "label": "spacr.point_annotation.build_point_queue#5",
+      "source": "when it holds ``_seg.npy`` bundles, or two images whose points files would share a name.",
+      "source_sha256": "35bd2890223bf835c01a93b0fbbae84602627191006139be45d98e7052e1484b",
+      "translation": "जब उसमें ``_seg.npy`` बंडल हों, या दो ऐसी छवियाँ हों जिनकी बिंदु फ़ाइलों का नाम एक ही होगा।"
+    },
+    {
+      "context": "The overlay folders a point work list uses when none are named.",
+      "label": "spacr.point_annotation.default_overlays#0",
+      "source": "The overlay folders a point queue uses when none are named.",
+      "source_sha256": "6382673e9ef2b32c5d615d65bc3f93a2fdbf3608a2549ae2c36281b99cee6a04",
+      "translation": "ओवरले फ़ोल्डर जिनका उपयोग बिंदु कार्य सूची तब करती है जब कोई नामित न हो।"
+    },
+    {
+      "context": "the work list folder.",
+      "label": "spacr.point_annotation.default_overlays#1",
+      "source": "the queue folder.",
+      "source_sha256": "fe42fed2ffc59de504c7516f810e4434c0e08be692a24b5a7504586872674927",
+      "translation": "कतार फ़ोल्डर।"
+    },
+    {
+      "context": "``[<folder>/../overlays]`` when that folder exists, else ``[]``.",
+      "label": "spacr.point_annotation.default_overlays#2",
+      "source": "``[<folder>/../overlays]`` when that folder exists, else ``[]``.",
+      "source_sha256": "8453c96ddcf6b2b2be301a913730c63d93c699d7f7581eb6489457ead3317f79",
+      "translation": "``[<folder>/../overlays]`` जब वह फ़ोल्डर मौजूद हो, अन्यथा ``[]``।"
+    },
+    {
+      "context": "The overlay images of one image, found by its points stem.",
+      "label": "spacr.point_annotation.overlays_for#0",
+      "source": "The overlay images of one image, found by its points stem.",
+      "source_sha256": "68f0363e422866dd5afd0162fb5fbda9ecd85ab93ac937b07d8cba780422b940",
+      "translation": "एक छवि की ओवरले छवियाँ, उसके बिंदु स्टेम द्वारा खोजी गईं।"
+    },
+    {
+      "context": "the image annotated.",
+      "label": "spacr.point_annotation.overlays_for#1",
+      "source": "the image annotated.",
+      "source_sha256": "293a8239e366b402b22bf8c28937d6c0a5ed6483b94d57fac5dc1804d6069ad0",
+      "translation": "एनोटेट की गई छवि।"
+    },
+    {
+      "context": "folders of overlay images.",
+      "label": "spacr.point_annotation.overlays_for#2",
+      "source": "folders of overlay images.",
+      "source_sha256": "094d9e3c0e107174a4d1c29f17540cbd9b85f1e764960bb34e10018fac38d9d2",
+      "translation": "ओवरले छवियों के फ़ोल्डर।"
+    },
+    {
+      "context": "the image files in ``folders`` named ``<stem>.<ext>`` or ``<stem>_<anything>.<ext>``, in folder order and then by name.",
+      "label": "spacr.point_annotation.overlays_for#3",
+      "source": "the image files in ``folders`` named ``<stem>.<ext>`` or ``<stem>_<anything>.<ext>``, in folder order and then by name.",
+      "source_sha256": "7130c0ce16b7620c8b5bacbd7126a9f23481e25ef8589d79efb704779044cca8",
+      "translation": "``folders`` में ``<stem>.<ext>`` या ``<stem>_<anything>.<ext>`` नाम वाली छवि फ़ाइलें, फ़ोल्डर क्रम में और फिर नाम के अनुसार।"
+    },
+    {
+      "context": "The points file of one image.",
+      "label": "spacr.point_annotation.points_path#0",
+      "source": "The points file of one image.",
+      "source_sha256": "5bf7c483423fad7d398e57b63f611fc8a7ecbe0cbf2b59e7fc4c757307f474c2",
+      "translation": "एक छवि की बिंदु फ़ाइल।"
+    },
+    {
+      "context": "the image file.",
+      "label": "spacr.point_annotation.points_path#1",
+      "source": "the image file.",
+      "source_sha256": "cfee20e0f1533a4073e5bec8b7908914deb70f198312fa7f7540897a843995d9",
+      "translation": "छवि फ़ाइल।"
+    },
+    {
+      "context": "the folder points files are saved in.",
+      "label": "spacr.point_annotation.points_path#2",
+      "source": "the folder points files are saved in.",
+      "source_sha256": "7345a0595dd32a741a31211b1bfec09108e3bb88c658b249f8fd404b2f7a407a",
+      "translation": "वह फ़ोल्डर जिसमें बिंदु फ़ाइलें सहेजी जाती हैं।"
+    },
+    {
+      "context": "``<annotations>/<stem>_points.csv``, the stem without a trailing ``_clean``.",
+      "label": "spacr.point_annotation.points_path#3",
+      "source": "``<annotations>/<stem>_points.csv``, the stem without a trailing ``_clean``.",
+      "source_sha256": "68122808202aac8e5e08d2407f43a5b04a021b7df056f9402b1da28b837f162c",
+      "translation": "``<annotations>/<stem>_points.csv``, स्टेम बिना अंतिम ``_clean`` के।"
+    },
+    {
+      "context": "Read a points file.",
+      "label": "spacr.point_annotation.read_points#0",
+      "source": "Read a points file.",
+      "source_sha256": "c6170c5121d945c4092c5933255424bb43dc937aa533028055bdd4ca677457bf",
+      "translation": "एक बिंदु फ़ाइल पढ़ें।"
+    },
+    {
+      "context": "A file saved by Fiji's Measure, with more columns than these, is read too; only ``X`` and ``Y`` are required.",
+      "label": "spacr.point_annotation.read_points#1",
+      "source": "A file saved by Fiji's Measure, with more columns than these, is read too; only ``X`` and ``Y`` are required.",
+      "source_sha256": "493ddb86656ea1787d47359a449e86770046d26dac2eb9e3dfb6022d9c62facf",
+      "translation": "Fiji के Measure द्वारा सहेजी गई फ़ाइल, जिसमें इनसे अधिक कॉलम हों, भी पढ़ी जाती है; केवल ``X`` और ``Y`` आवश्यक हैं।"
+    },
+    {
+      "context": "the points file.",
+      "label": "spacr.point_annotation.read_points#2",
+      "source": "the points file.",
+      "source_sha256": "02185da62bf7af1ddcf5d19970cbc0465e6e7476f6cb2bfb8f420ce0913bdf7a",
+      "translation": "बिंदु फ़ाइल।"
+    },
+    {
+      "context": "the points in file order, or ``[]`` when the file is absent.",
+      "label": "spacr.point_annotation.read_points#3",
+      "source": "the points in file order, or ``[]`` when the file is absent.",
+      "source_sha256": "07c568521535e408a022cea3008a087634f2f4eb5119636264e66941dfea5522",
+      "translation": "फ़ाइल क्रम में बिंदु, या ``[]`` जब फ़ाइल मौजूद न हो।"
+    },
+    {
+      "context": "when the file has no ``X`` or no ``Y`` column, or a coordinate that is not a number.",
+      "label": "spacr.point_annotation.read_points#4",
+      "source": "when the file has no ``X`` or no ``Y`` column, or a coordinate that is not a number.",
+      "source_sha256": "821cbc5163b2f05d7adc661ceed4d2ada6252963c5aa72b695df92308c0f2439",
+      "translation": "जब फ़ाइल में ``X`` कॉलम या ``Y`` कॉलम न हो, या कोई निर्देशांक संख्या न हो।"
+    },
+    {
+      "context": "Write a points file atomically, replacing what was there.",
+      "label": "spacr.point_annotation.write_points#0",
+      "source": "Write a points file atomically, replacing what was there.",
+      "source_sha256": "2bcdfcad0e09f780d3a5277ce0e5f01b9d1b0385df20d91ca2aec800c9f15067",
+      "translation": "बिंदु फ़ाइल को परमाणु रूप से लिखें, जो पहले था उसे बदलते हुए।"
+    },
+    {
+      "context": "the points file.",
+      "label": "spacr.point_annotation.write_points#1",
+      "source": "the points file.",
+      "source_sha256": "02185da62bf7af1ddcf5d19970cbc0465e6e7476f6cb2bfb8f420ce0913bdf7a",
+      "translation": "बिंदु फ़ाइल।"
+    },
+    {
+      "context": "the points, written in order.",
+      "label": "spacr.point_annotation.write_points#2",
+      "source": "the points, written in order.",
+      "source_sha256": "c56f913f4e08a1e580420882c1375c82065b0f581db8a3e1709e6c859c2e835b",
+      "translation": "बिंदु, क्रम में लिखे गए।"
+    },
+    {
+      "context": "the path written.",
+      "label": "spacr.point_annotation.write_points#3",
+      "source": "the path written.",
+      "source_sha256": "8138d15977925d7bbd3244f9f1ee67e7e1720c96671be8079d459f85932c86a7",
+      "translation": "लिखा गया पथ।"
+    },
+    {
+      "context": "when the file cannot be written.",
+      "label": "spacr.point_annotation.write_points#4",
+      "source": "when the file cannot be written.",
+      "source_sha256": "28aad44dafa807f4941e980fc6467e403f9545695fa3dfa99daa9f2326652439",
+      "translation": "जब फ़ाइल लिखी नहीं जा सकती।"
+    },
+    {
+      "context": "Make Masks' point mode: click one point per object (item 957, alpha).",
+      "label": "spacr.qt.point_annotator#0",
+      "source": "Make Masks' point mode: click one point per object (item 957, alpha).",
+      "source_sha256": "18df3b58fedf58e9d39b24f6b84f9071669d3b060cf4d47d43cbd3de342e24b1",
+      "translation": "Make Masks का बिंदु मोड: प्रति वस्तु एक बिंदु क्लिक करें (आइटम 957, alpha)।"
+    },
+    {
+      "context": "The window steps through a :func:`spacr.point_annotation.build_point_queue` session. Each image is shown on its own, blind: the outlines a scorer will compare the points against are not on application view. The controls are:",
+      "label": "spacr.qt.point_annotator#1",
+      "source": "The window steps through a :func:`spacr.point_annotation.build_point_queue` session. Each image is shown on its own, blind: the outlines a scorer will compare the points against are not on screen. The controls are:",
+      "source_sha256": "4c7b98240d822d214c492800c43292006afb094d9162c063d95b1702e61441da",
+      "translation": "विंडो एक :func:`spacr.point_annotation.build_point_queue` सत्र में क्रम से आगे बढ़ती है। प्रत्येक छवि अलग से, ब्लाइंड रूप में दिखाई जाती है: जिन रूपरेखाओं से स्कोरर बिंदुओं की तुलना करेगा वे स्क्रीन पर नहीं होतीं। नियंत्रण ये हैं:"
+    },
+    {
+      "context": "left click adds a point on the clicked pixel;",
+      "label": "spacr.qt.point_annotator#2",
+      "source": "left click adds a point on the clicked pixel;",
+      "source_sha256": "1113a4e82d3717bdb80c21e97e701fe2f62ec07cb19353639d28746c8dd6beaf",
+      "translation": "बायाँ क्लिक क्लिक किए गए पिक्सेल पर एक बिंदु जोड़ता है;"
+    },
+    {
+      "context": "right click removes the nearest point within a few pixels;",
+      "label": "spacr.qt.point_annotator#3",
+      "source": "right click removes the nearest point within a few pixels;",
+      "source_sha256": "da43f6180d4cd50aa9b07e1fbdd2708e5d6a578f74a1e18e5e61dd365882d2fb",
+      "translation": "दायाँ क्लिक कुछ पिक्सेल के भीतर निकटतम बिंदु हटाता है;"
+    },
+    {
+      "context": "``U`` flips \"unsure\" on the point nearest the cursor, or on the last one;",
+      "label": "spacr.qt.point_annotator#4",
+      "source": "``U`` flips \"unsure\" on the point nearest the cursor, or on the last one;",
+      "source_sha256": "8d0923fdda5d0a52d5b7aa93a960cf6974ee46f578d2d05982eedc24c2d162be",
+      "translation": "``U`` कर्सर के निकटतम बिंदु पर, या अंतिम बिंदु पर, \"unsure\" को पलटता है;"
+    },
+    {
+      "context": "``Ctrl+Z`` takes back the last change;",
+      "label": "spacr.qt.point_annotator#5",
+      "source": "``Ctrl+Z`` takes back the last change;",
+      "source_sha256": "e41a4d887597dde1215702bd63858cc550d235f37070f19fc32cb711730c6985",
+      "translation": "``Ctrl+Z`` अंतिम परिवर्तन को वापस लेता है;"
+    },
+    {
+      "context": "the wheel zooms at the cursor, and the middle button, or Shift with the left button, pans, as in the mask editor; ``F`` fits the image again;",
+      "label": "spacr.qt.point_annotator#6",
+      "source": "the wheel zooms at the cursor, and the middle button, or Shift with the left button, pans, as in the mask editor; ``F`` fits the image again;",
+      "source_sha256": "f65e338742316936d207301e321fbe75728cd0cd004dbd99f7cd156497ba45df",
+      "translation": "व्हील कर्सर पर ज़ूम करता है, और मध्य बटन, या बाएँ बटन के साथ Shift, पैन करता है, जैसे मास्क संपादक में; ``F`` छवि को फिर से फ़िट करता है;"
+    },
+    {
+      "context": "``Enter`` marks the image done and opens the next one not done, and the arrow keys step back and forward without marking.",
+      "label": "spacr.qt.point_annotator#7",
+      "source": "``Enter`` marks the image done and opens the next one not done, and the arrow keys step back and forward without marking.",
+      "source_sha256": "c33b696a8344fb205acf4bd8d9633462babc23d02e30c2b6907624980dd4c80e",
+      "translation": "``Enter`` छवि को पूर्ण चिह्नित करता है और अगली अपूर्ण छवि खोलता है, और तीर कुंजियाँ बिना चिह्नित किए पीछे और आगे जाती हैं।"
+    },
+    {
+      "context": "Every change is saved at once by :class:`spacr.point_annotation.PointSession`. An overlay folder can be shown only after every image of the folder is marked done (or from the start when the session was opened with ``hide_overlays`` off). While an overlay is on application view the points cannot be changed, so that the outlines never steer an annotation.",
+      "label": "spacr.qt.point_annotator#8",
+      "source": "Every change is saved at once by :class:`spacr.point_annotation.PointSession`. An overlay folder can be shown only after every image of the folder is marked done (or from the start when the session was opened with ``hide_overlays`` off). While an overlay is on screen the points cannot be changed, so that the outlines never steer an annotation.",
+      "source_sha256": "354ef6cf2dd10c137712775bb6b32f1898f36758a8eebf2f1a571e477bab4999",
+      "translation": "हर परिवर्तन :class:`spacr.point_annotation.PointSession` द्वारा तुरंत सहेजा जाता है। ओवरले फ़ोल्डर तभी दिखाया जा सकता है जब फ़ोल्डर की हर छवि पूर्ण चिह्नित हो जाए (या शुरू से ही, जब सत्र ``hide_overlays`` बंद रखकर खोला गया हो)। जब तक ओवरले स्क्रीन पर है, बिंदु बदले नहीं जा सकते, ताकि रूपरेखाएँ कभी किसी एनोटेशन को प्रभावित न करें।"
+    },
+    {
+      "context": "Click one point per object on each image of a point work list.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#0",
+      "source": "Click one point per object on each image of a point queue.",
+      "source_sha256": "7acfc91730211114e2c6ea6181a794d70cb4dc871dd9da8dfe1ab99b31eb64bc",
+      "translation": "बिंदु कार्य सूची की प्रत्येक छवि पर प्रति वस्तु एक बिंदु क्लिक करें।"
+    },
+    {
+      "context": "the session :func:`spacr.point_annotation.build_point_queue` built.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#1",
+      "source": "the session :func:`spacr.point_annotation.build_point_queue` built.",
+      "source_sha256": "83e870ce01e550aebcbfc2e93772dc2f4444373536290cab214ee103ecd1883b",
+      "translation": ":func:`spacr.point_annotation.build_point_queue` द्वारा बनाया गया सत्र।"
+    },
+    {
+      "context": "folders of overlay images, matched to each image by its points stem.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#2",
+      "source": "folders of overlay images, matched to each image by its points stem.",
+      "source_sha256": "a3d3634ce268403616e2d83a0d0e524e369d485d1a12b52b55d4a83bd68478d9",
+      "translation": "ओवरले छवियों के फ़ोल्डर, बिंदु स्टेम द्वारा प्रत्येक छवि से मिलाए गए।"
+    },
+    {
+      "context": "keep the overlays hidden until every image is marked done. Default True.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#3",
+      "source": "keep the overlays hidden until every image is marked done. Default True.",
+      "source_sha256": "cec860e0b57eb8c9b56ed9ef86c8db721be506634f2c2f8c4756a3f2d9e8f21e",
+      "translation": "हर छवि के पूर्ण चिह्नित होने तक ओवरले छिपाए रखें। डिफ़ॉल्ट True।"
+    },
+    {
+      "context": "the parent widget.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#4",
+      "source": "the parent widget.",
+      "source_sha256": "e1b1ecef8546d0fc83664715a3ec1102d0a7fbd697ab17deaef69615459de73e",
+      "translation": "पैरेंट विजेट।"
+    },
+    {
+      "context": "Build the window and open the first image not done.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#5",
+      "source": "Build the window and open the first image not done.",
+      "source_sha256": "abeaf00ebc071cd7759cf032ba838ae205388d5f80a2cd7366cf2613a956cbf6",
+      "translation": "विंडो बनाएँ और पहली अपूर्ण छवि खोलें।"
+    },
+    {
+      "context": "the point work list.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#6",
+      "source": "the point queue.",
+      "source_sha256": "0e97c9b5fcaf65b4eed3fda56b38dd7a599eacc2b656634dd58df478bb74ab8c",
+      "translation": "बिंदु कार्य सूची।"
+    },
+    {
+      "context": "folders of overlay images.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#7",
+      "source": "folders of overlay images.",
+      "source_sha256": "094d9e3c0e107174a4d1c29f17540cbd9b85f1e764960bb34e10018fac38d9d2",
+      "translation": "ओवरले छवियों के फ़ोल्डर।"
+    },
+    {
+      "context": "keep overlays hidden until every image is done.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#8",
+      "source": "keep overlays hidden until every image is done.",
+      "source_sha256": "fa511e8246a8845588eec2413533c676b5d4ef548eb464ca038efed0c8eb04e8",
+      "translation": "हर छवि के पूर्ण होने तक ओवरले छिपाए रखें।"
+    },
+    {
+      "context": "the parent widget.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog#9",
+      "source": "the parent widget.",
+      "source_sha256": "e1b1ecef8546d0fc83664715a3ec1102d0a7fbd697ab17deaef69615459de73e",
+      "translation": "पैरेंट विजेट।"
+    },
+    {
+      "context": "Save this image's points, mark it done, and open the next one not done.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog.mark_done#0",
+      "source": "Save this image's points, mark it done, and open the next one not done.",
+      "source_sha256": "9a162734c69bdf9b82b488dc5f3334a98245f509b533e954168e6502b6a5b372",
+      "translation": "इस छवि के बिंदु सहेजें, इसे पूर्ण चिह्नित करें, और अगली अपूर्ण छवि खोलें।"
+    },
+    {
+      "context": "Open the image at ``index`` of the session.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog.open_index#0",
+      "source": "Open the image at ``index`` of the session.",
+      "source_sha256": "8dead9a67358acaf293d3d568a98e5300a28c39c3f1626adbcca7c557357717d",
+      "translation": "सत्र के ``index`` स्थान पर छवि खोलें।"
+    },
+    {
+      "context": "position in the session; out of range does nothing.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog.open_index#1",
+      "source": "position in the session; out of range does nothing.",
+      "source_sha256": "d98d0bb683849540952b00e4701bda4816af22fc225bef8ae3b471df90e1ac94",
+      "translation": "सत्र में स्थान; सीमा से बाहर होने पर कुछ नहीं होता।"
+    },
+    {
+      "context": "whether an image was opened.",
+      "label": "spacr.qt.point_annotator.PointAnnotatorDialog.open_index#2",
+      "source": "whether an image was opened.",
+      "source_sha256": "38795ef531630d43224cbcaa1450131278206a676aac7277ad223838cad8bcf6",
+      "translation": "क्या कोई छवि खोली गई।"
+    }
+  ]
+}

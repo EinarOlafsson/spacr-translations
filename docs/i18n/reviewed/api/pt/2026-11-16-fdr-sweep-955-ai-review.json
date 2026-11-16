@@ -1,0 +1,77 @@
+{
+  "language": "pt",
+  "records": [
+    {
+      "context": "Genotyped share at matched decoy FDR, method by method (item 955).",
+      "label": "spacr.ops_prefix.fdr_sweep#0",
+      "source": "Genotyped share at matched decoy FDR, method by method (item 955).",
+      "source_sha256": "f81fb3c83bb6d598c4ab6056af090353cdac568c9da02afab462b350acc70881",
+      "translation": "Fração genotipada com FDR de chamarizes equiparado, método a método (item 955)."
+    },
+    {
+      "context": "Every method's reads (spaCR's own, or another workflow's per-spot reads) are matched by one matcher (:func:`match_prefix_reads`, ``hamming`` unless ``ops_prefix_metric`` says otherwise, up to the largest ``ops_fdr_sweep_max_distance``) against the whitelist with decoys (:func:`prefix_decoy_library`, ``ops_prefix_decoy_k`` and ``ops_prefix_decoy_seed``) and, for the control, against shuffled whitelists (:func:`shuffled_library`, one per ``ops_fdr_sweep_shuffle_seeds``). A configuration is a largest read distance, a fewest top-barcode reads, a cell rule (:data:`FDR_SWEEP_RULES`) and, for a method whose reads carry a quality, a lowest read quality: no cut or the ``ops_fdr_sweep_quality_quantiles`` of that method's reads in cells. Each site's calls are counted at every configuration; pooled over the selection sites, the decoy FDR is ``100 / k * decoys / real calls`` and the genotyped share ``100 * real calls / cells``.",
+      "label": "spacr.ops_prefix.fdr_sweep#1",
+      "source": "Every method's reads (spaCR's own, or another pipeline's per-spot reads) are matched by one matcher (:func:`match_prefix_reads`, ``hamming`` unless ``ops_prefix_metric`` says otherwise, up to the largest ``ops_fdr_sweep_max_distance``) against the whitelist with decoys (:func:`prefix_decoy_library`, ``ops_prefix_decoy_k`` and ``ops_prefix_decoy_seed``) and, for the control, against shuffled whitelists (:func:`shuffled_library`, one per ``ops_fdr_sweep_shuffle_seeds``). A configuration is a largest read distance, a fewest top-barcode reads, a cell rule (:data:`FDR_SWEEP_RULES`) and, for a method whose reads carry a quality, a lowest read quality: no cut or the ``ops_fdr_sweep_quality_quantiles`` of that method's reads in cells. Each site's calls are counted at every configuration; pooled over the selection sites, the decoy FDR is ``100 / k * decoys / real calls`` and the genotyped share ``100 * real calls / cells``.",
+      "source_sha256": "50161b4e966529d1949f033a530af14361ac8442ca651efc0a9c9361f2edf9ca",
+      "translation": "As leituras de cada método (as do próprio spaCR, ou as leituras por ponto de outro fluxo de análise) são pareadas por um único pareador (:func:`match_prefix_reads`, ``hamming`` a menos que ``ops_prefix_metric`` indique o contrário, até a maior ``ops_fdr_sweep_max_distance``) contra a lista de permissão com chamarizes (:func:`prefix_decoy_library`, ``ops_prefix_decoy_k`` e ``ops_prefix_decoy_seed``) e, para o controle, contra listas de permissão embaralhadas (:func:`shuffled_library`, uma por ``ops_fdr_sweep_shuffle_seeds``). Uma configuração é uma maior distância de leitura, um número mínimo de leituras do código de barras principal, uma regra de célula (:data:`FDR_SWEEP_RULES`) e, para um método cujas leituras trazem uma qualidade, uma qualidade mínima de leitura: nenhum corte ou os ``ops_fdr_sweep_quality_quantiles`` das leituras desse método em células. As chamadas de cada sítio são contadas em cada configuração; agrupado sobre os sítios de seleção, o FDR de chamarizes é ``100 / k * decoys / real calls`` e a fração genotipada ``100 * real calls / cells``."
+    },
+    {
+      "context": "For each ``ops_fdr_sweep_targets`` value, and for the lowest FDR every method reaches (rounded up to 0.0001 %), each method's configuration is the one with the most real calls at a pooled FDR no higher than the target; among equals the lower FDR, then the stricter configuration (fewer mismatches, more reads, stricter rule, higher quality cut) is kept. Each chosen configuration is then scored on the report sites: its genotyped share and decoy FDR with site-bootstrap 95 % intervals, and its barcode-shuffle call rate (shuffle-called cells per 100 cells, the mean over the shuffled whitelists, :func:`spacr.ops_decode.shuffle_call_rate`). Between methods the paired difference in genotyped share at the same target gets a site-bootstrap 95 % interval. The bootstrap draws site indices from ``numpy.random.default_rng(ops_fdr_sweep_seed)``, ``ops_fdr_sweep_bootstrap`` resamples at a time: the first draw serves every share and FDR interval and the first target's differences, each later target with two or more chosen methods takes the next draw.",
+      "label": "spacr.ops_prefix.fdr_sweep#2",
+      "source": "For each ``ops_fdr_sweep_targets`` value, and for the lowest FDR every method reaches (rounded up to 0.0001 %), each method's configuration is the one with the most real calls at a pooled FDR no higher than the target; among equals the lower FDR, then the stricter configuration (fewer mismatches, more reads, stricter rule, higher quality cut) is kept. Each chosen configuration is then scored on the report sites: its genotyped share and decoy FDR with site-bootstrap 95 % intervals, and its barcode-shuffle call rate (shuffle-called cells per 100 cells, the mean over the shuffled whitelists, :func:`spacr.ops_decode.shuffle_call_rate`). Between methods the paired difference in genotyped share at the same target gets a site-bootstrap 95 % interval. The bootstrap draws site indices from ``numpy.random.default_rng(ops_fdr_sweep_seed)``, ``ops_fdr_sweep_bootstrap`` resamples at a time: the first draw serves every share and FDR interval and the first target's differences, each later target with two or more chosen methods takes the next draw.",
+      "source_sha256": "5eed53d68ea3218ec400992ea9ba72c84ec7c4408bf6e2d033f1bc70157f15f3",
+      "translation": "Para cada valor de ``ops_fdr_sweep_targets``, e para o menor FDR que todos os métodos alcançam (arredondado para cima a 0.0001 %), a configuração de cada método é aquela com mais chamadas reais a um FDR agrupado não superior à meta; em caso de empate, mantém-se o FDR menor e depois a configuração mais estrita (menos incompatibilidades, mais leituras, regra mais estrita, corte de qualidade mais alto). Cada configuração escolhida é então avaliada nos sítios de relatório: sua fração genotipada e seu FDR de chamarizes com intervalos bootstrap de sítios de 95 %, e sua taxa de chamadas do embaralhamento de códigos de barras (células chamadas pelo embaralhamento por 100 células, a média sobre as listas de permissão embaralhadas, :func:`spacr.ops_decode.shuffle_call_rate`). Entre métodos, a diferença pareada na fração genotipada na mesma meta recebe um intervalo bootstrap de sítios de 95 %. O bootstrap sorteia índices de sítios de ``numpy.random.default_rng(ops_fdr_sweep_seed)``, ``ops_fdr_sweep_bootstrap`` reamostragens por vez: o primeiro sorteio serve a todos os intervalos de fração e de FDR e às diferenças da primeira meta, e cada meta posterior com dois ou mais métodos escolhidos usa o sorteio seguinte."
+    },
+    {
+      "context": "``{method: frame}``, or one frame with a ``method`` column; each frame has ``site``, ``cell`` (0 or less is outside every cell and dropped) and ``read`` (the called bases from cycle 1), and may have ``quality`` (a higher value is a better read).",
+      "label": "spacr.ops_prefix.fdr_sweep#3",
+      "source": "``{method: frame}``, or one frame with a ``method`` column; each frame has ``site``, ``cell`` (0 or less is outside every cell and dropped) and ``read`` (the called bases from cycle 1), and may have ``quality`` (a higher value is a better read).",
+      "source_sha256": "9a96169bd825e24546823d3d56a1575e751bf5f7c53e83b2e97c53bb6f16d26b",
+      "translation": "``{method: frame}``, ou uma única tabela com uma coluna ``method``; cada tabela tem ``site``, ``cell`` (0 ou menos fica fora de todas as células e é descartado) e ``read`` (as bases chamadas a partir do ciclo 1), e pode ter ``quality`` (um valor mais alto é uma leitura melhor)."
+    },
+    {
+      "context": "cells per site, as ``{site: cells}``, a series indexed by site, or a frame with ``site`` and ``cells``; the same cells serve every method.",
+      "label": "spacr.ops_prefix.fdr_sweep#4",
+      "source": "cells per site, as ``{site: cells}``, a series indexed by site, or a frame with ``site`` and ``cells``; the same cells serve every method.",
+      "source_sha256": "ec4c1a7dcd7eb9b0dfbeed4145e33d46951bc05f90c036fbadd57ca3c94d07e7",
+      "translation": "células por sítio, como ``{site: cells}``, uma série indexada por sítio, ou uma tabela com ``site`` e ``cells``; as mesmas células servem para todos os métodos."
+    },
+    {
+      "context": "the whitelist, from :func:`spacer_prefix_library`, without decoys.",
+      "label": "spacr.ops_prefix.fdr_sweep#5",
+      "source": "the whitelist, from :func:`spacer_prefix_library`, without decoys.",
+      "source_sha256": "368d97e2fe9aa842963963dba33f4f274c978c44730fd00db0f9a89cd1f84e0c",
+      "translation": "a lista de permissão, de :func:`spacer_prefix_library`, sem chamarizes."
+    },
+    {
+      "context": "the ``ops_fdr_sweep_*`` settings, ``ops_prefix_decoy_k`` (1 or more), ``ops_prefix_decoy_seed`` and ``ops_prefix_metric``.",
+      "label": "spacr.ops_prefix.fdr_sweep#6",
+      "source": "the ``ops_fdr_sweep_*`` settings, ``ops_prefix_decoy_k`` (1 or more), ``ops_prefix_decoy_seed`` and ``ops_prefix_metric``.",
+      "source_sha256": "0838f9d15ceca7c651ca6a9005525c6b5a05b65bfcf6f31f7f650a135e4195fc",
+      "translation": "os parâmetros ``ops_fdr_sweep_*``, ``ops_prefix_decoy_k`` (1 ou mais), ``ops_prefix_decoy_seed`` e ``ops_prefix_metric``."
+    },
+    {
+      "context": "the sites the configurations are chosen on; the others are the report sites. None chooses and reports on every site.",
+      "label": "spacr.ops_prefix.fdr_sweep#7",
+      "source": "the sites the configurations are chosen on; the others are the report sites. None chooses and reports on every site.",
+      "source_sha256": "cbe1598f8cb0024e7a081173a0e396e9db0665a665bb11f798e3283412b24f3b",
+      "translation": "os sítios em que as configurações são escolhidas; os demais são os sítios de relatório. None escolhe e relata em todos os sítios."
+    },
+    {
+      "context": "``settings`` (the values used), ``sites``, ``selection_sites``, ``report_sites``, ``decoys``, ``lowest_fdr_pct`` and ``quality_cuts`` per method, ``targets`` (per target ``label``, ``target_fdr_pct``, per method the chosen configuration with its selection and report numbers or None, and ``diffs``, the paired differences ``'<a> - <b>'``), ``table`` (one row per target and method), ``pooled`` (every configuration on the selection sites) and ``grid`` (every configuration per site) as frames.",
+      "label": "spacr.ops_prefix.fdr_sweep#8",
+      "source": "``settings`` (the values used), ``sites``, ``selection_sites``, ``report_sites``, ``decoys``, ``lowest_fdr_pct`` and ``quality_cuts`` per method, ``targets`` (per target ``label``, ``target_fdr_pct``, per method the chosen configuration with its selection and report numbers or None, and ``diffs``, the paired differences ``'<a> - <b>'``), ``table`` (one row per target and method), ``pooled`` (every configuration on the selection sites) and ``grid`` (every configuration per site) as frames.",
+      "source_sha256": "92b3d0d1792d13c370036c5714f6f519b2be45e5930aec4d443dc0bbe8a6a903",
+      "translation": "``settings`` (os valores usados), ``sites``, ``selection_sites``, ``report_sites``, ``decoys``, ``lowest_fdr_pct`` e ``quality_cuts`` por método, ``targets`` (por meta ``label``, ``target_fdr_pct``, por método a configuração escolhida com seus números de seleção e de relatório ou None, e ``diffs``, as diferenças pareadas ``'<a> - <b>'``), ``table`` (uma linha por meta e método), ``pooled`` (todas as configurações nos sítios de seleção) e ``grid`` (todas as configurações por sítio) como tabelas."
+    },
+    {
+      "context": "for invalid settings, missing columns, a site without a cell count, or selection sites that leave no report site.",
+      "label": "spacr.ops_prefix.fdr_sweep#9",
+      "source": "for invalid settings, missing columns, a site without a cell count, or selection sites that leave no report site.",
+      "source_sha256": "90d78c313e41d095f1246bfe3840f43a9d79062fafc0e980f663be710f906ba8",
+      "translation": "para parâmetros inválidos, colunas ausentes, um sítio sem contagem de células, ou sítios de seleção que não deixam nenhum sítio de relatório."
+    }
+  ],
+  "review_method": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-16 against the exact English source of item 955 on the claude-955-fdr-sweep branch: every block of spacr.ops_prefix.fdr_sweep. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

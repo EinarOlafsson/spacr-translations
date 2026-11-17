@@ -9,13 +9,6 @@
       "translation": "정렬 후"
     },
     {
-      "key": "Agreeing",
-      "source": "Agreeing",
-      "source_sha256": "f266f4c7cbffac569acd33ec489acadea829a25482a7967ea2587de9ac004857",
-      "table": "ui",
-      "translation": "일치"
-    },
-    {
       "key": "Align & stitch",
       "source": "Align & stitch",
       "source_sha256": "756670ff24e4fef73316808447c6c64f11d030eda1e75c728e4a3520a2c1b975",
@@ -23,11 +16,11 @@
       "translation": "정렬 및 스티칭"
     },
     {
-      "key": "Barcode",
-      "source": "Barcode",
-      "source_sha256": "a401f372102d06f4071255cb2192b24443f2dc1f125b90d60f0f74cbbd5f3998",
+      "key": "Barcode (commonest read)",
+      "source": "Barcode (commonest read)",
+      "source_sha256": "800d5ef0df82fccf954116e75782492f5ad27f3007f86da747180476dba66d87",
       "table": "ui",
-      "translation": "바코드"
+      "translation": "바코드(가장 흔한 리드)"
     },
     {
       "key": "Base-call quality",
@@ -35,6 +28,13 @@
       "source_sha256": "8058cb1fdf3f6869947adffeeb6e9e5662c67d3e73b0bfa74a8b7956732aa7ea",
       "table": "ui",
       "translation": "염기 호출 품질"
+    },
+    {
+      "key": "Best read quality",
+      "source": "Best read quality",
+      "source_sha256": "6f00278296c47e0c6c8565863eca08363f430ac69b27ac1ff068a3f1b5cdbc15",
+      "table": "ui",
+      "translation": "최고 리드 품질"
     },
     {
       "key": "Calls per nucleus ({rule})",
@@ -100,18 +100,18 @@
       "translation": "유전자 프로필을 임베딩하고, 설정에 지정된 첫 번째 그래프, 해상도, 시드로 클러스터링합니다."
     },
     {
+      "key": "Every read attributed to the nucleus, including reads that match no library guide.",
+      "source": "Every read attributed to the nucleus, including reads that match no library guide.",
+      "source_sha256": "56393c165f0a621a73183f78f554fa4e7d8e21242d4e5fca5b592c40df2b8fcf",
+      "table": "ui",
+      "translation": "라이브러리의 어떤 가이드와도 맞지 않는 리드를 포함해, 핵에 할당된 모든 리드입니다."
+    },
+    {
       "key": "Fewer than three components.",
       "source": "Fewer than three components.",
       "source_sha256": "4ee5e4661275d4a356f5849d71b3e5b61f6178ba2398d72da959f8545affca6c",
       "table": "ui",
       "translation": "구성 요소가 세 개 미만입니다."
-    },
-    {
-      "key": "Fraction",
-      "source": "Fraction",
-      "source_sha256": "1b3350570724a4f46133585b04ad1d3cffd056c5bbb314e726e580a055c2e9be",
-      "table": "ui",
-      "translation": "비율"
     },
     {
       "key": "Get OPS test data",
@@ -233,6 +233,27 @@
       "translation": "리드 품질(가장 나쁜 염기)"
     },
     {
+      "key": "Reads (all)",
+      "source": "Reads (all)",
+      "source_sha256": "675b1e4a0f0890a45eed9305af8ecea3dc5b2a3a2542ff71a0ab45dfdaa181a1",
+      "table": "ui",
+      "translation": "리드(전체)"
+    },
+    {
+      "key": "Reads for guide",
+      "source": "Reads for guide",
+      "source_sha256": "aca0b0657b240f03dbde7edc83391079ef4f62d355c61867300628ec7f90a637",
+      "table": "ui",
+      "translation": "가이드 리드"
+    },
+    {
+      "key": "Reads that match the called guide, exactly or within the allowed mismatches. For a pixel-fallback call (marked px), the pixels that voted for it.",
+      "source": "Reads that match the called guide, exactly or within the allowed mismatches. For a pixel-fallback call (marked px), the pixels that voted for it.",
+      "source_sha256": "e8f234450c8b59ed23112377821a81fe25720bf0641691c1ded623d254a43184",
+      "table": "ui",
+      "translation": "호출된 가이드와 정확히 또는 허용된 불일치 안에서 맞는 리드입니다. 픽셀 대체 호출(px 표시)에서는 그 가이드에 투표한 픽셀입니다."
+    },
+    {
       "key": "Segment nuclei and cells on one phenotype crop and measure them.",
       "source": "Segment nuclei and cells on one phenotype crop and measure them.",
       "source_sha256": "ff87369936c88e39518a0a3c44eeb0195157dfb02d4bddd186cc0eaed7ee72b1",
@@ -296,6 +317,41 @@
       "translation": "aggregate 단계가 유전자 표를 작성하지 않았습니다."
     },
     {
+      "key": "The called guide's share of the nucleus's guide votes. Only reads that match a library guide vote, so reads that match none count in Reads (all) but not in this share; with ops_decode_quality_weighted each vote is weighted by its read's quality.",
+      "source": "The called guide's share of the nucleus's guide votes. Only reads that match a library guide vote, so reads that match none count in Reads (all) but not in this share; with ops_decode_quality_weighted each vote is weighted by its read's quality.",
+      "source_sha256": "f3980e59cd57284ec51baf77f369c783f88f5dbf5e3571dd1b9cca24c0e97be4",
+      "table": "ui",
+      "translation": "핵의 가이드 투표에서 호출된 가이드가 차지하는 비율입니다. 라이브러리 가이드와 맞는 리드만 투표하므로, 어떤 가이드와도 맞지 않는 리드는 리드(전체)에는 세지만 이 비율에는 들어가지 않습니다. ops_decode_quality_weighted를 켜면 각 투표에 해당 리드의 품질로 가중치를 줍니다."
+    },
+    {
+      "key": "The commonest raw read among the reads that support the guide. It may differ from the guide by up to ops_read_mismatches bases, which the match allows.",
+      "source": "The commonest raw read among the reads that support the guide. It may differ from the guide by up to ops_read_mismatches bases, which the match allows.",
+      "source_sha256": "0de0508cb6c6d9edd138fdef17a0b714484c9f76da5635e759079caa76f66cda",
+      "table": "ui",
+      "translation": "가이드를 뒷받침하는 리드 중 가장 흔한 원시 리드입니다. 매칭이 허용하는 만큼, 즉 ops_read_mismatches개 염기까지 가이드와 다를 수 있습니다."
+    },
+    {
+      "key": "The highest quality among the reads for the guide; a read's quality is its worst cycle's margin between the top two bases, from 0 to 1.",
+      "source": "The highest quality among the reads for the guide; a read's quality is its worst cycle's margin between the top two bases, from 0 to 1.",
+      "source_sha256": "e5c00660e0e337d5a5609a9de42e9f73db98759c75604ed3836d85c2597fe446",
+      "table": "ui",
+      "translation": "가이드 리드 중 가장 높은 품질입니다. 리드의 품질은 가장 나쁜 사이클에서 상위 두 염기 사이의 차이로, 0부터 1까지입니다."
+    },
+    {
+      "key": "The library guide the nucleus is called with; * marks a decoy guide.",
+      "source": "The library guide the nucleus is called with; * marks a decoy guide.",
+      "source_sha256": "1c81ecf3769b5415c49be346930de4d53c3ba60404b64e1f6fd9cc146d759e69",
+      "table": "ui",
+      "translation": "핵에 호출된 라이브러리 가이드입니다. *는 디코이 가이드를 표시합니다."
+    },
+    {
+      "key": "The nucleus's label in the crop's nucleus mask.",
+      "source": "The nucleus's label in the crop's nucleus mask.",
+      "source_sha256": "e72f20c57464cf3af5579490746d704da50199a1708fd4f2826164e8ba39da86",
+      "table": "ui",
+      "translation": "크롭의 핵 마스크에서 이 핵의 레이블입니다."
+    },
+    {
       "key": "Tiles (blue), phenotype fields (teal)",
       "source": "Tiles (blue), phenotype fields (teal)",
       "source_sha256": "14ec170788e5785412f402466134ae7dc1e53999d68f15c01a4a43d940a52ed4",
@@ -308,6 +364,13 @@
       "source_sha256": "13d61712646485a6d69adab6f81ea186aa56d6369a9f47cc0c419b32aaf6c851",
       "table": "ui",
       "translation": "매핑 안 됨"
+    },
+    {
+      "key": "Vote share",
+      "source": "Vote share",
+      "source_sha256": "bb377da35583d0a8361e7f9c712f82ce3244ced78afde4302389857068b63bef",
+      "table": "ui",
+      "translation": "투표 비율"
     },
     {
       "key": "cells",

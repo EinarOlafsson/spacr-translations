@@ -1,0 +1,56 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "A parameter grid search for the OPS spacer-prefix decode on a few tiles (item 960, alpha).",
+      "label": "spacr.ops_grid_search#0",
+      "source": "A parameter grid search for the OPS spacer-prefix decode on a few tiles (item 960, alpha).",
+      "source_sha256": "f70ce0a7732f77d8a640da68bd0be4dc6d253b752af0f095fe90e8160daf4ab9",
+      "translation": "몇 개의 타일에서 OPS 스페이서 접두사 디코딩을 위한 매개변수 그리드 탐색(항목 960, 알파)."
+    },
+    {
+      "context": "Before a full run, pick a few representative tiles and score every combination of a grid of spot-detection and decode settings on them. Each combination reports, per tile and pooled over the tiles, the spot count, the read mapping rate, the cell assignment rate, the decoy FDR and the barcode-shuffle call rate, and how long it took. The last two are the false-call controls of items 942 and 949, so a setting is never chosen on yield alone.",
+      "label": "spacr.ops_grid_search#1",
+      "source": "Before a full run, pick a few representative tiles and score every combination of a grid of spot-detection and decode settings on them. Each combination reports, per tile and pooled over the tiles, the spot count, the read mapping rate, the cell assignment rate, the decoy FDR and the barcode-shuffle call rate, and how long it took. The last two are the false-call controls of items 942 and 949, so a setting is never chosen on yield alone.",
+      "source_sha256": "b6d15806a0929993c53120bfba7695f4812adc4bb64124bc90edf6143e0ce255",
+      "translation": "전체 실행 전에 대표 타일 몇 개를 고르고, 그 위에서 스팟 검출 및 디코딩 설정 그리드의 모든 조합을 평가합니다. 각 조합은 타일별 및 타일 전체 합산으로 스팟 수, 리드 매핑률, 세포 배정률, 디코이 FDR, 바코드 셔플 호출률과 소요 시간을 보고합니다. 마지막 두 가지는 항목 942와 949의 오호출 대조군이므로 설정이 수율만으로 선택되는 일은 없습니다."
+    },
+    {
+      "context": "The grid uses the decode itself, never a second implementation: each tile's spots are found once, down to the lowest read threshold of the grid, as :func:`spacr.ops_prefix.run_prefix_decode` finds them while it tunes, and each combination is then called, matched and counted by the decode's own functions. A combination's numbers are therefore the numbers a processing session at that setting writes to ``site_summary.csv``.",
+      "label": "spacr.ops_grid_search#2",
+      "source": "The grid uses the decode itself, never a second implementation: each tile's spots are found once, down to the lowest read threshold of the grid, as :func:`spacr.ops_prefix.run_prefix_decode` finds them while it tunes, and each combination is then called, matched and counted by the decode's own functions. A combination's numbers are therefore the numbers a run at that setting writes to ``site_summary.csv``.",
+      "source_sha256": "ae1378c1aac518754ebb1802667f5c744687d770e4ad8d6b2949a898ea9d53ed",
+      "translation": "그리드는 디코딩 자체를 사용하며 두 번째 구현은 결코 쓰지 않습니다. 각 타일의 스팟은 :func:`spacr.ops_prefix.run_prefix_decode`가 조정 중에 찾는 방식대로 그리드의 가장 낮은 리드 임계값까지 한 번 찾고, 이어서 각 조합을 디코딩 자체의 함수로 호출, 매칭, 집계합니다. 따라서 한 조합의 수치는 그 설정으로 처리 세션이 ``site_summary.csv``에 기록하는 수치와 같습니다."
+    },
+    {
+      "context": "The default point is the settings as they stand. When they tune the thresholds per microplate sample position (``ops_prefix_threshold_tuning='per_well_decoy'``, the default), the decode runs once on the chosen microscope image fields to find each microplate sample position's choice, and every grid point changes only the settings the grid names around that choice.",
+      "label": "spacr.ops_grid_search#3",
+      "source": "The default point is the settings as they stand. When they tune the thresholds per well (``ops_prefix_threshold_tuning='per_well_decoy'``, the default), the decode runs once on the chosen tiles to find each well's choice, and every grid point changes only the settings the grid names around that choice.",
+      "source_sha256": "f28b071d57d99b7a0eb30ff8356c45c1ef7b42569e9a430c9af4e091adb143ea",
+      "translation": "기본 지점은 현재 그대로의 설정입니다. 설정이 마이크로플레이트 시료 위치별로 임계값을 조정하면(``ops_prefix_threshold_tuning='per_well_decoy'``, 기본값) 디코딩이 선택된 현미경 이미지 필드에서 한 번 실행되어 마이크로플레이트 시료 위치마다 선택을 찾고, 각 그리드 지점은 그 선택을 중심으로 그리드가 지정한 설정만 바꿉니다."
+    },
+    {
+      "context": "Turn on ``ops_grid_search`` and an OPS run of the cropped-site layout runs the grid instead of the decode. Every grid run is written as CSV (``ops_grid_<run id>.csv``, identical when the same settings are executed again), with the timings in a second CSV and a plot of yield against the shuffle call rate that marks the default and the Pareto front. Applying a point writes its values into the settings with the grid processing session's ID, microscope image fields and seed.",
+      "label": "spacr.ops_grid_search#4",
+      "source": "Turn on ``ops_grid_search`` and an OPS run of the cropped-site layout runs the grid instead of the decode. Every grid run is written as CSV (``ops_grid_<run id>.csv``, identical when the same settings are run again), with the timings in a second CSV and a plot of yield against the shuffle call rate that marks the default and the Pareto front. Applying a point writes its values into the settings with the grid run's ID, tiles and seed.",
+      "source_sha256": "42d0dec7af1ac37fd53f2c97d5ef8cea54f3bab233fb883f49f8bde7416a6719",
+      "translation": "``ops_grid_search``를 켜면 잘린 사이트 레이아웃의 OPS 실행이 디코딩 대신 그리드를 실행합니다. 모든 그리드 실행은 CSV(``ops_grid_<run id>.csv``, 같은 설정을 다시 실행하면 동일)로 기록되며, 소요 시간은 두 번째 CSV에, 기본값과 파레토 전선을 표시한 셔플 호출률 대비 수율 그래프와 함께 저장됩니다. 지점을 적용하면 그 값이 그리드 처리 세션의 ID, 현미경 이미지 필드, 시드와 함께 설정에 기록됩니다."
+    },
+    {
+      "context": "The Grid search panel of the OPS Live preview's Spots & genotyping tab (item 960, alpha).",
+      "label": "spacr.qt.widgets.ops_grid_search_panel#0",
+      "source": "The Grid search panel of the OPS Live preview's Spots & genotyping tab (item 960, alpha).",
+      "source_sha256": "cf91ad5d9932eebe6a23425c8feaa566b8bfebf4342018b5a3376aa9a2428ab9",
+      "translation": "OPS 라이브 미리보기의 Spots & genotyping 탭에 있는 그리드 탐색 패널(항목 960, 알파)."
+    },
+    {
+      "context": "Pick a few representative tiles, enter a grid of spot and decode settings, and score every grid point on those tiles with the decode itself (:mod:`spacr.ops_grid_search`), off the main GUI execution path. The sortable table shows each point's spots, mapping rate, cells assigned, decoy FDR and barcode-shuffle call rate; the plot shows yield against the shuffle rate with the current default and the Pareto front. Apply to settings writes the selected point into the form and records the grid run.",
+      "label": "spacr.qt.widgets.ops_grid_search_panel#1",
+      "source": "Pick a few representative tiles, enter a grid of spot and decode settings, and score every grid point on those tiles with the decode itself (:mod:`spacr.ops_grid_search`), off the GUI thread. The sortable table shows each point's spots, mapping rate, cells assigned, decoy FDR and barcode-shuffle call rate; the plot shows yield against the shuffle rate with the current default and the Pareto front. Apply to settings writes the selected point into the form and records the grid run.",
+      "source_sha256": "82be0defb1f360312efa1eb30db5d39da28b6193149f48c1bb040f7da94f3817",
+      "translation": "대표 타일 몇 개를 고르고 스팟 및 디코딩 설정 그리드를 입력한 뒤, GUI의 주 실행 경로와 별도로 그 타일에서 디코딩 자체(:mod:`spacr.ops_grid_search`)로 각 그리드 지점을 평가합니다. 정렬 가능한 표는 각 지점의 스팟, 매핑률, 배정된 세포, 디코이 FDR, 바코드 셔플 호출률을 보여 주고, 그래프는 현재 기본값과 파레토 전선과 함께 셔플률 대비 수율을 보여 줍니다. Apply to settings는 선택한 지점을 양식에 기록하고 그리드 실행을 남깁니다."
+    }
+  ],
+  "review_method": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-17 against the exact English source of the module docstrings that item 960 (claude-960-1117 branch: the OPS parameter grid search on representative tiles) adds: spacr.ops_grid_search and spacr.qt.widgets.ops_grid_search_panel. Written directly, with no machine-translation draft. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

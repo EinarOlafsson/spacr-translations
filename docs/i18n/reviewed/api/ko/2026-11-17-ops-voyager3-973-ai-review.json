@@ -6,7 +6,7 @@
       "label": "spacr.ops_tvn.run_profile_phases#3",
       "source": "``\"profile\"``, ``\"evaluate\"`` or both, and the alpha ``\"etest\"`` (item 917, :func:`spacr.gene_measurement_compare.etest_phase`; with ``ops_etest`` on, the profile phase keeps the first cell state's per-cell embedding as ``cells_E.npy`` and ``cells_meta.parquet``) and ``\"cluster_sweep\"`` (item 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"`` (item 928, :func:`spacr.ops_clusters.cluster_consensus_phase`; also after ``\"cluster_sweep\"`` when ``ops_consensus_enabled`` is on) and ``\"cluster_bench_test\"`` (item 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`), which run after them under the same BLAS pin, and ``\"voyager3\"`` (item 973, :func:`spacr.voyager3.run_voyager3`, the clusters' biological roles from UniProt facts through the user's AI provider; also after a clustering phase when ``ops_voyager3_enabled`` is on), last.",
       "source_sha256": "15520cbc2cdd474ff17193913ab841a38e862d69995be835c1e14cdd07157434",
-      "translation": "``\"profile\"``, ``\"evaluate\"`` 또는 둘 다, 그리고 알파 단계인 ``\"etest\"`` (항목 917, :func:`spacr.gene_measurement_compare.etest_phase`; ``ops_etest``\\ 가 켜져 있으면 profile 단계는 첫 번째 세포 상태의 세포별 임베딩을 ``cells_E.npy``\\ 와 ``cells_meta.parquet``\\ 로 유지)와 ``\"cluster_sweep\"`` (항목 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"`` (항목 928, :func:`spacr.ops_clusters.cluster_consensus_phase`; ``ops_consensus_enabled``\\ 가 켜져 있으면 ``\"cluster_sweep\"`` 뒤에도 실행), ``\"cluster_bench_test\"`` (항목 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`)는 이들 뒤에 같은 BLAS 고정 아래에서 실행되며, ``\"voyager3\"`` (항목 973, :func:`spacr.voyager3.run_voyager3`, 사용자의 AI 제공자를 통해 UniProt 사실로부터 얻는 클러스터의 생물학적 역할; ``ops_voyager3_enabled``\\ 가 켜져 있으면 클러스터링 단계 뒤에도 실행)는 마지막에 실행됩니다."
+      "translation": "``\"profile\"``, ``\"evaluate\"`` 또는 둘 다, 그리고 알파 단계인 ``\"etest\"`` (항목 917, :func:`spacr.gene_measurement_compare.etest_phase`; ``ops_etest``\\ 가 켜져 있으면 profile 단계는 첫 번째 세포 상태의 세포별 임베딩을 ``cells_E.npy``\\ 와 ``cells_meta.parquet``\\ 로 유지)와 ``\"cluster_sweep\"`` (항목 916, :func:`spacr.ops_clusters.cluster_sweep_phase`), ``\"cluster_consensus\"`` (항목 928, :func:`spacr.ops_clusters.cluster_consensus_phase`; ``\"cluster_sweep\"`` 뒤에도 실행되며, 이는 ``ops_consensus_enabled``\\ 가 켜져 있을 때), ``\"cluster_bench_test\"`` (항목 929, :func:`spacr.ops_clusters.cluster_bench_test_phase`)는 이들 뒤에 같은 BLAS 고정 아래에서 실행되며, ``\"voyager3\"`` (항목 973, :func:`spacr.voyager3.run_voyager3`, 사용자의 AI 제공자를 통해 UniProt 사실로부터 얻는 클러스터의 생물학적 역할; ``ops_voyager3_enabled``\\ 가 켜져 있으면 클러스터링 단계 뒤에도 실행)는 마지막에 실행됩니다."
     },
     {
       "context": "The Voyager3 control in OPS's settings: a button, a progress bar and a status line (item 973, alpha).",
@@ -20,7 +20,7 @@
       "label": "spacr.qt.voyager3_panel#1",
       "source": "The button runs only the ``voyager3`` phase of :func:`spacr.ops_engine.run_ops` on the settings the panel holds, through the same worker thread a Run uses (:func:`spacr.qt.bridge.make_thread`), so the run appears on Home and in the console like any other. The bar follows the run's ``Progress: n/total`` lines. The AI that answers is the one chosen under Preferences > AI, or ``ops_voyager3_provider``; Voyager3 never uses a vendor API key.",
       "source_sha256": "d6d782a8ffbb02286a7d8b713a6ff64e8f3950c9f23b799d48930b2ff94eb66a",
-      "translation": "버튼은 패널이 보유한 설정으로 :func:`spacr.ops_engine.run_ops`\\ 의 ``voyager3`` 단계만 실행하며, Run이 사용하는 것과 같은 작업자 스레드(:func:`spacr.qt.bridge.make_thread`)를 거치므로 이 실행은 다른 실행과 똑같이 Home과 콘솔에 표시됩니다. 표시줄은 실행의 ``Progress: n/total`` 줄을 따라갑니다. 답하는 AI는 Preferences > AI에서 선택한 AI 또는 ``ops_voyager3_provider``\\ 이며, Voyager3은 공급업체 API 키를 절대 사용하지 않습니다."
+      "translation": "버튼은 ``voyager3`` 단계만 실행합니다. 이 단계는 :func:`spacr.ops_engine.run_ops`\\ 의 일부이며, 패널에 있는 값으로 Run이 사용하는 것과 같은 작업자 스레드(:func:`spacr.qt.bridge.make_thread`)를 거쳐 실행되므로 이 실행은 다른 실행과 똑같이 Home과 콘솔에 표시됩니다. 표시줄은 실행의 ``Progress: n/total`` 줄을 따라갑니다. 답하는 AI는 Preferences > AI에서 선택한 AI 또는 ``ops_voyager3_provider``\\ 이며, Voyager3은 공급업체 API 키를 절대 사용하지 않습니다."
     },
     {
       "context": "The button, bar and status line that start and follow a Voyager3 run.",
@@ -160,7 +160,7 @@
       "label": "spacr.voyager3.build_cluster_prompt#7",
       "source": "the ``meta`` of :func:`fetch_gene_facts`, for the release and fetch date.",
       "source_sha256": "f9ee71df624f5698fa451b861da86e5bf07f62e3cc9a996c2e5f3690496842ee",
-      "translation": "릴리스와 가져온 날짜를 위한 :func:`fetch_gene_facts`\\ 의 ``meta``."
+      "translation": "``meta``\\ (:func:`fetch_gene_facts`\\ 의 반환값)로, 릴리스와 가져온 날짜에 사용됩니다."
     },
     {
       "context": "the prompt text.",

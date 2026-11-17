@@ -60,13 +60,6 @@
       "translation": "Prefijo de OPS: k de señuelos"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_prefix_decoy_k",
-      "source": "How many decoy prefixes per library prefix the spacer-prefix decode matches together with the library: base-shuffled 12-mers at least two edits from every prefix. A read as close to a decoy as to a guide matches neither, and a cell whose top barcode is a decoy is counted, never genotyped, which gives each site, well and plate a decoy FDR (site_summary.csv, fdr_<plate>_<well>.json). 4 is recommended; 0 matches no decoys. Default 0. Alpha.",
-      "source_sha256": "a081fbadf67cb056da0e7c35660931bb99deafdbf26c56655c0ae2571ba9f003",
-      "translation": "Cuántos prefijos señuelo por prefijo de la biblioteca compara la decodificación de prefijos de espaciador junto con la biblioteca: 12-meros con las bases barajadas y al menos dos ediciones de distancia de cada prefijo. Una lectura tan cercana a un señuelo como a una guía no coincide con ninguno, y una célula cuyo código de barras principal es un señuelo se cuenta pero nunca se genotipa, lo que da a cada sitio, posición de muestra y placa un FDR de señuelos (site_summary.csv, fdr_<plate>_<well>.json). Se recomienda 4; 0 no compara ningún señuelo. Valor predeterminado: 0. Alfa."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_prefix_decoy_seed",
       "source": "Ops prefix decoy seed",
@@ -116,25 +109,11 @@
       "translation": "Prefijo de OPS: ajuste de umbrales"
     },
     {
-      "table": "setting_tooltips",
-      "key": "ops_prefix_threshold_tuning",
-      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json. Default 'none'. Alpha.",
-      "source_sha256": "a57ed210f9d351d9545498655cd78403b5a703afb1360b8bc90e4721446c7639",
-      "translation": "Cómo fija la decodificación de prefijos de espaciador sus umbrales. 'none' usa los valores que introduce. 'per_well_decoy' los elige posición de muestra por posición de muestra solo a partir de llamadas de señuelo, con la detección de puntos y la llamada juntas: la mitad de los sitios de la posición de muestra prueba cada combinación de ops_prefix_tuning_grid (umbral de lectura, calidad de lectura, discordancias), la combinación elegida por ops_decode_auto_objective se usa para toda la posición de muestra y la otra mitad informa su FDR. Requiere ops_prefix_decoy_k mayor que 0. La cuadrícula, la curva y la elección de cada posición de muestra se escriben en threshold_tuning_<plate>_<well>.csv, .png y .json. Valor predeterminado: 'none'. Alfa."
-    },
-    {
       "table": "setting_labels",
       "key": "ops_prefix_fdr_target_pct",
       "source": "Ops prefix fdr target pct",
       "source_sha256": "71d337229f2f109ee7bdfba91653d70bd9420bf07ed6deea2ecdd48e11f5c181",
       "translation": "Prefijo de OPS: objetivo de FDR en %"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "ops_prefix_fdr_target_pct",
-      "source": "The highest decoy FDR, in %, that 'per_well_decoy' tuning may accept (0.1 means 0.1 %). Default 0.1. Alpha.",
-      "source_sha256": "3b49d56184f3b3d7e2e6e8ff6ae211529c6febd4cd7bf0cb3326a73ddfd09352",
-      "translation": "El FDR de señuelos más alto, en %, que el ajuste 'per_well_decoy' puede aceptar (0.1 significa 0.1 %). Valor predeterminado: 0.1. Alfa."
     },
     {
       "table": "setting_labels",
@@ -175,6 +154,30 @@
       "source_sha256": "1c60a1e4a4e9cb7feaa0a86f56eeeaadf0ff73b5d85d22c326f6472e39312323",
       "translation": "El mayor número de llamadas falsas estimado con señuelos por 100 llamadas reales que pueden aceptar los umbrales automáticos (0.1 significa 0.1 %). Se usa con ops_decode_threshold_mode 'auto' y el objetivo 'recall_at_fdr'. Una posición de muestra en la que ningún ajuste lo alcanza recibe el ajuste elegido por ops_decode_auto_unreachable y auto_met False en su informe. Valor predeterminado: 0.1. Alfa.",
       "retired": true
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_decoy_k",
+      "source": "How many decoy prefixes per library prefix the spacer-prefix decode matches together with the library: base-shuffled 12-mers at least two edits from every prefix. A read as close to a decoy as to a guide matches neither, and a cell whose top barcode is a decoy is counted, never genotyped, which gives each site, well and plate a decoy FDR (site_summary.csv, fdr_<plate>_<well>.json). 4 is recommended; 0 matches no decoys. Default 0. Alpha.",
+      "source_sha256": "a081fbadf67cb056da0e7c35660931bb99deafdbf26c56655c0ae2571ba9f003",
+      "translation": "Cuántos prefijos señuelo por prefijo de la biblioteca compara la decodificación de prefijos de espaciador junto con la biblioteca: 12-meros con las bases barajadas y al menos dos ediciones de distancia de cada prefijo. Una lectura tan cercana a un señuelo como a una guía no coincide con ninguno, y una célula cuyo código de barras principal es un señuelo se cuenta pero nunca se genotipa, lo que da a cada sitio, posición de muestra y placa un FDR de señuelos (site_summary.csv, fdr_<plate>_<well>.json). Se recomienda 4; 0 no compara ningún señuelo. Valor predeterminado: 0. Alfa.",
+      "retired": "2026-11-17: item 966 (claude-966-1116 branch: the spacer-prefix decode defaults to the auto read with per-well decoy tuning at 1 % decoy FDR, schema 944) changed this English source; its successor is reviewed in 2026-11-17-prefix-default-966-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_threshold_tuning",
+      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json. Default 'none'. Alpha.",
+      "source_sha256": "a57ed210f9d351d9545498655cd78403b5a703afb1360b8bc90e4721446c7639",
+      "translation": "Cómo fija la decodificación de prefijos de espaciador sus umbrales. 'none' usa los valores que introduce. 'per_well_decoy' los elige posición de muestra por posición de muestra solo a partir de llamadas de señuelo, con la detección de puntos y la llamada juntas: la mitad de los sitios de la posición de muestra prueba cada combinación de ops_prefix_tuning_grid (umbral de lectura, calidad de lectura, discordancias), la combinación elegida por ops_decode_auto_objective se usa para toda la posición de muestra y la otra mitad informa su FDR. Requiere ops_prefix_decoy_k mayor que 0. La cuadrícula, la curva y la elección de cada posición de muestra se escriben en threshold_tuning_<plate>_<well>.csv, .png y .json. Valor predeterminado: 'none'. Alfa.",
+      "retired": "2026-11-17: item 966 (claude-966-1116 branch: the spacer-prefix decode defaults to the auto read with per-well decoy tuning at 1 % decoy FDR, schema 944) changed this English source; its successor is reviewed in 2026-11-17-prefix-default-966-ai-review.json."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_prefix_fdr_target_pct",
+      "source": "The highest decoy FDR, in %, that 'per_well_decoy' tuning may accept (0.1 means 0.1 %). Default 0.1. Alpha.",
+      "source_sha256": "3b49d56184f3b3d7e2e6e8ff6ae211529c6febd4cd7bf0cb3326a73ddfd09352",
+      "translation": "El FDR de señuelos más alto, en %, que el ajuste 'per_well_decoy' puede aceptar (0.1 significa 0.1 %). Valor predeterminado: 0.1. Alfa.",
+      "retired": "2026-11-17: item 966 (claude-966-1116 branch: the spacer-prefix decode defaults to the auto read with per-well decoy tuning at 1 % decoy FDR, schema 944) changed this English source; its successor is reviewed in 2026-11-17-prefix-default-966-ai-review.json."
     }
   ]
 }

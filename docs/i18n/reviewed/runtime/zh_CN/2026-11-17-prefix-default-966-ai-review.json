@@ -3,10 +3,10 @@
   "records": [
     {
       "key": "ops_read_mode",
-      "source": "How each spot's barcode is read, in the OPS and spacer-prefix decodes. 'log' reads the -LoG-filtered pixels (3 x 3 maximum) and calls bases after the per-cycle median normalisation. 'raw' reads the unfiltered pixels (maximum within 3 px) and calls the brightest channel as read, with no normalisation, unmixing or library calibration (PERISCOPE's read). 'auto' picks 'log' or 'raw' per well from decoy calls, tuned with ops_decode_threshold_mode 'auto' or ops_prefix_threshold_tuning 'per_well_decoy'. Spots are found the same way in every mode. Empty uses each decode's own default: the spacer-prefix decode reads 'auto' when ops_prefix_threshold_tuning is 'per_well_decoy' (the default) and 'log' otherwise; the OPS barcode decode reads 'log'. Default None. Alpha.",
-      "source_sha256": "1822fa77eb45541a2b10b6ff1a4a5ac74ba5c574d56fee84e14edc60d5812d5e",
+      "source": "How each spot's barcode is read. 'log' reads the -LoG-filtered pixels (3 x 3 maximum) and calls bases after per-cycle median normalisation. 'raw' reads the unfiltered pixels (maximum within 3 px) and calls the brightest channel as read (PERISCOPE's read). 'auto' picks 'log' or 'raw' per well from decoy calls; it needs ops_decode_threshold_mode 'auto' or ops_prefix_threshold_tuning 'per_well_decoy'. Spots are found the same way in every mode. Empty: the spacer-prefix decode reads 'auto' while it tunes and 'log' otherwise; the OPS barcode decode reads 'log'. Default None. Alpha.",
+      "source_sha256": "e30d07741d3987f82e3d02febb87c3eafb8d7f22c178ac76a022f8f09fbb59a1",
       "table": "setting_tooltips",
-      "translation": "在 OPS 解码和间隔序列前缀解码中如何读取每个斑点的条形码。'log' 读取经 LoG 滤波的像素（3 x 3 最大值），并在每个循环的中位数归一化之后判定碱基。'raw' 读取未经滤波的像素（3 px 范围内的最大值），按读取到的原样判定最亮的通道，不做归一化、解混或文库校准（PERISCOPE 的读取方式）。'auto' 根据诱饵判定为每个样本位置选择 'log' 或 'raw'，与 ops_decode_threshold_mode 'auto' 或 ops_prefix_threshold_tuning 'per_well_decoy' 一同调节。每种模式下斑点的检测方式相同。留空时使用各解码自身的默认值：当 ops_prefix_threshold_tuning 为 'per_well_decoy'（默认值）时，间隔序列前缀解码读取 'auto'，否则读取 'log'；OPS 条形码解码读取 'log'。默认值 None。Alpha。"
+      "translation": "如何读取每个斑点的条形码。'log' 读取经 LoG 滤波的像素（3 x 3 最大值），并在每个循环的中位数归一化之后判定碱基。'raw' 读取未经滤波的像素（3 px 范围内的最大值），按读取到的原样判定最亮的通道（PERISCOPE 的读取方式）。'auto' 根据诱饵判定为每个样本位置选择 'log' 或 'raw'；它需要 ops_decode_threshold_mode 'auto' 或 ops_prefix_threshold_tuning 'per_well_decoy'。每种模式下斑点的检测方式相同。留空：间隔序列前缀解码在调参时读取 'auto'，否则读取 'log'；OPS 条形码解码读取 'log'。默认值 None。Alpha。"
     },
     {
       "key": "ops_prefix_decoy_k",
@@ -17,10 +17,10 @@
     },
     {
       "key": "ops_prefix_threshold_tuning",
-      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json, and the run log ends with one line per well: the read mode and thresholds chosen and the decoy FDR of each half. Default 'per_well_decoy'. Alpha.",
-      "source_sha256": "74dafb8170b3f3be78ce3082c17687988b194f6ad649171e47a5b7e0ac6c9884",
+      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them per well from decoy calls only: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination ops_decode_auto_objective picks is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Writes threshold_tuning_<plate>_<well>.csv, .png and .json and one log line per well. Default 'per_well_decoy'. Alpha.",
+      "source_sha256": "a9ba112dfc5b5329ed592aebdd28248212b33492615d3a84dd354bbdef7b9095",
       "table": "setting_tooltips",
-      "translation": "间隔序列前缀解码如何设定其阈值。'none' 使用您输入的值。'per_well_decoy' 仅根据诱饵判定、逐样本位置地同时为斑点检测和判定选择阈值：样本位置中一半的位点尝试 ops_prefix_tuning_grid 的每种组合（读取阈值、读取质量、错配），由 ops_decode_auto_objective 选出的组合用于整个样本位置，另一半报告其 FDR。需要 ops_prefix_decoy_k 大于 0。每个样本位置的网格、曲线和选择结果写入 threshold_tuning_<plate>_<well>.csv、.png 和 .json，运行日志最后为每个样本位置各写一行：所选的读取模式和阈值，以及每一半位点的诱饵 FDR。默认值 'per_well_decoy'。Alpha。"
+      "translation": "间隔序列前缀解码如何设定其阈值。'none' 使用您输入的值。'per_well_decoy' 仅根据诱饵判定逐样本位置选择阈值：样本位置中一半的位点尝试 ops_prefix_tuning_grid 的每种组合（读取阈值、读取质量、错配），由 ops_decode_auto_objective 选出的组合用于整个样本位置，另一半报告其 FDR。需要 ops_prefix_decoy_k 大于 0。写入 threshold_tuning_<plate>_<well>.csv、.png 和 .json，并为每个样本位置写一行日志。默认值 'per_well_decoy'。Alpha。"
     },
     {
       "key": "ops_prefix_fdr_target_pct",

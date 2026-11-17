@@ -3,10 +3,10 @@
   "records": [
     {
       "key": "ops_read_mode",
-      "source": "How each spot's barcode is read, in the OPS and spacer-prefix decodes. 'log' reads the -LoG-filtered pixels (3 x 3 maximum) and calls bases after the per-cycle median normalisation. 'raw' reads the unfiltered pixels (maximum within 3 px) and calls the brightest channel as read, with no normalisation, unmixing or library calibration (PERISCOPE's read). 'auto' picks 'log' or 'raw' per well from decoy calls, tuned with ops_decode_threshold_mode 'auto' or ops_prefix_threshold_tuning 'per_well_decoy'. Spots are found the same way in every mode. Empty uses each decode's own default: the spacer-prefix decode reads 'auto' when ops_prefix_threshold_tuning is 'per_well_decoy' (the default) and 'log' otherwise; the OPS barcode decode reads 'log'. Default None. Alpha.",
-      "source_sha256": "1822fa77eb45541a2b10b6ff1a4a5ac74ba5c574d56fee84e14edc60d5812d5e",
+      "source": "How each spot's barcode is read. 'log' reads the -LoG-filtered pixels (3 x 3 maximum) and calls bases after per-cycle median normalisation. 'raw' reads the unfiltered pixels (maximum within 3 px) and calls the brightest channel as read (PERISCOPE's read). 'auto' picks 'log' or 'raw' per well from decoy calls; it needs ops_decode_threshold_mode 'auto' or ops_prefix_threshold_tuning 'per_well_decoy'. Spots are found the same way in every mode. Empty: the spacer-prefix decode reads 'auto' while it tunes and 'log' otherwise; the OPS barcode decode reads 'log'. Default None. Alpha.",
+      "source_sha256": "e30d07741d3987f82e3d02febb87c3eafb8d7f22c178ac76a022f8f09fbb59a1",
       "table": "setting_tooltips",
-      "translation": "OPS 디코딩과 스페이서 접두사 디코딩에서 각 스팟의 바코드를 읽는 방식. 'log'는 LoG 필터를 거친 픽셀(3 x 3 최댓값)을 읽고 사이클별 중앙값 정규화 뒤에 염기를 호출합니다. 'raw'는 필터를 거치지 않은 픽셀(3 px 이내 최댓값)을 읽고 가장 밝은 채널을 읽은 그대로 호출하며, 정규화, 분리 보정, 라이브러리 보정을 하지 않습니다(PERISCOPE의 판독). 'auto'는 디코이 호출로 샘플 위치마다 'log'나 'raw'를 고르며, ops_decode_threshold_mode 'auto' 또는 ops_prefix_threshold_tuning 'per_well_decoy'와 함께 조정됩니다. 스팟은 모든 모드에서 같은 방식으로 찾습니다. 비워 두면 각 디코딩의 자체 기본값을 사용합니다: 스페이서 접두사 디코딩은 ops_prefix_threshold_tuning이 'per_well_decoy'(기본값)이면 'auto'를, 그렇지 않으면 'log'를 읽고, OPS 바코드 디코딩은 'log'를 읽습니다. 기본값 None. 알파."
+      "translation": "각 스팟의 바코드를 읽는 방식. 'log'는 LoG 필터를 거친 픽셀(3 x 3 최댓값)을 읽고 사이클별 중앙값 정규화 뒤에 염기를 호출합니다. 'raw'는 필터를 거치지 않은 픽셀(3 px 이내 최댓값)을 읽고 가장 밝은 채널을 읽은 그대로 호출합니다(PERISCOPE의 판독). 'auto'는 디코이 호출로 샘플 위치마다 'log'나 'raw'를 고르며, ops_decode_threshold_mode 'auto' 또는 ops_prefix_threshold_tuning 'per_well_decoy'가 필요합니다. 스팟은 모든 모드에서 같은 방식으로 찾습니다. 비워 두면 스페이서 접두사 디코딩은 튜닝하는 동안 'auto'를, 그렇지 않으면 'log'를 읽고, OPS 바코드 디코딩은 'log'를 읽습니다. 기본값 None. 알파."
     },
     {
       "key": "ops_prefix_decoy_k",
@@ -17,10 +17,10 @@
     },
     {
       "key": "ops_prefix_threshold_tuning",
-      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them well by well from decoy calls only, spot detection and calling together: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination chosen by ops_decode_auto_objective is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Each well's grid, curve and choice are written to threshold_tuning_<plate>_<well>.csv, .png and .json, and the run log ends with one line per well: the read mode and thresholds chosen and the decoy FDR of each half. Default 'per_well_decoy'. Alpha.",
-      "source_sha256": "74dafb8170b3f3be78ce3082c17687988b194f6ad649171e47a5b7e0ac6c9884",
+      "source": "How the spacer-prefix decode sets its thresholds. 'none' uses the values you enter. 'per_well_decoy' chooses them per well from decoy calls only: half of the well's sites try every combination of ops_prefix_tuning_grid (read threshold, read quality, mismatches), the combination ops_decode_auto_objective picks is used for the whole well, and the other half reports its FDR. Needs ops_prefix_decoy_k above 0. Writes threshold_tuning_<plate>_<well>.csv, .png and .json and one log line per well. Default 'per_well_decoy'. Alpha.",
+      "source_sha256": "a9ba112dfc5b5329ed592aebdd28248212b33492615d3a84dd354bbdef7b9095",
       "table": "setting_tooltips",
-      "translation": "스페이서 접두사 디코딩이 임계값을 정하는 방식. 'none'은 입력한 값을 사용합니다. 'per_well_decoy'는 디코이 호출만으로 샘플 위치별로 스팟 검출과 호출을 함께 선택합니다: 샘플 위치의 사이트 절반이 ops_prefix_tuning_grid(리드 임계값, 리드 품질, 불일치)의 모든 조합을 시도하고, ops_decode_auto_objective가 선택한 조합이 샘플 위치 전체에 사용되며, 나머지 절반이 그 FDR을 보고합니다. ops_prefix_decoy_k가 0보다 커야 합니다. 각 샘플 위치의 그리드, 곡선, 선택 결과는 threshold_tuning_<plate>_<well>.csv, .png, .json에 기록되며, 실행 로그는 샘플 위치마다 한 줄로 끝납니다: 선택된 판독 모드와 임계값, 그리고 각 절반의 디코이 FDR. 기본값 'per_well_decoy'. 알파."
+      "translation": "스페이서 접두사 디코딩이 임계값을 정하는 방식. 'none'은 입력한 값을 사용합니다. 'per_well_decoy'는 디코이 호출만으로 샘플 위치마다 임계값을 선택합니다: 샘플 위치의 사이트 절반이 ops_prefix_tuning_grid(리드 임계값, 리드 품질, 불일치)의 모든 조합을 시도하고, ops_decode_auto_objective가 고른 조합이 샘플 위치 전체에 사용되며, 나머지 절반이 그 FDR을 보고합니다. ops_prefix_decoy_k가 0보다 커야 합니다. threshold_tuning_<plate>_<well>.csv, .png, .json과 샘플 위치마다 로그 한 줄을 씁니다. 기본값 'per_well_decoy'. 알파."
     },
     {
       "key": "ops_prefix_fdr_target_pct",

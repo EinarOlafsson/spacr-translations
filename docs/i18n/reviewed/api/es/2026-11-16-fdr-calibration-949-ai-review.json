@@ -244,14 +244,20 @@
       "label": "spacr.ops_prefix.prefix_settings#1",
       "source": "the OPS settings: ``ops_library``, ``ops_library_sequence_col``, ``ops_library_gene_col``, ``ops_prefix_length``, ``ops_sbs_cycles``, ``ops_cycle_mask``, ``ops_prefix_collision``, ``ops_prefix_metric``, ``ops_prefix_max_distance``, ``ops_prefix_crosstalk``, ``ops_quality_min_reads``, ``ops_prefix_quality_method``, ``ops_random_barcode_control``, ``ops_control_seed``, ``ops_prefix_masks``, ``ops_read_threshold`` and the item-942 decoy and tuning settings (``ops_prefix_decoy_k``, ``ops_prefix_decoy_seed``, ``ops_prefix_fdr_scale``, ``ops_prefix_min_read_quality``, ``ops_prefix_threshold_tuning``, ``ops_prefix_fdr_target_pct``, ``ops_prefix_tuning_grid``) and the item-949 ``ops_prefix_nearmiss_decoy_k`` and ``ops_prefix_fdr_calibration``.",
       "source_sha256": "c02350af99a8c3bbe9bb1f7361b8f4f74a8cc1b517de6b623df76ec4fe684a25",
-      "translation": "los ajustes de OPS: ``ops_library``, ``ops_library_sequence_col``, ``ops_library_gene_col``, ``ops_prefix_length``, ``ops_sbs_cycles``, ``ops_cycle_mask``, ``ops_prefix_collision``, ``ops_prefix_metric``, ``ops_prefix_max_distance``, ``ops_prefix_crosstalk``, ``ops_quality_min_reads``, ``ops_prefix_quality_method``, ``ops_random_barcode_control``, ``ops_control_seed``, ``ops_prefix_masks``, ``ops_read_threshold`` y los ajustes de señuelos y de ajuste del ítem 942 (``ops_prefix_decoy_k``, ``ops_prefix_decoy_seed``, ``ops_prefix_fdr_scale``, ``ops_prefix_min_read_quality``, ``ops_prefix_threshold_tuning``, ``ops_prefix_fdr_target_pct``, ``ops_prefix_tuning_grid``) y los ajustes ``ops_prefix_nearmiss_decoy_k`` y ``ops_prefix_fdr_calibration`` del ítem 949."
+      "translation": "los ajustes de OPS: ``ops_library``, ``ops_library_sequence_col``, ``ops_library_gene_col``, ``ops_prefix_length``, ``ops_sbs_cycles``, ``ops_cycle_mask``, ``ops_prefix_collision``, ``ops_prefix_metric``, ``ops_prefix_max_distance``, ``ops_prefix_crosstalk``, ``ops_quality_min_reads``, ``ops_prefix_quality_method``, ``ops_random_barcode_control``, ``ops_control_seed``, ``ops_prefix_masks``, ``ops_read_threshold`` y los ajustes de señuelos y de ajuste del ítem 942 (``ops_prefix_decoy_k``, ``ops_prefix_decoy_seed``, ``ops_prefix_fdr_scale``, ``ops_prefix_min_read_quality``, ``ops_prefix_threshold_tuning``, ``ops_prefix_fdr_target_pct``, ``ops_prefix_tuning_grid``) y los ajustes ``ops_prefix_nearmiss_decoy_k`` y ``ops_prefix_fdr_calibration`` del ítem 949.",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     },
     {
       "context": "without a library, for an unknown choice, for tuning or a shuffle calibration without decoys, or for a negative decoy count.",
       "label": "spacr.ops_prefix.prefix_settings#3",
       "source": "without a library, for an unknown choice, for tuning or a shuffle calibration without decoys, or for a negative decoy count.",
       "source_sha256": "d30326ea25776be10ec2d4cfc3be7583076c2237df9a53d6c6b3192b85fde6cb",
-      "translation": "sin una biblioteca, ante una opción desconocida, para el ajuste o una calibración por barajado sin señuelos, o ante un número negativo de señuelos."
+      "translation": "sin una biblioteca, ante una opción desconocida, para el ajuste o una calibración por barajado sin señuelos, o ante un número negativo de señuelos.",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     },
     {
       "context": "with ``ops_prefix_threshold_tuning`` 'per_well_decoy': per microplate sample position ``threshold_tuning_<plate>_<well_id>.csv`` and ``.png`` (every grid setting's tuning numbers and the genotyped-vs-FDR curve, :func:`spacr.ops_decode.write_tuning_curve`) and ``.json`` (the choice, :func:`spacr.ops_decode.tune_thresholds`); each site's spots are found once, down to the lowest read threshold, and the chosen setting's reads and cells are written;",
@@ -272,21 +278,30 @@
       "label": "spacr.ops_prefix.run_prefix_decode#10",
       "source": "with ``ops_prefix_fdr_calibration`` 'shuffle' (item 949): every read is also matched against :data:`spacr.ops_decode.SHUFFLE_SEEDS` shuffled whitelists (:func:`shuffled_library`, seeds ``ops_control_seed`` and up), and each well's FDR scale is raised from that control (:func:`spacr.ops_decode.calibrate_fdr_scale`; without tuning at the entered setting); ``fdr_pct`` uses the calibrated scale, and ``site_summary.csv`` gains ``shuffle_called`` (mean over the shuffled whitelists), ``shuffle_call_rate_pct`` and ``fdr_scale``; the FDR report gains the entered scale, the calibration, the FDR's interval and the shuffle call rate with its interval (:func:`spacr.ops_decode.shuffle_call_rate`). With both item-949 settings off the outputs are those of item 942.",
       "source_sha256": "5d552983349cb5af7847ebd761b171a8c5c34ec94100aa190faf617cdc07b9c7",
-      "translation": "con ``ops_prefix_fdr_calibration`` 'shuffle' (ítem 949): cada lectura se compara también con :data:`spacr.ops_decode.SHUFFLE_SEEDS` listas blancas barajadas (:func:`shuffled_library`, seeds desde ``ops_control_seed`` en adelante), y la escala de FDR de cada posición de muestra de la microplaca se eleva a partir de ese control (:func:`spacr.ops_decode.calibrate_fdr_scale`; sin ajuste, en el ajuste introducido); ``fdr_pct`` usa la escala calibrada, y ``site_summary.csv`` incorpora ``shuffle_called`` (media sobre las listas blancas barajadas), ``shuffle_call_rate_pct`` y ``fdr_scale``; el informe de FDR incorpora la escala introducida, la calibración, el intervalo del FDR y la tasa de llamadas de barajado con su intervalo (:func:`spacr.ops_decode.shuffle_call_rate`). Con ambos ajustes del ítem 949 desactivados, las salidas son las del ítem 942."
+      "translation": "con ``ops_prefix_fdr_calibration`` 'shuffle' (ítem 949): cada lectura se compara también con :data:`spacr.ops_decode.SHUFFLE_SEEDS` listas blancas barajadas (:func:`shuffled_library`, seeds desde ``ops_control_seed`` en adelante), y la escala de FDR de cada posición de muestra de la microplaca se eleva a partir de ese control (:func:`spacr.ops_decode.calibrate_fdr_scale`; sin ajuste, en el ajuste introducido); ``fdr_pct`` usa la escala calibrada, y ``site_summary.csv`` incorpora ``shuffle_called`` (media sobre las listas blancas barajadas), ``shuffle_call_rate_pct`` y ``fdr_scale``; el informe de FDR incorpora la escala introducida, la calibración, el intervalo del FDR y la tasa de llamadas de barajado con su intervalo (:func:`spacr.ops_decode.shuffle_call_rate`). Con ambos ajustes del ítem 949 desactivados, las salidas son las del ítem 942.",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     },
     {
       "context": "the OPS settings: ``dst_root``, the ``cpg_*`` reader settings, the item-920, item-942 and item-949 settings (:func:`prefix_settings`) and, for tuning, the shared tuner's settings (``ops_decode_auto_objective``, ``ops_decode_auto_f_beta``, ``ops_decode_auto_unreachable``, ``ops_decode_auto_ci``, ``ops_decode_auto_tune_fraction`` and ``ops_decode_auto_seed``).",
       "label": "spacr.ops_prefix.run_prefix_decode#11",
       "source": "the OPS settings: ``dst_root``, the ``cpg_*`` reader settings, the item-920, item-942 and item-949 settings (:func:`prefix_settings`) and, for tuning, the shared tuner's settings (``ops_decode_auto_objective``, ``ops_decode_auto_f_beta``, ``ops_decode_auto_unreachable``, ``ops_decode_auto_ci``, ``ops_decode_auto_tune_fraction`` and ``ops_decode_auto_seed``).",
       "source_sha256": "f4089912344a47d1e780bfb57c6b9e8de800bbd6b869429a36027c0674b0c046",
-      "translation": "los ajustes de OPS: ``dst_root``, los ajustes del lector ``cpg_*``, los ajustes de los ítems 920, 942 y 949 (:func:`prefix_settings`) y, para el ajuste, los del ajustador compartido (``ops_decode_auto_objective``, ``ops_decode_auto_f_beta``, ``ops_decode_auto_unreachable``, ``ops_decode_auto_ci``, ``ops_decode_auto_tune_fraction`` y ``ops_decode_auto_seed``)."
+      "translation": "los ajustes de OPS: ``dst_root``, los ajustes del lector ``cpg_*``, los ajustes de los ítems 920, 942 y 949 (:func:`prefix_settings`) y, para el ajuste, los del ajustador compartido (``ops_decode_auto_objective``, ``ops_decode_auto_f_beta``, ``ops_decode_auto_unreachable``, ``ops_decode_auto_ci``, ``ops_decode_auto_tune_fraction`` y ``ops_decode_auto_seed``).",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     },
     {
       "context": "called with progress lines.",
       "label": "spacr.ops_prefix.run_prefix_decode#12",
       "source": "called with progress lines.",
       "source_sha256": "af180464f5ebfea75d9e56d72c11bffddd7076d26203a4795a1c157ff419a14c",
-      "translation": "se llama con líneas de progreso."
+      "translation": "se llama con líneas de progreso.",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     },
     {
       "context": "the output paths, the library summary and the processing session's totals; with any item-942 setting on also ``seconds_per_well``, ``fdr`` (per microplate sample position) and ``tuning`` (per microplate sample position: the choice and its numbers); with the shuffle calibration also ``calibration`` (per microplate sample position).",
@@ -303,7 +318,10 @@
       "label": "spacr.ops_prefix.run_prefix_decode#14",
       "source": "without ``dst_root`` or a library, when the layout has fewer sequencing cycles than the prefix needs, or for tuning, near-miss decoys or a shuffle calibration without decoys.",
       "source_sha256": "c6628374fde9fd5f39ab8640b455be071db1b7315c3dc33ea01528d3eb445a4d",
-      "translation": "sin ``dst_root`` o sin biblioteca, cuando el diseño tiene menos ciclos de secuenciación de los que necesita el prefijo, o para el ajuste, los señuelos cercanos o una calibración por barajado sin señuelos."
+      "translation": "sin ``dst_root`` o sin biblioteca, cuando el diseño tiene menos ciclos de secuenciación de los que necesita el prefijo, o para el ajuste, los señuelos cercanos o una calibración por barajado sin señuelos.",
+      "retired": true,
+      "retired_date": "2026-11-17",
+      "retired_reason": "2026-11-17: item 967 (claude-967-1117 branch: the spacer-prefix cell call can ignore minority stray barcodes, ops_prefix_minority_min_reads, alpha, off by default) changed this English block or moved it to another index; its successor is reviewed in 2026-11-17-prefix-minority-967-ai-review.json."
     }
   ],
   "review_method": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-16 against the exact English source of item 949 on the claude-949-decoy-calibration branch: every block of spacr.ops_decode.calibrate_fdr_scale, spacr.ops_decode.shuffle_call_rate and spacr.ops_prefix.prefix_nearmiss_decoys, and the changed blocks of spacr.ops_decode.threshold_settings, spacr.ops_decode.write_well_reports, spacr.ops_prefix.prefix_settings and run_prefix_decode. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",

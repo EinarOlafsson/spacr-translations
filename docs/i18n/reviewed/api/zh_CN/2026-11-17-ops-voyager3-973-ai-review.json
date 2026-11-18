@@ -268,50 +268,57 @@
       "translation": "用 Voyager3 注释每个聚类，并写出其表格、报告和溯源记录。"
     },
     {
-      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
+      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
       "label": "spacr.voyager3.run_voyager3#1",
-      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
-      "source_sha256": "7d4a390c558c79de50bcf831a86e7c6b31d4855d5cc319cf4c66cc2f8ccd1861",
-      "translation": "读取聚类（``ops_voyager3_clusters``），获取其基因的 UniProt 事实（:func:`fetch_gene_facts`，缓存在输出旁的 ``uniprot_cache`` 中），对每个聚类询问提供方一次（出错或回答为空后重试一次），并通过 :func:`voyager3_replay` 的代码写出输出。启用 ``ops_voyager3_shuffle_control`` 时，对基因在聚类间按固定种子打乱（保持聚类大小）后的结果做同样处理。每个聚类打印一行 ``Progress: n/total, operation_type: Voyager3``。"
+      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
+      "source_sha256": "8fab3ff6edb4bd7ba58b870f0dc88a775d25b910befc4333599100c43b5e2a5e",
+      "translation": "读取聚类（``ops_voyager3_clusters``），获取其基因的 UniProt 事实（:func:`fetch_gene_facts`，缓存在输出旁的 ``uniprot_cache`` 中），对每个聚类询问提供方一次（出错或回答为空后重试一次），并通过 :func:`voyager3_replay` 的代码写出输出。启用 ``ops_voyager3_shuffle_control`` 时，对基因在聚类间按固定种子打乱（保持聚类大小）后的结果做同样处理。每个聚类打印一行 ``Progress: n/total, operation_type: Voyager3``，并附上复用的回答数和新询问的回答数。"
+    },
+    {
+      "context": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "label": "spacr.voyager3.run_voyager3#2",
+      "source": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "source_sha256": "de4cd247a13b0690f9b1bacd8b1749158c9ab8838d2d43d6fd0dd9a8dad91333",
+      "translation": "每个回答一到达即保存到 ``ops_voyager3_answers_dir``（为空时为输出旁的 ``answers``），保存为一个 JSON 文件，文件名为模板版本、模型、系统文本和提示词的 SHA-256，内容包括原始文本、提供方报告的模型 id 和费用，以及所用秒数；文件先以临时名称写入，再重命名。``ops_voyager3_resume`` 开启时（默认），重新运行会复用找到的每条提示词的已保存回答，只询问其余提示词，因此中断的运行会从停止处继续，并写出相同的表格；模型、模板或提示词改变时会重新询问。失败和超时的调用不会保存。溯源记录会注明哪些回答是复用的，哪些是询问得到的。"
     },
     {
       "context": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
-      "label": "spacr.voyager3.run_voyager3#2",
+      "label": "spacr.voyager3.run_voyager3#3",
       "source": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
       "source_sha256": "72e83635fbe8cb30fdd66b2d90cd9c384c4143d0fb965079d677c55810e1ccfc",
       "translation": "OPS 设置；从中读取 ``dst_root``、``ops_voyager3_*`` 设置和 ``ops_control_prefix``。"
     },
     {
       "context": "called with progress lines; ``print`` when None.",
-      "label": "spacr.voyager3.run_voyager3#3",
+      "label": "spacr.voyager3.run_voyager3#4",
       "source": "called with progress lines; ``print`` when None.",
       "source_sha256": "378e350cc50b9bfc51ed1ec5ebd5f2b0cac71c2f43bb306d03385aa29d53e1b8",
       "translation": "调用时传入进度行；为 None 时使用 ``print``。"
     },
     {
       "context": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
-      "label": "spacr.voyager3.run_voyager3#4",
+      "label": "spacr.voyager3.run_voyager3#5",
       "source": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
       "source_sha256": "f4b7395ed92495cbe061755f2191c01a0d4efef9ddb7fabd5f88d08910451cbc",
       "translation": "聊天提供方对象（``name``、``stream_chat``）；None 时使用 ``ops_voyager3_provider`` 或首选项中的选择，包括 spaCR AI（免费）。"
     },
     {
       "context": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
-      "label": "spacr.voyager3.run_voyager3#5",
+      "label": "spacr.voyager3.run_voyager3#6",
       "source": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
       "source_sha256": "9b6ed1fa80818535f9fc720a04282cfb54a8c0758f4207448deb4e882c9f5e3f",
       "translation": "输出文件夹；为 None 时为 ``<dst_root>/results/ops_voyager3``。"
     },
     {
       "context": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
-      "label": "spacr.voyager3.run_voyager3#6",
+      "label": "spacr.voyager3.run_voyager3#7",
       "source": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
       "source_sha256": "4e71892f56652c81d25b8d7bd1760e111874e56a9416b607bf1fdad65c21e082",
       "translation": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``."
     },
     {
       "context": "for missing clusters, an unknown organism or no usable provider.",
-      "label": "spacr.voyager3.run_voyager3#7",
+      "label": "spacr.voyager3.run_voyager3#8",
       "source": "for missing clusters, an unknown organism or no usable provider.",
       "source_sha256": "13197e88e30c298819d0f78c9a0edec3ff43131c94c59c8558fdaa17d5f9b943",
       "translation": "聚类缺失、物种未知或没有可用的提供方时。"

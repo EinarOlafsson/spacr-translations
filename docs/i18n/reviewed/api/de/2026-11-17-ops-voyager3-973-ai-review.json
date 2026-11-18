@@ -268,50 +268,57 @@
       "translation": "Annotiert jeden Cluster mit Voyager3 und schreibt dessen Tabellen, Bericht und Provenienz."
     },
     {
-      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
+      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
       "label": "spacr.voyager3.run_voyager3#1",
-      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
-      "source_sha256": "7d4a390c558c79de50bcf831a86e7c6b31d4855d5cc319cf4c66cc2f8ccd1861",
-      "translation": "Liest die Cluster (``ops_voyager3_clusters``), ruft die UniProt-Fakten ihrer Gene ab (:func:`fetch_gene_facts`, zwischengespeichert in ``uniprot_cache`` neben den Ausgaben), fragt den Anbieter einmal pro Cluster (ein erneuter Versuch nach einem Fehler oder einer leeren Antwort) und schreibt die Ausgaben über den Code von :func:`voyager3_replay`. Mit ``ops_voyager3_shuffle_control`` geschieht dasselbe für eine mit festem Seed erzeugte Durchmischung der Gene über die Cluster, bei gleichbleibenden Größen. Gibt pro Cluster eine Zeile ``Progress: n/total, operation_type: Voyager3`` aus."
+      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
+      "source_sha256": "8fab3ff6edb4bd7ba58b870f0dc88a775d25b910befc4333599100c43b5e2a5e",
+      "translation": "Liest die Cluster (``ops_voyager3_clusters``), ruft die UniProt-Fakten ihrer Gene ab (:func:`fetch_gene_facts`, zwischengespeichert in ``uniprot_cache`` neben den Ausgaben), fragt den Anbieter einmal pro Cluster (ein erneuter Versuch nach einem Fehler oder einer leeren Antwort) und schreibt die Ausgaben über den Code von :func:`voyager3_replay`. Mit ``ops_voyager3_shuffle_control`` geschieht dasselbe für eine mit festem Seed erzeugte Durchmischung der Gene über die Cluster, bei gleichbleibenden Größen. Gibt pro Cluster eine Zeile ``Progress: n/total, operation_type: Voyager3`` aus, mit der Zahl der wiederverwendeten und der angefragten Antworten."
+    },
+    {
+      "context": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "label": "spacr.voyager3.run_voyager3#2",
+      "source": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "source_sha256": "de4cd247a13b0690f9b1bacd8b1749158c9ab8838d2d43d6fd0dd9a8dad91333",
+      "translation": "Jede Antwort wird beim Eintreffen in ``ops_voyager3_answers_dir`` gespeichert (``answers`` neben den Ausgaben, wenn leer), als eine JSON-Datei, benannt nach dem SHA-256 aus Vorlagenversion, Modell, Systemtext und Prompt, mit dem Rohtext, den vom Anbieter gemeldeten Modell-IDs und Kosten sowie der benötigten Zeit in Sekunden; die Datei wird unter einem temporären Namen geschrieben und dann umbenannt. Ist ``ops_voyager3_resume`` eingeschaltet (Standard), verwendet ein erneuter Lauf die gespeicherte Antwort jedes gefundenen Prompts wieder und fragt nur die übrigen an, sodass ein unterbrochener Lauf dort weitermacht, wo er aufgehört hat, und dieselben Tabellen schreibt; bei geändertem Modell, geänderter Vorlage oder geändertem Prompt wird erneut angefragt. Fehlgeschlagene Aufrufe und Aufrufe mit Zeitüberschreitung werden nicht gespeichert. Die Provenienz hält fest, welche Antworten wiederverwendet und welche angefragt wurden."
     },
     {
       "context": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
-      "label": "spacr.voyager3.run_voyager3#2",
+      "label": "spacr.voyager3.run_voyager3#3",
       "source": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
       "source_sha256": "72e83635fbe8cb30fdd66b2d90cd9c384c4143d0fb965079d677c55810e1ccfc",
       "translation": "die OPS-Einstellungen; gelesen werden ``dst_root``, die Einstellungen ``ops_voyager3_*`` und ``ops_control_prefix``."
     },
     {
       "context": "called with progress lines; ``print`` when None.",
-      "label": "spacr.voyager3.run_voyager3#3",
+      "label": "spacr.voyager3.run_voyager3#4",
       "source": "called with progress lines; ``print`` when None.",
       "source_sha256": "378e350cc50b9bfc51ed1ec5ebd5f2b0cac71c2f43bb306d03385aa29d53e1b8",
       "translation": "wird mit Fortschrittszeilen aufgerufen; ``print``, wenn None."
     },
     {
       "context": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
-      "label": "spacr.voyager3.run_voyager3#4",
+      "label": "spacr.voyager3.run_voyager3#5",
       "source": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
       "source_sha256": "f4b7395ed92495cbe061755f2191c01a0d4efef9ddb7fabd5f88d08910451cbc",
       "translation": "ein Chat-Anbieterobjekt (``name``, ``stream_chat``); None verwendet ``ops_voyager3_provider`` oder die Auswahl in den Einstellungen, spaCR AI (kostenlos) eingeschlossen."
     },
     {
       "context": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
-      "label": "spacr.voyager3.run_voyager3#5",
+      "label": "spacr.voyager3.run_voyager3#6",
       "source": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
       "source_sha256": "9b6ed1fa80818535f9fc720a04282cfb54a8c0758f4207448deb4e882c9f5e3f",
       "translation": "der Ausgabeordner; ``<dst_root>/results/ops_voyager3``, wenn None."
     },
     {
       "context": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
-      "label": "spacr.voyager3.run_voyager3#6",
+      "label": "spacr.voyager3.run_voyager3#7",
       "source": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
       "source_sha256": "4e71892f56652c81d25b8d7bd1760e111874e56a9416b607bf1fdad65c21e082",
       "translation": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``."
     },
     {
       "context": "for missing clusters, an unknown organism or no usable provider.",
-      "label": "spacr.voyager3.run_voyager3#7",
+      "label": "spacr.voyager3.run_voyager3#8",
       "source": "for missing clusters, an unknown organism or no usable provider.",
       "source_sha256": "13197e88e30c298819d0f78c9a0edec3ff43131c94c59c8558fdaa17d5f9b943",
       "translation": "bei fehlenden Clustern, einem unbekannten Organismus oder keinem nutzbaren Anbieter."

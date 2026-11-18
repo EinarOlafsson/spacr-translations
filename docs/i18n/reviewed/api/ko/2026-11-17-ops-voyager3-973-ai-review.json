@@ -268,50 +268,57 @@
       "translation": "모든 클러스터에 Voyager3으로 주석을 달고 그 표, 보고서, 출처 정보를 기록합니다."
     },
     {
-      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
+      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
       "label": "spacr.voyager3.run_voyager3#1",
-      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
-      "source_sha256": "7d4a390c558c79de50bcf831a86e7c6b31d4855d5cc319cf4c66cc2f8ccd1861",
-      "translation": "클러스터(``ops_voyager3_clusters``)를 읽고, 그 유전자의 UniProt 사실을 가져오며(:func:`fetch_gene_facts`, 출력 옆의 ``uniprot_cache``\\ 에 캐시), 클러스터마다 제공자에게 한 번 묻고(오류나 빈 답변 뒤에는 한 번 재시도) :func:`voyager3_replay`\\ 의 코드로 출력을 기록합니다. ``ops_voyager3_shuffle_control``\\ 을 켜면 크기는 유지한 채 클러스터 간에 유전자를 시드 고정으로 섞은 결과에 대해서도 같은 작업을 합니다. 클러스터마다 ``Progress: n/total, operation_type: Voyager3`` 줄을 하나씩 출력합니다."
+      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
+      "source_sha256": "8fab3ff6edb4bd7ba58b870f0dc88a775d25b910befc4333599100c43b5e2a5e",
+      "translation": "클러스터(``ops_voyager3_clusters``)를 읽고, 그 유전자의 UniProt 사실을 가져오며(:func:`fetch_gene_facts`, 출력 옆의 ``uniprot_cache``\\ 에 캐시), 클러스터마다 제공자에게 한 번 묻고(오류나 빈 답변 뒤에는 한 번 재시도) :func:`voyager3_replay`\\ 의 코드로 출력을 기록합니다. ``ops_voyager3_shuffle_control``\\ 을 켜면 크기는 유지한 채 클러스터 간에 유전자를 시드 고정으로 섞은 결과에 대해서도 같은 작업을 합니다. 클러스터마다 ``Progress: n/total, operation_type: Voyager3`` 줄을 하나씩 출력하며, 이 줄에는 재사용한 답변과 새로 물은 답변의 수가 함께 표시됩니다."
+    },
+    {
+      "context": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "label": "spacr.voyager3.run_voyager3#2",
+      "source": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "source_sha256": "de4cd247a13b0690f9b1bacd8b1749158c9ab8838d2d43d6fd0dd9a8dad91333",
+      "translation": "각 답변은 도착하는 즉시 ``ops_voyager3_answers_dir`` 폴더(비어 있으면 출력 옆의 ``answers`` 폴더)에 JSON 파일 하나로 저장됩니다. 파일 이름은 템플릿 버전, 모델, 시스템 텍스트, 프롬프트의 SHA-256 해시이며, 파일에는 원시 텍스트, 제공자가 보고한 모델 id와 비용, 걸린 시간(초)이 담깁니다. 파일은 임시 이름으로 기록된 뒤 이름이 바뀝니다. ``ops_voyager3_resume`` 설정이 켜져 있으면(기본값) 다시 실행할 때 찾은 모든 프롬프트의 저장된 답변을 재사용하고 나머지만 물으므로, 중단된 실행은 멈춘 지점부터 이어서 같은 표를 기록합니다. 모델, 템플릿 또는 프롬프트가 바뀌면 다시 묻습니다. 실패하거나 시간 초과된 호출은 저장되지 않습니다. 출처 정보에는 어떤 답변을 재사용했고 어떤 답변을 물었는지 기록됩니다."
     },
     {
       "context": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
-      "label": "spacr.voyager3.run_voyager3#2",
+      "label": "spacr.voyager3.run_voyager3#3",
       "source": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
       "source_sha256": "72e83635fbe8cb30fdd66b2d90cd9c384c4143d0fb965079d677c55810e1ccfc",
       "translation": "OPS 설정으로, ``dst_root``, ``ops_voyager3_*`` 설정, ``ops_control_prefix``\\ 를 읽습니다."
     },
     {
       "context": "called with progress lines; ``print`` when None.",
-      "label": "spacr.voyager3.run_voyager3#3",
+      "label": "spacr.voyager3.run_voyager3#4",
       "source": "called with progress lines; ``print`` when None.",
       "source_sha256": "378e350cc50b9bfc51ed1ec5ebd5f2b0cac71c2f43bb306d03385aa29d53e1b8",
       "translation": "진행 줄과 함께 호출되며, None이면 ``print``."
     },
     {
       "context": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
-      "label": "spacr.voyager3.run_voyager3#4",
+      "label": "spacr.voyager3.run_voyager3#5",
       "source": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
       "source_sha256": "f4b7395ed92495cbe061755f2191c01a0d4efef9ddb7fabd5f88d08910451cbc",
       "translation": "채팅 제공자 객체(``name``, ``stream_chat``)로, None이면 ``ops_voyager3_provider`` 또는 spaCR AI (무료)를 포함한 Preferences의 선택을 사용합니다."
     },
     {
       "context": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
-      "label": "spacr.voyager3.run_voyager3#5",
+      "label": "spacr.voyager3.run_voyager3#6",
       "source": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
       "source_sha256": "9b6ed1fa80818535f9fc720a04282cfb54a8c0758f4207448deb4e882c9f5e3f",
       "translation": "출력 폴더로, None이면 ``<dst_root>/results/ops_voyager3``."
     },
     {
       "context": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
-      "label": "spacr.voyager3.run_voyager3#6",
+      "label": "spacr.voyager3.run_voyager3#7",
       "source": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
       "source_sha256": "4e71892f56652c81d25b8d7bd1760e111874e56a9416b607bf1fdad65c21e082",
       "translation": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``."
     },
     {
       "context": "for missing clusters, an unknown organism or no usable provider.",
-      "label": "spacr.voyager3.run_voyager3#7",
+      "label": "spacr.voyager3.run_voyager3#8",
       "source": "for missing clusters, an unknown organism or no usable provider.",
       "source_sha256": "13197e88e30c298819d0f78c9a0edec3ff43131c94c59c8558fdaa17d5f9b943",
       "translation": "클러스터가 없거나, 생물종을 알 수 없거나, 사용할 수 있는 제공자가 없을 때."

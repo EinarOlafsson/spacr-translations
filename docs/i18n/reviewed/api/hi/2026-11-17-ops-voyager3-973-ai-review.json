@@ -268,50 +268,57 @@
       "translation": "हर क्लस्टर को Voyager3 से एनोटेट करें और उसकी तालिकाएँ, रिपोर्ट और उद्गम जानकारी लिखें।"
     },
     {
-      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
+      "context": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
       "label": "spacr.voyager3.run_voyager3#1",
-      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster.",
-      "source_sha256": "7d4a390c558c79de50bcf831a86e7c6b31d4855d5cc319cf4c66cc2f8ccd1861",
-      "translation": "क्लस्टर (``ops_voyager3_clusters``) पढ़ता है, उनके जीनों के UniProt तथ्य प्राप्त करता है (:func:`fetch_gene_facts`, आउटपुट के पास ``uniprot_cache`` में कैश किए गए), हर क्लस्टर के लिए प्रदाता से एक बार पूछता है (त्रुटि या खाली उत्तर के बाद एक पुनः प्रयास) और आउटपुट :func:`voyager3_replay` के कोड से लिखता है। ``ops_voyager3_shuffle_control`` के साथ यही काम क्लस्टरों में जीनों के एक सीड-आधारित फेरबदल के लिए किया जाता है, आकार वही रखते हुए। हर क्लस्टर के लिए एक ``Progress: n/total, operation_type: Voyager3`` पंक्ति प्रिंट करता है।"
+      "source": "Reads the clusters (``ops_voyager3_clusters``), fetches their genes' UniProt facts (:func:`fetch_gene_facts`, cached in ``uniprot_cache`` beside the outputs), asks the provider once per cluster (one retry after an error or an empty answer) and writes the outputs through :func:`voyager3_replay`'s code. With ``ops_voyager3_shuffle_control`` the same is done for a seeded shuffle of the genes across the clusters, sizes kept. Prints a ``Progress: n/total, operation_type: Voyager3`` line per cluster, with the counts of answers replayed and asked.",
+      "source_sha256": "8fab3ff6edb4bd7ba58b870f0dc88a775d25b910befc4333599100c43b5e2a5e",
+      "translation": "क्लस्टर (``ops_voyager3_clusters``) पढ़ता है, उनके जीनों के UniProt तथ्य प्राप्त करता है (:func:`fetch_gene_facts`, आउटपुट के पास ``uniprot_cache`` में कैश किए गए), हर क्लस्टर के लिए प्रदाता से एक बार पूछता है (त्रुटि या खाली उत्तर के बाद एक पुनः प्रयास) और आउटपुट :func:`voyager3_replay` के कोड से लिखता है। ``ops_voyager3_shuffle_control`` के साथ यही काम क्लस्टरों में जीनों के एक सीड-आधारित फेरबदल के लिए किया जाता है, आकार वही रखते हुए। हर क्लस्टर के लिए एक ``Progress: n/total, operation_type: Voyager3`` पंक्ति प्रिंट करता है, जिसमें दोबारा उपयोग किए गए और पूछे गए उत्तरों की संख्या होती है।"
+    },
+    {
+      "context": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "label": "spacr.voyager3.run_voyager3#2",
+      "source": "Each answer is saved as it arrives, in ``ops_voyager3_answers_dir`` (``answers`` beside the outputs when empty), as one JSON file named by the SHA-256 of the template version, model, system text and prompt, holding the raw text, the model ids and cost the provider reported, and the seconds taken; the file is written to a temporary name and renamed. With ``ops_voyager3_resume`` on (the default) a rerun replays the saved answer of every prompt it finds and asks only the others, so an interrupted run picks up where it stopped and writes the same tables; a changed model, template or prompt asks again. Failed and timed-out calls are not saved. The provenance records which answers were replayed and which were asked.",
+      "source_sha256": "de4cd247a13b0690f9b1bacd8b1749158c9ab8838d2d43d6fd0dd9a8dad91333",
+      "translation": "हर उत्तर आते ही ``ops_voyager3_answers_dir`` में सहेजा जाता है (खाली होने पर आउटपुट के पास ``answers``), एक JSON फ़ाइल के रूप में जिसका नाम टेम्पलेट संस्करण, मॉडल, सिस्टम पाठ और प्रॉम्प्ट के SHA-256 पर रखा जाता है, और जिसमें कच्चा पाठ, प्रदाता द्वारा बताए गए मॉडल id और लागत, तथा लगे सेकंड होते हैं; फ़ाइल पहले एक अस्थायी नाम से लिखी जाती है और फिर उसका नाम बदला जाता है। ``ops_voyager3_resume`` चालू होने पर (डिफ़ॉल्ट) दोबारा चलाने पर मिले हर प्रॉम्प्ट का सहेजा गया उत्तर फिर से उपयोग होता है और केवल बाकी प्रॉम्प्ट पूछे जाते हैं, इसलिए बाधित रन वहीं से आगे बढ़ता है जहाँ वह रुका था और वही तालिकाएँ लिखता है; मॉडल, टेम्पलेट या प्रॉम्प्ट बदलने पर फिर से पूछा जाता है। विफल और समय-सीमा पार कर चुकी कॉल सहेजी नहीं जातीं। उद्गम जानकारी दर्ज करती है कि कौन-से उत्तर दोबारा उपयोग किए गए और कौन-से पूछे गए।"
     },
     {
       "context": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
-      "label": "spacr.voyager3.run_voyager3#2",
+      "label": "spacr.voyager3.run_voyager3#3",
       "source": "the OPS settings; read for ``dst_root``, the ``ops_voyager3_*`` settings and ``ops_control_prefix``.",
       "source_sha256": "72e83635fbe8cb30fdd66b2d90cd9c384c4143d0fb965079d677c55810e1ccfc",
       "translation": "OPS सेटिंग्स; ``dst_root``, ``ops_voyager3_*`` सेटिंग्स और ``ops_control_prefix`` के लिए पढ़ी जाती हैं।"
     },
     {
       "context": "called with progress lines; ``print`` when None.",
-      "label": "spacr.voyager3.run_voyager3#3",
+      "label": "spacr.voyager3.run_voyager3#4",
       "source": "called with progress lines; ``print`` when None.",
       "source_sha256": "378e350cc50b9bfc51ed1ec5ebd5f2b0cac71c2f43bb306d03385aa29d53e1b8",
       "translation": "प्रगति पंक्तियों के साथ बुलाया जाता है; None होने पर ``print``।"
     },
     {
       "context": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
-      "label": "spacr.voyager3.run_voyager3#4",
+      "label": "spacr.voyager3.run_voyager3#5",
       "source": "a chat provider object (``name``, ``stream_chat``); None uses ``ops_voyager3_provider`` or the Preferences choice, spaCR AI (free) included.",
       "source_sha256": "f4b7395ed92495cbe061755f2191c01a0d4efef9ddb7fabd5f88d08910451cbc",
       "translation": "एक चैट प्रदाता ऑब्जेक्ट (``name``, ``stream_chat``); None होने पर ``ops_voyager3_provider`` या प्राथमिकताएँ में किया गया चुनाव उपयोग होता है, spaCR AI (निःशुल्क) सहित।"
     },
     {
       "context": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
-      "label": "spacr.voyager3.run_voyager3#5",
+      "label": "spacr.voyager3.run_voyager3#6",
       "source": "the output folder; ``<dst_root>/results/ops_voyager3`` when None.",
       "source_sha256": "9b6ed1fa80818535f9fc720a04282cfb54a8c0758f4207448deb4e882c9f5e3f",
       "translation": "आउटपुट फ़ोल्डर; None होने पर ``<dst_root>/results/ops_voyager3``।"
     },
     {
       "context": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
-      "label": "spacr.voyager3.run_voyager3#6",
+      "label": "spacr.voyager3.run_voyager3#7",
       "source": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``.",
       "source_sha256": "4e71892f56652c81d25b8d7bd1760e111874e56a9416b607bf1fdad65c21e082",
       "translation": "``{\"folder\", \"outputs\", \"clusters\", \"provenance\"}``."
     },
     {
       "context": "for missing clusters, an unknown organism or no usable provider.",
-      "label": "spacr.voyager3.run_voyager3#7",
+      "label": "spacr.voyager3.run_voyager3#8",
       "source": "for missing clusters, an unknown organism or no usable provider.",
       "source_sha256": "13197e88e30c298819d0f78c9a0edec3ff43131c94c59c8558fdaa17d5f9b943",
       "translation": "अनुपस्थित क्लस्टरों, अज्ञात जीव या किसी उपयोग योग्य प्रदाता के न होने पर।"

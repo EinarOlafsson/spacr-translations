@@ -1,0 +1,105 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "key": "ops_barcode_layout",
+      "source": "Ops barcode layout",
+      "source_sha256": "fe0486f97a577d24ec8a80ce3431a81f3bc753f00d5ba461e79e08b1041a0647",
+      "table": "setting_labels",
+      "translation": "OPS 条形码布局"
+    },
+    {
+      "key": "ops_barcode_layout_file",
+      "source": "Ops barcode layout file",
+      "source_sha256": "86672ef92d6fc4151f2b94244ff10d3dca973223a490c864fe83a4c8650fe2af",
+      "table": "setting_labels",
+      "translation": "OPS 条形码布局文件"
+    },
+    {
+      "key": "ops_call_sort",
+      "source": "Ops call sort",
+      "source_sha256": "df76fd714e88ed76ec19f91fc407a8e29682348dd5536a23c9af469f32d8bb01",
+      "table": "setting_labels",
+      "translation": "OPS 调用排序"
+    },
+    {
+      "key": "ops_insitu_preset",
+      "source": "Ops insitu preset",
+      "source_sha256": "b9ba493afd0d0d1e3692548118e3c3d2f61917b3fbea2ba2ab9ee794d160c1a6",
+      "table": "setting_labels",
+      "translation": "OPS 原位预设"
+    },
+    {
+      "key": "ops_prefix_nuclei_masks",
+      "source": "Ops prefix nuclei masks",
+      "source_sha256": "74a298971992140796012001583a19771d4cc48f444266c4ac0b3bba2f8f2b2f",
+      "table": "setting_labels",
+      "translation": "OPS 前缀核掩膜"
+    },
+    {
+      "key": "ops_read_compartment",
+      "source": "Ops read compartment",
+      "source_sha256": "c629d508c26eb0b2433acb409e02f71cf9abf1d253a0eb3d9adbac50946334dd",
+      "table": "setting_labels",
+      "translation": "OPS 读段区室"
+    },
+    {
+      "key": "ops_recomb_min_quality",
+      "source": "Ops recomb min quality",
+      "source_sha256": "d8e522035a00915bef6a8878462b9a52a4cedf544e83988e9937ab1323008079",
+      "table": "setting_labels",
+      "translation": "OPS recomb 最低质量"
+    },
+    {
+      "key": "ops_barcode_layout",
+      "source": "single reads one barcode per spot (the guide prefix). combinatorial reads several barcode segments in different cycles, as in PerturbView and Zombie screens, and calls each cell's construct from the combination (ops_barcode_layout_file); reads whose segments belong to different constructs are flagged as recombined and not used. Needs ops_prefix_threshold_tuning none. Empty is single. Default None. Alpha.",
+      "source_sha256": "5025e36027c0c5267d53ba83008da09c470b20311f41ce89022d0ae53305666e",
+      "table": "setting_tooltips",
+      "translation": "single 每个点读取一个条形码（引导 RNA 前缀）。combinatorial 像 PerturbView 和 Zombie 筛选那样在不同循环中读取多个条形码片段，并根据组合调用每个细胞的构建体（ops_barcode_layout_file）；片段属于不同构建体的读段会被标记为重组且不被使用。需要 ops_prefix_threshold_tuning none。留空即 single。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_barcode_layout_file",
+      "source": "The combinatorial layout: a CSV or JSON with one row per segment: segment, start and end cycle, role (map, recomb or umi), the library column with its bases, and optionally max_distance and metric (hamming or levenshtein). The library needs those columns and the gene column. Default None. Alpha.",
+      "source_sha256": "bc00be5837525818e1d23899e2be69a8996eb2111768323757d36d634df8faac",
+      "table": "setting_tooltips",
+      "translation": "组合布局：每个片段一行的 CSV 或 JSON 文件：segment、起止循环、role（map、recomb 或 umi）、包含其碱基的文库列，以及可选的 max_distance 和 metric（hamming 或 levenshtein）。文库需要这些列和基因列。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_call_sort",
+      "source": "How a cell's barcodes are ranked: count (reads), quality (mean read quality) or peak (the brightest read's spot strength, for chemistries with one bright amplicon per cell). A tie leaves the cell ambiguous. Needs ops_prefix_quality_method spacr. Empty keeps the decode's own rule. Default None. Alpha.",
+      "source_sha256": "e869617e248e4102d7a4bf92e1c1a6aa0e0d82c3249e41388a3985aa14c5a618",
+      "table": "setting_tooltips",
+      "translation": "细胞条形码的排序方式：count（读段数）、quality（平均读段质量）或 peak（最亮读段的点强度，适用于每个细胞只有一个明亮扩增子的化学方法）。并列时细胞保持不明确。需要 ops_prefix_quality_method spacr。留空则沿用解码自身的规则。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_insitu_preset",
+      "source": "A named in situ sequencing setup for the spacer-prefix decode. t7 assigns reads to the nucleus, calls each cell by its brightest amplicon and accepts one read per cell, as validated for T7 chemistry; it fills only the keys left empty. Empty uses no preset. Default None. Alpha.",
+      "source_sha256": "08a749af6d0654af116b50de8722ecaa6d799f2399c20e61e7c559d24f28511d",
+      "table": "setting_tooltips",
+      "translation": "间隔序列前缀解码的命名原位测序设置。t7 把读段分配给细胞核，按每个细胞最亮的扩增子调用细胞，并接受每个细胞一条读段，与 T7 化学的验证方式一致；它只填写留空的键。留空则不使用预设。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_prefix_nuclei_masks",
+      "source": "The nucleus labels of each site for ops_read_compartment, as a path with {plate}, {well}, {well_id} and {site} to a TIFF, .npy or .npz file. Empty reads a nuclei array from the merged site file. Default None. Alpha.",
+      "source_sha256": "0201a53394da3bdcaf2668e33d31fa0e35abcdbd35e530866cb9e30763640ec3",
+      "table": "setting_tooltips",
+      "translation": "用于 ops_read_compartment 的各位点细胞核标签，写作包含 {plate}、{well}、{well_id} 和 {site} 的路径，指向 TIFF、.npy 或 .npz 文件。留空则从合并的位点文件读取 nuclei 数组。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_read_compartment",
+      "source": "Which part of a cell a read must lie in to count: cell (anywhere), nucleus (only over the nucleus, for amplicons that stay there) or cytoplasm (outside it). Nucleus and cytoplasm need nucleus labels (ops_prefix_nuclei_masks). Empty is cell. Default None. Alpha.",
+      "source_sha256": "1abb892bdfacb8fe7ec8b62018a04535c1967aa846757cb57df80435cc140605",
+      "table": "setting_tooltips",
+      "translation": "读段必须位于细胞的哪个部分才计入：cell（任意位置）、nucleus（仅在细胞核上，适用于留在核内的扩增子）或 cytoplasm（核外）。nucleus 和 cytoplasm 需要细胞核标签（ops_prefix_nuclei_masks）。留空即 cell。默认 None。Alpha 功能。"
+    },
+    {
+      "key": "ops_recomb_min_quality",
+      "source": "The lowest call quality (the worst cycle's margin) a recomb segment needs to be checked against its construct, as Brieflow's recomb_q_thresh; a lower-quality segment is neither trusted nor flagged as recombined. Empty is 0. Default None. Alpha.",
+      "source_sha256": "3c593921ba2fa1e23a4df5ffaf30dcbdf38491b91d9fa328732b9e7475cc589d",
+      "table": "setting_tooltips",
+      "translation": "recomb 片段要与其构建体核对所需的最低调用质量（最差循环的间隔），相当于 Brieflow 的 recomb_q_thresh；质量更低的片段既不使用，也不标记为重组。留空即 0。默认 None。Alpha 功能。"
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

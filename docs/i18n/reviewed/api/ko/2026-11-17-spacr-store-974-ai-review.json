@@ -1,0 +1,560 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "The spaCR store: Parquet tables, Zarr extracted image regions and one DuckDB catalog.",
+      "label": "spacr.store#0",
+      "source": "The spaCR store: Parquet tables, Zarr crops and one DuckDB catalog.",
+      "source_sha256": "e95a804a3ddf96868b696696c0b93b71dce2ae11cc5bf2635425db4bbad6a96e",
+      "translation": "spaCR 저장소: Parquet 테이블, Zarr 크롭, 하나의 DuckDB 카탈로그."
+    },
+    {
+      "context": "A project folder holds one table per object class under ``tables/<class>/plate=<P>/well=<W>/part-<N>.parquet``, one extracted image region store per microplate sample position under ``crops/plate=<P>/well=<W>.zarr`` and the catalog ``spacr.duckdb``, which registers every file with its row count and sha256 and defines one view per table over the registered files only.",
+      "label": "spacr.store#1",
+      "source": "A project folder holds one table per object class under ``tables/<class>/plate=<P>/well=<W>/part-<N>.parquet``, one crop store per well under ``crops/plate=<P>/well=<W>.zarr`` and the catalog ``spacr.duckdb``, which registers every file with its row count and sha256 and defines one view per table over the registered files only.",
+      "source_sha256": "4308a88036d91b8b813cfaa857db5b470ae0d33f031741eba83c44e3f2304e66",
+      "translation": "프로젝트 폴더에는 객체 클래스마다 하나의 테이블이 ``tables/<class>/plate=<P>/well=<W>/part-<N>.parquet`` 아래에, 웰마다 하나의 크롭 저장소가 ``crops/plate=<P>/well=<W>.zarr`` 아래에 있고, 카탈로그 ``spacr.duckdb``가 있습니다. 카탈로그는 모든 파일을 행 수 및 sha256과 함께 등록하고, 등록된 파일만을 대상으로 테이블마다 하나의 뷰를 정의합니다."
+    },
+    {
+      "context": "Each microplate sample position writes its own files with :func:`write_part` (a temporary name, an atomic rename, then a manifest), so microplate sample positions write in parallel without a lock. :func:`register` adds every waiting manifest to the catalog in one transaction. :func:`open` reads the registry and answers queries through an in-memory DuckDB, so a reader never holds the catalog. A folder holding only an older ``measurements.db`` opens through the same API.",
+      "label": "spacr.store#2",
+      "source": "Each well writes its own files with :func:`write_part` (a temporary name, an atomic rename, then a manifest), so wells write in parallel without a lock. :func:`register` adds every waiting manifest to the catalog in one transaction. :func:`open` reads the registry and answers queries through an in-memory DuckDB, so a reader never holds the catalog. A folder holding only an older ``measurements.db`` opens through the same API.",
+      "source_sha256": "3e6a931ba284076e44235c00f52db6d8b7933ac550a13b3f31b2c50dadbcfaeb",
+      "translation": "각 웰은 :func:`write_part`로 자신의 파일을 씁니다(임시 이름, 원자적 이름 변경, 그다음 매니페스트). 따라서 웰들은 잠금 없이 병렬로 씁니다. :func:`register`는 대기 중인 모든 매니페스트를 하나의 트랜잭션으로 카탈로그에 추가합니다. :func:`open`은 레지스트리를 읽고 메모리 내 DuckDB를 통해 쿼리에 응답하므로, 읽는 쪽은 카탈로그를 점유하지 않습니다. 이전 ``measurements.db``만 있는 폴더도 같은 API로 열립니다."
+    },
+    {
+      "context": "An open spaCR store, or an older SQLite project, made by :func:`open`.",
+      "label": "spacr.store.Store#0",
+      "source": "An open spaCR store, or an older SQLite project, made by :func:`open`.",
+      "source_sha256": "86a48d33a321722ec29c224167f840e9e3112d7f4ff9b8280e981a2741e30f22",
+      "translation": ":func:`open`으로 만든, 열린 spaCR 저장소 또는 이전 SQLite 프로젝트."
+    },
+    {
+      "context": "the project folder, or a SQLite file.",
+      "label": "spacr.store.Store#1",
+      "source": "the project folder, or a SQLite file.",
+      "source_sha256": "f7c52f780c7cbe9a369015c0977c811e7e88269ebcc2e38a5b526e7140007344",
+      "translation": "프로젝트 폴더 또는 SQLite 파일."
+    },
+    {
+      "context": "DuckDB threads; None leaves DuckDB's default.",
+      "label": "spacr.store.Store#2",
+      "source": "DuckDB threads; None leaves DuckDB's default.",
+      "source_sha256": "602b8c6e1db75bbc8247dc65375a08feb736288b8b054551650fb748e2717ae7",
+      "translation": "DuckDB 스레드 수; None이면 DuckDB의 기본값을 유지합니다."
+    },
+    {
+      "context": "as for :meth:`refresh`.",
+      "label": "spacr.store.Store#3",
+      "source": "as for :meth:`refresh`.",
+      "source_sha256": "396159012c808fe9b02c24b00a65be5214ebef70c12120d70b5343b62a5277ee",
+      "translation": ":meth:`refresh`와 같음."
+    },
+    {
+      "context": "Read the registry of ``project``; see :func:`open`.",
+      "label": "spacr.store.Store#4",
+      "source": "Read the registry of ``project``; see :func:`open`.",
+      "source_sha256": "ed3698148389d773ad092c439d9cc996e36977811159d87f5bc49b854167123e",
+      "translation": "``project``의 레지스트리를 읽습니다. :func:`open`을 참조하십시오."
+    },
+    {
+      "context": "The store itself, for ``with``.",
+      "label": "spacr.store.Store.__enter__#0",
+      "source": "The store itself, for ``with``.",
+      "source_sha256": "8d47e0369062fd9c76c2704bcd69c7a9cdef31f6fc79e0b9dce71a558cb897b7",
+      "translation": "``with``에 사용할 저장소 자체."
+    },
+    {
+      "context": "Close on leaving ``with``.",
+      "label": "spacr.store.Store.__exit__#0",
+      "source": "Close on leaving ``with``.",
+      "source_sha256": "dc891e64fc16d6a10d34524afd3ac750139bf0d39e8d0c9b8bf14869b9ad372c",
+      "translation": "``with``를 벗어날 때 닫습니다."
+    },
+    {
+      "context": "Iterate over a query in batches, for training.",
+      "label": "spacr.store.Store.batches#0",
+      "source": "Iterate over a query in batches, for training.",
+      "source_sha256": "d1794e0b6300016a33b5dc4c424975471cfab8b64b6b58a4ac1bd7133884197b",
+      "translation": "학습용으로 쿼리 결과를 배치 단위로 반복합니다."
+    },
+    {
+      "context": "Rows stream from DuckDB as Arrow record batches, so the whole result is never held at once. With ``shuffle`` the files are read in a random order and the rows are shuffled within ``buffer`` batches; the same seed gives the same order.",
+      "label": "spacr.store.Store.batches#1",
+      "source": "Rows stream from DuckDB as Arrow record batches, so the whole result is never held at once. With ``shuffle`` the files are read in a random order and the rows are shuffled within ``buffer`` batches; the same seed gives the same order.",
+      "source_sha256": "a52ccec38c8838da3cc6164f909853587667c9973d81b18b31b44733e7d3a251",
+      "translation": "행은 DuckDB에서 Arrow record batch로 스트리밍되므로 전체 결과를 한 번에 보유하지 않습니다. ``shuffle``을 사용하면 파일을 무작위 순서로 읽고 행을 ``buffer``개 배치 안에서 섞습니다. 같은 시드는 같은 순서를 줍니다."
+    },
+    {
+      "context": "how many batches are shuffled together.",
+      "label": "spacr.store.Store.batches#10",
+      "source": "how many batches are shuffled together.",
+      "source_sha256": "3b85eaf45282879b102d480908258ee8ee1299f5a0e5a863d485c5aa1656c53e",
+      "translation": "함께 섞는 배치 수."
+    },
+    {
+      "context": "an iterator over results shaped as :meth:`query` shapes them.",
+      "label": "spacr.store.Store.batches#11",
+      "source": "an iterator over results shaped as :meth:`query` shapes them.",
+      "source_sha256": "5eaf7fa436a70956b529507689a40e58a751c201f8b7cd9ed047419c71f8a13e",
+      "translation": ":meth:`query`가 만드는 형태의 결과를 내는 반복자."
+    },
+    {
+      "context": "as for :meth:`query`, but not a full ``SELECT`` when shuffling.",
+      "label": "spacr.store.Store.batches#2",
+      "source": "as for :meth:`query`, but not a full ``SELECT`` when shuffling.",
+      "source_sha256": "823d18b9062433ebf6c7a1b328ebad58f04cd0caa10b58bbe4573b5ac3208cad",
+      "translation": ":meth:`query`와 같지만, 섞을 때는 전체 ``SELECT``가 아니어야 합니다."
+    },
+    {
+      "context": "as for :meth:`query`.",
+      "label": "spacr.store.Store.batches#3",
+      "source": "as for :meth:`query`.",
+      "source_sha256": "1d123c2849a8b8edce2070ee6fad0685f84ebed06ef31885b3006a3d33b7dea6",
+      "translation": ":meth:`query`와 같음."
+    },
+    {
+      "context": "as for :meth:`query`.",
+      "label": "spacr.store.Store.batches#4",
+      "source": "as for :meth:`query`.",
+      "source_sha256": "1d123c2849a8b8edce2070ee6fad0685f84ebed06ef31885b3006a3d33b7dea6",
+      "translation": ":meth:`query`와 같음."
+    },
+    {
+      "context": "as for :meth:`query`.",
+      "label": "spacr.store.Store.batches#5",
+      "source": "as for :meth:`query`.",
+      "source_sha256": "1d123c2849a8b8edce2070ee6fad0685f84ebed06ef31885b3006a3d33b7dea6",
+      "translation": ":meth:`query`와 같음."
+    },
+    {
+      "context": "as for :meth:`query`; ``\"numpy\"`` by default.",
+      "label": "spacr.store.Store.batches#6",
+      "source": "as for :meth:`query`; ``\"numpy\"`` by default.",
+      "source_sha256": "c0363d0edab13b0cf1ed2205200be5cd93fae2e0c7f0bec4aabed53017985f1e",
+      "translation": ":meth:`query`와 같음; 기본값은 ``\"numpy\"``."
+    },
+    {
+      "context": "rows per batch.",
+      "label": "spacr.store.Store.batches#7",
+      "source": "rows per batch.",
+      "source_sha256": "00187ffd1fbb7143aa5ec7912176a6f71c119a7078e01b108eec2373ad56316c",
+      "translation": "배치당 행 수."
+    },
+    {
+      "context": "shuffle the files and the rows within the buffer.",
+      "label": "spacr.store.Store.batches#8",
+      "source": "shuffle the files and the rows within the buffer.",
+      "source_sha256": "ad5331036ac565856d62c391eda04ffaa6fb20f265221a2b99d0f390d9236dc5",
+      "translation": "파일과 버퍼 안의 행을 섞습니다."
+    },
+    {
+      "context": "the shuffle seed.",
+      "label": "spacr.store.Store.batches#9",
+      "source": "the shuffle seed.",
+      "source_sha256": "49cc4a6918f94840f1ae1344fa9d430a0d51a97f16072e73e1fe8333dbb84d9c",
+      "translation": "셔플 시드."
+    },
+    {
+      "context": "Close the in-memory connection.",
+      "label": "spacr.store.Store.close#0",
+      "source": "Close the in-memory connection.",
+      "source_sha256": "dc97e882e7bfd0eafa1b0bd5d3cd2b595747f6329c559d76221fafe627f7f183",
+      "translation": "메모리 내 연결을 닫습니다."
+    },
+    {
+      "context": "Rows of one table, optionally with their extracted image regions in row order.",
+      "label": "spacr.store.Store.query#0",
+      "source": "Rows of one table, optionally with their crops in row order.",
+      "source_sha256": "c42169414c097c14c952c21992ada81e8c645607d735ef61dd7e109b45ab2baa",
+      "translation": "한 테이블의 행, 선택적으로 행 순서대로 해당 크롭과 함께."
+    },
+    {
+      "context": "a SQL ``WHERE`` clause, a full ``SELECT``, a mapping ``{column: value or list}``, or None for every row.",
+      "label": "spacr.store.Store.query#1",
+      "source": "a SQL ``WHERE`` clause, a full ``SELECT``, a mapping ``{column: value or list}``, or None for every row.",
+      "source_sha256": "05777af8b0c5369dff924998db09f18674ed1fed658b557c1e312716265fe3ed",
+      "translation": "SQL ``WHERE`` 절, 전체 ``SELECT``, 매핑 ``{column: value or list}``, 또는 모든 행을 뜻하는 None."
+    },
+    {
+      "context": "the table.",
+      "label": "spacr.store.Store.query#2",
+      "source": "the table.",
+      "source_sha256": "b13622514190f53d146542b639a15daf335205ff35d74c5df03b77344fbab57f",
+      "translation": "테이블입니다."
+    },
+    {
+      "context": "the feature columns to return beside the identifier columns and the extracted image region pointer; None returns every column.",
+      "label": "spacr.store.Store.query#3",
+      "source": "the feature columns to return beside the key columns and the crop pointer; None returns every column.",
+      "source_sha256": "8f7651ab07dc61fe74a173f0b0ea4320c0a8a5dbbea61e9651604c5a502e071a",
+      "translation": "키 열과 크롭 포인터 외에 반환할 특징 열; None이면 모든 열을 반환합니다."
+    },
+    {
+      "context": "also return the extracted image regions, ``(n, C, H, W)`` in row order; a row without an extracted image region gets zeros.",
+      "label": "spacr.store.Store.query#4",
+      "source": "also return the crops, ``(n, C, H, W)`` in row order; a row without a crop gets zeros.",
+      "source_sha256": "8961d8a5b4ba4ab908bb35e8642632676e8e1411f471117d77c549de527525a9",
+      "translation": "크롭도 행 순서대로 ``(n, C, H, W)``로 반환합니다; 크롭이 없는 행은 0을 받습니다."
+    },
+    {
+      "context": "``\"pandas\"``, ``\"arrow\"`` or ``\"numpy\"``, the last giving ``(metadata DataFrame, float32 feature matrix)``.",
+      "label": "spacr.store.Store.query#5",
+      "source": "``\"pandas\"``, ``\"arrow\"`` or ``\"numpy\"``, the last giving ``(metadata DataFrame, float32 feature matrix)``.",
+      "source_sha256": "d76982ff251cae49dece6072a1b8458a3828db8cbfa91e56ca7faa00ef249394",
+      "translation": "``\"pandas\"``, ``\"arrow\"`` 또는 ``\"numpy\"``; 마지막은 ``(metadata DataFrame, float32 feature matrix)``를 줍니다."
+    },
+    {
+      "context": "the result, or ``(result, crops)`` when ``crops``.",
+      "label": "spacr.store.Store.query#6",
+      "source": "the result, or ``(result, crops)`` when ``crops``.",
+      "source_sha256": "3ec2ec5f29162ae8b5b60d6344cc10becda916b8606a2976838842b557ebf425",
+      "translation": "결과, 또는 ``(result, crops)``(``crops``가 참일 때)."
+    },
+    {
+      "context": "Read the registry again and rebuild the views.",
+      "label": "spacr.store.Store.refresh#0",
+      "source": "Read the registry again and rebuild the views.",
+      "source_sha256": "ba867631e59148b0e157c23bf303affee1964bf629b87704d613c6f972ed27c2",
+      "translation": "레지스트리를 다시 읽고 뷰를 다시 만듭니다."
+    },
+    {
+      "context": "``\"quick\"`` compares sizes and mtimes, ``\"full\"`` rehashes every file, ``\"none\"`` checks nothing.",
+      "label": "spacr.store.Store.refresh#1",
+      "source": "``\"quick\"`` compares sizes and mtimes, ``\"full\"`` rehashes every file, ``\"none\"`` checks nothing.",
+      "source_sha256": "9cb48dc711037fd68e020720f1cc7ffef904f0e5ad9b46bd970bc41751d41154",
+      "translation": "``\"quick\"``은 크기와 mtime을 비교하고, ``\"full\"``은 모든 파일의 해시를 다시 계산하며, ``\"none\"``은 아무것도 확인하지 않습니다."
+    },
+    {
+      "context": "the store.",
+      "label": "spacr.store.Store.refresh#2",
+      "source": "the store.",
+      "source_sha256": "db4a4d6c8d7c5388665a133d8943f855fa3525290573b22d054e5439f84cffb8",
+      "translation": "저장소."
+    },
+    {
+      "context": "Run raw SQL against the views.",
+      "label": "spacr.store.Store.sql#0",
+      "source": "Run raw SQL against the views.",
+      "source_sha256": "b7756ffde45bc15267fb703e13aca6fe9f7cedb9361ce3b0e9f54fa71a515453",
+      "translation": "뷰에 대해 원시 SQL을 실행합니다."
+    },
+    {
+      "context": "the SQL.",
+      "label": "spacr.store.Store.sql#1",
+      "source": "the SQL.",
+      "source_sha256": "4693e3adc3e86f287c84d926c6737f8d9d1685f6b0be646349239bb375a92a59",
+      "translation": "SQL 문."
+    },
+    {
+      "context": "its ``?`` parameters.",
+      "label": "spacr.store.Store.sql#2",
+      "source": "its ``?`` parameters.",
+      "source_sha256": "98e56bd878d169426c88a979b8d6db98d9fbbeb9cbde88a3bfdcfa237a514bc8",
+      "translation": "해당 ``?`` 매개변수."
+    },
+    {
+      "context": "``\"pandas\"`` or ``\"arrow\"``.",
+      "label": "spacr.store.Store.sql#3",
+      "source": "``\"pandas\"`` or ``\"arrow\"``.",
+      "source_sha256": "e804e106c9563416ee1b1311a7c4625616aec853dabe87ceed2453d49c05dacd",
+      "translation": "``\"pandas\"`` 또는 ``\"arrow\"``."
+    },
+    {
+      "context": "the result.",
+      "label": "spacr.store.Store.sql#4",
+      "source": "the result.",
+      "source_sha256": "5145de6665d84ff79c9c4c17f2a5a2c73dab78ab1f32df5f8e906cbb845b2a62",
+      "translation": "결과 항목입니다."
+    },
+    {
+      "context": "The tables this store answers queries on.",
+      "label": "spacr.store.Store.tables#0",
+      "source": "The tables this store answers queries on.",
+      "source_sha256": "f14918fc79ec0095e941e4c724a669124dfc4f2219c1b14d6de73a15274d3af6",
+      "translation": "이 저장소가 쿼리에 응답하는 테이블."
+    },
+    {
+      "context": "Check every registered file against the registry.",
+      "label": "spacr.store.Store.verify#0",
+      "source": "Check every registered file against the registry.",
+      "source_sha256": "d8f1faff6769da91c73415f1820108a73b18f1c316480d32e346b93d88513646",
+      "translation": "등록된 모든 파일을 레지스트리와 대조해 확인합니다."
+    },
+    {
+      "context": "rehash every file; otherwise compare sizes and mtimes.",
+      "label": "spacr.store.Store.verify#1",
+      "source": "rehash every file; otherwise compare sizes and mtimes.",
+      "source_sha256": "6521d5f51a56024cb624152d48c1e034f176ba2c18d2d400bf2fe617446cf29e",
+      "translation": "모든 파일의 해시를 다시 계산합니다; 그렇지 않으면 크기와 mtime을 비교합니다."
+    },
+    {
+      "context": "how many files were checked.",
+      "label": "spacr.store.Store.verify#2",
+      "source": "how many files were checked.",
+      "source_sha256": "ccdd3a4312a6bc3f11561453d86941ef377847bb9023c01484341a8e64810d69",
+      "translation": "확인한 파일 수."
+    },
+    {
+      "context": "naming each file that is missing or changed.",
+      "label": "spacr.store.Store.verify#3",
+      "source": "naming each file that is missing or changed.",
+      "source_sha256": "84ceb4c23bb542ed278049584c9ab5320dd7dabf1d1ebff7165f9a2d58a91bdf",
+      "translation": "누락되었거나 변경된 각 파일의 이름을 밝힙니다."
+    },
+    {
+      "context": "A store that cannot be read or written as asked; the message says why.",
+      "label": "spacr.store.StoreError#0",
+      "source": "A store that cannot be read or written as asked; the message says why.",
+      "source_sha256": "880df2bde39b737e1fc78c7214163847d0822503bace71dc3f879efa54ea8c0a",
+      "translation": "요청대로 읽거나 쓸 수 없는 저장소; 메시지에 이유가 나옵니다."
+    },
+    {
+      "context": "Remove temporary files older than ``older_than`` seconds.",
+      "label": "spacr.store.cleanup#0",
+      "source": "Remove temporary files older than ``older_than`` seconds.",
+      "source_sha256": "a69555397b7641e2b8c7cbdb2d242b249bf886fe8af84999f8d9f69bc6926210",
+      "translation": "``older_than``초보다 오래된 임시 파일을 제거합니다."
+    },
+    {
+      "context": "These are what a writer killed mid-write leaves behind. Registered files and waiting manifests are never touched.",
+      "label": "spacr.store.cleanup#1",
+      "source": "These are what a writer killed mid-write leaves behind. Registered files and waiting manifests are never touched.",
+      "source_sha256": "30a55f29f11391c9c6ebc4f2bd1d0ff4c448a87a07691188d2ac5bf7c0274f2d",
+      "translation": "이는 쓰기 도중 종료된 작성자가 남기는 파일입니다. 등록된 파일과 대기 중인 매니페스트는 절대 건드리지 않습니다."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.store.cleanup#2",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "프로젝트 폴더."
+    },
+    {
+      "context": "the age in seconds below which a file is kept, since a writer may still be busy with it.",
+      "label": "spacr.store.cleanup#3",
+      "source": "the age in seconds below which a file is kept, since a writer may still be busy with it.",
+      "source_sha256": "6e6071e6dceb0e44e9beea7e5c71fdd51df80dd247f4f5959768e37ea31695d9",
+      "translation": "초 단위의 나이 기준으로, 이보다 새로운 파일은 작성자가 아직 사용 중일 수 있으므로 유지됩니다."
+    },
+    {
+      "context": "the paths removed, relative to the project.",
+      "label": "spacr.store.cleanup#4",
+      "source": "the paths removed, relative to the project.",
+      "source_sha256": "80d96fb091bd0a9284aaf1c2c07cb000cb2a5c808f78b0da7711212db1123019",
+      "translation": "제거된 경로, 프로젝트 기준 상대 경로."
+    },
+    {
+      "context": "Open a spaCR store, or an older SQLite project, for reading.",
+      "label": "spacr.store.open#0",
+      "source": "Open a spaCR store, or an older SQLite project, for reading.",
+      "source_sha256": "07525dac101e52850029d61a9c22a011d50b94a245768ad4e652adad28c1cc6d",
+      "translation": "spaCR 저장소 또는 이전 SQLite 프로젝트를 읽기용으로 엽니다."
+    },
+    {
+      "context": "a project folder with ``spacr.duckdb``, or a folder or file holding ``measurements.db``.",
+      "label": "spacr.store.open#1",
+      "source": "a project folder with ``spacr.duckdb``, or a folder or file holding ``measurements.db``.",
+      "source_sha256": "37fe1a13630c17d3a54b05aff59f73b38ad073376a2d46f0b2e9010a3e45b297",
+      "translation": "``spacr.duckdb``가 있는 프로젝트 폴더, 또는 ``measurements.db``를 담은 폴더나 파일."
+    },
+    {
+      "context": "DuckDB threads; None leaves DuckDB's default.",
+      "label": "spacr.store.open#2",
+      "source": "DuckDB threads; None leaves DuckDB's default.",
+      "source_sha256": "602b8c6e1db75bbc8247dc65375a08feb736288b8b054551650fb748e2717ae7",
+      "translation": "DuckDB 스레드 수; None이면 DuckDB의 기본값을 유지합니다."
+    },
+    {
+      "context": "``\"quick\"`` (sizes and mtimes), ``\"full\"`` (sha256) or ``\"none\"``.",
+      "label": "spacr.store.open#3",
+      "source": "``\"quick\"`` (sizes and mtimes), ``\"full\"`` (sha256) or ``\"none\"``.",
+      "source_sha256": "a72bb81bec12685d9540725da956f0fcc2530b291fb3372444053d159ef5c9f1",
+      "translation": "``\"quick\"``(크기와 mtime), ``\"full\"``(sha256) 또는 ``\"none\"``."
+    },
+    {
+      "context": "the :class:`Store`.",
+      "label": "spacr.store.open#4",
+      "source": "the :class:`Store`.",
+      "source_sha256": "f6f7c655db9eb3cf4b0d2c321b306f3dc19ef89ba8f741d2f1611148ab1cc6a7",
+      "translation": ":class:`Store` 객체."
+    },
+    {
+      "context": "when there is nothing to open, or a registered file changed.",
+      "label": "spacr.store.open#5",
+      "source": "when there is nothing to open, or a registered file changed.",
+      "source_sha256": "b4ff361546179c615416bcddea8278b4f8260e3fb280b585b18643baaa44cfdd",
+      "translation": "열 대상이 없거나 등록된 파일이 변경되었을 때."
+    },
+    {
+      "context": "Register every waiting manifest in one transaction.",
+      "label": "spacr.store.register#0",
+      "source": "Register every waiting manifest in one transaction.",
+      "source_sha256": "0093a0c86848185251d360e6cb9d105c5ae4976bed1ebca53b3b25bd6b449f85",
+      "translation": "대기 중인 모든 매니페스트를 하나의 트랜잭션으로 등록합니다."
+    },
+    {
+      "context": "Each manifest's files are checked against their recorded size and mtime first. The microplate sample position's earlier files of the same table are replaced in the registry, the views are rebuilt and, after the commit, the replaced files and the manifests are deleted.",
+      "label": "spacr.store.register#1",
+      "source": "Each manifest's files are checked against their recorded size and mtime first. The well's earlier files of the same table are replaced in the registry, the views are rebuilt and, after the commit, the replaced files and the manifests are deleted.",
+      "source_sha256": "5dfb16f95fec1a8372a104f8d55c032d40a7eba5e658e6e5d43868d93c6539a5",
+      "translation": "각 매니페스트의 파일은 먼저 기록된 크기 및 mtime과 대조해 확인됩니다. 같은 테이블에 대한 해당 웰의 이전 파일은 레지스트리에서 교체되고, 뷰가 다시 만들어지며, 커밋 후 교체된 파일과 매니페스트가 삭제됩니다."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.store.register#2",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "프로젝트 폴더."
+    },
+    {
+      "context": "a ``spacr_runs`` row (``run_id``, ``settings``), or None.",
+      "label": "spacr.store.register#3",
+      "source": "a ``spacr_runs`` row (``run_id``, ``settings``), or None.",
+      "source_sha256": "1fa67e05d0b3489e7de525f6676f0f53d641b0580b12ab06b0ac91145f28861a",
+      "translation": "``spacr_runs`` 행(``run_id``, ``settings``) 또는 None."
+    },
+    {
+      "context": "rehash files whose size or mtime changed after the manifest was written and register their new hash.",
+      "label": "spacr.store.register#4",
+      "source": "rehash files whose size or mtime changed after the manifest was written and register their new hash.",
+      "source_sha256": "aca209b31a12bea73fd29afd821ae008615fbd402afb27eaf57df37465c02a12",
+      "translation": "매니페스트가 작성된 후 크기나 mtime이 바뀐 파일의 해시를 다시 계산하고 새 해시를 등록합니다."
+    },
+    {
+      "context": "``{\"registered\", \"superseded\", \"tables\"}``.",
+      "label": "spacr.store.register#5",
+      "source": "``{\"registered\", \"superseded\", \"tables\"}``.",
+      "source_sha256": "c1a3f4a7ef7427716c5f24889b10ec76656daa3d0ec7a21802035b67cbe424c7",
+      "translation": "``{\"registered\", \"superseded\", \"tables\"}``."
+    },
+    {
+      "context": "when a manifest's file is missing or changed.",
+      "label": "spacr.store.register#6",
+      "source": "when a manifest's file is missing or changed.",
+      "source_sha256": "71c430fc3837616194ae40c518376371ef02bd1faca56c603c57ee3f7f937d76",
+      "translation": "매니페스트의 파일이 누락되었거나 변경되었을 때."
+    },
+    {
+      "context": "Write one microplate sample position's rows of ``table`` (and its extracted image regions) and leave a manifest.",
+      "label": "spacr.store.write_part#0",
+      "source": "Write one well's rows of ``table`` (and its crops) and leave a manifest.",
+      "source_sha256": "2661925e258145729ad15af309f38425dbc93a5864bfc9273fcd3cca086a3b1f",
+      "translation": "한 웰의 ``table`` 행(및 그 크롭)을 쓰고 매니페스트를 남깁니다."
+    },
+    {
+      "context": "The rows are sorted by ``sort_by`` and written under a temporary name, flushed and renamed into ``tables/<table>/plate=<P>/well=<W>/``. The extracted image regions go to ``crops/plate=<P>/well=<W>.zarr`` in the same row order and each row gets ``crop_store`` and ``crop_index``. The manifest in ``_pending/`` is written last; nothing is visible to readers until :func:`register` adds it to the catalog.",
+      "label": "spacr.store.write_part#1",
+      "source": "The rows are sorted by ``sort_by`` and written under a temporary name, flushed and renamed into ``tables/<table>/plate=<P>/well=<W>/``. The crops go to ``crops/plate=<P>/well=<W>.zarr`` in the same row order and each row gets ``crop_store`` and ``crop_index``. The manifest in ``_pending/`` is written last; nothing is visible to readers until :func:`register` adds it to the catalog.",
+      "source_sha256": "40f509d47d0330f26a655d325970e38191858fda6c1968d7fe1127b25530ccd4",
+      "translation": "행은 ``sort_by``로 정렬되어 임시 이름으로 쓰이고, 플러시된 뒤 ``tables/<table>/plate=<P>/well=<W>/``로 이름이 바뀝니다. 크롭은 같은 행 순서로 ``crops/plate=<P>/well=<W>.zarr``에 저장되며 각 행은 ``crop_store``와 ``crop_index``를 받습니다. ``_pending/``의 매니페스트는 마지막에 쓰입니다; :func:`register`가 이를 카탈로그에 추가하기 전까지 읽는 쪽에는 아무것도 보이지 않습니다."
+    },
+    {
+      "context": "the frame row of each extracted image region; every row when None.",
+      "label": "spacr.store.write_part#10",
+      "source": "the frame row of each crop; every row when None.",
+      "source_sha256": "61fc8f4e4264e2a2f6a23475e57863eff23334849af675278044d64aa1d41452",
+      "translation": "각 크롭의 프레임 행; None이면 모든 행."
+    },
+    {
+      "context": "an array ``(k, H, W)`` beside the extracted image regions, or None.",
+      "label": "spacr.store.write_part#11",
+      "source": "an array ``(k, H, W)`` beside the crops, or None.",
+      "source_sha256": "0585aa55a9a0f7a5d1d5446c85b6fbd2e74a77126b1b17ba0c7d64fa7092cea2",
+      "translation": "크롭과 나란히 있는 배열 ``(k, H, W)`` 또는 None."
+    },
+    {
+      "context": "the run this write belongs to.",
+      "label": "spacr.store.write_part#12",
+      "source": "the run this write belongs to.",
+      "source_sha256": "6b875cd800b9871bafdbb3e112a49b0f57161a38455fff6c30e22767002e601a",
+      "translation": "이 쓰기가 속한 실행."
+    },
+    {
+      "context": "rows per row group, under the byte cap.",
+      "label": "spacr.store.write_part#13",
+      "source": "rows per row group, under the byte cap.",
+      "source_sha256": "431c38adc78615392260ba541ddd9ba5b49c36fb44f65b57c0b33cb66b2b6972",
+      "translation": "row group당 행 수, 바이트 상한 이내."
+    },
+    {
+      "context": "also write the float columns as a row-major Zarr copy, which point lookups of every column read instead of the Parquet part.",
+      "label": "spacr.store.write_part#14",
+      "source": "also write the float columns as a row-major Zarr copy, which point lookups of every column read instead of the Parquet part.",
+      "source_sha256": "f357856de491794907f8ac0df2283601db1f94d853dc88d3f8d614beb1c77ec6",
+      "translation": "부동소수점 열을 행 순서의 Zarr 사본으로도 쓰며, 모든 열의 단일 세포 조회는 Parquet 부분 대신 이 사본을 읽습니다."
+    },
+    {
+      "context": "the manifest.",
+      "label": "spacr.store.write_part#15",
+      "source": "the manifest.",
+      "source_sha256": "e9712869e62865759141b597558d9b751c042b32f9cae56308965033a223bb55",
+      "translation": "매니페스트."
+    },
+    {
+      "context": "when the frame's laboratory microplate or microplate sample position disagree with the partition, or the extracted image regions do not match ``crop_rows``.",
+      "label": "spacr.store.write_part#16",
+      "source": "when the frame's plate or well disagree with the partition, or the crops do not match ``crop_rows``.",
+      "source_sha256": "635f6794f96f3e8c010deda89be32f49b5eefd40e89e312d343e8ab5bae59320",
+      "translation": "프레임의 플레이트나 웰이 파티션과 일치하지 않거나, 크롭이 ``crop_rows``와 맞지 않을 때."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.store.write_part#2",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "프로젝트 폴더."
+    },
+    {
+      "context": "the object class, for example ``cells``.",
+      "label": "spacr.store.write_part#3",
+      "source": "the object class, for example ``cells``.",
+      "source_sha256": "fc2a080a4543bbcf8269d99d1e82a5e6d9016c320790794ac504d0e8b66a1397",
+      "translation": "객체 클래스, 예: ``cells``."
+    },
+    {
+      "context": "a DataFrame or Arrow table, one row per object.",
+      "label": "spacr.store.write_part#4",
+      "source": "a DataFrame or Arrow table, one row per object.",
+      "source_sha256": "cc6ed0eb0cfd5bd3dea4742799c39b99b034412af41261e2d7d4a72dceb647b3",
+      "translation": "DataFrame 또는 Arrow 테이블, 객체당 한 행."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.store.write_part#5",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "플레이트 이름."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.store.write_part#6",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "웰 이름."
+    },
+    {
+      "context": "the columns the rows are sorted by, those present.",
+      "label": "spacr.store.write_part#7",
+      "source": "the columns the rows are sorted by, those present.",
+      "source_sha256": "a2b4d3966e65e52122dcd3d3b0f325354404dcd2dce5c542fb1a6cb38800569a",
+      "translation": "행을 정렬하는 기준 열 중 존재하는 열."
+    },
+    {
+      "context": "the columns every feature query returns.",
+      "label": "spacr.store.write_part#8",
+      "source": "the columns every feature query returns.",
+      "source_sha256": "5e2d7c2f9976a1e7e4e4e539182ae34bdccf5e48dff5e2f8eb2dcfac62c34216",
+      "translation": "모든 특징 쿼리가 반환하는 열."
+    },
+    {
+      "context": "an array ``(k, C, H, W)`` indexable by an integer array.",
+      "label": "spacr.store.write_part#9",
+      "source": "an array ``(k, C, H, W)`` indexable by an integer array.",
+      "source_sha256": "35cb4034144144402f558a986b3e3b03a1089eaa3d960e8f77dd0476d1ca993f",
+      "translation": "정수 배열로 인덱싱할 수 있는 배열 ``(k, C, H, W)``."
+    }
+  ],
+  "review_method": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-17 against the exact English source of every docstring block of the new module spacr.store that item 974 (claude-974-1117 branch: the spaCR store, Parquet tables, Zarr crops and one DuckDB catalog) adds. Written directly, with no machine-translation draft. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

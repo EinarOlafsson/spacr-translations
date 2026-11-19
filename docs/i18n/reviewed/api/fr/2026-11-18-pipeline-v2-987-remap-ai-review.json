@@ -4,10 +4,10 @@
     {
       "context": "Pass 2 — segment stream the laboratory microplate in batches of N microscope fields of view, hand each batch to Cellpose, append the mask image data channels to the SAME stack file. Each batch stays in memory; nothing is written to disk but the combined stack and, at the end, the mask image data channel appended to it.",
       "label": "spacr.pipeline_v2#4",
-      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
       "source": "Pass 2 — segment stream the plate in batches of N fields, hand each batch to Cellpose, append the mask channels to the SAME stack file. Each batch stays in memory; nothing is written to disk but the combined stack and, at the end, the mask channel appended to it.",
       "source_sha256": "fc4946172043a7e473a306662eea5015dacc8336539e39d44264a19ef04e3966",
-      "translation": "Passe 2 — segmenter : la plaque est traitée par lots de N champs, chaque lot est remis à Cellpose et les canaux de masque sont ajoutés au MÊME fichier de pile. Chaque lot reste en mémoire ; rien n'est écrit sur le disque, hormis la pile combinée et, à la fin, le canal de masque qui lui est ajouté."
+      "translation": "Passe 2 — segmenter : traiter la plaque en flux par lots de N champs d’image, transmettre chaque lot à Cellpose et ajouter les canaux de masque au même fichier de pile (SAME). Chaque lot reste en mémoire ; seuls la pile combinée et, à la fin, le canal de masque qui lui est ajouté sont écrits sur le disque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987a spacr.pipeline_v2 docstring blocks. No human or native-speaker signoff."
     },
     {
       "context": "forwarded to ``model.eval`` through ``float()``.",
@@ -108,10 +108,10 @@
     {
       "context": "optional :class:`spacr.illumination.SegmentationIlluminationSession`. Its corrector sees private selected-image data channel copies immediately before normalisation/Cellpose; persisted intensity image layers remain raw, and completion is recorded only after the combined stack has been atomically replaced.",
       "label": "spacr.pipeline_v2.stream_masks_from_stack#7",
-      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
       "source": "optional :class:`spacr.illumination.SegmentationIlluminationSession`. Its corrector sees private selected-channel copies immediately before normalisation/Cellpose; persisted intensity planes remain raw, and completion is recorded only after the combined stack has been atomically replaced.",
       "source_sha256": "9da6f30268a0f03f9ba04ff82df56a9d3625a7d9b1d5fd5d9ffeb15ad6502e4e",
-      "translation": "facultatif :class:`spacr.illumination.SegmentationIlluminationSession`. Son correcteur voit des copies privées des canaux sélectionnés juste avant la normalisation/Cellpose ; les plans d'intensité enregistrés restent bruts, et l'achèvement n'est consigné qu'après le remplacement atomique de la pile combinée."
+      "translation": ":class:`spacr.illumination.SegmentationIlluminationSession` facultative. Son correcteur traite des copies privées des canaux sélectionnés immédiatement avant la normalisation/Cellpose ; les plans d’intensité conservés restent bruts et la fin du traitement n’est enregistrée qu’après le remplacement atomique de la pile combinée.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987a spacr.pipeline_v2 docstring blocks. No human or native-speaker signoff."
     },
     {
       "context": "optional captured PSF session. Unmixes each whole microscope field of view first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image data channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid extracted image region for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display image data channels in its separate output tree, with signed extracted image regions under ``signed/``. These display image data channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",

@@ -1,0 +1,518 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Simulated optical pooled screening experiments with planted effects of known size.",
+      "label": "spacr.power_ops#0",
+      "source": "Simulated optical pooled screens with planted effects of known size.",
+      "source_sha256": "26030e66226e00879c1be4470e5da7b5dc06452c6116e7e393a0356a0faff26b",
+      "translation": "크기가 알려진 효과를 심어 둔 시뮬레이션 광학 풀링 스크린."
+    },
+    {
+      "context": "spaCR's other power code (:mod:`spacr.power_simulate`, :mod:`spacr.power_model`) plans arrayed and microplate sample position-level pooled screens. An optical pooled screen (OPS) has another structure: every cell is genotyped from its own barcode reads, some cells get no call and some get the wrong one, the phenotype of a cell is a many-dimensional profile, guides are nested in genes and cells sit in microscope fields of view and microplate sample positions. This module simulates such a screen with known effects and runs spaCR's own OPS analysis steps on it, so a design can be scored by what it finds: the share of real effects detected, the false-positive rate, the smallest effect detected at 80 % power, the complexes the clustering recovers and the conditional information the information screen can see.",
+      "label": "spacr.power_ops#1",
+      "source": "spaCR's other power code (:mod:`spacr.power_simulate`, :mod:`spacr.power_model`) plans arrayed and well-level pooled screens. An optical pooled screen (OPS) has another structure: every cell is genotyped from its own barcode reads, some cells get no call and some get the wrong one, the phenotype of a cell is a many-dimensional profile, guides are nested in genes and cells sit in fields and wells. This module simulates such a screen with known effects and runs spaCR's own OPS analysis steps on it, so a design can be scored by what it finds: the share of real effects detected, the false-positive rate, the smallest effect detected at 80 % power, the complexes the clustering recovers and the conditional information the information screen can see.",
+      "source_sha256": "ed33c77814963d3dc04ac1cbd3eb1d6650178e266b8059b506dc61b7753c99c1",
+      "translation": "spaCR의 다른 검정력 코드(:mod:`spacr.power_simulate`, :mod:`spacr.power_model`)는 어레이 스크린과 웰 수준 풀링 스크린을 계획합니다. 광학 풀링 스크린(OPS)은 구조가 다릅니다. 모든 세포는 자신의 바코드 리드로 유전형이 판정되고, 일부 세포는 판정을 받지 못하며 일부는 잘못된 판정을 받습니다. 세포의 표현형은 다차원 프로파일이며, 가이드는 유전자 안에 중첩되고 세포는 필드와 웰 안에 놓입니다. 이 모듈은 알려진 효과를 가진 이러한 스크린을 시뮬레이션하고 그 위에서 spaCR 자체의 OPS 분석 단계를 실행하므로, 설계를 그것이 찾아내는 결과로 평가할 수 있습니다. 즉, 검출된 실제 효과의 비율, 위양성률, 80 % 검정력에서 검출되는 최소 효과, 클러스터링이 복원하는 복합체, 그리고 정보 스크린이 볼 수 있는 조건부 정보입니다."
+    },
+    {
+      "context": "The layers of one simulated screen:",
+      "label": "spacr.power_ops#2",
+      "source": "The layers of one simulated screen:",
+      "source_sha256": "0d1a77a30b9ff837d729d65ab64be441579deb41eca0531abea276f9fb5827e0",
+      "translation": "하나의 시뮬레이션 스크린을 구성하는 층:"
+    },
+    {
+      "context": "library: genes, guides per gene, non-targeting (NT) guides, a guide abundance skew (Dirichlet, :func:`spacr.power_simulate.rdirichlet_stable`) and guide efficacy (inactive guides and a per-guide knockout penetrance, :func:`spacr.power_simulate.rbeta_mean_variance`);",
+      "label": "spacr.power_ops#3",
+      "source": "library: genes, guides per gene, non-targeting (NT) guides, a guide abundance skew (Dirichlet, :func:`spacr.power_simulate.rdirichlet_stable`) and guide efficacy (inactive guides and a per-guide knockout penetrance, :func:`spacr.power_simulate.rbeta_mean_variance`);",
+      "source_sha256": "b24b432dadada5d47636b3ddd64b51f43e483df64bbaa3b58e9d98ca7f154882",
+      "translation": "라이브러리: 유전자, 유전자당 가이드, 비표적(NT) 가이드, 가이드 풍부도 편향(Dirichlet, :func:`spacr.power_simulate.rdirichlet_stable`) 및 가이드 효능(비활성 가이드와 가이드별 녹아웃 침투도, :func:`spacr.power_simulate.rbeta_mean_variance`);"
+    },
+    {
+      "context": "cells: cells per gene at the calibrated call rate, scaled by the design's call rate, assigned to guides by abundance, to microplate sample positions and microscope fields of view;",
+      "label": "spacr.power_ops#4",
+      "source": "cells: cells per gene at the calibrated call rate, scaled by the design's call rate, assigned to guides by abundance, to wells and fields;",
+      "source_sha256": "c753d4f223fdfd6a535b831070c75ef779d2b3775df250c46120c5d1923cc87b",
+      "translation": "세포: 보정된 판정률에서의 유전자당 세포 수를 설계의 판정률로 조정하고, 풍부도에 따라 가이드에 배정하며, 웰과 필드에 배정;"
+    },
+    {
+      "context": "genotyping: a share of the called cells carries a wrong guide (the decoy false discovery rate, FDR);",
+      "label": "spacr.power_ops#5",
+      "source": "genotyping: a share of the called cells carries a wrong guide (the decoy false discovery rate, FDR);",
+      "source_sha256": "5f8255414732c7c36546f869161f790a087be56af24d6f67b88631a26bc2b578",
+      "translation": "유전형 판정: 판정된 세포 중 일정 비율이 잘못된 가이드를 가짐(디코이 거짓 발견률, FDR);"
+    },
+    {
+      "context": "phenotype: NT cells resampled from a real run (``'empirical'``) or a fitted multivariate t with well and microscope field of view offsets (``'parametric'``);",
+      "label": "spacr.power_ops#6",
+      "source": "phenotype: NT cells resampled from a real run (``'empirical'``) or a fitted multivariate t with well and field offsets (``'parametric'``);",
+      "source_sha256": "858eba1e5031f61bb04ad75c03e0e2a4b2c41eb2b8d81f299a09718884b15c68",
+      "translation": "표현형: 실제 실행에서 재표본추출한 NT 세포(``'empirical'``) 또는 웰 및 필드 오프셋이 있는 적합된 다변량 t 분포(``'parametric'``);"
+    },
+    {
+      "context": "planted biology: a share of genes with a mean, variance or subpopulation effect on a few feature directions, a penetrance, and complexes of genes sharing an effect direction.",
+      "label": "spacr.power_ops#7",
+      "source": "planted biology: a share of genes with a mean, variance or subpopulation effect on a few feature directions, a penetrance, and complexes of genes sharing an effect direction.",
+      "source_sha256": "88f65eef3af9bfaf64045fdc599f8075773bcd1203411bb003581106c7a2486e",
+      "translation": "심은 생물학: 몇 개의 특징 방향에 평균, 분산 또는 하위집단 효과를 갖는 유전자의 비율, 침투도, 그리고 효과 방향을 공유하는 유전자 복합체."
+    },
+    {
+      "context": ":func:`calibrate_from_run` fills every nuisance parameter from a real OPS run and writes each value it uses to a JSON file. :func:`scan_ops_designs` sweeps a grid of designs and caches each finished point, and :func:`run_ops_power_sim` is the ``power_sim`` phase an OPS settings file runs.",
+      "label": "spacr.power_ops#8",
+      "source": ":func:`calibrate_from_run` fills every nuisance parameter from a real OPS run and writes each value it uses to a JSON file. :func:`scan_ops_designs` sweeps a grid of designs and caches each finished point, and :func:`run_ops_power_sim` is the ``power_sim`` phase an OPS settings file runs.",
+      "source_sha256": "5bafffb19686f96e4323825b6549278297fb6ae97621b8af53a20dbe28a4db61",
+      "translation": ":func:`calibrate_from_run` 함수는 실제 OPS 실행에서 모든 장애 매개변수를 채우고, 사용한 모든 값을 JSON 파일에 기록합니다. :func:`scan_ops_designs` 함수는 설계 그리드를 스윕하며 완료된 각 지점을 캐시하고, :func:`run_ops_power_sim` 함수는 OPS 설정 파일이 실행하는 ``power_sim`` 단계입니다."
+    },
+    {
+      "context": "Fill every nuisance parameter of the simulated optical pooled screening experiment from a real run.",
+      "label": "spacr.power_ops.calibrate_from_run#0",
+      "source": "Fill every nuisance parameter of the simulated optical pooled screen from a real run.",
+      "source_sha256": "a38e5665df459be934cd7b5322fadc397adcf0204932e1f31a6647a51a12a680",
+      "translation": "시뮬레이션 광학 풀링 스크린의 모든 장애 매개변수를 실제 실행에서 채웁니다."
+    },
+    {
+      "context": "The processing-session folder holds ``cells_meta.parquet``, one row per genotyped cell with ``gene_symbol_0``, ``cell_barcode_0`` and, when present, ``well`` and ``site``: the table the OPS ``etest`` phase reads. From it come the cells per gene and per guide, the guides per gene, the NT guides and the NT share of cells, the guide-abundance skew and the microplate sample positions. The phenotype comes from ``cells_E.npy`` and ``cells_meta.parquet`` of ``phenotype_dir`` (the processing-session folder when None): the NT cells' mean, covariance, multivariate t degrees of freedom, between-well and between-microscope field of view variance and between-guide variance (corrected for each guide's sampling noise), and a pool of NT cells (at most ``max_pool_cells``, drawn with ``default_rng(seed)``) for the empirical mode. The call rate is read from the processing session's ``funnel*.csv`` tables (``with_guide / linked``) when not given.",
+      "label": "spacr.power_ops.calibrate_from_run#1",
+      "source": "The run folder holds ``cells_meta.parquet``, one row per genotyped cell with ``gene_symbol_0``, ``cell_barcode_0`` and, when present, ``well`` and ``site``: the table the OPS ``etest`` phase reads. From it come the cells per gene and per guide, the guides per gene, the NT guides and the NT share of cells, the guide-abundance skew and the wells. The phenotype comes from ``cells_E.npy`` and ``cells_meta.parquet`` of ``phenotype_dir`` (the run folder when None): the NT cells' mean, covariance, multivariate t degrees of freedom, between-well and between-field variance and between-guide variance (corrected for each guide's sampling noise), and a pool of NT cells (at most ``max_pool_cells``, drawn with ``default_rng(seed)``) for the empirical mode. The call rate is read from the run's ``funnel*.csv`` tables (``with_guide / linked``) when not given.",
+      "source_sha256": "7906d8f3301720dae9835a2da516aa5fd65ba997d9655ff358a34dfc195f161c",
+      "translation": "실행 폴더에는 ``cells_meta.parquet`` 파일이 있으며, 이 파일은 유전형이 판정된 세포마다 한 행씩 ``gene_symbol_0``, ``cell_barcode_0`` 열과, 있을 경우 ``well`` 및 ``site`` 열을 담고 있습니다. 이는 OPS ``etest`` 단계가 읽는 표입니다. 여기에서 유전자당 및 가이드당 세포 수, 유전자당 가이드 수, NT 가이드와 세포 중 NT 비율, 가이드 풍부도 편향, 그리고 웰을 얻습니다. 표현형은 ``cells_E.npy`` 및 ``cells_meta.parquet`` 파일에서 얻으며, 이 파일들은 ``phenotype_dir`` (None이면 실행 폴더)에 있습니다. 즉, NT 세포의 평균, 공분산, 다변량 t 자유도, 웰 간 및 필드 간 분산과 가이드 간 분산(각 가이드의 표본추출 잡음에 대해 보정), 그리고 경험적 모드를 위한 NT 세포 풀(최대 ``max_pool_cells`` 개, ``default_rng(seed)`` 로 추출)입니다. 판정률이 주어지지 않으면 실행의 ``funnel*.csv`` 표(``with_guide / linked``)에서 읽습니다."
+    },
+    {
+      "context": "Every value used is written to ``out`` (JSON) and the NT pool to ``<out without .json>_pool.npz``, whose sha256 the JSON records.",
+      "label": "spacr.power_ops.calibrate_from_run#2",
+      "source": "Every value used is written to ``out`` (JSON) and the NT pool to ``<out without .json>_pool.npz``, whose sha256 the JSON records.",
+      "source_sha256": "a7802ca0fd9173ccf5217365c252a6ee6be257cc843fb34eb67495df71853d78",
+      "translation": "사용된 모든 값은 ``out`` (JSON)에, NT 풀은 ``<out without .json>_pool.npz`` 파일에 기록되며, JSON은 그 파일의 sha256을 기록합니다."
+    },
+    {
+      "context": "the calibration JSON; nothing is written when None.",
+      "label": "spacr.power_ops.calibrate_from_run#4",
+      "source": "the calibration JSON; nothing is written when None.",
+      "source_sha256": "bd505c5d3918ee89938f80055b536c0f3fc847ced6826fc5da98873faaea186f",
+      "translation": "보정 JSON; None이면 아무것도 기록하지 않습니다."
+    },
+    {
+      "context": "the folder of the per-cell embedding.",
+      "label": "spacr.power_ops.calibrate_from_run#5",
+      "source": "the folder of the per-cell embedding.",
+      "source_sha256": "28ce48d232ccf044d8be346cde42552b9d9bce953490cbd6e004abb9f6876560",
+      "translation": "세포별 임베딩이 있는 폴더."
+    },
+    {
+      "context": "the genotyping call rate (0 to 1), overriding the funnel tables.",
+      "label": "spacr.power_ops.calibrate_from_run#6",
+      "source": "the genotyping call rate (0 to 1), overriding the funnel tables.",
+      "source_sha256": "062b034bb9e0da9f337c718ca9a841d3908a3b91f36d158e332ddde98fd2f6d9",
+      "translation": "유전형 판정률(0에서 1), funnel 표보다 우선합니다."
+    },
+    {
+      "context": "where ``call_rate`` comes from.",
+      "label": "spacr.power_ops.calibrate_from_run#7",
+      "source": "where ``call_rate`` comes from.",
+      "source_sha256": "40b12a735193714d67e91e37fc5c8259025d4dda83d8739dbedef39acd79593c",
+      "translation": "``call_rate`` 값의 출처."
+    },
+    {
+      "context": "the decoy FDR of the calls, in percent; None records 0.",
+      "label": "spacr.power_ops.calibrate_from_run#8",
+      "source": "the decoy FDR of the calls, in percent; None records 0.",
+      "source_sha256": "8ec805996c23c971f322808717c1acfdc9fd4cc26dc89e162829a54174e5a3bb",
+      "translation": "판정의 디코이 FDR(백분율); None이면 0으로 기록합니다."
+    },
+    {
+      "context": "where ``fdr_pct`` comes from.",
+      "label": "spacr.power_ops.calibrate_from_run#9",
+      "source": "where ``fdr_pct`` comes from.",
+      "source_sha256": "0f780231095a6261366deb0c05fcebef120eec5e995c91cd7b933b0cd3798d9c",
+      "translation": "``fdr_pct`` 값의 출처."
+    },
+    {
+      "context": "a ``gene_name, group`` CORUM table for the complex sizes.",
+      "label": "spacr.power_ops.calibrate_from_run#10",
+      "source": "a ``gene_name, group`` CORUM table for the complex sizes.",
+      "source_sha256": "dd832113e45957df1db6b3768850cfb420c4c7a83bcb388f9cf76916749b179a",
+      "translation": "복합체 크기를 위한 ``gene_name, group`` CORUM 표."
+    },
+    {
+      "context": "the NT pool's cap.",
+      "label": "spacr.power_ops.calibrate_from_run#11",
+      "source": "the NT pool's cap.",
+      "source_sha256": "540c5299dc217414f9cf77ef9e1032048dfae024ac6148f83a325ffcb935b08b",
+      "translation": "NT 풀의 상한."
+    },
+    {
+      "context": "the pool and E-test seed.",
+      "label": "spacr.power_ops.calibrate_from_run#12",
+      "source": "the pool and E-test seed.",
+      "source_sha256": "336681489d70bec68151fed94477b8ffcc1ab08deecb3363d215cb266c54afec",
+      "translation": "풀 및 E-test 시드."
+    },
+    {
+      "context": "also score the real run with the E-test, in its ``empirical_null`` and ``guide_null`` modes, for the NT false-positive rates and the hits' effect sizes the validation compares with.",
+      "label": "spacr.power_ops.calibrate_from_run#13",
+      "source": "also score the real run with the E-test, in its ``empirical_null`` and ``guide_null`` modes, for the NT false-positive rates and the hits' effect sizes the validation compares with.",
+      "source_sha256": "78a764a6b496d22e3616176677658f7dcb7005d66f86817e54ba52a4b1bc9671",
+      "translation": "실제 실행도 E-test의 ``empirical_null`` 및 ``guide_null`` 모드로 점수화하여, 검증에서 비교하는 NT 위양성률과 히트의 효과 크기를 얻습니다."
+    },
+    {
+      "context": "the calibration.",
+      "label": "spacr.power_ops.calibrate_from_run#15",
+      "source": "the calibration.",
+      "source_sha256": "97f581ee2e46ac91c35d4886706989f0dd2ab97249ef60fb876058655f7c46a7",
+      "translation": "보정 결과."
+    },
+    {
+      "context": "Gaussian conditional mutual information ``I(gene; new | old)``, in bits.",
+      "label": "spacr.power_ops.conditional_information#0",
+      "source": "Gaussian conditional mutual information ``I(gene; new | old)``, in bits.",
+      "source_sha256": "ab59fbccc1d3a979b508c5ec337eec0df4f58e96a9b7be3f1c81825a7761a46c",
+      "translation": "가우스 조건부 상호정보량 ``I(gene; new | old)``, 단위는 비트."
+    },
+    {
+      "context": "``1/2 log det S(new | old) - 1/2 log det S(new | old, gene)``: the Schur complement of the total covariance of ``[old, new]`` against that of the pooled within-gene covariance (the MANOVA / Wilks form of item 964's screening experiment), with ``ridge`` times the mean variance on the diagonal so a singular block stays finite.",
+      "label": "spacr.power_ops.conditional_information#1",
+      "source": "``1/2 log det S(new | old) - 1/2 log det S(new | old, gene)``: the Schur complement of the total covariance of ``[old, new]`` against that of the pooled within-gene covariance (the MANOVA / Wilks form of item 964's screen), with ``ridge`` times the mean variance on the diagonal so a singular block stays finite.",
+      "source_sha256": "70182092dc6f25b959b49c583962556454219dbd413f8e7501e1e497703e2345",
+      "translation": "``1/2 log det S(new | old) - 1/2 log det S(new | old, gene)``: ``[old, new]`` 의 총 공분산의 Schur 보수를 합동 유전자 내 공분산의 Schur 보수와 대비한 것(항목 964 스크린의 MANOVA / Wilks 형식)이며, 특이 블록이 유한하게 유지되도록 대각선에 ``ridge`` 곱하기 평균 분산을 더합니다."
+    },
+    {
+      "context": "cells by old features.",
+      "label": "spacr.power_ops.conditional_information#2",
+      "source": "cells by old features.",
+      "source_sha256": "edfdb3b4f56a8f9ffbaf255dd8463ee9846b496fd4fac34d4eb6c2987fecbed6",
+      "translation": "세포별 기존 특징 행렬."
+    },
+    {
+      "context": "cells by new features.",
+      "label": "spacr.power_ops.conditional_information#3",
+      "source": "cells by new features.",
+      "source_sha256": "fee4d7cb735f91e98e5f4d25b8b323c8bc00fe5304fbe0c7552e85bed96a912e",
+      "translation": "세포별 새 특징 행렬."
+    },
+    {
+      "context": "the ridge share.",
+      "label": "spacr.power_ops.conditional_information#5",
+      "source": "the ridge share.",
+      "source_sha256": "fd56b24599688ba4b04f2b2f26bb78150adf543064d4b795c77302af42aced8c",
+      "translation": "ridge 비율."
+    },
+    {
+      "context": "the added gene information in bits (biased upward by about ``groups * new_dims / (2 n ln 2)``; compare with a permutation null).",
+      "label": "spacr.power_ops.conditional_information#6",
+      "source": "the added gene information in bits (biased upward by about ``groups * new_dims / (2 n ln 2)``; compare with a permutation null).",
+      "source_sha256": "34c7314a8f6483f4ba417ec00aa8b18f03c1b40f520d5785044e2f8c84785095",
+      "translation": "비트 단위의 추가된 유전자 정보(약 ``groups * new_dims / (2 n ln 2)`` 만큼 위쪽으로 편향됨; 순열 영분포와 비교할 것)."
+    },
+    {
+      "context": "Read a calibration JSON written by :func:`calibrate_from_run`.",
+      "label": "spacr.power_ops.load_calibration#0",
+      "source": "Read a calibration JSON written by :func:`calibrate_from_run`.",
+      "source_sha256": "32d11e248f34824c2b64c9846998956456c21bcc04ea7a311a527a4cdfdeeaa1",
+      "translation": ":func:`calibrate_from_run` 함수가 작성한 보정 JSON을 읽습니다."
+    },
+    {
+      "context": "The NT pool is loaded from its ``_pool.npz`` and checked against the sha256 the JSON records.",
+      "label": "spacr.power_ops.load_calibration#1",
+      "source": "The NT pool is loaded from its ``_pool.npz`` and checked against the sha256 the JSON records.",
+      "source_sha256": "7080cae4f4ef6aec168a6979108be38bb2c6739a0494233294e9d46e460d2696",
+      "translation": "NT 풀은 ``_pool.npz`` 파일에서 로드되고, JSON이 기록한 sha256과 대조하여 확인됩니다."
+    },
+    {
+      "context": "the JSON, or a processing-session folder to calibrate on the fly (nothing written).",
+      "label": "spacr.power_ops.load_calibration#2",
+      "source": "the JSON, or a run folder to calibrate on the fly (nothing written).",
+      "source_sha256": "fd679731e0a2a9899803cade4d64bfabbc045a6b7442157b318e9434799280a0",
+      "translation": "JSON, 또는 즉석에서 보정할 실행 폴더(아무것도 기록하지 않음)."
+    },
+    {
+      "context": "the calibration.",
+      "label": "spacr.power_ops.load_calibration#3",
+      "source": "the calibration.",
+      "source_sha256": "97f581ee2e46ac91c35d4886706989f0dd2ab97249ef60fb876058655f7c46a7",
+      "translation": "보정 결과."
+    },
+    {
+      "context": "when the pool file changed since the calibration.",
+      "label": "spacr.power_ops.load_calibration#4",
+      "source": "when the pool file changed since the calibration.",
+      "source_sha256": "cb0c40562e9141f74fdb23d5b136f171a627c3f26a5e661bc545d57f695fa5ae",
+      "translation": "보정 이후 풀 파일이 변경된 경우."
+    },
+    {
+      "context": "The smallest effect detected at ``target`` power, by linear interpolation along ``x``.",
+      "label": "spacr.power_ops.minimum_detectable_effect#0",
+      "source": "The smallest effect detected at ``target`` power, by linear interpolation along ``x``.",
+      "source_sha256": "b8572a74222b5202dcd4f3df0f852248c54b9b67cf4b26aab0b20efc6bb9aa68",
+      "translation": "``target`` 검정력에서 검출되는 최소 효과로, ``x`` 값을 따라 선형 보간하여 구합니다."
+    },
+    {
+      "context": "from :func:`power_summary`.",
+      "label": "spacr.power_ops.minimum_detectable_effect#1",
+      "source": "from :func:`power_summary`.",
+      "source_sha256": "83426455f307334f798996d95f544e6106a4a257194e62236d900970b6da09af",
+      "translation": ":func:`power_summary` 의 출력."
+    },
+    {
+      "context": "the power to reach.",
+      "label": "spacr.power_ops.minimum_detectable_effect#3",
+      "source": "the power to reach.",
+      "source_sha256": "0f42601fc74c4102fb24cc4e03f808fc130af01fa14be09f5c781a3227caaa86",
+      "translation": "도달할 검정력."
+    },
+    {
+      "context": "the columns that define one curve; every other ``design_*`` column when None.",
+      "label": "spacr.power_ops.minimum_detectable_effect#4",
+      "source": "the columns that define one curve; every other ``design_*`` column when None.",
+      "source_sha256": "759380eee9e128bcf68d1a4ec38d178db126ae9c6c79f9688f35dfadadba226b",
+      "translation": "하나의 곡선을 정의하는 열; None이면 나머지 모든 ``design_*`` 열."
+    },
+    {
+      "context": "one row per curve with ``mde`` (NaN when the curve never reaches ``target``, and the smallest ``x`` when it starts above it).",
+      "label": "spacr.power_ops.minimum_detectable_effect#5",
+      "source": "one row per curve with ``mde`` (NaN when the curve never reaches ``target``, and the smallest ``x`` when it starts above it).",
+      "source_sha256": "af09a8288bad04f0ce8750e7448c44bfe5e45f19dcc64a612b1617149a6ed629",
+      "translation": "곡선마다 한 행, ``mde`` 열 포함(곡선이 ``target`` 값에 끝내 도달하지 않으면 NaN, 처음부터 그 위에서 시작하면 가장 작은 ``x`` 값)."
+    },
+    {
+      "context": "Power per design with its 95 % interval, from a sweep's rows.",
+      "label": "spacr.power_ops.power_summary#0",
+      "source": "Power per design with its 95 % interval, from a sweep's rows.",
+      "source_sha256": "0bedcd8dd35745ec5f06dc80c251a529bcc8259f2e4e55d27eb1ee50876a2460",
+      "translation": "스윕의 행으로부터 계산한, 설계별 검정력과 그 95 % 구간."
+    },
+    {
+      "context": "from :func:`scan_ops_designs`.",
+      "label": "spacr.power_ops.power_summary#1",
+      "source": "from :func:`scan_ops_designs`.",
+      "source_sha256": "a943d0759901f2a2452f1d0e80c16597a8c05c33b53c6d8856233566a8a52d9d",
+      "translation": ":func:`scan_ops_designs` 의 출력."
+    },
+    {
+      "context": "one row per design (every ``design_*`` column but the seed): ``replicates``, ``power`` (detected over planted, pooled over the seeds) with its Wilson interval, the seeds' mean null-gene and NT pseudo-gene false-positive rates and, when scored, the complex recovery and the information screening experiment's detection share.",
+      "label": "spacr.power_ops.power_summary#2",
+      "source": "one row per design (every ``design_*`` column but the seed): ``replicates``, ``power`` (detected over planted, pooled over the seeds) with its Wilson interval, the seeds' mean null-gene and NT pseudo-gene false-positive rates and, when scored, the complex recovery and the information screen's detection share.",
+      "source_sha256": "408459f37093a4e36d2aea185934695e2ddc3761704a22c1b5bc8a161f96e39b",
+      "translation": "설계마다 한 행(시드를 제외한 모든 ``design_*`` 열): ``replicates``, ``power`` (심은 것 대비 검출된 것, 시드에 걸쳐 합산)와 그 Wilson 구간, 시드 평균 영유전자 및 NT 의사유전자 위양성률, 그리고 점수화된 경우 복합체 복원율과 정보 스크린의 검출 비율."
+    },
+    {
+      "context": "One full design: the defaults, then the calibration, then ``design``.",
+      "label": "spacr.power_ops.resolve_design#0",
+      "source": "One full design: the defaults, then the calibration, then ``design``.",
+      "source_sha256": "27f3e676583132fa7db61dea0abc2255e93585e99c9a06438e77d5d295c072c5",
+      "translation": "하나의 완전한 설계: 기본값, 그다음 보정, 그다음 ``design`` 값."
+    },
+    {
+      "context": "from :func:`calibrate_from_run`.",
+      "label": "spacr.power_ops.resolve_design#1",
+      "source": "from :func:`calibrate_from_run`.",
+      "source_sha256": "deef0ac8891d047e2e166814f245ac273400369f1ba8bfb3b5f70844190018a5",
+      "translation": ":func:`calibrate_from_run` 의 출력."
+    },
+    {
+      "context": "the design keys to set (see :data:`OPS_POWER_DESIGN`).",
+      "label": "spacr.power_ops.resolve_design#2",
+      "source": "the design keys to set (see :data:`OPS_POWER_DESIGN`).",
+      "source_sha256": "c6ebd3a9479bfd347bd47bedfcbb0cbefccba4972b4a7757605ca760e1ef74ae",
+      "translation": "설정할 설계 키(:data:`OPS_POWER_DESIGN` 참조)."
+    },
+    {
+      "context": "every design structured-data name with a value.",
+      "label": "spacr.power_ops.resolve_design#3",
+      "source": "every design key with a value.",
+      "source_sha256": "f543e6262bfda459272be5fb0effc1c09e5bdf2f8b5f9f1c6080bac31325b9a0",
+      "translation": "값이 지정된 모든 설계 키."
+    },
+    {
+      "context": "for an unknown key or effect type.",
+      "label": "spacr.power_ops.resolve_design#4",
+      "source": "for an unknown key or effect type.",
+      "source_sha256": "261278bcf9fe7ea25f296db8d017543fd0a197beb32b6c2bdda55e1583a959ea",
+      "translation": "알 수 없는 키 또는 효과 유형인 경우."
+    },
+    {
+      "context": "The OPS ``power_sim`` phase: calibrate, sweep the designs and write the power tables.",
+      "label": "spacr.power_ops.run_ops_power_sim#0",
+      "source": "The OPS ``power_sim`` phase: calibrate, sweep the designs and write the power tables.",
+      "source_sha256": "f112980e78cb52bd76832f3ff43a4c426aae022785cef0cfe2b1aec7b0355693",
+      "translation": "OPS ``power_sim`` 단계: 보정하고, 설계를 스윕하고, 검정력 표를 기록합니다."
+    },
+    {
+      "context": "Reads ``dst_root``, ``ops_power_calibration_run`` (a calibration JSON from :func:`calibrate_from_run`, or a processing-session folder calibrated on the fly), ``ops_power_mode``, ``ops_power_grid``, ``ops_power_sim_seeds``, ``ops_power_effect_types``, ``ops_power_scorers``, ``ops_power_sim_workers`` and ``ops_blas_threads``. Everything goes to ``<dst_root>/results/ops_power_sim``: ``designs.tsv`` (every point and seed, the resume cache), ``power_rows.csv`` (the same rows, sorted), ``power_summary.csv``, ``power_mde.csv``, ``power_curve.png`` and ``runtime.json`` (the settings and the calibration's sha256). The same settings file gives the same tables.",
+      "label": "spacr.power_ops.run_ops_power_sim#1",
+      "source": "Reads ``dst_root``, ``ops_power_calibration_run`` (a calibration JSON from :func:`calibrate_from_run`, or a run folder calibrated on the fly), ``ops_power_mode``, ``ops_power_grid``, ``ops_power_sim_seeds``, ``ops_power_effect_types``, ``ops_power_scorers``, ``ops_power_sim_workers`` and ``ops_blas_threads``. Everything goes to ``<dst_root>/results/ops_power_sim``: ``designs.tsv`` (every point and seed, the resume cache), ``power_rows.csv`` (the same rows, sorted), ``power_summary.csv``, ``power_mde.csv``, ``power_curve.png`` and ``runtime.json`` (the settings and the calibration's sha256). The same settings file gives the same tables.",
+      "source_sha256": "929d01f6c87116cebebd930a0c4fcbe04003da7dd37bf2a923dce6135e3e2d68",
+      "translation": "``dst_root``, ``ops_power_calibration_run`` (:func:`calibrate_from_run` 의 보정 JSON 또는 즉석에서 보정되는 실행 폴더), ``ops_power_mode``, ``ops_power_grid``, ``ops_power_sim_seeds``, ``ops_power_effect_types``, ``ops_power_scorers``, ``ops_power_sim_workers`` 및 ``ops_blas_threads`` 설정을 읽습니다. 모든 출력은 ``<dst_root>/results/ops_power_sim`` 폴더로 갑니다: ``designs.tsv`` (모든 지점과 시드, 재개 캐시), ``power_rows.csv`` (같은 행, 정렬됨), ``power_summary.csv``, ``power_mde.csv``, ``power_curve.png`` 및 ``runtime.json`` (설정과 보정의 sha256). 같은 설정 파일은 같은 표를 만듭니다."
+    },
+    {
+      "context": "the OPS settings.",
+      "label": "spacr.power_ops.run_ops_power_sim#2",
+      "source": "the OPS settings.",
+      "source_sha256": "6f9fad12a8777cda8d31f943cb49bc07d10909f7bd1ff9f0a2751cc06cc85172",
+      "translation": "OPS 설정."
+    },
+    {
+      "context": "when ``dst_root`` or the calibration is missing.",
+      "label": "spacr.power_ops.run_ops_power_sim#5",
+      "source": "when ``dst_root`` or the calibration is missing.",
+      "source_sha256": "b02ba4fd2d2e6dc3b8b4ad007303db196379fb28227c6358b2766d052a7b23ea",
+      "translation": "``dst_root`` 또는 보정이 없는 경우."
+    },
+    {
+      "context": "Sweep OPS screen designs: simulate, score and cache every point and seed.",
+      "label": "spacr.power_ops.scan_ops_designs#0",
+      "source": "Sweep OPS screen designs: simulate, score and cache every point and seed.",
+      "source_sha256": "919283786816c11cef8a25df120cf2a36b6f3e817a7b8416cc0fd2de3c887215",
+      "translation": "OPS 스크린 설계 스윕: 모든 지점과 시드를 시뮬레이션하고, 점수화하고, 캐시합니다."
+    },
+    {
+      "context": "from :func:`load_calibration`.",
+      "label": "spacr.power_ops.scan_ops_designs#1",
+      "source": "from :func:`load_calibration`.",
+      "source_sha256": "79031a1696b62f5f3675907673a46f72249483dda3cbfd5d017a652dcc74fe66",
+      "translation": ":func:`load_calibration` 의 출력."
+    },
+    {
+      "context": "design structured-data names to values; a key-value mapping sweeps their Cartesian product, a list of key-value mappings the union of the sweeps; :data:`DEFAULT_OPS_POWER_GRID` when None.",
+      "label": "spacr.power_ops.scan_ops_designs#2",
+      "source": "design keys to values; a dict sweeps their Cartesian product, a list of dicts the union of the sweeps; :data:`DEFAULT_OPS_POWER_GRID` when None.",
+      "source_sha256": "38257c09805856201635afe9c25f17b382738254794c3b2e438f07cf5c4d5017",
+      "translation": "설계 키에서 값으로의 매핑; dict는 데카르트 곱을, dict 목록은 스윕들의 합집합을 스윕합니다; None이면 :data:`DEFAULT_OPS_POWER_GRID`."
+    },
+    {
+      "context": "the replicate seeds of every point.",
+      "label": "spacr.power_ops.scan_ops_designs#3",
+      "source": "the replicate seeds of every point.",
+      "source_sha256": "744e3cf7571e925667a2a057f058b4980cc11ec677671f266e45ee433b1acd26",
+      "translation": "각 지점의 반복 시드."
+    },
+    {
+      "context": "the effect types swept when the grid has no ``effect_type``.",
+      "label": "spacr.power_ops.scan_ops_designs#4",
+      "source": "the effect types swept when the grid has no ``effect_type``.",
+      "source_sha256": "dac072575f241b16628fa8100c47b180a5afd04901dcb73919892d799dc7c281",
+      "translation": "그리드에 ``effect_type`` 항목이 없을 때 스윕하는 효과 유형."
+    },
+    {
+      "context": "see :func:`score_ops_screen`.",
+      "label": "spacr.power_ops.scan_ops_designs#5",
+      "source": "see :func:`score_ops_screen`.",
+      "source_sha256": "63f7da0d2f8dbd6cf78d6a40beb85fbe54959079a3f627004302fbdfc58ecaff",
+      "translation": ":func:`score_ops_screen` 참조."
+    },
+    {
+      "context": "a TSV each finished row is appended to; a rerun skips the rows already there (keyed by the point's values, the seed and the scorers), so a stopped sweep resumes.",
+      "label": "spacr.power_ops.scan_ops_designs#6",
+      "source": "a TSV each finished row is appended to; a rerun skips the rows already there (keyed by the point's values, the seed and the scorers), so a stopped sweep resumes.",
+      "source_sha256": "8dfd94212c71902f66043cd8ae872a6bf5fc7398f53d4cc2f9f1586c5124eaa1",
+      "translation": "완료된 각 행이 추가되는 TSV; 재실행 시 이미 있는 행(지점의 값, 시드, 스코어러를 키로 함)은 건너뛰므로 중단된 스윕이 재개됩니다."
+    },
+    {
+      "context": "processes run at once.",
+      "label": "spacr.power_ops.scan_ops_designs#7",
+      "source": "processes run at once.",
+      "source_sha256": "f5a6257f5649431817857592bc2722f5e990cb92ec874003edf0379119002c45",
+      "translation": "동시에 실행하는 프로세스 수."
+    },
+    {
+      "context": "BLAS independent execution paths per process.",
+      "label": "spacr.power_ops.scan_ops_designs#8",
+      "source": "BLAS threads per process.",
+      "source_sha256": "2ece68b9a28d6def77c79b92534a76fc82767907bbc41d4f2a0e667015a6f1da",
+      "translation": "프로세스당 BLAS 스레드 수."
+    },
+    {
+      "context": "called with one line per finished row.",
+      "label": "spacr.power_ops.scan_ops_designs#9",
+      "source": "called with one line per finished row.",
+      "source_sha256": "5caaeda06933821a14ee8401f3fd87970004e24c5cf4310d8d8ad6478dc44648",
+      "translation": "완료된 행마다 한 줄로 호출됩니다."
+    },
+    {
+      "context": "one row per point and seed, in grid then seed order; with ``progress_file``, the rows as stored there, so a resumed sweep and an uninterrupted one return the same values.",
+      "label": "spacr.power_ops.scan_ops_designs#10",
+      "source": "one row per point and seed, in grid then seed order; with ``progress_file``, the rows as stored there, so a resumed sweep and an uninterrupted one return the same values.",
+      "source_sha256": "7a8d3ca69c77fad3deb17d46996df06a453c802d9c77df79550581dc6454a0ff",
+      "translation": "지점과 시드마다 한 행, 그리드 순서 다음 시드 순서; ``progress_file`` 사용 시 그곳에 저장된 행을 반환하므로, 재개된 스윕과 중단 없는 스윕이 같은 값을 반환합니다."
+    },
+    {
+      "context": "Score one simulated screen with spaCR's OPS analysis steps.",
+      "label": "spacr.power_ops.score_ops_screen#0",
+      "source": "Score one simulated screen with spaCR's OPS analysis steps.",
+      "source_sha256": "7d8c78f81dd3482ab666f2f0228798f416a7289b6f4e62416b4773d58ed220a5",
+      "translation": "spaCR의 OPS 분석 단계로 하나의 시뮬레이션 스크린을 점수화합니다."
+    },
+    {
+      "context": "from :func:`simulate_ops_screen`.",
+      "label": "spacr.power_ops.score_ops_screen#1",
+      "source": "from :func:`simulate_ops_screen`.",
+      "source_sha256": "bf763224ee35b5dc17cd1b1936d27e0816a5034438f380dfe3a656f1f6f45082",
+      "translation": ":func:`simulate_ops_screen` 의 출력."
+    },
+    {
+      "context": "any of ``'etest'`` (per-gene E-tests against NT with BH, :class:`spacr.gene_measurement_compare.EnergyTest` in the design's ``etest_mode``, plus the guide agreement), ``'clustering'`` (Hybrid profiles, PHATE + Leiden and the planted complexes recovered; needs the ``clustering`` extra) and ``'information'`` (the conditional-information screening experiment of the last ``info_new_dims`` feature directions).",
+      "label": "spacr.power_ops.score_ops_screen#2",
+      "source": "any of ``'etest'`` (per-gene E-tests against NT with BH, :class:`spacr.gene_measurement_compare.EnergyTest` in the design's ``etest_mode``, plus the guide agreement), ``'clustering'`` (Hybrid profiles, PHATE + Leiden and the planted complexes recovered; needs the ``clustering`` extra) and ``'information'`` (the conditional-information screen of the last ``info_new_dims`` feature directions).",
+      "source_sha256": "df3675cc65a5824c47746b1f7f560f53e2d5fc3786de5eabbf9d8dc39a65477f",
+      "translation": "``'etest'`` (BH를 적용한 NT 대비 유전자별 E-test, :class:`spacr.gene_measurement_compare.EnergyTest` 를 설계의 ``etest_mode`` 로 사용, 그리고 가이드 일치도), ``'clustering'`` (Hybrid 프로파일, PHATE + Leiden 및 심은 복합체의 복원; ``clustering`` 추가 패키지 필요), ``'information'`` (마지막 ``info_new_dims`` 개 특징 방향의 조건부 정보 스크린) 중 임의의 항목."
+    },
+    {
+      "context": "the scorers' seed.",
+      "label": "spacr.power_ops.score_ops_screen#3",
+      "source": "the scorers' seed.",
+      "source_sha256": "e11133db8870fd5fb6b61a18b2f4ac364b491ce9dd5fe52fef7b6bb66a40fdc0",
+      "translation": "스코어러의 시드."
+    },
+    {
+      "context": "one flat row of metrics; a scorer whose optional packages are missing gives ``<scorer>_status`` ``'unavailable'``.",
+      "label": "spacr.power_ops.score_ops_screen#4",
+      "source": "one flat row of metrics; a scorer whose optional packages are missing gives ``<scorer>_status`` ``'unavailable'``.",
+      "source_sha256": "dcc1d97617d92ed5fba1c61efebd6340a0a956b3af82e172ba0774debd449c75",
+      "translation": "평평한 한 행의 지표; 선택 패키지가 없는 스코어러는 ``<scorer>_status`` 값으로 ``'unavailable'`` 을 줍니다."
+    },
+    {
+      "context": "for an unknown scorer.",
+      "label": "spacr.power_ops.score_ops_screen#5",
+      "source": "for an unknown scorer.",
+      "source_sha256": "8eba976ca18573505f77f7c0efa4b5eaba57e8d5d5cfc03d1c86cc258452fa8e",
+      "translation": "알 수 없는 스코어러인 경우."
+    },
+    {
+      "context": "Draw one simulated optical pooled screening experiment with planted effects.",
+      "label": "spacr.power_ops.simulate_ops_screen#0",
+      "source": "Draw one simulated optical pooled screen with planted effects.",
+      "source_sha256": "ad5fb0a8bba327aa9f7a85d2cbf793978d24230473f2ad9d7df3b1aebf91b6a8",
+      "translation": "심은 효과가 있는 시뮬레이션 광학 풀링 스크린 하나를 추출합니다."
+    },
+    {
+      "context": "from :func:`calibrate_from_run` or :func:`load_calibration`; the empirical mode needs its NT pool.",
+      "label": "spacr.power_ops.simulate_ops_screen#1",
+      "source": "from :func:`calibrate_from_run` or :func:`load_calibration`; the empirical mode needs its NT pool.",
+      "source_sha256": "5168152c0f1a17de65262e849e770a92f2b0cf5ee53023608faf15791fd50a22",
+      "translation": ":func:`calibrate_from_run` 또는 :func:`load_calibration` 의 출력; empirical 모드에는 NT 풀이 필요합니다."
+    },
+    {
+      "context": "the design (see :func:`resolve_design`).",
+      "label": "spacr.power_ops.simulate_ops_screen#2",
+      "source": "the design (see :func:`resolve_design`).",
+      "source_sha256": "de4375879940ae06278007c927de970dfa6af3d929893190dd7579a746700d0e",
+      "translation": "설계(:func:`resolve_design` 참조)."
+    },
+    {
+      "context": "the replicate seed; with the design's values it fixes every draw, so the same design and seed give the same simulated screen.",
+      "label": "spacr.power_ops.simulate_ops_screen#3",
+      "source": "the replicate seed; with the design's values it fixes every draw, so the same design and seed give the same simulated screen.",
+      "source_sha256": "97cbf2a1842b0197cccecf7dd73633fa3eefbbe94adef7c6944be45e9734863a",
+      "translation": "반복 시드; 설계의 값과 함께 모든 추출을 고정하므로, 같은 설계와 시드는 같은 시뮬레이션 스크린을 줍니다."
+    },
+    {
+      "context": "``{\"cells\", \"labels\", \"guides\", \"wells\", \"truth\", \"design\"}``: the per-cell phenotype (float32), each cell's observed gene and guide (NT cells ``nontargeting``), its well, and one row per gene with ``gene``, ``hit``, ``complex``, ``effect_size`` and ``cells``.",
+      "label": "spacr.power_ops.simulate_ops_screen#4",
+      "source": "``{\"cells\", \"labels\", \"guides\", \"wells\", \"truth\", \"design\"}``: the per-cell phenotype (float32), each cell's observed gene and guide (NT cells ``nontargeting``), its well, and one row per gene with ``gene``, ``hit``, ``complex``, ``effect_size`` and ``cells``.",
+      "source_sha256": "be2474a76a0de4f55394b454490da59565f20026343d74575b4918d0601b2797",
+      "translation": "``{\"cells\", \"labels\", \"guides\", \"wells\", \"truth\", \"design\"}``: 세포별 표현형(float32), 각 세포의 관측된 유전자와 가이드(NT 세포는 ``nontargeting``), 그 웰, 그리고 유전자마다 한 행으로 ``gene``, ``hit``, ``complex``, ``effect_size`` 및 ``cells`` 열."
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

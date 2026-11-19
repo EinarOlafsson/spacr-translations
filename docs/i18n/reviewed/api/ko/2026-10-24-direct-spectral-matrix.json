@@ -19,7 +19,10 @@
       "source": "A nonempty ``unmix_matrix_file`` in ``postprocess_settings`` supplies a version-1 JSON matrix instead of estimating one. This requires calibrated organized 2D cell V2 processing, no control wells, and ``unmix_per_plate=False``. Its physical channels must match the packed order exactly; no transpose, channel reordering or diagonal renormalization is inferred. ``matrix[i][j]`` is the camera reading in row-channel ``i`` per unit of the dye measured in its own column-channel ``j``. The diagonal is exactly one; outputs retain camera-linear units and signed residuals, not calibrated concentrations. For physical order ``[3, 1]``, the file has exactly these keys",
       "source_sha256": "82d81e5b85fe3b1f198a6bf80305c66c191e4c45a55d74e82c744680fb8ea533",
       "symbol": "spacr.pipeline_v2.run_v2",
-      "translation": "비어 있지 않은 ``unmix_matrix_file``은 ``postprocess_settings``에서 행렬을 추정하는 대신 버전 1 JSON 행렬을 제공합니다. 보정된 체계적 2D 세포 V2 처리, 대조 웰 없음, ``unmix_per_plate=False``가 필요합니다. 물리적 채널은 패킹된 순서와 정확히 일치해야 하며, 전치, 채널 재정렬 또는 대각선 재정규화는 추론하지 않습니다. ``matrix[i][j]``는 행 채널 ``i``의 카메라 판독값으로, 염료 자체의 열 채널 ``j``에서 측정한 염료 한 단위에 해당합니다. 대각선은 정확히 1입니다. 출력은 보정된 농도가 아닌 카메라 선형 단위와 부호 있는 잔차를 유지합니다. 물리적 순서 ``[3, 1]``의 파일에는 정확히 다음 키가 있습니다"
+      "translation": "비어 있지 않은 ``unmix_matrix_file``은 ``postprocess_settings``에서 행렬을 추정하는 대신 버전 1 JSON 행렬을 제공합니다. 보정된 체계적 2D 세포 V2 처리, 대조 웰 없음, ``unmix_per_plate=False``가 필요합니다. 물리적 채널은 패킹된 순서와 정확히 일치해야 하며, 전치, 채널 재정렬 또는 대각선 재정규화는 추론하지 않습니다. ``matrix[i][j]``는 행 채널 ``i``의 카메라 판독값으로, 염료 자체의 열 채널 ``j``에서 측정한 염료 한 단위에 해당합니다. 대각선은 정확히 1입니다. 출력은 보정된 농도가 아닌 카메라 선형 단위와 부호 있는 잔차를 유지합니다. 물리적 순서 ``[3, 1]``의 파일에는 정확히 다음 키가 있습니다",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "block_index": 21,
@@ -28,7 +31,10 @@
       "source": "Replace the example calibration hash with 64 lowercase hexadecimal digits. Background percentile must equal ``unmix_background_percentile``. Plate, time and Z must equal every mapped field's exact acquisition IDs, including their string or integer types; an absent time or Z uses the empty string. This supplied-file route requires POSIX descriptor-relative access without symbolic links; unsupported platforms refuse before creating outputs. The acquisition-compatibility token is an unverified user assertion: unknown gains, exposures and response remain unknown. The file is captured before outputs and copied byte-for-byte into ``psf/spectral_matrix_input.json``. Signed-cell readers validate that copied bundle and never depend on the original external path. An empty path preserves control-estimation behavior.",
       "source_sha256": "40ef111fb406461ba7219c4f1c8e377f3f143c1fa4ee73442a5f74700baf1661",
       "symbol": "spacr.pipeline_v2.run_v2",
-      "translation": "예제 보정 해시를 소문자 16진수 64자리로 바꾸세요. 배경 백분위수는 ``unmix_background_percentile``과 같아야 합니다. 플레이트, 시간, Z는 매핑된 모든 이미지 필드의 정확한 획득 ID와 일치해야 하며 문자열 또는 정수 유형도 일치해야 합니다. 시간 또는 Z가 없으면 빈 문자열을 사용합니다. 이 제공 파일 경로에는 심볼릭 링크 없는 POSIX 디스크립터 상대 접근이 필요합니다. 지원되지 않는 플랫폼은 출력을 만들기 전에 거부합니다. 획득 호환성 토큰은 검증되지 않은 사용자 주장입니다. 알 수 없는 게인, 노출 및 응답은 계속 알 수 없는 상태입니다. 파일은 출력 전에 캡처되어 ``psf/spectral_matrix_input.json``에 바이트 단위로 동일하게 복사됩니다. 부호 있는 세포 데이터 리더는 이 복사된 번들을 검증하며 원래 외부 경로에 의존하지 않습니다. 빈 경로는 대조군 추정 동작을 유지합니다."
+      "translation": "예제 보정 해시를 소문자 16진수 64자리로 바꾸세요. 배경 백분위수는 ``unmix_background_percentile``과 같아야 합니다. 플레이트, 시간, Z는 매핑된 모든 이미지 필드의 정확한 획득 ID와 일치해야 하며 문자열 또는 정수 유형도 일치해야 합니다. 시간 또는 Z가 없으면 빈 문자열을 사용합니다. 이 제공 파일 경로에는 심볼릭 링크 없는 POSIX 디스크립터 상대 접근이 필요합니다. 지원되지 않는 플랫폼은 출력을 만들기 전에 거부합니다. 획득 호환성 토큰은 검증되지 않은 사용자 주장입니다. 알 수 없는 게인, 노출 및 응답은 계속 알 수 없는 상태입니다. 파일은 출력 전에 캡처되어 ``psf/spectral_matrix_input.json``에 바이트 단위로 동일하게 복사됩니다. 부호 있는 세포 데이터 리더는 이 복사된 번들을 검증하며 원래 외부 경로에 의존하지 않습니다. 빈 경로는 대조군 추정 동작을 유지합니다.",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "block_index": 22,

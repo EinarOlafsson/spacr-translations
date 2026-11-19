@@ -1,0 +1,56 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "A parameter grid search for the OPS spacer-prefix decode on a few tiles (item 960, alpha).",
+      "label": "spacr.ops_grid_search#0",
+      "source": "A parameter grid search for the OPS spacer-prefix decode on a few tiles (item 960, alpha).",
+      "source_sha256": "f70ce0a7732f77d8a640da68bd0be4dc6d253b752af0f095fe90e8160daf4ab9",
+      "translation": "कुछ टाइलों पर OPS स्पेसर-प्रीफ़िक्स डिकोड के लिए एक पैरामीटर ग्रिड खोज (आइटम 960, अल्फ़ा)।"
+    },
+    {
+      "context": "Before a full run, pick a few representative tiles and score every combination of a grid of spot-detection and decode settings on them. Each combination reports, per tile and pooled over the tiles, the spot count, the read mapping rate, the cell assignment rate, the decoy FDR and the barcode-shuffle call rate, and how long it took. The last two are the false-call controls of items 942 and 949, so a setting is never chosen on yield alone.",
+      "label": "spacr.ops_grid_search#1",
+      "source": "Before a full run, pick a few representative tiles and score every combination of a grid of spot-detection and decode settings on them. Each combination reports, per tile and pooled over the tiles, the spot count, the read mapping rate, the cell assignment rate, the decoy FDR and the barcode-shuffle call rate, and how long it took. The last two are the false-call controls of items 942 and 949, so a setting is never chosen on yield alone.",
+      "source_sha256": "b6d15806a0929993c53120bfba7695f4812adc4bb64124bc90edf6143e0ce255",
+      "translation": "पूर्ण रन से पहले कुछ प्रतिनिधि टाइलें चुनी जाती हैं और उन पर स्पॉट-पहचान और डिकोड सेटिंग्स के एक ग्रिड के हर संयोजन का स्कोर निकाला जाता है। हर संयोजन प्रति टाइल और सभी टाइलों पर संयुक्त रूप से स्पॉट की संख्या, रीड मैपिंग दर, कोशिका असाइनमेंट दर, डिकॉय FDR और बारकोड-शफ़ल कॉल दर बताता है, और यह भी कि उसमें कितना समय लगा। अंतिम दो आइटम 942 और 949 के गलत-कॉल नियंत्रण हैं, इसलिए कोई सेटिंग केवल उपज के आधार पर कभी नहीं चुनी जाती।"
+    },
+    {
+      "context": "The grid uses the decode itself, never a second implementation: each tile's spots are found once, down to the lowest read threshold of the grid, as :func:`spacr.ops_prefix.run_prefix_decode` finds them while it tunes, and each combination is then called, matched and counted by the decode's own functions. A combination's numbers are therefore the numbers a processing session at that setting writes to ``site_summary.csv``.",
+      "label": "spacr.ops_grid_search#2",
+      "source": "The grid uses the decode itself, never a second implementation: each tile's spots are found once, down to the lowest read threshold of the grid, as :func:`spacr.ops_prefix.run_prefix_decode` finds them while it tunes, and each combination is then called, matched and counted by the decode's own functions. A combination's numbers are therefore the numbers a run at that setting writes to ``site_summary.csv``.",
+      "source_sha256": "ae1378c1aac518754ebb1802667f5c744687d770e4ad8d6b2949a898ea9d53ed",
+      "translation": "ग्रिड स्वयं डिकोड का उपयोग करता है, कभी दूसरा कार्यान्वयन नहीं: हर टाइल के स्पॉट एक बार, ग्रिड की सबसे कम रीड सीमा तक, उसी तरह ढूँढे जाते हैं जैसे :func:`spacr.ops_prefix.run_prefix_decode` ट्यूनिंग के दौरान ढूँढता है, और फिर हर संयोजन को डिकोड के अपने फ़ंक्शनों से कॉल, मिलान और गिना जाता है। इसलिए किसी संयोजन की संख्याएँ वही होती हैं जो उस सेटिंग वाला प्रोसेसिंग सत्र ``site_summary.csv`` में लिखता है।"
+    },
+    {
+      "context": "The default point is the settings as they stand. When they tune the thresholds per microplate sample position (``ops_prefix_threshold_tuning='per_well_decoy'``, the default), the decode runs once on the chosen microscope image fields to find each microplate sample position's choice, and every grid point changes only the settings the grid names around that choice.",
+      "label": "spacr.ops_grid_search#3",
+      "source": "The default point is the settings as they stand. When they tune the thresholds per well (``ops_prefix_threshold_tuning='per_well_decoy'``, the default), the decode runs once on the chosen tiles to find each well's choice, and every grid point changes only the settings the grid names around that choice.",
+      "source_sha256": "f28b071d57d99b7a0eb30ff8356c45c1ef7b42569e9a430c9af4e091adb143ea",
+      "translation": "डिफ़ॉल्ट बिंदु सेटिंग्स जैसी हैं वैसी ही हैं। जब वे माइक्रोप्लेट की हर नमूना स्थिति के लिए सीमाएँ ट्यून करती हैं (``ops_prefix_threshold_tuning='per_well_decoy'``, डिफ़ॉल्ट), तो डिकोड चुने गए माइक्रोस्कोप छवि क्षेत्रों पर एक बार चलता है ताकि माइक्रोप्लेट की हर नमूना स्थिति का चयन मिले, और हर ग्रिड बिंदु उस चयन के आसपास केवल वही सेटिंग्स बदलता है जिन्हें ग्रिड नाम देता है।"
+    },
+    {
+      "context": "Turn on ``ops_grid_search`` and an OPS run of the cropped-site layout runs the grid instead of the decode. Every grid run is written as CSV (``ops_grid_<run id>.csv``, identical when the same settings are executed again), with the timings in a second CSV and a plot of yield against the shuffle call rate that marks the default and the Pareto front. Applying a point writes its values into the settings with the grid processing session's ID, microscope image fields and seed.",
+      "label": "spacr.ops_grid_search#4",
+      "source": "Turn on ``ops_grid_search`` and an OPS run of the cropped-site layout runs the grid instead of the decode. Every grid run is written as CSV (``ops_grid_<run id>.csv``, identical when the same settings are run again), with the timings in a second CSV and a plot of yield against the shuffle call rate that marks the default and the Pareto front. Applying a point writes its values into the settings with the grid run's ID, tiles and seed.",
+      "source_sha256": "42d0dec7af1ac37fd53f2c97d5ef8cea54f3bab233fb883f49f8bde7416a6719",
+      "translation": "``ops_grid_search`` चालू करें, तो क्रॉप की गई साइटों के लेआउट का OPS रन डिकोड के बजाय ग्रिड चलाता है। हर ग्रिड रन CSV के रूप में लिखा जाता है (``ops_grid_<run id>.csv``, वही सेटिंग्स फिर से चलाने पर समान), समय एक दूसरी CSV में और शफ़ल कॉल दर के विरुद्ध उपज का एक प्लॉट जो डिफ़ॉल्ट और पैरेटो फ्रंट को चिह्नित करता है। किसी बिंदु को लागू करने पर उसके मान सेटिंग्स में ग्रिड प्रोसेसिंग सत्र की ID, माइक्रोस्कोप छवि क्षेत्रों और सीड के साथ लिखे जाते हैं।"
+    },
+    {
+      "context": "The Grid search panel of the OPS Live preview's Spots & genotyping tab (item 960, alpha).",
+      "label": "spacr.qt.widgets.ops_grid_search_panel#0",
+      "source": "The Grid search panel of the OPS Live preview's Spots & genotyping tab (item 960, alpha).",
+      "source_sha256": "cf91ad5d9932eebe6a23425c8feaa566b8bfebf4342018b5a3376aa9a2428ab9",
+      "translation": "OPS लाइव पूर्वावलोकन के Spots & genotyping टैब का ग्रिड खोज पैनल (आइटम 960, अल्फ़ा)।"
+    },
+    {
+      "context": "Pick a few representative tiles, enter a grid of spot and decode settings, and score every grid point on those tiles with the decode itself (:mod:`spacr.ops_grid_search`), off the main GUI execution path. The sortable table shows each point's spots, mapping rate, cells assigned, decoy FDR and barcode-shuffle call rate; the plot shows yield against the shuffle rate with the current default and the Pareto front. Apply to settings writes the selected point into the form and records the grid run.",
+      "label": "spacr.qt.widgets.ops_grid_search_panel#1",
+      "source": "Pick a few representative tiles, enter a grid of spot and decode settings, and score every grid point on those tiles with the decode itself (:mod:`spacr.ops_grid_search`), off the GUI thread. The sortable table shows each point's spots, mapping rate, cells assigned, decoy FDR and barcode-shuffle call rate; the plot shows yield against the shuffle rate with the current default and the Pareto front. Apply to settings writes the selected point into the form and records the grid run.",
+      "source_sha256": "82be0defb1f360312efa1eb30db5d39da28b6193149f48c1bb040f7da94f3817",
+      "translation": "कुछ प्रतिनिधि टाइलें चुनें, स्पॉट और डिकोड सेटिंग्स का एक ग्रिड दर्ज करें, और हर ग्रिड बिंदु का उन टाइलों पर स्वयं डिकोड (:mod:`spacr.ops_grid_search`) से स्कोर निकालें, GUI के मुख्य निष्पादन पथ से अलग। क्रमबद्ध करने योग्य तालिका हर बिंदु के स्पॉट, मैपिंग दर, सौंपी गई कोशिकाएँ, डिकॉय FDR और बारकोड-शफ़ल कॉल दर दिखाती है; प्लॉट वर्तमान डिफ़ॉल्ट और पैरेटो फ्रंट के साथ शफ़ल दर के विरुद्ध उपज दिखाता है। Apply to settings चुने गए बिंदु को फ़ॉर्म में लिखता है और ग्रिड रन दर्ज करता है।"
+    }
+  ],
+  "review_method": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-17 against the exact English source of the module docstrings that item 960 (claude-960-1117 branch: the OPS parameter grid search on representative tiles) adds: spacr.ops_grid_search and spacr.qt.widgets.ops_grid_search_panel. Written directly, with no machine-translation draft. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

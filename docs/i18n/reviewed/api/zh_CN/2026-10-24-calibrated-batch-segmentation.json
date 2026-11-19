@@ -24,7 +24,10 @@
       "label": "spacr.pipeline_v2.run_v2#19",
       "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
       "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
-      "translation": "包含 ``mapper``（:class:`FilenameMapper`）、``stacks``（:class:`StackFile` 列表）和 ``dst``（指向 ``merged/`` 的 Path）的字典。校准输出还给出其独立的 ``output_root``；其中 float32 显示强度已对齐、不可用于定量分析，绝不作为 Measure 输入。带符号的有效 ROI float32 诊断数据位于 ``output_root/signed``；其应用记录同时绑定两类产物，发生错误时保持未完成状态。"
+      "translation": "包含 ``mapper``（:class:`FilenameMapper`）、``stacks``（:class:`StackFile` 列表）和 ``dst``（指向 ``merged/`` 的 Path）的字典。校准输出还给出其独立的 ``output_root``；其中 float32 显示强度已对齐、不可用于定量分析，绝不作为 Measure 输入。带符号的有效 ROI float32 诊断数据位于 ``output_root/signed``；其应用记录同时绑定两类产物，发生错误时保持未完成状态。",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "context": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
@@ -52,7 +55,10 @@
       "label": "spacr.pipeline_v2.stream_masks_from_stack#10",
       "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
       "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
-      "translation": "可选的已捕获 PSF 会话。启用解混时，先对每个完整成像视野解混，再在照明处理之后、归一化、填充或 Cellpose 之前处理选定强度。存储的图像通道保持原始状态；只有追加的标签依赖于 PSF 处理。校准会话改为提供带符号的有效裁剪，供非负分割视图使用，将标签恢复到参考画布，并在独立输出树中保存单独的非定量 float32 显示通道，带符号裁剪位于 ``signed/`` 下。这些显示通道不是 Measure 输入；校准输出不能续跑，只有显示文件和带符号文件均持久保存后才算完成。"
+      "translation": "可选的已捕获 PSF 会话。启用解混时，先对每个完整成像视野解混，再在照明处理之后、归一化、填充或 Cellpose 之前处理选定强度。存储的图像通道保持原始状态；只有追加的标签依赖于 PSF 处理。校准会话改为提供带符号的有效裁剪，供非负分割视图使用，将标签恢复到参考画布，并在独立输出树中保存单独的非定量 float32 显示通道，带符号裁剪位于 ``signed/`` 下。这些显示通道不是 Measure 输入；校准输出不能续跑，只有显示文件和带符号文件均持久保存后才算完成。",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "context": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the image data channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single image layer, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected image data channel is the object's own image data channel for absolute mean-intensity filtering.",

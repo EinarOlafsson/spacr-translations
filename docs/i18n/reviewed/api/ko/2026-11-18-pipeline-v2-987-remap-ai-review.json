@@ -1,0 +1,142 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "Pass 2 — segment stream the laboratory microplate in batches of N microscope fields of view, hand each batch to Cellpose, append the mask image data channels to the SAME stack file. Each batch stays in memory; nothing is written to disk but the combined stack and, at the end, the mask image data channel appended to it.",
+      "label": "spacr.pipeline_v2#4",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "Pass 2 — segment stream the plate in batches of N fields, hand each batch to Cellpose, append the mask channels to the SAME stack file. Each batch stays in memory; nothing is written to disk but the combined stack and, at the end, the mask channel appended to it.",
+      "source_sha256": "fc4946172043a7e473a306662eea5015dacc8336539e39d44264a19ef04e3966",
+      "translation": "2단계 — 분할: 플레이트를 N개 시야씩 묶어 스트리밍하고, 각 묶음을 Cellpose에 넘기며, 마스크 채널을 같은 스택 파일에 추가합니다. 각 묶음은 메모리에만 있으며, 디스크에는 결합된 스택과 마지막에 거기에 추가되는 마스크 채널만 기록됩니다."
+    },
+    {
+      "context": "forwarded to ``model.eval`` through ``float()``.",
+      "label": "spacr.pipeline_v2.run_v2#11",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "forwarded to ``model.eval`` through ``float()``.",
+      "source_sha256": "caa8555563b397892c281a8e876566d5432580763f6c4aef15457394c9a55983",
+      "translation": "``model.eval``에 전달되며, ``float()``를 거칩니다."
+    },
+    {
+      "context": "forwarded to ``model.eval`` through ``int()``; ``None`` raises ``TypeError`` rather than meaning \"no minimum\".",
+      "label": "spacr.pipeline_v2.run_v2#13",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "forwarded to ``model.eval`` through ``int()``; ``None`` raises ``TypeError`` rather than meaning \"no minimum\".",
+      "source_sha256": "a4bfb9827ea4dddbba47fe74bcb74ceb2548256e98eb4e767b2f5092cd978fa4",
+      "translation": "``model.eval``에 전달되며, ``int()``를 거칩니다. ``None``은 \"no minimum\"을 뜻하지 않고 ``TypeError``를 발생시킵니다."
+    },
+    {
+      "context": "coerced with ``bool()``, so any non-empty string — ``\"false\"`` included — is True, while ``None`` is False.",
+      "label": "spacr.pipeline_v2.run_v2#14",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "coerced with ``bool()``, so any non-empty string — ``\"false\"`` included — is True, while ``None`` is False.",
+      "source_sha256": "c10d5f5385894767aca2c43c4c2096889c6ceda516b6a960e33a763d7bc30e6b",
+      "translation": "``bool()``로 강제 변환되므로, 비어 있지 않은 모든 문자열 — ``\"false\"`` 포함 — 은 True이고, ``None``은 False입니다."
+    },
+    {
+      "context": "``None`` hands the raw selected image layers to Cellpose and skips post-processing entirely. Any key-value mapping, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role structured-data names are rewritten on a copy (the caller's key-value mapping is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more image layers were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI extracted image regions are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference. Optional ``unmix_per_plate`` selects complete physical-image data channel controls from a JSON master map for one exact source plate/time/image layer; mixed sources and missing assignments refuse before output creation.",
+      "label": "spacr.pipeline_v2.run_v2#15",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "``None`` hands the raw selected planes to Cellpose and skips post-processing entirely. Any dict, ``{}`` included, switches on both :func:`spacr.io._normalize_img_batch` and :func:`spacr.object.merge_split_filter_masks`. The four ``*_channel`` role keys are rewritten on a copy (the caller's dict is left alone): all cleared to None, then ``object_type`` set to 0, plus ``nucleus_channel=1`` when ``object_type`` is ``\"cell\"`` and two or more planes were selected. An explicit ``unmix_calibration`` with ``unmix`` selects the organized 2D calibrated cell route: signed valid-ROI crops are retained separately, segmentation uses a nonnegative view and labels are restored to the original reference canvas with incomplete boundary objects removed. Unsupported preprocessing, custom/intensity/ perimeter filters and quality exclusion refuse before inference. Optional ``unmix_per_plate`` selects complete physical-channel controls from a JSON master map for one exact source plate/time/plane; mixed sources and missing assignments refuse before output creation.",
+      "source_sha256": "79dcef63ba27fb5bd05c1ec5e01a6a978a62eb68b01ac34f6a0438e64c20be7e",
+      "translation": "``None``이면 선택한 원시 평면을 Cellpose에 전달하고 후처리를 모두 건너뜁니다. ``{}``를 포함한 모든 딕셔너리는 :func:`spacr.io._normalize_img_batch`와 :func:`spacr.object.merge_split_filter_masks`를 모두 활성화합니다. 네 개의 ``*_channel`` 역할 키는 복사본에서 다시 씁니다(호출자의 딕셔너리는 바뀌지 않음). 먼저 모두 None으로 지우고 ``object_type``을 0으로 설정하며, ``nucleus_channel=1``도 설정하는 조건은 ``object_type``이 ``\"cell\"``이고 두 개 이상의 평면이 선택된 경우입니다. 명시적인 ``unmix_calibration``을 ``unmix``와 함께 사용하면 정리된 2D 보정 세포 경로를 선택합니다. 부호가 있는 유효 ROI 크롭은 별도로 유지하고 분할에는 음수가 없는 뷰를 사용하며, 경계의 불완전한 객체를 제거한 뒤 레이블을 원래 기준 캔버스로 복원합니다. 지원하지 않는 전처리, 사용자 정의/강도/둘레 필터 및 품질에 따른 제외는 추론 전에 거부합니다. 선택적인 ``unmix_per_plate`` 는 정확히 하나의 원본 플레이트, 시간, 평면 조합에 대해 JSON 마스터 맵에서 물리 채널의 완전한 대조군을 선택합니다. 원본 혼합 및 누락된 할당은 출력 생성 전에 거부됩니다."
+    },
+    {
+      "context": "picks the weights during ``model_name`` resolution, names the role given image data channel 0 in normalisation, and is passed to the mask post-processor. An unrecognised value does not raise — it adds a dead ``<value>_channel`` structured-data name and leaves every real role unset.",
+      "label": "spacr.pipeline_v2.run_v2#16",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "picks the weights during ``model_name`` resolution, names the role given channel 0 in normalisation, and is passed to the mask post-processor. An unrecognised value does not raise — it adds a dead ``<value>_channel`` key and leaves every real role unset.",
+      "source_sha256": "dcfc8f203076b7d60a923b07644e54531bfb8c9c7f2ac0a9ac2f0c62b596b4f5",
+      "translation": "``model_name`` 해상도에서 가중치를 고치고, 표준화에서 이미지 데이터 채널 0의 역할을 지정하고, 포스트 프로세서 마스크로 전달됩니다.인식되지 않은 값은 상승하지 않습니다 - 그것은 죽은 ``<value>_channel`` 구조화 된 데이터 이름을 추가하고 모든 실제 역할을 놓치지 않습니다."
+    },
+    {
+      "context": "full Mask settings mapping. When it enables ``illumination_correction``, one model is prepared from the raw persisted stacks after pass 1 and its session corrects only the private Cellpose inputs in pass 2; omitted/off preserves the previous byte-level output contract.",
+      "label": "spacr.pipeline_v2.run_v2#17",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "full Mask settings mapping. When it enables ``illumination_correction``, one model is prepared from the raw persisted stacks after pass 1 and its session corrects only the private Cellpose inputs in pass 2; omitted/off preserves the previous byte-level output contract.",
+      "source_sha256": "4554a1bbdec89947b598be33d2da307067ee47fdca422918ebcf3a830e938085",
+      "translation": "전체 Mask 설정 매핑. 이것이 ``illumination_correction``을 활성화하면, 패스 1 이후 저장된 원시 스택으로부터 모델 하나를 준비하고 그 세션이 패스 2에서 비공개 Cellpose 입력만 보정합니다. 생략하거나 끄면 이전의 바이트 수준 출력 계약이 유지됩니다."
+    },
+    {
+      "context": "key-value mapping with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "label": "spacr.pipeline_v2.run_v2#18",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
+      "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
+      "translation": "``mapper``(:class:`FilenameMapper`), ``stacks``(:class:`StackFile`의 목록), ``dst``(``merged/``의 Path)가 있는 딕셔너리입니다. 보정 출력에는 별도 ``output_root``도 표시됩니다. float32 표시 강도는 정렬되어 있고 비정량 데이터이며, Measure 입력으로 사용하지 않습니다. 부호가 있는 유효 ROI float32 진단 데이터는 ``output_root/signed``에 저장됩니다. 적용 기록은 두 산출물을 모두 연결하며 오류가 나면 미완료 상태로 유지됩니다."
+    },
+    {
+      "context": "A nonempty ``unmix_matrix_file`` in ``postprocess_settings`` supplies a version-1 JSON matrix instead of estimating one. This requires calibrated organized 2D cell V2 processing, no control microplate sample positions, and ``unmix_per_plate=False``. Its physical channels must match the packed order exactly; no transpose, channel reordering or diagonal renormalization is inferred. ``matrix[i][j]`` is the camera reading in row-channel ``i`` per unit of the dye measured in its own column-channel ``j``. The diagonal is exactly one; outputs retain camera-linear units and signed residuals, not calibrated concentrations. For physical order ``[3, 1]``, the file has exactly these structured-data names",
+      "label": "spacr.pipeline_v2.run_v2#19",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "A nonempty ``unmix_matrix_file`` in ``postprocess_settings`` supplies a version-1 JSON matrix instead of estimating one. This requires calibrated organized 2D cell V2 processing, no control wells, and ``unmix_per_plate=False``. Its physical channels must match the packed order exactly; no transpose, channel reordering or diagonal renormalization is inferred. ``matrix[i][j]`` is the camera reading in row-channel ``i`` per unit of the dye measured in its own column-channel ``j``. The diagonal is exactly one; outputs retain camera-linear units and signed residuals, not calibrated concentrations. For physical order ``[3, 1]``, the file has exactly these keys",
+      "source_sha256": "82d81e5b85fe3b1f198a6bf80305c66c191e4c45a55d74e82c744680fb8ea533",
+      "translation": "비어 있지 않은 ``unmix_matrix_file``은 ``postprocess_settings``에서 행렬을 추정하는 대신 버전 1 JSON 행렬을 제공합니다. 보정된 체계적 2D 세포 V2 처리, 대조 웰 없음, ``unmix_per_plate=False``가 필요합니다. 물리적 채널은 패킹된 순서와 정확히 일치해야 하며, 전치, 채널 재정렬 또는 대각선 재정규화는 추론하지 않습니다. ``matrix[i][j]``는 행 채널 ``i``의 카메라 판독값으로, 염료 자체의 열 채널 ``j``에서 측정한 염료 한 단위에 해당합니다. 대각선은 정확히 1입니다. 출력은 보정된 농도가 아닌 카메라 선형 단위와 부호 있는 잔차를 유지합니다. 물리적 순서 ``[3, 1]``의 파일에는 정확히 다음 키가 있습니다"
+    },
+    {
+      "context": "Replace the example calibration hash with 64 lowercase hexadecimal digits. Background percentile must equal ``unmix_background_percentile``. Laboratory microplate, time and Z must equal every mapped microscope field of view's exact acquisition IDs, including their string or integer types; an absent time or Z uses the empty string. This supplied-file route requires POSIX descriptor-relative access without symbolic links; unsupported platforms refuse before creating outputs. The acquisition-compatibility token is an unverified user assertion: unknown gains, exposures and response remain unknown. The file is captured before outputs and copied byte-for-byte into ``psf/spectral_matrix_input.json``. Signed-cell readers validate that copied bundle and never depend on the original external path. An empty path preserves control-estimation behavior.",
+      "label": "spacr.pipeline_v2.run_v2#20",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "Replace the example calibration hash with 64 lowercase hexadecimal digits. Background percentile must equal ``unmix_background_percentile``. Plate, time and Z must equal every mapped field's exact acquisition IDs, including their string or integer types; an absent time or Z uses the empty string. This supplied-file route requires POSIX descriptor-relative access without symbolic links; unsupported platforms refuse before creating outputs. The acquisition-compatibility token is an unverified user assertion: unknown gains, exposures and response remain unknown. The file is captured before outputs and copied byte-for-byte into ``psf/spectral_matrix_input.json``. Signed-cell readers validate that copied bundle and never depend on the original external path. An empty path preserves control-estimation behavior.",
+      "source_sha256": "40ef111fb406461ba7219c4f1c8e377f3f143c1fa4ee73442a5f74700baf1661",
+      "translation": "예제 보정 해시를 소문자 16진수 64자리로 바꾸세요. 배경 백분위수는 ``unmix_background_percentile``과 같아야 합니다. 플레이트, 시간, Z는 매핑된 모든 이미지 필드의 정확한 획득 ID와 일치해야 하며 문자열 또는 정수 유형도 일치해야 합니다. 시간 또는 Z가 없으면 빈 문자열을 사용합니다. 이 제공 파일 경로에는 심볼릭 링크 없는 POSIX 디스크립터 상대 접근이 필요합니다. 지원되지 않는 플랫폼은 출력을 만들기 전에 거부합니다. 획득 호환성 토큰은 검증되지 않은 사용자 주장입니다. 알 수 없는 게인, 노출 및 응답은 계속 알 수 없는 상태입니다. 파일은 출력 전에 캡처되어 ``psf/spectral_matrix_input.json``에 바이트 단위로 동일하게 복사됩니다. 부호 있는 세포 데이터 리더는 이 복사된 번들을 검증하며 원래 외부 경로에 의존하지 않습니다. 빈 경로는 대조군 추정 동작을 유지합니다."
+    },
+    {
+      "context": "With ``unmix_partition_plates=True`` and ``unmix_per_plate=True``, one mixed-plate source produces independent calibrated child datasets. Supply ``unmix_plate_calibrations`` as a JSON string mapping every exact plate ID to ``calibration_file``, positive YX ``pixel_size_um``, ``source_context`` containing exact ``plate``, ``time`` and ``z`` IDs, and ``acquisition_compatibility`` set to ``user_asserts_same_channel_gains_exposures_and_linear_response``. Relative optical paths resolve against the original source folder. Each plate has one time/Z context, complete physical-channel controls in the master map, and its own optical assignment and pixel spacing. The assertion concerns controls and targets within that plate, remains unverified, and does not assert equal acquisition settings between plates. Global optical settings and supplied matrix files cannot be combined with partitioning.",
+      "label": "spacr.pipeline_v2.run_v2#21",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "With ``unmix_partition_plates=True`` and ``unmix_per_plate=True``, one mixed-plate source produces independent calibrated child datasets. Supply ``unmix_plate_calibrations`` as a JSON string mapping every exact plate ID to ``calibration_file``, positive YX ``pixel_size_um``, ``source_context`` containing exact ``plate``, ``time`` and ``z`` IDs, and ``acquisition_compatibility`` set to ``user_asserts_same_channel_gains_exposures_and_linear_response``. Relative optical paths resolve against the original source folder. Each plate has one time/Z context, complete physical-channel controls in the master map, and its own optical assignment and pixel spacing. The assertion concerns controls and targets within that plate, remains unverified, and does not assert equal acquisition settings between plates. Global optical settings and supplied matrix files cannot be combined with partitioning.",
+      "source_sha256": "784279cbe69e8ab2635b3922863ec775984b72fed16da68b3dfb781c4676d4c1",
+      "translation": "``unmix_partition_plates=True`` 및 ``unmix_per_plate=True``이면 하나의 혼합 플레이트 소스에서 독립적인 보정 하위 데이터셋을 생성합니다. ``unmix_plate_calibrations``를 각 정확한 플레이트 ID를 ``calibration_file``, 양수 YX ``pixel_size_um``, ``source_context``(정확한 ``plate``, ``time``, ``z`` ID 포함) 및 ``acquisition_compatibility``(값은 ``user_asserts_same_channel_gains_exposures_and_linear_response``)에 매핑하는 JSON 문자열로 제공하세요. 상대 광학 경로는 원래 소스 폴더를 기준으로 해석합니다. 각 플레이트는 하나의 시간/Z 맥락, 마스터 맵의 완전한 물리적 채널 대조군, 고유한 광학 할당 및 픽셀 간격을 가집니다. 이 주장은 해당 플레이트 내의 대조군과 대상을 다루며 검증되지 않았고 플레이트 간 동일한 획득 설정을 주장하지 않습니다. 전역 광학 설정과 제공 행렬 파일을 분할과 함께 사용할 수 없습니다."
+    },
+    {
+      "context": "Before creating outputs, partitioning captures optical bytes, admits all source headers and batch bounds, and estimates each laboratory microplate's sampled-control matrix sequentially. Unread target values are validated later by the child route before model construction. Canonical control-value fingerprints are compared after assembly; actual NPY file hashes remain the child record's authority. Limits are 8192 microscope fields of view, 16 physical channels and 16 MiB retained metadata, with the ordinary per-microscope field of view, control and batch budgets unchanged. Supported source formats are unchanged; QC supports report or off only. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse before creating outputs.",
+      "label": "spacr.pipeline_v2.run_v2#22",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "Before creating outputs, partitioning captures optical bytes, admits all source headers and batch bounds, and estimates each plate's sampled-control matrix sequentially. Unread target values are validated later by the child route before model construction. Canonical control-value fingerprints are compared after assembly; actual NPY file hashes remain the child record's authority. Limits are 8192 fields, 16 physical channels and 16 MiB retained metadata, with the ordinary per-field, control and batch budgets unchanged. Supported source formats are unchanged; QC supports report or off only. Directory-relative, no-follow and nonblocking descriptor access is required; unsupported hosts refuse before creating outputs.",
+      "source_sha256": "7908c530e3a03b7eb74ad30f1a126fde86fcfedac7f9ded4faf4783954ec4faa",
+      "translation": "출력을 만들기 전에 플레이트 분할은 광학 바이트를 캡처하고 모든 소스 헤더와 배치 한계를 검사하며 각 플레이트의 샘플링된 대조군 행렬을 순차적으로 추정합니다. 읽지 않은 대상 값은 모델 생성 전에 하위 경로가 나중에 검증합니다. 조립 후 표준 대조군 값 지문을 비교하며 실제 NPY 파일 해시가 하위 레코드의 최종 기준으로 유지됩니다. 제한은 이미지 필드 8192개, 물리적 채널 16개, 유지 메타데이터 16 MiB이며 일반적인 필드별, 대조군 및 배치 예산은 변경되지 않습니다. 지원 소스 형식은 변경되지 않으며 QC는 report 또는 off만 지원합니다. 디렉터리 상대 접근, 링크를 따라가지 않는 접근 및 비차단 디스크립터 접근이 필요합니다. 지원하지 않는 호스트는 출력 생성 전에 거부합니다."
+    },
+    {
+      "context": "A fresh ``calibrated_plate_batch`` collection directory contains a ``plate_batch.json`` manifest and numbered ``plate_000001`` child datasets. Existing names receive a suffix. The collection is never a measurable dataset; each child retains the ordinary version-1 calibrated signed-cell contract and original global field/source identities. Original files and existing merged data remain untouched. Cancellation or failure preserves completed children and rethrows the original error. Segmentation completion is distinct from aggregate completion, which also requires completed or disabled QC. The opt-in return has ``partitioned=True``, ``plate_results`` with independent resolved ``settings`` and ``output_root`` per child, ``output_roots``, and ``manifest_path``; it has no singular output fallback. With partitioning disabled, the existing return and processing are unchanged.",
+      "label": "spacr.pipeline_v2.run_v2#23",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "A fresh ``calibrated_plate_batch`` collection directory contains a ``plate_batch.json`` manifest and numbered ``plate_000001`` child datasets. Existing names receive a suffix. The collection is never a measurable dataset; each child retains the ordinary version-1 calibrated signed-cell contract and original global field/source identities. Original files and existing merged data remain untouched. Cancellation or failure preserves completed children and rethrows the original error. Segmentation completion is distinct from aggregate completion, which also requires completed or disabled QC. The opt-in return has ``partitioned=True``, ``plate_results`` with independent resolved ``settings`` and ``output_root`` per child, ``output_roots``, and ``manifest_path``; it has no singular output fallback. With partitioning disabled, the existing return and processing are unchanged.",
+      "source_sha256": "30694406d35226bec3072252dc4fbb9ca3221441fe1d7501b0a3bb58317665ab",
+      "translation": "새 ``calibrated_plate_batch`` 컬렉션 디렉터리에는 ``plate_batch.json`` 매니페스트와 번호가 매겨진 ``plate_000001`` 하위 데이터셋이 포함됩니다. 기존 이름에는 접미사를 붙입니다. 컬렉션 자체는 측정 가능한 데이터셋이 아니며 각 하위 데이터셋은 일반 버전 1 보정된 부호 있는 세포 데이터 계약과 원래 전역 필드/소스 식별자를 유지합니다. 원본 파일과 기존 병합 데이터는 그대로 유지됩니다. 취소 또는 실패 시 완료된 하위 데이터셋을 보존하고 원래 오류를 다시 발생시킵니다. 분할 완료와 전체 완료는 별개이며 전체 완료에는 QC 완료 또는 비활성화도 필요합니다. 이 선택적 반환값은 ``partitioned=True``, ``plate_results``(하위 데이터셋마다 독립적으로 해석된 ``settings`` 및 ``output_root`` 포함), ``output_roots``, ``manifest_path``를 포함하며 단일 출력 폴백은 없습니다. 분할이 비활성화되면 기존 반환 및 처리는 변경되지 않습니다."
+    },
+    {
+      "context": "from :meth:`FilenameMapper.discover` when ``src`` holds no images, when ``metadata_type=\"custom\"`` has no ``custom_regex``, or from ``batch_fields=0``.",
+      "label": "spacr.pipeline_v2.run_v2#24",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "from :meth:`FilenameMapper.discover` when ``src`` holds no images, when ``metadata_type=\"custom\"`` has no ``custom_regex``, or from ``batch_fields=0``.",
+      "source_sha256": "9b53789529892bd33e716163f177cc1801a303f3c968e2b641ad3260638be306",
+      "translation": ":meth:`FilenameMapper.discover`에서 ``src``이 이미지를 보유하지 않는 경우, ``metadata_type=\"custom\"``이 ``custom_regex``이 없는 경우 또는 ``batch_fields=0``에서."
+    },
+    {
+      "context": "optional :class:`spacr.illumination.SegmentationIlluminationSession`. Its corrector sees private selected-image data channel copies immediately before normalisation/Cellpose; persisted intensity image layers remain raw, and completion is recorded only after the combined stack has been atomically replaced.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#7",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "optional :class:`spacr.illumination.SegmentationIlluminationSession`. Its corrector sees private selected-channel copies immediately before normalisation/Cellpose; persisted intensity planes remain raw, and completion is recorded only after the combined stack has been atomically replaced.",
+      "source_sha256": "9da6f30268a0f03f9ba04ff82df56a9d3625a7d9b1d5fd5d9ffeb15ad6502e4e",
+      "translation": "선택 사항인 :class:`spacr.illumination.SegmentationIlluminationSession`. 이 보정기는 정규화/Cellpose 직전에 선택된 채널의 비공개 복사본을 보며, 저장된 강도 평면은 원본 그대로 유지되고, 결합된 스택이 원자적으로 교체된 뒤에만 완료가 기록됩니다."
+    },
+    {
+      "context": "optional captured PSF session. Unmixes each whole microscope field of view first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image data channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid extracted image region for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display image data channels in its separate output tree, with signed extracted image regions under ``signed/``. These display image data channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#8",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
+      "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
+      "translation": "선택적인 캡처된 PSF 세션입니다. 언믹싱이 켜져 있으면 먼저 각 전체 시야를 언믹싱한 후, 조명 처리 뒤이자 정규화, 패딩 또는 Cellpose 전 단계에서 선택한 강도를 처리합니다. 저장된 이미지 채널은 원시 상태로 유지되며 추가된 레이블만 PSF 처리에 의존합니다. 보정 세션은 대신 음수가 없는 분할 뷰를 위한 부호가 있는 유효 크롭을 제공하고, 레이블을 기준 캔버스로 복원하며, 별도 출력 트리에 정량 분석용이 아닌 float32 표시 채널을 따로 저장합니다. 부호가 있는 크롭은 ``signed/`` 아래에 저장합니다. 이 표시 채널은 Measure 입력이 아닙니다. 보정 출력은 이어서 실행할 수 없으며, 표시 파일과 부호가 있는 파일이 모두 영구 저장되어야 완료됩니다."
+    },
+    {
+      "context": "the same list, with each :class:`StackFile.shape` / ``.channels`` updated to reflect the appended mask image data channel.",
+      "label": "spacr.pipeline_v2.stream_masks_from_stack#9",
+      "review_basis": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+      "source": "the same list, with each :class:`StackFile.shape` / ``.channels`` updated to reflect the appended mask channel.",
+      "source_sha256": "0bafdfe5776597bee9ec1e9df0d479dbc049ebda792885ba9da6c815d8d9eb05",
+      "translation": "같은 목록으로, 각 :class:`StackFile.shape` / ``.channels``가 덧붙은 마스크 채널을 반영하도록 갱신됩니다."
+    }
+  ],
+  "schema": 1
+}

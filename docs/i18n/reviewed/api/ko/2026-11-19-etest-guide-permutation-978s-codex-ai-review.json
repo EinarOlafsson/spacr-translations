@@ -1,0 +1,56 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "context": "``score(n, subsample_seed)`` caps every gene and control guide at ``n`` cells (``default_rng(seed + 100 + subsample_seed)``, genes in sorted order, then the control guides); ``n`` None keeps every cell. Only empirical-null mode uses one median-sized null. Guide-null mode fixes each NT guide in one capacity-compatible count stratum independently of feature values; exchangeability is conditional on this allocation and the counts. Query guide blocks participate in their permutation null. Assignments use ``default_rng(seed + 300 + subsample_seed)``; Monte Carlo sampling includes the observed assignment and uses add-one p-values. Sparse guide-pair distance sums are reused across matched profiles. Draw the reference and group the cells by gene and control guide.",
+      "label": "spacr.gene_measurement_compare.EnergyTest#13",
+      "source": "``score(n, subsample_seed)`` caps every gene and control guide at ``n`` cells (``default_rng(seed + 100 + subsample_seed)``, genes in sorted order, then the control guides); ``n`` None keeps every cell. Only empirical-null mode uses one median-sized null. Guide-null mode fixes each NT guide in one capacity-compatible count stratum independently of feature values; exchangeability is conditional on this allocation and the counts. Query guide blocks participate in their permutation null. Assignments use ``default_rng(seed + 300 + subsample_seed)``; Monte Carlo sampling includes the observed assignment and uses add-one p-values. Sparse guide-pair distance sums are reused across matched profiles. Draw the reference and group the cells by gene and control guide.",
+      "source_sha256": "b060aea9e99ea954a6eadd78f97db1d5a1373139df299e94cd3a119945501a6e",
+      "translation": "``score(n, subsample_seed)`` 는 모든 유전자와 대조 가이드를 최대 ``n`` 개의 세포로 제한합니다(``default_rng(seed + 100 + subsample_seed)``, 정렬 순서의 유전자 다음에 대조 가이드). ``n`` 이 None 이면 모든 세포를 유지합니다. 경험적 귀무 분포 모드만 세포 수 중앙값 크기의 귀무 분포 하나를 사용합니다. 가이드 귀무 분포 모드는 각 NT 가이드를 보유 세포 수로 충족할 수 있는 세포 수 층 하나에 고정하며, 이 배정은 특성값과 독립적입니다. 교환 가능성은 이 배정과 세포 수를 조건으로 합니다. 검정 대상 가이드 블록도 자체 순열 귀무 분포에 참여합니다. 배정에는 ``default_rng(seed + 300 + subsample_seed)`` 를 사용합니다. 몬테카를로 표본 추출은 관측된 배정을 포함하고, 하나를 더해 보정한 p 값을 사용합니다. 희소한 가이드 쌍 거리 합은 대응하는 프로파일들에서 재사용됩니다. 참조를 뽑고 세포를 유전자와 대조 가이드별로 묶습니다."
+    },
+    {
+      "context": "control cells in the fixed reference, drawn with ``default_rng(seed)``. Guide-null mode reserves whole guide identities for this reference before drawing its cells.",
+      "label": "spacr.gene_measurement_compare.EnergyTest#5",
+      "source": "control cells in the fixed reference, drawn with ``default_rng(seed)``. Guide-null mode reserves whole guide identities for this reference before drawing its cells.",
+      "source_sha256": "5fce1ef015b218131f6112d99e509f05c902dcbaa7affaae3d1f216d9a718d04",
+      "translation": "고정 참조의 대조 세포 수로, ``default_rng(seed)`` 로 뽑습니다. 가이드 귀무 분포 모드는 세포를 뽑기 전에 이 참조용 가이드 식별자를 통째로 따로 확보합니다."
+    },
+    {
+      "context": "empirical-null pseudo-genes drawn outside the reference with ``default_rng(seed + 1 + n)``, ``n`` the null cell count. Guide-null scoring uses ``max(1000, n_null)`` whole-guide permutations, or all assignments for a smaller exact space. Its diagnostic :meth:`null` retains this requested number of pseudo-genes.",
+      "label": "spacr.gene_measurement_compare.EnergyTest#6",
+      "source": "empirical-null pseudo-genes drawn outside the reference with ``default_rng(seed + 1 + n)``, ``n`` the null cell count. Guide-null scoring uses ``max(1000, n_null)`` whole-guide permutations, or all assignments for a smaller exact space. Its diagnostic :meth:`null` retains this requested number of pseudo-genes.",
+      "source_sha256": "c6127c1a8526281da92f93d8b9c3d3906e9ed50e455dd41954743869aa5f0ecc",
+      "translation": "참조 밖에서 ``default_rng(seed + 1 + n)`` 로 뽑는 경험적 귀무 분포의 유사 유전자 수이며, ``n`` 은 귀무 분포의 세포 수입니다. 가이드 귀무 분포의 채점은 ``max(1000, n_null)`` 회의 전체 가이드 순열을 사용하며, 정확한 배정 공간이 더 작으면 모든 배정을 사용합니다. 진단용 :meth:`null` 은 여기서 요청한 유사 유전자 수를 유지합니다."
+    },
+    {
+      "context": "held-out control pseudo-genes scored against the null. Empirical-null draws use ``default_rng(seed + 2 + n)``; guide-null scoring draws use ``default_rng(seed + 200 + subsample_seed)`` and match the profile frequencies of the scored genes.",
+      "label": "spacr.gene_measurement_compare.EnergyTest#7",
+      "source": "held-out control pseudo-genes scored against the null. Empirical-null draws use ``default_rng(seed + 2 + n)``; guide-null scoring draws use ``default_rng(seed + 200 + subsample_seed)`` and match the profile frequencies of the scored genes.",
+      "source_sha256": "e73fcbde7dfff05cfd0a5dff50bea947e3c7288a580c8ca340df7a0e80832568",
+      "translation": "귀무 분포에 대해 채점하는 홀드아웃 대조 유사 유전자 수입니다. 경험적 귀무 분포의 추출에는 ``default_rng(seed + 2 + n)`` 을 사용합니다. 가이드 귀무 분포 채점의 추출에는 ``default_rng(seed + 200 + subsample_seed)`` 를 사용하며, 채점한 유전자들의 가이드별 세포 수 프로파일 빈도를 맞춥니다."
+    },
+    {
+      "context": "``'empirical_null'`` (the null above), ``'guide_null'`` (whole-guide membership permutations between each query and matched NT blocks, preserving exact per-guide counts after subsampling; reference, NT null and held-out control guides are disjoint), or ``'permutation'`` (scPerturb's label permutation of the gene's cells and the reference, ``permutations`` times, ``default_rng(seed + 3)``).",
+      "label": "spacr.gene_measurement_compare.EnergyTest#9",
+      "source": "``'empirical_null'`` (the null above), ``'guide_null'`` (whole-guide membership permutations between each query and matched NT blocks, preserving exact per-guide counts after subsampling; reference, NT null and held-out control guides are disjoint), or ``'permutation'`` (scPerturb's label permutation of the gene's cells and the reference, ``permutations`` times, ``default_rng(seed + 3)``).",
+      "source_sha256": "7fe0960991364f7717fb687ea14facc3299ea03467af93a23d298c2d933ad739",
+      "translation": "``'empirical_null'`` (위의 귀무 분포), ``'guide_null'`` (각 검정 대상과 대응하는 NT 블록 사이에서 가이드 전체의 집단 소속을 순열하며, 부분 표본 추출 후 가이드별 정확한 세포 수를 유지합니다. 참조, NT 귀무 분포, 홀드아웃 대조 가이드는 서로 겹치지 않습니다), 또는 ``'permutation'`` (scPerturb 의 레이블 순열로, 유전자의 세포와 참조를 ``permutations`` 회 순열하며 ``default_rng(seed + 3)`` 사용)입니다."
+    },
+    {
+      "context": "In guide-null mode this diagnostic mixes the exact guide-count profiles obtained by capping eligible real genes to ``n`` cells. It uses NT-only pseudo-genes for effect-size diagnostics, with ``default_rng(seed + 11 + n)`` and ``default_rng(seed + 12 + n)``. Gene p-values instead use query-inclusive whole-guide permutations at their exact observed profiles and do not use these arrays.",
+      "label": "spacr.gene_measurement_compare.EnergyTest.null#3",
+      "source": "In guide-null mode this diagnostic mixes the exact guide-count profiles obtained by capping eligible real genes to ``n`` cells. It uses NT-only pseudo-genes for effect-size diagnostics, with ``default_rng(seed + 11 + n)`` and ``default_rng(seed + 12 + n)``. Gene p-values instead use query-inclusive whole-guide permutations at their exact observed profiles and do not use these arrays.",
+      "source_sha256": "5561a6000bbde24bab7a43f6da62bf5da18c2c8e892a46834efa3eb235f33f3a",
+      "translation": "가이드 귀무 분포 모드에서 이 진단은 적격 실제 유전자를 최대 ``n`` 개의 세포로 제한해 얻은 정확한 가이드별 세포 수 프로파일을 혼합합니다. 효과 크기 진단에는 NT 가이드만으로 만든 유사 유전자를 사용하며, ``default_rng(seed + 11 + n)`` 과 ``default_rng(seed + 12 + n)`` 로 추출합니다. 반면 유전자 p 값은 정확한 관측 프로파일에서 검정 대상을 포함하는 전체 가이드 순열을 사용하며 이 배열들을 사용하지 않습니다."
+    },
+    {
+      "context": "Guide-null p-values permute intact query and NT guide blocks within exact cell-count strata; only held-out NT guides appear as diagnostic rows. Its held-out pseudo-genes follow the frequency of profiles among scored genes. The table adds ``permutation_space`` (decimal string, or power-of-two bounds for huge spaces), ``permutation_draws``, ``permutation_resolution``, ``permutation_exact`` and ``permutation_supported``. Exact enumeration excludes the observed assignment from the draw count and adds it once to the denominator. Unsupported genes retain p=1; unsupported optional diagnostics retain NaN. Summary counts identify unsupported and coarse-resolution rows, and false-positive diagnostic percentages use only finite p-values.",
+      "label": "spacr.gene_measurement_compare.EnergyTest.score#4",
+      "source": "Guide-null p-values permute intact query and NT guide blocks within exact cell-count strata; only held-out NT guides appear as diagnostic rows. Its held-out pseudo-genes follow the frequency of profiles among scored genes. The table adds ``permutation_space`` (decimal string, or power-of-two bounds for huge spaces), ``permutation_draws``, ``permutation_resolution``, ``permutation_exact`` and ``permutation_supported``. Exact enumeration excludes the observed assignment from the draw count and adds it once to the denominator. Unsupported genes retain p=1; unsupported optional diagnostics retain NaN. Summary counts identify unsupported and coarse-resolution rows, and false-positive diagnostic percentages use only finite p-values.",
+      "source_sha256": "ee8493a4ad5cd7129ab6ea77ff6135fec99b6fc5a136649e6e46dc04dcfafeb1",
+      "translation": "가이드 귀무 분포의 p 값은 정확한 세포 수 층 내에서 검정 대상 및 NT 가이드 블록을 온전한 단위로 순열합니다. 진단 행에는 홀드아웃 NT 가이드만 나타납니다. 홀드아웃 유사 유전자는 채점한 유전자들의 프로파일 빈도를 따릅니다. 테이블에는 ``permutation_space`` (십진 문자열 또는 매우 큰 공간의 경우 이의 거듭제곱으로 나타낸 상하한), ``permutation_draws``, ``permutation_resolution``, ``permutation_exact``, ``permutation_supported`` 가 추가됩니다. 정확한 열거에서는 추출 횟수에서 관측된 배정을 제외하고 분모에 한 번 더합니다. 지원되지 않는 유전자는 p=1을 유지하고, 지원되지 않는 선택적 진단은 NaN 을 유지합니다. 요약 개수는 지원되지 않는 행과 해상도가 낮은 행을 식별하며, 위양성 진단 백분율에는 유한한 p 값만 사용합니다."
+    }
+  ],
+  "schema": 1,
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the guide-null whole-guide permutation messages and EnergyTest docstrings of items 978 and S. No human or native-speaker signoff."
+}

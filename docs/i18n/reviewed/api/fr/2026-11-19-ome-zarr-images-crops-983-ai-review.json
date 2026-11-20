@@ -1,0 +1,1799 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "context": "Ragged object extracted image regions in per-microplate sample position Zarr pixel pools, with the ssCell_Crops table (items 983 and 984, alpha).",
+      "label": "spacr.crop_store#0",
+      "source": "Ragged object crops in per-well Zarr pixel pools, with the ssCell_Crops table (items 983 and 984, alpha).",
+      "source_sha256": "67ce82668c7291f45891698b90b8cae1604d0b94784210d5efeb89c570b08872",
+      "translation": "Découpes d'objets de tailles variables dans des pools de pixels Zarr par puits, avec la table ssCell_Crops (points 983 et 984, alpha).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Each extracted image region is its object's bounding box plus a margin, stored at its own size. A microplate sample position's extracted image regions of one object class go into flat pixel pools inside the microplate sample position's extracted image region store, ``crops/plate=<P>/well=<W>.zarr`` (the per-microplate sample position store of item 974): ``<class>/pool/<k>`` holds the pixels ``(C, n)`` and ``<class>/mask/<k>`` the object's own mask pixels ``(n,)``, one pool array per shard of ``crops_per_shard`` extracted image regions, written whole by the one writer. The extracted-image-region table gives each extracted image region its pool, offset, height and width, so an extracted image region is one contiguous read.",
+      "label": "spacr.crop_store#1",
+      "source": "Each crop is its object's bounding box plus a margin, stored at its own size. A well's crops of one object class go into flat pixel pools inside the well's crop store, ``crops/plate=<P>/well=<W>.zarr`` (the per-well store of item 974): ``<class>/pool/<k>`` holds the pixels ``(C, n)`` and ``<class>/mask/<k>`` the object's own mask pixels ``(n,)``, one pool array per shard of ``crops_per_shard`` crops, written whole by the one writer. The crop table gives each crop its pool, offset, height and width, so a crop is one contiguous read.",
+      "source_sha256": "968cd136a017626e7f57a8e9ba27fd81be99e54a16b6b08880108aa4768f5e08",
+      "translation": "Chaque découpe est la boîte englobante de son objet augmentée d'une marge, stockée à sa propre taille. Les découpes d'une classe d'objets d'un puits sont placées dans des pools de pixels à plat au sein du magasin de découpes du puits, ``crops/plate=<P>/well=<W>.zarr`` (le magasin par puits du point 974) : ``<class>/pool/<k>`` contient les pixels ``(C, n)`` et ``<class>/mask/<k>`` les pixels du masque propre à l'objet ``(n,)``, avec un tableau de pool par fragment de ``crops_per_shard`` découpes, écrit en entier par l'unique instance d'écriture. La table des découpes indique le pool, le décalageage, la hauteur et la largeur de chaque découpe, de sorte qu'une découpe se lit en une seule lecture contiguë.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "This is spaCR's own image-region format, not an OME-Zarr image: viewers open the images, not the pools. :func:`export_crops` writes extracted image regions out as TIFF, PNG or npy for other tools.",
+      "label": "spacr.crop_store#2",
+      "source": "This is spaCR's own crop format, not an OME-Zarr image: viewers open the images, not the pools. :func:`export_crops` writes crops out as TIFF, PNG or npy for other tools.",
+      "source_sha256": "ea7b9c6da34416ac50ce91beb30b7658d2b57894dcd2559186c5cec6ce975855",
+      "translation": "Il s'agit du format de découpes propre à spaCR, pas d'une image OME-Zarr : les visionneuses ouvrent les images, pas les pools. :func:`export_crops` écrit les découpes en TIFF, PNG ou npy pour d'autres outils.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The one writer of a microplate sample position's ragged extracted image region pools (item 984).",
+      "label": "spacr.crop_store.CropPoolWriter#0",
+      "source": "The one writer of a well's ragged crop pools (item 984).",
+      "source_sha256": "f6aba7323c26c7436bbfaaf178a8925c7ee5b0e1a94f0f90612e5ec41215405a",
+      "translation": "L'unique instance d'écriture des pools de découpes de tailles variables d'un puits (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder (the 974 store's root).",
+      "label": "spacr.crop_store.CropPoolWriter#1",
+      "source": "the project folder (the 974 store's root).",
+      "source_sha256": "e372a7f52bc4d3d9b2042c6a66ae82f7b1a5967f59d78f8532d954ca491a674f",
+      "translation": "le dossier du projet (la racine du magasin du point 974).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.crop_store.CropPoolWriter#2",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.crop_store.CropPoolWriter#3",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "le nom du puits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class, such as ``'cell'``.",
+      "label": "spacr.crop_store.CropPoolWriter#4",
+      "source": "the object class, such as ``'cell'``.",
+      "source_sha256": "b38c2cbc36eef2795d1c643d10be128c58e2151187b17353684d830474c4c061",
+      "translation": "la classe d'objets, telle que ``'cell'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the number of channels.",
+      "label": "spacr.crop_store.CropPoolWriter#5",
+      "source": "the number of channels.",
+      "source_sha256": "9b67ad1cf1cf9f9d00742debd4cdb16315d8221505155672eca4c99b70f9cd4c",
+      "translation": "le nombre de canaux.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the pixel dtype.",
+      "label": "spacr.crop_store.CropPoolWriter#6",
+      "source": "the pixel dtype.",
+      "source_sha256": "4fd2b1fec96482ea2c4ddcba7c53fbbc9bc13adb0d011b359eedb6bc4a1aa3e7",
+      "translation": "le type de données des pixels.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "extracted image regions per pool shard (default 4096). Each shard is buffered until full (or :meth:`close`) and written whole, so no shard is ever rewritten.",
+      "label": "spacr.crop_store.CropPoolWriter#7",
+      "source": "crops per pool shard (default 4096). Each shard is buffered until full (or :meth:`close`) and written whole, so no shard is ever rewritten.",
+      "source_sha256": "42bef59363978d965490425138bf71f0c83de436719fc4432c3205903f0a400e",
+      "translation": "le nombre de découpes par fragment de pool (valeur par défaut 4096). Chaque fragment est conservé en tampon jusqu'à ce qu'il soit plein (ou jusqu'à :meth:`close`) et écrit en entier, de sorte qu'aucun fragment n'est jamais réécrit.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "metadata of this class's pools, stored on the class group under ``spacr`` (for example ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` and ``spacr_version`` are added. A structured-data name that is already stored with another value is refused, so pools of one class never mix channel orders or settings.",
+      "label": "spacr.crop_store.CropPoolWriter#8",
+      "source": "metadata of this class's pools, stored on the class group under ``spacr`` (for example ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` and ``spacr_version`` are added. A key that is already stored with another value is refused, so pools of one class never mix channel orders or settings.",
+      "source_sha256": "85c138f1436d651d710246ed7a014a0abc8999cb40789d9567ed79e01ebc1a48",
+      "translation": "les métadonnées des pools de cette classe, stockées sur le groupe de classe sous ``spacr`` (par exemple ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` et ``spacr_version`` sont ajoutés. Une clé déjà stockée avec une autre valeur est refusée, de sorte que les pools d'une classe ne mélangent jamais des ordres de canaux ou des paramètres différents.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Pools are written whole as they fill. :meth:`commit` then records them, with their table rows, as the class's committed set; a stopped run leaves pools that no commit lists, and :meth:`discard_uncommitted` removes them before a rerun. :meth:`read_commit` gives back what was committed, so a converter or a resumed run can skip the microplate sample positions it has. Open the microplate sample position's extracted image region store and start an empty shard buffer.",
+      "label": "spacr.crop_store.CropPoolWriter#9",
+      "source": "Pools are written whole as they fill. :meth:`commit` then records them, with their table rows, as the class's committed set; a stopped run leaves pools that no commit lists, and :meth:`discard_uncommitted` removes them before a rerun. :meth:`read_commit` gives back what was committed, so a converter or a resumed run can skip the wells it has. Open the well's crop store and start an empty shard buffer.",
+      "source_sha256": "ed07835432a19a443dbfeec1abb489f329f69ea5f6fdb80777693c215023fb89",
+      "translation": "Les pools sont écrits en entier lorsqu'ils se remplissent. :meth:`commit` les enregistre ensuite, avec leurs lignes de table, comme l'ensemble validé de la classe ; une exécution arrêtée laisse des pools qu'aucune validation ne répertorie, et :meth:`discard_uncommitted` les supprime avant une nouvelle exécution. :meth:`read_commit` renvoie ce qui a été validé, de sorte qu'un convertisseur ou une exécution reprise peut ignorer les puits déjà présents. Ouvre le magasin de découpes du puits et démarre un tampon de fragments vide.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Work list extracted image regions from :func:`cut_crops`, with their identity columns.",
+      "label": "spacr.crop_store.CropPoolWriter.add#0",
+      "source": "Queue crops from :func:`cut_crops`, with their identity columns.",
+      "source_sha256": "a2e4c96d3f6a46d47cbb33e3b93cbccd6bbb2422d705ffca569a4a8dde9ff33d",
+      "translation": "Met en file les découpes de :func:`cut_crops`, avec leurs colonnes d'identité.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``field``, ``timepoint`` and any other columns every extracted image region of this call shares.",
+      "label": "spacr.crop_store.CropPoolWriter.add#1",
+      "source": "``field``, ``timepoint`` and any other columns every crop of this call shares.",
+      "source_sha256": "66b1cce5252ec9241cf19ae6002f9da042905d3d96b4fed1c4ef5c898355f6ce",
+      "translation": "``field``, ``timepoint`` et toute autre colonne commune à toutes les découpes de cet appel.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "extracted image regions from :func:`cut_crops`, in the order they are stored.",
+      "label": "spacr.crop_store.CropPoolWriter.add#2",
+      "source": "crops from :func:`cut_crops`, in the order they are stored.",
+      "source_sha256": "128a91f5ba5e1fae6407e3e96eca0e4354a836dde30146cbbdc7b980f6278255",
+      "translation": "les découpes de :func:`cut_crops`, dans l'ordre de leur stockage.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Write the last, partly filled shard; return every extracted image region's table row.",
+      "label": "spacr.crop_store.CropPoolWriter.close#0",
+      "source": "Write the last, partly filled shard; return every crop's table row.",
+      "source_sha256": "eb5dcf0dcb7cc90c70c4fdb43acca53fe8253d413e87b643bd35fb072ce9560e",
+      "translation": "Écrit le dernier fragment, partiellement rempli ; renvoie la ligne de table de chaque découpe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Close the writer and record its pools and rows as committed.",
+      "label": "spacr.crop_store.CropPoolWriter.commit#0",
+      "source": "Close the writer and record its pools and rows as committed.",
+      "source_sha256": "ea5064ac781daee9e8104b9fde83e586d2d01d84beb1da902585873a99b787b3",
+      "translation": "Ferme l'instance d'écriture et enregistre ses pools et ses lignes comme validés.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The rows go to ``<class>/rows.jsonl`` and the record to ``<class>/spacr_commit.json``, each under a temporary name and then renamed, record last. Earlier commits of the class are kept: the record lists every committed pool and row.",
+      "label": "spacr.crop_store.CropPoolWriter.commit#1",
+      "source": "The rows go to ``<class>/rows.jsonl`` and the record to ``<class>/spacr_commit.json``, each under a temporary name and then renamed, record last. Earlier commits of the class are kept: the record lists every committed pool and row.",
+      "source_sha256": "140e77582eebe900d7ba0fb193bb029d8e46e132cdf7edcc91b418531864de1a",
+      "translation": "Les lignes sont écrites dans ``<class>/rows.jsonl`` et l'enregistrement dans ``<class>/spacr_commit.json``, chacun sous un nom temporaire puis renommé, l'enregistrement en dernier. Les validations antérieures de la classe sont conservées : l'enregistrement répertorie tous les pools et toutes les lignes validés.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the commit record, with its ``rows``.",
+      "label": "spacr.crop_store.CropPoolWriter.commit#2",
+      "source": "the commit record, with its ``rows``.",
+      "source_sha256": "ddce470441dd3d585109e068678a61029f8a8ea3770bf6cbfc2a6fa200d41509",
+      "translation": "l'enregistrement de validation, avec ses ``rows``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The parent's extracted-image-region writer for one Measure run (item 984).",
+      "label": "spacr.crop_store.CropSink#0",
+      "source": "The parent's crop writer for one Measure run (item 984).",
+      "source_sha256": "186e70da2346e829cf659be035d484bc3e5745bbdb5eb5b57e3e7a17ae79938a",
+      "translation": "L'instance d'écriture des découpes du parent pour une exécution de Mesurer (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder (the measurements folder's parent).",
+      "label": "spacr.crop_store.CropSink#1",
+      "source": "the project folder (the measurements folder's parent).",
+      "source_sha256": "9c86ae89eb6513fe638984ba72d240f7b39acb5b5720c554688b23ed76817b20",
+      "translation": "le dossier du projet (le parent du dossier des mesures).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the run's microscope field of view files, in the order extracted image regions are committed.",
+      "label": "spacr.crop_store.CropSink#2",
+      "source": "the run's field files, in the order crops are committed.",
+      "source_sha256": "982f10ec0104490399d98d055945fc23028bc9f445bcab4590d56d0cef31455b",
+      "translation": "les fichiers des champs de l'exécution, dans l'ordre de validation des découpes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "extracted image regions per pool shard.",
+      "label": "spacr.crop_store.CropSink#3",
+      "source": "crops per pool shard.",
+      "source_sha256": "6c7122f6e63573711c2b868c5f45a53670a1c7b7c9a03c6d5e983fe69cc01377",
+      "translation": "le nombre de découpes par fragment de pool.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Microscope fields of view can finish in any order; their extracted image regions wait in a reorder buffer and are written in plan order, so a rerun writes the same shards. Index the plan and start with no open writers.",
+      "label": "spacr.crop_store.CropSink#4",
+      "source": "Fields can finish in any order; their crops wait in a reorder buffer and are written in plan order, so a rerun writes the same shards. Index the plan and start with no open writers.",
+      "source_sha256": "3095df0234ee3af657dc7b0720f19e4341070c29b0477d2f9aea6ff3f7f6e269",
+      "translation": "Les champs peuvent terminer dans n'importe quel ordre ; leurs découpes attendent dans un tampon de réordonnancement et sont écrites dans l'ordre du plan, de sorte qu'une nouvelle exécution écrit les mêmes fragments. Indexe le plan et commence sans instance d'écriture ouverte.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Write the fields still waiting, in plan order, then commit every writer.",
+      "label": "spacr.crop_store.CropSink.close#0",
+      "source": "Write the fields still waiting, in plan order, then commit every writer.",
+      "source_sha256": "db1eda72627f4c3f520735b81f19340948bc8d6671594c9aabb0dd0229fb3949",
+      "translation": "Écrit les champs encore en attente dans l'ordre du plan, puis valide les données de chaque instance d'écriture.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "A class of a planned well that this run found no objects of is rewritten too, so its extracted image regions of the measured microscope fields of view go.",
+      "label": "spacr.crop_store.CropSink.close#1",
+      "source": "A class of a planned well that this run found no objects of is rewritten too, so its crops of the measured fields go.",
+      "source_sha256": "57efb2f53b550f1581d22867c8b52b7501fdd830b8e14ee824a45dcea08d8601",
+      "translation": "Une classe d'un puits planifié dans laquelle cette exécution n'a trouvé aucun objet est également réécrite, de sorte que ses découpes des champs mesurés sont supprimées.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Take one microscope field of view's extracted image regions; write every microscope field of view now due in plan order.",
+      "label": "spacr.crop_store.CropSink.receive#0",
+      "source": "Take one field's crops; write every field now due in plan order.",
+      "source_sha256": "2e40339112cc899887c8c5b8fd6a7df6fd18bcd9707008c523f6c1053c9ae020",
+      "translation": "Reçoit les découpes d'un champ ; écrit tous les champs dont le tour est venu, dans l'ordre du plan.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Measure sends a field's classes in one call. A later call for a field already written (a further class) is written at once: Measure commits one field's packet as a unit, so no other field came between.",
+      "label": "spacr.crop_store.CropSink.receive#1",
+      "source": "Measure sends a field's classes in one call. A later call for a field already written (a further class) is written at once: Measure commits one field's packet as a unit, so no other field came between.",
+      "source_sha256": "191a401c58aa5d3938a449ca4e4d2143340e987d729b24201e59c1d0e099c5e7",
+      "translation": "Mesurer envoie les classes d'un champ en un seul appel. Un appel ultérieur pour un champ déjà écrit (une classe supplémentaire) est écrit immédiatement : Mesurer valide le paquet d'un champ comme une unité, de sorte qu'aucun autre champ ne s'est intercalé.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field's file name, as in the plan.",
+      "label": "spacr.crop_store.CropSink.receive#2",
+      "source": "the field's file name, as in the plan.",
+      "source_sha256": "6dd6c28b1f48044ceb92928a20530dc295d906700274b3c3de2706bf4ee10026",
+      "translation": "le nom de fichier du champ, tel qu'il figure dans le plan.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "one entry per object class, as :func:`record_measure_field_crops` builds them.",
+      "label": "spacr.crop_store.CropSink.receive#3",
+      "source": "one entry per object class, as :func:`record_measure_field_crops` builds them.",
+      "source_sha256": "407b3f68fb51b88bc87295f8a6ec12825edb5766d7a7dab603c1c94a59eeac78",
+      "translation": "une entrée par classe d'objets, telle que les construit :func:`record_measure_field_crops`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Extracted-image-region source that reads Measure's OME-Zarr extracted image regions (items 983 and 984).",
+      "label": "spacr.crop_store.OmeZarrCropSource#0",
+      "source": "Crop source that reads Measure's OME-Zarr crops (items 983 and 984).",
+      "source_sha256": "8dff267523bdcd29e89bc80954994522dd64596a606153519ade7730800ad8a9",
+      "translation": "Source de découpes qui lit les découpes OME-Zarr de Mesurer (points 983 et 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Same interface as :class:`spacr.crops.PngCropSource`: :meth:`get` returns a ``(H, W, 3)`` uint8 RGB array, :meth:`get_image` a PIL image, :meth:`get_many` one array per row in order, :meth:`resolve` a string locator. :meth:`get_raw` adds the stored pixels and mask, in their own dtype and every image data channel, for training.",
+      "label": "spacr.crop_store.OmeZarrCropSource#1",
+      "source": "Same interface as :class:`spacr.crops.PngCropSource`: :meth:`get` returns a ``(H, W, 3)`` uint8 RGB array, :meth:`get_image` a PIL image, :meth:`get_many` one array per row in order, :meth:`resolve` a string locator. :meth:`get_raw` adds the stored pixels and mask, in their own dtype and every channel, for training.",
+      "source_sha256": "bf4cc46d481890b039dae66a2eff4d95b32e6be9a315060533006bc7a7d38ebb",
+      "translation": "Même interface que :class:`spacr.crops.PngCropSource` : :meth:`get` renvoie un tableau ``(H, W, 3)`` uint8 RGB, :meth:`get_image` une image PIL, :meth:`get_many` un tableau par ligne dans l'ordre, :meth:`resolve` une chaîne de localisation. :meth:`get_raw` ajoute les pixels et le masque stockés, dans leur propre type de données et avec tous les canaux, pour l'entraînement.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "A row is an ``ssCell_Crops`` row (``crop_store``, ``crop_array``, ``offset``, ...) or any row carrying ``object_id``, or ``plate``, ``well``, ``field``, ``object_type`` and ``object_label``; the extracted image region columns are then looked up in ``ssCell_Crops``. The RGB view maps ``channels`` to red, green, blue and stretches each to its 0.1-99.9 percentile inside the extracted image region, for display only: :meth:`get_raw` and the stored pixels are never stretched. Open the extracted-image-region table of ``root`` (``measurements/measurements.db``).",
+      "label": "spacr.crop_store.OmeZarrCropSource#2",
+      "source": "A row is an ``ssCell_Crops`` row (``crop_store``, ``crop_array``, ``offset``, ...) or any row carrying ``object_id``, or ``plate``, ``well``, ``field``, ``object_type`` and ``object_label``; the crop columns are then looked up in ``ssCell_Crops``. The RGB view maps ``channels`` to red, green, blue and stretches each to its 0.1-99.9 percentile inside the crop, for display only: :meth:`get_raw` and the stored pixels are never stretched. Open the crop table of ``root`` (``measurements/measurements.db``).",
+      "source_sha256": "e49b2be3a0ea6a7f6de7472f600d8b7a0613b2bf9851e6dd83e27d535fade409",
+      "translation": "Une ligne est une ligne de ``ssCell_Crops`` (``crop_store``, ``crop_array``, ``offset``, ...) ou toute ligne contenant ``object_id``, ou bien ``plate``, ``well``, ``field``, ``object_type`` et ``object_label`` ; les colonnes des découpes sont alors recherchées dans ``ssCell_Crops``. La vue RGB associe ``channels`` au rouge, au vert et au bleu et étire chaque canal selon ses percentiles 0.1–99.9 dans la découpe, uniquement pour l'affichage : :meth:`get_raw` et les pixels stockés ne sont jamais étirés. Ouvre la table des découpes de ``root`` (``measurements/measurements.db``).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.OmeZarrCropSource#3",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "why this source was picked, for :meth:`describe`.",
+      "label": "spacr.crop_store.OmeZarrCropSource#4",
+      "source": "why this source was picked, for :meth:`describe`.",
+      "source_sha256": "d2089c867f0594d40e14a850a386178de8fcd8c054a1b4c2467fc40693b9a04e",
+      "translation": "la raison du choix de cette source, pour :meth:`describe`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the database holding ``ssCell_Crops``.",
+      "label": "spacr.crop_store.OmeZarrCropSource#5",
+      "source": "the database holding ``ssCell_Crops``.",
+      "source_sha256": "6200646783445c7425ce7691df251eddd058a4105e84efcc228148bd89887871",
+      "translation": "la base de données contenant ``ssCell_Crops``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "stored channels shown as red, green, blue (up to three); the first three when None.",
+      "label": "spacr.crop_store.OmeZarrCropSource#6",
+      "source": "stored channels shown as red, green, blue (up to three); the first three when None.",
+      "source_sha256": "4b1c5d9c7ae67c25db66e18aa9842b23429de678cd771135425a42da7e1cf103",
+      "translation": "les canaux stockés affichés en rouge, vert et bleu (jusqu'à trois) ; les trois premiers si None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(h, w)`` every extracted image region is resized to (nearest-neighbour); the stored size when None.",
+      "label": "spacr.crop_store.OmeZarrCropSource#7",
+      "source": "``(h, w)`` every crop is resized to (nearest-neighbour); the stored size when None.",
+      "source_sha256": "f937ef6ff37694fc0b847c37193cc61a4e890e6b9df279b8b831062fccb9a8d7",
+      "translation": "``(h, w)`` auquel chaque découpe est redimensionnée (plus proche voisin) ; la taille stockée si None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "keep the pixels around the object; False zeroes them.",
+      "label": "spacr.crop_store.OmeZarrCropSource#8",
+      "source": "keep the pixels around the object; False zeroes them.",
+      "source_sha256": "b414baa8ef2b235bb2591ee92e37d83072d8e8e32825fe06d10edaf60306f378",
+      "translation": "conserve les pixels autour de l'objet ; False les met à zéro.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The extracted image region for ``row`` as a ``(H, W, 3)`` uint8 RGB array (display stretch).",
+      "label": "spacr.crop_store.OmeZarrCropSource.get#0",
+      "source": "The crop for ``row`` as a ``(H, W, 3)`` uint8 RGB array (display stretch).",
+      "source_sha256": "f631b7e22be189889801366b15c12583b7c79e8d8b9389b26f7d278405f69837",
+      "translation": "La découpe de ``row`` sous forme de tableau ``(H, W, 3)`` uint8 RGB (étirement pour l'affichage).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "an ``ssCell_Crops`` row, or a row naming the object (see the class).",
+      "label": "spacr.crop_store.OmeZarrCropSource.get#1",
+      "source": "an ``ssCell_Crops`` row, or a row naming the object (see the class).",
+      "source_sha256": "d14854195366ff65f7f99ebd6d1aecc417f82eff41d5f6b8ce2a8fc4bf0a2ab8",
+      "translation": "une ligne de ``ssCell_Crops``, ou une ligne identifiant l'objet (voir la classe).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The RGB views of many rows, read pool by pool (see :func:`read_crops`).",
+      "label": "spacr.crop_store.OmeZarrCropSource.get_many#0",
+      "source": "The RGB views of many rows, read pool by pool (see :func:`read_crops`).",
+      "source_sha256": "d21c73a23c4b9a197ca5095644b8d0d8721457db5826ac21fca31c69e7f41883",
+      "translation": "Les vues RGB de nombreuses lignes, lues pool par pool (voir :func:`read_crops`).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "rows as for :meth:`get`; one array per row, in order.",
+      "label": "spacr.crop_store.OmeZarrCropSource.get_many#1",
+      "source": "rows as for :meth:`get`; one array per row, in order.",
+      "source_sha256": "8b3bcb8ff4098a747c153d7f8b7ed747042c229f3982984aeeda5263e6714bd5",
+      "translation": "les lignes comme pour :meth:`get` ; un tableau par ligne, dans l'ordre.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The stored extracted image region: ``(pixels (C, h, w) in its dtype, mask (h, w) bool)``.",
+      "label": "spacr.crop_store.OmeZarrCropSource.get_raw#0",
+      "source": "The stored crop: ``(pixels (C, h, w) in its dtype, mask (h, w) bool)``.",
+      "source_sha256": "5696d36ef293a326eec0fff7ed2a5bf60fb8d37a310b904853debb8e58f43feb",
+      "translation": "La découpe stockée : ``(pixels (C, h, w) in its dtype, mask (h, w) bool)``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "as for :meth:`get`.",
+      "label": "spacr.crop_store.OmeZarrCropSource.get_raw#1",
+      "source": "as for :meth:`get`.",
+      "source_sha256": "3ff13539542d2f9fa1744efa93fe26f8f9970a189d8ca7368ba46695aeb20c89",
+      "translation": "comme pour :meth:`get`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crops/plate=P/well=W.zarr::<class>/pool/<k>@<offset>`` for ``row``.",
+      "label": "spacr.crop_store.OmeZarrCropSource.resolve#0",
+      "source": "``crops/plate=P/well=W.zarr::<class>/pool/<k>@<offset>`` for ``row``.",
+      "source_sha256": "abafdaae59cd7eff48d0af4d44dffbcf617cbd0f71fa3386c7147358a8eb00e1",
+      "translation": "``crops/plate=P/well=W.zarr::<class>/pool/<k>@<offset>`` pour ``row``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "as for :meth:`get`.",
+      "label": "spacr.crop_store.OmeZarrCropSource.resolve#1",
+      "source": "as for :meth:`get`.",
+      "source_sha256": "3ff13539542d2f9fa1744efa93fe26f8f9970a189d8ca7368ba46695aeb20c89",
+      "translation": "comme pour :meth:`get`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The folder of one microplate sample position's extracted image regions of one class: ``<project>/crops/plate=<P>/well=<W>.zarr/<class>``.",
+      "label": "spacr.crop_store.class_dir#0",
+      "source": "The folder of one well's crops of one class: ``<project>/crops/plate=<P>/well=<W>.zarr/<class>``.",
+      "source_sha256": "15b9efd989c81b0d9e356e468d09aff78c74f662440f7be0e06c7b71efa18c19",
+      "translation": "Le dossier des découpes d'une classe d'un puits : ``<project>/crops/plate=<P>/well=<W>.zarr/<class>``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.class_dir#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.crop_store.class_dir#2",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.crop_store.class_dir#3",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "le nom du puits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class.",
+      "label": "spacr.crop_store.class_dir#4",
+      "source": "the object class.",
+      "source_sha256": "9e930e98fe538f85ed542a131c7cda649b0b488bbb823e8c9468e862ae60e3c3",
+      "translation": "la classe d'objets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Close the run's sink and write its rows as the ``ssCell_Crops`` table.",
+      "label": "spacr.crop_store.close_measure_sink#0",
+      "source": "Close the run's sink and write its rows as the ``ssCell_Crops`` table.",
+      "source_sha256": "f90a956e2d4e0df4529ebf893941e9726628b9fc71de63312ebcd6fb85a804b4",
+      "translation": "Ferme le récepteur de sortie de l'exécution et écrit ses lignes dans la table ``ssCell_Crops``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The table lists every committed extracted image region of the project, so the microplate sample positions a resumed run did not touch stay in it.",
+      "label": "spacr.crop_store.close_measure_sink#1",
+      "source": "The table lists every committed crop of the project, so the wells a resumed run did not touch stay in it.",
+      "source_sha256": "bf0df7b070abb2ebc21fc292eda9a2970fdd302202f813d66094944ce3c6cfd3",
+      "translation": "La table répertorie chaque découpe validée du projet, de sorte que les puits auxquels une exécution reprise n'a pas touché y restent.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the number of extracted image regions this run's microplate sample positions and classes now hold.",
+      "label": "spacr.crop_store.close_measure_sink#2",
+      "source": "the number of crops this run's wells and classes now hold.",
+      "source_sha256": "01b8bbd029e38033df6ffb3995b8a8bc62d52497af3bc6c576c4a5f1c2d17ab9",
+      "translation": "le nombre de découpes que contiennent maintenant les puits et les classes de cette exécution.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder the sink was opened for.",
+      "label": "spacr.crop_store.close_measure_sink#3",
+      "source": "the project folder the sink was opened for.",
+      "source_sha256": "b4e5116ec150fddc06260566681d3945d376ebea0daeb7907c5daae9b36568f1",
+      "translation": "le dossier du projet pour lequel le récepteur de sortie a été ouvert.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the ``measurements.db`` that receives ``ssCell_Crops``.",
+      "label": "spacr.crop_store.close_measure_sink#4",
+      "source": "the ``measurements.db`` that receives ``ssCell_Crops``.",
+      "source_sha256": "42ed8d5ff7319bce32707adf7d17f61d4783d8c1f08a584f4de8ef206e945b7d",
+      "translation": "le fichier ``measurements.db`` qui reçoit ``ssCell_Crops``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Every committed extracted-image-region row of the project, by laboratory microplate, microplate sample position and class.",
+      "label": "spacr.crop_store.committed_rows#0",
+      "source": "Every committed crop row of the project, by plate, well and class.",
+      "source_sha256": "302fb8e9ad2c3647db15cdc7e9048f86851343a74651ad006ef3e26eb9fbb889",
+      "translation": "Chaque ligne de découpe validée du projet, par plaque, puits et classe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder holding ``crops/``.",
+      "label": "spacr.crop_store.committed_rows#1",
+      "source": "the project folder holding ``crops/``.",
+      "source_sha256": "73c27629baf197e8f5ffe26cf4845f3f814f3a5c09c93901e8fc196081f29d75",
+      "translation": "le dossier du projet contenant ``crops/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the rows :meth:`CropPoolWriter.commit` recorded, in path order.",
+      "label": "spacr.crop_store.committed_rows#2",
+      "source": "the rows :meth:`CropPoolWriter.commit` recorded, in path order.",
+      "source_sha256": "b2af02b1372ce9c32870f5aeb4a9cc4bea1317a108b8a82a47258dda5a4d8a31",
+      "translation": "les lignes enregistrées par :meth:`CropPoolWriter.commit`, dans l'ordre des chemins.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Render an extracted image region of any number of image data channels to ``(H, W, 3)`` uint8 RGB.",
+      "label": "spacr.crop_store.composite_crop#0",
+      "source": "Render a crop of any number of channels to ``(H, W, 3)`` uint8 RGB.",
+      "source_sha256": "780bf08269284e4e2f92c9e6c8ed8e112eb1ca55629f0343a63f5d1d4f47d9e4",
+      "translation": "Effectue le rendu d'une découpe ayant un nombre quelconque de canaux en ``(H, W, 3)`` uint8 RGB.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(C, H, W)``, in the stored dtype.",
+      "label": "spacr.crop_store.composite_crop#1",
+      "source": "``(C, H, W)``, in the stored dtype.",
+      "source_sha256": "a6b53684f08edda2a6d8daea8493e989bcfe93c783feee21fbd7bc8295dc1b9e",
+      "translation": "``(C, H, W)``, dans le type de données stocké.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "one entry per channel shown, in drawing order:",
+      "label": "spacr.crop_store.composite_crop#2",
+      "source": "one entry per channel shown, in drawing order:",
+      "source_sha256": "cd8bad663db5ca3861100a38d0c1a070d5120580478839af21e3c718d7349950",
+      "translation": "une entrée par canal affiché, dans l'ordre de tracé :",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``{\"channel\": c, \"role\": \"image\", \"colour\": \"green\", \"range\": (lo, hi), \"gamma\": 1.0}``: additive blend of the channel, scaled to ``range`` (stored units; the 0.1-99.9 percentile of the extracted image region when omitted) and raised to ``1 / gamma``.",
+      "label": "spacr.crop_store.composite_crop#3",
+      "source": "``{\"channel\": c, \"role\": \"image\", \"colour\": \"green\", \"range\": (lo, hi), \"gamma\": 1.0}``: additive blend of the channel, scaled to ``range`` (stored units; the 0.1-99.9 percentile of the crop when omitted) and raised to ``1 / gamma``.",
+      "source_sha256": "20754cffa35f1282f96bce9b156377316240d5c1c1ef4928689448f79d484b29",
+      "translation": "``{\"channel\": c, \"role\": \"image\", \"colour\": \"green\", \"range\": (lo, hi), \"gamma\": 1.0}`` : mélange additif du canal, mis à l'échelle de ``range`` (unités stockées ; percentiles 0.1–99.9 de la découpe si omis) et élevé à la puissance ``1 / gamma``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``{\"channel\": c, \"role\": \"outline\", \"colour\": \"yellow\", \"width\": 1, \"threshold\": t}``: the object's outline drawn over the image, from ``mask`` (``channel`` ``\"mask\"``), from a label image data channel (pixels > 0) or from a threshold on the image data channel.",
+      "label": "spacr.crop_store.composite_crop#4",
+      "source": "``{\"channel\": c, \"role\": \"outline\", \"colour\": \"yellow\", \"width\": 1, \"threshold\": t}``: the object's outline drawn over the image, from ``mask`` (``channel`` ``\"mask\"``), from a label channel (pixels > 0) or from a threshold on the channel.",
+      "source_sha256": "bc3f2a4d797900a460917b0e6becc8b49ed65ea578b51265071553eefbbe5226",
+      "translation": "``{\"channel\": c, \"role\": \"outline\", \"colour\": \"yellow\", \"width\": 1, \"threshold\": t}`` : le contour de l'objet tracé sur l'image, à partir de ``mask`` (``channel`` ``\"mask\"``), d'un canal d'étiquettes (pixels > 0) ou d'un seuil appliqué au canal.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the extracted image region's object mask, used by ``channel: \"mask\"`` outlines.",
+      "label": "spacr.crop_store.composite_crop#5",
+      "source": "the crop's object mask, used by ``channel: \"mask\"`` outlines.",
+      "source_sha256": "41c499513bf3bf7aa68df0f2a103594786eeef7f71ea8c486f01c1e06bda0253",
+      "translation": "le masque de l'objet de la découpe, utilisé pour les contours ``channel: \"mask\"``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The per-cell relationship columns of one extracted image region (item 984).",
+      "label": "spacr.crop_store.crop_relationships#0",
+      "source": "The per-cell relationship columns of one crop (item 984).",
+      "source_sha256": "d390ebe3c8b858f8e593fbc2f5792912faea631767aac8d2ce1507d1a9a85395",
+      "translation": "Les colonnes de relations par cellule d'une découpe (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a record from :func:`cut_crops`.",
+      "label": "spacr.crop_store.crop_relationships#1",
+      "source": "a record from :func:`cut_crops`.",
+      "source_sha256": "0f61922f52af37f5788456c7a7c5267e9d6cc7f2c2393807208e8019f89c6c23",
+      "translation": "un enregistrement de :func:`cut_crops`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microscope field of view's label images by class (``cell``, ``nucleus``, ``pathogen`` and organelle classes).",
+      "label": "spacr.crop_store.crop_relationships#2",
+      "source": "the field's label images by class (``cell``, ``nucleus``, ``pathogen`` and organelle classes).",
+      "source_sha256": "0f0cac332ac066178a56a469557154d88c3e098aa59e6636e784ab3aa23f6887",
+      "translation": "les images d'étiquettes du champ par classe (``cell``, ``nucleus``, ``pathogen`` et classes d'organites).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``parent_cell_id``, ``nucleus_id``, ``has_nucleus``, ``n_nuclei``, ``n_pathogens``, ``infected`` and one ``n_<organelle class>`` per organelle class, counted over the object's own pixels; ``annotation``, ``class`` and ``class_score`` empty.",
+      "label": "spacr.crop_store.crop_relationships#3",
+      "source": "``parent_cell_id``, ``nucleus_id``, ``has_nucleus``, ``n_nuclei``, ``n_pathogens``, ``infected`` and one ``n_<organelle class>`` per organelle class, counted over the object's own pixels; ``annotation``, ``class`` and ``class_score`` empty.",
+      "source_sha256": "02c338f1c226a7368899f7abb3fe2583e40a7cdab457751cd38455a54d3e80a2",
+      "translation": "``parent_cell_id``, ``nucleus_id``, ``has_nucleus``, ``n_nuclei``, ``n_pathogens``, ``infected`` et un ``n_<organelle class>`` par classe d'organites, comptés sur les pixels propres à l'objet ; ``annotation``, ``class`` et ``class_score`` sont vides.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Cut each object's bounding box plus ``margin`` out of a microscope field of view.",
+      "label": "spacr.crop_store.cut_crops#0",
+      "source": "Cut each object's bounding box plus ``margin`` out of a field.",
+      "source_sha256": "6ffd442580f61379a938223eb5b9f5b9c09f317b60cae79e2cfd4b68a8f42885",
+      "translation": "Extrait d'un champ la boîte englobante de chaque objet augmentée de ``margin``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field ``(C, Y, X)``.",
+      "label": "spacr.crop_store.cut_crops#1",
+      "source": "the field ``(C, Y, X)``.",
+      "source_sha256": "897017a22f5a69cffbe4d1c5799efbcb7d7c1caf235d5127e48d192c2461e374",
+      "translation": "le champ ``(C, Y, X)``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object labels ``(Y, X)``.",
+      "label": "spacr.crop_store.cut_crops#2",
+      "source": "the object labels ``(Y, X)``.",
+      "source_sha256": "3ce82bea003bcc6c90bf9e8e390f8771a09a942b8114d8150b9b4da791e669f4",
+      "translation": "les étiquettes des objets ``(Y, X)``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "pixels added on every side, clipped at the field edge.",
+      "label": "spacr.crop_store.cut_crops#3",
+      "source": "pixels added on every side, clipped at the field edge.",
+      "source_sha256": "ab804971ef415875c2d3ce9abfd55b56ac3be5acbd7ae98d39898000c3fe7574",
+      "translation": "les pixels ajoutés de chaque côté, limités par le bord du champ.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "set pixels outside the object to 0 in the extracted image region.",
+      "label": "spacr.crop_store.cut_crops#4",
+      "source": "set pixels outside the object to 0 in the crop.",
+      "source_sha256": "4d5ba9b8ecce2e157be426ad87a52317d6024e89b1188482a0fcc43c10986ba5",
+      "translation": "met à 0 dans la découpe les pixels extérieurs à l'objet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the labels to cut, ascending; every label when None.",
+      "label": "spacr.crop_store.cut_crops#5",
+      "source": "the labels to cut, ascending; every label when None.",
+      "source_sha256": "f59a21f281bd661638d6d87aa143d22a54a37f36992ecf54dd4c4c7fb0903cd4",
+      "translation": "les étiquettes à découper, par ordre croissant ; toutes les étiquettes si None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "one record per object: ``object_label``, ``pixels`` ``(C, h, w)``, ``mask`` ``(h, w)`` bool, ``bbox_y0/x0/y1/x1`` (the cut box, end-exclusive), ``margin_px`` and ``clipped_at_edge``.",
+      "label": "spacr.crop_store.cut_crops#6",
+      "source": "one record per object: ``object_label``, ``pixels`` ``(C, h, w)``, ``mask`` ``(h, w)`` bool, ``bbox_y0/x0/y1/x1`` (the cut box, end-exclusive), ``margin_px`` and ``clipped_at_edge``.",
+      "source_sha256": "9f5dffbe305169046a0ef1512c3388c2d6ebbbd12aad2a727b8d0e12e519d79c",
+      "translation": "un enregistrement par objet : ``object_label``, ``pixels`` ``(C, h, w)``, ``mask`` ``(h, w)`` bool, ``bbox_y0/x0/y1/x1`` (la boîte découpée, borne finale exclue), ``margin_px`` et ``clipped_at_edge``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Remove the pools of one microplate sample position and class that no commit lists.",
+      "label": "spacr.crop_store.discard_uncommitted#0",
+      "source": "Remove the pools of one well and class that no commit lists.",
+      "source_sha256": "ab945e8dc44ce304ab092d57926db32ea07ef95da31a334c48defc241598b5a2",
+      "translation": "Supprime les pools d'un puits et d'une classe qu'aucune validation ne répertorie.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "A stopped run leaves whole pools it never committed, and temporary folders; a rerun calls this first, so the class holds only committed pools and new ones are numbered after them.",
+      "label": "spacr.crop_store.discard_uncommitted#1",
+      "source": "A stopped run leaves whole pools it never committed, and temporary folders; a rerun calls this first, so the class holds only committed pools and new ones are numbered after them.",
+      "source_sha256": "c03dd895b1bc98ed2fe317ac7eecbf98194f13d6aecdca455973d0020b78a6eb",
+      "translation": "Une exécution arrêtée laisse des pools entiers qu'elle n'a jamais validés, ainsi que des dossiers temporaires ; une nouvelle exécution appelle d'abord cette fonction, de sorte que la classe ne contient que les pools validés et que les nouveaux sont numérotés à leur suite.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.discard_uncommitted#2",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.crop_store.discard_uncommitted#3",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.crop_store.discard_uncommitted#4",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "le nom du puits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class.",
+      "label": "spacr.crop_store.discard_uncommitted#5",
+      "source": "the object class.",
+      "source_sha256": "9e930e98fe538f85ed542a131c7cda649b0b488bbb823e8c9468e862ae60e3c3",
+      "translation": "la classe d'objets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the pool names removed.",
+      "label": "spacr.crop_store.discard_uncommitted#6",
+      "source": "the pool names removed.",
+      "source_sha256": "80f1ea1d625eff045db2f741a159c7bc54a7fed11dcf177f70289d048f17cb25",
+      "translation": "les noms des pools supprimés.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Write extracted image regions out of the pools as files other tools read (item 984).",
+      "label": "spacr.crop_store.export_crops#0",
+      "source": "Write crops out of the pools as files other tools read (item 984).",
+      "source_sha256": "f725d31ec95b3abe27379876af1b716c60450fa6981d9d352a7dc3123d02e219",
+      "translation": "Écrit les découpes des pools dans des fichiers lisibles par d'autres outils (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "ssCell_Crops rows.",
+      "label": "spacr.crop_store.export_crops#1",
+      "source": "ssCell_Crops rows.",
+      "source_sha256": "18c6818a9fa099929a439c343c7e03a78d5c4812516ecf13a42d999359695eec",
+      "translation": "Lignes de ssCell_Crops.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the folder for the files.",
+      "label": "spacr.crop_store.export_crops#2",
+      "source": "the folder for the files.",
+      "source_sha256": "b877f9a2e2137c0aec3ea565a1a796293f837bcbddfc3b1b3352d9faf344e8b4",
+      "translation": "le dossier des fichiers.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'tiff'`` (all image data channels, the mask as a second file), ``'npy'`` (``(C, h, w)``) or ``'png'`` (first three image data channels, 8-bit only, as PNG (Legacy) extracted image regions are).",
+      "label": "spacr.crop_store.export_crops#3",
+      "source": "``'tiff'`` (all channels, the mask as a second file), ``'npy'`` (``(C, h, w)``) or ``'png'`` (first three channels, 8-bit only, as PNG (Legacy) crops are).",
+      "source_sha256": "f3b4a4634f46a777d1c67176d65f3f5c528480ffa118121f9dd8d30b68f5a2ce",
+      "translation": "``'tiff'`` (tous les canaux, le masque dans un second fichier), ``'npy'`` (``(C, h, w)``) ou ``'png'`` (les trois premiers canaux, 8 bits uniquement, comme les découpes PNG (Legacy)).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the files written.",
+      "label": "spacr.crop_store.export_crops#4",
+      "source": "the files written.",
+      "source_sha256": "337b782db4b0d5be39ee6cad25cec4ea2f99045820c9579954ad3a3044aa6dd0",
+      "translation": "les fichiers écrits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder holding ``crops/``.",
+      "label": "spacr.crop_store.export_crops#5",
+      "source": "the project folder holding ``crops/``.",
+      "source_sha256": "73c27629baf197e8f5ffe26cf4845f3f814f3a5c09c93901e8fc196081f29d75",
+      "translation": "le dossier du projet contenant ``crops/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The one-line form of ``roles``; :func:`parse_channel_roles` reads it back.",
+      "label": "spacr.crop_store.format_channel_roles#0",
+      "source": "The one-line form of ``roles``; :func:`parse_channel_roles` reads it back.",
+      "source_sha256": "480339bf8dfa13be1e898c405bcd2650612e28d1150471057c166a77dff9fd26",
+      "translation": "La forme sur une ligne de ``roles`` ; :func:`parse_channel_roles` la relit.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "channel roles, as :func:`composite_crop` takes them.",
+      "label": "spacr.crop_store.format_channel_roles#1",
+      "source": "channel roles, as :func:`composite_crop` takes them.",
+      "source_sha256": "e1de89716ce8043cf0f5e55c78f2ff118fefd65fc110c07c6f8f408db03376b8",
+      "translation": "les rôles des canaux, sous la forme acceptée par :func:`composite_crop`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The extracted image region Measure's PNG (Legacy) path writes for this object, from its stored extracted image region.",
+      "label": "spacr.crop_store.legacy_png_view#0",
+      "source": "The crop Measure's PNG (Legacy) path writes for this object, from its stored crop.",
+      "source_sha256": "16a524d151440adf5f4dd0fdc5294ff6d89f26c76dd3577a23eeee9e479ae3f8",
+      "translation": "La découpe que le traitement PNG (Legacy) de Mesurer écrit pour cet objet, à partir de sa découpe stockée.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "PNG (Legacy) keeps the object's own pixels, zeroes the rest and cuts a ``png_size`` window centred on the object's centroid (no resize), with ``crop_intensity='raw'`` at the source bit depth. The OME-Zarr extracted image region holds the box around the object and its mask, so the same window is rebuilt exactly; this is what the 986 round trip compares.",
+      "label": "spacr.crop_store.legacy_png_view#1",
+      "source": "PNG (Legacy) keeps the object's own pixels, zeroes the rest and cuts a ``png_size`` window centred on the object's centroid (no resize), with ``crop_intensity='raw'`` at the source bit depth. The OME-Zarr crop holds the box around the object and its mask, so the same window is rebuilt exactly; this is what the 986 round trip compares.",
+      "source_sha256": "261a2172087702f0ee6637084b677522ffa4218186b873b0ea57badcadce9b56",
+      "translation": "PNG (Legacy) conserve les pixels propres à l'objet, met le reste à zéro et extrait une fenêtre ``png_size`` centrée sur le centroïde de l'objet (sans redimensionnement), avec ``crop_intensity='raw'`` à la profondeur de bits d'origine. La découpe OME-Zarr contient la boîte autour de l'objet et son masque, de sorte que la même fenêtre est reconstruite exactement ; c'est ce que compare l'aller-retour du point 986.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(width, height)``, as the ``png_size`` setting.",
+      "label": "spacr.crop_store.legacy_png_view#2",
+      "source": "``(width, height)``, as the ``png_size`` setting.",
+      "source_sha256": "ae7a25bd9b1e9fc92abfe9face6e58b194122bf27fcb6350b2fe16cef0252096",
+      "translation": "``(width, height)``, comme le paramètre ``png_size``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the stored image data channels in PNG file order (red, green, blue), positions in the extracted image region's own image data channel list.",
+      "label": "spacr.crop_store.legacy_png_view#3",
+      "source": "the stored channels in PNG file order (red, green, blue), positions in the crop's own channel list.",
+      "source_sha256": "cb7fbc96ad499c37554ea46eee98138b544c62d3cab20f53516701cb7ff766d0",
+      "translation": "les canaux stockés dans l'ordre du fichier PNG (rouge, vert, bleu), positions dans la liste de canaux propre à la découpe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(height, width, len(planes))``, in the stored dtype.",
+      "label": "spacr.crop_store.legacy_png_view#4",
+      "source": "``(height, width, len(planes))``, in the stored dtype.",
+      "source_sha256": "fd1d643a0042b2da07731290dc2341cd867bee84201add6a2679983099cbddd7",
+      "translation": "``(height, width, len(planes))``, dans le type de données stocké.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder holding ``crops/``.",
+      "label": "spacr.crop_store.legacy_png_view#5",
+      "source": "the project folder holding ``crops/``.",
+      "source_sha256": "73c27629baf197e8f5ffe26cf4845f3f814f3a5c09c93901e8fc196081f29d75",
+      "translation": "le dossier du projet contenant ``crops/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the extracted image region's ``ssCell_Crops`` row.",
+      "label": "spacr.crop_store.legacy_png_view#6",
+      "source": "the crop's ``ssCell_Crops`` row.",
+      "source_sha256": "7f54851fd8031fa3da00ac97b8c641d364c77c249f03b6bc04b7a517673b9cff",
+      "translation": "la ligne ``ssCell_Crops`` de la découpe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The project's saved channel-role presets, ``{name: roles}``; empty when none.",
+      "label": "spacr.crop_store.load_channel_presets#0",
+      "source": "The project's saved channel-role presets, ``{name: roles}``; empty when none.",
+      "source_sha256": "6324f1f06fb0bcae3709495355d6f47af96343fde7afba4620d8dc6ce8095578",
+      "translation": "Les préréglages de rôles de canaux enregistrés pour le projet, ``{name: roles}`` ; vide s'il n'y en a aucun.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.load_channel_presets#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Whether ``root`` holds OME-Zarr extracted image regions: a per-microplate sample position store and its table.",
+      "label": "spacr.crop_store.ome_zarr_crops_exist#0",
+      "source": "Whether ``root`` holds OME-Zarr crops: a per-well store and its table.",
+      "source_sha256": "a156d26133aab10b7f0a931d913f1d15b7d2600eb1b9d14fb71779d00c930121",
+      "translation": "Indique si ``root`` contient des découpes OME-Zarr : un magasin par puits et sa table.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder (the one holding ``crops/`` and ``measurements/measurements.db``).",
+      "label": "spacr.crop_store.ome_zarr_crops_exist#1",
+      "source": "the project folder (the one holding ``crops/`` and ``measurements/measurements.db``).",
+      "source_sha256": "490fd573a1b78f7513fa978809529c211aa1f8c732c72736d026e1a6a1cafe4f",
+      "translation": "le dossier du projet (celui qui contient ``crops/`` et ``measurements/measurements.db``).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Start the extracted image region sink of one Measure run in this (the writing) process.",
+      "label": "spacr.crop_store.open_measure_sink#0",
+      "source": "Start the crop sink of one Measure run in this (the writing) process.",
+      "source_sha256": "df10383777cd05b6f11b5dd7920eb9409d585a26c1481b86b7bb2a588b3b87de",
+      "translation": "Démarre le récepteur de découpes d'une exécution de Mesurer dans ce processus (celui qui écrit).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder (the measurements folder's parent).",
+      "label": "spacr.crop_store.open_measure_sink#1",
+      "source": "the project folder (the measurements folder's parent).",
+      "source_sha256": "9c86ae89eb6513fe638984ba72d240f7b39acb5b5720c554688b23ed76817b20",
+      "translation": "le dossier du projet (le parent du dossier des mesures).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the run's field files, in the order they are committed.",
+      "label": "spacr.crop_store.open_measure_sink#2",
+      "source": "the run's field files, in the order they are committed.",
+      "source_sha256": "de985da6fc68c319280222596ae44d660bfc6050a45f907feb0f72886db8e234",
+      "translation": "les fichiers des champs de l'exécution, dans l'ordre de leur validation.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Channel roles from Annotate's one-line form; empty text gives ``[]``.",
+      "label": "spacr.crop_store.parse_channel_roles#0",
+      "source": "Channel roles from Annotate's one-line form; empty text gives ``[]``.",
+      "source_sha256": "51d48d15ab1de473c1713bcd759bd3570858ac3aacd9d11f6d7b097ea59cb68a",
+      "translation": "Rôles des canaux du formulaire sur une ligne d'Annoter ; un texte vide donne ``[]``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Roles are separated by ``;``, fields by ``:``: ``channel:role:colour`` then ``key=value`` options. For example ``0:image:blue; 1:image:green:gamma=1.5:range=100-4000; mask:outline:yellow:width=2; 3:outline:magenta:threshold=900``.",
+      "label": "spacr.crop_store.parse_channel_roles#1",
+      "source": "Roles are separated by ``;``, fields by ``:``: ``channel:role:colour`` then ``key=value`` options. For example ``0:image:blue; 1:image:green:gamma=1.5:range=100-4000; mask:outline:yellow:width=2; 3:outline:magenta:threshold=900``.",
+      "source_sha256": "417974c4b4f6601a85832cfc433fcd809c686234e3ad6321bf155a6785dcff16",
+      "translation": "Les rôles sont séparés par ``;``, les champs par ``:`` : ``channel:role:colour`` puis les options ``key=value``. Par exemple ``0:image:blue; 1:image:green:gamma=1.5:range=100-4000; mask:outline:yellow:width=2; 3:outline:magenta:threshold=900``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the roles in the one-line form.",
+      "label": "spacr.crop_store.parse_channel_roles#2",
+      "source": "the roles in the one-line form.",
+      "source_sha256": "697c2abbc5689d101533cebae2441b4967e7f8553bd354212c726e33c6273ced",
+      "translation": "les rôles sous leur forme sur une ligne.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The attributes stored on one microplate sample position's class group (see :class:`CropPoolWriter`).",
+      "label": "spacr.crop_store.pool_attributes#0",
+      "source": "The attributes stored on one well's class group (see :class:`CropPoolWriter`).",
+      "source_sha256": "189c8fe5ba1e9d0021b044621cc7aec4eca6fc5438bd06c66b44bb89fcc8673b",
+      "translation": "Les attributs stockés sur le groupe de classe d'un puits (voir :class:`CropPoolWriter`).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.pool_attributes#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.crop_store.pool_attributes#2",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.crop_store.pool_attributes#3",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "le nom du puits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class.",
+      "label": "spacr.crop_store.pool_attributes#4",
+      "source": "the object class.",
+      "source_sha256": "9e930e98fe538f85ed542a131c7cda649b0b488bbb823e8c9468e862ae60e3c3",
+      "translation": "la classe d'objets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the ``spacr`` attributes; empty when the class has none.",
+      "label": "spacr.crop_store.pool_attributes#5",
+      "source": "the ``spacr`` attributes; empty when the class has none.",
+      "source_sha256": "37afdb80a92014529689a4255c8131cd21944e436ec5aaf348fc6c5074c1dc99",
+      "translation": "les attributs ``spacr`` ; vide si la classe n'en a aucun.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "What :meth:`CropPoolWriter.commit` recorded for one microplate sample position and class.",
+      "label": "spacr.crop_store.read_commit#0",
+      "source": "What :meth:`CropPoolWriter.commit` recorded for one well and class.",
+      "source_sha256": "4397e26858ea875e74ad15afbc91a6dc33fc727e1072d38e572caa3de7d63b99",
+      "translation": "Ce que :meth:`CropPoolWriter.commit` a enregistré pour un puits et une classe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.read_commit#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.crop_store.read_commit#2",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name.",
+      "label": "spacr.crop_store.read_commit#3",
+      "source": "the well name.",
+      "source_sha256": "8b063c3b2ccc8f5f7eab3ff47093d5fc2b1d402e10b98d26144847c357045e15",
+      "translation": "le nom du puits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class.",
+      "label": "spacr.crop_store.read_commit#4",
+      "source": "the object class.",
+      "source_sha256": "9e930e98fe538f85ed542a131c7cda649b0b488bbb823e8c9468e862ae60e3c3",
+      "translation": "la classe d'objets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the record with its ``rows``, or None when nothing is committed.",
+      "label": "spacr.crop_store.read_commit#5",
+      "source": "the record with its ``rows``, or None when nothing is committed.",
+      "source_sha256": "9046e92d52b8db0b690f4659227b157bda55c9890dd5681c8c7f46483b9c4373",
+      "translation": "l'enregistrement avec ses ``rows``, ou None si rien n'est validé.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "One extracted image region and its mask from its ssCell_Crops row.",
+      "label": "spacr.crop_store.read_crop#0",
+      "source": "One crop and its mask from its ssCell_Crops row.",
+      "source_sha256": "0807c1a1fca69c4af93be8ca2c08f3a57353a93595ea026655050e6d44fd4c65",
+      "translation": "Une découpe et son masque à partir de sa ligne ssCell_Crops.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.read_crop#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the extracted image region's table row (``crop_store``, ``crop_array``, ``offset``, ``height``, ``width``, ``mask_offset``).",
+      "label": "spacr.crop_store.read_crop#2",
+      "source": "the crop's table row (``crop_store``, ``crop_array``, ``offset``, ``height``, ``width``, ``mask_offset``).",
+      "source_sha256": "ceda6e6b4cb631ed7576d9ea913545c7aabc9e70e162e4c415787f9dcbbb3532",
+      "translation": "la ligne de table de la découpe (``crop_store``, ``crop_array``, ``offset``, ``height``, ``width``, ``mask_offset``).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "keep the pixels around the object; False zeroes them.",
+      "label": "spacr.crop_store.read_crop#3",
+      "source": "keep the pixels around the object; False zeroes them.",
+      "source_sha256": "b414baa8ef2b235bb2591ee92e37d83072d8e8e32825fe06d10edaf60306f378",
+      "translation": "conserve les pixels autour de l'objet ; False les met à zéro.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(h, w)`` to resize to, nearest-neighbour and therefore deterministic; the stored size when None.",
+      "label": "spacr.crop_store.read_crop#4",
+      "source": "``(h, w)`` to resize to, nearest-neighbour and therefore deterministic; the stored size when None.",
+      "source_sha256": "e9185ed9a88b4ad63582853ecf45fd827143d5649ca80b119c01de3b93aa350b",
+      "translation": "``(h, w)`` auquel redimensionner, par plus proche voisin et donc de façon déterministe ; la taille stockée si None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Many extracted image regions at once, each pool opened once and read in one slice.",
+      "label": "spacr.crop_store.read_crops#0",
+      "source": "Many crops at once, each pool opened once and read in one slice.",
+      "source_sha256": "b6207b7c9c6c7bdc7f4a0fb9e637d6a5ddbea9113a449d5402383974c6427ffd",
+      "translation": "De nombreuses découpes à la fois, chaque pool étant ouvert une seule fois et lu en une seule tranche.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The same extracted image regions as :func:`read_crop` row by row, in the order given. Reading extracted image region by extracted image region opens the pool and decodes its chunk again for every extracted image region; here the rows of one pool are read together, as one slice from the first to the last of them.",
+      "label": "spacr.crop_store.read_crops#1",
+      "source": "The same crops as :func:`read_crop` row by row, in the order given. Reading crop by crop opens the pool and decodes its chunk again for every crop; here the rows of one pool are read together, as one slice from the first to the last of them.",
+      "source_sha256": "9f3c5e1446eb05d91afd0478208f2a004c08d1a8c29f00a0a10683b2faff340b",
+      "translation": "Les mêmes découpes que :func:`read_crop` ligne par ligne, dans l'ordre indiqué. La lecture découpe par découpe ouvre le pool et décode à nouveau son bloc pour chaque découpe ; ici, les lignes d'un pool sont lues ensemble, en une seule tranche de la première à la dernière.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.read_crops#2",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``ssCell_Crops`` rows.",
+      "label": "spacr.crop_store.read_crops#3",
+      "source": "``ssCell_Crops`` rows.",
+      "source_sha256": "fb6d87cfae04bfa2b1771a63562c9c1c59a2d283a336ca51049ce762b6e2e5fc",
+      "translation": "Lignes de ``ssCell_Crops``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "keep the pixels around each object; False zeroes them.",
+      "label": "spacr.crop_store.read_crops#4",
+      "source": "keep the pixels around each object; False zeroes them.",
+      "source_sha256": "8b46da117f78f05bdfcf0603dd034fa027416562755cd58a8750b6313ca4bfac",
+      "translation": "conserve les pixels autour de chaque objet ; False les met à zéro.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(h, w)`` to resize every extracted image region to (nearest-neighbour).",
+      "label": "spacr.crop_store.read_crops#5",
+      "source": "``(h, w)`` to resize every crop to (nearest-neighbour).",
+      "source_sha256": "b55eb586c8607b738470a78a3c0758c20e1e0c837a8d93118e061eb440c2f2f2",
+      "translation": "``(h, w)`` auquel redimensionner chaque découpe (plus proche voisin).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "one ``(pixels (C, h, w), mask (h, w) bool)`` per row.",
+      "label": "spacr.crop_store.read_crops#6",
+      "source": "one ``(pixels (C, h, w), mask (h, w) bool)`` per row.",
+      "source_sha256": "4e1161e62bc2768bec61006f99e8c9b0bbe7ca5d5c5a38689c3495e56cb7e38a",
+      "translation": "un ``(pixels (C, h, w), mask (h, w) bool)`` par ligne.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Pass one microscope field of view's extracted image regions to the run's sink (the parent's write handler).",
+      "label": "spacr.crop_store.receive_measure_crops#0",
+      "source": "Pass one field's crops to the run's sink (the parent's write handler).",
+      "source_sha256": "a35a66a4675b59f5c5c4e7d69bc82a96d74e7233e195af080f01d9e852e91106",
+      "translation": "Transmet les découpes d'un champ au récepteur de sortie de l'exécution (le gestionnaire d'écriture du processus parent).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder the sink was opened for.",
+      "label": "spacr.crop_store.receive_measure_crops#1",
+      "source": "the project folder the sink was opened for.",
+      "source_sha256": "b4e5116ec150fddc06260566681d3945d376ebea0daeb7907c5daae9b36568f1",
+      "translation": "le dossier du projet pour lequel le récepteur de sortie a été ouvert.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field's file name.",
+      "label": "spacr.crop_store.receive_measure_crops#2",
+      "source": "the field's file name.",
+      "source_sha256": "262f74797b8458735de924bebc16f72b7766bb2d3ab1ac4be770d1040676fee1",
+      "translation": "le nom de fichier du champ.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microscope field of view's extracted image regions, one entry per object class.",
+      "label": "spacr.crop_store.receive_measure_crops#3",
+      "source": "the field's crops, one entry per object class.",
+      "source_sha256": "a5f64e0cf31c522f513fbbdd47c9e40b5857a035a7e3cda3063ee80872c0ddd0",
+      "translation": "les découpes du champ, une entrée par classe d'objets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Send one microscope field of view's extracted image regions of one class to the run's writer (item 984).",
+      "label": "spacr.crop_store.record_measure_crops#0",
+      "source": "Send one field's crops of one class to the run's writer (item 984).",
+      "source_sha256": "b673a4de944dda1c9375d456e57e296deadcc3224d7c3306ece308de7087f8b3",
+      "translation": "Envoie les découpes d'une classe d'un champ à l'instance d'écriture de l'exécution (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "A field with several classes goes through :func:`record_measure_field_crops` in one call instead, so the sink takes the whole field at once.",
+      "label": "spacr.crop_store.record_measure_crops#1",
+      "source": "A field with several classes goes through :func:`record_measure_field_crops` in one call instead, so the sink takes the whole field at once.",
+      "source_sha256": "c186f793690ca11ad7b142fb9bc4ee8b7668926b5f397f500e279bde002f9620",
+      "translation": "Un champ comportant plusieurs classes passe plutôt par :func:`record_measure_field_crops` en un seul appel, de sorte que le récepteur de sortie prend le champ entier à la fois.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the Measure settings (``src`` names the merged folder).",
+      "label": "spacr.crop_store.record_measure_crops#2",
+      "source": "the Measure settings (``src`` names the merged folder).",
+      "source_sha256": "ebfefc8c2a7830bdb63270f74f3a94335d9d098abfdeb2b117a97bc6e1f0befe",
+      "translation": "les paramètres de Mesurer (``src`` désigne le dossier des images fusionnées).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field's file name, ``<plate>_<well>_<field>``.",
+      "label": "spacr.crop_store.record_measure_crops#3",
+      "source": "the field's file name, ``<plate>_<well>_<field>``.",
+      "source_sha256": "ac327402153d1124f57c59c57c83d81903c2f4e5b97f79c3e87083652655d73a",
+      "translation": "le nom de fichier du champ, ``<plate>_<well>_<field>``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class, e.g. ``'cell'``.",
+      "label": "spacr.crop_store.record_measure_crops#4",
+      "source": "the object class, e.g. ``'cell'``.",
+      "source_sha256": "cc92a6366092f22922c92c98cac06da06a3318264f1dceb59b46f3ef01b59dca",
+      "translation": "la classe d'objets, p. ex. ``'cell'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "extracted image regions from :func:`cut_crops`.",
+      "label": "spacr.crop_store.record_measure_crops#5",
+      "source": "crops from :func:`cut_crops`.",
+      "source_sha256": "cd5f9ab1667cc693ebeec960ae77b8e50f0f6957024d808bab001b0e60862ad0",
+      "translation": "les découpes de :func:`cut_crops`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the number of stored channels.",
+      "label": "spacr.crop_store.record_measure_crops#6",
+      "source": "the number of stored channels.",
+      "source_sha256": "ce2022ba9a1674dc4f095ad6e8f737185d80fcc4fd232e108b32b1f6f0c95731",
+      "translation": "le nombre de canaux stockés.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the stored dtype.",
+      "label": "spacr.crop_store.record_measure_crops#7",
+      "source": "the stored dtype.",
+      "source_sha256": "eba0611bb99c6748e0028ae87d667d6eee99e2a4f06d0c1d215a549d00266a2e",
+      "translation": "le type de données stocké.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Send every class of one microscope field of view's extracted image regions to the run's writer (item 984).",
+      "label": "spacr.crop_store.record_measure_field_crops#0",
+      "source": "Send every class of one field's crops to the run's writer (item 984).",
+      "source_sha256": "f5976faa15a458ca7c2718b663404f9b8b823f9a3dbe8ed422dbcdd094a6f105",
+      "translation": "Envoie toutes les classes de découpes d'un champ à l'instance d'écriture de l'exécution (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(object_type, crops, channels, dtype)`` per class.",
+      "label": "spacr.crop_store.record_measure_field_crops#1",
+      "source": "``(object_type, crops, channels, dtype)`` per class.",
+      "source_sha256": "7dbfaeee3054109634ff3969801858ea705fa5c8a97a79433bc6c16e49cf2a84",
+      "translation": "``(object_type, crops, channels, dtype)`` par classe.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Inside a Measure worker the extracted image regions join the microscope field of view's write packet and reach the parent's sink through the write work list; in a single-process run they go to the sink directly. Either way only the parent writes the store, and it takes the microscope field of view whole, so microscope fields of view commit in plan order.",
+      "label": "spacr.crop_store.record_measure_field_crops#2",
+      "source": "Inside a Measure worker the crops join the field's write packet and reach the parent's sink through the write queue; in a single-process run they go to the sink directly. Either way only the parent writes the store, and it takes the field whole, so fields commit in plan order.",
+      "source_sha256": "c78f1cec71d2d57161e55f7502c7c47d2ed251140925d0a475dd589c28d7c24c",
+      "translation": "Dans un processus de travail de Mesurer, les découpes rejoignent le paquet d'écriture du champ et atteignent le récepteur du processus parent par la file d'écriture ; dans une exécution à un seul processus, elles vont directement au récepteur. Dans les deux cas, seul le parent écrit dans le magasin et il prend le champ entier, de sorte que les champs sont validés dans l'ordre du plan.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the Measure settings (``src`` names the merged folder).",
+      "label": "spacr.crop_store.record_measure_field_crops#3",
+      "source": "the Measure settings (``src`` names the merged folder).",
+      "source_sha256": "ebfefc8c2a7830bdb63270f74f3a94335d9d098abfdeb2b117a97bc6e1f0befe",
+      "translation": "les paramètres de Mesurer (``src`` désigne le dossier des images fusionnées).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field's file name, ``<plate>_<well>_<field>``.",
+      "label": "spacr.crop_store.record_measure_field_crops#4",
+      "source": "the field's file name, ``<plate>_<well>_<field>``.",
+      "source_sha256": "ac327402153d1124f57c59c57c83d81903c2f4e5b97f79c3e87083652655d73a",
+      "translation": "le nom de fichier du champ, ``<plate>_<well>_<field>``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Save ``roles`` as preset ``name`` for this project (checked by a test render).",
+      "label": "spacr.crop_store.save_channel_preset#0",
+      "source": "Save ``roles`` as preset ``name`` for this project (checked by a test render).",
+      "source_sha256": "b26d5d42f74e326849cfb5327682664b7019a10ac71b044a502124a7f9eb1657",
+      "translation": "Enregistre ``roles`` comme préréglage ``name`` pour ce projet (vérifié par un rendu d'essai).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the project folder.",
+      "label": "spacr.crop_store.save_channel_preset#1",
+      "source": "the project folder.",
+      "source_sha256": "c4edcca7ec8015bf06eba2b31e3564bb8428ee8c4d2dfa0b5ed5c0a9457209c0",
+      "translation": "le dossier du projet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the preset's name; an existing preset of that name is replaced.",
+      "label": "spacr.crop_store.save_channel_preset#2",
+      "source": "the preset's name; an existing preset of that name is replaced.",
+      "source_sha256": "50641f21d598e0b838d6f3e37beb23f98e0c9e52dfaf33ad31a6472068cc9fc4",
+      "translation": "le nom du préréglage ; un préréglage existant portant ce nom est remplacé.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "channel roles, as :func:`composite_crop` takes them.",
+      "label": "spacr.crop_store.save_channel_preset#3",
+      "source": "channel roles, as :func:`composite_crop` takes them.",
+      "source_sha256": "e1de89716ce8043cf0f5e55c78f2ff118fefd65fc110c07c6f8f408db03376b8",
+      "translation": "les rôles des canaux, sous la forme acceptée par :func:`composite_crop`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The measured-mask record for the microscope field of view at ``merged_path``.",
+      "label": "spacr.crops.measured_masks_path#0",
+      "source": "The measured-mask record for the field at ``merged_path``.",
+      "source_sha256": "655c81ec97c8c11e6baeb693b3ca02e8e3236723270486785751bfe5a6d064a8",
+      "translation": "L'enregistrement des masques mesurés du champ à ``merged_path``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the ``merged/<field>.npy``.",
+      "label": "spacr.crops.measured_masks_path#1",
+      "source": "the ``merged/<field>.npy``.",
+      "source_sha256": "cfdcc3e5587f5d0838bf2d48827453248709b27f366818adee160c6c7a515f62",
+      "translation": "le fichier ``merged/<field>.npy``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the record's path, ``merged/.spacr_measured_masks/<field>.npz``; it may not exist.",
+      "label": "spacr.crops.measured_masks_path#2",
+      "source": "the record's path, ``merged/.spacr_measured_masks/<field>.npz``; it may not exist.",
+      "source_sha256": "5129dedd7149cc48ac090bafa831d1b3e42e1b5db3e77717667ea47c576dda80",
+      "translation": "le chemin de l'enregistrement, ``merged/.spacr_measured_masks/<field>.npz`` ; il peut ne pas exister.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Whether a microscope field of view's measured-mask record applies to the microscope field of view as it is now.",
+      "label": "spacr.crops.measured_masks_state#0",
+      "source": "Whether a field's measured-mask record applies to the field as it is now.",
+      "source_sha256": "a333547602aa977b78a6d51e76fd5c689a6a678c45121b4b64df97f8a3016773",
+      "translation": "Indique si l'enregistrement des masques mesurés d'un champ s'applique à son état actuel.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": ":class:`MergedField` uses a current record and ignores a stale one (the microscope field of view was segmented again after Measure ran), cutting extracted image regions from the microscope field of view's own labels. A converter or an exporter that must reproduce what Measure measured asks here first and refuses ``'stale'``.",
+      "label": "spacr.crops.measured_masks_state#1",
+      "source": ":class:`MergedField` uses a current record and ignores a stale one (the field was segmented again after Measure ran), cutting crops from the field's own labels. A converter or an exporter that must reproduce what Measure measured asks here first and refuses ``'stale'``.",
+      "source_sha256": "351f80b715ba8ed9894af0fc5348f6f10826fe330546f7b92cfa3ad32fc9a7f5",
+      "translation": ":class:`MergedField` utilise un enregistrement à jour et ignore un enregistrement périmé (le champ a été segmenté à nouveau après l'exécution de Mesurer), en découpant à partir des étiquettes propres au champ. Un convertisseur ou un exportateur qui doit reproduire ce que Mesurer a mesuré consulte d'abord cette fonction et refuse ``'stale'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the ``merged/<field>.npy``.",
+      "label": "spacr.crops.measured_masks_state#2",
+      "source": "the ``merged/<field>.npy``.",
+      "source_sha256": "cfdcc3e5587f5d0838bf2d48827453248709b27f366818adee160c6c7a515f62",
+      "translation": "le fichier ``merged/<field>.npy``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'none'`` (no record), ``'current'`` or ``'stale'``.",
+      "label": "spacr.crops.measured_masks_state#3",
+      "source": "``'none'`` (no record), ``'current'`` or ``'stale'``.",
+      "source_sha256": "4060afed40052f710046257798129abddba40fcc98e3bb6f1ca402b4b94c794a",
+      "translation": "``'none'`` (aucun enregistrement), ``'current'`` ou ``'stale'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the record exists but cannot be read.",
+      "label": "spacr.crops.measured_masks_state#4",
+      "source": "the record exists but cannot be read.",
+      "source_sha256": "97c08bc3c835096a96815cc6cfcea9972f5c35b96c5bff4e16f17752f56695e8",
+      "translation": "l'enregistrement existe mais ne peut pas être lu.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Decode an extracted-image-region PNG at its stored bit depth, in the file's slot order.",
+      "label": "spacr.crops.read_crop_array#0",
+      "source": "Decode a crop PNG at its stored bit depth, in the file's slot order.",
+      "source_sha256": "e4a5b15eda8f49869a21d8d4b106e0558d6d8784ad5cb5b8cb869b80777fa1d7",
+      "translation": "Décode une découpe PNG à sa profondeur de bits stockée, dans l'ordre des emplacements de canaux du fichier.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "PIL narrows a 16-bit colour PNG to 8 bit when it opens it, so a raw extracted image region is decoded with OpenCV instead.",
+      "label": "spacr.crops.read_crop_array#1",
+      "source": "PIL narrows a 16-bit colour PNG to 8 bit when it opens it, so a raw crop is decoded with OpenCV instead.",
+      "source_sha256": "8e54ce4bd75e934e36b98dec185ef992c5c7d46272c8e6452ec4e06938f1c775",
+      "translation": "PIL réduit un PNG couleur de 16 bits à 8 bits à l'ouverture ; une découpe brute est donc décodée avec OpenCV à la place.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a path, or a binary stream positioned anywhere.",
+      "label": "spacr.crops.read_crop_array#2",
+      "source": "a path, or a binary stream positioned anywhere.",
+      "source_sha256": "55fc093ad76735da2cf07bb241cef06226ef1e1ff833ad1190471d0bca6f4493",
+      "translation": "un chemin, ou un flux binaire positionné n'importe où.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(H, W, C)`` array, red slot first, in the stored dtype.",
+      "label": "spacr.crops.read_crop_array#3",
+      "source": "``(H, W, C)`` array, red slot first, in the stored dtype.",
+      "source_sha256": "9b7358df13d425b1c468c58b242973a669080ec090eb3ce76adf5a1d13b5d1d8",
+      "translation": "Tableau ``(H, W, C)``, emplacement rouge en premier, dans le type de données stocké.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the bytes are not a readable image.",
+      "label": "spacr.crops.read_crop_array#4",
+      "source": "the bytes are not a readable image.",
+      "source_sha256": "6aa2d029518695dde316f5f25fb1df1416f0790ae5adf3be27f1a17196fad59f",
+      "translation": "les octets ne constituent pas une image lisible.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "spaCR's images as OME-Zarr 0.5 plates, and one reader for every image format (item 983, alpha).",
+      "label": "spacr.image_store#0",
+      "source": "spaCR's images as OME-Zarr 0.5 plates, and one reader for every image format (item 983, alpha).",
+      "source_sha256": "fde2aa78421651978e768f6cc1fec7ca151e8d7d16dd5f5677cc53de6670adaa",
+      "translation": "Les images de spaCR sous forme de plaques OME-Zarr 0.5 et un lecteur pour chaque format d'image (point 983, alpha).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "A laboratory microplate is one store, ``<root>/<plate>.ome.zarr``, laid out the HCS way: row, column (the microplate sample position) and microscope field of view groups, each microscope field of view an OME-NGFF 0.5 image (zarr-format 3, one zstd shard per microscope field of view) with its masks under ``labels/``.",
+      "label": "spacr.image_store#1",
+      "source": "A plate is one store, ``<root>/<plate>.ome.zarr``, laid out the HCS way: row, column (the well) and field groups, each field an OME-NGFF 0.5 image (zarr-format 3, one zstd shard per field) with its masks under ``labels/``.",
+      "source_sha256": "6a40c49a6d5e47d935e50b80d3fb3d5f4d67cb61a090d9d6370f319dbbe34b68",
+      "translation": "Une plaque constitue un magasin, ``<root>/<plate>.ome.zarr``, organisé selon HCS : groupes de ligne, de colonne (le puits) et de champ, chaque champ étant une image OME-NGFF 0.5 (format zarr 3, un fragment zstd par champ) avec ses masques sous ``labels/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "One writer per file. Field workers never write the store. They return their arrays through the process pool's result pipe; the parent process, the only writer, writes each field whole, in plan order, and records it in the store's commit ledger only after all of the field's arrays are on disk. A rerun skips committed fields and overwrites the rest, so a stopped run resumes and a repeated run is byte-identical.",
+      "label": "spacr.image_store#2",
+      "source": "ONE WRITER PER FILE. Field workers never write the store. They return their arrays through the process pool's result pipe; the parent process, the only writer, writes each field whole, in plan order, and records it in the store's commit ledger only after all of the field's arrays are on disk. A rerun skips committed fields and overwrites the rest, so a stopped run resumes and a repeated run is byte-identical.",
+      "source_sha256": "f75e8bf30f1a1d7ce809bcd152e3a3b604aa4e9e9e303ebfd25bbec2021a29e3",
+      "translation": "UN SEUL PROCESSUS D'ÉCRITURE PAR FICHIER. Les processus de travail des champs n'écrivent jamais dans le magasin. Ils renvoient leurs tableaux par le canal de résultats du pool de processus ; le processus parent, seul à écrire, écrit chaque champ en entier, dans l'ordre du plan, et ne l'inscrit dans le registre des validations du magasin qu'une fois tous les tableaux du champ sur disque. Une nouvelle exécution ignore les champs validés et écrase les autres, de sorte qu'une exécution arrêtée reprend et qu'une exécution répétée est identique octet pour octet.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Readers take any of npy, npz, TIFF, PNG or an OME-Zarr field, and find the format from what is on disk, never from a setting.",
+      "label": "spacr.image_store#3",
+      "source": "Readers take any of npy, npz, TIFF, PNG or an OME-Zarr field, and find the format from what is on disk, never from a setting.",
+      "source_sha256": "ea5f6f2b8bba22748b62b538b8af246b89d4d65b2fdb0cca568e491926b9d9d6",
+      "translation": "Les lecteurs acceptent npy, npz, TIFF, PNG ou un champ OME-Zarr et déterminent le format à partir du contenu sur disque, jamais d'un paramètre.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The only writer of one plate's OME-Zarr store (item 983).",
+      "label": "spacr.image_store.PlateWriter#0",
+      "source": "The only writer of one plate's OME-Zarr store (item 983).",
+      "source_sha256": "049f40f5d4229513a8c64c95ec1c4a14963553c4732a727b6e6fc486a6e00f3a",
+      "translation": "L'unique instance d'écriture du magasin OME-Zarr d'une plaque (point 983).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the folder that holds ``<plate>.ome.zarr``.",
+      "label": "spacr.image_store.PlateWriter#1",
+      "source": "the folder that holds ``<plate>.ome.zarr``.",
+      "source_sha256": "29e24edd0e8c0445f2675abe36acf5f6b35767e7b50df44b3c930fb71d19534d",
+      "translation": "le dossier contenant ``<plate>.ome.zarr``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate name.",
+      "label": "spacr.image_store.PlateWriter#2",
+      "source": "the plate name.",
+      "source_sha256": "3e28f17163ab61e4bed912e3d61e38e6b11f90475fa391987588657c1a75314e",
+      "translation": "le nom de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the image data channels' names, written to ``omero``.",
+      "label": "spacr.image_store.PlateWriter#3",
+      "source": "the image channels' names, written to ``omero``.",
+      "source_sha256": "afb97677c8920ceb2f28913f9276399e24e7498d33256a4f1a52c940f7267c3a",
+      "translation": "les noms des canaux de l'image, écrits dans ``omero``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a :class:`spacr.layers.Spacing` for the pixel size, or None to record pixels with no physical unit.",
+      "label": "spacr.image_store.PlateWriter#4",
+      "source": "a :class:`spacr.layers.Spacing` for the pixel size, or None to record pixels with no physical unit.",
+      "source_sha256": "39a05b4903f110acacfedd91142970c196e5bdf8af3bf9858afe8db1fcaf00ba",
+      "translation": "un :class:`spacr.layers.Spacing` pour la taille des pixels, ou None pour enregistrer des pixels sans unité physique.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Microscope fields of view are written whole with :meth:`write_field`; the laboratory microplate and microplate sample position metadata are rewritten from the ledger after each microscope field of view, so a reader opening the store mid-run sees only committed microscope fields of view. Open (or start) the laboratory microplate store and read its commit ledger.",
+      "label": "spacr.image_store.PlateWriter#5",
+      "source": "Fields are written whole with :meth:`write_field`; the plate and well metadata are rewritten from the ledger after each field, so a reader opening the store mid-run sees only committed fields. Open (or start) the plate store and read its commit ledger.",
+      "source_sha256": "2d98787852763f829a09ba8981755856682f2c7d7571f3489644dfd86ad64dc1",
+      "translation": "Les champs sont écrits en entier avec :meth:`write_field` ; les métadonnées de plaque et de puits sont réécrites à partir du registre après chaque champ, de sorte qu'un lecteur qui ouvre le magasin en cours d'exécution ne voit que les champs validés. Ouvre (ou crée) le magasin de la plaque et lit son registre des validations.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Whether the field is written and recorded.",
+      "label": "spacr.image_store.PlateWriter.committed#0",
+      "source": "Whether the field is written and recorded.",
+      "source_sha256": "8bd154118271291c2a3a94d23e563d95b32aba89a4a1befeecf63a30efac7a62",
+      "translation": "Indique si le champ est écrit et enregistré.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name, e.g. ``'B03'``.",
+      "label": "spacr.image_store.PlateWriter.committed#1",
+      "source": "the well name, e.g. ``'B03'``.",
+      "source_sha256": "8c8850b97a100b960362d1acbaf7b7d08587e7d2e2affad77514614c86f7e181",
+      "translation": "le nom du puits, p. ex. ``'B03'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field number.",
+      "label": "spacr.image_store.PlateWriter.committed#2",
+      "source": "the field number.",
+      "source_sha256": "30eb56c9f7c025b03e333eefa61b6de05c9d6affb44545032f1f3ec501523ddd",
+      "translation": "le numéro du champ.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Write one microscope field of view and its label images, then commit it.",
+      "label": "spacr.image_store.PlateWriter.write_field#0",
+      "source": "Write one field and its label images, then commit it.",
+      "source_sha256": "c71bf3418699216797e57ee026f5ec3fe1583780c5e49e69df3429263e62cfc3",
+      "translation": "Écrit un champ et ses images d'étiquettes, puis le valide.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field ``(C, Y, X)`` or ``(Y, X)``, or None to write labels only.",
+      "label": "spacr.image_store.PlateWriter.write_field#1",
+      "source": "the field ``(C, Y, X)`` or ``(Y, X)``, or None to write labels only.",
+      "source_sha256": "89fef8591f79c332459234479064481c3c9c070ffb0b7eb4a26c499cff58d32f",
+      "translation": "le champ ``(C, Y, X)`` ou ``(Y, X)``, ou None pour n'écrire que les étiquettes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field's store structured-data name.",
+      "label": "spacr.image_store.PlateWriter.write_field#3",
+      "source": "the field's store key.",
+      "source_sha256": "ff89861652916cc7dd0a1f077299e119ee258c33f4eb8f1fbeb871bf3b35b3f8",
+      "translation": "la clé du champ dans le magasin.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Each array is written to a temporary group, closed and renamed into place, and the field enters the ledger last, so a crash leaves an uncommitted field that the next run rewrites.",
+      "label": "spacr.image_store.PlateWriter.write_field#4",
+      "source": "Each array is written to a temporary group, closed and renamed into place, and the field enters the ledger last, so a crash leaves an uncommitted field that the next run rewrites.",
+      "source_sha256": "2b8750f611cb0f1c79f31f1f06612484097b39a1a913f1078e38186989ca8911",
+      "translation": "Chaque tableau est écrit dans un groupe temporaire, fermé et renommé vers son emplacement définitif, puis le champ est inscrit dans le registre en dernier, de sorte qu'un plantage laisse un champ non validé que l'exécution suivante réécrit.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Only ``(C, Y, X)`` and ``(Y, X)`` are written. A microscope field of view with time or depth axes is refused before anything is written, never flattened into channels: the HCS layout here has no ``t`` or ``z`` axis yet.",
+      "label": "spacr.image_store.PlateWriter.write_field#5",
+      "source": "Only ``(C, Y, X)`` and ``(Y, X)`` are written. A field with time or depth axes is refused before anything is written, never flattened into channels: the HCS layout here has no ``t`` or ``z`` axis yet.",
+      "source_sha256": "a288e5a9214a181e376bc618132dd14c092fbd702bdb503fc4d55c2688ef9c67",
+      "translation": "Seuls ``(C, Y, X)`` et ``(Y, X)`` sont écrits. Un champ avec des axes de temps ou de profondeur est refusé avant toute écriture et n'est jamais aplati en canaux : la structure HCS utilisée ici n'a pas encore d'axe ``t`` ou ``z``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name, e.g. ``'B03'``.",
+      "label": "spacr.image_store.PlateWriter.write_field#6",
+      "source": "the well name, e.g. ``'B03'``.",
+      "source_sha256": "8c8850b97a100b960362d1acbaf7b7d08587e7d2e2affad77514614c86f7e181",
+      "translation": "le nom du puits, p. ex. ``'B03'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field number.",
+      "label": "spacr.image_store.PlateWriter.write_field#7",
+      "source": "the field number.",
+      "source_sha256": "30eb56c9f7c025b03e333eefa61b6de05c9d6affb44545032f1f3ec501523ddd",
+      "translation": "le numéro du champ.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the image is not 2-D or 3-D, or a label image is not 2-D.",
+      "label": "spacr.image_store.PlateWriter.write_field#8",
+      "source": "the image is not 2-D or 3-D, or a label image is not 2-D.",
+      "source_sha256": "3eecb6264f4a3bbd4399f6b5ade14146ca7057007633bbb6cdf7a0a05313d2c4",
+      "translation": "l'image n'est ni 2-D ni 3-D, ou une image d'étiquettes n'est pas 2-D.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Write every ``<src>/merged`` microscope field of view in ``fmt`` (Mask Generation, item 983).",
+      "label": "spacr.image_store.export_merged#0",
+      "source": "Write every ``<src>/merged`` field in ``fmt`` (Mask Generation, item 983).",
+      "source_sha256": "e8d3138d0a3f79daad0d6e42e1d0707826a8feb22c40d95d8e240337f38738e2",
+      "translation": "Écrit chaque champ de ``<src>/merged`` dans ``fmt`` (Génération de masques, point 983).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the run root holding ``merged/`` and its image layer layout.",
+      "label": "spacr.image_store.export_merged#1",
+      "source": "the run root holding ``merged/`` and its plane layout.",
+      "source_sha256": "32740a9d2fee47c43d757f9a28c658ec59a8acf006723d7efcd2d7eb0f70915c",
+      "translation": "la racine de l'exécution contenant ``merged/`` et son agencement des plans.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'ome-zarr'``: one plate store per plate under ``<src>/images/``, with the masks as labels. ``'tiff'``: ``<src>/merged_tiff/<field>.tif`` (the image, image layers first) and ``<field>_<object>_mask.tif`` beside it, each in its own dtype. ``'npy'`` writes nothing.",
+      "label": "spacr.image_store.export_merged#2",
+      "source": "``'ome-zarr'``: one plate store per plate under ``<src>/images/``, with the masks as labels. ``'tiff'``: ``<src>/merged_tiff/<field>.tif`` (the image, planes first) and ``<field>_<object>_mask.tif`` beside it, each in its own dtype. ``'npy'`` writes nothing.",
+      "source_sha256": "0e529db8c0e77b4fe629a87434a591669830cf7ef6e97be8bd35d2bd6e58c274",
+      "translation": "``'ome-zarr'`` : un magasin par plaque sous ``<src>/images/``, avec les masques sous forme d'étiquettes. ``'tiff'`` : ``<src>/merged_tiff/<field>.tif`` (l'image, plans en premier) et ``<field>_<object>_mask.tif`` à côté, chacun dans son propre type de données. ``'npy'`` n'écrit rien.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "processes reading the merged stacks; the parent writes.",
+      "label": "spacr.image_store.export_merged#3",
+      "source": "processes reading the merged stacks; the parent writes.",
+      "source_sha256": "29da2d077fa14e999385a94b48b59545bee23fc248f18689faee438d27267f8a",
+      "translation": "les processus qui lisent les piles fusionnées ; le parent écrit.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "names for the intensity image data channels.",
+      "label": "spacr.image_store.export_merged#4",
+      "source": "names for the intensity channels.",
+      "source_sha256": "50c5f02e6f6753afc4abe670669642c004eba7809a4e14c8c62f99f7fbc5d896",
+      "translation": "les noms des canaux d'intensité.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "per plate, what :func:`run_fields` reports; or ``tiff``, the files written.",
+      "label": "spacr.image_store.export_merged#5",
+      "source": "per plate, what :func:`run_fields` reports; or ``tiff``, the files written.",
+      "source_sha256": "ff8168d6e2d0c5d5cdc2efcfb0aa9766a0a3c69198d328d3497d0369587b10b0",
+      "translation": "par plaque, ce que rapporte :func:`run_fields` ; ou, pour ``tiff``, les fichiers écrits.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The merged ``.npy`` stacks stay in place: Measure and the extracted image region readers read them until their readers move to :func:`read_image` (item 984).",
+      "label": "spacr.image_store.export_merged#6",
+      "source": "The merged ``.npy`` stacks stay in place: Measure and the crop readers read them until their readers move to :func:`read_image` (item 984).",
+      "source_sha256": "e1380103cfa9d3887afb2b4c688efa8746833337da018fa6b7fa54c0a0bbb66c",
+      "translation": "Les piles ``.npy`` fusionnées restent en place : Mesurer et les lecteurs de découpes les lisent jusqu'à ce que leurs lecteurs passent à :func:`read_image` (point 984).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The short store path of one field: ``B/3/0``.",
+      "label": "spacr.image_store.field_key#0",
+      "source": "The short store path of one field: ``B/3/0``.",
+      "source_sha256": "1ee46ce052d2d79f8b8ad91103606b85f160a9a87ca951b088bccc1dfa5758c5",
+      "translation": "Le chemin court d'un champ dans le magasin : ``B/3/0``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name, e.g. ``'B03'``.",
+      "label": "spacr.image_store.field_key#1",
+      "source": "the well name, e.g. ``'B03'``.",
+      "source_sha256": "8c8850b97a100b960362d1acbaf7b7d08587e7d2e2affad77514614c86f7e181",
+      "translation": "le nom du puits, p. ex. ``'B03'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the field number.",
+      "label": "spacr.image_store.field_key#2",
+      "source": "the field number.",
+      "source_sha256": "30eb56c9f7c025b03e333eefa61b6de05c9d6affb44545032f1f3ec501523ddd",
+      "translation": "le numéro du champ.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``<row>/<column>/<field>`` inside the plate store.",
+      "label": "spacr.image_store.field_key#3",
+      "source": "``<row>/<column>/<field>`` inside the plate store.",
+      "source_sha256": "0bda9040cbc640f960734937ed1f70b1990e719ca5208ea2181f389f655e184f",
+      "translation": "``<row>/<column>/<field>`` à l'intérieur du magasin de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "One image from any format spaCR writes (item 983).",
+      "label": "spacr.image_store.read_image#0",
+      "source": "One image from any format spaCR writes (item 983).",
+      "source_sha256": "be90d00d71f079dd885be3b8af70271a66ef5a041e42307855136afe2a12c695",
+      "translation": "Une image dans n'importe quel format écrit par spaCR (point 983).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "an ``.npy``, ``.npz`` (its first array), ``.tif``/``.tiff`` or ``.png`` file, an OME-Zarr image, or a plate store with ``key``.",
+      "label": "spacr.image_store.read_image#1",
+      "source": "an ``.npy``, ``.npz`` (its first array), ``.tif``/``.tiff`` or ``.png`` file, an OME-Zarr image, or a plate store with ``key``.",
+      "source_sha256": "8ba27616c338b4a10d70319e48b95d08e1c250b06e9c0ca5d36b86333a673e1e",
+      "translation": "un fichier ``.npy``, ``.npz`` (son premier tableau), ``.tif``/``.tiff`` ou ``.png``, une image OME-Zarr ou un magasin de plaque avec ``key``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a microscope field of view inside a laboratory microplate store, as ``'B/3/0'`` or ``('B03', 0)``.",
+      "label": "spacr.image_store.read_image#2",
+      "source": "a field inside a plate store, as ``'B/3/0'`` or ``('B03', 0)``.",
+      "source_sha256": "6dba513424f837180d4b717bdc7d3cebeda7289bbe126ac8fb98baf91a6bdada",
+      "translation": "un champ à l'intérieur d'un magasin de plaque, sous la forme ``'B/3/0'`` ou ``('B03', 0)``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the array with the dtype, axes and values it was written with.",
+      "label": "spacr.image_store.read_image#3",
+      "source": "the array with the dtype, axes and values it was written with.",
+      "source_sha256": "e86a023cfbbc2ffa7ab24a828086f59876b946cbd55f8b02aaa06981ee312bde",
+      "translation": "le tableau avec le type de données, les axes et les valeurs utilisés lors de son écriture.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "One label image: an OME-Zarr microscope field of view's ``labels/<name>``, or a mask file.",
+      "label": "spacr.image_store.read_labels#0",
+      "source": "One label image: an OME-Zarr field's ``labels/<name>``, or a mask file.",
+      "source_sha256": "3eb757d1032da9e3ca39f3ede192eefe1c4449b5defbc90189e1f061016960af",
+      "translation": "Une image d'étiquettes : ``labels/<name>`` d'un champ OME-Zarr, ou un fichier de masque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a laboratory microplate store (with ``key``), an OME-Zarr microscope field of view with a ``labels/<name>`` image, a label image itself, or a mask file in any format :func:`read_image` reads.",
+      "label": "spacr.image_store.read_labels#1",
+      "source": "a plate store (with ``key``), an OME-Zarr field with a ``labels/<name>`` image, a label image itself, or a mask file in any format :func:`read_image` reads.",
+      "source_sha256": "682f456e82d193ac9ea7ac411570e4147c495035cfe2d5c480ea549efd209a89",
+      "translation": "un magasin de plaque (avec ``key``), un champ OME-Zarr contenant une image ``labels/<name>``, une image d'étiquettes elle-même, ou un fichier de masque dans tout format lu par :func:`read_image`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the object class, such as ``'cell'``.",
+      "label": "spacr.image_store.read_labels#2",
+      "source": "the object class, such as ``'cell'``.",
+      "source_sha256": "b38c2cbc36eef2795d1c643d10be128c58e2151187b17353684d830474c4c061",
+      "translation": "la classe d'objets, telle que ``'cell'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Run ``work`` over the fields of ``plan`` and write each through ``writer``.",
+      "label": "spacr.image_store.run_fields#0",
+      "source": "Run ``work`` over the fields of ``plan`` and write each through ``writer``.",
+      "source_sha256": "e535cefa10da10c24673ef1bd9560df795eec139f5504f6a0fd762e3e898ede5",
+      "translation": "Exécute ``work`` sur les champs de ``plan`` et écrit chacun d'eux via ``writer``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(well, field, task)`` in the order fields are committed.",
+      "label": "spacr.image_store.run_fields#1",
+      "source": "``(well, field, task)`` in the order fields are committed.",
+      "source_sha256": "c6d2f8059eaab3a87d769931b72fa4718a9815744d785992dc3d4aaff7a15af4",
+      "translation": "``(well, field, task)`` dans l'ordre de validation des champs.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a top-level, spawn-safe function of ``task`` returning ``(image or None, {object class: labels})``.",
+      "label": "spacr.image_store.run_fields#2",
+      "source": "a top-level, spawn-safe function of ``task`` returning ``(image or None, {object class: labels})``.",
+      "source_sha256": "fb8e48ddc3be699d69d77fede964784c8c9257798b801582ceb915d4858004b2",
+      "translation": "une fonction de ``task`` définie au niveau du module, compatible avec le mode de démarrage spawn, qui renvoie ``(image or None, {object class: labels})``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the plate's single writer.",
+      "label": "spacr.image_store.run_fields#3",
+      "source": "the plate's single writer.",
+      "source_sha256": "fe1c012fe0854c3e4fde85b157d312eacfde1de9a04855cb0158f4eb56f15862",
+      "translation": "l'unique instance d'écriture de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "worker processes; 1 executions in this process. With more, the first field is computed here and its size sets how many workers the free RAM can hold (the RAM guard, ``'image_store'``).",
+      "label": "spacr.image_store.run_fields#4",
+      "source": "worker processes; 1 runs in this process. With more, the first field is computed here and its size sets how many workers the free RAM can hold (the RAM guard, ``'image_store'``).",
+      "source_sha256": "0ada2f5ed055199d0d62a4e26513ba142a8d1e06cbd4c6677978a412259650c4",
+      "translation": "les processus de travail ; 1 exécute le travail dans ce processus. Avec plusieurs processus, le premier champ est calculé ici et sa taille détermine combien de processus de travail peuvent tenir dans la RAM libre (la protection de la RAM, ``'image_store'``).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "how many fields may be in flight beyond the next one to commit (the reorder buffer); default ``2 * workers``. Memory stays at most ``ahead`` fields of results.",
+      "label": "spacr.image_store.run_fields#5",
+      "source": "how many fields may be in flight beyond the next one to commit (the reorder buffer); default ``2 * workers``. Memory stays at most ``ahead`` fields of results.",
+      "source_sha256": "aef2bae2028838ff9fa8d1888b7af832f15f26bb7fecb8408331fb46a86e3fb5",
+      "translation": "le nombre de champs pouvant être en cours de traitement au-delà du prochain à valider (le tampon de réordonnancement) ; valeur par défaut ``2 * workers``. La mémoire contient au plus les résultats de ``ahead`` champs.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'spawn'``, ``'forkserver'`` or ``'fork'``; the platform default when None.",
+      "label": "spacr.image_store.run_fields#6",
+      "source": "``'spawn'``, ``'forkserver'`` or ``'fork'``; the platform default when None.",
+      "source_sha256": "81a46d911f9a0d2e7beec9e95a90ea7a0e4de5a41496cd94a98679cb7166af23",
+      "translation": "``'spawn'``, ``'forkserver'`` ou ``'fork'`` ; la valeur par défaut de la plateforme si None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``written``, ``skipped`` (already committed) and ``keys``.",
+      "label": "spacr.image_store.run_fields#7",
+      "source": "``written``, ``skipped`` (already committed) and ``keys``.",
+      "source_sha256": "7c3605ef5745e8d7e5d75a010bf4e3fd684da715c161f71772a3fe068f5b6691",
+      "translation": "``written``, ``skipped`` (déjà validés) et ``keys``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "Results come back through the pool's result pipe; nothing is shared between processes but those pickled arrays. Fields are committed in plan order whatever order they finish in, so a rerun writes the same bytes.",
+      "label": "spacr.image_store.run_fields#8",
+      "source": "Results come back through the pool's result pipe; nothing is shared between processes but those pickled arrays. Fields are committed in plan order whatever order they finish in, so a rerun writes the same bytes.",
+      "source_sha256": "91604bfd1f0564f8f4416ac29a2c1e6a7decb30a972fb290ac5f050e0ce92fa9",
+      "translation": "Les résultats reviennent par le canal de résultats du pool ; rien n'est partagé entre les processus à part ces tableaux sérialisés avec pickle. Les champs sont validés dans l'ordre du plan, quel que soit leur ordre d'achèvement, de sorte qu'une nouvelle exécution écrit les mêmes octets.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'plate1_B03_2.npy'`` -> ``('plate1', 'B03', 2)``, spaCR's field name.",
+      "label": "spacr.image_store.split_field_name#0",
+      "source": "``'plate1_B03_2.npy'`` -> ``('plate1', 'B03', 2)``, spaCR's field name.",
+      "source_sha256": "627e31dca558b63597a26306cb989b8a138c3fd59ba8697deb52c1b797a3e6a2",
+      "translation": "``'plate1_B03_2.npy'`` -> ``('plate1', 'B03', 2)``, le nom de champ de spaCR.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "The name is read as :func:`spacr.schema.parse_field_stem` reads it: the laboratory microplate (with its underscores escaped), the microplate sample position and the microscope field of view, then the timepoint Mask Generation appends to every stack (``plate1_E01_10_1.npy`` is plate1, E01, microscope field of view 10), which a single microscope field of view's identity leaves out.",
+      "label": "spacr.image_store.split_field_name#1",
+      "source": "The name is read as :func:`spacr.schema.parse_field_stem` reads it: the plate (with its underscores escaped), the well and the field, then the timepoint Mask Generation appends to every stack (``plate1_E01_10_1.npy`` is plate1, E01, field 10), which a single field's identity leaves out.",
+      "source_sha256": "78d122ae9aab3805bfb79e18f25187a9fc53d871e66018a6f98d0941ceff196c",
+      "translation": "Le nom est lu comme le lit :func:`spacr.schema.parse_field_stem` : la plaque (avec ses traits de soulignement échappés), le puits et le champ, puis le point temporel que Génération de masques ajoute à chaque pile (``plate1_E01_10_1.npy`` correspond à plate1, E01, champ 10), lequel est omis dans l'identité d'un champ individuel.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "a field file name or path, ``<plate>_<well>_<field>[_<time>]``.",
+      "label": "spacr.image_store.split_field_name#2",
+      "source": "a field file name or path, ``<plate>_<well>_<field>[_<time>]``.",
+      "source_sha256": "d817347ba5380cd92357c8ee55c34b66f80882ebb9359d24f4794097e594ed61",
+      "translation": "un nom de fichier de champ ou un chemin, ``<plate>_<well>_<field>[_<time>]``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the name has another shape.",
+      "label": "spacr.image_store.split_field_name#4",
+      "source": "the name has another shape.",
+      "source_sha256": "bf157348d2089b11f6a837faeaedea75500b8aa907f1f78c0f8755ec29e30c07",
+      "translation": "le nom a une autre forme.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``'B03'`` -> ``('B', '3')``: the HCS row and column names.",
+      "label": "spacr.image_store.split_well#0",
+      "source": "``'B03'`` -> ``('B', '3')``: the HCS row and column names.",
+      "source_sha256": "db033ba5bf13b031f0325d22d9f243b4fe70658e8a5c54501c69d72c5bad0b60",
+      "translation": "``'B03'`` -> ``('B', '3')`` : les noms de ligne et de colonne HCS.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the microplate sample position name, a row letter and a column number.",
+      "label": "spacr.image_store.split_well#1",
+      "source": "the well name, a row letter and a column number.",
+      "source_sha256": "2c17ee130b418f2cbc9879addc00afbdb55d5072edfb104e7a7f40fa71f66ec9",
+      "translation": "le nom du puits, une lettre de ligne et un numéro de colonne.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(row, column)`` as the plate store names them.",
+      "label": "spacr.image_store.split_well#2",
+      "source": "``(row, column)`` as the plate store names them.",
+      "source_sha256": "4d79229d46d221477764d868bd88735f2e2f5012e521e8b15dde182d0c8806aa",
+      "translation": "``(row, column)`` tels que les nomme le magasin de la plaque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    },
+    {
+      "context": "the name does not start with a row letter.",
+      "label": "spacr.image_store.split_well#3",
+      "source": "the name does not start with a row letter.",
+      "source_sha256": "bacc6cb6ea9caccf0f5223af015723e77d16b8be76d10a2fc22928733a9a4b93",
+      "translation": "le nom ne commence pas par une lettre de ligne.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+    }
+  ],
+  "schema": 1,
+  "review_method": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+}

@@ -1,0 +1,119 @@
+{
+  "language": "sv",
+  "records": [
+    {
+      "key": "mask_image_format",
+      "source": "Mask image format",
+      "source_sha256": "46c2d188271ff4ba13f18857bf2e840cb7b370ca505952aeaf66a02fb1ef1291",
+      "table": "setting_labels",
+      "translation": "Maskbildformat"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "Crop image format",
+      "source_sha256": "71c2b78d88b2fe371d58a09570254a389c4ef4af044a7716e32c9ab3caf1b877",
+      "table": "setting_labels",
+      "translation": "Utsnittsformat"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "Crops per shard",
+      "source_sha256": "2fc44020f4b046e11187175b9232ede54acc42f927115744e9ac800e3d481184",
+      "table": "setting_labels",
+      "translation": "Utsnitt per segment"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Crop margin px",
+      "source_sha256": "fc1cf7729ba181f1c960e4a180b9ea65d39d9d4f1560338a291f9d98544001ab",
+      "table": "setting_labels",
+      "translation": "Utsnittsmarginal i px"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Crop zero outside",
+      "source_sha256": "dda6f00de73b37524f787425613ac440cce99327e99bc874e48c25806aa6ef51",
+      "table": "setting_labels",
+      "translation": "Nollställ utsnitt utanför objektet"
+    },
+    {
+      "key": "mask_image_format",
+      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+      "table": "setting_tooltips",
+      "translation": "Formatet som Maskgenerering också skriver sina sammanfogade bildfält i. 'npy' skriver enbart merged/*.npy, som tidigare. 'ome-zarr' lägger till ett OME-Zarr 0.5-lager per platta under images/, med namngivna kanaler för varje bildfält och dess masker lagrade som etiketter, vilket napari och Fiji kan öppna. 'tiff' lägger till merged_tiff/<field>.tif och en <field>_<object>_mask.tif per objekt. De sammanfogade .npy-filerna finns kvar, så att senare steg läser dem som tidigare. Standard 'npy'. Alfa."
+    },
+    {
+      "key": "crop_image_format",
+      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+      "table": "setting_tooltips",
+      "translation": "Formatet som Mät skriver objektutsnitt i. 'png' skriver PNG-mapparna som tidigare (standard). 'ome-zarr' skriver varje objekts avgränsningsruta plus crop_margin_px, med fullt bitdjup och alla kanaler, tillsammans med dess egen mask, till ett lager per brunn: crops/plate=<plate>/well=<well>.zarr, listat i measurements.db, tabellen ssCell_Crops. Utsnitten behåller sina råa intensiteter; inget sträcks. Alfa."
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
+      "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
+      "table": "setting_tooltips",
+      "translation": "Hur många utsnitt som hamnar i ett lagrat segment när crop_image_format är 'ome-zarr'. Större segment betyder färre filer; varje segment hålls i RAM innan det skrivs. Sänks automatiskt, med en loggrad, när det finns lite ledigt RAM. Standard 4096. Alfa."
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+      "table": "setting_tooltips",
+      "translation": "Pixlar som behålls runt varje objekts avgränsningsruta i OME-Zarr-utsnitt, avklippta vid bildens kant. Standard 0. Alfa."
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+      "table": "setting_tooltips",
+      "translation": "Lagra OME-Zarr-utsnitt med varje pixel utanför objektet satt till 0. Av som standard: pixlarna runt objektet behålls, och en läsare kan fortfarande dölja dem med den lagrade masken. Alfa."
+    },
+    {
+      "key": "(none: RGB view)",
+      "source": "(none: RGB view)",
+      "source_sha256": "ca5c2392c3404f643ecc35861b4e30b35e1d59c1551620303280a97d3c368bb6",
+      "table": "ui",
+      "translation": "(ingen: RGB-vy)"
+    },
+    {
+      "key": "Channel roles",
+      "source": "Channel roles",
+      "source_sha256": "75a4f2b62a6cb4a8230946db87d435a2c90dfbbc2b7a91fac8034f62d10f1d4d",
+      "table": "ui",
+      "translation": "Kanalroller"
+    },
+    {
+      "key": "Channel roles (OME-Zarr)",
+      "source": "Channel roles (OME-Zarr)",
+      "source_sha256": "fce333ea701a4e45384fe2d5e3428d035c394f03a1e77184d80db179e145ad42",
+      "table": "ui",
+      "translation": "Kanalroller (OME-Zarr)"
+    },
+    {
+      "key": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source_sha256": "0997af358804f6b7cf8c0129905afdca24fc6ecd40f4ed49443b8883a1455376",
+      "table": "ui",
+      "translation": "Så här ritas OME-Zarr-utsnitt: valfritt antal kanaler, åtskilda med ';'. Varje post är channel:role:colour, följt av alternativ. Rollen image blandar in kanalen i dess färg (range=lo-hi i lagrade enheter, gamma=g). Rollen outline ritar objektets kontur från masken, en etikettkanal eller threshold=t, med bredden width=w pixlar. Förinställningar sparas per projekt. En tom post ritar de tre första lagrade kanalerna som RGB. PNG-utsnitt behåller R, G, B."
+    },
+    {
+      "key": "Preset name:",
+      "source": "Preset name:",
+      "source_sha256": "ca4e4e73aab177cef8aa39b4710ac071f819bdef8dc4b19b3ef7bdecf79481f6",
+      "table": "ui",
+      "translation": "Förinställningens namn:"
+    },
+    {
+      "key": "Save preset",
+      "source": "Save preset",
+      "source_sha256": "362a1376e64153c9c61e05747623902bbfd604f6cfa0f5d2b9d6ef3c4b3869f9",
+      "table": "ui",
+      "translation": "Spara förinställning"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+  "schema": 1
+}

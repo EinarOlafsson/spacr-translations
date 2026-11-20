@@ -1,0 +1,119 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "key": "mask_image_format",
+      "source": "Mask image format",
+      "source_sha256": "46c2d188271ff4ba13f18857bf2e840cb7b370ca505952aeaf66a02fb1ef1291",
+      "table": "setting_labels",
+      "translation": "掩膜图像格式"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "Crop image format",
+      "source_sha256": "71c2b78d88b2fe371d58a09570254a389c4ef4af044a7716e32c9ab3caf1b877",
+      "table": "setting_labels",
+      "translation": "裁剪图格式"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "Crops per shard",
+      "source_sha256": "2fc44020f4b046e11187175b9232ede54acc42f927115744e9ac800e3d481184",
+      "table": "setting_labels",
+      "translation": "每个分片的裁剪图数"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Crop margin px",
+      "source_sha256": "fc1cf7729ba181f1c960e4a180b9ea65d39d9d4f1560338a291f9d98544001ab",
+      "table": "setting_labels",
+      "translation": "裁剪边距 px"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Crop zero outside",
+      "source_sha256": "dda6f00de73b37524f787425613ac440cce99327e99bc874e48c25806aa6ef51",
+      "table": "setting_labels",
+      "translation": "裁剪图对象外置零"
+    },
+    {
+      "key": "mask_image_format",
+      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+      "table": "setting_tooltips",
+      "translation": "Mask Generation 额外写出合并视野时使用的格式。'npy' 与以前一样，只写入 merged/*.npy。'ome-zarr' 为每个板添加一个 OME-Zarr 0.5 存储，位于 images/ 下，为每个视野的通道命名，并将掩膜存为标签，可由 napari 和 Fiji 打开。'tiff' 添加 merged_tiff/<field>.tif，并为每个对象添加一个 <field>_<object>_mask.tif。合并的 .npy 文件仍保留，因此后续步骤可像以前一样读取。默认 'npy'。Alpha。"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+      "table": "setting_tooltips",
+      "translation": "Measure 写入对象裁剪图时使用的格式。'png' 与以前一样写入 PNG 文件夹（默认）。'ome-zarr' 将每个对象的边界框加 crop_margin_px，以完整位深、全部通道及其自身掩膜，写入按孔组织的存储：crops/plate=<plate>/well=<well>.zarr，并在 measurements.db 的 ssCell_Crops 表中列出。裁剪图保留原始强度，不进行任何拉伸。Alpha。"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
+      "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
+      "table": "setting_tooltips",
+      "translation": "crop_image_format 为 'ome-zarr' 时，每个存储分片包含多少个裁剪图。分片越大，文件越少；每个分片在写入前都会保存在 RAM 中。空闲 RAM 不足时会自动降低此值，并记录一条日志。默认 4096。Alpha。"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+      "table": "setting_tooltips",
+      "translation": "OME-Zarr 裁剪图中每个对象边界框周围保留的像素数，在图像边缘截断。默认 0。Alpha。"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+      "table": "setting_tooltips",
+      "translation": "存储 OME-Zarr 裁剪图时，将对象外的每个像素设为 0。默认关闭：保留对象周围的像素，读取器仍可使用存储的掩膜隐藏它们。Alpha。"
+    },
+    {
+      "key": "(none: RGB view)",
+      "source": "(none: RGB view)",
+      "source_sha256": "ca5c2392c3404f643ecc35861b4e30b35e1d59c1551620303280a97d3c368bb6",
+      "table": "ui",
+      "translation": "(无：RGB 视图)"
+    },
+    {
+      "key": "Channel roles",
+      "source": "Channel roles",
+      "source_sha256": "75a4f2b62a6cb4a8230946db87d435a2c90dfbbc2b7a91fac8034f62d10f1d4d",
+      "table": "ui",
+      "translation": "通道角色"
+    },
+    {
+      "key": "Channel roles (OME-Zarr)",
+      "source": "Channel roles (OME-Zarr)",
+      "source_sha256": "fce333ea701a4e45384fe2d5e3428d035c394f03a1e77184d80db179e145ad42",
+      "table": "ui",
+      "translation": "通道角色 (OME-Zarr)"
+    },
+    {
+      "key": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source_sha256": "0997af358804f6b7cf8c0129905afdca24fc6ecd40f4ed49443b8883a1455376",
+      "table": "ui",
+      "translation": "OME-Zarr 裁剪图的绘制方式：可使用任意数量的通道，以 ';' 分隔。每项的格式为 channel:role:colour，后接选项。image 角色按指定颜色混合通道（range=lo-hi 使用存储单位，gamma=g）。outline 角色根据掩膜、标签通道或 threshold=t 绘制对象轮廓，线宽为 width=w 像素。预设按项目保存。留空时将存储的前三个通道绘制为 RGB。PNG 裁剪图保留 R、G、B。"
+    },
+    {
+      "key": "Preset name:",
+      "source": "Preset name:",
+      "source_sha256": "ca4e4e73aab177cef8aa39b4710ac071f819bdef8dc4b19b3ef7bdecf79481f6",
+      "table": "ui",
+      "translation": "预设名称："
+    },
+    {
+      "key": "Save preset",
+      "source": "Save preset",
+      "source_sha256": "362a1376e64153c9c61e05747623902bbfd604f6cfa0f5d2b9d6ef3c4b3869f9",
+      "table": "ui",
+      "translation": "保存预设"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+  "schema": 1
+}

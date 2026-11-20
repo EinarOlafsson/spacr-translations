@@ -1,0 +1,119 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "key": "mask_image_format",
+      "source": "Mask image format",
+      "source_sha256": "46c2d188271ff4ba13f18857bf2e840cb7b370ca505952aeaf66a02fb1ef1291",
+      "table": "setting_labels",
+      "translation": "마스크 이미지 형식"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "Crop image format",
+      "source_sha256": "71c2b78d88b2fe371d58a09570254a389c4ef4af044a7716e32c9ab3caf1b877",
+      "table": "setting_labels",
+      "translation": "크롭 이미지 형식"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "Crops per shard",
+      "source_sha256": "2fc44020f4b046e11187175b9232ede54acc42f927115744e9ac800e3d481184",
+      "table": "setting_labels",
+      "translation": "샤드당 크롭 수"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Crop margin px",
+      "source_sha256": "fc1cf7729ba181f1c960e4a180b9ea65d39d9d4f1560338a291f9d98544001ab",
+      "table": "setting_labels",
+      "translation": "크롭 여백 px"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Crop zero outside",
+      "source_sha256": "dda6f00de73b37524f787425613ac440cce99327e99bc874e48c25806aa6ef51",
+      "table": "setting_labels",
+      "translation": "크롭 객체 바깥을 0으로 설정"
+    },
+    {
+      "key": "mask_image_format",
+      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+      "table": "setting_tooltips",
+      "translation": "Mask Generation 이 병합된 시야를 추가로 쓰는 형식입니다. 'npy' 는 이전처럼 merged/*.npy 만 씁니다. 'ome-zarr' 는 플레이트마다 OME-Zarr 0.5 저장소 하나를 images/ 아래에 추가합니다. 각 시야의 채널에 이름을 붙이고 마스크를 레이블로 저장하며 napari 와 Fiji 에서 열 수 있습니다. 'tiff' 는 merged_tiff/<field>.tif 와 객체마다 <field>_<object>_mask.tif 하나를 추가합니다. 병합된 .npy 파일은 유지되므로 이후 단계에서 이전처럼 읽을 수 있습니다. 기본값 'npy'. 알파."
+    },
+    {
+      "key": "crop_image_format",
+      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+      "table": "setting_tooltips",
+      "translation": "Measure 가 객체 크롭을 쓰는 형식입니다. 'png' 는 이전처럼 PNG 폴더에 씁니다(기본값). 'ome-zarr' 는 각 객체의 경계 상자에 crop_margin_px 를 더한 영역을 전체 비트 깊이와 모든 채널, 자체 마스크와 함께 웰별 저장소에 씁니다: crops/plate=<plate>/well=<well>.zarr. 이는 measurements.db 의 ssCell_Crops 테이블에 나열됩니다. 크롭은 원시 강도를 유지하며 어떤 값도 늘리지 않습니다. 알파."
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
+      "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
+      "table": "setting_tooltips",
+      "translation": "crop_image_format 이 'ome-zarr' 일 때 저장된 샤드 하나에 들어가는 크롭 수입니다. 샤드가 크면 파일 수가 줄어듭니다. 각 샤드는 쓰기 전에 RAM 에 보관됩니다. 여유 RAM 이 부족하면 로그 한 줄을 남기고 자동으로 낮춥니다. 기본값 4096. 알파."
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+      "table": "setting_tooltips",
+      "translation": "OME-Zarr 크롭에서 각 객체의 경계 상자 주변에 유지할 픽셀 수이며 이미지 가장자리에서 잘립니다. 기본값 0. 알파."
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+      "table": "setting_tooltips",
+      "translation": "OME-Zarr 크롭을 저장할 때 객체 바깥의 모든 픽셀을 0으로 설정합니다. 기본적으로 꺼져 있어 객체 주변의 픽셀을 유지하며, 읽기 도구에서 저장된 마스크로 이를 숨길 수 있습니다. 알파."
+    },
+    {
+      "key": "(none: RGB view)",
+      "source": "(none: RGB view)",
+      "source_sha256": "ca5c2392c3404f643ecc35861b4e30b35e1d59c1551620303280a97d3c368bb6",
+      "table": "ui",
+      "translation": "(없음: RGB 보기)"
+    },
+    {
+      "key": "Channel roles",
+      "source": "Channel roles",
+      "source_sha256": "75a4f2b62a6cb4a8230946db87d435a2c90dfbbc2b7a91fac8034f62d10f1d4d",
+      "table": "ui",
+      "translation": "채널 역할"
+    },
+    {
+      "key": "Channel roles (OME-Zarr)",
+      "source": "Channel roles (OME-Zarr)",
+      "source_sha256": "fce333ea701a4e45384fe2d5e3428d035c394f03a1e77184d80db179e145ad42",
+      "table": "ui",
+      "translation": "채널 역할 (OME-Zarr)"
+    },
+    {
+      "key": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source_sha256": "0997af358804f6b7cf8c0129905afdca24fc6ecd40f4ed49443b8883a1455376",
+      "table": "ui",
+      "translation": "OME-Zarr 크롭을 그리는 방법입니다. 채널 수에는 제한이 없으며 ';' 로 구분합니다. 각 항목은 channel:role:colour 뒤에 옵션을 붙입니다. image 역할은 해당 색상으로 채널을 혼합합니다(저장된 단위의 range=lo-hi, gamma=g). outline 역할은 마스크, 레이블 채널 또는 threshold=t 를 바탕으로 객체 윤곽선을 그리며, 선 두께는 width=w 픽셀입니다. 프리셋은 프로젝트별로 저장됩니다. 비워 두면 저장된 첫 세 채널을 RGB 로 그립니다. PNG 크롭은 R, G, B 를 유지합니다."
+    },
+    {
+      "key": "Preset name:",
+      "source": "Preset name:",
+      "source_sha256": "ca4e4e73aab177cef8aa39b4710ac071f819bdef8dc4b19b3ef7bdecf79481f6",
+      "table": "ui",
+      "translation": "프리셋 이름:"
+    },
+    {
+      "key": "Save preset",
+      "source": "Save preset",
+      "source_sha256": "362a1376e64153c9c61e05747623902bbfd604f6cfa0f5d2b9d6ef3c4b3869f9",
+      "table": "ui",
+      "translation": "프리셋 저장"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+  "schema": 1
+}

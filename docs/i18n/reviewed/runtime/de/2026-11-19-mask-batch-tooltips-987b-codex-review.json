@@ -1,0 +1,28 @@
+{
+  "language": "de",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
+      "translation": "Wie viele Bilder in einem Durchlauf gemeinsam gehalten und verarbeitet werden: Feldstapel bei Normalisierung und Cellpose-Segmentierung, Bildausschnitte pro Schritt beim Training des Klassifikators und bei Aktivierungskarten. Ein höherer Wert beschleunigt Läufe, erhöht aber RAM/VRAM etwa linear; senken Sie ihn bei Speichermangel-Fehlern. Bei der Maskenerzeugung wählen 0, -1, None, 'none' oder 'auto' den größten Batch aus Bildfeldern, der in den freien GPU-Speicher und RAM passt; eine Anzahl, die nicht hineinpasst, wird mit einer Warnung reduziert. Ein kleiner letzter Batch wird mit dem Median der Perzentile der anderen Batches normalisiert. Die verwendete Größe wird in masks/batch_plan.json erfasst. Standardwerte: 0 (automatisch) für die Maskenerzeugung, 64 für das Training."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "Wie viele 256-Pixel-Kacheln Cellpose in Make Masks gleichzeitig durch das Netzwerk leitet. 0 behält die alte Regel bei: so viele Kacheln, wie Bildfelder im Stapel vorhanden sind (batch_size). Dadurch bleibt eine große GPU weitgehend ungenutzt, da ein Bildfeld von 2000 x 2000 bereits etwa 100 Kacheln enthält. Eine größere Anzahl führt dem Netzwerk mehr Kacheln pro Durchlauf zu und ist innerhalb der GPU-Speicherregelung schneller; die Kachelstapelgröße kann einige Maskenpixel verschieben, daher weigert sich ein fortgesetzter Lauf, zwei Werte zu mischen. Default 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_inference_precision",
+      "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
+      "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
+      "translation": "Zahlenformat des Cellpose-Netzwerks in Make Masks: auto, bf16 oder fp32. auto behält bei, was der Lauf bisher immer verwendet hat: bfloat16-Gewichte auf einer CUDA GPU, float32 auf einer CPU oder einem Mac. bf16 erzwingt bfloat16-Gewichte, die weniger GPU-Speicher benötigen und auf einer Karte mit entsprechender Unterstützung schneller laufen; fp32 erzwingt float32-Gewichte, die etwa doppelt so viel GPU-Speicher verwenden und einige Maskenpixel verschieben können. Eine Änderung verändert die Masken, daher weigert sich ein fortgesetzter Lauf, die beiden zu mischen. Default auto."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "schema": 1
+}

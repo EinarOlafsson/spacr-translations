@@ -1,0 +1,28 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
+      "translation": "Hversu margar myndir eru geymdar og unnar saman í einni umferð: myndastaflar sjónsviða við stöðlun og hlutun með Cellpose, myndskurðir í hverju skrefi við þjálfun flokkara og gerð virkjunarkorta. Hærra gildi flýtir keyrslum en eykur notkun RAM/VRAM nokkurn veginn línulega; lækkaðu það ef villur vegna minnisskorts koma upp. Við grímugerð velja 0, -1, None, 'none' eða 'auto' stærstu lotu sjónsviða sem rúmast í lausu GPU-minni og RAM, og gildi sem rúmast ekki er lækkað með viðvörun. Lítil lokalota er stöðluð með miðgildum hundraðshlutamarka hinna lotanna. Stærðin sem er notuð er skráð í masks/batch_plan.json. Sjálfgefin gildi: 0 (sjálfvirkt) fyrir grímugerð, 64 fyrir þjálfun."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "Hversu marga 256-pixla myndbúta Cellpose sendir í gegnum netið í einu í Make Masks. 0 heldur fyrri reglu: jafnmarga myndbúta og sjónsvið eru í lotunni (batch_size), sem skilur öfluga GPU að mestu ónotaða því sjónsvið sem er 2000 x 2000 inniheldur þegar um 100 myndbúta. Hærra gildi gefur netinu fleiri myndbúta í hverri umferð og er hraðvirkara, innan marka GPU-minnisstýringarinnar; lotustærð myndbúta getur fært til nokkra pixla í grímunum, svo keyrsla sem er haldið áfram hafnar því að blanda tveimur gildum saman. Default 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_inference_precision",
+      "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
+      "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
+      "translation": "Talnasnið Cellpose-netsins í Make Masks: auto, bf16 eða fp32. auto heldur því sem keyrslan hefur alltaf notað: bfloat16-vægi á CUDA GPU, float32 á CPU eða Mac. bf16 þvingar fram bfloat16-vægi, sem þurfa minna GPU-minni og eru hraðvirkari á skjákorti sem styður þau; fp32 þvingar fram float32-vægi, sem nota um tvöfalt GPU-minni og geta fært til nokkra pixla í grímunum. Breyting á þessu gildi breytir grímunum, svo keyrsla sem er haldið áfram hafnar því að blanda sniðunum tveimur saman. Default auto."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -1,0 +1,28 @@
+{
+  "language": "pt",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
+      "translation": "Quantas imagens são mantidas e processadas em conjunto numa passagem: pilhas de imagens de campos durante a normalização e a segmentação com Cellpose, recortes por passo durante o treino do classificador e a criação de mapas de ativação. Um valor maior acelera as execuções, mas aumenta a RAM/VRAM de forma aproximadamente linear; reduza-o se ocorrerem erros de falta de memória. Na geração de máscaras, 0, -1, None, 'none' ou 'auto' selecionam o maior lote de campos que cabe na memória livre da GPU e na RAM, e um valor que não cabe é reduzido com um aviso. Um último lote pequeno é normalizado com as medianas dos percentis dos outros batches. O tamanho utilizado é registado em masks/batch_plan.json. Valores predefinidos: 0 (automático) para a geração de máscaras, 64 para o treino."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "Quantos blocos de 256 píxeis o Cellpose passa pela rede de uma só vez em Make Masks. 0 mantém a regra anterior: tantos blocos quantos os campos no lote (batch_size), o que deixa uma GPU de grande capacidade praticamente inativa, pois um campo de 2000 x 2000 já tem cerca de 100 blocos. Um valor maior fornece mais blocos à rede por passagem e é mais rápido, dentro dos limites do controlador de memória da GPU; o tamanho do lote de blocos pode deslocar alguns píxeis das máscaras, pelo que uma execução retomada recusa misturar dois valores. padrão 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_inference_precision",
+      "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
+      "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
+      "translation": "Formato numérico da rede Cellpose em Make Masks: auto, bf16 ou fp32. auto mantém o formato que a execução sempre utilizou: pesos bfloat16 numa GPU CUDA, float32 numa CPU ou num Mac. bf16 força pesos bfloat16, que requerem menos memória da GPU e são mais rápidos numa placa compatível; fp32 força pesos float32, que utilizam cerca do dobro da memória da GPU e podem deslocar alguns píxeis das máscaras. Alterar este valor altera as máscaras, pelo que uma execução retomada recusa misturar os dois formatos. padrão auto."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "schema": 1
+}

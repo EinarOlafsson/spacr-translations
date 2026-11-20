@@ -1,0 +1,28 @@
+{
+  "language": "zh_CN",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
+      "translation": "一次处理中同时保留和处理的图像数量：包括归一化与 Cellpose 分割时的显微镜视野堆栈，以及分类器训练和激活图计算时每一步的提取图像区域。增大该值可加快运行，但 RAM/VRAM 用量会近似线性增加；出现内存不足错误时应调低。生成掩膜时，0、-1、None、'none' 或 'auto' 会选择可用 GPU 显存和 RAM 能容纳的最大视野批次；若指定数量无法容纳，则会发出警告并减小数量。最后一个数量较少的批次使用其他批次百分位数的中位数进行归一化。实际使用的大小记录在 masks/batch_plan.json 中。默认值：生成掩膜时为 0（自动），训练时为 64。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "在 Make Masks 中，Cellpose 一次送入网络的 256 像素图块数量。0 保留旧规则：图块数量与批次中的视野数量相同（batch_size），这会让大型 GPU 大部分时间处于空闲状态，因为一个 2000 x 2000 的视野就已经包含约 100 个图块。增大该值可让网络每次处理更多图块，在 GPU 显存管理器允许的范围内加快处理；图块批次大小可能使少量掩膜像素发生变化，因此续跑会拒绝混用两个不同的值。Default 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_inference_precision",
+      "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
+      "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
+      "translation": "Make Masks 中 Cellpose 网络的数值格式：auto、bf16 或 fp32。auto 保持该运行一贯使用的格式：bfloat16 权重用于 CUDA GPU，float32 用于 CPU 或 Mac。bf16 强制使用 bfloat16 权重，所需 GPU 显存更少，在支持它的显卡上运行更快；fp32 强制使用 float32 权重，所需 GPU 显存约为两倍，并可能使少量掩膜像素发生变化。更改此项会改变掩膜，因此续跑会拒绝混用这两种格式。Default auto."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "schema": 1
+}

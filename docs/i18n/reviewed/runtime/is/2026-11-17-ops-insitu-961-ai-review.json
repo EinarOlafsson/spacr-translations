@@ -1,0 +1,91 @@
+{
+  "language": "is",
+  "records": [
+    {
+      "key": "ops_barcode_layout",
+      "source": "Ops barcode layout",
+      "source_sha256": "fe0486f97a577d24ec8a80ce3431a81f3bc753f00d5ba461e79e08b1041a0647",
+      "table": "setting_labels",
+      "translation": "OPS strikamerkjaskipan"
+    },
+    {
+      "key": "ops_barcode_layout_file",
+      "source": "Ops barcode layout file",
+      "source_sha256": "86672ef92d6fc4151f2b94244ff10d3dca973223a490c864fe83a4c8650fe2af",
+      "table": "setting_labels",
+      "translation": "OPS skrá strikamerkjaskipanar"
+    },
+    {
+      "key": "ops_call_sort",
+      "source": "Ops call sort",
+      "source_sha256": "df76fd714e88ed76ec19f91fc407a8e29682348dd5536a23c9af469f32d8bb01",
+      "table": "setting_labels",
+      "translation": "OPS röðun kallana"
+    },
+    {
+      "key": "ops_insitu_preset",
+      "source": "Ops insitu preset",
+      "source_sha256": "b9ba493afd0d0d1e3692548118e3c3d2f61917b3fbea2ba2ab9ee794d160c1a6",
+      "table": "setting_labels",
+      "translation": "OPS in situ-forstilling"
+    },
+    {
+      "key": "ops_read_compartment",
+      "source": "Ops read compartment",
+      "source_sha256": "c629d508c26eb0b2433acb409e02f71cf9abf1d253a0eb3d9adbac50946334dd",
+      "table": "setting_labels",
+      "translation": "OPS lestrarhólf"
+    },
+    {
+      "key": "ops_recomb_min_quality",
+      "source": "Ops recomb min quality",
+      "source_sha256": "d8e522035a00915bef6a8878462b9a52a4cedf544e83988e9937ab1323008079",
+      "table": "setting_labels",
+      "translation": "OPS recomb: lágmarksgæði"
+    },
+    {
+      "key": "ops_barcode_layout",
+      "source": "single reads one barcode per spot (the guide prefix). combinatorial reads several barcode segments in different cycles, as in PerturbView and Zombie screens, and calls each cell's construct from the combination (ops_barcode_layout_file); reads whose segments belong to different constructs are flagged as recombined and not used. Needs ops_prefix_threshold_tuning none. Empty is single. Default None. Alpha.",
+      "source_sha256": "5025e36027c0c5267d53ba83008da09c470b20311f41ce89022d0ae53305666e",
+      "table": "setting_tooltips",
+      "translation": "single les eitt strikamerki á hvern blett (forskeyti leiðarans). combinatorial les nokkra strikamerkjahluta í mismunandi lotum, eins og í PerturbView- og Zombie-skimunum, og kallar smíð hverrar frumu út frá samsetningunni (ops_barcode_layout_file); lestrar þar sem hlutarnir tilheyra ólíkum smíðum eru merktir sem endurraðaðir og ekki notaðir. Krefst ops_prefix_threshold_tuning none. Tómt er single. Sjálfgefið None. Alfa."
+    },
+    {
+      "key": "ops_barcode_layout_file",
+      "source": "The combinatorial layout: a CSV or JSON with one row per segment: segment, start and end cycle, role (map, recomb or umi), the library column with its bases, and optionally max_distance and metric (hamming or levenshtein). The library needs those columns and the gene column. Default None. Alpha.",
+      "source_sha256": "bc00be5837525818e1d23899e2be69a8996eb2111768323757d36d634df8faac",
+      "table": "setting_tooltips",
+      "translation": "Samsetta skipanin: CSV- eða JSON-skrá með einni línu á hvern hluta: segment, upphafs- og lokalota, role (map, recomb eða umi), dálkur safnsins með bösum hans og valfrjálst max_distance og metric (hamming eða levenshtein). Safnið þarf þá dálka og genadálkinn. Sjálfgefið None. Alfa."
+    },
+    {
+      "key": "ops_call_sort",
+      "source": "How a cell's barcodes are ranked: count (reads), quality (mean read quality) or peak (the brightest read's spot strength, for chemistries with one bright amplicon per cell). A tie leaves the cell ambiguous. Needs ops_prefix_quality_method spacr. Empty keeps the decode's own rule. Default None. Alpha.",
+      "source_sha256": "e869617e248e4102d7a4bf92e1c1a6aa0e0d82c3249e41388a3985aa14c5a618",
+      "table": "setting_tooltips",
+      "translation": "Hvernig strikamerkjum frumu er raðað: count (lestrar), quality (meðalgæði lestra) eða peak (blettastyrkur björtasta lestursins, fyrir efnafræði með eina bjarta mögnunarafurð á frumu). Jafntefli skilur frumuna eftir óljósa. Krefst ops_prefix_quality_method spacr. Tómt heldur eigin reglu afkóðunarinnar. Sjálfgefið None. Alfa."
+    },
+    {
+      "key": "ops_insitu_preset",
+      "source": "A named in situ sequencing setup for the spacer-prefix decode. t7 assigns reads to the nucleus, calls each cell by its brightest amplicon and accepts one read per cell, as validated for T7 chemistry; it fills only the keys left empty. Empty uses no preset. Default None. Alpha.",
+      "source_sha256": "08a749af6d0654af116b50de8722ecaa6d799f2399c20e61e7c559d24f28511d",
+      "table": "setting_tooltips",
+      "translation": "Nefnd stilling fyrir in situ-raðgreiningu í afkóðun eftir forskeyti millistykkis. t7 tengir lestra við kjarnann, kallar hverja frumu eftir björtustu mögnunarafurð hennar og samþykkir einn lestur á frumu, eins og staðfest var fyrir T7-efnafræði; hún fyllir aðeins þá lykla sem eru skildir eftir tómir. Tómt notar enga forstillingu. Sjálfgefið None. Alfa."
+    },
+    {
+      "key": "ops_read_compartment",
+      "source": "Which part of a cell a read must lie in to count: cell (anywhere), nucleus (only over the nucleus, for amplicons that stay there) or cytoplasm (outside it). Nucleus and cytoplasm need nucleus labels (ops_prefix_nuclei_masks). Empty is cell. Default None. Alpha.",
+      "source_sha256": "1abb892bdfacb8fe7ec8b62018a04535c1967aa846757cb57df80435cc140605",
+      "table": "setting_tooltips",
+      "translation": "Í hvaða hluta frumu lestur þarf að liggja til að teljast: cell (hvar sem er), nucleus (aðeins yfir kjarnanum, fyrir mögnunarafurðir sem haldast þar) eða cytoplasm (utan hans). nucleus og cytoplasm þurfa kjarnamerki (ops_prefix_nuclei_masks). Tómt er cell. Sjálfgefið None. Alfa."
+    },
+    {
+      "key": "ops_recomb_min_quality",
+      "source": "The lowest call quality (the worst cycle's margin) a recomb segment needs to be checked against its construct, as Brieflow's recomb_q_thresh; a lower-quality segment is neither trusted nor flagged as recombined. Empty is 0. Default None. Alpha.",
+      "source_sha256": "3c593921ba2fa1e23a4df5ffaf30dcbdf38491b91d9fa328732b9e7475cc589d",
+      "table": "setting_tooltips",
+      "translation": "Lægstu köllunargæði (vik verstu lotunnar) sem recomb-hluti þarf til að vera borinn saman við smíð sína, eins og recomb_q_thresh í Brieflow; hluti með lægri gæði er hvorki notaður né merktur sem endurraðaður. Tómt er 0. Sjálfgefið None. Alfa."
+    }
+  ],
+  "review_kind": "Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
+  "schema": 1
+}

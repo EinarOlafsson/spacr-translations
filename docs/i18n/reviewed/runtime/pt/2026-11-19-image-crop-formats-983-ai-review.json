@@ -1,0 +1,119 @@
+{
+  "language": "pt",
+  "records": [
+    {
+      "key": "mask_image_format",
+      "source": "Mask image format",
+      "source_sha256": "46c2d188271ff4ba13f18857bf2e840cb7b370ca505952aeaf66a02fb1ef1291",
+      "table": "setting_labels",
+      "translation": "Formato das imagens de máscaras"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "Crop image format",
+      "source_sha256": "71c2b78d88b2fe371d58a09570254a389c4ef4af044a7716e32c9ab3caf1b877",
+      "table": "setting_labels",
+      "translation": "Formato das imagens de recortes"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "Crops per shard",
+      "source_sha256": "2fc44020f4b046e11187175b9232ede54acc42f927115744e9ac800e3d481184",
+      "table": "setting_labels",
+      "translation": "Recortes por fragmento"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Crop margin px",
+      "source_sha256": "fc1cf7729ba181f1c960e4a180b9ea65d39d9d4f1560338a291f9d98544001ab",
+      "table": "setting_labels",
+      "translation": "Margem do recorte em px"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Crop zero outside",
+      "source_sha256": "dda6f00de73b37524f787425613ac440cce99327e99bc874e48c25806aa6ef51",
+      "table": "setting_labels",
+      "translation": "Zerar fora do objeto no recorte"
+    },
+    {
+      "key": "mask_image_format",
+      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+      "table": "setting_tooltips",
+      "translation": "O formato em que Mask Generation também grava os campos mesclados. 'npy' grava apenas merged/*.npy, como antes. 'ome-zarr' adiciona um armazenamento OME-Zarr 0.5 por placa em images/, com os canais de cada campo nomeados e as máscaras armazenadas como rótulos, que napari e Fiji abrem. 'tiff' adiciona merged_tiff/<field>.tif e um <field>_<object>_mask.tif por objeto. Os arquivos .npy mesclados permanecem, para que as etapas seguintes os leiam como antes. Padrão 'npy'. Alfa."
+    },
+    {
+      "key": "crop_image_format",
+      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+      "table": "setting_tooltips",
+      "translation": "O formato em que Measure grava os recortes de objetos. 'png' grava as pastas PNG como antes (padrão). 'ome-zarr' grava a caixa delimitadora de cada objeto acrescida de crop_margin_px, com a profundidade de bits completa e todos os canais, junto com a própria máscara, em um armazenamento por poço: crops/plate=<plate>/well=<well>.zarr, listado em measurements.db, na tabela ssCell_Crops. Os recortes mantêm as intensidades brutas; não há ajuste de escala. Alfa."
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
+      "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
+      "table": "setting_tooltips",
+      "translation": "Quantos recortes entram em um fragmento armazenado quando crop_image_format é 'ome-zarr'. Fragmentos maiores significam menos arquivos; cada fragmento fica na RAM antes de ser gravado. O valor é reduzido automaticamente, com uma linha no registro, quando há pouca RAM livre. Padrão 4096. Alfa."
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+      "table": "setting_tooltips",
+      "translation": "Pixels mantidos ao redor da caixa delimitadora de cada objeto nos recortes OME-Zarr, limitados pela borda da imagem. Padrão 0. Alfa."
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+      "table": "setting_tooltips",
+      "translation": "Armazena recortes OME-Zarr com todos os pixels fora do objeto definidos como 0. Desativado por padrão: os pixels ao redor do objeto são mantidos, e um leitor ainda pode ocultá-los com a máscara armazenada. Alfa."
+    },
+    {
+      "key": "(none: RGB view)",
+      "source": "(none: RGB view)",
+      "source_sha256": "ca5c2392c3404f643ecc35861b4e30b35e1d59c1551620303280a97d3c368bb6",
+      "table": "ui",
+      "translation": "(nenhum: visualização RGB)"
+    },
+    {
+      "key": "Channel roles",
+      "source": "Channel roles",
+      "source_sha256": "75a4f2b62a6cb4a8230946db87d435a2c90dfbbc2b7a91fac8034f62d10f1d4d",
+      "table": "ui",
+      "translation": "Funções dos canais"
+    },
+    {
+      "key": "Channel roles (OME-Zarr)",
+      "source": "Channel roles (OME-Zarr)",
+      "source_sha256": "fce333ea701a4e45384fe2d5e3428d035c394f03a1e77184d80db179e145ad42",
+      "table": "ui",
+      "translation": "Funções dos canais (OME-Zarr)"
+    },
+    {
+      "key": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source_sha256": "0997af358804f6b7cf8c0129905afdca24fc6ecd40f4ed49443b8883a1455376",
+      "table": "ui",
+      "translation": "Como os recortes OME-Zarr são desenhados: qualquer número de canais, separados por ';'. Cada entrada é channel:role:colour, seguida das opções. A função image combina o canal em sua cor (range=lo-hi nas unidades armazenadas, gamma=g). A função outline desenha o contorno do objeto a partir da máscara, de um canal de rótulos ou de threshold=t, com largura width=w pixels. As predefinições são salvas por projeto. Se o campo ficar em branco, os três primeiros canais armazenados são desenhados como RGB. Os recortes PNG mantêm R, G, B."
+    },
+    {
+      "key": "Preset name:",
+      "source": "Preset name:",
+      "source_sha256": "ca4e4e73aab177cef8aa39b4710ac071f819bdef8dc4b19b3ef7bdecf79481f6",
+      "table": "ui",
+      "translation": "Nome da predefinição:"
+    },
+    {
+      "key": "Save preset",
+      "source": "Save preset",
+      "source_sha256": "362a1376e64153c9c61e05747623902bbfd604f6cfa0f5d2b9d6ef3c4b3869f9",
+      "table": "ui",
+      "translation": "Salvar predefinição"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+  "schema": 1
+}

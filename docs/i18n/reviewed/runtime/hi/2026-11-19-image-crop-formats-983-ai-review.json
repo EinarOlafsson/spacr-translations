@@ -1,0 +1,119 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "key": "mask_image_format",
+      "source": "Mask image format",
+      "source_sha256": "46c2d188271ff4ba13f18857bf2e840cb7b370ca505952aeaf66a02fb1ef1291",
+      "table": "setting_labels",
+      "translation": "मास्क छवि प्रारूप"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "Crop image format",
+      "source_sha256": "71c2b78d88b2fe371d58a09570254a389c4ef4af044a7716e32c9ab3caf1b877",
+      "table": "setting_labels",
+      "translation": "क्रॉप छवि प्रारूप"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "Crops per shard",
+      "source_sha256": "2fc44020f4b046e11187175b9232ede54acc42f927115744e9ac800e3d481184",
+      "table": "setting_labels",
+      "translation": "प्रति शार्ड क्रॉप"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Crop margin px",
+      "source_sha256": "fc1cf7729ba181f1c960e4a180b9ea65d39d9d4f1560338a291f9d98544001ab",
+      "table": "setting_labels",
+      "translation": "क्रॉप मार्जिन px"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Crop zero outside",
+      "source_sha256": "dda6f00de73b37524f787425613ac440cce99327e99bc874e48c25806aa6ef51",
+      "table": "setting_labels",
+      "translation": "क्रॉप में बाहर शून्य करें"
+    },
+    {
+      "key": "mask_image_format",
+      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+      "table": "setting_tooltips",
+      "translation": "वह प्रारूप जिसमें Mask Generation अपने मर्ज किए गए फ़ील्ड भी लिखता है। 'npy' पहले की तरह केवल merged/*.npy लिखता है। 'ome-zarr' प्रति प्लेट एक OME-Zarr 0.5 स्टोर images/ के अंतर्गत जोड़ता है, जिसमें हर फ़ील्ड के चैनल नामित और मास्क लेबलों के रूप में संग्रहीत होते हैं, जिन्हें napari और Fiji खोलते हैं। 'tiff' merged_tiff/<field>.tif और प्रति ऑब्जेक्ट एक <field>_<object>_mask.tif जोड़ता है। मर्ज की गई .npy फ़ाइलें बनी रहती हैं, ताकि बाद के चरण उन्हें पहले की तरह पढ़ें। डिफ़ॉल्ट 'npy'। अल्फ़ा।"
+    },
+    {
+      "key": "crop_image_format",
+      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+      "table": "setting_tooltips",
+      "translation": "वह प्रारूप जिसमें Measure ऑब्जेक्ट क्रॉप लिखता है। 'png' पहले की तरह PNG फ़ोल्डर लिखता है (डिफ़ॉल्ट)। 'ome-zarr' हर ऑब्जेक्ट का बाउंडिंग बॉक्स और crop_margin_px पूरी बिट गहराई और हर चैनल के साथ, उसके अपने मास्क सहित, प्रति वेल एक स्टोर में लिखता है: crops/plate=<plate>/well=<well>.zarr, जो measurements.db की ssCell_Crops तालिका में सूचीबद्ध है। क्रॉप अपनी कच्ची तीव्रताएँ रखते हैं; कुछ भी नहीं फैलाया जाता। अल्फ़ा।"
+    },
+    {
+      "key": "crops_per_shard",
+      "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
+      "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
+      "table": "setting_tooltips",
+      "translation": "crop_image_format के 'ome-zarr' होने पर एक संग्रहीत शार्ड में कितने क्रॉप जाते हैं। बड़े शार्ड का अर्थ कम फ़ाइलें हैं; हर शार्ड लिखे जाने से पहले RAM में रखा जाता है। खाली RAM कम होने पर यह मान अपने आप घटाया जाता है और लॉग में एक पंक्ति लिखी जाती है। डिफ़ॉल्ट 4096। अल्फ़ा।"
+    },
+    {
+      "key": "crop_margin_px",
+      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+      "table": "setting_tooltips",
+      "translation": "OME-Zarr क्रॉप में हर ऑब्जेक्ट के बाउंडिंग बॉक्स के आसपास रखे गए पिक्सेल, छवि के किनारे पर काटे जाते हैं। डिफ़ॉल्ट 0। अल्फ़ा।"
+    },
+    {
+      "key": "crop_zero_outside",
+      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+      "table": "setting_tooltips",
+      "translation": "OME-Zarr क्रॉप संग्रहीत करते समय ऑब्जेक्ट के बाहर हर पिक्सेल 0 करें। डिफ़ॉल्ट रूप से बंद: ऑब्जेक्ट के आसपास के पिक्सेल रखे जाते हैं और रीडर संग्रहीत मास्क से उन्हें अब भी छिपा सकता है। अल्फ़ा।"
+    },
+    {
+      "key": "(none: RGB view)",
+      "source": "(none: RGB view)",
+      "source_sha256": "ca5c2392c3404f643ecc35861b4e30b35e1d59c1551620303280a97d3c368bb6",
+      "table": "ui",
+      "translation": "(कोई नहीं: RGB दृश्य)"
+    },
+    {
+      "key": "Channel roles",
+      "source": "Channel roles",
+      "source_sha256": "75a4f2b62a6cb4a8230946db87d435a2c90dfbbc2b7a91fac8034f62d10f1d4d",
+      "table": "ui",
+      "translation": "चैनल भूमिकाएँ"
+    },
+    {
+      "key": "Channel roles (OME-Zarr)",
+      "source": "Channel roles (OME-Zarr)",
+      "source_sha256": "fce333ea701a4e45384fe2d5e3428d035c394f03a1e77184d80db179e145ad42",
+      "table": "ui",
+      "translation": "चैनल भूमिकाएँ (OME-Zarr)"
+    },
+    {
+      "key": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source": "How OME-Zarr crops are drawn: any number of channels, separated by ';'. Each is channel:role:colour, then options. An image role blends the channel in its colour (range=lo-hi in stored units, gamma=g). An outline role draws the object's outline from the mask, a label channel or threshold=t, width=w pixels. Presets are saved per project. Blank draws the stored first three channels as RGB. PNG crops keep R, G, B.",
+      "source_sha256": "0997af358804f6b7cf8c0129905afdca24fc6ecd40f4ed49443b8883a1455376",
+      "table": "ui",
+      "translation": "OME-Zarr क्रॉप दिखाने का तरीका: किसी भी संख्या में चैनल, ';' से अलग किए जाते हैं। हर प्रविष्टि channel:role:colour होती है, जिसके बाद विकल्प आते हैं। image भूमिका चैनल को उसके रंग में मिश्रित करती है (संग्रहीत इकाइयों में range=lo-hi, gamma=g)। outline भूमिका मास्क, लेबल चैनल या threshold=t से ऑब्जेक्ट की रूपरेखा खींचती है, जिसकी चौड़ाई width=w पिक्सेल होती है। प्रीसेट हर प्रोजेक्ट के लिए सहेजे जाते हैं। खाली छोड़ने पर संग्रहीत पहले तीन चैनल RGB के रूप में दिखाए जाते हैं। PNG क्रॉप R, G, B बनाए रखते हैं।"
+    },
+    {
+      "key": "Preset name:",
+      "source": "Preset name:",
+      "source_sha256": "ca4e4e73aab177cef8aa39b4710ac071f819bdef8dc4b19b3ef7bdecf79481f6",
+      "table": "ui",
+      "translation": "प्रीसेट नाम:"
+    },
+    {
+      "key": "Save preset",
+      "source": "Save preset",
+      "source_sha256": "362a1376e64153c9c61e05747623902bbfd604f6cfa0f5d2b9d6ef3c4b3869f9",
+      "table": "ui",
+      "translation": "प्रीसेट सहेजें"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+  "schema": 1
+}

@@ -4,9 +4,9 @@
     {
       "table": "setting_tooltips",
       "key": "batch_size",
-      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
-      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
-      "translation": "Wie viele Bilder in einem Durchlauf gemeinsam gehalten und verarbeitet werden: Feldstapel bei Normalisierung und Cellpose-Segmentierung, Bildausschnitte pro Schritt beim Training des Klassifikators und bei Aktivierungskarten. Ein höherer Wert beschleunigt Läufe, erhöht aber RAM/VRAM etwa linear; senken Sie ihn bei Speichermangel-Fehlern. Bei der Maskenerzeugung wählen 0, -1, None, 'none' oder 'auto' den größten Batch aus Bildfeldern, der in den freien GPU-Speicher und RAM passt; eine Anzahl, die nicht hineinpasst, wird mit einer Warnung reduziert. Ein kleiner letzter Batch wird mit dem Median der Perzentile der anderen Batches normalisiert. Die verwendete Größe wird in masks/batch_plan.json erfasst. Standardwerte: 0 (automatisch) für die Maskenerzeugung, 64 für das Training."
+      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
+      "translation": "Wie viele Bilder in einem Durchlauf gemeinsam verarbeitet werden: Feldstapel bei Normalisierung und Cellpose-Segmentierung, Bildausschnitte pro Schritt beim Training des Klassifikators und bei Aktivierungskarten. Ein höherer Wert ist schneller, benötigt aber mehr RAM/VRAM; senken Sie ihn bei Speichermangel-Fehlern. Bei der Maskenerzeugung wählen 0 oder 'auto' den größten Batch, der in den freien GPU-Speicher und RAM passt; eine Anzahl, die nicht hineinpasst, wird mit einer Warnung reduziert. Standardwerte: 0 (automatisch) für die Maskenerzeugung, 64 für das Training."
     },
     {
       "table": "setting_tooltips",
@@ -23,6 +23,6 @@
       "translation": "Zahlenformat des Cellpose-Netzwerks in Make Masks: auto, bf16 oder fp32. auto behält bei, was der Lauf bisher immer verwendet hat: bfloat16-Gewichte auf einer CUDA GPU, float32 auf einer CPU oder einem Mac. bf16 erzwingt bfloat16-Gewichte, die weniger GPU-Speicher benötigen und auf einer Karte mit entsprechender Unterstützung schneller laufen; fp32 erzwingt float32-Gewichte, die etwa doppelt so viel GPU-Speicher verwenden und einige Maskenpixel verschieben können. Eine Änderung verändert die Masken, daher weigert sich ein fortgesetzter Lauf, die beiden zu mischen. Default auto."
     }
   ],
-  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the shortened batch_size tooltip. The other two records retain their 2026-11-19 review. No human or native-speaker signoff.",
   "schema": 1
 }

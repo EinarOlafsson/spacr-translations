@@ -4,9 +4,9 @@
     {
       "table": "setting_tooltips",
       "key": "batch_size",
-      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
-      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
-      "translation": "一次处理中同时保留和处理的图像数量：包括归一化与 Cellpose 分割时的显微镜视野堆栈，以及分类器训练和激活图计算时每一步的提取图像区域。增大该值可加快运行，但 RAM/VRAM 用量会近似线性增加；出现内存不足错误时应调低。生成掩膜时，0、-1、None、'none' 或 'auto' 会选择可用 GPU 显存和 RAM 能容纳的最大视野批次；若指定数量无法容纳，则会发出警告并减小数量。最后一个数量较少的批次使用其他批次百分位数的中位数进行归一化。实际使用的大小记录在 masks/batch_plan.json 中。默认值：生成掩膜时为 0（自动），训练时为 64。"
+      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
+      "translation": "一次处理中一起处理的图像数量：包括归一化与 Cellpose 分割时的显微镜视野堆栈，以及分类器训练和激活图计算时每一步的提取图像区域。增大该值可加快运行，但会占用更多 RAM/VRAM；出现内存不足错误时应调低。生成掩膜时，0 或 'auto' 会选择可用 GPU 显存和 RAM 能容纳的最大批次；若指定数量无法容纳，则会发出警告并减小数量。默认值：生成掩膜时为 0（自动），训练时为 64。"
     },
     {
       "table": "setting_tooltips",
@@ -23,6 +23,6 @@
       "translation": "Make Masks 中 Cellpose 网络的数值格式：auto、bf16 或 fp32。auto 保持该运行一贯使用的格式：bfloat16 权重用于 CUDA GPU，float32 用于 CPU 或 Mac。bf16 强制使用 bfloat16 权重，所需 GPU 显存更少，在支持它的显卡上运行更快；fp32 强制使用 float32 权重，所需 GPU 显存约为两倍，并可能使少量掩膜像素发生变化。更改此项会改变掩膜，因此续跑会拒绝混用这两种格式。Default auto."
     }
   ],
-  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the shortened batch_size tooltip. The other two records retain their 2026-11-19 review. No human or native-speaker signoff.",
   "schema": 1
 }

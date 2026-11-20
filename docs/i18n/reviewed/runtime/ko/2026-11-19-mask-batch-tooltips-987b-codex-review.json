@@ -4,9 +4,9 @@
     {
       "table": "setting_tooltips",
       "key": "batch_size",
-      "source": "How many images are held and processed together in one pass: field stacks during normalization and Cellpose segmentation, crops per step during classifier training and activation maps. Raising it speeds runs up but increases RAM/VRAM roughly linearly; lower it on out-of-memory errors. In mask generation 0, -1, None, 'none' or 'auto' choose the largest batch of fields that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. A short last batch is normalised with the median percentiles of the other batches. The size used is recorded in masks/batch_plan.json. Defaults: 0 (automatic) for mask generation, 64 for training.",
-      "source_sha256": "21916912c25684106130995531459c8e30ad90a6b4bec58c4996a279a463624b",
-      "translation": "한 번에 함께 보관하고 처리하는 이미지 수입니다. 정규화와 Cellpose 분할 중에는 시야 스택, 분류기 학습과 활성화 맵에서는 단계당 크롭 수입니다. 값이 클수록 실행이 빨라지지만 RAM/VRAM 사용량이 대략 선형으로 증가합니다. 메모리 부족 오류가 나면 더 작은 값을 쓰십시오. 마스크 생성에서 0, -1, None, 'none' 또는 'auto' 는 사용 가능한 GPU 메모리와 RAM 에 들어가는 가장 큰 시야 배치를 선택하며, 들어가지 않는 수를 지정하면 경고와 함께 줄입니다. 마지막의 작은 배치는 다른 배치들의 백분위수 중앙값으로 정규화합니다. 사용된 크기는 masks/batch_plan.json 에 기록됩니다. 기본값: 마스크 생성은 0 (자동), 학습은 64."
+      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
+      "translation": "한 번에 함께 처리하는 이미지 수입니다. 정규화와 Cellpose 분할에서는 시야 스택, 분류기 학습과 활성화 맵에서는 단계당 크롭 수입니다. 값이 클수록 빠르지만 RAM/VRAM을 더 많이 사용하므로 메모리 부족 오류가 나면 값을 낮추세요. 마스크 생성에서 0 또는 'auto'는 사용 가능한 GPU 메모리와 RAM에 들어가는 가장 큰 배치를 선택하며, 들어가지 않는 수를 지정하면 경고와 함께 줄입니다. 기본값: 마스크 생성은 0(자동), 학습은 64."
     },
     {
       "table": "setting_tooltips",
@@ -23,6 +23,6 @@
       "translation": "Make Masks 에서 사용하는 Cellpose 네트워크의 숫자 형식입니다. auto, bf16 또는 fp32 를 사용합니다. auto 는 실행에서 항상 사용하던 형식을 유지합니다. bfloat16 가중치는 CUDA GPU 에서, float32 는 CPU 나 Mac 에서 사용합니다. bf16 은 bfloat16 가중치를 강제로 사용하며, 이 가중치는 GPU 메모리를 덜 필요로 하고 이를 지원하는 카드에서 더 빠르게 실행됩니다. fp32 는 float32 가중치를 강제로 사용하며, 이 가중치는 GPU 메모리를 약 두 배 사용하고 일부 마스크 픽셀을 이동시킬 수 있습니다. 이를 변경하면 마스크가 달라지므로 재개된 실행은 두 형식을 혼용하지 못하게 합니다. Default auto."
     }
   ],
-  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 987b settings tooltips. No human or native-speaker signoff.",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the shortened batch_size tooltip. The other two records retain their 2026-11-19 review. No human or native-speaker signoff.",
   "schema": 1
 }

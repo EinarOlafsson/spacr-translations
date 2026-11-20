@@ -24,7 +24,10 @@
       "label": "spacr.pipeline_v2.run_v2#19",
       "source": "dict with ``mapper`` (:class:`FilenameMapper`), ``stacks`` (list of :class:`StackFile`), and ``dst`` (Path to ``merged/``). Calibrated output also names its separate ``output_root``; its float32 display intensities are aligned and nonquantitative, never Measure inputs. Signed valid-ROI float32 diagnostics live under ``output_root/signed``; its application record binds both artifacts and remains incomplete on error.",
       "source_sha256": "bbb326cb4b1228f5641dfc5aa305c8c78cf638303a3f2baa0d6d9bb0a6e80739",
-      "translation": "``mapper``(:class:`FilenameMapper`), ``stacks``(:class:`StackFile`의 목록), ``dst``(``merged/``의 Path)가 있는 딕셔너리입니다. 보정 출력에는 별도 ``output_root``도 표시됩니다. float32 표시 강도는 정렬되어 있고 비정량 데이터이며, Measure 입력으로 사용하지 않습니다. 부호가 있는 유효 ROI float32 진단 데이터는 ``output_root/signed``에 저장됩니다. 적용 기록은 두 산출물을 모두 연결하며 오류가 나면 미완료 상태로 유지됩니다."
+      "translation": "``mapper``(:class:`FilenameMapper`), ``stacks``(:class:`StackFile`의 목록), ``dst``(``merged/``의 Path)가 있는 딕셔너리입니다. 보정 출력에는 별도 ``output_root``도 표시됩니다. float32 표시 강도는 정렬되어 있고 비정량 데이터이며, Measure 입력으로 사용하지 않습니다. 부호가 있는 유효 ROI float32 진단 데이터는 ``output_root/signed``에 저장됩니다. 적용 기록은 두 산출물을 모두 연결하며 오류가 나면 미완료 상태로 유지됩니다.",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "context": "plate folder holding the originals, scanned non-recursively. Normally the mapping CSV lands here and output goes to ``<src>/merged``. Calibrated runs use a fresh ``calibrated_segmentation`` output directory instead, preserving source metadata and existing merged arrays. Occupied names receive a numeric suffix; calibrated results are never resumed.",
@@ -52,7 +55,10 @@
       "label": "spacr.pipeline_v2.stream_masks_from_stack#10",
       "source": "optional captured PSF session. Unmixes each whole field first when unmixing is on, then processes selected intensities after illumination and before normalization, padding or Cellpose. Stored image channels stay raw; only the appended labels depend on PSF processing. A calibrated session instead supplies a signed valid crop for a nonnegative segmentation view, restores labels to the reference canvas and stores separate nonquantitative float32 display channels in its separate output tree, with signed crops under ``signed/``. These display channels are not Measure inputs; calibrated outputs cannot be resumed and completion requires both durable display and signed files.",
       "source_sha256": "f2334591aa2ef491da229e4519cfd860029cc8be2df96753a339530f57f61b35",
-      "translation": "선택적인 캡처된 PSF 세션입니다. 언믹싱이 켜져 있으면 먼저 각 전체 시야를 언믹싱한 후, 조명 처리 뒤이자 정규화, 패딩 또는 Cellpose 전 단계에서 선택한 강도를 처리합니다. 저장된 이미지 채널은 원시 상태로 유지되며 추가된 레이블만 PSF 처리에 의존합니다. 보정 세션은 대신 음수가 없는 분할 뷰를 위한 부호가 있는 유효 크롭을 제공하고, 레이블을 기준 캔버스로 복원하며, 별도 출력 트리에 정량 분석용이 아닌 float32 표시 채널을 따로 저장합니다. 부호가 있는 크롭은 ``signed/`` 아래에 저장합니다. 이 표시 채널은 Measure 입력이 아닙니다. 보정 출력은 이어서 실행할 수 없으며, 표시 파일과 부호가 있는 파일이 모두 영구 저장되어야 완료됩니다."
+      "translation": "선택적인 캡처된 PSF 세션입니다. 언믹싱이 켜져 있으면 먼저 각 전체 시야를 언믹싱한 후, 조명 처리 뒤이자 정규화, 패딩 또는 Cellpose 전 단계에서 선택한 강도를 처리합니다. 저장된 이미지 채널은 원시 상태로 유지되며 추가된 레이블만 PSF 처리에 의존합니다. 보정 세션은 대신 음수가 없는 분할 뷰를 위한 부호가 있는 유효 크롭을 제공하고, 레이블을 기준 캔버스로 복원하며, 별도 출력 트리에 정량 분석용이 아닌 float32 표시 채널을 따로 저장합니다. 부호가 있는 크롭은 ``signed/`` 아래에 저장합니다. 이 표시 채널은 Measure 입력이 아닙니다. 보정 출력은 이어서 실행할 수 없으며, 표시 파일과 부호가 있는 파일이 모두 영구 저장되어야 완료됩니다.",
+      "retired": true,
+      "retired_date": "2026-11-18",
+      "retired_reason": "2026-11-18: item 987 removed keep_npz and npz_dir from spacr.pipeline_v2 (no scratch NPZ is written), which rewrote or moved the docstring blocks of stream_masks_from_stack, run_v2 and the module."
     },
     {
       "context": "C-axis indices selected out of each assembled stack before it is handed to Cellpose — taken modulo the image data channel count and de-duplicated in order. It is NOT forwarded as Cellpose's ``channels=`` argument; ``[0, 0]`` therefore yields a single image layer, not a grayscale pair. Calibrated sessions instead require explicit in-range positions. The first selected image data channel is the object's own image data channel for absolute mean-intensity filtering.",

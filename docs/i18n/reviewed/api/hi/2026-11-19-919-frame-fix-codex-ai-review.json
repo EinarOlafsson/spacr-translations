@@ -1,0 +1,322 @@
+{
+  "language": "hi",
+  "records": [
+    {
+      "context": "Painting image data channels are named after the stain (``CorrDNA``, ``CorrER``, ``CorrMito``, ``CorrPhalloidin``, ``CorrWGA``); sequencing image data channels are ``Cycle<CC>_<base>`` for each cycle and base, plus ``Cycle01_DAPI``. The painting and sequencing extracted image regions of a site share one pixel grid and are already illumination-corrected, and the sequencing cycles are aligned to each other, so this reader stacks them as they are: no stitching, no cycle registration, no rescaling. The painting extracted image regions are NOT in the sequencing frame: PERISCOPE's 04Align moves them onto Cycle01_DAPI at analysis time (3-77 px on CP186A Well1). :func:`painting_to_sbs_shift` gives that shift per site, and the prefix decode applies it to painting-frame labels (``ops_prefix_masks_frame 'painting'``).",
+      "label": "spacr.cpg_cropped#2",
+      "source": "Painting channels are named after the stain (``CorrDNA``, ``CorrER``, ``CorrMito``, ``CorrPhalloidin``, ``CorrWGA``); sequencing channels are ``Cycle<CC>_<base>`` for each cycle and base, plus ``Cycle01_DAPI``. The painting and sequencing crops of a site share one pixel grid and are already illumination-corrected, and the sequencing cycles are aligned to each other, so this reader stacks them as they are: no stitching, no cycle registration, no rescaling. The painting crops are NOT in the sequencing frame: PERISCOPE's 04Align moves them onto Cycle01_DAPI at analysis time (3-77 px on CP186A Well1). :func:`painting_to_sbs_shift` gives that shift per site, and the prefix decode applies it to painting-frame labels (``ops_prefix_masks_frame 'painting'``).",
+      "source_sha256": "7ce2dfe21ee731fe3ab7e61ef03c2f2aec02de63e2fdd812a40dd12441474172",
+      "translation": "पेंटिंग चैनलों के नाम रंजक के अनुसार होते हैं (``CorrDNA``, ``CorrER``, ``CorrMito``, ``CorrPhalloidin``, ``CorrWGA``); अनुक्रमण चैनल हर चक्र और बेस के लिए ``Cycle<CC>_<base>`` तथा ``Cycle01_DAPI`` होते हैं। एक साइट की क्रॉप की गई पेंटिंग और अनुक्रमण छवियाँ एक ही पिक्सेल ग्रिड पर होती हैं और उनकी प्रकाश-समानता पहले से सुधारी गई होती है, और अनुक्रमण चक्र आपस में संरेखित होते हैं। इसलिए यह रीडर उन्हें ज्यों का त्यों स्टैक करता है: न स्टिचिंग, न चक्र पंजीकरण, न आकार परिवर्तन। क्रॉप की गई पेंटिंग छवियाँ अनुक्रमण फ़्रेम में नहीं होतीं: PERISCOPE का 04Align विश्लेषण के समय उन्हें Cycle01_DAPI पर ले जाता है (CP186A Well1 पर 3-77 px)। :func:`painting_to_sbs_shift` हर साइट के लिए वह विस्थापन देता है, और प्रीफ़िक्स डिकोड उसे पेंटिंग फ़्रेम के लेबल पर लागू करता है (``ops_prefix_masks_frame 'painting'``)।"
+    },
+    {
+      "context": "Typical use",
+      "label": "spacr.cpg_cropped#4",
+      "source": "Typical use",
+      "source_sha256": "4c057cef9f41cdf7718ab91446dad267199e6e0eae2e9e929201f59ef1ee70a8",
+      "translation": "सामान्य उपयोग"
+    },
+    {
+      "context": "Move a 2-D image by whole pixels, filling the uncovered band with zeros.",
+      "label": "spacr.cpg_cropped.shift_image#0",
+      "source": "Move a 2-D image by whole pixels, filling the uncovered band with zeros.",
+      "source_sha256": "8d1fde762bcae115a52cdd1c443f8194ce29ccca928518a84150b4624aa3e035",
+      "translation": "2-D छवि को पूरे पिक्सेलों से खिसकाता है और खुली पट्टी को शून्य से भरता है।"
+    },
+    {
+      "context": "``out[y, x] = image[y - dy, x - dx]``; nothing wraps around.",
+      "label": "spacr.cpg_cropped.shift_image#1",
+      "source": "``out[y, x] = image[y - dy, x - dx]``; nothing wraps around.",
+      "source_sha256": "1d4ab568394c191034df1727102a1bfeb275a737e0a1685bad111b9196c378e2",
+      "translation": "``out[y, x] = image[y - dy, x - dx]``; कोई तत्व विपरीत किनारे से वापस नहीं आता।"
+    },
+    {
+      "context": "a 2-D array (pixels or labels).",
+      "label": "spacr.cpg_cropped.shift_image#2",
+      "source": "a 2-D array (pixels or labels).",
+      "source_sha256": "59362d2dad61d11849d745b96ad29acd5a38cc841fb1bdbf20552c05dbe481f1",
+      "translation": "2-D ऐरे (पिक्सेल या लेबल)।"
+    },
+    {
+      "context": "rows to move down (negative moves up).",
+      "label": "spacr.cpg_cropped.shift_image#3",
+      "source": "rows to move down (negative moves up).",
+      "source_sha256": "9f2d27b149543c38176628f15cf9a0270cd98d408b5de80dd4b35c602327c300",
+      "translation": "नीचे खिसकाने की पंक्तियाँ (ऋणात्मक मान ऊपर खिसकाता है)।"
+    },
+    {
+      "context": "columns to move right (negative moves left).",
+      "label": "spacr.cpg_cropped.shift_image#4",
+      "source": "columns to move right (negative moves left).",
+      "source_sha256": "984e36f7033fd954a8a74932cb500dfb719be1739d4c2c612938cd10ced3a3d6",
+      "translation": "दाएँ खिसकाने के स्तंभ (ऋणात्मक मान बाएँ खिसकाता है)।"
+    },
+    {
+      "context": "a new array of the same shape and dtype.",
+      "label": "spacr.cpg_cropped.shift_image#5",
+      "source": "a new array of the same shape and dtype.",
+      "source_sha256": "8919bed90e76d85480d1634f052e0a8b38d33e02796c5689fc7b9645914b3eef",
+      "translation": "समान आकार और dtype का नया ऐरे।"
+    },
+    {
+      "context": "The PERISCOPE ``Image.csv`` that holds one site's 04Align record.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#0",
+      "source": "The PERISCOPE ``Image.csv`` that holds one site's 04Align record.",
+      "source_sha256": "58bc8be62f2ec1610def3f8d1ebe1808228c592177c6c59deed545ee357fa2a3",
+      "translation": "PERISCOPE की ``Image.csv`` जिसमें एक साइट का 04Align रिकॉर्ड होता है।"
+    },
+    {
+      "context": "In cpg0021 the extracted image regions sit at ``<top>/images/<batch>/images_corrected_cropped/<plate>_Well<N>/`` and the analysis of each site at ``<top>/workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv``.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#1",
+      "source": "In cpg0021 the crops sit at ``<top>/images/<batch>/images_corrected_cropped/<plate>_Well<N>/`` and the analysis of each site at ``<top>/workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv``.",
+      "source_sha256": "62a65346ef7def8b44e19f8722fa2292af6d7cf8bc50b58540798b3e582f4738",
+      "translation": "cpg0021 में क्रॉप की गई छवियाँ ``<top>/images/<batch>/images_corrected_cropped/<plate>_Well<N>/`` पर और हर साइट का विश्लेषण ``<top>/workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv`` पर होता है।"
+    },
+    {
+      "context": "the reader's ``cpg_root`` (the extracted image regions tree or one microplate sample position).",
+      "label": "spacr.cpg_cropped.periscope_image_csv#2",
+      "source": "the reader's ``cpg_root`` (the crops tree or one well).",
+      "source_sha256": "d9bc5ffdca582f0dd056f59b9a88af506eebc01604938690b1769dabcbd75417",
+      "translation": "रीडर का ``cpg_root`` (क्रॉप की गई छवियों का निर्देशिका वृक्ष या एक वेल)।"
+    },
+    {
+      "context": "the plate, for example ``CP186A``.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#3",
+      "source": "the plate, for example ``CP186A``.",
+      "source_sha256": "9b6a9040d17b5d90236ad7fa1a21958f37b658b63add853a2f75d47f73d2cf2a",
+      "translation": "प्लेट, उदाहरण के लिए ``CP186A``।"
+    },
+    {
+      "context": "``Well1`` or ``W1``.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#4",
+      "source": "``Well1`` or ``W1``.",
+      "source_sha256": "c46eacecffd5e9174f1834d83e33a165366a831de171ab60720c7ce205c85dff",
+      "translation": "``Well1`` या ``W1``।"
+    },
+    {
+      "context": "the site.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#5",
+      "source": "the site.",
+      "source_sha256": "2cf7c99ef095d3c61e6998c222c81c64ec986f46866179978cb0cff47cd69b28",
+      "translation": "साइट।"
+    },
+    {
+      "context": "``cpg_align_table``: a path with ``{plate}``, ``{well}`` (``Well1``), ``{well_number}`` and ``{site}`` fields. None derives the path from ``cpg_root`` as above.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#6",
+      "source": "``cpg_align_table``: a path with ``{plate}``, ``{well}`` (``Well1``), ``{well_number}`` and ``{site}`` fields. None derives the path from ``cpg_root`` as above.",
+      "source_sha256": "6201f0244ddebc8ef6de86bdfc623536028c46ed3a98f3b36df8e7be98fe8700",
+      "translation": "``cpg_align_table``: ``{plate}``, ``{well}`` (``Well1``), ``{well_number}`` और ``{site}`` फ़ील्ड वाला पथ। None ऊपर बताए अनुसार ``cpg_root`` से पथ निकालता है।"
+    },
+    {
+      "context": "the path (not checked for existence).",
+      "label": "spacr.cpg_cropped.periscope_image_csv#7",
+      "source": "the path (not checked for existence).",
+      "source_sha256": "2dd4aabf99a8aa1c48b6cbca74a68c0751da7adea4a5c9bc9109f0811fbce388",
+      "translation": "पथ (इसके मौजूद होने की जाँच नहीं की जाती)।"
+    },
+    {
+      "context": "when no template is given and ``cpg_root`` is not laid out as cpg0021.",
+      "label": "spacr.cpg_cropped.periscope_image_csv#8",
+      "source": "when no template is given and ``cpg_root`` is not laid out as cpg0021.",
+      "source_sha256": "301b7e3a7e40e7566aba068cb7a0593251a3c86461e01666ddb4099b8fd840e3",
+      "translation": "जब टेम्पलेट नहीं दिया गया हो और ``cpg_root`` की संरचना cpg0021 जैसी न हो।"
+    },
+    {
+      "context": "The whole-pixel shift that moves one site's painting frame onto its sequencing frame.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#0",
+      "source": "The whole-pixel shift that moves one site's painting frame onto its sequencing frame.",
+      "source_sha256": "49c3acefe4fc96f76ed87f0b06d85b058e25127b4b46012eb7184fdb426950de",
+      "translation": "पूरे पिक्सेलों का विस्थापन जो एक साइट के पेंटिंग फ़्रेम को उसके अनुक्रमण फ़्रेम पर ले जाता है।"
+    },
+    {
+      "context": "PERISCOPE's published painting extracted image regions are not in the sequencing frame: its 9_Analysis module 04Align moves the painting channels onto ``Cycle01_DAPI`` at run time and logs the shift. Labels segmented on the painting extracted image regions must be moved by ``(dy, dx)`` (:func:`shift_image`) before sequencing reads are assigned to them.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#1",
+      "source": "PERISCOPE's published painting crops are not in the sequencing frame: its 9_Analysis module 04Align moves the painting channels onto ``Cycle01_DAPI`` at run time and logs the shift. Labels segmented on the painting crops must be moved by ``(dy, dx)`` (:func:`shift_image`) before sequencing reads are assigned to them.",
+      "source_sha256": "36836093d5de9721532d29a91aa77c7bb5dfd5836479cd88f0bf3f82d61441b9",
+      "translation": "PERISCOPE की प्रकाशित क्रॉप की गई पेंटिंग छवियाँ अनुक्रमण फ़्रेम में नहीं होतीं: उसका 9_Analysis मॉड्यूल 04Align रन के समय पेंटिंग चैनलों को ``Cycle01_DAPI`` पर ले जाता है और विस्थापन दर्ज करता है। क्रॉप की गई पेंटिंग छवियों पर खंडित लेबल को अनुक्रमण रीड निर्दिष्ट करने से पहले ``(dy, dx)`` से खिसकाना चाहिए (:func:`shift_image`)।"
+    },
+    {
+      "context": "from :func:`cpg_cropped_index` (used by ``'register'``).",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#2",
+      "source": "from :func:`cpg_cropped_index` (used by ``'register'``).",
+      "source_sha256": "6332c9ba5e11f3081b8541c53f45e5882c974faee0857a99dc50f07bdae949af",
+      "translation": ":func:`cpg_cropped_index` से (``'register'`` द्वारा उपयोग किया जाता है)।"
+    },
+    {
+      "context": "the plate.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#3",
+      "source": "the plate.",
+      "source_sha256": "10b08477093ac78797467e1c884ab297720b4df285c5cb6baa5821839eae3ccc",
+      "translation": "प्लेट।"
+    },
+    {
+      "context": "``Well1`` or ``W1``.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#4",
+      "source": "``Well1`` or ``W1``.",
+      "source_sha256": "c46eacecffd5e9174f1834d83e33a165366a831de171ab60720c7ce205c85dff",
+      "translation": "``Well1`` या ``W1``।"
+    },
+    {
+      "context": "the site.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#5",
+      "source": "the site.",
+      "source_sha256": "2cf7c99ef095d3c61e6998c222c81c64ec986f46866179978cb0cff47cd69b28",
+      "translation": "साइट।"
+    },
+    {
+      "context": "the reader's root, to find PERISCOPE's tables.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#6",
+      "source": "the reader's root, to find PERISCOPE's tables.",
+      "source_sha256": "30e1cb242e7b7ed7278318bcc48f59d4cb06688eddb1e111954ade44b9764f6b",
+      "translation": "PERISCOPE तालिकाएँ खोजने के लिए रीडर की मूल निर्देशिका।"
+    },
+    {
+      "context": "``'periscope_logged'`` reads PERISCOPE's record (``(dy, dx) = -(Align_Yshift, Align_Xshift)_DAPI_Painting``); ``'register'`` phase-correlates ``painting_channel`` against ``sbs_channel`` (:func:`spacr.ops_register.phase_correlate`, CPU, float32).",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#7",
+      "source": "``'periscope_logged'`` reads PERISCOPE's record (``(dy, dx) = -(Align_Yshift, Align_Xshift)_DAPI_Painting``); ``'register'`` phase-correlates ``painting_channel`` against ``sbs_channel`` (:func:`spacr.ops_register.phase_correlate`, CPU, float32).",
+      "source_sha256": "4280684cae66812131bf16db139e570d7382a5e1c89d5e6f21c560ab8cb45210",
+      "translation": "``'periscope_logged'`` PERISCOPE का रिकॉर्ड पढ़ता है (``(dy, dx) = -(Align_Yshift, Align_Xshift)_DAPI_Painting``); ``'register'`` ``painting_channel`` और ``sbs_channel`` के बीच फ़ेज़ सहसंबंध निकालता है (:func:`spacr.ops_register.phase_correlate`, CPU, float32)।"
+    },
+    {
+      "context": "``cpg_align_table`` (:func:`periscope_image_csv`).",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#8",
+      "source": "``cpg_align_table`` (:func:`periscope_image_csv`).",
+      "source_sha256": "648a0e2764a4726b788a84cbf78a44a077a34aaf467524d7d19c7114f22ce9f3",
+      "translation": "``cpg_align_table`` (:func:`periscope_image_csv`)."
+    },
+    {
+      "context": "the painting nuclear channel for ``'register'``.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#9",
+      "source": "the painting nuclear channel for ``'register'``.",
+      "source_sha256": "102ce9e9454431829c08b3907d2c8a2026e98a3059de7a6cd3cf1b758bcbacd3",
+      "translation": "``'register'`` के लिए पेंटिंग का नाभिक चैनल।"
+    },
+    {
+      "context": "the sequencing nuclear channel for ``'register'``.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#10",
+      "source": "the sequencing nuclear channel for ``'register'``.",
+      "source_sha256": "70cb9deb5ebf1b5090b352ad08c631c0dce170c1a83e3f888c74a2fcdea4c276",
+      "translation": "``'register'`` के लिए अनुक्रमण का नाभिक चैनल।"
+    },
+    {
+      "context": "``dy``, ``dx``, ``source``, and ``logged_dy``/``logged_dx`` and ``record`` (the Image.csv path) or ``peak_ratio``.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#11",
+      "source": "``dy``, ``dx``, ``source``, and ``logged_dy``/``logged_dx`` and ``record`` (the Image.csv path) or ``peak_ratio``.",
+      "source_sha256": "a06885892c4f5795294faf9cb27b53fb9897479321a6e5043ff2898b7e1b4fc6",
+      "translation": "``dy``, ``dx``, ``source``, और ``logged_dy``/``logged_dx`` तथा ``record`` (Image.csv का पथ) या ``peak_ratio``।"
+    },
+    {
+      "context": "for an unknown source, or a site without a record (``'periscope_logged'``) or without an accepted registration (``'register'``). A site is never given a silent zero shift.",
+      "label": "spacr.cpg_cropped.painting_to_sbs_shift#12",
+      "source": "for an unknown source, or a site without a record (``'periscope_logged'``) or without an accepted registration (``'register'``). A site is never given a silent zero shift.",
+      "source_sha256": "2c2c1e7a5196177a780ee2bfd132e33f0c1067f71b3083de0d369d8c3bed184d",
+      "translation": "अज्ञात स्रोत के लिए, या रिकॉर्ड (``'periscope_logged'``) अथवा स्वीकृत पंजीकरण (``'register'``) के बिना साइट के लिए। साइट को कभी चुपचाप शून्य विस्थापन नहीं दिया जाता।"
+    },
+    {
+      "context": "Refuse painting-frame labels that are about to be read as sequencing-frame ones.",
+      "label": "spacr.ops_prefix.check_masks_frame#0",
+      "source": "Refuse painting-frame labels that are about to be read as sequencing-frame ones.",
+      "source_sha256": "14ece884d70e2300b22c0140ff70d63fe41ee7a3fe110b56d5d003dc753e9ad6",
+      "translation": "अनुक्रमण फ़्रेम के लेबल के रूप में पढ़े जाने वाले पेंटिंग फ़्रेम के लेबल अस्वीकार करता है।"
+    },
+    {
+      "context": "A label folder written by spaCR's large-site segmentation (:mod:`spacr.ops_large_sites`) has a ``settings.json`` with ``seg_sites_src`` next to its ``labels/`` folder: those labels were drawn on the painting extracted image regions. Reading them with ``ops_prefix_masks_frame 'sbs'`` would assign every read to the cell that sits PERISCOPE's 04Align shift away, so the processing session stops.",
+      "label": "spacr.ops_prefix.check_masks_frame#1",
+      "source": "A label folder written by spaCR's large-site segmentation (:mod:`spacr.ops_large_sites`) has a ``settings.json`` with ``seg_sites_src`` next to its ``labels/`` folder: those labels were drawn on the painting crops. Reading them with ``ops_prefix_masks_frame 'sbs'`` would assign every read to the cell that sits PERISCOPE's 04Align shift away, so the run stops.",
+      "source_sha256": "cf3050c71f43fb68e8e917b2792f77b187a0c2dbc11c8cc705ba4ef6fbc5cdcf",
+      "translation": "spaCR के बड़े साइट के खंडीकरण (:mod:`spacr.ops_large_sites`) द्वारा लिखे गए लेबल फ़ोल्डर में एक ``settings.json`` होता है, जिसमें ``seg_sites_src`` होता है और जो ``labels/`` फ़ोल्डर के पास होता है: वे लेबल क्रॉप की गई पेंटिंग छवियों पर बनाए गए थे। उन्हें ``ops_prefix_masks_frame 'sbs'`` के साथ पढ़ने से हर रीड उस कोशिका को निर्दिष्ट होगा जो PERISCOPE के 04Align विस्थापन जितनी दूर है, इसलिए रन रुक जाता है।"
+    },
+    {
+      "context": "from :func:`prefix_settings`.",
+      "label": "spacr.ops_prefix.check_masks_frame#2",
+      "source": "from :func:`prefix_settings`.",
+      "source_sha256": "89ba90debfcbde47c1c4f348e934d803b2a05e528fe678894d5d7f93563b2285",
+      "translation": ":func:`prefix_settings` से।"
+    },
+    {
+      "context": "for spaCR painting-extracted image region labels under ``'sbs'``.",
+      "label": "spacr.ops_prefix.check_masks_frame#3",
+      "source": "for spaCR painting-crop labels under ``'sbs'``.",
+      "source_sha256": "3a07d8b5d5bdf591abf2e54b707227c7fc02570404eefdb8bca6be3088bd8016",
+      "translation": "``'sbs'`` के अंतर्गत spaCR की क्रॉप की गई पेंटिंग छवियों के लेबल के लिए।"
+    },
+    {
+      "context": "One site's cell labels in the sequencing frame (item 919 frame fix).",
+      "label": "spacr.ops_prefix.frame_labels#0",
+      "source": "One site's cell labels in the sequencing frame (item 919 frame fix).",
+      "source_sha256": "5afee301c2cf1d7fce549dd471eac562d5ce7adfe8377d3fa53f85a3b4e1efce",
+      "translation": "अनुक्रमण फ़्रेम में एक साइट के कोशिका लेबल (मद 919 का फ़्रेम सुधार)।"
+    },
+    {
+      "context": "from :func:`site_labels`, or None.",
+      "label": "spacr.ops_prefix.frame_labels#1",
+      "source": "from :func:`site_labels`, or None.",
+      "source_sha256": "872e4329731e913ce067158c61b5b553cd96d0ab51caf60c57ea0999201087f6",
+      "translation": ":func:`site_labels` से, या None।"
+    },
+    {
+      "context": "from :func:`prefix_settings`.",
+      "label": "spacr.ops_prefix.frame_labels#2",
+      "source": "from :func:`prefix_settings`.",
+      "source_sha256": "89ba90debfcbde47c1c4f348e934d803b2a05e528fe678894d5d7f93563b2285",
+      "translation": ":func:`prefix_settings` से।"
+    },
+    {
+      "context": "the cropped-site index (for ``cpg_align_source 'register'``).",
+      "label": "spacr.ops_prefix.frame_labels#3",
+      "source": "the cropped-site index (for ``cpg_align_source 'register'``).",
+      "source_sha256": "3ed21ed3f1b68b379696fee8e578bdd5c05b82037aeaf7b2057b10c594c3e640",
+      "translation": "क्रॉप किए गए साइट का सूचकांक (``cpg_align_source 'register'`` के लिए)।"
+    },
+    {
+      "context": "the plate.",
+      "label": "spacr.ops_prefix.frame_labels#4",
+      "source": "the plate.",
+      "source_sha256": "10b08477093ac78797467e1c884ab297720b4df285c5cb6baa5821839eae3ccc",
+      "translation": "प्लेट।"
+    },
+    {
+      "context": "the microplate sample position folder name.",
+      "label": "spacr.ops_prefix.frame_labels#5",
+      "source": "the well folder name.",
+      "source_sha256": "f4743c4d5716510686560938483f05d303e4da0e46e3933cbb25a6b141539cee",
+      "translation": "वेल फ़ोल्डर का नाम।"
+    },
+    {
+      "context": "the site.",
+      "label": "spacr.ops_prefix.frame_labels#6",
+      "source": "the site.",
+      "source_sha256": "2cf7c99ef095d3c61e6998c222c81c64ec986f46866179978cb0cff47cd69b28",
+      "translation": "साइट।"
+    },
+    {
+      "context": "the reader's root.",
+      "label": "spacr.ops_prefix.frame_labels#7",
+      "source": "the reader's root.",
+      "source_sha256": "5a260179da03eb14897f1eed8ebc53ccca6f2b16fb0a0911e4a42578d9b7354f",
+      "translation": "रीडर की मूल निर्देशिका।"
+    },
+    {
+      "context": "filled with the site's shift; reused when the site comes again (tuning, then calling).",
+      "label": "spacr.ops_prefix.frame_labels#8",
+      "source": "filled with the site's shift; reused when the site comes again (tuning, then calling).",
+      "source_sha256": "4a5b38725779be1e8a87379238be5b32f5cf64f67592b08717aa4866ec673c66",
+      "translation": "साइट के विस्थापन से भरा जाता है; साइट के दोबारा आने पर फिर उपयोग होता है (पहले ट्यूनिंग, फिर कॉल)।"
+    },
+    {
+      "context": "``labels`` unchanged under ``'sbs'``; else moved by the site's painting-to-sequencing shift (:func:`spacr.cpg_cropped.shift_image`).",
+      "label": "spacr.ops_prefix.frame_labels#9",
+      "source": "``labels`` unchanged under ``'sbs'``; else moved by the site's painting-to-sequencing shift (:func:`spacr.cpg_cropped.shift_image`).",
+      "source_sha256": "250d1935d11d38cca76cc096b36200cd4e259cfb7f50abefca47bf4ec74c08b2",
+      "translation": "``labels`` ``'sbs'`` के अंतर्गत अपरिवर्तित रहते हैं; अन्यथा साइट के पेंटिंग-से-अनुक्रमण विस्थापन से खिसकाए जाते हैं (:func:`spacr.cpg_cropped.shift_image`)।"
+    },
+    {
+      "context": "when the site has no shift record (never a silent 0).",
+      "label": "spacr.ops_prefix.frame_labels#10",
+      "source": "when the site has no shift record (never a silent 0).",
+      "source_sha256": "cd9bba48151e7a468bd2d34863bea5a7fb9b4718d924803e7b6b220f76085d11",
+      "translation": "जब साइट का विस्थापन रिकॉर्ड न हो (कभी चुपचाप 0 नहीं)।"
+    }
+  ],
+  "review_method": "Codex (OpenAI) AI translation and review on 2026-11-20 of the strings the item 919 frame fix (claude-919fix-1119 @ 118d0d8240) adds or changes: labels and tooltips of ops_prefix_masks_frame, cpg_align_source and cpg_align_table, the changed spacr.cpg_cropped module paragraph and the blocks of spacr.cpg_cropped.shift_image, periscope_image_csv, painting_to_sbs_shift and spacr.ops_prefix.check_masks_frame, frame_labels. No human or native-speaker signoff.",
+  "schema": 1
+}

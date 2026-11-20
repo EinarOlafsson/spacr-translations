@@ -1,0 +1,49 @@
+{
+  "language": "fr",
+  "records": [
+    {
+      "key": "ops_prefix_masks_frame",
+      "source": "Ops prefix masks frame",
+      "source_sha256": "17b1dc8647bd2cd0917be57d8c78dfe3af3b050969a6c3619712a6c6020b87db",
+      "table": "setting_labels",
+      "translation": "Préfixe OPS : repère des masques"
+    },
+    {
+      "key": "ops_prefix_masks_frame",
+      "source": "The frame of the ops_prefix_masks labels. 'sbs': already in the sequencing frame, as PERISCOPE's deposited masks are. 'painting': segmented on the painting crops (CorrDNA), as spaCR's large-site segmentation does; each site's labels (and ops_prefix_nuclei_masks) are moved onto the sequencing frame by its cpg_align_source shift before reads are assigned, and the shifts are written to label_frame_<plate>_<well>.csv. spaCR segmentation labels read as 'sbs' are refused. Default 'sbs'. Alpha.",
+      "source_sha256": "10770d6b3b5a7ffadae3e4328d0453d37b4cdfcc30aa574aae935584412d2268",
+      "table": "setting_tooltips",
+      "translation": "Le repère des étiquettes de ops_prefix_masks. 'sbs' : déjà dans le repère de séquençage, comme les masques déposés par PERISCOPE. 'painting' : segmentées sur les recadrages de Cell Painting (CorrDNA), comme le fait la segmentation des grands sites de spaCR ; les étiquettes de chaque site (et ops_prefix_nuclei_masks) sont déplacées dans le repère de séquençage par son décalage cpg_align_source avant l’attribution des lectures, et les décalages sont écrits dans label_frame_<plate>_<well>.csv. Les étiquettes de segmentation de spaCR lues comme 'sbs' sont refusées. Valeur par défaut : 'sbs'. Alpha."
+    },
+    {
+      "key": "cpg_align_source",
+      "source": "Cpg align source",
+      "source_sha256": "e18f8e535d19f823489447201031d3371b6a3ba2ab029396ed1f1321da5eb497",
+      "table": "setting_labels",
+      "translation": "Lecteur CPG : source de l’alignement"
+    },
+    {
+      "key": "cpg_align_source",
+      "source": "Where a site's painting-to-sequencing shift comes from when ops_prefix_masks_frame is 'painting'. PERISCOPE publishes its painting crops in their own frame and moves them onto Cycle01_DAPI at analysis time. 'periscope_logged' reads that shift from the site's PERISCOPE Image.csv (Align_Yshift/Xshift_DAPI_Painting); 'register' measures it by phase correlation of CorrDNA against Cycle01_DAPI. A site without a record or an accepted registration is refused, never given a zero shift. Default 'periscope_logged'. Alpha.",
+      "source_sha256": "a3e681659ce9062e0937176951fb53c7e9049deb5c672341117cffc2bc661927",
+      "table": "setting_tooltips",
+      "translation": "La provenance du décalage d’un site entre Cell Painting et séquençage lorsque ops_prefix_masks_frame vaut 'painting'. PERISCOPE publie ses recadrages de Cell Painting dans leur propre repère et les déplace sur Cycle01_DAPI lors de l’analyse. 'periscope_logged' lit ce décalage dans le fichier PERISCOPE Image.csv du site (Align_Yshift/Xshift_DAPI_Painting) ; 'register' le mesure par corrélation de phase de CorrDNA avec Cycle01_DAPI. Un site sans enregistrement ou sans recalage accepté est refusé et ne reçoit jamais un décalage nul. Valeur par défaut : 'periscope_logged'. Alpha."
+    },
+    {
+      "key": "cpg_align_table",
+      "source": "Cpg align table",
+      "source_sha256": "3d29cef4727aef652eb45d682573a626019374968452a86a99f3a387eccb16c1",
+      "table": "setting_labels",
+      "translation": "Lecteur CPG : table d’alignement"
+    },
+    {
+      "key": "cpg_align_table",
+      "source": "The PERISCOPE Image.csv of each site, as a path with {plate}, {well}, {well_number} and {site} fields. Empty finds it from cpg_root in the cpg0021 layout (workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv). Default None. Alpha.",
+      "source_sha256": "c01d4cd3312e1f4f18dfb4ac686564c35c4ed0f457673417eccf56967424de60",
+      "table": "setting_tooltips",
+      "translation": "Le fichier PERISCOPE Image.csv de chaque site, sous forme de chemin avec les champs {plate}, {well}, {well_number} et {site}. Vide : il est recherché à partir de cpg_root dans la structure cpg0021 (workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv). Valeur par défaut : None. Alpha."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the strings the item 919 frame fix (claude-919fix-1119 @ 118d0d8240) adds or changes: labels and tooltips of ops_prefix_masks_frame, cpg_align_source and cpg_align_table, the changed spacr.cpg_cropped module paragraph and the blocks of spacr.cpg_cropped.shift_image, periscope_image_csv, painting_to_sbs_shift and spacr.ops_prefix.check_masks_frame, frame_labels. No human or native-speaker signoff.",
+  "schema": 1
+}

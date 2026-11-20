@@ -1,0 +1,49 @@
+{
+  "language": "ko",
+  "records": [
+    {
+      "key": "ops_prefix_masks_frame",
+      "source": "Ops prefix masks frame",
+      "source_sha256": "17b1dc8647bd2cd0917be57d8c78dfe3af3b050969a6c3619712a6c6020b87db",
+      "table": "setting_labels",
+      "translation": "OPS 접두사 마스크 좌표계"
+    },
+    {
+      "key": "ops_prefix_masks_frame",
+      "source": "The frame of the ops_prefix_masks labels. 'sbs': already in the sequencing frame, as PERISCOPE's deposited masks are. 'painting': segmented on the painting crops (CorrDNA), as spaCR's large-site segmentation does; each site's labels (and ops_prefix_nuclei_masks) are moved onto the sequencing frame by its cpg_align_source shift before reads are assigned, and the shifts are written to label_frame_<plate>_<well>.csv. spaCR segmentation labels read as 'sbs' are refused. Default 'sbs'. Alpha.",
+      "source_sha256": "10770d6b3b5a7ffadae3e4328d0453d37b4cdfcc30aa574aae935584412d2268",
+      "table": "setting_tooltips",
+      "translation": "ops_prefix_masks 레이블의 좌표계입니다. 'sbs': PERISCOPE가 기탁한 마스크처럼 이미 시퀀싱 좌표계에 있습니다. 'painting': spaCR의 대형 사이트 분할처럼 페인팅 크롭 이미지(CorrDNA)에서 분할되었습니다. 리드를 할당하기 전에 각 사이트의 레이블(및 ops_prefix_nuclei_masks)을 해당 cpg_align_source 이동량만큼 시퀀싱 좌표계로 옮기고, 이동량을 label_frame_<plate>_<well>.csv에 기록합니다. spaCR 분할 레이블을 'sbs'로 읽는 것은 거부됩니다. 기본값 'sbs'. 알파."
+    },
+    {
+      "key": "cpg_align_source",
+      "source": "Cpg align source",
+      "source_sha256": "e18f8e535d19f823489447201031d3371b6a3ba2ab029396ed1f1321da5eb497",
+      "table": "setting_labels",
+      "translation": "CPG 정렬 소스"
+    },
+    {
+      "key": "cpg_align_source",
+      "source": "Where a site's painting-to-sequencing shift comes from when ops_prefix_masks_frame is 'painting'. PERISCOPE publishes its painting crops in their own frame and moves them onto Cycle01_DAPI at analysis time. 'periscope_logged' reads that shift from the site's PERISCOPE Image.csv (Align_Yshift/Xshift_DAPI_Painting); 'register' measures it by phase correlation of CorrDNA against Cycle01_DAPI. A site without a record or an accepted registration is refused, never given a zero shift. Default 'periscope_logged'. Alpha.",
+      "source_sha256": "a3e681659ce9062e0937176951fb53c7e9049deb5c672341117cffc2bc661927",
+      "table": "setting_tooltips",
+      "translation": "ops_prefix_masks_frame이 'painting'일 때 사이트의 페인팅 좌표계에서 시퀀싱 좌표계로의 이동량을 가져오는 소스입니다. PERISCOPE는 페인팅 크롭 이미지를 자체 좌표계로 공개하고 분석 시 Cycle01_DAPI로 옮깁니다. 'periscope_logged'는 사이트의 PERISCOPE Image.csv(Align_Yshift/Xshift_DAPI_Painting)에서 이동량을 읽고, 'register'는 CorrDNA와 Cycle01_DAPI의 위상 상관으로 이를 측정합니다. 기록이나 승인된 영상 정합이 없는 사이트는 거부되며, 이동량 0을 부여하지 않습니다. 기본값 'periscope_logged'. 알파."
+    },
+    {
+      "key": "cpg_align_table",
+      "source": "Cpg align table",
+      "source_sha256": "3d29cef4727aef652eb45d682573a626019374968452a86a99f3a387eccb16c1",
+      "table": "setting_labels",
+      "translation": "CPG 정렬 테이블"
+    },
+    {
+      "key": "cpg_align_table",
+      "source": "The PERISCOPE Image.csv of each site, as a path with {plate}, {well}, {well_number} and {site} fields. Empty finds it from cpg_root in the cpg0021 layout (workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv). Default None. Alpha.",
+      "source_sha256": "c01d4cd3312e1f4f18dfb4ac686564c35c4ed0f457673417eccf56967424de60",
+      "table": "setting_tooltips",
+      "translation": "각 사이트의 PERISCOPE Image.csv 파일을 가리키는 경로로, {plate}, {well}, {well_number}, {site} 필드를 포함합니다. 비워 두면 cpg_root에서 cpg0021 구조(workspace/analysis/<batch>/<plate>-Well<N>-<site>/Image.csv)에 따라 찾습니다. 기본값 None. 알파."
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the strings the item 919 frame fix (claude-919fix-1119 @ 118d0d8240) adds or changes: labels and tooltips of ops_prefix_masks_frame, cpg_align_source and cpg_align_table, the changed spacr.cpg_cropped module paragraph and the blocks of spacr.cpg_cropped.shift_image, periscope_image_csv, painting_to_sbs_shift and spacr.ops_prefix.check_masks_frame, frame_labels. No human or native-speaker signoff.",
+  "schema": 1
+}

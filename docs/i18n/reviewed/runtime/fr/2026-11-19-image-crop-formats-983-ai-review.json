@@ -37,39 +37,11 @@
       "translation": "Mettre à zéro hors de l'objet dans la découpe"
     },
     {
-      "key": "mask_image_format",
-      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
-      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
-      "table": "setting_tooltips",
-      "translation": "Le format dans lequel Génération de masques écrit aussi ses champs fusionnés. 'npy' écrit uniquement merged/*.npy, comme auparavant. 'ome-zarr' ajoute un magasin OME-Zarr 0.5 par plaque sous images/, avec les canaux de chaque champ nommés et ses masques stockés sous forme d'étiquettes, que napari et Fiji peuvent ouvrir. 'tiff' ajoute merged_tiff/<field>.tif et un <field>_<object>_mask.tif par objet. Les fichiers .npy fusionnés restent en place, de sorte que les étapes suivantes les lisent comme auparavant. Valeur par défaut : 'npy'. Alpha."
-    },
-    {
-      "key": "crop_image_format",
-      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
-      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
-      "table": "setting_tooltips",
-      "translation": "Le format dans lequel Mesurer écrit les découpes d'objets. 'png' écrit les dossiers PNG comme auparavant (valeur par défaut). 'ome-zarr' écrit la boîte englobante de chaque objet augmentée de crop_margin_px, à pleine profondeur de bits et avec tous les canaux, accompagnée de son propre masque, dans un magasin par puits : crops/plate=<plate>/well=<well>.zarr, répertorié dans measurements.db, table ssCell_Crops. Les découpes conservent leurs intensités brutes ; rien n'est étiré. Alpha."
-    },
-    {
       "key": "crops_per_shard",
       "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
       "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
       "table": "setting_tooltips",
       "translation": "Le nombre de découpes placées dans un fragment stocké lorsque crop_image_format vaut 'ome-zarr'. Des fragments plus grands donnent moins de fichiers ; chaque fragment est conservé en RAM avant son écriture. Réduit automatiquement, avec une ligne dans le journal, lorsque la RAM libre est insuffisante. Valeur par défaut : 4096. Alpha."
-    },
-    {
-      "key": "crop_margin_px",
-      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
-      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
-      "table": "setting_tooltips",
-      "translation": "Pixels conservés autour de la boîte englobante de chaque objet dans les découpes OME-Zarr, limités par le bord de l'image. Valeur par défaut : 0. Alpha."
-    },
-    {
-      "key": "crop_zero_outside",
-      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
-      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
-      "table": "setting_tooltips",
-      "translation": "Stocke les découpes OME-Zarr en mettant à 0 chaque pixel extérieur à l'objet. Désactivé par défaut : les pixels autour de l'objet sont conservés, et un lecteur peut toujours les masquer avec le masque stocké. Alpha."
     },
     {
       "key": "(none: RGB view)",

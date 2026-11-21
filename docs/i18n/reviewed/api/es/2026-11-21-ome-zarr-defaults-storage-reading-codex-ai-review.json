@@ -1,0 +1,551 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "context": "image path, indexed native extracted image region reference, or seekable binary stream as accepted by PIL. Native references use the shared extracted image region reader.",
+      "label": "spacr.classification_pixels.read_classification_image#1",
+      "source": "image path, indexed native crop reference, or seekable binary stream as accepted by PIL. Native references use the shared crop reader.",
+      "source_sha256": "69d3c6114d266af627b478c592e358a05536a6fbed4cb7da48ce22b97b7740ca",
+      "translation": "ruta de imagen, referencia indexada a un recorte nativo o flujo binario con posicionamiento, según lo admitido por PIL. Las referencias nativas usan el lector compartido de recortes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "dataset directory holding ``train/`` and ``test/``. Both are searched recursively, and only ``.png``, ``.jpg``, ``.jpeg``, ``.tif``, ``.tiff``, ``.bmp`` and ``.npy`` files are collected, so a folder of any other format audits as empty unless ``crop_index.csv`` supplies native extracted image region references. Those references are hashed from their stored pixel dtype, shape and values rather than from locator text.",
+      "label": "spacr.classifier_evaluation.audit_dataset_splits#1",
+      "source": "dataset directory holding ``train/`` and ``test/``. Both are searched recursively, and only ``.png``, ``.jpg``, ``.jpeg``, ``.tif``, ``.tiff``, ``.bmp`` and ``.npy`` files are collected, so a folder of any other format audits as empty unless ``crop_index.csv`` supplies native crop references. Those references are hashed from their stored pixel dtype, shape and values rather than from locator text.",
+      "source_sha256": "b701488bfa37fb842baf3844027dc06d5c00b7c45238196a8b4bc89bee0b067e",
+      "translation": "directorio del conjunto de datos que contiene ``train/`` y ``test/``. Ambos se exploran de forma recursiva y solo se recopilan archivos ``.png``, ``.jpg``, ``.jpeg``, ``.tif``, ``.tiff``, ``.bmp`` y ``.npy``, por lo que una carpeta de cualquier otro formato se audita como vacía salvo que ``crop_index.csv`` proporcione referencias a recortes nativos. El hash de esas referencias se calcula a partir del tipo de datos, las dimensiones y los valores de los píxeles almacenados, no del texto del localizador.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Return indexed native references or sorted image paths for one split.",
+      "label": "spacr.classifier_evaluation.dataset_split_paths#0",
+      "source": "Return indexed native references or sorted image paths for one split.",
+      "source_sha256": "ad18a7c3b7edffdb453ab3aad7bf2459e92c7612e56dfbf7c1b44412c4a028ae",
+      "translation": "Devuelve referencias nativas indexadas o rutas de imágenes ordenadas para una partición.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "name of the split subfolder, such as ``train`` or ``test``. A missing folder returns an empty list; files with an image or ``.npy`` suffix are collected recursively below it. A parent ``crop_index.csv`` supplies references in recorded row order instead of file discovery.",
+      "label": "spacr.classifier_evaluation.dataset_split_paths#2",
+      "source": "name of the split subfolder, such as ``train`` or ``test``. A missing folder returns an empty list; files with an image or ``.npy`` suffix are collected recursively below it. A parent ``crop_index.csv`` supplies references in recorded row order instead of file discovery.",
+      "source_sha256": "743b7d89575bd0684fdd97ecdb4c874316e8852f2478fbad87791e26051f8855",
+      "translation": "nombre de la subcarpeta de la partición, como ``train`` o ``test``. Si la carpeta no existe, devuelve una lista vacía; los archivos con una extensión de imagen o ``.npy`` se recopilan recursivamente dentro de ella. Un ``crop_index.csv`` en el directorio superior proporciona las referencias en el orden de filas registrado, en lugar de buscar los archivos.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "The output is one ``(objects, height, width, channels)`` array, the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the extracted image region shape, and how many extracted image regions had to be conformed to it.",
+      "label": "spacr.crop_loader#4",
+      "source": "The output is one ``(objects, height, width, channels)`` array, the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the crop shape, and how many crops had to be conformed to it.",
+      "source_sha256": "53710c439c34a2008f6078bfb3d08b2cf292ac549f8f0059b43521dc8f4054f6",
+      "translation": "La salida es una matriz ``(objects, height, width, channels)``, la disposición que documenta :func:`spacr.embeddings.embed_array` y requiere :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`, más un ``record`` serializable en JSON de lo que se leyó realmente: cuántos coincidieron, cuántos se tomaron, las dimensiones de los recortes y cuántos recortes tuvieron que adaptarse a ellas.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "OME-Zarr extracted image regions retain their stored dtype and channels; legacy display extracted image regions are uint8.",
+      "label": "spacr.crop_loader#5",
+      "source": "OME-Zarr crops retain their stored dtype and channels; legacy display crops are uint8.",
+      "source_sha256": "e8556e1eb3ce9bbe893f6a086a8ece12b833e9778781ca12242ebe14b8c760f9",
+      "translation": "Los recortes OME-Zarr conservan su tipo de datos y sus canales almacenados; los recortes de visualización heredados son uint8.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "A legacy class is offered only when its id column holds at least one value, because a ``png_list`` written for cells carries an empty ``nucleus_id`` column on some schemas and offering it would put a choice in the panel that can only ever return nothing.",
+      "label": "spacr.crop_loader.object_classes#1",
+      "source": "A legacy class is offered only when its id column holds at least one value, because a ``png_list`` written for cells carries an empty ``nucleus_id`` column on some schemas and offering it would put a choice in the panel that can only ever return nothing.",
+      "source_sha256": "a5ca55b804f29c0d04105e29895756829027eb9b845741ce33065e60cffdeccb",
+      "translation": "Una clase heredada solo se ofrece cuando su columna de identificadores contiene al menos un valor, porque un ``png_list`` escrito para células contiene una columna ``nucleus_id`` vacía en algunos esquemas, y ofrecerla añadiría al panel una opción que nunca puede devolver nada.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Default discovery includes recorded native and legacy classes together, so native metadata cannot hide legacy choices when PNG is selected or native stores are unavailable. Pixel source selection belongs to the plan.",
+      "label": "spacr.crop_loader.object_classes#2",
+      "source": "Default discovery includes recorded native and legacy classes together, so native metadata cannot hide legacy choices when PNG is selected or native stores are unavailable. Pixel source selection belongs to the plan.",
+      "source_sha256": "346e6d06de1067303b6427ed8ca847b6a080a064e231f6d3ad8db6b1ce7f688a",
+      "translation": "La búsqueda predeterminada incluye juntas las clases nativas y heredadas registradas, para que los metadatos nativos no oculten opciones heredadas cuando se selecciona PNG o los almacenes nativos no están disponibles. La selección del origen de los píxeles corresponde al plan.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "class names in :data:`spacr.png_list.PNG_LIST_ID_COLUMNS` order, followed by other recorded native classes in sorted order. Empty when the database has no extracted image region records.",
+      "label": "spacr.crop_loader.object_classes#5",
+      "source": "class names in :data:`spacr.png_list.PNG_LIST_ID_COLUMNS` order, followed by other recorded native classes in sorted order. Empty when the database has no crop records.",
+      "source_sha256": "dc0e9fb6cee033ebda2221ca7ca52a4366d43f53cbdc62b8b28a39cffc7a9860",
+      "translation": "nombres de clase en el orden de :data:`spacr.png_list.PNG_LIST_ID_COLUMNS`, seguidos de las demás clases nativas registradas en orden. Vacío cuando la base de datos no contiene registros de recortes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Default discovery includes native and legacy records together; source selection remains the responsibility of the extracted image region plan.",
+      "label": "spacr.crop_loader.plates#1",
+      "source": "Default discovery includes native and legacy records together; source selection remains the responsibility of the crop plan.",
+      "source_sha256": "045d92c673d7b63ba7ab56fe829192764729a13f70b47714ea034f486bac5a82",
+      "translation": "La búsqueda predeterminada incluye juntos los registros nativos y heredados; la selección del origen sigue siendo responsabilidad del plan de recortes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "the ``measurements.db``.",
+      "label": "spacr.crop_loader.plates#2",
+      "source": "the ``measurements.db``.",
+      "source_sha256": "041ca665c5c4adffe4357cd8d73fe5b64e19b4c480a17ba3ab41beceb83d3535",
+      "translation": "el ``measurements.db``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "the extracted-image-region table; ``'png_list'``.",
+      "label": "spacr.crop_loader.plates#3",
+      "source": "the crop table; ``'png_list'``.",
+      "source_sha256": "0f0ba0c1c3d7407963e0cf78a3b0d4477de70924487935d6cd8d01bd26cfbef2",
+      "translation": "la tabla de recortes; ``'png_list'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "plate identifiers as strings. Empty when neither the selected legacy table nor the default native table records plate identifiers.",
+      "label": "spacr.crop_loader.plates#4",
+      "source": "plate identifiers as strings. Empty when neither the selected legacy table nor the default native table records plate identifiers.",
+      "source_sha256": "ca3d828b3753bae0211dfcae7ea1c2b1bec264286324677c8a9afa8575e6ddee",
+      "translation": "identificadores de placa como cadenas. Vacío cuando ni la tabla heredada seleccionada ni la tabla nativa predeterminada registran identificadores de placa.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``ome-zarr`` — read stored native extracted image regions Use existing OME-Zarr extracted image region pools through the shared reader. Legacy formats remain available when the project has no OME-Zarr extracted image region pools. ``png`` — load pre-generated images Read extracted image regions previously written by the measurement workflow. ``path_string`` filters paths by substring and ``file_type`` filters by image extension. This source performs no extracting image regions. ``merged`` — stream images Extract extracted image regions during training from ``merged/*.npy`` arrays. ``extract_channels`` selects the intensity image layers and ``object_array`` selects the labelled mask image layer that defines each object's extent. When ``coordinate_columns`` are configured, database coordinates instead define fixed bounding-box extracted image regions. ``generate`` — generate images, then load them Materialize a complete extracted image region set on disk before training, then read it through the same file-backed path as ``png``. This is a preprocessing action rather than a streaming source.",
+      "label": "spacr.crop_source#2",
+      "source": "``ome-zarr`` — read stored native crops Use existing OME-Zarr crop pools through the shared reader. Legacy formats remain available when the project has no OME-Zarr crop pools. ``png`` — load pre-generated images Read crops previously written by the measurement workflow. ``path_string`` filters paths by substring and ``file_type`` filters by image extension. This source performs no cropping. ``merged`` — stream images Extract crops during training from ``merged/*.npy`` arrays. ``extract_channels`` selects the intensity planes and ``object_array`` selects the labelled mask plane that defines each object's extent. When ``coordinate_columns`` are configured, database coordinates instead define fixed bounding-box crops. ``generate`` — generate images, then load them Materialize a complete crop set on disk before training, then read it through the same file-backed path as ``png``. This is a preprocessing action rather than a streaming source.",
+      "source_sha256": "4cbad813d5bc272bede09cd0f044e9ae5d79d3caa6b5ce109cde6a90ecc04df0",
+      "translation": "``ome-zarr`` — leer recortes nativos almacenados Usa los conjuntos existentes de recortes OME-Zarr mediante el lector compartido. Los formatos heredados siguen disponibles cuando el proyecto no tiene conjuntos de recortes OME-Zarr. ``png`` — cargar imágenes generadas previamente Lee los recortes escritos previamente por el flujo de medición. ``path_string`` filtra las rutas por subcadena y ``file_type`` filtra por extensión de imagen. Este origen no realiza recortes. ``merged`` — obtener imágenes bajo demanda Extrae recortes durante el entrenamiento de las matrices ``merged/*.npy``. ``extract_channels`` selecciona los planos de intensidad y ``object_array`` selecciona el plano de máscaras etiquetadas que define la extensión de cada objeto. Cuando se configura ``coordinate_columns``, las coordenadas de la base de datos definen en su lugar recortes con rectángulos delimitadores fijos. ``generate`` — generar imágenes y después cargarlas Materializa un conjunto completo de recortes en disco antes del entrenamiento y después lo lee mediante la misma ruta basada en archivos que ``png``. Es una acción de preprocesamiento, no un origen de lectura bajo demanda.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Return the canonical extracted-image-region source, including native ``ome-zarr`` extracted image regions.",
+      "label": "spacr.crop_source.resolve_source#0",
+      "source": "Return the canonical crop source, including native ``ome-zarr`` crops.",
+      "source_sha256": "c4859e96e63d1bf219c0bfa4e74091942aff4e62960152277a25f0803357854a",
+      "translation": "Devuelve el origen canónico de recortes, incluidos los recortes nativos ``ome-zarr``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means load images for compatibility; current panels supply an explicit default.",
+      "label": "spacr.crop_source.resolve_source#1",
+      "source": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means LOAD IMAGES for compatibility; current panels supply an explicit default.",
+      "source_sha256": "db9bbfaffe12c45c56683579945969afb2b1454aad249abf12430470a5d764cc",
+      "translation": "Se resuelve cada variante de :data:`CROP_SOURCE_ALIASES`, por lo que se acepta un archivo de ajustes escrito por cualquier panel publicado de spaCR. Un valor sin definir significa LOAD IMAGES por compatibilidad; los paneles actuales proporcionan un valor predeterminado explícito.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``bool`` by default, or ``uint8`` to preserve integer mask labels from 0 to 255. Zero is background; nonzero labels are foreground when reading without context. A class cannot mix mask dtypes across resumed writes.",
+      "label": "spacr.crop_store.CropPoolWriter#7",
+      "source": "``bool`` by default, or ``uint8`` to preserve integer mask labels from 0 to 255. Zero is background; nonzero labels are foreground when reading without context. A class cannot mix mask dtypes across resumed writes.",
+      "source_sha256": "49cdbf18a5f8dedf155de51e035724c59d3254edff8bbc7e40ef7e2ea169827e",
+      "translation": "``bool`` de forma predeterminada, o ``uint8`` para conservar etiquetas enteras de máscara de 0 a 255. El cero es fondo; las etiquetas distintas de cero pertenecen al objeto al leer sin contexto. Una clase no puede mezclar tipos de datos de máscaras al reanudar las escrituras.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "metadata of this class's pools, stored on the class group under ``spacr`` (for example ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` and ``spacr_version`` are added. ``mask_dtype`` is also stored for non-Boolean masks; its absence means Boolean. A structured-data name that is already stored with another value is refused, so pools of one class never mix image data channel orders or settings.",
+      "label": "spacr.crop_store.CropPoolWriter#9",
+      "source": "metadata of this class's pools, stored on the class group under ``spacr`` (for example ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` and ``spacr_version`` are added. ``mask_dtype`` is also stored for non-Boolean masks; its absence means Boolean. A key that is already stored with another value is refused, so pools of one class never mix channel orders or settings.",
+      "source_sha256": "6683ca0b47f798c32fdd8325d303fe68c43091489e179ca6d51debabebf8df0a",
+      "translation": "metadatos de los conjuntos de esta clase, almacenados en el grupo de la clase bajo ``spacr`` (por ejemplo, ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). Se añaden ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` y ``spacr_version``. También se almacena ``mask_dtype`` para las máscaras no booleanas; su ausencia indica máscaras booleanas. Se rechaza una clave que ya esté almacenada con otro valor, para que los conjuntos de una clase nunca mezclen órdenes de canales ni ajustes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "extracted image regions from :func:`cut_crops`, in the order they are stored. With ``mask_dtype=uint8``, masks must contain integers from 0 to 255.",
+      "label": "spacr.crop_store.CropPoolWriter.add#2",
+      "source": "crops from :func:`cut_crops`, in the order they are stored. With ``mask_dtype=uint8``, masks must contain integers from 0 to 255.",
+      "source_sha256": "17e9b3d38f3c986e14a05a08c8798790ee66d0198a46ae7e916d1099947f659e",
+      "translation": "recortes de :func:`cut_crops`, en el orden en que se almacenan. Con ``mask_dtype=uint8``, las máscaras deben contener enteros de 0 a 255.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "The stored extracted image region: ``(pixels (C, h, w), mask (h, w))`` in their stored dtypes.",
+      "label": "spacr.crop_store.OmeZarrCropSource.get_raw#0",
+      "source": "The stored crop: ``(pixels (C, h, w), mask (h, w))`` in their stored dtypes.",
+      "source_sha256": "50ab1b5602d854cb34f6abae84aa4568daf68d938fe4bad3f5addf2ef77aaa43",
+      "translation": "El recorte almacenado: ``(pixels (C, h, w), mask (h, w))`` con sus tipos de datos almacenados.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "keep the pixels around the object; False zeroes them. A row with ``has_mask=False`` keeps its pixels because its stored zero mask is a placeholder, which is still returned unchanged.",
+      "label": "spacr.crop_store.read_crop#3",
+      "source": "keep the pixels around the object; False zeroes them. A row with ``has_mask=False`` keeps its pixels because its stored zero mask is a placeholder, which is still returned unchanged.",
+      "source_sha256": "06c6d283a8663d2ecfdcddc7851559a16149282bc37602e7b73828b2234ed7b6",
+      "translation": "conservar los píxeles alrededor del objeto; False los pone a cero. Una fila con ``has_mask=False`` conserva sus píxeles porque su máscara almacenada de ceros es un marcador de posición, que se devuelve sin cambios.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``(pixels (C, h, w), mask (h, w))``, preserving both stored dtypes and mask labels.",
+      "label": "spacr.crop_store.read_crop#5",
+      "source": "``(pixels (C, h, w), mask (h, w))``, preserving both stored dtypes and mask labels.",
+      "source_sha256": "fe4c3cf34b15c4d6f18c3e30fd43d6ea4948120cfb2a957fa4467adad68ca00b",
+      "translation": "``(pixels (C, h, w), mask (h, w))``, conservando tanto los tipos de datos almacenados como las etiquetas de la máscara.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Many extracted image regions at once, each pool opened once and requested chunk ranges read together.",
+      "label": "spacr.crop_store.read_crops#0",
+      "source": "Many crops at once, each pool opened once and requested chunk ranges read together.",
+      "source_sha256": "0ae66be7349d03595b35f41131c680414a079d3f3f03e154504e64a8321a2624",
+      "translation": "Muchos recortes a la vez, abriendo cada conjunto una sola vez y leyendo juntos los rangos de bloques solicitados.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "The same extracted image regions as :func:`read_crop` row by row, in the order given. Reading extracted image region by extracted image region opens the pool and decodes its chunk again for every extracted image region; here ranges sharing or touching chunks are read together, while unrequested chunks between groups are left unread. Contiguous selections use one slice. Pixel and mask ranges use their own offsets and chunk sizes.",
+      "label": "spacr.crop_store.read_crops#1",
+      "source": "The same crops as :func:`read_crop` row by row, in the order given. Reading crop by crop opens the pool and decodes its chunk again for every crop; here ranges sharing or touching chunks are read together, while unrequested chunks between groups are left unread. Contiguous selections use one slice. Pixel and mask ranges use their own offsets and chunk sizes.",
+      "source_sha256": "e92a39d97e1fe0f23f1a2a8667d87d523f6498206f8081aa19bd31131ba2603b",
+      "translation": "Los mismos recortes que :func:`read_crop` fila a fila, en el orden indicado. La lectura recorte a recorte abre el conjunto y vuelve a decodificar su bloque para cada recorte; aquí se leen juntos los rangos cuyos bloques se solapan o son contiguos, mientras que los bloques no solicitados entre grupos no se leen. Las selecciones contiguas usan una sola sección. Los rangos de píxeles y de máscaras usan sus propios desplazamientos y tamaños de bloque.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "keep the pixels around each object; False zeroes them. Rows with ``has_mask=False`` keep their pixels and return the stored zero placeholder mask, as :func:`read_crop` does.",
+      "label": "spacr.crop_store.read_crops#4",
+      "source": "keep the pixels around each object; False zeroes them. Rows with ``has_mask=False`` keep their pixels and return the stored zero placeholder mask, as :func:`read_crop` does.",
+      "source_sha256": "00b6b1fb9705b3e6bdb33561787564c8688c1907dcb1955b4388e4dd462c11b2",
+      "translation": "conservar los píxeles alrededor de cada objeto; False los pone a cero. Las filas con ``has_mask=False`` conservan sus píxeles y devuelven la máscara almacenada de ceros que sirve de marcador de posición, como hace :func:`read_crop`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "one ``(pixels (C, h, w), mask (h, w))`` per row, preserving both stored dtypes and mask labels.",
+      "label": "spacr.crop_store.read_crops#6",
+      "source": "one ``(pixels (C, h, w), mask (h, w))`` per row, preserving both stored dtypes and mask labels.",
+      "source_sha256": "09a0643b3f967290b12af1cab6f59b2bff9f90bf3be9bb4374ff0f3ff6bca04f",
+      "translation": "un ``(pixels (C, h, w), mask (h, w))`` por fila, conservando tanto los tipos de datos almacenados como las etiquetas de la máscara.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Reads the ``train/<class>/`` and ``test/<class>/`` folder tree :func:`spacr.io.generate_dataset` writes, because that tree *is* the training set, or the selected rows of ``crop_index.csv`` for native OME-Zarr datasets. A class balance quoted from the settings would describe what was requested rather than what ended up on disk.",
+      "label": "spacr.deep_spacr.dataset_class_balance#1",
+      "source": "Reads the ``train/<class>/`` and ``test/<class>/`` folder tree :func:`spacr.io.generate_dataset` writes, because that tree *is* the training set, or the selected rows of ``crop_index.csv`` for native OME-Zarr datasets. A class balance quoted from the settings would describe what was requested rather than what ended up on disk.",
+      "source_sha256": "6401e8c300c45ada2d24517784dd46e4bcbd7d0d8f7d8aefd151313fb4b4d2a7",
+      "translation": "Lee el árbol de carpetas ``train/<class>/`` y ``test/<class>/`` que escribe :func:`spacr.io.generate_dataset`, porque ese árbol *es* el conjunto de entrenamiento, o las filas seleccionadas de ``crop_index.csv`` para los conjuntos de datos OME-Zarr nativos. Un balance de clases tomado de los ajustes describiría lo solicitado, en lugar de lo que acabó en el disco.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader; the default reads merged NPY.",
+      "label": "spacr.illumination.estimate_illumination#11",
+      "source": "optional selected-source loader; the default reads merged NPY.",
+      "source_sha256": "3fcaff4a55ad9ccf53908fde6197c0e09287aafb703e0c7045c209140c1cb41e",
+      "translation": "cargador opcional del origen seleccionado; de forma predeterminada lee los NPY de merged.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "an :class:`IlluminationModel`.",
+      "label": "spacr.illumination.estimate_illumination#12",
+      "source": "an :class:`IlluminationModel`.",
+      "source_sha256": "36cf297723929063c8dc4093f23f107f4d8ad7b44c559ef3af6129265dc079f3",
+      "translation": "an :class:`IlluminationModel`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader; external nucleus tables are unchanged.",
+      "label": "spacr.illumination.estimate_nuclear_illumination#16",
+      "source": "optional selected-source loader; external nucleus tables are unchanged.",
+      "source_sha256": "9ac4d28327fc3a1ccbf9108be6d80d7b66256d032e176131e3b35f580f55e95a",
+      "translation": "cargador opcional del origen seleccionado; las tablas externas de núcleos no cambian.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader used for the QC image pixels.",
+      "label": "spacr.illumination.illumination_qc#11",
+      "source": "optional selected-source loader used for the QC image pixels.",
+      "source_sha256": "cb9969789273151b624c7094a96be45ec334b89fd56f54deb15f60175a504c15",
+      "translation": "cargador opcional del origen seleccionado que se usa para los píxeles de las imágenes de control de calidad (QC).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader forwarded to estimation and QC.",
+      "label": "spacr.illumination.prepare_illumination_correction#5",
+      "source": "optional selected-source loader forwarded to estimation and QC.",
+      "source_sha256": "a3dfb9093bb3296ca500dc3394219555d63dd29bed08bc38b7bcf3efc7da5815",
+      "translation": "cargador opcional del origen seleccionado que se pasa a la estimación y al control de calidad (QC).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader for estimation, validation and QC.",
+      "label": "spacr.illumination.prepare_illumination_model#6",
+      "source": "optional selected-source loader for estimation, validation and QC.",
+      "source_sha256": "fd438d5065bcdabaa69c954189a10fd60882ba22bb8f6c62ff5597de5f5132f5",
+      "translation": "cargador opcional del origen seleccionado para la estimación, la validación y el control de calidad (QC).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional selected-source loader for held-out microscope fields of view and masks.",
+      "label": "spacr.illumination.validate_illumination#6",
+      "source": "optional selected-source loader for held-out fields and masks.",
+      "source_sha256": "b1ebb5f16c8f0b40de0f45d734ab0b071c9b88f993429b45b474dc21cffc83c1",
+      "translation": "cargador opcional del origen seleccionado para los campos de visión reservados y sus máscaras.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "A laboratory microplate is one store, ``<root>/<plate>.ome.zarr``, laid out the HCS way: row, column (the microplate sample position) and microscope field of view groups, each microscope field of view an OME-NGFF 0.5 image (zarr-format 3, unsharded Blosc LZ4 chunks) with its masks under ``labels/``.",
+      "label": "spacr.image_store#1",
+      "source": "A plate is one store, ``<root>/<plate>.ome.zarr``, laid out the HCS way: row, column (the well) and field groups, each field an OME-NGFF 0.5 image (zarr-format 3, unsharded Blosc LZ4 chunks) with its masks under ``labels/``.",
+      "source_sha256": "e81e4cdc6e3156646f2fb9d815e15f996459e9d3e056d15c45adb1023a073f48",
+      "translation": "Una placa corresponde a un almacén, ``<root>/<plate>.ome.zarr``, organizado según HCS: grupos de fila, columna (el pocillo) y campo de visión, cada campo como imagen OME-NGFF 0.5 (formato Zarr 3, bloques Blosc LZ4 sin agrupación en fragmentos) con sus máscaras en ``labels/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Microscope fields of view are written whole with :meth:`write_field`; the laboratory microplate and microplate sample position metadata are rewritten from the ledger after each microscope field of view, so a reader opening the store mid-run sees only committed microscope fields of view. Each image data channel and label image uses one unsharded whole-microscope field of view chunk, compressed with Blosc LZ4 and byte shuffle. Open (or start) the laboratory microplate store and read its commit ledger.",
+      "label": "spacr.image_store.PlateWriter#5",
+      "source": "Fields are written whole with :meth:`write_field`; the plate and well metadata are rewritten from the ledger after each field, so a reader opening the store mid-run sees only committed fields. Each image channel and label image uses one unsharded whole-field chunk, compressed with Blosc LZ4 and byte shuffle. Open (or start) the plate store and read its commit ledger.",
+      "source_sha256": "c918340f55a31c73777fc4adfd13f710d9173c45f00584eaf304e7ac402874e7",
+      "translation": "Los campos de visión se escriben completos con :meth:`write_field`; los metadatos de la placa y del pocillo se reescriben a partir del registro de confirmaciones después de cada campo, de modo que un lector que abre el almacén durante la ejecución solo ve los campos confirmados. Cada canal de imagen e imagen de etiquetas usa un único bloque que abarca todo el campo, sin agrupación en fragmentos, comprimido con Blosc LZ4 y reordenación de bytes. Abre (o inicia) el almacén de la placa y lee su registro de confirmaciones.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "The merged ``.npy`` stacks and image layer layout stay in place for microscope field of view discovery and legacy readers. Measure reads committed spatial OME-Zarr microscope fields of view through :func:`read_image` when selected, with the retained stacks as the fallback for missing or unsupported microscope field of view layouts.",
+      "label": "spacr.image_store.export_merged#6",
+      "source": "The merged ``.npy`` stacks and plane layout stay in place for field discovery and legacy readers. Measure reads committed spatial OME-Zarr fields through :func:`read_image` when selected, with the retained stacks as the fallback for missing or unsupported field layouts.",
+      "source_sha256": "b42d4f767759ff6fd54cd8cf172eeafba91e9f336491f30f19f8b4a0456db215",
+      "translation": "Las pilas ``.npy`` de merged y la disposición de los planos permanecen en su sitio para la búsqueda de campos y los lectores heredados. Medición lee los campos espaciales OME-Zarr confirmados mediante :func:`read_image` cuando se seleccionan, y usa las pilas conservadas como alternativa para las disposiciones de campo ausentes o no compatibles.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "optional shared field loader taking one merged path; the default retains the legacy memory-mapped NPY reader.",
+      "label": "spacr.intensity_rescale.build_plate_plan#4",
+      "source": "optional shared field loader taking one merged path; the default retains the legacy memory-mapped NPY reader.",
+      "source_sha256": "1984e77de85fa9b07fcd48d051005d00d59a6a696bcbf3a5e285627dbf9b58b0",
+      "translation": "cargador compartido opcional de campos que recibe una ruta de merged; de forma predeterminada conserva el lector NPY heredado con mapeo de memoria.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_source`` chooses where the images come from. ``'ome-zarr'`` reads stored native extracted image regions and exports their RGB display view to this explicit legacy archive. ``'auto'`` retains the shared source-resolution priority. ``'png'`` is the behaviour above, unchanged for uniform source formats: files are byte-copied into the tar with their format marker. Mixed formats are decoded into declared uint8 copies in the archive only. ``'merged'`` cuts every extracted image region out of ``merged/*.npy`` through :mod:`spacr.crops` instead, so the tar can be built with no PNG folder on disk at all, and is rebuilt at the *current* extracted-image-region settings rather than whatever the folder was generated with. The members are named exactly as the PNG folder would have named them, so everything that parses an extracted image region file name downstream -- fold grouping, ``prcfo``, the prediction merge -- keeps working either way.",
+      "label": "spacr.io.generate_dataset#2",
+      "source": "``crop_source`` chooses where the images come from. ``'ome-zarr'`` reads stored native crops and exports their RGB display view to this explicit legacy archive. ``'auto'`` retains the shared source-resolution priority. ``'png'`` is the behaviour above, unchanged for uniform source formats: files are byte-copied into the tar with their format marker. Mixed formats are decoded into declared uint8 copies in the archive only. ``'merged'`` cuts every crop out of ``merged/*.npy`` through :mod:`spacr.crops` instead, so the tar can be built with no PNG folder on disk at all, and is rebuilt at the *current* crop settings rather than whatever the folder was generated with. The members are named exactly as the PNG folder would have named them, so everything that parses a crop file name downstream -- fold grouping, ``prcfo``, the prediction merge -- keeps working either way.",
+      "source_sha256": "c69a61c93463b41b7abb8b2b94b29014231db22adac43ab7acdefba8e9c209dc",
+      "translation": "``crop_source`` elige de dónde proceden las imágenes. ``'ome-zarr'`` lee recortes nativos almacenados y exporta su representación de visualización RGB a este archivo heredado explícito. ``'auto'`` conserva la prioridad compartida de resolución del origen. ``'png'`` mantiene el comportamiento anterior sin cambios para formatos de origen uniformes: los archivos se copian byte a byte al tar con su marcador de formato. Los formatos mixtos se decodifican en copias uint8 declaradas solo dentro del archivo. ``'merged'`` extrae en su lugar cada recorte de ``merged/*.npy`` mediante :mod:`spacr.crops`, por lo que el tar puede construirse sin ninguna carpeta PNG en disco y se reconstruye con los ajustes de recorte *actuales*, no con los usados para generar la carpeta. Los miembros reciben exactamente los mismos nombres que les habría dado la carpeta PNG, por lo que todo lo que interpreta un nombre de archivo de recorte en pasos posteriores —la agrupación por particiones, ``prcfo`` y la combinación de predicciones— sigue funcionando en ambos casos.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_source`` — ``'ome-zarr'`` | ``'auto'`` | ``'png'`` | ``'merged'``.",
+      "label": "spacr.io.generate_dataset#8",
+      "source": "``crop_source`` — ``'ome-zarr'`` | ``'auto'`` | ``'png'`` | ``'merged'``.",
+      "source_sha256": "c7f8935e793b948a6ac82a6459d2e5510b2832dc8271ee83f4794a59b3ac8d34",
+      "translation": "``crop_source`` — ``'ome-zarr'`` | ``'auto'`` | ``'png'`` | ``'merged'``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "acquisition identity kept intact across the permanent train/test boundary. Default ``well``. ``cell`` is the leakiest per-object choice; legacy ``none`` aliases it.",
+      "label": "spacr.io.generate_dataset_from_lists#10",
+      "source": "acquisition identity kept intact across the permanent train/test boundary. Default ``well``. ``cell`` is the leakiest per-object choice; legacy ``none`` aliases it.",
+      "source_sha256": "6efe7b9dbcd1a3fc7ea60978ff3242a27c637dfc75db0a3808c136b668caf6a2",
+      "translation": "identidad de adquisición mantenida intacta a través del límite permanente entrenamiento/prueba. Por defecto ``well``. ``cell`` es la opción por objeto con más fugas; el valor heredado ``none`` es un alias de esa opción.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "if ``len(class_data) != len(classes)``.",
+      "label": "spacr.io.generate_dataset_from_lists#12",
+      "source": "if ``len(class_data) != len(classes)``.",
+      "source_sha256": "c015ef185dd629cc42bef884a8223a6b9a93211f13b7544cf3b0c049a16d015b",
+      "translation": "if ``len(class_data) != len(classes)``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Native OME-Zarr handles instead write one ``crop_index.csv`` containing relative project paths, object identities, class names and grouped splits. Their pixels stay in the existing pools and are read by the normal loaders.",
+      "label": "spacr.io.generate_dataset_from_lists#2",
+      "source": "Native OME-Zarr handles instead write one ``crop_index.csv`` containing relative project paths, object identities, class names and grouped splits. Their pixels stay in the existing pools and are read by the normal loaders.",
+      "source_sha256": "dbed4a775d39f9499881527caa2b3a8a865dfaaf3180661b2e3fb23d0d6fb480",
+      "translation": "Las referencias nativas OME-Zarr escriben en su lugar un único ``crop_index.csv`` que contiene rutas relativas de proyectos, identidades de objetos, nombres de clase y particiones por grupos. Sus píxeles permanecen en los conjuntos existentes y los leen los cargadores habituales.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_source``: ``'ome-zarr'``, ``'auto'``, ``'png'`` or ``'merged'``, as above.",
+      "label": "spacr.io.generate_training_dataset#14",
+      "source": "``crop_source``: ``'ome-zarr'``, ``'auto'``, ``'png'`` or ``'merged'``, as above.",
+      "source_sha256": "b3d205fb7996a89446519177123823c5e14052ac8943890dab81956050008ed1",
+      "translation": "``crop_source``: ``'ome-zarr'``, ``'auto'``, ``'png'`` o ``'merged'``, como se indica arriba.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_source`` chooses where the pixels come from. ``'ome-zarr'`` reads labels and identities from ``ssCell_Crops`` and writes one ``crop_index.csv`` instead of per-object images. The normal loaders read stored native pixels through the shared extracted image region reader before applying the existing model transforms. ``'auto'`` retains the shared source-resolution priority. ``'png'`` copies the pre-generated PNGs unchanged. ``'merged'`` cuts each selected extracted image region out of ``merged/*.npy`` through :mod:`spacr.crops` instead: the labels still come from ``png_list``, but the pixels are cut fresh at the current extracted-image-region settings, so the training set costs no standing disk and cannot be built out of a folder that has gone stale. A project with no ``png_list`` at all falls back to the object measurement table, which still carries everything the metadata rules select on.",
+      "label": "spacr.io.generate_training_dataset#7",
+      "source": "``crop_source`` chooses where the pixels come from. ``'ome-zarr'`` reads labels and identities from ``ssCell_Crops`` and writes one ``crop_index.csv`` instead of per-object images. The normal loaders read stored native pixels through the shared crop reader before applying the existing model transforms. ``'auto'`` retains the shared source-resolution priority. ``'png'`` copies the pre-generated PNGs unchanged. ``'merged'`` cuts each selected crop out of ``merged/*.npy`` through :mod:`spacr.crops` instead: the labels still come from ``png_list``, but the pixels are cut fresh at the current crop settings, so the training set costs no standing disk and cannot be built out of a folder that has gone stale. A project with no ``png_list`` at all falls back to the object measurement table, which still carries everything the metadata rules select on.",
+      "source_sha256": "f9b325d0e982258b79604b985a03be2c7a79931ef67683249884d191bf4b8c87",
+      "translation": "``crop_source`` elige de dónde proceden los píxeles. ``'ome-zarr'`` lee las etiquetas y las identidades de ``ssCell_Crops`` y escribe un único ``crop_index.csv`` en lugar de imágenes por objeto. Los cargadores habituales leen los píxeles nativos almacenados mediante el lector compartido de recortes antes de aplicar las transformaciones existentes del modelo. ``'auto'`` conserva la prioridad compartida de resolución del origen. ``'png'`` copia los PNG generados previamente sin cambios. ``'merged'`` extrae en su lugar cada recorte seleccionado de ``merged/*.npy`` mediante :mod:`spacr.crops`: las etiquetas siguen procediendo de ``png_list``, pero los píxeles se recortan de nuevo con los ajustes de recorte actuales, por lo que el conjunto de entrenamiento no ocupa espacio permanente en disco ni puede construirse a partir de una carpeta desactualizada. Si un proyecto no tiene ningún ``png_list``, se usa como alternativa la tabla de mediciones de objetos, que sigue conteniendo todo lo que utilizan las reglas de metadatos para seleccionar.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Thin, non-raising wrapper over :func:`spacr.crops.resolve_crop_source`: it reads ``settings['crop_source']`` (including ``'ome-zarr'``, ``'auto'``, ``'png'`` and ``'merged'``), prints which source was chosen and why, and returns None when neither is available -- so a caller can fall back to whatever it did before instead of failing on a project that predates ``merged/``.",
+      "label": "spacr.io.open_crop_source#1",
+      "source": "Thin, non-raising wrapper over :func:`spacr.crops.resolve_crop_source`: it reads ``settings['crop_source']`` (including ``'ome-zarr'``, ``'auto'``, ``'png'`` and ``'merged'``), prints which source was chosen and why, and returns None when neither is available -- so a caller can fall back to whatever it did before instead of failing on a project that predates ``merged/``.",
+      "source_sha256": "eeba13ae49c83c7866bfea3036654ebd5ca3d931c824351ff1d19ac602902a24",
+      "translation": "Envoltura ligera que no lanza excepciones sobre :func:`spacr.crops.resolve_crop_source`: lee ``settings['crop_source']`` (incluidos ``'ome-zarr'``, ``'auto'``, ``'png'`` y ``'merged'``), imprime qué origen se eligió y por qué, y devuelve None cuando ninguno está disponible, para que el código que la llama pueda recurrir a su comportamiento anterior en lugar de fallar con un proyecto anterior a ``merged/``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Read class subfolders or the native extracted image region index for the requested split.",
+      "label": "spacr.io.spacrDataset#0",
+      "source": "Read class subfolders or the native crop index for the requested split.",
+      "source_sha256": "bac4dbd402fe99b55478338b6c15d74fbadc44abf3773f67a5090e703087e23e",
+      "translation": "Lee las subcarpetas de clases o el índice de recortes nativos de la partición solicitada.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Split directory containing one subdirectory per class. A parent ``crop_index.csv`` supplies native extracted image region references without requiring per-object files in those directories.",
+      "label": "spacr.io.spacrDataset#1",
+      "source": "Split directory containing one subdirectory per class. A parent ``crop_index.csv`` supplies native crop references without requiring per-object files in those directories.",
+      "source_sha256": "3d09a690a87d62ae3b3c2704d62110855838a01d77f688a37b04140adb2e3042",
+      "translation": "Directorio de la partición que contiene una subcarpeta por clase. Un ``crop_index.csv`` en el directorio superior proporciona referencias a recortes nativos sin requerir archivos por objeto en esos directorios.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "What it needs: a ``merged/`` folder written by :func:`spacr.core.preprocess_generate_masks`: retained ``.npy`` filenames, headers and image layer layout identify each microscope field of view. New runs read committed image pixels and label masks from the accompanying OME-Zarr stores; explicit legacy selection and microscope fields of view without committed stores read the merged arrays. Which masks to measure is named per object -- ``cell_mask_dim``, ``nucleus_mask_dim``, ``pathogen_mask_dim`` and the organelle slots -- and an object with no mask dimension is not measured, rather than measured as empty.",
+      "label": "spacr.measure#2",
+      "source": "What it needs: a ``merged/`` folder written by :func:`spacr.core.preprocess_generate_masks`: retained ``.npy`` filenames, headers and plane layout identify each field. New runs read committed image pixels and label masks from the accompanying OME-Zarr stores; explicit legacy selection and fields without committed stores read the merged arrays. Which masks to measure is named per object -- ``cell_mask_dim``, ``nucleus_mask_dim``, ``pathogen_mask_dim`` and the organelle slots -- and an object with no mask dimension is not measured, rather than measured as empty.",
+      "source_sha256": "30dac6eeb87b6a221b5066658e43f01a5ec31661754a46f6537703186ceb6fad",
+      "translation": "Lo que necesita: una carpeta ``merged/`` escrita por :func:`spacr.core.preprocess_generate_masks`: los nombres de archivo ``.npy`` conservados, las cabeceras y la disposición de planos identifican cada campo de visión. Las nuevas ejecuciones leen los píxeles de imagen y las máscaras de etiquetas confirmados de los almacenes OME-Zarr adjuntos; la selección heredada explícita y los campos sin almacenes confirmados leen las matrices de merged. Las máscaras que se miden se indican por objeto —``cell_mask_dim``, ``nucleus_mask_dim``, ``pathogen_mask_dim`` y las posiciones de orgánulos— y un objeto sin dimensión de máscara no se mide, en lugar de medirse como vacío.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Optionally, OME-Zarr extracted image regions per object (``save_png``), or PNG when explicitly selected with ``crop_image_format='png'``, cut by the measured mask. Those extracted image regions are what :func:`spacr.deep_spacr.deep_spacr` trains on and what Annotate shows, which is why the extracting image regions lives here rather than beside the machine-learning classification model: they must be cut by the same mask the measurements came from.",
+      "label": "spacr.measure#5",
+      "source": "Optionally, OME-Zarr crops per object (``save_png``), or PNG when explicitly selected with ``crop_image_format='png'``, cut by the measured mask. Those crops are what :func:`spacr.deep_spacr.deep_spacr` trains on and what Annotate shows, which is why the cropping lives here rather than beside the classifier: they must be cut by the same mask the measurements came from.",
+      "source_sha256": "0d293349425e6f36f3713b82d56f294412ad1e6323e6735d5d41a5ce1bc19f10",
+      "translation": "Opcionalmente, recortes OME-Zarr por objeto (``save_png``), o PNG cuando se selecciona explícitamente con ``crop_image_format='png'``, delimitados por la máscara medida. Esos recortes son los que usa :func:`spacr.deep_spacr.deep_spacr` para entrenar y los que muestra Anotación, por eso el recorte se realiza aquí y no junto al clasificador: debe usar la misma máscara de la que proceden las mediciones.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Extract per-object measurements and optional extracted image regions from images and masks.",
+      "label": "spacr.measure.measure_crop#0",
+      "source": "Extract per-object measurements and optional crops from images and masks.",
+      "source_sha256": "cc94ea3e656e0a066dcb1cca7b9a7a9793957432f5e6eb32f282f97add475302",
+      "translation": "Extrae mediciones por objeto y recortes opcionales de imágenes y máscaras.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Consumes the ``merged/`` folder produced by :func:`spacr.core.preprocess_generate_masks`. Retained ``.npy`` filenames, headers and the image layer layout identify microscope fields of view; committed OME-Zarr images and masks supply the pixels by default. Explicit ``mask_image_format='npy'`` and microscope fields of view without committed stores retain the legacy merged reader. Computes shape, intensity, texture and spatial features per cell / nucleus / pathogen / cytoplasm object, and writes them to a SQLite ``measurements.db``. When ``save_png`` is enabled it also writes per-object OME-Zarr extracted image regions by default, which are training input for :func:`spacr.deep_spacr.deep_spacr`.",
+      "label": "spacr.measure.measure_crop#1",
+      "source": "Consumes the ``merged/`` folder produced by :func:`spacr.core.preprocess_generate_masks`. Retained ``.npy`` filenames, headers and the plane layout identify fields; committed OME-Zarr images and masks supply the pixels by default. Explicit ``mask_image_format='npy'`` and fields without committed stores retain the legacy merged reader. Computes shape, intensity, texture and spatial features per cell / nucleus / pathogen / cytoplasm object, and writes them to a SQLite ``measurements.db``. When ``save_png`` is enabled it also writes per-object OME-Zarr crops by default, which are training input for :func:`spacr.deep_spacr.deep_spacr`.",
+      "source_sha256": "c471a94b9237ef5e7328b27491e3b9886542bb676b78df746ebc5baca38ae861",
+      "translation": "Utiliza la carpeta ``merged/`` producida por :func:`spacr.core.preprocess_generate_masks`. Los nombres de archivo ``.npy`` conservados, las cabeceras y la disposición de planos identifican los campos de visión; las imágenes y máscaras OME-Zarr confirmadas proporcionan los píxeles de forma predeterminada. La selección explícita ``mask_image_format='npy'`` y los campos sin almacenes confirmados conservan el lector heredado de merged. Calcula características de forma, intensidad, textura y distribución espacial por objeto de célula / núcleo / patógeno / citoplasma y las escribe en una base SQLite ``measurements.db``. Cuando se activa ``save_png``, también escribe de forma predeterminada recortes OME-Zarr por objeto, que sirven como entrada de entrenamiento para :func:`spacr.deep_spacr.deep_spacr`.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``save_png`` — write per-object extracted image regions in ``crop_image_format``.",
+      "label": "spacr.measure.measure_crop#10",
+      "source": "``save_png`` — write per-object crops in ``crop_image_format``.",
+      "source_sha256": "b0a09649e2b69dd09a918c7dd13dbf1881f64570e9259e76298c93a025988876",
+      "translation": "``save_png`` — escribir recortes por objeto en ``crop_image_format``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_image_format`` — ``'ome-zarr'`` by default, or ``'png'`` for legacy thumbnails.",
+      "label": "spacr.measure.measure_crop#11",
+      "source": "``crop_image_format`` — ``'ome-zarr'`` by default, or ``'png'`` for legacy thumbnails.",
+      "source_sha256": "fe0d0888c91cb640040c3fcdc012ed42e49b0043974c473c508a544fcfd787cc",
+      "translation": "``crop_image_format`` — ``'ome-zarr'`` de forma predeterminada, o ``'png'`` para miniaturas heredadas.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``timelapse``, ``timelapse_objects``, ``n_jobs``, ``test_mode``.",
+      "label": "spacr.measure.measure_crop#14",
+      "source": "``timelapse``, ``timelapse_objects``, ``n_jobs``, ``test_mode``.",
+      "source_sha256": "99f5f572aa0963f50b62877ed33efe7ba74659b7ddfdc92ce792e0802360970c",
+      "translation": "``timelapse``, ``timelapse_objects``, ``n_jobs``, ``test_mode``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``None`` on a normal run, which writes ``measurements/measurements.db``, ``measure_crop_settings.csv``, and (if ``save_png``) OME-Zarr extracted image regions under ``crops/`` or legacy PNGs in per-object subfolders under ``src``. When ``dry_run`` is set, the list of :class:`spacr.validate.Problem` returned by :func:`spacr.validate.run_preflight`, and nothing is written.",
+      "label": "spacr.measure.measure_crop#17",
+      "source": "``None`` on a normal run, which writes ``measurements/measurements.db``, ``measure_crop_settings.csv``, and (if ``save_png``) OME-Zarr crops under ``crops/`` or legacy PNGs in per-object subfolders under ``src``. When ``dry_run`` is set, the list of :class:`spacr.validate.Problem` returned by :func:`spacr.validate.run_preflight`, and nothing is written.",
+      "source_sha256": "590ce4793742dd401a0227ee06278849ef2c9ab0b4b03c0515e4b65abc3403bf",
+      "translation": "``None`` en una ejecución normal, que escribe ``measurements/measurements.db``, ``measure_crop_settings.csv`` y (si se activa ``save_png``) recortes OME-Zarr en ``crops/`` o PNG heredados en subcarpetas por objeto dentro de ``src``. Cuando se activa ``dry_run``, la lista de :class:`spacr.validate.Problem` devuelta por :func:`spacr.validate.run_preflight`, y no se escribe nada.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "See Also: :func:`spacr.core.preprocess_generate_masks` — upstream mask generation. :func:`spacr.io.generate_dataset` — build a training set from the extracted image regions. :func:`spacr.deep_spacr.deep_spacr` — train a CNN on the extracted image regions.",
+      "label": "spacr.measure.measure_crop#21",
+      "source": "See Also: :func:`spacr.core.preprocess_generate_masks` — upstream mask generation. :func:`spacr.io.generate_dataset` — build a training set from the crops. :func:`spacr.deep_spacr.deep_spacr` — train a CNN on the crops.",
+      "source_sha256": "101c74753f3bf5d230fa0c3cda6748d2566340d99d3d4c72162ddc5d15979e1c",
+      "translation": "Véase también: :func:`spacr.core.preprocess_generate_masks` — generación previa de máscaras. :func:`spacr.io.generate_dataset` — construir un conjunto de entrenamiento a partir de los recortes. :func:`spacr.deep_spacr.deep_spacr` — entrenar una CNN con los recortes.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``crop_mode`` — list drawn from ``['cell','nucleus','pathogen', 'cytoplasm']``; each entry produces one extracted image region per object.",
+      "label": "spacr.measure.measure_crop#9",
+      "source": "``crop_mode`` — list drawn from ``['cell','nucleus','pathogen', 'cytoplasm']``; each entry produces one crop per object.",
+      "source_sha256": "4d82c00182e9d3f5ef8e7c5e9cbc4e392589c4d34d7226b490734fa74b550e3e",
+      "translation": "``crop_mode`` — lista cuyos elementos se toman de ``['cell','nucleus','pathogen', 'cytoplasm']``; cada entrada produce un recorte por objeto.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "``\"0.4\"`` (the default; zarr-format 2, written by this module alone) or ``\"0.5\"`` (zarr-format 3, sharded by default, written through :mod:`zarr`, so it needs ``spacr[zarr]``; item 983). With 0.5 the default ``compressor`` is zstd at ``compression_level`` 3 unless another one is named; ``\"lz4\"`` (Blosc LZ4 with byte shuffle) is also offered there.",
+      "label": "spacr.ome_zarr.write_ome_zarr#23",
+      "source": "``\"0.4\"`` (the default; zarr-format 2, written by this module alone) or ``\"0.5\"`` (zarr-format 3, sharded by default, written through :mod:`zarr`, so it needs ``spacr[zarr]``; item 983). With 0.5 the default ``compressor`` is zstd at ``compression_level`` 3 unless another one is named; ``\"lz4\"`` (Blosc LZ4 with byte shuffle) is also offered there.",
+      "source_sha256": "3bd92bbdd62b87a545d33f8933821ebb91dc6e6fafcf005d7fc0edb3fd8b9e94",
+      "translation": "``\"0.4\"`` (el valor predeterminado; formato Zarr 2, escrito solo por este módulo) o ``\"0.5\"`` (formato Zarr 3, agrupado en fragmentos de forma predeterminada, escrito mediante :mod:`zarr`, por lo que necesita ``spacr[zarr]``; ítem 983). Con 0.5, el ``compressor`` predeterminado es zstd con ``compression_level`` 3, salvo que se indique otro; también se ofrece ``\"lz4\"`` (Blosc LZ4 con reordenación de bytes).",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "0.5 only: the shard shape, one per axis, each a multiple of the chunk shape. Defaults to one shard holding the whole level, so one field is one file and one writer owns it. Pass ``False`` to store each chunk separately without sharding; ``None`` retains the whole-level shard default. The chunk shape and compression settings are unchanged by this choice.",
+      "label": "spacr.ome_zarr.write_ome_zarr#24",
+      "source": "0.5 only: the shard shape, one per axis, each a multiple of the chunk shape. Defaults to one shard holding the whole level, so one field is one file and one writer owns it. Pass ``False`` to store each chunk separately without sharding; ``None`` retains the whole-level shard default. The chunk shape and compression settings are unchanged by this choice.",
+      "source_sha256": "8d7f35d41275a81f220510687a7216d8baf757cdc78ad8b0fccced42af58839b",
+      "translation": "Solo para 0.5: las dimensiones del fragmento, una por eje, cada una múltiplo de las dimensiones del bloque. De forma predeterminada se usa un fragmento que contiene todo el nivel, por lo que cada campo corresponde a un archivo y tiene un único escritor. Pase ``False`` para almacenar cada bloque por separado, sin agruparlos en fragmentos; ``None`` mantiene el fragmento de nivel completo como valor predeterminado. Esta elección no cambia las dimensiones de los bloques ni los ajustes de compresión.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "read for ``plate``, ``dst_root``, ``ops_compare_reference_masks`` (a path template with ``{plate}``, ``{well}``, ``{site}`` or ``{tile}`` and ``{object}``), ``ops_compare_spacr_masks`` (the same; ``.npz`` files are spaCR phenotype masks and directories may name OME-Zarr microscope fields of view; when omitted, discover committed phenotype microscope fields of view or legacy ``{dst_root}/{well}/phenotype_masks/site-{site}.npz`` files), ``ops_compare_reference_objects``, ``ops_compare_iou``, ``ops_compare_edge_policy``, ``ops_compare_mask_scale``, ``ops_compare_reference_calls``, ``ops_compare_call_columns``, ``ops_compare_spacr_calls`` (a spaCR cell table with well, site, label and sgRNA, or ``\"reference\"`` for the self-match control), ``ops_compare_control_seed``, ``ops_compare_match_px`` and ``ops_compare_fields``.",
+      "label": "spacr.ops_decode.run_compare_masks#2",
+      "source": "read for ``plate``, ``dst_root``, ``ops_compare_reference_masks`` (a path template with ``{plate}``, ``{well}``, ``{site}`` or ``{tile}`` and ``{object}``), ``ops_compare_spacr_masks`` (the same; ``.npz`` files are spaCR phenotype masks and directories may name OME-Zarr fields; when omitted, discover committed phenotype fields or legacy ``{dst_root}/{well}/phenotype_masks/site-{site}.npz`` files), ``ops_compare_reference_objects``, ``ops_compare_iou``, ``ops_compare_edge_policy``, ``ops_compare_mask_scale``, ``ops_compare_reference_calls``, ``ops_compare_call_columns``, ``ops_compare_spacr_calls`` (a spaCR cell table with well, site, label and sgRNA, or ``\"reference\"`` for the self-match control), ``ops_compare_control_seed``, ``ops_compare_match_px`` and ``ops_compare_fields``.",
+      "source_sha256": "ea30f0c35a60eafb0774dcbcf533a5ef775aaa3ae4d8ca25dfd676e515ec0f9f",
+      "translation": "se consulta para ``plate``, ``dst_root``, ``ops_compare_reference_masks`` (una plantilla de ruta con ``{plate}``, ``{well}``, ``{site}`` o ``{tile}`` y ``{object}``), ``ops_compare_spacr_masks`` (lo mismo; los archivos ``.npz`` son máscaras del fenotipo de spaCR y los directorios pueden indicar campos OME-Zarr; si se omite, se buscan campos del fenotipo confirmados o archivos heredados ``{dst_root}/{well}/phenotype_masks/site-{site}.npz``), ``ops_compare_reference_objects``, ``ops_compare_iou``, ``ops_compare_edge_policy``, ``ops_compare_mask_scale``, ``ops_compare_reference_calls``, ``ops_compare_call_columns``, ``ops_compare_spacr_calls`` (una tabla de células de spaCR con well, site, label y sgRNA, o ``\"reference\"`` para el control de coincidencia consigo mismo), ``ops_compare_control_seed``, ``ops_compare_match_px`` y ``ops_compare_fields``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "The selected output path, or the existing source for measurement.",
+      "label": "spacr.ops_engine._ph_fields.mask_path#0",
+      "source": "The selected output path, or the existing source for measurement.",
+      "source_sha256": "db21ac087f8f307e344ba8fc4f6585fbefd29df2f57ad005781d85ba2c08faec",
+      "translation": "La ruta de salida seleccionada, o la ruta de origen existente para la medición.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "the OPS settings. Read here: ``plate`` (one laboratory microplate or a comma-separated list), ``dst_root``, ``ops_flatfield_nuclear_channel`` (required), ``ops_flatfield_nuclei``, ``ops_flatfield_dark``, ``ops_flatfield_maps``, ``ops_flatfield_nuclear_maps``, the fit settings ``ops_flatfield_block_px``, ``ops_flatfield_fit``, ``ops_flatfield_sigma_px``, ``ops_flatfield_ridge``, ``ops_flatfield_floor``, ``ops_flatfield_centre_cells``, ``ops_flatfield_map_grid``, ``ops_flatfield_field_px``, ``ops_flatfield_centre_offset``, ``ops_flatfield_lookup``, the hold-out ``ops_flatfield_holdout_fields``, ``ops_flatfield_holdout_n``, ``ops_flatfield_seed``, and for the check ``ops_flatfield_holdout_images`` (a folder, or ``{plate: folder}``, of ``*<well>_<site>.npy`` raw images of the image data channel), ``ops_flatfield_holdout_masks`` (the processing-session folder holding ``<well>/phenotype_masks/site-<n>.npz`` or committed OME-Zarr phenotype microscope fields of view; ``dst_root`` when empty), ``ops_flatfield_compare_maps`` (``{name: .npy}`` read by zoom), ``ops_flatfield_radial_edges``, ``ops_flatfield_bootstrap``, ``ops_flatfield_bootstrap_seed`` and ``ops_flatfield_min_bin_cells``.",
+      "label": "spacr.ops_flatfield.run_flat_phases#2",
+      "source": "the OPS settings. Read here: ``plate`` (one plate or a comma-separated list), ``dst_root``, ``ops_flatfield_nuclear_channel`` (required), ``ops_flatfield_nuclei``, ``ops_flatfield_dark``, ``ops_flatfield_maps``, ``ops_flatfield_nuclear_maps``, the fit settings ``ops_flatfield_block_px``, ``ops_flatfield_fit``, ``ops_flatfield_sigma_px``, ``ops_flatfield_ridge``, ``ops_flatfield_floor``, ``ops_flatfield_centre_cells``, ``ops_flatfield_map_grid``, ``ops_flatfield_field_px``, ``ops_flatfield_centre_offset``, ``ops_flatfield_lookup``, the hold-out ``ops_flatfield_holdout_fields``, ``ops_flatfield_holdout_n``, ``ops_flatfield_seed``, and for the check ``ops_flatfield_holdout_images`` (a folder, or ``{plate: folder}``, of ``*<well>_<site>.npy`` raw images of the channel), ``ops_flatfield_holdout_masks`` (the run folder holding ``<well>/phenotype_masks/site-<n>.npz`` or committed OME-Zarr phenotype fields; ``dst_root`` when empty), ``ops_flatfield_compare_maps`` (``{name: .npy}`` read by zoom), ``ops_flatfield_radial_edges``, ``ops_flatfield_bootstrap``, ``ops_flatfield_bootstrap_seed`` and ``ops_flatfield_min_bin_cells``.",
+      "source_sha256": "c0121318d89aeadb1d1bf9959f3aa3d47ff91ba2058dad3adff52b75036eeffc",
+      "translation": "los ajustes de OPS. Aquí se leen: ``plate`` (una placa o una lista separada por comas), ``dst_root``, ``ops_flatfield_nuclear_channel`` (obligatorio), ``ops_flatfield_nuclei``, ``ops_flatfield_dark``, ``ops_flatfield_maps``, ``ops_flatfield_nuclear_maps``, los ajustes de estimación ``ops_flatfield_block_px``, ``ops_flatfield_fit``, ``ops_flatfield_sigma_px``, ``ops_flatfield_ridge``, ``ops_flatfield_floor``, ``ops_flatfield_centre_cells``, ``ops_flatfield_map_grid``, ``ops_flatfield_field_px``, ``ops_flatfield_centre_offset``, ``ops_flatfield_lookup``, los de reserva para validación ``ops_flatfield_holdout_fields``, ``ops_flatfield_holdout_n``, ``ops_flatfield_seed`` y, para la comprobación, ``ops_flatfield_holdout_images`` (una carpeta, o ``{plate: folder}``, de imágenes sin procesar ``*<well>_<site>.npy`` del canal), ``ops_flatfield_holdout_masks`` (la carpeta de la ejecución que contiene ``<well>/phenotype_masks/site-<n>.npz`` o campos del fenotipo OME-Zarr confirmados; ``dst_root`` cuando está vacío), ``ops_flatfield_compare_maps`` (``{name: .npy}`` leído por zoom), ``ops_flatfield_radial_edges``, ``ops_flatfield_bootstrap``, ``ops_flatfield_bootstrap_seed`` y ``ops_flatfield_min_bin_cells``.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": ":func:`crop_index` and :func:`stream_crops` read native extracted image region pools or the legacy sharded store, shuffled within and between pools or shards, as a training loader does (WebDataset style; Aizman et al. 2019, arXiv:2001.01858) (B16);",
+      "label": "spacr.ops_run_infra#5",
+      "source": ":func:`crop_index` and :func:`stream_crops` read native crop pools or the legacy sharded store, shuffled within and between pools or shards, as a training loader does (WebDataset style; Aizman et al. 2019, arXiv:2001.01858) (B16);",
+      "source_sha256": "1fe2efb1a4f1d98a43d6d26e8c2de1202a91990704d4d0da560c0b8db969ccf5",
+      "translation": ":func:`crop_index` y :func:`stream_crops` leen conjuntos de recortes nativos o el almacén heredado dividido en fragmentos, con orden aleatorio tanto dentro de los conjuntos o fragmentos como entre ellos, como hace un cargador de entrenamiento (estilo WebDataset; Aizman et al. 2019, arXiv:2001.01858) (B16);",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Every committed OPS extracted image region, from native pools or the legacy sharded store, as one table.",
+      "label": "spacr.ops_run_infra.crop_index#0",
+      "source": "Every committed OPS crop, from native pools or the legacy sharded store, as one table.",
+      "source_sha256": "3532cf9cc17c72fc8624feb314741cf1e2a830fbb81768763e41dfe896b81929",
+      "translation": "Todos los recortes de OPS confirmados, procedentes de conjuntos nativos o del almacén heredado dividido en fragmentos, en una sola tabla.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "the shard indexes concatenated, with a ``shard`` column (the tar's path), ordered by shard and position in it. Native rows have ``crop_format='ome-zarr'`` and their extracted image region-pool locator columns; ``shard`` is the pool array path and ``member`` is ``prcfo``. ``object_id`` retains the sequencing identity, while ``crop_object_id`` is the extracted image region's unique identity. A committed native OPS well supersedes its legacy tar indexes, including an empty well.",
+      "label": "spacr.ops_run_infra.crop_index#4",
+      "source": "the shard indexes concatenated, with a ``shard`` column (the tar's path), ordered by shard and position in it. Native rows have ``crop_format='ome-zarr'`` and their crop-pool locator columns; ``shard`` is the pool array path and ``member`` is ``prcfo``. ``object_id`` retains the sequencing identity, while ``crop_object_id`` is the crop's unique identity. A committed native OPS well supersedes its legacy tar indexes, including an empty well.",
+      "source_sha256": "a24cfd20eeb1da97af995cd76af2c8971e1478aada365725a7c7a1840f5c1731",
+      "translation": "los índices de fragmentos concatenados, con una columna ``shard`` (la ruta del tar), ordenados por fragmento y por posición dentro de él. Las filas nativas tienen ``crop_format='ome-zarr'`` y sus columnas localizadoras del conjunto de recortes; ``shard`` es la ruta de la matriz del conjunto y ``member`` es ``prcfo``. ``object_id`` conserva la identidad de secuenciación, mientras que ``crop_object_id`` es la identidad única del recorte. Un pocillo nativo de OPS confirmado sustituye a sus índices tar heredados, incluso si está vacío.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Every extracted image region, read one native pool or legacy shard at a time, as a training loader would.",
+      "label": "spacr.ops_run_infra.stream_crops#0",
+      "source": "Every crop, read one native pool or legacy shard at a time, as a training loader would.",
+      "source_sha256": "84e98823a6ad4f2b1f6efbb3b9d4d18253ba7a869980088f1da3e740c3b86d17",
+      "translation": "Cada recorte, leyendo un conjunto nativo o un fragmento heredado a la vez, como haría un cargador de entrenamiento.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    },
+    {
+      "context": "Each shard is read once, front to back (``tarfile`` stream mode), which is what makes network storage fast: the reference laboratory microplate's 2 GB shards streamed at 842 extracted image regions/s against 17 extracted image regions/s for a seek per extracted image region. Native pools use :func:`spacr.crop_store.read_crops` in batches of at most 128 rows, bounded further by ``buffer``. Their masks retain their stored labels and dtype; ``has_mask=False`` yields None.",
+      "label": "spacr.ops_run_infra.stream_crops#8",
+      "source": "Each shard is read once, front to back (``tarfile`` stream mode), which is what makes network storage fast: the reference plate's 2 GB shards streamed at 842 crops/s against 17 crops/s for a seek per crop. Native pools use :func:`spacr.crop_store.read_crops` in batches of at most 128 rows, bounded further by ``buffer``. Their masks retain their stored labels and dtype; ``has_mask=False`` yields None.",
+      "source_sha256": "cb7882288a1097283e1a4774e19497eab2bb3e0c43f50d10927fd9a4e2edd957",
+      "translation": "Cada fragmento se lee una sola vez, de principio a fin (modo de flujo de ``tarfile``), lo que agiliza el almacenamiento en red: los fragmentos de 2 GB de la placa de referencia se leyeron en flujo a 842 recortes/s frente a 17 recortes/s cuando se realizaba un posicionamiento por recorte. Los conjuntos nativos usan :func:`spacr.crop_store.read_crops` en lotes de un máximo de 128 filas, limitados además por ``buffer``. Sus máscaras conservan las etiquetas y el tipo de datos almacenados; ``has_mask=False`` produce None.",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+    }
+  ],
+  "schema": 1,
+  "review_method": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+}

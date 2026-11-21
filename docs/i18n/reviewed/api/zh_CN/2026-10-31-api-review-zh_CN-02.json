@@ -720,39 +720,41 @@
       "label": "spacr.crop_loader#4",
       "source": "The output is one ``(objects, height, width, channels)`` uint8 array, which is the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the crop shape, and how many crops had to be conformed to it.",
       "source_sha256": "2dc463b78b0876693294852e1ee684857c77835b352b0bbee51e26e9b76c5f3e",
-      "translation": "输出是一个 ``(objects, height, width, channels)`` uint8 数组，这正是 :func:`spacr.embeddings.embed_array` 所记录、:meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` 所要求的布局，另外还有一个可 JSON 序列化的 ``record``，记录实际读取的内容——匹配了多少、取了多少、裁剪图形状，以及有多少张裁剪图必须被调整为该形状。"
+      "translation": "输出是一个 ``(objects, height, width, channels)`` uint8 数组，这正是 :func:`spacr.embeddings.embed_array` 所记录、:meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` 所要求的布局，另外还有一个可 JSON 序列化的 ``record``，记录实际读取的内容——匹配了多少、取了多少、裁剪图形状，以及有多少张裁剪图必须被调整为该形状。",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
-      "label": "spacr.crop_loader#5",
+      "label": "spacr.crop_loader#6",
       "source": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
       "source_sha256": "2bac6b2abbefa246e9492394ed854f727d1cfc407bb83364445d4df6f3b922f4",
       "translation": "该数组可以传给 Embeddings 屏幕或 :func:`spacr.embeddings.embed_array`。"
     },
     {
       "context": "The number of extracted image regions is capped by default. Sixty thousand extracted image regions of 96x96x3 take 1.6 GB before embedding, which can exhaust memory on a machine that could embed the first two thousand. :attr:`CropQuery.limit` therefore has a non-zero default, and the plan states what was left out -- \"the first 2,000 of 61,433\".",
-      "label": "spacr.crop_loader#6",
+      "label": "spacr.crop_loader#7",
       "source": "The number of crops is capped by default. Sixty thousand crops of 96x96x3 take 1.6 GB before embedding, which can exhaust memory on a machine that could embed the first two thousand. :attr:`CropQuery.limit` therefore has a non-zero default, and the plan states what was left out -- \"the first 2,000 of 61,433\".",
       "source_sha256": "efb17d019e4f80e9d22ce060cc95c8af5bf2e026f6a0b9e49b0c5db831128ece",
       "translation": "裁剪图数量默认有上限。六万张 96x96x3 的裁剪图在嵌入之前就占用 1.6 GB，这可能耗尽一台本可以嵌入前两千张的机器的内存。因此 :attr:`CropQuery.limit` 有一个非零默认值，并且方案会说明遗漏了什么——\"the first 2,000 of 61,433\"（61,433 张中的前 2,000 张）。"
     },
     {
       "context": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
-      "label": "spacr.crop_loader#7",
+      "label": "spacr.crop_loader#8",
       "source": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
       "source_sha256": "7f483bda810095966168bbde528ff00456a80903ac0ec268f35c8fe8af5a7a80",
       "translation": "因其他原因被丢弃的行与上限分开计数。合并路线会丢弃每一个无法裁切的行；把它报告为上限，会暗示去提高一个并未达到的限制。:attr:`CropPlan.matched`、:attr:`CropPlan.selected` 和 :attr:`CropPlan.count` 是三个数字，:attr:`CropPlan.capped` 是前两者之差，:attr:`CropPlan.dropped` 是后两者之差，它们以各自独立的分句出现在面板上。"
     },
     {
       "context": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
-      "label": "spacr.crop_loader#8",
+      "label": "spacr.crop_loader#9",
       "source": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
       "source_sha256": "4f41ff7970b4706488688ff17061663f820d3bf1d2474bcdd577e0ec22e3f481",
       "translation": "空结果会附带原因报告，而不是作为空数组返回。没有匹配任何内容的方案带有 :attr:`CropPlan.empty_reason`，它会指出所请求的表、类别、板和谓词，以及数据库实际包含的内容，例如从一个八块板的筛选中请求第 9 块板时。"
     },
     {
       "context": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
-      "label": "spacr.crop_loader#9",
+      "label": "spacr.crop_loader#10",
       "source": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
       "source_sha256": "c1e5770eafff138fd6860f51597883e6aedd6476f3aaef99cd169a33f9d09ea6",
       "translation": "谓词是 SQL，数据库以只读方式打开。``where`` 是针对用户自己文件的 SQL 片段。它会被拼接到 ``WHERE`` 子句中，因此连接以 ``readonly=True`` 打开——即 SQLite 的 ``query_only``，它在引擎层面拒绝所有写入——并且带有语句分隔符的谓词会在发送之前被拒绝。"
@@ -1515,7 +1517,7 @@
     },
     {
       "context": "Raw-valued microscope fields of view on a laboratory microplate share ``65535 / plate_max`` when any one of them exceeds the uint16 ceiling.  Normalised floating-point microscope fields of view retain their well-defined fixed conversion of ``x65535``.  A file that cannot be inspected is left in ``failures`` and its worker will make (and record) a per-microscope field of view fallback decision.",
-      "label": "spacr.intensity_rescale.build_plate_plan#4",
+      "label": "spacr.intensity_rescale.build_plate_plan#5",
       "source": "Raw-valued fields on a plate share ``65535 / plate_max`` when any one of them exceeds the uint16 ceiling.  Normalised floating-point fields retain their well-defined fixed conversion of ``x65535``.  A file that cannot be inspected is left in ``failures`` and its worker will make (and record) a per-field fallback decision.",
       "source_sha256": "6a2c5afe1f9b7a20ade9f86e739a0efa6cc915e3583ffc1561ed1183a8f41175",
       "translation": "当板上任意一个原始值视野超过 uint16 上限时，该板上的所有原始值视野共享 ``65535 / plate_max``。已归一化的浮点视野保留其定义明确的固定转换 ``x65535``。无法检查的文件会留在 ``failures`` 中，其工作进程会作出（并记录）一个逐视野的回退决定。"

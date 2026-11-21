@@ -456,7 +456,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``png`` — load pre-generated images (default) Read crops previously written by the measurement workflow. ``path_string`` filters paths by substring and ``file_type`` filters by image extension. This source performs no cropping. ``merged`` — stream images Extract crops during training from ``merged/*.npy`` arrays. ``extract_channels`` selects the intensity planes and ``object_array`` selects the labelled mask plane that defines each object's extent. When ``coordinate_columns`` are configured, database coordinates instead define fixed bounding-box crops. ``generate`` — generate images, then load them Materialize a complete crop set on disk before training, then read it through the same file-backed path as ``png``. This is a preprocessing action rather than a streaming source.",
       "source_sha256": "5026f186701793559c9124b4034bc5df898b06767660d111eec832008f959e93",
-      "translation": "``png`` — पहले से बनी छवियाँ लोड करें (डिफ़ॉल्ट) मापन कार्यप्रवाह द्वारा पहले लिखे गए निकाले गए छवि क्षेत्र पढ़ता है। ``path_string`` पथों को उप-स्ट्रिंग से और ``file_type`` छवि एक्सटेंशन से फ़िल्टर करता है। यह स्रोत कोई काट-छाँट नहीं करता। ``merged`` — छवियाँ प्रवाहित करें प्रशिक्षण के दौरान ``merged/*.npy`` सरणियों से निकाले गए छवि क्षेत्र निकालता है। ``extract_channels`` तीव्रता तल चुनता है और ``object_array`` वह लेबल किया गया मास्क तल चुनता है जो प्रत्येक वस्तु का विस्तार परिभाषित करता है। जब ``coordinate_columns`` विन्यस्त हों, तो डेटाबेस निर्देशांक इसके बजाय निश्चित सीमा-बॉक्स परिभाषित करते हैं। ``generate`` — छवियाँ बनाएँ, फिर उन्हें लोड करें प्रशिक्षण से पहले डिस्क पर पूरा निकाले-गए-छवि-क्षेत्र समुच्चय साकार करता है, फिर उसे ``png`` वाले फ़ाइल-आधारित मार्ग से पढ़ता है। यह प्रवाहित स्रोत नहीं बल्कि पूर्वप्रसंस्करण क्रिया है।"
+      "translation": "``png`` — पहले से बनी छवियाँ लोड करें (डिफ़ॉल्ट) मापन कार्यप्रवाह द्वारा पहले लिखे गए निकाले गए छवि क्षेत्र पढ़ता है। ``path_string`` पथों को उप-स्ट्रिंग से और ``file_type`` छवि एक्सटेंशन से फ़िल्टर करता है। यह स्रोत कोई काट-छाँट नहीं करता। ``merged`` — छवियाँ प्रवाहित करें प्रशिक्षण के दौरान ``merged/*.npy`` सरणियों से निकाले गए छवि क्षेत्र निकालता है। ``extract_channels`` तीव्रता तल चुनता है और ``object_array`` वह लेबल किया गया मास्क तल चुनता है जो प्रत्येक वस्तु का विस्तार परिभाषित करता है। जब ``coordinate_columns`` विन्यस्त हों, तो डेटाबेस निर्देशांक इसके बजाय निश्चित सीमा-बॉक्स परिभाषित करते हैं। ``generate`` — छवियाँ बनाएँ, फिर उन्हें लोड करें प्रशिक्षण से पहले डिस्क पर पूरा निकाले-गए-छवि-क्षेत्र समुच्चय साकार करता है, फिर उसे ``png`` वाले फ़ाइल-आधारित मार्ग से पढ़ता है। यह प्रवाहित स्रोत नहीं बल्कि पूर्वप्रसंस्करण क्रिया है।",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "**The stored values did not change.** ``png`` and ``merged`` are what ``spacr.crops.resolve_crop_source`` has always read, so a settings file written under either vocabulary means what it always meant: ``pre_generated``, ``load_images`` and ``auto`` all arrive as load images, ``on_demand`` and ``stream_images`` as stream images. :data:`CROP_SOURCE_ALIASES` is that migration, in one place, so a value written by a renamed panel is still accepted.",
@@ -778,7 +780,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Return the canonical crop source (``png``, ``merged`` or ``generate``).",
       "source_sha256": "f856f7b7516494d9fb754f3fab18f7bd51f8abb3cfd6791d2b1490cd7f2fd105",
-      "translation": "मानक निकाले-गए-छवि-क्षेत्र स्रोत (``png``, ``merged`` या ``generate``) लौटाता है।"
+      "translation": "मानक निकाले-गए-छवि-क्षेत्र स्रोत (``png``, ``merged`` या ``generate``) लौटाता है।",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means load images, the default in every panel.",
@@ -786,7 +790,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means LOAD IMAGES, the default in every panel.",
       "source_sha256": "e0f894730a40cb15be952ba305d740a167d9f948f648cb687701a2b176f6d0ec",
-      "translation": ":data:`CROP_SOURCE_ALIASES` की हर वर्तनी हल होती है, इसलिए किसी भी जारी spaCR पैनल द्वारा लिखी सेटिंग्स फ़ाइल स्वीकार होती है। असेट मान का अर्थ LOAD IMAGES है, जो हर पैनल में डिफ़ॉल्ट है।"
+      "translation": ":data:`CROP_SOURCE_ALIASES` की हर वर्तनी हल होती है, इसलिए किसी भी जारी spaCR पैनल द्वारा लिखी सेटिंग्स फ़ाइल स्वीकार होती है। असेट मान का अर्थ LOAD IMAGES है, जो हर पैनल में डिफ़ॉल्ट है।",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "an unrecognised source. The source is not guessed, because a wrong guess would train on different images without error.",

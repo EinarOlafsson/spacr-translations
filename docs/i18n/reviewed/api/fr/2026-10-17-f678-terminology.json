@@ -629,7 +629,7 @@
     },
     {
       "context": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
-      "label": "spacr.crop_loader#5",
+      "label": "spacr.crop_loader#6",
       "source": "The array can be passed to the Embeddings screen or to :func:`spacr.embeddings.embed_array`.",
       "source_sha256": "2bac6b2abbefa246e9492394ed854f727d1cfc407bb83364445d4df6f3b922f4",
       "translation": "Le tableau peut être passé à l'écran Embeddings ou à :func:`spacr.embeddings.embed_array`."
@@ -870,7 +870,9 @@
       "label": "spacr.deep_spacr.dataset_class_balance#1",
       "source": "Reads the ``train/<class>/`` and ``test/<class>/`` folder tree :func:`spacr.io.generate_dataset` writes, because that tree *is* the training set — a class balance quoted from the settings would describe what was requested rather than what ended up on disk.",
       "source_sha256": "2fac80d103a4e093aae7dacb3ec6fe2ee2519c7b63924fce8022e47b8c28808d",
-      "translation": "Lire l'arborescence des dossiers ``train/<class>/`` et ``test/<class>/`` :func:`spacr.io.generate_dataset`, car cet arbre *est* l'ensemble d'entraînement — un bilan de classe cité dans les paramètres décrirait ce qui était demandé plutôt que ce qui se terminait sur le disque."
+      "translation": "Lire l'arborescence des dossiers ``train/<class>/`` et ``test/<class>/`` :func:`spacr.io.generate_dataset`, car cet arbre *est* l'ensemble d'entraînement — un bilan de classe cité dans les paramètres décrirait ce qui était demandé plutôt que ce qui se terminait sur le disque.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Execute the full spacr deep-learning workflow: build dataset, train, apply model, merge predictions into the measurements DB.",
@@ -1599,7 +1601,9 @@
       "label": "spacr.intensity_rescale.build_plate_plan#4",
       "source": "Raw-valued fields on a plate share ``65535 / plate_max`` when any one of them exceeds the uint16 ceiling.  Normalised floating-point fields retain their well-defined fixed conversion of ``x65535``.  A file that cannot be inspected is left in ``failures`` and its worker will make (and record) a per-field fallback decision.",
       "source_sha256": "6a2c5afe1f9b7a20ade9f86e739a0efa6cc915e3583ffc1561ed1183a8f41175",
-      "translation": "Les champs de vision au microscope à valeur brute sur une microplaque de laboratoire partagent ``65535 / plate_max`` lorsque l'un d'eux dépasse le plafond uint16. Les champs normalisés au microscope flottant conservent leur conversion fixe bien définie de ``x65535``. Un fichier qui ne peut pas être inspecté est laissé dans ``failures`` et son worker prendra (et enregistrera) un champ de vision par microscope décision de repli."
+      "translation": "Les champs de vision au microscope à valeur brute sur une microplaque de laboratoire partagent ``65535 / plate_max`` lorsque l'un d'eux dépasse le plafond uint16. Les champs normalisés au microscope flottant conservent leur conversion fixe bien définie de ``x65535``. Un fichier qui ne peut pas être inspecté est laissé dans ``failures`` et son worker prendra (et enregistrera) un champ de vision par microscope décision de repli.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: an incorrect translation of this assigned unchanged source was replaced by a separate Codex (OpenAI) AI review. Original fields are preserved. The existing target changes floating-point fields into floating microscopes and garbles the per-field fallback decision. The correction restores the numeric representation, shared plate conversion condition, unchanged fixed conversion, retained failure, and field-specific recorded fallback."
     },
     {
       "context": "Resolve and verify one worker's record against the precomputed plan.",
@@ -1671,7 +1675,9 @@
       "label": "spacr.io.generate_training_dataset#7",
       "source": "``crop_source`` chooses where the pixels come from. ``'png'`` (and ``'auto'`` wherever a crop folder exists) copies the pre-generated PNGs, unchanged. ``'merged'`` (and ``'auto'`` with no crop folder) cuts each selected crop out of ``merged/*.npy`` through :mod:`spacr.crops` instead: the labels still come from ``png_list``, but the pixels are cut fresh at the current crop settings, so the training set costs no standing disk and cannot be built out of a folder that has gone stale. A project with no ``png_list`` at all falls back to the object measurement table, which still carries everything the metadata rules select on.",
       "source_sha256": "7d0a38a5446c2cb9d2284c41c34e765f8736a40ade5c8d69451cc70e91a0b9b7",
-      "translation": "``crop_source`` choisit d'où proviennent les pixels. ``'png'`` (et ``'auto'`` partout où existe un dossier de région d'image extraite) copie le fichier pré-généré PNGs, inchangé. ``'merged'`` ( et ``'auto'`` sans dossier de zone d'images extraite), coupe chaque région sélectionnée d'une image extraite de ``merged/*.npy`` par :mod:`spacr.crops` à la place : les étiquettes proviennent toujours de ``png_list``, mais les pixels sont coupés frais aux paramètres actuels de la région-images extraites, de sorte que l'entraînement ne coûte pas de disque debout et ne peut pas être construite à partir d'un dossier qui est resté dans l'impasse. Un projet sans ``png_list`` revient à la table de mesure des objets, qui porte toujours tout ce que les règles de métadonnées sélectionnent."
+      "translation": "``crop_source`` choisit d'où proviennent les pixels. ``'png'`` (et ``'auto'`` partout où existe un dossier de région d'image extraite) copie le fichier pré-généré PNGs, inchangé. ``'merged'`` ( et ``'auto'`` sans dossier de zone d'images extraite), coupe chaque région sélectionnée d'une image extraite de ``merged/*.npy`` par :mod:`spacr.crops` à la place : les étiquettes proviennent toujours de ``png_list``, mais les pixels sont coupés frais aux paramètres actuels de la région-images extraites, de sorte que l'entraînement ne coûte pas de disque debout et ne peut pas être construite à partir d'un dossier qui est resté dans l'impasse. Un projet sans ``png_list`` revient à la table de mesure des objets, qui porte toujours tout ce que les règles de métadonnées sélectionnent.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "A machine-learning classification model trained on 9,000 negatives and 300 positives is biased toward the majority class, so balancing is the ordinary case; it also discards data, which is why it is a setting and not a default of this function.",

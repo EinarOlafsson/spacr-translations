@@ -280,7 +280,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``png`` — load pre-generated images (default) Read crops previously written by the measurement workflow. ``path_string`` filters paths by substring and ``file_type`` filters by image extension. This source performs no cropping. ``merged`` — stream images Extract crops during training from ``merged/*.npy`` arrays. ``extract_channels`` selects the intensity planes and ``object_array`` selects the labelled mask plane that defines each object's extent. When ``coordinate_columns`` are configured, database coordinates instead define fixed bounding-box crops. ``generate`` — generate images, then load them Materialize a complete crop set on disk before training, then read it through the same file-backed path as ``png``. This is a preprocessing action rather than a streaming source.",
       "source_sha256": "5026f186701793559c9124b4034bc5df898b06767660d111eec832008f959e93",
-      "translation": "``png``——加载预先生成的图像（默认）读取测量工作流先前写出的裁剪图。``path_string`` 按子字符串过滤路径，``file_type`` 按图像扩展名过滤。此来源不执行任何裁剪。``merged``——流式读取图像 在训练期间从 ``merged/*.npy`` 数组中提取裁剪图。``extract_channels`` 选择强度平面，``object_array`` 选择定义每个对象范围的标签掩膜平面。配置了 ``coordinate_columns`` 时，则改由数据库坐标定义固定的边界框裁剪。``generate``——生成图像后再加载 在训练之前把完整的裁剪图集物化到磁盘上，然后通过与 ``png`` 相同的基于文件的路径读取。这是一个预处理操作，而不是流式来源。"
+      "translation": "``png``——加载预先生成的图像（默认）读取测量工作流先前写出的裁剪图。``path_string`` 按子字符串过滤路径，``file_type`` 按图像扩展名过滤。此来源不执行任何裁剪。``merged``——流式读取图像 在训练期间从 ``merged/*.npy`` 数组中提取裁剪图。``extract_channels`` 选择强度平面，``object_array`` 选择定义每个对象范围的标签掩膜平面。配置了 ``coordinate_columns`` 时，则改由数据库坐标定义固定的边界框裁剪。``generate``——生成图像后再加载 在训练之前把完整的裁剪图集物化到磁盘上，然后通过与 ``png`` 相同的基于文件的路径读取。这是一个预处理操作，而不是流式来源。",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "**The stored values did not change.** ``png`` and ``merged`` are what ``spacr.crops.resolve_crop_source`` has always read, so a settings file written under either vocabulary means what it always meant: ``pre_generated``, ``load_images`` and ``auto`` all arrive as load images, ``on_demand`` and ``stream_images`` as stream images. :data:`CROP_SOURCE_ALIASES` is that migration, in one place, so a value written by a renamed panel is still accepted.",
@@ -514,7 +516,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means LOAD IMAGES, the default in every panel.",
       "source_sha256": "e0f894730a40cb15be952ba305d740a167d9f948f648cb687701a2b176f6d0ec",
-      "translation": ":data:`CROP_SOURCE_ALIASES` 中的每种拼写都能被解析，因此任何已发布的 spaCR 面板写出的设置文件都会被接受。未设置的值表示加载图像（LOAD IMAGES），这是每个面板中的默认值。"
+      "translation": ":data:`CROP_SOURCE_ALIASES` 中的每种拼写都能被解析，因此任何已发布的 spaCR 面板写出的设置文件都会被接受。未设置的值表示加载图像（LOAD IMAGES），这是每个面板中的默认值。",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "an unrecognised source. The source is not guessed, because a wrong guess would train on different images without error.",

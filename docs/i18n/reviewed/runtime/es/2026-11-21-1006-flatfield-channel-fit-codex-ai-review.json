@@ -1,0 +1,154 @@
+{
+  "language": "es",
+  "records": [
+    {
+      "key": "the {channel} flat-field map in {folder} is still pending: run the ph_flatfield_objects phase (after ph_segment) before anything uses it",
+      "source": "the {channel} flat-field map in {folder} is still pending: run the ph_flatfield_objects phase (after ph_segment) before anything uses it",
+      "source_sha256": "749a5c375fa219390ca0fd53bf5b8e193d1c59078797f93c824e7e81a9f2926d",
+      "table": "ui",
+      "translation": "el mapa de campo plano de {channel} en {folder} sigue pendiente: ejecute la fase ph_flatfield_objects (después de ph_segment) antes de que se utilice"
+    },
+    {
+      "key": "ops_flatfield_channel_fit must give each channel one of {allowed}; got {bad}",
+      "source": "ops_flatfield_channel_fit must give each channel one of {allowed}; got {bad}",
+      "source_sha256": "5ed59fb9fb71204bef078cd6b50f0ef9c9b4886c5bc80b1f366591690791674b",
+      "table": "ui",
+      "translation": "ops_flatfield_channel_fit debe asignar a cada canal uno de {allowed}; se recibió {bad}"
+    },
+    {
+      "key": "ops_flatfield_channel_fit names channels the phenotype path does not have: {unknown}; it has {channels}",
+      "source": "ops_flatfield_channel_fit names channels the phenotype path does not have: {unknown}; it has {channels}",
+      "source_sha256": "4b1988f7b0ad9b9db0b0df9f4d4d954bed57995a9a9484c89f15d795e15fa4ba",
+      "table": "ui",
+      "translation": "ops_flatfield_channel_fit indica canales que no existen en el flujo de fenotipo: {unknown}; los canales disponibles son {channels}"
+    },
+    {
+      "key": "ops_flatfield_object_fields names fields without phenotype masks: {missing}",
+      "source": "ops_flatfield_object_fields names fields without phenotype masks: {missing}",
+      "source_sha256": "5a5b8edc2ac639ee937764f9649c780bd19055272c29d9e6f937d33a592a5744",
+      "table": "ui",
+      "translation": "ops_flatfield_object_fields indica campos de imagen sin máscaras de fenotipo: {missing}"
+    },
+    {
+      "key": "ph_flatfield_objects found no segmented field; run ph_segment first",
+      "source": "ph_flatfield_objects found no segmented field; run ph_segment first",
+      "source_sha256": "e5732ae97591c9ff359d66e344e66f33c157274ecbe81275514b12cdb83a333a",
+      "table": "ui",
+      "translation": "ph_flatfield_objects no encontró ningún campo de imagen segmentado; ejecute primero ph_segment"
+    },
+    {
+      "key": "ph_flatfield_objects needs the camera offset of {channels}; set ops_flatfield_dark",
+      "source": "ph_flatfield_objects needs the camera offset of {channels}; set ops_flatfield_dark",
+      "source_sha256": "869f510a9f0b4d9d7e9c7fae719af8e5b243f24f976574a74fe3a74efe38b1a5",
+      "table": "ui",
+      "translation": "ph_flatfield_objects necesita el offset de intensidad de la cámara de {channels}; establezca ops_flatfield_dark"
+    },
+    {
+      "key": "ph_flatfield_objects needs the maps folder {folder}; run ph_flatfield first",
+      "source": "ph_flatfield_objects needs the maps folder {folder}; run ph_flatfield first",
+      "source_sha256": "a100b07fa6a2044fb413daac8006eb8dd77f22161fb3c212c3e470707d982107",
+      "table": "ui",
+      "translation": "ph_flatfield_objects necesita la carpeta de mapas {folder}; ejecute primero ph_flatfield"
+    },
+    {
+      "key": "{count} fields could not be read for the object-median maps, first {first}",
+      "source": "{count} fields could not be read for the object-median maps, first {first}",
+      "source_sha256": "0ec60873128175546bccffac614252fe9b935df4f95f280c8eb48403e9016717",
+      "table": "ui",
+      "translation": "no se pudieron leer {count} campos de imagen para los mapas basados en la mediana de objetos; el primero: {first}"
+    },
+    {
+      "key": "{plate} {channel} {fit} map from {objects} objects in {fields} fields written to {folder}",
+      "source": "{plate} {channel} {fit} map from {objects} objects in {fields} fields written to {folder}",
+      "source_sha256": "6ff6869a3b19e6c20e760b34e900947ad34b67b353019dcbfa0c4e211e53e1de",
+      "table": "ui",
+      "translation": "mapa {plate} {channel} {fit} calculado con {objects} objetos de {fields} campos de imagen y escrito en {folder}"
+    },
+    {
+      "key": "ops_flatfield",
+      "source": "Correct the uneven illumination of the phenotype fields. 'none' measures the pixels as acquired. 'analytic' corrects the measured intensity features from each cell's mean flat-field gain (phase ph_masks), in about a minute per plate. 'exact' divides every pixel before measuring, so it needs the raw images again. Default 'exact'; settings files saved before item 1006 keep 'none'. Alpha.",
+      "source_sha256": "5f6c137f0b275e18472db8aa61393fbb122e30254a215ae00b7f26ff53ce8a3c",
+      "table": "setting_tooltips",
+      "translation": "Corrige la iluminación desigual de los campos de fenotipo. 'none' mide los píxeles tal como se adquirieron. 'analytic' corrige las características de intensidad medidas a partir de la ganancia media de campo plano de cada célula (fase ph_masks), en aproximadamente un minuto por placa. 'exact' divide cada píxel antes de medir, por lo que vuelve a necesitar las imágenes sin procesar. Valor predeterminado: 'exact'; los archivos de ajustes guardados antes del ítem 1006 conservan 'none'. Alfa."
+    },
+    {
+      "key": "ops_flatfield_channel_fit",
+      "source": "The flat-field fit of each phenotype channel, as {channel: fit}: 'nuclear_median' (the median raw intensity of the nuclei in each map cell), 'cytoplasm_median' (of the cytoplasm, at the cell centre), 'pixel_median' (the smoothed pixel median of the drawn fields) or 'polynomial' (that median, 4th-order polynomial). A channel not named takes 'nuclear_median' if it is DNA or in ops_flatfield_nuclear_stains, else 'cytoplasm_median', the most accurate maps on Funk plate A, built by ph_flatfield_objects after segmentation. 'legacy' gives the earlier maps. Default None. Alpha.",
+      "source_sha256": "ea3ceefdf75718eeca6ccaa39d21556617a38dce4a716565bed406f77adb332c",
+      "table": "setting_tooltips",
+      "translation": "El ajuste de campo plano de cada canal de fenotipo, como {channel: fit}: 'nuclear_median' (la mediana de la intensidad sin procesar de los núcleos de cada casilla de la cuadrícula del mapa), 'cytoplasm_median' (del citoplasma, en el centro de la célula), 'pixel_median' (la mediana por píxel suavizada de los campos de imagen seleccionados) o 'polynomial' (esa mediana ajustada con un polinomio de grado 4). Un canal no indicado usa 'nuclear_median' si es DNA o está en ops_flatfield_nuclear_stains; en caso contrario, usa 'cytoplasm_median'. Estos son los mapas más precisos en la placa A de Funk y se construyen mediante ph_flatfield_objects después de la segmentación. 'legacy' proporciona los mapas anteriores. Valor predeterminado: None. Alfa."
+    },
+    {
+      "key": "ops_flatfield_object_fields",
+      "source": "The fields ph_flatfield_objects builds the nuclear- and cytoplasm-median maps from: 'all', every segmented field of the wells run; a number, that many drawn with seed 0; or a JSON file of [well, site] pairs. More fields put more objects in each map cell, at one image and mask read per field. Default 'all'. Alpha.",
+      "source_sha256": "10849594748132e1f77311d0722dd14c129a3fe9b3ef2c89b5f354aedd122414",
+      "table": "setting_tooltips",
+      "translation": "Los campos de imagen que ph_flatfield_objects usa para construir los mapas basados en la mediana de núcleos y citoplasmas: 'all', todos los campos segmentados de los pocillos procesados; un número, esa cantidad de campos seleccionados aleatoriamente con semilla 0; o un archivo JSON de pares [well, site]. Más campos aportan más objetos a cada casilla de la cuadrícula del mapa, a costa de leer una imagen y una máscara por campo. Valor predeterminado: 'all'. Alfa."
+    },
+    {
+      "key": "ops_flatfield_channel_fit",
+      "source": "Ops flatfield channel fit",
+      "source_sha256": "694061922e3978cb3ad6a0cf61084d9e475eb87819275478213aa5d062aacadc",
+      "table": "setting_labels",
+      "translation": "Campo plano de OPS: ajuste por canal"
+    },
+    {
+      "key": "ops.ops_flatfield_channel_fit",
+      "source": "Flatfield channel fit",
+      "source_sha256": "74c57c54e609c0efa5f411288e033d358eb68f8f4407856a9f5cc2967439eaf1",
+      "table": "setting_labels",
+      "translation": "Campo plano: ajuste por canal"
+    },
+    {
+      "key": "ops_flatfield_object_fields",
+      "source": "Ops flatfield object fields",
+      "source_sha256": "53fd2ee48c4b2e24537db4d5c79347db02b34175d4b52b1cd76d314bf7b5e970",
+      "table": "setting_labels",
+      "translation": "Campos de imagen con objetos para el campo plano de OPS"
+    },
+    {
+      "key": "ops.ops_flatfield_object_fields",
+      "source": "Flatfield object fields",
+      "source_sha256": "cfca0d65c869e5ca1d25327a3eed65f95e37aca22db4af21ed6a96e292f5b2a2",
+      "table": "setting_labels",
+      "translation": "Campos de imagen con objetos para el campo plano"
+    },
+    {
+      "key": "ops_flatfield_channel_fit must be a {channel: fit} mapping or 'legacy'; got {value}",
+      "source": "ops_flatfield_channel_fit must be a {channel: fit} mapping or 'legacy'; got {value}",
+      "source_sha256": "90d12c41142a66449a7fa9ee1892e5aef5d62f5ec1631de8c6ed2bc49f8d3dc0",
+      "table": "ui",
+      "translation": "ops_flatfield_channel_fit debe ser un mapeo {channel: fit} o 'legacy'; se recibió {value}"
+    },
+    {
+      "key": "warning: the {plate} {channel} flat-field map reaches {ratio:.2f} of its centre at map cell {cell}; the map is used as fitted",
+      "source": "warning: the {plate} {channel} flat-field map reaches {ratio:.2f} of its centre at map cell {cell}; the map is used as fitted",
+      "source_sha256": "29f3ebd670a476491ee1def1836e61ee79b221ae0644d2f0ce379157f23f3e3b",
+      "table": "ui",
+      "translation": "advertencia: el mapa de campo plano de {plate} {channel} alcanza {ratio:.2f} veces el valor del centro del campo de visión en la casilla de la cuadrícula del mapa {cell}; el mapa se usa tal como se ajustó"
+    },
+    {
+      "key": "ops_flatfield_nuclear_stains",
+      "source": "Channels other than DNA that stain the nucleus, such as a nuclear antibody; their flat-field map is the nuclear median unless ops_flatfield_channel_fit names them. Names not among the phenotype channels are ignored. Default ['A594'], the gammaH2AX stain of Funk et al. Alpha.",
+      "source_sha256": "dfb9095a504385e8a8d494734b5c202dc2950925f14925eb8e4c7d4becd3c85f",
+      "table": "setting_tooltips",
+      "translation": "Los canales distintos de DNA que tiñen el núcleo, como el de un anticuerpo nuclear; su mapa de campo plano es la mediana nuclear, salvo que ops_flatfield_channel_fit los indique. Los nombres que no figuran entre los canales de fenotipo se ignoran. Valor predeterminado: ['A594'], la tinción gammaH2AX de Funk et al. Alfa."
+    },
+    {
+      "key": "ops_flatfield_nuclear_stains",
+      "source": "Ops flatfield nuclear stains",
+      "source_sha256": "8bced346632fc28014e82afc87936de6ce1e45c2f59e275251879092792c9efa",
+      "table": "setting_labels",
+      "translation": "Campo plano de OPS: tinciones nucleares"
+    },
+    {
+      "key": "ops.ops_flatfield_nuclear_stains",
+      "source": "Flatfield nuclear stains",
+      "source_sha256": "e1b36cd8a3c121b5910659333993df65198ecc7e616cb5ddcb914762113fb5fe",
+      "table": "setting_labels",
+      "translation": "Campo plano: tinciones nucleares"
+    }
+  ],
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-21 of item 1006 per-channel OPS object-median flat-field fits, nuclear stains, default correction and amended settings-version 952 reproducibility help (source 08a41759c7). No human or native-speaker signoff.",
+  "schema": 1
+}

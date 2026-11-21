@@ -280,7 +280,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "``png`` — load pre-generated images (default) Read crops previously written by the measurement workflow. ``path_string`` filters paths by substring and ``file_type`` filters by image extension. This source performs no cropping. ``merged`` — stream images Extract crops during training from ``merged/*.npy`` arrays. ``extract_channels`` selects the intensity planes and ``object_array`` selects the labelled mask plane that defines each object's extent. When ``coordinate_columns`` are configured, database coordinates instead define fixed bounding-box crops. ``generate`` — generate images, then load them Materialize a complete crop set on disk before training, then read it through the same file-backed path as ``png``. This is a preprocessing action rather than a streaming source.",
       "source_sha256": "5026f186701793559c9124b4034bc5df898b06767660d111eec832008f959e93",
-      "translation": "``png`` — 미리 생성된 이미지 로드(기본값) 측정 워크플로가 이전에 기록한 잘라낸 이미지를 읽습니다. ``path_string``은 하위 문자열로 경로를 필터링하고 ``file_type``은 이미지 확장자로 필터링합니다. 이 원본은 자르기를 수행하지 않습니다. ``merged`` — 이미지 스트리밍 학습 중에 ``merged/*.npy`` 배열에서 잘라낸 이미지를 추출합니다. ``extract_channels``는 강도 평면을 선택하고 ``object_array``는 각 객체의 범위를 정의하는 레이블 마스크 평면을 선택합니다. ``coordinate_columns``가 구성되어 있으면 데이터베이스 좌표가 대신 고정 경계 상자 잘라내기를 정의합니다. ``generate`` — 이미지를 생성한 뒤 로드 학습 전에 디스크에 완전한 잘라낸 이미지 세트를 구체화한 다음, ``png``와 같은 파일 기반 경로로 읽습니다. 이는 스트리밍 원본이 아니라 전처리 작업입니다."
+      "translation": "``png`` — 미리 생성된 이미지 로드(기본값) 측정 워크플로가 이전에 기록한 잘라낸 이미지를 읽습니다. ``path_string``은 하위 문자열로 경로를 필터링하고 ``file_type``은 이미지 확장자로 필터링합니다. 이 원본은 자르기를 수행하지 않습니다. ``merged`` — 이미지 스트리밍 학습 중에 ``merged/*.npy`` 배열에서 잘라낸 이미지를 추출합니다. ``extract_channels``는 강도 평면을 선택하고 ``object_array``는 각 객체의 범위를 정의하는 레이블 마스크 평면을 선택합니다. ``coordinate_columns``가 구성되어 있으면 데이터베이스 좌표가 대신 고정 경계 상자 잘라내기를 정의합니다. ``generate`` — 이미지를 생성한 뒤 로드 학습 전에 디스크에 완전한 잘라낸 이미지 세트를 구체화한 다음, ``png``와 같은 파일 기반 경로로 읽습니다. 이는 스트리밍 원본이 아니라 전처리 작업입니다.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "**The stored values did not change.** ``png`` and ``merged`` are what ``spacr.crops.resolve_crop_source`` has always read, so a settings file written under either vocabulary means what it always meant: ``pre_generated``, ``load_images`` and ``auto`` all arrive as load images, ``on_demand`` and ``stream_images`` as stream images. :data:`CROP_SOURCE_ALIASES` is that migration, in one place, so a value written by a renamed panel is still accepted.",
@@ -530,7 +532,9 @@
       "review_basis": "Direct AI technical authoring against exact current English source and normal target-neutral context",
       "source": "Every spelling in :data:`CROP_SOURCE_ALIASES` resolves, so a settings file written by any released spaCR panel is accepted. An unset value means LOAD IMAGES, the default in every panel.",
       "source_sha256": "e0f894730a40cb15be952ba305d740a167d9f948f648cb687701a2b176f6d0ec",
-      "translation": ":data:`CROP_SOURCE_ALIASES`의 모든 철자가 확인되므로, 공개된 어떤 spaCR 패널이 작성한 설정 파일이든 받아들여집니다. 설정되지 않은 값은 모든 패널의 기본값인 LOAD IMAGES를 뜻합니다."
+      "translation": ":data:`CROP_SOURCE_ALIASES`의 모든 철자가 확인되므로, 공개된 어떤 spaCR 패널이 작성한 설정 파일이든 받아들여집니다. 설정되지 않은 값은 모든 패널의 기본값인 LOAD IMAGES를 뜻합니다.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "an unrecognised source. The source is not guessed, because a wrong guess would train on different images without error.",

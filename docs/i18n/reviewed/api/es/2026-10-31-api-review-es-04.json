@@ -461,32 +461,34 @@
       "label": "spacr.crop_loader#4",
       "source": "The output is one ``(objects, height, width, channels)`` uint8 array, which is the layout :func:`spacr.embeddings.embed_array` documents and :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops` requires, plus a JSON-serialisable ``record`` of what was actually read -- how many matched, how many were taken, the crop shape, and how many crops had to be conformed to it.",
       "source_sha256": "2dc463b78b0876693294852e1ee684857c77835b352b0bbee51e26e9b76c5f3e",
-      "translation": "La salida es una única matriz uint8 ``(objects, height, width, channels)``, que es la disposición que documenta :func:`spacr.embeddings.embed_array` y que requiere :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`, junto con un ``record`` serializable en JSON de lo que realmente se leyó -- cuántos coincidieron, cuántos se tomaron, la forma de los recortes y cuántos recortes tuvieron que ajustarse a ella."
+      "translation": "La salida es una única matriz uint8 ``(objects, height, width, channels)``, que es la disposición que documenta :func:`spacr.embeddings.embed_array` y que requiere :meth:`spacr.qt.screens.embeddings.EmbeddingsScreen.set_crops`, junto con un ``record`` serializable en JSON de lo que realmente se leyó -- cuántos coincidieron, cuántos se tomaron, la forma de los recortes y cuántos recortes tuvieron que ajustarse a ella.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "The number of extracted image regions is capped by default. Sixty thousand extracted image regions of 96x96x3 take 1.6 GB before embedding, which can exhaust memory on a machine that could embed the first two thousand. :attr:`CropQuery.limit` therefore has a non-zero default, and the plan states what was left out -- \"the first 2,000 of 61,433\".",
-      "label": "spacr.crop_loader#6",
+      "label": "spacr.crop_loader#7",
       "source": "The number of crops is capped by default. Sixty thousand crops of 96x96x3 take 1.6 GB before embedding, which can exhaust memory on a machine that could embed the first two thousand. :attr:`CropQuery.limit` therefore has a non-zero default, and the plan states what was left out -- \"the first 2,000 of 61,433\".",
       "source_sha256": "efb17d019e4f80e9d22ce060cc95c8af5bf2e026f6a0b9e49b0c5db831128ece",
       "translation": "El número de recortes está limitado por defecto. Sesenta mil recortes de 96x96x3 ocupan 1.6 GB antes del embedding, lo que puede agotar la memoria de una máquina que podría procesar los dos mil primeros. Por eso :attr:`CropQuery.limit` tiene un valor predeterminado distinto de cero, y el plan indica lo que quedó fuera -- \"the first 2,000 of 61,433\" (los primeros 2,000 de 61,433)."
     },
     {
       "context": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
-      "label": "spacr.crop_loader#7",
+      "label": "spacr.crop_loader#8",
       "source": "Rows dropped for other reasons are counted separately from the cap. The merged route drops every row it cannot cut; reporting that as a cap would suggest raising a limit that was not reached. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` and :attr:`CropPlan.count` are three numbers, :attr:`CropPlan.capped` is the gap between the first two and :attr:`CropPlan.dropped` the gap between the last two, and they reach the panel as separate clauses.",
       "source_sha256": "7f483bda810095966168bbde528ff00456a80903ac0ec268f35c8fe8af5a7a80",
       "translation": "Las filas descartadas por otros motivos se cuentan aparte del límite. La ruta fusionada descarta todas las filas que no puede cortar; presentarlo como un límite sugeriría aumentar un límite que no se alcanzó. :attr:`CropPlan.matched`, :attr:`CropPlan.selected` y :attr:`CropPlan.count` son tres números, :attr:`CropPlan.capped` es la diferencia entre los dos primeros y :attr:`CropPlan.dropped` la diferencia entre los dos últimos, y llegan al panel como cláusulas separadas."
     },
     {
       "context": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
-      "label": "spacr.crop_loader#8",
+      "label": "spacr.crop_loader#9",
       "source": "An empty result is reported with a reason, not returned as an empty array. A plan that matched nothing carries :attr:`CropPlan.empty_reason`, which names the table, the class, the plate and the predicate that were asked for and what the database does hold, for example when plate 9 is requested from an eight-plate screen.",
       "source_sha256": "4f41ff7970b4706488688ff17061663f820d3bf1d2474bcdd577e0ec22e3f481",
       "translation": "Un resultado vacío se notifica con un motivo, no se devuelve como una matriz vacía. Un plan que no coincidió con nada lleva :attr:`CropPlan.empty_reason`, que nombra la tabla, la clase, la placa y el predicado que se pidieron y lo que sí contiene la base de datos, por ejemplo cuando se solicita la placa 9 de un cribado de ocho placas."
     },
     {
       "context": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
-      "label": "spacr.crop_loader#9",
+      "label": "spacr.crop_loader#10",
       "source": "The predicate is SQL and the database is opened read-only. ``where`` is an SQL fragment against the user's own file. It is spliced into a ``WHERE`` clause, so the connection is opened with ``readonly=True`` -- SQLite's ``query_only``, which refuses every write at the engine -- and a predicate carrying a statement separator is rejected before it is sent.",
       "source_sha256": "c1e5770eafff138fd6860f51597883e6aedd6476f3aaef99cd169a33f9d09ea6",
       "translation": "El predicado es SQL y la base de datos se abre en modo de solo lectura. ``where`` es un fragmento SQL sobre el propio archivo del usuario. Se inserta en una cláusula ``WHERE``, así que la conexión se abre con ``readonly=True`` -- el ``query_only`` de SQLite, que rechaza cualquier escritura en el motor -- y un predicado que lleva un separador de sentencias se rechaza antes de enviarse."

@@ -37,39 +37,11 @@
       "translation": "क्रॉप में बाहर शून्य करें"
     },
     {
-      "key": "mask_image_format",
-      "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
-      "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
-      "table": "setting_tooltips",
-      "translation": "वह प्रारूप जिसमें Mask Generation अपने मर्ज किए गए फ़ील्ड भी लिखता है। 'npy' पहले की तरह केवल merged/*.npy लिखता है। 'ome-zarr' प्रति प्लेट एक OME-Zarr 0.5 स्टोर images/ के अंतर्गत जोड़ता है, जिसमें हर फ़ील्ड के चैनल नामित और मास्क लेबलों के रूप में संग्रहीत होते हैं, जिन्हें napari और Fiji खोलते हैं। 'tiff' merged_tiff/<field>.tif और प्रति ऑब्जेक्ट एक <field>_<object>_mask.tif जोड़ता है। मर्ज की गई .npy फ़ाइलें बनी रहती हैं, ताकि बाद के चरण उन्हें पहले की तरह पढ़ें। डिफ़ॉल्ट 'npy'। अल्फ़ा।"
-    },
-    {
-      "key": "crop_image_format",
-      "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
-      "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
-      "table": "setting_tooltips",
-      "translation": "वह प्रारूप जिसमें Measure ऑब्जेक्ट क्रॉप लिखता है। 'png' पहले की तरह PNG फ़ोल्डर लिखता है (डिफ़ॉल्ट)। 'ome-zarr' हर ऑब्जेक्ट का बाउंडिंग बॉक्स और crop_margin_px पूरी बिट गहराई और हर चैनल के साथ, उसके अपने मास्क सहित, प्रति वेल एक स्टोर में लिखता है: crops/plate=<plate>/well=<well>.zarr, जो measurements.db की ssCell_Crops तालिका में सूचीबद्ध है। क्रॉप अपनी कच्ची तीव्रताएँ रखते हैं; कुछ भी नहीं फैलाया जाता। अल्फ़ा।"
-    },
-    {
       "key": "crops_per_shard",
       "source": "How many crops go into one stored shard when crop_image_format is 'ome-zarr'. Larger shards mean fewer files; each shard is held in RAM before it is written. Lowered automatically, with a log line, when free RAM is short. Default 4096. Alpha.",
       "source_sha256": "a1ffaaf9e60da4b53fe2337150bc6720fbee04d4a3ef9e7ff9eeb2a524dd4d81",
       "table": "setting_tooltips",
       "translation": "crop_image_format के 'ome-zarr' होने पर एक संग्रहीत शार्ड में कितने क्रॉप जाते हैं। बड़े शार्ड का अर्थ कम फ़ाइलें हैं; हर शार्ड लिखे जाने से पहले RAM में रखा जाता है। खाली RAM कम होने पर यह मान अपने आप घटाया जाता है और लॉग में एक पंक्ति लिखी जाती है। डिफ़ॉल्ट 4096। अल्फ़ा।"
-    },
-    {
-      "key": "crop_margin_px",
-      "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
-      "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
-      "table": "setting_tooltips",
-      "translation": "OME-Zarr क्रॉप में हर ऑब्जेक्ट के बाउंडिंग बॉक्स के आसपास रखे गए पिक्सेल, छवि के किनारे पर काटे जाते हैं। डिफ़ॉल्ट 0। अल्फ़ा।"
-    },
-    {
-      "key": "crop_zero_outside",
-      "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
-      "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
-      "table": "setting_tooltips",
-      "translation": "OME-Zarr क्रॉप संग्रहीत करते समय ऑब्जेक्ट के बाहर हर पिक्सेल 0 करें। डिफ़ॉल्ट रूप से बंद: ऑब्जेक्ट के आसपास के पिक्सेल रखे जाते हैं और रीडर संग्रहीत मास्क से उन्हें अब भी छिपा सकता है। अल्फ़ा।"
     },
     {
       "key": "(none: RGB view)",

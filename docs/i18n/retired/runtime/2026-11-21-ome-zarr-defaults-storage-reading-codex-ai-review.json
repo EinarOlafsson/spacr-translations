@@ -1,0 +1,503 @@
+{
+  "records": [
+    {
+      "path": "docs/i18n/reviewed/runtime/de/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Legt fest, woher Bildausschnitte stammen. Betrachter verwenden 'png' (LOAD IMAGES) für exportierte Bildausschnitte in data/ oder 'merged' (STREAM IMAGES), um mithilfe der Messdatenbank aus merged/*.npy auszuschneiden. Diese Betrachtermodi entsprechen den Quellen 'load_images' und 'stream_images' beim Training. spaCR meldet jeden Rückfall, und Bedienelemente, die für die gewählte Quelle nicht gelten, sind deaktiviert. Standard 'png' in Betrachtern und 'load_images' beim Training. Image UMAP beginnt mit 'auto', bevorzugt exportierte PNGs, wenn vorhanden, und streamt sonst aus zusammengeführten Arrays."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Quelle der Klassifikationsbilder. 'load_images' liest zuvor exportierte Objekt-Bildausschnitte; 'stream_images' erzeugt Bildausschnitte während des Trainings aus zusammengeführten Bild- und Masken-Arrays. Streaming vermeidet einen eigenen Export für jede Kombination aus Objekt, Kanal und Ausschnittform. Standard 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/de/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Das Format, in dem die Masken-Generierung ihre zusammengeführten Bildfelder zusätzlich schreibt. 'npy' schreibt wie bisher nur merged/*.npy. 'ome-zarr' ergänzt einen OME-Zarr-0.5-Store pro Platte unter images/, in dem die Kanäle jedes Bildfelds benannt und seine Masken als Labels gespeichert sind; napari und Fiji können ihn öffnen. 'tiff' ergänzt merged_tiff/<field>.tif und eine Datei <field>_<object>_mask.tif pro Objekt. Die zusammengeführten .npy-Dateien bleiben erhalten, sodass spätere Schritte sie wie bisher lesen. Standard 'npy'. Alpha."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Das Format, in dem Messen Objektausschnitte schreibt. 'png' schreibt die PNG-Ordner wie bisher (Standard). 'ome-zarr' schreibt den Begrenzungsrahmen jedes Objekts zuzüglich crop_margin_px mit voller Bittiefe, allen Kanälen und seiner eigenen Maske in einen Store pro Well: crops/plate=<plate>/well=<well>.zarr, aufgeführt in measurements.db in der Tabelle ssCell_Crops. Ausschnitte behalten ihre Rohintensitäten; nichts wird gespreizt. Alpha."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Pixel, die bei OME-Zarr-Ausschnitten um den Begrenzungsrahmen jedes Objekts erhalten bleiben, am Bildrand abgeschnitten. Standard 0. Alpha."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr-Ausschnitte speichern und dabei jedes Pixel außerhalb des Objekts auf 0 setzen. Standardmäßig aus: Die Pixel um das Objekt bleiben erhalten, und ein Leser kann sie weiterhin mit der gespeicherten Maske ausblenden. Alpha."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/es/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Selecciona de dónde proceden los recortes de imagen. Los visores usan 'png' (LOAD IMAGES) para los recortes exportados en data/ o 'merged' (STREAM IMAGES) para recortar de merged/*.npy usando la base de datos de mediciones. Estos modos de visor corresponden a los orígenes 'load_images' y 'stream_images' del entrenamiento. spaCR informa de cualquier alternativa usada, y los controles que no se aplican al origen seleccionado se desactivan. Valor predeterminado: 'png' en los visores y 'load_images' en el entrenamiento. Image UMAP empieza en 'auto', que prefiere los PNG exportados cuando existen y, si no, obtiene los recortes de las matrices fusionadas."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Origen de las imágenes de clasificación. 'load_images' lee recortes de objetos exportados previamente; 'stream_images' genera los recortes a partir de las matrices de imágenes y máscaras fusionadas durante el entrenamiento. La obtención bajo demanda evita crear una exportación aparte para cada combinación de objeto, canal y forma de recorte. Valor predeterminado: 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/es/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "El formato en el que Generación de máscaras también escribe sus campos fusionados. 'npy' escribe únicamente merged/*.npy, como antes. 'ome-zarr' añade un almacén OME-Zarr 0.5 por placa en images/, con los canales de cada campo nombrados y sus máscaras almacenadas como etiquetas, que napari y Fiji pueden abrir. 'tiff' añade merged_tiff/<field>.tif y un <field>_<object>_mask.tif por objeto. Los archivos .npy fusionados se conservan, de modo que los pasos posteriores los leen como antes. Valor predeterminado: 'npy'. Alfa."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "El formato en el que Medir escribe los recortes de objetos. 'png' escribe las carpetas PNG como antes (valor predeterminado). 'ome-zarr' escribe el rectángulo delimitador de cada objeto más crop_margin_px, con toda la profundidad de bits y todos los canales, junto con su propia máscara, en un almacén por pocillo: crops/plate=<plate>/well=<well>.zarr, listado en measurements.db, en la tabla ssCell_Crops. Los recortes conservan sus intensidades sin procesar; no se expande nada. Alfa."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Píxeles conservados alrededor del cuadro delimitador de cada objeto en los recortes OME-Zarr, limitados por el borde de la imagen. Valor predeterminado: 0. Alfa."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "Almacena recortes OME-Zarr con todos los píxeles fuera del objeto puestos a 0. Desactivado de forma predeterminada: se conservan los píxeles alrededor del objeto y un lector aún puede ocultarlos con la máscara almacenada. Alfa."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/fr/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Choisit la provenance des vignettes d’images. Les visionneuses utilisent 'png' (LOAD IMAGES) pour les vignettes exportées dans data/ ou 'merged' (STREAM IMAGES) pour les découper dans merged/*.npy à l’aide de la base de mesures. Ces modes de visionneuse correspondent aux sources 'load_images' et 'stream_images' de l’entraînement. spaCR signale tout repli, et les contrôles qui ne s’appliquent pas à la source choisie sont désactivés. Valeur par défaut : 'png' dans les visionneuses et 'load_images' pour l’entraînement. Image UMAP démarre à 'auto', en privilégiant les PNG exportés lorsqu’ils sont disponibles et en produisant sinon les vignettes en flux depuis les tableaux fusionnés."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Source des images de classification. 'load_images' lit des vignettes d’objets exportées précédemment ; 'stream_images' génère les vignettes à partir des tableaux d’images et de masques fusionnés pendant l’entraînement. Le mode flux évite de créer un export distinct pour chaque combinaison d’objet, de canal et de forme de vignette. Valeur par défaut : 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/fr/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Le format dans lequel Génération de masques écrit aussi ses champs fusionnés. 'npy' écrit uniquement merged/*.npy, comme auparavant. 'ome-zarr' ajoute un magasin OME-Zarr 0.5 par plaque sous images/, avec les canaux de chaque champ nommés et ses masques stockés sous forme d'étiquettes, que napari et Fiji peuvent ouvrir. 'tiff' ajoute merged_tiff/<field>.tif et un <field>_<object>_mask.tif par objet. Les fichiers .npy fusionnés restent en place, de sorte que les étapes suivantes les lisent comme auparavant. Valeur par défaut : 'npy'. Alpha."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Le format dans lequel Mesurer écrit les découpes d'objets. 'png' écrit les dossiers PNG comme auparavant (valeur par défaut). 'ome-zarr' écrit la boîte englobante de chaque objet augmentée de crop_margin_px, à pleine profondeur de bits et avec tous les canaux, accompagnée de son propre masque, dans un magasin par puits : crops/plate=<plate>/well=<well>.zarr, répertorié dans measurements.db, table ssCell_Crops. Les découpes conservent leurs intensités brutes ; rien n'est étiré. Alpha."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Pixels conservés autour de la boîte englobante de chaque objet dans les découpes OME-Zarr, limités par le bord de l'image. Valeur par défaut : 0. Alpha."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "Stocke les découpes OME-Zarr en mettant à 0 chaque pixel extérieur à l'objet. Désactivé par défaut : les pixels autour de l'objet sont conservés, et un lecteur peut toujours les masquer avec le masque stocké. Alpha."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/hi/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "चुनें कि छवि क्रॉप कहाँ से आते हैं। व्यूअर data/ में निर्यात किए गए क्रॉप के लिए 'png' (LOAD IMAGES) या माप डेटाबेस का उपयोग करके merged/*.npy से काटने के लिए 'merged' (STREAM IMAGES) का उपयोग करते हैं। ये व्यूअर मोड प्रशिक्षण के 'load_images' और 'stream_images' स्रोतों के अनुरूप हैं। spaCR कोई भी फ़ॉलबैक रिपोर्ट करता है, और चयनित स्रोत पर लागू न होने वाले नियंत्रण बंद कर दिए जाते हैं। व्यूअर में डिफ़ॉल्ट 'png' और प्रशिक्षण में 'load_images'। Image UMAP 'auto' से शुरू होता है, उपलब्ध होने पर निर्यात किए गए PNGs को प्राथमिकता देता है और अन्यथा merged ऐरे से स्ट्रीम करता है।"
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "वर्गीकरण छवियों का स्रोत। 'load_images' पहले निर्यात किए गए ऑब्जेक्ट क्रॉप पढ़ता है; 'stream_images' प्रशिक्षण के दौरान merged छवि और मास्क ऐरे से क्रॉप बनाता है। स्ट्रीमिंग हर ऑब्जेक्ट, चैनल और crop-shape संयोजन के लिए अलग निर्यात बनाने से बचाती है। डिफ़ॉल्ट 'load_images'।"
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/hi/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "वह प्रारूप जिसमें Mask Generation अपने मर्ज किए गए फ़ील्ड भी लिखता है। 'npy' पहले की तरह केवल merged/*.npy लिखता है। 'ome-zarr' प्रति प्लेट एक OME-Zarr 0.5 स्टोर images/ के अंतर्गत जोड़ता है, जिसमें हर फ़ील्ड के चैनल नामित और मास्क लेबलों के रूप में संग्रहीत होते हैं, जिन्हें napari और Fiji खोलते हैं। 'tiff' merged_tiff/<field>.tif और प्रति ऑब्जेक्ट एक <field>_<object>_mask.tif जोड़ता है। मर्ज की गई .npy फ़ाइलें बनी रहती हैं, ताकि बाद के चरण उन्हें पहले की तरह पढ़ें। डिफ़ॉल्ट 'npy'। अल्फ़ा।"
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "वह प्रारूप जिसमें Measure ऑब्जेक्ट क्रॉप लिखता है। 'png' पहले की तरह PNG फ़ोल्डर लिखता है (डिफ़ॉल्ट)। 'ome-zarr' हर ऑब्जेक्ट का बाउंडिंग बॉक्स और crop_margin_px पूरी बिट गहराई और हर चैनल के साथ, उसके अपने मास्क सहित, प्रति वेल एक स्टोर में लिखता है: crops/plate=<plate>/well=<well>.zarr, जो measurements.db की ssCell_Crops तालिका में सूचीबद्ध है। क्रॉप अपनी कच्ची तीव्रताएँ रखते हैं; कुछ भी नहीं फैलाया जाता। अल्फ़ा।"
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr क्रॉप में हर ऑब्जेक्ट के बाउंडिंग बॉक्स के आसपास रखे गए पिक्सेल, छवि के किनारे पर काटे जाते हैं। डिफ़ॉल्ट 0। अल्फ़ा।"
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr क्रॉप संग्रहीत करते समय ऑब्जेक्ट के बाहर हर पिक्सेल 0 करें। डिफ़ॉल्ट रूप से बंद: ऑब्जेक्ट के आसपास के पिक्सेल रखे जाते हैं और रीडर संग्रहीत मास्क से उन्हें अब भी छिपा सकता है। अल्फ़ा।"
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/is/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Velja hvaðan myndskurðir koma. Skoðarar nota 'png' (LOAD IMAGES) fyrir útflutta myndskurði í data/ eða 'merged' (STREAM IMAGES) til að skera úr merged/*.npy með mælingagagnagrunninum. Þessir skoðarahamir samsvara upprunum 'load_images' og 'stream_images' í þjálfun. spaCR tilkynnir hvern varakost, og stýringar sem eiga ekki við valinn uppruna eru gerðar óvirkar. Sjálfgefið 'png' í skoðurum og 'load_images' í þjálfun. Image UMAP byrjar á 'auto', sem velur frekar útfluttar PNG-myndir þegar þær eru tiltækar og streymir annars úr sameinuðum fylkjum."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Uppruni flokkunarmynda. 'load_images' les áður útflutta myndskurði hluta; 'stream_images' býr til myndskurði úr sameinuðum mynd- og grímufylkjum meðan á þjálfun stendur. Streymi forðast að búa til sérstakan útflutning fyrir hverja samsetningu hlutar, rásar og lögunar myndskurðar. Sjálfgefið 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/is/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Sniðið sem Mask Generation notar einnig til að skrifa sameinuð sjónsvið. 'npy' skrifar aðeins merged/*.npy, eins og áður. 'ome-zarr' bætir við einni OME-Zarr 0.5 geymslu fyrir hverja plötu undir images/, með heitum á rásum hvers sjónsviðs og grímum geymdum sem merki, sem napari og Fiji geta opnað. 'tiff' bætir við merged_tiff/<field>.tif og einni <field>_<object>_mask.tif fyrir hvern hlut. Sameinuðu .npy skrárnar haldast, svo síðari skref lesa þær eins og áður. Sjálfgefið 'npy'. Alfa."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Sniðið sem Measure notar til að skrifa úrklippur hluta. 'png' skrifar PNG möppurnar eins og áður (sjálfgefið). 'ome-zarr' skrifar umlykjandi ramma hvers hlutar að viðbættri crop_margin_px, með fullri bitadýpt og öllum rásum ásamt eigin grímu, í eina geymslu fyrir hvern brunn: crops/plate=<plate>/well=<well>.zarr, skráða í measurements.db í töflunni ssCell_Crops. Úrklippur halda upprunalegum styrkgildum; ekkert er endurkvarðað. Alfa."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Pixlar sem er haldið umhverfis umlykjandi ramma hvers hlutar í OME-Zarr úrklippum, takmarkaðir við brún myndarinnar. Sjálfgefið 0. Alfa."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "Geyma OME-Zarr úrklippur með alla pixla utan hlutarins stillta á 0. Sjálfgefið óvirkt: pixlunum umhverfis hlutinn er haldið, og lesari getur enn falið þá með geymdu grímunni. Alfa."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/ko/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "이미지 크롭을 어디서 가져올지 선택합니다. 뷰어는 data/의 내보낸 크롭에 'png'(LOAD IMAGES)를, 측정 데이터베이스를 사용해 merged/*.npy에서 잘라내려면 'merged'(STREAM IMAGES)를 사용합니다. 이 뷰어 모드는 학습의 'load_images' 및 'stream_images' 소스에 해당합니다. spaCR은 모든 대체 사실을 보고하며, 선택한 소스에 적용되지 않는 컨트롤은 비활성화됩니다. 뷰어에서는 기본값 'png', 학습에서는 'load_images'. Image UMAP은 'auto'에서 시작하며, 내보낸 PNGs가 있으면 이를 우선 사용하고 없으면 병합 배열에서 스트리밍합니다."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "분류 이미지의 출처입니다. 'load_images'는 이전에 내보낸 객체 크롭을 읽고, 'stream_images'는 학습 중 병합된 이미지 및 마스크 배열에서 크롭을 생성합니다. 스트리밍은 객체, 채널, 크롭 모양 조합마다 별도의 내보내기를 만들지 않아도 됩니다. 기본값 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/ko/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Mask Generation 이 병합된 시야를 추가로 쓰는 형식입니다. 'npy' 는 이전처럼 merged/*.npy 만 씁니다. 'ome-zarr' 는 플레이트마다 OME-Zarr 0.5 저장소 하나를 images/ 아래에 추가합니다. 각 시야의 채널에 이름을 붙이고 마스크를 레이블로 저장하며 napari 와 Fiji 에서 열 수 있습니다. 'tiff' 는 merged_tiff/<field>.tif 와 객체마다 <field>_<object>_mask.tif 하나를 추가합니다. 병합된 .npy 파일은 유지되므로 이후 단계에서 이전처럼 읽을 수 있습니다. 기본값 'npy'. 알파."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Measure 가 객체 크롭을 쓰는 형식입니다. 'png' 는 이전처럼 PNG 폴더에 씁니다(기본값). 'ome-zarr' 는 각 객체의 경계 상자에 crop_margin_px 를 더한 영역을 전체 비트 깊이와 모든 채널, 자체 마스크와 함께 웰별 저장소에 씁니다: crops/plate=<plate>/well=<well>.zarr. 이는 measurements.db 의 ssCell_Crops 테이블에 나열됩니다. 크롭은 원시 강도를 유지하며 어떤 값도 늘리지 않습니다. 알파."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr 크롭에서 각 객체의 경계 상자 주변에 유지할 픽셀 수이며 이미지 가장자리에서 잘립니다. 기본값 0. 알파."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr 크롭을 저장할 때 객체 바깥의 모든 픽셀을 0으로 설정합니다. 기본적으로 꺼져 있어 객체 주변의 픽셀을 유지하며, 읽기 도구에서 저장된 마스크로 이를 숨길 수 있습니다. 알파."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/pt/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Seleciona de onde vêm os recortes de imagem. Os visualizadores usam 'png' (LOAD IMAGES) para recortes exportados em data/ ou 'merged' (STREAM IMAGES) para recortar de merged/*.npy usando o banco de dados de medições. Esses modos dos visualizadores correspondem às origens 'load_images' e 'stream_images' do treinamento. O spaCR informa qualquer alternativa usada, e os controles que não se aplicam à origem selecionada ficam desativados. Padrão 'png' nos visualizadores e 'load_images' no treinamento. Image UMAP começa em 'auto', preferindo os PNGs exportados quando disponíveis e, caso contrário, transmitindo a partir dos arrays mesclados."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Fonte de imagens de classificação. 'load_images' lê recortes de objetos exportadas anteriormente; 'stream_images' gera recortes de matrizes de imagens e máscaras mescladas durante o treinamento. O streaming evita a criação de uma exportação separada para cada combinação de objeto, canal e forma de recorte. Padrão 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/pt/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "O formato em que Mask Generation também grava os campos mesclados. 'npy' grava apenas merged/*.npy, como antes. 'ome-zarr' adiciona um armazenamento OME-Zarr 0.5 por placa em images/, com os canais de cada campo nomeados e as máscaras armazenadas como rótulos, que napari e Fiji abrem. 'tiff' adiciona merged_tiff/<field>.tif e um <field>_<object>_mask.tif por objeto. Os arquivos .npy mesclados permanecem, para que as etapas seguintes os leiam como antes. Padrão 'npy'. Alfa."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "O formato em que Measure grava os recortes de objetos. 'png' grava as pastas PNG como antes (padrão). 'ome-zarr' grava a caixa delimitadora de cada objeto acrescida de crop_margin_px, com a profundidade de bits completa e todos os canais, junto com a própria máscara, em um armazenamento por poço: crops/plate=<plate>/well=<well>.zarr, listado em measurements.db, na tabela ssCell_Crops. Os recortes mantêm as intensidades brutas; não há ajuste de escala. Alfa."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Pixels mantidos ao redor da caixa delimitadora de cada objeto nos recortes OME-Zarr, limitados pela borda da imagem. Padrão 0. Alfa."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "Armazena recortes OME-Zarr com todos os pixels fora do objeto definidos como 0. Desativado por padrão: os pixels ao redor do objeto são mantidos, e um leitor ainda pode ocultá-los com a máscara armazenada. Alfa."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/sv/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "Välj varifrån bildutsnitten kommer. Visarna använder 'png' (LOAD IMAGES) för exporterade utsnitt i data/ eller 'merged' (STREAM IMAGES) för att klippa ut från merged/*.npy med hjälp av mätdatabasen. Dessa visningslägen motsvarar träningens källor 'load_images' och 'stream_images'. spaCR rapporterar alla reservlägen, och inställningar som inte gäller den valda källan inaktiveras. Standard 'png' i visarna och 'load_images' i träningen. Image UMAP startar med 'auto', som föredrar exporterade PNG-filer när de finns och annars strömmar från sammanslagna arrayer."
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "Källa för klassificeringsbilder. 'load_images' läser tidigare exporterade objektutsnitt; 'stream_images' genererar utsnitt från sammanslagna bild- och maskarrayer under träningen. Strömning undviker att skapa en separat export för varje kombination av objekt, kanal och utsnittsform. Standard 'load_images'."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/sv/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Formatet som Maskgenerering också skriver sina sammanfogade bildfält i. 'npy' skriver enbart merged/*.npy, som tidigare. 'ome-zarr' lägger till ett OME-Zarr 0.5-lager per platta under images/, med namngivna kanaler för varje bildfält och dess masker lagrade som etiketter, vilket napari och Fiji kan öppna. 'tiff' lägger till merged_tiff/<field>.tif och en <field>_<object>_mask.tif per objekt. De sammanfogade .npy-filerna finns kvar, så att senare steg läser dem som tidigare. Standard 'npy'. Alfa."
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Formatet som Mät skriver objektutsnitt i. 'png' skriver PNG-mapparna som tidigare (standard). 'ome-zarr' skriver varje objekts avgränsningsruta plus crop_margin_px, med fullt bitdjup och alla kanaler, tillsammans med dess egen mask, till ett lager per brunn: crops/plate=<plate>/well=<well>.zarr, listat i measurements.db, tabellen ssCell_Crops. Utsnitten behåller sina råa intensiteter; inget sträcks. Alfa."
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "Pixlar som behålls runt varje objekts avgränsningsruta i OME-Zarr-utsnitt, avklippta vid bildens kant. Standard 0. Alfa."
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "Lagra OME-Zarr-utsnitt med varje pixel utanför objektet satt till 0. Av som standard: pixlarna runt objektet behålls, och en läsare kan fortfarande dölja dem med den lagrade masken. Alfa."
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/zh_CN/2026-10-01-runtime-review-twelfth-pass-tooltips.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "table": "setting_tooltips",
+          "key": "crop_source",
+          "source": "Select where image crops come from. Viewers use 'png' (LOAD IMAGES) for exported crops in data/ or 'merged' (STREAM IMAGES) to cut from merged/*.npy using the measurements database. These viewer modes correspond to training's 'load_images' and 'stream_images' sources. spaCR reports any fallback, and controls that do not apply to the selected source are disabled. Default 'png' in viewers and 'load_images' in training. Image UMAP starts at 'auto', preferring exported PNGs when available and otherwise streaming from merged arrays.",
+          "source_sha256": "6737a42d709937d57e46f574a02de9138a102203be9544e6f98dd58057019697",
+          "translation": "选择图像裁剪图的来源。查看器使用 'png'（LOAD IMAGES）读取 data/ 中已导出的裁剪图，或使用 'merged'（STREAM IMAGES）借助测量数据库从 merged/*.npy 中裁剪。这些查看器模式对应于训练中的 'load_images' 和 'stream_images' 来源。spaCR 会报告任何回退，不适用于所选来源的控件会被禁用。查看器中默认值 'png'，训练中默认值 'load_images'。Image UMAP 初始为 'auto'，在有已导出的 PNGs 时优先使用，否则从合并数组中流式读取。"
+        },
+        {
+          "table": "setting_tooltips",
+          "key": "image_source",
+          "source": "Source of classification images. 'load_images' reads previously exported object crops; 'stream_images' generates crops from merged image and mask arrays during training. Streaming avoids creating a separate export for each object, channel, and crop-shape combination. Default 'load_images'.",
+          "source_sha256": "e694cf59853875edbcda99eb8ae2f038cfd5ae8098b1c1b2ec214ba055acc7bc",
+          "translation": "分类图像的来源。'load_images' 读取先前导出的对象裁剪图；'stream_images' 在训练期间从合并的图像和掩膜数组生成裁剪图。流式处理无需为每种对象、通道和裁剪形状组合创建单独的导出。默认值 'load_images'。"
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/zh_CN/2026-11-19-image-crop-formats-983-ai-review.json",
+      "reason": "Train 7 OME-Zarr defaults and storage-reading help supersede this assigned runtime source. Original records are preserved verbatim.",
+      "records": [
+        {
+          "key": "mask_image_format",
+          "source": "The format Mask Generation also writes its merged fields in. 'npy' writes only merged/*.npy, as before. 'ome-zarr' adds one OME-Zarr 0.5 store per plate under images/, with every field's channels named and its masks stored as labels, which napari and Fiji open. 'tiff' adds merged_tiff/<field>.tif and one <field>_<object>_mask.tif per object. The merged .npy files stay, so later steps read them as before. Default 'npy'. Alpha.",
+          "source_sha256": "f2d4c655a205ea130c6f7150114a7b16e326d14238e8f3f056afb48aba2ee146",
+          "table": "setting_tooltips",
+          "translation": "Mask Generation 额外写出合并视野时使用的格式。'npy' 与以前一样，只写入 merged/*.npy。'ome-zarr' 为每个板添加一个 OME-Zarr 0.5 存储，位于 images/ 下，为每个视野的通道命名，并将掩膜存为标签，可由 napari 和 Fiji 打开。'tiff' 添加 merged_tiff/<field>.tif，并为每个对象添加一个 <field>_<object>_mask.tif。合并的 .npy 文件仍保留，因此后续步骤可像以前一样读取。默认 'npy'。Alpha。"
+        },
+        {
+          "key": "crop_image_format",
+          "source": "The format Measure writes object crops in. 'png' writes the PNG folders as before (default). 'ome-zarr' writes each object's bounding box plus crop_margin_px, at full bit depth and every channel, with its own mask, into one store per well: crops/plate=<plate>/well=<well>.zarr, listed in measurements.db table ssCell_Crops. Crops keep their raw intensities; nothing is stretched. Alpha.",
+          "source_sha256": "dbceaa4d8263bc9011c4cf6a8d02cecbcd31f32dbf27f847e17bdd382d1f20f3",
+          "table": "setting_tooltips",
+          "translation": "Measure 写入对象裁剪图时使用的格式。'png' 与以前一样写入 PNG 文件夹（默认）。'ome-zarr' 将每个对象的边界框加 crop_margin_px，以完整位深、全部通道及其自身掩膜，写入按孔组织的存储：crops/plate=<plate>/well=<well>.zarr，并在 measurements.db 的 ssCell_Crops 表中列出。裁剪图保留原始强度，不进行任何拉伸。Alpha。"
+        },
+        {
+          "key": "crop_margin_px",
+          "source": "Pixels kept around each object's bounding box in OME-Zarr crops, clipped at the image edge. Default 0. Alpha.",
+          "source_sha256": "5eca4522cd3b50a2bdda190d5aa380b3c0eb75e61ab8f5f7b01b32ed1d929cfe",
+          "table": "setting_tooltips",
+          "translation": "OME-Zarr 裁剪图中每个对象边界框周围保留的像素数，在图像边缘截断。默认 0。Alpha。"
+        },
+        {
+          "key": "crop_zero_outside",
+          "source": "Store OME-Zarr crops with every pixel outside the object set to 0. Off by default: the pixels around the object are kept, and a reader can still hide them with the stored mask. Alpha.",
+          "source_sha256": "55ab47a2bd853457cd29544d7476e202658c0dea4b298baf490d168af6a4f47c",
+          "table": "setting_tooltips",
+          "translation": "存储 OME-Zarr 裁剪图时，将对象外的每个像素设为 0。默认关闭：保留对象周围的像素，读取器仍可使用存储的掩膜隐藏它们。Alpha。"
+        }
+      ]
+    },
+    {
+      "path": "docs/i18n/reviewed/runtime/is/2026-10-17-f678-terminology.json",
+      "reason": "The P change replaces this exact Annotate crop-source tooltip with the assigned OME-Zarr-aware runtime row17. Preserve the original review intact in the runtime retirement archive and remove only this obsolete active row.",
+      "records": [
+        {
+          "key": "LOAD IMAGES reads the crops the measure step exported under data/. STREAM IMAGES cuts them out of merged/*.npy as the page is drawn, which needs no export. Either mode falls back to the other when its folder is missing, and says which route drew.",
+          "source": "LOAD IMAGES reads the crops the measure step exported under data/. STREAM IMAGES cuts them out of merged/*.npy as the page is drawn, which needs no export. Either mode falls back to the other when its folder is missing, and says which route drew.",
+          "source_sha256": "c7bf1f316f2252110c170c5f62d6fb2a47dad91d92307a19946349b7cdf0b9eb",
+          "table": "ui",
+          "translation": "LOAD IMAGES les myndskurðina sem mælingaskrefið flutti út undir data/. STREAM IMAGES sker þá út úr merged/*.npy um leið og síðan er teiknuð, sem þarf engan útflutning. Hvor hamur fellur aftur á hinn þegar mappa hans finnst ekki, og segir hvor leiðin teiknaði."
+        }
+      ]
+    }
+  ]
+}

@@ -83,7 +83,7 @@
     },
     {
       "context": "extracted image regions per pool shard (default 4096). Each shard is buffered until full (or :meth:`close`) and written whole, so no shard is ever rewritten.",
-      "label": "spacr.crop_store.CropPoolWriter#7",
+      "label": "spacr.crop_store.CropPoolWriter#8",
       "source": "crops per pool shard (default 4096). Each shard is buffered until full (or :meth:`close`) and written whole, so no shard is ever rewritten.",
       "source_sha256": "42bef59363978d965490425138bf71f0c83de436719fc4432c3205903f0a400e",
       "translation": "每个池分片的裁剪图数（默认 4096）。每个分片会缓冲至填满（或调用 :meth:`close`）后完整写入，因此任何分片都不会被重写。",
@@ -95,11 +95,13 @@
       "source": "metadata of this class's pools, stored on the class group under ``spacr`` (for example ``channel_names``, ``pixel_size_um``, ``settings_hash``, ``relationship_columns``, ``source``). ``dtype``, ``channels``, ``compression``, ``crops_per_shard`` and ``spacr_version`` are added. A key that is already stored with another value is refused, so pools of one class never mix channel orders or settings.",
       "source_sha256": "85c138f1436d651d710246ed7a014a0abc8999cb40789d9567ed79e01ebc1a48",
       "translation": "该类别的池元数据，存储在类别分组的 ``spacr`` 下（例如 ``channel_names``、``pixel_size_um``、``settings_hash``、``relationship_columns``、``source``）。还会添加 ``dtype``、``channels``、``compression``、``crops_per_shard`` 和 ``spacr_version``。已存储且具有其他值的键会被拒绝，因此同一类别的池绝不会混用通道顺序或设置。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Pools are written whole as they fill. :meth:`commit` then records them, with their table rows, as the class's committed set; a stopped run leaves pools that no commit lists, and :meth:`discard_uncommitted` removes them before a rerun. :meth:`read_commit` gives back what was committed, so a converter or a resumed run can skip the microplate sample positions it has. Open the microplate sample position's extracted image region store and start an empty shard buffer.",
-      "label": "spacr.crop_store.CropPoolWriter#9",
+      "label": "spacr.crop_store.CropPoolWriter#10",
       "source": "Pools are written whole as they fill. :meth:`commit` then records them, with their table rows, as the class's committed set; a stopped run leaves pools that no commit lists, and :meth:`discard_uncommitted` removes them before a rerun. :meth:`read_commit` gives back what was committed, so a converter or a resumed run can skip the wells it has. Open the well's crop store and start an empty shard buffer.",
       "source_sha256": "ed07835432a19a443dbfeec1abb489f329f69ea5f6fdb80777693c215023fb89",
       "translation": "池填满后会完整写入。随后 :meth:`commit` 将这些池及其表行记录为该类别的已提交集合；中止的运行会留下没有任何提交记录列出的池，:meth:`discard_uncommitted` 会在重新运行前移除它们。:meth:`read_commit` 返回已提交的内容，使转换器或恢复的运行能够跳过已有的孔。打开孔的裁剪图存储，并启动一个空的分片缓冲区。",
@@ -127,7 +129,9 @@
       "source": "crops from :func:`cut_crops`, in the order they are stored.",
       "source_sha256": "128a91f5ba5e1fae6407e3e96eca0e4354a836dde30146cbbdc7b980f6278255",
       "translation": "来自 :func:`cut_crops` 的裁剪图，按存储顺序排列。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Write the last, partly filled shard; return every extracted image region's table row.",
@@ -359,7 +363,9 @@
       "source": "The stored crop: ``(pixels (C, h, w) in its dtype, mask (h, w) bool)``.",
       "source_sha256": "5696d36ef293a326eec0fff7ed2a5bf60fb8d37a310b904853debb8e58f43feb",
       "translation": "存储的裁剪图：``(pixels (C, h, w) in its dtype, mask (h, w) bool)``。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "as for :meth:`get`.",
@@ -1007,7 +1013,9 @@
       "source": "keep the pixels around the object; False zeroes them.",
       "source_sha256": "b414baa8ef2b235bb2591ee92e37d83072d8e8e32825fe06d10edaf60306f378",
       "translation": "保留对象周围的像素；False 将其置零。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "``(h, w)`` to resize to, nearest-neighbour and therefore deterministic; the stored size when None.",
@@ -1023,7 +1031,9 @@
       "source": "Many crops at once, each pool opened once and read in one slice.",
       "source_sha256": "b6207b7c9c6c7bdc7f4a0fb9e637d6a5ddbea9113a449d5402383974c6427ffd",
       "translation": "一次读取多个裁剪图，每个池只打开一次，并通过一个切片读取。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "The same extracted image regions as :func:`read_crop` row by row, in the order given. Reading extracted image region by extracted image region opens the pool and decodes its chunk again for every extracted image region; here the rows of one pool are read together, as one slice from the first to the last of them.",
@@ -1031,7 +1041,9 @@
       "source": "The same crops as :func:`read_crop` row by row, in the order given. Reading crop by crop opens the pool and decodes its chunk again for every crop; here the rows of one pool are read together, as one slice from the first to the last of them.",
       "source_sha256": "9f3c5e1446eb05d91afd0478208f2a004c08d1a8c29f00a0a10683b2faff340b",
       "translation": "按给定顺序逐行返回与 :func:`read_crop` 相同的裁剪图。逐个读取裁剪图时，每个裁剪图都会重新打开池并解码其数据块；此处将同一池中的行一起读取，使用覆盖首行到末行的一个切片。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "the project folder.",
@@ -1055,7 +1067,9 @@
       "source": "keep the pixels around each object; False zeroes them.",
       "source_sha256": "8b46da117f78f05bdfcf0603dd034fa027416562755cd58a8750b6313ca4bfac",
       "translation": "保留每个对象周围的像素；False 将其置零。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "``(h, w)`` to resize every extracted image region to (nearest-neighbour).",
@@ -1071,7 +1085,9 @@
       "source": "one ``(pixels (C, h, w), mask (h, w) bool)`` per row.",
       "source_sha256": "4e1161e62bc2768bec61006f99e8c9b0bbe7ca5d5c5a38689c3495e56cb7e38a",
       "translation": "每行一个 ``(pixels (C, h, w), mask (h, w) bool)``。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Pass one microscope field of view's extracted image regions to the run's sink (the parent's write handler).",
@@ -1359,7 +1375,9 @@
       "source": "A plate is one store, ``<root>/<plate>.ome.zarr``, laid out the HCS way: row, column (the well) and field groups, each field an OME-NGFF 0.5 image (zarr-format 3, one zstd shard per field) with its masks under ``labels/``.",
       "source_sha256": "6a40c49a6d5e47d935e50b80d3fb3d5f4d67cb61a090d9d6370f319dbbe34b68",
       "translation": "每个板对应一个存储 ``<root>/<plate>.ome.zarr``，采用 HCS 布局：行、列（孔）和视野分组。每个视野是一个 OME-NGFF 0.5 图像（zarr 格式 3，每个视野一个 zstd 分片），其掩膜位于 ``labels/`` 下。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "One writer per file. Field workers never write the store. They return their arrays through the process pool's result pipe; the parent process, the only writer, writes each field whole, in plan order, and records it in the store's commit ledger only after all of the field's arrays are on disk. A rerun skips committed fields and overwrites the rest, so a stopped run resumes and a repeated run is byte-identical.",
@@ -1423,7 +1441,9 @@
       "source": "Fields are written whole with :meth:`write_field`; the plate and well metadata are rewritten from the ledger after each field, so a reader opening the store mid-run sees only committed fields. Open (or start) the plate store and read its commit ledger.",
       "source_sha256": "2d98787852763f829a09ba8981755856682f2c7d7571f3489644dfd86ad64dc1",
       "translation": "通过 :meth:`write_field` 完整写入视野；每写完一个视野，都从记录簿重写板和孔的元数据，因此运行中途打开存储的读取方只能看到已提交的视野。打开（或创建）板存储，并读取其提交记录簿。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "Whether the field is written and recorded.",
@@ -1567,7 +1587,9 @@
       "source": "The merged ``.npy`` stacks stay in place: Measure and the crop readers read them until their readers move to :func:`read_image` (item 984).",
       "source_sha256": "e1380103cfa9d3887afb2b4c688efa8746833337da018fa6b7fa54c0a0bbb66c",
       "translation": "合并的 ``.npy`` 图像栈保留在原位：在读取器迁移到 :func:`read_image`（条目 984）之前，Measure 和裁剪图读取器仍读取它们。",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-19 of the item 983/984 spacr.image_store, spacr.crop_store and spacr.crops docstring blocks and the five image/crop format settings. No human or native-speaker signoff.",
+      "retired": "2026-11-21",
+      "retired_reason": "2026-11-21: train 7 revised this assigned API source block. Original review fields are retained; the replacement source has a separate Codex (OpenAI) AI review record."
     },
     {
       "context": "The short store path of one field: ``B/3/0``.",

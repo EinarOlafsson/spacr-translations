@@ -192,13 +192,6 @@
     },
     {
       "table": "setting_tooltips",
-      "key": "ops_read_neighbour_discount",
-      "source": "Weighs down reads that probably bled in from a touching cell. Inside a cell, a guide with fewer reads than the top guide is multiplied by this value when it is the top guide of a neighbouring cell. Neighbours are nuclei whose discs come within ops_footprint, or touching cells in the spacer-prefix decode. 1 is off, and 0 ignores such reads. The spacer-prefix decode applies it under ops_prefix_quality_method 'weighted_majority'. Default 1. Alpha.",
-      "source_sha256": "c22fb7581a7f29859bb5ab0e77f22e77aa2ab1c7344df330a3e95c3b8354e4c9",
-      "translation": "Réduit le poids des lectures qui ont probablement débordé d’une cellule en contact. Dans une cellule, un guide ayant moins de lectures que le guide principal est multiplié par cette valeur lorsqu’il est le guide principal d’une cellule voisine. Les voisins sont les noyaux dont les disques se trouvent à moins de ops_footprint, ou les cellules en contact dans le décodage par préfixe d’espaceur. 1 désactive la réduction, et 0 ignore ces lectures. Le décodage par préfixe d’espaceur l’applique avec ops_prefix_quality_method 'weighted_majority'. Valeur par défaut : 1. Alpha."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "ops_prefix_quality_method",
       "source": "How each cell's quality class is set from its matched reads. 'spacr' counts reads: perfect needs ops_quality_min_reads exact reads of one barcode, and a tie between barcodes is ambiguous. 'recipe_simple' uses the 'simple' rules of the Broad pooled Cell Painting recipe that PERISCOPE used: one barcode with only exact reads is perfect, one barcode with a corrected read is great, and several barcodes are imperfect or bad; ops_quality_min_reads is then not used. 'weighted_majority' calls the barcode holding most of the read weight (ops_prefix_weighted_min_share). Default 'spacr'. Alpha.",
       "source_sha256": "aa116ad6b157cc1d1f5e97075aee994052c92b2f4adb8fc4e2c8bab7ce3d756a",
@@ -206,5 +199,15 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-18 of the strings item 988 (distance-aware read weights, neighbour-bleed discount, 'weighted_majority' cell calls and multi-guide cell tables, alpha) adds or changes on the claude-988-1118 branch against the exact English source: the labels and tooltips of the 14 new ops_read_distance_*, ops_read_neighbour_discount, ops_prefix_distance_*, ops_prefix_weighted_*, ops_prefix_nuclei_masks and multi-guide settings, the changed ops_prefix_quality_method tooltip, and the new or changed blocks of spacr.ops_prefix.prefix_cell_calls, spacr.ops_prefix.prefix_settings, spacr.ops_prefix.run_prefix_decode, spacr.ops_decode.decode_rule and spacr.ops_sbs.vote_mapped_reads. Claude AI translation and review (Claude Opus 5.5). No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "ops_read_neighbour_discount",
+      "source": "Weighs down reads that probably bled in from a touching cell. Inside a cell, a guide with fewer reads than the top guide is multiplied by this value when it is the top guide of a neighbouring cell. Neighbours are nuclei whose discs come within ops_footprint, or touching cells in the spacer-prefix decode. 1 is off, and 0 ignores such reads. The spacer-prefix decode applies it under ops_prefix_quality_method 'weighted_majority'. Default 1. Alpha.",
+      "source_sha256": "c22fb7581a7f29859bb5ab0e77f22e77aa2ab1c7344df330a3e95c3b8354e4c9",
+      "translation": "Réduit le poids des lectures qui ont probablement débordé d’une cellule en contact. Dans une cellule, un guide ayant moins de lectures que le guide principal est multiplié par cette valeur lorsqu’il est le guide principal d’une cellule voisine. Les voisins sont les noyaux dont les disques se trouvent à moins de ops_footprint, ou les cellules en contact dans le décodage par préfixe d’espaceur. 1 désactive la réduction, et 0 ignore ces lectures. Le décodage par préfixe d’espaceur l’applique avec ops_prefix_quality_method 'weighted_majority'. Valeur par défaut : 1. Alpha.",
+      "retired": "Item 1013 changed this exact parent-bound English source or moved its API label; the successor is in 2026-11-22-neighbour-discount-codex-ai-review.json. Original review fields are preserved. Codex (OpenAI) AI translation and review on 2026-11-22 of item 1013 neighbour-discount and recipe-bleed documentation (source 1c641638e6edd965d32365e350fb82e859d8407a). No human or native-speaker signoff."
+    }
+  ]
 }

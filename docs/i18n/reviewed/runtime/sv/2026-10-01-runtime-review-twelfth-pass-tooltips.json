@@ -170,6 +170,14 @@
       "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
       "translation": "Hur det jämna fältet anpassas till medianen över fälten: 'polynomial' anpassar en yta av låg ordning, som inte kan böja sig runt en cell och är rätt val för en lampprofil plus vinjettering; 'smooth' gaussfiltrerar i stället medianen och kan följa en dammskugga som polynomet skulle missa. Standard polynomial.",
       "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle the order of the per-field arrays before they are grouped into normalization batches, so each batch spans plates and wells instead of one acquisition block - this matters because normalization percentiles are computed per batch. Forced to False for timelapse runs to keep frames in sequence. Default True.",
+      "source_sha256": "9c6e58005e4aee7703582963d699c4ad5a7a0e62a801e99f99c575cf300d1318",
+      "translation": "Blanda ordningen på arrayerna per fält innan de grupperas i normaliseringsbatcher, så att varje batch omfattar plattor och brunnar i stället för ett enda förvärvsblock – detta spelar roll eftersom normaliseringspercentilerna beräknas per batch. Tvingas till False för tidsseriekörningar så att bildrutorna behåller sin ordning. Standard True.",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -4555,13 +4563,6 @@
       "source": "Shrinkage applied to each boosting round's contribution (XGBoost eta). Lower values require more rounds but can produce smoother, better-calibrated infection probabilities; higher values converge faster but can yield probabilities concentrated near 0 or 1, reducing the utility of the ambiguous range. Typical range 0.01-0.3; tune together with infection_xgb_n_estimators. Default 0.1.",
       "source_sha256": "70c1691870c9c5ae96326ff955632dd1dca45a956ee87f0a31fb901cf12cc0b7",
       "translation": "Krympning som tillämpas på bidraget från varje boostingrunda (XGBoost eta). Lägre värden kräver fler rundor men kan ge jämnare, bättre kalibrerade infektionssannolikheter; högre värden konvergerar snabbare men kan ge sannolikheter samlade nära 0 eller 1, vilket minskar nyttan av det tvetydiga intervallet. Typiskt intervall 0.01-0.3; justera tillsammans med infection_xgb_n_estimators. Standard 0.1."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "randomize",
-      "source": "Shuffle the order of the per-field arrays before they are grouped into normalization batches, so each batch spans plates and wells instead of one acquisition block - this matters because normalization percentiles are computed per batch. Forced to False for timelapse runs to keep frames in sequence. Default True.",
-      "source_sha256": "9c6e58005e4aee7703582963d699c4ad5a7a0e62a801e99f99c575cf300d1318",
-      "translation": "Blanda ordningen på arrayerna per fält innan de grupperas i normaliseringsbatcher, så att varje batch omfattar plattor och brunnar i stället för ett enda förvärvsblock – detta spelar roll eftersom normaliseringspercentilerna beräknas per batch. Tvingas till False för tidsseriekörningar så att bildrutorna behåller sin ordning. Standard True."
     },
     {
       "table": "setting_tooltips",

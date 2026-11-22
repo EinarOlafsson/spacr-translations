@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "language": "zh_CN",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-21 of measured VRAM mask batching settings and the OPS channel validation message (source dca15fa045b5ae395c45cd8e8802ab569d9b505e). No human or native-speaker signoff.",
+  "source_commit": "dca15fa045b5ae395c45cd8e8802ab569d9b505e",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together: fields during mask generation and OPS, or crops per classifier step. For Mask Generation and OPS, 'auto_vram' measures GPU memory on the run data, then divides fields into batches whose sizes differ by at most one. Resident field arrays count toward the memory budget. Use 0 or 'whole' for the earlier largest-fitting-batch estimate, or a positive number to request a field count; it is reduced with a warning if the fields do not fit in memory. Defaults: 'auto_vram' for Mask Generation and OPS, 64 for training.",
+      "source_sha256": "9687c8c4f1a6afb449e03ef680624f2c4c5e57fe0e422342e2630baa95d891d9",
+      "translation": "一起处理的图像数量：掩膜生成和 OPS 中的视野数，或分类器每步处理的裁剪图数量。对于掩膜生成和 OPS，'auto_vram' 会用本次运行的数据测量 GPU 内存用量，然后将视野分成大小相差至多一个的批次。驻留的视野数组计入内存预算。使用 0 或 'whole' 可采用先前的最大可容纳批次估算方式，也可用正数指定视野数；如果内存无法容纳这些视野，系统会减小该数值并发出警告。默认值：掩膜生成和 OPS 为 'auto_vram'，训练为 64。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Mask Generation and OPS. 'auto_vram' measures the GPU working memory and resolves the largest tile batch that fits, up to mask_eval_batch_cap, before segmentation. CPU and external backends use at most 8. Use 0 for one tile per resident field, or a positive number to request the tile batch. The tile batch can move a few mask pixels; resume keeps the recorded value. Default 'auto_vram'.",
+      "source_sha256": "0bff4fb4c8c5f03723acb71f4d8faaa0ce94e9d77c6973bdf009a9b051bd8d19",
+      "translation": "掩膜生成和 OPS 中，Cellpose 一次送入网络的 256 像素图块数量。'auto_vram' 会测量 GPU 工作内存，并在分割前确定可容纳的最大图块批量，上限为 mask_eval_batch_cap。CPU 和外部后端最多使用 8。使用 0 表示每个驻留视野对应一个图块，也可用正数指定图块批量。图块批量可能使少量掩膜像素发生变化；恢复运行时保留已记录的值。默认值为 'auto_vram'。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU memory budget in GB for automatic mask batches in Mask Generation and OPS, including resident field arrays and network working memory. Empty uses SPACR_GPU_VRAM_GB when set, then the free card memory. The governor reserves its memory margin and CUDA context and divides the budget among mask workers. Set the same budget to reproduce batch sizes across cards; it can resolve fewer than mask_eval_batch_cap tiles. Default None. Alpha.",
+      "source_sha256": "b04491fec06264fe535f4b7258d16ee4cc1fd7a4f842aaf3b3c2eeb4be325edb",
+      "translation": "掩膜生成和 OPS 中自动掩膜批次的 GPU 内存预算，单位为 GB，包括驻留视野数组和网络工作内存。留空时，若已设置 SPACR_GPU_VRAM_GB 则使用该值，否则使用显卡的可用内存。控制器会预留内存余量和 CUDA 上下文所需空间，并在掩膜工作进程间分配预算。设置相同预算可在不同显卡上复现批次大小；确定的图块数可能小于 mask_eval_batch_cap。默认值为 None。实验功能。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_batch_seed",
+      "source": "Seed for the shared field shuffle in Mask Generation and OPS phenotype segmentation when randomize is True. The same field set and seed keep the same order; batch sizes also depend on the GPU budget. The plan and run journal record the order. Stitched sequencing windows, Spatial Mask Generation and timelapse keep acquisition order. Default 42. Alpha.",
+      "source_sha256": "7bafb2113f66f26a8518a2bc192ab171388a5074cc06d4dccea1d96b41345395",
+      "translation": "randomize 为 True 时，掩膜生成和 OPS 表型分割共用的视野随机排序种子。相同的视野集合和种子保持相同顺序；批次大小还取决于 GPU 预算。计划和运行日志会记录该顺序。拼接后的测序窗口、空间掩膜生成和延时成像保持采集顺序。默认值为 42。实验功能。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_cap",
+      "source": "Largest tile batch allowed when mask_eval_batch_size is 'auto_vram'. The measured GPU budget can resolve a smaller value; CPU and external backends use at most 8. A batch of 32 can need about 8 GB including resident fields, so a smaller GPU budget can select fewer tiles. Must be at least 1. Default 32. Alpha.",
+      "source_sha256": "c4852ddcfef6922d8185e2c10b5f906ac900103fdd4a302360f1a49c2fb4303e",
+      "translation": "mask_eval_batch_size 为 'auto_vram' 时允许的最大图块批量。测得的 GPU 预算可能决定使用更小的值；CPU 和外部后端最多使用 8。32 个图块的批次加上驻留视野可能需要约 8 GB，因此较小的 GPU 预算可能选择更少图块。必须至少为 1。默认值为 32。实验功能。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle fields with mask_batch_seed before batching in Mask Generation and OPS phenotype segmentation. Mask Generation pools normalization percentiles over each batch, so random order spreads acquisition drift across batches; OPS normalizes each field separately. Stitched sequencing windows and Spatial Mask Generation keep acquisition order. Forced to False for timelapse. Default True.",
+      "source_sha256": "6192704dca48af46aa82d6bf7ba75513f0c310087fe910f2eac38a40523d3184",
+      "translation": "在掩膜生成和 OPS 表型分割中，先用 mask_batch_seed 将视野随机排序，再分批。掩膜生成会在每个批次内汇总用于归一化的百分位数，因此随机顺序可将采集漂移分散到不同批次；OPS 则分别归一化每个视野。拼接后的测序窗口和空间掩膜生成保持采集顺序。延时成像时强制为 False。默认值为 True。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_sbs_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the sequencing nuclei of each stitched well and of the live spot preview. 0 uses the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value the sequencing path always used. Default 0.",
+      "source_sha256": "c5fc97b0dce0383e6377e5201f125012463aaa144ae193dec7e6bb640bbe1e3d",
+      "translation": "分割每个拼接孔和实时斑点预览中的测序细胞核时，Cellpose 一次送入网络的 256 像素图块数量。0 使用共用的、考虑显存的 mask_eval_batch_size（默认值为 auto_vram）。图块批量可能使少量掩膜像素发生变化，因此若要让本次运行与先前运行保持一致，请指定该值。早于此设置的设置文件会获得 16，即测序处理路径一直使用的值。默认值为 0。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_ph_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments phenotype nuclei, cells, pathogens and organelles. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 8, the value the phenotype path always used. Default 0. Alpha.",
+      "source_sha256": "700a3c38ca82bbdb27d3389a0d8b145902caa9216fc2a88094bd01cdc5172c17",
+      "translation": "分割表型细胞核、细胞、病原体和细胞器时，Cellpose 一次送入网络的 256 像素图块数量。0 跟随共用的、考虑显存的 mask_eval_batch_size（默认值为 auto_vram）。图块批量可能使少量掩膜像素发生变化，因此若要让本次运行与先前运行保持一致，请指定该值。早于此设置的设置文件会获得 8，即表型处理路径一直使用的值。默认值为 0。实验功能。"
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "spatial_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the stain. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value Spatial Mask Generation always used. Default 0.",
+      "source_sha256": "f132fc959f42a8c0bc09a88e9c091ff95aea76ed51d6c9e5a4f8981a9778f38c",
+      "translation": "分割染色图像时，Cellpose 一次送入网络的 256 像素图块数量。0 跟随共用的、考虑显存的 mask_eval_batch_size（默认值为 auto_vram）。图块批量可能使少量掩膜像素发生变化，因此若要让本次运行与先前运行保持一致，请指定该值。早于此设置的设置文件会获得 16，即空间掩膜生成一直使用的值。默认值为 0。"
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_eval_batch_cap",
+      "source": "Mask eval batch cap",
+      "source_sha256": "2aea70aedd9d81122a060e1a226fd2175c148c550212207622a96bbdf78af48d",
+      "translation": "掩膜评估批量上限"
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_batch_seed",
+      "source": "Mask batch seed",
+      "source_sha256": "1e4da9db52ebe257fa6881d421e0494daec7445b37f9fefbbd06d7f417da1099",
+      "translation": "掩膜批次随机种子"
+    },
+    {
+      "table": "setting_labels",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU vram budget gb",
+      "source_sha256": "161347dc559e8814f5fedd7d52ddafc620bcc9e55295e59b129f1c7bcdb0895c",
+      "translation": "GPU 显存预算（GB）"
+    },
+    {
+      "table": "ui",
+      "key": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source_sha256": "15dfbc983a90d0f5f9d02f3f73f6e51a79df0ee9bf1b79920d4151508de6c7fe",
+      "translation": "ops_ph_channels {channels} 必须指定 {nuclear} 和细胞通道 {cell}"
+    }
+  ]
+}

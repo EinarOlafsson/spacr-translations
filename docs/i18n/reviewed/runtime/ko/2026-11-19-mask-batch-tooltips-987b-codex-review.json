@@ -3,20 +3,6 @@
   "records": [
     {
       "table": "setting_tooltips",
-      "key": "batch_size",
-      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
-      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
-      "translation": "한 번에 함께 처리하는 이미지 수입니다. 정규화와 Cellpose 분할에서는 시야 스택, 분류기 학습과 활성화 맵에서는 단계당 크롭 수입니다. 값이 클수록 빠르지만 RAM/VRAM을 더 많이 사용하므로 메모리 부족 오류가 나면 값을 낮추세요. 마스크 생성에서 0 또는 'auto'는 사용 가능한 GPU 메모리와 RAM에 들어가는 가장 큰 배치를 선택하며, 들어가지 않는 수를 지정하면 경고와 함께 줄입니다. 기본값: 마스크 생성은 0(자동), 학습은 64."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "mask_eval_batch_size",
-      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
-      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
-      "translation": "256픽셀 타일 중 Cellpose 가 Make Masks 에서 한 번에 네트워크로 전달하는 개수입니다. 0 은 기존 규칙을 유지합니다. 즉, 배치의 시야 수만큼 타일을 전달합니다(batch_size). 이 방식에서는 큰 GPU 가 대부분 유휴 상태로 남습니다. 2000 x 2000 시야 하나에 이미 약 100 개의 타일이 있기 때문입니다. 값을 높이면 한 번에 더 많은 타일을 네트워크에 공급하여 GPU 메모리 제어기가 허용하는 범위에서 더 빨라집니다. 타일 배치는 일부 마스크 픽셀을 이동시킬 수 있으므로 재개된 실행은 두 값을 혼용하지 못하게 합니다. Default 0."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "mask_inference_precision",
       "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
       "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
@@ -24,5 +10,23 @@
     }
   ],
   "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the shortened batch_size tooltip. The other two records retain their 2026-11-19 review. No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
+      "translation": "한 번에 함께 처리하는 이미지 수입니다. 정규화와 Cellpose 분할에서는 시야 스택, 분류기 학습과 활성화 맵에서는 단계당 크롭 수입니다. 값이 클수록 빠르지만 RAM/VRAM을 더 많이 사용하므로 메모리 부족 오류가 나면 값을 낮추세요. 마스크 생성에서 0 또는 'auto'는 사용 가능한 GPU 메모리와 RAM에 들어가는 가장 큰 배치를 선택하며, 들어가지 않는 수를 지정하면 경고와 함께 줄입니다. 기본값: 마스크 생성은 0(자동), 학습은 64.",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "256픽셀 타일 중 Cellpose 가 Make Masks 에서 한 번에 네트워크로 전달하는 개수입니다. 0 은 기존 규칙을 유지합니다. 즉, 배치의 시야 수만큼 타일을 전달합니다(batch_size). 이 방식에서는 큰 GPU 가 대부분 유휴 상태로 남습니다. 2000 x 2000 시야 하나에 이미 약 100 개의 타일이 있기 때문입니다. 값을 높이면 한 번에 더 많은 타일을 네트워크에 공급하여 GPU 메모리 제어기가 허용하는 범위에서 더 빨라집니다. 타일 배치는 일부 마스크 픽셀을 이동시킬 수 있으므로 재개된 실행은 두 값을 혼용하지 못하게 합니다. Default 0.",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
+    }
+  ]
 }

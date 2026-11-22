@@ -146,6 +146,14 @@
       "source_sha256": "765a8dc5086a6374412cfe59ce102f5baad33149633b5bc27fb3eaa9685fa246",
       "translation": "시야 간 중앙값에 매끄러운 필드를 적합하는 방식입니다. 'polynomial'은 저차 곡면을 적합하며, 세포를 따라 휘어질 수 없으므로 램프 프로필과 비네팅에 적합한 선택입니다. 'smooth'는 대신 중앙값에 가우시안 블러를 적용하여 다항식이 놓칠 먼지 그림자를 따라갈 수 있습니다. 기본값 polynomial.",
       "retired": "2026-11-13: item 933 (the OPS nuclear-median flat-field, alpha) added the 'nuclear_median' choice to the illumination_estimator tooltip on the claude-train-1113 landing train, so this English changed. The replacement exact-source record is in 2026-11-13-flatfield-933-1113-ai-review.json; the original source and translation are kept here as evidence."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle the order of the per-field arrays before they are grouped into normalization batches, so each batch spans plates and wells instead of one acquisition block - this matters because normalization percentiles are computed per batch. Forced to False for timelapse runs to keep frames in sequence. Default True.",
+      "source_sha256": "9c6e58005e4aee7703582963d699c4ad5a7a0e62a801e99f99c575cf300d1318",
+      "translation": "정규화 배치로 묶기 전에 시야별 배열의 순서를 섞어, 각 배치가 하나의 획득 블록이 아니라 여러 플레이트와 웰에 걸치도록 합니다 - 정규화 백분위수가 배치마다 계산되므로 중요합니다. 타임랩스 실행에서는 프레임 순서를 유지하기 위해 False로 강제됩니다. 기본값 True.",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
     }
   ],
   "retirement_2026_10_04": "The glm_transform_conflict setting was retired (8456beae0); its source-bound reviews are kept here for history and no longer load.",
@@ -4097,13 +4105,6 @@
       "source": "Shrinkage applied to each boosting round's contribution (XGBoost eta). Lower values require more rounds but can produce smoother, better-calibrated infection probabilities; higher values converge faster but can yield probabilities concentrated near 0 or 1, reducing the utility of the ambiguous range. Typical range 0.01-0.3; tune together with infection_xgb_n_estimators. Default 0.1.",
       "source_sha256": "70c1691870c9c5ae96326ff955632dd1dca45a956ee87f0a31fb901cf12cc0b7",
       "translation": "각 부스팅 라운드의 기여에 적용하는 축소율입니다(XGBoost eta). 값이 낮으면 더 많은 라운드가 필요하지만 더 매끄럽고 잘 보정된 감염 확률을 만들 수 있고, 높으면 더 빨리 수렴하지만 확률이 0이나 1 근처에 몰려 모호 구간의 유용성이 줄어들 수 있습니다. 일반적 범위 0.01-0.3. infection_xgb_n_estimators와 함께 조정하십시오. 기본값 0.1."
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "randomize",
-      "source": "Shuffle the order of the per-field arrays before they are grouped into normalization batches, so each batch spans plates and wells instead of one acquisition block - this matters because normalization percentiles are computed per batch. Forced to False for timelapse runs to keep frames in sequence. Default True.",
-      "source_sha256": "9c6e58005e4aee7703582963d699c4ad5a7a0e62a801e99f99c575cf300d1318",
-      "translation": "정규화 배치로 묶기 전에 시야별 배열의 순서를 섞어, 각 배치가 하나의 획득 블록이 아니라 여러 플레이트와 웰에 걸치도록 합니다 - 정규화 백분위수가 배치마다 계산되므로 중요합니다. 타임랩스 실행에서는 프레임 순서를 유지하기 위해 False로 강제됩니다. 기본값 True."
     },
     {
       "table": "setting_tooltips",

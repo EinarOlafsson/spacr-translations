@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "language": "is",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-21 of measured VRAM mask batching settings and the OPS channel validation message (source dca15fa045b5ae395c45cd8e8802ab569d9b505e). No human or native-speaker signoff.",
+  "source_commit": "dca15fa045b5ae395c45cd8e8802ab569d9b505e",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together: fields during mask generation and OPS, or crops per classifier step. For Mask Generation and OPS, 'auto_vram' measures GPU memory on the run data, then divides fields into batches whose sizes differ by at most one. Resident field arrays count toward the memory budget. Use 0 or 'whole' for the earlier largest-fitting-batch estimate, or a positive number to request a field count; it is reduced with a warning if the fields do not fit in memory. Defaults: 'auto_vram' for Mask Generation and OPS, 64 for training.",
+      "source_sha256": "9687c8c4f1a6afb449e03ef680624f2c4c5e57fe0e422342e2630baa95d891d9",
+      "translation": "Hversu margar myndir eru unnar saman: sjónsvið í grímugerð og OPS eða útskurðir í hverju skrefi flokkarans. Í grímugerð og OPS mælir 'auto_vram' GPU-minnisnotkun á gögnum keyrslunnar og skiptir síðan sjónsviðunum í lotur þar sem stærðarmunurinn er í mesta lagi eitt sjónsvið. Sjónsviðsfylki sem þegar eru í minni teljast með í minnismörkunum. Notaðu 0 eða 'whole' fyrir fyrra matið á stærstu lotunni sem rúmast eða jákvæða tölu til að biðja um fjölda sjónsviða; fjöldinn er minnkaður með viðvörun ef sjónsviðin rúmast ekki í minni. Sjálfgefin gildi: 'auto_vram' fyrir grímugerð og OPS, 64 fyrir þjálfun."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Mask Generation and OPS. 'auto_vram' measures the GPU working memory and resolves the largest tile batch that fits, up to mask_eval_batch_cap, before segmentation. CPU and external backends use at most 8. Use 0 for one tile per resident field, or a positive number to request the tile batch. The tile batch can move a few mask pixels; resume keeps the recorded value. Default 'auto_vram'.",
+      "source_sha256": "0bff4fb4c8c5f03723acb71f4d8faaa0ce94e9d77c6973bdf009a9b051bd8d19",
+      "translation": "Hversu marga 256-pixla myndbúta Cellpose sendir í gegnum netið í einu í grímugerð og OPS. 'auto_vram' mælir GPU-vinnsluminnisþörfina og ákvarðar stærstu myndbútalotuna sem rúmast, upp að mask_eval_batch_cap, áður en hlutun hefst. CPU og ytri bakendar nota í mesta lagi 8. Notaðu 0 fyrir einn myndbút á hvert sjónsvið sem er í minni eða jákvæða tölu til að biðja um stærð myndbútalotunnar. Lotustærð myndbúta getur fært til nokkra pixla í grímunum; við áframhald keyrslu er skráða gildinu haldið. Sjálfgefið 'auto_vram'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU memory budget in GB for automatic mask batches in Mask Generation and OPS, including resident field arrays and network working memory. Empty uses SPACR_GPU_VRAM_GB when set, then the free card memory. The governor reserves its memory margin and CUDA context and divides the budget among mask workers. Set the same budget to reproduce batch sizes across cards; it can resolve fewer than mask_eval_batch_cap tiles. Default None. Alpha.",
+      "source_sha256": "b04491fec06264fe535f4b7258d16ee4cc1fd7a4f842aaf3b3c2eeb4be325edb",
+      "translation": "GPU-minnismörk í GB fyrir sjálfvirkar grímulotur í grímugerð og OPS, að meðtöldum sjónsviðsfylkjum sem eru í minni og vinnsluminni netsins. Tómt gildi notar SPACR_GPU_VRAM_GB ef það er stillt, annars laust minni kortsins. Minnisstýringin tekur frá svigrúm sitt í minni og CUDA-samhengið og skiptir minnismörkunum milli grímuvinnsluforrita. Stilltu sömu minnismörk til að endurtaka lotustærðir á mismunandi kortum; það getur leitt til færri myndbúta en mask_eval_batch_cap. Sjálfgefið None. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_batch_seed",
+      "source": "Seed for the shared field shuffle in Mask Generation and OPS phenotype segmentation when randomize is True. The same field set and seed keep the same order; batch sizes also depend on the GPU budget. The plan and run journal record the order. Stitched sequencing windows, Spatial Mask Generation and timelapse keep acquisition order. Default 42. Alpha.",
+      "source_sha256": "7bafb2113f66f26a8518a2bc192ab171388a5074cc06d4dccea1d96b41345395",
+      "translation": "Slembifræ fyrir sameiginlega stokkun sjónsviða í grímugerð og svipgerðarhlutun OPS þegar randomize er True. Sama safn sjónsviða og sama fræ halda sömu röð; lotustærðir ráðast einnig af GPU-minnismörkum. Áætlunin og keyrsluskráin skrá röðina. Samansaumaðir raðgreiningargluggar, Grímugerð í rými og tímaraðir halda myndatökuröðinni. Sjálfgefið 42. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_cap",
+      "source": "Largest tile batch allowed when mask_eval_batch_size is 'auto_vram'. The measured GPU budget can resolve a smaller value; CPU and external backends use at most 8. A batch of 32 can need about 8 GB including resident fields, so a smaller GPU budget can select fewer tiles. Must be at least 1. Default 32. Alpha.",
+      "source_sha256": "c4852ddcfef6922d8185e2c10b5f906ac900103fdd4a302360f1a49c2fb4303e",
+      "translation": "Stærsta leyfilega myndbútalotan þegar mask_eval_batch_size er 'auto_vram'. Mæld GPU-minnismörk geta gefið lægra gildi; CPU og ytri bakendar nota í mesta lagi 8. Lota með 32 getur þurft um 8 GB að meðtöldum sjónsviðum í minni, svo lægri GPU-minnismörk geta valið færri myndbúta. Verður að vera að minnsta kosti 1. Sjálfgefið 32. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle fields with mask_batch_seed before batching in Mask Generation and OPS phenotype segmentation. Mask Generation pools normalization percentiles over each batch, so random order spreads acquisition drift across batches; OPS normalizes each field separately. Stitched sequencing windows and Spatial Mask Generation keep acquisition order. Forced to False for timelapse. Default True.",
+      "source_sha256": "6192704dca48af46aa82d6bf7ba75513f0c310087fe910f2eac38a40523d3184",
+      "translation": "Stokka sjónsvið með mask_batch_seed áður en þeim er skipt í lotur í grímugerð og svipgerðarhlutun OPS. Í grímugerð eru hundraðshlutamörk fyrir stöðlun reiknuð sameiginlega yfir hverja lotu, svo slembiröð dreifir reki í myndatöku milli lota; OPS staðlar hvert sjónsvið sérstaklega. Samansaumaðir raðgreiningargluggar og Grímugerð í rými halda myndatökuröðinni. Þvingað í False fyrir tímaraðir. Sjálfgefið True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_sbs_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the sequencing nuclei of each stitched well and of the live spot preview. 0 uses the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value the sequencing path always used. Default 0.",
+      "source_sha256": "c5fc97b0dce0383e6377e5201f125012463aaa144ae193dec7e6bb640bbe1e3d",
+      "translation": "Hversu marga 256-pixla myndbúta Cellpose sendir í gegnum netið í einu þegar það hlutar kjarna í raðgreiningarmyndum frá hverjum samansaumuðum brunni og í lifandi forskoðun punkta. 0 notar sameiginlegu stillinguna mask_eval_batch_size sem tekur mið af VRAM (sjálfgefið auto_vram). Lotustærð myndbúta getur fært til nokkra pixla í grímunum, svo stilltu hana til að halda keyrslu eins og fyrri keyrslu. Stillingaskrár frá því áður en þessi stilling var til fá 16, gildið sem raðgreiningarferlið notaði alltaf. Sjálfgefið 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_ph_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments phenotype nuclei, cells, pathogens and organelles. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 8, the value the phenotype path always used. Default 0. Alpha.",
+      "source_sha256": "700a3c38ca82bbdb27d3389a0d8b145902caa9216fc2a88094bd01cdc5172c17",
+      "translation": "Hversu marga 256-pixla myndbúta Cellpose sendir í gegnum netið í einu þegar það hlutar kjarna, frumur, sýkla og frumulíffæri í svipgerðarmyndum. 0 fylgir sameiginlegu stillingunni mask_eval_batch_size sem tekur mið af VRAM (sjálfgefið auto_vram). Lotustærð myndbúta getur fært til nokkra pixla í grímunum, svo stilltu hana til að halda keyrslu eins og fyrri keyrslu. Stillingaskrár frá því áður en þessi stilling var til fá 8, gildið sem svipgerðarferlið notaði alltaf. Sjálfgefið 0. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "spatial_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the stain. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value Spatial Mask Generation always used. Default 0.",
+      "source_sha256": "f132fc959f42a8c0bc09a88e9c091ff95aea76ed51d6c9e5a4f8981a9778f38c",
+      "translation": "Hversu marga 256-pixla myndbúta Cellpose sendir í gegnum netið í einu þegar það hlutar litunina. 0 fylgir sameiginlegu stillingunni mask_eval_batch_size sem tekur mið af VRAM (sjálfgefið auto_vram). Lotustærð myndbúta getur fært til nokkra pixla í grímunum, svo stilltu hana til að halda keyrslu eins og fyrri keyrslu. Stillingaskrár frá því áður en þessi stilling var til fá 16, gildið sem Grímugerð í rými notaði alltaf. Sjálfgefið 0."
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_eval_batch_cap",
+      "source": "Mask eval batch cap",
+      "source_sha256": "2aea70aedd9d81122a060e1a226fd2175c148c550212207622a96bbdf78af48d",
+      "translation": "Hámark lotustærðar við útreikning gríma"
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_batch_seed",
+      "source": "Mask batch seed",
+      "source_sha256": "1e4da9db52ebe257fa6881d421e0494daec7445b37f9fefbbd06d7f417da1099",
+      "translation": "Slembifræ grímulota"
+    },
+    {
+      "table": "setting_labels",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU vram budget gb",
+      "source_sha256": "161347dc559e8814f5fedd7d52ddafc620bcc9e55295e59b129f1c7bcdb0895c",
+      "translation": "VRAM-mörk GPU í GB"
+    },
+    {
+      "table": "ui",
+      "key": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source_sha256": "15dfbc983a90d0f5f9d02f3f73f6e51a79df0ee9bf1b79920d4151508de6c7fe",
+      "translation": "ops_ph_channels {channels} verður að tilgreina {nuclear} og frumurásina {cell}"
+    }
+  ]
+}

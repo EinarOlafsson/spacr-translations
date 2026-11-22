@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "language": "fr",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-21 of measured VRAM mask batching settings and the OPS channel validation message (source dca15fa045b5ae395c45cd8e8802ab569d9b505e). No human or native-speaker signoff.",
+  "source_commit": "dca15fa045b5ae395c45cd8e8802ab569d9b505e",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together: fields during mask generation and OPS, or crops per classifier step. For Mask Generation and OPS, 'auto_vram' measures GPU memory on the run data, then divides fields into batches whose sizes differ by at most one. Resident field arrays count toward the memory budget. Use 0 or 'whole' for the earlier largest-fitting-batch estimate, or a positive number to request a field count; it is reduced with a warning if the fields do not fit in memory. Defaults: 'auto_vram' for Mask Generation and OPS, 64 for training.",
+      "source_sha256": "9687c8c4f1a6afb449e03ef680624f2c4c5e57fe0e422342e2630baa95d891d9",
+      "translation": "Nombre d’images traitées ensemble : champs pendant la génération de masques et OPS, ou recadrages par étape du classifieur. Pour Génération de masques et OPS, 'auto_vram' mesure la mémoire GPU sur les données de l’exécution, puis répartit les champs en batchs dont les tailles diffèrent d’au plus un. Les tableaux des champs résidant en mémoire sont pris en compte dans le budget mémoire. Utilisez 0 ou 'whole' pour l’ancienne estimation du plus grand lot pouvant tenir en mémoire, ou un nombre positif pour demander un nombre de champs ; ce nombre est réduit avec un avertissement si les champs ne tiennent pas en mémoire. Valeurs par défaut : 'auto_vram' pour Génération de masques et OPS, 64 pour l’entraînement."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Mask Generation and OPS. 'auto_vram' measures the GPU working memory and resolves the largest tile batch that fits, up to mask_eval_batch_cap, before segmentation. CPU and external backends use at most 8. Use 0 for one tile per resident field, or a positive number to request the tile batch. The tile batch can move a few mask pixels; resume keeps the recorded value. Default 'auto_vram'.",
+      "source_sha256": "0bff4fb4c8c5f03723acb71f4d8faaa0ce94e9d77c6973bdf009a9b051bd8d19",
+      "translation": "Nombre de tuiles de 256 pixels que Cellpose fait passer simultanément dans le réseau dans Génération de masques et OPS. 'auto_vram' mesure la mémoire de travail GPU et détermine, avant la segmentation, le plus grand lot de tuiles pouvant tenir en mémoire, jusqu’à mask_eval_batch_cap. Le CPU et les moteurs externes utilisent au plus 8 tuiles. Utilisez 0 pour une tuile par champ résidant en mémoire, ou un nombre positif pour demander la taille du lot de tuiles. La taille du lot de tuiles peut déplacer quelques pixels du masque ; la reprise conserve la valeur enregistrée. Valeur par défaut : 'auto_vram'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU memory budget in GB for automatic mask batches in Mask Generation and OPS, including resident field arrays and network working memory. Empty uses SPACR_GPU_VRAM_GB when set, then the free card memory. The governor reserves its memory margin and CUDA context and divides the budget among mask workers. Set the same budget to reproduce batch sizes across cards; it can resolve fewer than mask_eval_batch_cap tiles. Default None. Alpha.",
+      "source_sha256": "b04491fec06264fe535f4b7258d16ee4cc1fd7a4f842aaf3b3c2eeb4be325edb",
+      "translation": "Budget de mémoire GPU en GB pour les batchs automatiques de masques dans Génération de masques et OPS, incluant les tableaux des champs résidant en mémoire et la mémoire de travail du réseau. Si ce champ est vide, SPACR_GPU_VRAM_GB est utilisé s’il est défini, sinon la mémoire libre de la carte est utilisée. Le régulateur réserve sa marge mémoire et le contexte CUDA, puis répartit le budget entre les processus de masquage. Définissez le même budget pour reproduire les tailles de batchs sur différentes cartes ; le nombre de tuiles déterminé peut être inférieur à mask_eval_batch_cap. Valeur par défaut : None. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_batch_seed",
+      "source": "Seed for the shared field shuffle in Mask Generation and OPS phenotype segmentation when randomize is True. The same field set and seed keep the same order; batch sizes also depend on the GPU budget. The plan and run journal record the order. Stitched sequencing windows, Spatial Mask Generation and timelapse keep acquisition order. Default 42. Alpha.",
+      "source_sha256": "7bafb2113f66f26a8518a2bc192ab171388a5074cc06d4dccea1d96b41345395",
+      "translation": "Graine du mélange commun des champs dans Génération de masques et la segmentation du phénotype OPS lorsque randomize vaut True. Le même ensemble de champs et la même graine conservent le même ordre ; les tailles de lots dépendent aussi du budget GPU. Le plan et le journal d’exécution enregistrent l’ordre. Les fenêtres de séquençage assemblées, Génération de masques spatiale et le suivi temporel conservent l’ordre d’acquisition. Valeur par défaut : 42. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_cap",
+      "source": "Largest tile batch allowed when mask_eval_batch_size is 'auto_vram'. The measured GPU budget can resolve a smaller value; CPU and external backends use at most 8. A batch of 32 can need about 8 GB including resident fields, so a smaller GPU budget can select fewer tiles. Must be at least 1. Default 32. Alpha.",
+      "source_sha256": "c4852ddcfef6922d8185e2c10b5f906ac900103fdd4a302360f1a49c2fb4303e",
+      "translation": "Taille maximale autorisée du lot de tuiles lorsque mask_eval_batch_size vaut 'auto_vram'. Le budget GPU mesuré peut conduire à une valeur plus petite ; le CPU et les moteurs externes utilisent au plus 8 tuiles. Un lot de 32 peut nécessiter environ 8 GB, champs résidant en mémoire compris ; un budget GPU plus faible peut donc sélectionner moins de tuiles. Doit valoir au moins 1. Valeur par défaut : 32. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle fields with mask_batch_seed before batching in Mask Generation and OPS phenotype segmentation. Mask Generation pools normalization percentiles over each batch, so random order spreads acquisition drift across batches; OPS normalizes each field separately. Stitched sequencing windows and Spatial Mask Generation keep acquisition order. Forced to False for timelapse. Default True.",
+      "source_sha256": "6192704dca48af46aa82d6bf7ba75513f0c310087fe910f2eac38a40523d3184",
+      "translation": "Mélanger les champs avec mask_batch_seed avant leur répartition en batchs dans Génération de masques et la segmentation du phénotype OPS. Génération de masques calcule les percentiles de normalisation sur l’ensemble de chaque lot ; l’ordre aléatoire répartit donc la dérive d’acquisition entre les batchs, tandis qu’OPS normalise chaque champ séparément. Les fenêtres de séquençage assemblées et Génération de masques spatiale conservent l’ordre d’acquisition. Forcé à False pour le suivi temporel. Valeur par défaut : True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_sbs_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the sequencing nuclei of each stitched well and of the live spot preview. 0 uses the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value the sequencing path always used. Default 0.",
+      "source_sha256": "c5fc97b0dce0383e6377e5201f125012463aaa144ae193dec7e6bb640bbe1e3d",
+      "translation": "Nombre de tuiles de 256 pixels que Cellpose fait passer simultanément dans le réseau lorsqu’il segmente les noyaux de séquençage de chaque puits assemblé et de l’aperçu des points en temps réel. 0 utilise le réglage commun mask_eval_batch_size qui tient compte de la VRAM (valeur par défaut : auto_vram). La taille du lot de tuiles peut déplacer quelques pixels du masque ; fixez-la donc pour qu’une exécution reste identique à une précédente. Les fichiers de réglages antérieurs à l’introduction de ce réglage reçoivent 16, la valeur toujours utilisée pour le traitement du séquençage. Valeur par défaut : 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_ph_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments phenotype nuclei, cells, pathogens and organelles. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 8, the value the phenotype path always used. Default 0. Alpha.",
+      "source_sha256": "700a3c38ca82bbdb27d3389a0d8b145902caa9216fc2a88094bd01cdc5172c17",
+      "translation": "Nombre de tuiles de 256 pixels que Cellpose fait passer simultanément dans le réseau lorsqu’il segmente les noyaux, cellules, agents pathogènes et organites du phénotype. 0 suit le réglage commun mask_eval_batch_size qui tient compte de la VRAM (valeur par défaut : auto_vram). La taille du lot de tuiles peut déplacer quelques pixels du masque ; fixez-la donc pour qu’une exécution reste identique à une précédente. Les fichiers de réglages antérieurs à l’introduction de ce réglage reçoivent 8, la valeur toujours utilisée pour le traitement du phénotype. Valeur par défaut : 0. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "spatial_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the stain. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value Spatial Mask Generation always used. Default 0.",
+      "source_sha256": "f132fc959f42a8c0bc09a88e9c091ff95aea76ed51d6c9e5a4f8981a9778f38c",
+      "translation": "Nombre de tuiles de 256 pixels que Cellpose fait passer simultanément dans le réseau lorsqu’il segmente la coloration. 0 suit le réglage commun mask_eval_batch_size qui tient compte de la VRAM (valeur par défaut : auto_vram). La taille du lot de tuiles peut déplacer quelques pixels du masque ; fixez-la donc pour qu’une exécution reste identique à une précédente. Les fichiers de réglages antérieurs à l’introduction de ce réglage reçoivent 16, la valeur que Génération de masques spatiale a toujours utilisée. Valeur par défaut : 0."
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_eval_batch_cap",
+      "source": "Mask eval batch cap",
+      "source_sha256": "2aea70aedd9d81122a060e1a226fd2175c148c550212207622a96bbdf78af48d",
+      "translation": "Limite de taille du lot d’évaluation des masques"
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_batch_seed",
+      "source": "Mask batch seed",
+      "source_sha256": "1e4da9db52ebe257fa6881d421e0494daec7445b37f9fefbbd06d7f417da1099",
+      "translation": "Graine des lots de masques"
+    },
+    {
+      "table": "setting_labels",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU vram budget gb",
+      "source_sha256": "161347dc559e8814f5fedd7d52ddafc620bcc9e55295e59b129f1c7bcdb0895c",
+      "translation": "Budget de VRAM GPU en GB"
+    },
+    {
+      "table": "ui",
+      "key": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source_sha256": "15dfbc983a90d0f5f9d02f3f73f6e51a79df0ee9bf1b79920d4151508de6c7fe",
+      "translation": "ops_ph_channels {channels} doit indiquer {nuclear} et le canal des cellules {cell}"
+    }
+  ]
+}

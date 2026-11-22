@@ -3,20 +3,6 @@
   "records": [
     {
       "table": "setting_tooltips",
-      "key": "batch_size",
-      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
-      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
-      "translation": "एक पास में कितनी छवियाँ एक साथ प्रोसेस की जाती हैं: सामान्यीकरण और Cellpose सेगमेंटेशन में दृश्य-क्षेत्र स्टैक, वर्गीकारक प्रशिक्षण और सक्रियण मानचित्रों में प्रति चरण क्रॉप। बड़ा मान तेज़ होता है लेकिन RAM/VRAM का अधिक उपयोग करता है; मेमोरी-समाप्ति त्रुटियों पर मान घटाएँ। मास्क निर्माण के लिए 0 या 'auto' उपलब्ध GPU मेमोरी और RAM में समाने वाला सबसे बड़ा बैच चुनता है; जो संख्या नहीं समाती, उसे चेतावनी के साथ घटाया जाता है। डिफ़ॉल्ट: मास्क निर्माण के लिए 0 (स्वचालित), प्रशिक्षण के लिए 64।"
-    },
-    {
-      "table": "setting_tooltips",
-      "key": "mask_eval_batch_size",
-      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
-      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
-      "translation": "Make Masks में Cellpose एक साथ 256-पिक्सेल की कितनी टाइलें नेटवर्क से गुज़ारता है। 0 पुराना नियम बनाए रखता है: बैच में जितने दृश्य-क्षेत्र हों (batch_size), उतनी ही टाइलें; इससे बड़ा GPU अधिकांश समय निष्क्रिय रहता है, क्योंकि 2000 x 2000 के एक दृश्य-क्षेत्र में ही लगभग 100 टाइलें होती हैं। बड़ी संख्या नेटवर्क को हर पास में अधिक टाइलें देती है और GPU मेमोरी नियंत्रक की सीमा के भीतर अधिक तेज़ होती है; टाइल बैच कुछ मास्क पिक्सेल को खिसका सकता है, इसलिए फिर से शुरू किया गया रन दो मानों को मिलाने से इनकार करता है। Default 0."
-    },
-    {
-      "table": "setting_tooltips",
       "key": "mask_inference_precision",
       "source": "Number format of the Cellpose network in Make Masks: auto, bf16 or fp32. auto keeps what the run always used: bfloat16 weights on a CUDA GPU, float32 on a CPU or a Mac. bf16 forces bfloat16 weights, which need less GPU memory and run faster on a card that supports them; fp32 forces float32 weights, which use about twice the GPU memory and can move a few mask pixels. Changing it changes the masks, so a resumed run refuses to mix the two. Default auto.",
       "source_sha256": "5f48d516e64b64da8b8c83c1c271137c93395fca0a5e01fc15385f47762992ff",
@@ -24,5 +10,23 @@
     }
   ],
   "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-20 of the shortened batch_size tooltip. The other two records retain their 2026-11-19 review. No human or native-speaker signoff.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together in one pass: field stacks in normalization and Cellpose segmentation, crops per step in classifier training and activation maps. Larger is faster but uses more RAM/VRAM; lower it on out-of-memory errors. For mask generation, 0 or 'auto' picks the largest batch that fits the free GPU memory and RAM, and a number that does not fit is reduced with a warning. Defaults: 0 (automatic) for mask generation, 64 for training.",
+      "source_sha256": "c74102e3e84f90a4bdb2190a1c242dae6c4de0cf4a0bf8c3d5169f7b082500ed",
+      "translation": "एक पास में कितनी छवियाँ एक साथ प्रोसेस की जाती हैं: सामान्यीकरण और Cellpose सेगमेंटेशन में दृश्य-क्षेत्र स्टैक, वर्गीकारक प्रशिक्षण और सक्रियण मानचित्रों में प्रति चरण क्रॉप। बड़ा मान तेज़ होता है लेकिन RAM/VRAM का अधिक उपयोग करता है; मेमोरी-समाप्ति त्रुटियों पर मान घटाएँ। मास्क निर्माण के लिए 0 या 'auto' उपलब्ध GPU मेमोरी और RAM में समाने वाला सबसे बड़ा बैच चुनता है; जो संख्या नहीं समाती, उसे चेतावनी के साथ घटाया जाता है। डिफ़ॉल्ट: मास्क निर्माण के लिए 0 (स्वचालित), प्रशिक्षण के लिए 64।",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Make Masks. 0 keeps the old rule: as many tiles as there are fields in the batch (batch_size), which leaves a large GPU mostly idle because a 2000 x 2000 field already has about 100 tiles. A larger number feeds the network more tiles per pass and is faster, within the GPU memory governor; the tile batch can move a few mask pixels, so a resumed run refuses to mix two values. Default 0.",
+      "source_sha256": "bf4ff0c495b257eb0b7e24a5589f4faa94df069477195e1d94ea2f04ac41c86f",
+      "translation": "Make Masks में Cellpose एक साथ 256-पिक्सेल की कितनी टाइलें नेटवर्क से गुज़ारता है। 0 पुराना नियम बनाए रखता है: बैच में जितने दृश्य-क्षेत्र हों (batch_size), उतनी ही टाइलें; इससे बड़ा GPU अधिकांश समय निष्क्रिय रहता है, क्योंकि 2000 x 2000 के एक दृश्य-क्षेत्र में ही लगभग 100 टाइलें होती हैं। बड़ी संख्या नेटवर्क को हर पास में अधिक टाइलें देती है और GPU मेमोरी नियंत्रक की सीमा के भीतर अधिक तेज़ होती है; टाइल बैच कुछ मास्क पिक्सेल को खिसका सकता है, इसलिए फिर से शुरू किया गया रन दो मानों को मिलाने से इनकार करता है। Default 0.",
+      "retired": "English tooltip changed for measured VRAM mask batching; superseded by 2026-11-21-auto-vram-mask-batches-codex-ai-review.json against source dca15fa045b5ae395c45cd8e8802ab569d9b505e."
+    }
+  ]
 }

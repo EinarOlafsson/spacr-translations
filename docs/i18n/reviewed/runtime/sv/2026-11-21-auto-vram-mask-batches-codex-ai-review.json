@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "language": "sv",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-21 of measured VRAM mask batching settings and the OPS channel validation message (source dca15fa045b5ae395c45cd8e8802ab569d9b505e). No human or native-speaker signoff.",
+  "source_commit": "dca15fa045b5ae395c45cd8e8802ab569d9b505e",
+  "records": [
+    {
+      "table": "setting_tooltips",
+      "key": "batch_size",
+      "source": "How many images are processed together: fields during mask generation and OPS, or crops per classifier step. For Mask Generation and OPS, 'auto_vram' measures GPU memory on the run data, then divides fields into batches whose sizes differ by at most one. Resident field arrays count toward the memory budget. Use 0 or 'whole' for the earlier largest-fitting-batch estimate, or a positive number to request a field count; it is reduced with a warning if the fields do not fit in memory. Defaults: 'auto_vram' for Mask Generation and OPS, 64 for training.",
+      "source_sha256": "9687c8c4f1a6afb449e03ef680624f2c4c5e57fe0e422342e2630baa95d891d9",
+      "translation": "Hur många bilder som bearbetas tillsammans: bildfält vid maskgenerering och OPS, eller utsnitt per steg i klassificeraren. För maskgenerering och OPS mäter 'auto_vram' GPU-minnet på körningens data och delar sedan upp bildfälten i batcher vars storlekar skiljer sig med högst ett bildfält. Bildfältsarrayer som redan finns i minnet räknas in i minnesbudgeten. Använd 0 eller 'whole' för den tidigare uppskattningen av den största batch som ryms, eller ett positivt tal för att begära ett antal bildfält; antalet minskas med en varning om bildfälten inte ryms i minnet. Standardvärden: 'auto_vram' för maskgenerering och OPS, 64 för träning."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_size",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once in Mask Generation and OPS. 'auto_vram' measures the GPU working memory and resolves the largest tile batch that fits, up to mask_eval_batch_cap, before segmentation. CPU and external backends use at most 8. Use 0 for one tile per resident field, or a positive number to request the tile batch. The tile batch can move a few mask pixels; resume keeps the recorded value. Default 'auto_vram'.",
+      "source_sha256": "0bff4fb4c8c5f03723acb71f4d8faaa0ce94e9d77c6973bdf009a9b051bd8d19",
+      "translation": "Hur många 256-pixels bildrutor Cellpose skickar genom nätverket samtidigt vid maskgenerering och OPS. 'auto_vram' mäter GPU-arbetsminnet och bestämmer före segmenteringen den största batch av bildrutor som ryms, upp till mask_eval_batch_cap. CPU och externa bakändar använder högst 8. Använd 0 för en bildruta per bildfält som finns i minnet, eller ett positivt tal för att begära batchstorleken för bildrutor. Batchstorleken för bildrutor kan flytta några maskpixlar; vid återupptagning behålls det registrerade värdet. Standardvärde 'auto_vram'."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU memory budget in GB for automatic mask batches in Mask Generation and OPS, including resident field arrays and network working memory. Empty uses SPACR_GPU_VRAM_GB when set, then the free card memory. The governor reserves its memory margin and CUDA context and divides the budget among mask workers. Set the same budget to reproduce batch sizes across cards; it can resolve fewer than mask_eval_batch_cap tiles. Default None. Alpha.",
+      "source_sha256": "b04491fec06264fe535f4b7258d16ee4cc1fd7a4f842aaf3b3c2eeb4be325edb",
+      "translation": "GPU-minnesbudget i GB för automatiska maskbatcher vid maskgenerering och OPS, inklusive bildfältsarrayer som finns i minnet och nätverkets arbetsminne. Ett tomt värde använder SPACR_GPU_VRAM_GB om den är angiven, annars kortets lediga minne. Minnesregleringen reserverar sin minnesmarginal och CUDA-kontext och delar budgeten mellan maskarbetarna. Ange samma budget för att återskapa batchstorlekar på olika kort; den kan ge färre bildrutor än mask_eval_batch_cap. Standardvärde None. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_batch_seed",
+      "source": "Seed for the shared field shuffle in Mask Generation and OPS phenotype segmentation when randomize is True. The same field set and seed keep the same order; batch sizes also depend on the GPU budget. The plan and run journal record the order. Stitched sequencing windows, Spatial Mask Generation and timelapse keep acquisition order. Default 42. Alpha.",
+      "source_sha256": "7bafb2113f66f26a8518a2bc192ab171388a5074cc06d4dccea1d96b41345395",
+      "translation": "Slumpfrö för den gemensamma blandningen av bildfält vid maskgenerering och OPS-fenotypsegmentering när randomize är True. Samma uppsättning bildfält och samma slumpfrö behåller samma ordning; batchstorlekarna beror också på GPU-budgeten. Planen och körningsjournalen registrerar ordningen. Sammanfogade sekvenseringsfönster, Rumslig maskgenerering och tidsserier behåller insamlingsordningen. Standardvärde 42. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "mask_eval_batch_cap",
+      "source": "Largest tile batch allowed when mask_eval_batch_size is 'auto_vram'. The measured GPU budget can resolve a smaller value; CPU and external backends use at most 8. A batch of 32 can need about 8 GB including resident fields, so a smaller GPU budget can select fewer tiles. Must be at least 1. Default 32. Alpha.",
+      "source_sha256": "c4852ddcfef6922d8185e2c10b5f906ac900103fdd4a302360f1a49c2fb4303e",
+      "translation": "Största tillåtna batch av bildrutor när mask_eval_batch_size är 'auto_vram'. Den uppmätta GPU-budgeten kan ge ett mindre värde; CPU och externa bakändar använder högst 8. En batch på 32 kan behöva ungefär 8 GB inklusive bildfälten i minnet, så en mindre GPU-budget kan välja färre bildrutor. Måste vara minst 1. Standardvärde 32. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "randomize",
+      "source": "Shuffle fields with mask_batch_seed before batching in Mask Generation and OPS phenotype segmentation. Mask Generation pools normalization percentiles over each batch, so random order spreads acquisition drift across batches; OPS normalizes each field separately. Stitched sequencing windows and Spatial Mask Generation keep acquisition order. Forced to False for timelapse. Default True.",
+      "source_sha256": "6192704dca48af46aa82d6bf7ba75513f0c310087fe910f2eac38a40523d3184",
+      "translation": "Blanda bildfälten med mask_batch_seed före batchindelningen vid maskgenerering och OPS-fenotypsegmentering. Vid maskgenerering beräknas normaliseringspercentiler gemensamt för varje batch, så slumpmässig ordning sprider drift i bildinsamlingen över batcherna; OPS normaliserar varje bildfält separat. Sammanfogade sekvenseringsfönster och Rumslig maskgenerering behåller insamlingsordningen. Tvingas till False för tidsserier. Standardvärde True."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_sbs_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the sequencing nuclei of each stitched well and of the live spot preview. 0 uses the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value the sequencing path always used. Default 0.",
+      "source_sha256": "c5fc97b0dce0383e6377e5201f125012463aaa144ae193dec7e6bb640bbe1e3d",
+      "translation": "Hur många 256-pixels bildrutor Cellpose skickar genom nätverket samtidigt när det segmenterar sekvenseringskärnorna i varje sammanfogad brunn och i den löpande punktförhandsvisningen. 0 använder den gemensamma VRAM-anpassade mask_eval_batch_size (standardvärde auto_vram). Batchstorleken för bildrutor kan flytta några maskpixlar, så ange den för att hålla en körning identisk med en tidigare. Inställningsfiler från innan denna inställning fanns får 16, det värde som sekvenseringsflödet alltid använde. Standardvärde 0."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "ops_ph_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments phenotype nuclei, cells, pathogens and organelles. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 8, the value the phenotype path always used. Default 0. Alpha.",
+      "source_sha256": "700a3c38ca82bbdb27d3389a0d8b145902caa9216fc2a88094bd01cdc5172c17",
+      "translation": "Hur många 256-pixels bildrutor Cellpose skickar genom nätverket samtidigt när det segmenterar fenotypkärnor, celler, patogener och organeller. 0 följer den gemensamma VRAM-anpassade mask_eval_batch_size (standardvärde auto_vram). Batchstorleken för bildrutor kan flytta några maskpixlar, så ange den för att hålla en körning identisk med en tidigare. Inställningsfiler från innan denna inställning fanns får 8, det värde som fenotypflödet alltid använde. Standardvärde 0. Alpha."
+    },
+    {
+      "table": "setting_tooltips",
+      "key": "spatial_tile_batch",
+      "source": "How many 256-pixel tiles Cellpose passes through the network at once when it segments the stain. 0 follows the shared VRAM-aware mask_eval_batch_size (default auto_vram). The tile batch can move a few mask pixels, so set it to keep a run identical to an earlier one. Settings files from before this setting get 16, the value Spatial Mask Generation always used. Default 0.",
+      "source_sha256": "f132fc959f42a8c0bc09a88e9c091ff95aea76ed51d6c9e5a4f8981a9778f38c",
+      "translation": "Hur många 256-pixels bildrutor Cellpose skickar genom nätverket samtidigt när det segmenterar färgningen. 0 följer den gemensamma VRAM-anpassade mask_eval_batch_size (standardvärde auto_vram). Batchstorleken för bildrutor kan flytta några maskpixlar, så ange den för att hålla en körning identisk med en tidigare. Inställningsfiler från innan denna inställning fanns får 16, det värde som Rumslig maskgenerering alltid använde. Standardvärde 0."
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_eval_batch_cap",
+      "source": "Mask eval batch cap",
+      "source_sha256": "2aea70aedd9d81122a060e1a226fd2175c148c550212207622a96bbdf78af48d",
+      "translation": "Maximal batchstorlek för maskinferens"
+    },
+    {
+      "table": "setting_labels",
+      "key": "mask_batch_seed",
+      "source": "Mask batch seed",
+      "source_sha256": "1e4da9db52ebe257fa6881d421e0494daec7445b37f9fefbbd06d7f417da1099",
+      "translation": "Slumpfrö för maskbatcher"
+    },
+    {
+      "table": "setting_labels",
+      "key": "gpu_vram_budget_gb",
+      "source": "GPU vram budget gb",
+      "source_sha256": "161347dc559e8814f5fedd7d52ddafc620bcc9e55295e59b129f1c7bcdb0895c",
+      "translation": "GPU VRAM-budget i GB"
+    },
+    {
+      "table": "ui",
+      "key": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source": "ops_ph_channels {channels} must name {nuclear} and the cell channel {cell}",
+      "source_sha256": "15dfbc983a90d0f5f9d02f3f73f6e51a79df0ee9bf1b79920d4151508de6c7fe",
+      "translation": "ops_ph_channels {channels} måste ange {nuclear} och cellkanalen {cell}"
+    }
+  ]
+}

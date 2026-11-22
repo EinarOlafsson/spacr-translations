@@ -16,25 +16,11 @@
       "translation": "对于包含多个带有相同通道的采集的 phenotype_source，指定要使用的那一个采集：它在 phenotype_source 下的文件夹，或其文件名中带有的通道组，例如 20X_DAPI-GFP-A594_A1_A594_Site-0.tif 对应 DAPI-GFP-A594。只读取该采集的图块。留空：此类文件夹会被拒绝，并给出列出各采集名称的提示；只有一个采集的文件夹按原样读取。不能与 ops_ph_acquisitions 同时使用。默认值 None。Alpha。"
     },
     {
-      "key": "profile_features",
-      "source": "Add image-based profiling measurement families to every 2-D object. 'profiling' adds the fast families: edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity, and neighbours. profile_optional_families adds the slow Gabor, colocalisation and granularity families to 'profiling'; 'all' adds every family. A list or comma-separated names picks families one by one. Empty adds nothing, so a settings file without it measures exactly as before. Default None.",
-      "source_sha256": "c4a32236db1c66fcdecd2bc9f0390879f62d3e58e15f0d5d878d5d0c2c906a69",
-      "table": "setting_tooltips",
-      "translation": "为每个 2-D 对象添加基于图像的特征谱分析测量特征族。'profiling' 添加快速特征族：边缘强度、强度矩、径向分布、额外形状、Haralick、PFTAS 和 LBP 纹理、边界（periphery）和外环（outside）强度，以及近邻。profile_optional_families 会在 'profiling' 中添加较慢的 Gabor、共定位和颗粒度特征族；'all' 添加所有特征族。列表或逗号分隔的名称可逐个选择特征族。留空则不添加任何内容，因此不含该项的设置文件的测量与以前完全相同。默认值为 None。"
-    },
-    {
       "key": "profile_optional_families",
       "source": "The slow families that 'profiling' in profile_features also measures: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes and granularity. Together they cost several times the rest of 'profiling' (granularity alone about 58,900 CPU seconds per 100,000 cells). True or 'all' adds all five, which reproduces Brieflow's full set; names pick them one by one. Family names and 'all' in profile_features are not changed by it. Settings files saved before this setting keep texture_gabor, colocalisation and colocalisation_extra. Default None.",
       "source_sha256": "159f2e07392579f3bdf26054a4360095e58ad06c33c62e623e54d3fb4c6c855b",
       "table": "setting_tooltips",
       "translation": "profile_features 中的 'profiling' 还会测量的较慢特征族：texture_gabor、colocalisation、colocalisation_extra、colocalisation_costes 和 granularity。它们合计的开销是 'profiling' 其余部分的数倍（仅 granularity 就约为每 100,000 个细胞 58,900 CPU 秒）。True 或 'all' 添加全部五个，可重现 Brieflow 的完整集合；名称可逐个选择。profile_features 中的特征族名称和 'all' 不受其影响。在此设置出现之前保存的设置文件保留 texture_gabor、colocalisation 和 colocalisation_extra。默认值为 None。"
-    },
-    {
-      "key": "ops_ph_profile_features",
-      "source": "Also measure spaCR's image-based profiling families on the nucleus, cell and cytoplasm, as Measure's profile_features does: 'profiling' adds edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity and neighbours; ops_ph_profile_optional_families adds the slow Gabor, colocalisation and granularity families to it; 'all' adds every family; a list picks families. Turn ops_ph_zernike on with it for the full profiling set. Empty measures exactly as before. Default None. Alpha.",
-      "source_sha256": "8154fad0613fd381e82a1c12b0b7ab1ed97c958b6d9616ca6142d27c3e7c8ce0",
-      "table": "setting_tooltips",
-      "translation": "同时在细胞核、细胞和细胞质上测量 spaCR 的基于图像的特征谱分析特征族，与 Measure 的 profile_features 相同：'profiling' 添加边缘强度、强度矩、径向分布、额外形状、Haralick、PFTAS 和 LBP 纹理、边界（periphery）和外环（outside）强度以及近邻；ops_ph_profile_optional_families 会在其中添加较慢的 Gabor、共定位和颗粒度特征族；'all' 添加所有特征族；列表用于选择特征族。如需完整的特征谱分析集合，请同时开启 ops_ph_zernike。留空则测量与以前完全相同。默认值为 None。Alpha。"
     },
     {
       "key": "ops_ph_profile_optional_families",
@@ -66,5 +52,23 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 of the label and tooltip of ops_ph_use_acquisition (item 947, branch claude-947-multiacq-1114) and of the eight tooltips that branch rewrites for tests/test_tooltip_length_and_shape.py (profile_features, profile_optional_families, ops_ph_profile_features, ops_ph_profile_optional_families, ops_align_model and ops_decode_threshold_mode shortened under 600 characters; ops_placement_seed and ops_ph_placement_seed state their default), against the exact English source. No human or native-speaker signoff. At landing train 5 (2026-11-14) the ops_decode_threshold_mode record was dropped from this file: item 942 rewrote that tooltip too, and the merged English is reviewed in 2026-11-14-autotune-942-ai-review.json.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "profile_features",
+      "source": "Add image-based profiling measurement families to every 2-D object. 'profiling' adds the fast families: edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity, and neighbours. profile_optional_families adds the slow Gabor, colocalisation and granularity families to 'profiling'; 'all' adds every family. A list or comma-separated names picks families one by one. Empty adds nothing, so a settings file without it measures exactly as before. Default None.",
+      "source_sha256": "c4a32236db1c66fcdecd2bc9f0390879f62d3e58e15f0d5d878d5d0c2c906a69",
+      "table": "setting_tooltips",
+      "translation": "为每个 2-D 对象添加基于图像的特征谱分析测量特征族。'profiling' 添加快速特征族：边缘强度、强度矩、径向分布、额外形状、Haralick、PFTAS 和 LBP 纹理、边界（periphery）和外环（outside）强度，以及近邻。profile_optional_families 会在 'profiling' 中添加较慢的 Gabor、共定位和颗粒度特征族；'all' 添加所有特征族。列表或逗号分隔的名称可逐个选择特征族。留空则不添加任何内容，因此不含该项的设置文件的测量与以前完全相同。默认值为 None。",
+      "retired": "English tooltip changed for cytoskeleton channel selection; superseded by 2026-11-21-cytoskeleton-channel-controls-codex-ai-review.json against source c953bd96c18a82e011803d2209a5f5b7d5af6862."
+    },
+    {
+      "key": "ops_ph_profile_features",
+      "source": "Also measure spaCR's image-based profiling families on the nucleus, cell and cytoplasm, as Measure's profile_features does: 'profiling' adds edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity and neighbours; ops_ph_profile_optional_families adds the slow Gabor, colocalisation and granularity families to it; 'all' adds every family; a list picks families. Turn ops_ph_zernike on with it for the full profiling set. Empty measures exactly as before. Default None. Alpha.",
+      "source_sha256": "8154fad0613fd381e82a1c12b0b7ab1ed97c958b6d9616ca6142d27c3e7c8ce0",
+      "table": "setting_tooltips",
+      "translation": "同时在细胞核、细胞和细胞质上测量 spaCR 的基于图像的特征谱分析特征族，与 Measure 的 profile_features 相同：'profiling' 添加边缘强度、强度矩、径向分布、额外形状、Haralick、PFTAS 和 LBP 纹理、边界（periphery）和外环（outside）强度以及近邻；ops_ph_profile_optional_families 会在其中添加较慢的 Gabor、共定位和颗粒度特征族；'all' 添加所有特征族；列表用于选择特征族。如需完整的特征谱分析集合，请同时开启 ops_ph_zernike。留空则测量与以前完全相同。默认值为 None。Alpha。",
+      "retired": "English tooltip changed for cytoskeleton channel selection; superseded by 2026-11-21-cytoskeleton-channel-controls-codex-ai-review.json against source c953bd96c18a82e011803d2209a5f5b7d5af6862."
+    }
+  ]
 }

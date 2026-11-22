@@ -16,25 +16,11 @@
       "translation": "같은 채널을 가진 획득이 둘 이상 들어 있는 phenotype_source에서 사용할 하나의 획득입니다. phenotype_source 아래의 해당 폴더 또는 그 파일 이름에 들어 있는 채널 세트를 지정합니다. 예: 20X_DAPI-GFP-A594_A1_A594_Site-0.tif의 경우 DAPI-GFP-A594. 그 획득의 타일만 읽습니다. 비워 두면 그런 폴더는 획득 이름을 알려 주는 메시지와 함께 거부되며, 획득이 하나인 폴더는 이전과 같이 읽습니다. ops_ph_acquisitions와 함께 쓸 수 없습니다. 기본값 None. 알파."
     },
     {
-      "key": "profile_features",
-      "source": "Add image-based profiling measurement families to every 2-D object. 'profiling' adds the fast families: edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity, and neighbours. profile_optional_families adds the slow Gabor, colocalisation and granularity families to 'profiling'; 'all' adds every family. A list or comma-separated names picks families one by one. Empty adds nothing, so a settings file without it measures exactly as before. Default None.",
-      "source_sha256": "c4a32236db1c66fcdecd2bc9f0390879f62d3e58e15f0d5d878d5d0c2c906a69",
-      "table": "setting_tooltips",
-      "translation": "모든 2-D 객체에 이미지 기반 프로파일링 측정 계열을 추가합니다. 'profiling'은 빠른 계열을 추가합니다: 가장자리 강도, 강도 모멘트, 방사형 분포, 추가 형태, Haralick, PFTAS 및 LBP 텍스처, 경계(periphery) 및 바깥 고리(outside) 강도, 그리고 이웃입니다. profile_optional_families는 느린 Gabor, 공동국재, 입도 계열을 'profiling'에 추가합니다; 'all'은 모든 계열을 추가합니다. 목록이나 쉼표로 구분한 이름으로 계열을 하나씩 고를 수 있습니다. 비워 두면 아무것도 추가하지 않으므로, 이 설정이 없는 설정 파일은 이전과 정확히 같게 측정합니다. 기본값 None."
-    },
-    {
       "key": "profile_optional_families",
       "source": "The slow families that 'profiling' in profile_features also measures: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes and granularity. Together they cost several times the rest of 'profiling' (granularity alone about 58,900 CPU seconds per 100,000 cells). True or 'all' adds all five, which reproduces Brieflow's full set; names pick them one by one. Family names and 'all' in profile_features are not changed by it. Settings files saved before this setting keep texture_gabor, colocalisation and colocalisation_extra. Default None.",
       "source_sha256": "159f2e07392579f3bdf26054a4360095e58ad06c33c62e623e54d3fb4c6c855b",
       "table": "setting_tooltips",
       "translation": "profile_features의 'profiling'이 추가로 측정하는 느린 계열입니다: texture_gabor, colocalisation, colocalisation_extra, colocalisation_costes, granularity. 이들을 합치면 나머지 'profiling'보다 몇 배의 비용이 듭니다(granularity 하나만 세포 100,000개당 약 58,900 CPU 초). True 또는 'all'은 다섯 개를 모두 추가하여 Brieflow의 전체 집합을 재현하며, 이름으로 하나씩 고를 수 있습니다. profile_features의 계열 이름과 'all'은 이 설정으로 바뀌지 않습니다. 이 설정 이전에 저장된 설정 파일은 texture_gabor, colocalisation, colocalisation_extra를 유지합니다. 기본값 None."
-    },
-    {
-      "key": "ops_ph_profile_features",
-      "source": "Also measure spaCR's image-based profiling families on the nucleus, cell and cytoplasm, as Measure's profile_features does: 'profiling' adds edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity and neighbours; ops_ph_profile_optional_families adds the slow Gabor, colocalisation and granularity families to it; 'all' adds every family; a list picks families. Turn ops_ph_zernike on with it for the full profiling set. Empty measures exactly as before. Default None. Alpha.",
-      "source_sha256": "8154fad0613fd381e82a1c12b0b7ab1ed97c958b6d9616ca6142d27c3e7c8ce0",
-      "table": "setting_tooltips",
-      "translation": "Measure의 profile_features와 같이 핵, 세포, 세포질에서 spaCR의 이미지 기반 프로파일링 계열도 측정합니다: 'profiling'은 가장자리 강도, 강도 모멘트, 방사형 분포, 추가 형태, Haralick, PFTAS 및 LBP 텍스처, 경계(periphery) 및 바깥 고리(outside) 강도, 그리고 이웃을 추가합니다; ops_ph_profile_optional_families는 느린 Gabor, 공동국재, 입도 계열을 여기에 추가합니다; 'all'은 모든 계열을 추가합니다; 목록으로 계열을 고릅니다. 전체 프로파일링 집합을 얻으려면 ops_ph_zernike도 함께 켜십시오. 비워 두면 이전과 정확히 같게 측정합니다. 기본값 None. 알파."
     },
     {
       "key": "ops_ph_profile_optional_families",
@@ -66,5 +52,23 @@
     }
   ],
   "review_kind": "Claude AI translation and review (Claude Opus 5.5) on 2026-11-14 of the label and tooltip of ops_ph_use_acquisition (item 947, branch claude-947-multiacq-1114) and of the eight tooltips that branch rewrites for tests/test_tooltip_length_and_shape.py (profile_features, profile_optional_families, ops_ph_profile_features, ops_ph_profile_optional_families, ops_align_model and ops_decode_threshold_mode shortened under 600 characters; ops_placement_seed and ops_ph_placement_seed state their default), against the exact English source. No human or native-speaker signoff. At landing train 5 (2026-11-14) the ops_decode_threshold_mode record was dropped from this file: item 942 rewrote that tooltip too, and the merged English is reviewed in 2026-11-14-autotune-942-ai-review.json.",
-  "schema": 1
+  "schema": 1,
+  "retired_records": [
+    {
+      "key": "profile_features",
+      "source": "Add image-based profiling measurement families to every 2-D object. 'profiling' adds the fast families: edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity, and neighbours. profile_optional_families adds the slow Gabor, colocalisation and granularity families to 'profiling'; 'all' adds every family. A list or comma-separated names picks families one by one. Empty adds nothing, so a settings file without it measures exactly as before. Default None.",
+      "source_sha256": "c4a32236db1c66fcdecd2bc9f0390879f62d3e58e15f0d5d878d5d0c2c906a69",
+      "table": "setting_tooltips",
+      "translation": "모든 2-D 객체에 이미지 기반 프로파일링 측정 계열을 추가합니다. 'profiling'은 빠른 계열을 추가합니다: 가장자리 강도, 강도 모멘트, 방사형 분포, 추가 형태, Haralick, PFTAS 및 LBP 텍스처, 경계(periphery) 및 바깥 고리(outside) 강도, 그리고 이웃입니다. profile_optional_families는 느린 Gabor, 공동국재, 입도 계열을 'profiling'에 추가합니다; 'all'은 모든 계열을 추가합니다. 목록이나 쉼표로 구분한 이름으로 계열을 하나씩 고를 수 있습니다. 비워 두면 아무것도 추가하지 않으므로, 이 설정이 없는 설정 파일은 이전과 정확히 같게 측정합니다. 기본값 None.",
+      "retired": "English tooltip changed for cytoskeleton channel selection; superseded by 2026-11-21-cytoskeleton-channel-controls-codex-ai-review.json against source c953bd96c18a82e011803d2209a5f5b7d5af6862."
+    },
+    {
+      "key": "ops_ph_profile_features",
+      "source": "Also measure spaCR's image-based profiling families on the nucleus, cell and cytoplasm, as Measure's profile_features does: 'profiling' adds edge intensity, intensity moments, radial distribution, extra shape, Haralick, PFTAS and LBP texture, periphery and outside-ring intensity and neighbours; ops_ph_profile_optional_families adds the slow Gabor, colocalisation and granularity families to it; 'all' adds every family; a list picks families. Turn ops_ph_zernike on with it for the full profiling set. Empty measures exactly as before. Default None. Alpha.",
+      "source_sha256": "8154fad0613fd381e82a1c12b0b7ab1ed97c958b6d9616ca6142d27c3e7c8ce0",
+      "table": "setting_tooltips",
+      "translation": "Measure의 profile_features와 같이 핵, 세포, 세포질에서 spaCR의 이미지 기반 프로파일링 계열도 측정합니다: 'profiling'은 가장자리 강도, 강도 모멘트, 방사형 분포, 추가 형태, Haralick, PFTAS 및 LBP 텍스처, 경계(periphery) 및 바깥 고리(outside) 강도, 그리고 이웃을 추가합니다; ops_ph_profile_optional_families는 느린 Gabor, 공동국재, 입도 계열을 여기에 추가합니다; 'all'은 모든 계열을 추가합니다; 목록으로 계열을 고릅니다. 전체 프로파일링 집합을 얻으려면 ops_ph_zernike도 함께 켜십시오. 비워 두면 이전과 정확히 같게 측정합니다. 기본값 None. 알파.",
+      "retired": "English tooltip changed for cytoskeleton channel selection; superseded by 2026-11-21-cytoskeleton-channel-controls-codex-ai-review.json against source c953bd96c18a82e011803d2209a5f5b7d5af6862."
+    }
+  ]
 }

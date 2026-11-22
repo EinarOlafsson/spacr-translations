@@ -489,7 +489,10 @@
       "source": "``\"0.4\"`` (the default; zarr-format 2, written by this module alone) or ``\"0.5\"`` (zarr-format 3, sharded by default, written through :mod:`zarr`, so it needs ``spacr[zarr]``; item 983). With 0.5 the default ``compressor`` is zstd at ``compression_level`` 3 unless another one is named; ``\"lz4\"`` (Blosc LZ4 with byte shuffle) is also offered there.",
       "source_sha256": "3bd92bbdd62b87a545d33f8933821ebb91dc6e6fafcf005d7fc0edb3fd8b9e94",
       "translation": "``\"0.4\"``(기본값, zarr-format 2, 이 모듈만으로 작성) 또는 ``\"0.5\"``(zarr-format 3, 기본적으로 샤딩, :mod:`zarr` 를 통해 작성하므로 ``spacr[zarr]`` 필요, 항목 983)입니다. 0.5 에서는 다른 압축기를 지정하지 않으면 기본 ``compressor`` 는 zstd 이고 ``compression_level`` 은 3 입니다. 여기서는 ``\"lz4\"``(바이트 셔플을 사용하는 Blosc LZ4)도 제공합니다.",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff.",
+      "retired": true,
+      "retired_date": "2026-11-21",
+      "retired_reason": "2026-11-21: item 1007 (claude-1007-impl) rewrote this block (OME-Zarr NGFF 0.6 read and write); its successor is reviewed in 2026-11-21-1007-ome-zarr-ngff06-codex-ai-review.json."
     },
     {
       "context": "0.5 only: the shard shape, one per axis, each a multiple of the chunk shape. Defaults to one shard holding the whole level, so one field is one file and one writer owns it. Pass ``False`` to store each chunk separately without sharding; ``None`` retains the whole-level shard default. The chunk shape and compression settings are unchanged by this choice.",
@@ -497,7 +500,10 @@
       "source": "0.5 only: the shard shape, one per axis, each a multiple of the chunk shape. Defaults to one shard holding the whole level, so one field is one file and one writer owns it. Pass ``False`` to store each chunk separately without sharding; ``None`` retains the whole-level shard default. The chunk shape and compression settings are unchanged by this choice.",
       "source_sha256": "8d7f35d41275a81f220510687a7216d8baf757cdc78ad8b0fccced42af58839b",
       "translation": "0.5 에만 해당합니다. 샤드 형태는 축마다 값이 하나씩 있으며, 각각 대응하는 청크 크기의 배수입니다. 기본적으로 샤드 하나에 전체 레벨을 담으므로, 시야 하나가 파일 하나이고 작성자 하나가 담당합니다. ``False`` 를 전달하면 샤딩 없이 각 청크를 따로 저장하며, ``None`` 은 전체 레벨을 담는 기본 샤드를 유지합니다. 이 선택으로 청크 형태나 압축 설정은 바뀌지 않습니다.",
-      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff."
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-21 of the assigned train 7 OME-Zarr defaults and storage-reading runtime rows and API blocks. No human or native-speaker signoff.",
+      "retired": true,
+      "retired_date": "2026-11-21",
+      "retired_reason": "2026-11-21: item 1007 (claude-1007-impl) rewrote this block (OME-Zarr NGFF 0.6 read and write); its successor is reviewed in 2026-11-21-1007-ome-zarr-ngff06-codex-ai-review.json."
     },
     {
       "context": "read for ``plate``, ``dst_root``, ``ops_compare_reference_masks`` (a path template with ``{plate}``, ``{well}``, ``{site}`` or ``{tile}`` and ``{object}``), ``ops_compare_spacr_masks`` (the same; ``.npz`` files are spaCR phenotype masks and directories may name OME-Zarr microscope fields of view; when omitted, discover committed phenotype microscope fields of view or legacy ``{dst_root}/{well}/phenotype_masks/site-{site}.npz`` files), ``ops_compare_reference_objects``, ``ops_compare_iou``, ``ops_compare_edge_policy``, ``ops_compare_mask_scale``, ``ops_compare_reference_calls``, ``ops_compare_call_columns``, ``ops_compare_spacr_calls`` (a spaCR cell table with well, site, label and sgRNA, or ``\"reference\"`` for the self-match control), ``ops_compare_control_seed``, ``ops_compare_match_px`` and ``ops_compare_fields``.",

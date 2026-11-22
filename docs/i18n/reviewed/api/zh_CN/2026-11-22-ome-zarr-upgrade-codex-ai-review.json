@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "language": "zh_CN",
+  "review_kind": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff.",
+  "review_method": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff.",
+  "source_commit": "7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1",
+  "records": [
+    {
+      "context": "Convert an OME-Zarr 0.5 store to 0.6, or a 0.6 store back to 0.5, without touching a pixel.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#0",
+      "source": "Convert an OME-Zarr 0.5 store to 0.6, or a 0.6 store back to 0.5, without touching a pixel.",
+      "source_sha256": "dc4bb9c979c645399ea7f5711c2334685cda4d1d94f92db180bc0b62050e8a8f",
+      "translation": "将 OME-Zarr 0.5 存储转换为 0.6，或将 0.6 存储转回 0.5，而不改动任何像素。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "Item 1007. Every chunk file is hard-linked into ``dst`` (copied when ``link`` is False or the filesystem refuses the link) and only the group ``zarr.json`` metadata is rewritten, by :func:`spacr.ome_zarr.multiscale_to_ngff06` (or :func:`spacr.ome_zarr.multiscale_to_ngff05` for ``to='0.5'``): ``ome.version`` becomes the target, ``axes`` the intrinsic coordinate system and the transformations of each level the ``{\"path\"} -> {\"name\"}`` form. A ``version`` repeated inside ``multiscales``, ``plate``, ``well`` or ``labels`` that equals the store version is dropped, as 0.6 keeps it only at ``ome.version``, and listed in the report. Array metadata, the other OME structured-data names and every non-OME group are kept byte for byte or structured-data name for structured-data name.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#1",
+      "source": "Item 1007. Every chunk file is hard-linked into ``dst`` (copied when ``link`` is False or the filesystem refuses the link) and only the group ``zarr.json`` metadata is rewritten, by :func:`spacr.ome_zarr.multiscale_to_ngff06` (or :func:`spacr.ome_zarr.multiscale_to_ngff05` for ``to='0.5'``): ``ome.version`` becomes the target, ``axes`` the intrinsic coordinate system and the transformations of each level the ``{\"path\"} -> {\"name\"}`` form. A ``version`` repeated inside ``multiscales``, ``plate``, ``well`` or ``labels`` that equals the store version is dropped, as 0.6 keeps it only at ``ome.version``, and listed in the report. Array metadata, the other OME keys and every non-OME group are kept byte for byte or key for key.",
+      "source_sha256": "a7d6248897d1fbb1fe74aa6103bc7e669f84e98e1be6707ebad470d391069a1a",
+      "translation": "条目 1007。每个分块文件都会以硬链接方式放入 ``dst``（当 ``link`` 为 False 或文件系统拒绝创建链接时则复制），仅重写组的 ``zarr.json`` 元数据，使用 :func:`spacr.ome_zarr.multiscale_to_ngff06` （或在 :func:`spacr.ome_zarr.multiscale_to_ngff05` 中处理 ``to='0.5'``）：``ome.version`` 变为目标版本，``axes`` 变为内在坐标系，各层级的变换改为 ``{\"path\"} -> {\"name\"}`` 形式。重复的 ``version`` 若位于 ``multiscales``、``plate``、``well`` 或 ``labels`` 内且与存储版本相同，会被移除并列入报告，因为 0.6 仅在 ``ome.version`` 中保留版本。数组元数据、其他 OME 键以及每个非 OME 组均按字节或按键原样保留。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "Anything that has no lossless form in the target version is refused with the reason before anything is written, and ``src`` is never changed. A hard-linked chunk is the same file as in the source, so ``dst`` is a new view of the same pixels; edit neither in place.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#2",
+      "source": "Anything that has no lossless form in the target version is refused with the reason before anything is written, and ``src`` is never changed. A hard-linked chunk is the same file as in the source, so ``dst`` is a new view of the same pixels; edit neither in place.",
+      "source_sha256": "10e7cdc3334e6be6cae907097cb30942842466d35625716e78d81b60365ff215",
+      "translation": "若任何内容在目标版本中无法无损表示，会在写入任何数据前说明原因并拒绝转换，且始终不会更改 ``src``。硬链接分块与源中的分块是同一个文件，因此 ``dst`` 是同一组像素的新视图；请勿对其中任何一方进行原地编辑。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "After writing, the md5 of every chunk file in ``src`` and ``dst`` is compared and every group is mapped back to the source version, which must give the original metadata (structured-data name order aside). The report is written to ``dst/ngff_upgrade.json``. A run stopped part-way resumes when called again with the same ``src``, ``dst`` and ``to``.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#3",
+      "source": "After writing, the md5 of every chunk file in ``src`` and ``dst`` is compared and every group is mapped back to the source version, which must give the original metadata (key order aside). The report is written to ``dst/ngff_upgrade.json``. A run stopped part-way resumes when called again with the same ``src``, ``dst`` and ``to``.",
+      "source_sha256": "cbcb4ef04f1c166a1bbede531a61fcd7c963ee9966c76a85811f351b56034aa9",
+      "translation": "写入后，会比较 ``src`` 与 ``dst`` 中每个分块文件的 md5，并将每个组映射回源版本；结果必须与原始元数据一致（不考虑键顺序）。报告写入 ``dst/ngff_upgrade.json``。运行中途停止后，使用相同的 ``src``、``dst`` 和 ``to`` 再次调用即可继续。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "the store to convert, a Zarr v3 OME-Zarr 0.5 (or 0.6) group.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#4",
+      "source": "the store to convert, a Zarr v3 OME-Zarr 0.5 (or 0.6) group.",
+      "source_sha256": "30370355f6b990a07eed0eb7948925bc965ad2e7636e19a210bdea9827f98332",
+      "translation": "要转换的存储，即 Zarr v3 的 OME-Zarr 0.5（或 0.6）组。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "the new store; it must not exist, or hold an earlier run of the same upgrade.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#5",
+      "source": "the new store; it must not exist, or hold an earlier run of the same upgrade.",
+      "source_sha256": "3c1d3b5ee735d6fb045d2bae5807cb9c69ef120f789cbb1e3ec9234f79818e07",
+      "translation": "新的存储；该位置必须尚不存在，或包含同一次升级此前运行的结果。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "``'0.6'`` (default) or ``'0.5'``.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#6",
+      "source": "``'0.6'`` (default) or ``'0.5'``.",
+      "source_sha256": "fad665dba2805adfc7f37af0ef4b1236c1b290fa0ba84d77195ae666584f184d",
+      "translation": "``'0.6'``（默认）或 ``'0.5'``。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "hard-link the chunk files (True) or copy them (False); None (default) reads ``ome_zarr_upgrade_link`` from ``settings``, else its default in :data:`spacr.ops_settings.OPS_DEFAULTS` (True).",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#7",
+      "source": "hard-link the chunk files (True) or copy them (False); None (default) reads ``ome_zarr_upgrade_link`` from ``settings``, else its default in :data:`spacr.ops_settings.OPS_DEFAULTS` (True).",
+      "source_sha256": "5e56652346001c4a825c9a33ec0ff9a071f6b51f96b9f58db5d5d59088371a5b",
+      "translation": "对分块文件创建硬链接（True）或复制文件（False）；None（默认）读取 ``ome_zarr_upgrade_link``，取自 ``settings``，否则使用 :data:`spacr.ops_settings.OPS_DEFAULTS` 中的默认值（True）。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "a settings key-value mapping, as supplied by a settings file or the Upgrade row in the Convert tab; read for ``ome_zarr_upgrade_link``.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#8",
+      "source": "a settings dict, as supplied by a settings file or the Upgrade row in the Convert tab; read for ``ome_zarr_upgrade_link``.",
+      "source_sha256": "94008ec9d2ea17eb0f372b3448005aabe2615008debad2d3efdce134f38a8bae",
+      "translation": "设置字典，由设置文件或“转换”选项卡中的“升级”行提供；用于读取 ``ome_zarr_upgrade_link``。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "the report: ``to``, ``groups``, ``arrays``, ``chunks``, ``linked``, ``copied``, ``chunk_list_md5`` (the md5 of the sorted ``path<TAB>md5`` list), ``removed_version_keys`` and ``verdict`` (``'verified'``).",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#9",
+      "source": "the report: ``to``, ``groups``, ``arrays``, ``chunks``, ``linked``, ``copied``, ``chunk_list_md5`` (the md5 of the sorted ``path<TAB>md5`` list), ``removed_version_keys`` and ``verdict`` (``'verified'``).",
+      "source_sha256": "2dee715097422e8359fe468761824b14b7fdf7070a100fa2164d0aaf8f0f332b",
+      "translation": "报告：``to``、``groups``、``arrays``、``chunks``、``linked``、``copied``、``chunk_list_md5``（排序后的 ``path<TAB>md5`` 列表的 md5）、``removed_version_keys`` 和 ``verdict``（``'verified'``）。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "for an unknown target, a store that is not the source version, a Zarr v2 store, a destination inside the source or holding other files, metadata without a lossless form, or a failed verification.",
+      "label": "spacr.ome_zarr_convert.upgrade_ngff#10",
+      "source": "for an unknown target, a store that is not the source version, a Zarr v2 store, a destination inside the source or holding other files, metadata without a lossless form, or a failed verification.",
+      "source_sha256": "b6d366a0da33313b5dad49a721e788dc040ad3420b0044ec76928d6cb6974622",
+      "translation": "目标版本未知、存储不是源版本、存储为 Zarr v2、目标位于源内部或包含其他文件、元数据无法无损表示，或验证失败时引发。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "Upgrade the chosen OME-Zarr 0.5 store to 0.6 off the main GUI execution path (item 1007, alpha).",
+      "label": "spacr.qt.screens.convert.ConvertScreen.run_ngff_upgrade#0",
+      "source": "Upgrade the chosen OME-Zarr 0.5 store to 0.6 off the GUI thread (item 1007, alpha).",
+      "source_sha256": "0716e42a04f4a0a9b77f3953dcf7c2ba6cb91b4eeb770ec3eaf3ad664e2f1e29",
+      "translation": "在 GUI 线程之外将所选 OME-Zarr 0.5 存储升级为 0.6（条目 1007，alpha）。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": ":func:`spacr.ome_zarr_convert.upgrade_ngff` writes a new store beside the source and verifies every chunk; the report goes to the Summary pane, a refusal to the status line.",
+      "label": "spacr.qt.screens.convert.ConvertScreen.run_ngff_upgrade#1",
+      "source": ":func:`spacr.ome_zarr_convert.upgrade_ngff` writes a new store beside the source and verifies every chunk; the report goes to the Summary pane, a refusal to the status line.",
+      "source_sha256": "21dc7848f7855e06ff21983483eda692596f7154e4c25a445539d28dfdc6e556",
+      "translation": ":func:`spacr.ome_zarr_convert.upgrade_ngff` 在源旁边写入新存储并验证每个分块；报告显示在“摘要”窗格中，拒绝原因显示在状态行中。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    },
+    {
+      "context": "True when the job was started (or, unthreaded, succeeded).",
+      "label": "spacr.qt.screens.convert.ConvertScreen.run_ngff_upgrade#2",
+      "source": "True when the job was started (or, unthreaded, succeeded).",
+      "source_sha256": "d0957da24baf3497261b6867257ccc2094845a95f44c28d8622359cb2e40c341",
+      "translation": "作业已启动（或在不使用线程时已成功完成）时返回 True。",
+      "review_basis": "Codex (OpenAI) AI translation and review on 2026-11-22 of item 1007B OME-Zarr upgrade API and runtime messages (source 7a74b9b2c197bf3552e6ed11533e38f5e7a8faf1). No human or native-speaker signoff."
+    }
+  ]
+}
